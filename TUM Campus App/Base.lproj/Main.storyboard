@@ -334,31 +334,95 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Cqz-ah-oLK">
-                                <rect key="frame" x="0.0" y="92" width="600" height="246"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="132" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="246"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="131.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-Vj-iJf">
-                                            <rect key="frame" x="8" y="8" width="584" height="230"/>
+                                            <rect key="frame" x="8" y="8" width="584" height="115.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition Fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94g-Dk-mGV">
+                                                    <rect key="frame" x="8" y="8" width="140" height="32.5"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9k-6V-snm">
+                                                    <rect key="frame" x="8" y="78.5" width="55.5" height="17"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="12.12.12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x63-ZJ-0zj">
+                                                    <rect key="frame" x="88" y="51.5" width="67" height="16"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="140,00 €" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJK-sf-cB8">
+                                                    <rect key="frame" x="88" y="75.5" width="75" height="23"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="bJK-sf-cB8" firstAttribute="top" secondItem="x63-ZJ-0zj" secondAttribute="bottom" constant="8" id="2Zi-Vj-yGe"/>
+                                                <constraint firstItem="94g-Dk-mGV" firstAttribute="top" secondItem="kl1-Vj-iJf" secondAttribute="top" constant="8" id="Oo1-mi-lcE"/>
+                                                <constraint firstItem="94g-Dk-mGV" firstAttribute="leading" secondItem="kl1-Vj-iJf" secondAttribute="leading" constant="8" id="T1t-wJ-QR2"/>
+                                                <constraint firstItem="bJK-sf-cB8" firstAttribute="centerY" secondItem="t9k-6V-snm" secondAttribute="centerY" id="TQe-M7-WRo"/>
+                                                <constraint firstAttribute="bottom" secondItem="t9k-6V-snm" secondAttribute="bottom" constant="20" symbolic="YES" id="aL0-b8-XuU"/>
+                                                <constraint firstItem="bJK-sf-cB8" firstAttribute="leading" secondItem="x63-ZJ-0zj" secondAttribute="leading" id="gxi-6G-pUJ"/>
+                                            </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Deadline:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQd-tN-va6">
+                                            <rect key="frame" x="16" y="56.5" width="60.5" height="22"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
+                                        <constraint firstItem="t9k-6V-snm" firstAttribute="leading" secondItem="rQd-tN-va6" secondAttribute="leading" id="2Oz-gg-SmJ"/>
                                         <constraint firstItem="kl1-Vj-iJf" firstAttribute="centerY" secondItem="Lgz-Z4-dlR" secondAttribute="centerY" id="7FE-tC-Ete"/>
+                                        <constraint firstItem="rQd-tN-va6" firstAttribute="top" secondItem="94g-Dk-mGV" secondAttribute="bottom" constant="8" id="7Ug-ba-nlN"/>
                                         <constraint firstItem="kl1-Vj-iJf" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="topMargin" id="BXp-vd-rQg"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="rQd-tN-va6" secondAttribute="trailing" constant="-82" id="Ejj-R0-o64"/>
+                                        <constraint firstItem="x63-ZJ-0zj" firstAttribute="centerY" secondItem="rQd-tN-va6" secondAttribute="centerY" id="MG5-eY-Ing"/>
+                                        <constraint firstItem="x63-ZJ-0zj" firstAttribute="leading" secondItem="rQd-tN-va6" secondAttribute="trailing" constant="19.5" id="U2x-pC-vuc"/>
                                         <constraint firstItem="kl1-Vj-iJf" firstAttribute="trailing" secondItem="Lgz-Z4-dlR" secondAttribute="trailingMargin" id="XV4-Gn-3qV"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="rQd-tN-va6" secondAttribute="trailing" constant="-68.5" id="Ys6-Gx-nEn"/>
+                                        <constraint firstItem="t9k-6V-snm" firstAttribute="top" secondItem="rQd-tN-va6" secondAttribute="bottom" constant="8" id="dUz-ZP-6b6"/>
+                                        <constraint firstItem="rQd-tN-va6" firstAttribute="leading" secondItem="94g-Dk-mGV" secondAttribute="leading" id="rbF-Re-hn7"/>
                                         <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leadingMargin" id="xG3-VN-tpp"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Ejj-R0-o64"/>
+                                            <exclude reference="Ys6-Gx-nEn"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="balanceLabel" destination="bJK-sf-cB8" id="36E-9m-EGN"/>
+                                    <outlet property="cardView" destination="kl1-Vj-iJf" id="J3D-LF-YsH"/>
+                                    <outlet property="deadLineLabel" destination="x63-ZJ-0zj" id="NKB-Ui-Jgk"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="TUM_Campus_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="338" width="600" height="246"/>
+                                <rect key="frame" x="0.0" y="224" width="600" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="245.5"/>
@@ -371,6 +435,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="229.5"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="229.5" id="LOC-3L-fAz"/>
                                                         <constraint firstAttribute="width" secondItem="ELI-9f-uy1" secondAttribute="height" multiplier="719:1080" id="ngW-NG-2oa"/>
                                                     </constraints>
                                                 </imageView>
@@ -430,7 +495,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" rowHeight="174" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="TUM_Campus_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="584" width="600" height="174"/>
+                                <rect key="frame" x="0.0" y="470" width="600" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="173.5"/>
@@ -500,7 +565,9 @@
                             <outlet property="delegate" destination="u9w-Pv-4xV" id="dKB-FH-64U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TUM Campus App" id="7Vq-9E-9u2"/>
+                    <navigationItem key="navigationItem" title="TUM Campus App" id="7Vq-9E-9u2">
+                        <barButtonItem key="backBarButtonItem" title="TUM" id="9rI-DA-PZf"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foy-xU-PJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

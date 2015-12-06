@@ -9,7 +9,7 @@
 import UIKit
 import MCSwipeTableViewCell
 
-class CardViewController: UITableViewController, TumDataReceiver {
+class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadSubscriber {
     
     var manager: TumDataManager?
     
@@ -24,14 +24,26 @@ class CardViewController: UITableViewController, TumDataReceiver {
         if let bounds = imageView.superview?.bounds {
             imageView.frame = CGRectMake(bounds.origin.x+10, bounds.origin.y+10, bounds.width-20, bounds.height-20)
         }
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor.clearColor()
+        tableView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
         manager = (self.tabBarController as? CampusTabBarController)?.manager
         manager?.getCardItems(self)
     }
     
+    func updateImageView() {
+        tableView.reloadData()
+    }
+    
     func receiveData(data: [DataElement]) {
+        for item in data {
+            if let movieItem = item as? Movie {
+                movieItem.subscribeToImage(self)
+            }
+        }
         cards = data
         tableView.reloadData()
     }
