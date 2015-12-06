@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        UINavigationBar.appearance().barTintColor = UIColor(red: 0.4, green: 0.2, blue: 0.8, alpha: 0.7)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        //UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.tumBlue]
+        UINavigationBar.appearance().tintColor = Constants.tumBlue
         
         if NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.Token.rawValue) == nil || NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.LRZ.rawValue) == nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

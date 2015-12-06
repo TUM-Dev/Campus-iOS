@@ -17,7 +17,7 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logo = UIImage(named: "logo-white")
+        let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         self.navigationItem.titleView = imageView
@@ -29,7 +29,7 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor.clearColor()
-        tableView.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
+        tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
         manager?.getCardItems(self)
     }

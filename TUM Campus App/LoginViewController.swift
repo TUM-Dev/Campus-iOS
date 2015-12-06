@@ -16,8 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
         secondTextField.delegate = self
         numbersTextField.delegate = self
         firstTextField.becomeFirstResponder()
-        
-        let logo = UIImage(named: "logo-white")
+        self.view.backgroundColor = Constants.backgroundGray
+        let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         self.navigationItem.titleView = imageView

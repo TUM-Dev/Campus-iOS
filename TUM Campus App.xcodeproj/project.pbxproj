@@ -37,6 +37,7 @@
 		0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61E01C135E07006017DB /* LoginViewController.swift */; };
 		0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */; };
 		0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E01C145613000F47D1 /* CalendarManager.swift */; };
+		0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */; };
 		0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */; };
 		0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */; };
 		0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */; };
@@ -95,6 +96,7 @@
 		0E5A61E01C135E07006017DB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitForTokenViewController.swift; sourceTree = "<group>"; };
 		0E5DF1E01C145613000F47D1 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumStyleConstants.swift; sourceTree = "<group>"; };
 		0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenu.swift; sourceTree = "<group>"; };
 		0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				0E5A61E01C135E07006017DB /* LoginViewController.swift */,
+				0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */,
 				0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */,
 			);
 			name = "Setup Wizard";
@@ -447,6 +450,7 @@
 			files = (
 				0E5281771C0E2EB500762EA3 /* CafeteriaManager.swift in Sources */,
 				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
+				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,
 				0E3B214A1C13CB280035ED70 /* BulkRequest.swift in Sources */,
 				0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */,

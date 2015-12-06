@@ -22,9 +22,7 @@ class SearchViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
-        if(searchTextField.text == "") {
-            searchTextField.becomeFirstResponder()
-        }
+        
     }
 
 }
