@@ -38,6 +38,8 @@
 		0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */; };
 		0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E01C145613000F47D1 /* CalendarManager.swift */; };
 		0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */; };
+		0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */; };
+		0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD471C14845700B29948 /* DetailViewDelegate.swift */; };
 		0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */; };
 		0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */; };
 		0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */; };
@@ -97,6 +99,8 @@
 		0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitForTokenViewController.swift; sourceTree = "<group>"; };
 		0E5DF1E01C145613000F47D1 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumStyleConstants.swift; sourceTree = "<group>"; };
+		0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewController.swift; sourceTree = "<group>"; };
+		0E60CD471C14845700B29948 /* DetailViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewDelegate.swift; sourceTree = "<group>"; };
 		0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenu.swift; sourceTree = "<group>"; };
 		0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				0E3B21421C13C0590035ED70 /* TabBar */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
 				0E5A61E31C135E27006017DB /* Card View */,
+				0E60CD491C148ED700B29948 /* Movie Detail View */,
 				0E3B21411C13C0440035ED70 /* Search View */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
 			);
@@ -229,6 +234,15 @@
 				0EDCACD61C1450A4008648D8 /* Cards */,
 			);
 			name = "Card View";
+			sourceTree = "<group>";
+		};
+		0E60CD491C148ED700B29948 /* Movie Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0E60CD471C14845700B29948 /* DetailViewDelegate.swift */,
+				0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */,
+			);
+			name = "Movie Detail View";
 			sourceTree = "<group>";
 		};
 		0E64AC551C0DE46C00060FB0 /* Models */ = {
@@ -459,6 +473,7 @@
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,
+				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
@@ -481,6 +496,7 @@
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
 				0E3B214E1C13DB200035ED70 /* TumDataItems.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
+				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,

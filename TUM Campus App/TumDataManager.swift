@@ -42,4 +42,8 @@ class TumDataManager {
             }
         }
     }
+    
+    func getMovies(receiver: TumDataReceiver) {
+        managers[TumDataItems.MoviesCollection.rawValue]?.fetchData(receiver.receiveData)
+    }
 }

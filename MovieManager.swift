@@ -65,7 +65,11 @@ class MovieManager: Manager {
             }
             
         } else {
-            handler(onlyNew as [DataElement])
+            var returnableArray = [DataElement]()
+            for item in onlyNew {
+                returnableArray.append(item)
+            }
+            handler(returnableArray)
         }
     }
     

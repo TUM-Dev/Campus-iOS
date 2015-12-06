@@ -9,7 +9,7 @@
 import UIKit
 import MCSwipeTableViewCell
 
-class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadSubscriber {
+class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadSubscriber, DetailViewDelegate {
     
     var manager: TumDataManager?
     
@@ -32,6 +32,10 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
         manager?.getCardItems(self)
+    }
+    
+    func dataManager() -> TumDataManager {
+        return manager ?? TumDataManager(user: nil)
     }
     
     func updateImageView() {
@@ -71,6 +75,7 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
                 self.tableView.deleteRowsAtIndexPaths([path], withRowAnimation: UITableViewRowAnimation.Top)
             }
         }
+        cell.selectionStyle = .None
         cell.defaultColor = tableView.backgroundColor
         cell.setSwipeGestureWithView(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.Exit, state: MCSwipeTableViewCellState.State1) { (void) in handler() }
         cell.setSwipeGestureWithView(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.Exit, state: MCSwipeTableViewCellState.State2) { (void) in handler() }
@@ -80,7 +85,13 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? MovieDetailTableViewController {
+            mvc.delegate = self
+        }
     }
     
 }
