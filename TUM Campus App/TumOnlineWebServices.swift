@@ -14,4 +14,5 @@ enum TUMOnlineWebServices: String {
     case TokenConfirmation = "isTokenConfirmed"
     case TokenParameter = "pToken"
     case TuitionStatus = "studienbeitragsstatus"
+    case Calendar = "kalender"
 }

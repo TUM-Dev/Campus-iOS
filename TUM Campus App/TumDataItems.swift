@@ -12,4 +12,6 @@ enum TumDataItems: String {
     case TuitionStatus = "TuitionStatus"
     case MovieCard = "Movie"
     case MoviesCollection = "MoviesCollection"
+    case CalendarCard = "CalendarRow"
+    case CalendarFull = "CalendarFull"
 }

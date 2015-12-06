@@ -31,7 +31,6 @@ class MovieManager: Manager {
                     if let data = response.result.value {
                         if let json = JSON(data).array {
                             for item in json {
-                                print(item)
                                 if let rating = item["rating"].string, description = item["description"].string, director = item["director"].string, name = item["title"].string, runtime = item["runtime"].string, date = item["date"].string, cover = item["cover"].string, created = item["created"].string, year = item["year"].string, genre = item["genre"].string, id = item["link"].string, actors = item["actors"].string {
                                     let runTimeAsNumber = Int(runtime.componentsSeparatedByString(" ")[0]) ?? 0
                                     let ratingAsNumber = Double(rating) ?? 0.0

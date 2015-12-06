@@ -10,7 +10,7 @@ import Foundation
 
 class TumDataManager {
     
-    let cardItems = [TumDataItems.TuitionStatus, TumDataItems.Cafeterias, TumDataItems.MovieCard]
+    let cardItems = [TumDataItems.TuitionStatus, TumDataItems.Cafeterias, TumDataItems.MovieCard, TumDataItems.CalendarCard]
     
     var user: User?
     
@@ -30,6 +30,8 @@ class TumDataManager {
         setManager(TumDataItems.TuitionStatus, manager: TuitionStatusManager(mainManager: self))
         setManager(TumDataItems.MovieCard, manager: MovieManager(single: true))
         setManager(TumDataItems.MoviesCollection, manager: MovieManager(mainManager: self))
+        setManager(TumDataItems.CalendarCard, manager: CalendarManager(mainManager: self, single: true))
+        setManager(TumDataItems.CalendarFull, manager: CalendarManager(mainManager: self))
     }
     
     func getCardItems(receiver: TumDataReceiver) {

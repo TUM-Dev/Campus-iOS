@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3AB9864A7D7738CE9DB73641'
-               BlueprintName = 'Pods-TUM Campus App'
+               BlueprintIdentifier = '9D3AD9D14FEFA5D32FDA61AB'
+               BlueprintName = 'AYSlidingPickerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_TUM_Campus_App.framework'>
+               BuildableName = 'AYSlidingPickerView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

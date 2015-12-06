@@ -36,7 +36,6 @@ class Movie:DataElement {
         self.description = description
         self.year = year
         self.actors = actors
-        print(poster)
         if let url = NSURL(string: poster) {
             dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)) {
                 if let data = NSData(contentsOfURL: url), imageFromData = UIImage(data: data) {

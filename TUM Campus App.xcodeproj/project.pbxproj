@@ -36,6 +36,7 @@
 		0E5A61DF1C135750006017DB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61DE1C135750006017DB /* User.swift */; };
 		0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61E01C135E07006017DB /* LoginViewController.swift */; };
 		0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */; };
+		0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E01C145613000F47D1 /* CalendarManager.swift */; };
 		0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */; };
 		0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */; };
 		0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */; };
@@ -93,6 +94,7 @@
 		0E5A61DE1C135750006017DB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0E5A61E01C135E07006017DB /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitForTokenViewController.swift; sourceTree = "<group>"; };
+		0E5DF1E01C145613000F47D1 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenu.swift; sourceTree = "<group>"; };
 		0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
@@ -219,12 +221,9 @@
 		0E5A61E31C135E27006017DB /* Card View */ = {
 			isa = PBXGroup;
 			children = (
-				0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */,
-				0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */,
-				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
-				0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */,
+				0EDCACD61C1450A4008648D8 /* Cards */,
 			);
 			name = "Card View";
 			sourceTree = "<group>";
@@ -253,6 +252,7 @@
 				0E52817A1C0E2F7500762EA3 /* Manager.swift */,
 				0E5281761C0E2EB500762EA3 /* CafeteriaManager.swift */,
 				0E3B21471C13C3790035ED70 /* TuitionStatusManager.swift */,
+				0E5DF1E01C145613000F47D1 /* CalendarManager.swift */,
 				0E85D39E1C13E80200499564 /* MovieManager.swift */,
 				0E3B214F1C13DB360035ED70 /* TumDataReceiver.swift */,
 				0E3B214D1C13DB200035ED70 /* TumDataItems.swift */,
@@ -261,6 +261,17 @@
 				0E3B21571C13DBA20035ED70 /* TumOnlineLogin */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		0EDCACD61C1450A4008648D8 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */,
+				0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */,
+				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
+				0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */,
+			);
+			name = Cards;
 			sourceTree = "<group>";
 		};
 		88EF6B75EEA36B61CDF00060 /* Frameworks */ = {
@@ -458,6 +469,7 @@
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
 				0E85D39F1C13E80200499564 /* MovieManager.swift in Sources */,
+				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0E3B21501C13DB360035ED70 /* TumDataReceiver.swift in Sources */,
 				0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */,
 				0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */,

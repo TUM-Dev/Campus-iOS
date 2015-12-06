@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3AB9864A7D7738CE9DB73641'
-               BlueprintName = 'Pods-TUM Campus App'
+               BlueprintIdentifier = 'A3E56325C32B83E707DF67DD'
+               BlueprintName = 'PZPullToRefresh'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Pods_TUM_Campus_App.framework'>
+               BuildableName = 'PZPullToRefresh.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
