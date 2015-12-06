@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-jj-TiG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="z5f-jj-TiG">
                                 <rect key="frame" x="189" y="175" width="223" height="50"/>
                                 <animations/>
                                 <constraints>
@@ -32,7 +32,7 @@
                             </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.396078431372549" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="z5f-jj-TiG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ID8-SI-1aO"/>
                             <constraint firstItem="z5f-jj-TiG" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="216" id="hKs-AY-06B"/>

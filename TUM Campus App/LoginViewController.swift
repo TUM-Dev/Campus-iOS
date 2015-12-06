@@ -16,8 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
         secondTextField.delegate = self
         numbersTextField.delegate = self
         firstTextField.becomeFirstResponder()
-        
-        let logo = UIImage(named: "logo-white")
+        self.view.backgroundColor = Constants.backgroundGray
+        let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         self.navigationItem.titleView = imageView
@@ -30,6 +30,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
