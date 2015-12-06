@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MCSwipeTableViewCell
 
-class TUFilmCardCell: UITableViewCell {
+class TUFilmCardCell: MCSwipeTableViewCell {
     
     var movie: Movie? {
         didSet {
