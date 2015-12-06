@@ -32,6 +32,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
         // Dispose of any resources that can be recreated.
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
         switch textField {
