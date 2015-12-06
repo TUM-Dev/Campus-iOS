@@ -9,4 +9,5 @@ target 'TUM Campus App' do
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 	pod 'XMLParser', '~> 1.0'
+	pod "AYSlidingPickerView"
 end

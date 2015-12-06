@@ -67,8 +67,8 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         cell.setElement(item)
         let handler = { () -> () in
             if let path = self.tableView.indexPathForCell(cell) {
+                self.cards.removeAtIndex(path.row)
                 self.tableView.deleteRowsAtIndexPaths([path], withRowAnimation: UITableViewRowAnimation.Top)
-                self.cards.removeAtIndex(indexPath.row)
             }
         }
         cell.defaultColor = tableView.backgroundColor

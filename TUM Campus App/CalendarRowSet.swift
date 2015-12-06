@@ -8,6 +8,7 @@
 
 import Foundation
 class CalendarRowSet:DataElement {
+    
     var calendarList = [CalendarRow]()
     
     func getCellIdentifier() -> String {

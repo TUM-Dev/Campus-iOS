@@ -10,8 +10,8 @@ import Foundation
 import CoreLocation
 class CalendarRow: DataElement {
     var description: String?
-    var dtend: String?
-    var dtstart: String?
+    var dtend: NSDate?
+    var dtstart: NSDate?
     var geo: CLLocation?
     var location: String?
     var status: String?
