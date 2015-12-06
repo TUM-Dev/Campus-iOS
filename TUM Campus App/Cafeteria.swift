@@ -28,4 +28,8 @@ class Cafeteria:DataElement {
         return from.distanceFromLocation(location)
     }
     
+    func getCellIdentifier() -> String {
+        return "cafeteria"
+    }
+    
 }

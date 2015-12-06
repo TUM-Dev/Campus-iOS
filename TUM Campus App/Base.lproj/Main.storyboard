@@ -261,7 +261,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
                         </textField>
                     </navigationItem>
                     <connections>
@@ -334,8 +334,31 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Cqz-ah-oLK">
                                 <rect key="frame" x="0.0" y="92" width="600" height="246"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="246"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-Vj-iJf">
+                                            <rect key="frame" x="8" y="8" width="584" height="230"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="centerY" secondItem="Lgz-Z4-dlR" secondAttribute="centerY" id="7FE-tC-Ete"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="topMargin" id="BXp-vd-rQg"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="trailing" secondItem="Lgz-Z4-dlR" secondAttribute="trailingMargin" id="XV4-Gn-3qV"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leadingMargin" id="xG3-VN-tpp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="338" width="600" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="245.5"/>
@@ -407,7 +430,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" rowHeight="174" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="TUM_Campus_App" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="338" width="600" height="174"/>
+                                <rect key="frame" x="0.0" y="584" width="600" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="173.5"/>

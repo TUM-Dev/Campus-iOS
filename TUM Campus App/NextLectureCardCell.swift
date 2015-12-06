@@ -9,7 +9,7 @@
 import UIKit
 import MCSwipeTableViewCell
 
-class NextLectureCardCell: MCSwipeTableViewCell {
+class NextLectureCardCell: CardTableViewCell {
 
     @IBOutlet weak var lectureTitelLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!

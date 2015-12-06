@@ -7,5 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
-protocol DataElement {}
+protocol DataElement {
+    func getCellIdentifier() -> String
+}

@@ -11,22 +11,6 @@ import Alamofire
 import SwiftyJSON
 import XMLParser
 
-enum LoginDefaultsKeys: String {
-    case Token = "TomOnlineToken"
-    case LRZ = "TumOnlineLRZID"
-}
-
-enum TUMOnlineWebServices: String {
-    case BaseUrl = "https://campus.tum.de/tumonline/wbservicesbasic."
-    case TokenRequest = "requestToken"
-    case TokenConfirmation = "isTokenConfirmed"
-    case TokenParameter = "pToken"
-}
-
-protocol AccessTokenReceiver {
-    func receiveToken(token: String)
-}
-
 class TumOnlineLoginRequestManager {
     
     init(delegate:AccessTokenReceiver?) {

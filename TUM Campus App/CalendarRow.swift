@@ -17,4 +17,9 @@ class CalendarRow: DataElement {
     var status: String?
     var title: String?
     var url: NSURL?
+    
+    func getCellIdentifier() -> String {
+        return "calendarRow"
+    }
+    
 }

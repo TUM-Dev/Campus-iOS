@@ -27,4 +27,8 @@ class CafeteriaMenu:DataElement {
         self.name = name
     }
     
+    func getCellIdentifier() -> String {
+        return "cafeteriaMenu"
+    }
+    
 }

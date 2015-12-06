@@ -8,11 +8,11 @@
 
 import Foundation
 
-enum TumDataItems: String {
-    case Cafeterias = "Cafeterias"
-}
-
 class TumDataManager {
+    
+    let cardItems = [TumDataItems.TuitionStatus, TumDataItems.Cafeterias]
+    
+    var user: User?
     
     var managers = [String:Manager]()
     
@@ -20,5 +20,22 @@ class TumDataManager {
         managers[item.rawValue] = manager
     }
     
+    func getToken() -> String {
+        return user?.token ?? ""
+    }
     
+    init(user: User?) {
+        self.user = user
+        setManager(TumDataItems.Cafeterias, manager: CafeteriaManager(mainManager: self))
+        setManager(TumDataItems.TuitionStatus, manager: TuitionStatusManager(mainManager: self))
+    }
+    
+    func getCardItems(receiver: TumDataReceiver) {
+        let request = BulkRequest(receiver: receiver)
+        for item in cardItems {
+            managers[item.rawValue]?.fetchData() { (data) in
+                request.receiveData(data)
+            }
+        }
+    }
 }

@@ -9,7 +9,11 @@
 import UIKit
 import MCSwipeTableViewCell
 
-class CardViewController: UITableViewController {
+class CardViewController: UITableViewController, TumDataReceiver {
+    
+    var manager: TumDataManager?
+    
+    var cards = [DataElement]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +27,13 @@ class CardViewController: UITableViewController {
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.separatorColor = UIColor.clearColor()
-        let dataManager = TumDataManager()
-        let cafeteriasManager = CafeteriaManager(mainManager: dataManager)
-        cafeteriasManager.fetchData() { (response) in
-            print(response)
-        }
+        manager = (self.tabBarController as? CampusTabBarController)?.manager
+        manager?.getCardItems(self)
+    }
+    
+    func receiveData(data: [DataElement]) {
+        cards = data
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,19 +46,17 @@ class CardViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return cards.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return filmCell()
-    }
-    
-    func filmCell() -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("film") as? TUFilmCardCell ?? TUFilmCardCell()
-        cell.movie = Movie()
+        let item = cards[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        cell.setElement(item)
         let handler = { () -> () in
             if let path = self.tableView.indexPathForCell(cell) {
                 self.tableView.deleteRowsAtIndexPaths([path], withRowAnimation: UITableViewRowAnimation.Top)
+                self.cards.removeAtIndex(indexPath.row)
             }
         }
         cell.defaultColor = tableView.backgroundColor

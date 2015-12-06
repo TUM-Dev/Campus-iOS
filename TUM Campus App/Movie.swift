@@ -61,4 +61,8 @@ class Movie:DataElement {
         
     }
     
+    func getCellIdentifier() -> String {
+        return "film"
+    }
+    
 }

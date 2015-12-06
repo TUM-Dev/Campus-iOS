@@ -4,7 +4,7 @@ xcodeproj 'TUM Campus App.xcodeproj'
 platform :ios, '8.0'
 use_frameworks!
 
-target "TUM Campus App" do
+target 'TUM Campus App' do
 	pod 'Alamofire', '~> 3.0'
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
