@@ -7,22 +7,20 @@
 //
 
 import UIKit
+import MCSwipeTableViewCell
 
-class TUFilmCardCell: UITableViewCell {
+class TUFilmCardCell: CardTableViewCell {
     
-    var movie: Movie? {
-        didSet {
-            if let unwrappedMovie = movie {
-                
-                
-                titleLabel.text = unwrappedMovie.name
-                let cal = NSCalendar.currentCalendar()
-                let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
-                dateLabel.text = components.day.description + "." + components.month.description
-                posterImageView.image = unwrappedMovie.image
-            }
+    override func setElement(element: DataElement) {
+        if let unwrappedMovie = element as? Movie{
+            titleLabel.text = unwrappedMovie.name
+            let cal = NSCalendar.currentCalendar()
+            let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
+            dateLabel.text = components.day.description + "." + components.month.description
+            posterImageView.image = unwrappedMovie.image
         }
     }
+    
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!

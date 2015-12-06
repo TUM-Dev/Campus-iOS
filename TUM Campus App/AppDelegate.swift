@@ -19,6 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 0.4, green: 0.2, blue: 0.8, alpha: 0.7)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        if NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.Token.rawValue) == nil || NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.LRZ.rawValue) == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewControllerWithIdentifier("Login")
+            window?.rootViewController = loginViewController
+        }
+        
+        
         // Override point for customization after application launch.
         return true
     }

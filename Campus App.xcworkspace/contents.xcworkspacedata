@@ -4,4 +4,10 @@
    <FileRef
       location = "container:TUM Campus App.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TUM Campus App.xcodeproj">
+   </FileRef>
 </Workspace>
