@@ -24,6 +24,15 @@ class NextLectureCardCell: CardTableViewCell {
                 let start = dateformatter.stringFromDate(s)
                 let end = dateformatter.stringFromDate(e)
                 timeLabel.text = start + " - " + end
+                let remaining = s.timeIntervalSinceNow
+                let seconds = Int(remaining)
+                let hoursRemaining = seconds / 3600
+                if hoursRemaining > 0 {
+                    timeRemainingLabel.text = "In " + hoursRemaining.description + " hours"
+                } else {
+                    let minutes = (seconds / 60) % 60
+                    timeRemainingLabel.text = "In " + minutes.description + " minutes"
+                }
             }
         }
     }
