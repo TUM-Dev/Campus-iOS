@@ -1,0 +1,6 @@
+framework module ASWeekSelectorView {
+  umbrella header "ASWeekSelectorView-umbrella.h"
+
+  export *
+  module * { export * }
+}
