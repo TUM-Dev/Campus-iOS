@@ -14,6 +14,14 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     var manager: TumDataManager?
     
     var cards = [DataElement]()
+    
+    var nextLecture: CalendarRow?
+    
+    var refresh = UIRefreshControl()
+    
+    func refresh(sender: AnyObject?) {
+        manager?.getCardItems(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,8 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         if let bounds = imageView.superview?.bounds {
             imageView.frame = CGRectMake(bounds.origin.x+10, bounds.origin.y+10, bounds.width-20, bounds.height-20)
         }
+        refresh.addTarget(self, action: Selector("refresh:"), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refresh)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         imageView.clipsToBounds = true
@@ -43,13 +53,19 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     }
     
     func receiveData(data: [DataElement]) {
-        for item in data {
-            if let movieItem = item as? Movie {
-                movieItem.subscribeToImage(self)
+        if cards.count < data.count {
+            for item in data {
+                if let movieItem = item as? Movie {
+                    movieItem.subscribeToImage(self)
+                }
+                if let lectureItem = item as? CalendarRow {
+                    nextLecture = lectureItem
+                }
             }
+            cards = data
+            tableView.reloadData()
         }
-        cards = data
-        tableView.reloadData()
+        refresh.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +106,13 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let mvc = segue.destinationViewController as? MovieDetailTableViewController {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? CalendarViewController {
+            mvc.delegate = self
+            mvc.nextLectureItem = nextLecture
+        }
+        if let mvc = segue.destinationViewController as? TuitionTableViewController {
             mvc.delegate = self
         }
     }

@@ -12,13 +12,14 @@ import AYSlidingPickerView
 class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
     
     var pickerView = AYSlidingPickerView()
+    
+    var barItem: UIBarButtonItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         delegate?.dataManager().getMovies(self)
-        title = "Tap To Select Movie"
     }
     
     var delegate: DetailViewDelegate?
@@ -28,12 +29,26 @@ class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
         // Dispose of any resources that can be recreated.
     }
     
+    func showMovies(send: AnyObject?) {
+        pickerView.show()
+        barItem?.action = Selector("hideMovies:")
+        barItem?.image = UIImage(named: "collapse")
+    }
+    
+    func hideMovies(send: AnyObject?) {
+        pickerView.dismiss()
+        barItem?.action = Selector("showMovies:")
+        barItem?.image = UIImage(named: "expand")
+    }
+    
     func setUpPickerView() {
         var items = [AnyObject]()
         for movie in movies {
             let item = AYSlidingPickerViewItem(title: movie.name) { (did) in
                 if did {
                     self.currentMovie = movie
+                    self.barItem?.action = Selector("showMovies:")
+                    self.barItem?.image = UIImage(named: "expand")
                     self.tableView.reloadData()
                 }
             }
@@ -44,7 +59,14 @@ class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
-        pickerView.addGestureRecognizersToNavigationBar(navigationController?.navigationBar)
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  Selector("showMovies:"))
+        let gestureRecognizer = UIPanGestureRecognizer(target: pickerView, action: Selector("didPan:"))
+        navigationController?.toolbar.addGestureRecognizer(gestureRecognizer)
+        navigationItem.rightBarButtonItem = barItem
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     func receiveData(data: [DataElement]) {
@@ -66,6 +88,7 @@ class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
                 let info = movie.name.componentsSeparatedByString(": ")
                 titleLabel.text = info[1]
                 dateLabel.text = info[0]
+                title = info[1]
                 yearLabel.text = movie.year.description
                 ratingLabel.text = "★ " + movie.rating.description
                 runTimeLabel.text = movie.runtime.description + " min"
@@ -74,6 +97,7 @@ class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
                 directorLabel.text = movie.director
                 descriptionLabel.text = movie.description
                 posterView.image = movie.image
+                tableView.reloadData()
             }
         }
     }

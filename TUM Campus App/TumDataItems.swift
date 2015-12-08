@@ -9,9 +9,11 @@
 import Foundation
 enum TumDataItems: String {
     case Cafeterias = "Cafeterias"
+    case TuitionStatusSingle = "TuitionStatusSingle"
     case TuitionStatus = "TuitionStatus"
     case MovieCard = "Movie"
     case MoviesCollection = "MoviesCollection"
     case CalendarCard = "CalendarRow"
     case CalendarFull = "CalendarFull"
+    case CafeteriaMenu = "CalendarMenu"
 }

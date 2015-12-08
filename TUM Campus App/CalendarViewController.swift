@@ -18,7 +18,11 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     
     var weekSelector: ASWeekSelectorView?
     
+    var nextLectureItem: CalendarRow?
+    
     var scrolling = false
+    
+    var firstTimeAppearing = true
     
     func showToday(sender: AnyObject?) {
         let now = NSDate()
@@ -78,7 +82,19 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        showToday(nil)
+        if firstTimeAppearing {
+            if let item = nextLectureItem {
+                let date = item.dtstart ?? NSDate()
+                weekSelector?.setSelectedDate(date, animated: true)
+                updateTitle(date)
+                goToTime(date)
+            } else {
+                let now = NSDate()
+                
+                scrollTo(now, animated: false)
+                firstTimeAppearing = false
+            }
+        }
     }
     
     func lecturesOfDate(date: NSDate) -> [CalendarRow] {
@@ -90,8 +106,12 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     
     func goToDay(date: NSDate) {
         let newDate = lecturesOfDate(date).first?.dtstart ?? date
+        goToTime(newDate)
+    }
+    
+    func goToTime(date: NSDate) {
         scrolling = true
-        scrollTo(newDate)
+        scrollTo(date)
     }
     
     func updateTitle(date: NSDate) {
@@ -148,12 +168,16 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     }
     
     func scrollTo(date: NSDate) {
+        scrollTo(date, animated: true)
+    }
+    
+    func scrollTo(date: NSDate, animated: Bool) {
         let interval = NSTimeInterval(-1200.0)
         var newDate = NSDate(timeInterval: interval, sinceDate: date)
         if !sameDay(newDate, b: date) {
             newDate = date
         }
-        dayPlannerView.scrollToDate(newDate, options: MGCDayPlannerScrollDateTime, animated: true)
+        dayPlannerView.scrollToDate(newDate, options: MGCDayPlannerScrollDateTime, animated: animated)
     }
     
 }

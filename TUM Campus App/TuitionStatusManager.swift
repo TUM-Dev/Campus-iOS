@@ -15,27 +15,52 @@ class TuitionStatusManager: Manager {
     
     var main: TumDataManager?
     
+    var single = false
+    
     required init(mainManager: TumDataManager) {
         main = mainManager
     }
     
+    init(mainManager: TumDataManager, single: Bool) {
+        main = mainManager
+        self.single = single
+    }
+    
+    var tuitionItems = [DataElement]()
+    
     func fetchData(handler: ([DataElement]) -> ()) {
-        let url = getURL()
-        var tuitionItems = [DataElement]()
-        Alamofire.request(.GET, url).responseString() { (response) in
-            if let data = response.result.value {
-                let dataAsDictionary = XMLParser.sharedParser.decode(data)
-                let json = JSON(dataAsDictionary)
-                if let sollArray = json["soll"].array, fristArray = json["frist"].array, bezArray = json["semester_bezeichnung"].array {
-                    for i in 0...((sollArray.count)-1) {
-                        if let soll = sollArray[i].string, frist = fristArray[i].string, bez = bezArray[i].string {
-                            let tuition = Tuition(frist: frist, semester: bez, soll: soll)
-                            tuitionItems.append(tuition)
+        if tuitionItems.isEmpty {
+            let url = getURL()
+            Alamofire.request(.GET, url).responseString() { (response) in
+                if let data = response.result.value {
+                    let dataAsDictionary = XMLParser.sharedParser.decode(data)
+                    let json = JSON(dataAsDictionary)
+                    if let sollArray = json["soll"].array, fristArray = json["frist"].array, bezArray = json["semester_bezeichnung"].array {
+                        for i in 0...((sollArray.count)-1) {
+                            if let soll = sollArray[i].string, frist = fristArray[i].string, bez = bezArray[i].string {
+                                let dateformatter = NSDateFormatter()
+                                dateformatter.dateFormat = "yyyy-MM-dd"
+                                if let fristDate = dateformatter.dateFromString(frist) {
+                                    let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
+                                    self.tuitionItems.append(tuition)
+                                }
+                            }
                         }
+                        self.handle(handler)
                     }
-                    handler(tuitionItems)
                 }
             }
+        } else {
+            handle(handler)
+        }
+        
+    }
+    
+    func handle(handler: ([DataElement]) -> ()) {
+        if single {
+            handler([tuitionItems[0]])
+        } else {
+            handler(tuitionItems)
         }
     }
     

@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class CalendarManager: Manager {
     
-    static var calendarItems = [CalendarRow]()
+    static var calendarItems = [DataElement]()
     
     let main: TumDataManager?
     var single = false
@@ -63,14 +63,17 @@ class CalendarManager: Manager {
     
     func handle(handler: ([DataElement]) -> ()) {
         let onlyNew = CalendarManager.calendarItems.filter() { (item) in
-            return item.dtstart?.compare(NSDate()) == NSComparisonResult.OrderedDescending
+            if let element = item as? CalendarRow {
+                return element.dtstart?.compare(NSDate()) == NSComparisonResult.OrderedDescending
+            }
+            return false
         }
         if single {
             if !onlyNew.isEmpty {
                 handler([onlyNew[0]])
             }
         } else {
-            handler(onlyNew as [DataElement])
+            handler(CalendarManager.calendarItems)
         }
     }
     
