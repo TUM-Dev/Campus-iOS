@@ -10,4 +10,7 @@ target 'TUM Campus App' do
 	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 	pod 'XMLParser', '~> 1.0'
 	pod "AYSlidingPickerView"
+	pod 'PZPullToRefresh'
+	pod 'ASWeekSelectorView', '~> 0.3.0'
+	pod 'CalendarLib', '~> 1.0'
 end

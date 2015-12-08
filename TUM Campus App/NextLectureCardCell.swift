@@ -21,13 +21,16 @@ class NextLectureCardCell: CardTableViewCell {
     
     override func setElement(element: DataElement) {
         if let calendarItem = element as? CalendarRow {
-            lectureTitelLabel.text = calendarItem.title
+            lectureTitelLabel.text = calendarItem.title?.componentsSeparatedByString(" [")[0]
             let dateformatter = NSDateFormatter()
             dateformatter.dateFormat = "hh:mm"
+            let dayformatter = NSDateFormatter()
+            dayformatter.dateFormat = "EEEE"
             if let s = calendarItem.dtstart, e = calendarItem.dtend {
+                let day = dayformatter.stringFromDate(s)
                 let start = dateformatter.stringFromDate(s)
                 let end = dateformatter.stringFromDate(e)
-                timeLabel.text = start + " - " + end
+                timeLabel.text = day + ", " + start + " - " + end
                 let remaining = s.timeIntervalSinceNow
                 let seconds = Int(remaining)
                 let hoursRemaining = seconds / 3600

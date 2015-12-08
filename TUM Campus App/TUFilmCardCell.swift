@@ -17,7 +17,7 @@ class TUFilmCardCell: CardTableViewCell {
             let cal = NSCalendar.currentCalendar()
             let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
             dateLabel.text = components.day.description + "." + components.month.description
-            posterImageView.image = unwrappedMovie.image
+            posterImageView.image = unwrappedMovie.image ?? UIImage(named: "movie")
         }
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreLocation
-class CalendarRow: DataElement {
+class CalendarRow: DataElement, Equatable, Hashable {
     var description: String?
     var dtend: NSDate?
     var dtstart: NSDate?
@@ -22,4 +22,12 @@ class CalendarRow: DataElement {
         return "calendarRow"
     }
     
+    var hashValue: Int {
+        return dtstart?.hashValue ?? 0 * 10 + (dtend?.hashValue ?? 0)
+    }
+    
+}
+
+func == (lhs: CalendarRow, rhs: CalendarRow) -> Bool {
+    return lhs.title == rhs.title && lhs.dtstart == rhs.dtstart
 }

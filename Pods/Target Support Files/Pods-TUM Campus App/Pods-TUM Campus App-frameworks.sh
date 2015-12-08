@@ -84,17 +84,25 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-TUM Campus App/ASWeekSelectorView.framework"
   install_framework "Pods-TUM Campus App/AYSlidingPickerView.framework"
   install_framework "Pods-TUM Campus App/Alamofire.framework"
+  install_framework "Pods-TUM Campus App/CalendarLib.framework"
   install_framework "Pods-TUM Campus App/MCSwipeTableViewCell.framework"
+  install_framework "Pods-TUM Campus App/OSCache.framework"
+  install_framework "Pods-TUM Campus App/OrderedDictionary.framework"
   install_framework "Pods-TUM Campus App/PZPullToRefresh.framework"
   install_framework "Pods-TUM Campus App/SwiftyJSON.framework"
   install_framework "Pods-TUM Campus App/XMLParser.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-TUM Campus App/ASWeekSelectorView.framework"
   install_framework "Pods-TUM Campus App/AYSlidingPickerView.framework"
   install_framework "Pods-TUM Campus App/Alamofire.framework"
+  install_framework "Pods-TUM Campus App/CalendarLib.framework"
   install_framework "Pods-TUM Campus App/MCSwipeTableViewCell.framework"
+  install_framework "Pods-TUM Campus App/OSCache.framework"
+  install_framework "Pods-TUM Campus App/OrderedDictionary.framework"
   install_framework "Pods-TUM Campus App/PZPullToRefresh.framework"
   install_framework "Pods-TUM Campus App/SwiftyJSON.framework"
   install_framework "Pods-TUM Campus App/XMLParser.framework"

@@ -22,7 +22,11 @@ class SearchViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
-        
+        searchTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        searchTextField.resignFirstResponder()
     }
 
 }

@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 class Constants {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
-    static let backgroundGray = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1.0)
+    static let backgroundGray = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
 }

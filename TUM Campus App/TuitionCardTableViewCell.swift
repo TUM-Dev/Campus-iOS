@@ -12,7 +12,9 @@ class TuitionCardTableViewCell: CardTableViewCell {
 
     override func setElement(element: DataElement) {
         if let tuitionElement = element as? Tuition {
-            deadLineLabel.text = tuitionElement.frist
+            let dateformatter = NSDateFormatter()
+            dateformatter.dateFormat = "MMM dd, yyyy"
+            deadLineLabel.text = dateformatter.stringFromDate(tuitionElement.frist)
             balanceLabel.text = tuitionElement.soll + " €"
         }
     }

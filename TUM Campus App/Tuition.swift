@@ -8,10 +8,10 @@
 
 import Foundation
 class Tuition: DataElement {
-    let frist: String
+    let frist: NSDate
     let semester: String
     let soll: String
-    init(frist:String,semester:String,soll:String) {
+    init(frist:NSDate,semester:String,soll:String) {
         self.frist = frist
         self.semester = semester
         self.soll = soll

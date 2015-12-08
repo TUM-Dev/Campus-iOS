@@ -1,0 +1,1 @@
+../../../CalendarLib/CalendarLib/MGCEventCellLayoutAttributes.h

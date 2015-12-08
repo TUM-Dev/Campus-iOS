@@ -22,6 +22,7 @@ class CampusTabBarController: UITabBarController {
         let loginManager = TumOnlineLoginRequestManager(delegate: nil)
         user = loginManager.userFromStorage()
         manager = TumDataManager(user: user)
+        manager?.getUserData()
     }
 
     override func didReceiveMemoryWarning() {

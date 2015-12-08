@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9D3AD9D14FEFA5D32FDA61AB'
+               BlueprintIdentifier = 'F1FF83A1C88C03F8022AACDE'
                BlueprintName = 'AYSlidingPickerView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AYSlidingPickerView.framework'>

@@ -1,0 +1,6 @@
+framework module CalendarLib {
+  umbrella header "CalendarLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

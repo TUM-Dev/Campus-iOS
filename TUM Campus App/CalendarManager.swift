@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class CalendarManager: Manager {
     
-    static var calendarItems = [CalendarRow]()
+    static var calendarItems = [DataElement]()
     
     let main: TumDataManager?
     var single = false
@@ -33,6 +33,7 @@ class CalendarManager: Manager {
                 if let data = response.result.value {
                     let dataAsDictionary = XMLParser.sharedParser.decode(data)
                     let json = JSON(dataAsDictionary)
+                    print(json)
                     if let titleArray = json["title"].array, startArray = json["dtstart"].array, end = json["dtend"].array, descriptionArray = json["description"].array, statusArray = json["status"].array, linkArray = json["url"].array {
                         for i in 0...(titleArray.count - 1) {
                             let item = CalendarRow()
@@ -50,7 +51,9 @@ class CalendarManager: Manager {
                             if let link = linkArray[i].string {
                                 item.url = NSURL(string: link)
                             }
-                            CalendarManager.calendarItems.append(item)
+                            if item.status == "FT" {
+                                CalendarManager.calendarItems.append(item)
+                            }
                         }
                         self.handle(handler)
                     }
@@ -63,14 +66,17 @@ class CalendarManager: Manager {
     
     func handle(handler: ([DataElement]) -> ()) {
         let onlyNew = CalendarManager.calendarItems.filter() { (item) in
-            return item.dtstart?.compare(NSDate()) == NSComparisonResult.OrderedDescending
+            if let element = item as? CalendarRow {
+                return element.dtstart?.compare(NSDate()) == NSComparisonResult.OrderedDescending
+            }
+            return false
         }
         if single {
             if !onlyNew.isEmpty {
                 handler([onlyNew[0]])
             }
         } else {
-            handler(onlyNew as [DataElement])
+            handler(CalendarManager.calendarItems)
         }
     }
     
