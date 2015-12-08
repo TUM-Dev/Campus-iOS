@@ -26,7 +26,6 @@ class CafeteriaMenuManager: Manager {
                     if let value = response.result.value {
                         let json = JSON(value)
                         if let cafeteriasJsonArray = json["mensa_menu"].array {
-                            print(cafeteriasJsonArray)
                             for item in cafeteriasJsonArray {
                                 if let id = item["id"].string, cafeteria = item["mensa_id"].string, date = item["date"].string, typeShort = item["type_short"].string, typeLong = item["type_long"].string, typeNR = item["type_nr"].string, name = item["name"].string, idNumber = Int(id), mensa = self.manager?.getCafeteriaForID(cafeteria), nr = Int(typeNR) {
                                     let dateformatter = NSDateFormatter()
