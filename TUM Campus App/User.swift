@@ -8,27 +8,22 @@
 
 import Foundation
 import UIKit
-class User {
+class User:ImageDownloader {
     let token: String
     let lrzID: String?
     var name: String?
-    var picture: UIImage?
     var id: String?
     
     init(lrzID: String, token: String) {
         self.lrzID = lrzID
         self.token = token
+        super.init()
     }
     
     func getUserData(data: UserData) {
         name = data.name
         id = data.id
-        print(data.picture)
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue),0)) {
-            if let url = NSURL(string: data.picture), pictureData = NSData(contentsOfURL: url), image = UIImage(data: pictureData) {
-                self.picture = image
-            }
-        }
+        getImage(data.picture)
     }
     
 }
