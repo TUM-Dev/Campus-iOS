@@ -34,6 +34,8 @@ class TumDataManager {
         setManager(TumDataItems.CalendarCard, manager: CalendarManager(mainManager: self, single: true))
         setManager(TumDataItems.CalendarFull, manager: CalendarManager(mainManager: self))
         setManager(TumDataItems.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
+        setManager(TumDataItems.UserData, manager: UserDataManager(mainManager: self))
+        setManager(TumDataItems.PersonSearch, manager: PersonSearchManager(mainManager: self))
         managers[TumDataItems.Cafeterias.rawValue]?.fetchData() { (data) in }
     }
     
@@ -68,4 +70,21 @@ class TumDataManager {
     func getTuitionStatus(receiver: TumDataReceiver) {
         managers[TumDataItems.TuitionStatus.rawValue]?.fetchData(receiver.receiveData)
     }
+    
+    func doPersonSearch(handler: (data: [DataElement]) -> (), query: String) {
+        if let manager = managers[TumDataItems.PersonSearch.rawValue] as? PersonSearchManager {
+            manager.query = query
+            manager.fetchData(handler)
+        }
+    }
+    
+    func getUserData() {
+        let handler = { (data: [DataElement]) in
+            if let first = data.first as? UserData {
+                self.user?.getUserData(first)
+            }
+        }
+        managers[TumDataItems.UserData.rawValue]?.fetchData(handler)
+    }
+    
 }

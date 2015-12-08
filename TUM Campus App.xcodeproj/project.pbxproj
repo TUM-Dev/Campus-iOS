@@ -52,6 +52,9 @@
 		0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */; };
 		0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */; };
 		0EC10C211C171D100024F902 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C201C171D100024F902 /* MovieManager.swift */; };
+		0EC10C231C171F730024F902 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C221C171F730024F902 /* UserData.swift */; };
+		0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C241C171FEF0024F902 /* UserDataManager.swift */; };
+		0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C261C1738420024F902 /* PersonSearchManager.swift */; };
 		83F5F976EAD2D6C63FB9F630 /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0B5F4B6DD6DEA9123D0D56 /* Pods_TUM_Campus_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,9 @@
 		0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumCabeApi.swift; sourceTree = "<group>"; };
 		0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaManager.swift; sourceTree = "<group>"; };
 		0EC10C201C171D100024F902 /* MovieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
+		0EC10C221C171F730024F902 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		0EC10C241C171FEF0024F902 /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		0EC10C261C1738420024F902 /* PersonSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonSearchManager.swift; sourceTree = "<group>"; };
 		2B0B5F4B6DD6DEA9123D0D56 /* Pods_TUM_Campus_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFF19459D7568A0F68BCFF9 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -282,6 +288,7 @@
 				0E424F6C1BE1865C00B5DFCB /* Movie.swift */,
 				0E52817C1C0E306200762EA3 /* DataElement.swift */,
 				0E5A61DE1C135750006017DB /* User.swift */,
+				0EC10C221C171F730024F902 /* UserData.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
 			);
 			name = Models;
@@ -291,6 +298,8 @@
 			isa = PBXGroup;
 			children = (
 				0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */,
+				0EC10C241C171FEF0024F902 /* UserDataManager.swift */,
+				0EC10C261C1738420024F902 /* PersonSearchManager.swift */,
 				0E3B21491C13CB280035ED70 /* BulkRequest.swift */,
 				0E52817A1C0E2F7500762EA3 /* Manager.swift */,
 				0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */,
@@ -517,8 +526,11 @@
 				0E5A61DD1C13536C006017DB /* TumOnlineLoginRequestManager.swift in Sources */,
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
+				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
+				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,
 				0E3B21501C13DB360035ED70 /* TumDataReceiver.swift in Sources */,
+				0EC10C231C171F730024F902 /* UserData.swift in Sources */,
 				0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */,
 				0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */,
 				0EC10C211C171D100024F902 /* MovieManager.swift in Sources */,

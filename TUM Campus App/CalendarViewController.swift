@@ -138,13 +138,10 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     }
     
     func dayPlannerView(view: MGCDayPlannerView!, viewForEventOfType type: MGCEventType, atIndex index: UInt, date: NSDate!) -> MGCEventView! {
-        let eventView = MGCEventView()
-        eventView.backgroundColor = Constants.tumBlue
+        let eventView = MGCStandardEventView()
+        eventView.color = Constants.tumBlue
         let item = lecturesOfDate(date)[(Int)(index)]
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.text = item.title
-        eventView.addSubview(label)
+        eventView.title = item.title
         return eventView
     }
     

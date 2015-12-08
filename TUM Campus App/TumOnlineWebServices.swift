@@ -10,9 +10,14 @@ import Foundation
 
 enum TUMOnlineWebServices: String {
     case BaseUrl = "https://campus.tum.de/tumonline/wbservicesbasic."
+    case PersonSearch = "personenSuche"
     case TokenRequest = "requestToken"
     case TokenConfirmation = "isTokenConfirmed"
     case TokenParameter = "pToken"
+    case IDParameter = "pIdentNr"
     case TuitionStatus = "studienbeitragsstatus"
     case Calendar = "kalender"
+    case PersonDetails = "personenDetails"
+    case Identity = "id"
+    case Home = "https://campus.tum.de/tumonline/"
 }

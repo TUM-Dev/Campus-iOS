@@ -8,6 +8,7 @@
 
 import Foundation
 enum TumDataItems: String {
+    case UserData = "UserData"
     case Cafeterias = "Cafeterias"
     case TuitionStatusSingle = "TuitionStatusSingle"
     case TuitionStatus = "TuitionStatus"
@@ -16,4 +17,5 @@ enum TumDataItems: String {
     case CalendarCard = "CalendarRow"
     case CalendarFull = "CalendarFull"
     case CafeteriaMenu = "CalendarMenu"
+    case PersonSearch = "PersonSearch"
 }
