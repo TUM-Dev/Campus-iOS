@@ -22,4 +22,8 @@ class UserData: DataElement {
         self.picture = (TUMOnlineWebServices.Home.rawValue + picture).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())?.stringByReplacingOccurrencesOfString("amp;", withString: "") ?? ""
     }
     
+    var text: String {
+        return name
+    }
+    
 }

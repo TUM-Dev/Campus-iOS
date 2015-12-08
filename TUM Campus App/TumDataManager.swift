@@ -12,6 +12,8 @@ class TumDataManager {
     
     let cardItems = [TumDataItems.TuitionStatusSingle, TumDataItems.MovieCard, TumDataItems.CalendarCard, TumDataItems.CafeteriaMenu]
     
+    let searchManagers = [TumDataItems.PersonSearch]
+    
     var user: User?
     
     var managers = [String:Manager]()
@@ -48,6 +50,18 @@ class TumDataManager {
         for item in cardItems {
             managers[item.rawValue]?.fetchData() { (data) in
                 request.receiveData(data)
+            }
+        }
+    }
+    
+    func search(receiver: TumDataReceiver, query: String) {
+        let request = BulkRequest(receiver: receiver)
+        for item in searchManagers {
+            if let manager = managers[item.rawValue] as? SearchManager {
+                manager.setQuery(query)
+                manager.fetchData() { (data) in
+                    request.receiveData(data)
+                }
             }
         }
     }

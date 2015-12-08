@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class User {
     let token: String
-    let lrzID: String
+    let lrzID: String?
     var name: String?
     var picture: UIImage?
     var id: String?
@@ -29,10 +29,6 @@ class User {
                 self.picture = image
             }
         }
-    }
-    
-    func getCellIdentifier() -> String {
-        return "person"
     }
     
 }

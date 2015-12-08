@@ -8,7 +8,11 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITextFieldDelegate {
+class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver {
+    
+    var delegate: DetailViewDelegate?
+    
+    var elements = [DataElement]()
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -23,10 +27,44 @@ class SearchViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         searchTextField.becomeFirstResponder()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     override func viewWillDisappear(animated: Bool) {
         searchTextField.resignFirstResponder()
     }
+    
+    func receiveData(data: [DataElement]) {
+        elements = data
+        tableView.reloadData()
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if string != " " {
+            let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
+            if  replaced != "" {
+                delegate?.dataManager().search(self, query: replaced)
+            } else {
+                elements = []
+                tableView.reloadData()
+            }
+        }
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return elements.count
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(elements[indexPath.row].getCellIdentifier()) ?? UITableViewCell()
+        cell.textLabel?.text = elements[indexPath.row].text
+        return cell
+    }
+    
 
 }

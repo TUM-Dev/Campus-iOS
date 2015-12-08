@@ -112,6 +112,9 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
             mvc.delegate = self
             mvc.nextLectureItem = nextLecture
         }
+        if let mvc = segue.destinationViewController as? SearchViewController {
+            mvc.delegate = self
+        }
         if let mvc = segue.destinationViewController as? TuitionTableViewController {
             mvc.delegate = self
         }

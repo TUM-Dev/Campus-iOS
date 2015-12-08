@@ -50,6 +50,7 @@
 		0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */; };
 		0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E692BB71C162CD200266417 /* CalendarViewController.swift */; };
 		0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */; };
+		0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */; };
 		0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */; };
 		0EC10C211C171D100024F902 /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C201C171D100024F902 /* MovieManager.swift */; };
 		0EC10C231C171F730024F902 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C221C171F730024F902 /* UserData.swift */; };
@@ -118,6 +119,7 @@
 		0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadSubscriber.swift; sourceTree = "<group>"; };
 		0E692BB71C162CD200266417 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumCabeApi.swift; sourceTree = "<group>"; };
+		0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaManager.swift; sourceTree = "<group>"; };
 		0EC10C201C171D100024F902 /* MovieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		0EC10C221C171F730024F902 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				0EC10C261C1738420024F902 /* PersonSearchManager.swift */,
 				0E3B21491C13CB280035ED70 /* BulkRequest.swift */,
 				0E52817A1C0E2F7500762EA3 /* Manager.swift */,
+				0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */,
 				0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */,
 				0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */,
 				0E3B21471C13C3790035ED70 /* TuitionStatusManager.swift */,
@@ -540,6 +543,7 @@
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */,
+				0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
 			);

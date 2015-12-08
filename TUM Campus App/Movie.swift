@@ -59,4 +59,9 @@ class Movie:DataElement {
         return "film"
     }
     
+    var text: String {
+        return name
+    }
+    
+    
 }

@@ -18,6 +18,7 @@ class TUFilmCardCell: CardTableViewCell {
             let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
             dateLabel.text = components.day.description + "." + components.month.description
             posterImageView.image = unwrappedMovie.image ?? UIImage(named: "movie")
+            posterImageView.clipsToBounds = true
         }
     }
     

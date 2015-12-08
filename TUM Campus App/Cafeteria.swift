@@ -32,4 +32,8 @@ class Cafeteria:DataElement {
         return "cafeteria"
     }
     
+    var text: String {
+        return name
+    }
+    
 }
