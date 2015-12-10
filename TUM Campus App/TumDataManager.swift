@@ -12,7 +12,7 @@ class TumDataManager {
     
     let cardItems = [TumDataItems.TuitionStatusSingle, TumDataItems.MovieCard, TumDataItems.CalendarCard, TumDataItems.CafeteriaMenu]
     
-    let searchManagers = [TumDataItems.PersonSearch]
+    let searchManagers = [TumDataItems.PersonSearch, TumDataItems.LectureSearch]
     
     var user: User?
     
@@ -38,7 +38,13 @@ class TumDataManager {
         setManager(TumDataItems.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
         setManager(TumDataItems.UserData, manager: UserDataManager(mainManager: self))
         setManager(TumDataItems.PersonSearch, manager: PersonSearchManager(mainManager: self))
+        setManager(TumDataItems.LectureItems, manager: PersonalLectureManager(mainManager: self))
+        setManager(TumDataItems.LectureSearch, manager: LectureSearchManager(mainManager: self))
         managers[TumDataItems.Cafeterias.rawValue]?.fetchData() { (data) in }
+    }
+    
+    func getLectures(receiver: TumDataReceiver) {
+        managers[TumDataItems.LectureItems.rawValue]?.fetchData(receiver.receiveData)
     }
     
     func getCalendar(receiver: TumDataReceiver) {

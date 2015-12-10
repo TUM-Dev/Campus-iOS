@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A840DD0D2D7EC059AA3CC708'
+               BlueprintIdentifier = 'B7F21A99D421713BF66C0F57'
                BlueprintName = 'Pods-TUM Campus App'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_TUM_Campus_App.framework'>

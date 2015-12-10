@@ -41,7 +41,12 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         tableView.separatorColor = UIColor.clearColor()
         tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
-        manager?.getCardItems(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        cards.removeAll()
+        refresh(nil)
     }
     
     func dataManager() -> TumDataManager {

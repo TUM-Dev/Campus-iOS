@@ -18,4 +18,6 @@ enum TumDataItems: String {
     case CalendarFull = "CalendarFull"
     case CafeteriaMenu = "CalendarMenu"
     case PersonSearch = "PersonSearch"
+    case LectureItems = "Lectures"
+    case LectureSearch = "LectureSearch"
 }

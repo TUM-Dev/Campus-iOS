@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
-class User:ImageDownloader {
+class User:ImageDownloader, ImageDownloadSubscriber {
     let token: String
     let lrzID: String?
     var name: String?
     var id: String?
+    var data: UserData?
     
     init(lrzID: String, token: String) {
         self.lrzID = lrzID
@@ -21,9 +22,19 @@ class User:ImageDownloader {
     }
     
     func getUserData(data: UserData) {
+        self.data = data
         name = data.name
         id = data.id
-        getImage(data.picture)
+        if let image = data.image {
+            self.image = image
+            notifySubscribers()
+        } else {
+            data.subscribeToImage(self)
+        }
     }
     
+    func updateImageView() {
+        self.image = data?.image
+        notifySubscribers()
+    }
 }

@@ -8,13 +8,18 @@
 
 import Foundation
 import UIKit
+import Alamofire
 class ImageDownloader {
+    
+    static var imageCache = [String:UIImage]()
     
     init(url: String) {
         getImage(url)
     }
     
     init() {}
+    
+    var request: Request?
     
     var image: UIImage?
  
@@ -30,14 +35,21 @@ class ImageDownloader {
         subscribersToImage.append(subscriber)
     }
     
+    func clearSubscribers() {
+        subscribersToImage.removeAll()
+        request?.cancel()
+    }
+    
     func getImage(urlString: String) {
-        if let url = NSURL(string: urlString) {
-            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)) {
-                if let data = NSData(contentsOfURL: url), imageFromData = UIImage(data: data) {
+        if let cachedImage = ImageDownloader.imageCache[urlString] {
+            self.image = cachedImage
+            notifySubscribers()
+        } else {
+            request = Alamofire.request(.GET, urlString).validate().responseData() { (response) in
+                if let data = response.result.value, imageFromData = UIImage(data: data) {
+                    ImageDownloader.imageCache[urlString] = imageFromData
                     self.image = imageFromData
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.notifySubscribers()
-                    }
+                    self.notifySubscribers()
                 }
             }
         }

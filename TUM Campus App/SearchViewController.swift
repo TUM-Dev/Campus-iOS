@@ -8,11 +8,15 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver {
+class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver, ImageDownloadSubscriber {
     
     var delegate: DetailViewDelegate?
     
     var elements = [DataElement]()
+    
+    func updateImageView() {
+        tableView.reloadData()
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -28,6 +32,8 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
     override func viewDidLoad() {
         searchTextField.becomeFirstResponder()
         tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = 100
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -36,11 +42,21 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
     
     func receiveData(data: [DataElement]) {
         elements = data
+        for element in elements {
+            if let downloader = element as? ImageDownloader {
+                downloader.subscribeToImage(self)
+            }
+        }
         tableView.reloadData()
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if string != " " {
+            for element in elements {
+                if let downloader = element as? ImageDownloader {
+                    downloader.clearSubscribers()
+                }
+            }
             let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
             if  replaced != "" {
                 delegate?.dataManager().search(self, query: replaced)
@@ -61,8 +77,8 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(elements[indexPath.row].getCellIdentifier()) ?? UITableViewCell()
-        cell.textLabel?.text = elements[indexPath.row].text
+        let cell = tableView.dequeueReusableCellWithIdentifier(elements[indexPath.row].getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        cell.setElement(elements[indexPath.row])
         return cell
     }
     

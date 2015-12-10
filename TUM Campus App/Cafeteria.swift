@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class Cafeteria:DataElement {
+class Cafeteria: DataElement {
     
     let address: String
     let id: Int
