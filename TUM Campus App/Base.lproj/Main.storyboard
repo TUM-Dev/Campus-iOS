@@ -301,14 +301,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="92.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpx-ud-Ik1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpx-ud-Ik1">
                                             <rect key="frame" x="8" y="8" width="37" height="23"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" ambiguous="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA5-ns-F6I">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" ambiguous="YES" misplaced="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iA5-ns-F6I">
                                             <rect key="frame" x="8" y="39" width="50" height="11.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -342,6 +342,45 @@
                                     <outlet property="contributorsLabel" destination="6Px-Or-4Rl" id="ZOT-T3-dUk"/>
                                     <outlet property="detailsLabel" destination="iA5-ns-F6I" id="cLU-ZN-WrQ"/>
                                     <outlet property="titleLabel" destination="mpx-ud-Ik1" id="54H-Zs-Gqv"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="room" rowHeight="101" id="hsD-xP-wiL" customClass="RoomResultTableViewCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="285" width="600" height="101"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hsD-xP-wiL" id="9uO-ww-dqV">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wS3-2E-kUO">
+                                            <rect key="frame" x="8" y="8" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0u-Lj-WXA">
+                                            <rect key="frame" x="8" y="37" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="w0u-Lj-WXA" secondAttribute="bottom" constant="8" id="bky-Xn-2RO"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="w0u-Lj-WXA" secondAttribute="trailing" constant="8" id="fVk-qU-hFK"/>
+                                        <constraint firstAttribute="topMargin" secondItem="wS3-2E-kUO" secondAttribute="top" id="fgq-UQ-sYN"/>
+                                        <constraint firstItem="w0u-Lj-WXA" firstAttribute="top" secondItem="wS3-2E-kUO" secondAttribute="bottom" constant="8" id="hSR-7N-ycB"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="wS3-2E-kUO" secondAttribute="leading" id="iyD-7f-ge0"/>
+                                        <constraint firstItem="w0u-Lj-WXA" firstAttribute="leading" secondItem="wS3-2E-kUO" secondAttribute="leading" id="ojj-VZ-nnC"/>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="wS3-2E-kUO" secondAttribute="trailing" constant="8" id="uZI-OV-Te4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="buildingNameLabel" destination="w0u-Lj-WXA" id="Xce-wN-GnV"/>
+                                    <outlet property="roomNameLabel" destination="wS3-2E-kUO" id="56s-cv-Yws"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

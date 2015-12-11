@@ -10,6 +10,9 @@ import Alamofire
 import SWXMLHash
 
 class LectureSearchManager: SearchManager {
+    
+    var request: Request?
+    
     var main: TumDataManager?
     
     var query: String?
@@ -23,8 +26,9 @@ class LectureSearchManager: SearchManager {
     }
     
     func fetchData(handler: ([DataElement]) -> ()) {
+        request?.cancel()
         let url = getURL()
-        Alamofire.request(.GET, url).responseString() { (response) in
+        request = Alamofire.request(.GET, url).responseString() { (response) in
             if let value = response.result.value {
                 let parsedXML = SWXMLHash.parse(value)
                 let rows = parsedXML["rowset"]["row"].all

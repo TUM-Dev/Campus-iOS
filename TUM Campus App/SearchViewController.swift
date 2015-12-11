@@ -33,7 +33,7 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         searchTextField.becomeFirstResponder()
         tableView.tableFooterView = UIView(frame: CGRectZero)
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = 100
+        tableView.rowHeight = 102
     }
     
     override func viewWillDisappear(animated: Bool) {
