@@ -13,11 +13,12 @@ class TUFilmCardCell: CardTableViewCell {
     
     override func setElement(element: DataElement) {
         if let unwrappedMovie = element as? Movie{
-            titleLabel.text = unwrappedMovie.name
+            titleLabel.text = unwrappedMovie.text
             let cal = NSCalendar.currentCalendar()
             let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
             dateLabel.text = components.day.description + "." + components.month.description
             posterImageView.image = unwrappedMovie.image ?? UIImage(named: "movie")
+            posterImageView.clipsToBounds = true
         }
     }
     

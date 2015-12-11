@@ -8,7 +8,21 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITextFieldDelegate {
+class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver, ImageDownloadSubscriber, DetailViewDelegate {
+    
+    var delegate: DetailViewDelegate?
+    
+    var elements = [DataElement]()
+    
+    var currentElement: DataElement?
+    
+    func dataManager() -> TumDataManager {
+        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    }
+    
+    func updateImageView() {
+        tableView.reloadData()
+    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -23,10 +37,68 @@ class SearchViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         searchTextField.becomeFirstResponder()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = 102
     }
     
     override func viewWillDisappear(animated: Bool) {
         searchTextField.resignFirstResponder()
     }
+    
+    func receiveData(data: [DataElement]) {
+        elements = data
+        for element in elements {
+            if let downloader = element as? ImageDownloader {
+                downloader.subscribeToImage(self)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if string != " " {
+            for element in elements {
+                if let downloader = element as? ImageDownloader {
+                    downloader.clearSubscribers()
+                }
+            }
+            let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
+            if  replaced != "" {
+                delegate?.dataManager().search(self, query: replaced)
+            } else {
+                elements = []
+                tableView.reloadData()
+            }
+        }
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        currentElement = elements[indexPath.row]
+        return indexPath
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return elements.count
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(elements[indexPath.row].getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        cell.setElement(elements[indexPath.row])
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? RoomFinderViewController {
+            mvc.room = currentElement
+            mvc.delegate = self
+        }
+    }
+    
 
 }

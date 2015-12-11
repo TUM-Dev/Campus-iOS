@@ -21,7 +21,7 @@ class NextLectureCardCell: CardTableViewCell {
     
     override func setElement(element: DataElement) {
         if let calendarItem = element as? CalendarRow {
-            lectureTitelLabel.text = calendarItem.title?.componentsSeparatedByString(" [")[0]
+            lectureTitelLabel.text = calendarItem.text
             let dateformatter = NSDateFormatter()
             dateformatter.dateFormat = "hh:mm"
             let dayformatter = NSDateFormatter()

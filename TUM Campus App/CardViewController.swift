@@ -41,7 +41,12 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         tableView.separatorColor = UIColor.clearColor()
         tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
-        manager?.getCardItems(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        cards.removeAll()
+        refresh(nil)
     }
     
     func dataManager() -> TumDataManager {
@@ -53,7 +58,7 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     }
     
     func receiveData(data: [DataElement]) {
-        if cards.count < data.count {
+        if cards.count <= data.count {
             for item in data {
                 if let movieItem = item as? Movie {
                     movieItem.subscribeToImage(self)
@@ -112,7 +117,13 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
             mvc.delegate = self
             mvc.nextLectureItem = nextLecture
         }
+        if let mvc = segue.destinationViewController as? SearchViewController {
+            mvc.delegate = self
+        }
         if let mvc = segue.destinationViewController as? TuitionTableViewController {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? CafeteriaViewController {
             mvc.delegate = self
         }
     }

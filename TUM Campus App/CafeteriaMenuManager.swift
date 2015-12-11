@@ -27,18 +27,33 @@ class CafeteriaMenuManager: Manager {
                         let json = JSON(value)
                         if let cafeteriasJsonArray = json["mensa_menu"].array {
                             for item in cafeteriasJsonArray {
-                                if let id = item["id"].string, cafeteria = item["mensa_id"].string, date = item["date"].string, typeShort = item["type_short"].string, typeLong = item["type_long"].string, typeNR = item["type_nr"].string, name = item["name"].string, idNumber = Int(id), mensa = self.manager?.getCafeteriaForID(cafeteria), nr = Int(typeNR) {
-                                    let dateformatter = NSDateFormatter()
-                                    dateformatter.dateFormat = "yyyy-MM-dd"
-                                    let dateAsDate = dateformatter.dateFromString(date) ?? NSDate()
-                                    let newCafeteria = CafeteriaMenu(id: idNumber, cafeteria: mensa, date: dateAsDate, typeShort: typeShort, typeLong: typeLong, typeNr: nr, name: name)
-                                    CafeteriaMenuManager.cafeteriaMenus.append(newCafeteria)
+                                self.addMenu(item)
+                            }
+                            if let beilagenJsonArray = json["mensa_beilagen"].array {
+                                for item in beilagenJsonArray {
+                                    self.addMenu(item)
                                 }
                             }
+                            handler(CafeteriaMenuManager.cafeteriaMenus)
                         }
                     }
                 }
             }
+        }
+    }
+    
+    func addMenu(item: JSON) {
+        if let cafeteria = item["mensa_id"].string, date = item["date"].string, typeShort = item["type_short"].string, typeLong = item["type_long"].string, name = item["name"].string, mensa = self.manager?.getCafeteriaForID(cafeteria) {
+            let id = item["id"].string ?? ""
+            let typeNR = item["type_nr"].string ?? ""
+            let idNumber = Int(id) ?? 0
+            let nr = Int(typeNR) ?? Int.max
+            let dateformatter = NSDateFormatter()
+            dateformatter.dateFormat = "yyyy-MM-dd"
+            let dateAsDate = dateformatter.dateFromString(date) ?? NSDate()
+            let newMenu = CafeteriaMenu(id: idNumber, date: dateAsDate, typeShort: typeShort, typeLong: typeLong, typeNr: nr, name: name)
+            mensa.addMenu(newMenu)
+            CafeteriaMenuManager.cafeteriaMenus.append(newMenu)
         }
     }
     

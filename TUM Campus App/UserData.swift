@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class UserData: DataElement {
+class UserData: ImageDownloader, DataElement {
     
     func getCellIdentifier() -> String {
         return "person"
@@ -20,6 +20,11 @@ class UserData: DataElement {
         self.name = name
         self.id = id
         self.picture = (TUMOnlineWebServices.Home.rawValue + picture).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())?.stringByReplacingOccurrencesOfString("amp;", withString: "") ?? ""
+        super.init(url: self.picture)
+    }
+    
+    var text: String {
+        return name
     }
     
 }

@@ -86,9 +86,9 @@ class MovieDetailTableViewController: UITableViewController, TumDataReceiver {
         didSet {
             if let movie = currentMovie {
                 let info = movie.name.componentsSeparatedByString(": ")
-                titleLabel.text = info[1]
+                titleLabel.text = movie.text
                 dateLabel.text = info[0]
-                title = info[1]
+                title = movie.text
                 yearLabel.text = movie.year.description
                 ratingLabel.text = "★ " + movie.rating.description
                 runTimeLabel.text = movie.runtime.description + " min"

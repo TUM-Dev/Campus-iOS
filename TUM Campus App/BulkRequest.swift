@@ -8,6 +8,7 @@
 
 import Foundation
 class BulkRequest: TumDataReceiver {
+    
     var receiver: TumDataReceiver?
 
     init(receiver: TumDataReceiver) {

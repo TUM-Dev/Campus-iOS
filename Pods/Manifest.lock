@@ -10,6 +10,7 @@ PODS:
   - OSCache (1.2)
   - PZPullToRefresh (0.0.7)
   - SwiftyJSON (2.3.1)
+  - SWXMLHash (2.0.2)
   - XMLParser (1.0)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - MCSwipeTableViewCell (~> 2.1.4)
   - PZPullToRefresh
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SWXMLHash (~> 2.0.0)
   - XMLParser (~> 1.0)
 
 EXTERNAL SOURCES:
@@ -41,6 +43,7 @@ SPEC CHECKSUMS:
   OSCache: 10cdb5da579364aacfb8b7612dab13cf9c7aa4dc
   PZPullToRefresh: a596d42b90ca42f979f181b5f35c4820406c2136
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
   XMLParser: e737ced4d8e6486028f741fecc0523d9ba55d0ae
 
 COCOAPODS: 0.39.0

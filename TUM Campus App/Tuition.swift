@@ -21,4 +21,8 @@ class Tuition: DataElement {
         return "tuition"
     }
     
+    var text: String {
+        return semester
+    }
+    
 }

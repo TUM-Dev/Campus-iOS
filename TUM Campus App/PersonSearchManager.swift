@@ -8,42 +8,45 @@
 
 import Foundation
 import Alamofire
-import XMLParser
-import SwiftyJSON
+import SWXMLHash
 
-class PersonSearchManager: Manager {
+class PersonSearchManager: SearchManager {
+    
+    var request: Request?
     
     var main: TumDataManager?
     
     var query: String?
+    
+    func setQuery(query: String) {
+        self.query = query
+    }
     
     required init(mainManager: TumDataManager) {
         main = mainManager
     }
     
     func fetchData(handler: ([DataElement]) -> ()) {
+        request?.cancel()
         let url = getURL()
-        Alamofire.request(.GET, url).responseString() { (response) in
+        request = Alamofire.request(.GET, url).responseString() { (response) in
             if let value = response.result.value {
-                let dataAsDictionary = XMLParser.sharedParser.decode(value)
-                let json = JSON(dataAsDictionary)
-                var people = [DataElement]()
-                if let nameArray = json["vorname"].array, lastnameArray = json["familienname"].array, idArray = json["obfuscated_id"].array, imagesArray = json["bild_url"].array {
-                    for i in 0...nameArray.count-1 {
-                        if let firstname = nameArray[i].string, lastname = lastnameArray[i].string, id = idArray[i].string {
-                            let name = firstname + " " + lastname
-                            let newUser = UserData(name: name, picture: imagesArray[i].string ?? "", id: id)
+                let parsedXML = SWXMLHash.parse(value)
+                let rows = parsedXML["rowset"]["row"].all
+                if !rows.isEmpty {
+                    var people = [DataElement]()
+                    for i in 0...min(rows.count-1,20) {
+                        let row = rows[i]
+                        if let name = row["vorname"].element?.text, lastname = row["familienname"].element?.text, id = row["obfuscated_id"].element?.text {
+                            let image = row["bild_url"].element?.text ?? ""
+                            let newUser = UserData(name: name+" "+lastname, picture: image ?? "" , id: id)
                             people.append(newUser)
                         }
                     }
+                    handler(people)
                 }
-                handler(people)
             }
         }
-    }
-    
-    func getIDForUser(name: String) {
-        
     }
     
     func getURL() -> String {

@@ -141,7 +141,7 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         let eventView = MGCStandardEventView()
         eventView.color = Constants.tumBlue
         let item = lecturesOfDate(date)[(Int)(index)]
-        eventView.title = item.title
+        eventView.title = item.text
         return eventView
     }
     
@@ -159,6 +159,7 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
     func dayPlannerView(view: MGCDayPlannerView!, willDisplayDate date: NSDate!) {
         if !scrolling {
             weekSelector?.setSelectedDate(date, animated: true)
+            updateTitle(date)
         } else if sameDay(date, b: (weekSelector?.selectedDate)!) {
             scrolling = false
         }

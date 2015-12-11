@@ -15,4 +15,8 @@ class CalendarRowSet:DataElement {
         return "calendarRowSet"
     }
     
+    var text: String {
+        return ""
+    }
+    
 }

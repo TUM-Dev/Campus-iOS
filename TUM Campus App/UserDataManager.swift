@@ -8,8 +8,7 @@
 
 import Foundation
 import Alamofire
-import XMLParser
-import SwiftyJSON
+import SWXMLHash
 
 class UserDataManager: Manager {
     
@@ -29,11 +28,14 @@ class UserDataManager: Manager {
             let url = getIdentityURL()
             Alamofire.request(.GET, url).responseString() { (response) in
                 if let data = response.result.value {
-                    let dataAsDictionary = XMLParser.sharedParser.decode(data)
-                    let json = JSON(dataAsDictionary)
-                    if let nameArray = json["vorname"].array, lastnameArray = json["familienname"].array, firstname = nameArray[0].string, lastname = lastnameArray[0].string {
-                        let name = firstname + " " + lastname
-                        self.main?.doPersonSearch(handler, query: name)
+                    let parsedXML = SWXMLHash.parse(data)
+                    let rows = parsedXML["rowset"]["row"].all
+                    if rows.count == 1 {
+                        let person = rows[0]
+                        if let firstname = person["vorname"].element?.text, lastname = person["familienname"].element?.text {
+                            let name = firstname + " " + lastname
+                            self.main?.doPersonSearch(handler, query: name)
+                        }
                     }
                 }
             }

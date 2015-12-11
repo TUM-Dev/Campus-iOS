@@ -8,31 +8,33 @@
 
 import Foundation
 import UIKit
-class User {
+class User:ImageDownloader, ImageDownloadSubscriber {
     let token: String
-    let lrzID: String
+    let lrzID: String?
     var name: String?
-    var picture: UIImage?
     var id: String?
+    var data: UserData?
     
     init(lrzID: String, token: String) {
         self.lrzID = lrzID
         self.token = token
+        super.init()
     }
     
     func getUserData(data: UserData) {
+        self.data = data
         name = data.name
         id = data.id
-        print(data.picture)
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue),0)) {
-            if let url = NSURL(string: data.picture), pictureData = NSData(contentsOfURL: url), image = UIImage(data: pictureData) {
-                self.picture = image
-            }
+        if let image = data.image {
+            self.image = image
+            notifySubscribers()
+        } else {
+            data.subscribeToImage(self)
         }
     }
     
-    func getCellIdentifier() -> String {
-        return "person"
+    func updateImageView() {
+        self.image = data?.image
+        notifySubscribers()
     }
-    
 }
