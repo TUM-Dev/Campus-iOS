@@ -42,7 +42,7 @@ class Movie:ImageDownloader, DataElement {
     }
     
     var text: String {
-        return name
+        return name.componentsSeparatedByString(": ")[1] ?? name
     }
     
     

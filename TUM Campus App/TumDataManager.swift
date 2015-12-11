@@ -10,7 +10,7 @@ import Foundation
 
 class TumDataManager {
     
-    let cardItems = [TumDataItems.TuitionStatusSingle, TumDataItems.MovieCard, TumDataItems.CalendarCard, TumDataItems.CafeteriaMenu]
+    let cardItems = [TumDataItems.TuitionStatusSingle, TumDataItems.MovieCard, TumDataItems.CalendarCard, TumDataItems.CafeteriasCard]
     
     let searchManagers = [TumDataItems.PersonSearch, TumDataItems.LectureSearch, TumDataItems.RoomSearch]
     
@@ -29,6 +29,8 @@ class TumDataManager {
     init(user: User?) {
         self.user = user
         setManager(TumDataItems.Cafeterias, manager: CafeteriaManager(mainManager: self))
+        setManager(TumDataItems.CafeteriasCard, manager: CafeteriaManager(mainManager: self, single: true))
+        setManager(TumDataItems.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
         setManager(TumDataItems.TuitionStatus, manager: TuitionStatusManager(mainManager: self))
         setManager(TumDataItems.TuitionStatusSingle, manager: TuitionStatusManager(mainManager: self, single: true))
         setManager(TumDataItems.MovieCard, manager: MovieManager(single: true))
@@ -41,7 +43,7 @@ class TumDataManager {
         setManager(TumDataItems.LectureItems, manager: PersonalLectureManager(mainManager: self))
         setManager(TumDataItems.LectureSearch, manager: LectureSearchManager(mainManager: self))
         setManager(TumDataItems.RoomSearch, manager: RoomSearchManager(mainManager: self))
-        managers[TumDataItems.Cafeterias.rawValue]?.fetchData() { (data) in }
+        setManager(TumDataItems.RoomMap, manager: RoomFinderMapManager(mainManager: self))
     }
     
     func getLectures(receiver: TumDataReceiver) {
@@ -73,6 +75,13 @@ class TumDataManager {
         }
     }
     
+    func getMapsForRoom(receiver: TumDataReceiver, roomID: String) {
+        if let mapManager = managers[TumDataItems.RoomMap.rawValue] as? RoomFinderMapManager {
+            mapManager.setQuery(roomID)
+            mapManager.fetchData(receiver.receiveData)
+        }
+    }
+    
     func getCafeteriaForID(id: String) -> Cafeteria? {
         if let cafeteriaManager = managers[TumDataItems.Cafeterias.rawValue] as? CafeteriaManager {
             return cafeteriaManager.getCafeteriaForID(id)
@@ -82,6 +91,10 @@ class TumDataManager {
     
     func getCafeterias(receiver: TumDataReceiver) {
         managers[TumDataItems.Cafeterias.rawValue]?.fetchData(receiver.receiveData)
+    }
+    
+    func getCafeteriaMenus(handler: (data: [DataElement]) -> ()) {
+        managers[TumDataItems.CafeteriaMenu.rawValue]?.fetchData(handler)
     }
     
     func getMovies(receiver: TumDataReceiver) {

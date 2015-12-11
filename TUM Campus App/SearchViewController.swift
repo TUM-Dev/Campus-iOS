@@ -8,11 +8,17 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver, ImageDownloadSubscriber {
+class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver, ImageDownloadSubscriber, DetailViewDelegate {
     
     var delegate: DetailViewDelegate?
     
     var elements = [DataElement]()
+    
+    var currentElement: DataElement?
+    
+    func dataManager() -> TumDataManager {
+        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    }
     
     func updateImageView() {
         tableView.reloadData()
@@ -68,6 +74,11 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         return true
     }
     
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        currentElement = elements[indexPath.row]
+        return indexPath
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elements.count
     }
@@ -80,6 +91,13 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         let cell = tableView.dequeueReusableCellWithIdentifier(elements[indexPath.row].getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(elements[indexPath.row])
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? RoomFinderViewController {
+            mvc.room = currentElement
+            mvc.delegate = self
+        }
     }
     
 

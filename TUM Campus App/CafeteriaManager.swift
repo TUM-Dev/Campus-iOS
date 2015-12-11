@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 enum CafeteriasApi: String {
     case ID = "id"
@@ -20,37 +21,78 @@ enum CafeteriasApi: String {
 
 class CafeteriaManager: Manager {
     
-    var cafeterias = [DataElement]()
+    var main: TumDataManager?
     
-    var cafeteriaMap = [String:Cafeteria]()
+    static var locationManager = CLLocationManager()
+    
+    static var cafeterias = [DataElement]()
+    
+    var single = false
+    
+    static var cafeteriaMap = [String:Cafeteria]()
     
     required init(mainManager: TumDataManager) {
-        mainManager.setManager(TumDataItems.Cafeterias, manager: self)
+        main = mainManager
+    }
+    
+    init(mainManager: TumDataManager, single: Bool) {
+        main = mainManager
+        self.single = single
     }
     
     func fetchData(handler: ([DataElement]) -> ()) {
-        if cafeterias.isEmpty {
+        if CafeteriaManager.cafeterias.isEmpty {
             if let request = getRequest() {
                 Alamofire.request(request).responseJSON() { (response) in
                     if let value = response.result.value {
                         if let cafeteriasJsonArray = JSON(value).array {
                             for item in cafeteriasJsonArray {
                                 let newCafeteria = Cafeteria(id: item[CafeteriasApi.ID.rawValue].intValue, name: item[CafeteriasApi.Name.rawValue].stringValue, address: item[CafeteriasApi.Address.rawValue].stringValue, latitude: item[CafeteriasApi.Latitude.rawValue].doubleValue, longitude: item[CafeteriasApi.Longitude.rawValue].doubleValue)
-                                self.cafeterias.append(newCafeteria)
-                                self.cafeteriaMap[newCafeteria.id.description] = newCafeteria
+                                CafeteriaManager.cafeterias.append(newCafeteria)
+                                CafeteriaManager.cafeteriaMap[newCafeteria.id.description] = newCafeteria
                             }
-                            handler(self.cafeterias)
+                            let handle: ([DataElement]) -> () = { _ in
+                                self.handle(handler)
+                            }
+                            self.main?.getCafeteriaMenus(handle)
                         }
                     }
                 }
             }
         } else {
-            handler(cafeterias)
+            handle(handler)
+        }
+    }
+    
+    func handle(handler: ([DataElement]) -> ()) {
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+            CafeteriaManager.locationManager.requestWhenInUseAuthorization()
+        }
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.NotDetermined {
+            CafeteriaManager.locationManager.startUpdatingLocation()
+            let location = CafeteriaManager.locationManager.location
+            CafeteriaManager.locationManager.stopUpdatingLocation()
+            CafeteriaManager.cafeterias.sortInPlace() { (first, second) in
+                if let cafeOne = first as? Cafeteria {
+                    if let cafeTwo = second as? Cafeteria {
+                        return cafeOne.distance(location!) <= cafeTwo.distance(location!)
+                    } else {
+                        return true
+                    }
+                } else {
+                    return false
+                }
+            }
+        }
+        if single {
+            handler([CafeteriaManager.cafeterias[0]])
+        } else {
+            handler(CafeteriaManager.cafeterias)
         }
     }
     
     func getCafeteriaForID(id: String) -> Cafeteria? {
-        return cafeteriaMap[id]
+        return CafeteriaManager.cafeteriaMap[id]
     }
     
     func getRequest() -> NSMutableURLRequest? {

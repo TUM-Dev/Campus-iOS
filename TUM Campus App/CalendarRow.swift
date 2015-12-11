@@ -23,7 +23,7 @@ class CalendarRow: DataElement {
     }
     
     var text: String {
-        return title ?? ""
+        return title?.componentsSeparatedByString(" (")[0].componentsSeparatedByString(" [")[0] ?? ""
     }
     
 }

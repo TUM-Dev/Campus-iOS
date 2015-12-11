@@ -67,6 +67,9 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         if let mvc = segue.destinationViewController as? LecturesTableViewController {
             mvc.delegate = self
         }
+        if let mvc = segue.destinationViewController as? CafeteriaViewController {
+            mvc.delegate = self
+        }
     }
 
 }

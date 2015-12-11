@@ -7,9 +7,8 @@
 //
 
 import Foundation
-class CafeteriaMenu:DataElement {
+class CafeteriaMenu: DataElement {
     
-    let cafeteria: Cafeteria
     let date: NSDate
     let id: Int
     let name: String
@@ -17,9 +16,8 @@ class CafeteriaMenu:DataElement {
     let typeNr: Int
     let typeShort: String
     
-    init(id: Int, cafeteria: Cafeteria, date: NSDate, typeShort: String, typeLong: String, typeNr: Int, name: String) {
+    init(id: Int, date: NSDate, typeShort: String, typeLong: String, typeNr: Int, name: String) {
         self.id = id
-        self.cafeteria = cafeteria
         self.date = date
         self.typeShort = typeShort
         self.typeLong = typeLong

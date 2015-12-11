@@ -56,8 +56,8 @@ class RoomSearchManager: SearchManager {
     
     func getURL() -> String {
         let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.SearchRooms.rawValue
-        if let token = main?.getToken(), search = query {
-            let url = base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&s=" + search
+        if let search = query {
+            let url = base + "?" + "&s=" + search
             if let value = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
                 return value
             }

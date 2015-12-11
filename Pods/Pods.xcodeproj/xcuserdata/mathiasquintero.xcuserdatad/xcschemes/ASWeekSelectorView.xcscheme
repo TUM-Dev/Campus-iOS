@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5C1477961D2D06E0731218AD'
+               BlueprintIdentifier = 'DE705FC6FAA8120B0857120A'
                BlueprintName = 'ASWeekSelectorView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ASWeekSelectorView.framework'>

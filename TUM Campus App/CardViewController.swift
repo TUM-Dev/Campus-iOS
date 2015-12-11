@@ -58,7 +58,7 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     }
     
     func receiveData(data: [DataElement]) {
-        if cards.count < data.count {
+        if cards.count <= data.count {
             for item in data {
                 if let movieItem = item as? Movie {
                     movieItem.subscribeToImage(self)
@@ -121,6 +121,9 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
             mvc.delegate = self
         }
         if let mvc = segue.destinationViewController as? TuitionTableViewController {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? CafeteriaViewController {
             mvc.delegate = self
         }
     }
