@@ -14,4 +14,5 @@ target 'TUM Campus App' do
 	pod 'ASWeekSelectorView', '~> 0.3.0'
 	pod 'CalendarLib', '~> 1.0'
 	pod 'SWXMLHash', '~> 2.0.0'
+	pod 'TKSubmitTransition'
 end

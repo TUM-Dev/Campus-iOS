@@ -64,6 +64,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TKSubmitTransition.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>XMLParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +82,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1C0728FD567A2D65EDF149B39DF58E33</key>
+		<key>247C156E5A61A51AF1C7BF3CD8CE69C1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>432ECC54282C84882B482CCB4CF227FC</key>
+		<key>3D987BB15480960424DF8B2AFE658AA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48162EC9501C9E95E151BB5F8EBCDD31</key>
+		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D4938950977AEF89F4496C0B9CB2FEB</key>
+		<key>6C06EDB52AE6C21BFF2B6A67FBC66D93</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C0387FB8D202F00ACE8FCDEA22BCD54</key>
+		<key>83239A84FE6CF840BB8CD3B8080B8511</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B80872069D8C627C6FF103A6F8760F7F</key>
+		<key>B49A6D29AF55DF2B55624CFE405CCD59</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BD3A782A2D12D317AB8D62B98C922EAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

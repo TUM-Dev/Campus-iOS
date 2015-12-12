@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import TKSubmitTransition
 
 protocol TokenFetcherControllerDelegate {
     func getLRZ() -> String
 }
 
-class WaitForTokenViewController: UIViewController, AccessTokenReceiver {
+class WaitForTokenViewController: UIViewController, AccessTokenReceiver, UIViewControllerTransitioningDelegate {
     
     var user: User?
     var lrzID: String?
@@ -22,12 +23,16 @@ class WaitForTokenViewController: UIViewController, AccessTokenReceiver {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.normalBackgroundColor = Constants.tumBlue
+        button.highlightedBackgroundColor = Constants.tumBlue
         loginManager = TumOnlineLoginRequestManager(delegate: self)
         lrzID = delegate?.getLRZ()
         loginManager?.lrzID = lrzID
         loginManager?.fetch()
         checkRequest()
     }
+    
+    @IBOutlet weak var button: TKTransitionSubmitButton!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,24 +42,41 @@ class WaitForTokenViewController: UIViewController, AccessTokenReceiver {
     func receiveToken(token: String) {
         user = User(lrzID: token, token: token)
         if let userUnwrapped = user {
-            loginManager?.LoginSuccesful(userUnwrapped)
-            DoneHUD.showInView(self.view, message: "Login Succesful")
-            if presentingViewController != nil {
-                performSegueWithIdentifier("loggedIn", sender: self)
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let appDelegate: AppDelegate = (UIApplication.sharedApplication().delegate as? AppDelegate)!
-                self.dismissViewControllerAnimated(true, completion: nil)
-                appDelegate.window?.rootViewController = storyboard.instantiateViewControllerWithIdentifier("TabBar") as? CampusTabBarController
+            button.startFinishAnimation(NSTimeInterval(0)) {
+                self.loginManager?.LoginSuccesful(userUnwrapped)
+                if self.presentingViewController != nil {
+                    self.performSegueWithIdentifier("loggedIn", sender: self)
+                } else {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    if let mvc = storyboard.instantiateViewControllerWithIdentifier("TabBar") as? CampusTabBarController {
+                        mvc.transitioningDelegate = self
+                        self.presentViewController(mvc, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }
+    
+    func tokenNotConfirmed() {
+        button.returnToOriginalState()
+    }
+    
     @IBAction func refresh(sender: AnyObject) {
         checkRequest()
     }
     
     func checkRequest() {
+        button.startLoadingAnimation()
         loginManager?.confirmToken()
+    }
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let fadeInAnimator = TKFadeInAnimator()
+        return fadeInAnimator
+    }
+    
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
 
 }

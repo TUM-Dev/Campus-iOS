@@ -164,10 +164,10 @@
             </objects>
             <point key="canvasLocation" x="185" y="-443"/>
         </scene>
-        <!--Wait For Token View Controller-->
+        <!--Confirm Auhtorization-->
         <scene sceneID="vWl-RV-koz">
             <objects>
-                <viewController id="ccx-El-vP2" customClass="WaitForTokenViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Confirm Auhtorization" id="ccx-El-vP2" customClass="WaitForTokenViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Ic-Ri-DyI"/>
                         <viewControllerLayoutGuide type="bottom" id="H0n-VR-eh7"/>
@@ -176,15 +176,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-8k-q52">
-                                <rect key="frame" x="274" y="285" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-8k-q52" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
+                                <rect key="frame" x="260.5" y="275" width="80" height="50"/>
                                 <animations/>
-                                <state key="normal" title="Refresh"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="RxJ-Jc-she"/>
+                                    <constraint firstAttribute="width" constant="80" id="hFq-aD-zuK"/>
+                                </constraints>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="refresh:" destination="ccx-El-vP2" eventType="touchUpInside" id="iv0-Gc-GcH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please Authorize our App in TUM Online" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please Authorize our App in TUM Online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
                                 <rect key="frame" x="64" y="181.5" width="466" height="33"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
@@ -203,6 +209,9 @@
                             <constraint firstItem="TgS-8k-q52" firstAttribute="centerX" secondItem="9mt-oH-hhO" secondAttribute="centerX" id="p6c-X0-OAN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="TgS-8k-q52" id="q8v-hS-Nb8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGJ-uP-7of" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1756,6 +1765,26 @@
                                             <outlet property="dishLabel" destination="OeE-So-w9T" id="rTY-ME-kpo"/>
                                             <outlet property="priceLabel" destination="y1P-xt-UZg" id="RhU-n4-X7y"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="notavailable" textLabel="OFA-4C-Oe0" rowHeight="71" style="IBUITableViewCellStyleDefault" id="Lbf-ew-7zY">
+                                        <rect key="frame" x="0.0" y="190" width="600" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lbf-ew-7zY" id="C5h-t3-OnQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="70.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="No Menu Available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OFA-4C-Oe0">
+                                                    <rect key="frame" x="15" y="0.0" width="570" height="70.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
