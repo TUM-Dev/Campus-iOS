@@ -68,8 +68,14 @@ class TumOnlineLoginRequestManager {
                 if let con = json["confirmed"].array?[0].string {
                     if con == "true" {
                         self.delegate?.receiveToken(self.token)
+                    } else {
+                        self.delegate?.tokenNotConfirmed()
                     }
+                } else {
+                    self.delegate?.tokenNotConfirmed()
                 }
+            } else {
+                self.delegate?.tokenNotConfirmed()
             }
         }
     }

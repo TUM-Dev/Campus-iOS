@@ -60,7 +60,12 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
                 }))!))
             }
         }
+        tableView.separatorColor = categories.isEmpty ? UIColor.clearColor() : UIColor(red: 0.783922, green: 0.780392, blue: 0.8, alpha: 1)
         tableView.reloadData()
+    }
+    
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
 
     override func viewDidLoad() {
@@ -132,18 +137,31 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categories.count
+        return categories.count + 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == categories.count {
+            return nil
+        }
         return categories[section].0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if categories.isEmpty {
+            return 1
+        }
+        if section == categories.count {
+            return 0
+        }
         return categories[section].1.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == categories.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("notavailable") ?? UITableViewCell()
+            return cell
+        }
         let item = categories[indexPath.section].1[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier(item.getCellIdentifier() ?? "") as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)

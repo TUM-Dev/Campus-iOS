@@ -1,0 +1,6 @@
+framework module TKSubmitTransition {
+  umbrella header "TKSubmitTransition-umbrella.h"
+
+  export *
+  module * { export * }
+}
