@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 class User:ImageDownloader, ImageDownloadSubscriber {
     let token: String
     let lrzID: String?

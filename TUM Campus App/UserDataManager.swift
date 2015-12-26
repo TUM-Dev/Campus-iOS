@@ -25,7 +25,7 @@ class UserDataManager: Manager {
         if let user = main?.user?.name {
             main?.doPersonSearch(handler, query: user)
         } else {
-            let url = getIdentityURL()
+            let url = getURL()
             Alamofire.request(.GET, url).responseString() { (response) in
                 if let data = response.result.value {
                     let parsedXML = SWXMLHash.parse(data)
@@ -42,18 +42,10 @@ class UserDataManager: Manager {
         }
     }
     
-    func getIdentityURL() -> String {
+    func getURL() -> String {
         let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.Identity.rawValue
         if let token = main?.getToken() {
             return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&"
-        }
-        return ""
-    }
-    
-    func getURL(id: String) -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.PersonDetails.rawValue
-        if let token = main?.getToken() {
-            return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&" + TUMOnlineWebServices.IDParameter.rawValue + "=" + id
         }
         return ""
     }

@@ -43,6 +43,7 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         searchTextField.resignFirstResponder()
     }
     
@@ -96,6 +97,10 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let mvc = segue.destinationViewController as? RoomFinderViewController {
             mvc.room = currentElement
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
+            mvc.user = currentElement
             mvc.delegate = self
         }
     }

@@ -34,6 +34,10 @@
 		0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F681BE17ED700B5DFCB /* SearchViewController.swift */; };
 		0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */; };
 		0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6C1BE1865C00B5DFCB /* Movie.swift */; };
+		0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */; };
+		0E4825AB1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */; };
+		0E4825AD1C2C88E800C756A5 /* ContactInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */; };
+		0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */; };
 		0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52817A1C0E2F7500762EA3 /* Manager.swift */; };
 		0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52817C1C0E306200762EA3 /* DataElement.swift */; };
 		0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5725441C1656D500E5471D /* TuitionTableViewController.swift */; };
@@ -121,6 +125,10 @@
 		0E424F681BE17ED700B5DFCB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUFilmCardCell.swift; sourceTree = "<group>"; };
 		0E424F6C1BE1865C00B5DFCB /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailDataManager.swift; sourceTree = "<group>"; };
+		0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
+		0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoType.swift; sourceTree = "<group>"; };
+		0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPersonWithTitleCell.swift; sourceTree = "<group>"; };
 		0E52817A1C0E2F7500762EA3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		0E52817C1C0E306200762EA3 /* DataElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataElement.swift; sourceTree = "<group>"; };
 		0E57252F1C1647BD00E5471D /* TUM Campus App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TUM Campus App-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -251,6 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
+				0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */,
+				0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
 				0E3B21421C13C0590035ED70 /* TabBar */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
@@ -326,8 +336,8 @@
 		0E64AC551C0DE46C00060FB0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */,
 				0E3B21431C13C1B60035ED70 /* Tuition.swift */,
+				0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */,
 				0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */,
 				0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */,
 				0E64AC5E1C0DEC6F00060FB0 /* CalendarRowSet.swift */,
@@ -338,6 +348,7 @@
 				0EC10C221C171F730024F902 /* UserData.swift */,
 				0E1073B01C1A4BE2004C93CF /* Room.swift */,
 				0EB473CF1C1B4F0F00F17F44 /* Map.swift */,
+				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
 			);
@@ -370,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC10C241C171FEF0024F902 /* UserDataManager.swift */,
+				0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */,
 				0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */,
 				0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */,
 				0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */,
@@ -639,6 +651,7 @@
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
+				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,
@@ -648,8 +661,10 @@
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,
 				0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */,
+				0E4825AB1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift in Sources */,
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
+				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,
 				0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */,
 				0EB473C81C1B224700F17F44 /* MenuTableViewCell.swift in Sources */,
@@ -679,6 +694,7 @@
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
+				0E4825AD1C2C88E800C756A5 /* ContactInfoType.swift in Sources */,
 				0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */,
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */,
