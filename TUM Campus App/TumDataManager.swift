@@ -45,12 +45,21 @@ class TumDataManager {
         setManager(TumDataItems.RoomSearch, manager: RoomSearchManager(mainManager: self))
         setManager(TumDataItems.RoomMap, manager: RoomFinderMapManager(mainManager: self))
         setManager(TumDataItems.PersonDetail, manager: PersonDetailDataManager(mainManager: self))
+        setManager(TumDataItems.LectureDetails, manager: LectureDetailsManager(mainManager: self))
+        
     }
     
     func getPersonDetails(handler: (data: [DataElement]) -> (), user: UserData) {
         if let manager = managers[TumDataItems.PersonDetail.rawValue] as? PersonDetailDataManager {
             manager.userQuery = user
             manager.fetchData(handler)
+        }
+    }
+    
+    func getLectureDetails(receiver: TumDataReceiver, lecture: Lecture) {
+        if let manager = managers[TumDataItems.LectureDetails.rawValue] as? LectureDetailsManager {
+            manager.query = lecture
+            manager.fetchData(receiver.receiveData)
         }
     }
     

@@ -8,11 +8,17 @@
 
 import UIKit
 
-class LecturesTableViewController: UITableViewController, TumDataReceiver {
+class LecturesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate {
     
     var lectures = [(String,[DataElement])]()
     
     var delegate: DetailViewDelegate?
+    
+    var currentLecture: DataElement?
+    
+    func dataManager() -> TumDataManager {
+        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    }
     
     func receiveData(data: [DataElement]) {
         lectures.removeAll()
@@ -43,6 +49,11 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver {
             header.contentView.backgroundColor = Constants.tumBlue
             header.textLabel?.textColor = UIColor.whiteColor()
         }
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        currentLecture = lectures[indexPath.section].1[indexPath.row]
+        return indexPath
     }
 
     override func viewDidLoad() {
@@ -76,6 +87,13 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver {
         let cell = tableView.dequeueReusableCellWithIdentifier(item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
+            mvc.lecture = currentLecture
+            mvc.delegate = self
+        }
     }
 
 }

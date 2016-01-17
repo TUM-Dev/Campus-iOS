@@ -329,6 +329,7 @@
                                     <outlet property="contributorsLabel" destination="6Px-Or-4Rl" id="ZOT-T3-dUk"/>
                                     <outlet property="detailsLabel" destination="iA5-ns-F6I" id="cLU-ZN-WrQ"/>
                                     <outlet property="titleLabel" destination="mpx-ud-Ik1" id="54H-Zs-Gqv"/>
+                                    <segue destination="ORu-Kf-wPq" kind="show" id="2NI-yg-Il7"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="room" rowHeight="101" id="hsD-xP-wiL" customClass="RoomResultTableViewCell" customModule="TUM_Campus_App" customModuleProvider="target">
@@ -791,6 +792,7 @@
                                     <outlet property="contributorsLabel" destination="d4j-CT-NLD" id="sad-1a-1ag"/>
                                     <outlet property="detailsLabel" destination="dzs-m1-Dde" id="bNW-Eu-qQk"/>
                                     <outlet property="titleLabel" destination="0bB-SD-y6f" id="LRf-GC-NDF"/>
+                                    <segue destination="ORu-Kf-wPq" kind="show" id="4k9-LM-tTo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1747,6 +1749,51 @@
             </objects>
             <point key="canvasLocation" x="-615" y="1228"/>
         </scene>
+        <!--Lecture Details Table View Controller-->
+        <scene sceneID="JAi-jn-Yhi">
+            <objects>
+                <tableViewController id="ORu-Kf-wPq" customClass="LectureDetailsTableViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="77" sectionHeaderHeight="18" sectionFooterHeight="18" id="LXO-V8-m0N">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail" rowHeight="77" id="XCh-d1-TKO" customClass="LectureDetailTableViewCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="77"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XCh-d1-TKO" id="2ux-ig-8OP">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="76.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y3-hV-fGe">
+                                            <rect key="frame" x="16" y="16" width="42" height="44.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9y3-hV-fGe" secondAttribute="trailing" constant="8" id="3tr-eS-XVu"/>
+                                        <constraint firstAttribute="topMargin" secondItem="9y3-hV-fGe" secondAttribute="top" constant="-8" id="MVT-E6-TbM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="9y3-hV-fGe" secondAttribute="bottom" constant="8" id="QPn-mC-fdl"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="9y3-hV-fGe" secondAttribute="leading" constant="-8" id="TIk-2M-6Vs"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="9y3-hV-fGe" id="ILJ-pc-ssD"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ORu-Kf-wPq" id="iu0-ZD-rVf"/>
+                            <outlet property="delegate" destination="ORu-Kf-wPq" id="0O1-zd-pW1"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGx-Fp-EcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080" y="1713"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="D0p-0J-rdy">
             <objects>
@@ -1798,8 +1845,9 @@
         <image name="tuition" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="R25-pt-o8n"/>
         <segue reference="Sji-UH-eOw"/>
         <segue reference="q6U-kJ-jps"/>
-        <segue reference="R25-pt-o8n"/>
+        <segue reference="4k9-LM-tTo"/>
     </inferredMetricsTieBreakers>
 </document>
