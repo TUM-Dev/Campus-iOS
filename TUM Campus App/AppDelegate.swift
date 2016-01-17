@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.tumBlue]
         UINavigationBar.appearance().tintColor = Constants.tumBlue
-        
         if NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.Token.rawValue) == nil || NSUserDefaults.standardUserDefaults().stringForKey(LoginDefaultsKeys.LRZ.rawValue) == nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let loginViewController = storyboard.instantiateViewControllerWithIdentifier("Login")

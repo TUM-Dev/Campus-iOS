@@ -26,10 +26,10 @@ class TuitionStatusManager: Manager {
         self.single = single
     }
     
-    var tuitionItems = [DataElement]()
+    static var tuitionItems = [DataElement]()
     
     func fetchData(handler: ([DataElement]) -> ()) {
-        if tuitionItems.isEmpty {
+        if TuitionStatusManager.tuitionItems.isEmpty {
             let url = getURL()
             Alamofire.request(.GET, url).responseString() { (response) in
                 if let data = response.result.value {
@@ -42,7 +42,7 @@ class TuitionStatusManager: Manager {
                                 dateformatter.dateFormat = "yyyy-MM-dd"
                                 if let fristDate = dateformatter.dateFromString(frist) {
                                     let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
-                                    self.tuitionItems.append(tuition)
+                                    TuitionStatusManager.tuitionItems.append(tuition)
                                 }
                             }
                         }
@@ -58,9 +58,9 @@ class TuitionStatusManager: Manager {
     
     func handle(handler: ([DataElement]) -> ()) {
         if single {
-            handler([tuitionItems[0]])
+            handler([TuitionStatusManager.tuitionItems[0]])
         } else {
-            handler(tuitionItems)
+            handler(TuitionStatusManager.tuitionItems)
         }
     }
     
