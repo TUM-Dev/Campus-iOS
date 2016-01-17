@@ -15,11 +15,14 @@ enum TUMOnlineWebServices: String {
     case TokenConfirmation = "isTokenConfirmed"
     case TokenParameter = "pToken"
     case IDParameter = "pIdentNr"
+    case LectureIDParameter = "pLVNr"
     case TuitionStatus = "studienbeitragsstatus"
     case Calendar = "kalender"
     case PersonDetails = "personenDetails"
     case Identity = "id"
     case PersonalLectures = "veranstaltungenEigene"
     case LectureSearch = "veranstaltungenSuche"
+    case LectureDetails = "veranstaltungenDetails"
     case Home = "https://campus.tum.de/tumonline/"
+    
 }

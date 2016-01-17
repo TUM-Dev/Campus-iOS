@@ -103,6 +103,10 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
             mvc.user = currentElement
             mvc.delegate = self
         }
+        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
+            mvc.lecture = currentElement
+            mvc.delegate = self
+        }
     }
     
 

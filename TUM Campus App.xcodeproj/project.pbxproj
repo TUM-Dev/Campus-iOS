@@ -59,6 +59,9 @@
 		0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */; };
 		0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */; };
 		0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E692BB71C162CD200266417 /* CalendarViewController.swift */; };
+		0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */; };
+		0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */; };
+		0E6C20661C4C44F20059B7C2 /* LectureDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */; };
 		0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */; };
 		0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */; };
 		0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161831C1A05B6001A08FC /* Lecture.swift */; };
@@ -151,6 +154,9 @@
 		0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumDataManager.swift; sourceTree = "<group>"; };
 		0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadSubscriber.swift; sourceTree = "<group>"; };
 		0E692BB71C162CD200266417 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsManager.swift; sourceTree = "<group>"; };
+		0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsTableViewController.swift; sourceTree = "<group>"; };
+		0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailTableViewCell.swift; sourceTree = "<group>"; };
 		0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumCabeApi.swift; sourceTree = "<group>"; };
 		0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLectureManager.swift; sourceTree = "<group>"; };
 		0EB161831C1A05B6001A08FC /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
+				0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */,
+				0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */,
 				0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */,
 				0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
@@ -382,6 +390,7 @@
 			children = (
 				0EC10C241C171FEF0024F902 /* UserDataManager.swift */,
 				0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */,
+				0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */,
 				0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */,
 				0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */,
 				0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */,
@@ -654,6 +663,7 @@
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
+				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
 				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
@@ -688,10 +698,12 @@
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
+				0E6C20661C4C44F20059B7C2 /* LectureDetailTableViewCell.swift in Sources */,
 				0EB161861C1A0E6A001A08FC /* LecturesTableViewController.swift in Sources */,
 				0E3B214E1C13DB200035ED70 /* TumDataItems.swift in Sources */,
 				0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
+				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0E4825AD1C2C88E800C756A5 /* ContactInfoType.swift in Sources */,

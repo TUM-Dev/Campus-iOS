@@ -19,7 +19,9 @@ class Lecture: DataElement {
     let contributors: String
     let type: String
     
+    var detailsLoaded = false
     
+    var details = [(String,String)]()
     
     init(id: String, lectureID: String, module: String, name: String, semester: String, sws: Int, chair: String, contributors: String, type: String) {
         self.id = id
@@ -31,6 +33,10 @@ class Lecture: DataElement {
         self.chair = chair
         self.contributors = contributors
         self.type = type
+        details.append(("Semester",semester))
+        details.append(("Type",type))
+        details.append(("Chair",chair))
+        details.append(("Contributors",contributors))
     }
     
     func getCellIdentifier() -> String {
