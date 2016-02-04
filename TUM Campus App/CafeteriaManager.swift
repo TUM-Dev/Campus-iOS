@@ -73,15 +73,16 @@ class CafeteriaManager: Manager {
             let location = CafeteriaManager.locationManager.location
             CafeteriaManager.locationManager.stopUpdatingLocation()
             CafeteriaManager.cafeterias.sortInPlace() { (first, second) in
-                if let cafeOne = first as? Cafeteria {
-                    if let cafeTwo = second as? Cafeteria {
-                        return cafeOne.distance(location!) <= cafeTwo.distance(location!)
-                    } else {
+                if let unwrappedLocation = location {
+                    if let cafeOne = first as? Cafeteria {
+                        if let cafeTwo = second as? Cafeteria {
+                            return cafeOne.distance(unwrappedLocation) <= cafeTwo.distance(unwrappedLocation)
+                        }
                         return true
                     }
-                } else {
                     return false
                 }
+                return false
             }
         }
         if single {
