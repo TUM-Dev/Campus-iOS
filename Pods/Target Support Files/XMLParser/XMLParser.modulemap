@@ -1,6 +1,0 @@
-framework module XMLParser {
-  umbrella header "XMLParser-umbrella.h"
-
-  export *
-  module * { export * }
-}

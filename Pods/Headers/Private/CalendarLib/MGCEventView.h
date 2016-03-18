@@ -1,1 +1,0 @@
-../../../CalendarLib/CalendarLib/MGCEventView.h
