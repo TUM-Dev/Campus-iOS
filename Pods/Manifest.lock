@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (3.1.3)
+  - ASWeekSelectorView (0.3.5)
+  - AYSlidingPickerView (0.1.1)
+  - CalendarLib (1.0):
+    - OrderedDictionary (~> 1.2)
+    - OSCache (~> 1.2)
+  - MCSwipeTableViewCell (2.1.4)
+  - OrderedDictionary (1.2)
+  - OSCache (1.2)
+  - PZPullToRefresh (0.0.7)
+  - SwiftyJSON (2.3.1)
+  - SWXMLHash (2.0.2)
+  - TKSubmitTransition (0.3)
+  - XMLParser (1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - ASWeekSelectorView (~> 0.3.0)
+  - AYSlidingPickerView
+  - CalendarLib (~> 1.0)
+  - MCSwipeTableViewCell (~> 2.1.4)
+  - PZPullToRefresh
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SWXMLHash (~> 2.0.0)
+  - TKSubmitTransition
+  - XMLParser (~> 1.0)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: a4cce2ec0bf31bfec2cf4cc7f1030a59a7bc95d2
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  ASWeekSelectorView: 98161ef48915c42b42d355ece2865687c44b7da1
+  AYSlidingPickerView: 33fdb08cc1f74a32c706c52be821a12711a1462a
+  CalendarLib: 09364238c6259a17a719f2f8b05a79bf379ecb8d
+  MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
+  OrderedDictionary: 9cc5d69c5c5314ad696ed1839190724e83d534c7
+  OSCache: 10cdb5da579364aacfb8b7612dab13cf9c7aa4dc
+  PZPullToRefresh: a596d42b90ca42f979f181b5f35c4820406c2136
+  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
+  TKSubmitTransition: 6634e4fb07288db861b66d70fa4c4a7b96d0e6b2
+  XMLParser: e737ced4d8e6486028f741fecc0523d9ba55d0ae
+
+COCOAPODS: 0.39.0
