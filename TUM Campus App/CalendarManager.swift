@@ -61,9 +61,16 @@ class CalendarManager: Manager {
     }
     
     func getFromXML(value: String, handler: ([DataElement]) -> ()) {
-        let dataAsDictionary = XMLParser.sharedParser.decode(value)
-        let json = JSON(dataAsDictionary)
-        if let titleArray = json["title"].array, startArray = json["dtstart"].array, end = json["dtend"].array, descriptionArray = json["description"].array, statusArray = json["status"].array, linkArray = json["url"].array {
+        let dataAsDictionary = XMLParser.sharedParser.decode(value);
+        let json = JSON(dataAsDictionary);
+        
+        if let titleArray = json["title"].array,
+            startArray = json["dtstart"].array,
+            end = json["dtend"].array,
+            descriptionArray = json["description"].array,
+            statusArray = json["status"].array,
+            linkArray = json["url"].array {
+        
             for i in 0...(titleArray.count - 1) {
                 let item = CalendarRow()
                 item.title = titleArray[i].string
@@ -75,10 +82,14 @@ class CalendarManager: Manager {
                     item.dtstart = dateFormatter.dateFromString(s)
                     item.dtend = dateFormatter.dateFromString(e)
                 }
-                item.description = descriptionArray[i].string
+                if(i < descriptionArray.count){
+                    item.description = descriptionArray[i].string
+                }
                 item.status = statusArray[i].string
-                if let link = linkArray[i].string {
-                    item.url = NSURL(string: link)
+                if i < linkArray.count {
+                    if let link = linkArray[i].string {
+                        item.url = NSURL(string: link)
+                    }
                 }
                 if item.status == "FT" {
                     CalendarManager.calendarItems.append(item)
