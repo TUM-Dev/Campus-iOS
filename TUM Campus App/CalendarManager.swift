@@ -8,8 +8,7 @@
 
 import Foundation
 import Alamofire
-import XMLParser
-import SwiftyJSON
+import SWXMLHash
 
 class CalendarManager: Manager {
     
@@ -61,42 +60,33 @@ class CalendarManager: Manager {
     }
     
     func getFromXML(value: String, handler: ([DataElement]) -> ()) {
-        let dataAsDictionary = XMLParser.sharedParser.decode(value);
-        let json = JSON(dataAsDictionary);
-        
-        if let titleArray = json["title"].array,
-            startArray = json["dtstart"].array,
-            end = json["dtend"].array,
-            descriptionArray = json["description"].array,
-            statusArray = json["status"].array,
-            linkArray = json["url"].array {
-        
-            for i in 0...(titleArray.count - 1) {
+        let data = SWXMLHash.parse(value)
+        let events = data["events"]["event"].all
+        for event in events {
+            if let title = event["title"].element?.text,
+                    startString = event["dtstart"].element?.text,
+                    endString = event["dtend"].element?.text,
+                    status = event["status"].element?.text,
+                    link = event["url"].element?.text {
+                
                 let item = CalendarRow()
-                item.title = titleArray[i].string
-                let startString = startArray[i].string
-                let endString = end[i].string
+                item.title = title
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                if let s = startString, e = endString {
-                    item.dtstart = dateFormatter.dateFromString(s)
-                    item.dtend = dateFormatter.dateFromString(e)
+                item.dtstart = dateFormatter.dateFromString(startString)
+                item.dtend = dateFormatter.dateFromString(endString)
+                if let description = event["description"].element?.text {
+                    item.description = description
                 }
-                if(i < descriptionArray.count){
-                    item.description = descriptionArray[i].string
-                }
-                item.status = statusArray[i].string
-                if i < linkArray.count {
-                    if let link = linkArray[i].string {
-                        item.url = NSURL(string: link)
-                    }
-                }
+                item.status = status
+                item.url = NSURL(string: link)
                 if item.status == "FT" {
                     CalendarManager.calendarItems.append(item)
                 }
             }
-            handle(handler)
+            
         }
+        handle(handler)
     }
     
     func handle(handler: ([DataElement]) -> ()) {

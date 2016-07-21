@@ -95,7 +95,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-TUM Campus App/SWXMLHash.framework"
   install_framework "Pods-TUM Campus App/SwiftyJSON.framework"
   install_framework "Pods-TUM Campus App/TKSubmitTransition.framework"
-  install_framework "Pods-TUM Campus App/XMLParser.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TUM Campus App/ASWeekSelectorView.framework"
@@ -109,5 +108,4 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-TUM Campus App/SWXMLHash.framework"
   install_framework "Pods-TUM Campus App/SwiftyJSON.framework"
   install_framework "Pods-TUM Campus App/TKSubmitTransition.framework"
-  install_framework "Pods-TUM Campus App/XMLParser.framework"
 fi

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import XMLParser
 import SwiftyJSON
+import SWXMLHash
 
 class TuitionStatusManager: Manager {
     
@@ -33,21 +34,23 @@ class TuitionStatusManager: Manager {
             let url = getURL()
             Alamofire.request(.GET, url).responseString() { (response) in
                 if let data = response.result.value {
-                    let dataAsDictionary = XMLParser.sharedParser.decode(data)
-                    let json = JSON(dataAsDictionary)
-                    if let sollArray = json["soll"].array, fristArray = json["frist"].array, bezArray = json["semester_bezeichnung"].array {
-                        for i in 0...((sollArray.count)-1) {
-                            if let soll = sollArray[i].string, frist = fristArray[i].string, bez = bezArray[i].string {
-                                let dateformatter = NSDateFormatter()
-                                dateformatter.dateFormat = "yyyy-MM-dd"
-                                if let fristDate = dateformatter.dateFromString(frist) {
-                                    let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
-                                    TuitionStatusManager.tuitionItems.append(tuition)
-                                }
+                    let tuitionData = SWXMLHash.parse(data)
+                    let rows = tuitionData["rowset"]["row"].all
+                    for row in rows {
+                        if let soll = row["soll"].element?.text,
+                                frist = row["frist"].element?.text,
+                                bez = row["semester_bezeichnung"].element?.text {
+                            
+                            let dateformatter = NSDateFormatter()
+                            dateformatter.dateFormat = "yyyy-MM-dd"
+                            if let fristDate = dateformatter.dateFromString(frist) {
+                                let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
+                                TuitionStatusManager.tuitionItems.append(tuition)
                             }
+                            
                         }
-                        self.handle(handler)
                     }
+                    self.handle(handler)
                 }
             }
         } else {

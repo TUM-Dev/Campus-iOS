@@ -12,7 +12,6 @@ PODS:
   - SwiftyJSON (2.3.1)
   - SWXMLHash (2.0.2)
   - TKSubmitTransition (0.3)
-  - XMLParser (1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -24,7 +23,6 @@ DEPENDENCIES:
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
   - SWXMLHash (~> 2.0.0)
   - TKSubmitTransition
-  - XMLParser (~> 1.0)
 
 EXTERNAL SOURCES:
   SwiftyJSON:
@@ -47,6 +45,5 @@ SPEC CHECKSUMS:
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
   TKSubmitTransition: 6634e4fb07288db861b66d70fa4c4a7b96d0e6b2
-  XMLParser: e737ced4d8e6486028f741fecc0523d9ba55d0ae
 
 COCOAPODS: 0.39.0

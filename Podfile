@@ -8,8 +8,7 @@ target 'TUM Campus App' do
 	pod 'Alamofire', '~> 3.0'
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
-	pod 'XMLParser', '~> 1.0'
-	pod "AYSlidingPickerView"
+	pod 'AYSlidingPickerView'
 	pod 'PZPullToRefresh'
 	pod 'ASWeekSelectorView', '~> 0.3.0'
 	pod 'CalendarLib', '~> 1.0'

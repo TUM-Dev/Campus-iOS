@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D7E037B9A4203F1466619D57'
+               BlueprintIdentifier = '346DDF964B2822EC30F2D524'
                BlueprintName = 'OSCache'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'OSCache.framework'>

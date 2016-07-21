@@ -8,8 +8,7 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
-import XMLParser
+import SWXMLHash
 
 class TumOnlineLoginRequestManager {
     
@@ -47,10 +46,8 @@ class TumOnlineLoginRequestManager {
         print(url)
         Alamofire.request(.GET, url).responseString() { (response) in
             if let data = response.result.value {
-                let dataAsDictionary = XMLParser.sharedParser.decode(data)
-                let json = JSON(dataAsDictionary)
-                print(json)
-                if let token = json["token"].array?[0].string {
+                let tokenData = SWXMLHash.parse(data)
+                if let token = tokenData["token"].element?.text {
                     self.token = token
                 }
             }
@@ -62,11 +59,10 @@ class TumOnlineLoginRequestManager {
         print(url)
         Alamofire.request(.GET, url).responseString() { (response) in
             if let data = response.result.value {
-                let dataAsDictionary = XMLParser.sharedParser.decode(data)
-                let json = JSON(dataAsDictionary)
-                print(json)
-                if let con = json["confirmed"].array?[0].string {
-                    if con == "true" {
+                let tokenData = SWXMLHash.parse(data)
+                print(tokenData)
+                if let confirmed = tokenData["confirmed"].element?.text {
+                    if confirmed == "true" {
                         self.delegate?.receiveToken(self.token)
                     } else {
                         self.delegate?.tokenNotConfirmed()
