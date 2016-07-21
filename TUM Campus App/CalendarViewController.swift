@@ -10,13 +10,14 @@ import UIKit
 import ASWeekSelectorView
 import CalendarLib
 
-class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorViewDelegate, MGCDayPlannerViewDataSource, MGCDayPlannerViewDelegate {
+class CalendarViewController: UIViewController, DetailView {
+    
+    @IBOutlet weak var dayPlannerView: MGCDayPlannerView!
+    var weekSelector: ASWeekSelectorView?
     
     var items = [String:[CalendarRow]]()
     
     var delegate: DetailViewDelegate?
-    
-    var weekSelector: ASWeekSelectorView?
     
     var nextLectureItem: CalendarRow?
     
@@ -33,8 +34,23 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         dayPlannerView.reloadAllEvents()
     }
     
-    @IBOutlet weak var dayPlannerView: MGCDayPlannerView!
+    func lecturesOfDate(date: NSDate) -> [CalendarRow] {
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateFormat = "yyyy MM dd"
+        let string = dateformatter.stringFromDate(date)
+        return items[string] ?? []
+    }
+    
+    func updateTitle(date: NSDate) {
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateFormat = "MMMM dd"
+        title = dateformatter.stringFromDate(date)
+    }
+    
+}
 
+extension CalendarViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My Caledar"
@@ -46,7 +62,7 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         weekSelector?.delegate = self
         weekSelector?.selectedDate = NSDate()
         delegate?.dataManager().getCalendar(self)
-        let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action:  Selector("showToday:"))
+        let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
         navigationItem.rightBarButtonItem = barItem
         updateTitle(NSDate())
         dayPlannerView.frame = CGRectMake(dayPlannerView.frame.origin.x, dayPlannerView.frame.origin.y, view.frame.width, dayPlannerView.frame.width)
@@ -56,28 +72,6 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         dayPlannerView.dayHeaderHeight = 0.0
         dayPlannerView.showsAllDayEvents = false
         self.view.addSubview(weekSelector!)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func receiveData(data: [DataElement]) {
-        items.removeAll()
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        for item in data {
-            if let lecture = item as? CalendarRow, date = lecture.dtstart {
-                if let _ = items[dateformatter.stringFromDate(date)] {
-                    items[dateformatter.stringFromDate(date)]?.append(lecture)
-                } else {
-                    items[dateformatter.stringFromDate(date)] = [lecture]
-                }
-            }
-        }
-        let now = NSDate()
-        updateTitle(now)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -97,12 +91,9 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         }
     }
     
-    func lecturesOfDate(date: NSDate) -> [CalendarRow] {
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        let string = dateformatter.stringFromDate(date)
-        return items[string] ?? []
-    }
+}
+
+extension CalendarViewController {
     
     func goToDay(date: NSDate) {
         let newDate = lecturesOfDate(date).first?.dtstart ?? date
@@ -114,16 +105,58 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         scrollTo(date)
     }
     
-    func updateTitle(date: NSDate) {
+    func sameDay(a: NSDate, b: NSDate) -> Bool {
         let dateformatter = NSDateFormatter()
-        dateformatter.dateFormat = "MMMM dd"
-        title = dateformatter.stringFromDate(date)
+        dateformatter.dateFormat = "yyyy MM dd"
+        return dateformatter.stringFromDate(a) == dateformatter.stringFromDate(b)
     }
+    
+    func scrollTo(date: NSDate) {
+        scrollTo(date, animated: true)
+    }
+    
+    func scrollTo(date: NSDate, animated: Bool) {
+        let interval = NSTimeInterval(-1200.0)
+        var newDate = NSDate(timeInterval: interval, sinceDate: date)
+        if !sameDay(newDate, b: date) {
+            newDate = date
+        }
+        dayPlannerView.scrollToDate(newDate, options: MGCDayPlannerScrollDateTime, animated: animated)
+    }
+    
+}
+
+extension CalendarViewController: TumDataReceiver {
+    
+    func receiveData(data: [DataElement]) {
+        items.removeAll()
+        let dateformatter = NSDateFormatter()
+        dateformatter.dateFormat = "yyyy MM dd"
+        for item in data {
+            if let lecture = item as? CalendarRow, date = lecture.dtstart {
+                if let _ = items[dateformatter.stringFromDate(date)] {
+                    items[dateformatter.stringFromDate(date)]?.append(lecture)
+                } else {
+                    items[dateformatter.stringFromDate(date)] = [lecture]
+                }
+            }
+        }
+        let now = NSDate()
+        updateTitle(now)
+    }
+    
+}
+
+extension CalendarViewController: ASWeekSelectorViewDelegate {
     
     func weekSelector(weekSelector: ASWeekSelectorView!, didSelectDate date: NSDate!) {
         updateTitle(date)
         goToDay(date)
     }
+    
+}
+
+extension CalendarViewController: MGCDayPlannerViewDataSource, MGCDayPlannerViewDelegate {
     
     func dayPlannerView(view: MGCDayPlannerView!, canCreateNewEventOfType type: MGCEventType, atDate date: NSDate!) -> Bool {
         return false
@@ -150,12 +183,6 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         return MGCDateRange(start: item.dtstart!, end: item.dtend!)
     }
     
-    func sameDay(a: NSDate, b: NSDate) -> Bool {
-        let dateformatter = NSDateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        return dateformatter.stringFromDate(a) == dateformatter.stringFromDate(b)
-    }
-    
     func dayPlannerView(view: MGCDayPlannerView!, willDisplayDate date: NSDate!) {
         if !scrolling {
             weekSelector?.setSelectedDate(date, animated: true)
@@ -163,19 +190,6 @@ class CalendarViewController: UIViewController, TumDataReceiver, ASWeekSelectorV
         } else if sameDay(date, b: (weekSelector?.selectedDate)!) {
             scrolling = false
         }
-    }
-    
-    func scrollTo(date: NSDate) {
-        scrollTo(date, animated: true)
-    }
-    
-    func scrollTo(date: NSDate, animated: Bool) {
-        let interval = NSTimeInterval(-1200.0)
-        var newDate = NSDate(timeInterval: interval, sinceDate: date)
-        if !sameDay(newDate, b: date) {
-            newDate = date
-        }
-        dayPlannerView.scrollToDate(newDate, options: MGCDayPlannerScrollDateTime, animated: animated)
     }
     
 }

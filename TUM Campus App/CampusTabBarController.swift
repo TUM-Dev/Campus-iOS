@@ -25,12 +25,4 @@ class CampusTabBarController: UITabBarController {
         manager?.getUserData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.Default
-    }
-
 }

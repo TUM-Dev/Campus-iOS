@@ -8,26 +8,32 @@
 
 import UIKit
 
-class PersonDetailTableViewController: UITableViewController, TumDataReceiver {
+class PersonDetailTableViewController: UITableViewController, DetailView {
     
     var user: DataElement?
     
     var delegate: DetailViewDelegate?
     
     var contactInfo = [(ContactInfoType,String)]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-        title = user?.text
-        let barItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("addContact:"))
-        navigationItem.rightBarButtonItem = barItem
+    
+    var addingContact = false
+    
+    func addContact(sender: AnyObject?) {
+        let handler = { () in
+            DoneHUD.showInView(self.view, message: "Contact Added")
+        }
         if let data = user as? UserData {
-            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
-            contactInfo = data.contactInfo
+            if data.contactsLoaded {
+                addingContact = false
+                data.addContact(handler)
+            } else {
+                addingContact = true
+            }
         }
     }
+}
+
+extension PersonDetailTableViewController: TumDataReceiver {
     
     func receiveData(data: [DataElement]) {
         if let data = user as? UserData {
@@ -38,11 +44,32 @@ class PersonDetailTableViewController: UITableViewController, TumDataReceiver {
         }
         tableView.reloadData()
     }
+    
+}
 
+extension PersonDetailTableViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        title = user?.text
+        let barItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PersonDetailTableViewController.addContact(_:)))
+        navigationItem.rightBarButtonItem = barItem
+        if let data = user as? UserData {
+            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
+            contactInfo = data.contactInfo
+        }
+    }
+    
+}
+
+extension PersonDetailTableViewController {
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
@@ -57,7 +84,7 @@ class PersonDetailTableViewController: UITableViewController, TumDataReceiver {
         return nil
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {          
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if let data = user {
                 let cell = tableView.dequeueReusableCellWithIdentifier(data.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
@@ -77,21 +104,4 @@ class PersonDetailTableViewController: UITableViewController, TumDataReceiver {
         }
     }
     
-    var addingContact = false
-    
-    func addContact(sender: AnyObject?) {
-        
-        let handler = { () in
-            DoneHUD.showInView(self.view, message: "Contact Added")
-        }
-        if let data = user as? UserData {
-            if data.contactsLoaded {
-                addingContact = false
-                data.addContact(handler)
-            } else {
-                addingContact = true
-            }
-        }
-    }
-
 }

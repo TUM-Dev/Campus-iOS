@@ -9,16 +9,12 @@
 import UIKit
 
 class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        if let mvc = tabBarController as? CampusTabBarController {
-            user = mvc.user
-            manager = mvc.manager
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var avatarView: UIImageView! {
+        didSet {
+            avatarView.clipsToBounds = true
+            avatarView.layer.cornerRadius = avatarView.frame.width / 2
         }
     }
     
@@ -42,44 +38,32 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     func dataManager() -> TumDataManager {
         return manager ?? TumDataManager(user: nil)
     }
+
+}
+
+extension MoreTableViewController {
     
-    @IBOutlet weak var avatarView: UIImageView! {
-        didSet {
-            avatarView.clipsToBounds = true
-            avatarView.layer.cornerRadius = avatarView.frame.width / 2
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if let mvc = tabBarController as? CampusTabBarController {
+            user = mvc.user
+            manager = mvc.manager
         }
     }
     
-    @IBOutlet weak var nameLabel: UILabel!
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? MovieDetailTableViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? CalendarViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? SearchViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? TuitionTableViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? LecturesTableViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? CafeteriaViewController {
+        if var mvc = segue.destinationViewController as? DetailView {
             mvc.delegate = self
         }
         if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
             mvc.user = user?.data
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? NewsTableViewController {
-            mvc.delegate = self
         }
     }
-
+    
 }
 
 extension MoreTableViewController {

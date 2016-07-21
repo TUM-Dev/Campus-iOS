@@ -9,7 +9,7 @@
 import UIKit
 import MCSwipeTableViewCell
 
-class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadSubscriber, DetailViewDelegate {
+class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
     
@@ -22,40 +22,22 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     func refresh(sender: AnyObject?) {
         manager?.getCardItems(self)
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let logo = UIImage(named: "logo-blue")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
-        self.navigationItem.titleView = imageView
-        if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRectMake(bounds.origin.x+10, bounds.origin.y+10, bounds.width-20, bounds.height-20)
-        }
-        refresh.addTarget(self, action: Selector("refresh:"), forControlEvents: UIControlEvents.ValueChanged)
-        tableView.addSubview(refresh)
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-        imageView.clipsToBounds = true
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.separatorColor = UIColor.clearColor()
-        tableView.backgroundColor = Constants.backgroundGray
-        manager = (self.tabBarController as? CampusTabBarController)?.manager
-    }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        cards.removeAll()
-        refresh(nil)
+}
+
+extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
+    
+    func updateImageView() {
+        tableView.reloadData()
     }
     
     func dataManager() -> TumDataManager {
         return manager ?? TumDataManager(user: nil)
     }
     
-    func updateImageView() {
-        tableView.reloadData()
-    }
+}
+
+extension CardViewController: TumDataReceiver {
     
     func receiveData(data: [DataElement]) {
         if cards.count <= data.count {
@@ -72,11 +54,49 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         }
         refresh.endRefreshing()
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension CardViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let logo = UIImage(named: "logo-blue")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        self.navigationItem.titleView = imageView
+        if let bounds = imageView.superview?.bounds {
+            imageView.frame = CGRectMake(bounds.origin.x+10, bounds.origin.y+10, bounds.width-20, bounds.height-20)
+        }
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refresh)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
+        imageView.clipsToBounds = true
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.separatorColor = UIColor.clearColor()
+        tableView.backgroundColor = Constants.backgroundGray
+        manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        cards.removeAll()
+        refresh(nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if var mvc = segue.destinationViewController as? DetailView {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? CalendarViewController {
+            mvc.nextLectureItem = nextLecture
+        }
+    }
+    
+}
+
+extension CardViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -107,28 +127,6 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? MovieDetailTableViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? CalendarViewController {
-            mvc.delegate = self
-            mvc.nextLectureItem = nextLecture
-        }
-        if let mvc = segue.destinationViewController as? SearchViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? TuitionTableViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? CafeteriaViewController {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? NewsTableViewController {
-            mvc.delegate = self
-        }
     }
     
 }

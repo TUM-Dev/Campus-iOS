@@ -18,6 +18,7 @@ class LectureTableViewCell: CardTableViewCell {
             contributorsLabel.text = lecture.contributors
         }
     }
+    
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
             titleLabel.textColor = Constants.tumBlue

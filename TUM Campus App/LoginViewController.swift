@@ -8,8 +8,23 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherControllerDelegate {
+class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var firstTextField: UITextField!
+    @IBOutlet weak var numbersTextField: UITextField!
+    @IBOutlet weak var secondTextField: UITextField!
+    
+    func getLRZ() -> String {
+        if let first = firstTextField.text, numbers = numbersTextField.text, second = secondTextField.text {
+            return first + numbers + second
+        }
+        return ""
+    }
 
+}
+
+extension LoginViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firstTextField.delegate = self
@@ -25,15 +40,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
         }
         imageView.clipsToBounds = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? WaitForTokenViewController {
+            mvc.delegate = self
+        }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.Default
-    }
+}
+
+extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
@@ -72,21 +88,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate, TokenFetcherCo
         return true
     }
     
-    func getLRZ() -> String {
-        if let first = firstTextField.text, numbers = numbersTextField.text, second = secondTextField.text {
-            return first + numbers + second
-        }
-        return ""
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? WaitForTokenViewController {
-            mvc.delegate = self
-        }
-    }
-    
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var numbersTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
-
 }

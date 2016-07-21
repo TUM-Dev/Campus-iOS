@@ -9,17 +9,23 @@
 import UIKit
 import AYSlidingPickerView
 
-class RoomFinderViewController: UIViewController, TumDataReceiver, ImageDownloadSubscriber, UIScrollViewDelegate {
+class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, DetailView {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var delegate: DetailViewDelegate?
-    
     var room: DataElement?
     
+    var barItem: UIBarButtonItem?
+    var maps = [Map]()
     var currentMap: Map? {
         didSet {
             refreshImage()
         }
     }
+    
+    var pickerView = AYSlidingPickerView()
     
     func updateImageView() {
         refreshImage()
@@ -38,63 +44,10 @@ class RoomFinderViewController: UIViewController, TumDataReceiver, ImageDownload
         }
     }
     
-    @IBOutlet weak var imageView: UIImageView!
-    
-    var maps = [Map]()
-    
-    var pickerView = AYSlidingPickerView()
-    
-    var barItem: UIBarButtonItem?
-    
-    func showMaps(send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = Selector("hideMaps:")
-        barItem?.image = UIImage(named: "collapse")
-    }
-    
-    func hideMaps(send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = Selector("showMaps:")
-        barItem?.image = UIImage(named: "expand")
-    }
-    
-    func setUpPickerView() {
-        var items = [AnyObject]()
-        for item in maps {
-            let item = AYSlidingPickerViewItem(title: item.description) { (did) in
-                if did {
-                    self.currentMap = item
-                    self.barItem?.action = Selector("showMaps:")
-                    self.barItem?.image = UIImage(named: "expand")
-                }
-            }
-            items.append(item)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
-        pickerView.items = items
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  Selector("showMaps:"))
-        navigationItem.rightBarButtonItem = barItem
-    }
-    
-    @IBOutlet weak var scrollView: UIScrollView!
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
-        scrollView.delegate = self
-        if let roomUnwrapped = room as? Room {
-            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+extension RoomFinderViewController: TumDataReceiver {
+    
     func receiveData(data: [DataElement]) {
         maps.removeAll()
         for item in data {
@@ -108,8 +61,66 @@ class RoomFinderViewController: UIViewController, TumDataReceiver, ImageDownload
         setUpPickerView()
     }
     
+}
+
+extension RoomFinderViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
+        scrollView.delegate = self
+        if let roomUnwrapped = room as? Room {
+            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
+        }
+    }
+    
+}
+
+extension RoomFinderViewController {
+    
+    func showMaps(send: AnyObject?) {
+        pickerView.show()
+        barItem?.action = #selector(RoomFinderViewController.hideMaps(_:))
+        barItem?.image = UIImage(named: "collapse")
+    }
+    
+    func hideMaps(send: AnyObject?) {
+        pickerView.dismiss()
+        barItem?.action = #selector(RoomFinderViewController.showMaps(_:))
+        barItem?.image = UIImage(named: "expand")
+    }
+    
+}
+
+extension RoomFinderViewController: UIScrollViewDelegate {
+    
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+}
+
+extension RoomFinderViewController {
+    
+    func setUpPickerView() {
+        var items = [AnyObject]()
+        for item in maps {
+            let item = AYSlidingPickerViewItem(title: item.description) { (did) in
+                if did {
+                    self.currentMap = item
+                    self.barItem?.action = #selector(RoomFinderViewController.showMaps(_:))
+                    self.barItem?.image = UIImage(named: "expand")
+                }
+            }
+            items.append(item)
+        }
+        pickerView = AYSlidingPickerView.sharedInstance()
+        pickerView.mainView = view
+        pickerView.items = items
+        pickerView.selectedIndex = 0
+        pickerView.closeOnSelection = true
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
+        navigationItem.rightBarButtonItem = barItem
     }
     
 }

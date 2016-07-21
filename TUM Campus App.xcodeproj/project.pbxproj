@@ -88,6 +88,7 @@
 		0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */; };
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
+		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
 		83F5F976EAD2D6C63FB9F630 /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B0B5F4B6DD6DEA9123D0D56 /* Pods_TUM_Campus_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,7 @@
 		0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCardCell.swift; sourceTree = "<group>"; };
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2B0B5F4B6DD6DEA9123D0D56 /* Pods_TUM_Campus_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DFF19459D7568A0F68BCFF9 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				0E0EE9501D410E4E00E667A8 /* Extensions.swift */,
+				0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */,
 				0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */,
 				0E3B21291C13AB250035ED70 /* DoneHUD.swift */,
 				0E3B212A1C13AB250035ED70 /* DoneView.swift */,
@@ -278,12 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
-				0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */,
-				0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */,
-				0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */,
-				0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */,
-				0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */,
-				0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
 				0E3B21421C13C0590035ED70 /* TabBar */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
@@ -294,8 +291,12 @@
 				0EB473D41C1B647700F17F44 /* Cafeteria View */,
 				0E3B21411C13C0440035ED70 /* Search View */,
 				0EB473D31C1B646D00F17F44 /* Room Finder View */,
+				0EF4CEF21D4167C3001649F1 /* Lecture Detail View */,
+				0EF4CEF11D4167A1001649F1 /* News View */,
+				0EF4CEF31D4167CF001649F1 /* Person Detail View */,
 				0EB473D51C1B649100F17F44 /* Lecture View */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
+				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
 				0E57252F1C1647BD00E5471D /* TUM Campus App-Bridging-Header.h */,
 			);
@@ -331,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				0E5A61E01C135E07006017DB /* LoginViewController.swift */,
-				0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */,
 				0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */,
 			);
 			name = "Setup Wizard";
@@ -350,7 +350,6 @@
 		0E60CD491C148ED700B29948 /* Movie Detail View */ = {
 			isa = PBXGroup;
 			children = (
-				0E60CD471C14845700B29948 /* DetailViewDelegate.swift */,
 				0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */,
 			);
 			name = "Movie Detail View";
@@ -488,6 +487,42 @@
 				0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */,
 			);
 			name = Cards;
+			sourceTree = "<group>";
+		};
+		0EF4CEF11D4167A1001649F1 /* News View */ = {
+			isa = PBXGroup;
+			children = (
+				0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */,
+				0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */,
+			);
+			name = "News View";
+			sourceTree = "<group>";
+		};
+		0EF4CEF21D4167C3001649F1 /* Lecture Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */,
+				0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */,
+			);
+			name = "Lecture Detail View";
+			sourceTree = "<group>";
+		};
+		0EF4CEF31D4167CF001649F1 /* Person Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */,
+				0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */,
+			);
+			name = "Person Detail View";
+			sourceTree = "<group>";
+		};
+		0EF4CEF41D4169B5001649F1 /* Detail View Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0EF4CEEF1D416751001649F1 /* DetailView.swift */,
+				0E60CD471C14845700B29948 /* DetailViewDelegate.swift */,
+			);
+			name = "Detail View Protocols";
 			sourceTree = "<group>";
 		};
 		88EF6B75EEA36B61CDF00060 /* Frameworks */ = {
@@ -668,6 +703,7 @@
 				0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */,
 				0EB161881C1A0EB2001A08FC /* LectureTableViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
+				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,

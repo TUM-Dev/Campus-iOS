@@ -10,10 +10,18 @@ import UIKit
 import ASWeekSelectorView
 import AYSlidingPickerView
 
-class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelectorViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class CafeteriaViewController: UIViewController, DetailView {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var weekSelector: ASWeekSelectorView?
+    var pickerView = AYSlidingPickerView()
+    var barItem: UIBarButtonItem?
     
     var delegate: DetailViewDelegate?
     
+    var categories = [(String,[CafeteriaMenu])]()
+    
+    var cafeterias = [Cafeteria]()
     var currentCafeteria: Cafeteria? {
         didSet {
             if let cafe = currentCafeteria {
@@ -23,23 +31,11 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         }
     }
     
-    var categories = [(String,[CafeteriaMenu])]()
-    
-    var cafeterias = [Cafeteria]()
-    
-    var weekSelector: ASWeekSelectorView?
-    
     var currentDate = NSDate() {
         didSet {
             reloadItems()
         }
     }
-    
-    var pickerView = AYSlidingPickerView()
-    
-    var barItem: UIBarButtonItem?
-    
-    @IBOutlet weak var tableView: UITableView!
     
     func reloadItems() {
         categories.removeAll()
@@ -64,10 +60,10 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
+}
 
+extension CafeteriaViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -86,20 +82,20 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(weekSelector!)
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+extension CafeteriaViewController {
     
     func showCafeterias(send: AnyObject?) {
         pickerView.show()
-        barItem?.action = Selector("hideCafeterias:")
+        barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
         barItem?.image = UIImage(named: "collapse")
     }
     
     func hideCafeterias(send: AnyObject?) {
         pickerView.dismiss()
-        barItem?.action = Selector("showCafeterias:")
+        barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
         barItem?.image = UIImage(named: "expand")
     }
     
@@ -109,7 +105,7 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
             let item = AYSlidingPickerViewItem(title: item.name) { (did) in
                 if did {
                     self.currentCafeteria = item
-                    self.barItem?.action = Selector("showCafeterias:")
+                    self.barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
                     self.barItem?.image = UIImage(named: "expand")
                 }
             }
@@ -120,9 +116,13 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  Selector("showCafeterias:"))
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
+    
+}
+
+extension CafeteriaViewController: TumDataReceiver {
     
     func receiveData(data: [DataElement]) {
         cafeterias.removeAll()
@@ -135,6 +135,18 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         setUpPickerView()
         reloadItems()
     }
+    
+}
+
+extension CafeteriaViewController: ASWeekSelectorViewDelegate {
+    
+    func weekSelector(weekSelector: ASWeekSelectorView!, didSelectDate date: NSDate!) {
+        currentDate = date
+    }
+    
+}
+
+extension CafeteriaViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return categories.count + 1
@@ -175,8 +187,8 @@ class CafeteriaViewController: UIViewController, TumDataReceiver, ASWeekSelector
         }
     }
     
-    func weekSelector(weekSelector: ASWeekSelectorView!, didSelectDate date: NSDate!) {
-        currentDate = date
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
     
 }

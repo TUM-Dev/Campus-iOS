@@ -9,10 +9,11 @@
 import UIKit
 import AYSlidingPickerView
 
-class TuitionTableViewController: UITableViewController, TumDataReceiver {
+class TuitionTableViewController: UITableViewController, DetailView {
     
+    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var deadLineLabel: UILabel!
     var pickerView = AYSlidingPickerView()
-    
     var barItem: UIBarButtonItem?
     
     var delegate: DetailViewDelegate?
@@ -30,32 +31,10 @@ class TuitionTableViewController: UITableViewController, TumDataReceiver {
             }
         }
     }
-    
-    @IBOutlet weak var balanceLabel: UILabel!
 
-    @IBOutlet weak var deadLineLabel: UILabel!
-    
-    func setUpPickerView() {
-        var items = [AnyObject]()
-        for semester in semesters {
-            let item = AYSlidingPickerViewItem(title: semester.semester) { (did) in
-                if did {
-                    self.currentSemester = semester
-                    self.barItem?.action = Selector("showSemesters:")
-                    self.barItem?.image = UIImage(named: "expand")
-                    self.tableView.reloadData()
-                }
-            }
-            items.append(item)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.items = items
-        pickerView.mainView = view
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  Selector("showSemesters:"))
-        navigationItem.rightBarButtonItem = barItem
-    }
+}
+
+extension TuitionTableViewController: TumDataReceiver {
     
     func receiveData(data: [DataElement]) {
         semesters.removeAll()
@@ -68,27 +47,51 @@ class TuitionTableViewController: UITableViewController, TumDataReceiver {
         setUpPickerView()
     }
     
-    func showSemesters(send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = Selector("hideSemesters:")
-        barItem?.image = UIImage(named: "collapse")
-    }
-    
-    func hideSemesters(send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = Selector("showSemesters:")
-        barItem?.image = UIImage(named: "expand")
-    }
+}
+
+extension TuitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.dataManager().getTuitionStatus(self)
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension TuitionTableViewController {
+    
+    func setUpPickerView() {
+        var items = [AnyObject]()
+        for semester in semesters {
+            let item = AYSlidingPickerViewItem(title: semester.semester) { (did) in
+                if did {
+                    self.currentSemester = semester
+                    self.barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
+                    self.barItem?.image = UIImage(named: "expand")
+                    self.tableView.reloadData()
+                }
+            }
+            items.append(item)
+        }
+        pickerView = AYSlidingPickerView.sharedInstance()
+        pickerView.items = items
+        pickerView.mainView = view
+        pickerView.selectedIndex = 0
+        pickerView.closeOnSelection = true
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
+        navigationItem.rightBarButtonItem = barItem
     }
     
-
+    func showSemesters(send: AnyObject?) {
+        pickerView.show()
+        barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
+        barItem?.image = UIImage(named: "collapse")
+    }
+    
+    func hideSemesters(send: AnyObject?) {
+        pickerView.dismiss()
+        barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
+        barItem?.image = UIImage(named: "expand")
+    }
+    
 }

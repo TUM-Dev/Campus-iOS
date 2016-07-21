@@ -8,16 +8,40 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataReceiver, ImageDownloadSubscriber, DetailViewDelegate {
+class SearchViewController: UITableViewController, DetailView {
+    
+    @IBOutlet weak var searchTextField: UITextField! {
+        didSet {
+            searchTextField.delegate = self
+        }
+    }
     
     var delegate: DetailViewDelegate?
     
     var elements = [DataElement]()
     
     var currentElement: DataElement?
+
+}
+
+extension SearchViewController: DetailViewDelegate {
     
     func dataManager() -> TumDataManager {
         return delegate?.dataManager() ?? TumDataManager(user: nil)
+    }
+    
+}
+
+extension SearchViewController: TumDataReceiver, ImageDownloadSubscriber {
+    
+    func receiveData(data: [DataElement]) {
+        elements = data
+        for element in elements {
+            if let downloader = element as? ImageDownloader {
+                downloader.subscribeToImage(self)
+            }
+        }
+        tableView.reloadData()
     }
     
     func updateImageView() {
@@ -29,33 +53,9 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         return true
     }
     
-    @IBOutlet weak var searchTextField: UITextField! {
-        didSet {
-            searchTextField.delegate = self
-        }
-    }
-    
-    override func viewDidLoad() {
-        searchTextField.becomeFirstResponder()
-        tableView.tableFooterView = UIView(frame: CGRectZero)
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = 102
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        searchTextField.resignFirstResponder()
-    }
-    
-    func receiveData(data: [DataElement]) {
-        elements = data
-        for element in elements {
-            if let downloader = element as? ImageDownloader {
-                downloader.subscribeToImage(self)
-            }
-        }
-        tableView.reloadData()
-    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if string != " " {
@@ -74,6 +74,41 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         }
         return true
     }
+    
+}
+
+extension SearchViewController {
+    
+    override func viewDidLoad() {
+        searchTextField.becomeFirstResponder()
+        tableView.tableFooterView = UIView(frame: CGRectZero)
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = 102
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchTextField.resignFirstResponder()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if var mvc = segue.destinationViewController as? DetailView {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destinationViewController as? RoomFinderViewController {
+            mvc.room = currentElement
+        }
+        if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
+            mvc.user = currentElement
+        }
+        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
+            mvc.lecture = currentElement
+        }
+    }
+    
+}
+
+extension SearchViewController {
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
         currentElement = elements[indexPath.row]
@@ -94,20 +129,4 @@ class SearchViewController: UITableViewController, UITextFieldDelegate, TumDataR
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? RoomFinderViewController {
-            mvc.room = currentElement
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
-            mvc.user = currentElement
-            mvc.delegate = self
-        }
-        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
-            mvc.lecture = currentElement
-            mvc.delegate = self
-        }
-    }
-    
-
 }

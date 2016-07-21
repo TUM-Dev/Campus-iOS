@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsTableViewController: UITableViewController, TumDataReceiver {
+class NewsTableViewController: UITableViewController, DetailView {
     
     var news = [News]() {
         didSet {
@@ -16,12 +16,20 @@ class NewsTableViewController: UITableViewController, TumDataReceiver {
         }
     }
     
+    var delegate: DetailViewDelegate?
+
+}
+
+extension NewsTableViewController: TumDataReceiver {
+    
     func receiveData(data: [DataElement]) {
         news = data.flatMap() { $0 as? News }
     }
     
-    var delegate: DetailViewDelegate?
+}
 
+extension NewsTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.dataManager().getAllNews(self)
@@ -30,17 +38,15 @@ class NewsTableViewController: UITableViewController, TumDataReceiver {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRectZero)
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // MARK: - Table view data source
-
+extension NewsTableViewController {
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return news.count
     }
@@ -54,5 +60,5 @@ class NewsTableViewController: UITableViewController, TumDataReceiver {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         news[indexPath.row].open()
     }
-
+    
 }

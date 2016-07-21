@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LecturesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate {
+class LecturesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate, DetailView {
     
     var lectures = [(String,[DataElement])]()
     
@@ -43,19 +43,11 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
         }
         tableView.reloadData()
     }
-    
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let header = view as? UITableViewHeaderFooterView {
-            header.contentView.backgroundColor = Constants.tumBlue
-            header.textLabel?.textColor = UIColor.whiteColor()
-        }
-    }
-    
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        currentLecture = lectures[indexPath.section].1[indexPath.row]
-        return indexPath
-    }
 
+}
+
+extension LecturesTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate?.dataManager().getLectures(self)
@@ -63,17 +55,22 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRectZero)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
+            mvc.lecture = currentLecture
+            mvc.delegate = self
+        }
     }
+    
+}
 
-    // MARK: - Table view data source
-
+extension LecturesTableViewController {
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return lectures.count
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lectures[section].1.count
     }
@@ -89,11 +86,16 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? LectureDetailsTableViewController {
-            mvc.lecture = currentLecture
-            mvc.delegate = self
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.contentView.backgroundColor = Constants.tumBlue
+            header.textLabel?.textColor = UIColor.whiteColor()
         }
     }
-
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        currentLecture = lectures[indexPath.section].1[indexPath.row]
+        return indexPath
+    }
+    
 }

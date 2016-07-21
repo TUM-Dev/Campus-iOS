@@ -13,14 +13,32 @@ protocol TokenFetcherControllerDelegate {
     func getLRZ() -> String
 }
 
-class WaitForTokenViewController: UIViewController, AccessTokenReceiver, UIViewControllerTransitioningDelegate {
+class WaitForTokenViewController: UIViewController {
+    
+    @IBOutlet weak var button: TKTransitionSubmitButton!
     
     var user: User?
     var lrzID: String?
-    
     var loginManager: TumOnlineLoginRequestManager?
     var delegate: TokenFetcherControllerDelegate?
+    
+    @IBAction func refresh(sender: AnyObject) {
+        checkRequest()
+    }
+    
+    func tokenNotConfirmed() {
+        button.returnToOriginalState()
+    }
+    
+    func checkRequest() {
+        button.startLoadingAnimation()
+        loginManager?.confirmToken()
+    }
 
+}
+
+extension WaitForTokenViewController {
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         button.normalBackgroundColor = Constants.tumBlue
@@ -32,12 +50,9 @@ class WaitForTokenViewController: UIViewController, AccessTokenReceiver, UIViewC
         checkRequest()
     }
     
-    @IBOutlet weak var button: TKTransitionSubmitButton!
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+extension WaitForTokenViewController: AccessTokenReceiver {
     
     func receiveToken(token: String) {
         user = User(lrzID: token, token: token)
@@ -57,18 +72,9 @@ class WaitForTokenViewController: UIViewController, AccessTokenReceiver, UIViewC
         }
     }
     
-    func tokenNotConfirmed() {
-        button.returnToOriginalState()
-    }
-    
-    @IBAction func refresh(sender: AnyObject) {
-        checkRequest()
-    }
-    
-    func checkRequest() {
-        button.startLoadingAnimation()
-        loginManager?.confirmToken()
-    }
+}
+
+extension WaitForTokenViewController: UIViewControllerTransitioningDelegate {
     
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let fadeInAnimator = TKFadeInAnimator()
@@ -78,5 +84,5 @@ class WaitForTokenViewController: UIViewController, AccessTokenReceiver, UIViewC
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
     }
-
+    
 }

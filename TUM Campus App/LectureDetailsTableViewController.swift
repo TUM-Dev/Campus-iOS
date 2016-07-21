@@ -8,16 +8,24 @@
 
 import UIKit
 
-class LectureDetailsTableViewController: UITableViewController, TumDataReceiver {
+class LectureDetailsTableViewController: UITableViewController, DetailView {
     
     var lecture: DataElement?
     
     var delegate: DetailViewDelegate?
+
+}
+
+extension LectureDetailsTableViewController: TumDataReceiver {
     
     func receiveData(data: [DataElement]) {
         tableView.reloadData()
     }
+    
+}
 
+extension LectureDetailsTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
@@ -27,21 +35,18 @@ class LectureDetailsTableViewController: UITableViewController, TumDataReceiver 
             title = lectureUnwrapped.text
         }
     }
+    
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
+extension LectureDetailsTableViewController {
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if let lectureUnwrapped = lecture as? Lecture {
             return lectureUnwrapped.details.count
         }
         return 0
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -66,5 +71,5 @@ class LectureDetailsTableViewController: UITableViewController, TumDataReceiver 
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
-
+    
 }
