@@ -10,9 +10,9 @@ import Foundation
 
 class TumDataManager {
     
-    let cardItems = [TumDataItems.TuitionStatusSingle, TumDataItems.MovieCard, TumDataItems.CalendarCard, TumDataItems.CafeteriasCard]
+    let cardItems: [TumDataItems] = [.TuitionStatusSingle, .MovieCard, .CalendarCard, .CafeteriasCard, .NewsCard]
     
-    let searchManagers = [TumDataItems.PersonSearch, TumDataItems.LectureSearch, TumDataItems.RoomSearch]
+    let searchManagers: [TumDataItems] = [.PersonSearch, .LectureSearch, .RoomSearch]
     
     var user: User?
     
@@ -28,24 +28,26 @@ class TumDataManager {
     
     init(user: User?) {
         self.user = user
-        setManager(TumDataItems.Cafeterias, manager: CafeteriaManager(mainManager: self))
-        setManager(TumDataItems.CafeteriasCard, manager: CafeteriaManager(mainManager: self, single: true))
-        setManager(TumDataItems.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
-        setManager(TumDataItems.TuitionStatus, manager: TuitionStatusManager(mainManager: self))
-        setManager(TumDataItems.TuitionStatusSingle, manager: TuitionStatusManager(mainManager: self, single: true))
-        setManager(TumDataItems.MovieCard, manager: MovieManager(single: true))
-        setManager(TumDataItems.MoviesCollection, manager: MovieManager(mainManager: self))
-        setManager(TumDataItems.CalendarCard, manager: CalendarManager(mainManager: self, single: true))
-        setManager(TumDataItems.CalendarFull, manager: CalendarManager(mainManager: self))
-        setManager(TumDataItems.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
-        setManager(TumDataItems.UserData, manager: UserDataManager(mainManager: self))
-        setManager(TumDataItems.PersonSearch, manager: PersonSearchManager(mainManager: self))
-        setManager(TumDataItems.LectureItems, manager: PersonalLectureManager(mainManager: self))
-        setManager(TumDataItems.LectureSearch, manager: LectureSearchManager(mainManager: self))
-        setManager(TumDataItems.RoomSearch, manager: RoomSearchManager(mainManager: self))
-        setManager(TumDataItems.RoomMap, manager: RoomFinderMapManager(mainManager: self))
-        setManager(TumDataItems.PersonDetail, manager: PersonDetailDataManager(mainManager: self))
-        setManager(TumDataItems.LectureDetails, manager: LectureDetailsManager(mainManager: self))
+        setManager(.Cafeterias, manager: CafeteriaManager(mainManager: self))
+        setManager(.CafeteriasCard, manager: CafeteriaManager(mainManager: self, single: true))
+        setManager(.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
+        setManager(.TuitionStatus, manager: TuitionStatusManager(mainManager: self))
+        setManager(.TuitionStatusSingle, manager: TuitionStatusManager(mainManager: self, single: true))
+        setManager(.MovieCard, manager: MovieManager(single: true))
+        setManager(.MoviesCollection, manager: MovieManager(mainManager: self))
+        setManager(.CalendarCard, manager: CalendarManager(mainManager: self, single: true))
+        setManager(.CalendarFull, manager: CalendarManager(mainManager: self))
+        setManager(.CafeteriaMenu, manager: CafeteriaMenuManager(mainManager: self))
+        setManager(.UserData, manager: UserDataManager(mainManager: self))
+        setManager(.PersonSearch, manager: PersonSearchManager(mainManager: self))
+        setManager(.LectureItems, manager: PersonalLectureManager(mainManager: self))
+        setManager(.LectureSearch, manager: LectureSearchManager(mainManager: self))
+        setManager(.RoomSearch, manager: RoomSearchManager(mainManager: self))
+        setManager(.RoomMap, manager: RoomFinderMapManager(mainManager: self))
+        setManager(.PersonDetail, manager: PersonDetailDataManager(mainManager: self))
+        setManager(.LectureDetails, manager: LectureDetailsManager(mainManager: self))
+        setManager(.NewsCard, manager: NewsManager(single: true))
+        setManager(.NewsCollection, manager: NewsManager(single: false))
         
     }
     
@@ -127,6 +129,10 @@ class TumDataManager {
             manager.query = query
             manager.fetchData(handler)
         }
+    }
+    
+    func getAllNews(receiver: TumDataReceiver) {
+        managers[TumDataItems.NewsCollection.rawValue]?.fetchData(receiver.receiveData)
     }
     
     func getUserData() {

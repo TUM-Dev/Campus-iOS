@@ -75,6 +75,9 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
             mvc.user = user?.data
             mvc.delegate = self
         }
+        if let mvc = segue.destinationViewController as? NewsTableViewController {
+            mvc.delegate = self
+        }
     }
 
 }

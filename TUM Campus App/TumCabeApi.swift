@@ -11,4 +11,5 @@ enum TumCabeApi: String {
     case BaseURL = "https://tumcabe.in.tum.de/Api/"
     case Movie = "kino/"
     case Cafeteria = "mensen/"
+    case News = "news/"
 }

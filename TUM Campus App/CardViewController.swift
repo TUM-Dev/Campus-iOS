@@ -126,6 +126,9 @@ class CardViewController: UITableViewController, TumDataReceiver, ImageDownloadS
         if let mvc = segue.destinationViewController as? CafeteriaViewController {
             mvc.delegate = self
         }
+        if let mvc = segue.destinationViewController as? NewsTableViewController {
+            mvc.delegate = self
+        }
     }
     
 }

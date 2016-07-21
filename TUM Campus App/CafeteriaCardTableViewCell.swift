@@ -11,7 +11,6 @@ import UIKit
 class CafeteriaCardTableViewCell: CardTableViewCell {
 
     override func setElement(element: DataElement) {
-        print("Setting item")
         if let cafeteria = element as? Cafeteria {
             cafeteriaLabel.text = cafeteria.name
             let items = cafeteria.getMenusForDate(NSDate()).filter() { (item) in
@@ -19,7 +18,7 @@ class CafeteriaCardTableViewCell: CardTableViewCell {
             }
             var string = ""
             for item in items {
-                string += "* " + item.name + "\n"
+                string += "\u{2022} " + item.name + "\n"
             }
             itemsLabel.text = string
         }

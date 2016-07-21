@@ -60,7 +60,9 @@ class TuitionStatusManager: Manager {
     
     func handle(handler: ([DataElement]) -> ()) {
         if single {
-            handler([TuitionStatusManager.tuitionItems[0]])
+            if let tuitionItem = TuitionStatusManager.tuitionItems.first {
+                handler([tuitionItem])
+            }
         } else {
             handler(TuitionStatusManager.tuitionItems)
         }
