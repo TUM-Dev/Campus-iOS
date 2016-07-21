@@ -70,6 +70,30 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         if let mvc = segue.destinationViewController as? CafeteriaViewController {
             mvc.delegate = self
         }
+        if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
+            mvc.user = user?.data
+            mvc.delegate = self
+        }
     }
 
+}
+
+extension MoreTableViewController {
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.section {
+        case 4:
+            if let url =  NSURL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        case 5:
+            NSUserDefaults.standardUserDefaults().removeObjectForKey(LoginDefaultsKeys.Token.rawValue)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginViewController = storyboard.instantiateViewControllerWithIdentifier("Login")
+            UIApplication.sharedApplication().keyWindow?.rootViewController = loginViewController
+        default:
+            break
+        }
+    }
+    
 }
