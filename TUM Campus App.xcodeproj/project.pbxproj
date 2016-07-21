@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0EE9501D410E4E00E667A8 /* Extensions.swift */; };
 		0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */; };
 		0E1073AF1C1A410F004C93CF /* RoomFinderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */; };
 		0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073B01C1A4BE2004C93CF /* Room.swift */; };
@@ -97,6 +98,7 @@
 
 /* Begin PBXFileReference section */
 		0066EF9460FE3D93B2EA9C47 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
+		0E0EE9501D410E4E00E667A8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSearchManager.swift; sourceTree = "<group>"; };
 		0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderApi.swift; sourceTree = "<group>"; };
 		0E1073B01C1A4BE2004C93CF /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E0EE9501D410E4E00E667A8 /* Extensions.swift */,
 				0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */,
 				0E3B21291C13AB250035ED70 /* DoneHUD.swift */,
 				0E3B212A1C13AB250035ED70 /* DoneView.swift */,
@@ -662,6 +665,7 @@
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
+				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
 				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,

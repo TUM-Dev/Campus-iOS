@@ -27,27 +27,23 @@ class CalendarManager: Manager {
     
     func fetchData(handler: ([DataElement]) -> ()) {
         if CalendarManager.calendarItems.isEmpty {
-            let url = getURL()
             let filePath = self.getDocumentDirectory()
             let completeFilePath = filePath + "/" + XMLLocalFileResource.Calendar.rawValue + ".xml"
             let calendarXMLURL = NSURL(fileURLWithPath: completeFilePath)
-            if let calendarFromStorage = NSData(contentsOfURL: calendarXMLURL), dataString = String(data: calendarFromStorage, encoding:NSUTF8StringEncoding) {
-                getFromXML(dataString, handler: handler)
-            } else {
-                Alamofire.request(.GET, url).responseString() { (response) in
-                    if let data = response.result.value {
-                        self.getFromXML(data, handler: handler)
-                        let filePath = self.getDocumentDirectory()
-                        let completeFilePath = filePath + "/" + XMLLocalFileResource.Calendar.rawValue + ".xml"
-                        do {
-                            try data.writeToFile(completeFilePath, atomically: true, encoding: NSUTF8StringEncoding)
-                        } catch {
-                            print("Fuck!")
-                        }
-                        
-                        
+            do {
+                let changeDate = try NSFileManager.defaultManager().attributesOfItemAtPath(completeFilePath)["NSFileModificationDate"] as? NSDate ?? NSDate()
+                if changeDate.numberOfDaysUntilDateTime(NSDate()) < 7 {
+                    if let calendarFromStorage = NSData(contentsOfURL: calendarXMLURL), dataString = String(data: calendarFromStorage, encoding:NSUTF8StringEncoding) {
+                        getFromXML(dataString, handler: handler)
+                    } else {
+                        fetchFromTUMOnline(handler)
                     }
+                } else {
+                    fetchFromTUMOnline(handler)
                 }
+            } catch {
+                print("Error finding previous Calendar entries")
+                fetchFromTUMOnline(handler)
             }
         } else {
             handle(handler)
@@ -57,6 +53,22 @@ class CalendarManager: Manager {
     func getDocumentDirectory() -> String {
         let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
         return urls[urls.count - 1].path!
+    }
+    
+    func fetchFromTUMOnline(handler: ([DataElement]) -> ()) {
+        let url = getURL()
+        Alamofire.request(.GET, url).responseString() { (response) in
+            if let data = response.result.value {
+                self.getFromXML(data, handler: handler)
+                let filePath = self.getDocumentDirectory()
+                let completeFilePath = filePath + "/" + XMLLocalFileResource.Calendar.rawValue + ".xml"
+                do {
+                    try data.writeToFile(completeFilePath, atomically: true, encoding: NSUTF8StringEncoding)
+                } catch {
+                    print("Fuck!")
+                }
+            }
+        }
     }
     
     func getFromXML(value: String, handler: ([DataElement]) -> ()) {

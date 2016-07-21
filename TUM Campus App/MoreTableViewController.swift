@@ -49,6 +49,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
             avatarView.layer.cornerRadius = avatarView.frame.width / 2
         }
     }
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -38,4 +38,5 @@ class User:ImageDownloader, ImageDownloadSubscriber {
         self.image = data?.image
         notifySubscribers()
     }
+    
 }
