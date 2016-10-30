@@ -23,12 +23,12 @@ class LectureDetailsManager: Manager {
         main = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         if let data = query {
             if !data.detailsLoaded {
                 let url = getURL()
-                request = Alamofire.request(.GET, url).responseString() { (response) in
+                request = Alamofire.request(url).responseString() { (response) in
                     if let value = response.result.value {
                         let parsedXML = SWXMLHash.parse(value)
                         let result = parsedXML["rowset"]["row"].all.first
@@ -55,7 +55,7 @@ class LectureDetailsManager: Manager {
     
     func getURL() -> String {
         let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.LectureDetails.rawValue
-        if let token = main?.getToken(), id = query?.id {
+        if let token = main?.getToken(), let id = query?.id {
             return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&" + TUMOnlineWebServices.LectureIDParameter.rawValue + "=" + id
         }
         return ""

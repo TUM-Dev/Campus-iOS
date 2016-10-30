@@ -10,10 +10,10 @@ import UIKit
 
 class CafeteriaCardTableViewCell: CardTableViewCell {
 
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let cafeteria = element as? Cafeteria {
             cafeteriaLabel.text = cafeteria.name
-            let items = cafeteria.getMenusForDate(NSDate()).filter() { (item) in
+            let items = cafeteria.getMenusForDate(Date()).filter() { (item) in
                 return item.id != 0
             }
             var string = ""
@@ -28,7 +28,7 @@ class CafeteriaCardTableViewCell: CardTableViewCell {
     @IBOutlet weak var itemsLabel: UILabel!
     @IBOutlet weak var cardView: UIView! {
         didSet {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
             cardView.layer.shadowOpacity = 0.4
             cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         }

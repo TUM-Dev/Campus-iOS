@@ -16,27 +16,27 @@ enum ContactInfoType: String {
     case Fax = "Fax"
     case Web = "Webpage"
     
-    func handle(data: String) {
+    func handle(_ data: String) {
         switch self {
         case .Phone:
-            if let url = NSURL(string: "tel://\(data)") {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: "tel://\(data)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             return
         case .Mobile:
-            if let url = NSURL(string: "tel://\(data)") {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: "tel://\(data)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             return
         case .Fax: return
         case .Email:
-            if let url = NSURL(string: "mailto://\(data)") {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: "mailto://\(data)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             return
         case .Web:
-            if let url = NSURL(string: data) {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = URL(string: data) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
             return
         }

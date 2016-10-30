@@ -10,7 +10,7 @@ import UIKit
 
 class RoomResultTableViewCell: CardTableViewCell {
 
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let room = element as? Room {
             roomNameLabel.text = room.name
             buildingNameLabel.text = room.building

@@ -10,12 +10,12 @@ import UIKit
 
 class NewsCardCell: CardTableViewCell {
     
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let newsItem = element as? News {
             titleLabel.text = newsItem.title
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "hh:mm a - dd MMM, YYYY"
-            dateLabel.text = dateFormatter.stringFromDate(newsItem.date)
+            dateLabel.text = dateFormatter.string(from: newsItem.date as Date)
             detailImageView.image = newsItem.image
         }
     }
@@ -25,7 +25,7 @@ class NewsCardCell: CardTableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var cardView: UIView! {
         didSet {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
             cardView.layer.shadowOpacity = 0.4
             cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         }
@@ -36,7 +36,7 @@ class NewsCardCell: CardTableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -48,7 +48,7 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
 
 extension RoomFinderViewController: TumDataReceiver {
     
-    func receiveData(data: [DataElement]) {
+    func receiveData(_ data: [DataElement]) {
         maps.removeAll()
         for item in data {
             if let cafeteria = item as? Map {
@@ -78,13 +78,13 @@ extension RoomFinderViewController {
 
 extension RoomFinderViewController {
     
-    func showMaps(send: AnyObject?) {
+    func showMaps(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(RoomFinderViewController.hideMaps(_:))
         barItem?.image = UIImage(named: "collapse")
     }
     
-    func hideMaps(send: AnyObject?) {
+    func hideMaps(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(RoomFinderViewController.showMaps(_:))
         barItem?.image = UIImage(named: "expand")
@@ -94,7 +94,7 @@ extension RoomFinderViewController {
 
 extension RoomFinderViewController: UIScrollViewDelegate {
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
@@ -112,14 +112,14 @@ extension RoomFinderViewController {
                     self.barItem?.image = UIImage(named: "expand")
                 }
             }
-            items.append(item)
+            items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.mainView = view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

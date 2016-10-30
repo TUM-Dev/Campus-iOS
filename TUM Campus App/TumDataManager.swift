@@ -46,29 +46,29 @@ class TumDataManager {
         self.user = user
     }
     
-    func getPersonDetails(handler: (data: [DataElement]) -> (), user: UserData) {
+    func getPersonDetails(_ handler: @escaping (_ data: [DataElement]) -> (), user: UserData) {
         if let manager = managers[.PersonDetail] as? PersonDetailDataManager {
             manager.userQuery = user
             manager.fetchData(handler)
         }
     }
     
-    func getLectureDetails(receiver: TumDataReceiver, lecture: Lecture) {
+    func getLectureDetails(_ receiver: TumDataReceiver, lecture: Lecture) {
         if let manager = managers[.LectureDetails] as? LectureDetailsManager {
             manager.query = lecture
             manager.fetchData(receiver.receiveData)
         }
     }
     
-    func getLectures(receiver: TumDataReceiver) {
+    func getLectures(_ receiver: TumDataReceiver) {
         managers[.LectureItems]?.fetchData(receiver.receiveData)
     }
     
-    func getCalendar(receiver: TumDataReceiver) {
+    func getCalendar(_ receiver: TumDataReceiver) {
         managers[.CalendarFull]?.fetchData(receiver.receiveData)
     }
     
-    func getCardItems(receiver: TumDataReceiver) {
+    func getCardItems(_ receiver: TumDataReceiver) {
         let request = BulkRequest(receiver: receiver)
         for item in cardItems {
             managers[item]?.fetchData() { (data) in
@@ -77,7 +77,7 @@ class TumDataManager {
         }
     }
     
-    func search(receiver: TumDataReceiver, query: String) {
+    func search(_ receiver: TumDataReceiver, query: String) {
         let request = BulkRequest(receiver: receiver)
         for item in searchManagers {
             if let manager = managers[item] as? SearchManager {
@@ -89,44 +89,44 @@ class TumDataManager {
         }
     }
     
-    func getMapsForRoom(receiver: TumDataReceiver, roomID: String) {
+    func getMapsForRoom(_ receiver: TumDataReceiver, roomID: String) {
         if let mapManager = managers[.RoomMap] as? RoomFinderMapManager {
             mapManager.setQuery(roomID)
             mapManager.fetchData(receiver.receiveData)
         }
     }
     
-    func getCafeteriaForID(id: String) -> Cafeteria? {
+    func getCafeteriaForID(_ id: String) -> Cafeteria? {
         if let cafeteriaManager = managers[.Cafeterias] as? CafeteriaManager {
             return cafeteriaManager.getCafeteriaForID(id)
         }
         return nil
     }
     
-    func getCafeterias(receiver: TumDataReceiver) {
+    func getCafeterias(_ receiver: TumDataReceiver) {
         managers[.Cafeterias]?.fetchData(receiver.receiveData)
     }
     
-    func getCafeteriaMenus(handler: (data: [DataElement]) -> ()) {
+    func getCafeteriaMenus(_ handler: @escaping (_ data: [DataElement]) -> ()) {
         managers[.CafeteriaMenu]?.fetchData(handler)
     }
     
-    func getMovies(receiver: TumDataReceiver) {
+    func getMovies(_ receiver: TumDataReceiver) {
         managers[.MoviesCollection]?.fetchData(receiver.receiveData)
     }
     
-    func getTuitionStatus(receiver: TumDataReceiver) {
+    func getTuitionStatus(_ receiver: TumDataReceiver) {
         managers[.TuitionStatus]?.fetchData(receiver.receiveData)
     }
     
-    func doPersonSearch(handler: (data: [DataElement]) -> (), query: String) {
+    func doPersonSearch(_ handler: @escaping (_ data: [DataElement]) -> (), query: String) {
         if let manager = managers[.PersonSearch] as? PersonSearchManager {
             manager.query = query
             manager.fetchData(handler)
         }
     }
     
-    func getAllNews(receiver: TumDataReceiver) {
+    func getAllNews(_ receiver: TumDataReceiver) {
         managers[.NewsCollection]?.fetchData(receiver.receiveData)
     }
     

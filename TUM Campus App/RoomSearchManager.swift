@@ -17,7 +17,7 @@ class RoomSearchManager: SearchManager {
     
     var query: String?
     
-    func setQuery(query: String) {
+    func setQuery(_ query: String) {
         self.query = query
     }
     
@@ -25,10 +25,10 @@ class RoomSearchManager: SearchManager {
         main = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         let url = getURL()
-        request = Alamofire.request(.GET, url).responseString() { (response) in
+        request = Alamofire.request(url).responseString() { (response) in
             if let value = response.result.value {
                 let parsedXML = SWXMLHash.parse(value)
                 var roomsArray = [DataElement]()
@@ -40,7 +40,7 @@ class RoomSearchManager: SearchManager {
                             if let buildingName = building["title"].element?.text {
                                 let rooms = building["room"].all
                                 for room in rooms {
-                                    if let code = room.element?.attributes["api_code"], architectNumber = room["architect_number"].element?.text, name = room["title"].element?.text {
+                                    if let code = room.element?.attributes["api_code"], let architectNumber = room["architect_number"].element?.text, let name = room["title"].element?.text {
                                         let newRoom = Room(code: code, name: name, building: buildingName, campus: campusName, number: architectNumber)
                                         roomsArray.append(newRoom)
                                     }
@@ -58,7 +58,7 @@ class RoomSearchManager: SearchManager {
         let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.SearchRooms.rawValue
         if let search = query {
             let url = base + "?" + "&s=" + search
-            if let value = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
+            if let value = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
                 return value
             }
         }

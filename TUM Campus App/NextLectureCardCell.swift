@@ -19,17 +19,17 @@ class NextLectureCardCell: CardTableViewCell {
         }
     }
     
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let calendarItem = element as? CalendarRow {
             lectureTitelLabel.text = calendarItem.text
-            let dateformatter = NSDateFormatter()
+            let dateformatter = DateFormatter()
             dateformatter.dateFormat = "hh:mm"
-            let dayformatter = NSDateFormatter()
+            let dayformatter = DateFormatter()
             dayformatter.dateFormat = "EEEE"
-            if let s = calendarItem.dtstart, e = calendarItem.dtend {
-                let day = dayformatter.stringFromDate(s)
-                let start = dateformatter.stringFromDate(s)
-                let end = dateformatter.stringFromDate(e)
+            if let s = calendarItem.dtstart, let e = calendarItem.dtend {
+                let day = dayformatter.string(from: s as Date)
+                let start = dateformatter.string(from: s as Date)
+                let end = dateformatter.string(from: e as Date)
                 timeLabel.text = day + ", " + start + " - " + end
                 let remaining = s.timeIntervalSinceNow
                 let seconds = Int(remaining)
@@ -46,7 +46,7 @@ class NextLectureCardCell: CardTableViewCell {
    
     @IBOutlet weak var cardView: UIView! {
         didSet {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
             cardView.layer.shadowOpacity = 0.4
             cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         }

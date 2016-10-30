@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var secondTextField: UITextField!
     
     func getLRZ() -> String {
-        if let first = firstTextField.text, numbers = numbersTextField.text, second = secondTextField.text {
+        if let first = firstTextField.text, let numbers = numbersTextField.text, let second = secondTextField.text {
             return first + numbers + second
         }
         return ""
@@ -33,16 +33,16 @@ extension LoginViewController {
         firstTextField.becomeFirstResponder()
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
-        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRectMake(bounds.origin.x+10, bounds.origin.y+10, bounds.width-20, bounds.height-20)
+            imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
         }
         imageView.clipsToBounds = true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let mvc = segue.destinationViewController as? WaitForTokenViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let mvc = segue.destination as? WaitForTokenViewController {
             mvc.delegate = self
         }
     }
@@ -51,8 +51,8 @@ extension LoginViewController {
 
 extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelegate {
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let replaced = NSString(string: textField.text ?? "").stringByReplacingCharactersInRange(range, withString: string)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
         switch textField {
         case firstTextField:
             if replaced.characters.count == 2 {
@@ -75,7 +75,7 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
         case secondTextField:
             if replaced.characters.count == 3 {
                 secondTextField.text = replaced
-                performSegueWithIdentifier("waitForConfirmation", sender: self)
+                performSegue(withIdentifier: "waitForConfirmation", sender: self)
                 return false
             } else if replaced == "" {
                 secondTextField.text = ""

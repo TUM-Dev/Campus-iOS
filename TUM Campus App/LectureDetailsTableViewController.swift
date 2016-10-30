@@ -18,7 +18,7 @@ class LectureDetailsTableViewController: UITableViewController, DetailView {
 
 extension LectureDetailsTableViewController: TumDataReceiver {
     
-    func receiveData(data: [DataElement]) {
+    func receiveData(_ data: [DataElement]) {
         tableView.reloadData()
     }
     
@@ -40,26 +40,26 @@ extension LectureDetailsTableViewController {
 
 extension LectureDetailsTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         if let lectureUnwrapped = lecture as? Lecture {
             return lectureUnwrapped.details.count
         }
         return 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let lectureUnwrapped = lecture as? Lecture {
             return lectureUnwrapped.details[section].0
         }
         return nil
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("detail") as? LectureDetailTableViewCell ?? LectureDetailTableViewCell()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detail") as? LectureDetailTableViewCell ?? LectureDetailTableViewCell()
         if let lectureUnwrapped = lecture as? Lecture {
             cell.label?.text = lectureUnwrapped.details[indexPath.section].1
         } else {
@@ -68,7 +68,7 @@ extension LectureDetailsTableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }
     

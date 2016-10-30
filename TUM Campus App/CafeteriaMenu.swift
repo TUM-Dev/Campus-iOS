@@ -9,14 +9,14 @@
 import Foundation
 class CafeteriaMenu: DataElement {
     
-    let date: NSDate
+    let date: Date
     let id: Int
     let name: String
     let typeLong: String
     let typeNr: Int
     let typeShort: String
     
-    init(id: Int, date: NSDate, typeShort: String, typeLong: String, typeNr: Int, name: String) {
+    init(id: Int, date: Date, typeShort: String, typeLong: String, typeNr: Int, name: String) {
         self.id = id
         self.date = date
         self.typeShort = typeShort

@@ -9,11 +9,11 @@
 import Foundation
 class Tuition: DataElement {
     
-    let frist: NSDate
+    let frist: Date
     let semester: String
     let soll: String
     
-    init(frist:NSDate,semester:String,soll:String) {
+    init(frist:Date,semester:String,soll:String) {
         self.frist = frist
         self.semester = semester
         self.soll = soll

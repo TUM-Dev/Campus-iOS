@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+
 class ImageDownloader {
     
     static var imageCache = [String:UIImage]()
@@ -31,7 +32,7 @@ class ImageDownloader {
         }
     }
     
-    func subscribeToImage(subscriber: ImageDownloadSubscriber) {
+    func subscribeToImage(_ subscriber: ImageDownloadSubscriber) {
         subscribersToImage.append(subscriber)
     }
     
@@ -40,13 +41,13 @@ class ImageDownloader {
         request?.cancel()
     }
     
-    func getImage(urlString: String) {
+    func getImage(_ urlString: String) {
         if let cachedImage = ImageDownloader.imageCache[urlString] {
             self.image = cachedImage
             notifySubscribers()
         } else {
-            request = Alamofire.request(.GET, urlString).validate().responseData() { (response) in
-                if let data = response.result.value, imageFromData = UIImage(data: data) {
+            request = Alamofire.request(urlString).validate().responseData() { (response) in
+                if let data = response.result.value, let imageFromData = UIImage(data: data) {
                     ImageDownloader.imageCache[urlString] = imageFromData
                     self.image = imageFromData
                     self.notifySubscribers()

@@ -22,7 +22,7 @@ class User:ImageDownloader, ImageDownloadSubscriber {
         super.init()
     }
     
-    func getUserData(data: UserData) {
+    func getUserData(_ data: UserData) {
         self.data = data
         name = data.name
         id = data.id

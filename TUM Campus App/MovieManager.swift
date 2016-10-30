@@ -24,21 +24,22 @@ class MovieManager: Manager {
         self.single = single
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if MovieManager.movies.isEmpty {
             if let request = getRequest() {
-                Alamofire.request(request).responseJSON() { (response) in
+                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
                     if let data = response.result.value {
                         if let json = JSON(data).array {
                             for item in json {
-                                if let rating = item["rating"].string, description = item["description"].string, director = item["director"].string, name = item["title"].string, runtime = item["runtime"].string, date = item["date"].string, cover = item["cover"].string, created = item["created"].string, year = item["year"].string, genre = item["genre"].string, id = item["link"].string, actors = item["actors"].string {
-                                    let runTimeAsNumber = Int(runtime.componentsSeparatedByString(" ")[0]) ?? 0
+                                if let rating = item["rating"].string, let description = item["description"].string, let director = item["director"].string, let name = item["title"].string, let runtime = item["runtime"].string, let date = item["date"].string, let cover = item["cover"].string, let created = item["created"].string, let year = item["year"].string, let genre = item["genre"].string, let id = item["link"].string, let actors = item["actors"].string {
+                                    let runTimeAsNumber = Int(runtime.components(separatedBy: " ")[0]) ?? 0
                                     let ratingAsNumber = Double(rating) ?? 0.0
-                                    let dateFormatter = NSDateFormatter()
+                                    let dateFormatter = DateFormatter()
                                     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                    let poster = cover.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) ?? ""
-                                    let creationDate = dateFormatter.dateFromString(created) ?? NSDate()
-                                    let airdate = dateFormatter.dateFromString(date) ?? NSDate()
+                                    
+                                    let poster = cover.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
+                                    let creationDate = dateFormatter.date(from: created) ?? Date()
+                                    let airdate = dateFormatter.date(from: date) ?? Date()
                                     let yearAsNumber = Int(year) ?? 0
                                     let movie = Movie(name: name, id: id, year: yearAsNumber, runtime: runTimeAsNumber, rating: ratingAsNumber, genre: genre, actors: actors, director: director, description: description, created: creationDate, airDate: airdate, poster: poster)
                                     MovieManager.movies.append(movie)
@@ -55,9 +56,9 @@ class MovieManager: Manager {
         
     }
     
-    func handleMovies(handler: ([DataElement]) -> ()) {
+    func handleMovies(_ handler: ([DataElement]) -> ()) {
         let onlyNew = MovieManager.movies.filter() { (movie) in
-            return movie.airDate.compare(NSDate()) == NSComparisonResult.OrderedDescending
+            return movie.airDate.compare(Date()) == ComparisonResult.orderedDescending
         }
         if single {
             if !onlyNew.isEmpty {
@@ -78,9 +79,9 @@ class MovieManager: Manager {
     }
     
     func getRequest() -> NSMutableURLRequest? {
-        if let url = NSURL(string: getURL()), let uuid = UIDevice.currentDevice().identifierForVendor?.UUIDString {
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "GET"
+        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            let request = NSMutableURLRequest(url: url)
+            request.httpMethod = "GET"
             request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
             return request
         }

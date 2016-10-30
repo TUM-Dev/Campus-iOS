@@ -17,8 +17,8 @@ class CampusTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = Constants.tumBlue
-        UITabBar.appearance().backgroundColor = UIColor.whiteColor()
-        UITabBar.appearance().barTintColor = UIColor.whiteColor()
+        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor.white
         let loginManager = TumOnlineLoginRequestManager(delegate: nil)
         user = loginManager.userFromStorage()
         manager = TumDataManager(user: user)

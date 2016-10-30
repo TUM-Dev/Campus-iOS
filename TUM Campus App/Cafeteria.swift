@@ -24,13 +24,13 @@ class Cafeteria: DataElement {
         location = CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    func addMenu(menu: CafeteriaMenu) {
-        let dateformatter = NSDateFormatter()
+    func addMenu(_ menu: CafeteriaMenu) {
+        let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy MM dd"
-        let string = dateformatter.stringFromDate(menu.date)
+        let string = dateformatter.string(from: menu.date as Date)
         if menus[string] != nil {
             menus[string]?.append(menu)
-            menus[string]?.sortInPlace() { (first, second) in
+            menus[string]?.sort() { (first, second) in
                 return first.typeNr <= second.typeNr
             }
         } else {
@@ -38,14 +38,14 @@ class Cafeteria: DataElement {
         }
     }
     
-    func getMenusForDate(date: NSDate) -> [CafeteriaMenu] {
-        let dateformatter = NSDateFormatter()
+    func getMenusForDate(_ date: Date) -> [CafeteriaMenu] {
+        let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy MM dd"
-        return menus[dateformatter.stringFromDate(date)] ?? []
+        return menus[dateformatter.string(from: date)] ?? []
     }
     
-    func distance(from: CLLocation) -> CLLocationDistance {
-        return from.distanceFromLocation(location)
+    func distance(_ from: CLLocation) -> CLLocationDistance {
+        return from.distance(from: location)
     }
     
     func getCellIdentifier() -> String {

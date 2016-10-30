@@ -47,7 +47,7 @@ extension MoreTableViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
             user = mvc.user
@@ -55,11 +55,11 @@ extension MoreTableViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if var mvc = segue.destinationViewController as? DetailView {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
-        if let mvc = segue.destinationViewController as? PersonDetailTableViewController {
+        if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
     }
@@ -68,17 +68,17 @@ extension MoreTableViewController {
 
 extension MoreTableViewController {
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 4:
-            if let url =  NSURL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
-                UIApplication.sharedApplication().openURL(url)
+            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         case 5:
-            NSUserDefaults.standardUserDefaults().removeObjectForKey(LoginDefaultsKeys.Token.rawValue)
+            UserDefaults.standard.removeObject(forKey: LoginDefaultsKeys.Token.rawValue)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginViewController = storyboard.instantiateViewControllerWithIdentifier("Login")
-            UIApplication.sharedApplication().keyWindow?.rootViewController = loginViewController
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+            UIApplication.shared.keyWindow?.rootViewController = loginViewController
         default:
             break
         }

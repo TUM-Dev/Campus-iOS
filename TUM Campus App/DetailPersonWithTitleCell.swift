@@ -10,7 +10,7 @@ import UIKit
 
 class DetailPersonWithTitleCell: CardTableViewCell {
 
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let user = element as? UserData {
             avatarView.image = user.image ?? UIImage(named: "avatar")
             nameLabel.text = user.name

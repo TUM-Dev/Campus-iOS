@@ -11,7 +11,7 @@ import MCSwipeTableViewCell
 
 class CardTableViewCell: MCSwipeTableViewCell {
     
-    func setElement(element: DataElement) {
+    func setElement(_ element: DataElement) {
         
     }
 

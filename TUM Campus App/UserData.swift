@@ -21,7 +21,7 @@ class UserData: ImageDownloader, DataElement {
     init(name: String, picture: String, id: String) {
         self.name = name
         self.id = id
-        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet())?.stringByReplacingOccurrencesOfString("amp;", withString: "") ?? ""
+        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)?.replacingOccurrences(of: "amp;", with: "") ?? ""
         super.init(url: self.picture)
     }
     
@@ -39,7 +39,7 @@ class UserData: ImageDownloader, DataElement {
         }
     }
     
-    func addContact(handler: () -> ()?) {
+    func addContact(_ handler: () -> ()?) {
         let contact = CNMutableContact()
         if let imageOfUser = image {
             contact.imageData = UIImagePNGRepresentation(imageOfUser)
@@ -60,25 +60,25 @@ class UserData: ImageDownloader, DataElement {
             }
         }
         contact.emailAddresses = emails.map() { (item) in
-            return CNLabeledValue(label:CNLabelWork, value: item)
+            return CNLabeledValue(label: CNLabelWork, value: item as NSString)
         }
         contact.phoneNumbers = phones.map() { (item) in
             let number = CNPhoneNumber(stringValue: item)
             return CNLabeledValue(label:CNLabelPhoneNumberMain, value: number)
         }
-        contact.phoneNumbers.appendContentsOf(mobiles.map() { (item) in
+        contact.phoneNumbers.append(contentsOf: mobiles.map() { (item) in
             let number = CNPhoneNumber(stringValue: item)
             return CNLabeledValue(label:CNLabelPhoneNumberMobile, value: number)
         })
         contact.urlAddresses = websites.map() { (item) in
-            return CNLabeledValue(label:CNLabelURLAddressHomePage, value:item)
+            return CNLabeledValue(label:CNLabelURLAddressHomePage, value: item as NSString)
         }
         contact.organizationName = "Technische Universität München"
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()
-        saveRequest.addContact(contact, toContainerWithIdentifier:nil)
+        saveRequest.add(contact, toContainerWithIdentifier:nil)
         do {
-            try store.executeSaveRequest(saveRequest)
+            try store.execute(saveRequest)
             handler()
         } catch {
             print("Error")

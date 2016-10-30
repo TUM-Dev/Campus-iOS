@@ -8,5 +8,5 @@
 
 import Foundation
 protocol TumDataReceiver {
-    func receiveData(data: [DataElement])
+    func receiveData(_ data: [DataElement])
 }

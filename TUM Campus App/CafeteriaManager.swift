@@ -40,10 +40,10 @@ class CafeteriaManager: Manager {
         self.single = single
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if CafeteriaManager.cafeterias.isEmpty {
             if let request = getRequest() {
-                Alamofire.request(request).responseJSON() { (response) in
+                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
                     if let value = response.result.value {
                         if let cafeteriasJsonArray = JSON(value).array {
                             for item in cafeteriasJsonArray {
@@ -64,15 +64,15 @@ class CafeteriaManager: Manager {
         }
     }
     
-    func handle(handler: ([DataElement]) -> ()) {
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+    func handle(_ handler: ([DataElement]) -> ()) {
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.notDetermined {
             CafeteriaManager.locationManager.requestWhenInUseAuthorization()
         }
-        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.Denied && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.NotDetermined {
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.denied && CLLocationManager.authorizationStatus() != CLAuthorizationStatus.notDetermined {
             CafeteriaManager.locationManager.startUpdatingLocation()
             let location = CafeteriaManager.locationManager.location
             CafeteriaManager.locationManager.stopUpdatingLocation()
-            CafeteriaManager.cafeterias.sortInPlace() { (first, second) in
+            CafeteriaManager.cafeterias.sort() { (first, second) in
                 if let unwrappedLocation = location {
                     if let cafeOne = first as? Cafeteria {
                         if let cafeTwo = second as? Cafeteria {
@@ -92,14 +92,14 @@ class CafeteriaManager: Manager {
         }
     }
     
-    func getCafeteriaForID(id: String) -> Cafeteria? {
+    func getCafeteriaForID(_ id: String) -> Cafeteria? {
         return CafeteriaManager.cafeteriaMap[id]
     }
     
     func getRequest() -> NSMutableURLRequest? {
-        if let url = NSURL(string: getURL()), let uuid = UIDevice.currentDevice().identifierForVendor?.UUIDString {
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "GET"
+        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            let request = NSMutableURLRequest(url: url)
+            request.httpMethod = "GET"
             request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
             return request
         }

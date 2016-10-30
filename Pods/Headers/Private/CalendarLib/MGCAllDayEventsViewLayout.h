@@ -1,1 +1,0 @@
-../../../CalendarLib/CalendarLib/MGCAllDayEventsViewLayout.h

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.3)
+  - Alamofire (4.0.1)
   - ASWeekSelectorView (0.3.5)
   - AYSlidingPickerView (0.1.1)
   - CalendarLib (1.0):
@@ -8,42 +8,49 @@ PODS:
   - MCSwipeTableViewCell (2.1.4)
   - OrderedDictionary (1.2)
   - OSCache (1.2)
-  - PZPullToRefresh (0.0.7)
-  - SwiftyJSON (2.3.1)
-  - SWXMLHash (2.0.2)
-  - TKSubmitTransition (0.3)
+  - PZPullToRefresh (0.0.9)
+  - SwiftyJSON (3.1.1)
+  - SWXMLHash (3.0.2)
+  - TKSubmitTransition (0.2)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (~> 4.0)
   - ASWeekSelectorView (~> 0.3.0)
   - AYSlidingPickerView
   - CalendarLib (~> 1.0)
   - MCSwipeTableViewCell (~> 2.1.4)
-  - PZPullToRefresh
-  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
-  - SWXMLHash (~> 2.0.0)
-  - TKSubmitTransition
+  - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
+  - SwiftyJSON (~> 3.1.1)
+  - SWXMLHash (~> 3.0.0)
+  - TKSubmitTransition (from `https://github.com/jvitor/TKSubmitTransition.git`)
 
 EXTERNAL SOURCES:
-  SwiftyJSON:
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  PZPullToRefresh:
+    :git: https://github.com/mathiasquintero/PZPullToRefresh.git
+  TKSubmitTransition:
+    :git: https://github.com/jvitor/TKSubmitTransition.git
 
 CHECKOUT OPTIONS:
-  SwiftyJSON:
-    :commit: a4cce2ec0bf31bfec2cf4cc7f1030a59a7bc95d2
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+  PZPullToRefresh:
+    :commit: bebc997af293f0bc9fee607da8bcd27f7956e0a8
+    :git: https://github.com/mathiasquintero/PZPullToRefresh.git
+  TKSubmitTransition:
+    :commit: 00549e57dd72e9a7d93f0a5707653accdc4a1991
+    :git: https://github.com/jvitor/TKSubmitTransition.git
 
 SPEC CHECKSUMS:
-  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   ASWeekSelectorView: 98161ef48915c42b42d355ece2865687c44b7da1
   AYSlidingPickerView: 33fdb08cc1f74a32c706c52be821a12711a1462a
   CalendarLib: 09364238c6259a17a719f2f8b05a79bf379ecb8d
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   OrderedDictionary: 9cc5d69c5c5314ad696ed1839190724e83d534c7
   OSCache: 10cdb5da579364aacfb8b7612dab13cf9c7aa4dc
-  PZPullToRefresh: a596d42b90ca42f979f181b5f35c4820406c2136
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
-  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
-  TKSubmitTransition: 6634e4fb07288db861b66d70fa4c4a7b96d0e6b2
+  PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SWXMLHash: e0f6935971f01b06fb228cf435510d998ecde647
+  TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ccd21a338fa3691be2b49e1cda3eeaf617bcfac4
+
+COCOAPODS: 1.0.1

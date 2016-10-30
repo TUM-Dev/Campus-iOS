@@ -25,15 +25,15 @@ class CalendarManager: Manager {
         self.single = single
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if CalendarManager.calendarItems.isEmpty {
             let filePath = self.getDocumentDirectory()
             let completeFilePath = filePath + "/" + XMLLocalFileResource.Calendar.rawValue + ".xml"
-            let calendarXMLURL = NSURL(fileURLWithPath: completeFilePath)
+            let calendarXMLURL = URL(fileURLWithPath: completeFilePath)
             do {
-                let changeDate = try NSFileManager.defaultManager().attributesOfItemAtPath(completeFilePath)["NSFileModificationDate"] as? NSDate ?? NSDate()
-                if changeDate.numberOfDaysUntilDateTime(NSDate()) < 7 {
-                    if let calendarFromStorage = NSData(contentsOfURL: calendarXMLURL), dataString = String(data: calendarFromStorage, encoding:NSUTF8StringEncoding) {
+                let changeDate = try FileManager.default.attributesOfItem(atPath: completeFilePath)[FileAttributeKey.modificationDate] as? Date ?? Date()
+                if changeDate.numberOfDaysUntilDateTime(Date()) < 7 {
+                    if let calendarFromStorage = try? Data(contentsOf: calendarXMLURL), let dataString = String(data: calendarFromStorage, encoding:String.Encoding.utf8) {
                         getFromXML(dataString, handler: handler)
                     } else {
                         fetchFromTUMOnline(handler)
@@ -51,19 +51,19 @@ class CalendarManager: Manager {
     }
     
     func getDocumentDirectory() -> String {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask)
-        return urls[urls.count - 1].path!
+        let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        return urls[urls.count - 1].path
     }
     
-    func fetchFromTUMOnline(handler: ([DataElement]) -> ()) {
+    func fetchFromTUMOnline(_ handler: @escaping ([DataElement]) -> ()) {
         let url = getURL()
-        Alamofire.request(.GET, url).responseString() { (response) in
+        Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 self.getFromXML(data, handler: handler)
                 let filePath = self.getDocumentDirectory()
                 let completeFilePath = filePath + "/" + XMLLocalFileResource.Calendar.rawValue + ".xml"
                 do {
-                    try data.writeToFile(completeFilePath, atomically: true, encoding: NSUTF8StringEncoding)
+                    try data.write(toFile: completeFilePath, atomically: true, encoding: .utf8)
                 } catch {
                     print("Fuck!")
                 }
@@ -71,27 +71,27 @@ class CalendarManager: Manager {
         }
     }
     
-    func getFromXML(value: String, handler: ([DataElement]) -> ()) {
+    func getFromXML(_ value: String, handler: ([DataElement]) -> ()) {
         let data = SWXMLHash.parse(value)
         let events = data["events"]["event"].all
         for event in events {
             if let title = event["title"].element?.text,
-                    startString = event["dtstart"].element?.text,
-                    endString = event["dtend"].element?.text,
-                    status = event["status"].element?.text,
-                    link = event["url"].element?.text {
+                    let startString = event["dtstart"].element?.text,
+                    let endString = event["dtend"].element?.text,
+                    let status = event["status"].element?.text,
+                    let link = event["url"].element?.text {
                 
                 let item = CalendarRow()
                 item.title = title
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                item.dtstart = dateFormatter.dateFromString(startString)
-                item.dtend = dateFormatter.dateFromString(endString)
+                item.dtstart = dateFormatter.date(from: startString)
+                item.dtend = dateFormatter.date(from: endString)
                 if let description = event["description"].element?.text {
                     item.description = description
                 }
                 item.status = status
-                item.url = NSURL(string: link)
+                item.url = URL(string: link)
                 if item.status == "FT" {
                     CalendarManager.calendarItems.append(item)
                 }
@@ -101,10 +101,10 @@ class CalendarManager: Manager {
         handle(handler)
     }
     
-    func handle(handler: ([DataElement]) -> ()) {
+    func handle(_ handler: ([DataElement]) -> ()) {
         let onlyNew = CalendarManager.calendarItems.filter() { (item) in
             if let element = item as? CalendarRow {
-                return element.dtstart?.compare(NSDate()) == NSComparisonResult.OrderedDescending
+                return element.dtstart?.compare(Date()) == ComparisonResult.orderedDescending
             }
             return false
         }

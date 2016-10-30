@@ -1,7 +1,6 @@
 
 # TKSubmitTransition
 
-
 [![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat
 )](https://developer.apple.com/iphone/index.action)
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
@@ -10,6 +9,7 @@
 )](http://mit-license.org)
 [![CocoaPods](https://img.shields.io/cocoapods/v/TKSubmitTransition.svg)]()
 
+**Swift2.0!! :cat:**
 
 Inpired by https://dribbble.com/shots/1945593-Login-Home-Screen
 
@@ -19,12 +19,14 @@ As you can see in the GIF Animation Demo below, you can find the “Sign in” b
 
 I made them as classes and you can use it with ease.
 
+[Objective-C version is here.](https://github.com/wwdc14/HySubmitTransitionObjective-C)
 
 # Demo
 ![Demo GIF Animation](https://github.com/entotsu/TKSubmitTransition/blob/master/demo.gif "Demo GIF Animation")
 
 # Installation
 	pod 'TKSubmitTransition'
+	use_frameworks!
 
 # Usage
 

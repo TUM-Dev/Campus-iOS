@@ -8,69 +8,67 @@
 
 import UIKit
 
-@objc public protocol PZPullToRefreshDelegate: NSObjectProtocol {
-    func pullToRefreshDidTrigger(view: PZPullToRefreshView) -> ()
-    optional func pullToRefreshLastUpdated(view: PZPullToRefreshView) -> NSDate
+public protocol PZPullToRefreshDelegate: class {
+    func pullToRefreshDidTrigger(_ view: PZPullToRefreshView) -> ()
+    func pullToRefreshLastUpdated(_ view: PZPullToRefreshView) -> Date
 }
 
-public class PZPullToRefreshView: UIView {
+public final class PZPullToRefreshView: UIView {
     
     public enum RefreshState {
-        case Normal
-        case Pulling
-        case Loading
+        case normal
+        case pulling
+        case loading
     }
 
-    public var statusTextColor = UIColor.whiteColor()
-    public var timeTextColor = UIColor(red:0.95, green:0.82, blue:0.79, alpha:1)
-    public var bgColor = UIColor(red:0.82, green:0.44, blue:0.39, alpha:1)
+    public var statusTextColor = UIColor.white
+    public var timeTextColor = UIColor(red: 0.95, green: 0.82, blue: 0.79, alpha: 1)
+    public var bgColor = UIColor(red: 0.82, green: 0.44, blue: 0.39, alpha: 1)
+
     public var flipAnimatioDutation: CFTimeInterval = 0.18
     public var thresholdValue: CGFloat = 60.0
+
     public var lastUpdatedKey = "RefreshLastUpdated"
-    public var isShowUpdatedTime: Bool = true
+    public var isShowUpdatedTime = true
     
-    public var _isLoading: Bool = false
+    fileprivate var _isLoading = false
     public var isLoading: Bool {
         get {
             return _isLoading
         }
         set {
-            if state == .Loading {
-                _isLoading = true
-            } else {
-                _isLoading = false
-            }
+            _isLoading = state == .loading
         }
     }
     
-    private var _state: RefreshState = .Normal
+    fileprivate var _state: RefreshState = .normal
     public var state: RefreshState {
         get {
            return _state
         }
         set {
             switch newValue {
-            case .Normal:
+            case .normal:
                 statusLabel?.text = "Pull down to refresh"
                 activityView?.stopAnimating()
                 refreshLastUpdatedDate()
                 rotateArrowImage(angle: 0)
-            case .Pulling:
+            case .pulling:
                 statusLabel?.text = "Release to refresh"
                 rotateArrowImage(angle: CGFloat(M_PI))
-            case .Loading:
+            case .loading:
                 statusLabel?.text = "Loading..."
                 activityView?.startAnimating()
                 CATransaction.begin()
                 CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-                arrowImage?.hidden = true
+                arrowImage?.isHidden = true
                 CATransaction.commit()
             }
             _state = newValue
         }
     }
     
-    public func rotateArrowImage(angle angle: CGFloat) {
+    fileprivate func rotateArrowImage(angle: CGFloat) {
         CATransaction.begin()
         CATransaction.setAnimationDuration(flipAnimatioDutation)
         arrowImage?.transform = CATransform3DMakeRotation(angle, 0.0, 0.0, 1.0)
@@ -81,114 +79,115 @@ public class PZPullToRefreshView: UIView {
     public var statusLabel: UILabel?
     public var arrowImage: CALayer?
     public var activityView: UIActivityIndicatorView?
-    public var delegate: AnyObject?
+    public var delegate: PZPullToRefreshDelegate?
+    public var lastUpdatedLabelCustomFormatter: ( (_ date:Date)->String )?
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        self.backgroundColor = bgColor
+        autoresizingMask = .flexibleWidth
+        backgroundColor = bgColor
 
-        let label: UILabel = UILabel(frame: CGRectMake(0, frame.size.height - 30.0, self.frame.size.width, 20.0))
-        label.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        label.font = UIFont.systemFontOfSize(12.0)
+        let label = UILabel(frame: CGRect(x: 0, y: frame.size.height - 30.0, width: frame.size.width, height: 20.0))
+        label.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        label.font = UIFont.systemFont(ofSize: 12.0)
         label.textColor = timeTextColor
-        label.backgroundColor = UIColor.clearColor()
-        label.textAlignment = .Center
+        label.backgroundColor = UIColor.clear
+        label.textAlignment = .center
         lastUpdatedLabel = label
-        if let value: AnyObject = NSUserDefaults.standardUserDefaults().objectForKey(lastUpdatedKey) {
-            lastUpdatedLabel?.text = value as? String
+        if let time = UserDefaults.standard.object(forKey: lastUpdatedKey) as? String {
+            lastUpdatedLabel?.text = time
+
         } else {
             lastUpdatedLabel?.text = nil
         }
-        self.addSubview(label)
+        addSubview(label)
         
-        let label2: UILabel = UILabel(frame: CGRectMake(0, frame.size.height - 48.0, self.frame.size.width, 20.0))
-        label2.autoresizingMask = UIViewAutoresizing.FlexibleWidth
-        label2.font = UIFont.boldSystemFontOfSize(14.0)
+        let label2 = UILabel(frame: CGRect(x: 0, y: frame.size.height - 48.0, width: frame.size.width, height: 20.0))
+        label2.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        label2.font = UIFont.boldSystemFont(ofSize: 14.0)
         label2.textColor = statusTextColor
-        label2.backgroundColor = UIColor.clearColor()
-        label2.textAlignment = .Center
+        label2.backgroundColor = UIColor.clear
+        label2.textAlignment = .center
         statusLabel = label2
-        self.addSubview(label2)
+        addSubview(label2)
         
-        let layer: CALayer = CALayer()
-        layer.frame = CGRectMake(25.0, frame.size.height - 40.0, 15.0, 25.0)
-        layer.contentsGravity = kCAGravityResizeAspect
-        layer.contents = UIImage(named: "whiteArrow")?.CGImage
-        self.layer.addSublayer(layer)
-        arrowImage = layer
+        let caLayer = CALayer()
+        caLayer.frame = CGRect(x: 25.0, y: frame.size.height - 40.0, width: 15.0, height: 25.0)
+        caLayer.contentsGravity = kCAGravityResizeAspect
+        caLayer.contents = UIImage(named: "whiteArrow")?.cgImage
+        arrowImage = caLayer
+        layer.addSublayer(caLayer)
         
-        let view: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        view.frame = CGRectMake(25.0, frame.size.height - 38.0, 20.0, 20.0)
-        self.addSubview(view)
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        view.frame = CGRect(x: 25.0, y: frame.size.height - 38.0, width: 20.0, height: 20.0)
         activityView = view
+        addSubview(view)
         
-        state = .Normal
+        state = .normal
     }
 
-    required public init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     public func refreshLastUpdatedDate() {
         if isShowUpdatedTime {
-            if let update = delegate?.respondsToSelector("pullToRefreshLastUpdated:") {
-                var date = delegate?.pullToRefreshLastUpdated!(self)
-                let formatter = NSDateFormatter()
-                formatter.AMSymbol = "AM"
-                formatter.PMSymbol = "PM"
-                formatter.dateFormat = "yyyy/MM/dd/ hh:mm:a"
-                lastUpdatedLabel?.text = "Last Updated: \(formatter.stringFromDate(date!))"
-                NSUserDefaults.standardUserDefaults().setObject(lastUpdatedLabel?.text, forKey: lastUpdatedKey)
-                NSUserDefaults.standardUserDefaults().synchronize()
+            if let date = delegate?.pullToRefreshLastUpdated(self) {
+                var lastUpdateText:String
+                if let customFormatter = self.lastUpdatedLabelCustomFormatter {
+                    lastUpdateText = customFormatter(date)
+                }else{
+                    let formatter = DateFormatter()
+                    formatter.amSymbol = "AM"
+                    formatter.pmSymbol = "PM"
+                    formatter.dateFormat = "yyyy/MM/dd/ hh:mm:a"
+                    lastUpdateText = "Last Updated: \(formatter.string(from: date))"
+                }
+                lastUpdatedLabel?.text = lastUpdateText
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(lastUpdatedLabel?.text, forKey: lastUpdatedKey)
+                userDefaults.synchronize()
             }
         }
     }
-    
+
     // MARK:ScrollView Methods
     
-    public func refreshScrollViewDidScroll(scrollView: UIScrollView) {
-        if state == .Loading {
+    public func refreshScrollViewDidScroll(_ scrollView: UIScrollView) {
+        if state == .loading {
             UIView.beginAnimations(nil, context: nil)
             UIView.setAnimationDuration(0.2)
             var offset = max(scrollView.contentOffset.y * -1, 0)
             offset = min(offset, thresholdValue)
             scrollView.contentInset = UIEdgeInsetsMake(offset, 0.0, 0.0, 0.0)
             UIView.commitAnimations()
-        } else if scrollView.dragging {
-            var loading: Bool = false
-            if state == .Pulling && scrollView.contentOffset.y > -thresholdValue && scrollView.contentOffset.y < 0.0 && !loading {
-                state = .Normal
-            } else if state == .Normal && scrollView.contentOffset.y < -thresholdValue && !loading {
-                state = .Pulling
+
+        } else if scrollView.isDragging {
+            let loading = false
+            if state == .pulling && scrollView.contentOffset.y > -thresholdValue && scrollView.contentOffset.y < 0.0 && !loading {
+                state = .normal
+
+            } else if state == .normal && scrollView.contentOffset.y < -thresholdValue && !loading {
+                state = .pulling
             }
         }
     }
     
-    public func refreshScrollViewDidEndDragging(scrollView: UIScrollView) {
-        var loading: Bool = false
-        if (scrollView.contentOffset.y <= -thresholdValue && !loading) {
-            state = .Loading
-            if let load = delegate?.respondsToSelector("pullToRefreshDidTrigger:") {
-                delegate?.pullToRefreshDidTrigger(self)
-            }
+    public func refreshScrollViewDidEndDragging(_ scrollView: UIScrollView) {
+        let loading = false
+        if scrollView.contentOffset.y <= -thresholdValue && !loading {
+            state = .loading
+            delegate?.pullToRefreshDidTrigger(self)
         }
     }
     
-    public func refreshScrollViewDataSourceDidFinishedLoading(scrollView: UIScrollView) {
+    public func refreshScrollViewDataSourceDidFinishedLoading(_ scrollView: UIScrollView) {
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(0.4)
-        scrollView.contentInset = UIEdgeInsetsZero
+        scrollView.contentInset = UIEdgeInsets.zero
         UIView.commitAnimations()
-        arrowImage?.hidden = false
-        state = .Normal
+        arrowImage?.isHidden = false
+        state = .normal
     }
     
-    deinit {
-        delegate = nil
-        activityView = nil
-        statusLabel = nil
-        arrowImage = nil
-        lastUpdatedLabel = nil
-    }
 }

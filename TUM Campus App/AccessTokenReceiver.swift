@@ -8,6 +8,6 @@
 
 import Foundation
 protocol AccessTokenReceiver {
-    func receiveToken(token: String)
+    func receiveToken(_ token: String)
     func tokenNotConfirmed()
 }

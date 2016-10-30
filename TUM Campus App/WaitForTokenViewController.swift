@@ -22,7 +22,7 @@ class WaitForTokenViewController: UIViewController {
     var loginManager: TumOnlineLoginRequestManager?
     var delegate: TokenFetcherControllerDelegate?
     
-    @IBAction func refresh(sender: AnyObject) {
+    @IBAction func refresh(_ sender: AnyObject) {
         checkRequest()
     }
     
@@ -41,8 +41,7 @@ extension WaitForTokenViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        button.normalBackgroundColor = Constants.tumBlue
-        button.highlightedBackgroundColor = Constants.tumBlue
+        button.backgroundColor = Constants.tumBlue
         loginManager = TumOnlineLoginRequestManager(delegate: self)
         lrzID = delegate?.getLRZ()
         loginManager?.lrzID = lrzID
@@ -54,18 +53,18 @@ extension WaitForTokenViewController {
 
 extension WaitForTokenViewController: AccessTokenReceiver {
     
-    func receiveToken(token: String) {
+    func receiveToken(_ token: String) {
         user = User(lrzID: token, token: token)
         if let userUnwrapped = user {
-            button.startFinishAnimation(NSTimeInterval(0)) {
+            button.startFinishAnimation(delay: TimeInterval(0)) {
                 self.loginManager?.LoginSuccesful(userUnwrapped)
                 if self.presentingViewController != nil {
-                    self.performSegueWithIdentifier("loggedIn", sender: self)
+                    self.performSegue(withIdentifier: "loggedIn", sender: self)
                 } else {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let mvc = storyboard.instantiateViewControllerWithIdentifier("TabBar") as? CampusTabBarController {
+                    if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {
                         mvc.transitioningDelegate = self
-                        self.presentViewController(mvc, animated: true, completion: nil)
+                        self.present(mvc, animated: true, completion: nil)
                     }
                 }
             }
@@ -76,12 +75,12 @@ extension WaitForTokenViewController: AccessTokenReceiver {
 
 extension WaitForTokenViewController: UIViewControllerTransitioningDelegate {
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let fadeInAnimator = TKFadeInAnimator()
         return fadeInAnimator
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
     }
     

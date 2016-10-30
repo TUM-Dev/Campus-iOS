@@ -19,10 +19,10 @@ class Movie:ImageDownloader, DataElement {
     let actors: String
     let rating: Double
     let description: String
-    let created: NSDate
-    let airDate: NSDate
+    let created: Date
+    let airDate: Date
     
-    init(name: String, id: String, year: Int, runtime: Int, rating: Double, genre: String, actors: String, director: String, description: String, created: NSDate, airDate: NSDate, poster: String) {
+    init(name: String, id: String, year: Int, runtime: Int, rating: Double, genre: String, actors: String, director: String, description: String, created: Date, airDate: Date, poster: String) {
         self.name = name
         self.id = id
         self.runtime = runtime
@@ -42,7 +42,7 @@ class Movie:ImageDownloader, DataElement {
     }
     
     var text: String {
-        return name.componentsSeparatedByString(": ")[1] ?? name
+        return name.components(separatedBy: ": ")[1] 
     }
     
     

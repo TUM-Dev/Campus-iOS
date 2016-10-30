@@ -8,19 +8,14 @@
 
 import Foundation
 
-extension NSDate {
-    func numberOfDaysUntilDateTime(toDateTime: NSDate, inTimeZone timeZone: NSTimeZone? = nil) -> Int {
-        let calendar = NSCalendar.currentCalendar()
+extension Date {
+    func numberOfDaysUntilDateTime(_ toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
+        var calendar = Calendar.current
         if let timeZone = timeZone {
             calendar.timeZone = timeZone
         }
         
-        var fromDate: NSDate?, toDate: NSDate?
-        
-        calendar.rangeOfUnit(.Day, startDate: &fromDate, interval: nil, forDate: self)
-        calendar.rangeOfUnit(.Day, startDate: &toDate, interval: nil, forDate: toDateTime)
-        
-        let difference = calendar.components(.Day, fromDate: fromDate!, toDate: toDate!, options: [])
-        return difference.day
+        let difference = calendar.dateComponents(Set([.day]), from: self, to: toDateTime)
+        return difference.day ?? 0
     }
 }

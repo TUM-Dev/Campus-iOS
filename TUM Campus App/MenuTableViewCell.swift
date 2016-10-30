@@ -10,7 +10,7 @@ import UIKit
 
 class MenuTableViewCell: CardTableViewCell {
 
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let menu = element as? CafeteriaMenu {
             dishLabel.text = menu.name
             priceLabel.text = ""

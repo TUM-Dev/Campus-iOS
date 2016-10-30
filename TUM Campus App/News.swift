@@ -11,17 +11,17 @@ import UIKit
 class News: ImageDownloader, DataElement {
     
     let id: String
-    let date: NSDate
+    let date: Date
     let title: String
     let link: String
     
-    init(id: String, date: NSDate, title: String, link: String, image: String? = nil) {
+    init(id: String, date: Date, title: String, link: String, image: String? = nil) {
         self.id = id
         self.date = date
         self.title = title
         self.link = link
         super.init()
-        if let image = image?.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
+        if let image = image?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
             getImage(image)
         }
     }
@@ -37,8 +37,8 @@ class News: ImageDownloader, DataElement {
     }
     
     func open() {
-        if let url = NSURL(string: link) {
-            UIApplication.sharedApplication().openURL(url)
+        if let url = URL(string: link) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     

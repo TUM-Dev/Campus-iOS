@@ -20,19 +20,19 @@ class UserDataManager: Manager {
         main = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         self.handler = handler
         if let user = main?.user?.name {
             main?.doPersonSearch(handler, query: user)
         } else {
             let url = getURL()
-            Alamofire.request(.GET, url).responseString() { (response) in
+            Alamofire.request(url).responseString() { (response) in
                 if let data = response.result.value {
                     let parsedXML = SWXMLHash.parse(data)
                     let rows = parsedXML["rowset"]["row"].all
                     if rows.count == 1 {
                         let person = rows[0]
-                        if let firstname = person["vorname"].element?.text, lastname = person["familienname"].element?.text {
+                        if let firstname = person["vorname"].element?.text, let lastname = person["familienname"].element?.text {
                             let name = firstname + " " + lastname
                             self.main?.doPersonSearch(handler, query: name)
                         }

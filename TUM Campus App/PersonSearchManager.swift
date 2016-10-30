@@ -18,7 +18,7 @@ class PersonSearchManager: SearchManager {
     
     var query: String?
     
-    func setQuery(query: String) {
+    func setQuery(_ query: String) {
         self.query = query
     }
     
@@ -26,10 +26,10 @@ class PersonSearchManager: SearchManager {
         main = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         let url = getURL()
-        request = Alamofire.request(.GET, url).responseString() { (response) in
+        request = Alamofire.request(url).responseString() { (response) in
             if let value = response.result.value {
                 let parsedXML = SWXMLHash.parse(value)
                 let rows = parsedXML["rowset"]["row"].all
@@ -37,9 +37,9 @@ class PersonSearchManager: SearchManager {
                     var people = [DataElement]()
                     for i in 0...min(rows.count-1,20) {
                         let row = rows[i]
-                        if let name = row["vorname"].element?.text, lastname = row["familienname"].element?.text, id = row["obfuscated_id"].element?.text {
+                        if let name = row["vorname"].element?.text, let lastname = row["familienname"].element?.text, let id = row["obfuscated_id"].element?.text {
                             let image = row["bild_url"].element?.text ?? ""
-                            let newUser = UserData(name: name+" "+lastname, picture: image ?? "" , id: id)
+                            let newUser = UserData(name: name+" "+lastname, picture: image, id: id)
                             people.append(newUser)
                         }
                     }
@@ -51,9 +51,9 @@ class PersonSearchManager: SearchManager {
     
     func getURL() -> String {
         let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.PersonSearch.rawValue
-        if let token = main?.getToken(), search = query {
+        if let token = main?.getToken(), let search = query {
             let url = base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&pSuche=" + search
-            if let value = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
+            if let value = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
                 return value
             }
         }

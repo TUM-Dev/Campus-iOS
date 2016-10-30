@@ -28,21 +28,21 @@ class TuitionStatusManager: Manager {
     
     static var tuitionItems = [DataElement]()
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if TuitionStatusManager.tuitionItems.isEmpty {
             let url = getURL()
-            Alamofire.request(.GET, url).responseString() { (response) in
+            Alamofire.request(url).responseString() { (response) in
                 if let data = response.result.value {
                     let tuitionData = SWXMLHash.parse(data)
                     let rows = tuitionData["rowset"]["row"].all
                     for row in rows {
                         if let soll = row["soll"].element?.text,
-                                frist = row["frist"].element?.text,
-                                bez = row["semester_bezeichnung"].element?.text {
+                                let frist = row["frist"].element?.text,
+                                let bez = row["semester_bezeichnung"].element?.text {
                             
-                            let dateformatter = NSDateFormatter()
+                            let dateformatter = DateFormatter()
                             dateformatter.dateFormat = "yyyy-MM-dd"
-                            if let fristDate = dateformatter.dateFromString(frist) {
+                            if let fristDate = dateformatter.date(from: frist) {
                                 let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
                                 TuitionStatusManager.tuitionItems.append(tuition)
                             }
@@ -58,7 +58,7 @@ class TuitionStatusManager: Manager {
         
     }
     
-    func handle(handler: ([DataElement]) -> ()) {
+    func handle(_ handler: ([DataElement]) -> ()) {
         if single {
             if let tuitionItem = TuitionStatusManager.tuitionItems.first {
                 handler([tuitionItem])

@@ -24,20 +24,20 @@ class NewsManager: Manager {
         self.single = single
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if NewsManager.news.isEmpty {
             if let request = getRequest() {
-                Alamofire.request(request).responseJSON() { (response) in
+                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
                     if let data = response.result.value {
                         if let json = JSON(data).array {
                             for item in json {
-                                let dateformatter = NSDateFormatter()
+                                let dateformatter = DateFormatter()
                                 dateformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                                 if let title = item["title"].string,
-                                            link = item["link"].string,
-                                            dateString = item["date"].string,
-                                            id = item["news"].int,
-                                            date = dateformatter.dateFromString(dateString) {
+                                            let link = item["link"].string,
+                                            let dateString = item["date"].string,
+                                            let id = item["news"].int,
+                                            let date = dateformatter.date(from: dateString) {
                                     
                                     let image = item["image"].string
                                     let newsItem = News(id: id.description, date: date, title: title, link: link, image: image)
@@ -54,9 +54,9 @@ class NewsManager: Manager {
         }
     }
     
-    func handleNews(handler: ([DataElement]) -> ()) {
-        let items = NewsManager.news.sort { (a, b) in
-            return a.date.compare(b.date) == NSComparisonResult.OrderedDescending
+    func handleNews(_ handler: ([DataElement]) -> ()) {
+        let items = NewsManager.news.sorted { (a, b) in
+            return a.date.compare(b.date as Date) == ComparisonResult.orderedDescending
         }
         if single {
             if let firsStory = items.first {
@@ -76,9 +76,9 @@ class NewsManager: Manager {
     }
     
     func getRequest() -> NSMutableURLRequest? {
-        if let url = NSURL(string: getURL()), let uuid = UIDevice.currentDevice().identifierForVendor?.UUIDString {
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "GET"
+        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            let request = NSMutableURLRequest(url: url)
+            request.httpMethod = "GET"
             request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
             return request
         }

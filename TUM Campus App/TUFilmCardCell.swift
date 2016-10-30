@@ -11,12 +11,12 @@ import MCSwipeTableViewCell
 
 class TUFilmCardCell: CardTableViewCell {
     
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let unwrappedMovie = element as? Movie{
             titleLabel.text = unwrappedMovie.text
-            let cal = NSCalendar.currentCalendar()
-            let components = cal.components([NSCalendarUnit.Month, NSCalendarUnit.Day], fromDate: unwrappedMovie.airDate)
-            dateLabel.text = components.day.description + "." + components.month.description
+            let cal = Calendar.current
+            let components = (cal as NSCalendar).components([NSCalendar.Unit.month, NSCalendar.Unit.day], from: unwrappedMovie.airDate as Date)
+            dateLabel.text = (components.day?.description)! + "." + (components.month?.description)!
             posterImageView.image = unwrappedMovie.image ?? UIImage(named: "movie")
             posterImageView.clipsToBounds = true
         }
@@ -28,7 +28,7 @@ class TUFilmCardCell: CardTableViewCell {
     
     @IBOutlet weak var cardView: UIView! {
         didSet {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
             cardView.layer.shadowOpacity = 0.4
             cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         }

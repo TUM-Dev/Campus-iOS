@@ -23,9 +23,9 @@ class TuitionTableViewController: UITableViewController, DetailView {
     var currentSemester: Tuition? {
         didSet {
             if let semester = currentSemester {
-                let dateformatter = NSDateFormatter()
+                let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "MMM dd, yyyy"
-                deadLineLabel.text = dateformatter.stringFromDate(semester.frist)
+                deadLineLabel.text = dateformatter.string(from: semester.frist as Date)
                 balanceLabel.text = semester.soll + " €"
                 title = semester.semester
             }
@@ -36,7 +36,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
 
 extension TuitionTableViewController: TumDataReceiver {
     
-    func receiveData(data: [DataElement]) {
+    func receiveData(_ data: [DataElement]) {
         semesters.removeAll()
         for item in data {
             if let semester = item as? Tuition {
@@ -71,24 +71,24 @@ extension TuitionTableViewController {
                     self.tableView.reloadData()
                 }
             }
-            items.append(item)
+            items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.items = items
         pickerView.mainView = view
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
-    func showSemesters(send: AnyObject?) {
+    func showSemesters(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
         barItem?.image = UIImage(named: "collapse")
     }
     
-    func hideSemesters(send: AnyObject?) {
+    func hideSemesters(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
         barItem?.image = UIImage(named: "expand")

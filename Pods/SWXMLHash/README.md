@@ -4,6 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/SWXMLHash.svg)](https://cocoapods.org/pods/SWXMLHash)
 [![Join the chat at https://gitter.im/drmohundro/SWXMLHash](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/drmohundro/SWXMLHash?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![codebeat](https://codebeat.co/badges/893cc640-c5d9-45b2-a3ff-426e6e6b7b80)](https://codebeat.co/projects/github-com-drmohundro-swxmlhash)
 
 SWXMLHash is a relatively simple way to parse XML in Swift. If you're familiar with `NSXMLParser`, this library is a simple wrapper around it. Conceptually, it provides a translation from XML to a dictionary of arrays (aka hash).
 
@@ -11,13 +12,20 @@ The API takes a lot of inspiration from [SwiftyJSON](https://github.com/SwiftyJS
 
 ## Contents
 
+* [Requirements](#requirements)
 * [Installation](#installation)
 * [Getting Started](#getting-started)
 * [Configuration](#configuration)
 * [Examples](#examples)
+* [FAQ](#faq)
 * [Changelog](#changelog)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Requirements
+
+- iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 8.0+
 
 ## Installation
 
@@ -37,7 +45,7 @@ Then create a `Podfile` with the following contents:
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
-pod 'SWXMLHash', '~> 2.0.0'
+pod 'SWXMLHash', '~> 3.0.0'
 ```
 
 Finally, run the following command to install it:
@@ -58,7 +66,7 @@ $ brew install carthage
 Then add the following line to your `Cartfile`:
 
 ```
-github "drmohundro/SWXMLHash" ~> 2.0
+github "drmohundro/SWXMLHash" ~> 3.0
 ```
 
 ### Manual Installation
@@ -95,7 +103,7 @@ The available options at this time are:
 
 ## Examples
 
-All examples below can be found in the included [specs](https://github.com/drmohundro/SWXMLHash/blob/master/Tests/SWXMLHashSpecs.swift).
+All examples below can be found in the included [specs](https://github.com/drmohundro/SWXMLHash/blob/master/Tests/).
 
 ### Initialization
 
@@ -178,7 +186,7 @@ Given:
 The below will return "123".
 
 ```swift
-xml["root"]["catalog"]["book"][1].element?.attributes["id"]
+xml["root"]["catalog"]["book"][1].element?.attribute(by: "id")?.text
 ```
 
 Alternatively, you can look up an element with specific attributes. The below will return "John".
@@ -203,7 +211,7 @@ Given:
 </root>
 ```
 
-The below will return "Fiction, Non-fiction, Technical" (note the `all` method).
+The `all` method will iterate over all nodes at the indexed level. The code below will return "Fiction, Non-fiction, Technical".
 
 ```swift
 ", ".join(xml["root"]["catalog"]["book"].all.map { elem in
@@ -211,11 +219,19 @@ The below will return "Fiction, Non-fiction, Technical" (note the `all` method).
 })
 ```
 
-Alternatively, you can just iterate over the elements using `for-in` directly against an element.
+You can also iterate over the `all` method:
+
+```swift
+for elem in xml["root"]["catalog"]["book"].all {
+  print(elem["genre"].element!.text!)
+}
+```
+
+Alternatively, XMLIndexer provides `for-in` support directly from the index (no `all` needed in this case).
 
 ```swift
 for elem in xml["root"]["catalog"]["book"] {
-  NSLog(elem["genre"].element!.text!)
+  print(elem["genre"].element!.text!)
 }
 ```
 
@@ -235,12 +251,12 @@ Given:
 </root>
 ```
 
-The below will `NSLog` "root", "catalog", "book", "genre", "title", and "date" (note the `children` method).
+The below will `print` "root", "catalog", "book", "genre", "title", and "date" (note the `children` method).
 
 ```swift
 func enumerate(indexer: XMLIndexer) {
   for child in indexer.children {
-    NSLog(child.element!.name)
+    print(child.element!.name)
     enumerate(child)
   }
 }
@@ -255,8 +271,8 @@ Using Swift 2.0's new error handling feature:
 ```swift
 do {
   try xml!.byKey("root").byKey("what").byKey("header").byKey("foo")
-} catch let error as XMLIndexer.Error {
-  // error is an XMLIndexer.Error instance that you can deal with
+} catch let error as IndexerError {
+  // error is an IndexerError instance that you can deal with
 }
 ```
 
@@ -267,11 +283,138 @@ switch xml["root"]["what"]["header"]["foo"] {
 case .Element(let elem):
   // everything is good, code away!
 case .XMLError(let error):
-  // error is an XMLIndexer.Error instance that you can deal with
+  // error is an IndexerError instance that you can deal with
 }
 ```
 
 Note that error handling as shown above will not work with lazy loaded XML. The lazy parsing doesn't actually occur until the `element` or `all` method are called - as a result, there isn't any way to know prior to asking for an element if it exists or not.
+
+### Types conversion
+
+Given:
+
+```xml
+<root>
+  <books>
+    <book isbn="0000000001">
+      <title>Book A</title>
+      <price>12.5</price>
+      <year>2015</year>
+    </book>
+    <book isbn="0000000002">
+      <title>Book B</title>
+      <price>10</price>
+      <year>1988</year>
+    </book>
+    <book isbn="0000000003">
+      <title>Book C</title>
+      <price>8.33</price>
+      <year>1990</year>
+      <amount>10</amount>
+    </book>
+  <books>
+</root>
+```
+with `Book` struct implementing `XMLIndexerDeserializable`:
+
+```swift
+struct Book: XMLIndexerDeserializable {
+    let title: String
+    let price: Double
+    let year: Int
+    let amount: Int?
+    let isbn: Int
+
+    static func deserialize(_ node: XMLIndexer) throws -> Book {
+        return try Book(
+            title: node["title"].value(),
+            price: node["price"].value(),
+            year: node["year"].value(),
+            amount: node["amount"].value(),
+            isbn: node.value(ofAttribute: "isbn")
+        )
+    }
+}
+```
+
+The below will return array of `Book` structs:
+
+```swift
+let books: [Book] = try xml["root"]["books"]["book"].value()
+```
+
+<img src="https://raw.githubusercontent.com/ncreated/SWXMLHash/assets/types-conversion%402x.png" width="600" alt="Types Conversion" />
+
+You can convert any XML to your custom type by implementing `XMLIndexerDeserializable` for any non-leaf node (e.g. `<book>` in the example above).
+
+For leaf nodes (e.g. `<title>` in the example above), built-in converters support `Int`, `Double`, `Float`, `Bool`, and `String` values (both non- and -optional variants). Custom converters can be added by implementing `XMLElementDeserializable`.
+
+For attributes (e.g. `isbn=` in the example above), built-in converters support the same types as above, and additional converters can be added by implementing `XMLAttributeDeserializable`.
+
+Types conversion supports error handling, optionals and arrays. For more examples, look into `SWXMLHashTests.swift` or play with types conversion directly in the Swift playground.
+
+
+## FAQ
+
+### Does SWXMLHash handle URLs for me?
+
+No - SWXMLHash only handles parsing of XML. If you have a URL that has XML content on it, I'd recommend using a library like [AlamoFire](https://github.com/Alamofire/Alamofire) to download the content into a string and then parsing it.
+
+### Does SWXMLHash support writing XML content?
+
+No, not at the moment - SWXMLHash only supports parsing XML (via indexing, deserialization, etc.).
+
+### I'm getting an "Ambiguous reference to member 'subscript'" when I call `.value()`.
+
+`.value()` is used for deserialization - you have to have something that implements `XMLIndexerDeserializable` and that can handle deserialization to the left-hand side of expression.
+
+For example, given the following:
+
+```swift
+let dateValue: NSDate = try! xml["root"]["date"].value()
+```
+
+You'll get an error because there isn't any built-in deserializer for `NSDate`. See the above documentation on adding your own deserialization support.
+
+### I'm getting an `EXC_BAD_ACCESS (SIGSEGV)` when I call `parse()`
+
+Chances are very good that your XML content has what is called a "byte order mark" or BOM. SWXMLHash uses `NSXMLParser` for its parsing logic and there are issues with it and handling BOM characters. See [issue #65](https://github.com/drmohundro/SWXMLHash/issues/65) for more details. Others who have run into this problem have just rstripped the BOM out of their content prior to parsing.
+
+### How do I handle deserialization with a class versus a struct (such as with `NSDate`)?
+
+Using extensions on classes instead of structs can result in some odd catches that might give you a little trouble. For example, see [this question on StackOverflow](http://stackoverflow.com/questions/38174669/how-to-deserialize-nsdate-with-swxmlhash) where someone was trying to write their own `XMLElementDeserializable` for `NSDate` which is a class and not a struct. The `XMLElementDeserializable` protocol expects a method that returns `Self` - this is the part that gets a little odd.
+
+See below for the code snippet to get this to work and note in particular the `private static func value<T>() -> T` line - that is the key.
+
+```swift
+extension NSDate: XMLElementDeserializable {
+  public static func deserialize(element: XMLElement) throws -> Self {
+    guard let dateAsString = element.text else {
+      throw XMLDeserializationError.NodeHasNoValue
+    }
+
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
+    let date = dateFormatter.dateFromString(dateAsString)
+
+    guard let validDate = date else {
+      throw XMLDeserializationError.TypeConversionFailed(type: "Date", element: element)
+    }
+
+    // NOTE THIS
+    return value(validDate)
+  }
+
+  // AND THIS
+  private static func value<T>(date: NSDate) -> T {
+    return date as! T
+  }
+}
+```
+
+### Have a different question?
+
+Feel free to shoot me an email, post a [question on StackOverflow](http://stackoverflow.com/questions/tagged/swxmlhash), or open an issue if you think you've found a bug. I'm happy to try to help!
 
 ## Changelog
 
@@ -279,11 +422,7 @@ See [CHANGELOG](CHANGELOG.md) for a list of all changes and their corresponding 
 
 ## Contributing
 
-This framework uses [Quick](https://github.com/Quick/Quick) and [Nimble](https://github.com/Quick/Nimble) for its tests. To get these dependencies, you'll need to have [Carthage](https://github.com/Carthage/Carthage) installed. Once it is installed, you should be able to just run `carthage update`.
-
-To run the tests, you can either run them from within Xcode or you can run `rake test`.
-
-The code loosely follows GitHub's [Swift Styleguide](https://github.com/github/swift-style-guide). The line length recommendations aren't strictly followed and the codebase is currently using spaces over tabs. I'm using [SwiftLint](https://github.com/realm/SwiftLint) to catch issues with style.
+See [CONTRIBUTING](CONTRIBUTING.md) for guidelines to contribute back to SWXMLHash.
 
 ## License
 

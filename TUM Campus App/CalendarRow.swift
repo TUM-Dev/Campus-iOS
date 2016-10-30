@@ -10,20 +10,20 @@ import Foundation
 import CoreLocation
 class CalendarRow: DataElement {
     var description: String?
-    var dtend: NSDate?
-    var dtstart: NSDate?
+    var dtend: Date?
+    var dtstart: Date?
     var geo: CLLocation?
     var location: String?
     var status: String?
     var title: String?
-    var url: NSURL?
+    var url: URL?
     
     func getCellIdentifier() -> String {
         return "calendarRow"
     }
     
     var text: String {
-        return title?.componentsSeparatedByString(" (")[0].componentsSeparatedByString(" [")[0] ?? ""
+        return title?.components(separatedBy: " (")[0].components(separatedBy: " [")[0] ?? ""
     }
     
 }

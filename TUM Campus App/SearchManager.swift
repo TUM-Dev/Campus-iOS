@@ -8,6 +8,6 @@
 
 import Foundation
 protocol SearchManager: Manager {
-    func setQuery(query: String)
+    func setQuery(_ query: String)
     var query: String? { get set }
 }

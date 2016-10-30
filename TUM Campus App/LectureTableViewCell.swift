@@ -10,7 +10,7 @@ import UIKit
 
 class LectureTableViewCell: CardTableViewCell {
 
-    override func setElement(element: DataElement) {
+    override func setElement(_ element: DataElement) {
         if let lecture = element as? Lecture {
             titleLabel.text = lecture.name
             let text = lecture.type + " - " + lecture.semester

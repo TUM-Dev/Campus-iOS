@@ -29,7 +29,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var currentMovie: Movie? {
         didSet {
             if let movie = currentMovie {
-                let info = movie.name.componentsSeparatedByString(": ")
+                let info = movie.name.components(separatedBy: ": ")
                 titleLabel.text = movie.text
                 dateLabel.text = info[0]
                 title = movie.text
@@ -51,7 +51,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
 
 extension MovieDetailTableViewController: TumDataReceiver {
     
-    func receiveData(data: [DataElement]) {
+    func receiveData(_ data: [DataElement]) {
         movies.removeAll()
         for element in data {
             if let movieElement = element as? Movie {
@@ -79,13 +79,13 @@ extension MovieDetailTableViewController {
 
 extension MovieDetailTableViewController {
    
-    func showMovies(send: AnyObject?) {
+    func showMovies(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(MovieDetailTableViewController.hideMovies(_:))
         barItem?.image = UIImage(named: "collapse")
     }
     
-    func hideMovies(send: AnyObject?) {
+    func hideMovies(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
         barItem?.image = UIImage(named: "expand")
@@ -102,14 +102,14 @@ extension MovieDetailTableViewController {
                     self.tableView.reloadData()
                 }
             }
-            items.append(item)
+            items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.mainView = view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.Plain, target: self, action:  #selector(MovieDetailTableViewController.showMovies(_:)))
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(MovieDetailTableViewController.showMovies(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

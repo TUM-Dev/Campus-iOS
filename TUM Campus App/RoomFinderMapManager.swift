@@ -18,7 +18,7 @@ class RoomFinderMapManager: SearchManager {
     
     var query: String?
     
-    func setQuery(query: String) {
+    func setQuery(_ query: String) {
         self.query = query
     }
     
@@ -26,17 +26,17 @@ class RoomFinderMapManager: SearchManager {
         main = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         let url = getURL()
-        request = Alamofire.request(.GET, url).responseString() { (response) in
+        request = Alamofire.request(url).responseString() { (response) in
             if let value = response.result.value {
                 let parsedXML = SWXMLHash.parse(value)
                 print(parsedXML)
                 var mapsArray = [DataElement]()
                 let maps = parsedXML["maps"]["map"].all
                 for map in maps {
-                    if let description = map["description"].element?.text, id = map["id"].element?.text {
+                    if let description = map["description"].element?.text, let id = map["id"].element?.text {
                         let newMap = Map(roomID: self.query ?? "", mapID: id, description: description)
                         mapsArray.append(newMap)
                     }
@@ -50,7 +50,7 @@ class RoomFinderMapManager: SearchManager {
         let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.Maps.rawValue
         if let search = query {
             let url = base + "?" + "&id=" + search
-            if let value = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
+            if let value = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
                 return value
             }
         }

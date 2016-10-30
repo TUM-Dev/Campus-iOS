@@ -10,5 +10,5 @@ import Foundation
 
 protocol Manager {
     init(mainManager: TumDataManager)
-    func fetchData(handler: ([DataElement]) -> ())
+    func fetchData(_ handler: @escaping ([DataElement]) -> ())
 }

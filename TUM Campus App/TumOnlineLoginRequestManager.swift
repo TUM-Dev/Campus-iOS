@@ -18,18 +18,18 @@ class TumOnlineLoginRequestManager {
     
     var token = ""
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     var delegate: AccessTokenReceiver?
     
     var lrzID : String?
     
-    func newId(newId: String) {
+    func newId(_ newId: String) {
         lrzID = newId
     }
     
     func getLoginURL() -> String {
-        let version = (NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String) ?? "1"
+        let version = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
         let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenRequest.rawValue
         if let id = lrzID {
             return  base + "?pUsername=" + id + "&pTokenName=TumCampusApp-" + version
@@ -44,7 +44,7 @@ class TumOnlineLoginRequestManager {
     func fetch() {
         let url = getLoginURL()
         print(url)
-        Alamofire.request(.GET, url).responseString() { (response) in
+        Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
                 if let token = tokenData["token"].element?.text {
@@ -57,7 +57,7 @@ class TumOnlineLoginRequestManager {
     func confirmToken() {
         let url = getConfirmationURL()
         print(url)
-        Alamofire.request(.GET, url).responseString() { (response) in
+        Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
                 print(tokenData)
@@ -77,22 +77,22 @@ class TumOnlineLoginRequestManager {
     }
     
     func userFromStorage() -> User? {
-        let token = defaults.stringForKey(LoginDefaultsKeys.Token.rawValue)
-        let id = defaults.stringForKey(LoginDefaultsKeys.LRZ.rawValue)
-        if let idUnwrapped = id, tokenUnwrapped = token {
+        let token = defaults.string(forKey: LoginDefaultsKeys.Token.rawValue)
+        let id = defaults.string(forKey: LoginDefaultsKeys.LRZ.rawValue)
+        if let idUnwrapped = id, let tokenUnwrapped = token {
             return User(lrzID: idUnwrapped, token: tokenUnwrapped)
         }
         return nil
     }
     
-    func LoginSuccesful(user: User) {
-        defaults.setObject(user.token, forKey: LoginDefaultsKeys.Token.rawValue)
-        defaults.setObject(user.lrzID, forKey: LoginDefaultsKeys.LRZ.rawValue)
+    func LoginSuccesful(_ user: User) {
+        defaults.set(user.token, forKey: LoginDefaultsKeys.Token.rawValue)
+        defaults.set(user.lrzID, forKey: LoginDefaultsKeys.LRZ.rawValue)
     }
     
     func logOut() {
-        defaults.removeObjectForKey(LoginDefaultsKeys.LRZ.rawValue)
-        defaults.removeObjectForKey(LoginDefaultsKeys.Token.rawValue)
+        defaults.removeObject(forKey: LoginDefaultsKeys.LRZ.rawValue)
+        defaults.removeObject(forKey: LoginDefaultsKeys.Token.rawValue)
     }
     
     

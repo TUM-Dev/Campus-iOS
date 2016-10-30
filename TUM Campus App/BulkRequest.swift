@@ -17,8 +17,8 @@ class BulkRequest: TumDataReceiver {
     
     var data = [DataElement]()
     
-    func receiveData(data: [DataElement]) {
-        self.data.appendContentsOf(data)
+    func receiveData(_ data: [DataElement]) {
+        self.data.append(contentsOf: data)
         receiver?.receiveData(self.data)
     }
     

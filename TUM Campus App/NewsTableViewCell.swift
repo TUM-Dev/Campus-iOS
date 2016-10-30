@@ -14,9 +14,9 @@ class NewsTableViewCell: UITableViewCell {
         didSet {
             if let newsItem = newsItem {
                 titleLabel.text = newsItem.title
-                let dateFormatter = NSDateFormatter()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "hh:mm a - dd MMM, YYYY"
-                dateLabel.text = dateFormatter.stringFromDate(newsItem.date)
+                dateLabel.text = dateFormatter.string(from: newsItem.date as Date)
                 detailImageView.image = newsItem.image
             }
         }
@@ -31,7 +31,7 @@ class NewsTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

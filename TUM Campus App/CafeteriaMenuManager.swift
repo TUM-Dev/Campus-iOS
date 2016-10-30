@@ -19,10 +19,10 @@ class CafeteriaMenuManager: Manager {
         manager = mainManager
     }
     
-    func fetchData(handler: ([DataElement]) -> ()) {
+    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if CafeteriaMenuManager.cafeteriaMenus.isEmpty {
             if let request = getRequest() {
-                Alamofire.request(request).responseJSON() { (response) in
+                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
                     if let value = response.result.value {
                         let json = JSON(value)
                         if let cafeteriasJsonArray = json["mensa_menu"].array {
@@ -42,15 +42,15 @@ class CafeteriaMenuManager: Manager {
         }
     }
     
-    func addMenu(item: JSON) {
-        if let cafeteria = item["mensa_id"].string, date = item["date"].string, typeShort = item["type_short"].string, typeLong = item["type_long"].string, name = item["name"].string, mensa = self.manager?.getCafeteriaForID(cafeteria) {
+    func addMenu(_ item: JSON) {
+        if let cafeteria = item["mensa_id"].string, let date = item["date"].string, let typeShort = item["type_short"].string, let typeLong = item["type_long"].string, let name = item["name"].string, let mensa = self.manager?.getCafeteriaForID(cafeteria) {
             let id = item["id"].string ?? ""
             let typeNR = item["type_nr"].string ?? ""
             let idNumber = Int(id) ?? 0
             let nr = Int(typeNR) ?? Int.max
-            let dateformatter = NSDateFormatter()
+            let dateformatter = DateFormatter()
             dateformatter.dateFormat = "yyyy-MM-dd"
-            let dateAsDate = dateformatter.dateFromString(date) ?? NSDate()
+            let dateAsDate = dateformatter.date(from: date) ?? Date()
             let newMenu = CafeteriaMenu(id: idNumber, date: dateAsDate, typeShort: typeShort, typeLong: typeLong, typeNr: nr, name: name)
             mensa.addMenu(newMenu)
             CafeteriaMenuManager.cafeteriaMenus.append(newMenu)
@@ -62,9 +62,9 @@ class CafeteriaMenuManager: Manager {
     }
     
     func getRequest() -> NSMutableURLRequest? {
-        if let url = NSURL(string: getURL()), let uuid = UIDevice.currentDevice().identifierForVendor?.UUIDString {
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "GET"
+        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
+            let request = NSMutableURLRequest(url: url)
+            request.httpMethod = "GET"
             request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
             return request
         }

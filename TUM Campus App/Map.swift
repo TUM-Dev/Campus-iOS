@@ -17,7 +17,7 @@ class Map: ImageDownloader, DataElement {
         self.description = description
         let url = RoomFinderApi.BaseUrl.rawValue +  RoomFinderApi.MapImage.rawValue + "?id=" + roomID + "&mapid=" + mapID
         super.init()
-        if let sanitizedURL = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLFragmentAllowedCharacterSet()) {
+        if let sanitizedURL = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
             getImage(sanitizedURL)
         }
     }
