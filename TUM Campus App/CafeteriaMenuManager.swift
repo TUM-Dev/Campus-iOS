@@ -21,8 +21,9 @@ class CafeteriaMenuManager: Manager {
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if CafeteriaMenuManager.cafeteriaMenus.isEmpty {
-            if let request = getRequest() {
-                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
+            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+                Alamofire.request(getURL(), method: .get, parameters: nil,
+                                  headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
                     if let value = response.result.value {
                         let json = JSON(value)
                         if let cafeteriasJsonArray = json["mensa_menu"].array {
@@ -60,16 +61,5 @@ class CafeteriaMenuManager: Manager {
     func getURL() -> String {
         return "http://lu32kap.typo3.lrz.de/mensaapp/exportDB.php?mensa_id=all"
     }
-    
-    func getRequest() -> NSMutableURLRequest? {
-        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
-            let request = NSMutableURLRequest(url: url)
-            request.httpMethod = "GET"
-            request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
-            return request
-        }
-        return nil
-    }
-    
     
 }

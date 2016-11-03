@@ -42,8 +42,9 @@ class CafeteriaManager: Manager {
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if CafeteriaManager.cafeterias.isEmpty {
-            if let request = getRequest() {
-                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
+            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+                Alamofire.request(getURL(), method: .get, parameters: nil,
+                                  headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
                     if let value = response.result.value {
                         if let cafeteriasJsonArray = JSON(value).array {
                             for item in cafeteriasJsonArray {
@@ -94,16 +95,6 @@ class CafeteriaManager: Manager {
     
     func getCafeteriaForID(_ id: String) -> Cafeteria? {
         return CafeteriaManager.cafeteriaMap[id]
-    }
-    
-    func getRequest() -> NSMutableURLRequest? {
-        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
-            let request = NSMutableURLRequest(url: url)
-            request.httpMethod = "GET"
-            request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
-            return request
-        }
-        return nil
     }
     
     func getURL() -> String {

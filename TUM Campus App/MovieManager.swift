@@ -26,8 +26,9 @@ class MovieManager: Manager {
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         if MovieManager.movies.isEmpty {
-            if let request = getRequest() {
-                Alamofire.request(request as! URLRequestConvertible).responseJSON() { (response) in
+            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+                Alamofire.request(getURL(), method: .get, parameters: nil,
+                                  headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
                     if let data = response.result.value {
                         if let json = JSON(data).array {
                             for item in json {
@@ -76,16 +77,6 @@ class MovieManager: Manager {
     
     func getURL() -> String {
         return TumCabeApi.BaseURL.rawValue + TumCabeApi.Movie.rawValue
-    }
-    
-    func getRequest() -> NSMutableURLRequest? {
-        if let url = URL(string: getURL()), let uuid = UIDevice.current.identifierForVendor?.uuidString {
-            let request = NSMutableURLRequest(url: url)
-            request.httpMethod = "GET"
-            request.setValue(uuid, forHTTPHeaderField: "X-DEVICE-ID")
-            return request
-        }
-        return nil
     }
     
 }
