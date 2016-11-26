@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-import SWXMLHash
+import SwiftyJSON
 
 class RoomFinderMapManager: SearchManager {
     
@@ -29,19 +29,25 @@ class RoomFinderMapManager: SearchManager {
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         let url = getURL()
-        request = Alamofire.request(url).responseString() { (response) in
+        request = Alamofire.request(url).responseJSON() { (response) in
             if let value = response.result.value {
-                let parsedXML = SWXMLHash.parse(value)
-                print(parsedXML)
-                var mapsArray = [DataElement]()
-                let maps = parsedXML["maps"]["map"].all
-                for map in maps {
-                    if let description = map["description"].element?.text, let id = map["id"].element?.text {
-                        let newMap = Map(roomID: self.query ?? "", mapID: id, description: description)
-                        mapsArray.append(newMap)
+                
+                let parsed = JSON(value)
+                
+                print(parsed)
+                
+                let maps: [Map?]? = parsed.array?
+                    .map { map in
+                        guard let description = map["description"].string,
+                            let id = map["map_id"].int else {
+                                return nil
+                        }
+                        return Map(roomID: self.query ?? "", mapID: id.description, description: description)
                     }
-                }
-                handler(mapsArray)
+                
+                let result = maps?.flatMap { $0 } ?? []
+                
+                handler(result)
             }
         }
     }
@@ -49,7 +55,7 @@ class RoomFinderMapManager: SearchManager {
     func getURL() -> String {
         let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.Maps.rawValue
         if let search = query {
-            let url = base + "?" + "&id=" + search
+            let url = base + search
             if let value = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
                 return value
             }

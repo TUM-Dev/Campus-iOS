@@ -8,8 +8,8 @@
 
 import Foundation
 enum RoomFinderApi: String {
-    case BaseUrl = "http://vmbaumgarten3.informatik.tu-muenchen.de/roommaps/room"
-    case SearchRooms = "/search"
-    case Maps = "/availableMaps"
-    case MapImage = "/map"
+    case BaseUrl = "https://tumcabe.in.tum.de/Api/roomfinder/"
+    case SearchRooms = "room/search/"
+    case Maps = "room/availableMaps/"
+    case MapImage = "room/map/"
 }
