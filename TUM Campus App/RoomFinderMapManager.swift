@@ -34,8 +34,6 @@ class RoomFinderMapManager: SearchManager {
                 
                 let parsed = JSON(value)
                 
-                print(parsed)
-                
                 let maps: [Map?]? = parsed.array?
                     .map { map in
                         guard let description = map["description"].string,
