@@ -7,7 +7,7 @@
 //
 
 import Alamofire
-import SWXMLHash
+import SwiftyJSON
 
 class RoomSearchManager: SearchManager {
     
@@ -28,28 +28,26 @@ class RoomSearchManager: SearchManager {
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
         request?.cancel()
         let url = getURL()
-        request = Alamofire.request(url).responseString() { (response) in
+        request = Alamofire.request(url).responseJSON() { (response) in
             if let value = response.result.value {
-                let parsedXML = SWXMLHash.parse(value)
-                var roomsArray = [DataElement]()
-                let campuses = parsedXML["campuses"]["campus"].all
-                for campus in campuses {
-                    if let campusName = campus["title"].element?.text {
-                        let buildings = campus["building"].all
-                        for building in buildings {
-                            if let buildingName = building["title"].element?.text {
-                                let rooms = building["room"].all
-                                for room in rooms {
-                                    if let code = room.element?.attributes["api_code"], let architectNumber = room["architect_number"].element?.text, let name = room["title"].element?.text {
-                                        let newRoom = Room(code: code, name: name, building: buildingName, campus: campusName, number: architectNumber)
-                                        roomsArray.append(newRoom)
-                                    }
-                                }
-                            }
+                
+                let parsed = JSON(value)
+                
+                let roomsArray: [Room?]? = parsed.array?
+                    .map { room in
+                        guard let code = room["room_id"].string,
+                            let architectNumber = room["arch_id"].string,
+                            let name = room["info"].string,
+                            let building = room["name"].string,
+                            let campus = room["campus"].string else {
+                                return nil
                         }
+                        return Room(code: code, name: name, building: building, campus: campus, number: architectNumber)
                     }
-                }
-                handler(roomsArray)
+                
+                let result = roomsArray?.flatMap { $0 } ?? []
+                
+                handler(result)
             }
         }
     }
@@ -57,7 +55,7 @@ class RoomSearchManager: SearchManager {
     func getURL() -> String {
         let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.SearchRooms.rawValue
         if let search = query {
-            let url = base + "?" + "&s=" + search
+            let url = base + search
             if let value = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
                 return value
             }
