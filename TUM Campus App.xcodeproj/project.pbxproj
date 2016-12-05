@@ -89,6 +89,19 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */; };
+		50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0F1DF4941500B6FBE3 /* CardView.storyboard */; };
+		50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E111DF4948C00B6FBE3 /* Movie.storyboard */; };
+		50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E131DF4960F00B6FBE3 /* Setup.storyboard */; };
+		50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */; };
+		50200E181DF496A800B6FBE3 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E171DF496A800B6FBE3 /* More.storyboard */; };
+		50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */; };
+		50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1B1DF497C400B6FBE3 /* Search.storyboard */; };
+		50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */; };
+		50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */; };
+		50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */; };
+		50200E241DF498F400B6FBE3 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E231DF498F400B6FBE3 /* News.storyboard */; };
+		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
 		AF5B3DA4DA1C4EE21184536D /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -190,6 +203,19 @@
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tution.storyboard; sourceTree = "<group>"; };
+		50200E0F1DF4941500B6FBE3 /* CardView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardView.storyboard; sourceTree = "<group>"; };
+		50200E111DF4948C00B6FBE3 /* Movie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
+		50200E131DF4960F00B6FBE3 /* Setup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Setup.storyboard; sourceTree = "<group>"; };
+		50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Calendar Detail.storyboard"; sourceTree = "<group>"; };
+		50200E171DF496A800B6FBE3 /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cafeteria.storyboard; sourceTree = "<group>"; };
+		50200E1B1DF497C400B6FBE3 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomFinder.storyboard; sourceTree = "<group>"; };
+		50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lecture.storyboard; sourceTree = "<group>"; };
+		50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonDetail.storyboard; sourceTree = "<group>"; };
+		50200E231DF498F400B6FBE3 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LectureDetail.storyboard; sourceTree = "<group>"; };
 		DAA3C0849116E2B4E4ED1F88 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
 		EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F43AFC350BF52CC89A2FA259 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +258,7 @@
 		0E3B21411C13C0440035ED70 /* Search View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E1B1DF497C400B6FBE3 /* Search.storyboard */,
 				0E424F681BE17ED700B5DFCB /* SearchViewController.swift */,
 				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
 				0EB1618B1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift */,
@@ -315,6 +342,7 @@
 		0E5725431C1656B700E5471D /* Calendar Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */,
 				0E692BB71C162CD200266417 /* CalendarViewController.swift */,
 			);
 			name = "Calendar Detail View";
@@ -323,6 +351,7 @@
 		0E5725461C1656DF00E5471D /* Tuition Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */,
 				0E5725441C1656D500E5471D /* TuitionTableViewController.swift */,
 			);
 			name = "Tuition Detail View";
@@ -331,6 +360,7 @@
 		0E5A61E21C135E1E006017DB /* Setup Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				50200E131DF4960F00B6FBE3 /* Setup.storyboard */,
 				0E5A61E01C135E07006017DB /* LoginViewController.swift */,
 				0E5A61E41C13639E006017DB /* WaitForTokenViewController.swift */,
 			);
@@ -340,6 +370,7 @@
 		0E5A61E31C135E27006017DB /* Card View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E0F1DF4941500B6FBE3 /* CardView.storyboard */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
 				0EDCACD61C1450A4008648D8 /* Cards */,
@@ -350,6 +381,7 @@
 		0E60CD491C148ED700B29948 /* Movie Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E111DF4948C00B6FBE3 /* Movie.storyboard */,
 				0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */,
 			);
 			name = "Movie Detail View";
@@ -395,6 +427,7 @@
 		0E8FA93B1C1814FA0077BD7A /* More View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E171DF496A800B6FBE3 /* More.storyboard */,
 				0EBC0DBD1C17797D002D7A00 /* MoreTableViewController.swift */,
 			);
 			name = "More View";
@@ -453,6 +486,7 @@
 		0EB473D31C1B646D00F17F44 /* Room Finder View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */,
 				0EB473CD1C1B4A9500F17F44 /* RoomFinderViewController.swift */,
 			);
 			name = "Room Finder View";
@@ -461,6 +495,7 @@
 		0EB473D41C1B647700F17F44 /* Cafeteria View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */,
 				0EB473C51C1B1D6A00F17F44 /* CafeteriaViewController.swift */,
 				0EB473C71C1B224700F17F44 /* MenuTableViewCell.swift */,
 			);
@@ -470,6 +505,7 @@
 		0EB473D51C1B649100F17F44 /* Lecture View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */,
 				0EB161851C1A0E6A001A08FC /* LecturesTableViewController.swift */,
 				0EB161871C1A0EB2001A08FC /* LectureTableViewCell.swift */,
 			);
@@ -492,6 +528,7 @@
 		0EF4CEF11D4167A1001649F1 /* News View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E231DF498F400B6FBE3 /* News.storyboard */,
 				0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */,
 				0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */,
 			);
@@ -501,6 +538,7 @@
 		0EF4CEF21D4167C3001649F1 /* Lecture Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */,
 				0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */,
 				0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */,
 			);
@@ -510,6 +548,7 @@
 		0EF4CEF31D4167CF001649F1 /* Person Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */,
 				0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */,
 				0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */,
 			);
@@ -631,8 +670,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E424F531BE16DBE00B5DFCB /* LaunchScreen.storyboard in Resources */,
+				50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */,
+				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
+				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
+				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
+				50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */,
+				50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */,
 				0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */,
+				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
+				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
+				50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */,
+				50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */,
+				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
+				50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */,
+				50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
