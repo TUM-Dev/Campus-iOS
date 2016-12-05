@@ -51,12 +51,13 @@ extension RoomFinderViewController: TumDataReceiver {
     func receiveData(_ data: [DataElement]) {
         maps.removeAll()
         for item in data {
-            if let cafeteria = item as? Map {
-                maps.append(cafeteria)
+            if let map = item as? Map {
+                maps.append(map)
             }
         }
+        maps = maps.sorted {$0.scale < $1.scale} // Sort maps by their scale, so the smallest one is displayed as default
         if !maps.isEmpty {
-            currentMap = maps[0]
+            currentMap = maps.first
         }
         setUpPickerView()
     }
