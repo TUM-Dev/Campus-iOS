@@ -37,10 +37,11 @@ class RoomFinderMapManager: SearchManager {
                 let maps: [Map?]? = parsed.array?
                     .map { map in
                         guard let description = map["description"].string,
-                            let id = map["map_id"].int else {
+                            let id = map["map_id"].int,
+                            let scale = map["scale"].int else {
                                 return nil
                         }
-                        return Map(roomID: self.query ?? "", mapID: id.description, description: description)
+                        return Map(roomID: self.query ?? "", mapID: id.description, description: description, scale: scale)
                     }
                 
                 let result = maps?.flatMap { $0 } ?? []
