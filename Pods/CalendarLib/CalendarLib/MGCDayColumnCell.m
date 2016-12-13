@@ -39,11 +39,9 @@ static const CGFloat dotSize = 4;
 @property (nonatomic) UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic) CAShapeLayer *dotLayer;
 @property (nonatomic) CALayer *leftBorder;
-@property (nonatomic) BOOL grayedText;
-@property (nonatomic) BOOL thickBorder;
-@property (nonatomic) NSDateFormatter *dateFormatter;
 
 @end
+
 
 @implementation MGCDayColumnCell
 
@@ -52,10 +50,10 @@ static const CGFloat dotSize = 4;
     if (self = [super initWithFrame:frame]) {
 		_markColor = [UIColor blackColor];
 		_dotColor = [UIColor blueColor];
+        _separatorColor = [UIColor lightGrayColor];
 		_headerHeight = 50;
 		
 		_dayLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-		_dayLabel.textAlignment = NSTextAlignmentCenter;
 		_dayLabel.numberOfLines = 0;
 		_dayLabel.adjustsFontSizeToFitWidth = YES;
 		_dayLabel.minimumScaleFactor = .7;
@@ -71,61 +69,34 @@ static const CGFloat dotSize = 4;
 		[self.contentView.layer addSublayer:_dotLayer];
 		
 		_leftBorder = [CALayer layer];
-		_leftBorder.backgroundColor = [[UIColor lightGrayColor]CGColor];
-		_leftBorder.hidden = YES;
 		[self.contentView.layer addSublayer:_leftBorder];
-		
-		_dateFormatter = [NSDateFormatter new];
 	}
     return self;
 }
 
 - (void)setActivityIndicatorVisible:(BOOL)visible
 {
-	if (!visible) {
-		[self.activityIndicatorView stopAnimating];
-	}
-	else {
-		if (!self.activityIndicatorView) {
-			self.activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-			self.activityIndicatorView.color = [UIColor blackColor];
-			self.activityIndicatorView.transform = CGAffineTransformMakeScale(0.6, 0.6);
-			[self.contentView addSubview:self.activityIndicatorView];
-			//[self setNeedsLayout];
-		}
-		[self.activityIndicatorView startAnimating];
-	}
-}
-
-- (void)setDate:(NSDate*)date calendar:(NSCalendar*)calendar
-{
-	self.dateFormatter.calendar = calendar;
-	self.dateFormatter.dateFormat = self.dateFormat ?: @"d MMM\neeeee";//@"eee d";
-	self.dayLabel.text = [self.dateFormatter stringFromDate:date];
-	
-	NSUInteger weekDay = [calendar components:NSCalendarUnitWeekday fromDate:date].weekday;
-
-	self.thickBorder = (weekDay == calendar.firstWeekday);
-	
-	// isDateInWeekend is only in iOS 8 and later
-	if ([calendar respondsToSelector:@selector(isDateInWeekend:)] && [calendar isDateInWeekend:date]) {
-		self.grayedText = [calendar isDateInWeekend:date];
-	}
-	else {
-		self.grayedText = (weekDay == 7 || weekDay == 1);
-	}
-	
-	[self setNeedsLayout];
+    if (!visible) {
+        [self.activityIndicatorView stopAnimating];
+    }
+    else if (self.headerHeight > 0) {
+        if (!self.activityIndicatorView) {
+            self.activityIndicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            self.activityIndicatorView.color = [UIColor blackColor];
+            self.activityIndicatorView.transform = CGAffineTransformMakeScale(0.6, 0.6);
+            [self.contentView addSubview:self.activityIndicatorView];
+        }
+        [self.activityIndicatorView startAnimating];
+    }
 }
 
 - (void)prepareForReuse
 {
-	[super prepareForReuse];
-	self.accessoryTypes = MGCDayColumnCellAccessoryNone;
-	self.grayedText = NO;
-	self.markColor = [UIColor blackColor];
-	[self setActivityIndicatorVisible:NO];
-	//[self setNeedsLayout];
+    [super prepareForReuse];
+    
+    self.accessoryTypes = MGCDayColumnCellAccessoryNone;
+    self.markColor = [UIColor blackColor];
+    [self setActivityIndicatorVisible:NO];
 }
 
 - (void)layoutSubviews
@@ -149,43 +120,36 @@ static const CGFloat dotSize = 4;
 		if (self.accessoryTypes & MGCDayColumnCellAccessoryMark) {
 			self.dayLabel.layer.cornerRadius = 6;
 			self.dayLabel.layer.backgroundColor = self.markColor.CGColor;
-			self.dayLabel.textColor = [UIColor whiteColor];
 		}
 		else  {
 			self.dayLabel.layer.cornerRadius = 0;
 			self.dayLabel.layer.backgroundColor = [UIColor clearColor].CGColor;
-			self.dayLabel.textColor = self.grayedText ? [UIColor lightGrayColor] : [UIColor blackColor];
 		}
 	}
 	
 	self.dotLayer.hidden = !(self.accessoryTypes & MGCDayColumnCellAccessoryDot) || self.headerHeight == 0;
-	self.leftBorder.hidden = !(self.accessoryTypes & MGCDayColumnCellAccessoryBorder);
-	self.dayLabel.hidden = self.headerHeight == 0;
-	
-	self.leftBorder.frame = CGRectMake(0, self.headerHeight, 1, self.contentView.bounds.size.height);
-	if (self.thickBorder) {
-		self.leftBorder.frame = CGRectMake(0, 0, 2, self.contentView.bounds.size.height);
-	}
+	self.dayLabel.hidden = (self.headerHeight == 0);
+
+    // border
+    CGRect borderFrame = CGRectZero;
+    if (self.accessoryTypes & MGCDayColumnCellAccessoryBorder) {
+        borderFrame = CGRectMake(0, self.headerHeight, 1./[UIScreen mainScreen].scale, self.contentView.bounds.size.height-self.headerHeight);
+    }
+    else if (self.accessoryTypes & MGCDayColumnCellAccessorySeparator) {
+        borderFrame = CGRectMake(0, 0, 2./[UIScreen mainScreen].scale, self.contentView.bounds.size.height);
+    }
+    
+    self.leftBorder.frame = borderFrame;
+    self.leftBorder.borderColor = self.separatorColor.CGColor;
+    self.leftBorder.borderWidth = borderFrame.size.width / 2.;
 
 	[CATransaction commit];
 }
 
-- (void)setSelected:(BOOL)selected
-{
-	[super setSelected:selected];
-	
-	if (selected) {
-		self.accessoryTypes |= MGCDayColumnCellAccessoryMark;
-	}
-	else {
-		self.accessoryTypes &= ~MGCDayColumnCellAccessoryMark;
-	}
-}
-
 - (void)setAccessoryTypes:(MGCDayColumnCellAccessoryType)accessoryTypes
 {
-	_accessoryTypes = accessoryTypes;
-	[self setNeedsLayout];
+    _accessoryTypes = accessoryTypes;
+    [self setNeedsLayout];
 }
 
 @end

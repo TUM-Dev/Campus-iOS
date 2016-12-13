@@ -37,6 +37,13 @@
 @property (nonatomic) NSUInteger numberOfRows;
 @property (nonatomic) NSUInteger firstColumn;
 @property (nonatomic) NSUInteger lastColumn;
+
+@property (nonatomic) BOOL drawVerticalLines;
+@property (nonatomic) BOOL drawHorizontalLines;
+
+@property (nonatomic) BOOL drawBottomDayLabelLines;
+@property (nonatomic) CGFloat dayCellHeaderHeight;
+
 @property (nonatomic) UIColor *gridColor;
 
 @end

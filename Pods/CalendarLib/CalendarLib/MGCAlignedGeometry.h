@@ -1,5 +1,5 @@
 //
-//  MGCEventView.m
+//  MGCAlignedGeometry.h
 //  Graphical Calendars Library for iOS
 //
 //  Distributed under the MIT License
@@ -7,7 +7,7 @@
 //
 //	https://github.com/jumartin/Calendar
 //
-//  Copyright (c) 2014-2015 Julien Martin
+//  Copyright (c) 2014-2016 Julien Martin
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,37 +28,13 @@
 //  SOFTWARE.
 //
 
-#import "MGCEventView.h"
 
+// functions to align coordinates on pixel boundaries
 
-@implementation MGCEventView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        self.visibleHeight = CGFLOAT_MAX;
-        self.backgroundColor = [UIColor grayColor];
-        self.clipsToBounds = YES;
-    }
-    return self;
-}
-
-- (void)prepareForReuse
-{
-    self.selected = NO;
-}
-
-// if needed, implement in subclasses
-- (void)didTransitionToEventType:(MGCEventType)toType
-{
-}
-
-#pragma mark - NSCopying protocol
-
-- (id)copyWithZone:(NSZone*)zone
-{
-    MGCEventView *cell = [[[self class] allocWithZone:zone] initWithFrame:self.frame];
-    return cell;
-}
-
-@end
+CGRect MGCAlignedRect(CGRect rect);
+CGRect MGCAlignedRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height);
+CGSize MGCAlignedSize(CGSize size);
+CGSize MGCAlignedSizeMake(CGFloat width, CGFloat height);
+CGPoint MGCAlignedPoint(CGPoint point);
+CGPoint MGCAlignedPointMake(CGFloat x, CGFloat y);
+CGFloat MGCAlignedFloat(CGFloat f);

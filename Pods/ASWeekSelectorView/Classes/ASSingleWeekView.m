@@ -29,7 +29,7 @@
 {
   self = [super initWithFrame:frame];
   if (self) {
-    self.gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    self.gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     
     UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapper:)];
     [self addGestureRecognizer:tapper];

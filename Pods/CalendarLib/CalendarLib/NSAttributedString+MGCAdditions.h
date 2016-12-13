@@ -1,5 +1,5 @@
 //
-//  MGCEventView.m
+//  NSAttributedString+MGCAdditions.h
 //  Graphical Calendars Library for iOS
 //
 //  Distributed under the MIT License
@@ -7,7 +7,7 @@
 //
 //	https://github.com/jumartin/Calendar
 //
-//  Copyright (c) 2014-2015 Julien Martin
+//  Copyright (c) 2014-2016 Julien Martin
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,37 +28,33 @@
 //  SOFTWARE.
 //
 
-#import "MGCEventView.h"
+#import <Foundation/Foundation.h>
 
 
-@implementation MGCEventView
+extern NSString * const MGCCircleMarkAttributeName;
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    if (self = [super initWithFrame:frame]) {
-        self.visibleHeight = CGFLOAT_MAX;
-        self.backgroundColor = [UIColor grayColor];
-        self.clipsToBounds = YES;
-    }
-    return self;
-}
 
-- (void)prepareForReuse
-{
-    self.selected = NO;
-}
+// MGCCircleMark can be used as an attribute for NSAttributedString to draw a circle mark behing the text
+@interface MGCCircleMark : NSObject
 
-// if needed, implement in subclasses
-- (void)didTransitionToEventType:(MGCEventType)toType
-{
-}
+@property (nonatomic) UIColor *borderColor; // default is clear
+@property (nonatomic) UIColor *color;       // default is red
+@property (nonatomic) CGFloat margin;       // padding on each side of the text
+@property (nonatomic) CGFloat yOffset;      // vertical position adjustment
 
-#pragma mark - NSCopying protocol
+@end
 
-- (id)copyWithZone:(NSZone*)zone
-{
-    MGCEventView *cell = [[[self class] allocWithZone:zone] initWithFrame:self.frame];
-    return cell;
-}
+
+@interface NSAttributedString (MGCAdditions)
+
+- (UIImage*)imageWithCircleMark:(MGCCircleMark*)mark;
+- (NSAttributedString*)attributedStringWithProcessedCircleMarksInRange:(NSRange)range;
+
+@end
+
+
+@interface NSMutableAttributedString (MGCAdditions)
+
+- (void)processCircleMarksInRange:(NSRange)range;
 
 @end

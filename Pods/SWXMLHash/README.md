@@ -261,7 +261,7 @@ func enumerate(indexer: XMLIndexer) {
   }
 }
 
-enumerate(xml)
+enumerate(indexer: xml)
 ```
 
 ### Error Handling
@@ -271,19 +271,19 @@ Using Swift 2.0's new error handling feature:
 ```swift
 do {
   try xml!.byKey("root").byKey("what").byKey("header").byKey("foo")
-} catch let error as IndexerError {
-  // error is an IndexerError instance that you can deal with
+} catch let error as IndexingError {
+  // error is an IndexingError instance that you can deal with
 }
 ```
 
-__Or__ using the existing indexing functionality (__NOTE__ that the `.Error` case has been renamed to `.XMLError` so as to not conflict with the `XMLIndexer.Error` error type):
+__Or__ using the existing indexing functionality:
 
 ```swift
 switch xml["root"]["what"]["header"]["foo"] {
 case .Element(let elem):
   // everything is good, code away!
 case .XMLError(let error):
-  // error is an IndexerError instance that you can deal with
+  // error is an IndexingError instance that you can deal with
 }
 ```
 
@@ -378,7 +378,7 @@ You'll get an error because there isn't any built-in deserializer for `NSDate`. 
 
 ### I'm getting an `EXC_BAD_ACCESS (SIGSEGV)` when I call `parse()`
 
-Chances are very good that your XML content has what is called a "byte order mark" or BOM. SWXMLHash uses `NSXMLParser` for its parsing logic and there are issues with it and handling BOM characters. See [issue #65](https://github.com/drmohundro/SWXMLHash/issues/65) for more details. Others who have run into this problem have just rstripped the BOM out of their content prior to parsing.
+Chances are very good that your XML content has what is called a "byte order mark" or BOM. SWXMLHash uses `NSXMLParser` for its parsing logic and there are issues with it and handling BOM characters. See [issue #65](https://github.com/drmohundro/SWXMLHash/issues/65) for more details. Others who have run into this problem have just stripped the BOM out of their content prior to parsing.
 
 ### How do I handle deserialization with a class versus a struct (such as with `NSDate`)?
 
@@ -388,7 +388,7 @@ See below for the code snippet to get this to work and note in particular the `p
 
 ```swift
 extension NSDate: XMLElementDeserializable {
-  public static func deserialize(element: XMLElement) throws -> Self {
+  public static func deserialize(_ element: XMLElement) throws -> Self {
     guard let dateAsString = element.text else {
       throw XMLDeserializationError.NodeHasNoValue
     }

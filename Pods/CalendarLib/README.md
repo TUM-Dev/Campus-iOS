@@ -1,66 +1,72 @@
-MGC Graphical Calendars Library is a set of views and controllers for displaying and scheduling events on iOS.
+# CalendarLib
 
-![Day Planner View](CalendarDocs/DayPlannerView.jpg?raw=true "Day planner view")
+[![Version](https://img.shields.io/cocoapods/v/CalendarLib.svg?style=flat)](http://cocoapods.org/pods/CalendarLib)
+[![License](https://img.shields.io/cocoapods/l/CalendarLib.svg?style=flat)](http://cocoapods.org/pods/CalendarLib)
+[![Platform](https://img.shields.io/cocoapods/p/CalendarLib.svg?style=flat)](http://cocoapods.org/pods/CalendarLib)
 
-![Month Planner View](CalendarDocs/MonthPlannerView.jpg?raw=true "Month planner view")
+CalendarLib is a set of views and controllers for displaying and scheduling events on iOS.
 
-![Year Calendar View](CalendarDocs/YearView.jpg?raw=true "Year calendar view")
+![Day Planner View](https://raw.githubusercontent.com/jumartin/Calendar/master/CalendarDocs/DayPlannerView.png "Day planner view")
+![Day Planner View](https://raw.githubusercontent.com/jumartin/Calendar/master/CalendarDocs/DayPlannerView2.png)
+![Month Planner View](https://raw.githubusercontent.com/jumartin/Calendar/master/CalendarDocs/MonthPlannerView.png "Month planner view")
+![Month Planner View](https://raw.githubusercontent.com/jumartin/Calendar/master/CalendarDocs/MonthPlannerView2.png)
+![Year Calendar View](https://raw.githubusercontent.com/jumartin/Calendar/master/CalendarDocs/YearView.png "Year calendar view")
 
-# Features #
+## Features
 
 - Create and schedule events with iCal-like views and controllers
 - 3 kinds of views are available (a day planner view, a month planner view and a year view)
 - Scroll infinitely through days / months, or restrict scrolling to a given date range
-- Page through weeks in the day planner view
+- Restrict range of displayed hours in the day planner view
+- Page through weeks in the day planner view or months in the month planner view 
 - Use a standard view for event cells or create your own custom views
-- Easily customize appearance and layout (date format, size of headers, number of visible days...)
+- Easily customize appearance and layout (date format, colors, fonts, size of headers, number of visible days...)
 - Create events by tap-and-hold on the view
 - Drag-and-drop events to another date or time
 - Scroll through days / months while dragging
 - Specialized controllers for EventKit data source but can easily work with any custom event provider 
 - Background event loading for the EventKit controllers
 - Ability to show an activity indicator for days while events are loading
-- Restrict ability to create or move events to certain dates through datasource protocol methods (currently only in day planner view)
+- Restrict ability to create or move events to certain dates through datasource protocol methods
 - Zoom in/out the day planner view to increase or decrease the height of hour slots
 
-# Compatibility #
+## Compatibility
 
-iPad with iOS 7 or higher.
+iPad / iPhone with iOS 8 or higher.
 
-The views work on the iPhone but the EventKit controllers still need a bit of work.
+## Installation
 
-# Installation #
+### CocoaPods
+    
+The best way is to use [CocoaPods](https://cocoapods.org/pods/CalendarLib). Add the following line to your Podfile : 
 
-Copy the CalendarLib folder content into your project.
+```ruby
+pod "CalendarLib"
+```
 
-# Getting started #
+### The old way
 
-1.	Create a new project
-	
-2.	Import the **CalendarLib** folder into the project
+If you don't want to use CocoaPods, you need to copy the content of the CalendarLib folder into your project, as well as the source of the two dependencies : [OSCache](https://github.com/nicklockwood/OSCache) and [OrderedDictionary](https://github.com/nicklockwood/OrderedDictionary).
 
-3.  If you want to use EventKit as a data source, create an instance of `MGCDayPlannerEKViewController` or `MGCMonthPlannerEKViewController`, or subclass them for your own needs.
+## Getting started
+
+1.  If you want to use EventKit as a data source, create an instance of `MGCDayPlannerEKViewController` or `MGCMonthPlannerEKViewController`, or subclass them for your own needs.
 	
 	Don't forget to add the following frameworks to the project:
 	
 	- **EventKit.framework**
 	- **EventKitUI.framework**
 	
-4.  If you want to use another event provider, subclass one of `MGCDayPlannerViewController` or `MGCMonthPlannerViewController` and implement the data source protocol methods.
+2.  If you want to use another event provider, subclass one of `MGCDayPlannerViewController` or `MGCMonthPlannerViewController` and implement the data source protocol methods.
 
-5.  If you want to use a custom event cell, subclass `MGCEventView` or `MGCStandardEventView` and register the class with the day / month planner view.
+3.  If you want to use a custom event cell, subclass `MGCEventView` or `MGCStandardEventView` and register the class with the day / month planner view.
 	
-See the demo project to get an idea of how to use the library.
+See the demo project to get an idea of how to use the library and check the [documentation](http://cocoadocs.org/docsets/CalendarLib/)
 
-Have a look at the CalendarDocs folder for (incomplete) documentation on the day planner view.
+## License
 
-# Todo #
+CalendarLib is available under the MIT license. See the LICENSE file.
 
-- make the EventKit controllers work on the iPhone
-- make a demo app for the iPhone
+## Change-log
 
-# License #
-
-MGC Graphical Calendars Library is available under the MIT license. See the LICENSE file.
-
-An email telling me in what kind of application you're using it would be welcome!
+A summary of each CalendarLib release can be found in the [CHANGELOG](CHANGELOG.md). 

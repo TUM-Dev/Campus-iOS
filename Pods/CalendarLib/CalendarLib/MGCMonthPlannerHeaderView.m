@@ -1,5 +1,5 @@
 //
-//  MGCEventView.m
+//  MGCMonthPlannerHeaderView.m
 //  Graphical Calendars Library for iOS
 //
 //  Distributed under the MIT License
@@ -28,37 +28,27 @@
 //  SOFTWARE.
 //
 
-#import "MGCEventView.h"
+
+#import "MGCMonthPlannerHeaderView.h"
+#import "MGCMonthPlannerViewLayout.h"
 
 
-@implementation MGCEventView
+@implementation MGCMonthPlannerHeaderView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.visibleHeight = CGFLOAT_MAX;
-        self.backgroundColor = [UIColor grayColor];
-        self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
+        self.autoresizesSubviews = YES;
+        
+        _label = [[UILabel alloc]initWithFrame:self.bounds];
+        _label.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
+        _label.numberOfLines = 0;
+        _label.adjustsFontSizeToFitWidth = YES;
+        _label.minimumScaleFactor = .85;
+        [self addSubview:_label];
     }
     return self;
-}
-
-- (void)prepareForReuse
-{
-    self.selected = NO;
-}
-
-// if needed, implement in subclasses
-- (void)didTransitionToEventType:(MGCEventType)toType
-{
-}
-
-#pragma mark - NSCopying protocol
-
-- (id)copyWithZone:(NSZone*)zone
-{
-    MGCEventView *cell = [[[self class] allocWithZone:zone] initWithFrame:self.frame];
-    return cell;
 }
 
 @end

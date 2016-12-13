@@ -70,8 +70,9 @@ static const CGFloat kCellSpacing = 2.;		// space around cells
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
-	
-	// TODO: recalculate frames
+    [self reload];
+    // possible optimization: we shouldn't have to reload everything but only to recompute the frames of the cells
+    
 }
 
 - (NSUInteger)maxVisibleLinesForDaysInRange:(NSRange)range
@@ -310,8 +311,7 @@ static const CGFloat kCellSpacing = 2.;		// space around cells
 		if (shouldDeselect)
 		{
 			cell.selected = NO;
-			if ([self.delegate respondsToSelector:@selector(eventsRowView:didDeselectCellAtIndexPath:)])
-			{
+			if ([self.delegate respondsToSelector:@selector(eventsRowView:didDeselectCellAtIndexPath:)]) {
 				[self.delegate eventsRowView:self didDeselectCellAtIndexPath:path];
 			}
 		}
@@ -325,8 +325,7 @@ static const CGFloat kCellSpacing = 2.;		// space around cells
 		if (shouldSelect)
 		{
 			cell.selected = YES;
-			if ([self.delegate respondsToSelector:@selector(eventsRowView:didSelectCellAtIndexPath:)])
-			{
+			if ([self.delegate respondsToSelector:@selector(eventsRowView:didSelectCellAtIndexPath:)]) {
 				[self.delegate eventsRowView:self didSelectCellAtIndexPath:path];
 			}
 		}

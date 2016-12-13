@@ -30,6 +30,7 @@
 
 #import "MGCTimedEventsViewLayout.h"
 #import "MGCEventCellLayoutAttributes.h"
+#import "MGCAlignedGeometry.h"
 
 
 // In iOS 8.1.2 and older, there is a bug with UICollectionView that will make
@@ -84,18 +85,21 @@
 		
 		for (NSInteger item = 0; item < numItems; item++) {
 			NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-			MGCEventCellLayoutAttributes *cellAttribs = [MGCEventCellLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
 			
-			CGFloat left = self.dayColumnSize.width * indexPath.section;
-			CGFloat top = [self.delegate collectionView:self.collectionView layout:self yPosForEventAtIndexPath:indexPath];
-			CGFloat height = [self.delegate collectionView:self.collectionView layout:self heightForEventAtIndexPath:indexPath];
-			height = fmax(self.minimumVisibleHeight, height);
-			
-			cellAttribs.frame = CGRectInset(CGRectMake(left, top, self.dayColumnSize.width, height), 0, 1);
-			cellAttribs.visibleHeight = cellAttribs.frame.size.height;
-			
-			[attribs addObject:cellAttribs];
-		}
+            CGRect rect = [self.delegate collectionView:self.collectionView layout:self rectForEventAtIndexPath:indexPath];
+            if (!CGRectIsNull(rect)) {
+                MGCEventCellLayoutAttributes *cellAttribs = [MGCEventCellLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+                
+                rect.origin.x = self.dayColumnSize.width * indexPath.section;
+                rect.size.width = self.dayColumnSize.width;
+                rect.size.height = fmax(self.minimumVisibleHeight, rect.size.height);
+                
+                cellAttribs.frame = MGCAlignedRect(CGRectInset(rect , 0, 1));
+                cellAttribs.visibleHeight = cellAttribs.frame.size.height;
+                
+                [attribs addObject:cellAttribs];
+            }
+        }
 		
 		sectionAttribs = [self adjustLayoutForOverlappingCells:attribs inSection:section];
 		
@@ -138,6 +142,7 @@
 				if (visibleHeight > self.minimumVisibleHeight) {
 					covered = attribs2;
 					covered.visibleHeight = visibleHeight;
+                    attribs1.zIndex = attribs2.zIndex + 1;
 					break;
 				}
 				else {
@@ -159,7 +164,7 @@
 		CGFloat x = section * self.dayColumnSize.width + groupOffset;
 		
 		for (MGCEventCellLayoutAttributes* attribs in [layoutGroup reverseObjectEnumerator]) {
-			attribs.frame = CGRectMake(x, attribs.frame.origin.y, colWidth, attribs.frame.size.height);
+			attribs.frame = MGCAlignedRectMake(x, attribs.frame.origin.y, colWidth, attribs.frame.size.height);
 			x += colWidth;
 		}
 	}
@@ -227,8 +232,8 @@
 	// determine first and last day intersecting rect
 	NSUInteger maxSection = self.collectionView.numberOfSections;
 	NSUInteger first = MAX(0, floorf(rect.origin.x  / self.dayColumnSize.width));
-	NSUInteger last = MIN(maxSection, ceilf(CGRectGetMaxX(rect) / self.dayColumnSize.width));
-	
+    NSUInteger last =  MIN(MAX(first, ceilf(CGRectGetMaxX(rect) / self.dayColumnSize.width)), maxSection);
+    
 	for (NSInteger day = first; day < last; day++) {
 		NSArray *attribs = [self layoutAttributesForSection:day];
 		
@@ -247,14 +252,23 @@
 	return allAttribs;
 }
 
-#ifdef BUG_FIX
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset
+{
+    CGFloat x = roundf(proposedContentOffset.x / self.dayColumnSize.width) * self.dayColumnSize.width;
+    return CGPointMake(x, proposedContentOffset.y);
+}
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
 {
-	//NSLog(@"shouldInvalidateLayoutForBoundsChange %@", NSStringFromCGRect(newBounds));
-	return self.shouldInvalidate;
-}
-
+    //NSLog(@"shouldInvalidateLayoutForBoundsChange %@", NSStringFromCGRect(newBounds));
+    
+    CGRect oldBounds = self.collectionView.bounds;
+    
+    return
+#ifdef BUG_FIX
+        self.shouldInvalidate ||
 #endif
+        oldBounds.size.width != newBounds.size.width;
+}
 
 @end
