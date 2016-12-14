@@ -121,7 +121,7 @@ extension CalendarViewController {
         if !sameDay(newDate, b: date) {
             newDate = date
         }
-        //dayPlannerView.scroll(to: newDate, options: MGCDayPlannerScrollDateTime, animated: animated)
+        dayPlannerView.scroll(to: newDate, options: .dateTime, animated: animated)
     }
     
 }
