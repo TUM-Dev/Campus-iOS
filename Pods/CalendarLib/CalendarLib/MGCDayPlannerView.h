@@ -37,18 +37,24 @@
 @protocol MGCDayPlannerViewDelegate;
 
 
-typedef enum : NSUInteger
-{
+typedef NS_ENUM(NSUInteger, MGCEventType) {
 	MGCAllDayEventType = 0,
 	MGCTimedEventType
-} MGCEventType;
+};
 
 
-typedef enum : NSUInteger {
+typedef NS_ENUM(NSUInteger, MGCDayPlannerScrollType) {
 	MGCDayPlannerScrollDateTime = 0,
 	MGCDayPlannerScrollDate = 1,
 	MGCDayPlannerScrollTime = 2
-} MGCDayPlannerScrollType;
+};
+
+
+typedef NS_ENUM(NSUInteger, MGCDayPlannerTimeMark) {
+    MGCDayPlannerTimeMarkHeader = 0,
+    MGCDayPlannerTimeMarkCurrent = 1,
+    MGCDayPlannerTimeMarkFloating = 2,
+};
 
 
 /*!
@@ -112,6 +118,33 @@ typedef enum : NSUInteger {
 @property (nonatomic) CGFloat dayHeaderHeight;
 
 /*!
+	@abstract	Returns the color of the vertical separator lines between days.
+	@discussion The default value is light gray.
+ */
+@property (nonatomic) UIColor *daySeparatorsColor;
+
+/*!
+	@abstract	Returns the color of the horizontal separator lines between time slots.
+	@discussion The default value is light gray.
+                The color is also used for time labels. 
+    @see        dayPlannerView:attributedStringForTimeMark:time: delegate method
+ */
+@property (nonatomic) UIColor *timeSeparatorsColor;
+
+/*!
+	@abstract	Returns the color of the current time line and label.
+	@discussion The default value is red.
+    @see        dayPlannerView:attributedStringForTimeMark:time: delegate method
+ */
+@property (nonatomic) UIColor *currentTimeColor;
+
+/*!
+	@abstract	Returns the color of the dot in the header indicating that a day has events.
+	@discussion The default value is blue.
+ */
+@property (nonatomic) UIColor *eventIndicatorDotColor;
+
+/*!
 	@abstract	Determines whether the day planner view shows all-day events.
 	@discussion If the value of this property is YES, the view displays a bar at the top with all-day events.
 				The default value is YES.
@@ -143,6 +176,13 @@ typedef enum : NSUInteger {
 	@discussion If the currently visible day is outside the new range, the calendar view scrolls to the range starting date.
  */
 @property (nonatomic, copy) MGCDateRange *dateRange;
+
+/*!
+	@abstract	Displayable range of hours. Default is {0, 24}.
+    @discussion Range length must be >= 1
+
+ */
+@property (nonatomic) NSRange hourRange;
 
 /*!
 	@abstract	Determines whether zooming is enabled for this day planner view.
@@ -239,8 +279,7 @@ typedef enum : NSUInteger {
 	@param		viewClass	The class of the view that you want to use.
 	@param		identifier	The reuse identifier to associate with the specified class. 
 							This parameter must not be nil and must not be an empty string.
-	@discussion	Prior to calling the dequeueReusableViewWithIdentifier:forEventViewWithReuseIdentifier method, you must 
-				use this method to tell the day planer view how to create a new event cell of the given type.
+	@discussion	Prior to calling the dequeueReusableViewWithIdentifier:forEventOfType:atIndex:date: method, you must use this method to tell the day planer view how to create a new event cell of the given type.
  */
 - (void)registerClass:(Class)viewClass forEventViewWithReuseIdentifier:(NSString*)identifier;
 
@@ -470,15 +509,13 @@ typedef enum : NSUInteger {
 
 /*!
 	@abstract	Asks the data source for the view to be displayed when a new event is about to be created.
-	@discussion	If this method is not implemented by the delegate, a standard event view will be used.
- 
+	@discussion	If this method is not implemented by the data source, a standard event view will be used.
  */
 - (MGCEventView*)dayPlannerView:(MGCDayPlannerView*)view viewForNewEventOfType:(MGCEventType)type atDate:(NSDate*)date;
 
 /*!
 	@abstract	Asks the data source if an event can be created with given type and date. 
 	@discussion	This method is not called if day planner view's canCreateEvents property is set to NO.
- 
  */
 - (BOOL)dayPlannerView:(MGCDayPlannerView*)view canCreateNewEventOfType:(MGCEventType)type atDate:(NSDate*)date;
 
@@ -499,6 +536,29 @@ typedef enum : NSUInteger {
 @protocol MGCDayPlannerViewDelegate<NSObject>
 
 @optional
+
+/*!
+	@group Configuring appearance
+ */
+
+/*!
+	@abstract   Asks the delegate for the attributed string of time marks appearing on the left of the day planner view.
+	@param		view		The day planner view requesting the information.
+	@param		mark        The mark type being drawn.
+    @param		ti          The time for the mark.
+    @return     The attributed string to draw for the mark.
+	@discussion If nil is returned, the default mark style is used.
+ */
+- (NSAttributedString*)dayPlannerView:(MGCDayPlannerView*)view attributedStringForTimeMark:(MGCDayPlannerTimeMark)mark time:(NSTimeInterval)ti;
+
+/*!
+	@abstract   Asks the delegate for the attributed string of the day header for given date.
+    @param		view		The day planner view requesting the information.
+	@param		date		The date for the header.
+	@return     The attributed string to draw.
+    @discussion If nil is returned or the method is not implemented, a default string is drawn using dateFormat property.
+ */
+- (NSAttributedString*)dayPlannerView:(MGCDayPlannerView*)view attributedStringForDayHeaderAtDate:(NSDate*)date;
 
 /*!
 	@group Responding to scrolling

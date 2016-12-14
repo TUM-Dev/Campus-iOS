@@ -1,12 +1,20 @@
 //
 //  ASWeekSelectorView.h
-//  TripGo
+//  ASWeekSelectorView
 //
 //  Created by Adrian Schoenig on 15/04/2014.
-//
+//  Copyright © 2016 Adrian Schoenig. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+
+//! Project version number for ASWeekSelectorView.
+FOUNDATION_EXPORT double ASWeekSelectorViewVersionNumber;
+
+//! Project version string for ASWeekSelectorView.
+FOUNDATION_EXPORT const unsigned char ASWeekSelectorViewVersionString[];
+
+
 
 @protocol ASWeekSelectorViewDelegate;
 
@@ -44,7 +52,6 @@
  */
 @property (nonatomic, strong) NSLocale *locale;
 
-
 /**
  The selected date which is highlighted in the view. When setting this property, the view will also jump to show that date.
  */
@@ -55,6 +62,13 @@
  @param animated     Selection should be animated.
  */
 - (void)setSelectedDate:(NSDate *)selectedDate animated:(BOOL)animated;
+
+/**
+ Triggers a refresh of the week view, which calls again the delegate methods
+ for configuring colours and the indicators. Call this if your underlying
+ data has changed and you need those valus refreshed.
+ */
+- (void)refresh;
 
 @end
 
@@ -78,7 +92,6 @@
  */
 - (void)weekSelector:(ASWeekSelectorView *)weekSelector didSelectDate:(NSDate *)date;
 
-
 /**
  Called when the user did actively swipe to a new week.
  
@@ -87,5 +100,26 @@
  @param weekSelector The week selector that the user interacted with.
  */
 - (void)weekSelectorDidSwipe:(ASWeekSelectorView *)weekSelector;
+
+/**
+ Implement to draw a circle (stroke only) around the specified date.
+ @param date Date for which to customise color (not called for selected date)
+ @return Color of the highlighter circle, or `nil` if no circle
+ */
+- (UIColor *)weekSelector:(ASWeekSelectorView *)weekSelector circleColorForDate:(NSDate *)date;
+
+/**
+ Implement to change the color of the number for the specified date.
+ @param date Date for which to customise color (not called for selected date)
+ @return Color of number label, or `nil` to use default `numberTextColor`
+ */
+- (UIColor *)weekSelector:(ASWeekSelectorView *)weekSelector numberColorForDate:(NSDate *)date;
+
+/**
+ Implement to allow showing a dot below the number for the specified date.
+ @param date Date for which to show a dot (or not)
+ @return Whether an indicator dot should be shown
+ */
+- (BOOL)weekSelector:(ASWeekSelectorView *)weekSelector showIndicatorForDate:(NSDate *)date;
 
 @end

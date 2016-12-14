@@ -30,6 +30,7 @@
 
 #import "MGCTimeRowsView.h"
 #import "NSCalendar+MGCAdditions.h"
+#import "MGCAlignedGeometry.h"
 
 
 @interface MGCTimeRowsView()
@@ -55,6 +56,7 @@
 		_timeColor = [UIColor lightGrayColor];
 		_currentTimeColor = [UIColor redColor];
 		_rounding = 15;
+		_hourRange = NSMakeRange(0, 24);
 		
 		self.showsCurrentTime = YES;
 	}
@@ -78,6 +80,12 @@
 	return self.hourSlotHeight > 100;
 }
 
+- (void)setHourRange:(NSRange)hourRange
+{
+    NSAssert(hourRange.length >= 1 && NSMaxRange(hourRange) <= 24, @"Invalid hour range %@", NSStringFromRange(hourRange));
+    _hourRange = hourRange;
+}
+
 - (void)setTimeMark:(NSTimeInterval)timeMark
 {
 	_timeMark = timeMark;
@@ -89,15 +97,14 @@
 	[self setNeedsDisplay];
 }
 
-// time is the interval since the start of the day
+// time is the interval since the start of the day.
+// result can be negative if hour range doesn't start at 0
 - (CGFloat)yOffsetForTime:(NSTimeInterval)time rounded:(BOOL)rounded
 {
-	if (rounded) {
+    if (rounded) {
 		time = roundf(time / (self.rounding * 60)) * (self.rounding * 60);
 	}
-	
-	CGFloat hour = time / 3600.;
-	return hour * self.hourSlotHeight + self.insetsHeight;
+    return (time / 3600. - self.hourRange.location) * self.hourSlotHeight + self.insetsHeight;
 }
 
 // time is the interval since the start of the day
@@ -116,60 +123,95 @@
 	return [NSString stringWithFormat:@"%02d:%02d", hour, minutes];
 }
 
+- (NSAttributedString*)attributedStringForTimeMark:(MGCDayPlannerTimeMark)mark time:(NSTimeInterval)ti
+{
+    NSAttributedString *attrStr = nil;
+    
+    if ([self.delegate respondsToSelector:@selector(timeRowsView:attributedStringForTimeMark:time:)]) {
+        attrStr = [self.delegate timeRowsView:self attributedStringForTimeMark:mark time:ti];
+    }
+    
+    if (!attrStr) {
+        BOOL rounded = (mark != MGCDayPlannerTimeMarkCurrent);
+        BOOL minutesOnly = (mark == MGCDayPlannerTimeMarkFloating);
+    
+        NSString *str = [self stringForTime:ti rounded:rounded minutesOnly:minutesOnly];
+    
+        NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+        style.alignment = NSTextAlignmentRight;
+        
+        UIColor *foregroundColor = (mark == MGCDayPlannerTimeMarkCurrent ? self.currentTimeColor : self.timeColor);
+        attrStr = [[NSAttributedString alloc]initWithString:str attributes:@{ NSFontAttributeName: self.font, NSForegroundColorAttributeName: foregroundColor, NSParagraphStyleAttributeName: style }];
+    }
+    return attrStr;
+}
+
+- (BOOL)canDisplayTime:(NSTimeInterval)ti
+{
+    CGFloat hour = ti/3600.;
+    return hour >= self.hourRange.location && hour <= NSMaxRange(self.hourRange);
+}
+
 - (void)drawRect:(CGRect)rect
 {
 	const CGFloat kSpacing = 5.;
 	const CGFloat dash[2]= {2, 3};
-	
+    
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+    CGSize markSizeMax = CGSizeMake(self.timeColumnWidth - 2.*kSpacing, CGFLOAT_MAX);
+    
 	// calculate rect for current time mark
-	NSTimeInterval currentTime = -[[self.calendar mgc_startOfDayForDate:[NSDate date]] timeIntervalSinceNow];
-	NSString *s = [self stringForTime:currentTime rounded:NO minutesOnly:NO];
-	CGSize size = [s sizeWithAttributes:@{ NSFontAttributeName:self.font }];
-	
+    NSDateComponents *comps = [self.calendar components:NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond fromDate:[NSDate date]];
+    NSTimeInterval currentTime = comps.hour*3600.+comps.minute*60.+comps.second;
+    
+    NSAttributedString *markAttrStr = [self attributedStringForTimeMark:MGCDayPlannerTimeMarkCurrent time:currentTime];
+    CGSize markSize = [markAttrStr boundingRectWithSize:markSizeMax options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    
 	CGFloat y = [self yOffsetForTime:currentTime rounded:NO];
-	CGPoint pt = CGPointMake(self.timeColumnWidth - (size.width + kSpacing), y - size.height / 2.);
-	CGRect rectCurTime = CGRectMake(pt.x, pt.y, size.width, size.height);
+    CGRect rectCurTime = CGRectZero;
 	
 	// draw current time mark
-	if (self.showsCurrentTime) {
-		[s drawAtPoint:pt withAttributes:@{ NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.currentTimeColor }];
-		CGRect lineRect = CGRectMake(self.timeColumnWidth - kSpacing, y, rect.size.width - self.timeColumnWidth + kSpacing, 1);
+	if (self.showsCurrentTime && [self canDisplayTime:currentTime]) {
+        rectCurTime =  CGRectMake(kSpacing, y - markSize.height/2., markSizeMax.width, markSize.height);
+        [markAttrStr drawInRect:rectCurTime];
+		CGRect lineRect = CGRectMake(self.timeColumnWidth - kSpacing, y, self.bounds.size.width - self.timeColumnWidth + kSpacing, 1);
+        CGContextSetFillColorWithColor(context, self.currentTimeColor.CGColor);
 		UIRectFill(lineRect);
 	}
 	
-	// calculate rect for the small time mark
-	NSString *strTimeMark = [self stringForTime:self.timeMark rounded:YES minutesOnly:YES];
-	size = [strTimeMark sizeWithAttributes:@{ NSFontAttributeName:self.font }];
-	y = [self yOffsetForTime:self.timeMark rounded:YES];
-	CGPoint ptTimeMark = CGPointMake(self.timeColumnWidth - (size.width + kSpacing), y - size.height / 2.);
-	CGRect rectTimeMark = CGRectMake(ptTimeMark.x, ptTimeMark.y, size.width, size.height);
+	// calculate rect for the floating time mark
+    NSAttributedString *floatingMarkAttrStr = [self attributedStringForTimeMark:MGCDayPlannerTimeMarkFloating time:self.timeMark];
+    markSize = [floatingMarkAttrStr boundingRectWithSize:markSizeMax options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
 	
-	BOOL drawTimeMark = (self.timeMark != 0) && !CGRectIntersectsRect(rectTimeMark, rectCurTime);
-	
-	CGContextSetStrokeColorWithColor(context, self.timeColor.CGColor);
-	
+    y = [self yOffsetForTime:self.timeMark rounded:YES];
+    CGRect rectTimeMark = CGRectMake(kSpacing, y - markSize.height/2., markSizeMax.width, markSize.height);
+    
+    BOOL drawTimeMark = self.timeMark != 0 && [self canDisplayTime:self.timeMark];
+    CGFloat lineWidth = 1. / [UIScreen mainScreen].scale;
+    
 	// draw the hour marks
-	for (int i = 0; i <= 24; i++) {
+	for (NSUInteger i = self.hourRange.location; i <=  NSMaxRange(self.hourRange); i++) {
 		
-		s = [NSString stringWithFormat:@"%02d:00", i % 24];
-		size = [s sizeWithAttributes:@{ NSFontAttributeName:self.font }];
-		y = i * self.hourSlotHeight + self.insetsHeight;
-		pt = CGPointMake(self.timeColumnWidth - (size.width + kSpacing), y - size.height / 2.);
-		CGRect r = CGRectMake(pt.x, pt.y, size.width, size.height);
+        markAttrStr = [self attributedStringForTimeMark:MGCDayPlannerTimeMarkHeader time:(i % 24)*3600];
+        markSize = [markAttrStr boundingRectWithSize:markSizeMax options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+        
+        y = MGCAlignedFloat((i - self.hourRange.location) * self.hourSlotHeight + self.insetsHeight) - lineWidth * .5;
+		CGRect r = MGCAlignedRectMake(kSpacing, y - markSize.height / 2., markSizeMax.width, markSize.height);
 
 		if (!CGRectIntersectsRect(r, rectCurTime) || !self.showsCurrentTime) {
-			[s drawAtPoint:pt withAttributes:@{ NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.timeColor }];
-		}
-		
+            [markAttrStr drawInRect:r];
+ 		}
+        
+        CGContextSetStrokeColorWithColor(context, self.timeColor.CGColor);
+        CGContextSetLineWidth(context, lineWidth);
 		CGContextSetLineDash(context, 0, NULL, 0);
-		CGContextMoveToPoint(context, self.timeColumnWidth, y),
+        CGContextMoveToPoint(context, self.timeColumnWidth, y);
 		CGContextAddLineToPoint(context, self.timeColumnWidth + rect.size.width, y);
 		CGContextStrokePath(context);
 		
-		if (self.showsHalfHourLines && i != 24) {
-			y += self.hourSlotHeight / 2;
+		if (self.showsHalfHourLines && i < NSMaxRange(self.hourRange)) {
+			y = MGCAlignedFloat(y + self.hourSlotHeight/2.) - lineWidth * .5;
 			CGContextSetLineDash(context, 0, dash, 2);
 			CGContextMoveToPoint(context, self.timeColumnWidth, y),
 			CGContextAddLineToPoint(context, self.timeColumnWidth + rect.size.width, y);
@@ -181,7 +223,7 @@
 	}
 
 	if (drawTimeMark) {
-		[strTimeMark drawAtPoint:ptTimeMark withAttributes:@{ NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.timeColor }];
+        [floatingMarkAttrStr drawInRect:rectTimeMark];
 	}
 }
 

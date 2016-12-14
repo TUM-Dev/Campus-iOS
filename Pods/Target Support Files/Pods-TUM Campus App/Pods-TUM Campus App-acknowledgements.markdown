@@ -80,7 +80,7 @@ THE SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Julien Martin
+Copyright (c) 2016 Julien Martin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -125,7 +125,7 @@ THE SOFTWARE.
 ## OSCache
 
 OSCache 
-version 1.2, July 14th, 2015
+version 1.2.1, Decembet 18th, 2015
 
 Copyright (C) 2014 Charcoal Design
 
@@ -149,7 +149,7 @@ freely, subject to the following restrictions:
 
 OrderedDictionary
 
-Version 1.2, September 28th, 2014
+Version 1.4, September 12th, 2016
 
 Copyright (C) 2010 Charcoal Design
 

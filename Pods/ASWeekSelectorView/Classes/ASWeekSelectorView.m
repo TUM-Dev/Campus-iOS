@@ -8,6 +8,8 @@
 
 #import "ASWeekSelectorView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "ASSingleWeekView.h"
 #import "ASDaySelectionView.h"
 
@@ -70,7 +72,8 @@
   }
   
   if (! [self date:selectedDate matchesDateComponentsOfDate:_selectedDate]) {
-    [self colorLabelForDate:_selectedDate withTextColor:self.numberTextColor];
+    UIColor *numberTextColor = [self numberTextColorForDate:_selectedDate];
+    [self colorLabelForDate:_selectedDate withTextColor:numberTextColor];
     _selectedDate = selectedDate;
     self.isAnimating = animated;
     
@@ -91,6 +94,10 @@
 {
   _locale = locale;
   [self updateDateFormatters];
+}
+
+- (void)refresh {
+  [self rebuildWeeks];
 }
 
 #pragma mark - UIView
@@ -267,10 +274,35 @@
   UILabel *numberLabel = [[UILabel alloc] initWithFrame:numberFrame];
   numberLabel.textAlignment = NSTextAlignmentCenter;
   numberLabel.font = [UIFont systemFontOfSize:18];
-  numberLabel.textColor = (isSelection && ! self.isAnimating) ? self.selectorLetterTextColor : self.numberTextColor;
+  if (isSelection && ! self.isAnimating) {
+    numberLabel.textColor = self.selectorLetterTextColor;
+  } else {
+    numberLabel.textColor = [self numberTextColorForDate:date];
+  }
   numberLabel.text = dayNumberText;
   numberLabel.tag = 100 + [dayNumberText integerValue];
   [wrapper addSubview:numberLabel];
+  
+  if ([self.delegate respondsToSelector:@selector(weekSelector:circleColorForDate:)]) {
+    UIColor *color = [self.delegate weekSelector:self circleColorForDate:date];
+    if (color) {
+      ASDaySelectionView *view = [self eventDayView];
+      view.circleColor = color;
+      [wrapper insertSubview:view atIndex:0];
+    }
+  }
+  
+  if ([self.delegate respondsToSelector:@selector(weekSelector:showIndicatorForDate:)]) {
+    if ([self.delegate weekSelector:self showIndicatorForDate:date]) {
+      CGFloat radius = 3;
+      CGRect indicatorFrame = CGRectMake((width - radius) / 2, CGRectGetMaxY(numberFrame) - 7 - radius, radius, radius);
+      UIView *view = [[UIView alloc] initWithFrame:indicatorFrame];
+      view.backgroundColor = numberLabel.textColor;
+      view.layer.cornerRadius = radius / 2;
+      view.tag = 200 + [dayNumberText integerValue];
+      [wrapper addSubview:view];
+    }
+  }
   
   UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(frame) - 1, 0, 1, CGRectGetHeight(frame))];
   lineView.backgroundColor = self.lineColor;
@@ -285,7 +317,9 @@
 - (void)singleWeekView:(ASSingleWeekView *)singleWeekView didSelectDate:(NSDate *)date atFrame:(CGRect)frame
 {
   [self userWillSelectDate:date];
-  [self colorLabelForDate:_selectedDate withTextColor:self.numberTextColor];
+  
+  UIColor *numberTextColor = [self numberTextColorForDate:_selectedDate];
+  [self colorLabelForDate:_selectedDate withTextColor:numberTextColor];
 
   [UIView animateWithDuration:0.25f
                    animations:
@@ -316,9 +350,8 @@
     // this is using variables directly to not trigger setter methods
     _singleWeekViews = [NSMutableArray arrayWithCapacity:WEEKS];
     _firstWeekday = 1; // sunday
-    _gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    _gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
   }
-  
   CGFloat width = CGRectGetWidth(self.frame);
   CGFloat height = CGRectGetHeight(self.frame);
   CGRect scrollViewFrame = CGRectMake(0, 0, width, height - 1);
@@ -374,7 +407,7 @@
   }
   
   // determine where the start of the previews week was as that'll be our start date
-  NSDateComponents *component = [self.gregorian components:NSWeekdayCalendarUnit fromDate:self.selectedDate];
+  NSDateComponents *component = [self.gregorian components:NSCalendarUnitWeekday fromDate:self.selectedDate];
   NSInteger weekday = [component weekday];
   NSInteger daysToSubtract;
   if (weekday == self.firstWeekday) {
@@ -439,7 +472,8 @@
 
 - (void)userDidSelectDate:(NSDate *)date
 {
-  [self colorLabelForDate:_selectedDate withTextColor:self.numberTextColor];
+  UIColor *numberTextColor = [self numberTextColorForDate:_selectedDate];
+  [self colorLabelForDate:_selectedDate withTextColor:numberTextColor];
   _selectedDate = date;
 
   [self animateSelectionToPreDrag];
@@ -471,12 +505,24 @@
   }
 }
 
+- (UIColor *)numberTextColorForDate:(NSDate *)date {
+  if (date && [self.delegate respondsToSelector:@selector(weekSelector:numberColorForDate:)]) {
+    return [self.delegate weekSelector:self numberColorForDate:date] ?: self.numberTextColor;
+  } else {
+    return self.numberTextColor;
+  }
+}
+
 - (void)colorLabelForDate:(NSDate *)date withTextColor:(UIColor *)textColor
 {
   NSString *dayNumberText = [self.dayNumberDateFormatter stringFromDate:date];
-  NSInteger viewTag = 100 + [dayNumberText integerValue];
+  NSInteger labelTag = 100 + [dayNumberText integerValue];
+  NSInteger indicatorTag = 200 + [dayNumberText integerValue];
   for (ASSingleWeekView *singleWeek in self.singleWeekViews) {
-    UIView *view = [singleWeek viewWithTag:viewTag];
+    UIView *view = [singleWeek viewWithTag:indicatorTag];
+    view.backgroundColor = textColor;
+    
+    view = [singleWeek viewWithTag:labelTag];
     if ([view isKindOfClass:[UILabel class]]) {
       UILabel *label = (UILabel *)view;
       label.textColor = textColor;
@@ -522,4 +568,16 @@
   return _todayView;
 }
 
+-(ASDaySelectionView *)eventDayView
+{
+    CGFloat width = CGRectGetWidth(self.frame) / 7;
+    CGFloat height = CGRectGetHeight(self.frame);
+    ASDaySelectionView *view = [[ASDaySelectionView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    view.backgroundColor = [UIColor clearColor];
+    view.fillCircle = NO;
+    view.circleCenter = CGPointMake(width / 2, 20 + (height - 20) / 2);
+    view.circleColor = [UIColor redColor];
+    view.userInteractionEnabled = NO;
+    return view;
+}
 @end

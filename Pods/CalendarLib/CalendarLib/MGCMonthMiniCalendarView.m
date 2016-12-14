@@ -30,11 +30,15 @@
 
 #import "MGCMonthMiniCalendarView.h"
 #import "NSCalendar+MGCAdditions.h"
+#import "Constant.h"
 
 
 static const CGFloat kMonthMargin = 5;
 static const CGFloat kDefaultDayFontSize = 13;
 static const CGFloat kDefaultHeaderFontSize = 16;
+static const CGFloat kMonthMarginiPhone = 5;
+static const CGFloat kDefaultDayFontSizeiPhone = 7;
+static const CGFloat kDefaultHeaderFontSizeiPhone = 8;
 
 
 @interface MGCMonthMiniCalendarView ()
@@ -53,17 +57,25 @@ static const CGFloat kDefaultHeaderFontSize = 16;
 {
     self = [super initWithFrame:frame];
     if (self)
-	{
+    {
         _calendar = [NSCalendar currentCalendar];
-		_date = [NSDate date];
-		_dateFormatter = [NSDateFormatter new];
-		_dateFormatter.dateFormat = @"MMMM yyyy";
-		_daysFont = [UIFont systemFontOfSize:kDefaultDayFontSize];
-		_highlightColor = [UIColor blackColor];
-		_showsDayHeader = YES;
-		_showsMonthHeader = YES;
-		
-		self.backgroundColor = [UIColor clearColor];
+        _date = [NSDate date];
+        _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.dateFormat = @"MMMM yyyy";
+        if (isiPad) {
+            //NSLog(@"---------------- iPAD ------------------");
+            _daysFont = [UIFont systemFontOfSize:kDefaultDayFontSize];
+        }
+        else{
+            //NSLog(@"---------------- iPhone ------------------");
+            _daysFont = [UIFont systemFontOfSize:kDefaultDayFontSizeiPhone];
+        }
+        
+        _highlightColor = [UIColor blackColor];
+        _showsDayHeader = YES;
+        _showsMonthHeader = YES;
+        
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -72,49 +84,58 @@ static const CGFloat kDefaultHeaderFontSize = 16;
 
 - (NSArray*)dayLabels
 {
-	if (_dayLabels == nil)
-	{
-		NSArray *symbols = self.dateFormatter.veryShortStandaloneWeekdaySymbols;
-		
-		NSMutableArray *labels = [NSMutableArray array];
-		for (int i = 0; i < symbols.count; i++)
-		{
-			// days array is zero-based, sunday first.
-			// translate to get firstWeekday at position 0
-			NSUInteger weekday = (i + self.calendar.firstWeekday - 1 + symbols.count) % symbols.count;
-			
-			[labels addObject:[symbols objectAtIndex:weekday]];
-		}
-		_dayLabels = labels;
-	}
-	return _dayLabels;
+    if (_dayLabels == nil)
+    {
+        NSArray *symbols = self.dateFormatter.veryShortStandaloneWeekdaySymbols;
+        
+        NSMutableArray *labels = [NSMutableArray array];
+        for (int i = 0; i < symbols.count; i++)
+        {
+            // days array is zero-based, sunday first.
+            // translate to get firstWeekday at position 0
+            NSUInteger weekday = (i + self.calendar.firstWeekday - 1 + symbols.count) % symbols.count;
+            
+            [labels addObject:[symbols objectAtIndex:weekday]];
+        }
+        _dayLabels = labels;
+    }
+    return _dayLabels;
 }
 
 - (void)setCalendar:(NSCalendar*)calendar
 {
-	_calendar = [calendar copy];
-	self.dateFormatter.calendar = calendar;
+    _calendar = [calendar copy];
+    self.dateFormatter.calendar = calendar;
 }
 
 - (NSAttributedString*)headerText
 {
-	if (_headerText == nil)
-	{
-		NSString *s = [[self.dateFormatter stringFromDate:self.date]uppercaseString];
-		UIFont *font = [UIFont boldSystemFontOfSize:kDefaultHeaderFontSize];
-		
-		NSMutableParagraphStyle *para = [NSMutableParagraphStyle new];
-		para.alignment = NSTextAlignmentCenter;
-		return [[NSAttributedString alloc]initWithString:s attributes:@{ NSFontAttributeName: font, NSParagraphStyleAttributeName: para }];
-	}
-	return _headerText;
+    if (_headerText == nil)
+    {
+        NSString *s = [[self.dateFormatter stringFromDate:self.date]uppercaseString];
+        UIFont *font;
+        if (isiPad) {
+            //NSLog(@"---------------- iPAD ------------------");
+            font = [UIFont boldSystemFontOfSize:kDefaultHeaderFontSize];
+        }
+        else{
+            //NSLog(@"---------------- iPhone ------------------");
+            font = [UIFont boldSystemFontOfSize:kDefaultHeaderFontSizeiPhone];
+        }
+        
+        
+        NSMutableParagraphStyle *para = [NSMutableParagraphStyle new];
+        para.alignment = NSTextAlignmentCenter;
+        return [[NSAttributedString alloc]initWithString:s attributes:@{ NSFontAttributeName: font, NSParagraphStyleAttributeName: para }];
+    }
+    return _headerText;
 }
 
 - (NSUInteger)firstDayColumn
 {
 	NSDate *firstDayInMonth = [self.calendar mgc_startOfMonthForDate:self.date];
-	NSUInteger weekday = [self.calendar components:NSWeekdayCalendarUnit fromDate:firstDayInMonth].weekday;
-	NSUInteger numDaysInWeek = [self.calendar maximumRangeOfUnit:NSWeekdayCalendarUnit].length;
+	NSUInteger weekday = [self.calendar components:NSCalendarUnitWeekday fromDate:firstDayInMonth].weekday;
+	NSUInteger numDaysInWeek = [self.calendar maximumRangeOfUnit:NSCalendarUnitWeekday].length;
 	// zero-based, 0 is the first day of week of current calendar
 	weekday = (weekday + numDaysInWeek - self.calendar.firstWeekday) % numDaysInWeek;
 	return weekday;
@@ -131,48 +152,55 @@ static const CGFloat kDefaultHeaderFontSize = 16;
 	NSUInteger numCols = self.dayLabels.count;
 	NSUInteger numRows = self.showsDayHeader ? 1 : 0;
 	if (yearWise)
-		numRows += [self.calendar maximumRangeOfUnit:NSWeekOfMonthCalendarUnit].length;
+		numRows += [self.calendar maximumRangeOfUnit:NSCalendarUnitWeekOfMonth].length;
 	else
-		numRows += [self.calendar rangeOfUnit:NSWeekCalendarUnit inUnit:NSMonthCalendarUnit forDate:self.date].length;
+		numRows += [self.calendar rangeOfUnit:NSCalendarUnitWeekOfMonth inUnit:NSCalendarUnitMonth forDate:self.date].length;
 	
 	CGSize viewSize = CGSizeMake(numCols * dayCellSize + (numCols - 1) * space, numRows * dayCellSize + (numRows - 1) * space);
 	
-	if (self.showsMonthHeader)
-	{
-		CGRect headerRect = [self.headerText boundingRectWithSize:CGSizeMake(viewSize.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-		viewSize.height += headerRect.size.height + space;
-	}
-
-	viewSize.height += 2 * kMonthMargin;
-	viewSize.width += 2 * kMonthMargin;
-	return viewSize;
+    if (self.showsMonthHeader)
+    {
+        CGRect headerRect = [self.headerText boundingRectWithSize:CGSizeMake(viewSize.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        viewSize.height += headerRect.size.height + space;
+    }
+    if (isiPad) {
+        //NSLog(@"---------------- iPAD ------------------");
+        viewSize.height += 2 * kMonthMargin;
+        viewSize.width += 2 * kMonthMargin;
+    }
+    else{
+        //NSLog(@"---------------- iPhone ------------------");
+        viewSize.height += 2 * kMonthMarginiPhone;
+        viewSize.width += 2 * kMonthMarginiPhone;
+    }
+    
+    return viewSize;
 }
 
 - (NSMutableAttributedString*)textForDayAtIndex:(NSUInteger)index cellColor:(UIColor*)cellColor
 {
-	NSString *s = [NSString stringWithFormat:@"%lu", (unsigned long)index];
-	
-	UIColor *color = [UIColor blackColor];
-	UIFont *font = self.daysFont;
-	
-	if ([self.highlightedDays containsIndex:index] || cellColor != nil)
-	{
-		color = [UIColor colorWithWhite:1 alpha:.9];
-		font = [UIFont fontWithDescriptor:[[self.daysFont fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:self.daysFont.pointSize];
-	}
-	
-	NSMutableParagraphStyle *para = [NSMutableParagraphStyle new];
-	para.alignment = NSTextAlignmentCenter;
-	para.lineBreakMode = NSLineBreakByCharWrapping;
-	
-	return [[NSMutableAttributedString alloc]initWithString:s attributes:@{ NSFontAttributeName: font, NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: para }];
+    NSString *s = [NSString stringWithFormat:@"%lu", (unsigned long)index];
+    UIColor *color = [UIColor blackColor];
+    UIFont *font = self.daysFont;
+    
+    if ([self.highlightedDays containsIndex:index] || cellColor != nil)
+    {
+        color = [UIColor colorWithWhite:1 alpha:.9];
+        font = [UIFont fontWithDescriptor:[[self.daysFont fontDescriptor] fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold] size:self.daysFont.pointSize];
+    }
+    
+    NSMutableParagraphStyle *para = [NSMutableParagraphStyle new];
+    para.alignment = NSTextAlignmentCenter;
+    para.lineBreakMode = NSLineBreakByCharWrapping;
+    
+    return [[NSMutableAttributedString alloc]initWithString:s attributes:@{ NSFontAttributeName: font, NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: para }];
 }
 
 #pragma mark - UIView
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-	return [self preferredSizeYearWise:NO];
+    return [self preferredSizeYearWise:NO];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -182,8 +210,14 @@ static const CGFloat kDefaultHeaderFontSize = 16;
 	CGFloat dayCellSize = MAX(daySize.width, daySize.height);
 	CGFloat space = dayCellSize / 2.;
 
-	rect = CGRectInset(rect, kMonthMargin, kMonthMargin);
-
+    if (isiPad) {
+        //NSLog(@"---------------- iPAD ------------------");
+        rect = CGRectInset(rect, kMonthMargin, kMonthMargin);
+    }
+    else{
+        //NSLog(@"---------------- iPhone ------------------");
+        rect = CGRectInset(rect, kMonthMarginiPhone, kMonthMarginiPhone);
+    }
 	
 	// draw month header
 	if (self.showsMonthHeader)
@@ -224,7 +258,7 @@ static const CGFloat kDefaultHeaderFontSize = 16;
 	
 	// draw day cells
 	NSDate *firstDayInMonth = [self.calendar mgc_startOfMonthForDate:self.date];
-	NSUInteger days = [self.calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:firstDayInMonth].length;
+	NSUInteger days = [self.calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:firstDayInMonth].length;
 	NSUInteger firstCol = [self firstDayColumn];
 	
 	x = rect.origin.x + firstCol * (dayCellSize + space);

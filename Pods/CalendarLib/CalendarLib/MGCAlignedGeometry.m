@@ -1,5 +1,5 @@
 //
-//  MGCEventView.m
+//  MGCAlignedGeometry.m
 //  Graphical Calendars Library for iOS
 //
 //  Distributed under the MIT License
@@ -7,7 +7,7 @@
 //
 //	https://github.com/jumartin/Calendar
 //
-//  Copyright (c) 2014-2015 Julien Martin
+//  Copyright (c) 2014-2016 Julien Martin
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -28,37 +28,47 @@
 //  SOFTWARE.
 //
 
-#import "MGCEventView.h"
+
+#import <Foundation/Foundation.h>
+#import "MGCAlignedGeometry.h"
 
 
-@implementation MGCEventView
-
-- (instancetype)initWithFrame:(CGRect)frame
+CGRect MGCAlignedRect(CGRect rect)
 {
-    if (self = [super initWithFrame:frame]) {
-        self.visibleHeight = CGFLOAT_MAX;
-        self.backgroundColor = [UIColor grayColor];
-        self.clipsToBounds = YES;
-    }
-    return self;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    return CGRectMake(floorf(rect.origin.x * scale) / scale, floorf(rect.origin.y * scale) / scale, ceilf(rect.size.width * scale) / scale, ceilf(rect.size.height * scale) / scale);
 }
 
-- (void)prepareForReuse
+CGRect MGCAlignedRectMake(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
 {
-    self.selected = NO;
+    return MGCAlignedRect(CGRectMake(x, y, width, height));
 }
 
-// if needed, implement in subclasses
-- (void)didTransitionToEventType:(MGCEventType)toType
+CGSize MGCAlignedSize(CGSize size)
 {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    return CGSizeMake(ceilf(size.width * scale) / scale, ceilf(size.height * scale) / scale);
 }
 
-#pragma mark - NSCopying protocol
-
-- (id)copyWithZone:(NSZone*)zone
+CGSize MGCAlignedSizeMake(CGFloat width, CGFloat height)
 {
-    MGCEventView *cell = [[[self class] allocWithZone:zone] initWithFrame:self.frame];
-    return cell;
+    return MGCAlignedSize(CGSizeMake(width, height));
 }
 
-@end
+CGPoint MGCAlignedPoint(CGPoint point)
+{
+    CGFloat scale = [UIScreen mainScreen].scale;
+    return CGPointMake(floorf(point.x * scale) / scale, floorf(point.y * scale) / scale);
+}
+
+CGPoint MGCAlignedPointMake(CGFloat x, CGFloat y)
+{
+    return MGCAlignedPoint(CGPointMake(x, y));
+}
+
+CGFloat MGCAlignedFloat(CGFloat f)
+{
+    CGFloat scale = [UIScreen mainScreen].scale;
+    return roundf(f * scale) / scale;
+}
+

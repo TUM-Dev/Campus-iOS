@@ -233,7 +233,7 @@ class LazyXMLParser: NSObject, SimpleXmlParser, XMLParserDelegate {
         let parser = Foundation.XMLParser(data: data!)
         parser.shouldProcessNamespaces = options.shouldProcessNamespaces
         parser.delegate = self
-        parser.parse()
+        _ = parser.parse()
     }
 
     func parser(_ parser: Foundation.XMLParser,
@@ -312,7 +312,7 @@ class FullXMLParser: NSObject, SimpleXmlParser, XMLParserDelegate {
         let parser = Foundation.XMLParser(data: data)
         parser.shouldProcessNamespaces = options.shouldProcessNamespaces
         parser.delegate = self
-        parser.parse()
+        _ = parser.parse()
 
         return XMLIndexer(root)
     }
@@ -524,7 +524,7 @@ public enum XMLIndexer: Sequence {
 
     - parameter key: The element name to index by
     - returns: instance of XMLIndexer to match the element (or elements) found by key
-    - throws: Throws an XMLIndexerError.Key if no element was found
+    - throws: Throws an XMLIndexingError.Key if no element was found
     */
     public func byKey(_ key: String) throws -> XMLIndexer {
         switch self {
@@ -652,7 +652,7 @@ extension XMLIndexer: CustomStringConvertible {
 }
 
 extension IndexingError: CustomStringConvertible {
-    /// The description for the `XMLIndexer.Error`.
+    /// The description for the `IndexingError`.
     public var description: String {
         switch self {
         case .Attribute(let attr):
