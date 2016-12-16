@@ -78,10 +78,12 @@ class TumOnlineLoginRequestManager {
     
     func loginSuccesful(_ user: User) {
         PersistentUser.value = .some(lrzID: (user.lrzID).?, token: user.token)
+        User.shared = user
     }
     
     func logOut() {
         PersistentUser.reset()
+        User.shared = nil
     }
     
     

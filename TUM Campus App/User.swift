@@ -11,9 +11,9 @@ import UIKit
 
 final class User: ImageDownloader, ImageDownloadSubscriber {
     
-    static var shared: User? {
+    static var shared: User? = {
         return PersistentUser.value.user
-    }
+    }()
     
     let token: String
     let lrzID: String?

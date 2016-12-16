@@ -139,7 +139,7 @@
 		0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumOnlineWebServices.swift; sourceTree = "<group>"; };
 		0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenReceiver.swift; sourceTree = "<group>"; };
 		0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionCardTableViewCell.swift; sourceTree = "<group>"; };
-		0E424F451BE16DBE00B5DFCB /* TUM Campus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TUM Campus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E424F451BE16DBE00B5DFCB /* Campus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		0E424F4D1BE16DBE00B5DFCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 		0E424F461BE16DBE00B5DFCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E424F451BE16DBE00B5DFCB /* TUM Campus App.app */,
+				0E424F451BE16DBE00B5DFCB /* Campus.app */,
 				0E424F591BE16DBE00B5DFCB /* TUM Campus AppUITests.xctest */,
 			);
 			name = Products;
@@ -590,9 +590,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0E424F441BE16DBD00B5DFCB /* TUM Campus App */ = {
+		0E424F441BE16DBD00B5DFCB /* Campus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0E424F621BE16DBE00B5DFCB /* Build configuration list for PBXNativeTarget "TUM Campus App" */;
+			buildConfigurationList = 0E424F621BE16DBE00B5DFCB /* Build configuration list for PBXNativeTarget "Campus" */;
 			buildPhases = (
 				5C4F7A97179AC594E757A588 /* [CP] Check Pods Manifest.lock */,
 				0E424F411BE16DBD00B5DFCB /* Sources */,
@@ -605,9 +605,9 @@
 			);
 			dependencies = (
 			);
-			name = "TUM Campus App";
+			name = Campus;
 			productName = "TUM Campus App";
-			productReference = 0E424F451BE16DBE00B5DFCB /* TUM Campus App.app */;
+			productReference = 0E424F451BE16DBE00B5DFCB /* Campus.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0E424F581BE16DBE00B5DFCB /* TUM Campus AppUITests */ = {
@@ -664,7 +664,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0E424F441BE16DBD00B5DFCB /* TUM Campus App */,
+				0E424F441BE16DBD00B5DFCB /* Campus */,
 				0E424F581BE16DBE00B5DFCB /* TUM Campus AppUITests */,
 			);
 		};
@@ -852,7 +852,7 @@
 /* Begin PBXTargetDependency section */
 		0E424F5B1BE16DBE00B5DFCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0E424F441BE16DBD00B5DFCB /* TUM Campus App */;
+			target = 0E424F441BE16DBD00B5DFCB /* Campus */;
 			targetProxy = 0E424F5A1BE16DBE00B5DFCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1040,7 +1040,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0E424F621BE16DBE00B5DFCB /* Build configuration list for PBXNativeTarget "TUM Campus App" */ = {
+		0E424F621BE16DBE00B5DFCB /* Build configuration list for PBXNativeTarget "Campus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E424F631BE16DBE00B5DFCB /* Debug */,
