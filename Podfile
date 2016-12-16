@@ -5,6 +5,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'TUM Campus App' do
+        pod 'Sweeft'
 	pod 'Alamofire', '~> 4.2'
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SwiftyJSON', '~> 3.1.3'
