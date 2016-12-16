@@ -4,7 +4,7 @@ project 'TUM Campus App.xcodeproj'
 platform :ios, '10.0'
 use_frameworks!
 
-target 'TUM Campus App' do
+target 'Campus' do
         pod 'Sweeft'
 	pod 'Alamofire', '~> 4.2'
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'

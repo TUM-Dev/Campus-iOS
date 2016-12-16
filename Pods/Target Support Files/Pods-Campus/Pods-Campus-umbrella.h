@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_TUM_Campus_AppVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_TUM_Campus_AppVersionString[];
+FOUNDATION_EXPORT double Pods_CampusVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_CampusVersionString[];
 
