@@ -72,6 +72,16 @@ class NewsManager: Manager {
         }
     }
     
+    func getNextUpcomingNews() -> News {
+        let now = Date()
+        for (index, item) in NewsManager.news.enumerated() {
+            if item.date < now  {
+                return NewsManager.news[index-1]
+            }
+        }
+        return NewsManager.news[0] // There are only past news
+    }
+    
     func getURL() -> String {
         return TumCabeApi.BaseURL.rawValue + TumCabeApi.News.rawValue
     }
