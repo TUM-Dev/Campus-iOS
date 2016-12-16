@@ -56,12 +56,14 @@ class NewsManager: Manager {
     }
     
     func handleNews(_ handler: ([DataElement]) -> ()) {
-        let items = NewsManager.news.sorted { (a, b) in
-            return a.date.compare(b.date as Date) == ComparisonResult.orderedDescending
-        }
         if single {
-            handler([getNextUpcomingNews()])
+            if let story = getNextUpcomingNews() {
+                handler([story])
+            }
         } else {
+            let items = NewsManager.news.sorted { (a, b) in
+                return a.date.compare(b.date as Date) == ComparisonResult.orderedDescending
+            }
             var returnableArray = [DataElement]()
             for item in items {
                 returnableArray.append(item)
@@ -70,14 +72,12 @@ class NewsManager: Manager {
         }
     }
     
-    func getNextUpcomingNews() -> News {
+    func getNextUpcomingNews() -> News? {
         let now = Date()
-        for (index, item) in NewsManager.news.enumerated() {
-            if item.date < now  {
-                return NewsManager.news[index-1]
-            }
+        if let firstStory = NewsManager.news.filter({ $0.date > now }).last ?? NewsManager.news.first {
+            return firstStory
         }
-        return NewsManager.news[0] // There are only past news
+        return nil
     }
     
     func getURL() -> String {

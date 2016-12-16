@@ -131,11 +131,7 @@ class TumDataManager {
     }
     
     func getNextUpcomingNews() -> News? {
-        if let newsManager = managers[.NewsCollection] as? NewsManager {
-            return newsManager.getNextUpcomingNews()
-        } else {
-            return nil
-        }
+        return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
     }
     
     func getUserData() {
