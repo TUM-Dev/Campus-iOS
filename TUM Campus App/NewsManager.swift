@@ -60,9 +60,7 @@ class NewsManager: Manager {
             return a.date.compare(b.date as Date) == ComparisonResult.orderedDescending
         }
         if single {
-            if let firsStory = items.first {
-                handler([firsStory])
-            }
+            handler([getNextUpcomingNews()])
         } else {
             var returnableArray = [DataElement]()
             for item in items {
