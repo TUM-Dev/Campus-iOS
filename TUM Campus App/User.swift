@@ -6,10 +6,15 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import UIKit
 
-class User:ImageDownloader, ImageDownloadSubscriber {
+final class User: ImageDownloader, ImageDownloadSubscriber {
+    
+    static var shared: User? {
+        return PersistentUser.value.user
+    }
+    
     let token: String
     let lrzID: String?
     var name: String?

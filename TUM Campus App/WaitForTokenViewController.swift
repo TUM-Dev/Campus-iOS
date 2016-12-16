@@ -57,7 +57,7 @@ extension WaitForTokenViewController: AccessTokenReceiver {
         user = User(lrzID: token, token: token)
         if let userUnwrapped = user {
             button.startFinishAnimation(delay: TimeInterval(0)) {
-                self.loginManager?.LoginSuccesful(userUnwrapped)
+                self.loginManager?.loginSuccesful(userUnwrapped)
                 if self.presentingViewController != nil {
                     self.performSegue(withIdentifier: "loggedIn", sender: self)
                 } else {

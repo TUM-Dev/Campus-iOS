@@ -6,7 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import Alamofire
 import SWXMLHash
 
@@ -76,23 +76,12 @@ class TumOnlineLoginRequestManager {
         }
     }
     
-    func userFromStorage() -> User? {
-        let token = defaults.string(forKey: LoginDefaultsKeys.Token.rawValue)
-        let id = defaults.string(forKey: LoginDefaultsKeys.LRZ.rawValue)
-        if let idUnwrapped = id, let tokenUnwrapped = token {
-            return User(lrzID: idUnwrapped, token: tokenUnwrapped)
-        }
-        return nil
-    }
-    
-    func LoginSuccesful(_ user: User) {
-        defaults.set(user.token, forKey: LoginDefaultsKeys.Token.rawValue)
-        defaults.set(user.lrzID, forKey: LoginDefaultsKeys.LRZ.rawValue)
+    func loginSuccesful(_ user: User) {
+        PersistentUser.value = .some(lrzID: (user.lrzID).?, token: user.token)
     }
     
     func logOut() {
-        defaults.removeObject(forKey: LoginDefaultsKeys.LRZ.rawValue)
-        defaults.removeObject(forKey: LoginDefaultsKeys.Token.rawValue)
+        PersistentUser.reset()
     }
     
     

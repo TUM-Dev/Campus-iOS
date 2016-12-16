@@ -6,9 +6,11 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import Contacts
 import UIKit
+
+
 class UserData: ImageDownloader, DataElement {
     
     func getCellIdentifier() -> String {
@@ -39,6 +41,20 @@ class UserData: ImageDownloader, DataElement {
         }
     }
     
+    typealias LabeledValueInit<V: NSCopying & NSSecureCoding> = (V) -> CNLabeledValue<V>
+    
+    private func getLabeledFunc<V>(label: String) -> LabeledValueInit<V> {
+        return { value in
+            CNLabeledValue(label: label, value: value)
+        }
+    }
+    
+    func getPhoneNumbers(_ phones: [String]) -> [CNLabeledValue<CNPhoneNumber>] {
+        return phones => firstArgument
+            >>> CNPhoneNumber.init
+            >>> getLabeledFunc(label: CNLabelPhoneNumberMain)
+    }
+    
     func addContact(_ handler: () -> ()?) {
         let contact = CNMutableContact()
         if let imageOfUser = image {
@@ -59,20 +75,13 @@ class UserData: ImageDownloader, DataElement {
             case .Web: websites.append(item.1)
             }
         }
-        contact.emailAddresses = emails.map() { (item) in
-            return CNLabeledValue(label: CNLabelWork, value: item as NSString)
-        }
-        contact.phoneNumbers = phones.map() { (item) in
-            let number = CNPhoneNumber(stringValue: item)
-            return CNLabeledValue(label:CNLabelPhoneNumberMain, value: number)
-        }
-        contact.phoneNumbers.append(contentsOf: mobiles.map() { (item) in
-            let number = CNPhoneNumber(stringValue: item)
-            return CNLabeledValue(label:CNLabelPhoneNumberMobile, value: number)
-        })
-        contact.urlAddresses = websites.map() { (item) in
-            return CNLabeledValue(label:CNLabelURLAddressHomePage, value: item as NSString)
-        }
+        
+        contact.emailAddresses = emails => { $0.0 as NSString } >>> getLabeledFunc(label: CNLabelWork)
+        contact.phoneNumbers = getPhoneNumbers(phones)
+        
+        contact.phoneNumbers.append(contentsOf: getPhoneNumbers(mobiles))
+        contact.urlAddresses = websites => { $0.0 as NSString } >>> getLabeledFunc(label: CNLabelURLAddressHomePage)
+            
         contact.organizationName = "Technische Universität München"
         let store = CNContactStore()
         let saveRequest = CNSaveRequest()

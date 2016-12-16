@@ -13,6 +13,8 @@
 		0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073B01C1A4BE2004C93CF /* Room.swift */; };
 		0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */; };
 		0E1DD13B1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1DD13A1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift */; };
+		0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */; };
+		0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E33961E047BDB00E6F707 /* AppDefaults.swift */; };
 		0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21291C13AB250035ED70 /* DoneHUD.swift */; };
 		0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B212A1C13AB250035ED70 /* DoneView.swift */; };
 		0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21331C13B5760035ED70 /* CampusTabBarController.swift */; };
@@ -122,6 +124,8 @@
 		0E1073B01C1A4BE2004C93CF /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomResultTableViewCell.swift; sourceTree = "<group>"; };
 		0E1DD13A1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaCardTableViewCell.swift; sourceTree = "<group>"; };
+		0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentUserData.swift; sourceTree = "<group>"; };
+		0E2E33961E047BDB00E6F707 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		0E3B21291C13AB250035ED70 /* DoneHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneHUD.swift; sourceTree = "<group>"; };
 		0E3B212A1C13AB250035ED70 /* DoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		0E3B21331C13B5760035ED70 /* CampusTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTabBarController.swift; sourceTree = "<group>"; };
@@ -398,6 +402,7 @@
 				0E424F6C1BE1865C00B5DFCB /* Movie.swift */,
 				0E52817C1C0E306200762EA3 /* DataElement.swift */,
 				0E5A61DE1C135750006017DB /* User.swift */,
+				0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */,
 				0EB161831C1A05B6001A08FC /* Lecture.swift */,
 				0EC10C221C171F730024F902 /* UserData.swift */,
 				0E1073B01C1A4BE2004C93CF /* Room.swift */,
@@ -479,6 +484,7 @@
 				0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */,
 				0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */,
 				0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */,
+				0E2E33961E047BDB00E6F707 /* AppDefaults.swift */,
 			);
 			name = "Enums and Constants";
 			sourceTree = "<group>";
@@ -771,6 +777,7 @@
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
+				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
@@ -797,6 +804,7 @@
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
 				0E6160411C1A362F0065D661 /* XMLLocalFileResource.swift in Sources */,
+				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,
@@ -963,6 +971,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZGV2PY25EN;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -982,6 +991,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZGV2PY25EN;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

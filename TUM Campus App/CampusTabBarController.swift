@@ -10,8 +10,6 @@ import UIKit
 
 class CampusTabBarController: UITabBarController {
     
-    var user: User?
-    
     var manager: TumDataManager?
 
     override func viewDidLoad() {
@@ -19,9 +17,7 @@ class CampusTabBarController: UITabBarController {
         UITabBar.appearance().tintColor = Constants.tumBlue
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().barTintColor = UIColor.white
-        let loginManager = TumOnlineLoginRequestManager(delegate: nil)
-        user = loginManager.userFromStorage()
-        manager = TumDataManager(user: user)
+        manager = TumDataManager(user: User.shared)
         manager?.getUserData()
     }
 
