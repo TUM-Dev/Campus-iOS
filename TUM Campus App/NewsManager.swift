@@ -72,9 +72,9 @@ class NewsManager: Manager {
         }
     }
     
-    func getNextUpcomingNews() -> News? {
+    func getNextUpcomingNews(in news: [News] = NewsManager.news) -> News? {
         let now = Date()
-        if let firstStory = NewsManager.news.filter({ $0.date > now }).last ?? NewsManager.news.first {
+        if let firstStory = news.filter({ $0.date > now }).last ?? news.first {
             return firstStory
         }
         return nil
