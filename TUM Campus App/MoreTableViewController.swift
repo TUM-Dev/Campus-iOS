@@ -62,6 +62,11 @@ extension MoreTableViewController {
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
+        if let mvc = segue.destination as? SearchViewController {
+            if (tableView.indexPathForSelectedRow?.section == 2 && tableView.indexPathForSelectedRow?.row == 0) {
+                mvc.searchManagers = [TumDataItems.RoomSearch]
+            }
+        }
     }
     
 }
@@ -76,7 +81,7 @@ extension MoreTableViewController {
             }
         case 5:
             PersistentUser.reset()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             UIApplication.shared.keyWindow?.rootViewController = loginViewController
         default:
