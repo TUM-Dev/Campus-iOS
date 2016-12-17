@@ -37,6 +37,9 @@ extension NewsTableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        if let index = getRowOfUpcomingNews() {
+            tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        }
     }
     
 }
@@ -61,4 +64,13 @@ extension NewsTableViewController {
         news[indexPath.row].open()
     }
     
+}
+
+extension NewsTableViewController {
+    func getRowOfUpcomingNews() -> Int? {
+        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
+            return news.index(of: nextNews) ?? 0
+        }
+        return nil
+    }
 }
