@@ -70,6 +70,8 @@ class EditCardsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         
         switch indexPath.section {
+        case 0:
+            return .delete
         case 1:
             return .insert
         default:
@@ -86,10 +88,12 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
         if destinationIndexPath.section == 0 {
             enabled.move(itemAt: sourceIndexPath.row, to: destinationIndexPath.row)
         } else {
             enabled.remove(at: sourceIndexPath.row)
+            tableView.reloadData()
         }
     }
     
@@ -98,9 +102,16 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        
+        switch indexPath.section {
+        case 0:
+            enabled.remove(at: indexPath.row)
+            tableView.reloadData()
+        case 1:
             enabled.append(disabled[indexPath.row])
             tableView.reloadData()
+        default:
+            break
         }
     }
     
