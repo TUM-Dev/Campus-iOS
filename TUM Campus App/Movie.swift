@@ -45,5 +45,12 @@ class Movie:ImageDownloader, DataElement {
         return name.components(separatedBy: ": ")[1] 
     }
     
+}
+
+extension Movie: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .tufilm
+    }
     
 }

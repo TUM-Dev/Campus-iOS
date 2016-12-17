@@ -43,3 +43,11 @@ class News: ImageDownloader, DataElement {
     }
     
 }
+
+extension News: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .news
+    }
+    
+}

@@ -121,6 +121,12 @@ public extension Array {
         return <>(<>self).array(withFirst: number)
     }
     
+    mutating func move(itemAt source: Int, to destination: Int) {
+        let element = self[source]
+        remove(at: source)
+        insert(element, at: destination)
+    }
+    
 }
 
 public extension Array where Element: Hashable {
