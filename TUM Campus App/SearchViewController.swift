@@ -21,6 +21,8 @@ class SearchViewController: UITableViewController, DetailView {
     var elements = [DataElement]()
     
     var currentElement: DataElement?
+    
+    var searchManagers: [TumDataItems]?
 
 }
 
@@ -66,7 +68,7 @@ extension SearchViewController: UITextFieldDelegate {
             }
             let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if  replaced != "" {
-                delegate?.dataManager().search(self, query: replaced)
+                delegate?.dataManager().search(self, query: replaced, searchIn: searchManagers) // searchManager might be set during a segue. Otherwise it defaults to all searchManagers, defined in the TumDataManager
             } else {
                 elements = []
                 tableView.reloadData()
