@@ -77,9 +77,10 @@ class TumDataManager {
         }
     }
     
-    func search(_ receiver: TumDataReceiver, query: String) {
+    func search(_ receiver: TumDataReceiver, query: String, searchIn managersToSearchIn:[TumDataItems]? = nil) {
+        let tmpSearchManagers = managersToSearchIn != nil ? Array(Set(searchManagers).intersection(managersToSearchIn!)) : searchManagers
         let request = BulkRequest(receiver: receiver)
-        for item in searchManagers {
+        for item in tmpSearchManagers {
             if let manager = managers[item] as? SearchManager {
                 manager.setQuery(query)
                 manager.fetchData() { (data) in
