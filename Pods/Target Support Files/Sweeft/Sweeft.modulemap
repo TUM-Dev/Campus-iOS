@@ -1,0 +1,6 @@
+framework module Sweeft {
+  umbrella header "Sweeft-umbrella.h"
+
+  export *
+  module * { export * }
+}

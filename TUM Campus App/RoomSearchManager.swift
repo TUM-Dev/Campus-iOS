@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Sweeft
 import SwiftyJSON
 
 class RoomSearchManager: SearchManager {
@@ -30,24 +31,8 @@ class RoomSearchManager: SearchManager {
         let url = getURL()
         request = Alamofire.request(url).responseJSON() { (response) in
             if let value = response.result.value {
-                
                 let parsed = JSON(value)
-                
-                let roomsArray: [Room?]? = parsed.array?
-                    .map { room in
-                        guard let code = room["room_id"].string,
-                            let architectNumber = room["arch_id"].string,
-                            let name = room["info"].string,
-                            let building = room["name"].string,
-                            let campus = room["campus"].string else {
-                                return nil
-                        }
-                        return Room(code: code, name: name, building: building, campus: campus, number: architectNumber)
-                    }
-                
-                let result = roomsArray?.flatMap { $0 } ?? []
-                
-                handler(result)
+                parsed.array ==> Room.init | handler
             }
         }
     }

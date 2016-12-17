@@ -131,6 +131,10 @@ class TumDataManager {
         managers[.NewsCollection]?.fetchData(receiver.receiveData)
     }
     
+    func getNextUpcomingNews() -> News? {
+        return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
+    }
+    
     func getUserData() {
         let handler = { (data: [DataElement]) in
             if let first = data.first as? UserData {

@@ -6,6 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
+import Sweeft
 import UIKit
 
 class LecturesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate, DetailView {
@@ -33,7 +34,7 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
             return array
         })
         for semester in semesters {
-            let lecturesInSemester = data.filter() { (element) in
+            let lecturesInSemester = data.filter { (element: DataElement) in
                 if let lecture = element as? Lecture {
                     return lecture.semester == semester
                 }

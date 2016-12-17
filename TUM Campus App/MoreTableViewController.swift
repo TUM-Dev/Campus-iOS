@@ -50,7 +50,7 @@ extension MoreTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
-            user = mvc.user
+            user = User.shared
             manager = mvc.manager
         }
     }
@@ -80,7 +80,7 @@ extension MoreTableViewController {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         case 5:
-            UserDefaults.standard.removeObject(forKey: LoginDefaultsKeys.Token.rawValue)
+            PersistentUser.reset()
             let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             UIApplication.shared.keyWindow?.rootViewController = loginViewController

@@ -6,7 +6,9 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+
+import SwiftyJSON
+
 class Room: DataElement {
     let code: String
     let name: String
@@ -20,6 +22,17 @@ class Room: DataElement {
         self.building = building
         self.campus = campus
         self.number = number
+    }
+    
+    convenience init?(from json: JSON) {
+        guard let code = json["room_id"].string,
+            let architectNumber = json["arch_id"].string,
+            let name = json["info"].string,
+            let building = json["name"].string,
+            let campus = json["campus"].string else {
+                return nil
+        }
+        self.init(code: code, name: name, building: building, campus: campus, number: architectNumber)
     }
     
     func getCellIdentifier() -> String {
