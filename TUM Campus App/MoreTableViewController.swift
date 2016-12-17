@@ -76,7 +76,7 @@ extension MoreTableViewController {
             }
         case 5:
             UserDefaults.standard.removeObject(forKey: LoginDefaultsKeys.Token.rawValue)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             UIApplication.shared.keyWindow?.rootViewController = loginViewController
         default:
