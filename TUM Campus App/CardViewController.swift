@@ -6,6 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
+import Sweeft
 import UIKit
 import MCSwipeTableViewCell
 
@@ -103,17 +104,24 @@ extension CardViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cards.count
+        return max(cards.count, 1)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = cards[indexPath.row]
+        let item = cards | indexPath.row ?? EmptyCard()
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
         let handler = { () -> () in
             if let path = self.tableView.indexPath(for: cell) {
-                self.cards.remove(at: path.row)
-                self.tableView.deleteRows(at: [path], with: UITableViewRowAnimation.top)
+                PersistentCardOrder.value.remove(cardFor: item)
+                if !self.cards.isEmpty {
+                    self.cards.remove(at: path.row)
+                }
+                if !self.cards.isEmpty {
+                    self.tableView.deleteRows(at: [path], with: UITableViewRowAnimation.top)
+                } else {
+                    self.tableView.reloadData()
+                }
             }
         }
         cell.selectionStyle = .none

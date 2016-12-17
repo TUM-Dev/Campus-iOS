@@ -90,6 +90,8 @@
 		0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE11E05523C00FF1E40 /* CardKey.swift */; };
 		0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC28AE31E05549300FF1E40 /* EditCards.storyboard */; };
 		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
+		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
+		0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */; };
 		0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE51D414D39001649F1 /* NewsManager.swift */; };
 		0EF4CEE81D414D40001649F1 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE71D414D40001649F1 /* News.swift */; };
 		0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */; };
@@ -212,6 +214,8 @@
 		0EC28AE11E05523C00FF1E40 /* CardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardKey.swift; sourceTree = "<group>"; };
 		0EC28AE41E05549300FF1E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EditCards.storyboard; sourceTree = "<group>"; };
 		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
+		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
+		0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardCell.swift; sourceTree = "<group>"; };
 		0EF4CEE51D414D39001649F1 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		0EF4CEE71D414D40001649F1 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCardCell.swift; sourceTree = "<group>"; };
@@ -412,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */,
+				0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */,
 				0EC28AE11E05523C00FF1E40 /* CardKey.swift */,
 				0EC28ADF1E05522B00FF1E40 /* CardDisplayable.swift */,
 				0E3B21431C13C1B60035ED70 /* Tuition.swift */,
@@ -547,6 +552,7 @@
 				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
 				0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */,
 				0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */,
+				0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -803,6 +809,7 @@
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
+				0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */,
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
@@ -810,6 +817,7 @@
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
+				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,
 				0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */,
