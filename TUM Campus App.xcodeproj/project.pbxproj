@@ -85,6 +85,13 @@
 		0EC10C231C171F730024F902 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C221C171F730024F902 /* UserData.swift */; };
 		0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C241C171FEF0024F902 /* UserDataManager.swift */; };
 		0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C261C1738420024F902 /* PersonSearchManager.swift */; };
+		0EC28ADE1E053F7900FF1E40 /* CardOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */; };
+		0EC28AE01E05522B00FF1E40 /* CardDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28ADF1E05522B00FF1E40 /* CardDisplayable.swift */; };
+		0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE11E05523C00FF1E40 /* CardKey.swift */; };
+		0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC28AE31E05549300FF1E40 /* EditCards.storyboard */; };
+		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
+		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
+		0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */; };
 		0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE51D414D39001649F1 /* NewsManager.swift */; };
 		0EF4CEE81D414D40001649F1 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE71D414D40001649F1 /* News.swift */; };
 		0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */; };
@@ -202,6 +209,13 @@
 		0EC10C221C171F730024F902 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		0EC10C241C171FEF0024F902 /* UserDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		0EC10C261C1738420024F902 /* PersonSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonSearchManager.swift; sourceTree = "<group>"; };
+		0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardOrder.swift; sourceTree = "<group>"; };
+		0EC28ADF1E05522B00FF1E40 /* CardDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDisplayable.swift; sourceTree = "<group>"; };
+		0EC28AE11E05523C00FF1E40 /* CardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardKey.swift; sourceTree = "<group>"; };
+		0EC28AE41E05549300FF1E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EditCards.storyboard; sourceTree = "<group>"; };
+		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
+		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
+		0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardCell.swift; sourceTree = "<group>"; };
 		0EF4CEE51D414D39001649F1 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		0EF4CEE71D414D40001649F1 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCardCell.swift; sourceTree = "<group>"; };
@@ -380,6 +394,8 @@
 			isa = PBXGroup;
 			children = (
 				50200E0F1DF4941500B6FBE3 /* CardView.storyboard */,
+				0EC28AE31E05549300FF1E40 /* EditCards.storyboard */,
+				0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
 				0EDCACD61C1450A4008648D8 /* Cards */,
@@ -399,6 +415,10 @@
 		0E64AC551C0DE46C00060FB0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */,
+				0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */,
+				0EC28AE11E05523C00FF1E40 /* CardKey.swift */,
+				0EC28ADF1E05522B00FF1E40 /* CardDisplayable.swift */,
 				0E3B21431C13C1B60035ED70 /* Tuition.swift */,
 				0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */,
 				0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */,
@@ -532,6 +552,7 @@
 				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
 				0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */,
 				0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */,
+				0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -696,6 +717,7 @@
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
 				50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */,
 				50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */,
+				0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */,
 				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
 				50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */,
 				50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */,
@@ -724,7 +746,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8B8EEAF448EA284D43CDD27C /* [CP] Copy Pods Resources */ = {
@@ -776,6 +798,7 @@
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,
 				0E3B214A1C13CB280035ED70 /* BulkRequest.swift in Sources */,
+				0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */,
 				0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */,
 				0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */,
 				0EB1618C1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift in Sources */,
@@ -786,6 +809,7 @@
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
+				0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */,
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
@@ -793,6 +817,7 @@
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
+				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,
 				0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */,
@@ -800,10 +825,12 @@
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
+				0EC28AE01E05522B00FF1E40 /* CardDisplayable.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,
 				0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */,
 				0EB473C81C1B224700F17F44 /* MenuTableViewCell.swift in Sources */,
 				0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */,
+				0EC28ADE1E053F7900FF1E40 /* CardOrder.swift in Sources */,
 				0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */,
 				0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */,
 				0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */,
@@ -835,6 +862,7 @@
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
+				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,
 				0E4825AD1C2C88E800C756A5 /* ContactInfoType.swift in Sources */,
 				0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */,
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
@@ -880,6 +908,14 @@
 				0E424F521BE16DBE00B5DFCB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0EC28AE31E05549300FF1E40 /* EditCards.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0EC28AE41E05549300FF1E40 /* Base */,
+			);
+			name = EditCards.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -44,6 +44,14 @@ class News: ImageDownloader, DataElement {
     
 }
 
+extension News: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .news
+    }
+  
+}
+
 extension News: Equatable {
     static func == (lhs: News, rhs: News) -> Bool {
         return lhs.id == rhs.id

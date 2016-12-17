@@ -6,11 +6,13 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 
 class TumDataManager {
     
-    let cardItems: [TumDataItems] = [.TuitionStatusSingle, .MovieCard, .CalendarCard, .CafeteriasCard, .NewsCard]
+    var cardItems: [TumDataItems] {
+        return PersistentCardOrder.value.managers
+    }
     
     let searchManagers: [TumDataItems] = [.PersonSearch, .LectureSearch, .RoomSearch]
     
@@ -69,7 +71,12 @@ class TumDataManager {
     }
     
     func getCardItems(_ receiver: TumDataReceiver) {
-        let request = BulkRequest(receiver: receiver)
+        let request = BulkRequest(receiver: receiver, sorter: {
+            if let item = $0 as? CardDisplayable {
+                return PersistentCardOrder.value.cards.index(of: item.cardKey).?
+            }
+            return -1
+        })
         for item in cardItems {
             managers[item]?.fetchData() { (data) in
                 request.receiveData(data)

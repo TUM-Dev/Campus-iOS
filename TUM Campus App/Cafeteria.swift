@@ -57,3 +57,11 @@ class Cafeteria: DataElement {
     }
     
 }
+
+extension Cafeteria: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return  .cafeteria
+    }
+    
+}

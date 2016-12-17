@@ -28,3 +28,11 @@ class Tuition: DataElement {
     }
     
 }
+
+extension Tuition: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .tuition
+    }
+    
+}

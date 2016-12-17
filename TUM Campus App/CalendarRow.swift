@@ -27,3 +27,11 @@ class CalendarRow: DataElement {
     }
     
 }
+
+extension CalendarRow: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .calendar
+    }
+    
+}
