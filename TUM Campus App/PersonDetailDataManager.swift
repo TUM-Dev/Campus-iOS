@@ -49,7 +49,7 @@ class PersonDetailDataManager: Manager {
                         
                         let titel = parsedXML["person"]["titel"].element?.text
                         for data in contactInfo {
-                            if let infoValue = data.1 {
+                            if let infoValue = data.1, infoValue != "" {
                                 self.userQuery?.contactInfo.append((data.0,infoValue))
                             }
                         }

@@ -102,7 +102,7 @@ class CalendarManager: Manager {
     }
     
     func handle(_ handler: ([DataElement]) -> ()) {
-        let onlyNew = CalendarManager.calendarItems.filter() { (item) in
+        let onlyNew = CalendarManager.calendarItems.filter { (item: DataElement) in
             if let element = item as? CalendarRow {
                 return element.dtstart?.compare(Date()) == ComparisonResult.orderedDescending
             }

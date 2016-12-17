@@ -7,11 +7,14 @@
 //
 
 import Foundation
-class Map: ImageDownloader, DataElement {
+import SwiftyJSON
+
+final class Map: ImageDownloader, DataElement {
     let roomID: String
     let mapID: String
     let description: String
     let scale: Int
+    
     init(roomID: String, mapID: String, description: String, scale: Int) {
         self.roomID = roomID
         self.mapID = mapID
@@ -22,6 +25,15 @@ class Map: ImageDownloader, DataElement {
         if let sanitizedURL = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
             getImage(sanitizedURL)
         }
+    }
+    
+    convenience init?(roomID: String, from json: JSON) {
+        guard let description = json["description"].string,
+            let id = json["map_id"].int,
+            let scale = json["scale"].int else {
+                return nil
+        }
+        self.init(roomID: roomID, mapID: id.description, description: description, scale: scale)
     }
     
     func getCellIdentifier() -> String {
