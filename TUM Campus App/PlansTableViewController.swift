@@ -7,24 +7,31 @@
 //
 
 import UIKit
+import Alamofire
 
 class PlansTableViewController: UITableViewController {
     
-    lazy var plans = Plans()
-    var imageUrl: String!
-
     // MARK: - Table view data source
+    lazy var plans = Plans()
+    let loadingView = UIView()
+    let spinner = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.downloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return plans.getPlans().count
     }
 
+    // load data into the rows
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let plan = plans.getPlan(forIndex: indexPath.row)
         
@@ -37,26 +44,37 @@ class PlansTableViewController: UITableViewController {
         return cell
     }
     
+    // set the height of the table row
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 63.0
     }
     
+    // show detail view, when row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let plan = plans.getPlan(forIndex: indexPath.row)
         
-        if (plan.type == "image") {
-            print(plan.url)
-            performSegue(withIdentifier: "showDetail", sender: plan)
-        }
+        performSegue(withIdentifier: "showDetail", sender: plan)
         
     }
     
-    
+    // set data for passing to details view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             let nextScene = segue.destination as! PlanDetailsViewController
             let plan = sender as! Plan
-            nextScene.imageUrl = plan.url
+            nextScene.planFileUrl = plan.fileUrl
+            nextScene.planType = plan.type
+        }
+    }
+    
+    // download the plans
+    private func downloadData() {
+        for i in 0..<plans.getPlans().count {
+            let plan = plans.getPlan(forIndex: i)
+            if (plan.type == "pdf") {
+                let downloader = PlanDownloader()
+                downloader.downloadPlan(urlString: plan.url, withName: plan.fileUrl)
+            }
         }
     }
 

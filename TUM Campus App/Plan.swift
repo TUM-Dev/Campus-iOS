@@ -12,13 +12,15 @@ class Plan: ImageDownloader, DataElement {
     
     let title: String
     let type: String
+    let fileUrl: String
     let url: String
     let address: String
     let icon: String
     
-    init(title: String, type: String, url: String, address: String, icon: String) {
+    init(title: String, type: String, fileUrl: String, url: String, address: String, icon: String) {
         self.title = title
         self.type = type
+        self.fileUrl = fileUrl
         self.url = url
         self.address = address
         self.icon = icon

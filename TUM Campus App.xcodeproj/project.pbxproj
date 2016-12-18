@@ -98,6 +98,7 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		3047EFC51E07309300154FD8 /* PlanDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047EFC41E07309300154FD8 /* PlanDownloader.swift */; };
 		308D3EE11E040C750071584F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDC1E040C750071584F /* Plan.swift */; };
 		308D3EE21E040C750071584F /* Plans.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308D3EDD1E040C750071584F /* Plans.storyboard */; };
 		308D3EE31E040C750071584F /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDE1E040C750071584F /* Plans.swift */; };
@@ -229,6 +230,7 @@
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
+		3047EFC41E07309300154FD8 /* PlanDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDownloader.swift; sourceTree = "<group>"; };
 		308D3EDC1E040C750071584F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		308D3EDD1E040C750071584F /* Plans.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plans.storyboard; sourceTree = "<group>"; };
 		308D3EDE1E040C750071584F /* Plans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				0EF4CEE71D414D40001649F1 /* News.swift */,
 				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
+				3047EFC41E07309300154FD8 /* PlanDownloader.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
 			);
 			name = Models;
@@ -853,6 +856,7 @@
 				308D3EE41E040C750071584F /* PlansTableViewCell.swift in Sources */,
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
+				3047EFC51E07309300154FD8 /* PlanDownloader.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
 				0EC28AE01E05522B00FF1E40 /* CardDisplayable.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,

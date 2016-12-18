@@ -88,19 +88,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-a7-g1F">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-a7-g1F">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SAX-Ff-CtO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="centerY" secondItem="chZ-a7-g1F" secondAttribute="centerY" id="2rs-NM-HZg"/>
-                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="width" secondItem="chZ-a7-g1F" secondAttribute="width" id="Dge-HK-9Q9"/>
-                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="centerX" secondItem="chZ-a7-g1F" secondAttribute="centerX" id="mb0-fY-Ve4"/>
-                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="height" secondItem="chZ-a7-g1F" secondAttribute="height" id="myb-Y3-x18"/>
-                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="1BX-FA-H0G" id="pZB-6H-iF9"/>
                                 </connections>
@@ -115,7 +104,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="SAX-Ff-CtO" id="nBA-3b-thU"/>
                         <outlet property="scrollView" destination="chZ-a7-g1F" id="1ax-FA-lMM"/>
                     </connections>
                 </viewController>
