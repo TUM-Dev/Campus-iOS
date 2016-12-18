@@ -40,6 +40,18 @@ extension StudyRoomsTableViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destination as? RoomFinderViewController {
+            if let selectedIndex = tableView.indexPathForSelectedRow?.row {
+                mvc.room = studyRooms[selectedIndex]
+            }
+        }
+    }
+
+    
 }
 
 extension StudyRoomsTableViewController {
@@ -63,8 +75,12 @@ extension StudyRoomsTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        news[indexPath.row].open()
+}
+
+extension StudyRoomsTableViewController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager {
+        return delegate?.dataManager() ?? TumDataManager(user: nil)
     }
     
 }

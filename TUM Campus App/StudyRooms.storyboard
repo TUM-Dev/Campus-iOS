@@ -61,6 +61,7 @@
                                     <outlet property="code" destination="vrN-cy-BQh" id="y9t-y0-GEP"/>
                                     <outlet property="name" destination="gdG-FO-tJc" id="7ZU-0H-cGs"/>
                                     <outlet property="nextEvent" destination="zxt-RE-Vun" id="TS3-Yo-AD0"/>
+                                    <segue destination="aqI-rP-vuX" kind="show" id="g9V-36-Fkf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -69,6 +70,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jom-2b-OKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="29.600000000000001" y="156.97151424287858"/>
+        </scene>
+        <!--RoomFinder-->
+        <scene sceneID="gZP-Rz-CBM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RoomFinder" id="aqI-rP-vuX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4e3-Ux-EKl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520" y="157"/>
         </scene>
     </scenes>
 </document>
