@@ -103,6 +103,7 @@
 		308D3EE31E040C750071584F /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDE1E040C750071584F /* Plans.swift */; };
 		308D3EE41E040C750071584F /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDF1E040C750071584F /* PlansTableViewCell.swift */; };
 		308D3EE81E0413DC0071584F /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EE71E0413DC0071584F /* PlansTableViewController.swift */; };
+		308D3EEA1E042FFB0071584F /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */; };
 		50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */; };
 		50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0F1DF4941500B6FBE3 /* CardView.storyboard */; };
 		50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E111DF4948C00B6FBE3 /* Movie.storyboard */; };
@@ -233,6 +234,7 @@
 		308D3EDE1E040C750071584F /* Plans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		308D3EDF1E040C750071584F /* PlansTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
 		308D3EE71E0413DC0071584F /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewController.swift; sourceTree = "<group>"; };
+		308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
 		50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tution.storyboard; sourceTree = "<group>"; };
 		50200E0F1DF4941500B6FBE3 /* CardView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardView.storyboard; sourceTree = "<group>"; };
 		50200E111DF4948C00B6FBE3 /* Movie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				308D3EDD1E040C750071584F /* Plans.storyboard */,
 				308D3EDF1E040C750071584F /* PlansTableViewCell.swift */,
 				308D3EE71E0413DC0071584F /* PlansTableViewController.swift */,
+				308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */,
 			);
 			name = "Plans View";
 			sourceTree = "<group>";
@@ -888,6 +891,7 @@
 				0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
+				308D3EEA1E042FFB0071584F /* PlanDetailsViewController.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,

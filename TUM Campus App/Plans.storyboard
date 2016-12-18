@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,18 +14,52 @@
         <scene sceneID="uum-UX-S16">
             <objects>
                 <tableViewController id="2Pg-SU-hXN" customClass="PlansTableViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="cyF-Co-T4g">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" id="cyF-Co-T4g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="planCell" id="fwE-79-C9f">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="planCell" rowHeight="80" id="fwE-79-C9f" customClass="PlansTableViewCell" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fwE-79-C9f" id="1qu-sT-NJO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK7-Kd-oKA">
+                                            <rect key="frame" x="79" y="8" width="288" height="63"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="288" id="W5m-Rc-vaR"/>
+                                                <constraint firstAttribute="height" constant="63" id="pNL-yy-f00"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCd-Kh-EWM">
+                                            <rect key="frame" x="8" y="8" width="63" height="63"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="63" id="2VG-9l-kCm"/>
+                                                <constraint firstAttribute="height" constant="63" id="tjC-k8-4UO"/>
+                                            </constraints>
+                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hK7-Kd-oKA" firstAttribute="leading" secondItem="vCd-Kh-EWM" secondAttribute="trailing" constant="8" id="0LK-d1-8kQ"/>
+                                        <constraint firstItem="hK7-Kd-oKA" firstAttribute="trailing" secondItem="1qu-sT-NJO" secondAttribute="trailingMargin" id="NbG-mg-2g3"/>
+                                        <constraint firstItem="vCd-Kh-EWM" firstAttribute="bottom" secondItem="1qu-sT-NJO" secondAttribute="bottomMargin" id="Ogx-Lg-JsG"/>
+                                        <constraint firstItem="vCd-Kh-EWM" firstAttribute="top" secondItem="1qu-sT-NJO" secondAttribute="topMargin" id="VP6-xM-Kfq"/>
+                                        <constraint firstItem="vCd-Kh-EWM" firstAttribute="leading" secondItem="1qu-sT-NJO" secondAttribute="leadingMargin" id="XlD-XS-cix"/>
+                                        <constraint firstItem="hK7-Kd-oKA" firstAttribute="centerY" secondItem="1qu-sT-NJO" secondAttribute="centerY" id="eaJ-K4-vh3"/>
+                                        <constraint firstAttribute="trailing" secondItem="hK7-Kd-oKA" secondAttribute="trailing" constant="8" id="vb9-dU-aQG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="planImageView" destination="vCd-Kh-EWM" id="sVe-1o-kkV"/>
+                                    <outlet property="planTitleLabel" destination="hK7-Kd-oKA" id="mKG-EM-L0p"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,10 +67,61 @@
                             <outlet property="delegate" destination="2Pg-SU-hXN" id="thr-EM-wZK"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="BQO-5F-CEj"/>
+                    <connections>
+                        <segue destination="1BX-FA-H0G" kind="show" identifier="showDetail" id="3v6-Z6-EZZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yGe-fI-9br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-73" y="-13"/>
+            <point key="canvasLocation" x="863.20000000000005" y="44.527736131934034"/>
+        </scene>
+        <!--Plan Details View Controller-->
+        <scene sceneID="HoF-kU-m1R">
+            <objects>
+                <viewController id="1BX-FA-H0G" customClass="PlanDetailsViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uUO-3u-VZB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y5X-Xn-3JV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CL5-gO-0uq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-a7-g1F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SAX-Ff-CtO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="centerY" secondItem="chZ-a7-g1F" secondAttribute="centerY" id="2rs-NM-HZg"/>
+                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="width" secondItem="chZ-a7-g1F" secondAttribute="width" id="Dge-HK-9Q9"/>
+                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="centerX" secondItem="chZ-a7-g1F" secondAttribute="centerX" id="mb0-fY-Ve4"/>
+                                    <constraint firstItem="SAX-Ff-CtO" firstAttribute="height" secondItem="chZ-a7-g1F" secondAttribute="height" id="myb-Y3-x18"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="1BX-FA-H0G" id="pZB-6H-iF9"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="chZ-a7-g1F" firstAttribute="height" secondItem="CL5-gO-0uq" secondAttribute="height" id="4vG-X7-zNy"/>
+                            <constraint firstItem="chZ-a7-g1F" firstAttribute="width" secondItem="CL5-gO-0uq" secondAttribute="width" id="9D0-Ww-tNf"/>
+                            <constraint firstItem="chZ-a7-g1F" firstAttribute="centerY" secondItem="CL5-gO-0uq" secondAttribute="centerY" id="SGh-o5-A6e"/>
+                            <constraint firstItem="chZ-a7-g1F" firstAttribute="centerX" secondItem="CL5-gO-0uq" secondAttribute="centerX" id="SWT-4B-Gyn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="SAX-Ff-CtO" id="nBA-3b-thU"/>
+                        <outlet property="scrollView" destination="chZ-a7-g1F" id="1ax-FA-lMM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bw8-q3-Jse" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1640.8" y="44.527736131934034"/>
         </scene>
     </scenes>
 </document>
