@@ -27,6 +27,7 @@ class StudyRoomsManager: Manager {
                                     if let json = JSON(data).dictionary {
                                         if let rooms = json["raeume"]?.array {
                                             StudyRoomsManager.studyRooms.removeAll()
+                                            StudyRoomsManager.groups.removeAll()
                                             for roomItem in rooms {
                                                 if let studyRoom = StudyRoom(from: roomItem) {
                                                     StudyRoomsManager.studyRooms.append(studyRoom)
