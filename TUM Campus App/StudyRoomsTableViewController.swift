@@ -13,12 +13,19 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
     var studyRooms = [StudyRoom]() {
         didSet {
             tableView.reloadData()
+            refresh.endRefreshing()
         }
     }
 
 //    var roomGroups = [StudyRoomGroup]()
     
     var delegate: DetailViewDelegate?
+    
+    var refresh = UIRefreshControl()
+    
+    func refresh(_ sender: AnyObject?) {
+        delegate?.dataManager().getAllStudyRooms(self)
+    }
     
 }
 
@@ -33,11 +40,18 @@ extension StudyRoomsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getAllStudyRooms(self)
         title = "Study Rooms"
 //        tableView.estimatedRowHeight = tableView.rowHeight
 //        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refresh)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refresh(nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

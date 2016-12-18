@@ -20,17 +20,13 @@ class StudyRoomsManager: Manager {
     }
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        if (!StudyRoomsManager.studyRooms.isEmpty || !StudyRoomsManager.groups.isEmpty) {
-            handleStudyRooms(handler)
-            return
-        }
-        
         if let uuid = UIDevice.current.identifierForVendor?.uuidString {
             Alamofire.request(getURL(), method: .get, parameters: nil,
                               headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
                                 if let data = response.result.value {
                                     if let json = JSON(data).dictionary {
                                         if let rooms = json["raeume"]?.array {
+                                            StudyRoomsManager.studyRooms.removeAll()
                                             for roomItem in rooms {
                                                 if let studyRoom = StudyRoom(from: roomItem) {
                                                     StudyRoomsManager.studyRooms.append(studyRoom)
