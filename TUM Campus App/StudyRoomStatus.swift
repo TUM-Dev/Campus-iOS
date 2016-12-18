@@ -11,3 +11,12 @@ enum StudyRoomStatus: String {
     case Free = "frei"
     case Occupied = "belegt"
 }
+
+extension StudyRoomStatus {
+    var sortIndex: Int {
+        switch self {
+        case .Free: return 0
+        case .Occupied: return 1
+        }
+    }
+}

@@ -33,13 +33,13 @@ class StudyRoomsManager: Manager {
                                                 }
                                             }
                                         }
-//                                        if let groups = json["gruppen"]?.array {
-//                                            for groupItem in groups {
-//                                                if let group = StudyRoomGroup(from: groupItem) {
-//                                                    StudyRoomManager.groups.append(group)
-//                                                }
-//                                            }
-//                                        }
+                                        if let groups = json["gruppen"]?.array {
+                                            for groupItem in groups {
+                                                if let group = StudyRoomGroup(from: groupItem) {
+                                                    StudyRoomsManager.groups.append(group)
+                                                }
+                                            }
+                                        }
                                         self.handleStudyRooms(handler)
                                     }
                                 }
@@ -48,10 +48,9 @@ class StudyRoomsManager: Manager {
     }
 
     func handleStudyRooms(_ handler: ([DataElement]) -> ()) {
-//        let sortedGroups = StudyRoomManager.groups.sorted { $0.sortId < $1.sortId }
-        let freeRooms = StudyRoomsManager.studyRooms.filter { $0.status == StudyRoomStatus.Free }
-        let occupiedRooms = StudyRoomsManager.studyRooms.filter { $0.status == StudyRoomStatus.Occupied }
-        handler(freeRooms + occupiedRooms)
+        let sortedGroups = StudyRoomsManager.groups.sorted { $0.sortId < $1.sortId }
+        handler(sortedGroups)
+        handler(StudyRoomsManager.studyRooms)
     }
     
     func getURL() -> String {
