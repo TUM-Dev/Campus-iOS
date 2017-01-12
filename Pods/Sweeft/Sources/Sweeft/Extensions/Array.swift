@@ -14,6 +14,11 @@ public extension Array {
         return count.range => { (self[$0], $0) }
     }
     
+    /// Random index contained in the array
+    var randomIndex: Int? {
+        return count.range?.random
+    }
+    
     /**
      Map with index
      
@@ -121,10 +126,57 @@ public extension Array {
         return <>(<>self).array(withFirst: number)
     }
     
+    /**
+     Will shift the index of an item to another inced
+     
+     - Parameter source: index of the item you want to move
+     - Parameter destination: index where you want it to be at
+     */
     mutating func move(itemAt source: Int, to destination: Int) {
         let element = self[source]
         remove(at: source)
         insert(element, at: destination)
+    }
+    
+    /**
+     Will shift the index of an item to another inced
+     
+     - Parameter source: index of the item you want to move
+     - Parameter destination: index where you want it to be at
+     
+     - Returns: Resulting array
+     */
+    func moving(from source: Int, to destination: Int) -> [Element] {
+        var copy = self
+        copy.move(itemAt: source, to: destination)
+        return copy
+    }
+    
+    /**
+     Will shuffle the contents of an array
+     
+     - Returns: shuffled copy
+     */
+    func shuffled() -> [Element] {
+        guard !isEmpty else { return self }
+        var array = self
+        let swaps = randomIndex.? + 10
+        swaps => {
+            let a = (self.randomIndex).?
+            let b = (self.randomIndex).?
+            if a != b {
+                array[a] <=> array[b]
+            }
+        }
+        return array
+    }
+    
+    /**
+     Will shuffle the contents of an array in-place
+     
+     */
+    mutating func shuffle() {
+        self = shuffled()
     }
     
 }

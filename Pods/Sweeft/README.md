@@ -593,6 +593,85 @@ struct MyDataStatus: ObjectStatus {
 }
 ```
 
+### REST and HTTP
+
+Sweeft also abstracts away a lot of repetetive work on sending requests to your REST API.
+
+#### API and Endpoints
+
+To access an API you simply have to describe the API by creating a list of endpoints you can access.
+
+```Swift
+enum MyEndpoint: String, APIEndpoint {
+    case login = "login"
+    case user = "user/{id}"
+}
+```
+
+Then you can create your own API Object:
+
+```Swift
+struct MyAPI: API {
+    typealias Endpoint = MyEndpoint
+    let baseURL = "https://..."
+}
+```
+
+And do any requests from it, be it Data, JSON or anything that conforms to our DataRepresentable Protocol. Like so:
+
+```Swift
+let api = MyAPI()
+api.doJSONRequest(with: .get, to: .user, arguments: ["id": 1234])
+    .onSuccess { json in
+        let name = json["name"].string ?? "No name for the user is available"
+        print(name)
+    }
+    .onError { error in
+        print("Some Error Happened :(")
+        print(error)
+    }
+
+```
+
+The code above does a GET Request to /user/1234 and if the request is successful it will read the name attribute of the JSON Object and print it out.
+
+#### Deserializable Objects
+
+A deserializable object is any object that conforms to the protocol Deserializable and can therefore be instantiated from JSON.
+For instance let's say that we get an object representing a user from our API.
+
+```Swift
+struct User {
+    let name: String
+}
+
+extension User: Deserializable {
+    
+    init?(from: JSON) {
+        guard let name = json["name"].string else {
+            return nil
+        }
+        self.init(name: name)
+    }
+    
+}
+```
+
+Having done this you can automatically get User's from your api by calling get(:) or getAll(:) respectively.
+
+For example you can now call:
+
+```Swift
+let api = MyAPI()
+User.get(using: api, at: .user, arguments: ["id": 1234])
+    .onSuccess { user in
+        print(user.name)
+    }
+    .onError { error in
+        print(error)
+    }
+```
+
 ## Contributing
 
 Please contribute and help me make swift even better with more cool ways to simplify the swift syntax.

@@ -7,6 +7,36 @@
 
 import Foundation
 
+public enum Weekday: Int {
+    case sunday, monday, tuesday, wednesday, thursday, friday, saturday
+    
+    var index: Int {
+        return rawValue
+    }
+}
+
+extension Weekday: Defaultable {
+    
+    /// Default Value
+    public static var defaultValue: Weekday = .sunday
+    
+}
+
+public enum Month: Int {
+    case january, february, march, april, may, june, july, august, september, october, november, december
+    
+    var index: Int {
+        return rawValue
+    }
+}
+
+extension Month: Defaultable {
+    
+    /// Default Value
+    public static var defaultValue: Month = .january
+    
+}
+
 public extension Date {
     
     /**
@@ -20,6 +50,56 @@ public extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
+    }
+    
+    private func getValue(for unit: Calendar.Component) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        let value = calendar.dateComponents([unit], from: self).value(for: unit)
+        return value.?
+    }
+    
+    static var now: Date {
+        return Date()
+    }
+    
+    var nanosecond: Int {
+        return getValue(for: .nanosecond)
+    }
+    
+    var second: Int {
+        return getValue(for: .second)
+    }
+    
+    var minute: Int {
+        return getValue(for: .minute)
+    }
+    
+    var hour: Int {
+        return getValue(for: .hour)
+    }
+    
+    var day: Int {
+        return getValue(for: .day)
+    }
+    
+    var weekday: Weekday {
+        return Weekday.init(rawValue: getValue(for: .weekday) - 1).?
+    }
+    
+    var week: Int {
+        return getValue(for: .weekOfYear)
+    }
+    
+    var weekOfMonth: Int {
+        return getValue(for: .weekOfMonth)
+    }
+    
+    var month: Month {
+        return Month.init(rawValue: getValue(for: .month) - 1).?
+    }
+    
+    var year: Int {
+        return getValue(for: .year)
     }
     
 }
@@ -69,7 +149,7 @@ public struct DateDifference {
     }
     
     /// The difference in minutes
-    public var minute: Int {
+    public var minutes: Int {
         return difference(by: .minute)
     }
     
@@ -85,7 +165,7 @@ public struct DateDifference {
     
     /// The difference in weeks
     public var weeks: Int {
-        return difference(by: .weekdayOrdinal)
+        return difference(by: .weekOfYear)
     }
     
     /// The difference in years
@@ -98,5 +178,14 @@ public struct DateDifference {
         return years / 1000
     }
     
+    
+}
+
+extension Date: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .string(string())
+    }
     
 }

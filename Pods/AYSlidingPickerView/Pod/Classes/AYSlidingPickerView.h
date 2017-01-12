@@ -71,6 +71,26 @@ typedef enum {
  *  Current state of the picker view.
  */
 @property (nonatomic, readonly) AYSlidingPickerViewState state;
+/**
+ *  Indicates whether or not the picker view is allowed to be shown.
+ */
+@property (nonatomic, getter=isDisabled) BOOL disabled;
+/**
+ *  A block that will be fired before the picker view appears.
+ */
+@property (nonatomic, copy) void (^willAppearHandler)();
+/**
+ *  A block that will be fired after the picker view appears.
+ */
+@property (nonatomic, copy) void (^didAppearHandler)();
+/**
+ *  A block that will be fired before the picker view is dismissed.
+ */
+@property (nonatomic, copy) void (^willDismissHandler)();
+/**
+ *  A block that will be fired after the picker view is dismissed.
+ */
+@property (nonatomic, copy) void (^didDismissHandler)();
 
 #pragma mark Methods
 

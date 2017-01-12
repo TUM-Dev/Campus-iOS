@@ -37,6 +37,22 @@ public extension Collection {
     }
     
     /**
+     Will turn any Collection into a Dictionary with a handler
+     
+     - Parameter byDividingWith: Mapping function that breaks every element into a key and a value
+     
+     - Returns: Resulting dictionary
+     */
+    func dictionaryWithoutOptionals<K, V>(byDividingWith handler: @escaping (Iterator.Element) -> (K, V?)) -> [K:V] {
+        return self ==> >{ dict, item in
+            var dict = dict
+            let (key, value) = handler(item)
+            dict[key] <- value
+            return dict
+        }
+    }
+    
+    /**
      Will sum all of the Elements
      
      - Parameter mapper: Mapping function that returns the value for an Element
@@ -116,20 +132,42 @@ public extension Collection {
     }
     
     /**
+     Will check which element best serves your purpose
+     
+     - Parameter shouldChange: mapper that says whether or not it should change the second element for the first one
+     
+     - Returns: best match if it exists
+     */
+    func best(_ shouldChange: @escaping (Iterator.Element, Iterator.Element) -> Bool) -> Iterator.Element? {
+        return self.array ==> { prev, next in
+            if shouldChange(next, prev) {
+                return next
+            }
+            return prev
+        }
+    }
+    
+    /**
+     Will check which element best serves your purpose
+     
+     - Parameter mapping: mapper that translates the value of the element
+     - Parameter shouldChange: mapper that says whether or not it should change the second element for the first one
+     
+     - Returns: best match if it exists
+     */
+    func best<V>(_ mapping: @escaping (Iterator.Element) -> (V), _ shouldChange: @escaping (V, V) -> Bool) -> Iterator.Element? {
+        return best(mapping |>>> shouldChange)
+    }
+    
+    /**
      Will find the minimal item in the collection by using a cost function
      
      - Parameter mapping: Cost function
      
      - Returns: minimal element
      */
-    func min(_ mapping: @escaping (Iterator.Element) -> (Double)) -> Iterator.Element? {
-        let array = self.array
-        return array ==> { prev, next in
-            if mapping(next) < mapping(prev) {
-                return next
-            }
-            return prev
-        }
+    func min<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
+        return best(mapping, (<))
     }
     
     /**
@@ -139,8 +177,30 @@ public extension Collection {
      
      - Returns: maximal element
      */
-    func max(_ mapping: @escaping (Iterator.Element) -> (Double)) -> Iterator.Element? {
-        return min { -mapping($0) }
+    func max<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
+        return best(mapping, (>))
+    }
+    
+    /**
+     Will sort by applying a mapping for costs
+     
+     - Parameter mapping: Cost function
+     
+     - Returns: sorted array
+     */
+    func sorted<C: Comparable>(ascending mapping: (Iterator.Element) -> (C)) -> [Iterator.Element] {
+        return sorted { mapping($0) < mapping($1) }
+    }
+    
+    /**
+     Will sort by applying a mapping and sorting
+     
+     - Parameter mapping: Cost function
+     
+     - Returns: sorted array
+     */
+    func sorted<C: Comparable>(descending mapping: (Iterator.Element) -> (C)) -> [Iterator.Element] {
+        return <>sorted(ascending: mapping)
     }
     
 }
@@ -150,6 +210,14 @@ public extension Collection where Iterator.Element: Hashable {
     /// Will turn any Collection into a Set
     var set: Set<Iterator.Element> {
         return Set(array)
+    }
+    
+}
+
+extension Collection where Iterator.Element: Serializable {
+    
+    public var json: JSON {
+        return .array(self => JSON.init)
     }
     
 }

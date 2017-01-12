@@ -11,7 +11,7 @@ public extension String {
     
     /// Will say if the String is a palindrome
     var isPalindrome: Bool {
-        return self.reversed == self
+        return <>self == self
     }
     
     /// Will return the string reversed
@@ -42,9 +42,16 @@ public extension String {
         return URL(string: urlEncoded)
     }
     
-    /// Data resulting by encoding using utf8
-    var data: Data? {
-        return data(using: .utf8)
+    /**
+     Turns any string into a possible API
+     
+     - Parameter baseHeaders: Headers that should be included into every single request
+     - Parameter baseQueries: Queries that should be included into every single request
+     
+     - Returns: API using the string as base url
+     */
+    func api<V: APIEndpoint>(baseHeaders: [String : String] = [:], baseQueries: [String: String]) -> GenericAPI<V> {
+        return V.api(with: self, baseHeaders: baseHeaders, baseQueries: baseQueries)
     }
     
     /**
@@ -83,5 +90,27 @@ extension String: Defaultable {
 
     /// Default Value
     public static let defaultValue = ""
+    
+}
+
+extension String: DataRepresentable {
+    
+    public init?(data: Data) {
+        self.init(data: data, encoding: .utf8)
+    }
+    
+    /// Data resulting by encoding using utf8
+    public var data: Data? {
+        return data(using: .utf8)
+    }
+    
+}
+
+extension String: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .string(self)
+    }
     
 }

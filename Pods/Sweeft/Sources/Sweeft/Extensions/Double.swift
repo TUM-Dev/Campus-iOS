@@ -22,3 +22,12 @@ extension Double: Defaultable {
     public static let defaultValue = 0.0
     
 }
+
+extension Double: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .double(self)
+    }
+    
+}
