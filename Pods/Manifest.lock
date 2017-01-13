@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.2.0)
   - ASWeekSelectorView (1.0)
-  - AYSlidingPickerView (0.1.1)
+  - AYSlidingPickerView (0.1.4)
   - CalendarLib (2.0):
     - OrderedDictionary (~> 1.2)
     - OSCache (~> 1.2)
@@ -9,8 +9,8 @@ PODS:
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.2.7)
-  - SwiftyJSON (3.1.3)
+  - Sweeft (0.3.2)
+  - SwiftyJSON (3.1.4)
   - SWXMLHash (3.0.3)
   - TKSubmitTransition (0.2)
 
@@ -37,23 +37,23 @@ CHECKOUT OPTIONS:
     :commit: bebc997af293f0bc9fee607da8bcd27f7956e0a8
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   TKSubmitTransition:
-    :commit: 00549e57dd72e9a7d93f0a5707653accdc4a1991
+    :commit: '00549e57dd72e9a7d93f0a5707653accdc4a1991'
     :git: https://github.com/jvitor/TKSubmitTransition.git
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   ASWeekSelectorView: 31479a963ec0bb1f0a05c5b075d6ed4aa8f9f381
-  AYSlidingPickerView: 33fdb08cc1f74a32c706c52be821a12711a1462a
+  AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: bccbb50ec9d5df5d097b97c5c7941183f6fe2ead
-  SwiftyJSON: 38a8ea2006779c0fc4c310cb2ee8195327740faf
+  Sweeft: 64510a334fd7d3db1f0ac1e5b1934da776464227
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SWXMLHash: 80d2529d74891bb2f15305a0b9e08f2a4f229ee7
   TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
 PODFILE CHECKSUM: cdcfd6442a8118671f3b1083d3bc3015f71ffa88
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0.beta.3

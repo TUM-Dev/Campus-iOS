@@ -40,9 +40,7 @@ public extension Dictionary where Key: CustomStringConvertible {
      - Returns: value found
      */
     func match(containing query: String) -> Value? {
-        return match {
-            return $0.description.contains(query)
-        }
+        return match(describe >>> String.contains ** query)
     }
     
 }
@@ -61,6 +59,16 @@ extension Dictionary: Defaultable {
     /// Default Value
     public static var defaultValue: [Key:Value] {
         return [:]
+    }
+    
+}
+
+/// TODO: Find a way to inherit from this particular dict
+extension Dictionary where Key: CustomStringConvertible, Value: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .dict(self >>= mapFirst(with: describe) >>> mapLast(with: JSON.init))
     }
     
 }

@@ -15,7 +15,7 @@ import Foundation
  
  - Returns: array without optionals
  */
-public prefix func !<T, C: Collection where C.Iterator.Element == T?>(_ items: C?) -> [T] {
+public prefix func !<T, C: Collection>(_ items: C?) -> [T] where C.Iterator.Element == T? {
     return items ==> id
 }
 
@@ -195,8 +195,20 @@ public func |<T>(_ items: [T]?, _ index: Int) -> T? {
  
  - Returns: Value at index
  */
-public func |<T, C: Collection where C.Iterator.Element == Int>(_ items: [T]?, _ indexes: C?) -> [T] {
+public func |<T, C: Collection>(_ items: [T]?, _ indexes: C?) -> [T] where C.Iterator.Element == Int {
     return !(indexes => { items | $0 })
+}
+
+/**
+ Exclude from Array
+ 
+ - Parameter array: array you want to access
+ - Parameter indexes: collection of indexes you want to exclude from the array
+ 
+ - Returns: Value at index
+ */
+public func ||<T, C: Collection>(_ items: [T]?, _ indexes: C?) -> [T] where C.Iterator.Element == Int {
+    return (items?.withIndex >>= flipArguments) || indexes
 }
 
 /**
@@ -221,6 +233,19 @@ public func |<K, V>(_ dictionary: [K:V]?, _ key: K) -> V? {
  */
 public func |<V, C: Collection>(_ dictionary: [C.Iterator.Element:V]?, _ keys: C?) -> [V] {
     return !(keys => { dictionary | $0 })
+}
+
+/**
+ Exclude from dictionary
+ 
+ - Parameter dictionary: dictionary you want to access
+ - Parameter keys: collection of keys you want to exclude
+ 
+ - Returns: Value at key
+ */
+public func ||<V, C: Collection>(_ dictionary: [C.Iterator.Element:V]?, _ keys: C?) -> [V] {
+    let realKeys = dictionary?.keys => id
+    return dictionary | (realKeys - (keys => id))
 }
 
 /**
@@ -294,8 +319,8 @@ prefix operator <>
  
  - Returns: Array containing the elements of C in reversed order
  */
-public prefix func <><C: Collection>(_ items: C) -> [C.Iterator.Element] {
-    return items.reversed()
+public prefix func <><C: Collection>(_ items: C?) -> [C.Iterator.Element] {
+    return (items?.reversed()).?
 }
 
 /**
@@ -328,7 +353,7 @@ public prefix func <>(_ number: Int) -> Int {
  
  - Returns: Intersection of the 2 collections
  */
-public func -<C: Collection where C.Iterator.Element: Hashable>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> {
+public func -<C: Collection>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> where C.Iterator.Element: Hashable {
     return (b?.set | a?.set.subtracting).?
 }
 
@@ -340,7 +365,7 @@ public func -<C: Collection where C.Iterator.Element: Hashable>(_ a: C?, _ b: C?
  
  - Returns: Intersection of the 2 collections
  */
-public func &&<C: Collection where C.Iterator.Element: Hashable>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> {
+public func &&<C: Collection>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> where C.Iterator.Element: Hashable {
     return (b?.set | a?.set.intersection).?
 }
 
@@ -352,6 +377,6 @@ public func &&<C: Collection where C.Iterator.Element: Hashable>(_ a: C?, _ b: C
  
  - Returns: Union of the 2 collections
  */
-public func ||<C: Collection where C.Iterator.Element: Hashable>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> {
+public func ||<C: Collection>(_ a: C?, _ b: C?) -> Set<C.Iterator.Element> where C.Iterator.Element: Hashable {
     return (b?.set | a?.set.union).?
 }

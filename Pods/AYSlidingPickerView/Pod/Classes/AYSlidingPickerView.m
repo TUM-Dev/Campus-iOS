@@ -164,6 +164,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 #pragma mark Private
 
 - (void)showWithCompletion:(void (^)(BOOL))completion force:(BOOL)force {
+  if (self.isDisabled) {
+    return;
+  }
   NSAssert(self.mainView, @"Main view must be specified");
   NSAssert(self.items && self.items.count > 0, @"Array of items can't be empty");
   self.pickerView.hidden = NO;
@@ -185,6 +188,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 #pragma mark Gesture recognizers
 
 - (void)didPan:(UIPanGestureRecognizer *)gestureRecognizer {
+  if (self.isDisabled) {
+    return;
+  }
   self.pickerView.hidden = NO;
   for (UIView *view in [UIApplication sharedApplication].delegate.window.subviews) {
     if (view != self) {
@@ -234,6 +240,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 - (void)animateSelectorOpeningWithCompletion:(void (^)(BOOL))completion {
   if (self.state != AYSlidingPickerViewShownState && self.state != AYSlidingPickerViewDisplayingState) {
     self.state = AYSlidingPickerViewDisplayingState;
+    if (self.willAppearHandler) {
+      self.willAppearHandler();
+    }
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     [UIView animateWithDuration:0.2f animations:^{
       // Pushing the controller down
@@ -254,6 +263,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
         if (completion) {
           completion(completedSecond);
         }
+        if (self.didAppearHandler) {
+          self.didAppearHandler();
+        }
       }];
     }];
   }
@@ -262,6 +274,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 - (void)animateSelectorClosingWithCompletion:(void (^)(BOOL))completion {
   if (self.state != AYSlidingPickerViewClosedState) {
     self.state = AYSlidingPickerViewDisplayingState;
+    if (self.willDismissHandler) {
+      self.willDismissHandler();
+    }
     [UIView animateWithDuration:0.2f animations:^{
       // Pulling the controller up
       for (UIView *view in [UIApplication sharedApplication].delegate.window.subviews) {
@@ -283,6 +298,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
         if (completion) {
           completion(completedSecond);
         }
+        if (self.didDismissHandler) {
+          self.didDismissHandler();
+        }
       }];
     }];
   }
@@ -290,6 +308,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 
 - (void)openSelectorFromCenterWithVelocity:(CGFloat)velocity completion:(void (^)(BOOL))completion {
   self.state = AYSlidingPickerViewDisplayingState;
+  if (self.willAppearHandler) {
+    self.willAppearHandler();
+  }
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
   CGFloat viewCenterY = CGRectGetMidY([UIScreen mainScreen].bounds) + CGRectGetHeight(self.bounds) - kSlidingPickerViewBounceOffset;
   for (UIView *view in [UIApplication sharedApplication].delegate.window.subviews) {
@@ -301,6 +322,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
         if (completion) {
           completion(completed);
         }
+        if (self.didAppearHandler) {
+          self.didAppearHandler();
+        }
       }];
     }
   }
@@ -308,6 +332,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
 
 - (void)closeSelectorFromCenterWithVelocity:(CGFloat)velocity completion:(void (^)(BOOL))completion {
   self.state = AYSlidingPickerViewDisplayingState;
+  if (self.willDismissHandler) {
+    self.willDismissHandler();
+  }
   [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
   for (UIView *view in [UIApplication sharedApplication].delegate.window.subviews) {
     if (view != self) {
@@ -317,6 +344,9 @@ static NSUInteger const kSlidingPickerViewNumberOfVisibleItems = 5;
         self.state = AYSlidingPickerViewClosedState;
         if (completion) {
           completion(completed);
+        }
+        if (self.didDismissHandler) {
+          self.didDismissHandler();
         }
       }];
     }

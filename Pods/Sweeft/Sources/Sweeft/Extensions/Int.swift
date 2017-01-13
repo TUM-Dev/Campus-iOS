@@ -23,12 +23,25 @@ public extension Int {
         return [firstPrime] + (self / firstPrime).primeFactors
     }
     
+    /// Returns the factorial of self
+    var factorial: Int {
+        return range => inc ==> 1 ** (*)
+    }
+    
     /// Creates a range from 0 till n - 1
     var range: CountableRange<Int>? {
         if self < 1 {
             return nil
         }
         return (0..<self)
+    }
+    
+    /// Creates a range from 0 till n-1 or from n+1 till 0 depending on wheter self is positive or not.
+    var anyRange: [Int] {
+        guard let range = self.range else {
+            return <>((-self).range) => negative
+        }
+        return range.array
     }
     
     /// Determines if the value is even
@@ -61,12 +74,12 @@ public extension Int {
     
     /// Will return a reversed version of the integer
     var reversed: Int {
-        return self | { $0.description.reversed } | Int.init.?
+        return self | { Int($0.description.reversed).? }
     }
     
     /// Loop n times
     func times<V>(do handler: @escaping () -> (V)) {
-        range?.forEach(**handler**)
+        range => **handler**
     }
     
     /// Loop n times
@@ -80,5 +93,14 @@ extension Int: Defaultable {
     
     /// Default Value
     public static let defaultValue = 0
+    
+}
+
+extension Int: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .double(Double(self))
+    }
     
 }
