@@ -12,7 +12,7 @@ platform :ios do
   lane :test do
     scan(
     	scheme: "TUM Campus App",
-    	sdk: "iphonesimulator10.2"
+    	device: "iPhone 6 (10.2)",
 	)
   end
 

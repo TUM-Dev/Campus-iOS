@@ -1,5 +1,5 @@
 language: objective-c  # [sic]. Travis uses objective-c just to determine it needs to use the xcode cli
-osx_image: xcode8
+osx_image: xcode8.2
 
 before_install:
   - ./fastlane/before_install.sh
