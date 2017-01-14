@@ -4,5 +4,4 @@ osx_image: xcode8
 before_install:
   - ./fastlane/before_install.sh
 script:
-  - export FASTLANE_EXPLICIT_OPEN_SIMULATOR=1
-  - travis_retry fastlane test
+  - export FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane test
