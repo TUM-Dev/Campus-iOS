@@ -1,6 +1,4 @@
-sudo: false
 language: objective-c  # [sic]. Travis uses objective-c just to determine it needs to use the xcode cli
 osx_image: xcode8.2
-xcode_project: TUM Campus App.xcodeproj
-xcode_scheme: TUM Campus App
-xcode_sdk: iphonesimulator10.2
+script:
+- ./fastlane/travis.sh
