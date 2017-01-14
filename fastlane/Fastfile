@@ -10,7 +10,10 @@ platform :ios do
 
   desc "Run tests"
   lane :test do
-    scan(scheme: "TUM Campus App", device: "iPhone 6 (10.2)")
+    scan(
+    	scheme: "TUM Campus App",
+    	sdk: "iphonesimulator10.2"
+	)
   end
 
 end
