@@ -2,6 +2,3 @@ language: objective-c  # [sic]. Travis uses objective-c just to determine it nee
 osx_image: xcode8.2
 script:
 - ./fastlane/travis.sh
-cache:
-  bundler: false
-  cocoapods: true
