@@ -37,9 +37,10 @@ class TUM_Campus_AppUITests: XCTestCase {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd"
         let dateFormatted = formatter.string(from: date)
-        print(dateFormatted)
         
-        XCTAssert(app.navigationBars["Februar 12"].exists)
+        print("The current date is \(dateFormatted)")
+        
+        XCTAssert(app.navigationBars[dateFormatted].exists)
     }
     
 }
