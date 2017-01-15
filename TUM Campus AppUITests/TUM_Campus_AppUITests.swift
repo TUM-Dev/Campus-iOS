@@ -28,9 +28,18 @@ class TUM_Campus_AppUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testMoreToCalendarStartsAtTheCurrentDate() {
+        let app = XCUIApplication()
+        app.tabBars.buttons["More"].tap()
+        app.tables.staticTexts["Calendar"].tap()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd"
+        let dateFormatted = formatter.string(from: date)
+        print(dateFormatted)
+        
+        XCTAssert(app.navigationBars["Februar 12"].exists)
     }
     
 }
