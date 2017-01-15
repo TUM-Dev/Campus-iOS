@@ -5,7 +5,7 @@ before_install:
   - ./fastlane/before_install.sh
 
 script:
-  - travis_retry fastlane test
+  - FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane test
 
 notifications:
   email: false
