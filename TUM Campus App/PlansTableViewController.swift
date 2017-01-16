@@ -71,7 +71,7 @@ class PlansTableViewController: UITableViewController {
     private func downloadData() {
         for i in 0..<plans.getPlans().count {
             let plan = plans.getPlan(forIndex: i)
-            if (plan.type == "pdf") {
+            if (plan.type == .pdf) {
                 let downloader = PlanDownloader()
                 downloader.downloadPlan(urlString: plan.url, withName: plan.fileUrl)
             }

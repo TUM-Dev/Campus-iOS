@@ -8,28 +8,35 @@
 
 import UIKit
 
+enum PlanType {
+    case image
+    case pdf
+}
+
+
 class PlanDetailsViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     var imageView: UIImageView!
     var webView: UIWebView!
     var planFileUrl: String!
-    var planType: String!
+    var planType: PlanType!
     
     // display image or pdf, depending on the file type
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (planType == "image") {
+        switch planType! {
+        case .image:
             imageView = UIImageView()
             imageView.frame = self.view.frame
             imageView.contentMode = .scaleAspectFit
             imageView.image = UIImage(named: planFileUrl)
-        
+
             self.scrollView.minimumZoomScale = 1.0
             self.scrollView.maximumZoomScale = 5.0
             scrollView.addSubview(imageView)
-        } else if (planType == "pdf") {
+        case .pdf:
             webView = UIWebView()
             webView.scalesPageToFit = true
             webView.frame = self.view.frame
