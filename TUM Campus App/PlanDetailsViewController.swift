@@ -42,8 +42,9 @@ class PlanDetailsViewController: UIViewController, UIScrollViewDelegate {
             webView.frame = self.view.frame
             
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            let documentUrl = paths?.appendingPathComponent("plans/"+planFileUrl)
-            webView.loadRequest(NSURLRequest(url: documentUrl!) as URLRequest)
+            if let documentUrl = paths?.appendingPathComponent("plans/"+planFileUrl) {
+                webView.loadRequest(URLRequest(url: documentUrl))
+            }
             
             scrollView.addSubview(webView)
         }
