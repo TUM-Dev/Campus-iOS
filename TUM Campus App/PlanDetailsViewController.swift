@@ -26,27 +26,29 @@ class PlanDetailsViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        switch planType! {
-        case .image:
-            imageView = UIImageView()
-            imageView.frame = self.view.frame
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: planFileUrl)
-
-            self.scrollView.minimumZoomScale = 1.0
-            self.scrollView.maximumZoomScale = 5.0
-            scrollView.addSubview(imageView)
-        case .pdf:
-            webView = UIWebView()
-            webView.scalesPageToFit = true
-            webView.frame = self.view.frame
-            
-            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            if let documentUrl = paths?.appendingPathComponent("plans/"+planFileUrl) {
-                webView.loadRequest(URLRequest(url: documentUrl))
+        if let planType = self.planType {
+            switch planType {
+            case .image:
+                imageView = UIImageView()
+                imageView.frame = self.view.frame
+                imageView.contentMode = .scaleAspectFit
+                imageView.image = UIImage(named: planFileUrl)
+                
+                self.scrollView.minimumZoomScale = 1.0
+                self.scrollView.maximumZoomScale = 5.0
+                scrollView.addSubview(imageView)
+            case .pdf:
+                webView = UIWebView()
+                webView.scalesPageToFit = true
+                webView.frame = self.view.frame
+                
+                let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                if let documentUrl = paths?.appendingPathComponent("plans/"+planFileUrl) {
+                    webView.loadRequest(URLRequest(url: documentUrl))
+                }
+                
+                scrollView.addSubview(webView)
             }
-            
-            scrollView.addSubview(webView)
         }
     }
     
