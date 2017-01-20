@@ -33,6 +33,10 @@ class TUM_Campus_AppUnitTests: XCTestCase {
         XCTAssert(2 == 2)
     }
     
+    func testExample3() {
+        // ToDo: Implement this
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
