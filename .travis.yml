@@ -2,10 +2,15 @@ language: objective-c  # [sic]. Travis uses objective-c just to determine it nee
 osx_image: xcode8.2
 
 before_install:
-  - ./fastlane/before_install.sh
+- "./fastlane/before_install.sh"
 
 script:
-  - FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane test
+- FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane test
 
 notifications:
   email: false
+
+env:
+  global:
+    # SONAR_LOGIN_TOKEN
+    secure: Mh1fRGVs+gyfoq5yMLH1PIWZlINX6iuy1ithvUTJ6CGklfb3jApJfPRIczpys8oIrUil7KnOevYlaQzFW8kDkhb9+x1b6+bVlu41iZ1/DA7VgrcRBLmA5uKNboubHj0hU0NLKdyLy6q6x+Wdagrs+2QJpXSeLY666pkjZ+KF/TYaJq5L28O1PReVfyy+fMEl3W5k5aiMwKTls+VZ6maaAqrUHzbqVPjx/+chIkj2hL/7jtAWAxzbU6AM0/RIhto1Bt7CtoAFi8sDedlkIDMBp/a/6+QWjomEo+5H68vNfTSSzKec+0FAWekOTGB/P71MQ0UQffWW9oeiODlnC3NTMnuoyRmcsMDZkxgEiSlpkQHJTDmHlehC/t6pnMuCiTE6BCCVJnkB3JrS47c/78MzNJ9Lb3gnFC+iLdbRMc3milbKLIC8YlNfAybxesk3D5VJdogUW9X5mQcZdvj1OlxIZGlpL5raqcrHUofAEkGIPmqgjgCS9COqNfu6lniUjVVXiYy64Pay8dxwqhVA9PysGwPhYrzJ961MtR5rkXWAELjAOYe3Hhj25bflF8DDF28vQWH0XLtTaIgUWmj5tNv0dMtsqKnVgcyg/wA9ef0o745PnqFRNTLCkDSvjag0szoLm0ZsVXdJDT/fgSJ8dSwriGt4HnCWxYYrOFGuovWyQpg=
