@@ -41,6 +41,9 @@ class TUM_Campus_AppUITests: XCTestCase {
         print("The current date is \(dateFormatted)")
         
         XCTAssert(app.navigationBars[dateFormatted].exists)
+        
+        
+        
     }
     
 }

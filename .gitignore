@@ -50,7 +50,9 @@ Carthage/Build
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
 fastlane/report.xml
+fastlane/reports/
 fastlane/screenshots
+.sonar
 
 # Code Injection
 #

@@ -1,19 +1,65 @@
-fastlane_version "2.8.0"
+fastlane_version "2.9.0"
 
 default_platform :ios
 
-platform :ios do
+before_all do
+	# ensure_git_status_clean
+	# sh 'mkdir reports || true'
+	# sh 'mkdir DerivedData || true'
+end
 
-  before_all do
-    # ensure_git_status_clean
-  end
+# desc "Runs all the unit tests and UI Tests"
+# lane :test do
+# 	scan(
+# 		scheme: "TUM Campus App",
+# 		device: "iPhone 6 (10.2)",
+# 		code_coverage: true,
+# 		# skip_build: true,  # Should skip debug build before test build?
+# 		output_directory: 'fastlane/reports/',
 
-  desc "Run tests"
-  lane :test do
-    scan(
-    	scheme: "TUM Campus App",
-    	device: "iPhone 6 (10.2)",
-	)
-  end
+# 	)
+# 	slather(
+# 		scheme: 'TUM Campus App',
+# 		proj: 'TUM Campus App.xcodeproj',
+# 		gutter_json: true,
+# 		output_directory: "fastlane/reports/"
+# 	)
+# end
 
+# desc "Does a static analysis of the project. Configure the options in .swiftlint.yml"
+# lane :lint do
+# 	swiftlint(
+# 		mode: :lint,
+# 		output_file: 'fastlane/reports/swiftlint.json',
+#  		config_file: 'fastlane/.swiftlint.yml',
+#  		ignore_exit_status: true
+# 	)
+# end
+
+lane :test do
+	scan_args = {
+		scheme: "TUM Campus App",
+		device: "iPhone 6 (10.2)",
+		code_coverage: true,
+		# skip_build: true,  # Should skip debug build before test build? Might break sonar
+		derived_data_path: "fastlane/DerivedData",
+		output_directory: "fastlane/reports"
+	}
+	slather_args = {
+		proj: "TUM Campus App.xcodeproj",
+		scheme: "TUM Campus App", 
+		cobertura_xml: true, 
+		jenkins: true, 
+		build_directory: "fastlane/DerivedData", 
+		output_directory: "fastlane/reports", 
+	}
+	swiftlint_args = {
+		output_file: "fastlane/reports/swiftlint.txt",
+		ignore_exit_status: true
+	}
+	scan(scan_args)
+    slather(slather_args)
+    # sh("cd .. && lizard ./TUM\ Campus\ App -l swift --xml > fastlane/reports/lizard-report.xml")
+    swiftlint(swiftlint_args)
+    sonar(project_configuration_path: "sonar-project.properties")
 end
