@@ -21,9 +21,16 @@ class TUM_Campus_AppUnitTests: XCTestCase {
     }
     
     func testExample() {
+        XCTAssert(1 == 1)
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        XCTAssert(1 == 1)
+    }
+    
+    
+    func testExample2() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssert(2 == 2)
     }
     
     func testPerformanceExample() {

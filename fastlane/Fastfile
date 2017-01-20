@@ -60,19 +60,19 @@ lane :test do
 	sonar_current_pr_args = {
 		project_configuration_path: "sonar-project.properties", 
 		sonar_runner_args:  "-Dsonar.analysis.mode=preview" +
-							" -Dsonar.login="+ENV['SONAR_LOGIN_TOKEN'] +
-							" -Dsonar.github.pullRequest="+ENV['TRAVIS_PULL_REQUEST'] +
-							" -Dsonar.github.oauth="+ENV['GITHUB_ACCESS_TOKEN'] +
-							" -Dsonar.github.repository="+ENV['TRAVIS_REPO_SLUG'],
+							" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
+							" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
+							" -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN" +
+							" -Dsonar.github.repository=$TRAVIS_REPO_SLUG",
 	}
 	sonar_update_server_args = {
 		project_configuration_path: "sonar-project.properties", 
-		sonar_runner_args:  " -Dsonar.login="+ENV['SONAR_LOGIN_TOKEN']
+		sonar_runner_args:  " -Dsonar.login=$SONAR_LOGIN_TOKEN"
 	}
 	scan(scan_args)
     slather(slather_args)
     # sh("cd .. && lizard ./TUM\ Campus\ App -l swift --xml > fastlane/reports/lizard-report.xml")
     swiftlint(swiftlint_args)
+    sonar(sonar_current_pr_args)
     sonar(sonar_update_server_args)
-    # sonar(sonar_current_pr_args)
 end
