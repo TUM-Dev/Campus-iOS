@@ -14,7 +14,8 @@ before_install:
   - ./fastlane/before_install.sh
 
 script:
-  - ./fastlane/travis_runner.sh
+   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane pull_request; fi'
+   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane integration; fi'
 
 notifications:
   email: false
