@@ -1,11 +1,15 @@
 language: objective-c  # [sic]. Travis uses objective-c just to determine it needs to use the xcode cli
 osx_image: xcode8.2
 
+# cache:
+#   directories:
+#     - $HOME/.sonar
+
 before_install:
   - ./fastlane/before_install.sh
 
 script:
-  - FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane test
+  - ./fastlane/travis_runner.sh
 
 notifications:
   email: false

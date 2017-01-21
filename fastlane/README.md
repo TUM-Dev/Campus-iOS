@@ -5,9 +5,14 @@ fastlane documentation
 sudo gem install fastlane
 ```
 # Available Actions
-### test
+### integration
 ```
-fastlane test
+fastlane integration
+```
+
+### pr
+```
+fastlane pr
 ```
 
 

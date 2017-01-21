@@ -3,48 +3,65 @@ fastlane_version "2.9.0"
 default_platform :ios
 
 before_all do
-	# ensure_git_status_clean
-	# sh 'mkdir reports || true'
-	# sh 'mkdir DerivedData || true'
+	ensure_git_status_clean
+	sh 'mkdir reports || true'
+	sh 'mkdir DerivedData || true'
 end
 
-# desc "Runs all the unit tests and UI Tests"
-# lane :test do
-# 	scan(
-# 		scheme: "TUM Campus App",
-# 		device: "iPhone 6 (10.2)",
-# 		code_coverage: true,
-# 		# skip_build: true,  # Should skip debug build before test build?
-# 		output_directory: 'fastlane/reports/',
+desc 'Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.'
+lane :integration do
+	build
+	static_analysis
+	sonar_update_dashboard
+end
 
-# 	)
-# 	slather(
-# 		scheme: 'TUM Campus App',
-# 		proj: 'TUM Campus App.xcodeproj',
-# 		gutter_json: true,
-# 		output_directory: "fastlane/reports/"
-# 	)
-# end
+desc 'Performs tests and a static code analysis on the PR. Found issues are commented on the PR.'
+lane :pull_request do
+	build(code_coverage: true)
+	static_analysis
+    sonar_github_pr_bot
+end
 
-# desc "Does a static analysis of the project. Configure the options in .swiftlint.yml"
-# lane :lint do
-# 	swiftlint(
-# 		mode: :lint,
-# 		output_file: 'fastlane/reports/swiftlint.json',
-#  		config_file: 'fastlane/.swiftlint.yml',
-#  		ignore_exit_status: true
-# 	)
-# end
-
-lane :test do
+private_lane :build do |options|
 	scan_args = {
 		scheme: "TUM Campus App",
 		device: "iPhone 6 (10.2)",
-		code_coverage: true,
+		code_coverage: env[:code_coverage] ? options[:code_coverage] : false,
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
 		output_directory: "fastlane/reports"
 	}
+	scan(scan_args)
+end
+
+
+########################
+# PRIVATE HELPER LANES #
+########################
+desc 'Performs a sonar analysis in preview mode and comments on the PR on Github.'
+private_lane :sonar_github_pr_bot do
+	sonar_github_args = {
+		project_configuration_path: "sonar-project.properties", 
+		sonar_runner_args:  "-Dsonar.analysis.mode=preview" +
+							" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
+							" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
+							" -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN" +
+							" -Dsonar.github.repository=$TRAVIS_REPO_SLUG",
+	}
+	sonar(sonar_github_args)
+end
+
+desc 'Updates the SonarQube Server dashboard.'
+private_lane :sonar_update_dashboard do
+	sonar_update_server_args = {
+		project_configuration_path: "sonar-project.properties", 
+		sonar_runner_args:  " -Dsonar.login=$SONAR_LOGIN_TOKEN"
+	}
+	sonar(sonar_update_server_args)
+end
+
+desc 'Runs test coverage and swiftlint and provides data in a way sonar can use it afterwards.'
+private_lane :static_analysis do
 	slather_args = {
 		proj: "TUM Campus App.xcodeproj",
 		scheme: "TUM Campus App", 
@@ -57,22 +74,7 @@ lane :test do
 		output_file: "fastlane/reports/swiftlint.txt",
 		ignore_exit_status: true
 	}
-	sonar_current_pr_args = {
-		project_configuration_path: "sonar-project.properties", 
-		sonar_runner_args:  "-Dsonar.analysis.mode=preview" +
-							" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
-							" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
-							" -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN" +
-							" -Dsonar.github.repository=$TRAVIS_REPO_SLUG",
-	}
-	sonar_update_server_args = {
-		project_configuration_path: "sonar-project.properties", 
-		sonar_runner_args:  " -Dsonar.login=$SONAR_LOGIN_TOKEN"
-	}
-	scan(scan_args)
-    slather(slather_args)
+ 	slather(slather_args)
     # sh("cd .. && lizard ./TUM\ Campus\ App -l swift --xml > fastlane/reports/lizard-report.xml")
     swiftlint(swiftlint_args)
-    sonar(sonar_current_pr_args)
-    sonar(sonar_update_server_args)
 end
