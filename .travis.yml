@@ -5,6 +5,11 @@ osx_image: xcode8.2
 #   directories:
 #     - $HOME/.sonar
 
+branches:
+  # Only run push builds for the master branch. PR builds are run nevertheless
+  only: 
+    - master
+
 before_install:
   - ./fastlane/before_install.sh
 
