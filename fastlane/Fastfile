@@ -22,11 +22,15 @@ lane :pull_request do
     sonar_github_pr_bot
 end
 
+
+########################
+# PRIVATE HELPER LANES #
+########################
 private_lane :build do |options|
 	scan_args = {
 		scheme: "TUM Campus App",
 		device: "iPhone 6 (10.2)",
-		code_coverage: env[:code_coverage] ? options[:code_coverage] : false,
+		code_coverage: options[:code_coverage] ? options[:code_coverage] : false,
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
 		output_directory: "fastlane/reports"
@@ -34,10 +38,6 @@ private_lane :build do |options|
 	scan(scan_args)
 end
 
-
-########################
-# PRIVATE HELPER LANES #
-########################
 desc 'Performs a sonar analysis in preview mode and comments on the PR on Github.'
 private_lane :sonar_github_pr_bot do
 	sonar_github_args = {
