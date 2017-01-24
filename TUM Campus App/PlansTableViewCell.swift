@@ -10,7 +10,6 @@ import UIKit
 
 class PlansTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var planImageView: UIImageView!
     @IBOutlet weak var planTitleLabel: UILabel!
 

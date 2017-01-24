@@ -43,7 +43,7 @@ class PlanDetailsViewController: UIViewController, UIScrollViewDelegate {
                 webView.frame = self.view.frame
                 
                 let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                if let documentUrl = paths?.appendingPathComponent("plans/"+planFileUrl) {
+                if let documentUrl = paths?.appendingPathComponent("plans/" + planFileUrl) {
                     webView.loadRequest(URLRequest(url: documentUrl))
                 }
                 
