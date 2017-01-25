@@ -9,7 +9,8 @@
 import Foundation
 
 class Plans {
-    private var plans = [Plan]()
+    private(set) var plans = [Plan]()
+    static var shared = Plans()
     
     init(){
         plans.append(Plan(title: "MVV Gesamtnetz", type: .pdf, fileUrl: "Schnellbahnnetz.pdf", url: "http://www.mvv-muenchen.de/fileadmin/media/Dateien/plaene/pdf/Netz_2017_Version_A4.pdf", address: "", icon: "plan_mvv_icon"))
@@ -22,13 +23,5 @@ class Plans {
         plans.append(Plan(title: "Campus Olympiapark Hallenplan", type: .image, fileUrl: "plan_campus_olympiapark_hallenplan", url: "", address: "Connollystraße 32, 80809 München", icon: "plan_campus_olympiapark_hallenplan_icon"))
         plans.append(Plan(title: "Stammgelände", type: .image, fileUrl: "plan_campus_stammgelaende", url: "", address: "Arcisstraße 21, 80333 München", icon: "plan_campus_stammgelaende_icon"))
         plans.append(Plan(title: "Campus Weihenstephan", type: .image, fileUrl: "plan_campus_weihenstephan", url: "", address: "Liesel-Beckmann-Straße 6, 85354 Freising", icon: "plan_campus_weihenstephan_icon"))
-    }
-    
-    func getPlans() -> [Plan]{
-        return plans
-    }
-    
-    func getPlan(forIndex index:Int) -> Plan {
-        return plans[index]
     }
 }

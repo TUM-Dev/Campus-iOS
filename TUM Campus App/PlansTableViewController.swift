@@ -12,7 +12,9 @@ import Alamofire
 class PlansTableViewController: UITableViewController {
     
     // MARK: - Table view data source
-    lazy var plans = Plans()
+    var plans: [Plan] {
+        return Plans.shared.plans
+    }
     let loadingView = UIView()
     let spinner = UIActivityIndicatorView()
     let loadingLabel = UILabel()
@@ -28,12 +30,12 @@ class PlansTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return plans.getPlans().count
+        return plans.count
     }
 
     // load data into the rows
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let plan = plans.getPlan(forIndex: indexPath.row)
+        let plan = plans[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "planCell", for: indexPath) as! PlansTableViewCell
 
@@ -51,7 +53,7 @@ class PlansTableViewController: UITableViewController {
     
     // show detail view, when row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let plan = plans.getPlan(forIndex: indexPath.row)
+        let plan = plans[indexPath.row]
         
         performSegue(withIdentifier: "showDetail", sender: plan)
         
@@ -69,8 +71,7 @@ class PlansTableViewController: UITableViewController {
     
     // download the plans
     private func downloadData() {
-        for plan in plans.getPlans() {
-            let plan = plans.getPlan(forIndex: i)
+        for plan in plans {
             if (plan.type == .pdf) {
                 let downloader = PlanDownloader()
                 downloader.downloadPlan(urlString: plan.url, withName: plan.fileUrl)
