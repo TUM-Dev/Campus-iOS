@@ -10,7 +10,7 @@ end
 
 desc 'Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.'
 lane :integration do
-	build
+	build(code_coverage: true)
 	static_analysis
 	sonar_update_dashboard
 end

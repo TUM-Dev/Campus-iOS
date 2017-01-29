@@ -9,12 +9,12 @@ sudo gem install fastlane
 ```
 fastlane integration
 ```
-
-### pr
+Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.
+### pull_request
 ```
-fastlane pr
+fastlane pull_request
 ```
-
+Performs tests and a static code analysis on the PR. Found issues are commented on the PR.
 
 ----
 
