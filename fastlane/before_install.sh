@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # sudo gem install -n /usr/local/bin fastlane  -v 2.8.0
-sudo gem install fastlane  -v 2.9.0
+sudo gem install fastlane  -v 2.12.0
 sudo gem install slather  -v 2.3.0
 
 brew install swiftlint
