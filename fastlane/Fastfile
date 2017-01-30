@@ -30,10 +30,12 @@ private_lane :build do |options|
 	scan_args = {
 		scheme: "TUM Campus App",
 		device: "iPhone 6 (10.2)",
+		configuration: "Debug", # Defaults to Release
 		code_coverage: options[:code_coverage] ? options[:code_coverage] : false,
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
-		output_directory: "fastlane/reports"
+		output_directory: "fastlane/reports",
+		custom_report_file_name: "scan-test"
 	}
 	scan(scan_args)
 end
