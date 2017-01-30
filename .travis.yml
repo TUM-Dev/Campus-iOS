@@ -12,8 +12,10 @@ branches:
 
 before_install:
   - ./fastlane/before_install.sh
+  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone 6 (10.2) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
 
 script:
+   - open -a "simulator" --args -CurrentDeviceUDID $SIMULATOR_ID
    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then travis_retry fastlane pull_request; fi'
    - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then travis_retry fastlane integration; fi'
 
