@@ -25,9 +25,6 @@ This is not an official app of the Technische Universität München. There's no 
 You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](https://github.com/TCA-Team/TumCampusApp) or via E-Mail [tca-support.os.in@tum.de](mailto:tca-support.os.in@tum.de)
 
 ## License:
-Dual licensed under  
-[GNU GPL v3](http://www.gnu.org/licenses/gpl.html)  
-and / or  
-[New BSD License](http://www.opensource.org/licenses/bsd-license.php)
+Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html) 
 
 ## [Follow us on Facebook](https://www.facebook.com/TUMCampus)
