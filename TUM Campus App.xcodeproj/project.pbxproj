@@ -98,6 +98,13 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		3047EFC51E07309300154FD8 /* PlanDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047EFC41E07309300154FD8 /* PlanDownloader.swift */; };
+		308D3EE11E040C750071584F /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDC1E040C750071584F /* Plan.swift */; };
+		308D3EE21E040C750071584F /* Plans.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 308D3EDD1E040C750071584F /* Plans.storyboard */; };
+		308D3EE31E040C750071584F /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDE1E040C750071584F /* Plans.swift */; };
+		308D3EE41E040C750071584F /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EDF1E040C750071584F /* PlansTableViewCell.swift */; };
+		308D3EE81E0413DC0071584F /* PlansTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EE71E0413DC0071584F /* PlansTableViewController.swift */; };
+		308D3EEA1E042FFB0071584F /* PlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */; };
 		50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */; };
 		50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0F1DF4941500B6FBE3 /* CardView.storyboard */; };
 		50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E111DF4948C00B6FBE3 /* Movie.storyboard */; };
@@ -223,6 +230,13 @@
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
+		3047EFC41E07309300154FD8 /* PlanDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDownloader.swift; sourceTree = "<group>"; };
+		308D3EDC1E040C750071584F /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
+		308D3EDD1E040C750071584F /* Plans.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plans.storyboard; sourceTree = "<group>"; };
+		308D3EDE1E040C750071584F /* Plans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
+		308D3EDF1E040C750071584F /* PlansTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
+		308D3EE71E0413DC0071584F /* PlansTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewController.swift; sourceTree = "<group>"; };
+		308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailsViewController.swift; sourceTree = "<group>"; };
 		50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tution.storyboard; sourceTree = "<group>"; };
 		50200E0F1DF4941500B6FBE3 /* CardView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardView.storyboard; sourceTree = "<group>"; };
 		50200E111DF4948C00B6FBE3 /* Movie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
@@ -331,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
+				308D3EE61E040C7E0071584F /* Plans View */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
 				0E3B21421C13C0590035ED70 /* TabBar */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
@@ -432,9 +447,12 @@
 				0EC10C221C171F730024F902 /* UserData.swift */,
 				0E1073B01C1A4BE2004C93CF /* Room.swift */,
 				0EB473CF1C1B4F0F00F17F44 /* Map.swift */,
+				308D3EDC1E040C750071584F /* Plan.swift */,
+				308D3EDE1E040C750071584F /* Plans.swift */,
 				0EF4CEE71D414D40001649F1 /* News.swift */,
 				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
+				3047EFC41E07309300154FD8 /* PlanDownloader.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
 			);
 			name = Models;
@@ -596,6 +614,17 @@
 			name = "Detail View Protocols";
 			sourceTree = "<group>";
 		};
+		308D3EE61E040C7E0071584F /* Plans View */ = {
+			isa = PBXGroup;
+			children = (
+				308D3EDD1E040C750071584F /* Plans.storyboard */,
+				308D3EDF1E040C750071584F /* PlansTableViewCell.swift */,
+				308D3EE71E0413DC0071584F /* PlansTableViewController.swift */,
+				308D3EE91E042FFB0071584F /* PlanDetailsViewController.swift */,
+			);
+			name = "Plans View";
+			sourceTree = "<group>";
+		};
 		B3CA96B7ECEAA9D6B9C8C51A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +740,7 @@
 				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
 				50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */,
 				50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */,
+				308D3EE21E040C750071584F /* Plans.storyboard in Resources */,
 				0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */,
 				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
@@ -820,13 +850,17 @@
 				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,
+				308D3EE81E0413DC0071584F /* PlansTableViewController.swift in Sources */,
 				0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */,
 				0E4825AB1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift in Sources */,
+				308D3EE41E040C750071584F /* PlansTableViewCell.swift in Sources */,
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
+				3047EFC51E07309300154FD8 /* PlanDownloader.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
 				0EC28AE01E05522B00FF1E40 /* CardDisplayable.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,
+				308D3EE31E040C750071584F /* Plans.swift in Sources */,
 				0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */,
 				0EB473C81C1B224700F17F44 /* MenuTableViewCell.swift in Sources */,
 				0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */,
@@ -844,6 +878,7 @@
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,
 				0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */,
+				308D3EE11E040C750071584F /* Plan.swift in Sources */,
 				0EF4CEE81D414D40001649F1 /* News.swift in Sources */,
 				0E1073AF1C1A410F004C93CF /* RoomFinderApi.swift in Sources */,
 				0E3B21501C13DB360035ED70 /* TumDataReceiver.swift in Sources */,
@@ -860,6 +895,7 @@
 				0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
+				308D3EEA1E042FFB0071584F /* PlanDetailsViewController.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,

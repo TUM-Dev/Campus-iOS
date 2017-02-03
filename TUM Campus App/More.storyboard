@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BTp-lM-dAo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BTp-lM-dAo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -231,6 +231,30 @@
                                             <segue destination="Avg-KB-Ux0" kind="show" id="bY8-EB-uNw"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="n3O-6s-YDy" imageView="jGw-G3-Xfl" style="IBUITableViewCellStyleDefault" id="6Lb-b0-qc6">
+                                        <rect key="frame" x="0.0" y="513" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Lb-b0-qc6" id="SLX-J7-CtG">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Plans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n3O-6s-YDy">
+                                                    <rect key="frame" x="55" y="0.0" width="285" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Map Filled-25" id="jGw-G3-Xfl">
+                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ez8-Wi-0Tz" kind="show" id="yPJ-3T-ISv"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Settings" id="xbg-sf-Cvw">
@@ -459,6 +483,14 @@
             </objects>
             <point key="canvasLocation" x="747" y="1234"/>
         </scene>
+        <!--Plans-->
+        <scene sceneID="Z57-ZH-wsx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Plans" id="ez8-Wi-0Tz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ura-AJ-V3p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="1267"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Align Justify-25" width="25" height="25"/>
@@ -466,6 +498,7 @@
         <image name="Feedback Filled-25" width="25" height="25"/>
         <image name="Food Filled-25" width="25" height="25"/>
         <image name="Info Filled-25" width="25" height="25"/>
+        <image name="Map Filled-25" width="25" height="25"/>
         <image name="University Filled-25" width="25" height="25"/>
         <image name="avatar" width="420" height="420"/>
         <image name="cal" width="25" height="25"/>
