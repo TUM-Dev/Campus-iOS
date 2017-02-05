@@ -12,7 +12,7 @@ import Foundation
 public class BulkPromise<T, O: Error>: Promise<[T], O> {
     
     private let count: Int
-    private var results: [(Int, T)] {
+    private var results: [(Int, T)] = .empty {
         didSet {
             if results.count == count {
                 success(with: results.sorted(ascending: firstArgument) => lastArgument)
@@ -22,7 +22,6 @@ public class BulkPromise<T, O: Error>: Promise<[T], O> {
     
     init(promises: [Promise<T,O>], completionQueue: DispatchQueue = .main) {
         count = promises.count
-        results = []
         super.init(completionQueue: completionQueue)
         promises => { promise, index in
             promise.nest(to: self) { result in

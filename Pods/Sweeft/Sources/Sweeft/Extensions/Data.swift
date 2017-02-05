@@ -9,6 +9,10 @@
 import Foundation
 
 public extension Data {
+    
+    static var empty: Data {
+        return Data()
+    }
 
     /// Will get any structure representable as data using type inference
     private func get<T: DataRepresentable>() -> T? {
