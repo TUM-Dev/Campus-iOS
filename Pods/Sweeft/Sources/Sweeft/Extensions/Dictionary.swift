@@ -10,6 +10,11 @@ import Foundation
 
 public extension Dictionary {
     
+    /// Map Only Values
+    func mapValues<T>(_ map: @escaping (Value) -> T) -> [Key:T] {
+        return self >>= mapLast(with: map)
+    }
+    
     /**
      Will find a match for in the dictionary by key
      
@@ -58,7 +63,7 @@ extension Dictionary: Defaultable {
     
     /// Default Value
     public static var defaultValue: [Key:Value] {
-        return [:]
+        return .empty
     }
     
 }
@@ -68,7 +73,15 @@ extension Dictionary where Key: CustomStringConvertible, Value: Serializable {
     
     /// JSON Value
     public var json: JSON {
-        return .dict(self >>= mapFirst(with: describe) >>> mapLast(with: JSON.init))
+        return .dict(self >>= describe <*> JSON.init)
+    }
+    
+}
+
+public extension ExpressibleByDictionaryLiteral {
+    
+    static var empty: Self {
+        return Self()
     }
     
 }

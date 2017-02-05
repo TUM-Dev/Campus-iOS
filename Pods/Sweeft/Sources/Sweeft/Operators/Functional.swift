@@ -249,6 +249,18 @@ public func >>=<T, K, V>(_ items: [T], _ handler: @escaping (T, Int) -> (K, V)) 
 }
 
 /**
+ Dictionary by Mapping values of dictionary
+ 
+ - Parameter dict: Dictionary
+ - Parameter handler: dividing function with index
+ 
+ - Returns: dictionary
+ */
+public func >>=<T, K, V>(_ dict: [K:T]?, _ handler: @escaping (T) -> (V)) -> [K:V] {
+    return (dict.?).mapValues(handler)
+}
+
+/**
  Bind with input
  
  - Parameter handler: function that you want to call
@@ -490,4 +502,32 @@ public func |>>><V, O, R>(_ map: @escaping (V) -> (R), _ handler: @escaping (R, 
  */
 public func |>>><C: Collection, O, R>(_ map: @escaping (C.Iterator.Element) -> (R), _ handler: @escaping ([R]) -> (O)) -> (C) -> O {
     return (=>) <** map >>> handler
+}
+
+infix operator <*>: PowerPrecedence
+
+/**
+ Parallelize closures. Will combine two closures and take both inputs and respond with the tuppled results
+ 
+ - Parameter a: first closure
+ - Parameter b: second closure
+ 
+ - Returns: Bound closure
+ */
+public func <*><A, B, C, D>(_ a: @escaping (A) -> B, _ b: @escaping (C) -> D) -> (A, C) -> (B, D) {
+    return { (a($0), b($1)) }
+}
+
+infix operator <+>: PowerPrecedence
+
+/**
+ Parallelize closures. Will combine two closures with the same input and respond with the tuppled results
+ 
+ - Parameter a: first closure
+ - Parameter b: second closure
+ 
+ - Returns: Bound closure
+ */
+public func <+><A, B, C>(_ a: @escaping (A) -> B, _ b: @escaping (A) -> C) -> (A) -> (B, C) {
+    return duplicateArguments >>> (a <*> b)
 }

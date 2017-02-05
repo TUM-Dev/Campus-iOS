@@ -102,7 +102,7 @@ public func partialMap<V, T, O, R>(partial: @escaping (V) -> (T), map: @escaping
  - Returns: mapping function
  */
 public func mapFirst<V, T, R>(with map: @escaping (V) -> (R)) -> (V, T) -> (R, T) {
-    return flipArguments >>> mapLast(with: map) >>> flipArguments
+    return map <*> id
 }
 
 /**
@@ -113,7 +113,7 @@ public func mapFirst<V, T, R>(with map: @escaping (V) -> (R)) -> (V, T) -> (R, T
  - Returns: mapping function
  */
 public func mapLast<V, T, R>(with map: @escaping (T) -> (R)) -> (V, T) -> (V, R) {
-    return partialMap(partial: lastArgument, map: map) { ($0.0, $1) }
+    return id <*> map
 }
 
 /**
@@ -136,7 +136,7 @@ public func mapMiddle<V, T, O, R>(with map: @escaping (T) -> (R)) -> (V, T, O) -
  - Returns: mapping function
  */
 public func mapBoth<V, R>(with map: @escaping (V) -> (R)) -> (V, V) -> (R, R) {
-    return mapFirst(with: map) >>> mapLast(with: map)
+    return map <*> map
 }
 
 /**
@@ -167,6 +167,25 @@ public func dropArguments<V>(_ input: V) {  }
  */
 public func flipArguments<T, V>(_ argOne: T, _ argTwo: V) -> (V, T) {
     return (argTwo, argOne)
+}
+
+public func duplicateArguments<V>(_ arguments: V) -> (V, V) {
+    return (arguments, arguments)
+}
+
+/**
+ Will deoptionalize the internal optionals
+ 
+ - Parameter a: value
+ - Parameter b: value
+ 
+ - Returns: a, b only if both have values, nil otherwise
+ */
+public func iff<A, B>(first a: A?, and b: B?) -> (A, B)? {
+    guard let a = a, let b = b else {
+        return nil
+    }
+    return (a, b)
 }
 
 /**

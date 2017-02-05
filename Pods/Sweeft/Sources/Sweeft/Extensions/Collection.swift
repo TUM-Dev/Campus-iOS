@@ -44,12 +44,7 @@ public extension Collection {
      - Returns: Resulting dictionary
      */
     func dictionaryWithoutOptionals<K, V>(byDividingWith handler: @escaping (Iterator.Element) -> (K, V?)) -> [K:V] {
-        return self ==> >{ dict, item in
-            var dict = dict
-            let (key, value) = handler(item)
-            dict[key] <- value
-            return dict
-        }
+        return self ==> handler >>> iff >>= id
     }
     
     /**

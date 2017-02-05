@@ -9,6 +9,11 @@ import Foundation
 
 public extension Array {
     
+    /// Returns empty array
+    static var empty: [Element] {
+        return []
+    }
+    
     /// Array with Elements and indexes for better for loops.
     var withIndex: [(element: Element, index: Int)] {
         return count.range => { (self[$0], $0) }
@@ -109,10 +114,7 @@ public extension Array {
      - Returns: Array with the first n Elements
      */
     func array(withFirst number: Int) -> [Element] {
-        if number > count {
-            return self
-        }
-        return number.range => { self[$0] }
+        return self | number.range
     }
     
     /**
@@ -199,7 +201,15 @@ extension Array: Defaultable {
     
     /// Default Value
     public static var defaultValue: [Element] {
-        return []
+        return .empty
+    }
+    
+}
+
+public extension ExpressibleByArrayLiteral {
+    
+    static var empty: Self {
+        return Self()
     }
     
 }

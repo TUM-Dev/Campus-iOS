@@ -44,3 +44,38 @@ public extension DataSerializable {
     }
     
 }
+
+public extension DataSerializable {
+    
+    public func send<T: API, R: DataRepresentable>(using api: T,
+                     method: HTTPMethod,
+                     at endpoint: T.Endpoint,
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     headers: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty,
+                     auth: Auth = NoAuth.standard) -> Response<R> {
+        
+        return api.doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: self)
+    }
+    
+    public func put<T: API, R: DataRepresentable>(using api: T,
+                    at endpoint: T.Endpoint,
+                    arguments: [String:CustomStringConvertible] = .empty,
+                    headers: [String:CustomStringConvertible] = .empty,
+                    queries: [String:CustomStringConvertible] = .empty,
+                    auth: Auth = NoAuth.standard) -> Response<R> {
+        
+        return send(using: api, method: .put, at: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth)
+    }
+    
+    public func post<T: API, R: DataRepresentable>(using api: T,
+                     at endpoint: T.Endpoint,
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     headers: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty,
+                     auth: Auth = NoAuth.standard) -> Response<R> {
+        
+        return send(using: api, method: .post, at: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth)
+    }
+    
+}

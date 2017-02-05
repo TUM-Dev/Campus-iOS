@@ -91,7 +91,7 @@ public extension JSON {
     }
     
     /// Get Array of Deserializable Object in Path with internal Path inside array
-    public func getAll<T: Deserializable>(in path: [String], for internalPath: [String] = []) -> [T]? {
+    public func getAll<T: Deserializable>(in path: [String], for internalPath: [String] = .empty) -> [T]? {
         return getAll(in: path, using: T.initializer(for: internalPath))
     }
     
@@ -110,9 +110,9 @@ extension JSON {
         case .object(let value):
             return value.json
         case .array(let value):
-            return .array(value => { $0.serialized })
+            return .array(value => JSON.init)
         case .dict(let value):
-            return .dict(value >>= mapLast { $0.serialized })
+            return .dict(value >>= JSON.init)
         default:
             return self
         }
@@ -125,7 +125,7 @@ extension JSON {
         case .array(let value):
             return value => { $0.object }
         case .dict(let value):
-            return value >>= mapLast { $0.object }
+            return value >>= { $0.object }
         default:
             return json.value
         }
@@ -241,9 +241,82 @@ extension JSON: DataSerializable {
 
 extension JSON: Serializable {
     
-    /// Get JSON to send
+    /// Get JSON to send. Which would be itself
     public var json: JSON {
         return serialized
+    }
+    
+}
+
+extension JSON: Defaultable {
+    
+    /// Default Value
+    public static var defaultValue: JSON {
+        return .null
+    }
+    
+}
+
+extension JSON: ExpressibleByStringLiteral {
+    
+    public init(unicodeScalarLiteral value: String) {
+        self.init(stringLiteral: value)
+    }
+    
+    public init(extendedGraphemeClusterLiteral value: String) {
+        self.init(stringLiteral: value)
+    }
+    
+    public init(stringLiteral value: String) {
+        self = .string(value)
+    }
+    
+}
+
+extension JSON: ExpressibleByArrayLiteral {
+    
+    public init(arrayLiteral elements: JSON...) {
+        self = .array(elements)
+    }
+    
+}
+
+extension JSON: ExpressibleByDictionaryLiteral {
+    
+    public init(dictionaryLiteral elements: (String, JSON)...) {
+        self = .dict(elements >>= id)
+    }
+    
+}
+
+extension JSON: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = .bool(value)
+    }
+    
+}
+
+extension JSON: ExpressibleByIntegerLiteral {
+    
+    public init(integerLiteral value: Int) {
+        self = .double(Double(value))
+    }
+    
+}
+
+extension JSON: ExpressibleByFloatLiteral {
+    
+    public init(floatLiteral value: Double) {
+        self = .double(value)
+    }
+    
+}
+
+extension JSON: ExpressibleByNilLiteral {
+    
+    public init(nilLiteral: ()) {
+        self = .null
     }
     
 }

@@ -1,7 +1,7 @@
 workspace 'Campus App'
 source 'https://github.com/CocoaPods/Specs.git'
 project 'TUM Campus App.xcodeproj'
-platform :ios, '10.0'
+platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
