@@ -32,6 +32,7 @@ class TumDataManager {
         .PersonSearch: PersonSearchManager(mainManager: self),
         .LectureItems: PersonalLectureManager(mainManager: self),
         .LectureSearch: LectureSearchManager(mainManager: self),
+        .GradeItems: PersonalGradeManager(mainManager: self),
         .RoomSearch: RoomSearchManager(mainManager: self),
         .RoomMap: RoomFinderMapManager(mainManager: self),
         .PersonDetail: PersonDetailDataManager(mainManager: self),
@@ -60,6 +61,10 @@ class TumDataManager {
             manager.query = lecture
             manager.fetchData(receiver.receiveData)
         }
+    }
+    
+    func getGrades(_ receiver: TumDataReceiver) {
+        managers[.GradeItems]?.fetchData(receiver.receiveData)
     }
     
     func getLectures(_ receiver: TumDataReceiver) {
