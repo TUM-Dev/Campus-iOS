@@ -15,16 +15,13 @@ class GradeTableViewCell: CardTableViewCell {
             if let grade = grade {
                 titleLabel.text = grade.name
                 resultLabel.text  = "Restult: " + grade.result
-                let day = String (Calendar.current.component(.day, from: grade.date))
-                let month = String(Calendar.current.component(.month, from: grade.date))
-                let year = String(Calendar.current.component(.year, from: grade.date))
-                let date = "Date: " + day + "." + month + "." + year
-                let semester = "Semester: " + grade.semester
-                let ects = "ECTS: " + String(grade.ects)
-                let examiner = grade.examiner
-                let mode = grade.mode
+                let date = "Date: \(grade.date.string(using: "dd.MM.yyyy"))"
+                let semester = "Semester: \(grade.semester)"
+                let ects = "ECTS: \(grade.ects)"
+                let examiner = "Examiner: \(grade.examiner)"
+                let mode = "Mode: \(grade.mode)"
                 detailsLabel.text =  date + ", " + semester +  ", " + ects
-                secondDetailsLabel.text = "Examiner: " + examiner + ", Mode: " + mode
+                secondDetailsLabel.text =  examiner + ", " + mode
             }
         }
     }
