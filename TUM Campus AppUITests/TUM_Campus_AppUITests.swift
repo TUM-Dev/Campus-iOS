@@ -32,18 +32,19 @@ class TUM_Campus_AppUITests: XCTestCase {
     func testMoreToCalendarStartsAtTheCurrentDate() {
         let app = XCUIApplication()
 //        delay(10.0) {
-            app.tabBars.buttons["More"].tap()
-            sleep(10)
-            app.tables.staticTexts["Calendar"].tap()
+        sleep(10)
+        app.tabBars.buttons["More"].tap()
+        sleep(5)
+        app.tables.staticTexts["Calendar"].tap()
         
-            let date = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd"
-            let dateFormatted = formatter.string(from: date)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd"
+        let dateFormatted = formatter.string(from: date)
         
-            print("The current date is \(dateFormatted)")
+        print("The current date is \(dateFormatted)")
         
-            XCTAssert(app.navigationBars[dateFormatted].exists)
+        XCTAssert(app.navigationBars[dateFormatted].exists)
 //        }
         
     }

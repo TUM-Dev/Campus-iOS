@@ -15,8 +15,8 @@ before_install:
 
 script:
    - fastlane snapshot reset_simulators --force  # Workaround for Travis bug https://github.com/travis-ci/travis-ci/issues/7031
-   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane pull_request; fi'
-   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 travis_retry fastlane integration; fi'
+   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 fastlane pull_request; fi'
+   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then FASTLANE_EXPLICIT_OPEN_SIMULATOR=2 fastlane integration; fi'
 
 notifications:
   email: false
