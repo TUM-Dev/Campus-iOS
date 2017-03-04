@@ -111,7 +111,7 @@
 		50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */; };
 		50200E241DF498F400B6FBE3 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E231DF498F400B6FBE3 /* News.storyboard */; };
 		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
-		504C292C1E2BBB9C007583E2 /* TUM_Campus_AppUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* TUM_Campus_AppUnitTests.swift */; };
+		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
 		AE77B80EB6FCD1FB8FE4E213 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */; };
 /* End PBXBuildFile section */
 
@@ -244,7 +244,7 @@
 		50200E231DF498F400B6FBE3 /* News.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
 		50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LectureDetail.storyboard; sourceTree = "<group>"; };
 		504C29291E2BBB9C007583E2 /* TUM Campus AppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TUM Campus AppUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		504C292B1E2BBB9C007583E2 /* TUM_Campus_AppUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUnitTests.swift; sourceTree = "<group>"; };
+		504C292B1E2BBB9C007583E2 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Campus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
@@ -617,7 +617,7 @@
 		504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				504C292B1E2BBB9C007583E2 /* TUM_Campus_AppUnitTests.swift */,
+				504C292B1E2BBB9C007583E2 /* MovieTests.swift */,
 				504C292D1E2BBB9C007583E2 /* Info.plist */,
 			);
 			path = "TUM Campus AppUnitTests";
@@ -945,7 +945,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				504C292C1E2BBB9C007583E2 /* TUM_Campus_AppUnitTests.swift in Sources */,
+				504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1041,7 @@
 		};
 		0E424F611BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1102,7 +1103,6 @@
 		};
 		0E424F641BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1149,6 +1149,7 @@
 		};
 		504C29301E2BBB9C007583E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

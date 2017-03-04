@@ -1,4 +1,4 @@
-fastlane_version "2.12.0"
+fastlane_version "2.19.1"
 
 default_platform :ios
 
@@ -10,14 +10,14 @@ end
 
 desc 'Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.'
 lane :integration do
-	build(code_coverage: true)
+	test(code_coverage: true)
 	static_analysis
 	sonar_update_dashboard
 end
 
 desc 'Performs tests and a static code analysis on the PR. Found issues are commented on the PR.'
 lane :pull_request do
-	build(code_coverage: true)
+	test(code_coverage: true)
 	static_analysis
     sonar_github_pr_bot
 end
@@ -26,10 +26,9 @@ end
 ########################
 # PRIVATE HELPER LANES #
 ########################
-# options?
-private_lane :build do |options|
+lane :test do |options|
 	scan_args = {
-		scheme: "TUM Campus App",
+		scheme: "TCA-CI",
 		device: "iPhone 6 (10.2)",
 		configuration: "Debug", # Defaults to Release
 		code_coverage: options[:code_coverage] ? options[:code_coverage] : false,
