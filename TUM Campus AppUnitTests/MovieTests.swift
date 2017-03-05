@@ -25,11 +25,7 @@ class MovieTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetAllMovies() {
-        // ToDo something to complain
-        var dummy = 1
-        // FIXME
-        
+    func testGetAllMovies() {        
         self.testGetAllMoviesExpectation = expectation(description: "Fetch movies and check whether there are > 0 movies")
         manager.getMovies(self)
         waitForExpectations(timeout: 1) { error in

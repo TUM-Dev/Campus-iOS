@@ -16,6 +16,8 @@ struct CardOrder {
         return cards ==> { CardKey.managers | $0 }
     }
     
+    // FIXME REALLY NOW!
+    
     mutating func remove(cardFor data: DataElement) {
         cards <| { $0 != (data as? CardDisplayable)?.cardKey }
     }
