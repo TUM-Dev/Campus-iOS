@@ -44,12 +44,12 @@ public extension API {
     
     /// Default is empty
     var baseHeaders: [String:String] {
-        return [:]
+        return .empty
     }
     
     /// Default is empty
     var baseQueries: [String:String] {
-        return [:]
+        return .empty
     }
     
     /// Default does nothing
@@ -82,9 +82,9 @@ public extension API {
      */
     public func doDataRequest(with method: HTTPMethod = .get,
                        to endpoint: Endpoint,
-                       arguments: [String:CustomStringConvertible] = [:],
-                       headers: [String:CustomStringConvertible] = [:],
-                       queries: [String:CustomStringConvertible] = [:],
+                       arguments: [String:CustomStringConvertible] = .empty,
+                       headers: [String:CustomStringConvertible] = .empty,
+                       queries: [String:CustomStringConvertible] = .empty,
                        auth: Auth = NoAuth.standard,
                        body: Data? = nil,
                        acceptableStatusCodes: [Int] = [200],
@@ -96,7 +96,7 @@ public extension API {
             return string.replacingOccurrences(of: "{\(argument.key)}", with: argument.value.description)
         }
         
-        let url = (baseQueries + queries >>= mapLast { $0.description }) ==> base.appendingPathComponent(requestString) ** { url, query in
+        let url = (baseQueries + queries >>= { $0.description }) ==> base.appendingPathComponent(requestString) ** { url, query in
             return url.appendingQuery(key: query.key, value: query.value)
         }
         
@@ -104,7 +104,7 @@ public extension API {
         request.httpMethod = method.rawValue
         request.httpBody = body
         
-        (baseHeaders + headers >>= mapLast { $0.description }) => {
+        (baseHeaders + headers >>= { $0.description }) => {
             request.addValue($1, forHTTPHeaderField: $0)
         }
         
@@ -153,9 +153,9 @@ public extension API {
      */
     public func doRepresentedRequest<T: DataRepresentable>(with method: HTTPMethod = .get,
                                      to endpoint: Endpoint,
-                                     arguments: [String:CustomStringConvertible] = [:],
-                                     headers: [String:CustomStringConvertible] = [:],
-                                     queries: [String:CustomStringConvertible] = [:],
+                                     arguments: [String:CustomStringConvertible] = .empty,
+                                     headers: [String:CustomStringConvertible] = .empty,
+                                     queries: [String:CustomStringConvertible] = .empty,
                                      auth: Auth = NoAuth.standard,
                                      body: DataSerializable? = nil,
                                      acceptableStatusCodes: [Int] = [200],
@@ -193,9 +193,9 @@ public extension API {
      */
     public func doJSONRequest(with method: HTTPMethod = .get,
                        to endpoint: Endpoint,
-                       arguments: [String:CustomStringConvertible] = [:],
-                       headers: [String:CustomStringConvertible] = [:],
-                       queries: [String:CustomStringConvertible] = [:],
+                       arguments: [String:CustomStringConvertible] = .empty,
+                       headers: [String:CustomStringConvertible] = .empty,
+                       queries: [String:CustomStringConvertible] = .empty,
                        auth: Auth = NoAuth.standard,
                        body: JSON? = nil,
                        acceptableStatusCodes: [Int] = [200],
@@ -223,14 +223,14 @@ public extension API {
      */
     public func doObjectRequest<T: Deserializable>(with method: HTTPMethod = .get,
                          to endpoint: Endpoint,
-                         arguments: [String:CustomStringConvertible] = [:],
-                         headers: [String:CustomStringConvertible] = [:],
-                         queries: [String:CustomStringConvertible] = [:],
+                         arguments: [String:CustomStringConvertible] = .empty,
+                         headers: [String:CustomStringConvertible] = .empty,
+                         queries: [String:CustomStringConvertible] = .empty,
                          auth: Auth = NoAuth.standard,
                          body: JSON? = nil,
                          acceptableStatusCodes: [Int] = [200],
                          completionQueue: DispatchQueue = .main,
-                         at path: [String] = []) -> Response<T> {
+                         at path: [String] = .empty) -> Response<T> {
         
         return doJSONRequest(with: method, to: endpoint, arguments: arguments,
                       headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes)
@@ -260,9 +260,9 @@ public extension API {
      */
     public func doObjectRequest<T: Deserializable>(with method: HTTPMethod = .get,
                          to endpoint: Endpoint,
-                         arguments: [String:CustomStringConvertible] = [:],
-                         headers: [String:CustomStringConvertible] = [:],
-                         queries: [String:CustomStringConvertible] = [:],
+                         arguments: [String:CustomStringConvertible] = .empty,
+                         headers: [String:CustomStringConvertible] = .empty,
+                         queries: [String:CustomStringConvertible] = .empty,
                          auth: Auth = NoAuth.standard,
                          body: JSON? = nil,
                          acceptableStatusCodes: [Int] = [200],
@@ -292,15 +292,15 @@ public extension API {
      */
     public func doObjectsRequest<T: Deserializable>(with method: HTTPMethod = .get,
                           to endpoint: Endpoint,
-                          arguments: [String:CustomStringConvertible] = [:],
-                          headers: [String:CustomStringConvertible] = [:],
-                          queries: [String:CustomStringConvertible] = [:],
+                          arguments: [String:CustomStringConvertible] = .empty,
+                          headers: [String:CustomStringConvertible] = .empty,
+                          queries: [String:CustomStringConvertible] = .empty,
                           auth: Auth = NoAuth.standard,
                           body: JSON? = nil,
                           acceptableStatusCodes: [Int] = [200],
                           completionQueue: DispatchQueue = .main,
-                          at path: [String] = [],
-                          with internalPath: [String] = []) -> Response<[T]> {
+                          at path: [String] = .empty,
+                          with internalPath: [String] = .empty) -> Response<[T]> {
         
         
         return doJSONRequest(with: method, to: endpoint, arguments: arguments,
@@ -332,15 +332,15 @@ public extension API {
      */
     public func doFlatBulkObjectRequest<T: Deserializable>(with method: HTTPMethod = .get,
                                     to endpoints: [Endpoint],
-                                    arguments: [[String:CustomStringConvertible]] = [],
-                                    headers: [String:CustomStringConvertible] = [:],
-                                    queries: [String:CustomStringConvertible] = [:],
+                                    arguments: [[String:CustomStringConvertible]] = .empty,
+                                    headers: [String:CustomStringConvertible] = .empty,
+                                    queries: [String:CustomStringConvertible] = .empty,
                                     auth: Auth = NoAuth.standard,
-                                    bodies: [JSON?] = [],
+                                    bodies: [JSON?] = .empty,
                                     acceptableStatusCodes: [Int] = [200],
                                     completionQueue: DispatchQueue = .main,
-                                    at path: [String] = [],
-                                    with internalPath: [String] = []) -> Response<[T]> {
+                                    at path: [String] = .empty,
+                                    with internalPath: [String] = .empty) -> Response<[T]> {
         
         return BulkPromise<[T], APIError>(promises: endpoints => { endpoint, index in
             let arguments = arguments | index
@@ -370,14 +370,14 @@ public extension API {
      */
     public func doBulkObjectRequest<T: Deserializable>(with method: HTTPMethod = .get,
                                     to endpoints: [Endpoint],
-                                    arguments: [[String:CustomStringConvertible]] = [],
-                                    headers: [String:CustomStringConvertible] = [:],
-                                    queries: [String:CustomStringConvertible] = [:],
+                                    arguments: [[String:CustomStringConvertible]] = .empty,
+                                    headers: [String:CustomStringConvertible] = .empty,
+                                    queries: [String:CustomStringConvertible] = .empty,
                                     auth: Auth = NoAuth.standard,
-                                    bodies: [JSON?] = [],
+                                    bodies: [JSON?] = .empty,
                                     acceptableStatusCodes: [Int] = [200],
                                     completionQueue: DispatchQueue = .main,
-                                    at path: [String] = []) -> Response<[T]> {
+                                    at path: [String] = .empty) -> Response<[T]> {
         
         return BulkPromise(promises: endpoints => { endpoint, index in
             let arguments = arguments | index
@@ -407,11 +407,11 @@ public extension API {
      */
     public func doBulkObjectRequest<T: Deserializable>(with method: HTTPMethod = .get,
                               to endpoint: Endpoint,
-                              arguments: [[String:CustomStringConvertible]] = [],
-                              headers: [String:CustomStringConvertible] = [:],
-                              queries: [String:CustomStringConvertible] = [:],
+                              arguments: [[String:CustomStringConvertible]] = .empty,
+                              headers: [String:CustomStringConvertible] = .empty,
+                              queries: [String:CustomStringConvertible] = .empty,
                               auth: Auth = NoAuth.standard,
-                              bodies: [JSON?] = [],
+                              bodies: [JSON?] = .empty,
                               acceptableStatusCodes: [Int] = [200],
                               completionQueue: DispatchQueue = .main,
                               at path: String...) -> Response<[T]> {
@@ -434,9 +434,9 @@ public extension API {
      - Returns: Promise of JSON Object
      */
     public func get(_ endpoint: Endpoint,
-                    arguments: [String:CustomStringConvertible] = [:],
-                    headers: [String:CustomStringConvertible] = [:],
-                    queries: [String:CustomStringConvertible] = [:],
+                    arguments: [String:CustomStringConvertible] = .empty,
+                    headers: [String:CustomStringConvertible] = .empty,
+                    queries: [String:CustomStringConvertible] = .empty,
                     auth: Auth = NoAuth.standard,
                     body: JSON? = nil,
                     acceptableStatusCodes: [Int] = [200],
@@ -459,9 +459,9 @@ public extension API {
      - Returns: Promise of JSON Object
      */
     public func delete(_ endpoint: Endpoint,
-                    arguments: [String:CustomStringConvertible] = [:],
-                    headers: [String:CustomStringConvertible] = [:],
-                    queries: [String:CustomStringConvertible] = [:],
+                    arguments: [String:CustomStringConvertible] = .empty,
+                    headers: [String:CustomStringConvertible] = .empty,
+                    queries: [String:CustomStringConvertible] = .empty,
                     auth: Auth = NoAuth.standard,
                     body: JSON? = nil,
                     acceptableStatusCodes: [Int] = [200],
@@ -485,9 +485,9 @@ public extension API {
      */
     public func post(_ body: JSON? = nil,
                      to endpoint: Endpoint,
-                     arguments: [String:CustomStringConvertible] = [:],
-                     headers: [String:CustomStringConvertible] = [:],
-                     queries: [String:CustomStringConvertible] = [:],
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     headers: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty,
                      auth: Auth = NoAuth.standard,
                      acceptableStatusCodes: [Int] = [200],
                      completionQueue: DispatchQueue = .main) -> JSON.Result {
@@ -510,9 +510,9 @@ public extension API {
      */
     public func put(_ body: JSON? = nil,
                      at endpoint: Endpoint,
-                     arguments: [String:CustomStringConvertible] = [:],
-                     headers: [String:CustomStringConvertible] = [:],
-                     queries: [String:CustomStringConvertible] = [:],
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     headers: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty,
                      auth: Auth = NoAuth.standard,
                      acceptableStatusCodes: [Int] = [200],
                      completionQueue: DispatchQueue = .main) -> JSON.Result {

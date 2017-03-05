@@ -17,7 +17,7 @@ public protocol APIEndpoint {
 extension APIEndpoint {
     
     /// For the lazy. Creates a simple API object for your reference
-    public static func api(with url: String, baseHeaders: [String:String] = [:], baseQueries: [String:String] = [:]) -> GenericAPI<Self> {
+    public static func api(with url: String, baseHeaders: [String:String] = .empty, baseQueries: [String:String] = .empty) -> GenericAPI<Self> {
         return GenericAPI(baseURL: url, baseHeaders: baseHeaders, baseQueries: baseQueries)
     }
     
@@ -31,7 +31,7 @@ public struct GenericAPI<E: APIEndpoint>: API {
     public let baseHeaders: [String:String]
     public let baseQueries: [String:String]
     
-    init(baseURL: String, baseHeaders: [String:String] = [:], baseQueries: [String:String] = [:]) {
+    init(baseURL: String, baseHeaders: [String:String] = .empty, baseQueries: [String:String] = .empty) {
         self.baseURL = baseURL
         self.baseHeaders = baseHeaders
         self.baseQueries = baseQueries

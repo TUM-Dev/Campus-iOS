@@ -109,7 +109,7 @@ postfix operator .?
  - Returns: Value when not nil and type default when nil
  */
 public postfix func .?<V: Defaultable>(_ value: V?) -> V {
-    return value ?? V.defaultValue
+    return value ?? .defaultValue
 }
 
 /**

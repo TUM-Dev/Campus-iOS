@@ -91,7 +91,7 @@ public func +<V>(_ a: [V], _ b: V?) -> [V] {
  - Returns: array with extra value b
  */
 public func +<V>(_ a: [V]?, _ b: V?) -> [V] {
-    return (a ?? []) + b
+    return a.? + b
 }
 
 /**
@@ -104,7 +104,7 @@ public func +<V>(_ a: [V]?, _ b: V?) -> [V] {
  */
 public func +<V>(_ a: [V]?, _ b: [V]?) -> [V] {
     guard let a = a else {
-        return b ?? []
+        return b.?
     }
     guard let b = b else {
         return a
@@ -122,7 +122,7 @@ public func +<V>(_ a: [V]?, _ b: [V]?) -> [V] {
  */
 public func +<K, V>(_ a: [K:V]?, _ b: [K:V]?) -> [K:V]? {
     guard let a = a else {
-        return [:]
+        return .empty
     }
     guard let b = b else {
         return a

@@ -98,6 +98,11 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		301195E91E464A6A0012B133 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195E81E464A6A0012B133 /* Grade.swift */; };
+		301195EC1E464C830012B133 /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301195EB1E464C830012B133 /* Grade.storyboard */; };
+		301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195ED1E464F560012B133 /* GradesTableViewController.swift */; };
+		301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195EF1E464FBD0012B133 /* GradeTableViewCell.swift */; };
+		301195F21E4658FA0012B133 /* PersonalGradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195F11E4658FA0012B133 /* PersonalGradeManager.swift */; };
 		50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */; };
 		50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E0F1DF4941500B6FBE3 /* CardView.storyboard */; };
 		50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E111DF4948C00B6FBE3 /* Movie.storyboard */; };
@@ -113,6 +118,7 @@
 		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
 		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
 		AE77B80EB6FCD1FB8FE4E213 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */; };
+		AF5B3DA4DA1C4EE21184536D /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +235,11 @@
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		301195E81E464A6A0012B133 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		301195EB1E464C830012B133 /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
+		301195ED1E464F560012B133 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
+		301195EF1E464FBD0012B133 /* GradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeTableViewCell.swift; sourceTree = "<group>"; };
+		301195F11E4658FA0012B133 /* PersonalGradeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalGradeManager.swift; sourceTree = "<group>"; };
 		44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
 		50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tution.storyboard; sourceTree = "<group>"; };
 		50200E0F1DF4941500B6FBE3 /* CardView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardView.storyboard; sourceTree = "<group>"; };
@@ -258,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5B3DA4DA1C4EE21184536D /* Pods_TUM_Campus_App.framework in Frameworks */,
 				AE77B80EB6FCD1FB8FE4E213 /* Pods_Campus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +373,7 @@
 				0EB473D31C1B646D00F17F44 /* Room Finder View */,
 				0EF4CEF21D4167C3001649F1 /* Lecture Detail View */,
 				0EF4CEF11D4167A1001649F1 /* News View */,
+				301195EA1E464BB50012B133 /* Grade View */,
 				0EF4CEF31D4167CF001649F1 /* Person Detail View */,
 				0EB473D51C1B649100F17F44 /* Lecture View */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
@@ -446,6 +459,7 @@
 				0E52817C1C0E306200762EA3 /* DataElement.swift */,
 				0E5A61DE1C135750006017DB /* User.swift */,
 				0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */,
+				301195E81E464A6A0012B133 /* Grade.swift */,
 				0EB161831C1A05B6001A08FC /* Lecture.swift */,
 				0EC10C221C171F730024F902 /* UserData.swift */,
 				0E1073B01C1A4BE2004C93CF /* Room.swift */,
@@ -488,6 +502,7 @@
 				0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */,
 				0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */,
 				0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */,
+				301195F11E4658FA0012B133 /* PersonalGradeManager.swift */,
 				0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */,
 				0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */,
 				0E6160401C1A362F0065D661 /* XMLLocalFileResource.swift */,
@@ -623,6 +638,16 @@
 			path = "TUM Campus AppUnitTests";
 			sourceTree = "<group>";
 		};
+		301195EA1E464BB50012B133 /* Grade View */ = {
+			isa = PBXGroup;
+			children = (
+				301195EB1E464C830012B133 /* Grade.storyboard */,
+				301195ED1E464F560012B133 /* GradesTableViewController.swift */,
+				301195EF1E464FBD0012B133 /* GradeTableViewCell.swift */,
+			);
+			name = "Grade View";
+			sourceTree = "<group>";
+		};
 		B3CA96B7ECEAA9D6B9C8C51A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -709,6 +734,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "LS1 TUM";
 				TargetAttributes = {
@@ -763,6 +789,7 @@
 				50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */,
 				50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */,
 				0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */,
+				301195EC1E464C830012B133 /* Grade.storyboard in Resources */,
 				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
@@ -850,6 +877,7 @@
 				0EB473D01C1B4F0F00F17F44 /* Map.swift in Sources */,
 				0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */,
 				0EB161881C1A0EB2001A08FC /* LectureTableViewCell.swift in Sources */,
+				301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
@@ -863,6 +891,7 @@
 				0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
+				301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */,
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
@@ -875,6 +904,7 @@
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
+				301195F21E4658FA0012B133 /* PersonalGradeManager.swift in Sources */,
 				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,
@@ -912,6 +942,7 @@
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
+				301195E91E464A6A0012B133 /* Grade.swift in Sources */,
 				0E6C20661C4C44F20059B7C2 /* LectureDetailTableViewCell.swift in Sources */,
 				0EB161861C1A0E6A001A08FC /* LecturesTableViewController.swift in Sources */,
 				0E3B214E1C13DB200035ED70 /* TumDataItems.swift in Sources */,
@@ -1086,6 +1117,7 @@
 			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1103,8 +1135,10 @@
 		};
 		0E424F641BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1129,6 +1163,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Campus;
+				TEST_TARGET_NAME = "TUM Campus App";
 				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
@@ -1143,6 +1178,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Campus;
+				TEST_TARGET_NAME = "TUM Campus App";
 				USES_XCTRUNNER = YES;
 			};
 			name = Release;

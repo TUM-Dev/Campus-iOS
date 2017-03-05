@@ -40,3 +40,144 @@ public extension ObjectStatus {
     }
     
 }
+
+/// If the value is Defaultable you don't have to specify a default value anymore
+public extension ObjectStatus where Value: Defaultable {
+    
+    static var defaultValue: Value {
+        return .defaultValue
+    }
+    
+}
+
+/// Wrapper for User Defaults to store an Array of Objects
+public protocol CollectionStatus {
+    /// Value type
+    associatedtype Value: StatusSerializable
+    /// Key type
+    associatedtype Key: StatusKey
+    
+    /// Key for defaults
+    static var key: Key { get }
+    /// Default value in case it's not defined
+    static var defaultValue: [Value] { get }
+    /// Determines if it should fail it at least one of the items isn't deserializable
+    static var allOrNothing: Bool { get }
+}
+
+public extension CollectionStatus {
+    
+    static var values: [Value] {
+        get {
+            guard let array = SimpleStatus<Key, [[String:Any]]?>(key: key, defaultValue: nil).value else {
+                return defaultValue
+            }
+            let items = array ==> Value.init
+            if allOrNothing {
+                guard items.count == array.count else {
+                    return defaultValue
+                }
+            }
+            return items
+        }
+        set {
+            var status = SimpleStatus<Key, [[String:Any]]?>(key: key, defaultValue: nil)
+            status.value = newValue => { $0.serialized }
+        }
+    }
+    
+    static var defaultValue: [Value] {
+        return .empty
+    }
+    
+    static var allOrNothing: Bool {
+        return true
+    }
+    
+}
+
+enum OptionalObjectStatusSerialized<V: StatusSerializable> {
+    case none
+    case some(value: V)
+    
+    init(from value: V?) {
+        if let value = value {
+            self = .some(value: value)
+        } else {
+            self = .none
+        }
+    }
+    
+    var value: V? {
+        switch self {
+        case .some(let value):
+            return value
+        default:
+            return nil
+        }
+    }
+}
+
+extension OptionalObjectStatusSerialized: StatusSerializable {
+    
+    init?(from serialized: [String:Any]) {
+        guard let value = V.init(from: serialized) else {
+            self = .none
+            return
+        }
+        self = .some(value: value)
+    }
+    
+    var serialized: [String : Any] {
+        switch self {
+        case .some(let value):
+            return value.serialized
+        default:
+            return .empty
+        }
+    }
+    
+}
+
+extension OptionalObjectStatusSerialized: Defaultable {
+    
+    /// Default Value
+    static var defaultValue: OptionalObjectStatusSerialized<V> {
+        return .none
+    }
+    
+}
+
+/// Wrapper for User Defaults to store an object that can be an optional
+public protocol OptionalStatus {
+    
+    /// Value type
+    associatedtype Value: StatusSerializable
+    /// Key type
+    associatedtype Key: StatusKey
+    
+    /// Key for defaults
+    static var key: Key { get }
+    /// Default value in case it's not defined
+    static var defaultValue: Value? { get }
+    
+}
+
+public extension OptionalStatus {
+    
+    static var value: Value? {
+        get {
+            let value = DictionaryStatus(key: key).value
+            return OptionalObjectStatusSerialized<Value>(from: value)?.value ?? defaultValue
+        }
+        set {
+            var status = DictionaryStatus(key: key)
+            status.value = OptionalObjectStatusSerialized(from: newValue).serialized
+        }
+    }
+    
+    static var defaultValue: Value? {
+        return nil
+    }
+    
+}
