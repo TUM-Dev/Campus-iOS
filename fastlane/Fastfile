@@ -21,10 +21,15 @@ lane :integration do
 end
 
 desc 'Performs tests and a static code analysis on the PR. Found issues are commented on the PR.'
-lane :pull_request do
+lane :pull_request_from_upstream do
 	test(code_coverage: true)
 	static_analysis
 	sonar_github_pr_bot
+end
+
+desc 'Runs the test suite.'
+lane :pull_request_from_fork do
+	test(code_coverage: true)
 end
 
 
