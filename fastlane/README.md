@@ -43,6 +43,21 @@ Performs tests and a static code analysis on the PR. Found issues are commented 
 fastlane test
 ```
 
+### sonar_github_pr_bot
+```
+fastlane sonar_github_pr_bot
+```
+Performs a sonar analysis in preview mode and comments on the PR on Github.
+### sonar_update_dashboard
+```
+fastlane sonar_update_dashboard
+```
+Updates the SonarQube Server dashboard.
+### static_analysis
+```
+fastlane static_analysis
+```
+Runs test coverage and swiftlint and provides data in a way sonar can use it afterwards.
 
 ----
 

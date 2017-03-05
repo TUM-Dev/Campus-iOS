@@ -31,7 +31,6 @@ class TUM_Campus_AppUITests: XCTestCase {
     
     func testMoreToCalendarStartsAtTheCurrentDate() {
         let app = XCUIApplication()
-//        delay(10.0) {
         sleep(60)
         app.tabBars.buttons["More"].tap()
         sleep(10)
@@ -45,13 +44,6 @@ class TUM_Campus_AppUITests: XCTestCase {
         print("The current date is \(dateFormatted)")
         
         XCTAssert(app.navigationBars[dateFormatted].exists)
-//        }
-        
-    }
-    
-    func delay(_ delay:Double, closure:@escaping ()->()) {
-        let when = DispatchTime.now() + delay
-        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
     
 }

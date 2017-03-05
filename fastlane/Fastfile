@@ -10,6 +10,9 @@ before_all do
 	sh 'mkdir DerivedData || true'
 end
 
+################
+# PUBLIC LANES #
+################
 desc 'Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.'
 lane :integration do
 	test(code_coverage: true)
@@ -21,7 +24,7 @@ desc 'Performs tests and a static code analysis on the PR. Found issues are comm
 lane :pull_request do
 	test(code_coverage: true)
 	static_analysis
-    sonar_github_pr_bot
+	sonar_github_pr_bot
 end
 
 
@@ -47,10 +50,10 @@ private_lane :sonar_github_pr_bot do
 	sonar_github_args = {
 		project_configuration_path: "sonar-project.properties", 
 		sonar_runner_args:  "-Dsonar.analysis.mode=preview" +
-							" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
-							" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
-							" -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN" +
-							" -Dsonar.github.repository=$TRAVIS_REPO_SLUG",
+		" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
+		" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
+		" -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN" +
+		" -Dsonar.github.repository=$TRAVIS_REPO_SLUG",
 	}
 	sonar(sonar_github_args)
 end
@@ -78,7 +81,7 @@ private_lane :static_analysis do
 		output_file: "fastlane/reports/swiftlint.txt",
 		ignore_exit_status: true
 	}
- 	slather(slather_args)
-    # sh("cd .. && lizard ./TUM\ Campus\ App -l swift --xml > fastlane/reports/lizard-report.xml")
-    swiftlint(swiftlint_args)
+	slather(slather_args)
+	# sh("cd .. && lizard ./TUM\ Campus\ App -l swift --xml > fastlane/reports/lizard-report.xml")
+	swiftlint(swiftlint_args)
 end
