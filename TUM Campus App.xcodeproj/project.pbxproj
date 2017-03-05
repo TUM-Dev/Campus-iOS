@@ -117,6 +117,7 @@
 		50200E241DF498F400B6FBE3 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E231DF498F400B6FBE3 /* News.storyboard */; };
 		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
 		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
+		50AFC9861E6C8ECF00E7886A /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -255,6 +256,7 @@
 		504C29291E2BBB9C007583E2 /* TUM Campus AppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TUM Campus AppUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		504C292B1E2BBB9C007583E2 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Campus.framework; path = "../../Library/Developer/Xcode/DerivedData/Campus_App-abdlonhukuicsjbpypswdmfoclts/Build/Products/Debug-iphonesimulator/Pods_Campus.framework"; sourceTree = "<group>"; };
 		B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +265,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50AFC9861E6C8ECF00E7886A /* Pods_Campus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +338,7 @@
 				504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
 				0E424F461BE16DBE00B5DFCB /* Products */,
 				F378FBA46D95A7D54F58A390 /* Pods */,
+				50AFC9841E6C8ECE00E7886A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -637,6 +641,14 @@
 				504C292D1E2BBB9C007583E2 /* Info.plist */,
 			);
 			path = "TUM Campus AppUnitTests";
+			sourceTree = "<group>";
+		};
+		50AFC9841E6C8ECE00E7886A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
@@ -1100,6 +1112,21 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZGV2PY25EN;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Pods",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ASWeekSelectorView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AYSlidingPickerView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CalendarLib\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MCSwipeTableViewCell\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OSCache\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OrderedDictionary\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PZPullToRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Sweeft\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TKSubmitTransition\"",
+				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
