@@ -3,7 +3,9 @@ fastlane_version "2.19.1"
 default_platform :ios
 
 before_all do
-	ensure_git_status_clean
+	if is_ci?
+		ensure_git_status_clean
+	end
 	sh 'mkdir reports || true'
 	sh 'mkdir DerivedData || true'
 end
@@ -26,7 +28,7 @@ end
 ########################
 # PRIVATE HELPER LANES #
 ########################
-lane :test do |options|
+private_lane :test do |options|
 	scan_args = {
 		scheme: "TCA-CI",
 		device: "iPhone 6 (10.2)",
@@ -35,7 +37,7 @@ lane :test do |options|
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
 		output_directory: "fastlane/reports",
-		custom_report_file_name: "scan-test"
+		custom_report_file_name: "scan-test.junit"
 	}
 	scan(scan_args)
 end
@@ -66,7 +68,7 @@ desc 'Runs test coverage and swiftlint and provides data in a way sonar can use 
 private_lane :static_analysis do
 	slather_args = {
 		proj: "TUM Campus App.xcodeproj",
-		scheme: "TUM Campus App", 
+		scheme: "TCA-CI", 
 		cobertura_xml: true, 
 		jenkins: true, 
 		build_directory: "fastlane/DerivedData", 
