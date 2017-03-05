@@ -117,8 +117,6 @@
 		50200E241DF498F400B6FBE3 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E231DF498F400B6FBE3 /* News.storyboard */; };
 		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
 		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
-		AE77B80EB6FCD1FB8FE4E213 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */; };
-		AF5B3DA4DA1C4EE21184536D /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,11 +255,7 @@
 		504C29291E2BBB9C007583E2 /* TUM Campus AppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TUM Campus AppUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		504C292B1E2BBB9C007583E2 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Campus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
-		DAA3C0849116E2B4E4ED1F88 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
-		EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F43AFC350BF52CC89A2FA259 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,8 +263,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF5B3DA4DA1C4EE21184536D /* Pods_TUM_Campus_App.framework in Frameworks */,
-				AE77B80EB6FCD1FB8FE4E213 /* Pods_Campus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +335,6 @@
 				504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
 				0E424F461BE16DBE00B5DFCB /* Products */,
 				F378FBA46D95A7D54F58A390 /* Pods */,
-				B3CA96B7ECEAA9D6B9C8C51A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -629,15 +620,6 @@
 			name = "Detail View Protocols";
 			sourceTree = "<group>";
 		};
-		504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */ = {
-			isa = PBXGroup;
-			children = (
-				504C292B1E2BBB9C007583E2 /* MovieTests.swift */,
-				504C292D1E2BBB9C007583E2 /* Info.plist */,
-			);
-			path = "TUM Campus AppUnitTests";
-			sourceTree = "<group>";
-		};
 		301195EA1E464BB50012B133 /* Grade View */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,20 +630,18 @@
 			name = "Grade View";
 			sourceTree = "<group>";
 		};
-		B3CA96B7ECEAA9D6B9C8C51A /* Frameworks */ = {
+		504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				EDFD9C3B4BE31FC4FE635CAC /* Pods_TUM_Campus_App.framework */,
-				6A76425F01984CB2ADA54E78 /* Pods_Campus.framework */,
+				504C292B1E2BBB9C007583E2 /* MovieTests.swift */,
+				504C292D1E2BBB9C007583E2 /* Info.plist */,
 			);
-			name = Frameworks;
+			path = "TUM Campus AppUnitTests";
 			sourceTree = "<group>";
 		};
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DAA3C0849116E2B4E4ED1F88 /* Pods-TUM Campus App.debug.xcconfig */,
-				F43AFC350BF52CC89A2FA259 /* Pods-TUM Campus App.release.xcconfig */,
 				44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */,
 				B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */,
 			);
@@ -733,7 +713,6 @@
 		0E424F3D1BE16DBD00B5DFCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "LS1 TUM";
@@ -1116,7 +1095,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1137,7 +1115,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1162,7 +1139,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Campus;
 				TEST_TARGET_NAME = "TUM Campus App";
 				USES_XCTRUNNER = YES;
 			};
@@ -1177,7 +1153,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Campus;
 				TEST_TARGET_NAME = "TUM Campus App";
 				USES_XCTRUNNER = YES;
 			};
