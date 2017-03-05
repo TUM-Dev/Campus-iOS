@@ -11,6 +11,7 @@ branches:
     - master
 
 before_install:
+  - echo $TRAVIS_SECURE_ENV_VARS
   - ./fastlane/before_install.sh
 
 script:
