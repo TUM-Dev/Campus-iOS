@@ -10,8 +10,8 @@ import XCTest
 @testable import Campus
 
 class MockReceiver: TumDataReceiver {
-    var mockReceiveData: (([DataElement], XCTestExpectation) -> Void)?
-    var expectation: XCTestExpectation?
+    let mockReceiveData: (([DataElement], XCTestExpectation) -> Void)?
+    let expectation: XCTestExpectation?
     
     init(receiveData: @escaping (([DataElement], XCTestExpectation) -> Void), expectation: XCTestExpectation) {
         self.mockReceiveData = receiveData
@@ -46,7 +46,7 @@ class MovieTests: XCTestCase {
             let upcomingMovies = movies.filter() { movie in
                 return movie.airDate >= dateNow
             }
-            XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count)
+            XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count, "Movies are all in the future or there are no future movies.")
             expectation.fulfill()
         }
         
