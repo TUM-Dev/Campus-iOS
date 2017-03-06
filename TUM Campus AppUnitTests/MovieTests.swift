@@ -1,4 +1,3 @@
-//
 //  TUM_Campus_AppUnitTests.swift
 //  TUM Campus AppUnitTests
 //
@@ -25,15 +24,15 @@ class MovieTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetAllMovies() {        
-        self.testGetAllMoviesExpectation = expectation(description: "Fetch movies and check whether there are > 0 movies")
+    func testOnlyUpcomingMovies() {
+        self.testGetAllMoviesExpectation = expectation(description: "Fetch movies and check whether they are all in the future")
         manager.getMovies(self)
         waitForExpectations(timeout: 5) { error in
 //            if let error = error {
 //                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
 //            }
         }
-
+        
     }
     
 }
@@ -46,7 +45,11 @@ extension MovieTests: TumDataReceiver {
                 movies.append(movieElement)
             }
         }
-        XCTAssertNotNil(movies)
+        let dateNow = Date()
+        let upcomingMovies = movies.filter() { movie in
+            return movie.airDate >= dateNow
+        }
+        XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count)
         self.testGetAllMoviesExpectation?.fulfill()
     }
     
