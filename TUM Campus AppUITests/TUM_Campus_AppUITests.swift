@@ -19,6 +19,7 @@ class TUM_Campus_AppUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
+        sleep(10)
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -28,9 +29,21 @@ class TUM_Campus_AppUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testMoreToCalendarStartsAtTheCurrentDate() {
+        let app = XCUIApplication()
+        sleep(60)
+        app.tabBars.buttons["More"].tap()
+        sleep(10)
+        app.tables.staticTexts["Calendar"].tap()
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM dd"
+        let dateFormatted = formatter.string(from: date)
+        
+        print("The current date is \(dateFormatted)")
+        
+        XCTAssert(app.navigationBars[dateFormatted].exists)
     }
     
 }
