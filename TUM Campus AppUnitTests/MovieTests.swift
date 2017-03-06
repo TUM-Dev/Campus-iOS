@@ -9,20 +9,6 @@ import XCTest
 
 @testable import Campus
 
-class MockReceiver: TumDataReceiver {
-    let mockReceiveData: (([DataElement], XCTestExpectation) -> Void)?
-    let expectation: XCTestExpectation?
-    
-    init(receiveData: @escaping (([DataElement], XCTestExpectation) -> Void), expectation: XCTestExpectation) {
-        self.mockReceiveData = receiveData
-        self.expectation = expectation
-    }
-    
-    func receiveData(_ data: [DataElement]) {
-        self.mockReceiveData?(data, self.expectation!)
-    }
-}
-
 class MovieTests: XCTestCase {
     var manager = TumDataManager(user: nil)
     
@@ -36,12 +22,7 @@ class MovieTests: XCTestCase {
     
     func testOnlyUpcomingMovies() {
         func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
-            var movies = [Movie]()
-            for element in data {
-                if let movieElement = element as? Movie {
-                    movies.append(movieElement)
-                }
-            }
+            let movies = data.flatMap { $0 as? Movie }
             let dateNow = Date()
             let upcomingMovies = movies.filter() { movie in
                 return movie.airDate >= dateNow

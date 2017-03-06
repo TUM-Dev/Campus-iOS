@@ -118,6 +118,7 @@
 		50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E251DF4992900B6FBE3 /* LectureDetail.storyboard */; };
 		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
 		50AFC9861E6C8ECF00E7886A /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */; };
+		50D1535A1E6DEAC9005EF930 /* MockReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D153591E6DEAC9005EF930 /* MockReceiver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -257,6 +258,7 @@
 		504C292B1E2BBB9C007583E2 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Campus.framework; path = "../../Library/Developer/Xcode/DerivedData/Campus_App-abdlonhukuicsjbpypswdmfoclts/Build/Products/Debug-iphonesimulator/Pods_Campus.framework"; sourceTree = "<group>"; };
+		50D153591E6DEAC9005EF930 /* MockReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReceiver.swift; sourceTree = "<group>"; };
 		B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -637,6 +639,7 @@
 		504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				50D153591E6DEAC9005EF930 /* MockReceiver.swift */,
 				504C292B1E2BBB9C007583E2 /* MovieTests.swift */,
 				504C292D1E2BBB9C007583E2 /* Info.plist */,
 			);
@@ -967,6 +970,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D1535A1E6DEAC9005EF930 /* MockReceiver.swift in Sources */,
 				504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
