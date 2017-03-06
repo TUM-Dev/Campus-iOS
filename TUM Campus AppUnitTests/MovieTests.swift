@@ -20,6 +20,20 @@ class MovieTests: XCTestCase {
         super.tearDown()
     }
     
+    func testReceivedDataAreMovies() {
+        func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
+            let movies = data.flatMap { $0 as? Movie }
+            XCTAssertTrue(data.count == movies.count, expectation.description)
+            expectation.fulfill()
+        }
+        
+        let expect = expectation(description: "Received data items can be initialized to movies")
+        let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
+        
+        manager.getMovies(tmpReceiver)
+        waitForExpectations(timeout: 5) { error in }
+    }
+    
     func testOnlyUpcomingMovies() {
         func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
             let movies = data.flatMap { $0 as? Movie }
@@ -27,16 +41,15 @@ class MovieTests: XCTestCase {
             let upcomingMovies = movies.filter() { movie in
                 return movie.airDate >= dateNow
             }
-            XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count, "Movies are all in the future or there are no future movies.")
+            XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count, expectation.description)
             expectation.fulfill()
         }
         
-        let expect = expectation(description: "Fetch movies and check whether they are all in the future")
+        let expect = expectation(description: "Movies are all in the future or there are no movies")
         let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
         
         manager.getMovies(tmpReceiver)
         waitForExpectations(timeout: 5) { error in }
-        
     }
     
 }
