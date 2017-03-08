@@ -1,4 +1,3 @@
-//
 //  TUM_Campus_AppUnitTests.swift
 //  TUM Campus AppUnitTests
 //
@@ -11,11 +10,7 @@ import XCTest
 @testable import Campus
 
 class MovieTests: XCTestCase {
-    
-    var movies = [Movie]()
     var manager = TumDataManager(user: nil)
-    
-    var testGetAllMoviesExpectation: XCTestExpectation?
     
     override func setUp() {
         super.setUp()
@@ -25,29 +20,36 @@ class MovieTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetAllMovies() {        
-        self.testGetAllMoviesExpectation = expectation(description: "Fetch movies and check whether there are > 0 movies")
-        manager.getMovies(self)
-        waitForExpectations(timeout: 5) { error in
-//            if let error = error {
-//                XCTFail("waitForExpectationsWithTimeout errored: \(error)")
-//            }
+    func testReceivedDataAreMovies() {
+        func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
+            let movies = data.flatMap { $0 as? Movie }
+            XCTAssertTrue(data.count == movies.count, expectation.description)
+            expectation.fulfill()
         }
-
+        
+        let expect = expectation(description: "Received data items can be initialized to movies")
+        let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
+        
+        manager.getMovies(tmpReceiver)
+        waitForExpectations(timeout: 5) { error in }
     }
     
-}
-
-extension MovieTests: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        for element in data {
-            if let movieElement = element as? Movie {
-                movies.append(movieElement)
+    func testOnlyUpcomingMovies() {
+        func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
+            let movies = data.flatMap { $0 as? Movie }
+            let dateNow = Date()
+            let upcomingMovies = movies.filter() { movie in
+                return movie.airDate >= dateNow
             }
+            XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count, expectation.description)
+            expectation.fulfill()
         }
-        XCTAssertNotNil(movies)
-        self.testGetAllMoviesExpectation?.fulfill()
+        
+        let expect = expectation(description: "Movies are all in the future or there are no movies")
+        let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
+        
+        manager.getMovies(tmpReceiver)
+        waitForExpectations(timeout: 5) { error in }
     }
     
 }
