@@ -1,26 +1,20 @@
 devices([
-  "iPhone 6",
-#   "iPhone 6 Plus",
-  # "iPhone 5",
-#   "iPad Pro (12.9 inch)",
-#   "iPad Pro (9.7 inch)",
-#   "Apple TV 1080p"
+  "iPhone 5",
+  "iPhone 6 Plus",
+#  "iPad Pro (12.9 inch)",
+#  "iPad Pro (9.7 inch)",
 ])
 
 languages([
-  "en-US",
-  # "de-DE",
+  "de-DE",
+  # "en-US",
 ])
 
-project "TUM Campus App.xcodeproj"
+# project "TUM Campus App.xcodeproj"
 scheme "Screenshots"
-# scheme "TUM Campus App"
 configuration "Debug"
 
 output_directory "fastlane/screenshots"
 derived_data_path "fastlane/DerivedData"
 clear_previous_screenshots true
 stop_after_first_error true
-
-# Arguments to pass to the app on launch. See https://github.com/fastlane/snapshot#launch-arguments
-# launch_arguments(["-favColor red"])

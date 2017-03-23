@@ -27,8 +27,7 @@ Dies ist keine offizielle App der Technischen Universität München. Es erfolgt 
 Datenschutzerklärung: https://tumcabe.in.tum.de/landing/privacy/
 
 Lizenz:
-GNU GPL v3 - http://www.gnu.org/licenses/gpl.html oder
-New BSD License - http://www.opensource.org/licenses/bsd-license.php
+GNU GPL v3 - http://www.gnu.org/licenses/gpl.html
 
 Der Quellcode kann hier bezogen werden: https://github.com/TCA-Team/
 
