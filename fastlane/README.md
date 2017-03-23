@@ -33,16 +33,16 @@ xcode-select --install
 fastlane integration
 ```
 Performs the integration into master. It Builds and tests, performs a static code analysis and updates the SonarQube dashboard.
-### pull_request
+### pull_request_from_upstream
 ```
-fastlane pull_request
+fastlane pull_request_from_upstream
 ```
 Performs tests and a static code analysis on the PR. Found issues are commented on the PR.
-### test
+### pull_request_from_fork
 ```
-fastlane test
+fastlane pull_request_from_fork
 ```
-
+Runs the test suite.
 
 ----
 
