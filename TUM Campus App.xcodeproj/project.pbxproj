@@ -119,6 +119,8 @@
 		504C292C1E2BBB9C007583E2 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504C292B1E2BBB9C007583E2 /* MovieTests.swift */; };
 		50AFC9861E6C8ECF00E7886A /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */; };
 		50D1535A1E6DEAC9005EF930 /* MockReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D153591E6DEAC9005EF930 /* MockReceiver.swift */; };
+		50F798E11E71615400FA4E49 /* AutomatedScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */; };
+		50F798E91E71618400FA4E49 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F798E81E71618400FA4E49 /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +132,13 @@
 			remoteInfo = "TUM Campus App";
 		};
 		504C292E1E2BBB9C007583E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E424F3D1BE16DBD00B5DFCB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E424F441BE16DBD00B5DFCB;
+			remoteInfo = Campus;
+		};
+		50DDC48F1E71703C0021894E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E424F3D1BE16DBD00B5DFCB /* Project object */;
 			proxyType = 1;
@@ -259,6 +268,10 @@
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Campus.framework; path = "../../Library/Developer/Xcode/DerivedData/Campus_App-abdlonhukuicsjbpypswdmfoclts/Build/Products/Debug-iphonesimulator/Pods_Campus.framework"; sourceTree = "<group>"; };
 		50D153591E6DEAC9005EF930 /* MockReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReceiver.swift; sourceTree = "<group>"; };
+		50F798DE1E71615400FA4E49 /* AutomatedScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomatedScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedScreenshots.swift; sourceTree = "<group>"; };
+		50F798E21E71615400FA4E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50F798E81E71618400FA4E49 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
 		B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +292,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		504C29261E2BBB9C007583E2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50F798DB1E71615400FA4E49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,6 +358,7 @@
 				0E424F471BE16DBE00B5DFCB /* TUM Campus App */,
 				0E424F5C1BE16DBE00B5DFCB /* TUM Campus AppUITests */,
 				504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
+				50F798DF1E71615400FA4E49 /* AutomatedScreenshots */,
 				0E424F461BE16DBE00B5DFCB /* Products */,
 				F378FBA46D95A7D54F58A390 /* Pods */,
 				50AFC9841E6C8ECE00E7886A /* Frameworks */,
@@ -350,6 +371,7 @@
 				0E424F451BE16DBE00B5DFCB /* Campus.app */,
 				0E424F591BE16DBE00B5DFCB /* TUM Campus AppUITests.xctest */,
 				504C29291E2BBB9C007583E2 /* TUM Campus AppUnitTests.xctest */,
+				50F798DE1E71615400FA4E49 /* AutomatedScreenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -654,6 +676,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		50F798DF1E71615400FA4E49 /* AutomatedScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				50F798E81E71618400FA4E49 /* SnapshotHelper.swift */,
+				50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */,
+				50F798E21E71615400FA4E49 /* Info.plist */,
+			);
+			path = AutomatedScreenshots;
+			sourceTree = "<group>";
+		};
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,13 +754,31 @@
 			productReference = 504C29291E2BBB9C007583E2 /* TUM Campus AppUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		50F798DD1E71615400FA4E49 /* AutomatedScreenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50F798E51E71615400FA4E49 /* Build configuration list for PBXNativeTarget "AutomatedScreenshots" */;
+			buildPhases = (
+				50F798DA1E71615400FA4E49 /* Sources */,
+				50F798DB1E71615400FA4E49 /* Frameworks */,
+				50F798DC1E71615400FA4E49 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50DDC4901E71703C0021894E /* PBXTargetDependency */,
+			);
+			name = AutomatedScreenshots;
+			productName = AutomatedScreenshots;
+			productReference = 50F798DE1E71615400FA4E49 /* AutomatedScreenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0E424F3D1BE16DBD00B5DFCB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "LS1 TUM";
 				TargetAttributes = {
@@ -744,6 +794,11 @@
 						TestTargetID = 0E424F441BE16DBD00B5DFCB;
 					};
 					504C29281E2BBB9C007583E2 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0E424F441BE16DBD00B5DFCB;
+					};
+					50F798DD1E71615400FA4E49 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0E424F441BE16DBD00B5DFCB;
@@ -766,6 +821,7 @@
 				0E424F441BE16DBD00B5DFCB /* Campus */,
 				0E424F581BE16DBE00B5DFCB /* TUM Campus AppUITests */,
 				504C29281E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
+				50F798DD1E71615400FA4E49 /* AutomatedScreenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -804,6 +860,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		504C29271E2BBB9C007583E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50F798DC1E71615400FA4E49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -975,6 +1038,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		50F798DA1E71615400FA4E49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F798E91E71618400FA4E49 /* SnapshotHelper.swift in Sources */,
+				50F798E11E71615400FA4E49 /* AutomatedScreenshots.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -987,6 +1059,11 @@
 			isa = PBXTargetDependency;
 			target = 0E424F441BE16DBD00B5DFCB /* Campus */;
 			targetProxy = 504C292E1E2BBB9C007583E2 /* PBXContainerItemProxy */;
+		};
+		50DDC4901E71703C0021894E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E424F441BE16DBD00B5DFCB /* Campus */;
+			targetProxy = 50DDC48F1E71703C0021894E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1020,6 +1097,7 @@
 /* Begin XCBuildConfiguration section */
 		0E424F601BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1163,6 +1241,7 @@
 		};
 		0E424F661BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1177,6 +1256,7 @@
 		};
 		0E424F671BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1209,6 +1289,7 @@
 		};
 		504C29311E2BBB9C007583E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1219,6 +1300,40 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Campus.app/Campus";
+			};
+			name = Release;
+		};
+		50F798E61E71615400FA4E49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B8D8B1367F8E0398040486 /* Pods-Campus.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = AutomatedScreenshots/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AutomatedScreenshots.AutomatedScreenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Campus;
+			};
+			name = Debug;
+		};
+		50F798E71E71615400FA4E49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B036FEAD3E1DFC9E65802F03 /* Pods-Campus.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				INFOPLIST_FILE = AutomatedScreenshots/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AutomatedScreenshots.AutomatedScreenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Campus;
 			};
 			name = Release;
 		};
@@ -1257,6 +1372,15 @@
 			buildConfigurations = (
 				504C29301E2BBB9C007583E2 /* Debug */,
 				504C29311E2BBB9C007583E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50F798E51E71615400FA4E49 /* Build configuration list for PBXNativeTarget "AutomatedScreenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50F798E61E71615400FA4E49 /* Debug */,
+				50F798E71E71615400FA4E49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
