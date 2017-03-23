@@ -23,7 +23,11 @@ You're welcome to contribute to this app! Just check it out and open PR's for yo
 - We have SonarQube to check the code quality at [https://sonarqube.com/dashboard?id=de.tum.in.www.Tum-Campus-App](https://sonarqube.com/dashboard?id=de.tum.in.www.Tum-Campus-App)
 - If a PR is coming from a branch from this repository (and not a fork), our [@TCA-Bot](https://travis-ci.org/TCA-Team/iOS) will review the changes automatically
 - Use [ci skip] in the commit message if you know there is no need to run a build on Travis
+
+## Publishing a new version
 - You can use _fastlane snapshot_ to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the AutomatedScreenshots.swift test
+- App Store metadata is managed in the directory _fastlane/metadata/_. Go edit those and they'll be updated on the store with the next release
+- Members of the Apple Developer Team of this app can run _fastlane deliver_ to update the metadata on iTunes Connect (run _fastlane deliver init_ first)
 
 ## Disclaimer:
 This is not an official app of the Technische Universität München. There's no support or warranty (you can however send us an email [tca-support.os.in@tum.de](mailto:tca-support.os.in@tum.de) or open an issue here on Github). The app is developed by students and for students, so use it at your own risk. We try to keep your data safe with only using TUMonline tokens and not saving your password. For further information you should have a look at our privacy policy and the terms and conditions of the lecture chat.

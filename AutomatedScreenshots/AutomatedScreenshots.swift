@@ -34,11 +34,11 @@ class ScreenshotUITests: XCTestCase {
         app.navigationBars.buttons.element(boundBy: 0).tap()
         tablesQuery.staticTexts["My Lectures"].tap()
         snapshot("3_MyLectures")
-        app.navigationBars["My Lectures"].buttons["More"].tap()
-        tablesQuery.staticTexts["Room Finder"].tap()
-        app.navigationBars["Campus.SearchView"].textFields["Search"].typeText("hs1")
-        sleep(10)
-        snapshot("4_RoomFinderSearch")
+//        ToDo: RoomFinder: Wait for callback / results before doing screenshot
+//        app.navigationBars["My Lectures"].buttons["More"].tap()
+//        tablesQuery.staticTexts["Room Finder"].tap()
+//        app.navigationBars["Campus.SearchView"].textFields["Search"].typeText("hs1")
+//        snapshot("4_RoomFinderSearch")
         XCTAssert(true)
     }
     
