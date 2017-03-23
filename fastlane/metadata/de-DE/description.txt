@@ -1,0 +1,35 @@
+Die inoffizielle TUM Campus App (kein Support/Haftung durch die TU München) wird von Studierenden, freiwilligen Helfern und Lehrstuhlmitarbeitern entwickelt. Die App eignet sich sowohl zur Verwendung auf Smartphones, wie auch Tablets und bietet unter anderem folgende Funktionen:
+
+Persönliche Vorlesungstermine, Nachrichten der TUM und anderer Quellen, Veranstaltungshinweise, Mensa Speiseplan, MVV Abfahrtszeiten, Umgebungspläne und viele weiteren Informationen. 
+
+Die App ist sowohl für Studierende, wie auch Mitarbeiter gedacht.
+
+Projektmanagement:
+TUM - Fakultät für Informatik / F13
+Prof. Dr. Uwe Baumgarten
+Kordian Bruck
+
+Derzeitige Entwickler (2017):
+Mathias Quintero
+Max Muth
+Florian Gareis
+
+
+Weitere Entwickler und involvierte Personen:
+https://github.com/TCA-Team/iOS
+
+Support: https://www.facebook.com/TUMCampus
+Für besondere Anliegen erreichen Sie uns auch via E-Mail unter "tca-support.os.in AT tum.de"
+
+Wichtiger Hinweis:
+Dies ist keine offizielle App der Technischen Universität München. Es erfolgt daher auch kein offizieller Support oder eine Haftung. Die App wird von und für Studierende entwickelt. Die Benutzung erfolgt auf eigene Gefahr und eine Haftung ist ausgeschlossen. Aus Sicherheitsgründen wird der Zugriff auf private Daten in TUMonline über Tokens realisiert, die jeweils in TUMonline durch den Nutzer freigegeben und mit den jeweiligen Rechten versehen werden müssen. Für die Nutzung der neuen Chat-Funktionen gelten nachfolgende Bedingungen, denen Sie separat auch in der App zustimmen müssen. Mit der Installation der App akzeptieren Sie zudem die Erfassung diverser, technischer Daten. Weitere Hinweise finden Sie unten unter "Datenschutzerklärung".
+
+Datenschutzerklärung: https://tumcabe.in.tum.de/landing/privacy/
+
+Lizenz:
+GNU GPL v3 - http://www.gnu.org/licenses/gpl.html oder
+New BSD License - http://www.opensource.org/licenses/bsd-license.php
+
+Der Quellcode kann hier bezogen werden: https://github.com/TCA-Team/
+
+Wir suchen weiterhin Unterstützung! Bitte melden Sie sich unter: "tca-support.os.in AT tum.de"
