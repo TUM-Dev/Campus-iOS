@@ -10,5 +10,14 @@ import Foundation
 
 protocol Manager {
     init(mainManager: TumDataManager)
+    var requiresLogin: Bool { get }
     func fetchData(_ handler: @escaping ([DataElement]) -> ())
+}
+
+extension Manager {
+    
+    var requiresLogin: Bool {
+        return true
+    }
+    
 }

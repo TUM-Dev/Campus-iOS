@@ -16,6 +16,10 @@ class RoomFinderMapManager: SearchManager {
     
     var main: TumDataManager?
     
+    var requiresLogin: Bool {
+        return false
+    }
+    
     var query: String?
     
     func setQuery(_ query: String) {

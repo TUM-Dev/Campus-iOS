@@ -7,15 +7,26 @@
 //
 
 import UIKit
+import Sweeft
 
 class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
     
+    @IBOutlet weak var calendarCell: UITableViewCell!
+    @IBOutlet weak var lectureCell: UITableViewCell!
+    @IBOutlet weak var gradesCell: UITableViewCell!
+    @IBOutlet weak var tuitionCell: UITableViewCell!
+    
+    @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
         didSet {
             avatarView.clipsToBounds = true
             avatarView.layer.cornerRadius = avatarView.frame.width / 2
         }
+    }
+    
+    var cellsWithLogin: [UITableViewCell] {
+        return [calendarCell, lectureCell, gradesCell, tuitionCell]
     }
     
     var manager: TumDataManager?
@@ -26,9 +37,22 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         }
     }
     
+    var isLoggedIn: Bool {
+        return user != nil
+    }
+    
     func updateView() {
-        nameLabel.text = user?.name
-        avatarView.image = user?.image ?? UIImage(named: "avatar")
+        if isLoggedIn {
+            nameLabel.text = user?.name
+            avatarView.image = user?.image ?? UIImage(named: "avatar")
+            logoutLabel.text = "Log Out"
+            logoutLabel.textColor = .red
+        } else {
+            nameLabel.text = "Stranger..."
+            avatarView.image = UIImage(named: "avatar")
+            logoutLabel.text = "Log In"
+            logoutLabel.textColor = .green
+        }
     }
     
     func updateImageView() {
@@ -73,6 +97,29 @@ extension MoreTableViewController {
 
 extension MoreTableViewController {
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard !isLoggedIn else {
+            cell.alpha = 1.0
+            return
+        }
+        if cellsWithLogin.contains(cell) {
+            cell.alpha = 0.5
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        
+        guard !isLoggedIn else {
+            return true
+        }
+        switch indexPath.section {
+        case 0, 1:
+            return false
+        default:
+            return true
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 4:
@@ -83,6 +130,7 @@ extension MoreTableViewController {
             PersistentUser.reset()
             let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+            Usage.value = false
             UIApplication.shared.keyWindow?.rootViewController = loginViewController
         default:
             break

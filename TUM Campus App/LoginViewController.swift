@@ -20,6 +20,14 @@ class LoginViewController: UIViewController {
         }
         return ""
     }
+    
+    @IBAction func skip(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {
+            Usage.value = true
+            self.present(mvc, animated: true, completion: nil)
+        }
+    }
 
 }
 

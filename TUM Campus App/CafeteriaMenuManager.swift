@@ -15,6 +15,10 @@ class CafeteriaMenuManager: Manager {
     
     var manager: TumDataManager?
     
+    var requiresLogin: Bool {
+        return false
+    }
+    
     required init(mainManager: TumDataManager) {
         manager = mainManager
     }

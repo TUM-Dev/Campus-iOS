@@ -19,12 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.tumBlue]
         UINavigationBar.appearance().tintColor = Constants.tumBlue
-        if User.shared == nil {
+        if User.shared == nil && !Usage.value {
             let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             window?.rootViewController = loginViewController
         }
-        
         
         // Override point for customization after application launch.
         return true
