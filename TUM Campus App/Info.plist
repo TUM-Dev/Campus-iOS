@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>The TUM Campus App cann add events to your calendar.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>The TUM Campus App would like to access your contacts.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The TUM Campus App would like to use your location to Sort Cafeterias and other items. If not they will be in alphabetical order.</string>
 	<key>UILaunchStoryboardName</key>
