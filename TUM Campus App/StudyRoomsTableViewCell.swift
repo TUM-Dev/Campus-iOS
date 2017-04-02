@@ -23,8 +23,8 @@ class StudyRoomsTableViewCell: UITableViewCell {
                 nextEvent.text = studyRoomItem.nextEvent
                 buildingName.text = studyRoomItem.buildingName
                 
-                let background = studyRoomItem.status == StudyRoomStatus.Free ? Constants.StudyRoomFree : Constants.StudyRoomOccupied
-                self.backgroundColor = background
+                let color = studyRoomItem.status == StudyRoomStatus.Free ? Constants.StudyRoomFreeColor : Constants.StudyRoomOccupiedColor
+                self.nextEvent.color = color
             }
         }
     }

@@ -11,6 +11,6 @@ import UIKit
 class Constants {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
     static let backgroundGray = UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
-    static let StudyRoomFree = UIColor(red: 0, green: 170/255, blue: 0/255, alpha: 1)
-    static let StudyRoomOccupied = UIColor(red: 255, green: 60/255, blue: 0/255, alpha: 1)
+    static let StudyRoomFreeColor = UIColor(red: 0, green: 170/255, blue: 0/255, alpha: 1)
+    static let StudyRoomOccupiedColor = UIColor(red: 255, green: 60/255, blue: 0/255, alpha: 1)
 }
