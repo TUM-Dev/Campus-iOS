@@ -23,6 +23,7 @@ public struct PromiseSuccessHandler<R, T, E: Error> {
         self.promise = promise
         self.handler = handler
         promise.successHandlers.append(handler**)
+        promise.state.result | handler**
     }
     
     /// Add an action after the current item
@@ -43,6 +44,17 @@ public struct PromiseSuccessHandler<R, T, E: Error> {
     
 }
 
+public extension PromiseSuccessHandler where R: PromiseBody {
+    
+    /// Promise returned by the handler
+    public var future: Promise<R.Result, R.ErrorType> {
+        let promise = Promise<R.Result, R.ErrorType>()
+        then(R.nest ** (promise, id))
+        return promise
+    }
+    
+}
+
 /// Structure that allows us to nest callbacks more nicely
 public struct PromiseErrorHandler<R, T, E: Error> {
     
@@ -55,6 +67,7 @@ public struct PromiseErrorHandler<R, T, E: Error> {
         self.promise = promise
         self.handler = handler
         promise.errorHandlers.append(handler**)
+        promise.state.error | handler**
     }
     
     /// Add an action to be done afterwards

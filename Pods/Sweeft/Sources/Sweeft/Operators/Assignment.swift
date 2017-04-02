@@ -109,7 +109,7 @@ postfix operator .?
  - Returns: Value when not nil and type default when nil
  */
 public postfix func .?<V: Defaultable>(_ value: V?) -> V {
-    return value ?? V.defaultValue
+    return value ?? .defaultValue
 }
 
 /**
@@ -119,7 +119,7 @@ public postfix func .?<V: Defaultable>(_ value: V?) -> V {
  
  - Returns: array with all the elements unwrapped with default.
  */
-public postfix func .?<T: Defaultable, C: Collection where C.Iterator.Element == T?>(_ items: C) -> [T] {
+public postfix func .?<T: Defaultable, C: Collection>(_ items: C) -> [T] where C.Iterator.Element == T? {
     return items => (.?)
 }
 

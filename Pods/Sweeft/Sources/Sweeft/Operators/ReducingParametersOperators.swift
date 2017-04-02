@@ -66,6 +66,6 @@ prefix operator >
  
  - Returns: Result of reduce
  */
-public prefix func ><P: ReducingParameters where P.Result: Defaultable>(_ nextPartialResult: P.NextPartialResultHandler) -> P {
+public prefix func ><P: ReducingParameters>(_ nextPartialResult: P.NextPartialResultHandler) -> P where P.Result: Defaultable {
     return P.Result.defaultValue ** nextPartialResult
 }

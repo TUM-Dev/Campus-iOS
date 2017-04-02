@@ -50,7 +50,11 @@ Carthage/Build
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
 
 fastlane/report.xml
+fastlane/reports/
 fastlane/screenshots
+fastlane/Deliverfile  # We don't want to store an individual users credentials here, so just run fastlane deliver init yourself.
+Preview.html  # Preview file by deliver
+.sonar
 
 # Code Injection
 #

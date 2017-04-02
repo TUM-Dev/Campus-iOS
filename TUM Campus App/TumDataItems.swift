@@ -23,6 +23,7 @@ enum TumDataItems: String {
     case LectureItems = "Lectures"
     case LectureSearch = "LectureSearch"
     case LectureDetails = "LectureDetails"
+    case GradeItems = "Grades"
     case RoomSearch = "RoomSearch"
     case RoomMap = "RoomMap"
     case NewsCard = "NewsCard"

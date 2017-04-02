@@ -10,6 +10,11 @@ import Foundation
 
 public extension Dictionary {
     
+    /// Map Only Values
+    func mapValues<T>(_ map: @escaping (Value) -> T) -> [Key:T] {
+        return self >>= mapLast(with: map)
+    }
+    
     /**
      Will find a match for in the dictionary by key
      
@@ -40,9 +45,7 @@ public extension Dictionary where Key: CustomStringConvertible {
      - Returns: value found
      */
     func match(containing query: String) -> Value? {
-        return match {
-            return $0.description.contains(query)
-        }
+        return match(describe >>> String.contains ** query)
     }
     
 }
@@ -60,7 +63,25 @@ extension Dictionary: Defaultable {
     
     /// Default Value
     public static var defaultValue: [Key:Value] {
-        return [:]
+        return .empty
+    }
+    
+}
+
+/// TODO: Find a way to inherit from this particular dict
+extension Dictionary where Key: CustomStringConvertible, Value: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .dict(self >>= describe <*> JSON.init)
+    }
+    
+}
+
+public extension ExpressibleByDictionaryLiteral {
+    
+    static var empty: Self {
+        return Self()
     }
     
 }

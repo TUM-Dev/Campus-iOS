@@ -21,6 +21,7 @@ enum TUMOnlineWebServices: String {
     case PersonDetails = "personenDetails"
     case Identity = "id"
     case PersonalLectures = "veranstaltungenEigene"
+    case PersonalGrades = "noten"
     case LectureSearch = "veranstaltungenSuche"
     case LectureDetails = "veranstaltungenDetails"
     case Home = "https://campus.tum.de/tumonline/"

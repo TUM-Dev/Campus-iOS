@@ -1,0 +1,22 @@
+language: objective-c  # [sic]. Travis uses objective-c just to determine it needs to use the xcode cli
+osx_image: xcode8.2
+
+# cache:
+#   directories:
+#     - $HOME/.sonar
+
+branches:
+  # Only run push builds for the master branch. PR builds are run nevertheless
+  only: 
+    - master
+
+before_install:
+  - echo $TRAVIS_SECURE_ENV_VARS
+  - ./fastlane/before_install.sh
+
+script:
+   - fastlane snapshot reset_simulators --force  # Workaround for Travis bug https://github.com/travis-ci/travis-ci/issues/7031
+   - ./fastlane/run.sh  # Decide which lane to run
+
+notifications:
+  email: false

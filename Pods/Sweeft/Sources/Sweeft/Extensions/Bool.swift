@@ -23,3 +23,11 @@ extension Bool: Defaultable {
     public static let defaultValue = false
     
 }
+
+extension Bool: Serializable {
+    
+    public var json: JSON {
+        return .bool(self)
+    }
+    
+}

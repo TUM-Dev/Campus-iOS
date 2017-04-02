@@ -11,7 +11,7 @@ public extension String {
     
     /// Will say if the String is a palindrome
     var isPalindrome: Bool {
-        return self.reversed == self
+        return <>self == self
     }
     
     /// Will return the string reversed
@@ -42,9 +42,16 @@ public extension String {
         return URL(string: urlEncoded)
     }
     
-    /// Data resulting by encoding using utf8
-    var data: Data? {
-        return data(using: .utf8)
+    /**
+     Turns any string into a possible API
+     
+     - Parameter baseHeaders: Headers that should be included into every single request
+     - Parameter baseQueries: Queries that should be included into every single request
+     
+     - Returns: API using the string as base url
+     */
+    func api<V: APIEndpoint>(baseHeaders: [String : String] = .empty, baseQueries: [String: String]) -> GenericAPI<V> {
+        return V.api(with: self, baseHeaders: baseHeaders, baseQueries: baseQueries)
     }
     
     /**
@@ -68,7 +75,7 @@ public extension String {
      Will say if a String matches a RegEx
      
      - Parameter pattern: RegEx you want to match
-     - Parameter options: Extra options (Optional: Default is [])
+     - Parameter options: Extra options (Optional: Default is .empty)
      
      - Returns: Whether or not the string matches
      */
@@ -82,6 +89,36 @@ public extension String {
 extension String: Defaultable {
 
     /// Default Value
-    public static let defaultValue = ""
+    public static let defaultValue: String = .empty
+    
+}
+
+extension String: DataRepresentable {
+    
+    public init?(data: Data) {
+        self.init(data: data, encoding: .utf8)
+    }
+    
+    /// Data resulting by encoding using utf8
+    public var data: Data? {
+        return data(using: .utf8)
+    }
+    
+}
+
+extension String: Serializable {
+    
+    /// JSON Value
+    public var json: JSON {
+        return .string(self)
+    }
+    
+}
+
+public extension ExpressibleByStringLiteral where StringLiteralType == String {
+    
+    static var empty: Self {
+        return Self(stringLiteral: "")
+    }
     
 }

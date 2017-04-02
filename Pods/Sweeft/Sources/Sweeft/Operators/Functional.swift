@@ -70,7 +70,7 @@ infix operator =>: AdditionPrecedence
  
  - Returns: result of mapping the array with the function
  */
-public func =><C: Collection, V>(_ items: C?, _ handler: (C.Iterator.Element) -> (V)) -> [V] {
+@discardableResult public func =><C: Collection, V>(_ items: C?, _ handler: (C.Iterator.Element) -> (V)) -> [V] {
     return (items?.map(handler)).?
 }
 
@@ -82,7 +82,7 @@ public func =><C: Collection, V>(_ items: C?, _ handler: (C.Iterator.Element) ->
  
  - Returns: result of mapping the array with the function
  */
-public func =><T, V>(_ items: [T]?, _ handler: (T, Int) -> (V)) -> [V] {
+@discardableResult public func =><T, V>(_ items: [T]?, _ handler: (T, Int) -> (V)) -> [V] {
     return (items?.map(handler)).?
 }
 
@@ -108,39 +108,6 @@ public func =><V>(_ number: Int?, _ handler: @escaping () -> (V)) {
 public func =><V>(_ number: Int?, _ handler: @escaping (Int) -> (V)) {
     number?.times(do: handler)
 }
-
-/**
- For each. Will call the handler with every element in the array
- 
- - Parameter items: array
- - Parameter handler: mapping function
- 
- */
-public func =><C: Collection>(_ items: C?, _ handler: (C.Iterator.Element) -> ()) {
-    items?.forEach(handler)
-}
-
-/**
- For each with index. Will call the handler with every element in the array
- 
- - Parameter items: array
- - Parameter handler: mapping function
- 
- */
-public func =><T>(_ items: [T]?, _ handler: (T, Int) -> ()) {
-    items?.forEach(handler)
-}
-
-/**
- Empty for each
- 
- - Parameter items: array
- - Parameter handler: call that should be called
- 
- */
-//public func =><C: Collection>(_ items: C?, _ handler: @escaping () -> ()) {
-//    items?.forEach(**handler)
-//}
 
 infix operator ==>: AdditionPrecedence
 
@@ -281,6 +248,74 @@ public func >>=<T, K, V>(_ items: [T], _ handler: @escaping (T, Int) -> (K, V)) 
     return items.dictionary(byDividingWith: handler)
 }
 
+/**
+ Dictionary by Mapping values of dictionary
+ 
+ - Parameter dict: Dictionary
+ - Parameter handler: dividing function with index
+ 
+ - Returns: dictionary
+ */
+public func >>=<T, K, V>(_ dict: [K:T]?, _ handler: @escaping (T) -> (V)) -> [K:V] {
+    return (dict.?).mapValues(handler)
+}
+
+/**
+ Bind with input
+ 
+ - Parameter handler: function that you want to call
+ - Parameter input: input that you want to give to your function
+ 
+ - Returns: function that when called will use input given
+ */
+public func **<T, O>(_ handler: @escaping (T) -> O, _ input: T) -> () -> O {
+    return {
+        handler(input)
+    }
+}
+
+/**
+ Bind with input
+ 
+ - Parameter handler: function that you want to call
+ - Parameter input: input that you want to give to your function
+ 
+ - Returns: function that when called will use input given
+ */
+public func **<V, T, O>(_ handler: @escaping (T, V) -> O, _ input: T) -> (V) -> O {
+    return {
+        handler(input, $0)
+    }
+}
+
+/**
+ Bind with input for later
+ 
+ - Parameter handler: function that when given to the value will return the function to be handed the input to
+ - Parameter input: input that you want to give to your function
+ 
+ - Returns: function that when called with the value will apply the function with the input
+ */
+public func **<V, T, O>(_ handler: @escaping (V) -> ((T) -> O), _ input: T) -> (V) -> O {
+    return { handler($0)(input) }
+}
+
+infix operator <**: MultiplicationPrecedence
+
+/**
+ Bind with input from the right
+ 
+ - Parameter handler: function that you want to call
+ - Parameter input: input that you want to give to your function
+ 
+ - Returns: function that when called will use input given
+ */
+public func <**<V, T, O>(_ handler: @escaping (T, V) -> O, _ input: V) -> (T) -> O {
+    return {
+        handler($0, input)
+    }
+}
+
 prefix operator **
 
 /**
@@ -405,4 +440,94 @@ infix operator ||>
  */
 public func ||><C: Collection>(_ items: C?, _ handler: (C.Iterator.Element) -> Bool) -> Bool {
     return (items?.or(disjunctUsing: handler)).?
+}
+
+infix operator |>>>: MultiplicationPrecedence
+
+/**
+ Map and execute
+ 
+ - Parameter map: maps the first Argument
+ - Parameter handler: handler for all the arguments with the mapped first argument
+ 
+ - Returns: Bound closure
+ */
+public func |>>><V, T, O, R>(_ map: @escaping (V) -> (R), _ handler: @escaping (R, T) -> (O)) -> (V, T) -> O {
+    return mapFirst(with: map) >>> handler
+}
+
+/**
+ Map and execute
+ 
+ - Parameter map: maps the last Argument
+ - Parameter handler: handler for all the arguments with the mapped last argument
+ 
+ - Returns: Bound closure
+ */
+public func |>>><V, T, O, R>(_ map: @escaping (T) -> (R), _ handler: @escaping (V, R) -> (O)) -> (V, T) -> O {
+    return mapLast(with: map) >>> handler
+}
+
+/**
+ Map and execute
+ 
+ - Parameter map: maps the middle Argument
+ - Parameter handler: handler for all the arguments with the mapped middle argument
+ 
+ - Returns: Bound closure
+ */
+public func |>>><V, K, T, O, R>(_ map: @escaping (K) -> (R), _ handler: @escaping (V, R, T) -> (O)) -> (V, K, T) -> O {
+    return mapMiddle(with: map) >>> handler
+}
+
+/**
+ Map and execute
+ 
+ - Parameter map: maps each argument
+ - Parameter handler: handler for all the arguments with the mapped argument
+ 
+ - Returns: Bound closure
+ */
+public func |>>><V, O, R>(_ map: @escaping (V) -> (R), _ handler: @escaping (R, R) -> (O)) -> (V, V) -> O {
+    return mapBoth(with: map) >>> handler
+}
+
+/**
+ Map and execute
+ 
+ - Parameter map: maps each argument
+ - Parameter handler: handler for all the arguments with the mapped arguments
+ 
+ - Returns: Bound closure
+ */
+public func |>>><C: Collection, O, R>(_ map: @escaping (C.Iterator.Element) -> (R), _ handler: @escaping ([R]) -> (O)) -> (C) -> O {
+    return (=>) <** map >>> handler
+}
+
+infix operator <*>: PowerPrecedence
+
+/**
+ Parallelize closures. Will combine two closures and take both inputs and respond with the tuppled results
+ 
+ - Parameter a: first closure
+ - Parameter b: second closure
+ 
+ - Returns: Bound closure
+ */
+public func <*><A, B, C, D>(_ a: @escaping (A) -> B, _ b: @escaping (C) -> D) -> (A, C) -> (B, D) {
+    return { (a($0), b($1)) }
+}
+
+infix operator <+>: PowerPrecedence
+
+/**
+ Parallelize closures. Will combine two closures with the same input and respond with the tuppled results
+ 
+ - Parameter a: first closure
+ - Parameter b: second closure
+ 
+ - Returns: Bound closure
+ */
+public func <+><A, B, C>(_ a: @escaping (A) -> B, _ b: @escaping (A) -> C) -> (A) -> (B, C) {
+    return duplicateArguments >>> (a <*> b)
 }
