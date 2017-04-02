@@ -188,8 +188,6 @@
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2LZ-Kl-aUw" imageView="SwH-nR-HbD" style="IBUITableViewCellStyleDefault" id="oAx-G5-j0H">
                                         <rect key="frame" x="0.0" y="427" width="375" height="44"/>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="BiB-81-lnB" imageView="0KL-qT-mZR" style="IBUITableViewCellStyleDefault" id="tu9-wf-eBN">
-                                        <rect key="frame" x="0.0" y="471" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAx-G5-j0H" id="rkZ-lS-5ir">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -532,11 +530,8 @@
         <image name="Feedback Filled-25" width="25" height="25"/>
         <image name="Food Filled-25" width="25" height="25"/>
         <image name="Info Filled-25" width="25" height="25"/>
-<<<<<<< HEAD
         <image name="Search Filled-25" width="25" height="25"/>
-=======
         <image name="Line Chart-25" width="25" height="25"/>
->>>>>>> master
         <image name="University Filled-25" width="25" height="25"/>
         <image name="avatar" width="420" height="420"/>
         <image name="cal" width="25" height="25"/>
