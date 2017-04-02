@@ -23,17 +23,28 @@ public extension Collection {
     /**
      Will turn any Collection into a Dictionary with a handler
      
+     - Parameter key: Mapping function that returns the key of an Element
+     - Parameter value: Mapping function that returns the Value of an Element
+     
+     - Returns: Resulting dictionary
+     */
+    func dictionary<K, V>(with keys: @escaping (Iterator.Element) -> K, and values: @escaping (Iterator.Element) -> V) -> [K:V] {
+        return self ==> >{ dict, item in
+            var dict = dict
+            dict[keys(item)] = values(item)
+            return dict
+        }
+    }
+    
+    /**
+     Will turn any Collection into a Dictionary with a handler
+     
      - Parameter byDividingWith: Mapping function that breaks every element into a key and a value
      
      - Returns: Resulting dictionary
      */
     func dictionary<K, V>(byDividingWith handler: @escaping (Iterator.Element) -> (K, V)) -> [K:V] {
-        return self ==> >{ dict, item in
-            var dict = dict
-            let (key, value) = handler(item)
-            dict[key] = value
-            return dict
-        }
+        return divide(closure: handler) | dictionary
     }
     
     /**
@@ -161,7 +172,7 @@ public extension Collection {
      
      - Returns: minimal element
      */
-    func min<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
+    func argmin<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
         return best(mapping, (<))
     }
     
@@ -172,8 +183,30 @@ public extension Collection {
      
      - Returns: maximal element
      */
-    func max<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
+    func argmax<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> Iterator.Element? {
         return best(mapping, (>))
+    }
+    
+    /**
+     Will find the minimal item in the collection by using a cost function
+     
+     - Parameter mapping: Cost function
+     
+     - Returns: minimal element
+     */
+    func min<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> C? {
+        return argmin(mapping) | mapping
+    }
+    
+    /**
+     Will find the maximal item in the collection by using a cost function
+     
+     - Parameter mapping: Cost function
+     
+     - Returns: maximal element
+     */
+    func max<C: Comparable>(_ mapping: @escaping (Iterator.Element) -> (C)) -> C? {
+        return argmax(mapping) | mapping
     }
     
     /**
@@ -183,8 +216,8 @@ public extension Collection {
      
      - Returns: sorted array
      */
-    func sorted<C: Comparable>(ascending mapping: (Iterator.Element) -> (C)) -> [Iterator.Element] {
-        return sorted { mapping($0) < mapping($1) }
+    func sorted<C: Comparable>(ascending mapping: @escaping (Iterator.Element) -> (C)) -> [Iterator.Element] {
+        return sorted(by: mapBoth(with: mapping) >>> (<=))
     }
     
     /**
@@ -194,7 +227,7 @@ public extension Collection {
      
      - Returns: sorted array
      */
-    func sorted<C: Comparable>(descending mapping: (Iterator.Element) -> (C)) -> [Iterator.Element] {
+    func sorted<C: Comparable>(descending mapping: @escaping (Iterator.Element) -> (C)) -> [Iterator.Element] {
         return <>sorted(ascending: mapping)
     }
     

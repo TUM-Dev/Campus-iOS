@@ -10,6 +10,9 @@ import Foundation
 
 /// Enum For Representing an Empty Error Domain
 public enum NoError: Error {}
+public enum AnyError: Error {
+    case error(Error)
+}
 
 /// Structure that allows us to nest callbacks more nicely
 public struct PromiseSuccessHandler<R, T, E: Error> {
@@ -33,7 +36,7 @@ public struct PromiseSuccessHandler<R, T, E: Error> {
     }
     
     /// Add a success Handler
-    @discardableResult public func onSuccess<O>(call handler: @escaping (T) -> (O)) -> PromiseSuccessHandler<O, T, E> {
+    @discardableResult public func and<O>(call handler: @escaping (T) -> (O)) -> PromiseSuccessHandler<O, T, E> {
         return promise.onSuccess(call: handler)
     }
     
@@ -44,13 +47,14 @@ public struct PromiseSuccessHandler<R, T, E: Error> {
     
 }
 
-public extension PromiseSuccessHandler where R: PromiseBody {
+public extension PromiseSuccessHandler where R: PromiseBody, R.ErrorType == E {
     
     /// Promise returned by the handler
     public var future: Promise<R.Result, R.ErrorType> {
-        let promise = Promise<R.Result, R.ErrorType>()
-        then(R.nest ** (promise, id))
-        return promise
+        return .new { promise in
+            self.then { $0.nest(to: promise, using: id) }
+            self.onError(call: promise.error)
+        }
     }
     
 }
@@ -82,7 +86,7 @@ public struct PromiseErrorHandler<R, T, E: Error> {
     }
     
     /// Add an error Handler
-    @discardableResult public func onError<O>(call handler: @escaping (E) -> (O)) -> PromiseErrorHandler<O, T, E> {
+    @discardableResult public func and<O>(call handler: @escaping (E) -> (O)) -> PromiseErrorHandler<O, T, E> {
         return promise.onError(call: handler)
     }
     

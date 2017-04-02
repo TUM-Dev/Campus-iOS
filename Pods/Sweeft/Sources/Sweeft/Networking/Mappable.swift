@@ -108,3 +108,22 @@ extension Serializable {
     }
     
 }
+
+extension RawRepresentable where RawValue: Serializable {
+    
+    var json: JSON {
+        return rawValue.json
+    }
+    
+}
+
+extension RawRepresentable where RawValue: Deserializable {
+    
+    init?(json: JSON) {
+        guard let value = RawValue(from: json) else {
+            return nil
+        }
+        self.init(rawValue: value)
+    }
+    
+}

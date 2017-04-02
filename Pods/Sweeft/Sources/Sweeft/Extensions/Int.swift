@@ -56,7 +56,7 @@ public extension Int {
     
     /// Gives an Array of the digits in the number
     var digits: [Int] {
-        return self.description.characters => { String($0) } ==> { Int($0) }
+        return self.description.characters => describe ==> { Int($0) }
     }
     
     /// Will say it is prime

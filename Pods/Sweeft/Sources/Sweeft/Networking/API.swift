@@ -90,8 +90,6 @@ public extension API {
                        acceptableStatusCodes: [Int] = [200],
                        completionQueue: DispatchQueue = .main) -> Data.Result {
         
-        let promise = Promise<Data, APIError>(completionQueue: completionQueue)
-        
         let requestString = arguments ==> endpoint.rawValue ** { string, argument in
             return string.replacingOccurrences(of: "{\(argument.key)}", with: argument.value.description)
         }
@@ -108,33 +106,36 @@ public extension API {
             request.addValue($1, forHTTPHeaderField: $0)
         }
         
-        auth.apply(to: &request)
-        willPerform(request: &request)
-        
-        let session = self.session(for: method, at: endpoint)
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                if let error = error as? URLError, error.code == .timedOut {
-                    promise.error(with: .timeout)
-                } else {
-                    promise.error(with: .unknown(error: error))
+        return .new(completionQueue: completionQueue) { promise in
+            
+            auth.apply(to: request).onSuccess { request in
+                var request = request
+                self.willPerform(request: &request)
+                let session = self.session(for: method, at: endpoint)
+                let task = session.dataTask(with: request) { (data, response, error) in
+                    if let error = error {
+                        if let error = error as? URLError, error.code == .timedOut {
+                            promise.error(with: .timeout)
+                        } else {
+                            promise.error(with: .unknown(error: error))
+                        }
+                        return
+                    }
+                    let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+                    guard acceptableStatusCodes.contains(statusCode) else {
+                        promise.error(with: .invalidStatus(code: statusCode, data: data))
+                        return
+                    }
+                    if let data = data {
+                        promise.success(with: data)
+                    } else {
+                        promise.error(with: .noData)
+                    }
                 }
-                return
+                task.resume()
             }
-            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
-            guard acceptableStatusCodes.contains(statusCode) else {
-                promise.error(with: .invalidStatus(code: statusCode, data: data))
-                return
-            }
-            if let data = data {
-                promise.success(with: data)
-            } else {
-                promise.error(with: .noData)
-            }
+            
         }
-        task.resume()
-        
-        return promise
     }
     
     /**
@@ -416,7 +417,7 @@ public extension API {
                               completionQueue: DispatchQueue = .main,
                               at path: String...) -> Response<[T]> {
         
-        let endpoints = arguments.count.range => **{ endpoint }
+        let endpoints = arguments.count.range => returning(endpoint)
         return doBulkObjectRequest(with: method, to: endpoints, arguments: arguments, headers: headers, queries: queries, auth: auth, bodies: bodies, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue, at: path)
     }
     

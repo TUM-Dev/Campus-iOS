@@ -7,10 +7,21 @@
 
 import Foundation
 
+public typealias ResultPromise<R> = Promise<R, AnyError>
+
 enum PromiseState<T, E: Error> {
     case waiting
     case success(result: T)
     case error(error: E)
+    
+    var isDone: Bool {
+        switch self {
+        case .waiting:
+            return false
+        default:
+            return true
+        }
+    }
     
     var result: T? {
         switch self {
@@ -59,6 +70,30 @@ public class Promise<T, E: Error>: PromiseBody {
         self.completionQueue = completionQueue
     }
     
+    public init(successful value: T, completionQueue: DispatchQueue = .main) {
+        self.completionQueue = completionQueue
+        self.state = .success(result: value)
+    }
+    
+    public init(errored value: E, completionQueue: DispatchQueue = .main) {
+        self.completionQueue = completionQueue
+        self.state = .error(error: value)
+    }
+    
+    public static func successful(with value: T) -> Promise<T, E> {
+        return Promise<T, E>(successful: value)
+    }
+    
+    public static func errored(with value: E) -> Promise<T, E> {
+        return Promise<T, E>(errored: value)
+    }
+    
+    public static func new(completionQueue: DispatchQueue = .main, _ handle: (Promise<T, E>) -> ()) -> Promise<T, E> {
+        let promise = Promise<T, E>(completionQueue: completionQueue)
+        handle(promise)
+        return promise
+    }
+    
     /**
      Add success handler
      
@@ -77,17 +112,25 @@ public class Promise<T, E: Error>: PromiseBody {
     
     /// Call this when the promise is fulfilled
     public func success(with value: T) {
+        guard !state.isDone else {
+            return
+        }
         state = .success(result: value)
+        let count = self.successHandlers.count
         completionQueue >>> {
-            self.successHandlers => apply(value: value)
+            self.successHandlers.array(withFirst: count) => apply(value: value)
         }
     }
     
     /// Call this when the promise has an error
     public func error(with value: E) {
+        guard !state.isDone else {
+            return
+        }
         state = .error(error: value)
+        let count = self.errorHandlers.count
         completionQueue >>> {
-            self.errorHandlers => apply(value: value)
+            self.errorHandlers.array(withFirst: count) => apply(value: value)
         }
     }
     
@@ -105,16 +148,46 @@ public class Promise<T, E: Error>: PromiseBody {
     
     /// Will create a Promise that is based on this promise but maps the result
     public func nested<V>(_ mapper: @escaping (T) -> V) -> Promise<V, E> {
-        let promise = Promise<V, E>(completionQueue: completionQueue)
-        nest(to: promise, using: mapper)
-        return promise
+        return .new { promise in
+            self.nest(to: promise, using: mapper)
+        }
     }
     
     /// Will create a Promise that is based on this promise but maps the result
     public func nested<V>(_ mapper: @escaping (T, Promise<V, E>) -> ()) -> Promise<V, E> {
-        let promise = Promise<V, E>(completionQueue: completionQueue)
-        nest(to: promise, using: add(trailing: promise) >>> mapper)
-        return promise
+        return .new { promise in
+            self.nest(to: promise, using: add(trailing: promise) >>> mapper)
+        }
+    }
+    
+    public func generalizeError() -> Promise<T, AnyError> {
+        return .new { promise in
+            onSuccess(call: promise.success)
+            onError(call: AnyError.error >>> promise.error)
+        }
+    }
+    
+    /**
+     Turns an asynchrounous handler into a synchrounous one. 
+     Warning! This can result really badly. Be very careful when calling this.
+     
+     
+     - Returns: Result of your promise
+     */
+    public func wait() throws -> T {
+        let group = DispatchGroup()
+        group.enter()
+        onSuccess { _ in
+            group.leave()
+        }
+        onError { _ in
+            group.leave()
+        }
+        group.wait()
+        if let result = state.result {
+            return result
+        }
+        throw state.error!
     }
     
 }

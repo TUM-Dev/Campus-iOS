@@ -23,6 +23,18 @@ public func >>>(_ queue: DispatchQueue,_ handler: @escaping () -> ()) {
 /**
  Runs a closure in a specific queue
  
+ - Parameter qos: qos for the Queue the code should run in.
+ - Parameter handler: function you want to run later
+ 
+ */
+public func >>>(_ qos: DispatchQoS,_ handler: @escaping () -> ()) {
+    let queue = DispatchQueue(label: String(describing: qos), qos: qos)
+    queue >>> handler
+}
+
+/**
+ Runs a closure in a specific queue
+ 
  - Parameter label: label for the Queue the code should run in.
  - Parameter handler: function you want to run later
  
