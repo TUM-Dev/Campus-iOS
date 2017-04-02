@@ -11,9 +11,12 @@ import UIKit
 class StudyRoomsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var code: UILabel!
-    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var name: UILabel! {
+        didSet {
+            name.textColor = Constants.tumBlue
+        }
+    }
     @IBOutlet weak var nextEvent: UILabel!
-    @IBOutlet weak var buildingName: UILabel!
     
     var studyRoomItem: StudyRoom? {
         didSet {
@@ -21,10 +24,9 @@ class StudyRoomsTableViewCell: UITableViewCell {
                 code.text = studyRoomItem.code
                 name.text = studyRoomItem.name
                 nextEvent.text = studyRoomItem.nextEvent
-                buildingName.text = studyRoomItem.buildingName
                 
                 let color = studyRoomItem.status == StudyRoomStatus.Free ? Constants.StudyRoomFreeColor : Constants.StudyRoomOccupiedColor
-                self.nextEvent.color = color
+                self.nextEvent.textColor = color
             }
         }
     }
