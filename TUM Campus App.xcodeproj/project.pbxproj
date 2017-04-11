@@ -1196,21 +1196,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/Pods",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/ASWeekSelectorView\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/AYSlidingPickerView\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/CalendarLib\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/MCSwipeTableViewCell\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/OSCache\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/OrderedDictionary\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/PZPullToRefresh\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/Sweeft\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
-					"\"$PODS_CONFIGURATION_BUILD_DIR/TKSubmitTransition\"",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
