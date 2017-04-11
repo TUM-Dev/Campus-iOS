@@ -21,9 +21,12 @@ class CardViewController: UITableViewController {
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
-        manager?.getCardItems(self)
+        if cards.count > 0 {
+            manager?.getCardItems(self)
+        } else {
+            refresh.endRefreshing()
+        }
     }
-    
 }
 
 extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
