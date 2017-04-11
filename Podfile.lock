@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.3.0)
+  - Alamofire (4.4.0)
   - ASWeekSelectorView (1.0)
   - AYSlidingPickerView (0.1.4)
   - CalendarLib (2.0):
@@ -41,7 +41,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/jvitor/TKSubmitTransition.git
 
 SPEC CHECKSUMS:
-  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   ASWeekSelectorView: 31479a963ec0bb1f0a05c5b075d6ed4aa8f9f381
   AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
@@ -56,4 +56,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f0b99b18af164be675fc65c6fd045a5571d6a689
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1
