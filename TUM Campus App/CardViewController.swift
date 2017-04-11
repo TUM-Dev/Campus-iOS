@@ -21,11 +21,7 @@ class CardViewController: UITableViewController {
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
-        if cards.count > 0 {
             manager?.getCardItems(self)
-        } else {
-            refresh.endRefreshing()
-        }
     }
 }
 
@@ -78,7 +74,7 @@ extension CardViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.separatorColor = UIColor.clear
+        tableView.separatorStyle = .none
         tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
