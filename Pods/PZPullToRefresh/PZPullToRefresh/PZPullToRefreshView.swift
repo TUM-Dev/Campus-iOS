@@ -55,7 +55,7 @@ public final class PZPullToRefreshView: UIView {
                 rotateArrowImage(angle: 0)
             case .pulling:
                 statusLabel?.text = "Release to refresh"
-                rotateArrowImage(angle: CGFloat(M_PI))
+                rotateArrowImage(angle: CGFloat(Double.pi))
             case .loading:
                 statusLabel?.text = "Loading..."
                 activityView?.startAnimating()
