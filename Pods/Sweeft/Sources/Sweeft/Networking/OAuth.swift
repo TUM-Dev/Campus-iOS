@@ -8,102 +8,111 @@
 
 import Foundation
 
-public struct OAuthEndpoint: APIEndpoint {
-    public let rawValue: String
-}
-
-public struct OAuthManager: API {
+public final class OAuth: Auth, Observable {
     
-    public typealias Endpoint = OAuthEndpoint
-    public let baseURL: String
-    public let clientID: String
-    public let secret: String
+    public var listeners = [Listener]()
     
-    public init(baseURL: String, clientID: String, secret: String) {
-        self.baseURL = baseURL
-        self.clientID = clientID
-        self.secret = secret
+    var token: String
+    var tokenType: String
+    var refreshToken: String?
+    var expirationDate: Date?
+    var manager: OAuthManager<OAuthEndpoint>?
+    var endpoint: OAuthEndpoint?
+    private var refreshPromise: OAuth.Result?
+    
+    init(token: String, tokenType: String, refreshToken: String?, expirationDate: Date?, manager: OAuthManager<OAuthEndpoint>? = nil, endpoint: OAuthEndpoint? = nil) {
+        self.token = token
+        self.tokenType = tokenType
+        self.refreshToken = refreshToken
+        self.expirationDate = expirationDate
+        self.manager = manager
+        self.endpoint = endpoint
     }
     
-    func body(username: String, password: String, scope: String?) -> JSON {
-        return [
-            "grant_type": "password",
-            "client_id": clientID.json,
-            "client_secret": secret.json,
-            "username": username.json,
-            "password": password.json,
-            "scope": (scope?.json).?
-        ]
+    public func update(with auth: OAuth) {
+        token = auth.token
+        tokenType = auth.tokenType
+        refreshToken = auth.refreshToken
+        expirationDate = auth.expirationDate
+        hasChanged()
     }
     
-    public func authenticate(at url: String, username: String, password: String, scope: String...) -> OAuth.Result {
-        let endpoint = OAuthEndpoint(rawValue: url)
-        let auth = BasicAuth(username: username, password: password)
-        let scope = scope.isEmpty ? nil : scope.join(with: " ")
-        let body = self.body(username: username, password: password, scope: scope)
-        return doObjectRequest(with: .post, to: endpoint, auth: auth, body: body)
-    }
-    
-}
-
-public struct OAuth: Auth {
-    
-    fileprivate let token: String
-    fileprivate let tokenType: String
-    fileprivate let refreshToken: String?
-    fileprivate let expirationDate: Date?
-    
-    var isExpired: Bool {
+    public var isExpired: Bool {
         guard let expirationDate = expirationDate else {
             return false
         }
         return expirationDate < .now
     }
     
-    public func refresh() {
-        
+    public var isRefreshable: Bool {
+        return ??refreshToken && ??expirationDate
     }
     
-    public func apply(to request: inout URLRequest) {
-        if isExpired {
-            refresh()
+    public func refresh() -> OAuth.Result {
+        guard let manager = manager, let endpoint = endpoint else {
+            return .errored(with: .cannotPerformRequest)
         }
+        return manager.refresh(at: endpoint, with: self)
+    }
+    
+    public func apply(to request: URLRequest) -> Promise<URLRequest, APIError> {
+        if isExpired {
+            refreshPromise = self.refreshPromise ?? refresh()
+            return refreshPromise?.onSuccess { (auth: OAuth) -> Promise<URLRequest, APIError> in
+                self.refreshPromise = nil
+                self.update(with: auth)
+                return self.apply(to: request)
+                }
+                .future ?? .errored(with: .cannotPerformRequest)
+        }
+        var request = request
         request.addValue("\(tokenType) \(token)", forHTTPHeaderField: "Authorization")
+        return .successful(with: request)
     }
     
 }
 
 extension OAuth: Deserializable {
     
-    public init?(from json: JSON) {
+    public convenience init?(from json: JSON) {
         guard let token = json["access_token"].string,
             let tokenType = json["token_type"].string else {
                 return nil
         }
-        self.init(token: token, tokenType: tokenType,
-                  refreshToken: json["refresh_token"].string, expirationDate: nil)
+        self.init(token: token,
+                  tokenType: tokenType,
+                  refreshToken: json["refresh_token"].string,
+                  expirationDate: json["expires_in"].dateInDistanceFromNow,
+                  manager: nil,
+                  endpoint: nil)
     }
     
 }
 
 extension OAuth: StatusSerializable {
     
-    public init?(from status: [String : Any]) {
+    public convenience init?(from status: [String : Any]) {
         guard let token = status["token"] as? String,
             let tokenType = status["tokenType"] as? String else {
                 return nil
         }
+        let managerStatus = status["manager"] as? [String:Any] ?? .empty
+        let endpoint = (status["endpoint"] as? String) | OAuthEndpoint.init(rawValue:)
         self.init(token: token, tokenType: tokenType, refreshToken: (status["refresh"] as? String),
-                  expirationDate: (status["expiration"] as? String)?.date())
+                  expirationDate: (status["expiration"] as? String)?.date(),
+                  manager: OAuthManager<OAuthEndpoint>(from: managerStatus),
+                  endpoint: endpoint)
     }
     
     public var serialized: [String : Any] {
-        var dict = [
+        var dict: [String:Any] = [
             "token": token,
             "tokenType": tokenType
         ]
         dict["refresh"] <- refreshToken
         dict["expiration"] <- expirationDate?.string()
+        dict["endpoint"] <- endpoint?.rawValue
+        dict["manager"] <- manager?.serialized
         return dict
     }
     

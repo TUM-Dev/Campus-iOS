@@ -297,7 +297,7 @@ public func **<V, T, O>(_ handler: @escaping (T, V) -> O, _ input: T) -> (V) -> 
  - Returns: function that when called with the value will apply the function with the input
  */
 public func **<V, T, O>(_ handler: @escaping (V) -> ((T) -> O), _ input: T) -> (V) -> O {
-    return { handler($0)(input) }
+    return <>handler <** input
 }
 
 infix operator <**: MultiplicationPrecedence
@@ -311,9 +311,7 @@ infix operator <**: MultiplicationPrecedence
  - Returns: function that when called will use input given
  */
 public func <**<V, T, O>(_ handler: @escaping (T, V) -> O, _ input: V) -> (T) -> O {
-    return {
-        handler($0, input)
-    }
+    return (flipArguments >>> handler) ** input
 }
 
 prefix operator **
@@ -530,4 +528,15 @@ infix operator <+>: PowerPrecedence
  */
 public func <+><A, B, C>(_ a: @escaping (A) -> B, _ b: @escaping (A) -> C) -> (A) -> (B, C) {
     return duplicateArguments >>> (a <*> b)
+}
+
+/**
+ Flatten Closure. If a Closure returns another closure that returns an output, you can flatten it to return the output directly
+ 
+ - Parameter a: closure
+ 
+ - Returns: flattened closure
+ */
+public prefix func <><A, B, C>(_ handler: @escaping (A) -> (B) -> C) -> (A, B) -> C {
+    return { handler($0)($1) }
 }
