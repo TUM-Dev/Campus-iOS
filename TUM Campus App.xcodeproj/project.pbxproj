@@ -1101,6 +1101,7 @@
 /* Begin XCBuildConfiguration section */
 		0E424F601BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B140E8CDBA1DDAF4572698 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1148,6 +1149,7 @@
 		};
 		0E424F611BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1229,6 +1231,7 @@
 		};
 		0E424F661BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B140E8CDBA1DDAF4572698 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1243,6 +1246,7 @@
 		};
 		0E424F671BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1257,6 +1261,7 @@
 		};
 		504C29301E2BBB9C007583E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B140E8CDBA1DDAF4572698 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1274,6 +1279,7 @@
 		};
 		504C29311E2BBB9C007583E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1289,6 +1295,7 @@
 		};
 		50F798E61E71615400FA4E49 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B140E8CDBA1DDAF4572698 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1306,6 +1313,7 @@
 		};
 		50F798E71E71615400FA4E49 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
