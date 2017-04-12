@@ -1124,6 +1124,20 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ASWeekSelectorView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AYSlidingPickerView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CalendarLib\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MCSwipeTableViewCell\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OSCache\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OrderedDictionary\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PZPullToRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Sweeft\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TKSubmitTransition\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1171,6 +1185,20 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ASWeekSelectorView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AYSlidingPickerView\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CalendarLib\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/MCSwipeTableViewCell\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OSCache\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/OrderedDictionary\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/PZPullToRefresh\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SWXMLHash\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Sweeft\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/TKSubmitTransition\"",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1230,6 +1258,7 @@
 		0E424F661BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AppUITests";
@@ -1244,6 +1273,7 @@
 		0E424F671BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AppUITests";
@@ -1261,6 +1291,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus AppUnitTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1278,6 +1309,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus AppUnitTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AppUnitTests";
@@ -1292,6 +1324,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AutomatedScreenshots/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
@@ -1309,6 +1342,7 @@
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = AutomatedScreenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.in.www1.ios15.TUM-Campus-AutomatedScreenshots.AutomatedScreenshots";
