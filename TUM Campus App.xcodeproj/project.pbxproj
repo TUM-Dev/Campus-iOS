@@ -120,6 +120,7 @@
 		50D1535A1E6DEAC9005EF930 /* MockReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D153591E6DEAC9005EF930 /* MockReceiver.swift */; };
 		50F798E11E71615400FA4E49 /* AutomatedScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */; };
 		50F798E91E71618400FA4E49 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F798E81E71618400FA4E49 /* SnapshotHelper.swift */; };
+		AE32EC14F65BAE025368BB02 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24903A680C6A8A498F797A7C /* Pods_Campus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE32EC14F65BAE025368BB02 /* Pods_Campus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
