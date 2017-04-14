@@ -13,7 +13,12 @@ class MenuTableViewCell: CardTableViewCell {
     override func setElement(_ element: DataElement) {
         if let menu = element as? CafeteriaMenu {
             dishLabel.text = menu.name
-            priceLabel.text = ""
+            if let menuPrice = menu.price?.st {
+                priceLabel.text = String(menuPrice)
+            } else {
+                priceLabel.text = ""
+            }
+            priceLabel.textColor = .green
         }
     }
     @IBOutlet weak var dishLabel: UILabel!
