@@ -14,11 +14,15 @@ class MenuTableViewCell: CardTableViewCell {
         if let menu = element as? CafeteriaMenu {
             dishLabel.text = menu.name
             if let menuPrice = menu.price?.st {
-                priceLabel.text = String(menuPrice)
+
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .currency
+                formatter.locale = Locale(identifier: "de_DE")
+                priceLabel.text = formatter.string(from: NSNumber(value: menuPrice))
             } else {
                 priceLabel.text = ""
             }
-            priceLabel.textColor = .green
+            priceLabel.textColor = .gray
         }
     }
     @IBOutlet weak var dishLabel: UILabel!
