@@ -22,9 +22,26 @@ class MenuTableViewCell: CardTableViewCell {
             } else {
                 priceLabel.text = ""
             }
+            print(menu.details.annotationDescriptions)
+            
+            annotationsLabel.text = ""
+//            menu.details.annotationDescriptions.forEach({annotationsLabel.text!.append("\($0) ")})
+            
+            for description in menu.details.annotationDescriptions {
+                if menu.details.annotationDescriptions.last != description {
+                     annotationsLabel.text!.append("\(description), ")
+                } else {
+                     annotationsLabel.text!.append(description)
+                }
+               
+            }
+            
+            
             priceLabel.textColor = .gray
+            annotationsLabel.textColor = .gray
         }
     }
+    @IBOutlet weak var annotationsLabel: UILabel!
     @IBOutlet weak var dishLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
 
