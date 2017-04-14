@@ -108,3 +108,10 @@ class CafeteriaMenuManager: Manager {
     }
     
 }
+
+struct Price {
+    
+    var st: Double
+    var ma: Double
+    var ga: Double
+}
