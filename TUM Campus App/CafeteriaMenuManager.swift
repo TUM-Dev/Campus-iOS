@@ -167,7 +167,7 @@ class CafeteriaMenuManager: Manager {
             
             let matches = regex.matches(in: output as String, options: [], range: NSMakeRange(0, output.length))
             
-            matchedAnnotations = matches.flatMap({output.substring(with: $0.range)})
+            matchedAnnotations = matches.flatMap { output.substring(with: $0.range) }
             
             for match in matches {
                 
