@@ -24,6 +24,10 @@ public extension Array {
         return count.range?.random
     }
     
+    var lastIndex: Int {
+        return count - 1
+    }
+    
     /**
      Map with index
      

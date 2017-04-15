@@ -8,6 +8,8 @@
 
 import Foundation
 
+fileprivate struct Null {}
+
 /// JSON Object
 public enum JSON {
     
@@ -21,12 +23,35 @@ public enum JSON {
     
     /// Access dictionary
     public subscript(key: String) -> JSON {
-        return dict | key ?? .null
+        get {
+            return dict | key ?? .null
+        }
+        set {
+            switch self {
+            case .dict(var dict):
+                dict[key] = newValue
+                self = .dict(dict)
+            default:
+                break
+            }
+        }
     }
     
     /// Access array
     public subscript(index: Int) -> JSON {
-        return array | index ?? .null
+        get {
+            return array | index ?? .null
+        }
+        set {
+            switch self {
+            case .array(var array):
+                array[index] = newValue
+                self = .array(array)
+            default:
+                break
+            }
+        }
+        
     }
     
 }
@@ -49,7 +74,7 @@ public extension JSON {
         case .object(let value):
             return value
         case .null:
-            return NSNull()
+            return Null()
         }
     }
     
@@ -166,9 +191,14 @@ extension JSON {
         return get()
     }
     
+    /// When the date is expressed in the amount of time from now
+    public var dateInDistanceFromNow: Date? {
+        return double | Date.init(timeIntervalSinceNow:)
+    }
+    
     /// Get underlying Date
     public func date(using format: String = "dd.MM.yyyy hh:mm:ss a") -> Date? {
-        return string?.date(using: format)
+        return string?.date(using: format) ?? double | Date.init(timeIntervalSince1970:)
     }
     
 }
@@ -194,6 +224,10 @@ extension JSON {
             self = .double(double)
             return
         }
+        if let bool = value as? Bool {
+            self = .bool(bool)
+            return
+        }
         return nil
     }
     
@@ -208,6 +242,18 @@ extension JSON {
     /// Initialize from Serializable
     public init(from serializable: Serializable) {
         self = serializable.json
+    }
+    
+}
+
+extension JSON {
+    
+    init(fragment: String) {
+        var items = fragment.components(separatedBy: "&") => { $0.components(separatedBy: "=") }
+        let dictionary = items ==> { (strings: [String]) -> (String?, JSON?) in
+            return (strings | 0, (strings | 1).json)
+        } >>> iff >>= id
+        self = .dict(dictionary)
     }
     
 }
@@ -275,15 +321,16 @@ extension JSON: ExpressibleByStringLiteral {
 
 extension JSON: ExpressibleByArrayLiteral {
     
-    public init(arrayLiteral elements: JSON...) {
-        self = .array(elements)
+    public init(arrayLiteral elements: Serializable...) {
+        self = .array(elements => { $0.json })
     }
     
 }
 
 extension JSON: ExpressibleByDictionaryLiteral {
     
-    public init(dictionaryLiteral elements: (String, JSON)...) {
+    public init(dictionaryLiteral elements: (String, Serializable?)...) {
+        let elements = elements ==> { ($0, $1?.json) } >>> iff
         self = .dict(elements >>= id)
     }
     

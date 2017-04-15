@@ -20,6 +20,17 @@ public func id<T>(_ value: T) -> T {
 }
 
 /**
+ Will turn a value into a closure that always returns said value.
+ 
+ - Parameter value: value
+ 
+ - Returns: Closure that returns that value regardless of the input
+ */
+public func returning<T, V>(_ value: V) -> (T) -> V {
+    return **{ value }
+}
+
+/**
  Will return the first argument you give it. Let type inference do what you need it to do. 
  (Be careful with type inference)
  
@@ -67,7 +78,7 @@ public func middleArgument<T, V, Z>(_ argOne: T, _ argTwo: V, _ argThree: Z) -> 
  - Returns: function that passes the input through with the extra argument at the end
  */
 public func add<V, T>(trailing argument: T) -> (V) -> (V, T) {
-    return { ($0, argument) }
+    return id <+> returning(argument)
 }
 
 /**
@@ -78,7 +89,7 @@ public func add<V, T>(trailing argument: T) -> (V) -> (V, T) {
  - Returns: function that passes the input through with the extra argument at the start
  */
 public func add<V, T>(starting argument: T) -> (V) -> (T, V) {
-    return { (argument, $0) }
+    return add(trailing: argument) >>> flipArguments
 }
 
 /**
@@ -169,6 +180,13 @@ public func flipArguments<T, V>(_ argOne: T, _ argTwo: V) -> (V, T) {
     return (argTwo, argOne)
 }
 
+/**
+ Will return the arguments twice
+ 
+ - Parameter arguments: value
+ 
+ - Returns: Tuple containing the arguments twice
+ */
 public func duplicateArguments<V>(_ arguments: V) -> (V, V) {
     return (arguments, arguments)
 }
@@ -219,4 +237,16 @@ public func negative(_ number: Int) -> Int {
  */
 public func describe<T: CustomStringConvertible>(of input: T) -> String {
     return input.description
+}
+
+/**
+ Will split a function with two outputs into two functions with a single output each. Is supposed to be the inverse equivalent of <+>
+ **Be careful no to include a state into these closures. Since they might be run more than once.**
+ 
+ - Parameter handler: closure that you want to split
+ 
+ - Returns: Tuple of clousures
+ */
+public func divide<A, B, C>(closure handler: @escaping (A) -> (B, C)) -> ((A) -> B, (A) -> C) {
+    return (handler >>> firstArgument, handler >>> lastArgument)
 }

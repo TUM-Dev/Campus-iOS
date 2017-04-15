@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u9w-Pv-4xV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u9w-Pv-4xV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,6 +63,7 @@
                                             </variation>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="xWj-R6-cJw" secondAttribute="bottom" constant="8" id="7wS-Iy-LgY"/>
                                         <constraint firstItem="xWj-R6-cJw" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="topMargin" id="XY3-lJ-09M"/>
@@ -134,6 +135,7 @@
                                             </variation>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="EqL-Bu-XtJ" firstAttribute="top" secondItem="OAg-a9-fyj" secondAttribute="topMargin" id="6uh-c6-omb"/>
                                         <constraint firstItem="EqL-Bu-XtJ" firstAttribute="leading" secondItem="OAg-a9-fyj" secondAttribute="leadingMargin" constant="8" id="Wfv-ai-Uyy"/>
@@ -185,6 +187,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="W3w-zB-bmv" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="16" id="4po-8F-M7H"/>
                                         <constraint firstItem="fGn-Y6-IZt" firstAttribute="centerY" secondItem="8fA-Gv-n7a" secondAttribute="centerY" id="9cX-V6-luN"/>
@@ -251,6 +254,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="t9k-6V-snm" firstAttribute="leading" secondItem="rQd-tN-va6" secondAttribute="leading" id="2Oz-gg-SmJ"/>
                                         <constraint firstItem="kl1-Vj-iJf" firstAttribute="centerY" secondItem="Lgz-Z4-dlR" secondAttribute="centerY" id="7FE-tC-Ete"/>
@@ -331,6 +335,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="ucH-l3-rxT" secondAttribute="trailing" constant="8" id="1Ob-wN-HdR"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="uO5-bj-XWu" secondAttribute="leading" constant="-8" id="LYi-NA-nxq"/>
@@ -396,6 +401,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="NoA-CP-wYL" firstAttribute="leading" secondItem="43C-yg-bx9" secondAttribute="leadingMargin" constant="8" id="Nb5-7K-T1t"/>
                                         <constraint firstItem="NoA-CP-wYL" firstAttribute="top" secondItem="43C-yg-bx9" secondAttribute="topMargin" id="cBw-4d-w17"/>

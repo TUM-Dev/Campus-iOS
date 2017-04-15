@@ -26,8 +26,17 @@ public extension Defaultable {
      
      - Parameter size: size of the array. (Default: 0)
      */
-    static func array(ofSize size: Int = 0) -> [Self] {
-        return size.range => **{ defaultValue }
+    static func array(of size: Int = 0) -> [Self] {
+        return defaultValue.array(of: size)
+    }
+    
+    /**
+     Will generate an array populated with the same value
+     
+     - Parameter size: size of the array. (Default: 0)
+     */
+    func array(of size: Int = 0) -> [Self] {
+        return size.range => returning(self)
     }
     
 }
