@@ -12,9 +12,12 @@ class MenuTableViewCell: CardTableViewCell {
 
     override func setElement(_ element: DataElement) {
         if let menu = element as? CafeteriaMenu {
-            dishLabel.text = menu.name
+            
+            //Dish Label
+            dishLabel.text = menu.details.nameWithEmojiWithoutAnnotations
+            
+            //Price Label
             if let menuPrice = menu.price?.st {
-
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .currency
                 formatter.locale = Locale(identifier: "de_DE")
@@ -22,10 +25,11 @@ class MenuTableViewCell: CardTableViewCell {
             } else {
                 priceLabel.text = ""
             }
-            print(menu.details.annotationDescriptions)
+            priceLabel.textColor = .gray
+
             
+            //Annotations Label
             annotationsLabel.text = ""
-//            menu.details.annotationDescriptions.forEach({annotationsLabel.text!.append("\($0) ")})
             
             for description in menu.details.annotationDescriptions {
                 if menu.details.annotationDescriptions.last != description {
@@ -33,12 +37,9 @@ class MenuTableViewCell: CardTableViewCell {
                 } else {
                      annotationsLabel.text!.append(description)
                 }
-               
             }
-            
-            
-            priceLabel.textColor = .gray
             annotationsLabel.textColor = .gray
+
         }
     }
     @IBOutlet weak var annotationsLabel: UILabel!

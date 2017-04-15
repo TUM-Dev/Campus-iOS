@@ -75,6 +75,7 @@ class CafeteriaMenuManager: Manager {
         let output = NSMutableString(string: name)
         var startPoint = output.length
         var withoutAnnotations = output
+        var withEmojiWithoutAnnotations = output
 
         
         if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
@@ -108,9 +109,10 @@ class CafeteriaMenuManager: Manager {
             output.deleteCharacters(in: range)
             withoutAnnotations = output
             matchedEmoji.forEach({output.append($0)})
+            withEmojiWithoutAnnotations = output
             notMatchedEmoji.forEach({output.append($0)})
         }
-        return MenuDetail(name: String(output), nameWithoutAnnotations: String(withoutAnnotations), annotations: matchedAnnotations, annotationDescriptions: matchedDescriptions)
+        return MenuDetail(name: String(output), nameWithoutAnnotations: String(withoutAnnotations), nameWithEmojiWithoutAnnotations: String(withEmojiWithoutAnnotations), annotations: matchedAnnotations, annotationDescriptions: matchedDescriptions)
     }
     
     func getURL() -> String {
@@ -130,6 +132,7 @@ struct MenuDetail {
     
     var name: String
     var nameWithoutAnnotations: String
+    var nameWithEmojiWithoutAnnotations: String
     var annotations: [String]
     var annotationDescriptions: [String]
 }

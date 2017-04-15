@@ -40,13 +40,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1P-xt-UZg">
-                                                    <rect key="frame" x="330" y="115.5" width="37" height="19.5"/>
+                                                    <rect key="frame" x="330" y="8" width="37" height="102"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Annotations" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LxF-pP-8QA">
-                                                    <rect key="frame" x="8" y="118" width="75" height="16.5"/>
+                                                    <rect key="frame" x="8" y="118" width="359" height="17"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -54,15 +54,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="LxF-pP-8QA" secondAttribute="bottom" constant="4" id="2Td-dC-8Xn"/>
-                                                <constraint firstItem="y1P-xt-UZg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LxF-pP-8QA" secondAttribute="trailing" priority="999" constant="8" id="3Vj-lC-Hp9"/>
                                                 <constraint firstItem="y1P-xt-UZg" firstAttribute="leading" secondItem="OeE-So-w9T" secondAttribute="trailing" constant="8" id="GPg-ZA-gDs"/>
                                                 <constraint firstItem="OeE-So-w9T" firstAttribute="top" secondItem="x2X-iB-Ssw" secondAttribute="topMargin" constant="8" id="GqE-bz-17w"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="OeE-So-w9T" secondAttribute="leading" id="MTI-j1-3CJ"/>
                                                 <constraint firstItem="y1P-xt-UZg" firstAttribute="trailing" secondItem="x2X-iB-Ssw" secondAttribute="trailingMargin" id="Q1c-ns-DZZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="y1P-xt-UZg" secondAttribute="bottom" constant="4" id="QGo-hc-ntU"/>
                                                 <constraint firstItem="LxF-pP-8QA" firstAttribute="top" secondItem="OeE-So-w9T" secondAttribute="bottom" constant="8" id="VlZ-ce-Sf8"/>
                                                 <constraint firstItem="LxF-pP-8QA" firstAttribute="leading" secondItem="x2X-iB-Ssw" secondAttribute="leadingMargin" id="gR7-b7-CBH"/>
-                                                <constraint firstItem="y1P-xt-UZg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="x2X-iB-Ssw" secondAttribute="top" constant="8" id="um6-bt-8Hl"/>
+                                                <constraint firstItem="LxF-pP-8QA" firstAttribute="top" secondItem="y1P-xt-UZg" secondAttribute="bottom" constant="8" id="ks4-dg-PhA"/>
+                                                <constraint firstItem="LxF-pP-8QA" firstAttribute="trailing" secondItem="x2X-iB-Ssw" secondAttribute="trailingMargin" id="th6-Eu-v79"/>
+                                                <constraint firstItem="y1P-xt-UZg" firstAttribute="top" secondItem="x2X-iB-Ssw" secondAttribute="top" constant="8" id="um6-bt-8Hl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
