@@ -15,31 +15,31 @@ class CafeteriaMenuManager: Manager {
     
     var manager: TumDataManager?
     let priceList = [
-        "Tagesgericht 1":Price(st: 1.00,ma: 1.90, ga: 2.40),
-        "Tagesgericht 2":Price(st: 1.55,ma: 2.25, ga: 2.75),
-        "Tagesgericht 3":Price(st: 1.90,ma: 2.60, ga: 3.10),
-        "Tagesgericht 4":Price(st: 2.40,ma: 2.95, ga: 3.45),
-        "Aktionsessen 1":Price(st: 1.55,ma: 2.25, ga: 2.75),
-        "Aktionsessen 2":Price(st: 1.90,ma: 2.60, ga: 3.10),
-        "Aktionsessen 3":Price(st: 2.40,ma: 2.95, ga: 3.45),
-        "Aktionsessen 4":Price(st: 2.60,ma: 3.30, ga: 3.80),
-        "Aktionsessen 5":Price(st: 2.80,ma: 3.65, ga: 4.15),
-        "Aktionsessen 6":Price(st: 3.00,ma: 4.00, ga: 4.50),
-        "Aktionsessen 7":Price(st: 3.20,ma: 4.35, ga: 4.85),
-        "Aktionsessen 8":Price(st: 3.50,ma: 4.70, ga: 4.85),
-        "Aktionsessen 9":Price(st: 4.00,ma: 5.05, ga: 5.55),
-        "Aktionsessen 10":Price(st: 4.50,ma: 5.40, ga: 5.90),
-        "Biogericht 1":Price(st: 1.55,ma: 2.25, ga: 2.75),
-        "Biogericht 2":Price(st: 1.90,ma: 2.60, ga: 3.10),
-        "Biogericht 3":Price(st: 2.40,ma: 2.95, ga: 3.45),
-        "Biogericht 4":Price(st: 2.60,ma: 3.30, ga: 3.80),
-        "Biogericht 5":Price(st: 2.80,ma: 3.65, ga: 4.15),
-        "Biogericht 6":Price(st: 3.00,ma: 4.00, ga: 4.50),
-        "Biogericht 7":Price(st: 3.20,ma: 4.35, ga: 4.85),
-        "Biogericht 8":Price(st: 3.50,ma: 4.70, ga: 5.20),
-        "Biogericht 9":Price(st: 4.00,ma: 5.05, ga: 5.55),
-        "Biogericht 10":Price(st: 4.50,ma: 5.40, ga: 5.90),
-        "Self-Service":Price(st: 0.00,ma: 0.00, ga: 0.00)
+        "Tagesgericht 1":Price(student: 1.00,employee: 1.90, guest: 2.40),
+        "Tagesgericht 2":Price(student: 1.55,employee: 2.25, guest: 2.75),
+        "Tagesgericht 3":Price(student: 1.90,employee: 2.60, guest: 3.10),
+        "Tagesgericht 4":Price(student: 2.40,employee: 2.95, guest: 3.45),
+        "Aktionsessen 1":Price(student: 1.55,employee: 2.25, guest: 2.75),
+        "Aktionsessen 2":Price(student: 1.90,employee: 2.60, guest: 3.10),
+        "Aktionsessen 3":Price(student: 2.40,employee: 2.95, guest: 3.45),
+        "Aktionsessen 4":Price(student: 2.60,employee: 3.30, guest: 3.80),
+        "Aktionsessen 5":Price(student: 2.80,employee: 3.65, guest: 4.15),
+        "Aktionsessen 6":Price(student: 3.00,employee: 4.00, guest: 4.50),
+        "Aktionsessen 7":Price(student: 3.20,employee: 4.35, guest: 4.85),
+        "Aktionsessen 8":Price(student: 3.50,employee: 4.70, guest: 4.85),
+        "Aktionsessen 9":Price(student: 4.00,employee: 5.05, guest: 5.55),
+        "Aktionsessen 10":Price(student: 4.50,employee: 5.40, guest: 5.90),
+        "Biogericht 1":Price(student: 1.55,employee: 2.25, guest: 2.75),
+        "Biogericht 2":Price(student: 1.90,employee: 2.60, guest: 3.10),
+        "Biogericht 3":Price(student: 2.40,employee: 2.95, guest: 3.45),
+        "Biogericht 4":Price(student: 2.60,employee: 3.30, guest: 3.80),
+        "Biogericht 5":Price(student: 2.80,employee: 3.65, guest: 4.15),
+        "Biogericht 6":Price(student: 3.00,employee: 4.00, guest: 4.50),
+        "Biogericht 7":Price(student: 3.20,employee: 4.35, guest: 4.85),
+        "Biogericht 8":Price(student: 3.50,employee: 4.70, guest: 5.20),
+        "Biogericht 9":Price(student: 4.00,employee: 5.05, guest: 5.55),
+        "Biogericht 10":Price(student: 4.50,employee: 5.40, guest: 5.90),
+        "Self-Service":Price(student: 0.00,employee: 0.00, guest: 0.00)
         ]
     
     let mensaAnnotationsEmoji = [
@@ -208,9 +208,9 @@ class CafeteriaMenuManager: Manager {
 
 struct Price {
     
-    var st: Double
-    var ma: Double
-    var ga: Double
+    var student: Double
+    var employee: Double
+    var guest: Double
 }
 
 struct MenuDetail {

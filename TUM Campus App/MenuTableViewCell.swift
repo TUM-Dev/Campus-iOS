@@ -17,7 +17,7 @@ class MenuTableViewCell: CardTableViewCell {
             dishLabel.text = menu.details.nameWithEmojiWithoutAnnotations
             
             //Price Label
-            if let menuPrice = menu.price?.st {
+            if let menuPrice = menu.price?.student {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .currency
                 formatter.locale = Locale(identifier: "de_DE")
