@@ -21,7 +21,8 @@ class MenuTableViewCell: CardTableViewCell {
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .currency
                 formatter.locale = Locale(identifier: "de_DE")
-                priceLabel.text = formatter.string(from: NSNumber(value: menuPrice))
+                priceLabel.text = formatter.string(for: menuPrice)
+
             } else {
                 priceLabel.text = ""
             }
