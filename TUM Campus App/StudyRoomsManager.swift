@@ -27,19 +27,9 @@ class StudyRoomsManager: Manager {
                                     if let json = JSON(data).dictionary {
                                         if let rooms = json["raeume"]?.array {
                                             StudyRoomsManager.studyRooms = rooms.flatMap(StudyRoom.init)
-                                            StudyRoomsManager.groups = rooms.flatMap(StudyRoomGroup.init)
-                                            for roomItem in rooms {
-                                                if let studyRoom = StudyRoom(from: roomItem) {
-                                                    StudyRoomsManager.studyRooms.append(studyRoom)
-                                                }
-                                            }
                                         }
                                         if let groups = json["gruppen"]?.array {
-                                            for groupItem in groups {
-                                                if let group = StudyRoomGroup(from: groupItem) {
-                                                    StudyRoomsManager.groups.append(group)
-                                                }
-                                            }
+                                            StudyRoomsManager.groups = groups.flatMap(StudyRoomGroup.init)
                                         }
                                         self.handleStudyRooms(handler)
                                     }
