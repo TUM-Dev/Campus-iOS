@@ -30,7 +30,7 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
         didSet {
             title = currentGroup?.name
             currentRooms = self.studyRooms
-                .filter() { (self.currentGroup?.roomNumbers.contains($0.roomNumber)) ?? false }
+                .filter() { self.currentGroup?.roomNumbers.contains($0.roomNumber) ?? false }
                 .sorted() { $0.status.sortIndex < $1.status.sortIndex }
         }
     }
@@ -46,13 +46,8 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
 extension StudyRoomsTableViewController: TumDataReceiver {
     
     func receiveData(_ data: [DataElement]) { // Is called twice, once with [StudyRoomGroups] as argument, once for [StudyRooms]
-        for item in data {
-            if let group = item as? StudyRoomGroup {
-                roomGroups.append(group)
-            } else if let room = item as? StudyRoom {
-                studyRooms.append(room)
-            }
-        }
+        roomGroups.append(contentsOf: data.flatMap { $0 as? StudyRoomGroup })
+        studyRooms.append(contentsOf: data.flatMap { $0 as? StudyRoom })
         currentGroup = roomGroups.first
         setUpPickerView()
     }
