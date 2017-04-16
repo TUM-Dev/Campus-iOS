@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,26 +26,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gruppenarbeitsraum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-FO-tJc">
-                                            <rect key="frame" x="15" y="11" width="346" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gruppenarbeitsraum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-FO-tJc">
+                                            <rect key="frame" x="15" y="11" width="345" height="24"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Belegt bis 14:43" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxt-RE-Vun">
-                                            <rect key="frame" x="151" y="36" width="210" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Belegt bis 14:43" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxt-RE-Vun">
+                                            <rect key="frame" x="236" y="36" width="124" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.056107677723830074" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.10.37B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrN-cy-BQh" userLabel="Code">
-                                            <rect key="frame" x="15" y="36" width="111" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.10.37B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrN-cy-BQh" userLabel="Code">
+                                            <rect key="frame" x="15" y="36" width="65.5" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gdG-FO-tJc" firstAttribute="leading" secondItem="yGu-NA-oOj" secondAttribute="leadingMargin" constant="7" id="0xn-Yq-V7H"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zxt-RE-Vun" secondAttribute="bottom" constant="5.5" id="LQj-Bp-kWD"/>
+                                        <constraint firstItem="vrN-cy-BQh" firstAttribute="leading" secondItem="yGu-NA-oOj" secondAttribute="leadingMargin" constant="7" id="SRC-r5-ej7"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zxt-RE-Vun" secondAttribute="trailing" constant="7" id="VaV-oL-za6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gdG-FO-tJc" secondAttribute="trailing" constant="7" id="Yq4-CS-6Gc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vrN-cy-BQh" secondAttribute="bottom" constant="5.5" id="cNs-wh-rxN"/>
+                                        <constraint firstItem="gdG-FO-tJc" firstAttribute="top" secondItem="yGu-NA-oOj" secondAttribute="topMargin" constant="3" id="np2-gn-yLB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gdG-FO-tJc" secondAttribute="trailing" constant="7" id="ppt-jl-Wrp"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
