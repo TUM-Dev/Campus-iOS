@@ -25,7 +25,7 @@ class StudyRoomsTableViewCell: UITableViewCell {
                 name.text = studyRoomItem.name
                 nextEvent.text = studyRoomItem.nextEvent
                 
-                let color = studyRoomItem.status == StudyRoomStatus.Free ? Constants.StudyRoomFreeColor : Constants.StudyRoomOccupiedColor
+                let color = studyRoomItem.status == StudyRoomStatus.Free ? Constants.studyRoomFreeColor : Constants.studyRoomOccupiedColor
                 self.nextEvent.textColor = color
             }
         }
