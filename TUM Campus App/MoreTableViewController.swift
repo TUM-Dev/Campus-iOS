@@ -11,11 +11,6 @@ import Sweeft
 
 class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
     
-    @IBOutlet weak var calendarCell: UITableViewCell!
-    @IBOutlet weak var lectureCell: UITableViewCell!
-    @IBOutlet weak var gradesCell: UITableViewCell!
-    @IBOutlet weak var tuitionCell: UITableViewCell!
-    
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
@@ -26,15 +21,12 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     }
     
     let secionsForLoggedInUsers = [0, 1]
+    let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
     let notImplemented = [
         IndexPath(row: 2, section: 2), // MVV
         IndexPath(row: 1, section: 3), // Services
         IndexPath(row: 2, section: 3), // Default Campus
     ]
-    
-    var cellsWithLogin: [UITableViewCell] {
-        return [calendarCell, lectureCell, gradesCell, tuitionCell]
-    }
     
     var manager: TumDataManager?
     
@@ -51,12 +43,12 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     func updateView() {
         if isLoggedIn {
             nameLabel.text = user?.name
-            avatarView.image = user?.image ?? UIImage(named: "avatar")
+            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
         } else {
-            nameLabel.text = "Stranger..."
-            avatarView.image = UIImage(named: "avatar")
+            nameLabel.text = "Stranger"
+            avatarView.image = #imageLiteral(resourceName: "avatar")
             logoutLabel.text = "Log In"
             logoutLabel.textColor = .green
         }
@@ -109,7 +101,7 @@ extension MoreTableViewController {
             cell.alpha = 1.0
             return
         }
-        if cellsWithLogin.contains(cell) {
+        if unhighlightedSectionsIfNotLoggedIn.contains(indexPath.section) {
             cell.alpha = 0.5
         }
     }

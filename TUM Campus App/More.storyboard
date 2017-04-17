@@ -436,12 +436,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avatarView" destination="tD4-za-hbK" id="78c-cW-SBl"/>
-                        <outlet property="calendarCell" destination="TbE-xk-2Ce" id="Mj3-wx-HqA"/>
-                        <outlet property="gradesCell" destination="duz-Un-9Iv" id="UEU-gc-YSF"/>
-                        <outlet property="lectureCell" destination="NSZ-mB-ALr" id="nFc-Wk-WB5"/>
                         <outlet property="logoutLabel" destination="xLM-JZ-VN5" id="35G-k6-c35"/>
                         <outlet property="nameLabel" destination="1r3-0d-1B6" id="1rb-fS-sQ0"/>
-                        <outlet property="tuitionCell" destination="PDR-2A-fgO" id="mHk-v5-Yja"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nG-ra-VnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
