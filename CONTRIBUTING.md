@@ -2,7 +2,7 @@
 
 Beside code contributions, you can also test our app and use the GitHub issue tracker to report bugs.
 
-### Workflow, Do's / Dont's:
+### Workflow, DO's and DON'Ts:
 - Master branch is protected, create PR's for your changes
 - Branch naming convention: `max/42-some-description`, where 42 is the issue number this branch is refering to
 - Create a separate PR for every feature/fix you're working on
