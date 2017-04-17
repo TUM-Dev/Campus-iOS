@@ -11,4 +11,5 @@ import Sweeft
 enum AppDefaults: String, StatusKey {
     case login
     case cards
+    case usage
 }

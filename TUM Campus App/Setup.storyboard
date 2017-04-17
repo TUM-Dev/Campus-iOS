@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D12b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E192b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="bwV-bZ-K7A">
             <objects>
-                <viewController id="IcY-YJ-gjf" customClass="LoginViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IcY-YJ-gjf" customClass="LoginViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="x8d-8s-UkD"/>
                         <viewControllerLayoutGuide type="bottom" id="hyy-26-BYg"/>
@@ -75,6 +75,13 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pj-cI-PxK">
+                                <rect key="frame" x="112" y="357" width="152" height="30"/>
+                                <state key="normal" title="I don't have an LRZ-ID"/>
+                                <connections>
+                                    <action selector="skip:" destination="IcY-YJ-gjf" eventType="touchUpInside" id="tqs-pQ-3bG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -96,12 +103,14 @@
                             <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="30.5" id="Isi-kn-4fU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SDU-z4-ShP" secondAttribute="trailing" constant="161" id="KJ6-Dg-SKi"/>
                             <constraint firstItem="uiV-A8-7nM" firstAttribute="height" secondItem="SDU-z4-ShP" secondAttribute="height" id="LKp-O9-lYF"/>
+                            <constraint firstItem="6pj-cI-PxK" firstAttribute="top" secondItem="XiW-yr-cNe" secondAttribute="bottom" constant="8" id="M8b-Gq-jFW"/>
                             <constraint firstItem="SDU-z4-ShP" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="8" id="MH7-0U-QTk"/>
                             <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="8" symbolic="YES" id="N1J-La-VY9"/>
                             <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="8" symbolic="YES" id="N7m-rd-sU6"/>
                             <constraint firstItem="bLP-9l-x36" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5ED-tm-PaK" secondAttribute="leadingMargin" constant="20" id="Vlr-qg-9ip"/>
                             <constraint firstItem="XiW-yr-cNe" firstAttribute="centerY" secondItem="bLP-9l-x36" secondAttribute="centerY" id="Wca-K2-KhU"/>
                             <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" secondItem="SDU-z4-ShP" secondAttribute="bottom" constant="8" id="XgA-0e-jXC"/>
+                            <constraint firstItem="6pj-cI-PxK" firstAttribute="centerX" secondItem="XiW-yr-cNe" secondAttribute="centerX" id="Z38-yR-f4U"/>
                             <constraint firstItem="SDU-z4-ShP" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="ZdH-yP-I6N"/>
                             <constraint firstItem="uiV-A8-7nM" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="Zss-Yi-urx"/>
                             <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="40" id="ZwM-Q0-Ik2"/>
@@ -161,7 +170,7 @@
         <!--Confirm Auhtorization-->
         <scene sceneID="vWl-RV-koz">
             <objects>
-                <viewController title="Confirm Auhtorization" id="ccx-El-vP2" customClass="WaitForTokenViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Confirm Auhtorization" id="ccx-El-vP2" customClass="WaitForTokenViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Ic-Ri-DyI"/>
                         <viewControllerLayoutGuide type="bottom" id="H0n-VR-eh7"/>

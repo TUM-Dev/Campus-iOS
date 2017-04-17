@@ -16,6 +16,10 @@ class NewsManager: Manager {
     
     var single = false
     
+    var requiresLogin: Bool {
+        return false
+    }
+    
     required init(mainManager: TumDataManager) {
         
     }

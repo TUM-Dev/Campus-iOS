@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Sweeft
 
 class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
     
+    @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
         didSet {
@@ -17,6 +19,14 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
             avatarView.layer.cornerRadius = avatarView.frame.width / 2
         }
     }
+    
+    let secionsForLoggedInUsers = [0, 1]
+    let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
+    let notImplemented = [
+        IndexPath(row: 2, section: 2), // MVV
+        IndexPath(row: 1, section: 3), // Services
+        IndexPath(row: 2, section: 3), // Default Campus
+    ]
     
     var manager: TumDataManager?
     
@@ -26,9 +36,22 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         }
     }
     
+    var isLoggedIn: Bool {
+        return user != nil
+    }
+    
     func updateView() {
-        nameLabel.text = user?.name
-        avatarView.image = user?.image ?? UIImage(named: "avatar")
+        if isLoggedIn {
+            nameLabel.text = user?.name
+            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
+            logoutLabel.text = "Log Out"
+            logoutLabel.textColor = .red
+        } else {
+            nameLabel.text = "Stranger"
+            avatarView.image = #imageLiteral(resourceName: "avatar")
+            logoutLabel.text = "Log In"
+            logoutLabel.textColor = .green
+        }
     }
     
     func updateImageView() {
@@ -73,24 +96,39 @@ extension MoreTableViewController {
 
 extension MoreTableViewController {
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard !isLoggedIn else {
+            cell.alpha = 1.0
+            return
+        }
+        if unhighlightedSectionsIfNotLoggedIn.contains(indexPath.section) {
+            cell.alpha = 0.5
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        
+        guard !isLoggedIn else {
+            return true
+        }
+        return !secionsForLoggedInUsers.contains(indexPath.section)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !notImplemented.contains(indexPath) else {
+            return handleNotYetImplemented()
+        }
         switch indexPath.section {
-        case 2:
-            if indexPath.row == 1 {
-                handleNotYetImplemented()  // MVV
-            }
-        case 3:
-            if indexPath.row == 1 || indexPath.row == 2 {
-                handleNotYetImplemented()  // Services and Default Campus
-            }
         case 4:
             if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         case 5:
             PersistentUser.reset()
+            User.shared = nil
             let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+            Usage.value = false
             UIApplication.shared.keyWindow?.rootViewController = loginViewController
         default:
             break
@@ -100,9 +138,11 @@ extension MoreTableViewController {
 }
 
 extension MoreTableViewController {
+    
     func handleNotYetImplemented() {
         let alert = UIAlertController(title: "Not Yet Implemented!", message: "This feature will come soon. Stay tuned!", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
 }

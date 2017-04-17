@@ -29,6 +29,10 @@ class CafeteriaManager: Manager {
     
     var single = false
     
+    var requiresLogin: Bool {
+        return false
+    }
+    
     static var cafeteriaMap = [String:Cafeteria]()
     
     required init(mainManager: TumDataManager) {

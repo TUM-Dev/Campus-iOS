@@ -16,6 +16,10 @@ class TumDataManager {
     
     let searchManagers: [TumDataItems] = [.PersonSearch, .LectureSearch, .RoomSearch]
     
+    var isLoggedIn: Bool {
+        return user?.token != nil
+    }
+    
     var user: User?
     
     lazy var managers: [TumDataItems:Manager] = [
@@ -84,8 +88,9 @@ class TumDataManager {
             }
             return -1
         })
-        for item in cardItems {
-            managers[item]?.fetchData() { (data) in
+        let filter: (Manager) -> Bool = isLoggedIn ? **{ true } : { !$0.requiresLogin }
+        cardItems ==> { managers[$0] } |> filter => {
+            $0.fetchData() { (data) in
                 request.receiveData(data)
             }
         }
@@ -94,12 +99,12 @@ class TumDataManager {
     func search(_ receiver: TumDataReceiver, query: String, searchIn managersToSearchIn:[TumDataItems]? = nil) {
         let tmpSearchManagers = managersToSearchIn != nil ? Array(Set(searchManagers).intersection(managersToSearchIn!)) : searchManagers
         let request = BulkRequest(receiver: receiver)
-        for item in tmpSearchManagers {
-            if let manager = managers[item] as? SearchManager {
-                manager.setQuery(query)
-                manager.fetchData() { (data) in
-                    request.receiveData(data)
-                }
+        
+        let filter: (Manager) -> Bool = isLoggedIn ? **{ true } : { !$0.requiresLogin }
+        tmpSearchManagers ==> { managers[$0] as? SearchManager } |> filter => { manager in
+            manager.setQuery(query)
+            manager.fetchData() { (data) in
+                request.receiveData(data)
             }
         }
     }
