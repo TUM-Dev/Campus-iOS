@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E0C68241E8A4355007001F1 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68231E8A4355007001F1 /* Usage.swift */; };
 		0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */; };
 		0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */; };
 		0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0EE9501D410E4E00E667A8 /* Extensions.swift */; };
@@ -65,6 +64,9 @@
 		0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */; };
 		0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */; };
 		0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E692BB71C162CD200266417 /* CalendarViewController.swift */; };
+		0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B53461EA447F3002B5058 /* TumSexyTableViewController.swift */; };
+		0E6B534A1EA44814002B5058 /* TumSexyView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B53491EA44814002B5058 /* TumSexyView.storyboard */; };
+		0E6B534C1EA449F0002B5058 /* SexyEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B534B1EA449F0002B5058 /* SexyEntryTableViewCell.swift */; };
 		0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */; };
 		0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */; };
 		0E6C20661C4C44F20059B7C2 /* LectureDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */; };
@@ -101,7 +103,6 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
-		1CF35A09959AB8C2D4D0A813 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9749813738E16D3ECCA56C /* Pods_Campus.framework */; };
 		301195E91E464A6A0012B133 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195E81E464A6A0012B133 /* Grade.swift */; };
 		301195EC1E464C830012B133 /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301195EB1E464C830012B133 /* Grade.storyboard */; };
 		301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195ED1E464F560012B133 /* GradesTableViewController.swift */; };
@@ -161,7 +162,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E0C68231E8A4355007001F1 /* Usage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyManager.swift; sourceTree = "<group>"; };
 		0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexyEntry.swift; sourceTree = "<group>"; };
 		0E0EE9501D410E4E00E667A8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -224,6 +224,9 @@
 		0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumDataManager.swift; sourceTree = "<group>"; };
 		0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadSubscriber.swift; sourceTree = "<group>"; };
 		0E692BB71C162CD200266417 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		0E6B53461EA447F3002B5058 /* TumSexyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyTableViewController.swift; sourceTree = "<group>"; };
+		0E6B53491EA44814002B5058 /* TumSexyView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TumSexyView.storyboard; sourceTree = "<group>"; };
+		0E6B534B1EA449F0002B5058 /* SexyEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexyEntryTableViewCell.swift; sourceTree = "<group>"; };
 		0E6C20611C4C38B50059B7C2 /* LectureDetailsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsManager.swift; sourceTree = "<group>"; };
 		0E6C20631C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsTableViewController.swift; sourceTree = "<group>"; };
 		0E6C20651C4C44F20059B7C2 /* LectureDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		301195ED1E464F560012B133 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
 		301195EF1E464FBD0012B133 /* GradeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeTableViewCell.swift; sourceTree = "<group>"; };
 		301195F11E4658FA0012B133 /* PersonalGradeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalGradeManager.swift; sourceTree = "<group>"; };
+		3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		5007C69B1E0678460014B065 /* StudyRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoom.swift; sourceTree = "<group>"; };
 		5007C69D1E06786E0014B065 /* StudyRoomStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomStatus.swift; sourceTree = "<group>"; };
 		5007C69F1E06788F0014B065 /* StudyRoomsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomsManager.swift; sourceTree = "<group>"; };
@@ -274,7 +278,6 @@
 		5007C6A71E0693240014B065 /* StudyRoomsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomsTableViewController.swift; sourceTree = "<group>"; };
 		5007C6A91E0693420014B065 /* StudyRoomsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomsTableViewCell.swift; sourceTree = "<group>"; };
 		5007C6AC1E0693550014B065 /* StudyRooms.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StudyRooms.storyboard; sourceTree = "<group>"; };
-		3CFE741858AAD1FD9088ECAA /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		50200E0D1DF493BF00B6FBE3 /* Tution.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tution.storyboard; sourceTree = "<group>"; };
 		50200E0F1DF4941500B6FBE3 /* CardView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CardView.storyboard; sourceTree = "<group>"; };
 		50200E111DF4948C00B6FBE3 /* Movie.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Movie.storyboard; sourceTree = "<group>"; };
@@ -422,6 +425,7 @@
 				301195EA1E464BB50012B133 /* Grade View */,
 				0EF4CEF31D4167CF001649F1 /* Person Detail View */,
 				0EB473D51C1B649100F17F44 /* Lecture View */,
+				0E6B53481EA447FD002B5058 /* TUM Sexy */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
 				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
@@ -534,6 +538,16 @@
 				0E3B21571C13DBA20035ED70 /* TumOnlineLogin */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		0E6B53481EA447FD002B5058 /* TUM Sexy */ = {
+			isa = PBXGroup;
+			children = (
+				0E6B53461EA447F3002B5058 /* TumSexyTableViewController.swift */,
+				0E6B534B1EA449F0002B5058 /* SexyEntryTableViewCell.swift */,
+				0E6B53491EA44814002B5058 /* TumSexyView.storyboard */,
+			);
+			name = "TUM Sexy";
 			sourceTree = "<group>";
 		};
 		0E8FA93B1C1814FA0077BD7A /* More View */ = {
@@ -883,6 +897,7 @@
 				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
 				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
 				50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */,
+				0E6B534A1EA44814002B5058 /* TumSexyView.storyboard in Resources */,
 				50200E261DF4992900B6FBE3 /* LectureDetail.storyboard in Resources */,
 				0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */,
 				301195EC1E464C830012B133 /* Grade.storyboard in Resources */,
@@ -979,6 +994,7 @@
 				0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */,
 				0EB473D01C1B4F0F00F17F44 /* Map.swift in Sources */,
 				0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */,
+				0E6B534C1EA449F0002B5058 /* SexyEntryTableViewCell.swift in Sources */,
 				0EB161881C1A0EB2001A08FC /* LectureTableViewCell.swift in Sources */,
 				301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
@@ -1068,6 +1084,7 @@
 				0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */,
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */,
+				0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */,
 				0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
