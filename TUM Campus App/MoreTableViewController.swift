@@ -25,6 +25,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         }
     }
     
+    let secionsForLoggedInUsers = [0, 1]
     let notImplemented = [
         IndexPath(row: 2, section: 2), // MVV
         IndexPath(row: 1, section: 3), // Services
@@ -118,12 +119,7 @@ extension MoreTableViewController {
         guard !isLoggedIn else {
             return true
         }
-        switch indexPath.section {
-        case 0, 1:
-            return false
-        default:
-            return true
-        }
+        return !secionsForLoggedInUsers.contains(indexPath.section)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
