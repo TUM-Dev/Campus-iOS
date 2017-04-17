@@ -30,15 +30,16 @@ class NextLectureCardCell: CardTableViewCell {
                 let day = dayformatter.string(from: s as Date)
                 let start = dateformatter.string(from: s as Date)
                 let end = dateformatter.string(from: e as Date)
+                
+                let dateComponentsFormatter = DateComponentsFormatter()
+                dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
+                dateComponentsFormatter.maximumUnitCount = 2
+                dateComponentsFormatter.unitsStyle = .full
+                
                 timeLabel.text = day + ", " + start + " - " + end
-                let remaining = s.timeIntervalSinceNow
-                let seconds = Int(remaining)
-                let hoursRemaining = seconds / 3600
-                if hoursRemaining > 0 {
-                    timeRemainingLabel.text = "In " + hoursRemaining.description + " hours"
-                } else {
-                    let minutes = (seconds / 60) % 60
-                    timeRemainingLabel.text = "In " + minutes.description + " minutes"
+                
+                if let timeRemaining = dateComponentsFormatter.string(from: Date(), to: s) {
+                    timeRemainingLabel.text = "In \(timeRemaining)"
                 }
             }
         }
