@@ -67,7 +67,6 @@
 		48EEEADA96153B4C56CF475C05B5B992 /* MGCStandardEventView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1058A5FB83B76C0D2AFD722C1AFDC1B5 /* MGCStandardEventView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A9CF068DF6CC1C36D674AEDAA0B1AAA /* MGCMonthPlannerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 24B2EF3560ED5F9DEE2FFE00F9023CB7 /* MGCMonthPlannerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B818DE5D4CD8225E10E60C6FAEAF326 /* OSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 046117E0F11D858E889D5A48DB9BAF9C /* OSCache.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4C69F43F406841146F7F9EF439098E39 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9633BC63BF7C3C0A05D2FB0F29DAA2DC /* CoreGraphics.framework */; };
 		4C8D204363CE74E62CEF5F4ACC7CD390 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF59796C0BEA3FE9D41D26F2E4291E3 /* SwiftyJSON.swift */; };
 		504CE26AA31EC855607B8443679789DC /* MGCYearCalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 44158CC5237B23A5162C630063C2F2AC /* MGCYearCalendarMonthHeaderView.m */; };
 		5387216E723A3C68E851CA15573CDD71 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889F551D1E985E9219878E2635231078 /* Request.swift */; };
@@ -146,7 +145,7 @@
 		A60DB0F58A558D9EE8C9BF4E0725B67D /* Functional.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CA816FC95AE2A68E4239649F588F26 /* Functional.swift */; };
 		A6CF59C1CF1E38DCABE3A960AC8859F6 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB2F55E478BFFA9703B2D604B104BFE /* Bool.swift */; };
 		A794B2BB3C538694C4529E8A370075E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73369F47F137F7D7F4A7BC9645CD76DD /* Foundation.framework */; };
-		A799AB234E9CD92FEA6F7288ABFD4EC8 /* MGCDayPlannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DDCF052B4473C26EDB692FA026AD34 /* MGCDayPlannerView.m */; };
+    A799AB234E9CD92FEA6F7288ABFD4EC8 /* MGCDayPlannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DDCF052B4473C26EDB692FA026AD34 /* MGCDayPlannerView.m */; };
 		A8787656FA62545833196331DB668682 /* MGCDayPlannerEKViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0FA80607F2CC84F27EF9F408518C91 /* MGCDayPlannerEKViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8967F5E77ABBC8C3B6E59447D67732E /* AYSlidingPickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CDC0116F7CEAF9F83E1AD8E4143CEAA /* AYSlidingPickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A995F53E9B3F6B830A43B572AF5BDD83 /* OrderedDictionary-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EA881F422B1813390DA5E3646C4D65B /* OrderedDictionary-dummy.m */; };
@@ -359,8 +358,6 @@
 		27976D023D30D46D95EFEA91D60ECF97 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		27A84AF250D99100757BE1D1874552AD /* MGCMonthPlannerEKViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGCMonthPlannerEKViewController.m; path = CalendarLib/MGCMonthPlannerEKViewController.m; sourceTree = "<group>"; };
 		2838A9EE0BF77DAC0E2ECC359F9BD3BF /* MGCDateRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGCDateRange.h; path = CalendarLib/MGCDateRange.h; sourceTree = "<group>"; };
-		2870E756F4C7A7D033F099FA9294F5DB /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/EventKitUI.framework; sourceTree = DEVELOPER_DIR; };
-		298ACD3E29B3798ABB897694AA34E69A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2990D824B9517B1202CE14CE50752F28 /* MGCDayColumnCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGCDayColumnCell.h; path = CalendarLib/MGCDayColumnCell.h; sourceTree = "<group>"; };
 		29E6B32870E1DF1D3945280B41401457 /* ObjectStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectStatus.swift; path = Sources/Sweeft/UserDefaults/ObjectStatus.swift; sourceTree = "<group>"; };
 		2A82FA59EAC6331A879F63D808ADD6A1 /* PZPullToRefreshView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PZPullToRefreshView.swift; path = PZPullToRefresh/PZPullToRefreshView.swift; sourceTree = "<group>"; };

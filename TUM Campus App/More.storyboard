@@ -176,7 +176,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="University Filled-25" id="V1e-Ay-Dkd">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Search Filled-25" id="V1e-Ay-Dkd">
                                                     <rect key="frame" x="15" y="9" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -184,6 +184,30 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="4BW-3f-UHw" kind="show" id="kCa-xM-t1I"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2LZ-Kl-aUw" imageView="SwH-nR-HbD" style="IBUITableViewCellStyleDefault" id="oAx-G5-j0H">
+                                        <rect key="frame" x="0.0" y="427" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAx-G5-j0H" id="rkZ-lS-5ir">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Study Rooms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2LZ-Kl-aUw">
+                                                    <rect key="frame" x="55" y="0.0" width="285" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="University Filled-25" id="SwH-nR-HbD">
+                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gGz-Ki-lHH" kind="show" id="QM8-cs-Xsb"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="BiB-81-lnB" imageView="0KL-qT-mZR" style="IBUITableViewCellStyleDefault" id="tu9-wf-eBN">
@@ -491,6 +515,14 @@
             </objects>
             <point key="canvasLocation" x="735" y="1099"/>
         </scene>
+        <!--StudyRooms-->
+        <scene sceneID="5MD-3n-nFJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StudyRooms" id="gGz-Ki-lHH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B0x-WA-ARm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="1282"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Align Justify-25" width="25" height="25"/>
@@ -498,6 +530,7 @@
         <image name="Feedback Filled-25" width="25" height="25"/>
         <image name="Food Filled-25" width="25" height="25"/>
         <image name="Info Filled-25" width="25" height="25"/>
+        <image name="Search Filled-25" width="25" height="25"/>
         <image name="Line Chart-25" width="25" height="25"/>
         <image name="University Filled-25" width="25" height="25"/>
         <image name="avatar" width="420" height="420"/>

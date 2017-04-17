@@ -39,6 +39,7 @@ class TumDataManager {
         .LectureDetails: LectureDetailsManager(mainManager: self),
         .NewsCard: NewsManager(single: true),
         .NewsCollection: NewsManager(single: false),
+        .StudyRooms: StudyRoomsManager(mainManager: self),
     ]
     
     func getToken() -> String {
@@ -145,6 +146,10 @@ class TumDataManager {
     
     func getNextUpcomingNews() -> News? {
         return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
+    }
+    
+    func getAllStudyRooms(_ receiver: TumDataReceiver) {
+        managers[.StudyRooms]?.fetchData(receiver.receiveData)
     }
     
     func getUserData() {
