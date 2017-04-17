@@ -10,14 +10,20 @@ import Alamofire
 import SwiftyJSON
 import Sweeft
 
-class TumSexyManager: Manager {
+final class TumSexyManager: Manager {
     
-    required init(mainManager: TumDataManager) {
-        // Nothing required
+    let url: String
+    
+    init(url: String = "http://json.tum.sexy") {
+        self.url = url
+    }
+    
+    convenience init(mainManager: TumDataManager) {
+        self.init()
     }
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        Alamofire.request("http://json.tum.sexy").responseJSON { response in
+        Alamofire.request(url).responseJSON { response in
             if let value = response.result.value,
                 let items = JSON(value).dictionary {
                 
