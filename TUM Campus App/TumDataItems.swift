@@ -30,4 +30,5 @@ enum TumDataItems: String {
     case NewsCollection = "NewsCollection"
     case StudyRooms = "StudyRooms"
     case StudyRoomGroups = "StudyRoomGroups"
+    case TUMSexy = "TUMSexy"
 }
