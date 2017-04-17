@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0C68241E8A4355007001F1 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68231E8A4355007001F1 /* Usage.swift */; };
+		0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */; };
+		0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */; };
 		0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0EE9501D410E4E00E667A8 /* Extensions.swift */; };
 		0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */; };
 		0E1073AF1C1A410F004C93CF /* RoomFinderApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */; };
@@ -158,6 +161,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E0C68231E8A4355007001F1 /* Usage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
+		0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyManager.swift; sourceTree = "<group>"; };
+		0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexyEntry.swift; sourceTree = "<group>"; };
 		0E0EE9501D410E4E00E667A8 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSearchManager.swift; sourceTree = "<group>"; };
 		0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderApi.swift; sourceTree = "<group>"; };
@@ -487,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */,
+				0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */,
 				0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */,
 				0EC28AE11E05523C00FF1E40 /* CardKey.swift */,
 				0EC28ADF1E05522B00FF1E40 /* CardDisplayable.swift */,
@@ -564,6 +571,7 @@
 				0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */,
 				0EC10C201C171D100024F902 /* MovieManager.swift */,
 				0EF4CEE51D414D39001649F1 /* NewsManager.swift */,
+				0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */,
 			);
 			name = "TumCabe JSON Managers";
 			sourceTree = "<group>";
@@ -989,6 +997,7 @@
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
 				301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */,
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
+				0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */,
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
 				5007C6A01E06788F0014B065 /* StudyRoomsManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
@@ -1041,6 +1050,7 @@
 				0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */,
 				0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */,
 				0EC10C211C171D100024F902 /* MovieManager.swift in Sources */,
+				0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */,
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
