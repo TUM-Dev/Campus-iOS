@@ -11,8 +11,16 @@ import UIKit
 
 final class User: ImageDownloader, ImageDownloadSubscriber {
     
+    private static var internalUser: User? = nil
+    
     static var shared: User? {
-        return PersistentUser.value.user
+        get {
+            return internalUser ?? PersistentUser.value.user
+        }
+        set {
+            internalUser = newValue
+        }
+        
     }
     
     let token: String

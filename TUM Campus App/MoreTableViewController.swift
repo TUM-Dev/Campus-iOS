@@ -133,6 +133,7 @@ extension MoreTableViewController {
             }
         case 5:
             PersistentUser.reset()
+            User.shared = nil
             let storyboard = UIStoryboard(name: "Setup", bundle: nil)
             let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             Usage.value = false
