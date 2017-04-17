@@ -25,6 +25,12 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         }
     }
     
+    let notImplemented = [
+        IndexPath(row: 2, section: 2), // MVV
+        IndexPath(row: 1, section: 3), // Services
+        IndexPath(row: 2, section: 3), // Default Campus
+    ]
+    
     var cellsWithLogin: [UITableViewCell] {
         return [calendarCell, lectureCell, gradesCell, tuitionCell]
     }
@@ -121,15 +127,10 @@ extension MoreTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !notImplemented.contains(indexPath) else {
+            return handleNotYetImplemented()
+        }
         switch indexPath.section {
-        case 2:
-            if indexPath.row == 1 {
-                handleNotYetImplemented()  // MVV
-            }
-        case 3:
-            if indexPath.row == 1 || indexPath.row == 2 {
-                handleNotYetImplemented()  // Services and Default Campus
-            }
         case 4:
             if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -148,9 +149,11 @@ extension MoreTableViewController {
 }
 
 extension MoreTableViewController {
+    
     func handleNotYetImplemented() {
         let alert = UIAlertController(title: "Not Yet Implemented!", message: "This feature will come soon. Stay tuned!", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
 }
