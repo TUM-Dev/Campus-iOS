@@ -110,6 +110,12 @@ extension String: Serializable {
     
     /// JSON Value
     public var json: JSON {
+        if let double = Double(self) {
+            return double.json
+        }
+        if let bool = Bool(self) {
+            return bool.json
+        }
         return .string(self)
     }
     

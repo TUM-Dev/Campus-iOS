@@ -17,12 +17,8 @@ Features already implemented:
 * Cafeteria Information
 
 ## Contributing
-You're welcome to contribute to this app! Just check it out and open PR's for your contributions. 
-
-- We use [Travis](https://travis-ci.org/TCA-Team/iOS) to perform builds on new PR's
-- We have SonarQube to check the code quality at [https://sonarqube.com/dashboard?id=de.tum.in.www.Tum-Campus-App](https://sonarqube.com/dashboard?id=de.tum.in.www.Tum-Campus-App)
-- If a PR is coming from a branch from this repository (and not a fork), our [@TCA-Bot](https://travis-ci.org/TCA-Team/iOS) will review the changes automatically
-- Use [ci skip] in the commit message if you know there is no need to run a build on Travis
+You're welcome to contribute to this app!
+Check out our detailed information at [CONTIRBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
 ## Publishing a new version
 - You can use _fastlane snapshot_ to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the AutomatedScreenshots.swift test

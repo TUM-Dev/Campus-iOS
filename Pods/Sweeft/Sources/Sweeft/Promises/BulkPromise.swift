@@ -9,7 +9,7 @@
 import Foundation
 
 /// A promise that represent a collection of other promises and waits for them all to be finished
-public class BulkPromise<T, O: Error>: Promise<[T], O> {
+public final class BulkPromise<T, O: Error>: Promise<[T], O> {
     
     private let count: Int
     private var results: [(Int, T)] = .empty {
@@ -38,6 +38,14 @@ extension BulkPromise where T: Collection {
         return nested { result in
             return result.flatMap(id)
         }
+    }
+    
+}
+
+extension BulkPromise: ExpressibleByArrayLiteral {
+    
+    public convenience init(arrayLiteral elements: Promise<T, O>...) {
+        self.init(promises: elements)
     }
     
 }

@@ -9,9 +9,13 @@ This is a collection of extensions and operators that make swift a bit sweeter. 
 *Note:* These operators are supposed to help me in the way I write Swift. Which is a functional style.
 So most of these regard possible problems and annoyances with functional programming in Swift.
 
-**Please** Contribute to make Swift a bit cooler looking... Post your ideas in the issues as enhancements
+
+
+**Please:** Contribute to make Swift a bit cooler looking... Post your ideas in the issues as enhancements
 
 ## Installing Sweeft
+
+<div><img src="http://i.giphy.com/3knKct3fGqxhK.gif" height=250></div>
 
 Sweeft is available both as a Pod in Cocoapods and as a Dependency in the Swift Package Manager. So you can choose how you include Sweeft into your project.
 
@@ -41,7 +45,10 @@ let package = Package(
 
 ## Why use Sweeft?
 
-Sweeft allows you to make your code so much shorter.
+<div><img src="http://i.giphy.com/l4JyX3V0yydvPHNBe.gif" height=200></div>
+
+I know what you're wondering. Why the hell do I need this? 
+Well. Sweeft allows you to make your code so much shorter.
 
 For instance: let's say you have an array with some integers and some nil values.
 
@@ -79,10 +86,10 @@ let even = !array |> { $0 & 1 == 0 }
 
 Now to be clear, the last two solutions are following the same principles.
 
-In this case first we are unwrapping the array with '.?'. Meaning that if it's nil we should get an empty array. Which in turn means: we unwrapped it safely.
+First we get rid of all the nil values from the array and cast it as a [Int] using the prefix '!'.
+Then we just call filter. But since our fingers are too lazy we spelled it '|>' ;)
 
-Then we get rid of all the nil values from the array and cast it as a [Int] using the prefix '!'.
-Finally we just call filter. But since our fingers are to lazy we spelled it '|>' ;)
+<div><img src="http://i.giphy.com/1VrOcCmld1a92.gif" height=150></div>
 
 ### Still not convinced?
 
@@ -100,6 +107,8 @@ First we filter out the non-palindromes.
 And then we filter out the non-primes.
 
 ### Wow! You're a hard sell.
+
+<div><img src="http://i.giphy.com/Fjr6v88OPk7U4.gif" height=250></div>
 
 Ok. If you still are not sure if you should use Sweeft, see this example.
 
@@ -140,6 +149,8 @@ for (item, index) in array.withIndex {
     // Do Stuff
 }
 ```
+
+Which I know ```array.enumerated()``` already does. But ```array.withIndex``` just sounds so much clearer. ;)
 
 Or even better. With the built in for-each operator:
 
@@ -293,6 +304,48 @@ array >>= { item, index in
     return (..., ...)
 }
 ```
+
+#### ( ** ) Bind with input
+
+If you want some of functions inputs to be already filled you can use \** to bind them to the function.
+
+```Swift
+let inc = (+) ** 1
+
+inc(3) // 4
+inc(4) // 5
+```
+
+You can also go from right to left with <\**
+
+#### (<+>) or (<*>) Parallelize closures.
+
+Say you want to combine to closures into one, that takes both inputs and delivers both outputs.
+For example you have a dictionary dict [Int: Int] and you want to increase every key by one and get the square of every value.
+
+Simple:
+
+```Swift
+let dict = [ 2 : 4, 3 : 5]
+let newDict = dict >>= inc <*> { $0 ** 2 } // [3 : 16, 4 : 25]
+```
+
+Or if you want to use binding:
+
+```Swift
+let newDict = dict >>= inc <*> ((**) <** 2)  // Now no one can read. Perfect!
+```
+
+But what if both functions should take the same input? Then use <+> and both closures will be fed the same input:
+
+```Swift
+let dict = [1, 2, 3, 4]
+let newDict = dict >>= inc <+> { $0 ** 2 } // [2 : 1, 3 : 4, 4 : 9, 5 : 16] 
+```
+
+And now your code will look so awesome:
+
+<div><img src="http://i.giphy.com/uWv3uPfWOz088.gif" height=250></div>
 
 #### ( ** ) Drop input/output from function
 

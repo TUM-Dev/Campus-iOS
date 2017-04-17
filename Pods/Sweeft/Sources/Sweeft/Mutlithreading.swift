@@ -19,3 +19,35 @@ public func after(_ time: TimeInterval = 0.0, in queue: DispatchQueue = .main, h
         handler()
     }
 }
+
+
+public func async<T>(runQueue: DispatchQueue,
+                     completionQueue: DispatchQueue = .main,
+                     _ handle: @escaping () throws -> T) -> Promise<T, AnyError> {
+    
+    return .new(completionQueue: completionQueue) { promise in
+        runQueue >>> {
+            do {
+                let result = try handle()
+                promise.success(with: result)
+            } catch let error {
+                promise.error(with: .error(error))
+            }
+        }
+    }
+}
+
+public func async<T>(qos: DispatchQoS = .background,
+                     completionQueue: DispatchQueue = .main,
+                     _ handle: @escaping () throws -> T) -> Promise<T, AnyError> {
+    
+    let queue = DispatchQueue(label: String(describing: qos), qos: qos)
+    return async(runQueue: queue, completionQueue: completionQueue, handle)
+}
+
+public func async<I, T>(qos: DispatchQoS = .background,
+                        completionQueue: DispatchQueue = .main,
+                        _ handle: @escaping (I) -> T) -> (I) -> Promise<T, AnyError> {
+    
+    return { async(qos: qos, completionQueue: completionQueue, handle ** $0) }
+}

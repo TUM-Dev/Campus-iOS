@@ -10,17 +10,17 @@ import Foundation
 
 /// Authentication protocol
 public protocol Auth {
-    func apply(to request: inout URLRequest)
+    func apply(to request: URLRequest) -> Promise<URLRequest, APIError>
 }
 
 /// Object that doesn't do anything to authenticate the user
 public struct NoAuth: Auth {
     
     /// Shared instance
-    static let standard = NoAuth()
+    public static let standard = NoAuth()
     
-    public func apply(to request: inout URLRequest) {
-        // Do Nothing
+    public func apply(to request: URLRequest) -> Promise<URLRequest, APIError> {
+        return .successful(with: request)
     }
     
 }
@@ -41,10 +41,12 @@ public struct BasicAuth {
 extension BasicAuth: Auth {
     
     /// Adds authorization header
-    public func apply(to request: inout URLRequest) {
+    public func apply(to request: URLRequest) -> Promise<URLRequest, APIError> {
+        var request = request
         let string = ("\(username):\(password)".base64Encoded).?
         let auth = "Basic \(string)"
         request.addValue(auth, forHTTPHeaderField: "Authorization")
+        return .successful(with: request)
     }
     
 }
