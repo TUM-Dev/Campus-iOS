@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 // Very Sexy
 struct SexyEntry: DataElement {
@@ -32,6 +33,19 @@ extension SexyEntry {
             return
         }
         UIApplication.shared.open(url)
+    }
+    
+}
+
+extension SexyEntry {
+    
+    init?(name: String, json: JSON) {
+        guard let link = json["target"].string,
+            let descriptionText = json["description"].string else {
+                
+            return nil
+        }
+        self.init(name: name, link: link, descriptionText: descriptionText)
     }
     
 }

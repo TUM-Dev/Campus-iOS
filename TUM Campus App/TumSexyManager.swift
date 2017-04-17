@@ -17,17 +17,12 @@ class TumSexyManager: Manager {
     }
     
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        Alamofire.request("http://json.tum.sexy").responseJSON() { (response) in
-            if let value = response.result.value {
-                if let items = JSON(value).dictionary {
-                    var links = [DataElement]()
-                    for (key, value) in items {
-                        if let text = value["description"].string, let link = value["target"].string {
-                            links.append(SexyEntry(name: key, link: link, descriptionText: text))
-                        }
-                    }
-                    handler(links)
-                }
+        Alamofire.request("http://json.tum.sexy").responseJSON { response in
+            if let value = response.result.value,
+                let items = JSON(value).dictionary {
+                
+                let links = items.flatMap(SexyEntry.init).map { $0 as DataElement }
+                handler(links)
             }
         }
     }
