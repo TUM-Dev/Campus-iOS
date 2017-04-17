@@ -33,13 +33,13 @@ class NextLectureCardCell: CardTableViewCell {
                 
                 let dateComponentsFormatter = DateComponentsFormatter()
                 dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
-                dateComponentsFormatter.maximumUnitCount = 1
+                dateComponentsFormatter.maximumUnitCount = 2
                 dateComponentsFormatter.unitsStyle = .full
                 
                 timeLabel.text = day + ", " + start + " - " + end
                 
                 if let timeRemaining = dateComponentsFormatter.string(from: Date(), to: s) {
-                    timeRemainingLabel.text = timeRemaining
+                    timeRemainingLabel.text = "In \(timeRemaining)"
                 }
             }
         }
