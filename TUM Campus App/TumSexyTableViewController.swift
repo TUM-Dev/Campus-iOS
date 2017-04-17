@@ -16,6 +16,13 @@ class TumSexyTableViewController: UITableViewController, DetailView {
         delegate?.dataManager().getSexyEntries(self)
     }
     
+    @IBAction func visit(_ sender: Any) {
+        guard let url = URL(string: "http://tum.sexy") else {
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+    
 }
 
 extension TumSexyTableViewController {

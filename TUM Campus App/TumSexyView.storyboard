@@ -48,6 +48,13 @@
                             <outlet property="delegate" destination="gaM-gc-b8z" id="iYR-Qm-ZjN"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="TUM.sexy" id="EjA-eX-eIC">
+                        <barButtonItem key="rightBarButtonItem" title="Visit" id="4sP-CQ-bFE">
+                            <connections>
+                                <action selector="visit:" destination="gaM-gc-b8z" id="Auy-ZD-HXk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tA2-Yo-uPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
