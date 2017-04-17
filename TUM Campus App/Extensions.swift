@@ -9,6 +9,7 @@
 import Foundation
 
 extension Date {
+    
     func numberOfDaysUntilDateTime(_ toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current
         if let timeZone = timeZone {
@@ -18,4 +19,14 @@ extension Date {
         let difference = calendar.dateComponents(Set([.day]), from: self, to: toDateTime)
         return difference.day ?? 0
     }
+    
+}
+
+
+extension Collection {
+    
+    func mapped<V>() -> [V] {
+        return flatMap { $0 as? V }
+    }
+    
 }
