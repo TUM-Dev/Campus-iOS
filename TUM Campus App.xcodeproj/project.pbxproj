@@ -104,6 +104,7 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		22F4B6B01EA800BA0086D49A /* ProofOfConcept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6AF1EA800BA0086D49A /* ProofOfConcept.swift */; };
 		301195E91E464A6A0012B133 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195E81E464A6A0012B133 /* Grade.swift */; };
 		301195EC1E464C830012B133 /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301195EB1E464C830012B133 /* Grade.storyboard */; };
 		301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195ED1E464F560012B133 /* GradesTableViewController.swift */; };
@@ -265,6 +266,7 @@
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		22F4B6AF1EA800BA0086D49A /* ProofOfConcept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProofOfConcept.swift; sourceTree = "<group>"; };
 		24903A680C6A8A498F797A7C /* Pods_Campus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Campus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		301195E81E464A6A0012B133 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		301195EB1E464C830012B133 /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				5007C69F1E06788F0014B065 /* StudyRoomsManager.swift */,
 				0EB1617D1C1A01FE001A08FC /* TumOnlie XML Managers */,
 				0EB1617E1C1A0211001A08FC /* TumCabe JSON Managers */,
+				22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */,
 				0EB1617F1C1A0227001A08FC /* Manager Classes */,
 				0EB161801C1A0242001A08FC /* Enums and Constants */,
 				0E3B21571C13DBA20035ED70 /* TumOnlineLogin */,
@@ -697,6 +700,14 @@
 				0E60CD471C14845700B29948 /* DetailViewDelegate.swift */,
 			);
 			name = "Detail View Protocols";
+			sourceTree = "<group>";
+		};
+		22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */ = {
+			isa = PBXGroup;
+			children = (
+				22F4B6AF1EA800BA0086D49A /* ProofOfConcept.swift */,
+			);
+			name = "TumOPAC HTML Managers";
 			sourceTree = "<group>";
 		};
 		301195EA1E464BB50012B133 /* Grade View */ = {
@@ -1027,6 +1038,7 @@
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
 				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
+				22F4B6B01EA800BA0086D49A /* ProofOfConcept.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E0C68241E8A4355007001F1 /* Usage.swift in Sources */,
 				5007C6A31E067E240014B065 /* StudyRoomsApi.swift in Sources */,
