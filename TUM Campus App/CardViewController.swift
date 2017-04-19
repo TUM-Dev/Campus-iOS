@@ -8,7 +8,6 @@
 
 import Sweeft
 import UIKit
-import MCSwipeTableViewCell
 
 class CardViewController: UITableViewController {
     
@@ -124,11 +123,11 @@ extension CardViewController {
             }
         }
         cell.selectionStyle = .none
-        cell.defaultColor = tableView.backgroundColor
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state1) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state2) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state3) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state4) { (void) in handler() }
+//        cell.defaultColor = tableView.backgroundColor
+//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state1) { (void) in handler() }
+//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state2) { (void) in handler() }
+//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state3) { (void) in handler() }
+//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state4) { (void) in handler() }
         return cell
     }
     

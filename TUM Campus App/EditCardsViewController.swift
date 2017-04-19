@@ -8,6 +8,7 @@
 
 import UIKit
 import Sweeft
+import FoldingCell
 
 class EditCardsViewController: UITableViewController {
     
@@ -19,6 +20,15 @@ class EditCardsViewController: UITableViewController {
             PersistentCardOrder.value.cards = newValue
         }
     }
+    
+    fileprivate struct C {
+        struct CellHeight {
+            static let close: CGFloat = 100
+            static let open: CGFloat = 200
+        }
+    }
+    
+    var cellHeights = (0..<8).map { _ in C.CellHeight.close }
     
     var disabled: [CardKey] {
         return (CardKey.all - enabled).array
@@ -79,6 +89,10 @@ class EditCardsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.row]
+    }
+    
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 0
     }
@@ -94,6 +108,17 @@ class EditCardsViewController: UITableViewController {
         } else {
             enabled.remove(at: sourceIndexPath.row)
             tableView.reloadData()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if case let cell as FoldingCell = cell {
+            if cellHeights[indexPath.row] == C.CellHeight.close {
+                cell.selectedAnimation(false, animated: false, completion:nil)
+            } else {
+                cell.selectedAnimation(true, animated: false, completion: nil)
+            }
         }
     }
     
