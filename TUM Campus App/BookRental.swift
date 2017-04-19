@@ -36,7 +36,7 @@ class BookRental: DataElement {
     }
 }
 
-extension BookRenal: CardDisplayable {
+extension BookRental: CardDisplayable {
     
     var cardKey: CardKey {
         return .bookRental

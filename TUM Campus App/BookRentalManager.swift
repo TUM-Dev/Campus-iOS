@@ -28,6 +28,9 @@ class BookRentalManager: Manager {
     required init(mainManager: TumDataManager) {
         main = mainManager
     }
+    
+    static var rentals = [DataElement]()
+
 
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
 
@@ -122,6 +125,10 @@ class BookRentalManager: Manager {
                             print(bib)
                             print(prolong)
                             print("-----------------")
+                            
+                            let rental = BookRental(title: title!, author: author!, id: id!, deadline: deadline!, bib: bib!, prolong: prolong!)
+                            
+                            BookRentalManager.rentals.append(rental)
                         }
                     }
                 }
