@@ -104,6 +104,9 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
+		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
+		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
 		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
 		22F4B6B41EA802960086D49A /* BookRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B31EA802960086D49A /* BookRental.swift */; };
 		22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */; };
@@ -268,6 +271,9 @@
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRetanlAPI.swift; sourceTree = "<group>"; };
+		0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalSession.swift; sourceTree = "<group>"; };
+		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
 		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
 		22F4B6B31EA802960086D49A /* BookRental.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRental.swift; sourceTree = "<group>"; };
 		22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalsCard.swift; sourceTree = "<group>"; };
@@ -708,10 +714,29 @@
 			name = "Detail View Protocols";
 			sourceTree = "<group>";
 		};
-		22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */ = {
+		0EF790F41EA83042005CB9AB /* Book Rental */ = {
 			isa = PBXGroup;
 			children = (
 				22F4B6B11EA802350086D49A /* BookRentalManager.swift */,
+				0EF790F51EA8304E005CB9AB /* Helper */,
+			);
+			name = "Book Rental";
+			sourceTree = "<group>";
+		};
+		0EF790F51EA8304E005CB9AB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */,
+				0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */,
+				0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0EF790F41EA83042005CB9AB /* Book Rental */,
 			);
 			name = "TumOPAC HTML Managers";
 			sourceTree = "<group>";
@@ -1026,6 +1051,7 @@
 				0E3B214A1C13CB280035ED70 /* BulkRequest.swift in Sources */,
 				0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */,
 				0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */,
+				0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */,
 				0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */,
 				0EB1618C1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift in Sources */,
 				0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */,
@@ -1068,6 +1094,7 @@
 				0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */,
 				0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */,
 				0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */,
+				0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */,
 				0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */,
 				0E5A61DD1C13536C006017DB /* TumOnlineLoginRequestManager.swift in Sources */,
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
@@ -1100,6 +1127,7 @@
 				0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
+				0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,

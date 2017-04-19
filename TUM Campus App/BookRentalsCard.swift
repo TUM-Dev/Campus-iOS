@@ -20,7 +20,7 @@ class BookRentalsCardCell: CardTableViewCell {
             titleLabel.text = rentalItem.title
             authorLabel.text = rentalItem.author
             deadlineLabel.text = rentalItem.deadline
-            prolongLabel.text = rentalItem.prolong
+            prolongLabel.text = rentalItem.prolong.rawValue // TODO: Remap to localized string when available
         }
     }
     

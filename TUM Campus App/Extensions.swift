@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Sweeft
 
 extension Date {
     
@@ -27,6 +28,18 @@ extension Collection {
     
     func mapped<V>() -> [V] {
         return flatMap { $0 as? V }
+    }
+    
+}
+
+extension Promise {
+    
+    func finish(with result: Result?, onNil error: ErrorType) {
+        if let result = result {
+            success(with: result)
+        } else {
+            self.error(with: error)
+        }
     }
     
 }
