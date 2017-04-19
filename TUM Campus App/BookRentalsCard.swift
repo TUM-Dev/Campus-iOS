@@ -8,12 +8,18 @@
 
 import UIKit
 
-class BookRentalCardCell: CardTableViewCell {
+class BookRentalsCardCell: CardTableViewCell {
 
-    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var deadlineLabel: UILabel!
+    @IBOutlet var prolongLabel: UILabel!
     
     override func setElement(_ element: DataElement) {
-        
+        titleLabel.text = ""
+        authorLabel.text = ""
+        deadlineLabel.text = ""
+        prolongLabel.text = ""
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
