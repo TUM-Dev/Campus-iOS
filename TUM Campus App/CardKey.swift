@@ -14,6 +14,7 @@ enum CardKey: Int {
     case news
     case cafeteria
     case tuition
+    case bookRental
     
     var description: String {
         switch self {
@@ -27,6 +28,8 @@ enum CardKey: Int {
             return "News"
         case .tuition:
             return "Tuition"
+        case .bookRental:
+            return "Book Rental"
         }
     }
     
