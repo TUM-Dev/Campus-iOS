@@ -35,7 +35,6 @@ class BookRentalManager: Manager {
     func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
 
         startSession()
-        
     }
     
     func startSession() {
