@@ -33,7 +33,7 @@ enum CardKey: Int {
         }
     }
     
-    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition]
+    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental]
     
     static var managers: [CardKey: TumDataItems] = [
         .tufilm: .MovieCard,
@@ -41,5 +41,6 @@ enum CardKey: Int {
         .news: .NewsCard,
         .cafeteria: .CafeteriasCard,
         .tuition: .TuitionStatusSingle,
+        .bookRental: .BookRentalCard,
         ]
 }

@@ -530,7 +530,6 @@
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
 				22F4B6B31EA802960086D49A /* BookRental.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
-				0E0C68231E8A4355007001F1 /* Usage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -597,6 +596,7 @@
 				0EC10C201C171D100024F902 /* MovieManager.swift */,
 				0EF4CEE51D414D39001649F1 /* NewsManager.swift */,
 				0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */,
+				0E0C68231E8A4355007001F1 /* Usage.swift */,
 			);
 			name = "TumCabe JSON Managers";
 			sourceTree = "<group>";
