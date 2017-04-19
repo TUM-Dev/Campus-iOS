@@ -16,10 +16,12 @@ class BookRentalsCardCell: CardTableViewCell {
     @IBOutlet var prolongLabel: UILabel!
     
     override func setElement(_ element: DataElement) {
-        titleLabel.text = ""
-        authorLabel.text = ""
-        deadlineLabel.text = ""
-        prolongLabel.text = ""
+        if let rentalItem = element as? BookRental {
+            titleLabel.text = rentalItem.title
+            authorLabel.text = rentalItem.author
+            deadlineLabel.text = rentalItem.deadline
+            prolongLabel.text = rentalItem.prolong
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
