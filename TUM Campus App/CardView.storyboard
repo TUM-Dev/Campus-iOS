@@ -138,10 +138,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="cafeteriaLabel" destination="NF0-fN-izc" id="OU6-aP-k8G"/>
                                     <outlet property="containerView" destination="mQt-4Y-eCQ" id="qtY-Jp-QWC"/>
                                     <outlet property="containerViewTop" destination="2Bh-IB-GIL" id="yZy-9x-4Aa"/>
                                     <outlet property="foregroundView" destination="fGn-Y6-IZt" id="tnl-NZ-krH"/>
                                     <outlet property="foregroundViewTop" destination="sky-fe-ZG2" id="KKg-Ji-0aH"/>
+                                    <outlet property="itemsLabel" destination="W3w-zB-bmv" id="hzn-0s-mtk"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="300" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
@@ -208,8 +210,11 @@
                                 <connections>
                                     <outlet property="containerView" destination="6aX-hP-D0e" id="6T7-Ya-LTd"/>
                                     <outlet property="containerViewTop" destination="gZ8-pl-vcm" id="mwh-Zc-uMu"/>
+                                    <outlet property="dateLabel" destination="lME-ch-Qre" id="Ovz-Jx-tl5"/>
+                                    <outlet property="detailImageView" destination="EXr-FU-UK1" id="Rch-3e-0Aw"/>
                                     <outlet property="foregroundView" destination="EqL-Bu-XtJ" id="PgK-vV-4zL"/>
                                     <outlet property="foregroundViewTop" destination="yPF-wt-qcL" id="VjS-sO-BLS"/>
+                                    <outlet property="titleLabel" destination="Cz4-SO-gOQ" id="fkl-If-OIS"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="300" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -291,8 +296,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="balanceLabel" destination="bJK-sf-cB8" id="ldn-1X-2Pl"/>
                                     <outlet property="containerView" destination="xTs-wS-4nV" id="USj-u8-tF8"/>
                                     <outlet property="containerViewTop" destination="qwM-ug-v2N" id="wfX-Pw-nQq"/>
+                                    <outlet property="deadLineLabel" destination="x63-ZJ-0zj" id="sZH-zL-Vbp"/>
                                     <outlet property="foregroundView" destination="kl1-Vj-iJf" id="8sR-x6-DMD"/>
                                     <outlet property="foregroundViewTop" destination="McQ-cf-Oip" id="lj2-ej-2GI"/>
                                 </connections>
@@ -368,8 +375,11 @@
                                 <connections>
                                     <outlet property="containerView" destination="dZJ-P2-ffT" id="r2e-vv-wvi"/>
                                     <outlet property="containerViewTop" destination="Gbi-Cz-h6w" id="wt4-EB-VUC"/>
+                                    <outlet property="dateLabel" destination="hsc-fa-32i" id="ihf-0t-CA1"/>
                                     <outlet property="foregroundView" destination="uO5-bj-XWu" id="H5V-v0-kSw"/>
                                     <outlet property="foregroundViewTop" destination="7Jk-tp-0bp" id="YQz-rN-1oI"/>
+                                    <outlet property="posterImageView" destination="ELI-9f-uy1" id="iPC-It-fSt"/>
+                                    <outlet property="titleLabel" destination="rSq-0e-n7z" id="aW0-oi-BYp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="300" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
@@ -440,6 +450,9 @@
                                     <outlet property="containerViewTop" destination="E9P-l5-lwu" id="YgZ-03-33K"/>
                                     <outlet property="foregroundView" destination="NoA-CP-wYL" id="GwO-Or-ofL"/>
                                     <outlet property="foregroundViewTop" destination="Dy2-KW-rmH" id="gQV-Fr-G4O"/>
+                                    <outlet property="lectureTitelLabel" destination="06n-Z9-WDt" id="GzL-kg-x5X"/>
+                                    <outlet property="timeLabel" destination="75O-P5-F6F" id="aaP-Kc-yOO"/>
+                                    <outlet property="timeRemainingLabel" destination="oMH-Ka-njU" id="43D-x2-x2R"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
