@@ -43,7 +43,7 @@ extension BookRentalHTML {
             return nil
         }
         if tableItems.count > 1 {
-            return stride(from: 0, to: tds.count, by: 2).flatMap { BookRental(td1: tds[$0], td2: tds[$0 + 1]) }
+            return stride(from: 0, to: tableItems.count, by: 2).flatMap { BookRental(td1: tableItems[$0], td2: tableItems[$0 + 1]) }
         } else {
             return .empty
         }
