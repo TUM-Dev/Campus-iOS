@@ -99,7 +99,6 @@ extension CardViewController {
         }
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cards.removeAll()
@@ -135,16 +134,23 @@ extension CardViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if case let cell as FoldingCell = cell {
-            cell.foregroundView.layer.cornerRadius = 8
-            cell.foregroundView.layer.masksToBounds = true
-            cell.containerView.layer.cornerRadius = 8
-            cell.containerView.layer.masksToBounds = true
+            configureCell(cell: cell)
             if cellHeights[indexPath.row] == kCloseCellHeight {
                 cell.selectedAnimation(false, animated: false, completion:nil)
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }
         }
+    }
+    
+    func configureCell(cell: FoldingCell) {
+        cell.foregroundView.layer.cornerRadius = 8
+        cell.foregroundView.layer.masksToBounds = true
+        cell.containerView.layer.cornerRadius = 8
+        cell.containerView.layer.masksToBounds = true
+        let markerView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: cell.foregroundView.frame.height))
+        markerView.backgroundColor = .red
+        cell.foregroundView.addSubview(markerView)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
