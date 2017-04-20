@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWj-R6-cJw" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Go on Edit to add some..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
                                                     <rect key="frame" x="8" y="42.5" width="327" height="49.5"/>
@@ -49,7 +48,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIT-hT-872" userLabel="ContainerView">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="i9u-as-pCT"/>
                                             </constraints>
@@ -57,12 +56,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="gIT-hT-872" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="26A-rH-Qaj"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xWj-R6-cJw" secondAttribute="trailing" constant="8" id="2zw-Jf-ue3"/>
-                                        <constraint firstItem="gIT-hT-872" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="topMargin" constant="108" id="6T8-5t-EBj"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gIT-hT-872" secondAttribute="trailing" constant="8" id="YT3-WG-eTg"/>
-                                        <constraint firstItem="xWj-R6-cJw" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="topMargin" constant="8" id="adF-eG-0si"/>
-                                        <constraint firstItem="xWj-R6-cJw" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="rOu-BP-qeJ"/>
+                                        <constraint firstItem="gIT-hT-872" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leading" constant="8" id="26A-rH-Qaj"/>
+                                        <constraint firstAttribute="trailing" secondItem="xWj-R6-cJw" secondAttribute="trailing" constant="8" id="2zw-Jf-ue3"/>
+                                        <constraint firstItem="gIT-hT-872" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="top" constant="108" id="6T8-5t-EBj"/>
+                                        <constraint firstAttribute="trailing" secondItem="gIT-hT-872" secondAttribute="trailing" constant="8" id="YT3-WG-eTg"/>
+                                        <constraint firstItem="xWj-R6-cJw" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="top" constant="8" id="adF-eG-0si"/>
+                                        <constraint firstItem="xWj-R6-cJw" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leading" constant="8" id="rOu-BP-qeJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -84,12 +83,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="300" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="328" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRk-VH-QTm" id="8fA-Gv-n7a">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRk-VH-QTm" id="8fA-Gv-n7a">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-Y6-IZt" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Cafeteria Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF0-fN-izc">
                                                     <rect key="frame" x="8" y="8" width="319" height="26.5"/>
@@ -112,7 +111,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-4Y-eCQ">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="lZh-QT-oFb"/>
@@ -121,12 +120,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="topMargin" constant="108" id="2Bh-IB-GIL"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="mQt-4Y-eCQ" secondAttribute="trailing" constant="8" id="Aax-Zy-meG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="fGn-Y6-IZt" secondAttribute="trailing" constant="8" id="SIr-JR-ume"/>
-                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="bjT-7Y-rSa"/>
-                                        <constraint firstItem="fGn-Y6-IZt" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="topMargin" constant="8" id="sky-fe-ZG2"/>
-                                        <constraint firstItem="fGn-Y6-IZt" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="ylo-zF-f2c"/>
+                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="top" constant="108" id="2Bh-IB-GIL"/>
+                                        <constraint firstAttribute="trailing" secondItem="mQt-4Y-eCQ" secondAttribute="trailing" constant="8" id="Aax-Zy-meG"/>
+                                        <constraint firstAttribute="trailing" secondItem="fGn-Y6-IZt" secondAttribute="trailing" constant="8" id="SIr-JR-ume"/>
+                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leading" constant="8" id="bjT-7Y-rSa"/>
+                                        <constraint firstItem="fGn-Y6-IZt" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="top" constant="8" id="sky-fe-ZG2"/>
+                                        <constraint firstItem="fGn-Y6-IZt" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leading" constant="8" id="ylo-zF-f2c"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -148,12 +147,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="300" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="628" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DJl-q0-InR" id="OAg-a9-fyj">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DJl-q0-InR" id="OAg-a9-fyj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EqL-Bu-XtJ" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="248" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz4-SO-gOQ">
                                                     <rect key="frame" x="100" y="8" width="235" height="55.5"/>
@@ -180,7 +179,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6aX-hP-D0e">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="Ru4-jl-0If"/>
@@ -189,12 +188,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="6aX-hP-D0e" secondAttribute="trailing" constant="8" id="AaS-nI-bHx"/>
-                                        <constraint firstItem="6aX-hP-D0e" firstAttribute="leading" secondItem="OAg-a9-fyj" secondAttribute="leadingMargin" constant="8" id="Gaa-Pu-PiZ"/>
-                                        <constraint firstItem="6aX-hP-D0e" firstAttribute="top" secondItem="OAg-a9-fyj" secondAttribute="topMargin" constant="108" id="gZ8-pl-vcm"/>
-                                        <constraint firstItem="EqL-Bu-XtJ" firstAttribute="leading" secondItem="OAg-a9-fyj" secondAttribute="leadingMargin" constant="8" id="kYW-4W-BRm"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="EqL-Bu-XtJ" secondAttribute="trailing" constant="8" id="rIi-Do-ZYQ"/>
-                                        <constraint firstItem="EqL-Bu-XtJ" firstAttribute="top" secondItem="OAg-a9-fyj" secondAttribute="topMargin" constant="8" id="yPF-wt-qcL"/>
+                                        <constraint firstAttribute="trailing" secondItem="6aX-hP-D0e" secondAttribute="trailing" constant="8" id="AaS-nI-bHx"/>
+                                        <constraint firstItem="6aX-hP-D0e" firstAttribute="leading" secondItem="OAg-a9-fyj" secondAttribute="leading" constant="8" id="Gaa-Pu-PiZ"/>
+                                        <constraint firstItem="6aX-hP-D0e" firstAttribute="top" secondItem="OAg-a9-fyj" secondAttribute="top" constant="108" id="gZ8-pl-vcm"/>
+                                        <constraint firstItem="EqL-Bu-XtJ" firstAttribute="leading" secondItem="OAg-a9-fyj" secondAttribute="leading" constant="8" id="kYW-4W-BRm"/>
+                                        <constraint firstAttribute="trailing" secondItem="EqL-Bu-XtJ" secondAttribute="trailing" constant="8" id="rIi-Do-ZYQ"/>
+                                        <constraint firstItem="EqL-Bu-XtJ" firstAttribute="top" secondItem="OAg-a9-fyj" secondAttribute="top" constant="8" id="yPF-wt-qcL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -216,12 +215,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="300" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="928" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-Vj-iJf" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100.5"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" fixedFrame="YES" text="Tuition Fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94g-Dk-mGV">
                                                     <rect key="frame" x="8" y="8" width="327" height="26.5"/>
@@ -265,7 +264,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTs-wS-4nV">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="gYA-0s-hIX"/>
@@ -274,12 +273,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="xTs-wS-4nV" secondAttribute="trailing" constant="8" id="0Xa-Pp-00d"/>
-                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leadingMargin" constant="8" id="GbG-Cu-Dre"/>
-                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="topMargin" constant="8" id="McQ-cf-Oip"/>
-                                        <constraint firstItem="xTs-wS-4nV" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leadingMargin" constant="8" id="NeA-UC-fBG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="kl1-Vj-iJf" secondAttribute="trailing" constant="8" id="Tol-Hz-lXP"/>
-                                        <constraint firstItem="xTs-wS-4nV" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="topMargin" constant="108" id="qwM-ug-v2N"/>
+                                        <constraint firstAttribute="trailing" secondItem="xTs-wS-4nV" secondAttribute="trailing" constant="8" id="0Xa-Pp-00d"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leading" constant="8" id="GbG-Cu-Dre"/>
+                                        <constraint firstItem="kl1-Vj-iJf" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="top" constant="8" id="McQ-cf-Oip"/>
+                                        <constraint firstItem="xTs-wS-4nV" firstAttribute="leading" secondItem="Lgz-Z4-dlR" secondAttribute="leading" constant="8" id="NeA-UC-fBG"/>
+                                        <constraint firstAttribute="trailing" secondItem="kl1-Vj-iJf" secondAttribute="trailing" constant="8" id="Tol-Hz-lXP"/>
+                                        <constraint firstItem="xTs-wS-4nV" firstAttribute="top" secondItem="Lgz-Z4-dlR" secondAttribute="top" constant="108" id="qwM-ug-v2N"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -301,12 +300,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="300" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1228" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uO5-bj-XWu" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-9f-uy1">
                                                     <rect key="frame" x="8" y="8" width="56" height="84"/>
@@ -340,7 +339,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZJ-P2-ffT">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="dQs-bG-P7P"/>
@@ -349,12 +348,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="uO5-bj-XWu" firstAttribute="top" secondItem="V2f-ss-IEJ" secondAttribute="topMargin" constant="8" id="7Jk-tp-0bp"/>
-                                        <constraint firstItem="dZJ-P2-ffT" firstAttribute="top" secondItem="V2f-ss-IEJ" secondAttribute="topMargin" constant="108" id="Gbi-Cz-h6w"/>
-                                        <constraint firstItem="uO5-bj-XWu" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leadingMargin" constant="8" id="KzA-ML-S5W"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="uO5-bj-XWu" secondAttribute="trailing" constant="8" id="PXQ-9E-gEG"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="dZJ-P2-ffT" secondAttribute="trailing" constant="8" id="SxR-AY-CWl"/>
-                                        <constraint firstItem="dZJ-P2-ffT" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leadingMargin" constant="8" id="iqE-hX-F50"/>
+                                        <constraint firstItem="uO5-bj-XWu" firstAttribute="top" secondItem="V2f-ss-IEJ" secondAttribute="top" constant="8" id="7Jk-tp-0bp"/>
+                                        <constraint firstItem="dZJ-P2-ffT" firstAttribute="top" secondItem="V2f-ss-IEJ" secondAttribute="top" constant="108" id="Gbi-Cz-h6w"/>
+                                        <constraint firstItem="uO5-bj-XWu" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leading" constant="8" id="KzA-ML-S5W"/>
+                                        <constraint firstAttribute="trailing" secondItem="uO5-bj-XWu" secondAttribute="trailing" constant="8" id="PXQ-9E-gEG"/>
+                                        <constraint firstAttribute="trailing" secondItem="dZJ-P2-ffT" secondAttribute="trailing" constant="8" id="SxR-AY-CWl"/>
+                                        <constraint firstItem="dZJ-P2-ffT" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leading" constant="8" id="iqE-hX-F50"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -376,12 +375,12 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="300" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="1528" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NoA-CP-wYL" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
-                                            <rect key="frame" x="16" y="16" width="343" height="100"/>
+                                            <rect key="frame" x="8" y="8" width="359" height="100"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="752" fixedFrame="YES" text="Tutorübungen zu Grundlagen: Datenbanken" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06n-Z9-WDt">
                                                     <rect key="frame" x="8" y="8" width="327" height="54.5"/>
@@ -410,7 +409,7 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7S-oz-LzN">
-                                            <rect key="frame" x="16" y="116" width="343" height="400"/>
+                                            <rect key="frame" x="8" y="108" width="359" height="400"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="400" id="lIG-sU-472"/>
@@ -419,12 +418,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="NoA-CP-wYL" firstAttribute="leading" secondItem="43C-yg-bx9" secondAttribute="leadingMargin" constant="8" id="B3h-KT-9NU"/>
-                                        <constraint firstItem="NoA-CP-wYL" firstAttribute="top" secondItem="43C-yg-bx9" secondAttribute="topMargin" constant="8" id="Dy2-KW-rmH"/>
-                                        <constraint firstItem="R7S-oz-LzN" firstAttribute="top" secondItem="43C-yg-bx9" secondAttribute="topMargin" constant="108" id="E9P-l5-lwu"/>
-                                        <constraint firstItem="R7S-oz-LzN" firstAttribute="leading" secondItem="43C-yg-bx9" secondAttribute="leadingMargin" constant="8" id="NSJ-Aa-VRO"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="NoA-CP-wYL" secondAttribute="trailing" constant="8" id="QSO-c7-fjw"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="R7S-oz-LzN" secondAttribute="trailing" constant="8" id="iHZ-y0-h9H"/>
+                                        <constraint firstItem="NoA-CP-wYL" firstAttribute="leading" secondItem="43C-yg-bx9" secondAttribute="leading" constant="8" id="B3h-KT-9NU"/>
+                                        <constraint firstItem="NoA-CP-wYL" firstAttribute="top" secondItem="43C-yg-bx9" secondAttribute="top" constant="8" id="Dy2-KW-rmH"/>
+                                        <constraint firstItem="R7S-oz-LzN" firstAttribute="top" secondItem="43C-yg-bx9" secondAttribute="top" constant="108" id="E9P-l5-lwu"/>
+                                        <constraint firstItem="R7S-oz-LzN" firstAttribute="leading" secondItem="43C-yg-bx9" secondAttribute="leading" constant="8" id="NSJ-Aa-VRO"/>
+                                        <constraint firstAttribute="trailing" secondItem="NoA-CP-wYL" secondAttribute="trailing" constant="8" id="QSO-c7-fjw"/>
+                                        <constraint firstAttribute="trailing" secondItem="R7S-oz-LzN" secondAttribute="trailing" constant="8" id="iHZ-y0-h9H"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

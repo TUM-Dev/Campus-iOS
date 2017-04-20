@@ -11,6 +11,15 @@ import FoldingCell
 
 class CardTableViewCell: FoldingCell {
     
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+//        self.foregroundView.layer.cornerRadius = 8
+//        self.foregroundView.layer.masksToBounds = true
+//        self.containerView.layer.cornerRadius = 8
+//        self.containerView.layer.masksToBounds = true
+    }
+    
     func setElement(_ element: DataElement) {
         
     }

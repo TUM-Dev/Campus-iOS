@@ -16,7 +16,6 @@ class CardViewController: UITableViewController {
     
     var cards = [DataElement]() {
         didSet {
-            print(max(cards.count,1))
             kRowsCount = max(cards.count,1)
             createCellHeightsArray()
         }
@@ -30,21 +29,11 @@ class CardViewController: UITableViewController {
             manager?.getCardItems(self)
     }
     
-    fileprivate struct C {
-        struct CellHeight {
-            static let close: CGFloat = 100 // equal or greater foregroundView height
-            static let open: CGFloat = 400 // equal or greater containerView height
-        }
-    }
-
     var cellHeights = [CGFloat]()
     
-    let kCloseCellHeight: CGFloat = 100
-    let kOpenCellHeight: CGFloat = 400
+    let kCloseCellHeight: CGFloat = 108
+    let kOpenCellHeight: CGFloat = 408
     var kRowsCount = 4
-    
-    //var cellHeights = (0..<4).map { _ in C.CellHeight.close }
-
 }
 
 extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
@@ -94,10 +83,12 @@ extension CardViewController {
         tableView.addSubview(refresh)
 //        tableView.estimatedRowHeight = tableView.rowHeight
 //        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.backgroundColor = .clear
+        tableView.backgroundView = UIImageView(image: UIImage(named: "bg"))
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Constants.backgroundGray
+//        tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
     
@@ -144,7 +135,11 @@ extension CardViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if case let cell as FoldingCell = cell {
-            if cellHeights[indexPath.row] == C.CellHeight.close {
+            cell.foregroundView.layer.cornerRadius = 8
+            cell.foregroundView.layer.masksToBounds = true
+            cell.containerView.layer.cornerRadius = 8
+            cell.containerView.layer.masksToBounds = true
+            if cellHeights[indexPath.row] == kCloseCellHeight {
                 cell.selectedAnimation(false, animated: false, completion:nil)
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
