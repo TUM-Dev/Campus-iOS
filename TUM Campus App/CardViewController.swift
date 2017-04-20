@@ -148,9 +148,12 @@ extension CardViewController {
         cell.foregroundView.layer.masksToBounds = true
         cell.containerView.layer.cornerRadius = 8
         cell.containerView.layer.masksToBounds = true
-        let markerView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: cell.foregroundView.frame.height))
-        markerView.backgroundColor = .red
-        cell.foregroundView.addSubview(markerView)
+        let sideMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: cell.foregroundView.frame.height))
+        let topMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: cell.containerView.frame.size.width, height: 18))
+        sideMarkerView.backgroundColor = .red
+        topMarkerView.backgroundColor = .red
+        cell.foregroundView.addSubview(sideMarkerView)
+        cell.containerView.addSubview(topMarkerView)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
