@@ -8,6 +8,7 @@
 
 import Sweeft
 import UIKit
+import FoldingCell
 
 class CardViewController: UITableViewController {
     
@@ -22,6 +23,19 @@ class CardViewController: UITableViewController {
     func refresh(_ sender: AnyObject?) {
             manager?.getCardItems(self)
     }
+    
+    fileprivate struct C {
+        struct CellHeight {
+            static let close: CGFloat = 100 // equal or greater foregroundView height
+            static let open: CGFloat = 200 // equal or greater containerView height
+        }
+    }
+    
+    let kCloseCellHeight: CGFloat = 100
+    let kOpenCellHeight: CGFloat = 200
+    
+    var cellHeights = (0..<4).map { _ in C.CellHeight.close }
+
 }
 
 extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
@@ -103,6 +117,43 @@ extension CardViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return max(cards.count, 1)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.row]
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if case let cell as FoldingCell = cell {
+            if cellHeights[indexPath.row] == C.CellHeight.close {
+                cell.selectedAnimation(false, animated: false, completion:nil)
+            } else {
+                cell.selectedAnimation(true, animated: false, completion: nil)
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard case let cell as FoldingCell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        
+        var duration = 0.0
+        if cellHeights[indexPath.row] == kCloseCellHeight { // open cell
+            cellHeights[indexPath.row] = kOpenCellHeight
+            cell.selectedAnimation(true, animated: true, completion: nil)
+            duration = 0.5
+        } else {// close cell
+            cellHeights[indexPath.row] = kCloseCellHeight
+            cell.selectedAnimation(false, animated: true, completion: nil)
+            duration = 1.1
+        }
+        
+        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

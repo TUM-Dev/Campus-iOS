@@ -11,26 +11,26 @@ import UIKit
 class CafeteriaCardTableViewCell: CardTableViewCell {
 
     override func setElement(_ element: DataElement) {
-        if let cafeteria = element as? Cafeteria {
-            cafeteriaLabel.text = cafeteria.name
-            let items = cafeteria.getMenusForDate(Date()).filter() { (item) in
-                return item.id != 0
-            }
-            var string = ""
-            for item in items {
-                string += "\u{2022} " + item.name + "\n"
-            }
-            itemsLabel.text = string
-        }
+//        if let cafeteria = element as? Cafeteria {
+//            cafeteriaLabel.text = cafeteria.name
+//            let items = cafeteria.getMenusForDate(Date()).filter() { (item) in
+//                return item.id != 0
+//            }
+//            var string = ""
+//            for item in items {
+//                string += "\u{2022} " + item.name + "\n"
+//            }
+//            itemsLabel.text = string
+//        }
     }
 
-    @IBOutlet weak var cafeteriaLabel: UILabel!
-    @IBOutlet weak var itemsLabel: UILabel!
-    @IBOutlet weak var cardView: UIView! {
-        didSet {
-            backgroundColor = UIColor.clear
-            cardView.layer.shadowOpacity = 0.4
-            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        }
-    }
+//    @IBOutlet weak var cafeteriaLabel: UILabel!
+//    @IBOutlet weak var itemsLabel: UILabel!
+    
+//    didSet {
+//            backgroundColor = UIColor.clear
+//            cardView.layer.shadowOpacity = 0.4
+//            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+//        }
+//    }
 }

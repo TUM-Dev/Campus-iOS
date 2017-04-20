@@ -20,11 +20,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" rowHeight="316" id="Vs7-al-SSJ" customClass="EmptyCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="316"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" rowHeight="300" id="Vs7-al-SSJ" customClass="EmptyCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vs7-al-SSJ" id="CaP-il-Qhj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="315.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWj-R6-cJw" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -74,21 +74,18 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cardView" destination="xWj-R6-cJw" id="QkR-8L-PqA"/>
                                     <outlet property="containerView" destination="gIT-hT-872" id="Af4-Y7-TDv"/>
                                     <outlet property="containerViewTop" destination="keU-hK-OZk" id="EQq-iI-qeP"/>
-                                    <outlet property="dateLabel" destination="a4G-9L-8wP" id="Tkf-K9-ZVB"/>
                                     <outlet property="foregroundView" destination="xWj-R6-cJw" id="Shd-bX-LUL"/>
                                     <outlet property="foregroundViewTop" destination="pSw-h4-E0T" id="KM6-xO-2DU"/>
-                                    <outlet property="titleLabel" destination="Cn6-7O-sTo" id="cas-6Q-kAe"/>
                                     <segue destination="3Db-3m-P8t" kind="presentation" id="QcW-8x-sJE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="112" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="344" width="375" height="112"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="300" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="328" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRk-VH-QTm" id="8fA-Gv-n7a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="111.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-Y6-IZt" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -114,9 +111,16 @@
                                                 <constraint firstItem="NF0-fN-izc" firstAttribute="top" secondItem="fGn-Y6-IZt" secondAttribute="topMargin" id="Fam-gH-2Fj"/>
                                                 <constraint firstItem="W3w-zB-bmv" firstAttribute="leading" secondItem="fGn-Y6-IZt" secondAttribute="leadingMargin" id="LUy-B4-8hc"/>
                                                 <constraint firstAttribute="height" constant="100" id="ObA-uh-oPg"/>
-                                                <constraint firstItem="W3w-zB-bmv" firstAttribute="top" secondItem="NF0-fN-izc" secondAttribute="bottom" constant="8" id="PWc-m2-RDl"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="W3w-zB-bmv" secondAttribute="bottom" id="Qr7-dG-KvV"/>
+                                                <constraint firstItem="W3w-zB-bmv" firstAttribute="top" secondItem="NF0-fN-izc" secondAttribute="bottom" constant="8" id="fdw-35-VhL"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="W3w-zB-bmv" secondAttribute="trailing" id="qGE-jm-tLa"/>
+                                            </constraints>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-4Y-eCQ">
+                                            <rect key="frame" x="16" y="116" width="359" height="200"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="8FX-PK-uOH"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -124,23 +128,25 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="fGn-Y6-IZt" secondAttribute="trailing" constant="8" id="6Sn-oI-qDO"/>
                                         <constraint firstItem="fGn-Y6-IZt" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="topMargin" id="7ZY-0m-P8s"/>
+                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="8UZ-V9-5yk"/>
+                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="topMargin" constant="108" id="Czc-tt-JOG"/>
                                         <constraint firstItem="fGn-Y6-IZt" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="n8l-xL-2iQ"/>
+                                        <constraint firstItem="mQt-4Y-eCQ" firstAttribute="trailing" secondItem="8fA-Gv-n7a" secondAttribute="trailingMargin" constant="8" id="vLC-0w-QDq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cafeteriaLabel" destination="NF0-fN-izc" id="WIh-NE-92u"/>
-                                    <outlet property="cardView" destination="fGn-Y6-IZt" id="SyV-7q-hDP"/>
+                                    <outlet property="containerView" destination="mQt-4Y-eCQ" id="qtY-Jp-QWC"/>
+                                    <outlet property="containerViewTop" destination="Czc-tt-JOG" id="4JL-pz-Ryc"/>
                                     <outlet property="foregroundView" destination="fGn-Y6-IZt" id="tnl-NZ-krH"/>
                                     <outlet property="foregroundViewTop" destination="7ZY-0m-P8s" id="80a-kT-hSJ"/>
-                                    <outlet property="itemsLabel" destination="W3w-zB-bmv" id="bRZ-P9-LEA"/>
                                     <segue destination="dal-lx-uvI" kind="show" id="8TT-2h-nPZ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="312" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="456" width="375" height="312"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="300" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="628" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DJl-q0-InR" id="OAg-a9-fyj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="311.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="EqL-Bu-XtJ" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -199,21 +205,17 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cardView" destination="EqL-Bu-XtJ" id="j5P-0n-sBU"/>
                                     <outlet property="containerView" destination="6aX-hP-D0e" id="6T7-Ya-LTd"/>
                                     <outlet property="containerViewTop" destination="soU-je-N3E" id="I7V-90-22V"/>
-                                    <outlet property="dateLabel" destination="lME-ch-Qre" id="XrL-2Q-xqg"/>
-                                    <outlet property="detailImageView" destination="EXr-FU-UK1" id="CLG-Ik-ug5"/>
                                     <outlet property="foregroundView" destination="EqL-Bu-XtJ" id="PgK-vV-4zL"/>
                                     <outlet property="foregroundViewTop" destination="GMQ-Wr-JVN" id="Lmq-Au-fpc"/>
-                                    <outlet property="titleLabel" destination="Cz4-SO-gOQ" id="ACb-Ws-t5H"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="346" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="768" width="375" height="346"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="300" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="928" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="345.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-Vj-iJf" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -294,21 +296,18 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="balanceLabel" destination="bJK-sf-cB8" id="36E-9m-EGN"/>
-                                    <outlet property="cardView" destination="kl1-Vj-iJf" id="J3D-LF-YsH"/>
                                     <outlet property="containerView" destination="xTs-wS-4nV" id="USj-u8-tF8"/>
                                     <outlet property="containerViewTop" destination="SZm-OF-RWv" id="s9d-BA-KNQ"/>
-                                    <outlet property="deadLineLabel" destination="x63-ZJ-0zj" id="NKB-Ui-Jgk"/>
                                     <outlet property="foregroundView" destination="kl1-Vj-iJf" id="8sR-x6-DMD"/>
                                     <outlet property="foregroundViewTop" destination="EOP-uz-zIN" id="SdL-rg-vAY"/>
                                     <segue destination="pUb-YI-hpF" kind="show" identifier="showTuition" id="q6U-kJ-jps"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="369" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1114" width="375" height="369"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="300" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1228" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="368.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uO5-bj-XWu" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -376,22 +375,18 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cardView" destination="uO5-bj-XWu" id="SIL-Hi-muA"/>
                                     <outlet property="containerView" destination="dZJ-P2-ffT" id="r2e-vv-wvi"/>
                                     <outlet property="containerViewTop" destination="5h6-mP-dKe" id="cXJ-I6-Sbz"/>
-                                    <outlet property="dateLabel" destination="hsc-fa-32i" id="73l-85-O9h"/>
                                     <outlet property="foregroundView" destination="uO5-bj-XWu" id="H5V-v0-kSw"/>
                                     <outlet property="foregroundViewTop" destination="fVD-dX-2Do" id="aqu-qj-O2V"/>
-                                    <outlet property="posterImageView" destination="ELI-9f-uy1" id="1l6-hH-4NN"/>
-                                    <outlet property="titleLabel" destination="rSq-0e-n7z" id="5Cg-sq-vcI"/>
                                     <segue destination="DM2-F6-YFe" kind="show" identifier="showMovies" id="PG7-sY-fS4"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="463" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1483" width="375" height="463"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="300" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1528" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="462.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NoA-CP-wYL" userLabel="ForegroundView" customClass="RotatedView" customModule="FoldingCell">
@@ -450,14 +445,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <outlet property="cardView" destination="NoA-CP-wYL" id="Ih4-a0-TVL"/>
                                     <outlet property="containerView" destination="R7S-oz-LzN" id="SXZ-Kf-h1L"/>
                                     <outlet property="containerViewTop" destination="Ul3-76-gDo" id="oIp-L3-4CT"/>
                                     <outlet property="foregroundView" destination="NoA-CP-wYL" id="GwO-Or-ofL"/>
                                     <outlet property="foregroundViewTop" destination="bhk-cz-1Rh" id="niH-W4-7Nw"/>
-                                    <outlet property="lectureTitelLabel" destination="06n-Z9-WDt" id="RHE-Hc-KSE"/>
-                                    <outlet property="timeLabel" destination="75O-P5-F6F" id="ot1-i7-pLi"/>
-                                    <outlet property="timeRemainingLabel" destination="oMH-Ka-njU" id="W4M-VB-vap"/>
                                     <segue destination="m2X-lf-QKG" kind="show" identifier="showCalendar" id="R25-pt-o8n"/>
                                 </connections>
                             </tableViewCell>
@@ -485,7 +476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foy-xU-PJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="266.71664167916043"/>
+            <point key="canvasLocation" x="627.5" y="266.5"/>
         </scene>
         <!--Tution-->
         <scene sceneID="h0E-mN-54v">
