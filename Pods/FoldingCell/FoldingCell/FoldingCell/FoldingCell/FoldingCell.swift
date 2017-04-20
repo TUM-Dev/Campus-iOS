@@ -225,6 +225,11 @@ open class FoldingCell: UITableViewCell {
             assert(contSize.height - 2 * forgSize.height >= itemHeight, "contanerView.height too high")
         }
     // decrease containerView height or increase itemCount
+    print("calc: \(contSize.height - 2 * forgSize.height)")
+    print("item count: \(itemCount)")
+    print("container height: \(contSize.height)")
+    print("foreground height: \(forgSize.height)")
+    print("item height: \(itemHeight)")
     assert(contSize.height - 2 * forgSize.height >= itemHeight, "contanerView.height too high")
     
     var yPosition = 2 * forgSize.height

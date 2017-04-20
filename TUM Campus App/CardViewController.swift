@@ -14,7 +14,13 @@ class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
     
-    var cards = [DataElement]()
+    var cards = [DataElement]() {
+        didSet {
+            print(max(cards.count,1))
+            kRowsCount = max(cards.count,1)
+            createCellHeightsArray()
+        }
+    }
     
     var nextLecture: CalendarRow?
     
@@ -27,14 +33,17 @@ class CardViewController: UITableViewController {
     fileprivate struct C {
         struct CellHeight {
             static let close: CGFloat = 100 // equal or greater foregroundView height
-            static let open: CGFloat = 200 // equal or greater containerView height
+            static let open: CGFloat = 400 // equal or greater containerView height
         }
     }
+
+    var cellHeights = [CGFloat]()
     
     let kCloseCellHeight: CGFloat = 100
-    let kOpenCellHeight: CGFloat = 200
+    let kOpenCellHeight: CGFloat = 400
+    var kRowsCount = 4
     
-    var cellHeights = (0..<4).map { _ in C.CellHeight.close }
+    //var cellHeights = (0..<4).map { _ in C.CellHeight.close }
 
 }
 
@@ -67,13 +76,13 @@ extension CardViewController: TumDataReceiver {
         }
         refresh.endRefreshing()
     }
-    
 }
 
 extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createCellHeightsArray()
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -83,14 +92,22 @@ extension CardViewController {
         }
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = tableView.rowHeight
+//        tableView.rowHeight = UITableViewAutomaticDimension
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
+    
+    func createCellHeightsArray() {
+        cellHeights = []
+        for _ in 0...kRowsCount {
+            cellHeights.append(kCloseCellHeight)
+        }
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,8 +123,9 @@ extension CardViewController {
             mvc.nextLectureItem = nextLecture
         }
     }
-    
 }
+
+
 
 extension CardViewController {
     
