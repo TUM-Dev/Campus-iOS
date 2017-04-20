@@ -47,6 +47,7 @@ extension BookRentalAPI {
     
     func loadLogin() -> Response<BookRentalAPISession> {
         return doHTMLRequest(to: .login, queries: ["methodToCall": "done"]).nested { (document, promise) in
+            
             promise.finish(with: document.session, onNil: .noData)
         }
     }
@@ -54,15 +55,7 @@ extension BookRentalAPI {
     func rentals() -> Response<[BookRental]> {
         return doHTMLRequest(to: .rentals, queries: ["methodToCall": "showAccount", "typ": 1]).nested { (document, promise) in
             
-            guard let tds = document.tableItems else {
-                return promise.error(with: .noData)
-            }
-            if tds.count > 1 {
-                let rentals = stride(from: 0, to: tds.count, by: 2).flatMap { BookRental(td1: tds[$0], td2: tds[$0 + 1]) }
-                promise.success(with: rentals)
-            } else {
-                promise.success(with: .empty)
-            }
+            promise.finish(with: document.rentals, onNil: .noData)
         }
     }
     

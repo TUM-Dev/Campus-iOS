@@ -38,6 +38,17 @@ extension BookRentalHTML {
         return BookRentalAPISession()
     }
     
+    var rentals: [BookRental]? {
+        guard let tableItems = tableItems else {
+            return nil
+        }
+        if tableItems.count > 1 {
+            return stride(from: 0, to: tds.count, by: 2).flatMap { BookRental(td1: tds[$0], td2: tds[$0 + 1]) }
+        } else {
+            return .empty
+        }
+    }
+    
 }
 
 extension BookRentalHTML: DataRepresentable {
