@@ -31,8 +31,8 @@ class CardViewController: UITableViewController {
     
     var cellHeights = [CGFloat]()
     
-    let kCloseCellHeight: CGFloat = 108
-    let kOpenCellHeight: CGFloat = 408
+    let kCloseCellHeight: CGFloat = 112
+    let kOpenCellHeight: CGFloat = 412
     var kRowsCount = 4
 }
 
