@@ -134,12 +134,12 @@ extension CardViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if case let cell as FoldingCell = cell {
-            configureCell(cell: cell)
             if cellHeights[indexPath.row] == kCloseCellHeight {
                 cell.selectedAnimation(false, animated: false, completion:nil)
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }
+            configureCell(cell: cell)
         }
     }
     
@@ -148,8 +148,8 @@ extension CardViewController {
         cell.foregroundView.layer.masksToBounds = true
         cell.containerView.layer.cornerRadius = 8
         cell.containerView.layer.masksToBounds = true
-        let sideMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: cell.foregroundView.frame.height))
-        let topMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: cell.containerView.frame.size.width, height: 18))
+        let sideMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: cell.contentView.frame.height))
+        let topMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.size.width, height: 18))
         sideMarkerView.backgroundColor = .red
         topMarkerView.backgroundColor = .red
         cell.foregroundView.addSubview(sideMarkerView)
