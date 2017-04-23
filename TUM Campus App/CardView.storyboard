@@ -127,6 +127,7 @@
                                     <outlet property="dateLabel" destination="lME-ch-Qre" id="XrL-2Q-xqg"/>
                                     <outlet property="detailImageView" destination="EXr-FU-UK1" id="CLG-Ik-ug5"/>
                                     <outlet property="titleLabel" destination="Cz4-SO-gOQ" id="ACb-Ws-t5H"/>
+                                    <segue destination="7VU-7x-HwV" kind="show" id="1zY-xa-Nvj"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="112" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">

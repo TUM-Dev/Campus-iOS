@@ -32,7 +32,7 @@ class LibrarySettingsViewController: UIViewController {
        
         if usernameTextField.text != "" || passwordTextField.text != "" {
             
-        let opac_url = "https://opac.ub.tum.de/InfoGuideClient.tumsis"
+        let opac_url = TumOPACApi.OpacURL.rawValue
         let api = BookRentalAPI(baseURL: opac_url)
         
         api.start()

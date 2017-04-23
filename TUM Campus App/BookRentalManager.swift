@@ -17,7 +17,7 @@ class BookRentalManager: Manager {
     let keychainWrapper = KeychainWrapper()
     var user: String
     var password: String
-    let opac_url = "https://opac.ub.tum.de/InfoGuideClient.tumsis"
+    let opac_url = TumOPACApi.OpacURL.rawValue
     
     
     var main: TumDataManager
