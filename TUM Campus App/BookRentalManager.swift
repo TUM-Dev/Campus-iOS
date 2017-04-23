@@ -15,8 +15,8 @@ import Kanna
 class BookRentalManager: Manager {
     
     let keychainWrapper = KeychainWrapper()
-    var user = ""
-    var password = ""
+    var user: String
+    var password: String
     let opac_url = "https://opac.ub.tum.de/InfoGuideClient.tumsis"
     
     
