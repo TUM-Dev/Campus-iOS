@@ -25,7 +25,6 @@ class BookRentalsCardCell: CardTableViewCell {
     
     override func setElement(_ element: DataElement) {
         if let rentalItem = element as? BookRental {
-            print(rentalItem.title)
             titleLabel.text = rentalItem.title
             authorLabel.text = rentalItem.author
             deadlineLabel.text = rentalItem.deadline
