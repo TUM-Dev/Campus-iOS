@@ -13,6 +13,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var bibNumber: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
         didSet {
             avatarView.clipsToBounds = true
@@ -68,6 +69,11 @@ extension MoreTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
+            bibNumber.text = savedUsername
+        } else {
+            bibNumber.text = "Not logged in"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
