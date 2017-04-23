@@ -11,16 +11,21 @@ import Alamofire
 import Sweeft
 import Kanna
 
+
 class BookRentalManager: Manager {
     
-    let user = ""
-    let password = ""
+    let keychainWrapper = KeychainWrapper()
+    var user = ""
+    var password = ""
     let opac_url = "https://opac.ub.tum.de/InfoGuideClient.tumsis"
+    
     
     var main: TumDataManager
     
     required init(mainManager: TumDataManager) {
         main = mainManager
+        password = keychainWrapper.myObject(forKey: "v_Data") as? String ?? ""
+        user = UserDefaults.standard.value(forKey: "username") as? String ?? ""
     }
     
     static var rentals = [DataElement]()
