@@ -449,7 +449,7 @@
 				0EF4CEF31D4167CF001649F1 /* Person Detail View */,
 				0EB473D51C1B649100F17F44 /* Lecture View */,
 				0E6B53481EA447FD002B5058 /* TUM Sexy */,
-				229795831EAC1DFC004A7F9B /* Library Settings */,
+				229795831EAC1DFC004A7F9B /* Library */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
 				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
@@ -744,7 +744,7 @@
 			name = Helper;
 			sourceTree = "<group>";
 		};
-		229795831EAC1DFC004A7F9B /* Library Settings */ = {
+		229795831EAC1DFC004A7F9B /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */,
@@ -752,7 +752,7 @@
 				229795881EAC228E004A7F9B /* KeychainWrapper.h */,
 				229795891EAC228E004A7F9B /* KeychainWrapper.m */,
 			);
-			name = "Library Settings";
+			name = Library;
 			sourceTree = "<group>";
 		};
 		22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */ = {
