@@ -558,7 +558,7 @@
                 <viewControllerPlaceholder storyboardName="Tution" id="pUb-YI-hpF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owI-lW-n4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="332"/>
+            <point key="canvasLocation" x="1385" y="296"/>
         </scene>
         <!--News-->
         <scene sceneID="WWd-4M-boq">
@@ -566,7 +566,7 @@
                 <viewControllerPlaceholder storyboardName="News" id="7VU-7x-HwV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ezt-Wa-DtZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="379"/>
+            <point key="canvasLocation" x="1381" y="345"/>
         </scene>
         <!--Cafeteria-->
         <scene sceneID="DLc-6R-pZj">
@@ -574,7 +574,7 @@
                 <viewControllerPlaceholder storyboardName="Cafeteria" id="dal-lx-uvI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfS-EX-R6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="289"/>
+            <point key="canvasLocation" x="1398" y="243"/>
         </scene>
         <!--Movie-->
         <scene sceneID="iHc-2D-awl">
@@ -582,7 +582,7 @@
                 <viewControllerPlaceholder storyboardName="Movie" id="DM2-F6-YFe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQN-NN-lhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="243"/>
+            <point key="canvasLocation" x="1382" y="194"/>
         </scene>
         <!--Calendar Detail-->
         <scene sceneID="6e3-ya-1yv">
@@ -590,7 +590,7 @@
                 <viewControllerPlaceholder storyboardName="Calendar Detail" id="m2X-lf-QKG" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Y2-bk-APa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="198"/>
+            <point key="canvasLocation" x="1428" y="139"/>
         </scene>
         <!--EditCards-->
         <scene sceneID="ggL-VQ-yr3">
@@ -606,7 +606,7 @@
                 <viewControllerPlaceholder storyboardName="Search" id="9BT-FI-HmU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLc-1N-94R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1180" y="155"/>
+            <point key="canvasLocation" x="1388" y="85"/>
         </scene>
     </scenes>
     <resources>
