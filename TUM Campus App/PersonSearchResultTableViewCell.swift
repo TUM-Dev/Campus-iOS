@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonSearchResultTableViewCell: CardTableViewCell {
+class PersonSearchResultTableViewCell: TableViewCell {
 
     override func setElement(_ element: DataElement) {
         if let user = element as? UserData {

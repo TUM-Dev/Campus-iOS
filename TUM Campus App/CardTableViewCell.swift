@@ -8,6 +8,7 @@
 
 import UIKit
 import FoldingCell
+import MCSwipeTableViewCell
 
 class CardTableViewCell: FoldingCell {
     
@@ -23,3 +24,12 @@ class CardTableViewCell: FoldingCell {
     }
     
 }
+
+class TableViewCell: MCSwipeTableViewCell {
+    
+    func setElement(_ element: DataElement) {
+        
+    }
+    
+}
+
