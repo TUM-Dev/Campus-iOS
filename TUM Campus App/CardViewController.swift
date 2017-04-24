@@ -81,14 +81,10 @@ extension CardViewController {
         }
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-//        tableView.estimatedRowHeight = tableView.rowHeight
-//        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.backgroundColor = .clear
-        tableView.backgroundView = UIImageView(image: UIImage(named: "bg"))
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
-//        tableView.backgroundColor = Constants.backgroundGray
+        tableView.backgroundColor = Constants.backgroundGray
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
     
