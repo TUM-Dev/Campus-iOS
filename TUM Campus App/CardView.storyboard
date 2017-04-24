@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F43c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u9w-Pv-4xV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="u9w-Pv-4xV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -496,7 +496,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookRental" rowHeight="174" id="zT4-lK-HIn" customClass="BookRentalsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="940" width="375" height="174"/>
+                                <rect key="frame" x="0.0" y="948" width="375" height="174"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zT4-lK-HIn" id="q4n-nw-muo">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="173.5"/>
@@ -529,6 +529,24 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t0e-PM-zE7">
+                                                    <rect key="frame" x="271" y="0.0" width="80" height="16"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Rentals" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyl-vh-STo">
+                                                            <rect key="frame" x="5.5" y="1" width="69" height="14"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="5Ac-9Z-FYx"/>
+                                                        <constraint firstItem="Dyl-vh-STo" firstAttribute="centerX" secondItem="t0e-PM-zE7" secondAttribute="centerX" id="Lsr-AH-koe"/>
+                                                        <constraint firstAttribute="height" constant="16" id="ORN-GR-rAn"/>
+                                                        <constraint firstItem="Dyl-vh-STo" firstAttribute="centerY" secondItem="t0e-PM-zE7" secondAttribute="centerY" id="gLb-vf-7yx"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
@@ -540,7 +558,9 @@
                                                 <constraint firstItem="tP1-Sh-DdH" firstAttribute="leading" secondItem="u13-ad-pxV" secondAttribute="leadingMargin" id="VJf-7i-I8N"/>
                                                 <constraint firstItem="g9d-wh-PLp" firstAttribute="top" secondItem="u13-ad-pxV" secondAttribute="topMargin" constant="8" id="X7a-wK-4sX"/>
                                                 <constraint firstItem="tP1-Sh-DdH" firstAttribute="trailing" secondItem="u13-ad-pxV" secondAttribute="trailingMargin" constant="8" id="XHp-IZ-ilS"/>
+                                                <constraint firstItem="t0e-PM-zE7" firstAttribute="top" secondItem="u13-ad-pxV" secondAttribute="topMargin" constant="-8" id="XXX-07-F2z"/>
                                                 <constraint firstItem="BB5-UB-gdf" firstAttribute="trailing" secondItem="u13-ad-pxV" secondAttribute="trailingMargin" id="Yd1-oi-V7T"/>
+                                                <constraint firstItem="t0e-PM-zE7" firstAttribute="trailing" secondItem="u13-ad-pxV" secondAttribute="trailingMargin" constant="16" id="b6H-wb-2OT"/>
                                                 <constraint firstItem="tP1-Sh-DdH" firstAttribute="top" secondItem="BB5-UB-gdf" secondAttribute="bottom" constant="8" id="cqv-o0-ENc"/>
                                                 <constraint firstItem="BB5-UB-gdf" firstAttribute="leading" secondItem="u13-ad-pxV" secondAttribute="leadingMargin" id="crb-6W-qoX"/>
                                                 <constraint firstItem="g9d-wh-PLp" firstAttribute="leading" secondItem="u13-ad-pxV" secondAttribute="leadingMargin" id="lTK-8l-3xj"/>
