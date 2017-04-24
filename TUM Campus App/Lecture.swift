@@ -6,7 +6,9 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
 class Lecture: DataElement {
     
     let id: String
@@ -41,6 +43,14 @@ class Lecture: DataElement {
     
     func getCellIdentifier() -> String {
         return "lecture"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
     }
     
     var text: String {

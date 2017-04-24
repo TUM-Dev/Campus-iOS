@@ -6,10 +6,11 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol DataElement {
     func getCellIdentifier() -> String
+    func getOpenCellHeight() -> CGFloat
+    func getCloseCellHeight() -> CGFloat
     var text: String { get }
 }

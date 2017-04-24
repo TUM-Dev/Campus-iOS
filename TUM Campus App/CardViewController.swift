@@ -29,10 +29,10 @@ class CardViewController: UITableViewController {
             manager?.getCardItems(self)
     }
     
-    var cellHeights = [CGFloat]()
+    var cellHeights: [CGFloat] = [112]
+    var openCellHeights: [CGFloat] = [412]
+    var closeCellHeights: [CGFloat] = [112]
     
-    let kCloseCellHeight: CGFloat = 112
-    let kOpenCellHeight: CGFloat = 412
     var kRowsCount = 4
 }
 
@@ -61,6 +61,7 @@ extension CardViewController: TumDataReceiver {
                 }
             }
             cards = data
+            createCellHeightsArray()
             tableView.reloadData()
         }
         refresh.endRefreshing()
@@ -71,7 +72,6 @@ extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createCellHeightsArray()
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -90,8 +90,13 @@ extension CardViewController {
     
     func createCellHeightsArray() {
         cellHeights = []
-        for _ in 0...kRowsCount {
-            cellHeights.append(kCloseCellHeight)
+        closeCellHeights = []
+        openCellHeights = []
+        
+        for card in cards {
+            cellHeights.append(card.getCloseCellHeight())
+            openCellHeights.append(card.getOpenCellHeight())
+            closeCellHeights.append(card.getCloseCellHeight())
         }
     }
 
@@ -130,7 +135,7 @@ extension CardViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if case let cell as FoldingCell = cell {
-            if cellHeights[indexPath.row] == kCloseCellHeight {
+            if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] {
                 cell.selectedAnimation(false, animated: false, completion:nil)
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
@@ -158,12 +163,14 @@ extension CardViewController {
         }
         
         var duration = 0.0
-        if cellHeights[indexPath.row] == kCloseCellHeight { // open cell
-            cellHeights[indexPath.row] = kOpenCellHeight
+        if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] { // open cell
+            print("open cell")
+            cellHeights[indexPath.row] = openCellHeights[indexPath.row]
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.5
         } else {// close cell
-            cellHeights[indexPath.row] = kCloseCellHeight
+            print("close cell")
+            cellHeights[indexPath.row] = closeCellHeights[indexPath.row]
             cell.selectedAnimation(false, animated: true, completion: nil)
             duration = 1.1
         }
@@ -192,11 +199,7 @@ extension CardViewController {
             }
         }
         cell.selectionStyle = .none
-//        cell.defaultColor = tableView.backgroundColor
-//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state1) { (void) in handler() }
-//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state2) { (void) in handler() }
-//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state3) { (void) in handler() }
-//        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state4) { (void) in handler() }
+
         return cell
     }
     

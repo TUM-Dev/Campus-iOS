@@ -41,6 +41,14 @@ class Movie:ImageDownloader, DataElement {
         return "film"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     var text: String {
         return name.components(separatedBy: ": ")[1] 
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2016 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class EmptyCard: DataElement {
     
@@ -16,6 +16,14 @@ class EmptyCard: DataElement {
     
     func getCellIdentifier() -> String {
         return "empty"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
     }
     
 }

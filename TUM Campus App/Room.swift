@@ -39,6 +39,14 @@ class Room: DataElement {
         return "room"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     var text: String {
         return name
     }

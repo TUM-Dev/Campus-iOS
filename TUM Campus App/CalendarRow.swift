@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
+
 class CalendarRow: DataElement {
     var description: String?
     var dtend: Date?
@@ -20,6 +22,14 @@ class CalendarRow: DataElement {
     
     func getCellIdentifier() -> String {
         return "calendarRow"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
     }
     
     var text: String {

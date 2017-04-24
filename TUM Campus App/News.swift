@@ -36,6 +36,14 @@ class News: ImageDownloader, DataElement {
         return "news"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     func open() {
         if let url = URL(string: link) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
