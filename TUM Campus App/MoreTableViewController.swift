@@ -69,11 +69,7 @@ extension MoreTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
-            bibNumber.text = savedUsername
-        } else {
-            bibNumber.text = "Not logged in"
-        }
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,6 +77,11 @@ extension MoreTableViewController {
         if let mvc = tabBarController as? CampusTabBarController {
             user = User.shared
             manager = mvc.manager
+        }
+        if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
+            bibNumber.text = savedUsername
+        } else {
+            bibNumber.text = "Not logged in"
         }
     }
     

@@ -59,6 +59,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kQ-jX-46Z">
+                                <rect key="frame" x="163" y="256" width="48" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.027805624139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="fw4-Rt-rqp" eventType="touchUpInside" id="Lln-UX-deu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,6 +79,7 @@
                             <constraint firstItem="IAo-BS-z4V" firstAttribute="leading" secondItem="Qbv-h5-LiW" secondAttribute="leadingMargin" id="Gj9-Ed-Elb"/>
                             <constraint firstItem="toH-TC-jsO" firstAttribute="top" secondItem="AvQ-xg-AUQ" secondAttribute="bottom" constant="40" id="MbE-rC-uxG"/>
                             <constraint firstItem="X7a-Mj-YXe" firstAttribute="leading" secondItem="Qbv-h5-LiW" secondAttribute="leadingMargin" id="PTX-1T-lVr"/>
+                            <constraint firstItem="1kQ-jX-46Z" firstAttribute="top" secondItem="3K6-wM-QqK" secondAttribute="bottom" constant="51" id="Ut0-E9-jWt"/>
                             <constraint firstItem="3K6-wM-QqK" firstAttribute="width" secondItem="7Nn-Hm-Xzt" secondAttribute="width" id="W1o-e2-ldR"/>
                             <constraint firstItem="QjD-gV-dC3" firstAttribute="top" secondItem="3K6-wM-QqK" secondAttribute="bottom" constant="51" id="X9D-Wb-Bdp"/>
                             <constraint firstItem="7Nn-Hm-Xzt" firstAttribute="top" secondItem="toH-TC-jsO" secondAttribute="bottom" constant="49" id="ZEd-HR-suY"/>
@@ -78,9 +88,12 @@
                             <constraint firstItem="toH-TC-jsO" firstAttribute="trailing" secondItem="Qbv-h5-LiW" secondAttribute="trailingMargin" id="kJL-b2-48q"/>
                             <constraint firstItem="3K6-wM-QqK" firstAttribute="top" secondItem="7Nn-Hm-Xzt" secondAttribute="bottom" constant="15" id="log-uY-RUf"/>
                             <constraint firstItem="IAo-BS-z4V" firstAttribute="top" secondItem="X7a-Mj-YXe" secondAttribute="bottom" constant="26" id="mMK-Lr-a8E"/>
+                            <constraint firstItem="1kQ-jX-46Z" firstAttribute="centerX" secondItem="Qbv-h5-LiW" secondAttribute="centerX" id="pEo-6b-fyI"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="QjD-gV-dC3" id="wgX-kU-bfW"/>
+                        <outlet property="logoutButton" destination="1kQ-jX-46Z" id="bWg-zQ-A6s"/>
                         <outlet property="passwordTextField" destination="3K6-wM-QqK" id="dsm-sy-rnd"/>
                         <outlet property="usernameTextField" destination="7Nn-Hm-Xzt" id="Ywv-tL-03M"/>
                     </connections>

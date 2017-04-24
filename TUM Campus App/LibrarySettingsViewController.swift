@@ -12,7 +12,11 @@ import UIKit
 class LibrarySettingsViewController: UIViewController {
     
     @IBOutlet var usernameTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!    
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var logoutButton: UIButton!
+    
+    let keychainWrapper = KeychainWrapper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ class LibrarySettingsViewController: UIViewController {
         
         if UserDefaults.standard.bool(forKey: "hasSavedPassword") {
             passwordTextField.text = "******"
+            loginButton.isHidden = true
+            logoutButton.isHidden = false
         }
     }
 
@@ -54,6 +60,16 @@ class LibrarySettingsViewController: UIViewController {
         passwordTextField.resignFirstResponder()
         
     }
+    
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        
+        logout()
+        logoutButton.isHidden = true
+        loginButton.isHidden = false
+//        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
         
     func displayWarning(title: String, message: String) {
             
@@ -65,11 +81,18 @@ class LibrarySettingsViewController: UIViewController {
     
     func saveInKeychain(username: String, password: String) {
         
-        let keychainWrapper = KeychainWrapper()
         UserDefaults.standard.set(username, forKey: "username")
         UserDefaults.standard.set(true, forKey: "hasSavedPassword")
         keychainWrapper.mySetObject(password, forKey:kSecValueData)
         keychainWrapper.writeToKeychain()
+        UserDefaults.standard.synchronize()
+    }
+    
+    func logout() {
+        
+        keychainWrapper.resetKeychainItem()
+        UserDefaults.standard.set(false, forKey: "hasSavedPassword")
+        UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.synchronize()
     }
     

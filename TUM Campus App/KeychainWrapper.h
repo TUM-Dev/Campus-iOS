@@ -14,5 +14,6 @@
 - (void)mySetObject:(id)inObject forKey:(id)key;
 - (id)myObjectForKey:(id)key;
 - (void)writeToKeychain;
+- (void)resetKeychainItem;
 
 @end
