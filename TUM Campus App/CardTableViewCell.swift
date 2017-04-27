@@ -27,9 +27,15 @@ class CardTableViewCell: FoldingCell {
         super.awakeFromNib()
         contentView.layer.shadowOpacity = 0.4
         contentView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+        foregroundView.layer.cornerRadius = 8
+        foregroundView.layer.masksToBounds = true
+        containerView.layer.cornerRadius = 8
+        containerView.layer.masksToBounds = true
     }
     
 }
+
+
 
 class TableViewCell: MCSwipeTableViewCell {
     

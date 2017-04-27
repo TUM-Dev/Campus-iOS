@@ -17,7 +17,6 @@ class CardViewController: UITableViewController {
     var cards = [DataElement]() {
         didSet {
             kRowsCount = max(cards.count,1)
-            createCellHeightsArray()
         }
     }
     
@@ -29,9 +28,9 @@ class CardViewController: UITableViewController {
             manager?.getCardItems(self)
     }
     
-    var cellHeights: [CGFloat] = [112]
-    var openCellHeights: [CGFloat] = [412]
-    var closeCellHeights: [CGFloat] = [112]
+    var cellHeights: [CGFloat] = [120]
+    var openCellHeights: [CGFloat] = [420]
+    var closeCellHeights: [CGFloat] = [120]
     
     var kRowsCount = 4
 }
@@ -140,21 +139,7 @@ extension CardViewController {
             } else {
                 cell.selectedAnimation(true, animated: false, completion: nil)
             }
-            configureCell(cell: cell)
         }
-    }
-    
-    func configureCell(cell: FoldingCell) {
-        cell.foregroundView.layer.cornerRadius = 8
-        cell.foregroundView.layer.masksToBounds = true
-        cell.containerView.layer.cornerRadius = 8
-        cell.containerView.layer.masksToBounds = true
-        let sideMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: cell.contentView.frame.height))
-        let topMarkerView = UIView(frame: CGRect(x: 0, y: 0, width: cell.contentView.frame.size.width, height: 18))
-        sideMarkerView.backgroundColor = .red
-        topMarkerView.backgroundColor = .red
-        cell.foregroundView.addSubview(sideMarkerView)
-        cell.containerView.addSubview(topMarkerView)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

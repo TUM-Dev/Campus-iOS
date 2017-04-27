@@ -13,14 +13,7 @@ class NewsCardCell: CardTableViewCell {
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-//    @IBOutlet weak var cardView: UIView! {
-//        didSet {
-//            backgroundColor = UIColor.clear
-//            cardView.layer.shadowOpacity = 0.4
-//            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-//        }
-//    }
-    
+
     
     override func setElement(_ element: DataElement) {
         if let newsItem = element as? News {
@@ -32,10 +25,6 @@ class NewsCardCell: CardTableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
