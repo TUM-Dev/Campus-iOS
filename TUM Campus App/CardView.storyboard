@@ -145,10 +145,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-4Y-eCQ">
-                                            <rect key="frame" x="12" y="162" width="351" height="800"/>
+                                            <rect key="frame" x="12" y="162" width="351" height="600"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="800" id="lZh-QT-oFb"/>
+                                                <constraint firstAttribute="height" constant="600" id="lZh-QT-oFb"/>
                                             </constraints>
                                         </view>
                                     </subviews>

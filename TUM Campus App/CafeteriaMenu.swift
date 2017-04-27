@@ -41,7 +41,7 @@ class CafeteriaMenu: DataElement {
     }
     
     func getOpenCellHeight() -> CGFloat {
-        return 660
+        return 612
     }
     
     var text: String {
