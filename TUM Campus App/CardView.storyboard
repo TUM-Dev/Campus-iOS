@@ -129,31 +129,31 @@
                                             <rect key="frame" x="12" y="12" width="351" height="150"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Cafeteria Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF0-fN-izc">
-                                                    <rect key="frame" x="12" y="8" width="331" height="54.5"/>
+                                                    <rect key="frame" x="12" y="8" width="331" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagesgericht 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3w-zB-bmv">
-                                                    <rect key="frame" x="12" y="70.5" width="331" height="14.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dish 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3w-zB-bmv">
+                                                    <rect key="frame" x="12" y="37" width="331" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagesgericht 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-vO-if4">
-                                                    <rect key="frame" x="12" y="89" width="331" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dish 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-vO-if4">
+                                                    <rect key="frame" x="12" y="56" width="331" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktionsgericht 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rn-Qp-ewp">
-                                                    <rect key="frame" x="12" y="108" width="331" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dish 3" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rn-Qp-ewp">
+                                                    <rect key="frame" x="12" y="75" width="331" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aktionsgericht 2" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuE-zk-seE">
-                                                    <rect key="frame" x="12" y="127" width="331" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dish 4" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuE-zk-seE">
+                                                    <rect key="frame" x="12" y="94" width="331" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -165,28 +165,46 @@
                                                         <constraint firstAttribute="width" constant="8" id="gQN-aj-Qvr"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dish 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F21-QC-M12">
+                                                    <rect key="frame" x="12" y="131.5" width="339" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="241" text="dish 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfd-Wf-Zve">
+                                                    <rect key="frame" x="12" y="113" width="339" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="W3w-zB-bmv" firstAttribute="top" secondItem="NF0-fN-izc" secondAttribute="bottom" constant="8" id="7YC-Az-Xbe"/>
+                                                <constraint firstItem="W3w-zB-bmv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NF0-fN-izc" secondAttribute="bottom" constant="4" id="7YC-Az-Xbe"/>
                                                 <constraint firstItem="Kb6-vO-if4" firstAttribute="top" secondItem="W3w-zB-bmv" secondAttribute="bottom" constant="4" id="9rk-hi-h7q"/>
                                                 <constraint firstItem="tfj-Ag-Im5" firstAttribute="leading" secondItem="fGn-Y6-IZt" secondAttribute="leading" id="FEm-gn-XIR"/>
                                                 <constraint firstItem="BuE-zk-seE" firstAttribute="trailing" secondItem="fGn-Y6-IZt" secondAttribute="trailingMargin" id="FTb-Bs-B6f"/>
                                                 <constraint firstItem="BuE-zk-seE" firstAttribute="top" secondItem="8Rn-Qp-ewp" secondAttribute="bottom" constant="4" id="GDh-bR-lha"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NF0-fN-izc" secondAttribute="trailing" id="Hfk-iA-Kjx"/>
+                                                <constraint firstAttribute="trailing" secondItem="F21-QC-M12" secondAttribute="trailing" id="Puz-3M-Meb"/>
                                                 <constraint firstAttribute="height" constant="150" id="RUw-gX-cKE"/>
                                                 <constraint firstItem="NF0-fN-izc" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="RXT-zs-5KF"/>
                                                 <constraint firstItem="NF0-fN-izc" firstAttribute="top" secondItem="fGn-Y6-IZt" secondAttribute="topMargin" id="T4d-o6-MjY"/>
                                                 <constraint firstItem="Kb6-vO-if4" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="VKo-oe-5gZ"/>
                                                 <constraint firstItem="W3w-zB-bmv" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="Va0-iF-YDP"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="BuE-zk-seE" secondAttribute="bottom" id="YH5-tR-ypi"/>
+                                                <constraint firstItem="F21-QC-M12" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="Vt3-9q-1M9"/>
+                                                <constraint firstAttribute="bottom" secondItem="F21-QC-M12" secondAttribute="bottom" constant="4" id="WPR-4L-mK6"/>
                                                 <constraint firstItem="8Rn-Qp-ewp" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="Yhj-wP-KYH"/>
+                                                <constraint firstItem="F21-QC-M12" firstAttribute="top" secondItem="cfd-Wf-Zve" secondAttribute="bottom" constant="4" id="aRm-QD-DAa"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="W3w-zB-bmv" secondAttribute="trailing" id="gKN-m0-RNp"/>
                                                 <constraint firstItem="Kb6-vO-if4" firstAttribute="trailing" secondItem="fGn-Y6-IZt" secondAttribute="trailingMargin" id="hvQ-QX-VQR"/>
                                                 <constraint firstItem="8Rn-Qp-ewp" firstAttribute="top" secondItem="Kb6-vO-if4" secondAttribute="bottom" constant="4" id="jAw-EW-yNL"/>
                                                 <constraint firstItem="tfj-Ag-Im5" firstAttribute="top" secondItem="fGn-Y6-IZt" secondAttribute="top" id="k94-Uu-HSX"/>
+                                                <constraint firstAttribute="trailing" secondItem="cfd-Wf-Zve" secondAttribute="trailing" id="nLd-rU-eiw"/>
+                                                <constraint firstItem="cfd-Wf-Zve" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="nlr-2e-4Ig"/>
                                                 <constraint firstItem="8Rn-Qp-ewp" firstAttribute="trailing" secondItem="fGn-Y6-IZt" secondAttribute="trailingMargin" id="sLC-dJ-6vz"/>
                                                 <constraint firstAttribute="bottom" secondItem="tfj-Ag-Im5" secondAttribute="bottom" id="sag-b5-MIP"/>
+                                                <constraint firstItem="cfd-Wf-Zve" firstAttribute="top" secondItem="BuE-zk-seE" secondAttribute="bottom" constant="4" id="ste-sR-kCn"/>
                                                 <constraint firstItem="BuE-zk-seE" firstAttribute="leading" secondItem="tfj-Ag-Im5" secondAttribute="trailing" constant="4" id="usC-Mr-G0r"/>
                                             </constraints>
                                         </view>
@@ -243,9 +261,12 @@
                                     <outlet property="cafeteriaLabel" destination="NF0-fN-izc" id="OU6-aP-k8G"/>
                                     <outlet property="containerView" destination="mQt-4Y-eCQ" id="qtY-Jp-QWC"/>
                                     <outlet property="containerViewTop" destination="2Bh-IB-GIL" id="yZy-9x-4Aa"/>
+                                    <outlet property="dish1Label" destination="W3w-zB-bmv" id="ZNj-dN-bUf"/>
+                                    <outlet property="dish2Label" destination="Kb6-vO-if4" id="xsv-11-Ff9"/>
+                                    <outlet property="dish3Label" destination="8Rn-Qp-ewp" id="Wqq-vE-YKd"/>
+                                    <outlet property="dish4Label" destination="BuE-zk-seE" id="6nv-MF-HgG"/>
                                     <outlet property="foregroundView" destination="fGn-Y6-IZt" id="tnl-NZ-krH"/>
                                     <outlet property="foregroundViewTop" destination="sky-fe-ZG2" id="KKg-Ji-0aH"/>
-                                    <outlet property="itemsLabel" destination="W3w-zB-bmv" id="hzn-0s-mtk"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="300" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
