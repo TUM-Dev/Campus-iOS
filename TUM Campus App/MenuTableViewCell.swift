@@ -12,7 +12,6 @@ class MenuTableViewCell: TableViewCell {
 
     override func setElement(_ element: DataElement) {
         if let menu = element as? CafeteriaMenu {
-            
             //Dish Label
             dishLabel.text = menu.details.nameWithEmojiWithoutAnnotations
             
