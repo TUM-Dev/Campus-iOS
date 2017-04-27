@@ -20,7 +20,7 @@ class NewsCardCell: CardTableViewCell {
 //            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
 //        }
 //    }
-
+    
     
     override func setElement(_ element: DataElement) {
         if let newsItem = element as? News {
@@ -34,7 +34,6 @@ class NewsCardCell: CardTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

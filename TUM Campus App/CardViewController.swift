@@ -94,9 +94,9 @@ extension CardViewController {
         openCellHeights = []
         
         for card in cards {
-            cellHeights.append(card.getCloseCellHeight())
-            openCellHeights.append(card.getOpenCellHeight())
-            closeCellHeights.append(card.getCloseCellHeight())
+            cellHeights.append(card.getCloseCellHeight()+8)
+            openCellHeights.append(card.getOpenCellHeight()+8)
+            closeCellHeights.append(card.getCloseCellHeight()+8)
         }
     }
 
@@ -164,12 +164,10 @@ extension CardViewController {
         
         var duration = 0.0
         if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] { // open cell
-            print("open cell")
             cellHeights[indexPath.row] = openCellHeights[indexPath.row]
             cell.selectedAnimation(true, animated: true, completion: nil)
             duration = 0.5
         } else {// close cell
-            print("close cell")
             cellHeights[indexPath.row] = closeCellHeights[indexPath.row]
             cell.selectedAnimation(false, animated: true, completion: nil)
             duration = 1.1

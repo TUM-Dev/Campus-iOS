@@ -23,6 +23,12 @@ class CardTableViewCell: FoldingCell {
         return durations[itemIndex]
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentView.layer.shadowOpacity = 0.4
+        contentView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
+    }
+    
 }
 
 class TableViewCell: MCSwipeTableViewCell {
