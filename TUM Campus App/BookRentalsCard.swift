@@ -36,10 +36,4 @@ class BookRentalsCardCell: CardTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
 }
