@@ -6,6 +6,7 @@ PODS:
     - OrderedDictionary (~> 1.2)
     - OSCache (~> 1.2)
   - FoldingCell (2.0.3)
+  - Kanna (2.1.1)
   - MCSwipeTableViewCell (2.1.4)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - AYSlidingPickerView
   - CalendarLib (~> 2.0)
   - FoldingCell (~> 2.0.3)
+  - Kanna (~> 2.1.0)
   - MCSwipeTableViewCell (~> 2.1.4)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
   - Sweeft
@@ -48,6 +50,7 @@ SPEC CHECKSUMS:
   AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   FoldingCell: 2f3113051609167776743415fc00ed877ac6d62c
+  Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
