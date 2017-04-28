@@ -160,6 +160,12 @@ public class Promise<T, E: Error>: PromiseBody {
         }
     }
     
+    public func next<V>(_ mapper: @escaping (T) -> Promise<V, E>) -> Promise<V, E> {
+        return .new { promise in
+            self.onSuccess(call: mapper).future.nest(to: promise, using: id)
+        }
+    }
+    
     public func generalizeError() -> Promise<T, AnyError> {
         return .new { promise in
             onSuccess(call: promise.success)
