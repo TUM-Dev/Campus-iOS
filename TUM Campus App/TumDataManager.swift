@@ -45,6 +45,8 @@ class TumDataManager {
         .NewsCollection: NewsManager(single: false),
         .StudyRooms: StudyRoomsManager(mainManager: self),
         .TUMSexy : TumSexyManager(mainManager: self),
+        .BookRental: BookRentalManager(mainManager: self),
+        .BookRentalCard: BookRentalManager(mainManager: self),
     ]
     
     func getToken() -> String {
@@ -171,4 +173,7 @@ class TumDataManager {
         managers[.TUMSexy]?.fetchData(receiver.receiveData)
     }
     
+    func getRentals(_ receiver: TumDataReceiver) {
+        managers[.BookRental]?.fetchData(receiver.receiveData)
+    }
 }
