@@ -111,6 +111,7 @@
 		71A50F73EB96093C0EDC467BCC81D1EE /* OSCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AC2F4E580C735F08DDD3E5212CA9F43 /* OSCache.framework */; };
 		71D771B9E43C36E8E47679C401B1DBB6 /* NSAttributedString+MGCAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 5654F91522CBB2B6460AED2061E549FB /* NSAttributedString+MGCAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73369F47F137F7D7F4A7BC9645CD76DD /* Foundation.framework */; };
+		7484ACDE69678B36DF7A41C84A346CC4 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F03CBF390FCFCC74939B090EF80A04 /* Optional.swift */; };
 		74BCE467CA23E2D08945A7814301C356 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298ACD3E29B3798ABB897694AA34E69A /* UIKit.framework */; };
 		75882F4BB08CBFC176D18640FCBB747A /* MGCEventsRowView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA71AD7B43ADB511546F115D806995D /* MGCEventsRowView.m */; };
 		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7608211A5928F2F1C1A12606BAE0B72 /* SessionDelegate.swift */; };
@@ -227,12 +228,12 @@
 			remoteGlobalIDString = B626E472969D6F87698AF0041EAAFC38;
 			remoteInfo = FoldingCell;
 		};
-		3D1C681DA65FAE89A40596C6C43CED40 /* PBXContainerItemProxy */ = {
+		23BE84C42DF871B083A41D46013BD0E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 4B172C7D65903C91FE6D62563B444415;
-			remoteInfo = OrderedDictionary;
+			remoteGlobalIDString = 83369E9C12238433B2DEF1E31C4A239C;
+			remoteInfo = CalendarLib;
 		};
 		530E288B76F4EDA90F39376FDE783EDF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -283,12 +284,12 @@
 			remoteGlobalIDString = 4B172C7D65903C91FE6D62563B444415;
 			remoteInfo = OrderedDictionary;
 		};
-		8EBBCC21435755EBDBEB263FB24E4B47 /* PBXContainerItemProxy */ = {
+		8A2E952DA2CDB59A999FC740C0A7BABA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EA811680C1BAD7B8DAFEF051AFE071D3;
-			remoteInfo = OSCache;
+			remoteGlobalIDString = 4B172C7D65903C91FE6D62563B444415;
+			remoteInfo = OrderedDictionary;
 		};
 		BD81365B375B4827E9BAEA49289B8160 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -636,6 +637,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1AD1447F272E199A0355368CEE14449F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				483C17C81CE5D866D27F61316970ED08 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		47E96BD01762822562ED3AF52DC4CE17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -674,19 +683,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		928A5E71714134D4C7B1504468CFD64D /* Frameworks */ = {
+		D9B7C02B416D9D277FD810A0EED44D5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A794B2BB3C538694C4529E8A370075E9 /* Foundation.framework in Frameworks */,
+				CB16367005ACC9F336EFE50938D90075 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		99195E4207764744AEC07ECCBCD550EB /* Frameworks */ = {
+		E3CD7C3D8507A60A8F4739ECEA8CB722 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */,
+				0217D9DC1D3156C2224A4BA7107A3264 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,11 +707,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9B7C02B416D9D277FD810A0EED44D5A /* Frameworks */ = {
+		FCB7B77E3FA55CEA3E8F5ECFBD4A69ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB16367005ACC9F336EFE50938D90075 /* Foundation.framework in Frameworks */,
+				724C6CAC4B900907F0A009F8FF639674 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +771,7 @@
 				DCF41B87F9B6F05D3EF6BCCE012787C6 /* PZPullToRefresh-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/PZPullToRefresh";
+			path = "../Target Support Files/TKSubmitTransition";
 			sourceTree = "<group>";
 		};
 		0D33245038349B8ABD7B5DD31B78B796 /* Support Files */ = {
@@ -841,26 +850,32 @@
 			path = PZPullToRefresh;
 			sourceTree = "<group>";
 		};
-		302229EB190A0412443933FE93B7B430 /* iOS */ = {
+		1BE632093D258877653E375E0A8145F9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9633BC63BF7C3C0A05D2FB0F29DAA2DC /* CoreGraphics.framework */,
-				6F0FE75BD770D2CE4F9E674A181ABC75 /* EventKit.framework */,
-				2870E756F4C7A7D033F099FA9294F5DB /* EventKitUI.framework */,
-				73369F47F137F7D7F4A7BC9645CD76DD /* Foundation.framework */,
-				298ACD3E29B3798ABB897694AA34E69A /* UIKit.framework */,
+				1FC2CCC2732195A84770618CBF452541 /* Info.plist */,
+				8A2CC8190E3C481B476F231515341B41 /* SWXMLHash.modulemap */,
+				E104056B37FB6328DAE4D8095F98AA8B /* SWXMLHash.xcconfig */,
+				652D7833CAD261A464C73F63EEAA1E17 /* SWXMLHash-dummy.m */,
+				E8E78A8676834F7C3D33166DF633BB0E /* SWXMLHash-prefix.pch */,
+				6321FE30A6A6F14A282279A2F61E163E /* SWXMLHash-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/SWXMLHash";
 			sourceTree = "<group>";
 		};
-		4095B5A90CF1C4DF2350A3C3C93F7977 /* Frameworks */ = {
+		254753AA924F6560CDC63CEBFCC95FA2 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				71D6E0D174F4DE38CD29304BC2BA2282 /* OrderedDictionary.framework */,
-				0AC2F4E580C735F08DDD3E5212CA9F43 /* OSCache.framework */,
-				302229EB190A0412443933FE93B7B430 /* iOS */,
+				B4D91189BD601618526855A933AB4004 /* ASWeekSelectorView.modulemap */,
+				84606F9F6A05DB1CCACF86090DC41E58 /* ASWeekSelectorView.xcconfig */,
+				1BE86CFBF4519F6BFEC59529E288AF49 /* ASWeekSelectorView-dummy.m */,
+				7B0652863A362ED4FA6D3C218179B613 /* ASWeekSelectorView-prefix.pch */,
+				21298A38120083D294B107DD30F8BA22 /* ASWeekSelectorView-umbrella.h */,
+				3BAAC7B0ADDE28047C4F756CA929CD8E /* Info.plist */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/ASWeekSelectorView";
 			sourceTree = "<group>";
 		};
 		4FCA883211F2EF096083FE25E6C22718 /* Support Files */ = {
@@ -1037,7 +1052,7 @@
 			path = CalendarLib;
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		54E44CCC0B68A77001559035033AB03D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
@@ -1046,6 +1061,8 @@
 				549E833D5B8CDD2EE56B5A162E86A655 /* Products */,
 				A71E0115EA3381B06310CD7F28345401 /* Targets Support Files */,
 			);
+			name = "Support Files";
+			path = "../Target Support Files/OrderedDictionary";
 			sourceTree = "<group>";
 		};
 		87256972F91301B042B725DCC356AD35 /* OrderedDictionary */ = {
@@ -1102,12 +1119,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A71E0115EA3381B06310CD7F28345401 /* Targets Support Files */ = {
+		855787F2A8A67CD5A06172C30E61674A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C6133CC67D4316CF636DF2F67184E2EA /* Pods-Campus */,
+				7ADD7F1E0C15A97D824EEB6CF36EFF4F /* CalendarLib.modulemap */,
+				842D1F47E8532EA50B3C91D0F7C01C4C /* CalendarLib.xcconfig */,
+				602E4F90EAB9BFAE9C9B37A053C93028 /* CalendarLib-dummy.m */,
+				B7C9D3BC83199989C01427EB89D01412 /* CalendarLib-prefix.pch */,
+				4A81EE2856504426F74A4953462A5F35 /* CalendarLib-umbrella.h */,
+				BBAC31F525194635774B8A472AE3DA76 /* Info.plist */,
+				E9D8907632E40F261C1CD250417341C3 /* ResourceBundle-CalendarLib-Info.plist */,
 			);
-			name = "Targets Support Files";
+			name = "Support Files";
+			path = "../Target Support Files/CalendarLib";
 			sourceTree = "<group>";
 		};
 		BDAB86802DAEB0A0464673D1E16B138B /* AYSlidingPickerView */ = {
@@ -1364,12 +1388,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7A2409AD0B8F196222928F611EEBAB37 /* Headers */ = {
+		5BDAA05193A936BF6997ECB3129DE593 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF81565F3B461596F57B7CD3C3E21D87 /* OSCache-umbrella.h in Headers */,
-				8127672F060AA1A71B3F30782EB05FF3 /* OSCache.h in Headers */,
+				7A56F0147A756D9BEC9A4326D3C3A016 /* Pods-Campus-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,13 +1600,13 @@
 			productReference = 744E251CD2E00E04DAA80B7C5AE04D82 /* TKSubmitTransition.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		54CDBA9524CE5510D3B15D01D3ACCC29 /* ASWeekSelectorView */ = {
+		4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 79ADF0241BB8A9C0B9F96FBD76B680AD /* Build configuration list for PBXNativeTarget "ASWeekSelectorView" */;
+			buildConfigurationList = 032FE6A4FF03E43B2C60899A35389C7F /* Build configuration list for PBXNativeTarget "Kanna" */;
 			buildPhases = (
-				0D11D99A59AF381D72C3EE27BABC5D83 /* Sources */,
-				928A5E71714134D4C7B1504468CFD64D /* Frameworks */,
-				A145A193D392FFAD567CE5EBA0DE0C70 /* Headers */,
+				252B13ABC5AE0EA65897098097C1703E /* Sources */,
+				B26FEF1A0E7E734EE57A74A7D845B0F9 /* Frameworks */,
+				A3CA17BFDDB0A81444254ACD04D49309 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -1611,21 +1634,17 @@
 			productReference = 16906D346D362B517D918D580187AB07 /* PZPullToRefresh.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		83369E9C12238433B2DEF1E31C4A239C /* CalendarLib */ = {
+		54CDBA9524CE5510D3B15D01D3ACCC29 /* ASWeekSelectorView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F46F52207DB0DFB8375B487A05EF0824 /* Build configuration list for PBXNativeTarget "CalendarLib" */;
+			buildConfigurationList = 79ADF0241BB8A9C0B9F96FBD76B680AD /* Build configuration list for PBXNativeTarget "ASWeekSelectorView" */;
 			buildPhases = (
-				FB8CB1D3ABC27A9E54D6AC503F30A8F7 /* Sources */,
-				47E96BD01762822562ED3AF52DC4CE17 /* Frameworks */,
-				1A6BBA4A5727AC23C7F5149F10ABF267 /* Resources */,
-				1F68E9AAA93B8BBE328DF562C8D6FDE5 /* Headers */,
+				0D11D99A59AF381D72C3EE27BABC5D83 /* Sources */,
+				928A5E71714134D4C7B1504468CFD64D /* Frameworks */,
+				A145A193D392FFAD567CE5EBA0DE0C70 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7BDB4BC52AAB71793112955C9FDD749C /* PBXTargetDependency */,
-				B4854F171A6BCA77A2AC1573C036F922 /* PBXTargetDependency */,
-				45EFBD85B91387EAF6F7F915F1BA99A1 /* PBXTargetDependency */,
 			);
 			name = CalendarLib;
 			productName = CalendarLib;
@@ -1677,6 +1696,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				7BDB4BC52AAB71793112955C9FDD749C /* PBXTargetDependency */,
+				B4854F171A6BCA77A2AC1573C036F922 /* PBXTargetDependency */,
+				45EFBD85B91387EAF6F7F915F1BA99A1 /* PBXTargetDependency */,
 			);
 			name = FoldingCell;
 			productName = FoldingCell;
@@ -1948,8 +1970,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47A15F3B4F250B087B518B41A2BBA168 /* OSCache-dummy.m in Sources */,
-				4B818DE5D4CD8225E10E60C6FAEAF326 /* OSCache.m in Sources */,
+				91489831F7284705C45278608AF482DD /* PZPullToRefresh-dummy.m in Sources */,
+				39B1A26D3BD71AFE2D814799BC0CCB8A /* PZPullToRefreshView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2010,6 +2032,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FD1357FB232B7C45B551758BAB153A59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8CF2BAA4E81C898B9A25995C0E5DD73 /* SWXMLHash+TypeConversion.swift in Sources */,
+				3303420779C9C872B8A8CE5A7B1C98F1 /* SWXMLHash-dummy.m in Sources */,
+				1DC959B39F29CBD980715A6F8684D8E2 /* SWXMLHash.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2025,11 +2057,17 @@
 			target = 801B9D9D0EFF67D4AA276FAC553E7E04 /* PZPullToRefresh */;
 			targetProxy = F5972CBD6FC5B284D5005854BDBCC528 /* PBXContainerItemProxy */;
 		};
-		45EFBD85B91387EAF6F7F915F1BA99A1 /* PBXTargetDependency */ = {
+		29AEF95D3155C895CA9E11B5D7284009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PZPullToRefresh;
+			target = 1847A585FADAEEF18812D0ABF5E4BFC5 /* PZPullToRefresh */;
+			targetProxy = 8E21793A489DA89BB3FC5C3793988C82 /* PBXContainerItemProxy */;
+		};
+		33EAD4141CD9254CAB8FB01A25F82C53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OrderedDictionary;
 			target = 4B172C7D65903C91FE6D62563B444415 /* OrderedDictionary */;
-			targetProxy = 3D1C681DA65FAE89A40596C6C43CED40 /* PBXContainerItemProxy */;
+			targetProxy = 8A2E952DA2CDB59A999FC740C0A7BABA /* PBXContainerItemProxy */;
 		};
 		50484AB9E27FCC305FC946999A03DF74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2043,7 +2081,7 @@
 			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
 			targetProxy = C20A260D7AE1C9EFB1C85231A86806B0 /* PBXContainerItemProxy */;
 		};
-		7BDB4BC52AAB71793112955C9FDD749C /* PBXTargetDependency */ = {
+		5530C8EC461326E1723843838CED80AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "CalendarLib-CalendarLib";
 			target = 251BB9D8494E86A2610CF1B2809AA14E /* CalendarLib-CalendarLib */;
@@ -2210,6 +2248,75 @@
 				PRODUCT_NAME = ASWeekSelectorView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0C8447837398E5837D55BFE0033A5165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5C8E0BD6666018BFA54ED96C6A2F6FC /* Sweeft.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Sweeft/Sweeft-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Sweeft/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Sweeft/Sweeft.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Sweeft;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0DD1DE3AC0DD11871BB2C794BAF0E363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72D6133C33BDC269CA896784B6C7DE89 /* Kanna.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Kanna/Kanna-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Kanna/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Kanna/Kanna.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Kanna;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2549,7 +2656,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -2576,7 +2683,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		83C66ECA9785FD41B8109E733BA7C066 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -3061,7 +3168,7 @@
 			};
 			name = Debug;
 		};
-		EA8DC48F7303BCF3B12C2033BA4C01C0 /* Debug */ = {
+		E5450D4EE682ACFB22AC64E5EF64FCE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8995E145E4D3561277509FF35A63CEDA /* OSCache.xcconfig */;
 			buildSettings = {
@@ -3070,29 +3177,30 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OSCache/OSCache-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OSCache/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SWXMLHash/SWXMLHash-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SWXMLHash/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OSCache/OSCache.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = OSCache;
+				MODULEMAP_FILE = "Target Support Files/SWXMLHash/SWXMLHash.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SWXMLHash;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		F0D502FDDDFAE21F0B4A45DFD574E6C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3199,11 +3307,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C60DC26D64DA1101AAAB22350A5F8A9 /* Build configuration list for PBXNativeTarget "OrderedDictionary" */ = {
+		032FE6A4FF03E43B2C60899A35389C7F /* Build configuration list for PBXNativeTarget "Kanna" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9AB46C653728B1BA7FB537EBC046A3CA /* Debug */,
-				2A42677C72AFB5588B99BEB2BE2747DF /* Release */,
+				0DD1DE3AC0DD11871BB2C794BAF0E363 /* Debug */,
+				3BB2BE0C4C787F5F23DD4AFAF90D4DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3339,6 +3447,15 @@
 			buildConfigurations = (
 				F505EF1B72C31AE321106909EDEAA3ED /* Debug */,
 				AAF1CC4A18B26F4EAE711FC7BD0E0B40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC4967A234EDEA06CF685A19297187B5 /* Build configuration list for PBXNativeTarget "Sweeft" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D251E4E775DDE865412794602C063AD1 /* Debug */,
+				0C8447837398E5837D55BFE0033A5165 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -104,6 +104,16 @@
 		0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */; };
 		0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */; };
 		0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEEF1D416751001649F1 /* DetailView.swift */; };
+		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
+		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
+		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
+		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
+		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
+		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
+		2297958E1EAD711B004A7F9B /* TumOPACApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297958D1EAD711B004A7F9B /* TumOPACApi.swift */; };
+		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
+		22F4B6B41EA802960086D49A /* BookRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B31EA802960086D49A /* BookRental.swift */; };
+		22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */; };
 		301195E91E464A6A0012B133 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195E81E464A6A0012B133 /* Grade.swift */; };
 		301195EC1E464C830012B133 /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301195EB1E464C830012B133 /* Grade.storyboard */; };
 		301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195ED1E464F560012B133 /* GradesTableViewController.swift */; };
@@ -265,7 +275,19 @@
 		0EF4CEEB1D415D95001649F1 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEED1D415DB5001649F1 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		0EF4CEEF1D416751001649F1 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRetanlAPI.swift; sourceTree = "<group>"; };
+		0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalSession.swift; sourceTree = "<group>"; };
+		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
+		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
+		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LibrarySettingsView.storyboard; sourceTree = "<group>"; };
+		2297958D1EAD711B004A7F9B /* TumOPACApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumOPACApi.swift; sourceTree = "<group>"; };
+		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
+		22F4B6B31EA802960086D49A /* BookRental.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRental.swift; sourceTree = "<group>"; };
+		22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalsCard.swift; sourceTree = "<group>"; };
 		24903A680C6A8A498F797A7C /* Pods_Campus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Campus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27707466F6D5E27D3397DA7A /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
 		301195E81E464A6A0012B133 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		301195EB1E464C830012B133 /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
 		301195ED1E464F560012B133 /* GradesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesTableViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +450,7 @@
 				0EF4CEF31D4167CF001649F1 /* Person Detail View */,
 				0EB473D51C1B649100F17F44 /* Lecture View */,
 				0E6B53481EA447FD002B5058 /* TUM Sexy */,
+				229795831EAC1DFC004A7F9B /* Library Settings */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
 				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
@@ -522,8 +545,8 @@
 				0EF4CEE71D414D40001649F1 /* News.swift */,
 				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
+				22F4B6B31EA802960086D49A /* BookRental.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
-				0E0C68231E8A4355007001F1 /* Usage.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -536,6 +559,7 @@
 				5007C69F1E06788F0014B065 /* StudyRoomsManager.swift */,
 				0EB1617D1C1A01FE001A08FC /* TumOnlie XML Managers */,
 				0EB1617E1C1A0211001A08FC /* TumCabe JSON Managers */,
+				22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */,
 				0EB1617F1C1A0227001A08FC /* Manager Classes */,
 				0EB161801C1A0242001A08FC /* Enums and Constants */,
 				0E3B21571C13DBA20035ED70 /* TumOnlineLogin */,
@@ -589,6 +613,7 @@
 				0EC10C201C171D100024F902 /* MovieManager.swift */,
 				0EF4CEE51D414D39001649F1 /* NewsManager.swift */,
 				0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */,
+				0E0C68231E8A4355007001F1 /* Usage.swift */,
 			);
 			name = "TumCabe JSON Managers";
 			sourceTree = "<group>";
@@ -610,6 +635,7 @@
 				0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */,
 				0E1073AE1C1A410F004C93CF /* RoomFinderApi.swift */,
 				0E85D39C1C13E6EE00499564 /* TumCabeApi.swift */,
+				2297958D1EAD711B004A7F9B /* TumOPACApi.swift */,
 				0E2E33961E047BDB00E6F707 /* AppDefaults.swift */,
 				5007C69D1E06786E0014B065 /* StudyRoomStatus.swift */,
 				5007C6A21E067E240014B065 /* StudyRoomsApi.swift */,
@@ -655,6 +681,7 @@
 				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
 				0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */,
 				0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */,
+				22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */,
 				0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */,
 			);
 			name = Cards;
@@ -697,6 +724,44 @@
 				0E60CD471C14845700B29948 /* DetailViewDelegate.swift */,
 			);
 			name = "Detail View Protocols";
+			sourceTree = "<group>";
+		};
+		0EF790F41EA83042005CB9AB /* Book Rental */ = {
+			isa = PBXGroup;
+			children = (
+				22F4B6B11EA802350086D49A /* BookRentalManager.swift */,
+				0EF790F51EA8304E005CB9AB /* Helper */,
+			);
+			name = "Book Rental";
+			sourceTree = "<group>";
+		};
+		0EF790F51EA8304E005CB9AB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */,
+				0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */,
+				0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		229795831EAC1DFC004A7F9B /* Library Settings */ = {
+			isa = PBXGroup;
+			children = (
+				2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */,
+				229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */,
+				229795881EAC228E004A7F9B /* KeychainWrapper.h */,
+				229795891EAC228E004A7F9B /* KeychainWrapper.m */,
+			);
+			name = "Library Settings";
+			sourceTree = "<group>";
+		};
+		22F4B6AE1EA800960086D49A /* TumOPAC HTML Managers */ = {
+			isa = PBXGroup;
+			children = (
+				0EF790F41EA83042005CB9AB /* Book Rental */,
+			);
+			name = "TumOPAC HTML Managers";
 			sourceTree = "<group>";
 		};
 		301195EA1E464BB50012B133 /* Grade View */ = {
@@ -905,6 +970,7 @@
 				0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */,
 				301195EC1E464C830012B133 /* Grade.storyboard in Resources */,
 				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
+				2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
 				50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */,
@@ -1003,21 +1069,25 @@
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
+				22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,
 				0E3B214A1C13CB280035ED70 /* BulkRequest.swift in Sources */,
 				0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */,
 				0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */,
+				0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */,
 				0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */,
 				0EB1618C1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift in Sources */,
 				0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				5007C6A81E0693240014B065 /* StudyRoomsTableViewController.swift in Sources */,
+				229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */,
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
 				301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */,
 				0E5725451C1656D500E5471D /* TuitionTableViewController.swift in Sources */,
 				0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */,
 				0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */,
+				2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */,
 				5007C6A01E06788F0014B065 /* StudyRoomsManager.swift in Sources */,
 				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
@@ -1050,6 +1120,7 @@
 				0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */,
 				0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */,
 				0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */,
+				0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */,
 				0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */,
 				0E5A61DD1C13536C006017DB /* TumOnlineLoginRequestManager.swift in Sources */,
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
@@ -1058,7 +1129,9 @@
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
+				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
+				2297958E1EAD711B004A7F9B /* TumOPACApi.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,
 				5007C69C1E0678460014B065 /* StudyRoom.swift in Sources */,
 				0EF4CEEC1D415D95001649F1 /* NewsTableViewController.swift in Sources */,
@@ -1081,6 +1154,7 @@
 				0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */,
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
+				0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,
@@ -1092,6 +1166,7 @@
 				0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
+				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
 				0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */,
 				0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */,
 			);
