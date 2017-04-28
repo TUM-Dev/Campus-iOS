@@ -20,7 +20,7 @@ public final class BulkPromise<T, O: Error>: Promise<[T], O> {
         }
     }
     
-    init(promises: [Promise<T,O>], completionQueue: DispatchQueue = .main) {
+    public init(promises: [Promise<T,O>], completionQueue: DispatchQueue = .main) {
         count = promises.count
         super.init(completionQueue: completionQueue)
         promises => { promise, index in
@@ -28,13 +28,16 @@ public final class BulkPromise<T, O: Error>: Promise<[T], O> {
                 self.results.append((index, result))
             }
         }
+        if promises.isEmpty {
+            success(with: [])
+        }
     }
     
 }
 
 extension BulkPromise where T: Collection {
     
-    var flattened: Promise<[T.Iterator.Element], O> {
+    public var flattened: Promise<[T.Iterator.Element], O> {
         return nested { result in
             return result.flatMap(id)
         }

@@ -249,7 +249,7 @@ extension JSON {
 extension JSON {
     
     init(fragment: String) {
-        var items = fragment.components(separatedBy: "&") => { $0.components(separatedBy: "=") }
+        let items = fragment.components(separatedBy: "&") => { $0.components(separatedBy: "=") }
         let dictionary = items ==> { (strings: [String]) -> (String?, JSON?) in
             return (strings | 0, (strings | 1).json)
         } >>> iff >>= id

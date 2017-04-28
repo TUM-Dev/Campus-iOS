@@ -106,35 +106,31 @@ public extension API {
             request.addValue($1, forHTTPHeaderField: $0)
         }
         
-        return .new(completionQueue: completionQueue) { promise in
-            
-            auth.apply(to: request).onSuccess { request in
-                var request = request
-                self.willPerform(request: &request)
-                let session = self.session(for: method, at: endpoint)
-                let task = session.dataTask(with: request) { (data, response, error) in
-                    if let error = error {
-                        if let error = error as? URLError, error.code == .timedOut {
-                            promise.error(with: .timeout)
-                        } else {
-                            promise.error(with: .unknown(error: error))
-                        }
-                        return
-                    }
-                    let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
-                    guard acceptableStatusCodes.contains(statusCode) else {
-                        promise.error(with: .invalidStatus(code: statusCode, data: data))
-                        return
-                    }
-                    if let data = data {
-                        promise.success(with: data)
+        return auth.apply(to: request).nested { request, promise in
+            var request = request
+            self.willPerform(request: &request)
+            let session = self.session(for: method, at: endpoint)
+            let task = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    if let error = error as? URLError, error.code == .timedOut {
+                        promise.error(with: .timeout)
                     } else {
-                        promise.error(with: .noData)
+                        promise.error(with: .unknown(error: error))
                     }
+                    return
                 }
-                task.resume()
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 200
+                guard acceptableStatusCodes.contains(statusCode) else {
+                    promise.error(with: .invalidStatus(code: statusCode, data: data))
+                    return
+                }
+                if let data = data {
+                    promise.success(with: data)
+                } else {
+                    promise.error(with: .noData)
+                }
             }
-            
+            task.resume()
         }
     }
     
