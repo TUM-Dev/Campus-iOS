@@ -13,26 +13,17 @@ import FoldingCell
 class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
-    
-    var cards = [DataElement]() {
-        didSet {
-            kRowsCount = max(cards.count,1)
-        }
-    }
-    
+    var cards: [DataElement] = []
     var nextLecture: CalendarRow?
-    
     var refresh = UIRefreshControl()
-    
-    func refresh(_ sender: AnyObject?) {
-            manager?.getCardItems(self)
-    }
-    
     var cellHeights: [CGFloat] = [120]
     var openCellHeights: [CGFloat] = [420]
     var closeCellHeights: [CGFloat] = [120]
+
     
-    var kRowsCount = 4
+    func refresh(_ sender: AnyObject?) {
+        manager?.getCardItems(self)
+    }
 }
 
 extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
@@ -71,6 +62,7 @@ extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -79,6 +71,8 @@ extension CardViewController {
             imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
         }
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(sender:)))
+        tableView.addGestureRecognizer(longpress)
         tableView.addSubview(refresh)
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -87,6 +81,86 @@ extension CardViewController {
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
     
+    
+    func longPressGesture(sender: UIGestureRecognizer) {
+        let longPress = sender as! UILongPressGestureRecognizer
+        let state = longPress.state
+        let locationInView = longPress.location(in: tableView)
+        var indexPath = tableView.indexPathForRow(at: locationInView)
+    
+        switch state {
+        case UIGestureRecognizerState.began:
+            if indexPath != nil {
+                Cell.initialIndexPath = indexPath
+                let cell = tableView.cellForRow(at: indexPath!)!
+                Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
+                var center = cell.center
+                Cell.cellSnapshot!.center = center
+                Cell.cellSnapshot!.alpha = 0.0
+                tableView.addSubview(Cell.cellSnapshot!)
+                
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    center.y = locationInView.y
+                    Cell.cellSnapshot!.center = center
+                    Cell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                    Cell.cellSnapshot!.alpha = 0.80
+                    cell.alpha = 0.0
+                   
+                }, completion: { (finished) -> Void in
+                    if finished {
+                        cell.isHidden = true
+                    }
+                })
+            }
+            
+        case UIGestureRecognizerState.changed:
+            var center = Cell.cellSnapshot!.center
+            center.y = locationInView.y
+            Cell.cellSnapshot!.center = center
+            if ((indexPath != nil) && (indexPath != Cell.initialIndexPath)) {
+                swap(&cards[indexPath!.row], &cards[Cell.initialIndexPath!.row])
+                swap(&cellHeights[indexPath!.row], &cellHeights[Cell.initialIndexPath!.row])
+                swap(&openCellHeights[indexPath!.row], &openCellHeights[Cell.initialIndexPath!.row])
+                swap(&closeCellHeights[indexPath!.row], &closeCellHeights[Cell.initialIndexPath!.row])
+                tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath!)
+                Cell.initialIndexPath = indexPath
+            }
+            
+        default:
+            let cell = tableView.cellForRow(at: Cell.initialIndexPath!)!
+            cell.isHidden = false
+            cell.alpha = 0.0
+            UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                Cell.cellSnapshot!.center = cell.center
+                Cell.cellSnapshot!.transform = CGAffineTransform.identity
+                Cell.cellSnapshot!.alpha = 0.0
+                cell.alpha = 1.0
+            }, completion: { (finished) -> Void in
+                if finished {
+                    Cell.initialIndexPath = nil
+                    Cell.cellSnapshot!.removeFromSuperview()
+                    Cell.cellSnapshot = nil
+                }
+            })
+        }
+    }
+    
+    func snapshotOfCell(inputView: UIView) -> UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0.0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        let cellSnapshot : UIView = UIImageView(image: image)
+        cellSnapshot.layer.masksToBounds = false
+        cellSnapshot.layer.cornerRadius = 0.0
+        cellSnapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        cellSnapshot.layer.shadowRadius = 5.0
+        cellSnapshot.layer.shadowOpacity = 0.4
+
+    
+        return cellSnapshot
+        }
+        
     func createCellHeightsArray() {
         cellHeights = []
         closeCellHeights = []
@@ -192,3 +266,8 @@ extension CardViewController {
     
 }
 
+struct Cell {
+    static var cellSnapshot : UIView? = nil
+    static var initialIndexPath : IndexPath? = nil
+
+}
