@@ -242,24 +242,6 @@
                                                 <constraint firstItem="FdV-aJ-msh" firstAttribute="leading" secondItem="mQt-4Y-eCQ" secondAttribute="leading" id="mEM-Yf-eKY"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4k-Dy-ggd">
-                                            <rect key="frame" x="301" y="0.0" width="50" height="16"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDS-R1-rYy">
-                                                    <rect key="frame" x="10.5" y="1" width="29" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="fDS-R1-rYy" firstAttribute="centerY" secondItem="j4k-Dy-ggd" secondAttribute="centerY" id="IJJ-aS-BL5"/>
-                                                <constraint firstAttribute="width" constant="50" id="N6a-jL-92W"/>
-                                                <constraint firstItem="fDS-R1-rYy" firstAttribute="centerX" secondItem="j4k-Dy-ggd" secondAttribute="centerX" id="l5T-cF-6Ct"/>
-                                                <constraint firstAttribute="height" constant="16" id="wDX-cl-ZnH"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -373,24 +355,6 @@
                                                 <constraint firstAttribute="height" constant="400" id="Ru4-jl-0If"/>
                                                 <constraint firstItem="gfv-GX-uqX" firstAttribute="leading" secondItem="6aX-hP-D0e" secondAttribute="leading" id="llR-c8-Ag1"/>
                                                 <constraint firstAttribute="trailing" secondItem="gfv-GX-uqX" secondAttribute="trailing" id="xBx-jJ-ygd"/>
-                                            </constraints>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggp-M3-lO2">
-                                            <rect key="frame" x="291" y="0.0" width="60" height="16"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafeteria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEv-NA-m54">
-                                                    <rect key="frame" x="5.5" y="1" width="48" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="gEv-NA-m54" firstAttribute="centerY" secondItem="Ggp-M3-lO2" secondAttribute="centerY" id="ikm-De-9LN"/>
-                                                <constraint firstItem="gEv-NA-m54" firstAttribute="centerX" secondItem="Ggp-M3-lO2" secondAttribute="centerX" id="qUD-BV-SDc"/>
-                                                <constraint firstAttribute="height" constant="16" id="rSl-Sb-icv"/>
-                                                <constraint firstAttribute="width" constant="60" id="wPL-Wv-UXq"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -522,24 +486,6 @@
                                                 <constraint firstAttribute="height" constant="400" id="gYA-0s-hIX"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v36-SL-vjC">
-                                            <rect key="frame" x="281" y="0.0" width="70" height="16"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tution Fees" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ehu-XB-nkh">
-                                                    <rect key="frame" x="4.5" y="1" width="61" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="2S5-8t-yA7"/>
-                                                <constraint firstItem="Ehu-XB-nkh" firstAttribute="centerX" secondItem="v36-SL-vjC" secondAttribute="centerX" id="Ybg-Ru-dbs"/>
-                                                <constraint firstItem="Ehu-XB-nkh" firstAttribute="centerY" secondItem="v36-SL-vjC" secondAttribute="centerY" id="f6X-S9-fPX"/>
-                                                <constraint firstAttribute="height" constant="16" id="uX8-RQ-1Jc"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -660,24 +606,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="5S2-3F-5JG" secondAttribute="trailing" id="efM-5T-5P8"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqD-aS-NYu">
-                                            <rect key="frame" x="301" y="0.0" width="50" height="16"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TU Film" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PL5-iE-0kS">
-                                                    <rect key="frame" x="4.5" y="1" width="41" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="PL5-iE-0kS" firstAttribute="centerX" secondItem="eqD-aS-NYu" secondAttribute="centerX" id="0ew-cT-ARc"/>
-                                                <constraint firstAttribute="width" constant="50" id="ROE-Iv-M4f"/>
-                                                <constraint firstAttribute="height" constant="16" id="j74-cT-VDj"/>
-                                                <constraint firstItem="PL5-iE-0kS" firstAttribute="centerY" secondItem="eqD-aS-NYu" secondAttribute="centerY" id="u5z-KY-Fq4"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -788,24 +716,6 @@
                                                 <constraint firstItem="fBe-I0-k2g" firstAttribute="leading" secondItem="R7S-oz-LzN" secondAttribute="leading" id="jlx-ld-vQl"/>
                                                 <constraint firstAttribute="height" constant="400" id="lIG-sU-472"/>
                                                 <constraint firstAttribute="trailing" secondItem="fBe-I0-k2g" secondAttribute="trailing" id="rp1-Pr-QQK"/>
-                                            </constraints>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaj-eP-pQG">
-                                            <rect key="frame" x="291" y="0.0" width="60" height="16"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYc-S9-83u">
-                                                    <rect key="frame" x="6.5" y="1" width="47" height="14"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.96078431610000004" green="0.70588237050000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="02m-Py-CaY"/>
-                                                <constraint firstItem="GYc-S9-83u" firstAttribute="centerX" secondItem="zaj-eP-pQG" secondAttribute="centerX" id="154-Py-Syq"/>
-                                                <constraint firstAttribute="width" constant="60" id="Q9N-qv-gll"/>
-                                                <constraint firstItem="GYc-S9-83u" firstAttribute="centerY" secondItem="zaj-eP-pQG" secondAttribute="centerY" id="WWi-qa-0h7"/>
                                             </constraints>
                                         </view>
                                     </subviews>
