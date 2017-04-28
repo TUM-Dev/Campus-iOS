@@ -156,16 +156,16 @@ class CafeteriaMenuManager: Manager {
     
     func parseMensaMenu(_ name: String) -> MenuDetail {
         
-        let pattern = "(?:(?<=\\((?:[[a-z][A-Z][0-9]][[a-z][A-Z][0-9]]?,)?)|(?<=,(?:[[a-z][A-Z][0-9]][[a-z][A-Z][0-9]]?,)?))([[a-z][A-Z][0-9]][[a-z][A-Z][0-9]]?)(?=(?:,[[a-z][A-Z][0-9]][[a-z][A-Z][0-9]]?)*\\))"
+        let pattern = "(?:(?<=\\((?:[[a-z][A-Z][0-9]]{1,3},)?)|(?<=,(?:[[a-z][A-Z][0-9]]{1,3},)?))([[a-z][A-Z][0-9]]{1,3})(?=(?:,[[a-z][A-Z][0-9]]{1,3})*\\))"
         var notMatchedEmoji: [String] = []
         var matchedAnnotations: [String] = []
         var matchedEmoji: [String] = []
         var matchedDescriptions: [String] = []
         let output = NSMutableString(string: name)
         var startPoint = output.length
-        var withoutAnnotations = output
-        var withEmojiWithoutAnnotations = output
-
+        var withoutAnnotations = String(output)
+        var withEmojiWithoutAnnotations = String(output)
+        
         
         if let regex = try? NSRegularExpression(pattern: pattern, options: []) {
             
@@ -196,12 +196,12 @@ class CafeteriaMenuManager: Manager {
             let range = NSMakeRange(startPoint, output.length - startPoint)
             
             output.deleteCharacters(in: range)
-            withoutAnnotations = output
+            withoutAnnotations = String(output)
             matchedEmoji.forEach({output.append($0)})
-            withEmojiWithoutAnnotations = output
+            withEmojiWithoutAnnotations = String(output)
             notMatchedEmoji.forEach({output.append($0)})
         }
-        return MenuDetail(name: String(output), nameWithoutAnnotations: String(withoutAnnotations), nameWithEmojiWithoutAnnotations: String(withEmojiWithoutAnnotations), annotations: matchedAnnotations, annotationDescriptions: matchedDescriptions)
+        return MenuDetail(name: String(output), nameWithoutAnnotations: withoutAnnotations, nameWithEmojiWithoutAnnotations: withEmojiWithoutAnnotations, annotations: matchedAnnotations, annotationDescriptions: matchedDescriptions)
     }
     
     func getURL() -> String {
