@@ -117,7 +117,7 @@ extension CardViewController {
             var center = Cell.cellSnapshot!.center
             center.y = locationInView.y
             Cell.cellSnapshot!.center = center
-            if ((indexPath != nil) && (indexPath != Cell.initialIndexPath)) {
+            if indexPath != nil && indexPath != Cell.initialIndexPath {
                 swap(&cards[indexPath!.row], &cards[Cell.initialIndexPath!.row])
                 swap(&cellHeights[indexPath!.row], &cellHeights[Cell.initialIndexPath!.row])
                 swap(&openCellHeights[indexPath!.row], &openCellHeights[Cell.initialIndexPath!.row])
