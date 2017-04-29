@@ -15,6 +15,7 @@ target 'Campus' do
 	pod 'CalendarLib', '~> 2.0'
 	pod 'SWXMLHash', '~> 3.0.3'
 	pod 'TKSubmitTransition', :git => 'https://github.com/jvitor/TKSubmitTransition.git'
+    pod 'Kanna', '~> 2.1.0'
 end
 
 post_install do |installer|

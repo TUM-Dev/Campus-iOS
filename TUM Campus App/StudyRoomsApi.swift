@@ -8,7 +8,7 @@
 
 import Foundation
 enum StudyRoomApi: String {
-    case BaseUrl = "http://www.devapp.it.tum.de/iris/ris_api.php?format=json"
+    case BaseUrl = "https://www.devapp.it.tum.de/iris/ris_api.php?format=json"
     case AllRoomsAndGroups = ""
     case Room = "&raum="
 //    case Maps = "room/availableMaps/"
