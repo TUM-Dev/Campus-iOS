@@ -9,70 +9,28 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Sweeft
 import SWXMLHash
 
-class TuitionStatusManager: Manager {
+final class TuitionStatusManager: CachedManager, SingleItemManager {
     
-    var main: TumDataManager?
+    typealias DataType = Tuition
     
-    var single = false
+    var config: Config
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    var cache = [Tuition]()
+    var isLoaded = false
+    
+    var requiresLogin: Bool {
+        return false
     }
     
-    init(mainManager: TumDataManager, single: Bool) {
-        main = mainManager
-        self.single = single
+    init(config: Config) {
+        self.config = config
     }
     
-    static var tuitionItems = [DataElement]()
-    
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        if TuitionStatusManager.tuitionItems.isEmpty {
-            let url = getURL()
-            Alamofire.request(url).responseString() { (response) in
-                if let data = response.result.value {
-                    let tuitionData = SWXMLHash.parse(data)
-                    let rows = tuitionData["rowset"]["row"].all
-                    for row in rows {
-                        if let soll = row["soll"].element?.text,
-                                let frist = row["frist"].element?.text,
-                                let bez = row["semester_bezeichnung"].element?.text {
-                            
-                            let dateformatter = DateFormatter()
-                            dateformatter.dateFormat = "yyyy-MM-dd"
-                            if let fristDate = dateformatter.date(from: frist) {
-                                let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
-                                TuitionStatusManager.tuitionItems.append(tuition)
-                            }
-                            
-                        }
-                    }
-                    self.handle(handler)
-                }
-            }
-        } else {
-            handle(handler)
-        }
-        
+    func perform() -> Response<[Tuition]> {
+        return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus, at: "rowset", "row")
     }
     
-    func handle(_ handler: ([DataElement]) -> ()) {
-        if single {
-            if let tuitionItem = TuitionStatusManager.tuitionItems.first {
-                handler([tuitionItem])
-            }
-        } else {
-            handler(TuitionStatusManager.tuitionItems)
-        }
-    }
-    
-    func getURL() -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TuitionStatus.rawValue
-        if let token = main?.getToken() {
-            return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token
-        }
-        return ""
-    }
 }

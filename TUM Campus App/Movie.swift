@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Sweeft
 
-class Movie:ImageDownloader, DataElement {
+final class Movie: ImageDownloader, DataElement {
     
     let name: String
     let id: String
@@ -51,6 +52,43 @@ extension Movie: CardDisplayable {
     
     var cardKey: CardKey {
         return .tufilm
+    }
+    
+}
+
+extension Movie: Deserializable {
+    
+    convenience init?(from json: JSON) {
+        guard let ratingString = json["rating"].string,
+            let rating = Double(ratingString),
+            let description = json["description"].string,
+            let director = json["director"].string,
+            let name = json["title"].string,
+            let runtime = json["runtime"].string,
+            let airDate = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
+            let cover = json["cover"].string,
+            let created = json["created"].date(using: "yyyy-MM-dd HH:mm:ss"),
+            let yearString = json["year"].string,
+            let year = Int(yearString),
+            let genre = json["genre"].string,
+            let id = json["link"].string,
+            let actors = json["actors"].string else {
+                
+            return nil
+        }
+        
+        self.init(name: name,
+                  id: id,
+                  year: year,
+                  runtime: 0,
+                  rating: rating,
+                  genre: genre,
+                  actors: actors,
+                  director: director,
+                  description: description,
+                  created: created,
+                  airDate: airDate,
+                  poster: cover)
     }
     
 }

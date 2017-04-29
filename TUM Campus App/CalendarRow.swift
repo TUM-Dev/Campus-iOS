@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import Sweeft
+import SWXMLHash
 import CoreLocation
-class CalendarRow: DataElement {
+
+final class CalendarRow: DataElement {
     var description: String?
     var dtend: Date?
     var dtstart: Date?
@@ -32,6 +35,27 @@ extension CalendarRow: CardDisplayable {
     
     var cardKey: CardKey {
         return .calendar
+    }
+    
+}
+
+extension CalendarRow: XMLDeserializable {
+    
+    convenience init?(from xml: XMLIndexer) {
+        guard let title = xml["title"].element?.text,
+            let start = xml["dtstart"].element?.text?.date(using: "yyyy-MM-dd HH:mm:ss"),
+            let end = xml["dtend"].element?.text?.date(using: "yyyy-MM-dd HH:mm:ss"),
+            let status = xml["status"].element?.text,
+            let link = xml["url"].element?.text else {
+                
+                return nil
+        }
+        self.init()
+        self.title = title
+        self.dtstart = start
+        self.dtend = end
+        self.status = status
+        self.url = URL(string: link)
     }
     
 }

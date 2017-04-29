@@ -26,12 +26,12 @@ class TumDataManager {
         .Cafeterias: CafeteriaManager(mainManager: self),
         .CafeteriasCard: CafeteriaManager(mainManager: self, single: true),
         .CafeteriaMenu: CafeteriaMenuManager(mainManager: self),
-        .TuitionStatus: TuitionStatusManager(mainManager: self),
-        .TuitionStatusSingle: TuitionStatusManager(mainManager: self, single: true),
-        .MovieCard: MovieManager(single: true),
-        .MoviesCollection: MovieManager(mainManager: self),
-        .CalendarCard: CalendarManager(mainManager: self, single: true),
-        .CalendarFull: CalendarManager(mainManager: self),
+        // .TuitionStatus: TuitionStatusManager(mainManager: self),
+        // .TuitionStatusSingle: TuitionStatusManager(mainManager: self, single: true),
+        // .MovieCard: MovieManager(single: true),
+        // .MoviesCollection: MovieManager(mainManager: self),
+        // .CalendarCard: CalendarManager(mainManager: self, single: true),
+        // .CalendarFull: CalendarManager(mainManager: self),
         .UserData: UserDataManager(mainManager: self),
         .PersonSearch: PersonSearchManager(mainManager: self),
         .LectureItems: PersonalLectureManager(mainManager: self),
@@ -53,6 +53,16 @@ class TumDataManager {
     
     init(user: User?) {
         self.user = user
+        
+        let tumCabe = TUMCabeAPI(baseURL: "https://tumcabe.in.tum.de/Api/")
+        let tumOnline = TUMOnlineAPI(baseURL: "https://campus.tum.de/tumonline", user: user)
+        let config = Config(tumCabe: tumCabe, tumOnline: tumOnline, user: user)
+        
+        let manager = TuitionStatusManager(config: config)
+        manager.fetch().onSuccess { tuition in
+            print(tuition)
+        }
+        
     }
     
     func getPersonDetails(_ handler: @escaping (_ data: [DataElement]) -> (), user: UserData) {
