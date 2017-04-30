@@ -105,84 +105,84 @@ extension CardViewController {
        
         let locationInView = sender.location(in: tableView)
         
-                switch sender.state {
-                case UIGestureRecognizerState.began:
-                    guard let indexPath = tableView.indexPathForRow(at: locationInView) else {
-                        return
-                    }
-                    guard let cell = tableView.cellForRow(at: indexPath) else {
-                        return
-                    }
-                    var center = cell.center
-                    Cell.initialIndexPath = indexPath
-                    Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
+        switch sender.state {
+            case UIGestureRecognizerState.began:
+                guard let indexPath = tableView.indexPathForRow(at: locationInView) else {
+                    return
+                }
+                guard let cell = tableView.cellForRow(at: indexPath) else {
+                    return
+                }
+                var center = cell.center
+                Cell.initialIndexPath = indexPath
+                Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
+                Cell.cellSnapshot!.center = center
+                Cell.cellSnapshot!.alpha = 0.0
+                tableView.addSubview(Cell.cellSnapshot!)
+            
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    center.y = locationInView.y
+                    Cell.isAnimating = true
                     Cell.cellSnapshot!.center = center
-                    Cell.cellSnapshot!.alpha = 0.0
-                    tableView.addSubview(Cell.cellSnapshot!)
-                
-                    UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                        center.y = locationInView.y
-                        Cell.isAnimating = true
-                        Cell.cellSnapshot!.center = center
-                        Cell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                        Cell.cellSnapshot!.alpha = 0.80
-                        cell.alpha = 0.0
+                    Cell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                    Cell.cellSnapshot!.alpha = 0.80
+                    cell.alpha = 0.0
                    
                     }, completion: { finished -> Void in
-                        if finished {
-                             Cell.isAnimating = false
-                            if Cell.needsToBeVisible {
-                                Cell.needsToBeVisible = false
-                                UIView.animate(withDuration: 0.25) { cell.alpha = 1 }
-                            } else {
-                                cell.isHidden = true
-                            }
+                    if finished {
+                        Cell.isAnimating = false
+                        if Cell.needsToBeVisible {
+                            Cell.needsToBeVisible = false
+                            UIView.animate(withDuration: 0.25) { cell.alpha = 1 }
+                        } else {
+                            cell.isHidden = true
                         }
-                    })
+                    }
+                })
             
-                case UIGestureRecognizerState.changed:
-                    guard let indexPath = tableView.indexPathForRow(at: locationInView) else {
-                        return
-                    }
-                    guard let snapshot = Cell.cellSnapshot else {
-                        return
-                    }
-                    guard let initalIndexPath = Cell.initialIndexPath else {
-                        return
-                    }
-                    var center = snapshot.center
-                    center.y = locationInView.y
-                    snapshot.center = center
-                    if indexPath != initalIndexPath {
-                        swap(&cards[indexPath.row], &cards[initalIndexPath.row])
-                        swap(&cellHeights[indexPath.row], &cellHeights[initalIndexPath.row])
-                        swap(&openCellHeights[indexPath.row], &openCellHeights[initalIndexPath.row])
-                        swap(&closeCellHeights[indexPath.row], &closeCellHeights[initalIndexPath.row])
-                        tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath)
-                        Cell.initialIndexPath = indexPath
-                    }
-                    
-                default:
-                    guard let initalIndexPath = Cell.initialIndexPath else {
-                        return
-                    }
-                    guard let cell = tableView.cellForRow(at: initalIndexPath) else {
-                        return
-                    }
-                    guard let snapshot = Cell.cellSnapshot else {
-                        return
-                    }
-                    if Cell.isAnimating {
-                        Cell.needsToBeVisible = true
-                    } else {
-                        cell.isHidden = false
-                        cell.alpha = 0.0
-                    }
-                    UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                        snapshot.center = cell.center
-                        snapshot.transform = CGAffineTransform.identity
-                        snapshot.alpha = 0.0
-                        cell.alpha = 1.0
+            case UIGestureRecognizerState.changed:
+                guard let indexPath = tableView.indexPathForRow(at: locationInView) else {
+                    return
+                }
+                guard let snapshot = Cell.cellSnapshot else {
+                    return
+                }
+                guard let initalIndexPath = Cell.initialIndexPath else {
+                    return
+                }
+                var center = snapshot.center
+                center.y = locationInView.y
+                snapshot.center = center
+                if indexPath != initalIndexPath {
+                    swap(&cards[indexPath.row], &cards[initalIndexPath.row])
+                    swap(&cellHeights[indexPath.row], &cellHeights[initalIndexPath.row])
+                    swap(&openCellHeights[indexPath.row], &openCellHeights[initalIndexPath.row])
+                    swap(&closeCellHeights[indexPath.row], &closeCellHeights[initalIndexPath.row])
+                    tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath)
+                    Cell.initialIndexPath = indexPath
+                }
+            
+            default:
+                guard let initalIndexPath = Cell.initialIndexPath else {
+                    return
+                }
+                guard let cell = tableView.cellForRow(at: initalIndexPath) else {
+                    return
+                }
+                guard let snapshot = Cell.cellSnapshot else {
+                    return
+                }
+                if Cell.isAnimating {
+                    Cell.needsToBeVisible = true
+                } else {
+                    cell.isHidden = false
+                    cell.alpha = 0.0
+                }
+                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    snapshot.center = cell.center
+                    snapshot.transform = CGAffineTransform.identity
+                    snapshot.alpha = 0.0
+                    cell.alpha = 1.0
                     }, completion: { finished -> Void in
                         if finished {
                             Cell.initialIndexPath = nil
@@ -191,8 +191,8 @@ extension CardViewController {
                             Cell.needsToBeVisible = false
                             Cell.isAnimating = false
                         }
-                    })
-                }
+            })
+        }
     }
     
     func snapshotOfCell(inputView: UIView) -> UIView {
