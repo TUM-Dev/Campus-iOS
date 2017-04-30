@@ -75,7 +75,6 @@ class CardTableViewCell: FoldingCell {
             
         default:
                 UIView.animate(withDuration: 0.5) { self.frame = originalFrame }
-            break
         }
     }
     
@@ -110,13 +109,10 @@ class CardTableViewCell: FoldingCell {
         containerView.layer.masksToBounds = true
     }
     
-    
-    
-    
 }
 
 
-class TableViewCell: MCSwipeTableViewCell {
+class TableViewCell: UITableViewCell {
     
     func setElement(_ element: DataElement) {
 

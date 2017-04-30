@@ -65,6 +65,7 @@ extension CardViewController: TableViewCellDelegate {
         if let indexPath = tableView.indexPath(for: card) {
         
             tableView.beginUpdates()
+            card.isHidden = true
             cards.remove(at: indexPath.row)
             cellHeights.remove(at: indexPath.row)
             closeCellHeights.remove(at: indexPath.row)
@@ -82,12 +83,12 @@ extension CardViewController {
         
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
+        imageView.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
             imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
         }
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: .valueChanged)
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(sender:)))
         tableView.addGestureRecognizer(longpress)
         tableView.addSubview(refresh)
@@ -99,66 +100,65 @@ extension CardViewController {
     }
     
     
-    func longPressGesture(sender: UIGestureRecognizer) {
-        let longPress = sender as! UILongPressGestureRecognizer
-        let state = longPress.state
-        let locationInView = longPress.location(in: tableView)
-        var indexPath = tableView.indexPathForRow(at: locationInView)
-    
-        switch state {
-        case UIGestureRecognizerState.began:
-            if indexPath != nil {
-                Cell.initialIndexPath = indexPath
-                let cell = tableView.cellForRow(at: indexPath!)!
-                Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
-                var center = cell.center
-                Cell.cellSnapshot!.center = center
-                Cell.cellSnapshot!.alpha = 0.0
-                tableView.addSubview(Cell.cellSnapshot!)
+    func longPressGesture(sender: UILongPressGestureRecognizer) {
+       
+        let locationInView = sender.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: locationInView) {
+            if let cell = tableView.cellForRow(at: indexPath) {
                 
-                UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                switch sender.state {
+                case UIGestureRecognizerState.began:
+                    
+                    Cell.initialIndexPath = indexPath
+                    Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
+                    var center = cell.center
+                    Cell.cellSnapshot!.center = center
+                    Cell.cellSnapshot!.alpha = 0.0
+                    tableView.addSubview(Cell.cellSnapshot!)
+                
+                    UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                        center.y = locationInView.y
+                        Cell.cellSnapshot!.center = center
+                        Cell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                        Cell.cellSnapshot!.alpha = 0.80
+                        cell.alpha = 0.0
+                   
+                    }, completion: { (finished) -> Void in
+                        if finished {
+                            cell.isHidden = true
+                        }
+                    })
+            
+                case UIGestureRecognizerState.changed:
+                    var center = Cell.cellSnapshot!.center
                     center.y = locationInView.y
                     Cell.cellSnapshot!.center = center
-                    Cell.cellSnapshot!.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                    Cell.cellSnapshot!.alpha = 0.80
-                    cell.alpha = 0.0
-                   
-                }, completion: { (finished) -> Void in
-                    if finished {
-                        cell.isHidden = true
+                    if indexPath != Cell.initialIndexPath {
+                        swap(&cards[indexPath.row], &cards[Cell.initialIndexPath!.row])
+                        swap(&cellHeights[indexPath.row], &cellHeights[Cell.initialIndexPath!.row])
+                        swap(&openCellHeights[indexPath.row], &openCellHeights[Cell.initialIndexPath!.row])
+                        swap(&closeCellHeights[indexPath.row], &closeCellHeights[Cell.initialIndexPath!.row])
+                        tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath)
+                        Cell.initialIndexPath = indexPath
                     }
-                })
-            }
-            
-        case UIGestureRecognizerState.changed:
-            var center = Cell.cellSnapshot!.center
-            center.y = locationInView.y
-            Cell.cellSnapshot!.center = center
-            if indexPath != nil && indexPath != Cell.initialIndexPath {
-                swap(&cards[indexPath!.row], &cards[Cell.initialIndexPath!.row])
-                swap(&cellHeights[indexPath!.row], &cellHeights[Cell.initialIndexPath!.row])
-                swap(&openCellHeights[indexPath!.row], &openCellHeights[Cell.initialIndexPath!.row])
-                swap(&closeCellHeights[indexPath!.row], &closeCellHeights[Cell.initialIndexPath!.row])
-                tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath!)
-                Cell.initialIndexPath = indexPath
-            }
-            
-        default:
-            let cell = tableView.cellForRow(at: Cell.initialIndexPath!)!
-            cell.isHidden = false
-            cell.alpha = 0.0
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                Cell.cellSnapshot!.center = cell.center
-                Cell.cellSnapshot!.transform = CGAffineTransform.identity
-                Cell.cellSnapshot!.alpha = 0.0
-                cell.alpha = 1.0
-            }, completion: { (finished) -> Void in
-                if finished {
-                    Cell.initialIndexPath = nil
-                    Cell.cellSnapshot!.removeFromSuperview()
-                    Cell.cellSnapshot = nil
+                    
+                default:
+                    cell.isHidden = false
+                    cell.alpha = 0.0
+                    UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                        Cell.cellSnapshot!.center = cell.center
+                        Cell.cellSnapshot!.transform = CGAffineTransform.identity
+                        Cell.cellSnapshot!.alpha = 0.0
+                        cell.alpha = 1.0
+                    }, completion: { (finished) -> Void in
+                        if finished {
+                            Cell.initialIndexPath = nil
+                            Cell.cellSnapshot!.removeFromSuperview()
+                            Cell.cellSnapshot = nil
+                        }
+                    })
                 }
-            })
+            }
         }
     }
     
