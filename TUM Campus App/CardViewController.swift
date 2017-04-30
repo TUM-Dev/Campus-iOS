@@ -58,6 +58,23 @@ extension CardViewController: TumDataReceiver {
     }
 }
 
+extension CardViewController: TableViewCellDelegate {
+    
+    func cardDeleted(card: FoldingCell) {
+        
+        if let indexPath = tableView.indexPath(for: card) {
+        
+            tableView.beginUpdates()
+            cards.remove(at: indexPath.row)
+            cellHeights.remove(at: indexPath.row)
+            closeCellHeights.remove(at: indexPath.row)
+            openCellHeights.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .none)
+            tableView.endUpdates()
+        }
+    }
+}
+
 extension CardViewController {
     
     override func viewDidLoad() {
@@ -242,6 +259,7 @@ extension CardViewController {
         let item = cards | indexPath.row ?? EmptyCard()
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
+        cell.delegate = self
         let handler = { () -> () in
             if let path = self.tableView.indexPath(for: cell) {
                 PersistentCardOrder.value.remove(cardFor: item)
@@ -269,5 +287,4 @@ extension CardViewController {
 struct Cell {
     static var cellSnapshot : UIView? = nil
     static var initialIndexPath : IndexPath? = nil
-
 }
