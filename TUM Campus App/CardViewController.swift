@@ -102,17 +102,15 @@ extension CardViewController {
     
     func longPressGesture(sender: UILongPressGestureRecognizer) {
        
-        var hideAllowed = false
         let locationInView = sender.location(in: tableView)
         if let indexPath = tableView.indexPathForRow(at: locationInView) {
             if let cell = tableView.cellForRow(at: indexPath) {
                 
                 switch sender.state {
                 case UIGestureRecognizerState.began:
-                    print("began")
+                    var center = cell.center
                     Cell.initialIndexPath = indexPath
                     Cell.cellSnapshot  = snapshotOfCell(inputView: cell)
-                    var center = cell.center
                     Cell.cellSnapshot!.center = center
                     Cell.cellSnapshot!.alpha = 0.0
                     tableView.addSubview(Cell.cellSnapshot!)
@@ -127,11 +125,10 @@ extension CardViewController {
                    
                     }, completion: { finished -> Void in
                         if finished {
+                             Cell.isAnimating = false
                             if Cell.needsToBeVisible {
                                 Cell.needsToBeVisible = false
-                                UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                                    cell.alpha = 1
-                                })
+                                UIView.animate(withDuration: 0.25) { cell.alpha = 1 }
                             } else {
                                 cell.isHidden = true
                             }
@@ -139,7 +136,6 @@ extension CardViewController {
                     })
             
                 case UIGestureRecognizerState.changed:
-                    print("changed")
                     var center = Cell.cellSnapshot!.center
                     center.y = locationInView.y
                     Cell.cellSnapshot!.center = center
@@ -153,8 +149,6 @@ extension CardViewController {
                     }
                     
                 default:
-                    print(sender.state.rawValue)
-                    cell.isHidden = false
                     if Cell.isAnimating {
                         Cell.needsToBeVisible = true
                     } else {
@@ -166,11 +160,13 @@ extension CardViewController {
                         Cell.cellSnapshot!.transform = CGAffineTransform.identity
                         Cell.cellSnapshot!.alpha = 0.0
                         cell.alpha = 1.0
-                    }, completion: { (finished) -> Void in
+                    }, completion: { finished -> Void in
                         if finished {
                             Cell.initialIndexPath = nil
                             Cell.cellSnapshot!.removeFromSuperview()
                             Cell.cellSnapshot = nil
+                            Cell.needsToBeVisible = false
+                            Cell.isAnimating = false
                         }
                     })
                 }
