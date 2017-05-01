@@ -409,6 +409,7 @@
 		0E424F3C1BE16DBD00B5DFCB = {
 			isa = PBXGroup;
 			children = (
+				222F90F91EB7BD69002F9289 /* Campus.entitlements */,
 				0E424F471BE16DBE00B5DFCB /* TUM Campus App */,
 				0E424F5C1BE16DBE00B5DFCB /* TUM Campus AppUITests */,
 				504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
@@ -915,6 +916,11 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = LQ83GZ8GRK;
 						LastSwiftMigration = 0820;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					0E424F581BE16DBE00B5DFCB = {
 						CreatedOnToolsVersion = 7.1;
@@ -1346,6 +1352,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Campus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1367,6 +1374,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Campus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
