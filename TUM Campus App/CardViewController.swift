@@ -19,6 +19,7 @@ class CardViewController: UITableViewController {
     var cellHeights: [CGFloat] = [120]
     var openCellHeights: [CGFloat] = [420]
     var closeCellHeights: [CGFloat] = [120]
+    var cellIsAnimating: Bool = false
 
     
     func refresh(_ sender: AnyObject?) {
@@ -272,13 +273,15 @@ extension CardViewController {
         }
         
         var duration = 0.0
-        if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] { // open cell
+        if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] && cellIsAnimating == false { // open cell
+            cellIsAnimating = true
             cellHeights[indexPath.row] = openCellHeights[indexPath.row]
-            cell.selectedAnimation(true, animated: true, completion: nil)
+            cell.selectedAnimation(true, animated: true) { self.cellIsAnimating = false }
             duration = 0.5
-        } else {// close cell
+        } else if cellHeights[indexPath.row] == openCellHeights[indexPath.row] && cellIsAnimating == false {// close cell
+            cellIsAnimating = true
             cellHeights[indexPath.row] = closeCellHeights[indexPath.row]
-            cell.selectedAnimation(false, animated: true, completion: nil)
+            cell.selectedAnimation(false, animated: true) { self.cellIsAnimating = false }
             duration = 1.1
         }
         
