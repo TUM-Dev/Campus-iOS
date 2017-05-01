@@ -7,49 +7,21 @@
 //
 
 import Sweeft
-import Alamofire
-import SwiftyJSON
 
-class RoomFinderMapManager: SearchManager {
+final class RoomFinderMapManager: SearchManager {
     
-    var request: Request?
+    typealias DataType = Map
     
-    var main: TumDataManager?
+    var config: Config
     
-    var requiresLogin: Bool {
-        return false
+    init(config: Config) {
+        self.config = config
     }
     
-    var query: String?
-    
-    func setQuery(_ query: String) {
-        self.query = query
-    }
-    
-    required init(mainManager: TumDataManager) {
-        main = mainManager
-    }
-    
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        request?.cancel()
-        let url = getURL()
-        request = Alamofire.request(url).responseJSON() { (response) in
-            if let value = response.result.value {
-                let parsed = JSON(value)
-                parsed.array ==> { Map(roomID: self.query.?, from: $0) } | handler
-            }
+    func search(query: String) -> Response<[Map]> {
+        return config.tumCabe.doJSONRequest(to: .roomMaps, arguments: ["room" : query]).nested { (json: JSON) in
+            return json.array ==> Map.init ** query
         }
-    }
-    
-    func getURL() -> String {
-        let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.Maps.rawValue
-        if let search = query {
-            let url = base + search
-            if let value = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
-                return value
-            }
-        }
-        return ""
     }
     
 }

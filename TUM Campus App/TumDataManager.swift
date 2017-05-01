@@ -33,12 +33,12 @@ class TumDataManager {
         // .CalendarCard: CalendarManager(mainManager: self, single: true),
         // .CalendarFull: CalendarManager(mainManager: self),
         .UserData: UserDataManager(mainManager: self),
-        .PersonSearch: PersonSearchManager(mainManager: self),
+        // .PersonSearch: PersonSearchManager(mainManager: self),
         // .LectureItems: PersonalLectureManager(mainManager: self),
-        .LectureSearch: LectureSearchManager(mainManager: self),
-        .GradeItems: PersonalGradeManager(mainManager: self),
-        .RoomSearch: RoomSearchManager(mainManager: self),
-        .RoomMap: RoomFinderMapManager(mainManager: self),
+        // .LectureSearch: LectureSearchManager(mainManager: self),
+        // .GradeItems: PersonalGradeManager(mainManager: self),
+        // .RoomSearch: RoomSearchManager(mainManager: self),
+        // .RoomMap: RoomFinderMapManager(mainManager: self),
         .PersonDetail: PersonDetailDataManager(mainManager: self),
         .LectureDetails: LectureDetailsManager(mainManager: self),
         // .NewsCard: NewsManager(single: true),
@@ -107,23 +107,17 @@ class TumDataManager {
         }
     }
     
-    func search(_ receiver: TumDataReceiver, query: String, searchIn managersToSearchIn:[TumDataItems]? = nil) {
+    func search(_ receiver: TumDataReceiver, query: String, searchIn managersToSearchIn: [TumDataItems]? = nil) {
         let tmpSearchManagers = managersToSearchIn != nil ? Array(Set(searchManagers).intersection(managersToSearchIn!)) : searchManagers
         let request = BulkRequest(receiver: receiver)
-        
-        let filter: (Manager) -> Bool = isLoggedIn ? **{ true } : { !$0.requiresLogin }
-        tmpSearchManagers ==> { managers[$0] as? SearchManager } |> filter => { manager in
-            manager.setQuery(query)
-            manager.fetchData() { (data) in
-                request.receiveData(data)
-            }
+        tmpSearchManagers ==> { managers[$0] as? SimpleSearchManager } => { (manager: SimpleSearchManager) in
+            manager.search(query: query).onSuccess(call: request.receiveData)
         }
     }
     
     func getMapsForRoom(_ receiver: TumDataReceiver, roomID: String) {
         if let mapManager = managers[.RoomMap] as? RoomFinderMapManager {
-            mapManager.setQuery(roomID)
-            mapManager.fetchData(receiver.receiveData)
+            mapManager.search(query: roomID).onSuccess(call: receiver.receiveData)
         }
     }
     
@@ -152,8 +146,7 @@ class TumDataManager {
     
     func doPersonSearch(_ handler: @escaping (_ data: [DataElement]) -> (), query: String) {
         if let manager = managers[.PersonSearch] as? PersonSearchManager {
-            manager.query = query
-            manager.fetchData(handler)
+            manager.search(query: query).onSuccess(call: handler)
         }
     }
     

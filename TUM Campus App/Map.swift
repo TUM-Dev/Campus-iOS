@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import Sweeft
 
 final class Map: ImageDownloader, DataElement {
     let roomID: String

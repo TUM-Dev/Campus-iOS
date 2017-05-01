@@ -9,9 +9,9 @@
 import Sweeft
 import Contacts
 import UIKit
+import SWXMLHash
 
-
-class UserData: ImageDownloader, DataElement {
+final class UserData: ImageDownloader, DataElement {
     
     func getCellIdentifier() -> String {
         return "person"
@@ -93,6 +93,21 @@ class UserData: ImageDownloader, DataElement {
             print("Error")
         }
         
+    }
+    
+}
+
+extension UserData: XMLDeserializable {
+    
+    convenience init?(from xml: XMLIndexer) {
+        guard let name = xml["vorname"].element?.text,
+            let lastname = xml["familienname"].element?.text,
+            let id = xml["obfuscated_id"].element?.text else {
+            
+            return nil
+        }
+        let image = xml["bild_url"].element?.text ?? ""
+        self.init(name: "\(name) \(lastname)", picture: image, id: id)
     }
     
 }

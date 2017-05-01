@@ -12,7 +12,6 @@ import SWXMLHash
 
 class LectureDetailsManager: Manager {
     
-    
     var main: TumDataManager?
     
     var request: Request?

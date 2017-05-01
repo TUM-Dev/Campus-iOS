@@ -31,12 +31,12 @@ protocol SimpleSearchManager {
     func search(query: String) -> Response<[DataElement]>
 }
 
-protocol NewSearchManager: SimpleSearchManager {
+protocol SearchManager: SimpleSearchManager {
     associatedtype DataType: DataElement
     func search(query: String) -> Response<[DataType]>
 }
 
-extension NewSearchManager {
+extension SearchManager {
     
     func search(query: String) -> Response<[DataElement]> {
         return search(query: query).nested { $0.map { $0 as DataElement } }

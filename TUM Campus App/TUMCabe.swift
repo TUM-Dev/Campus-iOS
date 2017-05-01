@@ -13,9 +13,9 @@ enum TUMCabeEndpoint: String, APIEndpoint {
     case movie = "kino/"
     case cafeteria = "mensen/"
     case news = "news/"
-    case searchRooms = "room/search/"
-    case roomMaps = "room/availableMaps/"
-    case mapImage = "room/map/"
+    case searchRooms = "room/search/{query}"
+    case roomMaps = "room/availableMaps/{room}"
+    case mapImage = "room/map/{id}"
 }
 
 struct TUMCabeAPI: API {

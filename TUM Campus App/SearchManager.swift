@@ -7,7 +7,3 @@
 //
 
 import Foundation
-protocol SearchManager: Manager {
-    func setQuery(_ query: String)
-    var query: String? { get set }
-}
