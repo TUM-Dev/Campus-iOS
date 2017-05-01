@@ -12,7 +12,7 @@ branches:
 
 before_install:
   - echo $TRAVIS_SECURE_ENV_VARS
-  - pod repo update
+  - pod repo update 2>/dev/null
   - ./fastlane/before_install.sh
 
 script:
