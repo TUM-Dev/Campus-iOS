@@ -56,7 +56,6 @@
 		0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */; };
 		0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD471C14845700B29948 /* DetailViewDelegate.swift */; };
 		0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */; };
-		0E6160411C1A362F0065D661 /* XMLLocalFileResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6160401C1A362F0065D661 /* XMLLocalFileResource.swift */; };
 		0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */; };
 		0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */; };
 		0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */; };
@@ -223,7 +222,6 @@
 		0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewController.swift; sourceTree = "<group>"; };
 		0E60CD471C14845700B29948 /* DetailViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewDelegate.swift; sourceTree = "<group>"; };
 		0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenuManager.swift; sourceTree = "<group>"; };
-		0E6160401C1A362F0065D661 /* XMLLocalFileResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLLocalFileResource.swift; sourceTree = "<group>"; };
 		0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenu.swift; sourceTree = "<group>"; };
 		0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 				301195F11E4658FA0012B133 /* PersonalGradeManager.swift */,
 				0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */,
 				0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */,
-				0E6160401C1A362F0065D661 /* XMLLocalFileResource.swift */,
 				0EC10C261C1738420024F902 /* PersonSearchManager.swift */,
 				0EB161891C1A1999001A08FC /* LectureSearchManager.swift */,
 				0E3B21471C13C3790035ED70 /* TuitionStatusManager.swift */,
@@ -1085,7 +1082,6 @@
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */,
 				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
-				0E6160411C1A362F0065D661 /* XMLLocalFileResource.swift in Sources */,
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,

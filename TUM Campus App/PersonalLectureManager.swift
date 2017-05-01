@@ -6,10 +6,6 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
-import Alamofire
-import SWXMLHash
-
 import Sweeft
 
 final class PersonalLectureManager: CachedManager {

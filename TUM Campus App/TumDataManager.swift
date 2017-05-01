@@ -40,7 +40,7 @@ class TumDataManager {
         // .RoomSearch: RoomSearchManager(mainManager: self),
         // .RoomMap: RoomFinderMapManager(mainManager: self),
         .PersonDetail: PersonDetailDataManager(mainManager: self),
-        .LectureDetails: LectureDetailsManager(mainManager: self),
+        // .LectureDetails: LectureDetailsManager(mainManager: self),
         // .NewsCard: NewsManager(single: true),
         // .NewsCollection: NewsManager(single: false),
         // .StudyRooms: StudyRoomsManager(mainManager: self),
@@ -75,8 +75,7 @@ class TumDataManager {
     
     func getLectureDetails(_ receiver: TumDataReceiver, lecture: Lecture) {
         if let manager = managers[.LectureDetails] as? LectureDetailsManager {
-            manager.query = lecture
-            manager.fetchData(receiver.receiveData)
+            manager.fetch(for: lecture).onSuccess { receiver.receiveData([$0]) }
         }
     }
     

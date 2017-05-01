@@ -26,6 +26,12 @@ extension Manager {
 
 // NEW Stuff!!!
 
+protocol DetailsManager {
+    associatedtype DataType
+    init(config: Config)
+    func fetch(for data: DataType) -> Response<DataType>
+}
+
 protocol SimpleSearchManager {
     init(config: Config)
     func search(query: String) -> Response<[DataElement]>

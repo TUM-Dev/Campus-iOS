@@ -47,6 +47,14 @@ extension XMLIndexer {
     
 }
 
+extension XMLIndexer: XMLDeserializable {
+    
+    init?(from xml: XMLIndexer) {
+        self = xml
+    }
+    
+}
+
 extension API {
     
     func doXMLObjectRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
