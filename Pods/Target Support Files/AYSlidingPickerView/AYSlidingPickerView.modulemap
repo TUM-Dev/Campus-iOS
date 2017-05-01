@@ -1,6 +1,0 @@
-framework module AYSlidingPickerView {
-  umbrella header "AYSlidingPickerView-umbrella.h"
-
-  export *
-  module * { export * }
-}
