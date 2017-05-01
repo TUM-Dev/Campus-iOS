@@ -34,7 +34,7 @@ class TumDataManager {
         // .CalendarFull: CalendarManager(mainManager: self),
         .UserData: UserDataManager(mainManager: self),
         .PersonSearch: PersonSearchManager(mainManager: self),
-        .LectureItems: PersonalLectureManager(mainManager: self),
+        // .LectureItems: PersonalLectureManager(mainManager: self),
         .LectureSearch: LectureSearchManager(mainManager: self),
         .GradeItems: PersonalGradeManager(mainManager: self),
         .RoomSearch: RoomSearchManager(mainManager: self),
@@ -43,7 +43,7 @@ class TumDataManager {
         .LectureDetails: LectureDetailsManager(mainManager: self),
         // .NewsCard: NewsManager(single: true),
         // .NewsCollection: NewsManager(single: false),
-        .StudyRooms: StudyRoomsManager(mainManager: self),
+        // .StudyRooms: StudyRoomsManager(mainManager: self),
         // .TUMSexy : TumSexyManager(mainManager: self),
     ]
     
@@ -60,8 +60,8 @@ class TumDataManager {
                             roomsURL: "http://www.devapp.it.tum.de/iris/",
                             user: user)
         
-        MovieManager(config: config).fetch().onSuccess { items in
-            print(items)
+        PersonalLectureManager(config: config).fetch().onSuccess { lectures in
+            print(lectures)
         }
         
     }

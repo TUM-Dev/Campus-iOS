@@ -10,6 +10,31 @@ import Foundation
 import Alamofire
 import SWXMLHash
 
+import Sweeft
+
+final class NewPersonalGradeManager: CachedManager {
+    
+    typealias DataType = Grade
+    
+    var config: Config
+    
+    var cache = [Grade]()
+    var isLoaded = false
+    
+    var requiresLogin: Bool {
+        return false
+    }
+    
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func perform() -> Response<[Grade]> {
+        return config.tumOnline.doXMLObjectsRequest(to: .personalLectures, at: "rowset", "row")
+    }
+    
+}
+
 class PersonalGradeManager: Manager {
     
     static var grades = [DataElement]()

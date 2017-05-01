@@ -10,42 +10,29 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class StudyRoomsManager: Manager {
-    
-    static var studyRooms = [StudyRoom]()
-    static var groups = [StudyRoomGroup]()
-    
-    required init(mainManager: TumDataManager) {
-        
-    }
-    
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        if let uuid = UIDevice.current.identifierForVendor?.uuidString {
-            Alamofire.request(getURL(), method: .get, parameters: nil,
-                              headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
-                                if let data = response.result.value {
-                                    if let json = JSON(data).dictionary {
-                                        if let rooms = json["raeume"]?.array {
-                                            StudyRoomsManager.studyRooms = rooms.flatMap(StudyRoom.init)
-                                        }
-                                        if let groups = json["gruppen"]?.array {
-                                            StudyRoomsManager.groups = groups.flatMap(StudyRoomGroup.init)
-                                        }
-                                        self.handleStudyRooms(handler)
-                                    }
-                                }
-            }
-        }
-    }
+import Sweeft
 
-    func handleStudyRooms(_ handler: ([DataElement]) -> ()) {
-        let sortedGroups = StudyRoomsManager.groups.sorted { $0.sortId < $1.sortId }
-        handler(sortedGroups)
-        handler(StudyRoomsManager.studyRooms)
+final class StudyRoomsManager: CachedManager {
+    
+    typealias DataType = StudyRoomGroup
+    
+    var config: Config
+    
+    var cache = [StudyRoomGroup]()
+    var isLoaded = false
+    
+    var requiresLogin: Bool {
+        return false
     }
     
-    func getURL() -> String {
-        return StudyRoomApi.BaseUrl.rawValue + StudyRoomApi.AllRoomsAndGroups.rawValue
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func perform() -> Response<[StudyRoomGroup]> {
+        return config.rooms.doJSONRequest(to: .rooms).nested { json in
+            return json["gruppen"].array ==> StudyRoomGroup.init
+        }
     }
     
 }

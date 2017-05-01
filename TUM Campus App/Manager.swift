@@ -26,6 +26,24 @@ extension Manager {
 
 // NEW Stuff!!!
 
+protocol SimpleSearchManager {
+    init(config: Config)
+    func search(query: String) -> Response<[DataElement]>
+}
+
+protocol NewSearchManager: SimpleSearchManager {
+    associatedtype DataType: DataElement
+    func search(query: String) -> Response<[DataType]>
+}
+
+extension NewSearchManager {
+    
+    func search(query: String) -> Response<[DataElement]> {
+        return search(query: query).nested { $0.map { $0 as DataElement } }
+    }
+    
+}
+
 protocol SimpleManager {
     init(config: Config)
     var requiresLogin: Bool { get }

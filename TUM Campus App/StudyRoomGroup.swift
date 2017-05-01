@@ -6,7 +6,7 @@
 //  Copyright © 2016 LS1 TUM. All rights reserved.
 //
 
-import SwiftyJSON
+import Sweeft
 
 class StudyRoomGroup: DataElement {
     let sortId: Int
