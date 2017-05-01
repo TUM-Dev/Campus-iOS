@@ -17,6 +17,7 @@ target 'Campus' do
 	pod 'TKSubmitTransition', :git => 'https://github.com/jvitor/TKSubmitTransition.git'
     pod 'FoldingCell', '~> 2.0.3'
     pod 'Kanna', '~> 2.1.0'
+    pod 'Charts'
 end
 
 post_install do |installer|

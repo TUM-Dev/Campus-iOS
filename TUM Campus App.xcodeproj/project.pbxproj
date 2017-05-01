@@ -324,8 +324,8 @@
 		50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedScreenshots.swift; sourceTree = "<group>"; };
 		50F798E21E71615400FA4E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F798E81E71618400FA4E49 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
-		9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
-		CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
+		80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
+		83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -818,8 +818,8 @@
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */,
-				CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */,
+				83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */,
+				80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1251,7 +1251,7 @@
 /* Begin XCBuildConfiguration section */
 		0E424F601BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1299,7 +1299,7 @@
 		};
 		0E424F611BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1341,7 +1341,7 @@
 		};
 		0E424F631BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */;
+			baseConfigurationReference = 83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1362,7 +1362,7 @@
 		};
 		0E424F641BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1381,7 +1381,7 @@
 		};
 		0E424F661BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */;
+			baseConfigurationReference = 83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1396,7 +1396,7 @@
 		};
 		0E424F671BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1411,7 +1411,7 @@
 		};
 		504C29301E2BBB9C007583E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */;
+			baseConfigurationReference = 83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1429,7 +1429,7 @@
 		};
 		504C29311E2BBB9C007583E2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1445,7 +1445,7 @@
 		};
 		50F798E61E71615400FA4E49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9853D2CAE4295D6821EBA3B5 /* Pods-Campus.debug.xcconfig */;
+			baseConfigurationReference = 83888E420F91BDF0F1652D1B /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1463,7 +1463,7 @@
 		};
 		50F798E71E71615400FA4E49 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA4D61126B9EBDD16FB11A29 /* Pods-Campus.release.xcconfig */;
+			baseConfigurationReference = 80076866295E9FEE70F99F76 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
