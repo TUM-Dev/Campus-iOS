@@ -8,7 +8,9 @@
 
 import UIKit
 
-class News: ImageDownloader, DataElement {
+import Sweeft
+
+final class News: ImageDownloader, DataElement {
     
     let id: String
     let date: Date
@@ -50,6 +52,21 @@ extension News: CardDisplayable {
         return .news
     }
   
+}
+
+extension News: Deserializable {
+    
+    convenience init?(from json: JSON) {
+        guard let title = json["title"].string,
+            let link = json["link"].string,
+            let date = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
+            let id = json["news"].string else {
+                
+            return nil
+        }
+        self.init(id: id, date: date, title: title, link: link)
+    }
+    
 }
 
 extension News: Equatable {

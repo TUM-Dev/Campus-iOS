@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import Alamofire
 import Sweeft
-import SWXMLHash
 
 final class CalendarManager: CachedManager, SingleItemManager {
     

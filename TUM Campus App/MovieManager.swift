@@ -7,11 +7,9 @@
 //
 
 import Foundation
-import Alamofire
 import Sweeft
-import SwiftyJSON
 
-final class MovieManager: CachedManager {
+final class MovieManager: CachedManager, SingleItemManager {
     
     typealias DataType = Movie
     

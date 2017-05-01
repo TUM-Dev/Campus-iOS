@@ -6,6 +6,7 @@
 //  Copyright © 2017 LS1 TUM. All rights reserved.
 //
 
+import UIKit
 import Sweeft
 
 enum TUMCabeEndpoint: String, APIEndpoint {
@@ -21,12 +22,15 @@ struct TUMCabeAPI: API {
     let baseURL: String
     
     var baseHeaders: [String : String] {
-        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
+        guard let uuid = UIDevice.current.identifierForVendor?.uuidString,
+            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
             
             return .empty
         }
         return [
-            "X-DEVICE-ID": uuid
+            "X-DEVICE-ID": uuid,
+            "X-APP-VERSION": appVersion,
+            "X-OS-VERSION": UIDevice.current.systemVersion,
         ]
     }
     

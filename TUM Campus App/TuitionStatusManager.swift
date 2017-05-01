@@ -7,10 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
 import Sweeft
-import SWXMLHash
 
 final class TuitionStatusManager: CachedManager, SingleItemManager {
     

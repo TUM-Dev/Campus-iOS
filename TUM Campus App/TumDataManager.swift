@@ -41,10 +41,10 @@ class TumDataManager {
         .RoomMap: RoomFinderMapManager(mainManager: self),
         .PersonDetail: PersonDetailDataManager(mainManager: self),
         .LectureDetails: LectureDetailsManager(mainManager: self),
-        .NewsCard: NewsManager(single: true),
-        .NewsCollection: NewsManager(single: false),
+        // .NewsCard: NewsManager(single: true),
+        // .NewsCollection: NewsManager(single: false),
         .StudyRooms: StudyRoomsManager(mainManager: self),
-        .TUMSexy : TumSexyManager(mainManager: self),
+        // .TUMSexy : TumSexyManager(mainManager: self),
     ]
     
     func getToken() -> String {
@@ -54,13 +54,14 @@ class TumDataManager {
     init(user: User?) {
         self.user = user
         
-        let tumCabe = TUMCabeAPI(baseURL: "https://tumcabe.in.tum.de/Api/")
-        let tumOnline = TUMOnlineAPI(baseURL: "https://campus.tum.de/tumonline", user: user)
-        let config = Config(tumCabe: tumCabe, tumOnline: tumOnline, user: user)
+        let config = Config(tumCabeURL: "https://tumcabe.in.tum.de/Api/",
+                            tumOnlineURL: "https://campus.tum.de/tumonline",
+                            tumSexyURL: "http://json.tum.sexy",
+                            roomsURL: "http://www.devapp.it.tum.de/iris/",
+                            user: user)
         
-        let manager = TuitionStatusManager(config: config)
-        manager.fetch().onSuccess { tuition in
-            print(tuition)
+        MovieManager(config: config).fetch().onSuccess { items in
+            print(items)
         }
         
     }
@@ -161,7 +162,8 @@ class TumDataManager {
     }
     
     func getNextUpcomingNews() -> News? {
-        return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
+        return nil
+        // return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
     }
     
     func getAllStudyRooms(_ receiver: TumDataReceiver) {

@@ -11,5 +11,18 @@ import Foundation
 struct Config {
     let tumCabe: TUMCabeAPI
     let tumOnline: TUMOnlineAPI
-    var user: User?
+    let tumSexy: TUMSexyAPI
+    let rooms: StudyRoomAPI
+}
+
+extension Config {
+    
+    init(tumCabeURL: String, tumOnlineURL: String, tumSexyURL: String, roomsURL: String, user: User?) {
+        
+        self.init(tumCabe: TUMCabeAPI(baseURL: tumCabeURL),
+                  tumOnline: TUMOnlineAPI(baseURL: tumOnlineURL, user: user),
+                  tumSexy: TUMSexyAPI(baseURL: tumSexyURL),
+                  rooms: StudyRoomAPI(baseURL: roomsURL))
+    }
+    
 }
