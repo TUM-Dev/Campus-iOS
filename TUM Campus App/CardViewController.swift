@@ -66,6 +66,7 @@ extension CardViewController: TableViewCellDelegate {
         if let indexPath = tableView.indexPath(for: card) {
         
             tableView.beginUpdates()
+            PersistentCardOrder.value.remove(cardFor: cards[indexPath.row])
             card.isHidden = true
             cards.remove(at: indexPath.row)
             cellHeights.remove(at: indexPath.row)
@@ -155,11 +156,13 @@ extension CardViewController {
                 center.y = locationInView.y
                 snapshot.center = center
                 if indexPath != initalIndexPath {
-                    swap(&cards[indexPath.row], &cards[initalIndexPath.row])
+                    PersistentCardOrder.value.cards.move(itemAt: initalIndexPath.row, to: indexPath.row)
+                    print(PersistentCardOrder.value.cards)
+//                    swap(&cards[indexPath.row], &cards[initalIndexPath.row])
                     swap(&cellHeights[indexPath.row], &cellHeights[initalIndexPath.row])
                     swap(&openCellHeights[indexPath.row], &openCellHeights[initalIndexPath.row])
                     swap(&closeCellHeights[indexPath.row], &closeCellHeights[initalIndexPath.row])
-                    tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath)
+//                    tableView.moveRow(at: Cell.initialIndexPath!, to: indexPath)
                     Cell.initialIndexPath = indexPath
                 }
             
