@@ -946,10 +946,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSY-lG-bnh" userLabel="ContainerView">
-                                            <rect key="frame" x="20" y="112" width="335" height="400"/>
+                                            <rect key="frame" x="12" y="112" width="351" height="400"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vBy-Zs-oSd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="24"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="4zz-de-dCJ"/>
@@ -968,10 +968,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="aP6-GW-vhX" firstAttribute="top" secondItem="Spe-3Y-1z3" secondAttribute="top" constant="12" id="Lsd-bl-3S1"/>
-                                        <constraint firstItem="qSY-lG-bnh" firstAttribute="leading" secondItem="Spe-3Y-1z3" secondAttribute="leadingMargin" constant="12" id="MPY-cI-49k"/>
+                                        <constraint firstItem="qSY-lG-bnh" firstAttribute="leading" secondItem="Spe-3Y-1z3" secondAttribute="leading" constant="12" id="MPY-cI-49k"/>
                                         <constraint firstItem="aP6-GW-vhX" firstAttribute="leading" secondItem="Spe-3Y-1z3" secondAttribute="leading" constant="12" id="ebr-Py-Rdm"/>
                                         <constraint firstAttribute="trailing" secondItem="aP6-GW-vhX" secondAttribute="trailing" constant="12" id="oGH-MI-4Ap"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="qSY-lG-bnh" secondAttribute="trailing" constant="12" id="t0g-Zg-KmB"/>
+                                        <constraint firstAttribute="trailing" secondItem="qSY-lG-bnh" secondAttribute="trailing" constant="12" id="t0g-Zg-KmB"/>
                                         <constraint firstItem="qSY-lG-bnh" firstAttribute="top" secondItem="Spe-3Y-1z3" secondAttribute="top" constant="112" id="yTt-5B-xu3"/>
                                     </constraints>
                                 </tableViewCellContentView>
