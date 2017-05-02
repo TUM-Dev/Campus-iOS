@@ -131,18 +131,16 @@ extension MoreTableViewController {
             
             let systemVersion = UIDevice.current.systemVersion
             let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
+            let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
                 if let url =  URL(string: "https://tumcabe.in.tum.de/") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             } else if indexPath.row == 1 {
-                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS: \(systemVersion), App Version: \(appVersion)]")
+                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
             }
             
-//            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de?subject=[iOS: \(systemVersion), App Version: (str)]") {
-//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            }
         case 5:
             PersistentUser.reset()
             User.shared = nil
@@ -155,12 +153,13 @@ extension MoreTableViewController {
         }
     }
     
-    func sendEmail(recipient: String, subject: String) {
+    func sendEmail(recipient: String, subject: String, body: String) {
         if MFMailComposeViewController.canSendMail() {
             let mailVC = MFMailComposeViewController()
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients([recipient])
             mailVC.setSubject(subject)
+            mailVC.setMessageBody(body, isHTML: true)
             
             present(mailVC, animated: true)
         } else {
