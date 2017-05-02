@@ -127,7 +127,7 @@ extension MoreTableViewController {
         }
         switch indexPath.section {
         case 4:
-            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
+            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de?subject=[iOS]") {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         case 5:
