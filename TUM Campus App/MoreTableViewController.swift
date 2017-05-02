@@ -8,8 +8,9 @@
 
 import UIKit
 import Sweeft
+import MessageUI
 
-class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
+class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -127,9 +128,21 @@ extension MoreTableViewController {
         }
         switch indexPath.section {
         case 4:
-            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de?subject=[iOS]") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
+            let systemVersion = UIDevice.current.systemVersion
+            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
+            
+            if indexPath.row == 0 {
+                if let url =  URL(string: "https://tumcabe.in.tum.de/") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            } else if indexPath.row == 1 {
+                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS: \(systemVersion), App Version: \(appVersion)]")
             }
+            
+//            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de?subject=[iOS: \(systemVersion), App Version: (str)]") {
+//                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            }
         case 5:
             PersistentUser.reset()
             User.shared = nil
@@ -140,6 +153,23 @@ extension MoreTableViewController {
         default:
             break
         }
+    }
+    
+    func sendEmail(recipient: String, subject: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([recipient])
+            mailVC.setSubject(subject)
+            
+            present(mailVC, animated: true)
+        } else {
+            print("error can't send mail")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
 }
