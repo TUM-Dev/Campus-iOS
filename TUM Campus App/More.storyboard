@@ -386,6 +386,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="TGA-Ps-hnf" kind="show" id="tJv-vr-fPE"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationLevel="1" indentationWidth="0.0" textLabel="hcL-c6-I1l" detailTextLabel="Vak-XP-9Y9" imageView="VSs-FY-mKo" style="IBUITableViewCellStyleValue1" id="aM2-nv-llx">
                                         <rect key="frame" x="0.0" y="877" width="375" height="44"/>
@@ -585,7 +588,7 @@
                 <viewControllerPlaceholder storyboardName="StudyRooms" id="gGz-Ki-lHH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0x-WA-ARm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="1379"/>
+            <point key="canvasLocation" x="764" y="1408"/>
         </scene>
         <!--TumSexyView-->
         <scene sceneID="B7M-3E-1x6">
@@ -595,13 +598,21 @@
             </objects>
             <point key="canvasLocation" x="770" y="1298"/>
         </scene>
+        <!--DefaultCampusStoryboard-->
+        <scene sceneID="vll-7f-eQj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DefaultCampusStoryboard" id="TGA-Ps-hnf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VtP-b5-1sX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829" y="1335"/>
+        </scene>
         <!--LibrarySettingsView-->
         <scene sceneID="2im-KB-qUU">
             <objects>
                 <viewControllerPlaceholder storyboardName="LibrarySettingsView" id="XgE-p0-4IH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT5-mT-RiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="1341"/>
+            <point key="canvasLocation" x="798" y="1372"/>
         </scene>
     </scenes>
     <resources>
