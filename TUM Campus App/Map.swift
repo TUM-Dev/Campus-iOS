@@ -20,11 +20,14 @@ final class Map: ImageDownloader, DataElement {
         self.mapID = mapID
         self.description = description
         self.scale = scale
-        let url = RoomFinderApi.BaseUrl.rawValue +  RoomFinderApi.MapImage.rawValue + roomID + "/" + mapID
         super.init()
-        if let sanitizedURL = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
-            getImage(sanitizedURL)
-        }
+        
+        // TODO:
+        
+        //let url = RoomFinderApi.BaseUrl.rawValue +  RoomFinderApi.MapImage.rawValue + roomID + "/" + mapID
+        // if let sanitizedURL = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
+           // getImage(sanitizedURL)
+        //}
     }
     
     convenience init?(roomID: String, from json: JSON) {

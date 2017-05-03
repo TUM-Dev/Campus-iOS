@@ -15,8 +15,7 @@ final class NewsManager: CachedManager, SingleItemManager {
     
     var config: Config
     
-    var cache = [News]()
-    var isLoaded = false
+    var cache: [News]?
     
     var requiresLogin: Bool {
         return false

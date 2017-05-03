@@ -102,7 +102,8 @@ class CafeteriaManager: Manager {
     }
     
     func getURL() -> String {
-        return TumCabeApi.BaseURL.rawValue + TumCabeApi.Cafeteria.rawValue
+        return .empty
+        // return TumCabeApi.BaseURL.rawValue + TumCabeApi.Cafeteria.rawValue
     }
     
 }

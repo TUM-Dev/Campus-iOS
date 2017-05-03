@@ -15,8 +15,7 @@ final class CalendarManager: CachedManager, SingleItemManager {
     
     var config: Config
     
-    var cache = [CalendarRow]()
-    var isLoaded = false
+    var cache: [CalendarRow]?
     
     var requiresLogin: Bool {
         return false

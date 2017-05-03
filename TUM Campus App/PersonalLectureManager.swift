@@ -14,8 +14,7 @@ final class PersonalLectureManager: CachedManager {
     
     var config: Config
     
-    var cache = [Lecture]()
-    var isLoaded = false
+    var cache: [Lecture]?
     
     var requiresLogin: Bool {
         return false

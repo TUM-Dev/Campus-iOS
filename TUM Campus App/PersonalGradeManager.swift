@@ -14,8 +14,7 @@ final class PersonalGradeManager: CachedManager {
     
     var config: Config
     
-    var cache = [Grade]()
-    var isLoaded = false
+    var cache: [Grade]?
     
     var requiresLogin: Bool {
         return false

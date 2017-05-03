@@ -15,8 +15,7 @@ final class TuitionStatusManager: CachedManager, SingleItemManager {
     
     var config: Config
     
-    var cache = [Tuition]()
-    var isLoaded = false
+    var cache: [Tuition]?
     
     var requiresLogin: Bool {
         return false

@@ -15,8 +15,7 @@ final class MovieManager: CachedManager, SingleItemManager {
     
     var config: Config
     
-    var cache = [Movie]()
-    var isLoaded = false
+    var cache: [Movie]?
     
     var requiresLogin: Bool {
         return false

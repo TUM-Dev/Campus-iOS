@@ -17,8 +17,7 @@ final class NewBookRentalManager: CachedManager, SingleItemManager {
     
     var config: Config
     
-    var cache = [BookRental]()
-    var isLoaded = false
+    var cache: [BookRental]?
     
     var requiresLogin: Bool {
         return false
@@ -45,6 +44,28 @@ final class NewBookRentalManager: CachedManager, SingleItemManager {
     
     func getPassword() -> String {
         return KeychainWrapper().myObject(forKey: "v_Data") as? String ?? ""
+    }
+    
+    func saveInKeychain(username: String, password: String) {
+        
+        let keychainWrapper = KeychainWrapper()
+        
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(true, forKey: "hasSavedPassword")
+        keychainWrapper.mySetObject(password, forKey: kSecValueData)
+        keychainWrapper.writeToKeychain()
+        UserDefaults.standard.synchronize()
+    }
+    
+    func login(username: String, password: String) -> Response<Bool> {
+        let api = config.bookRentals
+        return api.start().next { (csid: String) in
+            return api.login(user: username, password: password, csid: csid)
+        }
+        .nested { (result: BookRentalAPISession) in
+            self.saveInKeychain(username: username, password: password)
+            return true
+        }
     }
     
 }

@@ -14,8 +14,7 @@ final class TumSexyManager: CachedManager {
     
     var config: Config
     
-    var cache = [SexyEntry]()
-    var isLoaded = true
+    var cache: [SexyEntry]?
     
     var requiresLogin: Bool {
         return false

@@ -18,8 +18,7 @@ final class StudyRoomsManager: CachedManager {
     
     var config: Config
     
-    var cache = [StudyRoomGroup]()
-    var isLoaded = false
+    var cache: [StudyRoomGroup]?
     
     var requiresLogin: Bool {
         return false

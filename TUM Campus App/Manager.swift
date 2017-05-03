@@ -86,19 +86,17 @@ extension SingleItemManager {
 }
 
 protocol CachedManager: class, NewManager {
-    var cache: [DataType] { get set }
-    var isLoaded: Bool { get set }
+    var cache: [DataType]? { get set }
     func perform() -> Response<[DataType]>
 }
 
 extension CachedManager {
     
     func fetch() -> Response<[DataType]> {
-        guard !isLoaded else {
+        if let cache = cache {
             return .successful(with: cache)
         }
         return perform().nested { (results: [DataType]) in
-            self.isLoaded = true
             self.cache = results
             return results
         }
