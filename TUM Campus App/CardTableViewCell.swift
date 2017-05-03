@@ -8,7 +8,6 @@
 
 import UIKit
 import FoldingCell
-import MCSwipeTableViewCell
 
 protocol TableViewCellDelegate {
 
