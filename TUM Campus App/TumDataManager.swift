@@ -58,6 +58,7 @@ class TumDataManager {
                             tumOnlineURL: "https://campus.tum.de/tumonline",
                             tumSexyURL: "http://json.tum.sexy",
                             roomsURL: "http://www.devapp.it.tum.de/iris/",
+                            rentalsURL: "",
                             user: user)
         
         PersonalLectureManager(config: config).fetch().onSuccess { lectures in

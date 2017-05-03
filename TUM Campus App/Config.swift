@@ -13,16 +13,27 @@ struct Config {
     let tumOnline: TUMOnlineAPI
     let tumSexy: TUMSexyAPI
     let rooms: StudyRoomAPI
+    let bookRentals: BookRentalAPI
 }
 
 extension Config {
     
-    init(tumCabeURL: String, tumOnlineURL: String, tumSexyURL: String, roomsURL: String, user: User?) {
+    var user: User? {
+        return tumOnline.user
+    }
+    
+    init(tumCabeURL: String,
+         tumOnlineURL: String,
+         tumSexyURL: String,
+         roomsURL: String,
+         rentalsURL: String,
+         user: User?) {
         
         self.init(tumCabe: TUMCabeAPI(baseURL: tumCabeURL),
                   tumOnline: TUMOnlineAPI(baseURL: tumOnlineURL, user: user),
                   tumSexy: TUMSexyAPI(baseURL: tumSexyURL),
-                  rooms: StudyRoomAPI(baseURL: roomsURL))
+                  rooms: StudyRoomAPI(baseURL: roomsURL),
+                  bookRentals: BookRentalAPI(baseURL: rentalsURL))
     }
     
 }

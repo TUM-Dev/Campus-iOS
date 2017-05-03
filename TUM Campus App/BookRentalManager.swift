@@ -11,35 +11,31 @@ import Alamofire
 import Sweeft
 import Kanna
 
-
-class BookRentalManager: Manager {
-
-    let opac_url = TumOPACApi.OpacURL.rawValue
-    var main: TumDataManager
+final class NewBookRentalManager: CachedManager, SingleItemManager {
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    typealias DataType = BookRental
+    
+    var config: Config
+    
+    var cache = [BookRental]()
+    var isLoaded = false
+    
+    var requiresLogin: Bool {
+        return false
     }
     
-    static var rentals = [DataElement]()
-
-
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        
-        let api = BookRentalAPI(baseURL: opac_url)
-        
-        api.start().onSuccess { csid in
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func perform() -> Response<[BookRental]> {
+        let api = config.bookRentals
+        return api.start().next { csid in
             return api.login(user: self.getUsername(), password: self.getPassword(), csid: csid)
         }
-        .future
-        .onSuccess { session in
+        .next { session in
             // TODO: store session maybe
             return api.rentals()
-        }
-        .future
-        .onSuccess { rentals in
-            BookRentalManager.rentals = rentals
-            handler(rentals)
         }
     }
     
@@ -50,4 +46,5 @@ class BookRentalManager: Manager {
     func getPassword() -> String {
         return KeychainWrapper().myObject(forKey: "v_Data") as? String ?? ""
     }
+    
 }

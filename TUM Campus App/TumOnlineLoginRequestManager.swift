@@ -12,7 +12,7 @@ import SWXMLHash
 
 class TumOnlineLoginRequestManager {
     
-    init(delegate:AccessTokenReceiver?) {
+    init(delegate: AccessTokenReceiver?) {
         self.delegate = delegate
     }
     
