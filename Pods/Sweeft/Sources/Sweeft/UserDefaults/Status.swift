@@ -15,6 +15,7 @@ public protocol Status {
     /// Keytype
     associatedtype Key: StatusKey
     
+    static var storage: Storage { get }
     /// Key for defaults
     static var key: Key { get }
     /// Default value in case the value is not defined
@@ -23,13 +24,17 @@ public protocol Status {
 
 public extension Status {
     
+    static var storage: Storage {
+        return .userDefaults
+    }
+    
     /// Value stored in defaults
     static var value: Value {
         get {
-            return SimpleStatus(key: key, defaultValue: defaultValue).value
+            return SimpleStatus(storage: storage, key: key, defaultValue: defaultValue).value
         }
         set {
-            var status = SimpleStatus(key: key, defaultValue: defaultValue)
+            var status = SimpleStatus(storage: storage, key: key, defaultValue: defaultValue)
             status.value = newValue
         }
     }

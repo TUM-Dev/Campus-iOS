@@ -15,6 +15,7 @@ public protocol ObjectStatus {
     /// Key type
     associatedtype Key: StatusKey
     
+    static var storage: Storage { get }
     /// Key for defaults
     static var key: Key { get }
     /// Default value in case it's not defined
@@ -23,13 +24,17 @@ public protocol ObjectStatus {
 
 public extension ObjectStatus {
 
+    static var storage: Storage {
+        return .userDefaults
+    }
+    
     /// Value in Defaults for your Status
     static var value: Value {
         get {
-            return Value.init(from: DictionaryStatus(key: key).value) ?? defaultValue
+            return Value.init(from: DictionaryStatus(storage: storage, key: key, defaultValue: .empty).value) ?? defaultValue
         }
         set {
-            var status = DictionaryStatus(key: key)
+            var status = DictionaryStatus(storage: storage, key: key, defaultValue: .empty)
             status.value = newValue.serialized
         }
     }
@@ -57,6 +62,7 @@ public protocol CollectionStatus {
     /// Key type
     associatedtype Key: StatusKey
     
+    static var storage: Storage { get }
     /// Key for defaults
     static var key: Key { get }
     /// Default value in case it's not defined
@@ -67,9 +73,13 @@ public protocol CollectionStatus {
 
 public extension CollectionStatus {
     
+    static var storage: Storage {
+        return .userDefaults
+    }
+    
     static var values: [Value] {
         get {
-            guard let array = SimpleStatus<Key, [[String:Any]]?>(key: key, defaultValue: nil).value else {
+            guard let array = SimpleStatus<Key, [[String:Any]]?>(storage: storage, key: key, defaultValue: nil).value else {
                 return defaultValue
             }
             let items = array ==> Value.init
@@ -81,7 +91,7 @@ public extension CollectionStatus {
             return items
         }
         set {
-            var status = SimpleStatus<Key, [[String:Any]]?>(key: key, defaultValue: nil)
+            var status = SimpleStatus<Key, [[String:Any]]?>(storage: storage, key: key, defaultValue: nil)
             status.value = newValue => { $0.serialized }
         }
     }
@@ -156,6 +166,7 @@ public protocol OptionalStatus {
     /// Key type
     associatedtype Key: StatusKey
     
+    static var storage: Storage { get }
     /// Key for defaults
     static var key: Key { get }
     /// Default value in case it's not defined
@@ -165,13 +176,17 @@ public protocol OptionalStatus {
 
 public extension OptionalStatus {
     
+    static var storage: Storage {
+        return .userDefaults
+    }
+    
     static var value: Value? {
         get {
-            let value = DictionaryStatus(key: key).value
+            let value = DictionaryStatus(storage: storage, key: key, defaultValue: .empty).value
             return OptionalObjectStatusSerialized<Value>(from: value)?.value ?? defaultValue
         }
         set {
-            var status = DictionaryStatus(key: key)
+            var status = DictionaryStatus(storage: storage, key: key, defaultValue: .empty)
             status.value = OptionalObjectStatusSerialized(from: newValue).serialized
         }
     }

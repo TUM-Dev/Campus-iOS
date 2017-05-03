@@ -8,11 +8,13 @@
 
 import UIKit
 import Sweeft
+import MessageUI
 
-class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate {
+class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var bibNumber: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
         didSet {
             avatarView.clipsToBounds = true
@@ -68,6 +70,7 @@ extension MoreTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +78,11 @@ extension MoreTableViewController {
         if let mvc = tabBarController as? CampusTabBarController {
             user = User.shared
             manager = mvc.manager
+        }
+        if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
+            bibNumber.text = savedUsername
+        } else {
+            bibNumber.text = "Not logged in"
         }
     }
     
@@ -120,9 +128,19 @@ extension MoreTableViewController {
         }
         switch indexPath.section {
         case 4:
-            if let url =  URL(string: indexPath.row == 0 ? "https://tumcabe.in.tum.de/" : "mailto://tca-support.os.in@tum.de") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            
+            let systemVersion = UIDevice.current.systemVersion
+            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
+            let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
+            
+            if indexPath.row == 0 {
+                if let url =  URL(string: "https://tumcabe.in.tum.de/") {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            } else if indexPath.row == 1 {
+                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
             }
+            
         case 5:
             PersistentUser.reset()
             User.shared = nil
@@ -133,6 +151,24 @@ extension MoreTableViewController {
         default:
             break
         }
+    }
+    
+    func sendEmail(recipient: String, subject: String, body: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([recipient])
+            mailVC.setSubject(subject)
+            mailVC.setMessageBody(body, isHTML: true)
+            
+            present(mailVC, animated: true)
+        } else {
+            print("error can't send mail")
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
     
 }

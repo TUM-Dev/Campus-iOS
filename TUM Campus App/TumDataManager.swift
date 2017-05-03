@@ -175,4 +175,7 @@ class TumDataManager {
         managers[.TUMSexy]?.fetchData(receiver.receiveData)
     }
     
+    func getRentals(_ receiver: TumDataReceiver) {
+        managers[.BookRental]?.fetchData(receiver.receiveData)
+    }
 }
