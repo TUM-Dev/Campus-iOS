@@ -18,6 +18,15 @@ target 'Campus' do
     pod 'FoldingCell', '~> 2.0.3'
     pod 'Kanna', '~> 2.1.0'
     pod 'Charts'
+    
+    target 'TUM Campus AppUITests' do
+        inherit! :search_paths
+    end
+    
+    target 'TUM Campus AppUnitTests' do
+        inherit! :search_paths
+    end
+    
 end
 
 post_install do |installer|
