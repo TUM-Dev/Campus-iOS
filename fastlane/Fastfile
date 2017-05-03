@@ -4,7 +4,7 @@ default_platform :ios
 
 before_all do
 	if is_ci?
-		ensure_git_status_clean
+		# ensure_git_status_clean
 	end
 	sh 'mkdir reports || true'
 	sh 'mkdir DerivedData || true'
