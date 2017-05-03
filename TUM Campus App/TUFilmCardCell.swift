@@ -14,7 +14,6 @@ class TUFilmCardCell: CardTableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
-
     
     override func setElement(_ element: DataElement) {
         if let unwrappedMovie = element as? Movie{

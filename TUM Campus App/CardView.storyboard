@@ -1015,6 +1015,13 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="m2X-lf-QKG" kind="show" identifier="calendarRow" id="h87-To-p04"/>
+                        <segue destination="DM2-F6-YFe" kind="show" identifier="film" id="Nrs-ab-zdj"/>
+                        <segue destination="dal-lx-uvI" kind="show" identifier="cafeteria" id="Amw-8Q-4hr"/>
+                        <segue destination="pUb-YI-hpF" kind="show" identifier="tuition" id="Wxn-pH-g35"/>
+                        <segue destination="7VU-7x-HwV" kind="show" identifier="news" id="JEf-93-hUu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foy-xU-PJs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

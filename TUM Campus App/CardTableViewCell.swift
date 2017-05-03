@@ -21,7 +21,6 @@ class CardTableViewCell: FoldingCell {
     var deleteLeftOnDragRelease = false
     var deleteRightOnDragRelease = false
     var delegate: TableViewCellDelegate?
-
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -109,6 +108,13 @@ class CardTableViewCell: FoldingCell {
         containerView.layer.masksToBounds = true
     }
     
+    func isFoldingCell() -> Bool {
+        return false
+    }
+    
+    func segueIdentifier() -> String? {
+        return nil
+    }
 }
 
 

@@ -271,27 +271,35 @@ extension CardViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard case let cell as FoldingCell = tableView.cellForRow(at: indexPath) else {
+        guard case let cell as CardTableViewCell = tableView.cellForRow(at: indexPath) else {
             return
         }
         
-        var duration = 0.0
-        if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] && cellIsAnimating == false { // open cell
-            cellIsAnimating = true
-            cellHeights[indexPath.row] = openCellHeights[indexPath.row]
-            cell.selectedAnimation(true, animated: true) { self.cellIsAnimating = false }
-            duration = 0.5
-        } else if cellHeights[indexPath.row] == openCellHeights[indexPath.row] && cellIsAnimating == false {// close cell
-            cellIsAnimating = true
-            cellHeights[indexPath.row] = closeCellHeights[indexPath.row]
-            cell.selectedAnimation(false, animated: true) { self.cellIsAnimating = false }
-            duration = 1.1
+        if cell.isFoldingCell() {
+            
+            var duration = 0.0
+            if cellHeights[indexPath.row] == closeCellHeights[indexPath.row] && cellIsAnimating == false { // open cell
+                cellIsAnimating = true
+                cellHeights[indexPath.row] = openCellHeights[indexPath.row]
+                cell.selectedAnimation(true, animated: true) { self.cellIsAnimating = false }
+                duration = 0.5
+            } else if cellHeights[indexPath.row] == openCellHeights[indexPath.row] && cellIsAnimating == false {// close cell
+                cellIsAnimating = true
+                cellHeights[indexPath.row] = closeCellHeights[indexPath.row]
+                cell.selectedAnimation(false, animated: true) { self.cellIsAnimating = false }
+                duration = 1.1
+            }
+            
+            UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
+                tableView.beginUpdates()
+                tableView.endUpdates()
+            }, completion: nil)
+            
+        } else {
+            if let segue = cell.segueIdentifier() {
+                performSegue(withIdentifier: segue, sender: nil)
+            }
         }
-        
-        UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: { _ in
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        }, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

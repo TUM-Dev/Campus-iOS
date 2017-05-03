@@ -26,8 +26,11 @@ class CafeteriaCardTableViewCell: CardTableViewCell {
             for item in items {
                 string += "\u{2022} " + item.name + "\n"
             }
-//            itemsLabel.text = string
         }
+    }
+    
+    override func isFoldingCell() -> Bool {
+         return true
     }
 
 }
