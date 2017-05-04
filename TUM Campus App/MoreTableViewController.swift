@@ -39,7 +39,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     }
     
     var isLoggedIn: Bool {
-        return user != nil
+        return user != nil //&& user?.data != nil
     }
     
     func updateView() {
@@ -134,7 +134,6 @@ extension MoreTableViewController {
             } else {
                 tableView.deselectRow(at: indexPath, animated: true)
             }
-            
             
         case 4:
             let systemVersion = UIDevice.current.systemVersion
