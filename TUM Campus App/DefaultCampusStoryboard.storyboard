@@ -17,6 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="pDr-ro-aZI" userLabel="Footer">
+                            <rect key="frame" x="0.0" y="535" width="375" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </view>
                         <sections>
                             <tableViewSection id="OvI-gD-1bq">
                                 <cells>
@@ -51,11 +56,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ri-3p-dm8">
-                                                    <rect key="frame" x="-8" y="5" width="375" height="216"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ri-3p-dm8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
                                                 </pickerView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Ri-3p-dm8" firstAttribute="leading" secondItem="Ggm-yb-e6l" secondAttribute="leading" id="9O0-Ny-weB"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Ri-3p-dm8" secondAttribute="bottom" id="Iy4-Si-pO9"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Ri-3p-dm8" secondAttribute="trailing" id="NPi-ne-Q0x"/>
+                                                <constraint firstItem="7Ri-3p-dm8" firstAttribute="top" secondItem="Ggm-yb-e6l" secondAttribute="top" id="yae-kl-Nxk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="M8R-VF-XxB" detailTextLabel="6n3-tf-y1B" style="IBUITableViewCellStyleValue1" id="FcM-h6-f9x">
@@ -89,11 +99,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gbz-cr-w6k">
-                                                    <rect key="frame" x="0.0" y="8" width="375" height="216"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gbz-cr-w6k">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                                 </pickerView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Gbz-cr-w6k" firstAttribute="top" secondItem="3j5-mb-5yn" secondAttribute="top" id="GGv-a7-sFs"/>
+                                                <constraint firstAttribute="trailing" secondItem="Gbz-cr-w6k" secondAttribute="trailing" id="TIY-mv-K1r"/>
+                                                <constraint firstItem="Gbz-cr-w6k" firstAttribute="leading" secondItem="3j5-mb-5yn" secondAttribute="leading" id="lmu-3N-bZT"/>
+                                                <constraint firstAttribute="bottom" secondItem="Gbz-cr-w6k" secondAttribute="bottom" id="obP-Vj-ZY9"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -104,6 +119,10 @@
                             <outlet property="delegate" destination="QlK-li-LY1" id="fkj-d0-gS6"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="cafeteriaSelectorCell" destination="dq3-eN-ExX" id="9dY-2f-nUX"/>
+                        <outlet property="campusSelectorCell" destination="JAG-DK-bmB" id="mJT-8o-ora"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycP-nZ-Kjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
