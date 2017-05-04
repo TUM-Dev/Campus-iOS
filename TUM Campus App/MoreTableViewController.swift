@@ -127,8 +127,16 @@ extension MoreTableViewController {
             return handleNotYetImplemented()
         }
         switch indexPath.section {
-        case 4:
             
+        case 0:
+            if indexPath.row == 0 && user?.data != nil {
+                performSegue(withIdentifier: "showPersonalDetail", sender: self)
+            } else {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+            
+            
+        case 4:
             let systemVersion = UIDevice.current.systemVersion
             let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
             let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String

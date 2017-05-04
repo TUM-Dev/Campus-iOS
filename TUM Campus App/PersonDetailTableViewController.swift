@@ -93,9 +93,12 @@ extension PersonDetailTableViewController {
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact") ?? UITableViewCell()
-        cell.textLabel?.text = contactInfo[indexPath.row].0.rawValue
-        cell.detailTextLabel?.text = contactInfo[indexPath.row].1
-        return cell
+        print(contactInfo)
+        if contactInfo.count > indexPath.row {
+            cell.textLabel?.text = contactInfo[indexPath.row].0.rawValue
+            cell.detailTextLabel?.text = contactInfo[indexPath.row].1
+        }
+            return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
