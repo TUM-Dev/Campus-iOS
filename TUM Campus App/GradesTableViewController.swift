@@ -32,6 +32,7 @@ extension GradesTableViewController {
         delegate?.dataManager().getGrades(self)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
+        navigationItem.title = "Grades"
     }
     
 }
