@@ -8,21 +8,30 @@
 
 import UIKit
 
-class DefaultCampusTableViewController: UITableViewController {
+class DefaultCampusTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet var campusSelectorCell: UITableViewCell!
+    @IBOutlet var campusSelector: UIPickerView!
     var campusSelectorExpanded = false
+    var campus =  ["Garching", "Stammgelände"]
     @IBOutlet var cafeteriaSelectorCell: UITableViewCell!
+    @IBOutlet var cafeteriaSelector: UIPickerView!
     var cafeteriaSelectorExpanded = false
+    var cafeteria = ["Garching", "Stammgelände"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.title = "Default Campus"
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        setupPickers()
+    }
+    
+    func setupPickers() {
+        campusSelector.numberOfRows(inComponent: campus.count)
+        campusSelector.dataSource = self
+        campusSelector.delegate = self
+        cafeteriaSelector.numberOfRows(inComponent: cafeteria.count)
+        cafeteriaSelector.dataSource = self
+        cafeteriaSelector.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -67,6 +76,35 @@ class DefaultCampusTableViewController: UITableViewController {
             return 44
         }
         
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView === cafeteriaSelector {
+            return cafeteria.count
+        } else if pickerView === campusSelector {
+            return campus.count
+        } else {
+            return 0
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("did Select row: \(row)")
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView === cafeteriaSelector {
+            return cafeteria[row]
+        } else if pickerView === campusSelector {
+            return campus[row]
+        } else {
+            return ""
+        }
     }
     
 }
