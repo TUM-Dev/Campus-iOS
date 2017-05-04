@@ -135,7 +135,10 @@ extension MoreTableViewController {
             
             if indexPath.row == 0 {
                 if let url =  URL(string: "https://tumcabe.in.tum.de/") {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    UIApplication.shared.open(url, options: [:]) { finished in
+                        self.tableView.deselectRow(at: indexPath, animated: true)
+                    }
+
                 }
             } else if indexPath.row == 1 {
                 sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
