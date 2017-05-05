@@ -25,14 +25,13 @@ struct TUMCabeAPI: API {
     let baseURL: String
     
     var baseHeaders: [String : String] {
-        guard let uuid = UIDevice.current.identifierForVendor?.uuidString,
-            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
             
             return .empty
         }
         return [
             "X-DEVICE-ID": uuid,
-            "X-APP-VERSION": appVersion,
+            "X-APP-VERSION": Bundle.main.version,
             "X-OS-VERSION": UIDevice.current.systemVersion,
         ]
     }

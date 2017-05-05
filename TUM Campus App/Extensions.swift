@@ -43,3 +43,11 @@ extension Promise {
     }
     
 }
+
+extension Bundle {
+    
+    var version: String {
+        return infoDictionary?["CFBundleVersion"] as? String ?? "1.0"
+    }
+    
+}

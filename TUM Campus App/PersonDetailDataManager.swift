@@ -9,6 +9,30 @@
 import Foundation
 import Alamofire
 import SWXMLHash
+import Sweeft
+
+final class NewPersonDetailDataManager: DetailsManager {
+    
+    typealias DataType = UserData
+    
+    var config: Config
+    
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func fetch(for data: UserData) -> Promise<UserData, APIError> {
+        guard !data.contactsLoaded else {
+            return .successful(with: data)
+        }
+        return config.tumOnline.doRepresentedRequest(to: .personDetails).nested { (xml: XMLIndexer) in
+            // TODO:
+            
+            return data
+        }
+    }
+    
+}
 
 class PersonDetailDataManager: Manager {
     

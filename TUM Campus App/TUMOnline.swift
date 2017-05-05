@@ -7,6 +7,7 @@
 //
 
 import Sweeft
+import SWXMLHash
 
 enum TUMOnlineEndpoint: String, APIEndpoint {
     case personSearch = "wbservicesbasic.personenSuche"
@@ -35,6 +36,32 @@ struct TUMOnlineAPI: API {
         return [
             "pToken": token
         ]
+    }
+    
+}
+
+extension TUMOnlineAPI {
+    
+    func token(for id: String) -> String.Result {
+        
+        let version = Bundle.main.version
+        return doRepresentedRequest(to: .tokenRequest,
+                                    queries: [
+                                        "pUsername": id,
+                                        "pTokenName": "TumCampusApp-\(version)"
+                                    ]).nested { (xml: XMLIndexer, promise) in
+            
+            guard let token = xml["token"].element?.text else {
+                return promise.error(with: .noData)
+            }
+            promise.success(with: token)
+        }
+    }
+    
+    func confirm(token: String) -> Response<Bool> {
+        return doRepresentedRequest(to: .tokenConfirmation).nested { (xml: XMLIndexer) in
+            return xml["confirmed"].element?.text == "true"
+        }
     }
     
 }

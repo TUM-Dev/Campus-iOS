@@ -29,7 +29,7 @@ final class UserData: ImageDownloader, DataElement {
     
     var title: String?
     
-    var contactInfo = [(ContactInfoType,String)]()
+    var contactInfo = [(ContactInfoType, String)]()
     
     var text: String {
         return name
