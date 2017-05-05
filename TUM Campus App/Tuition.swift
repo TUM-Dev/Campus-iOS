@@ -6,7 +6,8 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 class Tuition: DataElement {
     
     let frist: Date
@@ -21,6 +22,14 @@ class Tuition: DataElement {
     
     func getCellIdentifier() -> String {
         return "tuition"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
     }
     
     var text: String {

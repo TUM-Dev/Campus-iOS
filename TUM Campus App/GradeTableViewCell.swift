@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GradeTableViewCell: CardTableViewCell {
+class GradeTableViewCell: TableViewCell {
     
     var grade: Grade? {
         didSet {

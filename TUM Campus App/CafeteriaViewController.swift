@@ -175,7 +175,7 @@ extension CafeteriaViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         let item = categories[indexPath.section].1[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? TableViewCell ?? TableViewCell()
         cell.setElement(item)
         return cell
     }

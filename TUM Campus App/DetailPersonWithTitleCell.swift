@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailPersonWithTitleCell: CardTableViewCell {
+class DetailPersonWithTitleCell: TableViewCell {
 
     override func setElement(_ element: DataElement) {
         if let user = element as? UserData {

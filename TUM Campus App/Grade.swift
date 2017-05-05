@@ -6,7 +6,7 @@
 //  Copyright © 2017 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Grade: DataElement {
     let name: String
@@ -31,7 +31,22 @@ class Grade: DataElement {
         return "grade"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     var text: String {
         return name
+    }
+}
+
+extension Grade: CardDisplayable {
+    
+    var cardKey: CardKey {
+        return .grades
     }
 }

@@ -24,6 +24,14 @@ struct SexyEntry: DataElement {
         return ""
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 0
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 0
+    }
+    
 }
 
 extension SexyEntry {

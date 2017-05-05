@@ -17,6 +17,14 @@ class UserData: ImageDownloader, DataElement {
         return "person"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     let name: String
     let picture: String
     let id: String

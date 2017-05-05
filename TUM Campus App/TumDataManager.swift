@@ -47,6 +47,7 @@ class TumDataManager {
         .TUMSexy : TumSexyManager(mainManager: self),
         .BookRental: BookRentalManager(mainManager: self),
         .BookRentalCard: BookRentalManager(mainManager: self),
+        .GradesCard: PersonalGradeManager(mainManager: self),
     ]
     
     func getToken() -> String {

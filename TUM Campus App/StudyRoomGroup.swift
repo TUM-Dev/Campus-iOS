@@ -35,4 +35,12 @@ class StudyRoomGroup: DataElement {
     func getCellIdentifier() -> String {
         return "studyRoomGroup"
     }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
 }

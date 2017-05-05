@@ -40,6 +40,14 @@ final class Map: ImageDownloader, DataElement {
         return "map"
     }
     
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
+    }
+    
     var text: String {
         return description
     }

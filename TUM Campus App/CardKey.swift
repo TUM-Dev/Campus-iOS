@@ -15,6 +15,7 @@ enum CardKey: Int {
     case cafeteria
     case tuition
     case bookRental
+    case grades
     
     var description: String {
         switch self {
@@ -30,10 +31,13 @@ enum CardKey: Int {
             return "Tuition"
         case .bookRental:
             return "Book Rental"
+        case .grades:
+            return "Grades"
+
         }
     }
     
-    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental,]
+    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental, .grades,]
     
     static var managers: [CardKey: TumDataItems] = [
         .tufilm: .MovieCard,
@@ -42,5 +46,6 @@ enum CardKey: Int {
         .cafeteria: .CafeteriasCard,
         .tuition: .TuitionStatusSingle,
         .bookRental: .BookRentalCard,
+        .grades: .GradesCard,
         ]
 }

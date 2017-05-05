@@ -6,13 +6,23 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
 class CalendarRowSet:DataElement {
     
     var calendarList = [CalendarRow]()
     
     func getCellIdentifier() -> String {
         return "calendarRowSet"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 112
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 412
     }
     
     var text: String {

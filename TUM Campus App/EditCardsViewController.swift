@@ -20,6 +20,7 @@ class EditCardsViewController: UITableViewController {
         }
     }
     
+    
     var disabled: [CardKey] {
         return (CardKey.all - enabled).array
     }

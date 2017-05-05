@@ -6,7 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 class Cafeteria: DataElement {
@@ -51,6 +51,15 @@ class Cafeteria: DataElement {
     func getCellIdentifier() -> String {
         return "cafeteria"
     }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 162
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 612
+    }
+
     
     var text: String {
         return name

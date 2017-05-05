@@ -6,7 +6,9 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
 class CafeteriaMenu: DataElement {
     
     let date: Date
@@ -32,6 +34,14 @@ class CafeteriaMenu: DataElement {
     
     func getCellIdentifier() -> String {
         return "cafeteriaMenu"
+    }
+    
+    func getCloseCellHeight() -> CGFloat {
+        return 162
+    }
+    
+    func getOpenCellHeight() -> CGFloat {
+        return 612
     }
     
     var text: String {

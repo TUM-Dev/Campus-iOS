@@ -33,4 +33,5 @@ enum TumDataItems: String {
     case TUMSexy = "TUMSexy"
     case BookRental = "BookRental"
     case BookRentalCard = "BookRentalCard"
+    case GradesCard = "GradesCard"
 }
