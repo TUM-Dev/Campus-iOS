@@ -10,7 +10,6 @@ PODS:
   - Charts/Core (3.0.2)
   - FoldingCell (2.0.5)
   - Kanna (2.1.1)
-  - MCSwipeTableViewCell (2.1.4)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
@@ -27,7 +26,6 @@ DEPENDENCIES:
   - Charts
   - FoldingCell (~> 2.0.3)
   - Kanna (~> 2.1.0)
-  - MCSwipeTableViewCell (~> 2.1.4)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
   - Sweeft
   - SwiftyJSON (~> 3.1.4)
@@ -56,7 +54,6 @@ SPEC CHECKSUMS:
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   FoldingCell: fb189fc746e95b722a1debf8ef455006b70cae2e
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
-  MCSwipeTableViewCell: 1b303e16c3a26b1982f3a68386e9b8c5fc8344c3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
@@ -65,6 +62,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 29d20b84692fc319ea8ed933058fe7d8d005139b
   TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
-PODFILE CHECKSUM: 01b2320eb2041ed2ff155e245cb417511733f6af
+PODFILE CHECKSUM: e4f7e995e50e7df68dac783f9fabaf4c9b10dc23
 
 COCOAPODS: 1.2.1
