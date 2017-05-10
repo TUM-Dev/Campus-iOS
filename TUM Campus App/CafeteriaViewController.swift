@@ -83,6 +83,10 @@ extension CafeteriaViewController {
         self.view.addSubview(weekSelector!)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideCafeterias(nil)
+    }
 }
 
 extension CafeteriaViewController {
