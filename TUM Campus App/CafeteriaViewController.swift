@@ -112,10 +112,11 @@ extension CafeteriaViewController {
             items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideCafeterias(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
