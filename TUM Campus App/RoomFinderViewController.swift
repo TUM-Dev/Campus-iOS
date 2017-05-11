@@ -85,12 +85,14 @@ extension RoomFinderViewController {
         pickerView.show()
         barItem?.action = #selector(RoomFinderViewController.hideMaps(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.view.isUserInteractionEnabled = false
     }
     
     func hideMaps(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(RoomFinderViewController.showMaps(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.view.isUserInteractionEnabled = true
     }
     
 }

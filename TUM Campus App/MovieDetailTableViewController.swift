@@ -83,12 +83,14 @@ extension MovieDetailTableViewController {
         pickerView.show()
         barItem?.action = #selector(MovieDetailTableViewController.hideMovies(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.view.isUserInteractionEnabled = false
     }
     
     func hideMovies(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.view.isUserInteractionEnabled = true
     }
     
     func setUpPickerView() {

@@ -86,12 +86,14 @@ extension TuitionTableViewController {
         pickerView.show()
         barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.view.isUserInteractionEnabled = false
     }
     
     func hideSemesters(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.view.isUserInteractionEnabled = true
     }
     
 }

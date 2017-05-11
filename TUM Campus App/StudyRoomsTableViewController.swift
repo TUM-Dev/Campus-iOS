@@ -105,12 +105,14 @@ extension StudyRoomsTableViewController {
         pickerView.show()
         barItem?.action = #selector(StudyRoomsTableViewController.hideRooms(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.view.isUserInteractionEnabled = false
     }
     
     func hideRooms(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(StudyRoomsTableViewController.showRooms(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.view.isUserInteractionEnabled = true
     }
     
     func setUpPickerView() {
