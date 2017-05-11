@@ -85,12 +85,14 @@ extension RoomFinderViewController {
         pickerView.show()
         barItem?.action = #selector(RoomFinderViewController.hideMaps(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func hideMaps(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(RoomFinderViewController.showMaps(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
 }
@@ -118,10 +120,11 @@ extension RoomFinderViewController {
             items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideMaps(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
         navigationItem.rightBarButtonItem = barItem
     }

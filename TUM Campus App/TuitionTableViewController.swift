@@ -75,9 +75,10 @@ extension TuitionTableViewController {
         }
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.items = items
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideSemesters(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
@@ -86,12 +87,14 @@ extension TuitionTableViewController {
         pickerView.show()
         barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func hideSemesters(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
 }
