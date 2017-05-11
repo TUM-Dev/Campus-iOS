@@ -75,7 +75,7 @@ extension TuitionTableViewController {
         }
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.items = items
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
