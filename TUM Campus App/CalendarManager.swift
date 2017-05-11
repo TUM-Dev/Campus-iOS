@@ -79,7 +79,8 @@ class CalendarManager: Manager {
                     let startString = event["dtstart"].element?.text,
                     let endString = event["dtend"].element?.text,
                     let status = event["status"].element?.text,
-                    let link = event["url"].element?.text {
+                    let link = event["url"].element?.text,
+                    let location = event["location"].element?.text {
                 
                 let item = CalendarRow()
                 item.title = title
@@ -92,6 +93,7 @@ class CalendarManager: Manager {
                 }
                 item.status = status
                 item.url = URL(string: link)
+                item.location = location
                 if item.status == "FT" {
                     CalendarManager.calendarItems.append(item)
                 }
