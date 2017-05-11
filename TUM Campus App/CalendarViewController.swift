@@ -175,6 +175,7 @@ extension CalendarViewController: MGCDayPlannerViewDataSource, MGCDayPlannerView
         eventView.color = Constants.tumBlue
         let item = lecturesOfDate(date)[(Int)(index)]
         eventView.title = item.text
+        eventView.subtitle = item.location
         return eventView
     }
     
