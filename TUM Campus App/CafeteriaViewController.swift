@@ -91,7 +91,7 @@ extension CafeteriaViewController {
         pickerView.show()
         barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
         barItem?.image = UIImage(named: "collapse")
-        navigationController?.view.isUserInteractionEnabled = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
     }
     
@@ -99,7 +99,7 @@ extension CafeteriaViewController {
         pickerView.dismiss()
         barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
         barItem?.image = UIImage(named: "expand")
-        navigationController?.view.isUserInteractionEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func setUpPickerView() {
