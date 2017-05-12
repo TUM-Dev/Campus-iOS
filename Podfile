@@ -5,7 +5,7 @@ platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
-    pod 'Sweeft'
+        pod 'Sweeft', '~> 0.9'
 	pod 'Alamofire', '~> 4.2'
 	pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SwiftyJSON', '~> 3.1.4'
@@ -15,7 +15,7 @@ target 'Campus' do
 	pod 'CalendarLib', '~> 2.0'
 	pod 'SWXMLHash', '~> 3.0.3'
 	pod 'TKSubmitTransition', :git => 'https://github.com/jvitor/TKSubmitTransition.git'
-    pod 'Kanna', '~> 2.1.0'
+        pod 'Kanna', '~> 2.1.0'
     
     target 'TUM Campus AppUITests' do
         inherit! :search_paths
