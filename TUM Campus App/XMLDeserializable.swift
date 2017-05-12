@@ -65,9 +65,10 @@ extension API {
                                 auth: Auth = NoAuth.standard,
                                 body: Data? = nil,
                                 acceptableStatusCodes: [Int] = [200],
-                                completionQueue: DispatchQueue = .main) -> Response<T> {
+                                completionQueue: DispatchQueue = .main,
+                                maxCacheTime: TimeInterval = 0) -> Response<T> {
         
-        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue)
+        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue, maxCacheTime: maxCacheTime)
     }
     
     func doXMLObjectsRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
@@ -79,9 +80,10 @@ extension API {
                             body: Data? = nil,
                             acceptableStatusCodes: [Int] = [200],
                             completionQueue: DispatchQueue = .main,
-                            at path: String...) -> Response<[T]> {
+                            at path: String...,
+                            maxCacheTime: TimeInterval = 0) -> Response<[T]> {
         
-        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue).nested { (xml: XMLIndexer, promise) in
+        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue, maxCacheTime: maxCacheTime).nested { (xml: XMLIndexer, promise) in
         
             guard let array = xml.get(at: path)?.all else {
                 return promise.error(with: .noData)

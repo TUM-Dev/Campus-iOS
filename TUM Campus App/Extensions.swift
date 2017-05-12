@@ -51,3 +51,23 @@ extension Bundle {
     }
     
 }
+
+extension TimeInterval {
+    
+    static var oneHour: TimeInterval {
+        return 60
+    }
+    
+    static var sixHours: TimeInterval {
+        return 6 * .oneHour
+    }
+    
+    static var aboutOneDay: TimeInterval {
+        return 24 * .oneHour
+    }
+    
+    static var aboutOneWeek: TimeInterval {
+        return 7 * .aboutOneDay
+    }
+    
+}

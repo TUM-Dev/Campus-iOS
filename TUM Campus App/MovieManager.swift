@@ -9,13 +9,11 @@
 import Foundation
 import Sweeft
 
-final class MovieManager: CachedManager, SingleItemManager {
+final class MovieManager: SingleItemManager {
     
     typealias DataType = Movie
     
     var config: Config
-    
-    var cache: [Movie]?
     
     var requiresLogin: Bool {
         return false
@@ -25,8 +23,8 @@ final class MovieManager: CachedManager, SingleItemManager {
         self.config = config
     }
     
-    func perform() -> Response<[Movie]> {
-        return config.tumCabe.doObjectsRequest(to: .movie).nested { $0 |> { $0.airDate >= .now } }
+    func fetch() -> Response<[Movie]> {
+        return config.tumCabe.doObjectsRequest(to: .movie, maxCacheTime: .aboutOneDay).nested { $0 |> { $0.airDate >= .now } }
     }
     
 }

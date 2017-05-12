@@ -9,13 +9,11 @@
 import Foundation
 import Sweeft
 
-final class NewsManager: CachedManager, SingleItemManager {
+final class NewsManager: SingleItemManager {
     
     typealias DataType = News
     
     var config: Config
-    
-    var cache: [News]?
     
     var requiresLogin: Bool {
         return false
@@ -29,8 +27,8 @@ final class NewsManager: CachedManager, SingleItemManager {
         return items.filter({ $0.date > .now }).first ?? items.last
     }
     
-    func perform() -> Response<[News]> {
-        return config.tumCabe.doObjectsRequest(to: .news).nested { $0.sorted(descending: { $0.date }) }
+    func fetch() -> Response<[News]> {
+        return config.tumCabe.doObjectsRequest(to: .news, maxCacheTime: .aboutOneDay).nested { $0.sorted(descending: { $0.date }) }
     }
     
 }

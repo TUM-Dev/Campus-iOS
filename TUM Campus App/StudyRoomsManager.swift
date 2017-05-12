@@ -12,13 +12,11 @@ import SwiftyJSON
 
 import Sweeft
 
-final class StudyRoomsManager: CachedManager {
+final class StudyRoomsManager: NewManager {
     
     typealias DataType = StudyRoomGroup
     
     var config: Config
-    
-    var cache: [StudyRoomGroup]?
     
     var requiresLogin: Bool {
         return false
@@ -28,7 +26,7 @@ final class StudyRoomsManager: CachedManager {
         self.config = config
     }
     
-    func perform() -> Response<[StudyRoomGroup]> {
+    func fetch() -> Response<[StudyRoomGroup]> {
         return config.rooms.doJSONRequest(to: .rooms).nested { json in
             return json["gruppen"].array ==> StudyRoomGroup.init
         }

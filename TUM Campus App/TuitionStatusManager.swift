@@ -9,13 +9,11 @@
 import Foundation
 import Sweeft
 
-final class TuitionStatusManager: CachedManager, SingleItemManager {
+final class TuitionStatusManager: SingleItemManager {
     
     typealias DataType = Tuition
     
     var config: Config
-    
-    var cache: [Tuition]?
     
     var requiresLogin: Bool {
         return false
@@ -25,8 +23,8 @@ final class TuitionStatusManager: CachedManager, SingleItemManager {
         self.config = config
     }
     
-    func perform() -> Response<[Tuition]> {
-        return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus, at: "rowset", "row")
+    func fetch() -> Response<[Tuition]> {
+        return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus, at: "rowset", "row", maxCacheTime: .aboutOneDay)
     }
     
 }

@@ -84,22 +84,3 @@ extension SingleItemManager {
     }
     
 }
-
-protocol CachedManager: class, NewManager {
-    var cache: [DataType]? { get set }
-    func perform() -> Response<[DataType]>
-}
-
-extension CachedManager {
-    
-    func fetch() -> Response<[DataType]> {
-        if let cache = cache {
-            return .successful(with: cache)
-        }
-        return perform().nested { (results: [DataType]) in
-            self.cache = results
-            return results
-        }
-    }
-    
-}

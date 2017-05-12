@@ -11,13 +11,11 @@ import Alamofire
 import Sweeft
 import Kanna
 
-final class NewBookRentalManager: CachedManager, SingleItemManager {
+final class NewBookRentalManager: SingleItemManager {
     
     typealias DataType = BookRental
     
     var config: Config
-    
-    var cache: [BookRental]?
     
     var requiresLogin: Bool {
         return false
@@ -27,7 +25,7 @@ final class NewBookRentalManager: CachedManager, SingleItemManager {
         self.config = config
     }
     
-    func perform() -> Response<[BookRental]> {
+    func fetch() -> Response<[BookRental]> {
         let api = config.bookRentals
         return api.start().next { csid in
             return api.login(user: self.getUsername(), password: self.getPassword(), csid: csid)
