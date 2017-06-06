@@ -32,14 +32,14 @@ class TumDataManager {
         // .MoviesCollection: MovieManager(mainManager: self),
         // .CalendarCard: CalendarManager(mainManager: self, single: true),
         // .CalendarFull: CalendarManager(mainManager: self),
-        .UserData: UserDataManager(mainManager: self),
+//        .UserData: UserDataManager(mainManager: self),
         // .PersonSearch: PersonSearchManager(mainManager: self),
         // .LectureItems: PersonalLectureManager(mainManager: self),
         // .LectureSearch: LectureSearchManager(mainManager: self),
         // .GradeItems: PersonalGradeManager(mainManager: self),
         // .RoomSearch: RoomSearchManager(mainManager: self),
         // .RoomMap: RoomFinderMapManager(mainManager: self),
-        .PersonDetail: PersonDetailDataManager(mainManager: self),
+//        .PersonDetail: PersonDetailDataManager(mainManager: self),
         // .LectureDetails: LectureDetailsManager(mainManager: self),
         // .NewsCard: NewsManager(single: true),
         // .NewsCollection: NewsManager(single: false),
@@ -68,10 +68,10 @@ class TumDataManager {
     }
     
     func getPersonDetails(_ handler: @escaping (_ data: [DataElement]) -> (), user: UserData) {
-        if let manager = managers[.PersonDetail] as? PersonDetailDataManager {
-            manager.userQuery = user
-            manager.fetchData(handler)
-        }
+//        if let manager = managers[.PersonDetail] as? PersonDetailDataManager {
+//            manager.userQuery = user
+//            manager.fetchData(handler)
+//        }
     }
     
     func getLectureDetails(_ receiver: TumDataReceiver, lecture: Lecture) {

@@ -54,8 +54,12 @@ extension Bundle {
 
 extension TimeInterval {
     
-    static var oneHour: TimeInterval {
+    static var oneMinute: TimeInterval {
         return 60
+    }
+    
+    static var oneHour: TimeInterval {
+        return 60 * .oneMinute
     }
     
     static var sixHours: TimeInterval {

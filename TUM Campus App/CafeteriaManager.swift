@@ -19,6 +19,14 @@ enum CafeteriasApi: String {
     case Latitude = "latitude"
 }
 
+//class NewCafeteriaManager: NewManager {
+//    
+//    typealias DataType = CafeteriaMenu
+//    
+//    
+//    
+//}
+
 class CafeteriaManager: Manager {
     
     var main: TumDataManager?

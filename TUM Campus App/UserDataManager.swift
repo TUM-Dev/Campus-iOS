@@ -7,46 +7,40 @@
 //
 
 import Foundation
-import Alamofire
+import Sweeft
 import SWXMLHash
 
-class UserDataManager: Manager {
+final class UserDataManager: DetailsForDataManager {
     
-    var main: TumDataManager?
+    typealias DataType = User
+    typealias ResponseType = UserData
     
-    var handler: (([DataElement]) -> ())?
+    let config: Config
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    init(config: Config) {
+        self.config = config
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        self.handler = handler
-        if let user = main?.user?.name {
-            main?.doPersonSearch(handler, query: user)
-        } else {
-            let url = getURL()
-            Alamofire.request(url).responseString() { (response) in
-                if let data = response.result.value {
-                    let parsedXML = SWXMLHash.parse(data)
-                    let rows = parsedXML["rowset"]["row"].all
-                    if rows.count == 1 {
-                        let person = rows[0]
-                        if let firstname = person["vorname"].element?.text, let lastname = person["familienname"].element?.text {
-                            let name = firstname + " " + lastname
-                            self.main?.doPersonSearch(handler, query: name)
-                        }
-                    }
+    func search(with id: String) -> Promise<UserData, APIError> {
+        let manager = PersonSearchManager(config: config)
+        return manager.search(query: id).nested { users, promise in
+            guard let user = users.first else {
+                return promise.error(with: .noData)
+            }
+            promise.success(with: user)
+        }
+    }
+    
+    func fetch(for data: User) -> Promise<UserData, APIError> {
+        guard let id = data.id else {
+            return config.tumOnline.doRepresentedRequest(to: .identify).next { (xml: XMLIndexer) in
+                guard let id = xml["id"].element?.text else {
+                    return .errored(with: .cannotPerformRequest)
                 }
+                return self.search(with: id)
             }
         }
+        return search(with: id)
     }
-    
-    func getURL() -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.Identity.rawValue
-        if let token = main?.getToken() {
-            return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&"
-        }
-        return ""
-    }
+
 }

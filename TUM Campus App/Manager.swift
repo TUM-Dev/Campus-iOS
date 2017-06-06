@@ -26,9 +26,14 @@ extension Manager {
 
 // NEW Stuff!!!
 
-protocol DetailsManager {
+protocol DetailsForDataManager {
     associatedtype DataType
+    associatedtype ResponseType
     init(config: Config)
+    func fetch(for data: DataType) -> Response<ResponseType>
+}
+
+protocol DetailsManager: DetailsForDataManager {
     func fetch(for data: DataType) -> Response<DataType>
 }
 
