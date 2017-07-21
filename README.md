@@ -2,7 +2,7 @@
 
 # TumCampusApp - an unoffical guide through university life
 
-The [TUM Campus App (TCA)]((https://itunes.apple.com/app/id1217412716) is an open source project, developed by volunteers and available on the App Store.
+The [TUM Campus App (TCA)](https://itunes.apple.com/app/id1217412716) is an open source project, developed by volunteers and available on the App Store.
 
 The TCA mostly targets phones, but can also be used on tablets or any other device that runs iOS. This is the repo for the iOS Version of the TUM Campus App.
 
