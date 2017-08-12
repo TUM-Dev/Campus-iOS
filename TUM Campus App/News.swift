@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class News: ImageDownloader, DataElement {
     
@@ -36,8 +37,13 @@ class News: ImageDownloader, DataElement {
         return "news"
     }
     
-    func open() {
-        if let url = URL(string: link) {
+    func open(sender: UIViewController? = nil) {
+        guard let url = URL(string: link) else { return }
+        
+        if let sender = sender {
+            let safariViewController = SFSafariViewController(url: url)
+            sender.present(safariViewController, animated: true, completion: nil)
+        } else {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
