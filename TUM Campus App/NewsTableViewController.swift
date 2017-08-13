@@ -61,7 +61,7 @@ extension NewsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        news[indexPath.row].open()
+        news[indexPath.row].open(sender: self)
     }
     
 }
