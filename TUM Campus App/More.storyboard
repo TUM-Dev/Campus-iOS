@@ -54,9 +54,6 @@
                                                 <constraint firstAttribute="topMargin" secondItem="tD4-za-hbK" secondAttribute="top" constant="-8" id="VU4-y7-XRs"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="tUg-C5-TOA" kind="show" id="dJ4-83-CmK"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -501,6 +498,7 @@
                         <outlet property="bibNumber" destination="Vak-XP-9Y9" id="RM3-ts-fYp"/>
                         <outlet property="logoutLabel" destination="xLM-JZ-VN5" id="35G-k6-c35"/>
                         <outlet property="nameLabel" destination="1r3-0d-1B6" id="1rb-fS-sQ0"/>
+                        <segue destination="tUg-C5-TOA" kind="show" identifier="showPersonalDetail" id="aKf-Iw-xkZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nG-ra-VnU" userLabel="First Responder" sceneMemberID="firstResponder"/>

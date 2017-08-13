@@ -39,7 +39,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     }
     
     var isLoggedIn: Bool {
-        return user != nil
+        return user != nil //&& user?.data != nil
     }
     
     func updateView() {
@@ -127,15 +127,25 @@ extension MoreTableViewController {
             return handleNotYetImplemented()
         }
         switch indexPath.section {
-        case 4:
             
+        case 0:
+            if indexPath.row == 0 && user?.data != nil {
+                performSegue(withIdentifier: "showPersonalDetail", sender: self)
+            } else {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+            
+        case 4:
             let systemVersion = UIDevice.current.systemVersion
             let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
             let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
                 if let url =  URL(string: "https://tumcabe.in.tum.de/") {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    UIApplication.shared.open(url, options: [:]) { finished in
+                        self.tableView.deselectRow(at: indexPath, animated: true)
+                    }
+
                 }
             } else if indexPath.row == 1 {
                 sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
