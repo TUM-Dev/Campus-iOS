@@ -46,7 +46,7 @@ class DeparturesViewController : UITableViewController {
         MVG.default.getDepartures(forStation: station) { error, departures in
             if let error = error {
                 self.showError("Error", error.localizedDescription)
-                return;
+                return
             }
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()

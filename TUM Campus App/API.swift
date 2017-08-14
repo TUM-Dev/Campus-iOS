@@ -92,7 +92,10 @@ struct MVG {
         ]
         
         try! makeRequest(.getNearbyStations, parameters) { error, json in
-            guard let json = json else { handler(error, []); return; }
+            guard let json = json else {
+                handler(error, [])
+                return
+            }
             
             var stations = [Station]()
             
@@ -113,7 +116,7 @@ struct MVG {
             "footway" : 0
         ]
         
-        var departures = [Departure]()
+        var departures: [Departure] = []
         
         try! makeRequest(.departure, params, clearCache: true) { error, json in
             guard let departuresJSON = json?["departures"].array else {

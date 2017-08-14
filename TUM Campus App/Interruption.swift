@@ -51,7 +51,7 @@ struct Interruption {
         
         // Parse lines
         
-        var _lines = [Line]()
+        var _lines: [Line] = []
         
         for lineJSON in json["lines"]["line"].arrayValue {
             let lineNumber = Int(lineJSON["line"].stringValue.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))!
