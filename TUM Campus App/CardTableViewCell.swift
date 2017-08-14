@@ -7,12 +7,30 @@
 //
 
 import UIKit
-import MCSwipeTableViewCell
 
-class CardTableViewCell: MCSwipeTableViewCell {
-    
-    func setElement(_ element: DataElement) {
-        
-    }
-
+@IBDesignable class CardTableViewCell: UITableViewCell {
+	
+	@IBInspectable var color1: UIColor = UIColor.white
+	@IBInspectable var color2: UIColor = UIColor.black
+	
+	let gradientLayer = CAGradientLayer()
+	
+	func configureBackgroundGradient() {
+		gradientLayer.colors = [color1.cgColor, color2.cgColor]
+		gradientLayer.locations = [0.0, 1.0]
+		gradientLayer.frame = frame
+		gradientLayer.opacity = 0.05
+		contentView.layer.insertSublayer(gradientLayer, at: 0)
+	}
+	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		configureBackgroundGradient()
+	}
+	
+	
+	func setElement(_ element: DataElement) {
+		fatalError("setElement not implemented")
+	}
+	
 }

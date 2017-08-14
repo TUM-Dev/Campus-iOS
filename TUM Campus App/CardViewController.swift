@@ -8,16 +8,12 @@
 
 import Sweeft
 import UIKit
-import MCSwipeTableViewCell
 
 class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
-    
     var cards = [DataElement]()
-    
     var nextLecture: CalendarRow?
-    
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
@@ -70,12 +66,12 @@ extension CardViewController {
         }
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.estimatedRowHeight = 180
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Constants.backgroundGray
+        tableView.backgroundColor = .white
         manager = (self.tabBarController as? CampusTabBarController)?.manager
     }
     
@@ -124,12 +120,8 @@ extension CardViewController {
             }
         }
         cell.selectionStyle = .none
-        cell.defaultColor = tableView.backgroundColor
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state1) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state2) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state3) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state4) { (void) in handler() }
-        return cell
+		
+		return cell
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
