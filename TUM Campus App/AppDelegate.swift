@@ -21,16 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    private func setupAppearance(){
+    private func setupAppearance() {
         UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.tumBlue]
         UINavigationBar.appearance().tintColor = Constants.tumBlue
     }
     
-    private func conditionallyShowLoginViewController(){
+    private func conditionallyShowLoginViewController() {
         if User.shared == nil && !Usage.value {
-            guard let loginViewController = ViewControllerProvider.loginNavigationViewController
-                else { return }
+            let loginViewController = ViewControllerProvider.loginNavigationViewController
             window?.makeKeyAndVisible()
             window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
         }

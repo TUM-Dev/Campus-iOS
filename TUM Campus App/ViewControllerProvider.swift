@@ -9,9 +9,9 @@
 import UIKit
 
 class ViewControllerProvider {
-    static private(set) var loginNavigationViewController: UINavigationController? = {
+    static private(set) var loginNavigationViewController: UIViewController = {
         let storyboard = UIStoryboard(name: "Setup", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "Login") as? UINavigationController
+        return storyboard.instantiateViewController(withIdentifier: "Login")
     }()
     
     private init(){}

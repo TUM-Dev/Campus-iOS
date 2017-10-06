@@ -93,11 +93,10 @@ extension PersonDetailTableViewController {
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact") ?? UITableViewCell()
-        if indexPath.row < contactInfo.count{
+        if indexPath.row < contactInfo.count {
             cell.textLabel?.text = contactInfo[indexPath.row].0.rawValue
             cell.detailTextLabel?.text = contactInfo[indexPath.row].1
-        }
-        else {
+        } else {
             cell.textLabel?.text = ""
             cell.detailTextLabel?.text = ""
         }

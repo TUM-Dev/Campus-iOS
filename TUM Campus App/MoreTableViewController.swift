@@ -147,8 +147,7 @@ extension MoreTableViewController {
             User.shared = nil
             Usage.value = false
             
-            guard let loginViewController = ViewControllerProvider.loginNavigationViewController
-                else { break }
+            let loginViewController = ViewControllerProvider.loginNavigationViewController
             self.present(loginViewController, animated: true, completion: nil)
         default:
             break
