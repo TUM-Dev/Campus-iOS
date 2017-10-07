@@ -16,7 +16,8 @@ before_install:
   - ./fastlane/before_install.sh
 
 script:
-   - fastlane snapshot reset_simulators --force  # Workaround for Travis bug https://github.com/travis-ci/travis-ci/issues/7031
+   - export SNAPSHOT_FORCE_DELETE=true
+   - fastlane snapshot reset_simulators  # Workaround for Travis bug https://github.com/travis-ci/travis-ci/issues/7031
    - ./fastlane/run.sh  # Decide which lane to run
 
 notifications:
