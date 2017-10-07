@@ -84,6 +84,7 @@ extension MoreTableViewController {
         } else {
             bibNumber.text = "Not logged in"
         }
+        updateView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -144,10 +145,10 @@ extension MoreTableViewController {
         case 5:
             PersistentUser.reset()
             User.shared = nil
-            let storyboard = UIStoryboard(name: "Setup", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             Usage.value = false
-            UIApplication.shared.keyWindow?.rootViewController = loginViewController
+            
+            let loginViewController = ViewControllerProvider.loginNavigationViewController
+            self.present(loginViewController, animated: true, completion: nil)
         default:
             break
         }

@@ -45,7 +45,7 @@ private_lane :test do |options|
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
 		output_directory: "fastlane/reports",
-		custom_report_file_name: "scan-test.junit"
+		output_files: "scan-test.html,scan-test.junit"
 	}
 	scan(scan_args)
 end
@@ -53,7 +53,7 @@ end
 desc 'Performs a sonar analysis in preview mode and comments on the PR on Github.'
 private_lane :sonar_github_pr_bot do
 	sonar_github_args = {
-		project_configuration_path: "sonar-project.properties", 
+		project_configuration_path: "sonar-project.properties",
 		sonar_runner_args:  "-Dsonar.analysis.mode=preview" +
 		" -Dsonar.login=$SONAR_LOGIN_TOKEN" +
 		" -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST" +
@@ -66,7 +66,7 @@ end
 desc 'Updates the SonarQube Server dashboard.'
 private_lane :sonar_update_dashboard do
 	sonar_update_server_args = {
-		project_configuration_path: "sonar-project.properties", 
+		project_configuration_path: "sonar-project.properties",
 		sonar_runner_args:  " -Dsonar.login=$SONAR_LOGIN_TOKEN"
 	}
 	sonar(sonar_update_server_args)
@@ -76,11 +76,11 @@ desc 'Runs test coverage and swiftlint and provides data in a way sonar can use 
 private_lane :static_analysis do
 	slather_args = {
 		proj: "TUM Campus App.xcodeproj",
-		scheme: "TCA-CI", 
-		cobertura_xml: true, 
-		jenkins: true, 
-		build_directory: "fastlane/DerivedData", 
-		output_directory: "fastlane/reports", 
+		scheme: "TCA-CI",
+		cobertura_xml: true,
+		jenkins: true,
+		build_directory: "fastlane/DerivedData",
+		output_directory: "fastlane/reports",
 	}
 	swiftlint_args = {
 		output_file: "fastlane/reports/swiftlint.txt",
