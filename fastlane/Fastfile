@@ -45,7 +45,7 @@ private_lane :test do |options|
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
 		derived_data_path: "fastlane/DerivedData",
 		output_directory: "fastlane/reports",
-		output_files: "scan-test.junit"
+		output_files: "scan-test.html,scan-test.junit"
 	}
 	scan(scan_args)
 end
