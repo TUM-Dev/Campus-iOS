@@ -7,7 +7,7 @@ osx_image: xcode8.3
 
 branches:
   # Only run push builds for the master branch. PR builds are run nevertheless
-  only: 
+  only:
     - master
 
 before_install:
@@ -16,7 +16,6 @@ before_install:
   - ./fastlane/before_install.sh
 
 script:
-   - fastlane snapshot reset_simulators --force # Workaround for Travis bug https://github.com/travis-ci/travis-ci/issues/7031
    - ./fastlane/run.sh  # Decide which lane to run
 
 notifications:
