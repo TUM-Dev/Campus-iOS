@@ -59,7 +59,7 @@ extension WaitForTokenViewController: AccessTokenReceiver {
             button.startFinishAnimation(delay: TimeInterval(0)) {
                 self.loginManager?.loginSuccesful(userUnwrapped)
                 if self.presentingViewController != nil {
-                    self.performSegue(withIdentifier: "loggedIn", sender: self)
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {

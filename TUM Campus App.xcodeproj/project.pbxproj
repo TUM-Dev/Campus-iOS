@@ -156,6 +156,7 @@
 		807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */; };
 		807C481D1F4093FC00CAD35D /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */; };
 		B20DF5B992DFD30580046509 /* Pods_TUM_Campus_AppUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */; };
+		E1369C9D1F87D25E00D6766E /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,7 +336,6 @@
 		50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedScreenshots.swift; sourceTree = "<group>"; };
 		50F798E21E71615400FA4E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F798E81E71618400FA4E49 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
-		D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		645706747A75D493650CE8BF /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71E5FE2E8CB9088FB285EB17 /* Pods_TUM_Campus_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +349,8 @@
 		807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		88D5EC6E4CF40FB09D2EEFE1 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
+		D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
+		E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
 		FD5344B43361B4DC4AB2F5C3 /* Pods-TUM Campus AppUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		FF106B0699A0B4431DB45432 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -482,6 +484,7 @@
 				229795831EAC1DFC004A7F9B /* Library Settings */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
 				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
+				E1369C9B1F87D22200D6766E /* UI Services */,
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
 				0E57252F1C1647BD00E5471D /* TUM Campus App-Bridging-Header.h */,
 				807C480E1F4090EF00CAD35D /* MVV */,
@@ -866,6 +869,12 @@
 				807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */,
 			);
 			name = MVV;
+		E1369C9B1F87D22200D6766E /* UI Services */ = {
+			isa = PBXGroup;
+			children = (
+				E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */,
+			);
+			name = "UI Services";
 			sourceTree = "<group>";
 		};
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
@@ -1100,13 +1109,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Campus-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8B8EEAF448EA284D43CDD27C /* [CP] Copy Pods Resources */ = {
@@ -1130,9 +1142,36 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Campus/Pods-Campus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ASWeekSelectorView/ASWeekSelectorView.framework",
+				"${BUILT_PRODUCTS_DIR}/AYSlidingPickerView/AYSlidingPickerView.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CalendarLib/CalendarLib.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
+				"${BUILT_PRODUCTS_DIR}/MCSwipeTableViewCell/MCSwipeTableViewCell.framework",
+				"${BUILT_PRODUCTS_DIR}/OSCache/OSCache.framework",
+				"${BUILT_PRODUCTS_DIR}/OrderedDictionary/OrderedDictionary.framework",
+				"${BUILT_PRODUCTS_DIR}/PZPullToRefresh/PZPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/Sweeft/Sweeft.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TKSubmitTransition/TKSubmitTransition.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASWeekSelectorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AYSlidingPickerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalendarLib.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MCSwipeTableViewCell.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OSCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OrderedDictionary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PZPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sweeft.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKSubmitTransition.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1160,13 +1199,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TUM Campus AppUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D462006C11A068CEFDD51E22 /* [CP] Embed Pods Frameworks */ = {
@@ -1205,13 +1247,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TUM Campus AppUnitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1325,6 +1370,7 @@
 				0E3B212C1C13AB250035ED70 /* DoneView.swift in Sources */,
 				0E6C20641C4C3A1F0059B7C2 /* LectureDetailsTableViewController.swift in Sources */,
 				0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */,
+				E1369C9D1F87D25E00D6766E /* ViewControllerProvider.swift in Sources */,
 				0EB473C61C1B1D6A00F17F44 /* CafeteriaViewController.swift in Sources */,
 				0EB1618A1C1A1999001A08FC /* LectureSearchManager.swift in Sources */,
 				0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */,
@@ -1506,7 +1552,6 @@
 		};
 		0E424F631BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3346F85B79A55B221B08FEDB /* Pods-Campus.debug.xcconfig */;
 			baseConfigurationReference = FF106B0699A0B4431DB45432 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
@@ -1529,7 +1574,6 @@
 		};
 		0E424F641BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */;
 			baseConfigurationReference = AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
