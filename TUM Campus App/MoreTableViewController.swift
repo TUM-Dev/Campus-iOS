@@ -26,8 +26,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
     let notImplemented = [
         IndexPath(row: 2, section: 2), // MVV
-        IndexPath(row: 1, section: 3), // Services
-        IndexPath(row: 2, section: 3), // Default Campus
+        IndexPath(row: 1, section: 3), // Default Campus
     ]
     
     var manager: TumDataManager?
