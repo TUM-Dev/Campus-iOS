@@ -869,6 +869,8 @@
 				807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */,
 			);
 			name = MVV;
+			sourceTree = "<group>";
+		};
 		E1369C9B1F87D22200D6766E /* UI Services */ = {
 			isa = PBXGroup;
 			children = (
