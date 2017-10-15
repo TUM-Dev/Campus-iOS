@@ -58,7 +58,7 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
-        let numberOfCharacterPerTextField = [2, 2, 3]
+        let numberOfCharactersPerTextField = [2, 2, 3]
         let textFields = [firstTextField, numbersTextField, secondTextField]
         
         guard let textFieldIndex = textFields.index(where: { $0 == textField })
@@ -78,7 +78,7 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
             let startIndex = mutableReplaced.startIndex
             let endIndex = replaced.index(startIndex,
                                           offsetBy: min(mutableReplaced.characters.count,
-                                                        numberOfCharacterPerTextField[i]) - 1)
+                                                        numberOfCharactersPerTextField[i]) - 1)
             
             let range = ClosedRange(uncheckedBounds: (lower: startIndex, upper: endIndex))
             
@@ -89,7 +89,7 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
             
             if mutableReplaced.characters.count == 0 {
                 
-                if textFields[i]?.text?.characters.count == numberOfCharacterPerTextField[i] {
+                if textFields[i]?.text?.characters.count == numberOfCharactersPerTextField[i] {
                     textFields[min(textFields.count - 1, i + 1)]?.becomeFirstResponder()
                 }
                 
