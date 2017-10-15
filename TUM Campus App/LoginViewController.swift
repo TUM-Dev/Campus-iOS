@@ -76,8 +76,12 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
         
         for i in textFieldIndex..<textFields.endIndex {
             let startIndex = mutableReplaced.startIndex
-            let endIndex = replaced.index(startIndex, offsetBy: min(mutableReplaced.characters.count, numberOfCharacterPerTextField[i]) - 1)
+            let endIndex = replaced.index(startIndex,
+                                          offsetBy: min(mutableReplaced.characters.count,
+                                                        numberOfCharacterPerTextField[i]) - 1)
+            
             let range = ClosedRange(uncheckedBounds: (lower: startIndex, upper: endIndex))
+            
             textFields[i]?.text = mutableReplaced[range]
             textFields[i]?.becomeFirstResponder()
         
@@ -102,7 +106,10 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
     }
     
     private func textFieldContentsAreValid() -> Bool {
-        guard let firstText = firstTextField.text, let numbers = numbersTextField.text, let secondText = secondTextField.text, let _ = Int(numbers)
+        guard let firstText = firstTextField.text,
+            let numbers = numbersTextField.text,
+            let secondText = secondTextField.text,
+            let _ = Int(numbers)
             else { return false }
         return firstText.characters.count == 2 && numbers.characters.count == 2 && secondText.characters.count == 3
     }
