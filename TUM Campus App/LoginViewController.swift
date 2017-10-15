@@ -58,39 +58,53 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
-        switch textField {
-        case firstTextField:
-            if replaced.characters.count == 2 {
-                firstTextField.text = replaced
-                numbersTextField.becomeFirstResponder()
-                return false
-            }
-            break
-        case numbersTextField:
-            if replaced.characters.count == 2 {
-                numbersTextField.text = replaced
-                secondTextField.becomeFirstResponder()
-                return false
-            } else if replaced == "" {
-                numbersTextField.text = ""
-                firstTextField.becomeFirstResponder()
-                return false
-            }
-            break
-        case secondTextField:
-            if replaced.characters.count == 3 {
-                secondTextField.text = replaced
-                performSegue(withIdentifier: "waitForConfirmation", sender: self)
-                return false
-            } else if replaced == "" {
-                secondTextField.text = ""
-                numbersTextField.becomeFirstResponder()
-                return false
-            }
-            break
-        default: break
+        let numberOfCharacterPerTextField = [2, 2, 3]
+        let textFields = [firstTextField, numbersTextField, secondTextField]
+        
+        guard let textFieldIndex = textFields.index(where: { $0 == textField })
+            else { return true }
+        
+        if replaced == "" {
+            textField.text = ""
+            textFields[max(0, textFieldIndex - 1)]?.becomeFirstResponder()
+            return false
+        } else if string.characters.count < range.length {
+            return true
         }
-        return true
+    
+        var mutableReplaced = replaced
+        
+        for i in textFieldIndex..<textFields.endIndex {
+            let startIndex = mutableReplaced.startIndex
+            let endIndex = replaced.index(startIndex, offsetBy: min(mutableReplaced.characters.count, numberOfCharacterPerTextField[i]) - 1)
+            let range = ClosedRange(uncheckedBounds: (lower: startIndex, upper: endIndex))
+            textFields[i]?.text = mutableReplaced[range]
+            textFields[i]?.becomeFirstResponder()
+        
+            mutableReplaced.removeSubrange(range)
+            
+            if mutableReplaced.characters.count == 0 {
+                
+                if textFields[i]?.text?.characters.count == numberOfCharacterPerTextField[i] {
+                    textFields[min(textFields.count - 1, i + 1)]?.becomeFirstResponder()
+                }
+                
+                break
+            }
+        }
+        
+        if textFieldContentsAreValid() {
+            self.view.endEditing(true)
+            performSegue(withIdentifier: "waitForConfirmation", sender: self)
+        }
+        
+        return false
+    }
+    
+    private func textFieldContentsAreValid() -> Bool {
+        guard let firstText = firstTextField.text, let numbers = numbersTextField.text, let secondText = secondTextField.text, let _ = Int(numbers)
+            else { return false }
+        return firstText.characters.count == 2 && numbers.characters.count == 2 && secondText.characters.count == 3
     }
     
 }
