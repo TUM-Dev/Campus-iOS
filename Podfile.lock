@@ -10,7 +10,7 @@ PODS:
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.12.1)
+  - Sweeft (0.13.0)
   - SwiftyJSON (3.1.4)
   - SWXMLHash (4.2.3)
   - TKSubmitTransition (0.2)
@@ -23,7 +23,7 @@ DEPENDENCIES:
   - Kanna (~> 2.1.0)
   - MCSwipeTableViewCell (~> 2.1.4)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
-  - Sweeft
+  - Sweeft (~> 0.13)
   - SwiftyJSON (~> 3.1.4)
   - SWXMLHash (~> 4.2.3)
   - TKSubmitTransition (from `https://github.com/jvitor/TKSubmitTransition.git`)
@@ -52,11 +52,11 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: c83adbea27b7f1c06111001289c38e1106e542f0
+  Sweeft: 61192a407df4a00cb4536f040702f2785b4e7932
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SWXMLHash: 6ab10e1cb4567d88cd3634be0bf331a7839945dd
   TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
-PODFILE CHECKSUM: 455d8eb4508671530f2068cb4038d49da87ad1e9
+PODFILE CHECKSUM: 3f0b08a80bdea320937ec32e0a1d74c75112f78c
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0.beta.1

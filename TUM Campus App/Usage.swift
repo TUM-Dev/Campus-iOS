@@ -8,7 +8,7 @@
 
 import Sweeft
 
-struct Usage: Status {
+struct Usage: SingleStatus {
     static var key: AppDefaults = .usage
     static var defaultValue = false
 }

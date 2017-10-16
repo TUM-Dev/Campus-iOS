@@ -8,30 +8,15 @@
 
 import Sweeft
 
-enum PersistendUserData: StatusSerializable {
+enum PersistendUserData: Codable {
+    
+    enum CodingKeys: String, CodingKey {
+        case lrzID
+        case token
+    }
+    
     case no
     case some(lrzID: String, token: String)
-    
-    var serialized: [String : Any] {
-        switch self {
-        case .no:
-            return [:]
-        case .some(let lrzID, let token):
-            return [
-                "lrzID": lrzID,
-                "token": token,
-            ]
-        }
-    }
-    
-    init?(from status: [String : Any]) {
-        guard let lrzID = status["lrzID"] as? String,
-            let token = status["token"] as? String else {
-                
-                return nil
-        }
-        self = .some(lrzID: lrzID, token: token)
-    }
     
     var user: User? {
         switch self {
@@ -42,9 +27,34 @@ enum PersistendUserData: StatusSerializable {
         }
     }
     
+    
+    init(from decoder: Decoder) throws {
+        do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let lrzID = try container.decode(String.self, forKey: .lrzID)
+            let token = try container.decode(String.self, forKey: .token)
+            self = .some(lrzID: lrzID, token: token)
+        } catch {
+            self = .no
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        switch self {
+        case .no:
+            let dict = [String : String]()
+            var container = encoder.singleValueContainer()
+            try container.encode(dict)
+        case .some(let lrzID, let token):
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(lrzID, forKey: .lrzID)
+            try container.encode(token, forKey: .token)
+        }
+    }
+    
 }
 
-struct PersistentUser: ObjectStatus {
+struct PersistentUser: SingleStatus {
     static var key: AppDefaults = .login
     static var defaultValue: PersistendUserData = .no
 }

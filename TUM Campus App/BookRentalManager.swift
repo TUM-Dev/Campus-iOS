@@ -28,15 +28,13 @@ class BookRentalManager: Manager {
         
         let api = BookRentalAPI(baseURL: opac_url)
         
-        api.start().onSuccess { csid in
+        api.start().flatMap { csid in
             return api.login(user: self.getUsername(), password: self.getPassword(), csid: csid)
         }
-        .future
-        .onSuccess { session in
+        .flatMap { session in
             // TODO: store session maybe
             return api.rentals()
         }
-        .future
         .onSuccess { rentals in
             BookRentalManager.rentals = rentals
             handler(rentals)
