@@ -55,6 +55,7 @@ enum PersistendUserData: Codable {
 }
 
 struct PersistentUser: SingleStatus {
-    static var key: AppDefaults = .login
-    static var defaultValue: PersistendUserData = .no
+    static let storage: Storage = .keychain
+    static let key: AppDefaults = .login
+    static let defaultValue: PersistendUserData = .no
 }
