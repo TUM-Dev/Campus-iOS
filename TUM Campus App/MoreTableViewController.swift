@@ -119,7 +119,13 @@ extension MoreTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
         switch indexPath.section {
+        case 2:
+            if indexPath.row == 2 {
+                self.navigationController?.pushViewController(MVGNearbyStationsViewController(), animated: true)
+            }
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
