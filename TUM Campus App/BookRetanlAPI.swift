@@ -23,8 +23,8 @@ struct BookRentalAPI: API {
 extension BookRentalAPI {
     
     func start() -> String.Result {
-        return doHTMLRequest(to: .start, queries: ["Login": "wotum01"]).nested { (document, promise) in
-            promise.finish(with: document.csid, onNil: .noData)
+        return doHTMLRequest(to: .start, queries: ["Login": "wotum01"]).flatMap { document in
+            return document.csid.map { .successful(with: $0) } ?? .errored(with: .noData)
         }
     }
     
@@ -35,27 +35,28 @@ extension BookRentalAPI {
             "CSId": csid,
             "methodToCall" : "submit"
         ]
-        return doHTMLRequest(with: .post, to: .login, queries: queries).nested { (document, promise) in
+        return doHTMLRequest(with: .post, to: .login, queries: queries).flatMap { document in
             
             if document.isMethodDone {
-                self.loadLogin().nest(to: promise, using: id)
+                return self.loadLogin()
             } else {
-                promise.finish(with: document.session, onNil: .noData)
+                return document.session.map { .successful(with: $0) } ?? .errored(with: .noData)
             }
         }
     }
     
     func loadLogin() -> Response<BookRentalAPISession> {
-        return doHTMLRequest(to: .login, queries: ["methodToCall": "done"]).nested { (document, promise) in
+        return doHTMLRequest(to: .login, queries: ["methodToCall": "done"]).flatMap { document in
             
-            promise.finish(with: document.session, onNil: .noData)
+            return document.session.map { .successful(with: $0) } ?? .errored(with: .noData)
+            
         }
     }
     
     func rentals() -> Response<[BookRental]> {
-        return doHTMLRequest(to: .rentals, queries: ["methodToCall": "showAccount", "typ": 1]).nested { (document, promise) in
+        return doHTMLRequest(to: .rentals, queries: ["methodToCall": "showAccount", "typ": 1]).flatMap { document in
             
-            promise.finish(with: document.rentals, onNil: .noData)
+            return document.rentals.map { .successful(with: $0) } ?? .errored(with: .noData)
         }
     }
     

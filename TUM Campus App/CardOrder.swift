@@ -8,7 +8,7 @@
 
 import Sweeft
 
-struct CardOrder {
+struct CardOrder: Codable {
     var cards: [CardKey]
     
     var managers: [TumDataItems] {
@@ -21,25 +21,7 @@ struct CardOrder {
     
 }
 
-extension CardOrder: StatusSerializable {
-    
-    init?(from status: [String : Any]) {
-        guard let items = status["items"] as? [Int] else {
-            return nil
-        }
-        let cards = items ==> { CardKey(rawValue: $0) }
-        self.init(cards: cards)
-    }
-    
-    var serialized: [String : Any] {
-        return [
-            "items": self.cards => { $0.rawValue }
-        ]
-    }
-    
-}
-
-struct PersistentCardOrder: ObjectStatus {
+struct PersistentCardOrder: SingleStatus {
     static var key: AppDefaults = .cards
     static var defaultValue = CardOrder(cards: CardKey.all)
 }
