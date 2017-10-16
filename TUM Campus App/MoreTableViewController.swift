@@ -25,7 +25,6 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
     let notImplemented = [
-        IndexPath(row: 2, section: 2), // MVV
         IndexPath(row: 1, section: 3), // Services
         IndexPath(row: 2, section: 3), // Default Campus
     ]
@@ -84,6 +83,7 @@ extension MoreTableViewController {
         } else {
             bibNumber.text = "Not logged in"
         }
+        updateView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,10 +123,15 @@ extension MoreTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         guard !notImplemented.contains(indexPath) else {
             return handleNotYetImplemented()
         }
         switch indexPath.section {
+        case 2:
+            if indexPath.row == 2 {
+                self.navigationController?.pushViewController(MVGNearbyStationsViewController(), animated: true)
+            }
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
@@ -144,10 +149,10 @@ extension MoreTableViewController {
         case 5:
             PersistentUser.reset()
             User.shared = nil
-            let storyboard = UIStoryboard(name: "Setup", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             Usage.value = false
-            UIApplication.shared.keyWindow?.rootViewController = loginViewController
+            
+            let loginViewController = ViewControllerProvider.loginNavigationViewController
+            self.present(loginViewController, animated: true, completion: nil)
         default:
             break
         }

@@ -93,13 +93,19 @@ extension PersonDetailTableViewController {
             }
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "contact") ?? UITableViewCell()
-        cell.textLabel?.text = contactInfo[indexPath.row].0.rawValue
-        cell.detailTextLabel?.text = contactInfo[indexPath.row].1
+        if indexPath.row < contactInfo.count {
+            cell.textLabel?.text = contactInfo[indexPath.row].0.rawValue
+            cell.detailTextLabel?.text = contactInfo[indexPath.row].1
+        } else {
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = ""
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 1 && indexPath.row < contactInfo.count {
             contactInfo[indexPath.row].0.handle(contactInfo[indexPath.row].1)
         }
     }
