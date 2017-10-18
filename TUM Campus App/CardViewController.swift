@@ -102,25 +102,19 @@ extension CardViewController {
         return max(cards.count, 1)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 480
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
-        let handler = { () -> () in
-            if let path = self.tableView.indexPath(for: cell) {
-                PersistentCardOrder.value.remove(cardFor: item)
-                if !self.cards.isEmpty {
-                    self.cards.remove(at: path.row)
-                }
-                if !self.cards.isEmpty {
-                    self.tableView.deleteRows(at: [path], with: UITableViewRowAnimation.top)
-                } else {
-                    self.tableView.reloadData()
-                }
-            }
-        }
         cell.selectionStyle = .none
-		
 		return cell
     }
     
