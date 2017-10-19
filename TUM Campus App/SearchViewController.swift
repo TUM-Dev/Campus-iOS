@@ -26,6 +26,7 @@ class SearchViewController: UITableViewController, DetailView {
     
     func search(query: String) {
         delegate?.dataManager().search(query: query).onSuccess { data in
+            guard query == self.searchTextField.text else { return }
             self.elements = data
             for element in self.elements {
                 if let downloader = element as? ImageDownloader {
@@ -33,12 +34,6 @@ class SearchViewController: UITableViewController, DetailView {
                 }
             }
             self.tableView.reloadData()
-        }
-        .onError { error in
-            print(error)
-            if case .invalidStatus(_, let data) = error {
-                print(data?.string.debugDescription)
-            }
         }
     }
 
