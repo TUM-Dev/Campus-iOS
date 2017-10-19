@@ -30,6 +30,7 @@
 		0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */; };
 		0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */; };
 		0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */; };
+		0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3BD6451F9946F500ED0409 /* LocationProvider.swift */; };
 		0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */; };
 		0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */; };
 		0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */; };
@@ -55,7 +56,6 @@
 		0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */; };
 		0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */; };
 		0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD471C14845700B29948 /* DetailViewDelegate.swift */; };
-		0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */; };
 		0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */; };
 		0E64AC5B1C0DE93F00060FB0 /* CafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */; };
 		0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */; };
@@ -211,6 +211,7 @@
 		0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumOnlineWebServices.swift; sourceTree = "<group>"; };
 		0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenReceiver.swift; sourceTree = "<group>"; };
 		0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionCardTableViewCell.swift; sourceTree = "<group>"; };
+		0E3BD6451F9946F500ED0409 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		0E424F451BE16DBE00B5DFCB /* Campus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +242,6 @@
 		0E5DF1E21C14748F000F47D1 /* TumStyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumStyleConstants.swift; sourceTree = "<group>"; };
 		0E60CD451C14823300B29948 /* MovieDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailTableViewController.swift; sourceTree = "<group>"; };
 		0E60CD471C14845700B29948 /* DetailViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewDelegate.swift; sourceTree = "<group>"; };
-		0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenuManager.swift; sourceTree = "<group>"; };
 		0E64AC581C0DE4E100060FB0 /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		0E64AC5A1C0DE93F00060FB0 /* CafeteriaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaMenu.swift; sourceTree = "<group>"; };
 		0E64AC5C1C0DEBAB00060FB0 /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
@@ -631,6 +631,7 @@
 				0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */,
 				0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */,
 				0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */,
+				0E3BD6451F9946F500ED0409 /* LocationProvider.swift */,
 				0EF790F51EA8304E005CB9AB /* Helper */,
 			);
 			name = Config;
@@ -667,7 +668,6 @@
 			isa = PBXGroup;
 			children = (
 				0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */,
-				0E60CD4A1C14B89600B29948 /* CafeteriaMenuManager.swift */,
 				0EC10C201C171D100024F902 /* MovieManager.swift */,
 				0EF4CEE51D414D39001649F1 /* NewsManager.swift */,
 				0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */,
@@ -1315,7 +1315,6 @@
 				2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */,
 				807C48121F40917E00CAD35D /* Departure.swift in Sources */,
 				5007C6A01E06788F0014B065 /* StudyRoomsManager.swift in Sources */,
-				0E60CD4B1C14B89600B29948 /* CafeteriaMenuManager.swift in Sources */,
 				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
 				0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */,
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
@@ -1362,6 +1361,7 @@
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				807C48111F40917E00CAD35D /* API.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
+				0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,

@@ -78,3 +78,18 @@ extension CafeteriaMenu {
     }
     
 }
+
+
+struct Price {
+    var student: Double
+    var employee: Double
+    var guest: Double
+}
+
+struct MenuDetail {
+    var name: String
+    var nameWithoutAnnotations: String
+    var nameWithEmojiWithoutAnnotations: String
+    var annotations: [String]
+    var annotationDescriptions: [String]
+}

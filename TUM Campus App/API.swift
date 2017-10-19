@@ -12,6 +12,7 @@ import CoreLocation
 import Alamofire
 import SwiftyJSON
 
+// TODO: Refactor This
 
 struct MVG {
     fileprivate struct Credentials {
