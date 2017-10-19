@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
+import Sweeft
 import CoreLocation
 
 enum CafeteriasApi: String {
@@ -19,13 +18,25 @@ enum CafeteriasApi: String {
     case Latitude = "latitude"
 }
 
-//class NewCafeteriaManager: NewManager {
-//    
-//    typealias DataType = CafeteriaMenu
-//    
-//    
-//    
-//}
+final class CafeteriaManager: NewManager {
+    
+    typealias DataType = Cafeteria
+    
+    var config: Config
+    
+    var requiresLogin: Bool {
+        return false
+    }
+    
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func fetch() -> Response<[Cafeteria]> {
+        fatalError()
+    }
+    
+}
 
 //class CafeteriaManager: Manager {
 //

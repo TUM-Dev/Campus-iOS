@@ -6,7 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import CoreLocation
 
 class Cafeteria: DataElement {
@@ -14,7 +14,7 @@ class Cafeteria: DataElement {
     let address: String
     let id: Int
     let name: String
-    var menus = [String:[CafeteriaMenu]]()
+    var menus = [String : [CafeteriaMenu]]()
     let location: CLLocation
 
     init(id: Int, name: String, address: String, latitude: Double, longitude: Double) {
@@ -25,23 +25,13 @@ class Cafeteria: DataElement {
     }
     
     func addMenu(_ menu: CafeteriaMenu) {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        let string = dateformatter.string(from: menu.date as Date)
-        if menus[string] != nil {
-            menus[string]?.append(menu)
-            menus[string]?.sort() { (first, second) in
-                return first.typeNr <= second.typeNr
-            }
-        } else {
-            menus[string] = [menu]
-        }
+        let key = menu.date.string(using: "yyyy MM dd")
+        menus[key, default: []].append(menu)
+        menus[key] = menus[key]?.sorted(ascending: \.typeNr)
     }
     
     func getMenusForDate(_ date: Date) -> [CafeteriaMenu] {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        return menus[dateformatter.string(from: date)] ?? []
+        return menus[date.string(using: "yyyy MM dd")] ?? []
     }
     
     func distance(_ from: CLLocation) -> CLLocationDistance {
@@ -54,6 +44,17 @@ class Cafeteria: DataElement {
     
     var text: String {
         return name
+    }
+    
+}
+
+extension Cafeteria {
+    
+    convenience init?(from json: JSON) {
+        
+        
+        
+        let newCafeteria = Cafeteria(id: item[CafeteriasApi.ID.rawValue].intValue, name: item[CafeteriasApi.Name.rawValue].stringValue, address: item[CafeteriasApi.Address.rawValue].stringValue, latitude: item[CafeteriasApi.Latitude.rawValue].doubleValue, longitude: item[CafeteriasApi.Longitude.rawValue].doubleValue)
     }
     
 }
