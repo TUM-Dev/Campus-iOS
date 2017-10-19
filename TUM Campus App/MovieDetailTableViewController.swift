@@ -24,7 +24,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
 
     var currentMovie: Movie? {
         didSet {

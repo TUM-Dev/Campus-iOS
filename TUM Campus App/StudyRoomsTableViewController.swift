@@ -11,21 +11,28 @@ import AYSlidingPickerView
 
 class StudyRoomsTableViewController: UITableViewController, DetailView {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
     var refresh = UIRefreshControl()
+    
     func refresh(_ sender: AnyObject?) {
         roomGroups.removeAll()
         studyRooms.removeAll()
-//        delegate?.dataManager().getAllStudyRooms(self)
+        delegate?.dataManager().studyRoomsManager.fetch().onSuccess(in: .main) { result in
+            self.roomGroups.append(contentsOf: result.flatMap { $0 as? StudyRoomGroup })
+//            self.studyRooms.append(contentsOf: result.flatMap { $0 as? StudyRoom })
+            self.currentGroup = self.roomGroups.first
+            self.setUpPickerView()
+        }
     }
 
     
     var roomGroups = [StudyRoomGroup]()
     var studyRooms = [StudyRoom]() // Rooms of all available groups
+    
     var currentGroup: StudyRoomGroup? {
         didSet {
             title = currentGroup?.name
@@ -41,16 +48,6 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
         }
     }
     
-}
-
-extension StudyRoomsTableViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) { // Is called twice, once with [StudyRoomGroups] as argument, once for [StudyRooms]
-        roomGroups.append(contentsOf: data.flatMap { $0 as? StudyRoomGroup })
-        studyRooms.append(contentsOf: data.flatMap { $0 as? StudyRoom })
-        currentGroup = roomGroups.first
-        setUpPickerView()
-    }
 }
 
 extension StudyRoomsTableViewController {

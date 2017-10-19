@@ -9,7 +9,7 @@
 import UIKit
 import TKSubmitTransition
 
-protocol TokenFetcherControllerDelegate {
+protocol TokenFetcherControllerDelegate: class {
     func getLRZ() -> String
 }
 
@@ -20,7 +20,7 @@ class WaitForTokenViewController: UIViewController {
     var user: User?
     var lrzID: String?
     var loginManager: TumOnlineLoginRequestManager?
-    var delegate: TokenFetcherControllerDelegate?
+    weak var delegate: TokenFetcherControllerDelegate?
     
     @IBAction func refresh(_ sender: AnyObject) {
         checkRequest()

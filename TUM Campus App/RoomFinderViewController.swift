@@ -14,7 +14,7 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     var room: DataElement?
     
     var barItem: UIBarButtonItem?

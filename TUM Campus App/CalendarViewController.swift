@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController, DetailView {
     
     var items = [String:[CalendarRow]]()
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var nextLectureItem: CalendarRow?
     
@@ -54,14 +54,14 @@ extension CalendarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My Caledar"
+        self.fetch()
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
         weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
         weekSelector?.firstWeekday = 2
         weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
         weekSelector?.delegate = self
-        weekSelector?.selectedDate = Date()
-//        delegate?.dataManager().getCalendar(self)
+        weekSelector?.selectedDate = .now
         let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
         navigationItem.rightBarButtonItem = barItem
         updateTitle(Date())
@@ -126,23 +126,22 @@ extension CalendarViewController {
     
 }
 
-extension CalendarViewController: TumDataReceiver {
+extension CalendarViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        items.removeAll()
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        for item in data {
-            if let lecture = item as? CalendarRow, let date = lecture.dtstart {
-                if let _ = items[dateformatter.string(from: date as Date)] {
-                    items[dateformatter.string(from: date as Date)]?.append(lecture)
-                } else {
-                    items[dateformatter.string(from: date as Date)] = [lecture]
-                }
+    func fetch() {
+        delegate?.dataManager().calendarManager.fetch().onSuccess(in: .main) { entries in
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "yyyy MM dd"
+            
+            self.items = entries.reduce([:]) { dict, item in
+                guard let start = item.dtstart else { return dict }
+                var dict = dict
+                dict[dateformatter.string(from: start), default: []].append(item)
+                return dict
             }
+            self.updateTitle(.now)
         }
-        let now = Date()
-        updateTitle(now)
     }
     
 }

@@ -20,7 +20,7 @@ class TumOnlineLoginRequestManager {
     
     let defaults = UserDefaults.standard
     
-    var delegate: AccessTokenReceiver?
+    weak var delegate: AccessTokenReceiver?
     
     var lrzID : String?
     

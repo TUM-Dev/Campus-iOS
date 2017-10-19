@@ -12,14 +12,17 @@ class LectureDetailsTableViewController: UITableViewController, DetailView {
     
     var lecture: DataElement?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
 
 }
 
-extension LectureDetailsTableViewController: TumDataReceiver {
+extension LectureDetailsTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        tableView.reloadData()
+    func fetch(lecture: Lecture) {
+        delegate?.dataManager().lectureDetailsManager.fetch(for: lecture).onSuccess(in: .main) { lecture in
+            self.lecture = lecture
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -31,7 +34,7 @@ extension LectureDetailsTableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         if let lectureUnwrapped = lecture as? Lecture {
-//            delegate?.dataManager().getLectureDetails(self, lecture: lectureUnwrapped)
+            
             title = lectureUnwrapped.text
         }
     }

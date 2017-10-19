@@ -16,14 +16,16 @@ class NewsTableViewController: UITableViewController, DetailView {
         }
     }
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
 
 }
 
-extension NewsTableViewController: TumDataReceiver {
+extension NewsTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        news = data.flatMap() { $0 as? News }
+    func fetch() {
+        delegate?.dataManager().newsManager.fetch().onSuccess(in: .main) { news in
+            self.news = news
+        }
     }
     
 }
@@ -32,7 +34,7 @@ extension NewsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        delegate?.dataManager().getAllNews(self)
+        self.fetch()
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension

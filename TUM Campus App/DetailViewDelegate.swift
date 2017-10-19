@@ -7,6 +7,7 @@
 //
 
 import Foundation
-protocol DetailViewDelegate {
+
+protocol DetailViewDelegate: AnyObject {
     func dataManager() -> TumDataManager
 }

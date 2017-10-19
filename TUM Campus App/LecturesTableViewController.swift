@@ -13,7 +13,7 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
     
     var lectures = [(String,[Lecture])]()
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var currentLecture: DataElement?
     
@@ -31,6 +31,8 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
         }.onSuccess { lectures in
             self.lectures = lectures
             self.tableView.reloadData()
+        }.onError { error in
+            print(error)
         }
     }
 

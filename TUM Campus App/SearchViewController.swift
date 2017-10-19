@@ -16,7 +16,7 @@ class SearchViewController: UITableViewController, DetailView {
         }
     }
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var elements = [DataElement]()
     

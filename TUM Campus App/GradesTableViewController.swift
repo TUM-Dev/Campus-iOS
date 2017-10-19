@@ -8,19 +8,24 @@
 
 import UIKit
 
-class GradesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate, DetailView  {
+class GradesTableViewController: UITableViewController, DetailViewDelegate, DetailView  {
 
     var grades = [Grade]()
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     func dataManager() -> TumDataManager {
         return delegate?.dataManager() ?? TumDataManager(user: nil)
     }
     
-    func receiveData(_ data: [DataElement]) {
-        grades = data.flatMap() { $0 as? Grade }
-        tableView.reloadData()
+    func fetch() {
+        delegate?.dataManager().gradesManager.fetch().onSuccess(in: .main) { grades in
+            self.grades = grades
+            self.tableView.reloadData()
+        }
+        .onError { error in
+            print(error)
+        }
     }
     
 }
@@ -29,7 +34,7 @@ extension GradesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        delegate?.dataManager().getGrades(self)
+        self.fetch()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }

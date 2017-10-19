@@ -17,7 +17,7 @@ class CafeteriaViewController: UIViewController, DetailView {
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var categories = [(String,[CafeteriaMenu])]()
     

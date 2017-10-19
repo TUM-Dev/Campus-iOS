@@ -7,7 +7,7 @@ import UIKit
 
 class TumSexyTableViewController: UITableViewController, DetailView {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var entries = [SexyEntry]()
     
