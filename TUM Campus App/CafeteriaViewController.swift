@@ -13,14 +13,12 @@ import AYSlidingPickerView
 class CafeteriaViewController: UIViewController, DetailView {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var weekSelector: ASWeekSelectorView?
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
-    
     var delegate: DetailViewDelegate?
-    
     var categories = [(String,[CafeteriaMenu])]()
-    
     var cafeterias = [Cafeteria]()
     var currentCafeteria: Cafeteria? {
         didSet {
@@ -180,6 +178,8 @@ extension CafeteriaViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let item = categories[indexPath.section].1[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        cell.color1 = .white
+        cell.color2 = .white
         cell.setElement(item)
         return cell
     }
