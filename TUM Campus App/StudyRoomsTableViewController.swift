@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sweeft
 import AYSlidingPickerView
 
 class StudyRoomsTableViewController: UITableViewController, DetailView {
@@ -23,7 +24,7 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
     var currentGroup: StudyRoomGroup? {
         didSet {
             title = currentGroup?.name
-            currentRooms = self.currentGroup?.rooms ?? []
+            currentRooms = self.currentGroup?.rooms.sorted(ascending: \.status.sortIndex) ?? []
         }
     }
     
