@@ -25,6 +25,10 @@ class CalendarViewController: UIViewController, DetailView {
     
     var firstTimeAppearing = true
     
+    var refreshBarButton = UIBarButtonItem()
+    var stopRefreshBarButton = UIBarButtonItem()
+    var todayBarButton = UIBarButtonItem()
+    
     func showToday(_ sender: AnyObject?) {
         let now = Date()
         weekSelector?.setSelectedDate(now, animated: true)
@@ -32,6 +36,12 @@ class CalendarViewController: UIViewController, DetailView {
         scrolling = true
         scrollTo(now)
         dayPlannerView.reloadAllEvents()
+    }
+    
+    func updateCalendar(_ sender: AnyObject?) {
+        print("updateCalendar clicked")
+        navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
+        delegate?.dataManager().updateCalendar(self)
     }
     
     func lecturesOfDate(_ date: Date) -> [CalendarRow] {
@@ -62,8 +72,12 @@ extension CalendarViewController {
         weekSelector?.delegate = self
         weekSelector?.selectedDate = Date()
         delegate?.dataManager().getCalendar(self)
-        let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
-        navigationItem.rightBarButtonItem = barItem
+        
+        todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(self.showToday(_:)))
+        refreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(self.updateCalendar(_:)))
+        stopRefreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
+        
         updateTitle(Date())
         dayPlannerView.frame = CGRect(x: dayPlannerView.frame.origin.x, y: dayPlannerView.frame.origin.y, width: view.frame.width, height: dayPlannerView.frame.width)
         dayPlannerView.dataSource = self
@@ -143,8 +157,8 @@ extension CalendarViewController: TumDataReceiver {
         }
         let now = Date()
         updateTitle(now)
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
     }
-    
 }
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {

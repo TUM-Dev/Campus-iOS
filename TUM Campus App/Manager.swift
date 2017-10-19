@@ -12,6 +12,7 @@ protocol Manager {
     init(mainManager: TumDataManager)
     var requiresLogin: Bool { get }
     func fetchData(_ handler: @escaping ([DataElement]) -> ())
+    func updateData(_ handler: @escaping ([DataElement]) -> ())
 }
 
 extension Manager {
@@ -20,4 +21,10 @@ extension Manager {
         return true
     }
     
+}
+
+extension Manager {
+    func updateData(_ handler: @escaping ([DataElement]) -> ()) {
+        fatalError("The specific manager didn't implement updateData")
+    }
 }
