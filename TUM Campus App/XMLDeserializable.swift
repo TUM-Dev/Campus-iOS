@@ -58,15 +58,15 @@ extension XMLIndexer: XMLDeserializable {
 extension API {
     
     func doXMLObjectRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
-                                to endpoint: Endpoint,
-                                arguments: [String:CustomStringConvertible] = .empty,
-                                headers: [String:CustomStringConvertible] = .empty,
-                                queries: [String:CustomStringConvertible] = .empty,
-                                auth: Auth = NoAuth.standard,
-                                body: Data? = nil,
-                                acceptableStatusCodes: [Int] = [200],
-                                completionQueue: DispatchQueue = .main,
-                                maxCacheTime: CacheTime = .no) -> Response<T> {
+                                                  to endpoint: Endpoint,
+                                                  arguments: [String:CustomStringConvertible] = .empty,
+                                                  headers: [String:CustomStringConvertible] = .empty,
+                                                  queries: [String:CustomStringConvertible] = .empty,
+                                                  auth: Auth = NoAuth.standard,
+                                                  body: Data? = nil,
+                                                  acceptableStatusCodes: [Int] = [200],
+                                                  completionQueue: DispatchQueue = .main,
+                                                  maxCacheTime: CacheTime = .no) -> Response<T> {
         
         return doRepresentedRequest(with: method,
                                     to: endpoint,
@@ -81,16 +81,16 @@ extension API {
     }
     
     func doXMLObjectsRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
-                            to endpoint: Endpoint,
-                            arguments: [String:CustomStringConvertible] = .empty,
-                            headers: [String:CustomStringConvertible] = .empty,
-                            queries: [String:CustomStringConvertible] = .empty,
-                            auth: Auth = NoAuth.standard,
-                            body: Data? = nil,
-                            acceptableStatusCodes: [Int] = [200],
-                            completionQueue: DispatchQueue = .main,
-                            at path: String...,
-                            maxCacheTime: CacheTime = .no) -> Response<[T]> {
+                                                   to endpoint: Endpoint,
+                                                   arguments: [String:CustomStringConvertible] = .empty,
+                                                   headers: [String:CustomStringConvertible] = .empty,
+                                                   queries: [String:CustomStringConvertible] = .empty,
+                                                   auth: Auth = NoAuth.standard,
+                                                   body: Data? = nil,
+                                                   acceptableStatusCodes: [Int] = [200],
+                                                   completionQueue: DispatchQueue = .main,
+                                                   at path: String...,
+                                                   maxCacheTime: CacheTime = .no) -> Response<[T]> {
         
         return doRepresentedRequest(with: method,
                                     to: endpoint,
@@ -103,9 +103,7 @@ extension API {
                                     completionQueue: completionQueue,
                                     maxCacheTime: maxCacheTime).flatMap { (xml: XMLIndexer) in
         
-            guard let array = xml.get(at: path)?.all else {
-                return .errored(with: .noData)
-            }
+            let array = xml.get(at: path)?.all ?? []
             return .successful(with: array ==> T.init)
         }
     }

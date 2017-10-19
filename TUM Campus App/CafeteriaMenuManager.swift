@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-class CafeteriaMenuManager: Manager {
+
+class CafeteriaMenuManager {
     
     static var cafeteriaMenus = [DataElement]()
     

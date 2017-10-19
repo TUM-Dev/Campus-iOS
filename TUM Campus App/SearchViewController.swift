@@ -23,6 +23,24 @@ class SearchViewController: UITableViewController, DetailView {
     var currentElement: DataElement?
     
     var searchManagers: [TumDataItems]?
+    
+    func search(query: String) {
+        delegate?.dataManager().search(query: query).onSuccess { data in
+            self.elements = data
+            for element in self.elements {
+                if let downloader = element as? ImageDownloader {
+                    downloader.subscribeToImage(self)
+                }
+            }
+            self.tableView.reloadData()
+        }
+        .onError { error in
+            print(error)
+            if case .invalidStatus(_, let data) = error {
+                print(data?.string.debugDescription)
+            }
+        }
+    }
 
 }
 
@@ -34,17 +52,7 @@ extension SearchViewController: DetailViewDelegate {
     
 }
 
-extension SearchViewController: TumDataReceiver, ImageDownloadSubscriber {
-    
-    func receiveData(_ data: [DataElement]) {
-        elements = data
-        for element in elements {
-            if let downloader = element as? ImageDownloader {
-                downloader.subscribeToImage(self)
-            }
-        }
-        tableView.reloadData()
-    }
+extension SearchViewController: ImageDownloadSubscriber {
     
     func updateImageView() {
         tableView.reloadData()
@@ -68,7 +76,7 @@ extension SearchViewController: UITextFieldDelegate {
             }
             let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if  replaced != "" {
-//                delegate?.dataManager().search(self, query: replaced, searchIn: searchManagers) // searchManager might be set during a segue. Otherwise it defaults to all searchManagers, defined in the TumDataManager
+                search(query: replaced)
             } else {
                 elements = []
                 tableView.reloadData()

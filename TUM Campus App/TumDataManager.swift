@@ -19,8 +19,11 @@ class TumDataManager {
     lazy var newsManager: NewsManager = { NewsManager(config: self.config) }()
     lazy var tuitionManager: TuitionStatusManager = { TuitionStatusManager(config: self.config) }()
     lazy var bookRentalManager: NewBookRentalManager = { NewBookRentalManager(config: self.config) }()
+    lazy var studyRoomsManager: StudyRoomsManager = { StudyRoomsManager(config: self.config) }()
     
-    let searchManagers: [TumDataItems] = [.PersonSearch, .LectureSearch, .RoomSearch]
+    lazy var roomSearchManager: RoomSearchManager = { RoomSearchManager(config: self.config) }()
+    lazy var personSearchManager: PersonSearchManager = { PersonSearchManager(config: self.config) }()
+    lazy var lectureSearchManager: LectureSearchManager = { LectureSearchManager(config: self.config) }()
     
     var isLoggedIn: Bool {
         return user?.token != nil
@@ -28,10 +31,6 @@ class TumDataManager {
     
     var config: Config
     var user: User?
-    
-    lazy var managers: [TumDataItems : Manager] = [
-        :
-    ]
     
     var cardManager: [SimpleSingleManager] {
         return [
@@ -43,21 +42,33 @@ class TumDataManager {
         ]
     }
     
+    var searchManagers: [SimpleSearchManager] {
+        return [
+            roomSearchManager,
+            personSearchManager,
+            lectureSearchManager
+        ]
+    }
+    
     func getToken() -> String {
         return user?.token ?? ""
     }
     
     init(user: User?) {
         self.user = user
-        self.config = Config(tumCabeURL: "https://tumcabe.in.tum.de/Api/",
+        self.config = Config(tumCabeURL: "https://tumcabe.in.tum.de/Api",
                              tumOnlineURL: "https://campus.tum.de/tumonline",
                              tumSexyURL: "http://json.tum.sexy",
-                             roomsURL: "http://www.devapp.it.tum.de/iris/",
+                             roomsURL: "http://www.devapp.it.tum.de/iris",
                              rentalsURL: "https://opac.ub.tum.de/InfoGuideClient.tumsis",
                              user: user)
         
-        PersonalLectureManager(config: config).fetch().onSuccess { lectures in
-            print(lectures)
+        roomSearchManager.search(query: "MI HS").onResult { result in
+            print(result)
+        }
+        
+        studyRoomsManager.fetch().onResult { result in
+            print(result)
         }
         
     }
@@ -66,4 +77,10 @@ class TumDataManager {
         // TODO: Sort
         return (self.cardManager => { $0.fetchSingle() }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
+    
+    func search(query: String) -> Response<[DataElement]> {
+        // TODO: Handle more
+        return (self.searchManagers => { $0.search(query: query) }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+    }
+    
 }

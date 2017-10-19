@@ -18,4 +18,10 @@ struct StudyRoomAPI: API {
     
     let baseURL: String
     
+    var baseQueries: [String : String] {
+        return [
+            "format": "json"
+        ]
+    }
+    
 }
