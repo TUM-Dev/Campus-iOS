@@ -25,7 +25,9 @@ class CalendarViewController: UIViewController, DetailView {
     
     var firstTimeAppearing = true
     
-    let refreshButton: UIButton = UIButton.init(type: UIButtonType.custom)
+    var refreshBarButton = UIBarButtonItem()
+    var stopRefreshBarButton = UIBarButtonItem()
+    var todayBarButton = UIBarButtonItem()
     
     func showToday(_ sender: AnyObject?) {
         let now = Date()
@@ -37,6 +39,8 @@ class CalendarViewController: UIViewController, DetailView {
     }
     
     func updateCalendar(_ sender: AnyObject?) {
+        print("updateCalendar clicked")
+        navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
         delegate?.dataManager().updateCalendar(self)
     }
     
@@ -69,10 +73,9 @@ extension CalendarViewController {
         weekSelector?.selectedDate = Date()
         delegate?.dataManager().getCalendar(self)
         
-        let todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
-        refreshButton.setImage(UIImage(named: "sexy-dress"), for: UIControlState.normal)
-        refreshButton.addTarget(self, action: #selector(updateCalendar), for: UIControlEvents.touchUpInside)
-        let refreshBarButton = UIBarButtonItem(customView: refreshButton)
+        todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(self.showToday(_:)))
+        refreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(self.updateCalendar(_:)))
+        stopRefreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: nil)
         navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
         
         updateTitle(Date())
@@ -154,8 +157,8 @@ extension CalendarViewController: TumDataReceiver {
         }
         let now = Date()
         updateTitle(now)
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
     }
-    
 }
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {
