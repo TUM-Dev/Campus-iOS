@@ -17,12 +17,8 @@ class CardViewController: UITableViewController {
     var refresh = UIRefreshControl()
     
     
-    func refresh(animated: Bool = true) {
-        if animated {
-            manager?.getCardItems(self)
-        } else {
-            
-        }
+    func refresh(_ sender: AnyObject?) {
+        manager?.getCardItems(self)
     }
 }
 
@@ -39,10 +35,8 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
 
 extension CardViewController: TumDataReceiver {
     
-    func receiveData(_ data: [DataElement], animated: Bool) {
-        if animated {
-            DispatchQueue.main.async(execute: {self.refresh.beginRefreshing()})
-        }
+    func receiveData(_ data: [DataElement]) {
+        DispatchQueue.main.async(execute: {self.refresh.beginRefreshing()})
         if cards.count <= data.count {
             for item in data {
                 if let movieItem = item as? Movie {
@@ -55,9 +49,7 @@ extension CardViewController: TumDataReceiver {
             cards = data
             DispatchQueue.main.async(execute: {self.tableView.reloadData()})
         }
-        if animated {
-            DispatchQueue.main.async(execute: {self.refresh.endRefreshing()})
-        }
+        DispatchQueue.main.async(execute: {self.refresh.endRefreshing()})
     }
 }
 
@@ -73,7 +65,7 @@ extension CardViewController {
         if let bounds = imageView.superview?.bounds {
             imageView.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width, height: bounds.height)
         }
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(animated:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -85,7 +77,7 @@ extension CardViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cards.removeAll()
-        refresh(animated: false)
+        refresh(nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
