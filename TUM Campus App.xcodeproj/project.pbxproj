@@ -85,7 +85,6 @@
 		0EB473CC1C1B495100F17F44 /* RoomFinderMapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */; };
 		0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB473CD1C1B4A9500F17F44 /* RoomFinderViewController.swift */; };
 		0EB473D01C1B4F0F00F17F44 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB473CF1C1B4F0F00F17F44 /* Map.swift */; };
-		0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */; };
 		0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC0DBD1C17797D002D7A00 /* MoreTableViewController.swift */; };
 		0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */; };
 		0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */; };
@@ -269,7 +268,6 @@
 		0EB473CB1C1B495100F17F44 /* RoomFinderMapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderMapManager.swift; sourceTree = "<group>"; };
 		0EB473CD1C1B4A9500F17F44 /* RoomFinderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderViewController.swift; sourceTree = "<group>"; };
 		0EB473CF1C1B4F0F00F17F44 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		0EBC0DBD1C17797D002D7A00 /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaManager.swift; sourceTree = "<group>"; };
@@ -676,7 +674,6 @@
 			isa = PBXGroup;
 			children = (
 				0E52817A1C0E2F7500762EA3 /* Manager.swift */,
-				0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */,
 			);
 			name = "Manager Classes";
 			sourceTree = "<group>";
@@ -1389,7 +1386,6 @@
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */,
 				0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */,
-				0EBC0DBC1C175BF4002D7A00 /* SearchManager.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
 				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
