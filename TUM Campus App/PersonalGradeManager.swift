@@ -30,13 +30,22 @@ class PersonalGradeManager: Manager {
                     let parsedXML = SWXMLHash.parse(value)
                     let rows = parsedXML["rowset"]["row"].all
                     for row in rows {
-                        if let name = row["lv_titel"].element?.text, let result = row["uninotenamekurz"].element?.text, let stringDate = row["datum"].element?.text, let semester = row["lv_semester"].element?.text, let stringEcts = row["lv_credits"].element?.text, let examiner = row["pruefer_nachname"].element?.text, let mode = row["modus"].element?.text {
+                        if let name = row["lv_titel"].element?.text,
+                            let result = row["uninotenamekurz"].element?.text,
+                            let stringDate = row["datum"].element?.text,
+                            let semester = row["lv_semester"].element?.text,
+                            let stringEcts = row["lv_credits"].element?.text,
+                            let examiner = row["pruefer_nachname"].element?.text, let mode = row["modus"].element?.text {
                             let dateFormatter = DateFormatter()
+                            let numberFormatter = NumberFormatter()
+                            numberFormatter.decimalSeparator = ","
                             dateFormatter.dateFormat = ("y-M-dd")
-                            let date = dateFormatter.date(from: stringDate)
                             let ects = Int(stringEcts) ?? 0
-                            let newGrade = Grade(name: name, result: result, date: date!, semester: semester, ects: ects, examiner: examiner, mode: mode)
-                            PersonalGradeManager.grades.append(newGrade)
+                            if let date = dateFormatter.date(from: stringDate),
+                                let grade = numberFormatter.number(from: result) {
+                                let newGrade = Grade(name: name, result: result, grade: grade.doubleValue, date: date, semester: semester, ects: ects, examiner: examiner, mode: mode)
+                                PersonalGradeManager.grades.append(newGrade)
+                            }
                         }
                     }
                     handler(PersonalGradeManager.grades)

@@ -11,15 +11,17 @@ import Foundation
 class Grade: DataElement {
     let name: String
     let result: String
+    let grade: Double
     let date: Date
     let semester: String
     let ects: Int
     let examiner: String
     let mode: String
     
-    init(name: String, result: String, date: Date, semester: String, ects: Int, examiner: String, mode: String) {
+    init(name: String, result: String, grade: Double, date: Date, semester: String, ects: Int, examiner: String, mode: String) {
         self.name = name
         self.result = result
+        self.grade = grade
         self.date = date
         self.semester = semester
         self.ects = ects
