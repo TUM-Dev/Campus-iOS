@@ -9,23 +9,6 @@
 import Foundation
 import Sweeft
 
-
-protocol Manager {
-    init(mainManager: TumDataManager)
-    var requiresLogin: Bool { get }
-    func fetchData(_ handler: @escaping ([DataElement]) -> ())
-}
-
-extension Manager {
-    
-    var requiresLogin: Bool {
-        return true
-    }
-    
-}
-
-// NEW Stuff!!!
-
 protocol DetailsForDataManager {
     associatedtype DataType
     associatedtype ResponseType
