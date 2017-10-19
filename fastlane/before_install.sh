@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo gem install fastlane  -v 2.19.1
-sudo gem install slather  -v 2.3.0
+sudo gem install fastlane
+sudo gem install slather
 gem cleanup
 
 brew install swiftlint
