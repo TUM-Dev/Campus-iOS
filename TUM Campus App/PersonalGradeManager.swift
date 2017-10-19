@@ -23,7 +23,7 @@ final class PersonalGradeManager: NewManager {
     }
     
     func fetch() -> Response<[Grade]> {
-        return config.tumOnline.doXMLObjectsRequest(to: .personalLectures,
+        return config.tumOnline.doXMLObjectsRequest(to: .personalGrades,
                                                     at: "rowset", "row",
                                                     maxCacheTime: .time(.aboutOneWeek))
     }

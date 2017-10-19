@@ -23,9 +23,6 @@ class GradesTableViewController: UITableViewController, DetailViewDelegate, Deta
             self.grades = grades
             self.tableView.reloadData()
         }
-        .onError { error in
-            print(error)
-        }
     }
     
 }
