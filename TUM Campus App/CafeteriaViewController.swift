@@ -129,7 +129,7 @@ extension CafeteriaViewController {
 extension CafeteriaViewController {
     
     func fetch() {
-        delegate?.dataManager().cafeteriaManager.fetch().onSuccess(in: .main) { cafeterias in
+        delegate?.dataManager()?.cafeteriaManager.fetch().onSuccess(in: .main) { cafeterias in
             self.cafeterias = cafeterias
             self.currentCafeteria = cafeterias.first
             self.setUpPickerView()

@@ -45,8 +45,8 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
         tableView.reloadData()
     }
     
-    func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return manager
     }
     
 }

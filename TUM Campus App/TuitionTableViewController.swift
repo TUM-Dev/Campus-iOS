@@ -37,7 +37,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
 extension TuitionTableViewController {
     
     func fetch() {
-        delegate?.dataManager().tuitionManager.fetch().onSuccess(in: .main) { semesters in
+        delegate?.dataManager()?.tuitionManager.fetch().onSuccess(in: .main) { semesters in
             self.semesters = semesters
             self.currentSemester = semesters.first
             self.setUpPickerView()

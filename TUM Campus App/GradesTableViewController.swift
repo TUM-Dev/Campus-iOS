@@ -14,12 +14,12 @@ class GradesTableViewController: UITableViewController, DetailViewDelegate, Deta
     
     weak var delegate: DetailViewDelegate?
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
     func fetch() {
-        delegate?.dataManager().gradesManager.fetch().onSuccess(in: .main) { grades in
+        delegate?.dataManager()?.gradesManager.fetch().onSuccess(in: .main) { grades in
             self.grades = grades
             self.tableView.reloadData()
         }

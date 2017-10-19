@@ -49,7 +49,7 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
 extension RoomFinderViewController {
     
     func fetch(id: String) {
-        delegate?.dataManager().roomMapsManager.search(query: id).onSuccess(in: .main) { maps in
+        delegate?.dataManager()?.roomMapsManager.search(query: id).onSuccess(in: .main) { maps in
             self.maps = maps.sorted { $0.scale < $1.scale }
             if !maps.isEmpty {
                 self.currentMap = self.maps.first

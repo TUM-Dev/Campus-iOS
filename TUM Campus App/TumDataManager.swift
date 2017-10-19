@@ -61,15 +61,12 @@ class TumDataManager {
         return user?.token ?? ""
     }
     
-    init(user: User?) {
+    init?(user: User?, json: JSON) {
+        guard let config = Config(user: user, json: json) else {
+            return nil
+        }
         self.user = user
-        self.config = Config(tumCabeURL: "https://tumcabe.in.tum.de/Api",
-                             tumOnlineURL: "https://campus.tum.de/tumonline",
-                             tumSexyURL: "http://json.tum.sexy",
-                             roomsURL: "http://www.devapp.it.tum.de/iris",
-                             rentalsURL: "https://opac.ub.tum.de/InfoGuideClient.tumsis",
-                             mensaAppURL: "http://lu32kap.typo3.lrz.de/mensaapp",
-                             user: user)
+        self.config = config
     }
     
     func getCardItems() -> Response<[DataElement]> {

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol DetailViewDelegate: AnyObject {
-    func dataManager() -> TumDataManager
+    func dataManager() -> TumDataManager?
 }

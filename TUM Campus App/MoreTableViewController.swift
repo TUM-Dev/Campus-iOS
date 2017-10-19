@@ -55,8 +55,8 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         updateView()
     }
     
-    func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return manager
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Sweeft
 
 struct Config {
     let tumCabe: TUMCabeAPI
@@ -37,6 +38,30 @@ extension Config {
                   rooms: StudyRoomAPI(baseURL: roomsURL),
                   bookRentals: BookRentalAPI(baseURL: rentalsURL),
                   mensaApp: MensaAppAPI(baseURL: mensaAppURL))
+    }
+    
+}
+
+extension Config {
+    
+    init?(user: User?, json: JSON) {
+        
+        guard let tumCabe = json["tumCabe"].string,
+            let tumOnline = json["tumOnline"].string,
+            let tumSexy = json["tumSexy"].string,
+            let rooms = json["studyRooms"].string,
+            let rentals = json["bookRentals"].string,
+            let mensaApp = json["mensaApp"].string else {
+                
+            return nil
+        }
+        self.init(tumCabeURL: tumCabe,
+                  tumOnlineURL: tumOnline,
+                  tumSexyURL: tumSexy,
+                  roomsURL: rooms,
+                  rentalsURL: rentals,
+                  mensaAppURL: mensaApp,
+                  user: user)
     }
     
 }

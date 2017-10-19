@@ -52,7 +52,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
 extension MovieDetailTableViewController {
     
     func fetch() {
-        delegate?.dataManager().movieManager.fetch().onSuccess(in: .main) { movies in
+        delegate?.dataManager()?.movieManager.fetch().onSuccess(in: .main) { movies in
             self.movies = movies
             self.currentMovie = movies.first
             self.setUpPickerView()

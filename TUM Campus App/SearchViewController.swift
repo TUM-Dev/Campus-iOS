@@ -25,7 +25,7 @@ class SearchViewController: UITableViewController, DetailView {
     var searchManagers: [TumDataItems]?
     
     func search(query: String) {
-        delegate?.dataManager().search(query: query).onSuccess { data in
+        delegate?.dataManager()?.search(query: query).onSuccess { data in
             guard query == self.searchTextField.text else { return }
             self.elements = data
             for element in self.elements {
@@ -41,8 +41,8 @@ class SearchViewController: UITableViewController, DetailView {
 
 extension SearchViewController: DetailViewDelegate {
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
 }

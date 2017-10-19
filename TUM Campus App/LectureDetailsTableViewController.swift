@@ -19,7 +19,7 @@ class LectureDetailsTableViewController: UITableViewController, DetailView {
 extension LectureDetailsTableViewController {
     
     func fetch(lecture: Lecture) {
-        delegate?.dataManager().lectureDetailsManager.fetch(for: lecture).onSuccess(in: .main) { lecture in
+        delegate?.dataManager()?.lectureDetailsManager.fetch(for: lecture).onSuccess(in: .main) { lecture in
             self.lecture = lecture
             self.tableView.reloadData()
         }

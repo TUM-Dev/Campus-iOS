@@ -17,12 +17,12 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
     
     var currentLecture: DataElement?
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
     func fetch() {
-        let promise = delegate?.dataManager().lecturesManager.fetch()
+        let promise = delegate?.dataManager()?.lecturesManager.fetch()
         promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
             let semesters = Set(lectures.map { $0.semester })
             return semesters.map { semester in

@@ -36,7 +36,7 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
     }
     
     func refresh(_ sender: AnyObject?) {
-        delegate?.dataManager().studyRoomsManager.fetch().onSuccess(in: .main) { result in
+        delegate?.dataManager()?.studyRoomsManager.fetch().onSuccess(in: .main) { result in
             self.roomGroups = result
             self.currentGroup = self.roomGroups.first
             self.setUpPickerView()
@@ -85,8 +85,8 @@ extension StudyRoomsTableViewController {
 
 extension StudyRoomsTableViewController: DetailViewDelegate {
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
 }

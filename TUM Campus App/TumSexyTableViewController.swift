@@ -17,7 +17,7 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     }
     
     func fetch() {
-        delegate?.dataManager().tumSexyManager.fetch().onSuccess(in: .main) { entries in
+        delegate?.dataManager()?.tumSexyManager.fetch().onSuccess(in: .main) { entries in
             self.entries = entries
             self.tableView.reloadData()
         }

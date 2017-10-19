@@ -23,7 +23,7 @@ class NewsTableViewController: UITableViewController, DetailView {
 extension NewsTableViewController {
     
     func fetch() {
-        delegate?.dataManager().newsManager.fetch().onSuccess(in: .main) { news in
+        delegate?.dataManager()?.newsManager.fetch().onSuccess(in: .main) { news in
             self.news = news
         }
     }
@@ -70,7 +70,7 @@ extension NewsTableViewController {
 
 extension NewsTableViewController {
     func getRowOfUpcomingNews() -> Int? {
-//        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
+//        if let nextNews = delegate?.dataManager()?.getNextUpcomingNews() as News? {
 //            return news.index(of: nextNews) ?? 0
 //        }
         return nil

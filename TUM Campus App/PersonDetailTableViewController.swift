@@ -38,7 +38,7 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
 extension PersonDetailTableViewController {
     
     func fetch(for user: UserData) {
-        delegate?.dataManager().personDetailsManager.fetch(for: user).onSuccess(in: .main) { user in
+        delegate?.dataManager()?.personDetailsManager.fetch(for: user).onSuccess(in: .main) { user in
             self.user = user
             self.tableView.reloadData()
             if self.addingContact {
