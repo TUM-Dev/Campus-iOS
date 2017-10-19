@@ -14,6 +14,7 @@ struct Config {
     let tumSexy: TUMSexyAPI
     let rooms: StudyRoomAPI
     let bookRentals: BookRentalAPI
+    let mensaApp: MensaAppAPI
 }
 
 extension Config {
@@ -27,13 +28,15 @@ extension Config {
          tumSexyURL: String,
          roomsURL: String,
          rentalsURL: String,
+         mensaAppURL: String,
          user: User?) {
         
         self.init(tumCabe: TUMCabeAPI(baseURL: tumCabeURL),
                   tumOnline: TUMOnlineAPI(baseURL: tumOnlineURL, user: user),
                   tumSexy: TUMSexyAPI(baseURL: tumSexyURL),
                   rooms: StudyRoomAPI(baseURL: roomsURL),
-                  bookRentals: BookRentalAPI(baseURL: rentalsURL))
+                  bookRentals: BookRentalAPI(baseURL: rentalsURL),
+                  mensaApp: MensaAppAPI(baseURL: mensaAppURL))
     }
     
 }

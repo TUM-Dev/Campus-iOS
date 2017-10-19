@@ -9,15 +9,16 @@
 import Sweeft
 import CoreLocation
 
-class Cafeteria: DataElement {
+final class Cafeteria: DataElement {
     
     let address: String
-    let id: Int
+    let id: String
     let name: String
     var menus = [String : [CafeteriaMenu]]()
     let location: CLLocation
 
-    init(id: Int, name: String, address: String, latitude: Double, longitude: Double) {
+    init(id: String, name: String, address: String, latitude: Double, longitude: Double) {
+        
         self.id = id
         self.name = name
         self.address = address
@@ -27,7 +28,7 @@ class Cafeteria: DataElement {
     func addMenu(_ menu: CafeteriaMenu) {
         let key = menu.date.string(using: "yyyy MM dd")
         menus[key, default: []].append(menu)
-        menus[key] = menus[key]?.sorted(ascending: \.typeNr)
+//        menus[key] = menus[key]?.sorted(ascending: \.typeNr)
     }
     
     func getMenusForDate(_ date: Date) -> [CafeteriaMenu] {
@@ -48,13 +49,24 @@ class Cafeteria: DataElement {
     
 }
 
-extension Cafeteria {
+extension Cafeteria: Deserializable {
     
     convenience init?(from json: JSON) {
         
+        guard let id = json["id"].string,
+            let name = json["name"].string,
+            let address = json["address"].string,
+            let latitude = json["latitude"].string.flatMap(Double.init),
+            let longitude = json["longitude"].string.flatMap(Double.init) else {
+                
+            return nil
+        }
         
-        
-        let newCafeteria = Cafeteria(id: item[CafeteriasApi.ID.rawValue].intValue, name: item[CafeteriasApi.Name.rawValue].stringValue, address: item[CafeteriasApi.Address.rawValue].stringValue, latitude: item[CafeteriasApi.Latitude.rawValue].doubleValue, longitude: item[CafeteriasApi.Longitude.rawValue].doubleValue)
+        self.init(id: id,
+                  name: name,
+                  address: address,
+                  latitude: latitude,
+                  longitude: longitude)
     }
     
 }

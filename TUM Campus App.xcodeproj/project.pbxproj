@@ -74,6 +74,8 @@
 		0E893EFA1EB3D8190058027F /* XMLDeserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E893EF91EB3D8190058027F /* XMLDeserializable.swift */; };
 		0E893EFD1EB3DB620058027F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E893EFC1EB3DB620058027F /* Config.swift */; };
 		0E893EFF1EB3DB720058027F /* TUMCabe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E893EFE1EB3DB720058027F /* TUMCabe.swift */; };
+		0EA0F5E81F9938C9008C5229 /* CafeteriaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0F5E71F9938C9008C5229 /* CafeteriaConstants.swift */; };
+		0EA0F5EA1F993CBA008C5229 /* MensaAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */; };
 		0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */; };
 		0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161831C1A05B6001A08FC /* Lecture.swift */; };
 		0EB161861C1A0E6A001A08FC /* LecturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161851C1A0E6A001A08FC /* LecturesTableViewController.swift */; };
@@ -258,6 +260,8 @@
 		0E893EF91EB3D8190058027F /* XMLDeserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLDeserializable.swift; sourceTree = "<group>"; };
 		0E893EFC1EB3DB620058027F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		0E893EFE1EB3DB720058027F /* TUMCabe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabe.swift; sourceTree = "<group>"; };
+		0EA0F5E71F9938C9008C5229 /* CafeteriaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaConstants.swift; sourceTree = "<group>"; };
+		0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaAppAPI.swift; sourceTree = "<group>"; };
 		0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLectureManager.swift; sourceTree = "<group>"; };
 		0EB161831C1A05B6001A08FC /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		0EB161851C1A0E6A001A08FC /* LecturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesTableViewController.swift; sourceTree = "<group>"; };
@@ -626,6 +630,7 @@
 				0E893EFE1EB3DB720058027F /* TUMCabe.swift */,
 				0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */,
 				0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */,
+				0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */,
 				0EF790F51EA8304E005CB9AB /* Helper */,
 			);
 			name = Config;
@@ -667,6 +672,7 @@
 				0EF4CEE51D414D39001649F1 /* NewsManager.swift */,
 				0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */,
 				0E0C68231E8A4355007001F1 /* Usage.swift */,
+				0EA0F5E71F9938C9008C5229 /* CafeteriaConstants.swift */,
 			);
 			name = "TumCabe JSON Managers";
 			sourceTree = "<group>";
@@ -1322,8 +1328,10 @@
 				0E0C68241E8A4355007001F1 /* Usage.swift in Sources */,
 				0E893EF81EB3D7DE0058027F /* TUMOnline.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
+				0EA0F5EA1F993CBA008C5229 /* MensaAppAPI.swift in Sources */,
 				301195F21E4658FA0012B133 /* PersonalGradeManager.swift in Sources */,
 				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
+				0EA0F5E81F9938C9008C5229 /* CafeteriaConstants.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,
 				807C480D1F4090E600CAD35D /* MVGNearbyStationsViewController.swift in Sources */,
 				0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */,

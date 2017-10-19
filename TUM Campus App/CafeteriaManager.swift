@@ -33,7 +33,27 @@ final class CafeteriaManager: NewManager {
     }
     
     func fetch() -> Response<[Cafeteria]> {
-        fatalError()
+        
+        let promise = config.tumCabe.doObjectsRequest(to: .cafeteria,
+                                                      maxCacheTime: .time(.aboutOneWeek)) as Response<[Cafeteria]>
+        
+        return promise.flatMap { (cafeterias: [Cafeteria]) in
+            
+            return self.config.mensaApp.doJSONRequest(to: .exported,
+                                                      queries: ["mensa_id" : "all"]).map { (json: JSON) in
+                
+                let menus = json["mensa_menu"].array ==> CafeteriaMenu.init(from:)
+                let extras = json["mensa_beilagen"].array ==> CafeteriaMenu.init(from:)
+                
+                let allMenus = menus + extras
+                
+                allMenus.forEach { menu in
+                    cafeterias.first(where: { $0.id == menu.mensaId })?.addMenu(menu)
+                }
+                
+                return cafeterias
+            }
+        }
     }
     
 }

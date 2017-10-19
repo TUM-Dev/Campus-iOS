@@ -23,6 +23,7 @@ class TumDataManager {
     lazy var lecturesManager: PersonalLectureManager = { PersonalLectureManager(config: self.config) }()
     lazy var gradesManager: PersonalGradeManager = { PersonalGradeManager(config: self.config) }()
     lazy var tumSexyManager: TumSexyManager = { TumSexyManager(config: self.config) }()
+    lazy var cafeteriaManager: CafeteriaManager = { CafeteriaManager(config: self.config) }()
     
     lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
     lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()
@@ -67,6 +68,7 @@ class TumDataManager {
                              tumSexyURL: "http://json.tum.sexy",
                              roomsURL: "http://www.devapp.it.tum.de/iris",
                              rentalsURL: "https://opac.ub.tum.de/InfoGuideClient.tumsis",
+                             mensaAppURL: "http://lu32kap.typo3.lrz.de/mensaapp",
                              user: user)
     }
     

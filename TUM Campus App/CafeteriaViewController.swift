@@ -68,7 +68,7 @@ extension CafeteriaViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-//        delegate?.dataManager().getCafeterias(self)
+        self.fetch()
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
         weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
@@ -126,18 +126,15 @@ extension CafeteriaViewController {
     
 }
 
-extension CafeteriaViewController: TumDataReceiver {
+extension CafeteriaViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        cafeterias.removeAll()
-        for item in data {
-            if let cafeteria = item as? Cafeteria {
-                cafeterias.append(cafeteria)
-            }
+    func fetch() {
+        delegate?.dataManager().cafeteriaManager.fetch().onSuccess(in: .main) { cafeterias in
+            self.cafeterias = cafeterias
+            self.currentCafeteria = cafeterias.first
+            self.setUpPickerView()
+            self.reloadItems()
         }
-        currentCafeteria = cafeterias.first
-        setUpPickerView()
-        reloadItems()
     }
     
 }
