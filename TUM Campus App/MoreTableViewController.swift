@@ -24,11 +24,6 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
-    let notImplemented = [
-        IndexPath(row: 2, section: 2), // MVV
-        IndexPath(row: 1, section: 3), // Services
-        IndexPath(row: 2, section: 3), // Default Campus
-    ]
     
     var manager: TumDataManager?
     
@@ -84,6 +79,7 @@ extension MoreTableViewController {
         } else {
             bibNumber.text = "Not logged in"
         }
+        updateView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,10 +119,13 @@ extension MoreTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard !notImplemented.contains(indexPath) else {
-            return handleNotYetImplemented()
-        }
+        tableView.deselectRow(at: indexPath, animated: true)
+
         switch indexPath.section {
+        case 2:
+            if indexPath.row == 2 {
+                self.navigationController?.pushViewController(MVGNearbyStationsViewController(), animated: true)
+            }
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
@@ -144,10 +143,10 @@ extension MoreTableViewController {
         case 5:
             PersistentUser.reset()
             User.shared = nil
-            let storyboard = UIStoryboard(name: "Setup", bundle: nil)
-            let loginViewController = storyboard.instantiateViewController(withIdentifier: "Login")
             Usage.value = false
-            UIApplication.shared.keyWindow?.rootViewController = loginViewController
+            
+            let loginViewController = ViewControllerProvider.loginNavigationViewController
+            self.present(loginViewController, animated: true, completion: nil)
         default:
             break
         }
@@ -169,16 +168,6 @@ extension MoreTableViewController {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
-    }
-    
-}
-
-extension MoreTableViewController {
-    
-    func handleNotYetImplemented() {
-        let alert = UIAlertController(title: "Not Yet Implemented!", message: "This feature will come soon. Stay tuned!", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
 }

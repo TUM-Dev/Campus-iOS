@@ -83,12 +83,14 @@ extension MovieDetailTableViewController {
         pickerView.show()
         barItem?.action = #selector(MovieDetailTableViewController.hideMovies(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func hideMovies(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func setUpPickerView() {
@@ -105,10 +107,11 @@ extension MovieDetailTableViewController {
             items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideMovies(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(MovieDetailTableViewController.showMovies(_:)))
         navigationItem.rightBarButtonItem = barItem
     }

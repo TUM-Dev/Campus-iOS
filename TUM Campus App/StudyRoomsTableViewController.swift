@@ -105,12 +105,14 @@ extension StudyRoomsTableViewController {
         pickerView.show()
         barItem?.action = #selector(StudyRoomsTableViewController.hideRooms(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     func hideRooms(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(StudyRoomsTableViewController.showRooms(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func setUpPickerView() {
@@ -126,10 +128,11 @@ extension StudyRoomsTableViewController {
             items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideRooms(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
         navigationItem.rightBarButtonItem = barItem
     }

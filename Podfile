@@ -13,7 +13,7 @@ target 'Campus' do
 	pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'
 	pod 'ASWeekSelectorView', '~> 1.0'
 	pod 'CalendarLib', '~> 2.0'
-	pod 'SWXMLHash', '~> 3.0.3'
+	pod 'SWXMLHash', '~> 4.2.3'
 	pod 'TKSubmitTransition', :git => 'https://github.com/jvitor/TKSubmitTransition.git'
         pod 'Kanna', '~> 2.1.0'
     

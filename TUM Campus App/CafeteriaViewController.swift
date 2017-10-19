@@ -91,12 +91,15 @@ extension CafeteriaViewController {
         pickerView.show()
         barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
         barItem?.image = UIImage(named: "collapse")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
     }
     
     func hideCafeterias(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
         barItem?.image = UIImage(named: "expand")
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func setUpPickerView() {
@@ -112,10 +115,11 @@ extension CafeteriaViewController {
             items.append(item!)
         }
         pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = view
+        pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
+        pickerView.didDismissHandler = { self.hideCafeterias(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
