@@ -16,7 +16,6 @@ class CardViewController: UITableViewController {
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     
-    
     func refresh(_ sender: AnyObject?) {
         manager?.getCardItems(self)
     }
@@ -36,7 +35,6 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
 extension CardViewController: TumDataReceiver {
     
     func receiveData(_ data: [DataElement]) {
-        DispatchQueue.main.async(execute: {self.refresh.beginRefreshing()})
         if cards.count <= data.count {
             for item in data {
                 if let movieItem = item as? Movie {
@@ -57,7 +55,7 @@ extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -72,11 +70,6 @@ extension CardViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         manager = (self.tabBarController as? CampusTabBarController)?.manager
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cards.removeAll()
         refresh(nil)
     }
     
