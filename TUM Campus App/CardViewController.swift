@@ -12,12 +12,17 @@ import UIKit
 class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
-    var cards = [DataElement]()
+    var cards: [DataElement] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     
-    func refresh(_ sender: AnyObject?) {
+    
+    func refresh(animated: Bool = true) {
+        if animated {
             manager?.getCardItems(self)
+        } else {
+            
+        }
     }
 }
 
@@ -30,12 +35,14 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
     func dataManager() -> TumDataManager {
         return manager ?? TumDataManager(user: nil)
     }
-    
 }
 
 extension CardViewController: TumDataReceiver {
     
-    func receiveData(_ data: [DataElement]) {
+    func receiveData(_ data: [DataElement], animated: Bool) {
+        if animated {
+            DispatchQueue.main.async(execute: {self.refresh.beginRefreshing()})
+        }
         if cards.count <= data.count {
             for item in data {
                 if let movieItem = item as? Movie {
@@ -46,28 +53,28 @@ extension CardViewController: TumDataReceiver {
                 }
             }
             cards = data
-            tableView.reloadData()
+            DispatchQueue.main.async(execute: {self.tableView.reloadData()})
         }
-        refresh.endRefreshing()
+        if animated {
+            DispatchQueue.main.async(execute: {self.refresh.endRefreshing()})
+        }
     }
-    
 }
 
 extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
+            imageView.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width, height: bounds.height)
         }
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(animated:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 180
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
@@ -78,7 +85,7 @@ extension CardViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cards.removeAll()
-        refresh(nil)
+        refresh(animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,7 +96,6 @@ extension CardViewController {
             mvc.nextLectureItem = nextLecture
         }
     }
-    
 }
 
 extension CardViewController {

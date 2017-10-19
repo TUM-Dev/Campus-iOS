@@ -16,23 +16,11 @@ import UIKit
     let gradientLayer = CAGradientLayer()
     
     func configureBackgroundGradient() {
-        print(self.reuseIdentifier)
-        print(self.frame)
-        self.contentView.clipsToBounds = true
-        self.clipsToBounds = true
-//        if let gradientLayer = self.layer.sublayers?[0] as? CAGradientLayer {
-        self.gradientLayer.removeFromSuperlayer()
-            gradientLayer.colors = [color1.cgColor, color2.cgColor]
-            gradientLayer.locations = [0.0, 1.0]
-            gradientLayer.frame = bounds
-            gradientLayer.opacity = 0.05
-//        } else {
-//            gradientLayer.colors = [color1.cgColor, color2.cgColor]
-//            gradientLayer.locations = [0.0, 1.0]
-//            gradientLayer.frame = frame
-//            gradientLayer.opacity = 0.05
-            self.contentView.layer.insertSublayer(gradientLayer, at: 0)
-//        }
+        gradientLayer.colors = [color1.cgColor, color2.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = bounds
+        gradientLayer.opacity = 0.05
+        self.contentView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func awakeFromNib() {
