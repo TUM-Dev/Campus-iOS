@@ -18,33 +18,27 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
     
     var refresh = UIRefreshControl()
     
-    func refresh(_ sender: AnyObject?) {
-        roomGroups.removeAll()
-        studyRooms.removeAll()
-        delegate?.dataManager().studyRoomsManager.fetch().onSuccess(in: .main) { result in
-            self.roomGroups.append(contentsOf: result.flatMap { $0 as? StudyRoomGroup })
-//            self.studyRooms.append(contentsOf: result.flatMap { $0 as? StudyRoom })
-            self.currentGroup = self.roomGroups.first
-            self.setUpPickerView()
-        }
-    }
-
-    
     var roomGroups = [StudyRoomGroup]()
-    var studyRooms = [StudyRoom]() // Rooms of all available groups
     
     var currentGroup: StudyRoomGroup? {
         didSet {
             title = currentGroup?.name
-            currentRooms = self.studyRooms
-                .filter() { self.currentGroup?.roomNumbers.contains($0.roomNumber) ?? false }
-                .sorted() { $0.status.sortIndex < $1.status.sortIndex }
+            currentRooms = self.currentGroup?.rooms ?? []
         }
     }
+    
     var currentRooms = [StudyRoom]() { // Rooms for the group that is currently selected
         didSet {
             tableView.reloadData()
             refresh.endRefreshing()
+        }
+    }
+    
+    func refresh(_ sender: AnyObject?) {
+        delegate?.dataManager().studyRoomsManager.fetch().onSuccess(in: .main) { result in
+            self.roomGroups = result
+            self.currentGroup = self.roomGroups.first
+            self.setUpPickerView()
         }
     }
     

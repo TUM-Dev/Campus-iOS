@@ -7,9 +7,6 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
-
 import Sweeft
 
 final class StudyRoomsManager: NewManager {
@@ -27,8 +24,9 @@ final class StudyRoomsManager: NewManager {
     }
     
     func fetch() -> Response<[StudyRoomGroup]> {
-        return config.rooms.doJSONRequest(to: .rooms).map { json in
-            return json["gruppen"].array ==> StudyRoomGroup.init
+        return config.rooms.doJSONRequest(to: .rooms).map { (json: JSON) in
+            let rooms = json[""].array ==> StudyRoom.init(from:)
+            return json["gruppen"].array ==> StudyRoomGroup.init <** rooms
         }
     }
     
