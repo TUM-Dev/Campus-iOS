@@ -26,7 +26,7 @@ final class PersonSearchManager: SearchManager {
     }
     
     func search(query: String) -> Promise<[UserData], APIError> {
-        return config.tumOnline.doXMLObjectsRequest(to: .lectureSearch, queries: ["pSuche" : query], at: "rowset", "row")
+        return config.tumOnline.doXMLObjectsRequest(to: .personSearch, queries: ["pSuche" : query], at: "rowset", "row")
     }
     
 }
