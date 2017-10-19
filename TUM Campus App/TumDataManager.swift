@@ -10,10 +10,6 @@ import Sweeft
 
 class TumDataManager {
     
-    var cardItems: [TumDataItems] {
-        return PersistentCardOrder.value.managers
-    }
-    
     lazy var calendarManager: CalendarManager = { CalendarManager(config: self.config) }()
     lazy var movieManager: MovieManager = { MovieManager(config: self.config) }()
     lazy var newsManager: NewsManager = { NewsManager(config: self.config) }()

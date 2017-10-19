@@ -22,8 +22,6 @@ class SearchViewController: UITableViewController, DetailView {
     
     var currentElement: DataElement?
     
-    var searchManagers: [TumDataItems]?
-    
     func search(query: String) {
         delegate?.dataManager()?.search(query: query).onSuccess { data in
             guard query == self.searchTextField.text else { return }
