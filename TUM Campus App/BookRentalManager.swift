@@ -27,10 +27,13 @@ final class NewBookRentalManager: SingleItemManager {
     
     func fetch() -> Response<[BookRental]> {
         let api = config.bookRentals
-        return api.start().next { csid in
-            return api.login(user: self.getUsername(), password: self.getPassword(), csid: csid)
+        return api.start().flatMap { csid in
+            
+            return api.login(user: self.getUsername(),
+                             password: self.getPassword(),
+                             csid: csid)
         }
-        .next { session in
+        .flatMap { session in
             // TODO: store session maybe
             return api.rentals()
         }
@@ -57,10 +60,10 @@ final class NewBookRentalManager: SingleItemManager {
     
     func login(username: String, password: String) -> Response<Bool> {
         let api = config.bookRentals
-        return api.start().next { (csid: String) in
+        return api.start().flatMap { (csid: String) in
             return api.login(user: username, password: password, csid: csid)
         }
-        .nested { (result: BookRentalAPISession) in
+        .map { (result: BookRentalAPISession) in
             self.saveInKeychain(username: username, password: password)
             return true
         }

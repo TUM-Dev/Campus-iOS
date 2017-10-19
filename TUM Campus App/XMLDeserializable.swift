@@ -66,9 +66,18 @@ extension API {
                                 body: Data? = nil,
                                 acceptableStatusCodes: [Int] = [200],
                                 completionQueue: DispatchQueue = .main,
-                                maxCacheTime: TimeInterval = 0) -> Response<T> {
+                                maxCacheTime: CacheTime = .no) -> Response<T> {
         
-        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue, maxCacheTime: maxCacheTime)
+        return doRepresentedRequest(with: method,
+                                    to: endpoint,
+                                    arguments: arguments,
+                                    headers: headers,
+                                    queries: queries,
+                                    auth: auth,
+                                    body: body,
+                                    acceptableStatusCodes: acceptableStatusCodes,
+                                    completionQueue: completionQueue,
+                                    maxCacheTime: maxCacheTime)
     }
     
     func doXMLObjectsRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
@@ -81,14 +90,23 @@ extension API {
                             acceptableStatusCodes: [Int] = [200],
                             completionQueue: DispatchQueue = .main,
                             at path: String...,
-                            maxCacheTime: TimeInterval = 0) -> Response<[T]> {
+                            maxCacheTime: CacheTime = .no) -> Response<[T]> {
         
-        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries, auth: auth, body: body, acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue, maxCacheTime: maxCacheTime).nested { (xml: XMLIndexer, promise) in
+        return doRepresentedRequest(with: method,
+                                    to: endpoint,
+                                    arguments: arguments,
+                                    headers: headers,
+                                    queries: queries,
+                                    auth: auth,
+                                    body: body,
+                                    acceptableStatusCodes: acceptableStatusCodes,
+                                    completionQueue: completionQueue,
+                                    maxCacheTime: maxCacheTime).flatMap { (xml: XMLIndexer) in
         
             guard let array = xml.get(at: path)?.all else {
-                return promise.error(with: .noData)
+                return .errored(with: .noData)
             }
-            promise.success(with: array ==> T.init)
+            return .successful(with: array ==> T.init)
         }
     }
     

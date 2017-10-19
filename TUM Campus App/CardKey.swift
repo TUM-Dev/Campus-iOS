@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CardKey: Int {
+enum CardKey: Int, Codable {
     case tufilm
     case calendar
     case news

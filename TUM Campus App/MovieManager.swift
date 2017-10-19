@@ -24,7 +24,8 @@ final class MovieManager: SingleItemManager {
     }
     
     func fetch() -> Response<[Movie]> {
-        return config.tumCabe.doObjectsRequest(to: .movie, maxCacheTime: .aboutOneDay).nested { $0 |> { $0.airDate >= .now } }
+        return config.tumCabe.doObjectsRequest(to: .movie,
+                                               maxCacheTime: .time(.aboutOneDay)).map { $0 |> { $0.airDate >= .now } }
     }
     
 }

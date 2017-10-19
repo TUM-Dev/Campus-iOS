@@ -25,7 +25,7 @@ final class PersonDetailDataManager: DetailsManager {
         guard !data.contactsLoaded else {
             return .successful(with: data)
         }
-        return config.tumOnline.doRepresentedRequest(to: .personDetails).nested { (xml: XMLIndexer) in
+        return config.tumOnline.doRepresentedRequest(to: .personDetails).map { (xml: XMLIndexer) in
             
             let dien = xml["person"]["dienstlich"]
             let privat = xml["person"]["privat"]

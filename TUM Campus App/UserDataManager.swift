@@ -23,17 +23,17 @@ final class UserDataManager: DetailsForDataManager {
     
     func search(with id: String) -> Promise<UserData, APIError> {
         let manager = PersonSearchManager(config: config)
-        return manager.search(query: id).nested { users, promise in
+        return manager.search(query: id).flatMap { users in
             guard let user = users.first else {
-                return promise.error(with: .noData)
+                return .errored(with: .noData)
             }
-            promise.success(with: user)
+            return .successful(with: user)
         }
     }
     
     func fetch(for data: User) -> Promise<UserData, APIError> {
         guard let id = data.id else {
-            return config.tumOnline.doRepresentedRequest(to: .identify).next { (xml: XMLIndexer) in
+            return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
                 guard let id = xml["id"].element?.text else {
                     return .errored(with: .cannotPerformRequest)
                 }

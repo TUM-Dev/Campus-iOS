@@ -31,7 +31,7 @@ final class CalendarManager: SingleItemManager {
     func fetch() -> Response<[CalendarRow]> {
         return config.tumOnline.doXMLObjectsRequest(to: .calendar,
                                                     at: "events", "event",
-                                                    maxCacheTime: .aboutOneWeek)
+                                                    maxCacheTime: .time(.aboutOneWeek))
     }
     
 }

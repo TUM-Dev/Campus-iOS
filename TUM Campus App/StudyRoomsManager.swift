@@ -27,7 +27,7 @@ final class StudyRoomsManager: NewManager {
     }
     
     func fetch() -> Response<[StudyRoomGroup]> {
-        return config.rooms.doJSONRequest(to: .rooms).nested { json in
+        return config.rooms.doJSONRequest(to: .rooms).map { json in
             return json["gruppen"].array ==> StudyRoomGroup.init
         }
     }

@@ -19,7 +19,9 @@ final class RoomFinderMapManager: SearchManager {
     }
     
     func search(query: String) -> Response<[Map]> {
-        return config.tumCabe.doJSONRequest(to: .roomMaps, arguments: ["room" : query]).nested { (json: JSON) in
+        return config.tumCabe.doJSONRequest(to: .roomMaps,
+                                            arguments: ["room" : query]).map { (json: JSON) in
+                                                
             return json.array ==> Map.init ** query
         }
     }

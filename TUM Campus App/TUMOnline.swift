@@ -50,17 +50,17 @@ extension TUMOnlineAPI {
                                     queries: [
                                         "pUsername": id,
                                         "pTokenName": "TumCampusApp-\(version)"
-                                    ]).nested { (xml: XMLIndexer, promise) in
+                                    ]).flatMap { (xml: XMLIndexer) in
             
             guard let token = xml["token"].element?.text else {
-                return promise.error(with: .noData)
+                return .errored(with: .noData)
             }
-            promise.success(with: token)
+            return .successful(with: token)
         }
     }
     
     func confirm(token: String) -> Response<Bool> {
-        return doRepresentedRequest(to: .tokenConfirmation).nested { (xml: XMLIndexer) in
+        return doRepresentedRequest(to: .tokenConfirmation).map { (xml: XMLIndexer) in
             return xml["confirmed"].element?.text == "true"
         }
     }

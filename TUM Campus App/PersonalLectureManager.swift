@@ -23,7 +23,9 @@ final class PersonalLectureManager: NewManager {
     }
     
     func fetch() -> Response<[Lecture]> {
-        return config.tumOnline.doXMLObjectsRequest(to: .personalLectures, at: "rowset", "row", maxCacheTime: .aboutOneWeek)
+        return config.tumOnline.doXMLObjectsRequest(to: .personalLectures,
+                                                    at: "rowset", "row",
+                                                    maxCacheTime: .time(.aboutOneWeek))
     }
     
 }

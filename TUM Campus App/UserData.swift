@@ -50,9 +50,7 @@ final class UserData: ImageDownloader, DataElement {
     }
     
     func getPhoneNumbers(_ phones: [String]) -> [CNLabeledValue<CNPhoneNumber>] {
-        return phones => firstArgument
-            >>> CNPhoneNumber.init
-            >>> getLabeledFunc(label: CNLabelPhoneNumberMain)
+        return phones => CNPhoneNumber.init >>> getLabeledFunc(label: CNLabelPhoneNumberMain)
     }
     
     func addContact(_ handler: () -> ()?) {
@@ -76,11 +74,11 @@ final class UserData: ImageDownloader, DataElement {
             }
         }
         
-        contact.emailAddresses = emails => { $0.0 as NSString } >>> getLabeledFunc(label: CNLabelWork)
+        contact.emailAddresses = emails => { $0 as NSString } >>> getLabeledFunc(label: CNLabelWork)
         contact.phoneNumbers = getPhoneNumbers(phones)
         
         contact.phoneNumbers.append(contentsOf: getPhoneNumbers(mobiles))
-        contact.urlAddresses = websites => { $0.0 as NSString } >>> getLabeledFunc(label: CNLabelURLAddressHomePage)
+        contact.urlAddresses = websites => { $0 as NSString } >>> getLabeledFunc(label: CNLabelURLAddressHomePage)
             
         contact.organizationName = "Technische Universität München"
         let store = CNContactStore()

@@ -43,8 +43,8 @@ extension CalendarRow: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer) {
         guard let title = xml["title"].element?.text,
-            let start = xml["dtstart"].element?.text?.date(using: "yyyy-MM-dd HH:mm:ss"),
-            let end = xml["dtend"].element?.text?.date(using: "yyyy-MM-dd HH:mm:ss"),
+            let start = xml["dtstart"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
+            let end = xml["dtend"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
             let status = xml["status"].element?.text,
             let link = xml["url"].element?.text else {
                 

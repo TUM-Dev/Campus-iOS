@@ -25,7 +25,7 @@ final class LectureDetailsManager: DetailsManager {
         }
         return config.tumOnline.doXMLObjectsRequest(to: .lectureDetails,
                                                     queries: ["pLVNr" : data.id],
-                                                    at: "rowset", "row").nested { (xml: [XMLIndexer]) in
+                                                    at: "rowset", "row").map { (xml: [XMLIndexer]) in
         
             data.detailsLoaded = true
             guard let lecture = xml.first else {

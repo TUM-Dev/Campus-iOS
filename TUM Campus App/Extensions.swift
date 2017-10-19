@@ -32,18 +32,6 @@ extension Collection {
     
 }
 
-extension Promise {
-    
-    func finish(with result: Result?, onNil error: ErrorType) {
-        if let result = result {
-            success(with: result)
-        } else {
-            self.error(with: error)
-        }
-    }
-    
-}
-
 extension Bundle {
     
     var version: String {

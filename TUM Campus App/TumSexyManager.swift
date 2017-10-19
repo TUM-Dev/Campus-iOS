@@ -23,7 +23,8 @@ final class TumSexyManager: NewManager {
     }
     
     func fetch() -> Response<[SexyEntry]> {
-        return config.tumSexy.doJSONRequest(to: .sexy, maxCacheTime: .aboutOneWeek).nested { (json: JSON) in
+        return config.tumSexy.doJSONRequest(to: .sexy,
+                                            maxCacheTime: .time(.aboutOneWeek)).map { (json: JSON) in
             return json.dict ==> SexyEntry.init
         }
     }

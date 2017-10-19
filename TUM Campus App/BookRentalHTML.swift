@@ -72,11 +72,16 @@ extension API {
                        auth: Auth = NoAuth.standard,
                        acceptableStatusCodes: [Int] = [200],
                        completionQueue: DispatchQueue = .main,
-                       maxCacheTime: TimeInterval = 0) -> BookRentalHTML.Result {
+                       maxCacheTime: CacheTime = .no) -> BookRentalHTML.Result {
         
-        return doRepresentedRequest(with: method, to: endpoint, arguments: arguments, headers: headers, queries: queries,
+        return doRepresentedRequest(with: method,
+                                    to: endpoint,
+                                    arguments: arguments,
+                                    headers: headers,
+                                    queries: queries,
                                     auth: auth,
-                                    acceptableStatusCodes: acceptableStatusCodes, completionQueue: completionQueue,
+                                    acceptableStatusCodes: acceptableStatusCodes,
+                                    completionQueue: completionQueue,
                                     maxCacheTime: maxCacheTime)
     }
     

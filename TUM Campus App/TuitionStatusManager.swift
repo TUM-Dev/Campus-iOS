@@ -24,7 +24,9 @@ final class TuitionStatusManager: SingleItemManager {
     }
     
     func fetch() -> Response<[Tuition]> {
-        return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus, at: "rowset", "row", maxCacheTime: .aboutOneDay)
+        return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus,
+                                                    at: "rowset", "row",
+                                                    maxCacheTime: .time(.aboutOneDay))
     }
     
 }

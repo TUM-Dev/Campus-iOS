@@ -50,7 +50,7 @@ protocol SearchManager: SimpleSearchManager {
 extension SearchManager {
     
     func search(query: String) -> Response<[DataElement]> {
-        return search(query: query).nested { $0.map { $0 as DataElement } }
+        return search(query: query).map { $0.map { $0 as DataElement } }
     }
     
 }
@@ -69,7 +69,7 @@ protocol NewManager: SimpleManager {
 extension NewManager {
     
     func fetch() -> Promise<[DataElement], APIError> {
-        return fetch().nested { $0.map { $0 as DataElement } }
+        return fetch().map { $0.map { $0 as DataElement } }
     }
     
 }
@@ -85,7 +85,7 @@ extension SingleItemManager {
     }
     
     func fetchSingle() -> Response<DataElement?> {
-        return fetch().nested { self.toSingle(from: $0) }
+        return fetch().map { self.toSingle(from: $0) }
     }
     
 }

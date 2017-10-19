@@ -42,7 +42,7 @@ extension Grade: XMLDeserializable {
     convenience init?(from xml: XMLIndexer) {
         guard let name = xml["lv_titel"].element?.text,
             let result = xml["uninotenamekurz"].element?.text,
-            let date = xml["datum"].element?.text?.date(using: "y-M-dd"),
+            let date = xml["datum"].element?.text.date(using: "y-M-dd"),
             let semester = xml["lv_semester"].element?.text,
             let ects = xml["lv_credits"].element?.text,
             let examiner = xml["pruefer_nachname"].element?.text,

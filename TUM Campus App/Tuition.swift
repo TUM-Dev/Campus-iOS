@@ -43,7 +43,7 @@ extension Tuition: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer) {
         guard let soll = xml["soll"].element?.text,
-            let frist = xml["frist"].element?.text?.date(using: "yyyy-MM-dd"),
+            let frist = xml["frist"].element?.text.date(using: "yyyy-MM-dd"),
             let semester = xml["semester_bezeichnung"].element?.text else {
             
             return nil
