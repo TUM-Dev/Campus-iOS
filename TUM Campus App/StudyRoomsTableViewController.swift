@@ -20,7 +20,7 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
     func refresh(_ sender: AnyObject?) {
         roomGroups.removeAll()
         studyRooms.removeAll()
-        delegate?.dataManager().getAllStudyRooms(self)
+//        delegate?.dataManager().getAllStudyRooms(self)
     }
 
     

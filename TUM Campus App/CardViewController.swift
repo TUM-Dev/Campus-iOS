@@ -21,7 +21,21 @@ class CardViewController: UITableViewController {
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
-            manager?.getCardItems(self)
+        manager?.getCardItems().onSuccess { data in
+            if self.cards.count <= data.count {
+                for item in data {
+                    if let movieItem = item as? Movie {
+                        movieItem.subscribeToImage(self)
+                    }
+                    if let lectureItem = item as? CalendarRow {
+                        self.nextLecture = lectureItem
+                    }
+                }
+                self.cards = data
+                self.tableView.reloadData()
+            }
+            self.refresh.endRefreshing()
+        }
     }
 }
 
@@ -33,26 +47,6 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
     
     func dataManager() -> TumDataManager {
         return manager ?? TumDataManager(user: nil)
-    }
-    
-}
-
-extension CardViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        if cards.count <= data.count {
-            for item in data {
-                if let movieItem = item as? Movie {
-                    movieItem.subscribeToImage(self)
-                }
-                if let lectureItem = item as? CalendarRow {
-                    nextLecture = lectureItem
-                }
-            }
-            cards = data
-            tableView.reloadData()
-        }
-        refresh.endRefreshing()
     }
     
 }

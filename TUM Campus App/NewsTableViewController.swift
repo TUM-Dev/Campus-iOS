@@ -32,7 +32,7 @@ extension NewsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getAllNews(self)
+//        delegate?.dataManager().getAllNews(self)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -68,9 +68,9 @@ extension NewsTableViewController {
 
 extension NewsTableViewController {
     func getRowOfUpcomingNews() -> Int? {
-        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
-            return news.index(of: nextNews) ?? 0
-        }
+//        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
+//            return news.index(of: nextNews) ?? 0
+//        }
         return nil
     }
 }

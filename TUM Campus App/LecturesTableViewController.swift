@@ -51,7 +51,7 @@ extension LecturesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getLectures(self)
+//        delegate?.dataManager().getLectures(self)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)

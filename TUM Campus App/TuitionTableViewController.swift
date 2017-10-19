@@ -53,7 +53,7 @@ extension TuitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getTuitionStatus(self)
+//        delegate?.dataManager().getTuitionStatus(self)
     }
     
 }

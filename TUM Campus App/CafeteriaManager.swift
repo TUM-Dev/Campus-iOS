@@ -67,7 +67,7 @@ class CafeteriaManager: Manager {
                             let handle: ([DataElement]) -> () = { _ in
                                 self.handle(handler)
                             }
-                            self.main?.getCafeteriaMenus(handle)
+//                            self.main?.getCafeteriaMenus(handle)
                         }
                     }
                 }

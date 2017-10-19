@@ -71,9 +71,9 @@ extension RoomFinderViewController {
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         if let roomUnwrapped = room as? Room {
-            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
+//            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
         } else if let roomUnwrapped = room as? StudyRoom {
-            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.architectNumber)
+//            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.architectNumber)
         }
     }
     

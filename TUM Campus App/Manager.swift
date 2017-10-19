@@ -66,6 +66,10 @@ protocol NewManager: SimpleManager {
     func fetch() -> Response<[DataType]>
 }
 
+protocol SimpleSingleManager: SimpleManager {
+    func fetchSingle() -> Response<DataElement?>
+}
+
 extension NewManager {
     
     func fetch() -> Promise<[DataElement], APIError> {
@@ -74,7 +78,7 @@ extension NewManager {
     
 }
 
-protocol SingleItemManager: NewManager {
+protocol SingleItemManager: SimpleSingleManager, NewManager {
     func toSingle(from items: [DataType]) -> DataElement?
 }
 

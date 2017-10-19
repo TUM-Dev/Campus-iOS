@@ -68,7 +68,7 @@ extension CafeteriaViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        delegate?.dataManager().getCafeterias(self)
+//        delegate?.dataManager().getCafeterias(self)
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
         weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))

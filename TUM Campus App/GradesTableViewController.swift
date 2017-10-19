@@ -29,7 +29,7 @@ extension GradesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getGrades(self)
+//        delegate?.dataManager().getGrades(self)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }

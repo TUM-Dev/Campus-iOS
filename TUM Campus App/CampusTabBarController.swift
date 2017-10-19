@@ -18,7 +18,7 @@ class CampusTabBarController: UITabBarController {
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().barTintColor = UIColor.white
         manager = TumDataManager(user: User.shared)
-        manager?.getUserData()
+//        manager?.getUserData()
     }
 
 }

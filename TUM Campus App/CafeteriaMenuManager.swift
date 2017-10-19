@@ -137,21 +137,21 @@ class CafeteriaMenuManager: Manager {
     }
     
     func addMenu(_ item: JSON) {
-        if let cafeteria = item["mensa_id"].string, let date = item["date"].string, let typeShort = item["type_short"].string, let typeLong = item["type_long"].string, var name = item["name"].string, let mensa = self.manager?.getCafeteriaForID(cafeteria) {
-            let id = item["id"].string ?? ""
-            let typeNR = item["type_nr"].string ?? ""
-            let idNumber = Int(id) ?? 0
-            let nr = Int(typeNR) ?? Int.max
-            let dateformatter = DateFormatter()
-            let price = priceList[typeLong]
-                name = parseMensaMenu(name).name
-            let details = parseMensaMenu(name)
-            dateformatter.dateFormat = "yyyy-MM-dd"
-            let dateAsDate = dateformatter.date(from: date) ?? Date()
-            let newMenu = CafeteriaMenu(id: idNumber, date: dateAsDate, typeShort: typeShort, typeLong: typeLong, typeNr: nr, name: name, price: price, details: details)
-            mensa.addMenu(newMenu)
-            CafeteriaMenuManager.cafeteriaMenus.append(newMenu)
-        }
+//        if let cafeteria = item["mensa_id"].string, let date = item["date"].string, let typeShort = item["type_short"].string, let typeLong = item["type_long"].string, var name = item["name"].string, let mensa = self.manager?.getCafeteriaForID(cafeteria) {
+//            let id = item["id"].string ?? ""
+//            let typeNR = item["type_nr"].string ?? ""
+//            let idNumber = Int(id) ?? 0
+//            let nr = Int(typeNR) ?? Int.max
+//            let dateformatter = DateFormatter()
+//            let price = priceList[typeLong]
+//                name = parseMensaMenu(name).name
+//            let details = parseMensaMenu(name)
+//            dateformatter.dateFormat = "yyyy-MM-dd"
+//            let dateAsDate = dateformatter.date(from: date) ?? Date()
+//            let newMenu = CafeteriaMenu(id: idNumber, date: dateAsDate, typeShort: typeShort, typeLong: typeLong, typeNr: nr, name: name, price: price, details: details)
+//            mensa.addMenu(newMenu)
+//            CafeteriaMenuManager.cafeteriaMenus.append(newMenu)
+//        }
     }
     
     func parseMensaMenu(_ name: String) -> MenuDetail {

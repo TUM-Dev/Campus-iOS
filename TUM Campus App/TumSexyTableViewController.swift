@@ -13,7 +13,7 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getSexyEntries(self)
+//        delegate?.dataManager().getSexyEntries(self)
     }
     
     @IBAction func visit(_ sender: Any) {

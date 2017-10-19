@@ -72,7 +72,7 @@ extension MovieDetailTableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        delegate?.dataManager().getMovies(self)
+//        delegate?.dataManager().getMovies(self)
     }
     
 }

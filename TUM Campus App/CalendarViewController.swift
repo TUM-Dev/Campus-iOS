@@ -61,7 +61,7 @@ extension CalendarViewController {
         weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
         weekSelector?.delegate = self
         weekSelector?.selectedDate = Date()
-        delegate?.dataManager().getCalendar(self)
+//        delegate?.dataManager().getCalendar(self)
         let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
         navigationItem.rightBarButtonItem = barItem
         updateTitle(Date())

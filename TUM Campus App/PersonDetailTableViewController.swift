@@ -57,7 +57,7 @@ extension PersonDetailTableViewController {
         let barItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(PersonDetailTableViewController.addContact(_:)))
         navigationItem.rightBarButtonItem = barItem
         if let data = user as? UserData {
-            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
+//            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
             contactInfo = data.contactInfo
         }
     }
