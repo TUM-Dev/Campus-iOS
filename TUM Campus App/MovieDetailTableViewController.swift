@@ -49,19 +49,14 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var movies = [Movie]()
 }
 
-extension MovieDetailTableViewController: TumDataReceiver {
+extension MovieDetailTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        movies.removeAll()
-        for element in data {
-            if let movieElement = element as? Movie {
-                movies.append(movieElement)
-                if currentMovie == nil {
-                    currentMovie = movieElement
-                }
-            }
+    func fetch() {
+        delegate?.dataManager().movieManager.fetch().onSuccess(in: .main) { movies in
+            self.movies = movies
+            self.currentMovie = movies.first
+            self.setUpPickerView()
         }
-        setUpPickerView()
     }
     
 }
@@ -72,7 +67,7 @@ extension MovieDetailTableViewController {
         super.viewDidLoad()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-//        delegate?.dataManager().getMovies(self)
+        self.fetch()
     }
     
 }
