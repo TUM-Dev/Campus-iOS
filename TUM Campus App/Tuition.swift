@@ -12,11 +12,16 @@ class Tuition: DataElement {
     let frist: Date
     let semester: String
     let soll: String
+    let amountDue: Double
+    var payed: Bool {
+        return amountDue == 0
+    }
     
-    init(frist:Date,semester:String,soll:String) {
+    init(frist:Date,semester:String,soll:String, amountDue: Double) {
         self.frist = frist
         self.semester = semester
         self.soll = soll
+        self.amountDue = amountDue
     }
     
     func getCellIdentifier() -> String {
