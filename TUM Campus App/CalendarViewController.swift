@@ -25,6 +25,8 @@ class CalendarViewController: UIViewController, DetailView {
     
     var firstTimeAppearing = true
     
+    let refreshButton: UIButton = UIButton.init(type: UIButtonType.custom)
+    
     func showToday(_ sender: AnyObject?) {
         let now = Date()
         weekSelector?.setSelectedDate(now, animated: true)
@@ -32,6 +34,10 @@ class CalendarViewController: UIViewController, DetailView {
         scrolling = true
         scrollTo(now)
         dayPlannerView.reloadAllEvents()
+    }
+    
+    func updateCalendar(_ sender: AnyObject?) {
+        delegate?.dataManager().updateCalendar(self)
     }
     
     func lecturesOfDate(_ date: Date) -> [CalendarRow] {
@@ -62,8 +68,13 @@ extension CalendarViewController {
         weekSelector?.delegate = self
         weekSelector?.selectedDate = Date()
         delegate?.dataManager().getCalendar(self)
-        let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
-        navigationItem.rightBarButtonItem = barItem
+        
+        let todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
+        refreshButton.setImage(UIImage(named: "sexy-dress"), for: UIControlState.normal)
+        refreshButton.addTarget(self, action: #selector(updateCalendar), for: UIControlEvents.touchUpInside)
+        let refreshBarButton = UIBarButtonItem(customView: refreshButton)
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
+        
         updateTitle(Date())
         dayPlannerView.frame = CGRect(x: dayPlannerView.frame.origin.x, y: dayPlannerView.frame.origin.y, width: view.frame.width, height: dayPlannerView.frame.width)
         dayPlannerView.dataSource = self

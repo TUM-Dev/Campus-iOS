@@ -83,6 +83,10 @@ class TumDataManager {
         managers[.CalendarFull]?.fetchData(receiver.receiveData)
     }
     
+    func updateCalendar(_ receiver: TumDataReceiver) {
+        managers[.CalendarFull]?.updateData(receiver.receiveData)
+    }
+    
     func getCardItems(_ receiver: TumDataReceiver) {
         let request = BulkRequest(receiver: receiver, sorter: {
             if let item = $0 as? CardDisplayable {
