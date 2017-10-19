@@ -40,6 +40,22 @@ extension Bundle {
     
 }
 
+extension Promise {
+    
+    @discardableResult func onSuccess(in queue: DispatchQueue, call handler: @escaping (T) -> ()) -> Promise<T, E> {
+        let promise = map(completionQueue: queue) { $0 as T }
+        promise.onSuccess(call: handler)
+        return self
+    }
+    
+    @discardableResult func onError(queue: DispatchQueue, call handler: @escaping (E) -> ()) -> Promise<T, E> {
+        let promise = map(completionQueue: queue) { $0 as T }
+        promise.onError(call: handler)
+        return self
+    }
+    
+}
+
 extension TimeInterval {
     
     static var oneMinute: TimeInterval {

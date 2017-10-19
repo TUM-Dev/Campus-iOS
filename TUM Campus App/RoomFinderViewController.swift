@@ -46,20 +46,16 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
     
 }
 
-extension RoomFinderViewController: TumDataReceiver {
+extension RoomFinderViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        maps.removeAll()
-        for item in data {
-            if let map = item as? Map {
-                maps.append(map)
+    func fetch(id: String) {
+        delegate?.dataManager().roomMapsManager.search(query: id).onSuccess(in: .main) { maps in
+            self.maps = maps.sorted { $0.scale < $1.scale }
+            if !maps.isEmpty {
+                self.currentMap = self.maps.first
             }
+            self.setUpPickerView()
         }
-        maps = maps.sorted {$0.scale < $1.scale} // Sort maps by their scale, so the smallest one is displayed as default
-        if !maps.isEmpty {
-            currentMap = maps.first
-        }
-        setUpPickerView()
     }
     
 }
@@ -71,9 +67,9 @@ extension RoomFinderViewController {
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         if let roomUnwrapped = room as? Room {
-//            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
+            fetch(id: roomUnwrapped.number)
         } else if let roomUnwrapped = room as? StudyRoom {
-//            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.architectNumber)
+            fetch(id: roomUnwrapped.architectNumber)
         }
     }
     
@@ -125,7 +121,11 @@ extension RoomFinderViewController {
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
         pickerView.didDismissHandler = { self.hideMaps(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
+        
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"),
+                                  style: UIBarButtonItemStyle.plain,
+                                  target: self,
+                                  action:  #selector(RoomFinderViewController.showMaps(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

@@ -22,7 +22,7 @@ final class RoomFinderMapManager: SearchManager {
         return config.tumCabe.doJSONRequest(to: .roomMaps,
                                             arguments: ["room" : query]).map { (json: JSON) in
                                                 
-            return json.array ==> Map.init ** query
+            return json.array ==> { Map(roomID: query, api: self.config.tumCabe, from: $0) }
         }
     }
     

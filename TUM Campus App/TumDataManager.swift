@@ -25,6 +25,7 @@ class TumDataManager {
     
     lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
     lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()
+    lazy var roomMapsManager: RoomFinderMapManager = { RoomFinderMapManager(config: self.config) }()
     
     lazy var roomSearchManager: RoomSearchManager = { RoomSearchManager(config: self.config) }()
     lazy var personSearchManager: PersonSearchManager = { PersonSearchManager(config: self.config) }()
@@ -43,7 +44,6 @@ class TumDataManager {
             movieManager,
             newsManager,
             tuitionManager,
-//            bookRentalManager,
         ]
     }
     
@@ -67,15 +67,6 @@ class TumDataManager {
                              roomsURL: "http://www.devapp.it.tum.de/iris",
                              rentalsURL: "https://opac.ub.tum.de/InfoGuideClient.tumsis",
                              user: user)
-        
-        roomSearchManager.search(query: "MI HS").onResult { result in
-            print(result)
-        }
-        
-        studyRoomsManager.fetch().onResult { result in
-            print(result)
-        }
-        
     }
     
     func getCardItems() -> Response<[DataElement]> {

@@ -15,7 +15,7 @@ enum TUMCabeEndpoint: String, APIEndpoint {
     case news = "news/"
     case searchRooms = "roomfinder/room/search/{query}"
     case roomMaps = "roomfinder/room/availableMaps/{room}"
-    case mapImage = "roomfinder/room/map/{id}"
+    case mapImage = "roomfinder/room/map/{room}/{id}"
 }
 
 struct TUMCabeAPI: API {

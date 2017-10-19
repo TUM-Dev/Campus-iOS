@@ -9,9 +9,9 @@
 import Sweeft
 import UIKit
 
-class LecturesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate, DetailView {
+class LecturesTableViewController: UITableViewController, DetailViewDelegate, DetailView {
     
-    var lectures = [(String,[DataElement])]()
+    var lectures = [(String,[Lecture])]()
     
     var delegate: DetailViewDelegate?
     
@@ -21,28 +21,17 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
         return delegate?.dataManager() ?? TumDataManager(user: nil)
     }
     
-    func receiveData(_ data: [DataElement]) {
-        lectures.removeAll()
-        let semesters = data.reduce([String](), { (array, element) in
-            if let lecture = element as? Lecture {
-                if !array.contains(lecture.semester) {
-                    var newArray = array
-                    newArray.append(lecture.semester)
-                    return newArray
-                }
+    func fetch() {
+        let promise = delegate?.dataManager().lecturesManager.fetch()
+        promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
+            let semesters = Set(lectures.map { $0.semester })
+            return semesters.map { semester in
+                return (semester, lectures.filter { $0.semester == semester })
             }
-            return array
-        })
-        for semester in semesters {
-            let lecturesInSemester = data.filter { (element: DataElement) in
-                if let lecture = element as? Lecture {
-                    return lecture.semester == semester
-                }
-                return false
-            }
-            lectures.append((semester,lecturesInSemester))
+        }.onSuccess { lectures in
+            self.lectures = lectures
+            self.tableView.reloadData()
         }
-        tableView.reloadData()
     }
 
 }
@@ -51,7 +40,7 @@ extension LecturesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        delegate?.dataManager().getLectures(self)
+        self.fetch()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)

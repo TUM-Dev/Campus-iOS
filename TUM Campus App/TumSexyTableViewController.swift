@@ -13,7 +13,14 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        delegate?.dataManager().getSexyEntries(self)
+        fetch()
+    }
+    
+    func fetch() {
+        delegate?.dataManager().tumSexyManager.fetch().onSuccess { entries in
+            self.entries = entries
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func visit(_ sender: Any) {
@@ -43,15 +50,6 @@ extension TumSexyTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         entries[indexPath.row].open()
-    }
-    
-}
-
-extension TumSexyTableViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        entries = data.mapped()
-        tableView.reloadData()
     }
     
 }
