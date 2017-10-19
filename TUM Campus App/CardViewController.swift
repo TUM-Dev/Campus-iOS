@@ -8,20 +8,16 @@
 
 import Sweeft
 import UIKit
-import MCSwipeTableViewCell
 
 class CardViewController: UITableViewController {
     
     var manager: TumDataManager?
-    
-    var cards = [DataElement]()
-    
+    var cards: [DataElement] = []
     var nextLecture: CalendarRow?
-    
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
-            manager?.getCardItems(self)
+        manager?.getCardItems(self)
     }
 }
 
@@ -34,7 +30,6 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
     func dataManager() -> TumDataManager {
         return manager ?? TumDataManager(user: nil)
     }
-    
 }
 
 extension CardViewController: TumDataReceiver {
@@ -50,38 +45,31 @@ extension CardViewController: TumDataReceiver {
                 }
             }
             cards = data
-            tableView.reloadData()
+            DispatchQueue.main.async(execute: {self.tableView.reloadData()})
         }
-        refresh.endRefreshing()
+        DispatchQueue.main.async(execute: {self.refresh.endRefreshing()})
     }
-    
 }
 
 extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
+            imageView.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width, height: bounds.height)
         }
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
         imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Constants.backgroundGray
+        tableView.backgroundColor = .white
         manager = (self.tabBarController as? CampusTabBarController)?.manager
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        cards.removeAll()
         refresh(nil)
     }
     
@@ -93,7 +81,6 @@ extension CardViewController {
             mvc.nextLectureItem = nextLecture
         }
     }
-    
 }
 
 extension CardViewController {
@@ -106,30 +93,20 @@ extension CardViewController {
         return max(cards.count, 1)
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 480
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
-        let handler = { () -> () in
-            if let path = self.tableView.indexPath(for: cell) {
-                PersistentCardOrder.value.remove(cardFor: item)
-                if !self.cards.isEmpty {
-                    self.cards.remove(at: path.row)
-                }
-                if !self.cards.isEmpty {
-                    self.tableView.deleteRows(at: [path], with: UITableViewRowAnimation.top)
-                } else {
-                    self.tableView.reloadData()
-                }
-            }
-        }
         cell.selectionStyle = .none
-        cell.defaultColor = tableView.backgroundColor
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state1) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state2) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state3) { (void) in handler() }
-        cell.setSwipeGestureWith(UIView(), color: tableView.backgroundColor, mode: MCSwipeTableViewCellMode.exit, state: MCSwipeTableViewCellState.state4) { (void) in handler() }
-        return cell
+		return cell
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
