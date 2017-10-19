@@ -20,10 +20,12 @@ final class UserData: ImageDownloader, DataElement {
     let name: String
     let picture: String
     let id: String
+    
     init(name: String, picture: String, id: String) {
         self.name = name
         self.id = id
-        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)?.replacingOccurrences(of: "amp;", with: "") ?? ""
+        self.picture = ""
+//        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)?.replacingOccurrences(of: "amp;", with: "") ?? ""
         super.init(url: self.picture)
     }
     
