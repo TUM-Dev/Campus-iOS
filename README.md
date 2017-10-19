@@ -22,6 +22,8 @@ Features already implemented:
 You're welcome to contribute to this app!
 Check out our detailed information at [CONTIRBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
+Join us on [WhatsApp](https://chat.whatsapp.com/invite/BPXZYBLyFIN8oHlA2va1fw) for discussions! 
+
 ## Publishing a new version
 - You can use _fastlane snapshot_ to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the AutomatedScreenshots.swift test
 - App Store metadata is managed in the directory _fastlane/metadata/_. Go edit those and they'll be updated on the store with the next release
