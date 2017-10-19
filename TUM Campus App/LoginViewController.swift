@@ -27,46 +27,67 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-
-        let text = sender.text ?? ""
-
         if sender === firstTextField {
-            if text.count >= 2 {
-                sender.text = String(text.prefix(2))
-                numbersTextField.becomeFirstResponder()
-            }
+            handleTextFieldInput(currentTextField: firstTextField,
+                                 nextTextField: numbersTextField,
+                                 characterLimit: 2)
         } else if sender === numbersTextField {
-            if text.count >= 2 {
-                sender.text = String(text.prefix(2))
-                secondTextField.becomeFirstResponder()
-            } else if text.isEmpty {
-                firstTextField.becomeFirstResponder()
-            }
+            handleTextFieldInput(currentTextField: numbersTextField,
+                                 previousTextField: firstTextField,
+                                 nextTextField: secondTextField,
+                                 characterLimit: 2)
         } else if sender === secondTextField {
-            if text.count >= 3 {
-                sender.text = String(text.prefix(3))
-                secondTextField.resignFirstResponder()
-            } else if text.isEmpty {
-                numbersTextField.becomeFirstResponder()
-            }
+            handleTextFieldInput(currentTextField: secondTextField,
+                                 previousTextField: numbersTextField,
+                                 characterLimit: 3)
         }
 
         confirmButton.isEnabled = textFieldContentsAreValid()
         confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
     }
 
-    func textFieldContentsAreValid() -> Bool {
-        guard (firstTextField.text ?? "").count == 2, (secondTextField.text ?? "").count == 3,
-            let numbers = numbersTextField.text, numbers.count == 2 else { return false }
+    private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
+        let text = currentTextField.text ?? ""
 
-        if let _ = Int(numbers) {
-            numbersTextField.layer.borderColor = UIColor(hexString: "0xC7C7CD").cgColor
-            return true
-        } else {
-            numbersTextField.layer.borderWidth = 1
-            numbersTextField.layer.borderColor = UIColor.red.cgColor
-            return false
+        if text.count >= characterLimit {
+            currentTextField.text = String(text.prefix(characterLimit))
+
+            let substring = String(text.characters.dropFirst(characterLimit))
+            if let nextTextField = nextTextField {
+                nextTextField.becomeFirstResponder()
+                if !substring.isEmpty {
+                    nextTextField.text = substring
+                    textFieldEditingChanged(nextTextField)
+                }
+            } else {
+                currentTextField.resignFirstResponder()
+            }
+        } else if text.isEmpty {
+            guard let previousTextField = previousTextField else { return }
+
+            previousTextField.becomeFirstResponder()
         }
+    }
+
+    func textFieldContentsAreValid() -> Bool {
+        guard let firstText = firstTextField.text, firstText.count == 2,
+            let numbersText = numbersTextField.text, numbersText.count == 2,
+            let secondText = secondTextField.text, secondText.count == 3 else { return false }
+
+        let isFirstTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: firstText))
+        let isNumbersTextValid = Int(numbersText) != nil
+        let isSecondTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: secondText))
+
+        highlightTextfield(textField: firstTextField, isHighlighted: !isFirstTextValid)
+        highlightTextfield(textField: numbersTextField, isHighlighted: !isNumbersTextValid)
+        highlightTextfield(textField: secondTextField, isHighlighted: !isSecondTextValid)
+
+        return isFirstTextValid && isNumbersTextValid && isSecondTextValid
+    }
+
+    private func highlightTextfield(textField: UITextField, isHighlighted: Bool) {
+        textField.layer.borderWidth = isHighlighted ? 1 : 0
+        textField.layer.borderColor = isHighlighted ? UIColor.red.cgColor : UIColor(hexString: "0xC7C7CD").cgColor
     }
 }
 
