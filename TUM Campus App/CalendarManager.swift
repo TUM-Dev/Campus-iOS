@@ -77,6 +77,7 @@ class CalendarManager: Manager {
     }
     
     func getFromXML(_ value: String, handler: ([DataElement]) -> ()) {
+        CalendarManager.calendarItems.removeAll()
         let data = SWXMLHash.parse(value)
         let events = data["events"]["event"].all
         for event in events {
