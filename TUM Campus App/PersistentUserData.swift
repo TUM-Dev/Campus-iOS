@@ -89,6 +89,7 @@ struct PersistentUser: SingleStatus {
             return .no
         }
         UserDefaults.standard.removeObject(forKey: "AppDefaults.login")
+        UserDefaults.standard.synchronize()
         PersistentUser.value = previousValue
         return previousValue
     }
