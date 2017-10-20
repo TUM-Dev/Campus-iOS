@@ -34,7 +34,7 @@ end
 lane :test do |options|
 	scan_args = {
 		scheme: "TCA-CI",
-		device: "iPhone 8 (11.0)",
+		device: "iPhone 8",
 		configuration: "Debug", # Defaults to Release
 		code_coverage: options[:code_coverage] ? options[:code_coverage] : false,
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
