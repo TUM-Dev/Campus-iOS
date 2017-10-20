@@ -56,7 +56,6 @@ extension LoginViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        PersistentUser.value = .no
     }
     
 }

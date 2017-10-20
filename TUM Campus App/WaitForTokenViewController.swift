@@ -44,6 +44,12 @@ extension WaitForTokenViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard !PersistentUser.isLoggedIn else { return }
+        PersistentUser.reset()
+    }
+    
 }
 
 extension WaitForTokenViewController: AccessTokenReceiver {
