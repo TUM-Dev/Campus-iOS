@@ -15,14 +15,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     
-
-    
     @IBAction func skip() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func confirm() {
+        PersistentUser.value = .requestingToken(lrzID: getLRZ())
         performSegue(withIdentifier: "waitForConfirmation", sender: self)
     }
     
@@ -95,7 +94,11 @@ extension LoginViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if PersistentUser.hasEnteredID {
+            performSegue(withIdentifier: "waitForConfirmation", sender: self)
+        }
+        
         firstTextField.becomeFirstResponder()
 
         confirmButton.setTitle("🍻", for: .normal)
@@ -106,20 +109,21 @@ extension LoginViewController {
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
+            imageView.frame = CGRect(x: bounds.origin.x + 10,
+                                     y: bounds.origin.y + 10,
+                                     width: bounds.width - 20,
+                                     height: bounds.height-20)
         }
         imageView.clipsToBounds = true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let mvc = segue.destination as? WaitForTokenViewController {
-            mvc.delegate = self
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
 }
 
-extension LoginViewController: TokenFetcherControllerDelegate {
+extension LoginViewController {
 
     func getLRZ() -> String {
         if let first = firstTextField.text, let numbers = numbersTextField.text, let second = secondTextField.text {
