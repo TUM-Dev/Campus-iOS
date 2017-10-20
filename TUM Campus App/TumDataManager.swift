@@ -161,9 +161,14 @@ class TumDataManager {
     }
     
     func getUserData() {
+        getUserData(success: nil)
+    }
+    
+    func getUserData(success: (() -> ())?){
         let handler = { (data: [DataElement]) in
             if let first = data.first as? UserData {
                 self.user?.getUserData(first)
+                success?()
             }
         }
         managers[.UserData]?.fetchData(handler)
