@@ -12,21 +12,46 @@ import SWXMLHash
 
 class TumOnlineLoginRequestManager {
     
-    init(delegate:AccessTokenReceiver?) {
+    enum State {
+        case creatingToken(lrzID: String)
+        case waiting(lrzID: String, token: String)
+    }
+    
+    init(delegate: AccessTokenReceiver?) {
         self.delegate = delegate
     }
     
-    var token = ""
-    
-    let defaults = UserDefaults.standard
-    
-    var delegate: AccessTokenReceiver?
-    
-    var lrzID : String?
-    
-    func newId(_ newId: String) {
-        lrzID = newId
+    var state: State? {
+        switch PersistentUser.value {
+        case .requestingToken(let lrzID):
+            return .creatingToken(lrzID: lrzID)
+        case .some(let lrzID, let token, state: .awaitingConfirmation):
+            return .waiting(lrzID: lrzID, token: token)
+        default:
+            return nil
+        }
     }
+    
+    var token: String? {
+        guard case .some(.waiting(_, let token)) = state else {
+            return nil
+        }
+        return token
+    }
+    
+    var lrzID : String? {
+        
+        switch state {
+        case .some(.creatingToken(let lrzID)):
+            return lrzID
+        case .some(.waiting(let lrzID, _)):
+            return lrzID
+        default:
+            return nil
+        }
+    }
+    
+    weak var delegate: AccessTokenReceiver?
     
     func getLoginURL() -> String {
         let version = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
@@ -38,17 +63,16 @@ class TumOnlineLoginRequestManager {
     }
     
     func getConfirmationURL() -> String {
-        return TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenConfirmation.rawValue + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token
+        return TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenConfirmation.rawValue + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + (token.?)
     }
     
     func fetch() {
         let url = getLoginURL()
-        print(url)
         Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
                 if let token = tokenData["token"].element?.text {
-                    self.token = token
+                    self.loginStarted(with: token)
                 }
             }
         }
@@ -56,14 +80,12 @@ class TumOnlineLoginRequestManager {
     
     func confirmToken() {
         let url = getConfirmationURL()
-        print(url)
         Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
-                print(tokenData)
                 if let confirmed = tokenData["confirmed"].element?.text {
                     if confirmed == "true" {
-                        self.delegate?.receiveToken(self.token)
+                        self.loginSuccesful()
                     } else {
                         self.delegate?.tokenNotConfirmed()
                     }
@@ -76,15 +98,26 @@ class TumOnlineLoginRequestManager {
         }
     }
     
-    func loginSuccesful(_ user: User) {
-        PersistentUser.value = .some(lrzID: (user.lrzID).?, token: user.token)
-        User.shared = user
+    func loginStarted(with token: String) {
+        guard case .some(.creatingToken(let lrzID)) = self.state else {
+            return
+        }
+        PersistentUser.value = .some(lrzID: lrzID, token: token, state: .awaitingConfirmation)
+        confirmToken()
+    }
+    
+    func loginSuccesful() {
+        guard case .some(.waiting(let lrzID, let token)) = self.state else {
+            return
+        }
+        PersistentUser.value = .some(lrzID: lrzID, token: token, state: .loggedIn)
+        User.shared = PersistentUser.value.user
+        delegate?.receiveToken(token)
     }
     
     func logOut() {
         PersistentUser.reset()
         User.shared = nil
     }
-    
     
 }
