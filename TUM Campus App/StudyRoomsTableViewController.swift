@@ -94,7 +94,7 @@ extension StudyRoomsTableViewController {
 extension StudyRoomsTableViewController: DetailViewDelegate {
     
     func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+        return delegate?.dataManager() ?? TumDataManager()
     }
     
 }
