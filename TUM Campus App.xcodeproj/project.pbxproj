@@ -31,6 +31,7 @@
 		0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */; };
 		0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */; };
 		0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */; };
+		0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */; };
 		0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */; };
 		0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */; };
 		0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */; };
@@ -208,6 +209,7 @@
 		0E3B21531C13DB690035ED70 /* TumOnlineWebServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumOnlineWebServices.swift; sourceTree = "<group>"; };
 		0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenReceiver.swift; sourceTree = "<group>"; };
 		0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionCardTableViewCell.swift; sourceTree = "<group>"; };
+		0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TUMLogoView.xib; sourceTree = "<group>"; };
 		0E424F451BE16DBE00B5DFCB /* Campus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 				0E3B21401C13C0310035ED70 /* Assisting Files and Frameworks */,
 				0E57252F1C1647BD00E5471D /* TUM Campus App-Bridging-Header.h */,
 				807C480E1F4090EF00CAD35D /* MVV */,
+				0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				0E424F531BE16DBE00B5DFCB /* LaunchScreen.storyboard in Resources */,
 				5007C6AD1E0693550014B065 /* StudyRooms.storyboard in Resources */,
 				50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */,
+				0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */,
 				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
 				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
 				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
