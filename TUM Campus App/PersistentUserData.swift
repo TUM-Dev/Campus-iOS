@@ -68,10 +68,31 @@ enum PersistendUserData: Codable {
     
 }
 
+private func fetchCredentialsFromDefaults() -> PersistendUserData? {
+    let defaults = UserDefaults.standard
+    guard let dictionary = defaults.dictionary(forKey: "AppDefaults.login") else {
+        return nil
+    }
+    guard let lrzID = dictionary["lrzID"] as? String, let token = dictionary["token"] as? String else {
+        return nil
+    }
+    return .some(lrzID: lrzID, token: token, state: .loggedIn)
+}
+
 struct PersistentUser: SingleStatus {
     static let storage: Storage = .keychain
     static let key: AppDefaults = .login
-    static let defaultValue: PersistendUserData = .no
+    
+    static var defaultValue: PersistendUserData {
+        
+        guard let previousValue = fetchCredentialsFromDefaults() else {
+            return .no
+        }
+        UserDefaults.standard.removeObject(forKey: "AppDefaults.login")
+        UserDefaults.standard.synchronize()
+        PersistentUser.value = previousValue
+        return previousValue
+    }
 }
 
 
