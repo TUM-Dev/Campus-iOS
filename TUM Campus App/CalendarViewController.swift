@@ -39,7 +39,6 @@ class CalendarViewController: UIViewController, DetailView {
     }
     
     func updateCalendar(_ sender: AnyObject?) {
-        print("updateCalendar clicked")
         navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
         delegate?.dataManager().updateCalendar(self)
     }
@@ -157,6 +156,7 @@ extension CalendarViewController: TumDataReceiver {
         }
         let now = Date()
         updateTitle(now)
+        dayPlannerView.reloadAllEvents()
         navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
     }
 }
