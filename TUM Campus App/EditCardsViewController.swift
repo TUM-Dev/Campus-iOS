@@ -9,14 +9,21 @@
 import UIKit
 import Sweeft
 
+protocol EditCardsViewControllerDelegate {
+    func didUpdateCards()
+}
+
+
 class EditCardsViewController: UITableViewController {
     
+    var delegate: EditCardsViewControllerDelegate?
     var enabled: [CardKey] {
         get {
             return PersistentCardOrder.value.cards
         }
         set {
             PersistentCardOrder.value.cards = newValue
+            delegate?.didUpdateCards()
         }
     }
     

@@ -14,11 +14,7 @@ class NextLectureCardCell: CardTableViewCell {
     @IBOutlet weak var lectureTitelLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel! {
-        didSet {
-            timeLabel.textColor = Constants.tumBlue
-        }
-    }
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func setElement(_ element: DataElement) {
         if let calendarItem = element as? CalendarRow {
@@ -46,13 +42,4 @@ class NextLectureCardCell: CardTableViewCell {
             }
         }
     }
-   
-    @IBOutlet weak var cardView: UIView! {
-        didSet {
-            backgroundColor = UIColor.clear
-            cardView.layer.shadowOpacity = 0.4
-            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
-        }
-    }
-
 }
