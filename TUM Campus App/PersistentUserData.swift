@@ -26,14 +26,10 @@ enum PersistendUserData: Codable {
     case some(lrzID: String, token: String, state: State)
     
     var user: User? {
-        switch self {
-        case .no:
+        guard case .some(let lrzID, let token, let state) = self else {
             return nil
-        case .requestingToken:
-            return nil
-        case .some(let lrzID, let token, let state):
-            return state == .loggedIn ? User(lrzID: lrzID, token: token) : nil
         }
+        return state == .loggedIn ? User(lrzID: lrzID, token: token) : nil
     }
     
     
