@@ -9,6 +9,7 @@
 import Foundation
 
 class Grade: DataElement {
+    
     let name: String
     let result: String
     let grade: Double
