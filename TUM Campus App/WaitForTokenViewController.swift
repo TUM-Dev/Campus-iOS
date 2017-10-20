@@ -7,20 +7,14 @@
 //
 
 import UIKit
+import Sweeft
 import TKSubmitTransition
-
-protocol TokenFetcherControllerDelegate {
-    func getLRZ() -> String
-}
 
 class WaitForTokenViewController: UIViewController {
     
     @IBOutlet weak var button: TKTransitionSubmitButton!
     
-    var user: User?
-    var lrzID: String?
-    var loginManager: TumOnlineLoginRequestManager?
-    var delegate: TokenFetcherControllerDelegate?
+    lazy var loginManager: TumOnlineLoginRequestManager = { TumOnlineLoginRequestManager(delegate: self) }()
     
     @IBAction func refresh(_ sender: AnyObject) {
         checkRequest()
@@ -32,7 +26,7 @@ class WaitForTokenViewController: UIViewController {
     
     func checkRequest() {
         button.startLoadingAnimation()
-        loginManager?.confirmToken()
+        loginManager.confirmToken()
     }
 
 }
@@ -42,11 +36,18 @@ extension WaitForTokenViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         button.backgroundColor = Constants.tumBlue
-        loginManager = TumOnlineLoginRequestManager(delegate: self)
-        lrzID = delegate?.getLRZ()
-        loginManager?.lrzID = lrzID
-        loginManager?.fetch()
-        checkRequest()
+        if PersistentUser.hasRequestedToken {
+            checkRequest()
+        } else {
+            button.startLoadingAnimation()
+            loginManager.fetch()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard !PersistentUser.isLoggedIn else { return }
+        PersistentUser.reset()
     }
     
 }
@@ -54,18 +55,14 @@ extension WaitForTokenViewController {
 extension WaitForTokenViewController: AccessTokenReceiver {
     
     func receiveToken(_ token: String) {
-        user = User(lrzID: token, token: token)
-        if let userUnwrapped = user {
-            button.startFinishAnimation(delay: TimeInterval(0)) {
-                self.loginManager?.loginSuccesful(userUnwrapped)
-                if self.presentingViewController != nil {
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {
-                        mvc.transitioningDelegate = self
-                        self.present(mvc, animated: true, completion: nil)
-                    }
+        button.startFinishAnimation(delay: TimeInterval(0)) {
+            if self.presentingViewController != nil {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {
+                    mvc.transitioningDelegate = self
+                    self.present(mvc, animated: true, completion: nil)
                 }
             }
         }
