@@ -271,6 +271,7 @@
 		0EBC0DBB1C175BF4002D7A00 /* SearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		0EBC0DBD1C17797D002D7A00 /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0EC04A191F9AA00300F91AE8 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		0EC10C1E1C171CFB0024F902 /* CafeteriaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaManager.swift; sourceTree = "<group>"; };
 		0EC10C201C171D100024F902 /* MovieManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		0EC10C221C171F730024F902 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -443,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				222F90F91EB7BD69002F9289 /* Campus.entitlements */,
+				0EC04A191F9AA00300F91AE8 /* CHANGELOG.md */,
 				0E424F471BE16DBE00B5DFCB /* TUM Campus App */,
 				0E424F5C1BE16DBE00B5DFCB /* TUM Campus AppUITests */,
 				504C292A1E2BBB9C007583E2 /* TUM Campus AppUnitTests */,
