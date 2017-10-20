@@ -37,13 +37,17 @@ class TuitionStatusManager: Manager {
                     let rows = tuitionData["rowset"]["row"].all
                     for row in rows {
                         if let soll = row["soll"].element?.text,
-                                let frist = row["frist"].element?.text,
-                                let bez = row["semester_bezeichnung"].element?.text {
+                        let frist = row["frist"].element?.text,
+                            let bez = row["semester_bezeichnung"].element?.text {
                             
+                            let numberFormatter = NumberFormatter()
+                            numberFormatter.decimalSeparator = ","
+
                             let dateformatter = DateFormatter()
                             dateformatter.dateFormat = "yyyy-MM-dd"
-                            if let fristDate = dateformatter.date(from: frist) {
-                                let tuition = Tuition(frist: fristDate, semester: bez, soll: soll)
+                            if let fristDate = dateformatter.date(from: frist),
+                            let amount = numberFormatter.number(from: soll) {
+                                let tuition = Tuition(frist: fristDate, semester: bez, soll: soll, amountDue: amount.doubleValue)
                                 TuitionStatusManager.tuitionItems.append(tuition)
                             }
                             

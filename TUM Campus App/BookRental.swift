@@ -15,6 +15,8 @@ class BookRental: DataElement {
     let author: String
     let id: String
     let deadline: String
+    let startDate: Date?
+    let endDate: Date?
     let bib: String
     let prolong: ProlongPossibilty
     
@@ -30,6 +32,12 @@ class BookRental: DataElement {
         self.author = author
         self.id = id
         self.deadline = deadline
+        let dateFormatter = DateFormatter()
+        let startString = deadline.split(separator: ",").first?.replacingOccurrences(of: " ", with: "")
+        let endString = deadline.split(separator: ",").last?.replacingOccurrences(of: " ", with: "")
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        self.startDate = dateFormatter.date(from: startString ?? "01.01.2001")
+        self.endDate = dateFormatter.date(from: endString ?? "01.01.2001")
         self.bib = bib
         self.prolong = prolong
     }
