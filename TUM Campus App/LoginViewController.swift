@@ -13,29 +13,94 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var numbersTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
+    @IBOutlet weak var confirmButton: UIButton!
     
-    func getLRZ() -> String {
-        if let first = firstTextField.text, let numbers = numbersTextField.text, let second = secondTextField.text {
-            return first + numbers + second
-        }
-        return ""
-    }
+
     
-    @IBAction func skip(_ sender: Any) {
-        self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func skip() {
+        view.endEditing(true)
+        dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func confirm() {
+        performSegue(withIdentifier: "waitForConfirmation", sender: self)
+    }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        if sender === firstTextField {
+            handleTextFieldInput(currentTextField: firstTextField,
+                                 nextTextField: numbersTextField,
+                                 characterLimit: 2)
+        } else if sender === numbersTextField {
+            handleTextFieldInput(currentTextField: numbersTextField,
+                                 previousTextField: firstTextField,
+                                 nextTextField: secondTextField,
+                                 characterLimit: 2)
+        } else if sender === secondTextField {
+            handleTextFieldInput(currentTextField: secondTextField,
+                                 previousTextField: numbersTextField,
+                                 characterLimit: 3)
+        }
+
+        confirmButton.isEnabled = textFieldContentsAreValid()
+        confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
+    }
+
+    private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
+        let text = currentTextField.text ?? ""
+
+        if text.count >= characterLimit {
+            currentTextField.text = String(text.prefix(characterLimit))
+
+            let substring = String(text.characters.dropFirst(characterLimit))
+            if let nextTextField = nextTextField {
+                nextTextField.becomeFirstResponder()
+                if !substring.isEmpty {
+                    nextTextField.text = substring
+                    textFieldEditingChanged(nextTextField)
+                }
+            } else {
+                currentTextField.resignFirstResponder()
+            }
+        } else if text.isEmpty {
+            guard let previousTextField = previousTextField else { return }
+
+            previousTextField.becomeFirstResponder()
+        }
+    }
+
+    func textFieldContentsAreValid() -> Bool {
+        guard let firstText = firstTextField.text, firstText.count == 2,
+            let numbersText = numbersTextField.text, numbersText.count == 2,
+            let secondText = secondTextField.text, secondText.count == 3 else { return false }
+
+        let isFirstTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: firstText))
+        let isNumbersTextValid = Int(numbersText) != nil
+        let isSecondTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: secondText))
+
+        highlightTextfield(textField: firstTextField, isHighlighted: !isFirstTextValid)
+        highlightTextfield(textField: numbersTextField, isHighlighted: !isNumbersTextValid)
+        highlightTextfield(textField: secondTextField, isHighlighted: !isSecondTextValid)
+
+        return isFirstTextValid && isNumbersTextValid && isSecondTextValid
+    }
+
+    private func highlightTextfield(textField: UITextField, isHighlighted: Bool) {
+        textField.layer.borderWidth = isHighlighted ? 1 : 0
+        textField.layer.borderColor = isHighlighted ? UIColor.red.cgColor : UIColor(hexString: "0xC7C7CD").cgColor
+    }
 }
 
 extension LoginViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstTextField.delegate = self
-        secondTextField.delegate = self
-        numbersTextField.delegate = self
+
         firstTextField.becomeFirstResponder()
+
+        confirmButton.setTitle("🍻", for: .normal)
+        confirmButton.setTitle("🎓", for: .disabled)
+
         let logo = UIImage(named: "logo-blue")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = UIViewContentMode.scaleAspectFit
@@ -54,64 +119,12 @@ extension LoginViewController {
     
 }
 
-extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
-        let numberOfCharactersPerTextField = [2, 2, 3]
-        let textFields = [firstTextField, numbersTextField, secondTextField]
-        
-        guard let textFieldIndex = textFields.index(where: { $0 == textField })
-            else { return true }
-        
-        if replaced == "" {
-            textField.text = ""
-            textFields[max(0, textFieldIndex - 1)]?.becomeFirstResponder()
-            return false
-        } else if string.characters.count < range.length {
-            return true
+extension LoginViewController: TokenFetcherControllerDelegate {
+
+    func getLRZ() -> String {
+        if let first = firstTextField.text, let numbers = numbersTextField.text, let second = secondTextField.text {
+            return first + numbers + second
         }
-    
-        var mutableReplaced = replaced
-        
-        for i in textFieldIndex..<textFields.endIndex {
-            let startIndex = mutableReplaced.startIndex
-            let endIndex = replaced.index(startIndex,
-                                          offsetBy: min(mutableReplaced.characters.count,
-                                                        numberOfCharactersPerTextField[i]) - 1)
-            
-            let range = ClosedRange(uncheckedBounds: (lower: startIndex, upper: endIndex))
-            
-            textFields[i]?.text = mutableReplaced[range]
-            textFields[i]?.becomeFirstResponder()
-        
-            mutableReplaced.removeSubrange(range)
-            
-            if mutableReplaced.characters.count == 0 {
-                
-                if textFields[i]?.text?.characters.count == numberOfCharactersPerTextField[i] {
-                    textFields[min(textFields.count - 1, i + 1)]?.becomeFirstResponder()
-                }
-                
-                break
-            }
-        }
-        
-        if textFieldContentsAreValid() {
-            self.view.endEditing(true)
-            performSegue(withIdentifier: "waitForConfirmation", sender: self)
-        }
-        
-        return false
+        return ""
     }
-    
-    private func textFieldContentsAreValid() -> Bool {
-        guard let firstText = firstTextField.text,
-            let numbers = numbersTextField.text,
-            let secondText = secondTextField.text,
-            let _ = Int(numbers)
-            else { return false }
-        return firstText.characters.count == 2 && numbers.characters.count == 2 && secondText.characters.count == 3
-    }
-    
 }

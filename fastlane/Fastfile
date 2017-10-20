@@ -1,5 +1,4 @@
-fastlane_version "2.19.1"
-
+# fastlane_version "2.37.0"  # Xcode 8.3.3 Travis image installs this version
 default_platform :ios
 
 before_all do
@@ -32,14 +31,10 @@ lane :pull_request_from_fork do
 	test(code_coverage: true)
 end
 
-
-########################
-# PRIVATE HELPER LANES #
-########################
-private_lane :test do |options|
+lane :test do |options|
 	scan_args = {
 		scheme: "TCA-CI",
-		device: "iPhone 6 (10.2)",
+		device: "iPhone 8",
 		configuration: "Debug", # Defaults to Release
 		code_coverage: options[:code_coverage] ? options[:code_coverage] : false,
 		# skip_build: true,  # Should skip debug build before test build? Might break sonar
@@ -50,6 +45,9 @@ private_lane :test do |options|
 	scan(scan_args)
 end
 
+########################
+# PRIVATE HELPER LANES #
+########################
 desc 'Performs a sonar analysis in preview mode and comments on the PR on Github.'
 private_lane :sonar_github_pr_bot do
 	sonar_github_args = {
