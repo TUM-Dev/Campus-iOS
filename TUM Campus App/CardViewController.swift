@@ -18,6 +18,9 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     
     func refresh(_ sender: AnyObject?) {
         manager?.getCardItems(self)
+        if cards.count == 0 {
+            refresh.endRefreshing()
+        }
     }
     
     func didUpdateCards() {
