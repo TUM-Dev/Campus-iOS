@@ -178,8 +178,8 @@ extension CafeteriaViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let item = categories[indexPath.section].1[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.color1 = .white
-        cell.color2 = .white
+        cell.topGradientColor = .white
+        cell.bottomGradientColor = .white
         cell.setElement(item)
         return cell
     }

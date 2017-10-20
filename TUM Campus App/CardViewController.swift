@@ -23,6 +23,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     func didUpdateCards() {
         cards.removeAll()
         refresh(nil)
+        tableView.reloadData()
     }
 }
 
@@ -68,7 +69,7 @@ extension CardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLogo()
-        
+
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
         tableView.tableFooterView = UIView(frame: CGRect.zero)

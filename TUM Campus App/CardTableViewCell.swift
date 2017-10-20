@@ -10,13 +10,13 @@ import UIKit
 
 @IBDesignable class CardTableViewCell: UITableViewCell {
 	
-	@IBInspectable var color1: UIColor = UIColor.white
-	@IBInspectable var color2: UIColor = UIColor.black
+	@IBInspectable var topGradientColor: UIColor = UIColor.white
+	@IBInspectable var bottomGradientColor: UIColor = UIColor.black
     
     let gradientLayer = CAGradientLayer()
     
     func configureBackgroundGradient() {
-        gradientLayer.colors = [color1.cgColor, color2.cgColor]
+        gradientLayer.colors = [topGradientColor.cgColor, bottomGradientColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]
         gradientLayer.frame = bounds
         gradientLayer.opacity = 0.05

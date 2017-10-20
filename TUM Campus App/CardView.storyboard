@@ -10,6 +10,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--TUM Campus App-->
         <scene sceneID="gYy-N5-MtS">
@@ -25,11 +30,11 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" rowHeight="160" id="Vs7-al-SSJ" customClass="EmptyCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="36" width="375" height="160"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="empty" rowHeight="250" id="Vs7-al-SSJ" customClass="EmptyCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="36" width="375" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vs7-al-SSJ" id="CaP-il-Qhj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NO CARDS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-7O-sTo">
@@ -39,36 +44,55 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Personalize Your Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
-                                            <rect key="frame" x="16" y="69" width="239.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <rect key="frame" x="16" y="69" width="317" height="26.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <color key="textColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gR-zX-gCV">
-                                            <rect key="frame" x="16" y="97.5" width="71" height="30"/>
-                                            <state key="normal" title="Edit Cards"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gR-zX-gCV" customClass="BorderedButton" customModule="Campus" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="164.5" width="120" height="53"/>
+                                            <color key="backgroundColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="ZRd-rC-QeX"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="mGn-cO-Pum"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Edit Cards">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="3Db-3m-P8t" kind="show" id="7t5-4Y-use"/>
+                                            </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can add remove cards and change their order." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23G-Bt-rki">
+                                            <rect key="frame" x="16" y="112" width="343" height="42.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="23G-Bt-rki" secondAttribute="trailing" constant="8" id="0bN-rT-C7S"/>
                                         <constraint firstItem="Cn6-7O-sTo" firstAttribute="top" secondItem="CaP-il-Qhj" secondAttribute="topMargin" constant="16" id="6t7-au-UFK"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0gR-zX-gCV" secondAttribute="bottom" constant="24" id="Fwu-yS-WE6"/>
+                                        <constraint firstItem="0gR-zX-gCV" firstAttribute="top" secondItem="23G-Bt-rki" secondAttribute="bottom" constant="10" id="GP8-8k-teD"/>
+                                        <constraint firstItem="23G-Bt-rki" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="Qa4-DF-7Ul"/>
                                         <constraint firstItem="Cn6-7O-sTo" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="Ule-ko-GSi"/>
                                         <constraint firstItem="0gR-zX-gCV" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="ZuU-hT-zM3"/>
                                         <constraint firstItem="a4G-9L-8wP" firstAttribute="leading" secondItem="CaP-il-Qhj" secondAttribute="leadingMargin" constant="8" id="dIs-mO-0Yc"/>
+                                        <constraint firstItem="23G-Bt-rki" firstAttribute="top" secondItem="a4G-9L-8wP" secondAttribute="bottom" constant="16" id="e6K-wm-Zct"/>
                                         <constraint firstItem="a4G-9L-8wP" firstAttribute="top" secondItem="Cn6-7O-sTo" secondAttribute="bottom" constant="16" id="rCE-2S-poy"/>
-                                        <constraint firstItem="0gR-zX-gCV" firstAttribute="top" secondItem="a4G-9L-8wP" secondAttribute="bottom" constant="8" id="xv6-Qp-4tg"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="0gR-zX-gCV" secondAttribute="trailing" constant="8" id="y9O-Tm-8NQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="a4G-9L-8wP" id="Tkf-K9-ZVB"/>
                                     <outlet property="titleLabel" destination="Cn6-7O-sTo" id="cas-6Q-kAe"/>
-                                    <segue destination="3Db-3m-P8t" kind="presentation" id="QcW-8x-sJE"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="news" rowHeight="240" id="DJl-q0-InR" customClass="NewsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="196" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="286" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DJl-q0-InR" id="OAg-a9-fyj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
@@ -125,7 +149,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="166" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="436" width="375" height="166"/>
+                                <rect key="frame" x="0.0" y="526" width="375" height="166"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRk-VH-QTm" id="8fA-Gv-n7a">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="165.5"/>
@@ -169,7 +193,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="150" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="602" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="692" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
@@ -230,7 +254,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="752" width="375" height="246"/>
+                                <rect key="frame" x="0.0" y="842" width="375" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="245.5"/>
@@ -287,7 +311,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="268" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="998" width="375" height="268"/>
+                                <rect key="frame" x="0.0" y="1088" width="375" height="268"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="267.5"/>
@@ -353,7 +377,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookRental" rowHeight="240" id="zT4-lK-HIn" customClass="BookRentalsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1266" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="1356" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zT4-lK-HIn" id="q4n-nw-muo">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="239.5"/>
@@ -504,6 +528,6 @@
         <image name="movie" width="386" height="572"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PNa-zK-Lk0"/>
+        <segue reference="7t5-4Y-use"/>
     </inferredMetricsTieBreakers>
 </document>
