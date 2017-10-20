@@ -21,6 +21,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     }
     
     func didUpdateCards() {
+        cards.removeAll()
         refresh(nil)
     }
 }
