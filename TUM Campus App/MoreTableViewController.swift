@@ -56,23 +56,24 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     }
     
     func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager(user: nil)
+        return manager ?? TumDataManager()
     }
 
 }
 
 extension MoreTableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
             user = User.shared
             manager = mvc.manager
+            
+            if user?.data == nil {
+                manager?.getUserData() {
+                    self.updateView()
+                }
+            }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             bibNumber.text = savedUsername
@@ -146,7 +147,11 @@ extension MoreTableViewController {
             Usage.value = false
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
-            self.present(loginViewController, animated: true, completion: nil)
+            // Since this is a shared object, we want to bring it into a usable state for the user before showing it
+            // Without popping to the root view controller, we would show the wait for token view controller if the
+            // user logged in and out and wanted to log in again in the same session.
+            (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
+            self.present(loginViewController, animated: true)
         default:
             break
         }

@@ -18,7 +18,7 @@ class LecturesTableViewController: UITableViewController, TumDataReceiver, Detai
     var currentLecture: DataElement?
     
     func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+        return delegate?.dataManager() ?? TumDataManager()
     }
     
     func receiveData(_ data: [DataElement]) {
