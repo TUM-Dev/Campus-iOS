@@ -489,7 +489,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="EditCards" storyboardName="EditCards" id="3Db-3m-P8t" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Icg-Uf-0J2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1402" y="26"/>
+            <point key="canvasLocation" x="1533" y="8"/>
         </scene>
         <!--Search-->
         <scene sceneID="FWf-cp-Lx8">
@@ -504,6 +504,6 @@
         <image name="movie" width="386" height="572"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QcW-8x-sJE"/>
+        <segue reference="PNa-zK-Lk0"/>
     </inferredMetricsTieBreakers>
 </document>

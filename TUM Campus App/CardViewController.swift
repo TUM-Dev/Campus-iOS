@@ -9,7 +9,7 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UITableViewController {
+class CardViewController: UITableViewController, EditCardsViewControllerDelegate {
     
     var manager: TumDataManager?
     var cards: [DataElement] = []
@@ -18,6 +18,10 @@ class CardViewController: UITableViewController {
     
     func refresh(_ sender: AnyObject?) {
         manager?.getCardItems(self)
+    }
+    
+    func didUpdateCards() {
+        refresh(nil)
     }
 }
 
@@ -75,6 +79,10 @@ extension CardViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var mvc = segue.destination as? DetailView {
+            mvc.delegate = self
+        }
+        if let navCon = segue.destination as? UINavigationController,
+            let mvc = navCon.topViewController as? EditCardsViewController {
             mvc.delegate = self
         }
         if let mvc = segue.destination as? CalendarViewController {
