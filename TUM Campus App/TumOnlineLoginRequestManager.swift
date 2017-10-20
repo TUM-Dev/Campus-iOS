@@ -43,12 +43,12 @@ class TumOnlineLoginRequestManager {
     
     func fetch() {
         let url = getLoginURL()
-        print(url)
         Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
                 if let token = tokenData["token"].element?.text {
                     self.token = token
+                    self.loginStarted()
                 }
             }
         }
@@ -56,7 +56,6 @@ class TumOnlineLoginRequestManager {
     
     func confirmToken() {
         let url = getConfirmationURL()
-        print(url)
         Alamofire.request(url).responseString() { (response) in
             if let data = response.result.value {
                 let tokenData = SWXMLHash.parse(data)
@@ -74,6 +73,10 @@ class TumOnlineLoginRequestManager {
                 self.delegate?.tokenNotConfirmed()
             }
         }
+    }
+    
+    func loginStarted() {
+        PersistentUser.value = .some(lrzID: lrzID.?, token: token, state: .awaitingConfirmation)
     }
     
     func loginSuccesful(_ user: User) {
