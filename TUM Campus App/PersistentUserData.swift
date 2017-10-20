@@ -22,11 +22,14 @@ enum PersistendUserData: Codable {
     }
     
     case no
+    case requestingToken(lrzID: String)
     case some(lrzID: String, token: String, state: State)
     
     var user: User? {
         switch self {
         case .no:
+            return nil
+        case .requestingToken:
             return nil
         case .some(let lrzID, let token, let state):
             return state == .loggedIn ? User(lrzID: lrzID, token: token) : nil
@@ -38,9 +41,13 @@ enum PersistendUserData: Codable {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let lrzID = try container.decode(String.self, forKey: .lrzID)
-            let token = try container.decode(String.self, forKey: .token)
-            let state = try container.decode(State.self, forKey: .state)
-            self = .some(lrzID: lrzID, token: token, state: state)
+            do {
+                let token = try container.decode(String.self, forKey: .token)
+                let state = try container.decode(State.self, forKey: .state)
+                self = .some(lrzID: lrzID, token: token, state: state)
+            } catch {
+                self = .requestingToken(lrzID: lrzID)
+            }
         } catch {
             self = .no
         }
@@ -52,6 +59,9 @@ enum PersistendUserData: Codable {
             let dict = [String : String]()
             var container = encoder.singleValueContainer()
             try container.encode(dict)
+        case .requestingToken(let lrzID):
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(lrzID, forKey: .lrzID)
         case .some(let lrzID, let token, let state):
             var container = encoder.container(keyedBy: CodingKeys.self)
             try container.encode(lrzID, forKey: .lrzID)
@@ -66,4 +76,30 @@ struct PersistentUser: SingleStatus {
     static let storage: Storage = .keychain
     static let key: AppDefaults = .login
     static let defaultValue: PersistendUserData = .no
+}
+
+
+extension PersistentUser {
+    
+    static var isLoggedIn: Bool {
+        if case .some(_, _, .loggedIn) = value {
+            return true
+        }
+        return false
+    }
+    
+    static var hasEnteredID: Bool {
+        if case .no = value {
+            return false
+        }
+        return true
+    }
+    
+    static var hasRequestedToken: Bool {
+        if case .some = value {
+            return true
+        }
+        return false
+    }
+    
 }

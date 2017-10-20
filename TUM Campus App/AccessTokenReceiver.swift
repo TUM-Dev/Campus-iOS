@@ -7,7 +7,7 @@
 //
 
 import Foundation
-protocol AccessTokenReceiver {
+protocol AccessTokenReceiver: class {
     func receiveToken(_ token: String)
     func tokenNotConfirmed()
 }

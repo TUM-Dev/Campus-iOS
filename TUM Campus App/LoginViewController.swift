@@ -32,6 +32,11 @@ extension LoginViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if PersistentUser.hasEnteredID {
+            performSegue(withIdentifier: "waitForConfirmation", sender: self)
+        }
+        
         firstTextField.delegate = self
         secondTextField.delegate = self
         numbersTextField.delegate = self
@@ -41,20 +46,22 @@ extension LoginViewController {
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         self.navigationItem.titleView = imageView
         if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x+10, y: bounds.origin.y+10, width: bounds.width-20, height: bounds.height-20)
+            imageView.frame = CGRect(x: bounds.origin.x + 10,
+                                     y: bounds.origin.y + 10,
+                                     width: bounds.width - 20,
+                                     height: bounds.height-20)
         }
         imageView.clipsToBounds = true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let mvc = segue.destination as? WaitForTokenViewController {
-            mvc.delegate = self
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        PersistentUser.value = .no
     }
     
 }
 
-extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelegate {
+extension LoginViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
@@ -99,6 +106,7 @@ extension LoginViewController: UITextFieldDelegate, TokenFetcherControllerDelega
         
         if textFieldContentsAreValid() {
             self.view.endEditing(true)
+            PersistentUser.value = .requestingToken(lrzID: getLRZ())
             performSegue(withIdentifier: "waitForConfirmation", sender: self)
         }
         
