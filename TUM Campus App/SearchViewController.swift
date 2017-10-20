@@ -29,7 +29,7 @@ class SearchViewController: UITableViewController, DetailView {
 extension SearchViewController: DetailViewDelegate {
     
     func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager(user: nil)
+        return delegate?.dataManager() ?? TumDataManager()
     }
     
 }

@@ -20,7 +20,9 @@ class TumDataManager {
         return user?.token != nil
     }
     
-    var user: User?
+    var user: User? {
+        return User.shared
+    }
     
     lazy var managers: [TumDataItems:Manager] = [
         .Cafeterias: CafeteriaManager(mainManager: self),
@@ -51,10 +53,6 @@ class TumDataManager {
     
     func getToken() -> String {
         return user?.token ?? ""
-    }
-    
-    init(user: User?) {
-        self.user = user
     }
     
     func getPersonDetails(_ handler: @escaping (_ data: [DataElement]) -> (), user: UserData) {

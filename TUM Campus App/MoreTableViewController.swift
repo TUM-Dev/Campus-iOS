@@ -56,7 +56,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     }
     
     func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager(user: nil)
+        return manager ?? TumDataManager()
     }
 
 }
@@ -68,7 +68,6 @@ extension MoreTableViewController {
         if let mvc = tabBarController as? CampusTabBarController {
             user = User.shared
             manager = mvc.manager
-            manager?.user = user
             
             if user?.data == nil {
                 manager?.getUserData() {

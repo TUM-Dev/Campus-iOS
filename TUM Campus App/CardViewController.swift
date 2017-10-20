@@ -37,7 +37,7 @@ extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
     }
     
     func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager(user: nil)
+        return manager ?? TumDataManager()
     }
 }
 
