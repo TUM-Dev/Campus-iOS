@@ -58,19 +58,19 @@ extension CardViewController: TumDataReceiver {
 
 extension CardViewController {
     
+    func setupLogo() {
+        let bundle = Bundle.main
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? UIView }
+        guard let view = nib?.first else { return }
+        self.navigationItem.titleView = view
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        let logo = UIImage(named: "logo-blue")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        self.navigationItem.titleView = imageView
-        if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x, y: bounds.origin.y, width: bounds.width, height: bounds.height)
-        }
+        setupLogo()
+        
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-        imageView.clipsToBounds = true
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
