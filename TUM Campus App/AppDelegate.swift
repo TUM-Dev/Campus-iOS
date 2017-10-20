@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func conditionallyShowLoginViewController() {
-        if User.shared == nil && !Usage.value {
+        if !PersistentUser.isLoggedIn && !Usage.value {
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             window?.makeKeyAndVisible()
             window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
