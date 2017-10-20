@@ -1,4 +1,4 @@
-## [1.2.0] - Unreleased
+## [1.2.0] - 2017-10-20
 ### Added
 - Added a brand new sleek design to the Cards View
 - Added possibility to refresh the Calendar
