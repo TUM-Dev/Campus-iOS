@@ -1,5 +1,5 @@
 language: objective-c  # [sic]. Travis uses objective-c just to determine it needs to use the xcode cli
-osx_image: xcode9.0
+osx_image: xcode9
 
 # cache:
 #   directories:
@@ -14,6 +14,7 @@ before_install:
   - echo $TRAVIS_SECURE_ENV_VARS
   - pod repo update > /dev/null
   - ./fastlane/before_install.sh
+  - fastlane --version
 
 script:
    - ./fastlane/run.sh  # Decide which lane to run

@@ -50,6 +50,11 @@ class CalendarManager: Manager {
         }
     }
     
+    func updateData(_ handler: @escaping ([DataElement]) -> ()) {
+        print("Updating calendar data...")
+        fetchFromTUMOnline(handler)
+    }
+    
     func getDocumentDirectory() -> String {
         let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         return urls[urls.count - 1].path
