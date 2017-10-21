@@ -10,7 +10,7 @@ import XCTest
 @testable import Campus
 
 class MovieTests: XCTestCase {
-    var manager = TumDataManager(user: nil)
+    var manager = TumDataManager()
     
     override func setUp() {
         super.setUp()
