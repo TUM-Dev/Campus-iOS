@@ -17,11 +17,8 @@ class SearchViewController: UITableViewController, DetailView {
     }
     
     var delegate: DetailViewDelegate?
-    
     var elements = [DataElement]()
-    
     var currentElement: DataElement?
-    
     var searchManagers: [TumDataItems]?
 
 }

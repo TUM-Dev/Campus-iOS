@@ -15,6 +15,9 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var cards: [DataElement] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
+    var searchResults: [DataElement] = []
+    var searchManagers: [TumDataItems] = []
+    var search: UISearchController?
     
     func refresh(_ sender: AnyObject?) {
         manager?.getCardItems(self)
@@ -78,6 +81,18 @@ extension CardViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
+      
+        let storyboard = UIStoryboard(name: "CardView", bundle: nil)
+        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? UIViewController else {
+            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
+        }
+        search = UISearchController(searchResultsController: searchResultsController)
+        search?.searchResultsUpdater = self
+        search?.searchBar.placeholder = "Search"
+        definesPresentationContext = true
+        if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = search
+        }
         manager = (self.tabBarController as? CampusTabBarController)?.manager
         refresh(nil)
     }
@@ -124,6 +139,18 @@ extension CardViewController {
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+}
+
+extension CardViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchResultsController = searchController.searchResultsController as? SearchResultsController {
+            if let queryString = searchController.searchBar.text {
+                dataManager().search(searchResultsController, query: queryString)
+            }
+        }
     }
     
 }
