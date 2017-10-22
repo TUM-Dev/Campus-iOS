@@ -182,9 +182,6 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4BW-3f-UHw" kind="show" id="kCa-xM-t1I"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2LZ-Kl-aUw" imageView="SwH-nR-HbD" style="IBUITableViewCellStyleDefault" id="oAx-G5-j0H">
                                         <rect key="frame" x="0.0" y="469" width="375" height="44"/>
@@ -505,14 +502,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWb-I2-Rn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="733" y="1224"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="W3O-lH-P9d">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="4BW-3f-UHw" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YeD-7P-LFq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="740" y="1189"/>
         </scene>
         <!--Cafeteria-->
         <scene sceneID="ced-AW-eg8">
