@@ -65,6 +65,12 @@ extension MoreTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        }
+
         if let mvc = tabBarController as? CampusTabBarController {
             user = User.shared
             manager = mvc.manager

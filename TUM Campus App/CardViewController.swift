@@ -75,6 +75,11 @@ extension CardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLogo()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        }
 
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
