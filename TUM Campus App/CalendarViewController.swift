@@ -25,6 +25,10 @@ class CalendarViewController: UIViewController, DetailView {
     
     var firstTimeAppearing = true
     
+    var refreshBarButton = UIBarButtonItem()
+    var stopRefreshBarButton = UIBarButtonItem()
+    var todayBarButton = UIBarButtonItem()
+    
     func showToday(_ sender: AnyObject?) {
         let now = Date()
         weekSelector?.setSelectedDate(now, animated: true)
@@ -32,6 +36,12 @@ class CalendarViewController: UIViewController, DetailView {
         scrolling = true
         scrollTo(now)
         dayPlannerView.reloadAllEvents()
+    }
+    
+    func updateCalendar(_ sender: AnyObject?) {
+        navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
+        // TODO:
+//        delegate?.dataManager().updateCalendar(self)
     }
     
     func lecturesOfDate(_ date: Date) -> [CalendarRow] {
@@ -142,8 +152,12 @@ extension CalendarViewController {
             }
             self.updateTitle(.now)
         }
+        
+        let now = Date()
+        updateTitle(now)
+        dayPlannerView.reloadAllEvents()
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
     }
-    
 }
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {

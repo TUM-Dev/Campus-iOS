@@ -9,6 +9,9 @@
 import UIKit
 
 class CafeteriaCardTableViewCell: CardTableViewCell {
+    
+    @IBOutlet weak var cafeteriaLabel: UILabel!
+    @IBOutlet weak var itemsLabel: UILabel!
 
     override func setElement(_ element: DataElement) {
         if let cafeteria = element as? Cafeteria {
@@ -21,16 +24,6 @@ class CafeteriaCardTableViewCell: CardTableViewCell {
                 string += "\u{2022} " + item.name + "\n"
             }
             itemsLabel.text = string
-        }
-    }
-
-    @IBOutlet weak var cafeteriaLabel: UILabel!
-    @IBOutlet weak var itemsLabel: UILabel!
-    @IBOutlet weak var cardView: UIView! {
-        didSet {
-            backgroundColor = UIColor.clear
-            cardView.layer.shadowOpacity = 0.4
-            cardView.layer.shadowOffset = CGSize(width: 3.0, height: 2.0)
         }
     }
 }
