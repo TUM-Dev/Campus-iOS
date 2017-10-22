@@ -90,11 +90,6 @@ extension MoreTableViewController {
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
-        if let mvc = segue.destination as? SearchViewController {
-            if (tableView.indexPathForSelectedRow?.section == 2 && tableView.indexPathForSelectedRow?.row == 0) {
-                mvc.searchManagers = [TumDataItems.RoomSearch]
-            }
-        }
     }
     
 }

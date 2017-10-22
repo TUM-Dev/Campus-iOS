@@ -38,7 +38,6 @@
 		0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F4F1BE16DBE00B5DFCB /* Assets.xcassets */; };
 		0E424F531BE16DBE00B5DFCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F511BE16DBE00B5DFCB /* LaunchScreen.storyboard */; };
 		0E424F5E1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F5D1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift */; };
-		0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F681BE17ED700B5DFCB /* SearchViewController.swift */; };
 		0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */; };
 		0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6C1BE1865C00B5DFCB /* Movie.swift */; };
 		0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */; };
@@ -137,7 +136,6 @@
 		50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */; };
 		50200E181DF496A800B6FBE3 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E171DF496A800B6FBE3 /* More.storyboard */; };
 		50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */; };
-		50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1B1DF497C400B6FBE3 /* Search.storyboard */; };
 		50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */; };
 		50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */; };
 		50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */; };
@@ -222,7 +220,6 @@
 		0E424F591BE16DBE00B5DFCB /* TUM Campus AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TUM Campus AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F5D1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		0E424F5F1BE16DBE00B5DFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E424F681BE17ED700B5DFCB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUFilmCardCell.swift; sourceTree = "<group>"; };
 		0E424F6C1BE1865C00B5DFCB /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailDataManager.swift; sourceTree = "<group>"; };
@@ -328,7 +325,6 @@
 		50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Calendar Detail.storyboard"; sourceTree = "<group>"; };
 		50200E171DF496A800B6FBE3 /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cafeteria.storyboard; sourceTree = "<group>"; };
-		50200E1B1DF497C400B6FBE3 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomFinder.storyboard; sourceTree = "<group>"; };
 		50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lecture.storyboard; sourceTree = "<group>"; };
 		50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonDetail.storyboard; sourceTree = "<group>"; };
@@ -413,17 +409,6 @@
 			name = "Assisting Files and Frameworks";
 			sourceTree = "<group>";
 		};
-		0E3B21411C13C0440035ED70 /* Search View */ = {
-			isa = PBXGroup;
-			children = (
-				50200E1B1DF497C400B6FBE3 /* Search.storyboard */,
-				0E424F681BE17ED700B5DFCB /* SearchViewController.swift */,
-				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
-				0EB1618B1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift */,
-			);
-			name = "Search View";
-			sourceTree = "<group>";
-		};
 		0E3B21421C13C0590035ED70 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,7 +466,6 @@
 				0E5725431C1656B700E5471D /* Calendar Detail View */,
 				5007C6A11E067BD50014B065 /* StudyRooms View */,
 				0EB473D41C1B647700F17F44 /* Cafeteria View */,
-				0E3B21411C13C0440035ED70 /* Search View */,
 				0EB473D31C1B646D00F17F44 /* Room Finder View */,
 				0EF4CEF21D4167C3001649F1 /* Lecture Detail View */,
 				0EF4CEF11D4167A1001649F1 /* News View */,
@@ -547,6 +531,8 @@
 				22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
+				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
+				0EB1618B1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift */,
 				0EDCACD61C1450A4008648D8 /* Cards */,
 			);
 			name = "Card View";
@@ -1068,7 +1054,6 @@
 				2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
-				50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */,
 				50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */,
 				0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */,
 				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
@@ -1291,7 +1276,6 @@
 				301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
-				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
 				22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,

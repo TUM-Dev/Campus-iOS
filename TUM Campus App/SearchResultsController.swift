@@ -11,13 +11,34 @@ import UIKit
 
 class SearchResultsController: UITableViewController {
     
+    var delegate: DetailViewDelegate?
+    var currentElement: DataElement?
     public var elements: [DataElement] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
+            mvc.delegate = self
+        }
+        if let mvc = segue.destination as? RoomFinderViewController {
+            mvc.room = currentElement
+        }
+        if let mvc = segue.destination as? PersonDetailTableViewController {
+            mvc.user = currentElement
+        }
+        if let mvc = segue.destination as? LectureDetailsTableViewController {
+            mvc.lecture = currentElement
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        currentElement = elements[indexPath.row]
+        return indexPath
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return elements.count
     }
@@ -53,6 +74,15 @@ extension SearchResultsController: TumDataReceiver, ImageDownloadSubscriber {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+}
+
+
+extension SearchResultsController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager {
+        return delegate?.dataManager() ?? TumDataManager()
     }
     
 }

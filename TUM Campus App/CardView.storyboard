@@ -449,9 +449,9 @@
                                 <segue destination="3Db-3m-P8t" kind="presentation" id="PNa-zK-Lk0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="tZ2-Dg-5OD">
+                        <barButtonItem key="rightBarButtonItem" title="Account" id="tZ2-Dg-5OD">
                             <connections>
-                                <segue destination="9BT-FI-HmU" kind="show" id="zlE-qC-PQe"/>
+                                <segue destination="0Ji-ZX-9B7" kind="show" id="2U1-is-aRK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -502,13 +502,21 @@
             </objects>
             <point key="canvasLocation" x="1215" y="198"/>
         </scene>
+        <!--More-->
+        <scene sceneID="pJn-gt-mJj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="More" id="0Ji-ZX-9B7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dL0-GZ-sGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="-4"/>
+        </scene>
         <!--EditCards-->
         <scene sceneID="ggL-VQ-yr3">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="EditCards" storyboardName="EditCards" id="3Db-3m-P8t" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Icg-Uf-0J2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="8"/>
+            <point key="canvasLocation" x="1202" y="93"/>
         </scene>
         <!--Search Results Controller-->
         <scene sceneID="vMU-Z2-faL">
@@ -566,7 +574,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="6Ek-B8-4lm" id="GuA-JP-gnN"/>
                                     <outlet property="nameLabel" destination="JfW-of-AC4" id="fSf-fj-63b"/>
-                                    <segue destination="lJx-qQ-ojU" kind="show" id="xrS-ZZ-KF0"/>
+                                    <segue destination="QOj-nB-teH" kind="show" id="v1e-xl-Tlk"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lecture" rowHeight="93" id="LWd-IM-w6e" customClass="LectureTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -620,7 +628,7 @@
                                     <outlet property="contributorsLabel" destination="gfn-BZ-8Pj" id="Rox-cp-SQI"/>
                                     <outlet property="detailsLabel" destination="bJR-UA-nYN" id="fJv-QX-hiP"/>
                                     <outlet property="titleLabel" destination="DRJ-KK-lsb" id="K0L-V6-bvD"/>
-                                    <segue destination="TeB-k2-F08" kind="show" id="pwp-8C-iLN"/>
+                                    <segue destination="0hi-tX-ENF" kind="show" id="nNv-rO-E6n"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="room" rowHeight="101" id="hBd-rx-dGi" customClass="RoomResultTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -664,7 +672,7 @@
                                 <connections>
                                     <outlet property="buildingNameLabel" destination="bS8-5X-261" id="gYA-cp-W00"/>
                                     <outlet property="roomNameLabel" destination="F9F-cC-Yyp" id="nri-lt-qI2"/>
-                                    <segue destination="dkX-sJ-5La" kind="show" id="QGw-LO-TlI"/>
+                                    <segue destination="8EW-cA-v4q" kind="show" id="Jvw-sL-kSH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -687,28 +695,34 @@
             <point key="canvasLocation" x="1180" y="155"/>
         </scene>
         <!--PersonDetail-->
-        <scene sceneID="gaC-lJ-u7f">
+        <scene sceneID="KQj-Js-Wab">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="UITableViewController-E7r-lK-paj" storyboardName="PersonDetail" id="lJx-qQ-ojU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mP1-RV-hja" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="PersonDetail" id="QOj-nB-teH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="D2N-X2-kov"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sxi-wk-q3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2707" y="43"/>
+            <point key="canvasLocation" x="2822" y="108"/>
         </scene>
         <!--LectureDetail-->
-        <scene sceneID="Z6j-FP-tTn">
+        <scene sceneID="Ui6-nw-oOC">
             <objects>
-                <viewControllerPlaceholder storyboardName="LectureDetail" id="dkX-sJ-5La" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rKu-ur-iFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="LectureDetail" id="8EW-cA-v4q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tlp-sI-IUK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="icY-7h-cPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="243"/>
+            <point key="canvasLocation" x="2834" y="332"/>
         </scene>
         <!--RoomFinder-->
-        <scene sceneID="mj4-db-9Ef">
+        <scene sceneID="QqC-1g-jiE">
             <objects>
-                <viewControllerPlaceholder storyboardName="RoomFinder" id="TeB-k2-F08" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W3v-tX-bNU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="RoomFinder" id="0hi-tX-ENF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="K57-OA-3Cd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWf-Sd-XhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2703" y="155"/>
+            <point key="canvasLocation" x="2818" y="237"/>
         </scene>
     </scenes>
     <resources>
