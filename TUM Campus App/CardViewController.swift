@@ -98,7 +98,7 @@ extension CardViewController {
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = search
         }
-        manager = (self.tabBarController as? CampusTabBarController)?.manager
+        manager = (self.navigationController as? CampusNavigationController)?.manager
         refresh(nil)
     }
     

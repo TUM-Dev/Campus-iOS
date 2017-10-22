@@ -10,7 +10,7 @@ import UIKit
 import Sweeft
 import MessageUI
 
-class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate, MFMailComposeViewControllerDelegate {
+class MoreTableViewController: UITableViewController, DetailView, ImageDownloadSubscriber, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,13 +24,10 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
-    
-    var manager: TumDataManager?
+    var delegate: DetailViewDelegate?
     
     var user: User? {
-        didSet {
-            updateView()
-        }
+        return delegate?.dataManager().user
     }
     
     var isLoggedIn: Bool {
@@ -54,10 +51,6 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     func updateImageView() {
         updateView()
     }
-    
-    func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager()
-    }
 
 }
 
@@ -70,15 +63,10 @@ extension MoreTableViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         }
-
-        if let mvc = tabBarController as? CampusTabBarController {
-            user = User.shared
-            manager = mvc.manager
-            
-            if user?.data == nil {
-                manager?.getUserData() {
-                    self.updateView()
-                }
+        
+        if user?.data == nil {
+            delegate?.dataManager().getUserData() {
+                self.updateView()
             }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
@@ -91,7 +79,7 @@ extension MoreTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var mvc = segue.destination as? DetailView {
-            mvc.delegate = self
+            mvc.delegate = delegate
         }
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Campus Navigation Controller-->
         <scene sceneID="oaX-dG-Alx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Qf-8m-xen" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Qf-8m-xen" customClass="CampusNavigationController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="OMN-xt-TI8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nVD-4p-0Mh">
