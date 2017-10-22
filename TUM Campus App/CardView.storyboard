@@ -686,14 +686,6 @@
             </objects>
             <point key="canvasLocation" x="2136.8000000000002" y="266.71664167916043"/>
         </scene>
-        <!--Search-->
-        <scene sceneID="FWf-cp-Lx8">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="9BT-FI-HmU" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YLc-1N-94R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1180" y="155"/>
-        </scene>
         <!--PersonDetail-->
         <scene sceneID="KQj-Js-Wab">
             <objects>
