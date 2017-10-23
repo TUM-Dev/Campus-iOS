@@ -7,10 +7,7 @@
 //
 
 import Sweeft
-import Alamofire
 import SWXMLHash
-
-// TODO: Refactor this
 
 class TumOnlineLoginRequestManager {
     

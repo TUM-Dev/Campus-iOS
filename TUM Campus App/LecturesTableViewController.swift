@@ -24,7 +24,8 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
     func fetch() {
         let promise = delegate?.dataManager()?.lecturesManager.fetch()
         promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
-            let semesters = Set(lectures.map { $0.semester })
+            let ordered = lectures.map { $0.semester }
+            let semesters = Set(ordered).sorted(ascending: { ordered.index(of: $0) ?? ordered.count })
             return semesters.map { semester in
                 return (semester, lectures.filter { $0.semester == semester })
             }
