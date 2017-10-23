@@ -9,7 +9,14 @@
 import CoreLocation
 import Sweeft
 
-let locationManager = CLLocationManager()
+private let locationManager = CLLocationManager()
+
+private func currentLocation() -> CLLocation {
+    locationManager.startUpdatingLocation()
+    let location = locationManager.location
+    locationManager.stopUpdatingLocation()
+    return location ?? DefaultCampus.value.location
+}
 
 extension Date {
     
@@ -28,11 +35,8 @@ extension Date {
 
 extension SimpleManager {
     
-    var location: CLLocation? {
-        locationManager.startUpdatingLocation()
-        let location = locationManager.location
-        locationManager.stopUpdatingLocation()
-        return location
+    var location: CLLocation {
+        return currentLocation()
     }
     
 }
@@ -44,12 +48,8 @@ extension Collection {
     }
     
     func sorted(byLocation path: KeyPath<Element, CLLocation>) -> [Element] {
-        locationManager.startUpdatingLocation()
-        let location = locationManager.location
-        locationManager.stopUpdatingLocation()
-        return location.map { location in
-            return self.sorted(ascending: { location.distance(from: $0[keyPath: path]) })
-        } ?? Array(self)
+        let location = currentLocation()
+        return self.sorted(ascending: { location.distance(from: $0[keyPath: path]) })
     }
     
 }

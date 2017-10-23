@@ -98,6 +98,7 @@
 		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
 		0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD970E1F9D87D60070441D /* MVV.storyboard */; };
 		0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD97101F9D8C6C0070441D /* DetailedStation.swift */; };
+		0ECD97131F9D8EC70070441D /* DefaultCampus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD97121F9D8EC70070441D /* DefaultCampus.swift */; };
 		0EDD932B1EB78AF30022E9BC /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */; };
 		0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */; };
 		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
@@ -283,6 +284,7 @@
 		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
 		0ECD970E1F9D87D60070441D /* MVV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MVV.storyboard; sourceTree = "<group>"; };
 		0ECD97101F9D8C6C0070441D /* DetailedStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedStation.swift; sourceTree = "<group>"; };
+		0ECD97121F9D8EC70070441D /* DefaultCampus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampus.swift; sourceTree = "<group>"; };
 		0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomAPI.swift; sourceTree = "<group>"; };
 		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
 				22F4B6B31EA802960086D49A /* BookRental.swift */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
+				0ECD97121F9D8EC70070441D /* DefaultCampus.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1300,6 +1303,7 @@
 				0E3B212B1C13AB250035ED70 /* DoneHUD.swift in Sources */,
 				0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */,
 				0E893EFF1EB3DB720058027F /* TUMCabe.swift in Sources */,
+				0ECD97131F9D8EC70070441D /* DefaultCampus.swift in Sources */,
 				0E893EFD1EB3DB620058027F /* Config.swift in Sources */,
 				0EB1618C1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,

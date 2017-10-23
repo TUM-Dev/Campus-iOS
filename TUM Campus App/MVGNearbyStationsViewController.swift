@@ -41,12 +41,6 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var mvc = segue.destination as? DetailView {
-            mvc.delegate = delegate
-        }
-    }
-    
     // MARK: Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,6 +62,8 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
         cell.textLabel?.text = station.name
         if let distance = station.distance {
             cell.detailTextLabel?.text = "\(distance) m"
+        } else {
+            cell.detailTextLabel?.text = ""
         }
     }
     
@@ -75,6 +71,7 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
         let station = nearestStations[indexPath.row]
         
         let vc = DeparturesViewController(station: station)
+        vc.delegate = delegate
         
         navigationController?.pushViewController(vc, animated: true)
     }

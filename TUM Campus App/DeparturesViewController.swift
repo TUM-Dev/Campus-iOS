@@ -51,6 +51,9 @@ class DeparturesViewController : UITableViewController, DetailView {
             self.tableView.refreshControl?.endRefreshing()
         }
         .onError { error in
+            if case .invalidStatus(_, let data) = error {
+                print(data!.string!)
+            }
             self.showError("Error", error.localizedDescription)
         }
     }

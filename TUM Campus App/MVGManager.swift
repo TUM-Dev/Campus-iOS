@@ -33,13 +33,10 @@ final class MVGManager: NewManager, SimpleSingleManager {
     }
     
     func fetch() -> Response<[Station]> {
-        return location.map { location in
-            
-            return config.mvg.doObjectsRequest(to: .getNearbyStations,
-                                               queries: ["latitude" : location.coordinate.latitude,
-                                                         "longitude" : location.coordinate.longitude],
-                                               at: ["locations"]).map { $0.sorted(byLocation: \.location) }
-        } ?? .successful(with: [])
+        return config.mvg.doObjectsRequest(to: .getNearbyStations,
+                                           queries: ["latitude" : location.coordinate.latitude,
+                                                     "longitude" : location.coordinate.longitude],
+                                           at: ["locations"]).map { $0.sorted(byLocation: \.location) }
     }
     
 }
