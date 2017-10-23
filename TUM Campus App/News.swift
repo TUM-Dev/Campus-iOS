@@ -62,7 +62,7 @@ extension News: Deserializable {
                 
             return nil
         }
-        self.init(id: id, date: date, title: title, link: link)
+        self.init(id: id, date: date, title: title, link: link, image: json["image"].string)
     }
     
 }
