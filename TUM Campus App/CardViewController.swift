@@ -93,7 +93,7 @@ extension CardViewController {
             fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
         search = UISearchController(searchResultsController: searchResultsController)
-        search?.searchResultsUpdater = searchResultsController
+        search?.searchResultsUpdater = self
         search?.searchBar.placeholder = "Search"
         search?.obscuresBackgroundDuringPresentation = true
         search?.hidesNavigationBarDuringPresentation = true
@@ -146,6 +146,20 @@ extension CardViewController {
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+}
+
+
+extension CardViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let resultsController = searchController.searchResultsController as? SearchResultsController else {
+            fatalError()
+        }
+        if let queryString = searchController.searchBar.text {
+            dataManager().search(resultsController, query: queryString)
+        }
     }
     
 }

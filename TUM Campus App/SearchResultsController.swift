@@ -120,12 +120,3 @@ extension SearchResultsController: DetailViewDelegate {
     
 }
 
-extension SearchResultsController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        if let queryString = searchController.searchBar.text {
-            dataManager().search(self, query: queryString)
-        }
-    }
-    
-}
