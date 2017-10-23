@@ -47,6 +47,10 @@ extension Collection {
         return flatMap { $0 as? V }
     }
     
+    func first<V: Equatable>(where path: KeyPath<Element, V>, equals value: V) -> Element? {
+        return first { $0[keyPath: path] == value }
+    }
+    
     func sorted(byLocation path: KeyPath<Element, CLLocation>) -> [Element] {
         let location = currentLocation()
         return self.sorted(ascending: { location.distance(from: $0[keyPath: path]) })

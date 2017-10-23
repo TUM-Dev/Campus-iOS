@@ -32,28 +32,31 @@ final class CafeteriaManager: CachedManager, SingleItemManager, CardManager {
         self.config = config
     }
     
+    func fetchMenus(for cafeterias: [Cafeteria], maxCache: CacheTime) -> Response<[Cafeteria]> {
+        return self.config.mensaApp.doJSONRequest(to: .exported,
+                                                  queries: ["mensa_id" : "all"],
+                                                  maxCacheTime: maxCache).map { (json: JSON) in
+                                                    
+            let menus = json["mensa_menu"].array ==> CafeteriaMenu.init(from:)
+            let extras = json["mensa_beilagen"].array ==> CafeteriaMenu.init(from:)
+                                                    
+            let allMenus = menus + extras
+                                                    
+            allMenus.forEach { menu in
+                cafeterias.first(where: \.id, equals: menu.mensaId)?.addMenu(menu)
+            }
+                                                    
+            return cafeterias.sorted(byLocation: \.location)
+        }
+    }
+    
     func fetch(maxCache: CacheTime) -> Response<[Cafeteria]> {
         
         let promise = config.tumCabe.doObjectsRequest(to: .cafeteria,
                                                       maxCacheTime: maxCache) as Response<[Cafeteria]>
         
         return promise.flatMap { (cafeterias: [Cafeteria]) in
-            
-            return self.config.mensaApp.doJSONRequest(to: .exported,
-                                                      queries: ["mensa_id" : "all"],
-                                                      maxCacheTime: maxCache).map { (json: JSON) in
-                
-                let menus = json["mensa_menu"].array ==> CafeteriaMenu.init(from:)
-                let extras = json["mensa_beilagen"].array ==> CafeteriaMenu.init(from:)
-                
-                let allMenus = menus + extras
-                
-                allMenus.forEach { menu in
-                    cafeterias.first(where: { $0.id == menu.mensaId })?.addMenu(menu)
-                }
-                
-                return cafeterias.sorted(byLocation: \.location)
-            }
+            return self.fetchMenus(for: cafeterias, maxCache: maxCache)
         }
     }
     

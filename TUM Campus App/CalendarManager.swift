@@ -32,7 +32,7 @@ final class CalendarManager: CachedManager, CardManager, SingleItemManager {
     }
     
     func toSingle(from items: [CalendarRow]) -> DataElement? {
-        let new = items |> { $0.dtstart! > .now } // TODO:
+        let new = items |> { $0.dtstart! > .now }
         return new.first
     }
     

@@ -9,6 +9,14 @@
 import Sweeft
 import UIKit
 
+private func mapped(lectures: [Lecture]) -> [(String, [Lecture])] {
+    let ordered = lectures.map { $0.semester }
+    let semesters = Set(ordered).sorted(ascending: { ordered.index(of: $0) ?? ordered.count })
+    return semesters.map { semester in
+        return (semester, lectures.filter { $0.semester == semester })
+    }
+}
+
 class LecturesTableViewController: UITableViewController, DetailViewDelegate, DetailView {
     
     var lectures = [(String,[Lecture])]()
@@ -24,11 +32,7 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
     func fetch() {
         let promise = delegate?.dataManager()?.lecturesManager.fetch()
         promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
-            let ordered = lectures.map { $0.semester }
-            let semesters = Set(ordered).sorted(ascending: { ordered.index(of: $0) ?? ordered.count })
-            return semesters.map { semester in
-                return (semester, lectures.filter { $0.semester == semester })
-            }
+            return mapped(lectures: lectures)
         }.onSuccess { lectures in
             self.lectures = lectures
             self.tableView.reloadData()

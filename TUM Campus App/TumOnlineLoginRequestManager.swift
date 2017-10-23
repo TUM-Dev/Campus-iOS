@@ -57,7 +57,11 @@ class TumOnlineLoginRequestManager {
                                                      queries: ["pToken" : token]).map { (xml: XMLIndexer) in
                                                         
             return xml["confirmed"].element?.text == "true"
-        }.onSuccess { if $0 { self.loginSuccesful() } }
+        }.onSuccess { success in
+            if success {
+                self.loginSuccesful()
+            }
+        }
     }
     
     private func start(id: String) -> Response<Bool> {

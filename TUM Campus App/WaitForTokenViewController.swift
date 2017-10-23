@@ -25,7 +25,9 @@ class WaitForTokenViewController: UIViewController, DetailView {
         button.startLoadingAnimation()
         loginManager.fetch().onSuccess(in: .main) { done in
             self.button.returnToOriginalState()
-            if done { self.done() }
+            if done {
+                self.done()
+            }
         }
         .onError { _ in self.button.returnToOriginalState() }
     }

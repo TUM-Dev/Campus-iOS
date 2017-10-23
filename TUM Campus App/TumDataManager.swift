@@ -71,12 +71,10 @@ class TumDataManager {
     }
     
     func getCardItems() -> Response<[DataElement]> {
-        // TODO: Sort
         return (self.cardManager.sorted(ascending: \.indexInOrder) => { $0.fetchSingle() }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
     
     func search(query: String) -> Response<[DataElement]> {
-        // TODO: Handle more
         return (self.searchManagers => { $0.search(query: query) }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
     

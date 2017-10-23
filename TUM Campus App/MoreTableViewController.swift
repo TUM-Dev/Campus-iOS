@@ -62,12 +62,6 @@ extension MoreTableViewController {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
             manager = mvc.manager
-            
-            if user?.data == nil {
-//                manager?.getUserData() {
-//                    self.updateView()
-//                }
-            }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             bibNumber.text = savedUsername
@@ -84,11 +78,6 @@ extension MoreTableViewController {
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
-//        if let mvc = segue.destination as? SearchViewController {
-//            if (tableView.indexPathForSelectedRow?.section == 2 && tableView.indexPathForSelectedRow?.row == 0) {
-//                mvc.searchManagers = [TumDataItems.RoomSearch]
-//            }
-//        }
     }
     
 }

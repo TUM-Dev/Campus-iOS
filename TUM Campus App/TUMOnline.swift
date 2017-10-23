@@ -40,29 +40,3 @@ struct TUMOnlineAPI: API {
     }
     
 }
-
-extension TUMOnlineAPI {
-    
-    func token(for id: String) -> String.Result {
-        
-        let version = Bundle.main.version
-        return doRepresentedRequest(to: .tokenRequest,
-                                    queries: [
-                                        "pUsername": id,
-                                        "pTokenName": "TumCampusApp-\(version)"
-                                    ]).flatMap { (xml: XMLIndexer) in
-            
-            guard let token = xml["token"].element?.text else {
-                return .errored(with: .noData)
-            }
-            return .successful(with: token)
-        }
-    }
-    
-    func confirm(token: String) -> Response<Bool> {
-        return doRepresentedRequest(to: .tokenConfirmation).map { (xml: XMLIndexer) in
-            return xml["confirmed"].element?.text == "true"
-        }
-    }
-    
-}

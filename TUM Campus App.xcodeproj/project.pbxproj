@@ -25,7 +25,6 @@
 		0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */; };
 		0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21511C13DB550035ED70 /* LoginDefaultKeys.swift */; };
 		0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */; };
-		0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3BD6451F9946F500ED0409 /* LocationProvider.swift */; };
 		0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */; };
 		0E424F491BE16DBE00B5DFCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */; };
 		0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */; };
@@ -203,7 +202,6 @@
 		0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		0E3B21511C13DB550035ED70 /* LoginDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDefaultKeys.swift; sourceTree = "<group>"; };
 		0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionCardTableViewCell.swift; sourceTree = "<group>"; };
-		0E3BD6451F9946F500ED0409 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TUMLogoView.xib; sourceTree = "<group>"; };
 		0E424F451BE16DBE00B5DFCB /* Campus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F481BE16DBE00B5DFCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -627,7 +625,6 @@
 				0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */,
 				0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */,
 				0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */,
-				0E3BD6451F9946F500ED0409 /* LocationProvider.swift */,
 				0EF790F51EA8304E005CB9AB /* Helper */,
 			);
 			name = Config;
@@ -1354,7 +1351,6 @@
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
-				0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,

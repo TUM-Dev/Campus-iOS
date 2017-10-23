@@ -55,9 +55,6 @@ final class UserData: DataElement {
     
     func addContact(_ handler: () -> ()?) {
         let contact = CNMutableContact()
-//        if let imageOfUser = image {
-//            contact.imageData = UIImagePNGRepresentation(imageOfUser)
-//        }
         contact.givenName = name
         var phones = [String]()
         var mobiles = [String]()
