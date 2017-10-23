@@ -11,12 +11,10 @@ import UIKit
 class PersonDetailTableViewController: UITableViewController, DetailView {
     
     var user: DataElement?
-    
     var delegate: DetailViewDelegate?
-    
     var contactInfo = [(ContactInfoType,String)]()
-    
     var addingContact = false
+    
     
     func addContact(_ sender: AnyObject?) {
         let handler = { () in
@@ -31,6 +29,9 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
             }
         }
     }
+    
+    
+    
 }
 
 extension PersonDetailTableViewController: TumDataReceiver {
@@ -51,6 +52,12 @@ extension PersonDetailTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         title = user?.text

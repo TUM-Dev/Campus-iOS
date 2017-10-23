@@ -15,6 +15,9 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var cards: [DataElement] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
+    var searchResults: [DataElement] = []
+    var searchManagers: [TumDataItems] = []
+    var search: UISearchController?
     
     func refresh(_ sender: AnyObject?) {
         manager?.getCardItems(self)
@@ -72,13 +75,32 @@ extension CardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLogo()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
 
         refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
-        manager = (self.tabBarController as? CampusTabBarController)?.manager
+        definesPresentationContext = true
+
+        let storyboard = UIStoryboard(name: "CardView", bundle: nil)
+        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? SearchResultsController else {
+            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
+        }
+        search = UISearchController(searchResultsController: searchResultsController)
+        search?.searchResultsUpdater = self
+        search?.searchBar.placeholder = "Search"
+        search?.obscuresBackgroundDuringPresentation = true
+        search?.hidesNavigationBarDuringPresentation = true
+        if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = search
+        }
+        manager = (self.navigationController as? CampusNavigationController)?.manager
         refresh(nil)
     }
     
@@ -86,7 +108,7 @@ extension CardViewController {
         if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
-        if let navCon = segue.destination as? UINavigationController,
+        if let navCon = segue.destination as? SearchResultsNavigationController,
             let mvc = navCon.topViewController as? EditCardsViewController {
             mvc.delegate = self
         }
@@ -127,4 +149,19 @@ extension CardViewController {
     }
     
 }
+
+
+extension CardViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let resultsController = searchController.searchResultsController as? SearchResultsController else {
+            fatalError()
+        }
+        if let queryString = searchController.searchBar.text {
+            dataManager().search(resultsController, query: queryString)
+        }
+    }
+    
+}
+
 

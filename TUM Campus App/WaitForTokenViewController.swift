@@ -60,7 +60,7 @@ extension WaitForTokenViewController: AccessTokenReceiver {
                 self.dismiss(animated: true, completion: nil)
             } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let mvc = storyboard.instantiateViewController(withIdentifier: "TabBar") as? CampusTabBarController {
+                if let mvc = storyboard.instantiateViewController(withIdentifier: "NavigationController") as? CampusNavigationController {
                     mvc.transitioningDelegate = self
                     self.present(mvc, animated: true, completion: nil)
                 }

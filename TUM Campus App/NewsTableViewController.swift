@@ -32,6 +32,12 @@ extension NewsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         delegate?.dataManager().getAllNews(self)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight

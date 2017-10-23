@@ -11,7 +11,6 @@ import UIKit
 class LectureDetailsTableViewController: UITableViewController, DetailView {
     
     var lecture: DataElement?
-    
     var delegate: DetailViewDelegate?
 
 }
@@ -28,6 +27,12 @@ extension LectureDetailsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         if let lectureUnwrapped = lecture as? Lecture {

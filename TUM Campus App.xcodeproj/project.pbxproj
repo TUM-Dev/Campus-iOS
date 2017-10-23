@@ -38,7 +38,6 @@
 		0E424F501BE16DBE00B5DFCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F4F1BE16DBE00B5DFCB /* Assets.xcassets */; };
 		0E424F531BE16DBE00B5DFCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E424F511BE16DBE00B5DFCB /* LaunchScreen.storyboard */; };
 		0E424F5E1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F5D1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift */; };
-		0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F681BE17ED700B5DFCB /* SearchViewController.swift */; };
 		0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */; };
 		0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E424F6C1BE1865C00B5DFCB /* Movie.swift */; };
 		0E4825A91C2B7AE300C756A5 /* PersonDetailDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */; };
@@ -108,10 +107,12 @@
 		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
 		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
 		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
+		2260A4051F9E620B0029740A /* SearchResultsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260A4041F9E620B0029740A /* SearchResultsNavigationController.swift */; };
 		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
 		2297958E1EAD711B004A7F9B /* TumOPACApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2297958D1EAD711B004A7F9B /* TumOPACApi.swift */; };
+		22A92C2F1F9CE512005F4407 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */; };
 		22D58D201F9A6AA3006EBCC9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */; };
 		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
 		22F4B6B41EA802960086D49A /* BookRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B31EA802960086D49A /* BookRental.swift */; };
@@ -136,7 +137,6 @@
 		50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */; };
 		50200E181DF496A800B6FBE3 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E171DF496A800B6FBE3 /* More.storyboard */; };
 		50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */; };
-		50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1B1DF497C400B6FBE3 /* Search.storyboard */; };
 		50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */; };
 		50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */; };
 		50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */; };
@@ -221,7 +221,6 @@
 		0E424F591BE16DBE00B5DFCB /* TUM Campus AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TUM Campus AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E424F5D1BE16DBE00B5DFCB /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		0E424F5F1BE16DBE00B5DFCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E424F681BE17ED700B5DFCB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUFilmCardCell.swift; sourceTree = "<group>"; };
 		0E424F6C1BE1865C00B5DFCB /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		0E4825A81C2B7AE300C756A5 /* PersonDetailDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailDataManager.swift; sourceTree = "<group>"; };
@@ -295,11 +294,13 @@
 		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
 		1272671411F9035D9B894A44 /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		222F90F91EB7BD69002F9289 /* Campus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
+		2260A4041F9E620B0029740A /* SearchResultsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsNavigationController.swift; sourceTree = "<group>"; };
 		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
 		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LibrarySettingsView.storyboard; sourceTree = "<group>"; };
 		2297958D1EAD711B004A7F9B /* TumOPACApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumOPACApi.swift; sourceTree = "<group>"; };
+		22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
 		22F4B6B31EA802960086D49A /* BookRental.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRental.swift; sourceTree = "<group>"; };
@@ -326,7 +327,6 @@
 		50200E151DF4967700B6FBE3 /* Calendar Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Calendar Detail.storyboard"; sourceTree = "<group>"; };
 		50200E171DF496A800B6FBE3 /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		50200E191DF497A700B6FBE3 /* Cafeteria.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cafeteria.storyboard; sourceTree = "<group>"; };
-		50200E1B1DF497C400B6FBE3 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		50200E1D1DF497EB00B6FBE3 /* RoomFinder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomFinder.storyboard; sourceTree = "<group>"; };
 		50200E1F1DF4980700B6FBE3 /* Lecture.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Lecture.storyboard; sourceTree = "<group>"; };
 		50200E211DF498B700B6FBE3 /* PersonDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PersonDetail.storyboard; sourceTree = "<group>"; };
@@ -411,23 +411,12 @@
 			name = "Assisting Files and Frameworks";
 			sourceTree = "<group>";
 		};
-		0E3B21411C13C0440035ED70 /* Search View */ = {
-			isa = PBXGroup;
-			children = (
-				50200E1B1DF497C400B6FBE3 /* Search.storyboard */,
-				0E424F681BE17ED700B5DFCB /* SearchViewController.swift */,
-				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
-				0EB1618B1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift */,
-			);
-			name = "Search View";
-			sourceTree = "<group>";
-		};
-		0E3B21421C13C0590035ED70 /* TabBar */ = {
+		0E3B21421C13C0590035ED70 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
 				0E3B21331C13B5760035ED70 /* CampusTabBarController.swift */,
 			);
-			name = TabBar;
+			name = NavigationController;
 			sourceTree = "<group>";
 		};
 		0E3B21571C13DBA20035ED70 /* TumOnlineLogin */ = {
@@ -471,7 +460,7 @@
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
-				0E3B21421C13C0590035ED70 /* TabBar */,
+				0E3B21421C13C0590035ED70 /* NavigationController */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
 				0E5A61E31C135E27006017DB /* Card View */,
 				0E60CD491C148ED700B29948 /* Movie Detail View */,
@@ -479,7 +468,6 @@
 				0E5725431C1656B700E5471D /* Calendar Detail View */,
 				5007C6A11E067BD50014B065 /* StudyRooms View */,
 				0EB473D41C1B647700F17F44 /* Cafeteria View */,
-				0E3B21411C13C0440035ED70 /* Search View */,
 				0EB473D31C1B646D00F17F44 /* Room Finder View */,
 				0EF4CEF21D4167C3001649F1 /* Lecture Detail View */,
 				0EF4CEF11D4167A1001649F1 /* News View */,
@@ -542,8 +530,12 @@
 				50200E0F1DF4941500B6FBE3 /* CardView.storyboard */,
 				0EC28AE31E05549300FF1E40 /* EditCards.storyboard */,
 				0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */,
+				22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */,
+				2260A4041F9E620B0029740A /* SearchResultsNavigationController.swift */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
+				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
+				0EB1618B1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift */,
 				0EDCACD61C1450A4008648D8 /* Cards */,
 			);
 			name = "Card View";
@@ -1065,7 +1057,6 @@
 				2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
-				50200E1C1DF497C400B6FBE3 /* Search.storyboard in Resources */,
 				50200E161DF4967700B6FBE3 /* Calendar Detail.storyboard in Resources */,
 				0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */,
 				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
@@ -1288,7 +1279,6 @@
 				301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
-				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
 				22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,
@@ -1298,6 +1288,7 @@
 				0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */,
 				0E3B21541C13DB690035ED70 /* TumOnlineWebServices.swift in Sources */,
 				0EB1618C1C1A1C1D001A08FC /* PersonSearchResultTableViewCell.swift in Sources */,
+				22A92C2F1F9CE512005F4407 /* SearchResultsController.swift in Sources */,
 				0E85D39D1C13E6EE00499564 /* TumCabeApi.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				5007C6A81E0693240014B065 /* StudyRoomsTableViewController.swift in Sources */,
@@ -1322,6 +1313,7 @@
 				0E0C68241E8A4355007001F1 /* Usage.swift in Sources */,
 				5007C6A31E067E240014B065 /* StudyRoomsApi.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
+				2260A4051F9E620B0029740A /* SearchResultsNavigationController.swift in Sources */,
 				301195F21E4658FA0012B133 /* PersonalGradeManager.swift in Sources */,
 				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0E424F6B1BE1853C00B5DFCB /* TUFilmCardCell.swift in Sources */,

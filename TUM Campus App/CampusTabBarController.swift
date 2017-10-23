@@ -8,15 +8,12 @@
 
 import UIKit
 
-class CampusTabBarController: UITabBarController {
+class CampusNavigationController: UINavigationController {
     
     var manager: TumDataManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        UITabBar.appearance().tintColor = Constants.tumBlue
-        UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().barTintColor = UIColor.white
         manager = TumDataManager()
         manager?.getUserData()
     }
