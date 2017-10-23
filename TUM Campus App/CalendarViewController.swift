@@ -40,8 +40,7 @@ class CalendarViewController: UIViewController, DetailView {
     
     func updateCalendar(_ sender: AnyObject?) {
         navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
-        // TODO:
-//        delegate?.dataManager().updateCalendar(self)
+        fetch(skippingCache: true)
     }
     
     func lecturesOfDate(_ date: Date) -> [CalendarRow] {
@@ -72,9 +71,14 @@ extension CalendarViewController {
         weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
         weekSelector?.delegate = self
         weekSelector?.selectedDate = .now
-        let barItem = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CalendarViewController.showToday(_:)))
-        navigationItem.rightBarButtonItem = barItem
-        updateTitle(Date())
+        
+        
+        todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(self.showToday(_:)))
+        refreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(self.updateCalendar(_:)))
+        stopRefreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: nil)
+        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
+        
+        updateTitle(.now)
         dayPlannerView.frame = CGRect(x: dayPlannerView.frame.origin.x, y: dayPlannerView.frame.origin.y, width: view.frame.width, height: dayPlannerView.frame.width)
         dayPlannerView.dataSource = self
         dayPlannerView.delegate = self
@@ -152,18 +156,17 @@ extension CalendarViewController {
                 dict[dateformatter.string(from: start), default: []].append(item)
                 return dict
             }
+            
             self.updateTitle(.now)
+            
+            self.dayPlannerView.reloadAllEvents()
+            self.navigationItem.rightBarButtonItems = [self.refreshBarButton, self.todayBarButton]
         }
-        
-        let now = Date()
-        updateTitle(now)
-        dayPlannerView.reloadAllEvents()
-        navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
     }
 }
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {
-    
+
     func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
         updateTitle(date)
         goToDay(date)

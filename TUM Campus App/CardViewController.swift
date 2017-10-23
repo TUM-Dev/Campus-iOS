@@ -32,6 +32,9 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
             }
             self.refresh.endRefreshing()
         }
+        .onError { error in
+            print(error)
+        }
     }
     
     func didUpdateCards() {

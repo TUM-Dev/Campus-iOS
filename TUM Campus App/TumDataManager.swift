@@ -42,6 +42,7 @@ class TumDataManager {
             movieManager,
             newsManager,
             tuitionManager,
+            cafeteriaManager,
         ]
     }
     

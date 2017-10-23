@@ -18,7 +18,7 @@ enum CafeteriasApi: String {
     case Latitude = "latitude"
 }
 
-final class CafeteriaManager: NewManager {
+final class CafeteriaManager: CachedManager, SingleItemManager {
     
     typealias DataType = Cafeteria
     
@@ -28,20 +28,24 @@ final class CafeteriaManager: NewManager {
         return false
     }
     
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
+    }
+    
     init(config: Config) {
         self.config = config
     }
     
-    func fetch() -> Response<[Cafeteria]> {
+    func fetch(maxCache: CacheTime) -> Response<[Cafeteria]> {
         
         let promise = config.tumCabe.doObjectsRequest(to: .cafeteria,
-                                                      maxCacheTime: .time(.aboutOneWeek)) as Response<[Cafeteria]>
+                                                      maxCacheTime: maxCache) as Response<[Cafeteria]>
         
         return promise.flatMap { (cafeterias: [Cafeteria]) in
             
             return self.config.mensaApp.doJSONRequest(to: .exported,
                                                       queries: ["mensa_id" : "all"],
-                                                      maxCacheTime: .time(.aboutOneDay)).map { (json: JSON) in
+                                                      maxCacheTime: maxCache).map { (json: JSON) in
                 
                 let menus = json["mensa_menu"].array ==> CafeteriaMenu.init(from:)
                 let extras = json["mensa_beilagen"].array ==> CafeteriaMenu.init(from:)
