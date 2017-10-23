@@ -24,7 +24,7 @@ final class UserDataManager: DetailsForDataManager {
     func search(with id: String) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
         return manager.search(query: id).flatMap { users in
-            guard let user = users.first else {
+            guard let user = users.first, users.count == 1 else {
                 return .errored(with: .noData)
             }
             return .successful(with: user)
@@ -41,15 +41,20 @@ final class UserDataManager: DetailsForDataManager {
     }
     
     func fetch(for data: User) -> Response<UserData> {
-        guard let id = data.id else {
+        guard let name = data.name else {
             return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
-                guard let id = xml["id"].element?.text else {
+                
+                guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
+                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
+                        
                     return .errored(with: .cannotPerformRequest)
                 }
-                return self.search(with: id)
+                let name = "\(first) \(last)"
+                data.name = name
+                return self.search(with: name)
             }
         }
-        return search(with: id)
+        return search(with: name)
     }
 
 }

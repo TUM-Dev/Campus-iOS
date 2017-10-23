@@ -62,14 +62,10 @@ extension MoreTableViewController {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
             manager = mvc.manager
-            manager?.userDataManager.fetch().onSuccess(in: .main) { _ in
+        }
+        if user?.data == nil {
+            manager?.userDataManager.fetch().onResult { _ in
                 self.updateView()
-            }
-            .onError { error in
-                guard case .invalidStatus(_, .some(let data)) = error else {
-                    return
-                }
-                print(data.string!)
             }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
