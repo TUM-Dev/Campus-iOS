@@ -10,6 +10,7 @@ import UIKit
 import Sweeft
 
 class ImageViewBinding {
+    // Empty class used to signal when the reference has changed
 }
 
 protocol ImageContainer {
@@ -25,14 +26,15 @@ class Image {
         self.url = url
     }
     
-    func bind(to imageView: UIImageView, default image: UIImage?) -> ImageViewBinding {
+    func bind(to imageView: UIImageView,
+              default image: UIImage?) -> ImageViewBinding {
+        
         promise = promise ?? url.map { .new(from: $0) }
         let binding = ImageViewBinding()
         imageView.image = image
-        promise?.onSuccess(in: .main) { [weak binding] image in
+        promise?.onSuccess(in: .main) { [weak binding, weak imageView] image in
             guard binding != nil else { return }
-            imageView.image = image
-            imageView.superview?.layoutIfNeeded()
+            imageView?.image = image
         }
         return binding
     }
