@@ -36,8 +36,10 @@ class TumDataManager {
         return user?.token != nil
     }
     
-    var config: Config
-    var user: User?
+    private(set) var config: Config
+    var user: User? {
+        return config.tumOnline.user
+    }
     
     var cardManager: [CardManager] {
         return [
@@ -65,7 +67,6 @@ class TumDataManager {
         guard let config = Config(user: user, json: json) else {
             return nil
         }
-        self.user = user
         self.config = config
     }
     

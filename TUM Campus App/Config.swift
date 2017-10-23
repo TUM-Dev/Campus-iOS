@@ -11,7 +11,7 @@ import Sweeft
 
 struct Config {
     let tumCabe: TUMCabeAPI
-    let tumOnline: TUMOnlineAPI
+    var tumOnline: TUMOnlineAPI
     let tumSexy: TUMSexyAPI
     let rooms: StudyRoomAPI
     let bookRentals: BookRentalAPI
@@ -70,6 +70,19 @@ extension Config {
                   mvgURL: mvg,
                   mvgKey: mvgKey,
                   user: user)
+    }
+    
+}
+
+extension Config {
+    
+    func clearCache() {
+        tumCabe.clearCache()
+        tumOnline.clearCache()
+        tumSexy.clearCache()
+        rooms.clearCache()
+        mensaApp.clearCache()
+        mvg.clearCache()
     }
     
 }

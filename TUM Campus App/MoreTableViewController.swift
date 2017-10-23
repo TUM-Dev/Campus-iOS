@@ -28,9 +28,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     var manager: TumDataManager?
     
     var user: User? {
-        didSet {
-            updateView()
-        }
+        return manager?.user
     }
     
     var isLoggedIn: Bool {
@@ -66,7 +64,6 @@ extension MoreTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if let mvc = tabBarController as? CampusTabBarController {
-            user = User.shared
             manager = mvc.manager
             
             if user?.data == nil {
@@ -138,9 +135,7 @@ extension MoreTableViewController {
             }
             
         case 5:
-            PersistentUser.reset()
-            User.shared = nil
-            Usage.value = false
+            manager?.loginManager.logOut()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it

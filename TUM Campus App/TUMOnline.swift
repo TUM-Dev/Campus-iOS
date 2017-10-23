@@ -28,7 +28,7 @@ struct TUMOnlineAPI: API {
     typealias Endpoint = TUMOnlineEndpoint
     
     let baseURL: String
-    let user: User?
+    var user: User?
     
     var baseQueries: [String : String] {
         guard let token = user?.token else {

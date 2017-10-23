@@ -139,3 +139,24 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
 }
+
+extension API {
+    
+    func clearCache() {
+        cache.clear()
+    }
+    
+}
+
+extension FileCache {
+    
+    private var searchPathURL: URL {
+        let urls = FileManager.default.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        return urls[urls.count - 1].appendingPathComponent(directory)
+    }
+    
+    func clear() {
+        try? FileManager.default.removeItem(at: searchPathURL)
+    }
+    
+}

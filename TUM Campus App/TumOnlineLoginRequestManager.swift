@@ -98,12 +98,14 @@ class TumOnlineLoginRequestManager {
             return
         }
         PersistentUser.value = .some(lrzID: lrzID, token: token, state: .loggedIn)
-        User.shared = PersistentUser.value.user
+        config.tumOnline.user = PersistentUser.value.user
     }
     
     func logOut() {
+        config.clearCache()
         PersistentUser.reset()
-        User.shared = nil
+        config.tumOnline.user = nil
+        Usage.value = false
     }
     
 }
