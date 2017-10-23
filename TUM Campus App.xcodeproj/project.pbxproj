@@ -409,12 +409,12 @@
 			name = "Assisting Files and Frameworks";
 			sourceTree = "<group>";
 		};
-		0E3B21421C13C0590035ED70 /* TabBar */ = {
+		0E3B21421C13C0590035ED70 /* NavigationController */ = {
 			isa = PBXGroup;
 			children = (
 				0E3B21331C13B5760035ED70 /* CampusTabBarController.swift */,
 			);
-			name = TabBar;
+			name = NavigationController;
 			sourceTree = "<group>";
 		};
 		0E3B21571C13DBA20035ED70 /* TumOnlineLogin */ = {
@@ -458,7 +458,7 @@
 			children = (
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
-				0E3B21421C13C0590035ED70 /* TabBar */,
+				0E3B21421C13C0590035ED70 /* NavigationController */,
 				0E5A61E21C135E1E006017DB /* Setup Wizard */,
 				0E5A61E31C135E27006017DB /* Card View */,
 				0E60CD491C148ED700B29948 /* Movie Detail View */,
