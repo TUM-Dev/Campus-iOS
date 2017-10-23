@@ -53,6 +53,23 @@ protocol SimpleSingleManager: SimpleManager {
     func fetchSingle() -> Response<DataElement?>
 }
 
+protocol CachedManager: NewManager {
+    var defaultMaxCache: CacheTime { get }
+    func fetch(maxCache: CacheTime) -> Response<[DataType]>
+}
+
+extension CachedManager {
+    
+    func update() -> Response<[DataType]> {
+        return fetch(maxCache: .time(0))
+    }
+    
+    func fetch() -> Response<[DataType]> {
+        return fetch(maxCache: defaultMaxCache)
+    }
+    
+}
+
 extension NewManager {
     
     func fetch() -> Promise<[DataElement], APIError> {

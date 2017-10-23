@@ -56,16 +56,18 @@ class TumOnlineLoginRequestManager {
     }
     
     func getLoginURL() -> String {
-        let version = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenRequest.rawValue
-        if let id = lrzID {
-            return  base + "?pUsername=" + id + "&pTokenName=TumCampusApp-" + version
-        }
-        return ""
+        fatalError()
+//        let version = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? "1"
+//        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenRequest.rawValue
+//        if let id = lrzID {
+//            return  base + "?pUsername=" + id + "&pTokenName=TumCampusApp-" + version
+//        }
+//        return ""
     }
     
     func getConfirmationURL() -> String {
-        return TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenConfirmation.rawValue + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + (token.?)
+        fatalError()
+//        return TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.TokenConfirmation.rawValue + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + (token.?)
     }
     
     func fetch() {

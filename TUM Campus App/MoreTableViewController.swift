@@ -70,9 +70,9 @@ extension MoreTableViewController {
             manager = mvc.manager
             
             if user?.data == nil {
-                manager?.getUserData() {
-                    self.updateView()
-                }
+//                manager?.getUserData() {
+//                    self.updateView()
+//                }
             }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {

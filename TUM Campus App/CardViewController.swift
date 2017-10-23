@@ -33,6 +33,13 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
             self.refresh.endRefreshing()
         }
     }
+    
+    func didUpdateCards() {
+        cards.removeAll()
+        refresh(nil)
+        tableView.reloadData()
+    }
+    
 }
 
 extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {

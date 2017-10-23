@@ -138,8 +138,10 @@ extension CalendarViewController {
 
 extension CalendarViewController {
     
-    func fetch() {
-        delegate?.dataManager()?.calendarManager.fetch().onSuccess(in: .main) { entries in
+    func fetch(skippingCache: Bool = false) {
+        let manager = delegate?.dataManager()?.calendarManager
+        let promise = skippingCache ? manager?.update() : manager?.fetch()
+        promise?.onSuccess(in: .main) { entries in
             
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "yyyy MM dd"
