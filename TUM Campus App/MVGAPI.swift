@@ -9,11 +9,8 @@
 import Sweeft
 
 enum MVGAPIEndpoint: String, APIEndpoint {
-    case queryStationById = "fahrinfo/api/location/query"
-    case queryStationsByName = "fahrinfo/api/location/queryWeb"
     case getNearbyStations = "fahrinfo/api/location/nearby"
-    case departure = "fahrinfo/api/departure"
-    case interruptions = ".rest/betriebsaenderungen/api/interruptions"
+    case departure = "fahrinfo/api/departure/{id}"
 }
 
 struct MVGAPI: API {

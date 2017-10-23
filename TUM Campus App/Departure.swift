@@ -30,7 +30,7 @@ struct Departure {
             let live = json["live"].double?.bool,
             let lineBackgroundColor = json["lineBackgroundColor"].string,
             let departureId = json["departureId"].int,
-            let sev = json["dev"].double?.bool else {
+            let sev = json["sev"].double?.bool else {
                 
                 return nil
         }

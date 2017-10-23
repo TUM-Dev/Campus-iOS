@@ -46,10 +46,8 @@ extension MVGManager: DetailsForDataManager {
     func fetch(for data: Station) -> Response<[Departure]> {
         
         return config.mvg.doJSONRequest(to: .departure,
-                                        queries: [
-                                            "id" : data.id,
-                                            "footway": 0,
-                                        ]).map { (json: JSON) in
+                                        arguments: ["id" : data.id],
+                                        queries: [ "footway": 0 ]).map { (json: JSON) in
             
             return json["departures"].array ==> Departure.init <** data
         }
