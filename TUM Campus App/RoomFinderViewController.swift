@@ -68,6 +68,12 @@ extension RoomFinderViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         if let roomUnwrapped = room as? Room {
