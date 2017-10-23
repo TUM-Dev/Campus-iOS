@@ -97,6 +97,7 @@
 		0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC28AE31E05549300FF1E40 /* EditCards.storyboard */; };
 		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
 		0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD970E1F9D87D60070441D /* MVV.storyboard */; };
+		0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD97101F9D8C6C0070441D /* DetailedStation.swift */; };
 		0EDD932B1EB78AF30022E9BC /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */; };
 		0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */; };
 		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
@@ -281,6 +282,7 @@
 		0EC28AE41E05549300FF1E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EditCards.storyboard; sourceTree = "<group>"; };
 		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
 		0ECD970E1F9D87D60070441D /* MVV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MVV.storyboard; sourceTree = "<group>"; };
+		0ECD97101F9D8C6C0070441D /* DetailedStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedStation.swift; sourceTree = "<group>"; };
 		0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomAPI.swift; sourceTree = "<group>"; };
 		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				0E893EFB1EB3DB550058027F /* Config */,
+				807C480F1F40917E00CAD35D /* MVGManager.swift */,
 				0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */,
 				5007C69F1E06788F0014B065 /* StudyRoomsManager.swift */,
 				0EB1617D1C1A01FE001A08FC /* TumOnlie XML Managers */,
@@ -868,9 +871,9 @@
 		807C48131F40918500CAD35D /* MVV */ = {
 			isa = PBXGroup;
 			children = (
-				807C480F1F40917E00CAD35D /* MVGManager.swift */,
 				807C48101F40917E00CAD35D /* Departure.swift */,
 				807C48141F4091DD00CAD35D /* Interruption.swift */,
+				0ECD97101F9D8C6C0070441D /* DetailedStation.swift */,
 				807C48161F4091E300CAD35D /* Station.swift */,
 				807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */,
 			);
@@ -1393,6 +1396,7 @@
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
 				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
+				0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */,
 				0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */,
 				0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */,
 			);
