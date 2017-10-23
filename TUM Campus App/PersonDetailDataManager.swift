@@ -24,7 +24,8 @@ final class PersonDetailDataManager: DetailsManager {
         guard !data.contactsLoaded else {
             return .successful(with: data)
         }
-        return config.tumOnline.doRepresentedRequest(to: .personDetails).map { (xml: XMLIndexer) in
+        return config.tumOnline.doRepresentedRequest(to: .personDetails,
+                                                     queries: ["pIdentNr": data.id]).map { (xml: XMLIndexer) in
             
             let dien = xml["person"]["dienstlich"]
             let privat = xml["person"]["privat"]
@@ -43,7 +44,6 @@ final class PersonDetailDataManager: DetailsManager {
             contactInfo.append((.Web, dien["www_homepage"].element?.text))
             contactInfo.append((.Web, privat["www_homepage"].element?.text))
             
-//            let titel = xml["person"]["titel"].element?.text
             for item in contactInfo {
                 if let infoValue = item.1, infoValue != "" {
                     data.contactInfo.append((item.0, infoValue))
