@@ -36,7 +36,7 @@ class TumDataManager {
     var config: Config
     var user: User?
     
-    var cardManager: [SimpleSingleManager] {
+    var cardManager: [CardManager] {
         return [
             calendarManager,
             movieManager,
@@ -68,7 +68,7 @@ class TumDataManager {
     
     func getCardItems() -> Response<[DataElement]> {
         // TODO: Sort
-        return (self.cardManager => { $0.fetchSingle() }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+        return (self.cardManager.sorted(ascending: \.indexInOrder) => { $0.fetchSingle() }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
     
     func search(query: String) -> Response<[DataElement]> {

@@ -43,13 +43,6 @@ class BookRental: DataElement {
     }
 }
 
-extension BookRental: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return .bookRental
-    }
-}
-
 extension BookRental {
     
     convenience init?(td1: XMLElement, td2: XMLElement) {

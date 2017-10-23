@@ -10,15 +10,7 @@ import Foundation
 import Sweeft
 import CoreLocation
 
-enum CafeteriasApi: String {
-    case ID = "id"
-    case Name = "name"
-    case Address = "address"
-    case Longitude = "longitude"
-    case Latitude = "latitude"
-}
-
-final class CafeteriaManager: CachedManager, SingleItemManager {
+final class CafeteriaManager: CachedManager, SingleItemManager, CardManager {
     
     typealias DataType = Cafeteria
     
@@ -30,6 +22,10 @@ final class CafeteriaManager: CachedManager, SingleItemManager {
     
     var defaultMaxCache: CacheTime {
         return .time(.aboutOneDay)
+    }
+    
+    var cardKey: CardKey {
+        return .cafeteria
     }
     
     init(config: Config) {

@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class CalendarManager: CachedManager, SingleItemManager {
+final class CalendarManager: CachedManager, CardManager, SingleItemManager {
     
     typealias DataType = CalendarRow
     
@@ -17,6 +17,10 @@ final class CalendarManager: CachedManager, SingleItemManager {
     
     var defaultMaxCache: CacheTime {
         return .time(.aboutOneWeek)
+    }
+    
+    var cardKey: CardKey {
+        return .calendar
     }
     
     var requiresLogin: Bool {

@@ -31,14 +31,6 @@ final class CalendarRow: DataElement {
     
 }
 
-extension CalendarRow: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return .calendar
-    }
-    
-}
-
 extension CalendarRow: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer) {

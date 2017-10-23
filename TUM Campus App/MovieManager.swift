@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class MovieManager: SingleItemManager {
+final class MovieManager: SingleItemManager, CardManager {
     
     typealias DataType = Movie
     
@@ -17,6 +17,10 @@ final class MovieManager: SingleItemManager {
     
     var requiresLogin: Bool {
         return false
+    }
+    
+    var cardKey: CardKey {
+        return .tufilm
     }
     
     init(config: Config) {

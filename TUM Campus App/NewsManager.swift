@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class NewsManager: SingleItemManager {
+final class NewsManager: SingleItemManager, CardManager {
     
     typealias DataType = News
     
@@ -17,6 +17,10 @@ final class NewsManager: SingleItemManager {
     
     var requiresLogin: Bool {
         return false
+    }
+    
+    var cardKey: CardKey {
+        return .news
     }
     
     init(config: Config) {

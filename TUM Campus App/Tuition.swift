@@ -31,14 +31,6 @@ final class Tuition: DataElement {
     
 }
 
-extension Tuition: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return .tuition
-    }
-    
-}
-
 extension Tuition: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer) {

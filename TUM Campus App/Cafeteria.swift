@@ -70,11 +70,3 @@ extension Cafeteria: Deserializable {
     }
     
 }
-
-extension Cafeteria: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return  .cafeteria
-    }
-    
-}

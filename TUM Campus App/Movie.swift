@@ -48,14 +48,6 @@ final class Movie: ImageDownloader, DataElement {
     
 }
 
-extension Movie: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return .tufilm
-    }
-    
-}
-
 extension Movie: Deserializable {
     
     convenience init?(from json: JSON) {

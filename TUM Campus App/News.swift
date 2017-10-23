@@ -52,14 +52,6 @@ final class News: ImageDownloader, DataElement {
     
 }
 
-extension News: CardDisplayable {
-    
-    var cardKey: CardKey {
-        return .news
-    }
-  
-}
-
 extension News: Deserializable {
     
     convenience init?(from json: JSON) {

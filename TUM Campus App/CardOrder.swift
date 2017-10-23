@@ -10,11 +10,6 @@ import Sweeft
 
 struct CardOrder: Codable {
     var cards: [CardKey]
-    
-    mutating func remove(cardFor data: DataElement) {
-        cards <| { $0 != (data as? CardDisplayable)?.cardKey }
-    }
-    
 }
 
 struct PersistentCardOrder: SingleStatus {

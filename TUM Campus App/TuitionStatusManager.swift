@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class TuitionStatusManager: SingleItemManager {
+final class TuitionStatusManager: SingleItemManager, CardManager {
     
     typealias DataType = Tuition
     
@@ -17,6 +17,10 @@ final class TuitionStatusManager: SingleItemManager {
     
     var requiresLogin: Bool {
         return false
+    }
+    
+    var cardKey: CardKey {
+        return .tuition
     }
     
     init(config: Config) {

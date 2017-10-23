@@ -93,3 +93,17 @@ extension SingleItemManager {
     }
     
 }
+
+protocol CardManager: SimpleSingleManager {
+    var cardKey: CardKey { get }
+}
+
+extension CardManager {
+    
+    
+    var indexInOrder: Int {
+        let cards = PersistentCardOrder.value.cards
+        return cards.index(of: cardKey) ?? cards.count
+    }
+    
+}
