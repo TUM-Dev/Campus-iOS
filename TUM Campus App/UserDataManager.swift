@@ -21,7 +21,7 @@ final class UserDataManager: DetailsForDataManager {
         self.config = config
     }
     
-    func search(with id: String) -> Promise<UserData, APIError> {
+    func search(with id: String) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
         return manager.search(query: id).flatMap { users in
             guard let user = users.first else {
@@ -31,7 +31,16 @@ final class UserDataManager: DetailsForDataManager {
         }
     }
     
-    func fetch(for data: User) -> Promise<UserData, APIError> {
+    func fetch() -> Response<User> {
+        return config.tumOnline.user.map { user in
+            return self.fetch(for: user).map { (data: UserData) in
+                user.data = data
+                return user
+            }
+        } ?? .errored(with: .cannotPerformRequest)
+    }
+    
+    func fetch(for data: User) -> Response<UserData> {
         guard let id = data.id else {
             return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
                 guard let id = xml["id"].element?.text else {

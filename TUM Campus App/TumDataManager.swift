@@ -29,6 +29,7 @@ class TumDataManager {
     lazy var roomSearchManager: RoomSearchManager = { RoomSearchManager(config: self.config) }()
     lazy var personSearchManager: PersonSearchManager = { PersonSearchManager(config: self.config) }()
     lazy var lectureSearchManager: LectureSearchManager = { LectureSearchManager(config: self.config) }()
+    lazy var userDataManager: UserDataManager = { UserDataManager(config: self.config) }()
     
     lazy var loginManager: TumOnlineLoginRequestManager = { TumOnlineLoginRequestManager(config: self.config) }()
     

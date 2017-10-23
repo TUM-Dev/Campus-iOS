@@ -20,7 +20,7 @@ enum TUMOnlineEndpoint: String, APIEndpoint {
     case personalGrades = "wbservicesbasic.noten"
     case lectureSearch = "wbservicesbasic.veranstaltungenSuche"
     case lectureDetails = "wbservicesbasic.veranstaltungenDetails"
-    case identify = "wbservicebasic.id"
+    case identify = "wbservicesbasic.id"
 }
 
 struct TUMOnlineAPI: API {
