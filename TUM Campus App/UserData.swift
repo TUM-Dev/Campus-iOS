@@ -11,7 +11,7 @@ import Contacts
 import UIKit
 import SWXMLHash
 
-final class UserData: ImageDownloader, DataElement {
+final class UserData: DataElement {
     
     func getCellIdentifier() -> String {
         return "person"
@@ -19,11 +19,12 @@ final class UserData: ImageDownloader, DataElement {
     
     let name: String
     let id: String
+    let avatar: Image?
     
     init(name: String, picture: URL?, id: String) {
         self.name = name
         self.id = id
-        super.init(url: picture?.absoluteString)
+        self.avatar = picture.map { .new(from: $0.absoluteString) }
     }
     
     var title: String?
@@ -54,9 +55,9 @@ final class UserData: ImageDownloader, DataElement {
     
     func addContact(_ handler: () -> ()?) {
         let contact = CNMutableContact()
-        if let imageOfUser = image {
-            contact.imageData = UIImagePNGRepresentation(imageOfUser)
-        }
+//        if let imageOfUser = image {
+//            contact.imageData = UIImagePNGRepresentation(imageOfUser)
+//        }
         contact.givenName = name
         var phones = [String]()
         var mobiles = [String]()

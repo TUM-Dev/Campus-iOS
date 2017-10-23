@@ -13,7 +13,6 @@ class NewsCardCell: CardTableViewCell {
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
     
     override func setElement(_ element: DataElement) {
         if let newsItem = element as? News {
@@ -21,7 +20,7 @@ class NewsCardCell: CardTableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "hh:mm a - dd MMM, YYYY"
             dateLabel.text = dateFormatter.string(from: newsItem.date as Date)
-            detailImageView.image = newsItem.image
+//            detailImageView.image = newsItem.image
         }
     }
 

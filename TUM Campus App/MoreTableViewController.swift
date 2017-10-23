@@ -10,7 +10,7 @@ import UIKit
 import Sweeft
 import MessageUI
 
-class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate, MFMailComposeViewControllerDelegate {
+class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,7 +38,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     func updateView() {
         if isLoggedIn {
             nameLabel.text = user?.name
-            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
+//            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
         } else {
@@ -49,9 +49,9 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
         }
     }
     
-    func updateImageView() {
-        updateView()
-    }
+//    func updateImageView() {
+//        updateView()
+//    }
     
     func dataManager() -> TumDataManager? {
         return manager

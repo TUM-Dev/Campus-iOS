@@ -9,7 +9,7 @@
 import UIKit
 import AYSlidingPickerView
 
-class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, DetailView {
+class RoomFinderViewController: UIViewController, DetailView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -27,21 +27,21 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
     
     var pickerView = AYSlidingPickerView()
     
-    func updateImageView() {
-        refreshImage()
-    }
+//    func updateImageView() {
+//        refreshImage()
+//    }
     
     func refreshImage() {
-        if let image = currentMap?.image {
-            title = currentMap?.description
-            imageView.image = image
-            scrollView.zoomScale = 1.0
-            scrollView.contentSize = imageView.bounds.size
-            scrollView.minimumZoomScale = 1.0
-            scrollView.maximumZoomScale = 5.0
-        } else {
-            currentMap?.subscribeToImage(self)
-        }
+//        if let image = currentMap?.image {
+//            title = currentMap?.description
+//            imageView.image = image
+//            scrollView.zoomScale = 1.0
+//            scrollView.contentSize = imageView.bounds.size
+//            scrollView.minimumZoomScale = 1.0
+//            scrollView.maximumZoomScale = 5.0
+//        } else {
+//            currentMap?.subscribeToImage(self)
+//        }
     }
     
 }

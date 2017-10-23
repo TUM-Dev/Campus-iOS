@@ -9,7 +9,7 @@
 import UIKit
 import Sweeft
 
-final class Movie: ImageDownloader, DataElement {
+final class Movie: DataElement {
     
     let name: String
     let id: String
@@ -22,8 +22,21 @@ final class Movie: ImageDownloader, DataElement {
     let description: String
     let created: Date
     let airDate: Date
+    let poster: Image
     
-    init(name: String, id: String, year: Int, runtime: Int, rating: Double, genre: String, actors: String, director: String, description: String, created: Date, airDate: Date, poster: String) {
+    init(name: String,
+         id: String,
+         year: Int,
+         runtime: Int,
+         rating: Double,
+         genre: String,
+         actors: String,
+         director: String,
+         description: String,
+         created: Date,
+         airDate: Date,
+         poster: String) {
+        
         self.name = name
         self.id = id
         self.runtime = runtime
@@ -35,7 +48,7 @@ final class Movie: ImageDownloader, DataElement {
         self.description = description
         self.year = year
         self.actors = actors
-        super.init(url: poster)
+        self.poster = .new(from: poster)
     }
     
     func getCellIdentifier() -> String {
@@ -51,6 +64,7 @@ final class Movie: ImageDownloader, DataElement {
 extension Movie: Deserializable {
     
     convenience init?(from json: JSON) {
+        
         guard let ratingString = json["rating"].string,
             let rating = Double(ratingString),
             let description = json["description"].string,

@@ -40,7 +40,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
                 actorsLabel.text = movie.actors
                 directorLabel.text = movie.director
                 descriptionLabel.text = movie.description
-                posterView.image = movie.image
+//                posterView.image = movie.image
                 tableView.reloadData()
             }
         }

@@ -17,7 +17,6 @@ class SearchViewController: UITableViewController, DetailView {
     }
     
     weak var delegate: DetailViewDelegate?
-    
     var elements = [DataElement]()
     
     var currentElement: DataElement?
@@ -26,11 +25,6 @@ class SearchViewController: UITableViewController, DetailView {
         delegate?.dataManager()?.search(query: query).onSuccess { data in
             guard query == self.searchTextField.text else { return }
             self.elements = data
-            for element in self.elements {
-                if let downloader = element as? ImageDownloader {
-                    downloader.subscribeToImage(self)
-                }
-            }
             self.tableView.reloadData()
         }
     }
@@ -45,11 +39,11 @@ extension SearchViewController: DetailViewDelegate {
     
 }
 
-extension SearchViewController: ImageDownloadSubscriber {
+extension SearchViewController {
     
-    func updateImageView() {
-        tableView.reloadData()
-    }
+//    func updateImageView() {
+//        tableView.reloadData()
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -62,11 +56,6 @@ extension SearchViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string != " " {
-            for element in elements {
-                if let downloader = element as? ImageDownloader {
-                    downloader.clearSubscribers()
-                }
-            }
             let replaced = NSString(string: textField.text ?? "").replacingCharacters(in: range, with: string)
             if  replaced != "" {
                 search(query: replaced)

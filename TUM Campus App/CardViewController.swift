@@ -20,9 +20,6 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
         manager?.getCardItems().onSuccess { data in
             if self.cards.count <= data.count {
                 for item in data {
-                    if let movieItem = item as? Movie {
-                        movieItem.subscribeToImage(self)
-                    }
                     if let lectureItem = item as? CalendarRow {
                         self.nextLecture = lectureItem
                     }
@@ -42,11 +39,11 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     
 }
 
-extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
+extension CardViewController: DetailViewDelegate {
     
-    func updateImageView() {
-        tableView.reloadData()
-    }
+//    func updateImageView() {
+//        tableView.reloadData()
+//    }
     
     func dataManager() -> TumDataManager? {
         return manager

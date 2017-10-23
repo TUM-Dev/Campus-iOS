@@ -58,7 +58,6 @@
 		0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC5E1C0DEC6F00060FB0 /* CalendarRowSet.swift */; };
 		0E64AC651C0DF59100060FB0 /* NextLectureCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */; };
 		0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */; };
-		0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */; };
 		0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E692BB71C162CD200266417 /* CalendarViewController.swift */; };
 		0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B53461EA447F3002B5058 /* TumSexyTableViewController.swift */; };
 		0E6B534A1EA44814002B5058 /* TumSexyView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E6B53491EA44814002B5058 /* TumSexyView.storyboard */; };
@@ -242,7 +241,6 @@
 		0E64AC5E1C0DEC6F00060FB0 /* CalendarRowSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRowSet.swift; sourceTree = "<group>"; };
 		0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextLectureCardCell.swift; sourceTree = "<group>"; };
 		0E64AC661C0DFACD00060FB0 /* TumDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumDataManager.swift; sourceTree = "<group>"; };
-		0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloadSubscriber.swift; sourceTree = "<group>"; };
 		0E692BB71C162CD200266417 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0E6B53461EA447F3002B5058 /* TumSexyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyTableViewController.swift; sourceTree = "<group>"; };
 		0E6B53491EA44814002B5058 /* TumSexyView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TumSexyView.storyboard; sourceTree = "<group>"; };
@@ -543,7 +541,6 @@
 				0EC28AE31E05549300FF1E40 /* EditCards.storyboard */,
 				0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
-				0E68EF311C13F721002EE471 /* ImageDownloadSubscriber.swift */,
 				0EDCACD61C1450A4008648D8 /* Cards */,
 			);
 			name = "Card View";
@@ -1318,7 +1315,6 @@
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
 				0E64AC671C0DFACD00060FB0 /* TumDataManager.swift in Sources */,
 				0E6C20621C4C38B50059B7C2 /* LectureDetailsManager.swift in Sources */,
-				0E68EF321C13F721002EE471 /* ImageDownloadSubscriber.swift in Sources */,
 				0E60CD461C14823300B29948 /* MovieDetailTableViewController.swift in Sources */,
 				0E893EFA1EB3D8190058027F /* XMLDeserializable.swift in Sources */,
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,

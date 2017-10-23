@@ -9,23 +9,21 @@
 import Foundation
 import Sweeft
 
-final class Map: ImageDownloader, DataElement {
+final class Map: DataElement {
     let roomID: String
     let mapID: String
     let description: String
     let scale: Int
+    let image: Image
     
     init(roomID: String, mapID: String, description: String, scale: Int, api: TUMCabeAPI) {
         self.roomID = roomID
         self.mapID = mapID
         self.description = description
         self.scale = scale
-        super.init()
-        
-        // TODO:
         
         let url = api.url(for: TUMCabeEndpoint.mapImage, arguments: ["room": roomID, "id": mapID])
-        getImage(url.absoluteString)
+        image = .new(from: url.absoluteString)
     }
     
     convenience init?(roomID: String, api: TUMCabeAPI, from json: JSON) {

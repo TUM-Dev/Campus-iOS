@@ -11,22 +11,20 @@ import SafariServices
 
 import Sweeft
 
-final class News: ImageDownloader, DataElement {
+final class News: DataElement {
     
     let id: String
     let date: Date
     let title: String
     let link: String
+    let image: Image?
     
     init(id: String, date: Date, title: String, link: String, image: String? = nil) {
         self.id = id
         self.date = date
         self.title = title
         self.link = link
-        super.init()
-        if let image = image?.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
-            getImage(image)
-        }
+        self.image = image.map { .new(from: $0) }
     }
     
     var text: String {

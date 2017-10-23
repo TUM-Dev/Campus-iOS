@@ -14,10 +14,8 @@ class NewsTableViewCell: UITableViewCell {
         didSet {
             if let newsItem = newsItem {
                 titleLabel.text = newsItem.title
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "hh:mm a - dd MMM, YYYY"
-                dateLabel.text = dateFormatter.string(from: newsItem.date as Date)
-                detailImageView.image = newsItem.image
+                dateLabel.text = newsItem.date.string(using: "hh:mm a - dd MMM, YYYY")
+//                detailImageView.image = newsItem.image
             }
         }
     }
