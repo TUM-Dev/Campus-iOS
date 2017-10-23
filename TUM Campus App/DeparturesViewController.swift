@@ -43,14 +43,14 @@ class DeparturesViewController : UITableViewController {
     }
     
     func refresh() {
-        MVG.default.getDepartures(forStation: station) { error, departures in
-            if let error = error {
-                self.showError("Error", error.localizedDescription)
-                return
-            }
-            self.departures = departures
-            self.tableView.refreshControl?.endRefreshing()
-        }
+//        MVG.default.getDepartures(forStation: station) { error, departures in
+//            if let error = error {
+//                self.showError("Error", error.localizedDescription)
+//                return
+//            }
+//            self.departures = departures
+//            self.tableView.refreshControl?.endRefreshing()
+//        }
     }
     
     func openInMaps() {

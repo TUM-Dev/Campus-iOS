@@ -73,6 +73,7 @@
 		0E893EFF1EB3DB720058027F /* TUMCabe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E893EFE1EB3DB720058027F /* TUMCabe.swift */; };
 		0EA0F5E81F9938C9008C5229 /* CafeteriaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0F5E71F9938C9008C5229 /* CafeteriaConstants.swift */; };
 		0EA0F5EA1F993CBA008C5229 /* MensaAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */; };
+		0EAB3B951F9D76280074FB1E /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAB3B941F9D76280074FB1E /* MVGAPI.swift */; };
 		0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */; };
 		0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161831C1A05B6001A08FC /* Lecture.swift */; };
 		0EB161861C1A0E6A001A08FC /* LecturesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB161851C1A0E6A001A08FC /* LecturesTableViewController.swift */; };
@@ -148,7 +149,7 @@
 		57D1F81D1D9AFFF8B294E299 /* Pods_Campus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24903A680C6A8A498F797A7C /* Pods_Campus.framework */; };
 		68B7D77455045A6C4557BDD9 /* Pods_TUM_Campus_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E5FE2E8CB9088FB285EB17 /* Pods_TUM_Campus_AppUITests.framework */; };
 		807C480D1F4090E600CAD35D /* MVGNearbyStationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */; };
-		807C48111F40917E00CAD35D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C480F1F40917E00CAD35D /* API.swift */; };
+		807C48111F40917E00CAD35D /* MVGManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C480F1F40917E00CAD35D /* MVGManager.swift */; };
 		807C48121F40917E00CAD35D /* Departure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48101F40917E00CAD35D /* Departure.swift */; };
 		807C48151F4091DD00CAD35D /* Interruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48141F4091DD00CAD35D /* Interruption.swift */; };
 		807C48171F4091E300CAD35D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48161F4091E300CAD35D /* Station.swift */; };
@@ -255,6 +256,7 @@
 		0E893EFE1EB3DB720058027F /* TUMCabe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabe.swift; sourceTree = "<group>"; };
 		0EA0F5E71F9938C9008C5229 /* CafeteriaConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaConstants.swift; sourceTree = "<group>"; };
 		0EA0F5E91F993CBA008C5229 /* MensaAppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaAppAPI.swift; sourceTree = "<group>"; };
+		0EAB3B941F9D76280074FB1E /* MVGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
 		0EB161811C1A0540001A08FC /* PersonalLectureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalLectureManager.swift; sourceTree = "<group>"; };
 		0EB161831C1A05B6001A08FC /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		0EB161851C1A0E6A001A08FC /* LecturesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesTableViewController.swift; sourceTree = "<group>"; };
@@ -340,7 +342,7 @@
 		645706747A75D493650CE8BF /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		71E5FE2E8CB9088FB285EB17 /* Pods_TUM_Campus_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGNearbyStationsViewController.swift; sourceTree = "<group>"; };
-		807C480F1F40917E00CAD35D /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		807C480F1F40917E00CAD35D /* MVGManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGManager.swift; sourceTree = "<group>"; };
 		807C48101F40917E00CAD35D /* Departure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Departure.swift; sourceTree = "<group>"; };
 		807C48141F4091DD00CAD35D /* Interruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interruption.swift; sourceTree = "<group>"; };
 		807C48161F4091E300CAD35D /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				0E893EFC1EB3DB620058027F /* Config.swift */,
+				0EAB3B941F9D76280074FB1E /* MVGAPI.swift */,
 				0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */,
 				0E893EF71EB3D7DE0058027F /* TUMOnline.swift */,
 				0E893EFE1EB3DB720058027F /* TUMCabe.swift */,
@@ -862,7 +865,7 @@
 		807C48131F40918500CAD35D /* MVV */ = {
 			isa = PBXGroup;
 			children = (
-				807C480F1F40917E00CAD35D /* API.swift */,
+				807C480F1F40917E00CAD35D /* MVGManager.swift */,
 				807C48101F40917E00CAD35D /* Departure.swift */,
 				807C48141F4091DD00CAD35D /* Interruption.swift */,
 				807C48161F4091E300CAD35D /* Station.swift */,
@@ -1283,6 +1286,7 @@
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				0E424F691BE17ED700B5DFCB /* SearchViewController.swift in Sources */,
 				22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */,
+				0EAB3B951F9D76280074FB1E /* MVGAPI.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
 				0E424F4B1BE16DBE00B5DFCB /* CardViewController.swift in Sources */,
 				0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */,
@@ -1346,7 +1350,7 @@
 				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
-				807C48111F40917E00CAD35D /* API.swift in Sources */,
+				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
 				0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,

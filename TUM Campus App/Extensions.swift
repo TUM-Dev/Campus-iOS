@@ -100,6 +100,14 @@ extension UIViewController {
     }
 }
 
+extension Double {
+    
+    var bool: Bool {
+        return NSNumber(value: self).boolValue
+    }
+    
+}
+
 extension UIColor {
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

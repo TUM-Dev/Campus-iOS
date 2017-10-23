@@ -20,6 +20,7 @@ class TumDataManager {
     lazy var gradesManager: PersonalGradeManager = { PersonalGradeManager(config: self.config) }()
     lazy var tumSexyManager: TumSexyManager = { TumSexyManager(config: self.config) }()
     lazy var cafeteriaManager: CafeteriaManager = { CafeteriaManager(config: self.config) }()
+    lazy var mvgManager: MVGManager = { MVGManager(config: self.config) }()
     
     lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
     lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()

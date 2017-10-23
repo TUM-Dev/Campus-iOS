@@ -61,15 +61,15 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
     }
     
     func updateDeparturesForLocation(_ location: CLLocation) {
-        api.getNearbyStations(atLocation: location) { error, stations in
-            if let error = error {
-                self.showError("Error", error.localizedDescription)
-                return
-            }
-            
-            self.nearestStations = stations.sorted { $0.0.distance ?? 0 < $0.1.distance ?? 0 }
-            self.tableView.refreshControl?.endRefreshing()
-        }
+//        api.getNearbyStations(atLocation: location) { error, stations in
+//            if let error = error {
+//                self.showError("Error", error.localizedDescription)
+//                return
+//            }
+//            
+//            self.nearestStations = stations.sorted { $0.0.distance ?? 0 < $0.1.distance ?? 0 }
+//            self.tableView.refreshControl?.endRefreshing()
+//        }
     }
     
     

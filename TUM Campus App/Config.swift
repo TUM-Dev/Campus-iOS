@@ -16,6 +16,7 @@ struct Config {
     let rooms: StudyRoomAPI
     let bookRentals: BookRentalAPI
     let mensaApp: MensaAppAPI
+    let mvg: MVGAPI
 }
 
 extension Config {
@@ -30,6 +31,8 @@ extension Config {
          roomsURL: String,
          rentalsURL: String,
          mensaAppURL: String,
+         mvgURL: String,
+         mvgKey: String,
          user: User?) {
         
         self.init(tumCabe: TUMCabeAPI(baseURL: tumCabeURL),
@@ -37,7 +40,8 @@ extension Config {
                   tumSexy: TUMSexyAPI(baseURL: tumSexyURL),
                   rooms: StudyRoomAPI(baseURL: roomsURL),
                   bookRentals: BookRentalAPI(baseURL: rentalsURL),
-                  mensaApp: MensaAppAPI(baseURL: mensaAppURL))
+                  mensaApp: MensaAppAPI(baseURL: mensaAppURL),
+                  mvg: MVGAPI(baseURL: mvgURL, apiKey: mvgKey))
     }
     
 }
@@ -51,7 +55,9 @@ extension Config {
             let tumSexy = json["tumSexy"].string,
             let rooms = json["studyRooms"].string,
             let rentals = json["bookRentals"].string,
-            let mensaApp = json["mensaApp"].string else {
+            let mensaApp = json["mensaApp"].string,
+            let mvg = json["mvg"].string,
+            let mvgKey = json["mvgKey"].string else {
                 
             return nil
         }
@@ -61,6 +67,8 @@ extension Config {
                   roomsURL: rooms,
                   rentalsURL: rentals,
                   mensaAppURL: mensaApp,
+                  mvgURL: mvg,
+                  mvgKey: mvgKey,
                   user: user)
     }
     

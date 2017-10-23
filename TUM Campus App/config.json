@@ -4,5 +4,7 @@
     "tumSexy": "http://json.tum.sexy",
     "studyRooms": "http://www.devapp.it.tum.de/iris/",
     "bookRentals": "https://opac.ub.tum.de/InfoGuideClient.tumsis",
-    "mensaApp": "http://lu32kap.typo3.lrz.de/mensaapp"
+    "mensaApp": "http://lu32kap.typo3.lrz.de/mensaapp",
+    "mvg": "https://www.mvg.de",
+    "mvgKey": "5af1beca494712ed38d313714d4caff6"
 }
