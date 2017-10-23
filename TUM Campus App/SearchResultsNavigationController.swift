@@ -15,8 +15,7 @@ class SearchResultsNavigationController: UINavigationController {
 
         let backButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didSelectBackButton(sender:)))
         
-        self.navigationItem.backBarButtonItem = backButton
-        if let destination = self.topViewController as? UIViewController {
+        if let destination = self.topViewController {
             destination.navigationItem.leftBarButtonItem = backButton
         }
     }

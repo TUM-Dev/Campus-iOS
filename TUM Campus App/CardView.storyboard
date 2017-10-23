@@ -628,7 +628,7 @@
                                     <outlet property="contributorsLabel" destination="gfn-BZ-8Pj" id="Rox-cp-SQI"/>
                                     <outlet property="detailsLabel" destination="bJR-UA-nYN" id="fJv-QX-hiP"/>
                                     <outlet property="titleLabel" destination="DRJ-KK-lsb" id="K0L-V6-bvD"/>
-                                    <segue destination="mUA-1k-eBB" kind="show" id="Ukd-1R-Pcc"/>
+                                    <segue destination="014-Ol-Jnb" kind="show" id="QO1-PK-26H"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="room" rowHeight="101" id="hBd-rx-dGi" customClass="RoomResultTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -672,7 +672,7 @@
                                 <connections>
                                     <outlet property="buildingNameLabel" destination="bS8-5X-261" id="gYA-cp-W00"/>
                                     <outlet property="roomNameLabel" destination="F9F-cC-Yyp" id="nri-lt-qI2"/>
-                                    <segue destination="014-Ol-Jnb" kind="show" id="uB7-9n-ifA"/>
+                                    <segue destination="mUA-1k-eBB" kind="show" id="Jta-oL-ne3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
