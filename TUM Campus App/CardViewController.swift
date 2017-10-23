@@ -108,7 +108,7 @@ extension CardViewController {
         if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
-        if let navCon = segue.destination as? UINavigationController,
+        if let navCon = segue.destination as? SearchResultsNavigationController,
             let mvc = navCon.topViewController as? EditCardsViewController {
             mvc.delegate = self
         }

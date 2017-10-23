@@ -716,10 +716,10 @@
             </objects>
             <point key="canvasLocation" x="4191" y="266"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search Results Navigation Controller-->
         <scene sceneID="0Dc-oP-Po8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w70-f5-X1o" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w70-f5-X1o" customClass="SearchResultsNavigationController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lBy-mH-sBw">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -734,10 +734,10 @@
             </objects>
             <point key="canvasLocation" x="2945" y="-117"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search Results Navigation Controller-->
         <scene sceneID="sZf-mn-aos">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUA-1k-eBB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mUA-1k-eBB" customClass="SearchResultsNavigationController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HYV-bK-te4">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -752,10 +752,10 @@
             </objects>
             <point key="canvasLocation" x="3626" y="267"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Search Results Navigation Controller-->
         <scene sceneID="vC1-qL-gaQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="014-Ol-Jnb" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="014-Ol-Jnb" customClass="SearchResultsNavigationController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oDP-cU-O51">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
