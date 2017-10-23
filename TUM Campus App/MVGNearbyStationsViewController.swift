@@ -41,6 +41,12 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
+            mvc.delegate = delegate
+        }
+    }
+    
     // MARK: Table View
     
     override func numberOfSections(in tableView: UITableView) -> Int {
