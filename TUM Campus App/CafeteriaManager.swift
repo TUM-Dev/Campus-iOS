@@ -52,7 +52,7 @@ final class CafeteriaManager: CachedManager, SingleItemManager, CardManager {
                     cafeterias.first(where: { $0.id == menu.mensaId })?.addMenu(menu)
                 }
                 
-                return cafeterias
+                return cafeterias.sorted(byLocation: \.location)
             }
         }
     }

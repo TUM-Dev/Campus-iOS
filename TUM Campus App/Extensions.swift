@@ -6,8 +6,10 @@
 //  Copyright © 2016 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 import Sweeft
+
+let locationManager = CLLocationManager()
 
 extension Date {
     
@@ -23,11 +25,19 @@ extension Date {
     
 }
 
-
 extension Collection {
     
     func mapped<V>() -> [V] {
         return flatMap { $0 as? V }
+    }
+    
+    func sorted(byLocation path: KeyPath<Element, CLLocation>) -> [Element] {
+        locationManager.startUpdatingLocation()
+        let location = locationManager.location
+        locationManager.stopUpdatingLocation()
+        return location.map { location in
+            return self.sorted(ascending: { location.distance(from: $0[keyPath: path]) })
+        } ?? Array(self)
     }
     
 }
