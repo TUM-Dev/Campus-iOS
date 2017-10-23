@@ -1,1 +1,9 @@
-- Implemented the MVV feature: You can select a nearby station and get upcoming departures
+- Added a brand new sleek design to the Cards View
+- Added possibility to refresh the Calendar
+- Added a confirm button to the login screen to safeguard against typo's
+- Added locations to the Calendar Events
+- Added support for keeping track of your library account
+
+- Fixed issues with losing login progress after killing the app
+- Fixed bug with pickers in Details views not hiding when leaving them
+- Credentials are now stored in the Keychain
