@@ -25,6 +25,18 @@ extension Date {
     
 }
 
+
+extension SimpleManager {
+    
+    var location: CLLocation? {
+        locationManager.startUpdatingLocation()
+        let location = locationManager.location
+        locationManager.stopUpdatingLocation()
+        return location
+    }
+    
+}
+
 extension Collection {
     
     func mapped<V>() -> [V] {

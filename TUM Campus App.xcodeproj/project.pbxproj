@@ -96,6 +96,7 @@
 		0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE11E05523C00FF1E40 /* CardKey.swift */; };
 		0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC28AE31E05549300FF1E40 /* EditCards.storyboard */; };
 		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
+		0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD970E1F9D87D60070441D /* MVV.storyboard */; };
 		0EDD932B1EB78AF30022E9BC /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */; };
 		0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */; };
 		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
@@ -279,6 +280,7 @@
 		0EC28AE11E05523C00FF1E40 /* CardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardKey.swift; sourceTree = "<group>"; };
 		0EC28AE41E05549300FF1E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EditCards.storyboard; sourceTree = "<group>"; };
 		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
+		0ECD970E1F9D87D60070441D /* MVV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MVV.storyboard; sourceTree = "<group>"; };
 		0EDD932A1EB78AF30022E9BC /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomAPI.swift; sourceTree = "<group>"; };
 		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 				807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */,
 				807C48181F4092A800CAD35D /* DeparturesViewController.swift */,
 				807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */,
+				0ECD970E1F9D87D60070441D /* MVV.storyboard */,
 			);
 			name = MVV;
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */,
 				0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */,
 				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
+				0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */,
 				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
 				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
 				50200E141DF4960F00B6FBE3 /* Setup.storyboard in Resources */,

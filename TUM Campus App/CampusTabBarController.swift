@@ -26,10 +26,6 @@ class CampusTabBarController: UITabBarController {
                 return
         }
         manager = TumDataManager(user: User.shared, json: json)
-        
-        manager?.mvgManager.fetch().onResult { result in
-            print(result)
-        }
     }
 
 }
