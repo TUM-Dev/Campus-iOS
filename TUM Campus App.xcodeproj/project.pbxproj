@@ -24,7 +24,6 @@
 		0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21471C13C3790035ED70 /* TuitionStatusManager.swift */; };
 		0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */; };
 		0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21511C13DB550035ED70 /* LoginDefaultKeys.swift */; };
-		0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */; };
 		0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */; };
 		0E3BD6461F9946F500ED0409 /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3BD6451F9946F500ED0409 /* LocationProvider.swift */; };
 		0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */; };
@@ -205,7 +204,6 @@
 		0E3B21471C13C3790035ED70 /* TuitionStatusManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionStatusManager.swift; sourceTree = "<group>"; };
 		0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		0E3B21511C13DB550035ED70 /* LoginDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDefaultKeys.swift; sourceTree = "<group>"; };
-		0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenReceiver.swift; sourceTree = "<group>"; };
 		0E3B21581C13DD3C0035ED70 /* TuitionCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionCardTableViewCell.swift; sourceTree = "<group>"; };
 		0E3BD6451F9946F500ED0409 /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TUMLogoView.xib; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 			children = (
 				0E5A61DC1C13536C006017DB /* TumOnlineLoginRequestManager.swift */,
 				0E3B21511C13DB550035ED70 /* LoginDefaultKeys.swift */,
-				0E3B21551C13DB880035ED70 /* AccessTokenReceiver.swift */,
 			);
 			name = TumOnlineLogin;
 			sourceTree = "<group>";
@@ -585,12 +582,12 @@
 				5007C6A51E068AA60014B065 /* StudyRoomGroup.swift */,
 				0EB473CF1C1B4F0F00F17F44 /* Map.swift */,
 				0EF4CEE71D414D40001649F1 /* News.swift */,
-				807C48131F40918500CAD35D /* MVV */,
 				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
 				22F4B6B31EA802960086D49A /* BookRental.swift */,
-				0E64AC681C0DFAD400060FB0 /* Managers */,
 				0ECD97121F9D8EC70070441D /* DefaultCampus.swift */,
+				807C48131F40918500CAD35D /* MVV */,
+				0E64AC681C0DFAD400060FB0 /* Managers */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1358,7 +1355,6 @@
 				807C48191F4092A800CAD35D /* DeparturesViewController.swift in Sources */,
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */,
-				0E3B21561C13DB880035ED70 /* AccessTokenReceiver.swift in Sources */,
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,

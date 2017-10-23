@@ -26,6 +26,8 @@ class CampusTabBarController: UITabBarController {
                 return
         }
         manager = TumDataManager(user: User.shared, json: json)
+        
+        (ViewControllerProvider.loginNavigationViewController.childViewControllers.first as? LoginViewController)?.manager = manager
     }
 
 }

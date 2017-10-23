@@ -10,23 +10,24 @@ import UIKit
 import Sweeft
 import TKSubmitTransition
 
-class WaitForTokenViewController: UIViewController {
+class WaitForTokenViewController: UIViewController, DetailView {
     
     @IBOutlet weak var button: TKTransitionSubmitButton!
     
-    lazy var loginManager: TumOnlineLoginRequestManager = { TumOnlineLoginRequestManager(delegate: self) }()
+    weak var delegate: DetailViewDelegate?
     
     @IBAction func refresh(_ sender: AnyObject) {
         checkRequest()
     }
     
-    func tokenNotConfirmed() {
-        button.returnToOriginalState()
-    }
-    
     func checkRequest() {
+        guard let loginManager = delegate?.dataManager()?.loginManager else { return }
         button.startLoadingAnimation()
-        loginManager.confirmToken()
+        loginManager.fetch().onSuccess(in: .main) { done in
+            self.button.returnToOriginalState()
+            if done { self.done() }
+        }
+        .onError { _ in self.button.returnToOriginalState() }
     }
 
 }
@@ -36,12 +37,7 @@ extension WaitForTokenViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         button.backgroundColor = Constants.tumBlue
-        if PersistentUser.hasRequestedToken {
-            checkRequest()
-        } else {
-            button.startLoadingAnimation()
-            loginManager.fetch()
-        }
+        checkRequest()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,11 +46,7 @@ extension WaitForTokenViewController {
         PersistentUser.reset()
     }
     
-}
-
-extension WaitForTokenViewController: AccessTokenReceiver {
-    
-    func receiveToken(_ token: String) {
+    func done() {
         button.startFinishAnimation(delay: TimeInterval(0)) {
             if self.presentingViewController != nil {
                 self.dismiss(animated: true, completion: nil)

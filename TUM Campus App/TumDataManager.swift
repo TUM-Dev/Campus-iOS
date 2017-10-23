@@ -30,6 +30,8 @@ class TumDataManager {
     lazy var personSearchManager: PersonSearchManager = { PersonSearchManager(config: self.config) }()
     lazy var lectureSearchManager: LectureSearchManager = { LectureSearchManager(config: self.config) }()
     
+    lazy var loginManager: TumOnlineLoginRequestManager = { TumOnlineLoginRequestManager(config: self.config) }()
+    
     var isLoggedIn: Bool {
         return user?.token != nil
     }
