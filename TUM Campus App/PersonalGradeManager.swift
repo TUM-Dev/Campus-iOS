@@ -8,7 +8,7 @@
 
 import Sweeft
 
-final class PersonalGradeManager: NewManager {
+final class PersonalGradeManager: CachedManager {
     
     typealias DataType = Grade
     
@@ -18,14 +18,18 @@ final class PersonalGradeManager: NewManager {
         return false
     }
     
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneWeek)
+    }
+    
     init(config: Config) {
         self.config = config
     }
     
-    func fetch() -> Response<[Grade]> {
+    func fetch(maxCache: CacheTime) -> Response<[Grade]> {
         return config.tumOnline.doXMLObjectsRequest(to: .personalGrades,
                                                     at: "rowset", "row",
-                                                    maxCacheTime: .time(.aboutOneWeek))
+                                                    maxCacheTime: maxCache)
     }
     
 }

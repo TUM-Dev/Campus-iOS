@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class NewsManager: SingleItemManager, CardManager {
+final class NewsManager: CachedManager, SingleItemManager, CardManager {
     
     typealias DataType = News
     
@@ -23,6 +23,10 @@ final class NewsManager: SingleItemManager, CardManager {
         return .news
     }
     
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
+    }
+    
     init(config: Config) {
         self.config = config
     }
@@ -31,9 +35,9 @@ final class NewsManager: SingleItemManager, CardManager {
         return items.filter({ $0.date > .now }).first ?? items.last
     }
     
-    func fetch() -> Response<[News]> {
+    func fetch(maxCache: CacheTime) -> Response<[News]> {
         return config.tumCabe.doObjectsRequest(to: .news,
-                                               maxCacheTime: .time(.aboutOneDay)).map { $0.sorted(descending: \.date) }
+                                               maxCacheTime: maxCache).map { $0.sorted(descending: \.date) }
     }
     
 }

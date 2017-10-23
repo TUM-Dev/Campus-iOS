@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class MovieManager: SingleItemManager, CardManager {
+final class MovieManager: CachedManager, SingleItemManager, CardManager {
     
     typealias DataType = Movie
     
@@ -23,13 +23,17 @@ final class MovieManager: SingleItemManager, CardManager {
         return .tufilm
     }
     
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
+    }
+    
     init(config: Config) {
         self.config = config
     }
     
-    func fetch() -> Response<[Movie]> {
+    func fetch(maxCache: CacheTime) -> Response<[Movie]> {
         return config.tumCabe.doObjectsRequest(to: .movie,
-                                               maxCacheTime: .time(.aboutOneDay)).map { $0 |> { $0.airDate >= .now } }
+                                               maxCacheTime: maxCache).map { $0 |> { $0.airDate >= .now } }
     }
     
 }

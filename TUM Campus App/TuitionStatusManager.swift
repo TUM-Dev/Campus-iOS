@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class TuitionStatusManager: SingleItemManager, CardManager {
+final class TuitionStatusManager: CachedManager, SingleItemManager, CardManager {
     
     typealias DataType = Tuition
     
@@ -17,6 +17,10 @@ final class TuitionStatusManager: SingleItemManager, CardManager {
     
     var requiresLogin: Bool {
         return false
+    }
+    
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
     }
     
     var cardKey: CardKey {
@@ -27,10 +31,10 @@ final class TuitionStatusManager: SingleItemManager, CardManager {
         self.config = config
     }
     
-    func fetch() -> Response<[Tuition]> {
+    func fetch(maxCache: CacheTime) -> Response<[Tuition]> {
         return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus,
                                                     at: "rowset", "row",
-                                                    maxCacheTime: .time(.aboutOneDay))
+                                                    maxCacheTime: maxCache)
     }
     
 }
