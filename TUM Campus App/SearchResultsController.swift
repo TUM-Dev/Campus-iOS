@@ -19,7 +19,39 @@ class SearchResultsController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.view.backgroundColor = .clear
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = self.view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            
+            self.tableView.separatorEffect = UIVibrancyEffect(blurEffect: blurEffect)
+            self.tableView.backgroundView = blurEffectView
+
+        } else {
+            self.view.backgroundColor = .black
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navCon = segue.destination as? UINavigationController {
+            if var mvc = navCon.topViewController as? DetailView {
+                mvc.delegate = self
+            }
+            if let mvc = navCon.topViewController as? RoomFinderViewController {
+                mvc.room = currentElement
+            }
+            if let mvc = navCon.topViewController as? PersonDetailTableViewController {
+                mvc.user = currentElement
+            }
+            if let mvc = navCon.topViewController as? LectureDetailsTableViewController {
+                mvc.lecture = currentElement
+            }
+        }
         if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
@@ -50,6 +82,7 @@ class SearchResultsController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: elements[indexPath.row].getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(elements[indexPath.row])
+        cell.backgroundColor = .clear
         return cell
     }
     

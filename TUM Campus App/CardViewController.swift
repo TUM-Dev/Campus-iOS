@@ -86,15 +86,17 @@ extension CardViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
-      
+        definesPresentationContext = true
+
         let storyboard = UIStoryboard(name: "CardView", bundle: nil)
-        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? UIViewController else {
+        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? SearchResultsController else {
             fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
         search = UISearchController(searchResultsController: searchResultsController)
         search?.searchResultsUpdater = self
         search?.searchBar.placeholder = "Search"
-        definesPresentationContext = true
+        search?.obscuresBackgroundDuringPresentation = true
+        search?.hidesNavigationBarDuringPresentation = true
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = search
         }

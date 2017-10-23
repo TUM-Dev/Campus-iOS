@@ -574,7 +574,7 @@
                                 <connections>
                                     <outlet property="avatarView" destination="6Ek-B8-4lm" id="GuA-JP-gnN"/>
                                     <outlet property="nameLabel" destination="JfW-of-AC4" id="fSf-fj-63b"/>
-                                    <segue destination="QOj-nB-teH" kind="show" id="v1e-xl-Tlk"/>
+                                    <segue destination="nbj-I6-7RU" kind="presentation" id="VTH-sh-Exp"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="lecture" rowHeight="93" id="LWd-IM-w6e" customClass="LectureTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -628,7 +628,7 @@
                                     <outlet property="contributorsLabel" destination="gfn-BZ-8Pj" id="Rox-cp-SQI"/>
                                     <outlet property="detailsLabel" destination="bJR-UA-nYN" id="fJv-QX-hiP"/>
                                     <outlet property="titleLabel" destination="DRJ-KK-lsb" id="K0L-V6-bvD"/>
-                                    <segue destination="0hi-tX-ENF" kind="show" id="nNv-rO-E6n"/>
+                                    <segue destination="646-5i-8f9" kind="presentation" id="VPy-lM-lCG"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="room" rowHeight="101" id="hBd-rx-dGi" customClass="RoomResultTableViewCell" customModule="Campus" customModuleProvider="target">
@@ -672,7 +672,7 @@
                                 <connections>
                                     <outlet property="buildingNameLabel" destination="bS8-5X-261" id="gYA-cp-W00"/>
                                     <outlet property="roomNameLabel" destination="F9F-cC-Yyp" id="nri-lt-qI2"/>
-                                    <segue destination="8EW-cA-v4q" kind="show" id="Jvw-sL-kSH"/>
+                                    <segue destination="ZfK-w1-Zd8" kind="presentation" id="jfe-xa-k2X"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -694,7 +694,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sxi-wk-q3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2822" y="108"/>
+            <point key="canvasLocation" x="3531" y="-439"/>
         </scene>
         <!--LectureDetail-->
         <scene sceneID="Ui6-nw-oOC">
@@ -704,7 +704,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icY-7h-cPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2834" y="332"/>
+            <point key="canvasLocation" x="3558" y="960"/>
         </scene>
         <!--RoomFinder-->
         <scene sceneID="QqC-1g-jiE">
@@ -714,7 +714,61 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWf-Sd-XhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2818" y="237"/>
+            <point key="canvasLocation" x="3527" y="266"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bSQ-IJ-F8h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nbj-I6-7RU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dxB-2D-mGb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QOj-nB-teH" kind="relationship" relationship="rootViewController" id="LVK-6G-ah4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hHb-gL-E0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2996" y="-438"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aiv-eg-azq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="646-5i-8f9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9zI-Rd-daB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0hi-tX-ENF" kind="relationship" relationship="rootViewController" id="w4g-NX-bba"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgA-Z1-bhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2996" y="267"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0hi-Oy-cEP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZfK-w1-Zd8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VMX-yI-XJl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8EW-cA-v4q" kind="relationship" relationship="rootViewController" id="7Sn-MV-eBL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="elN-oK-bBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2996" y="961"/>
         </scene>
     </scenes>
     <resources>
