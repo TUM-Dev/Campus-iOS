@@ -86,6 +86,15 @@ extension MoreTableViewController {
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showPersonDetail" {
+            if user?.data != nil {
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
 extension MoreTableViewController {

@@ -55,7 +55,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tUg-C5-TOA" kind="show" id="dJ4-83-CmK"/>
+                                            <segue destination="tUg-C5-TOA" kind="show" identifier="showPersonDetail" id="dJ4-83-CmK"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
