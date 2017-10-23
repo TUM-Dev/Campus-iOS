@@ -83,6 +83,10 @@ extension RoomFinderViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        pickerView.removeFromSuperview()
+    }
+    
 }
 
 extension RoomFinderViewController {
