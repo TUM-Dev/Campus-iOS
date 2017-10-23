@@ -26,6 +26,7 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
     
     var manager: TumDataManager?
+    var binding: ImageViewBinding?
     
     var user: User? {
         return manager?.user
@@ -38,7 +39,7 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
     func updateView() {
         if isLoggedIn {
             nameLabel.text = user?.name
-//            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
+            binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
         } else {
@@ -48,10 +49,6 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
             logoutLabel.textColor = .green
         }
     }
-    
-//    func updateImageView() {
-//        updateView()
-//    }
     
     func dataManager() -> TumDataManager? {
         return manager

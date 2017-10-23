@@ -41,10 +41,6 @@ extension SearchViewController: DetailViewDelegate {
 
 extension SearchViewController {
     
-//    func updateImageView() {
-//        tableView.reloadData()
-//    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

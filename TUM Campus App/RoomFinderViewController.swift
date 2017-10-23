@@ -27,21 +27,15 @@ class RoomFinderViewController: UIViewController, DetailView {
     
     var pickerView = AYSlidingPickerView()
     
-//    func updateImageView() {
-//        refreshImage()
-//    }
+    var binding: ImageViewBinding?
     
     func refreshImage() {
-//        if let image = currentMap?.image {
-//            title = currentMap?.description
-//            imageView.image = image
-//            scrollView.zoomScale = 1.0
-//            scrollView.contentSize = imageView.bounds.size
-//            scrollView.minimumZoomScale = 1.0
-//            scrollView.maximumZoomScale = 5.0
-//        } else {
-//            currentMap?.subscribeToImage(self)
-//        }
+        binding = currentMap?.image.bind(to: imageView, default: nil)
+        title = currentMap?.description
+        scrollView.zoomScale = 1.0
+        scrollView.contentSize = imageView.bounds.size
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
     }
     
 }

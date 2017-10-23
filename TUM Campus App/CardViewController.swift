@@ -41,13 +41,10 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
 
 extension CardViewController: DetailViewDelegate {
     
-//    func updateImageView() {
-//        tableView.reloadData()
-//    }
-    
     func dataManager() -> TumDataManager? {
         return manager
     }
+    
 }
 
 extension CardViewController {

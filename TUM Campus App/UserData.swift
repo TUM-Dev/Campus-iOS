@@ -19,12 +19,12 @@ final class UserData: DataElement {
     
     let name: String
     let id: String
-    let avatar: Image?
+    let avatar: Image
     
-    init(name: String, picture: URL?, id: String) {
+    init(name: String, picture: String?, id: String) {
         self.name = name
         self.id = id
-        self.avatar = picture.map { .new(from: $0.absoluteString) }
+        self.avatar = .init(url: picture)
     }
     
     var title: String?
@@ -104,7 +104,7 @@ extension UserData {
             
             return nil
         }
-        let url = xml["bild_url"].element.map { api.base.appendingPathComponent($0.text) }
+        let url = xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
         self.init(name: "\(name) \(lastname)", picture: url, id: id)
     }
     

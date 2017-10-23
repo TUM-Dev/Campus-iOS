@@ -48,7 +48,7 @@ final class Movie: DataElement {
         self.description = description
         self.year = year
         self.actors = actors
-        self.poster = .new(from: poster)
+        self.poster = .init(url: poster)
     }
     
     func getCellIdentifier() -> String {

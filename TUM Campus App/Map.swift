@@ -23,7 +23,7 @@ final class Map: DataElement {
         self.scale = scale
         
         let url = api.url(for: TUMCabeEndpoint.mapImage, arguments: ["room": roomID, "id": mapID])
-        image = .new(from: url.absoluteString)
+        image = .init(url: url.absoluteString)
     }
     
     convenience init?(roomID: String, api: TUMCabeAPI, from json: JSON) {

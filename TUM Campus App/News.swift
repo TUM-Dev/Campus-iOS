@@ -17,14 +17,14 @@ final class News: DataElement {
     let date: Date
     let title: String
     let link: String
-    let image: Image?
+    let image: Image
     
     init(id: String, date: Date, title: String, link: String, image: String? = nil) {
         self.id = id
         self.date = date
         self.title = title
         self.link = link
-        self.image = image.map { .new(from: $0) }
+        self.image = .init(url: image)
     }
     
     var text: String {

@@ -9,34 +9,40 @@
 import UIKit
 import Sweeft
 
-typealias Image = Response<UIImage>
-
 class ImageViewBinding {
-    fileprivate var cancelled = false
-    
-    func cancel() {
-        cancelled = true
-    }
 }
 
 protocol ImageContainer {
     var image: Image? { get }
 }
 
+class Image {
+    
+    let url: String?
+    private var promise: Response<UIImage>?
+    
+    init(url: String?) {
+        self.url = url
+    }
+    
+    func bind(to imageView: UIImageView, default image: UIImage?) -> ImageViewBinding {
+        promise = promise ?? url.map { .new(from: $0) }
+        let binding = ImageViewBinding()
+        imageView.image = image
+        promise?.onSuccess(in: .main) { [weak binding] image in
+            guard binding != nil else { return }
+            imageView.image = image
+            imageView.superview?.layoutIfNeeded()
+        }
+        return binding
+    }
+    
+}
+
 extension Response where T == UIImage {
     
     static func new(from url: String) -> Response<T> {
         return UIImage.download(url: url)
-    }
-    
-    func bind(to imageView: UIImageView, default image: UIImage?) -> ImageViewBinding {
-        let binding = ImageViewBinding()
-        imageView.image = image
-        onSuccess(in: .main) { image in
-            guard !binding.cancelled else { return }
-            imageView.image = image
-        }
-        return binding
     }
     
 }

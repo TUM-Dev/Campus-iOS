@@ -25,9 +25,12 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var barItem: UIBarButtonItem?
     
     weak var delegate: DetailViewDelegate?
+    
+    var binding: ImageViewBinding?
 
     var currentMovie: Movie? {
         didSet {
+            binding = nil
             if let movie = currentMovie {
                 let info = movie.name.components(separatedBy: ": ")
                 titleLabel.text = movie.text
@@ -40,7 +43,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
                 actorsLabel.text = movie.actors
                 directorLabel.text = movie.director
                 descriptionLabel.text = movie.description
-//                posterView.image = movie.image
+                binding = movie.poster.bind(to: posterView, default: #imageLiteral(resourceName: "movie"))
                 tableView.reloadData()
             }
         }
