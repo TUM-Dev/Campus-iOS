@@ -18,15 +18,12 @@ final class UserData: ImageDownloader, DataElement {
     }
     
     let name: String
-    let picture: String
     let id: String
     
-    init(name: String, picture: String, id: String) {
+    init(name: String, picture: URL?, id: String) {
         self.name = name
         self.id = id
-        self.picture = ""
-//        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)?.replacingOccurrences(of: "amp;", with: "") ?? ""
-        super.init(url: self.picture)
+        super.init(url: picture?.absoluteString)
     }
     
     var title: String?
@@ -97,17 +94,17 @@ final class UserData: ImageDownloader, DataElement {
     
 }
 
-extension UserData: XMLDeserializable {
+extension UserData {
     
-    convenience init?(from xml: XMLIndexer) {
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI) {
         guard let name = xml["vorname"].element?.text,
             let lastname = xml["familienname"].element?.text,
             let id = xml["obfuscated_id"].element?.text else {
             
             return nil
         }
-        let image = xml["bild_url"].element?.text ?? ""
-        self.init(name: "\(name) \(lastname)", picture: image, id: id)
+        let url = xml["bild_url"].element.map { api.base.appendingPathComponent($0.text) }
+        self.init(name: "\(name) \(lastname)", picture: url, id: id)
     }
     
 }

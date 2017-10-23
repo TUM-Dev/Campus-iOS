@@ -12,9 +12,10 @@ import Alamofire
 
 class ImageDownloader {
     
-    static var imageCache = [String:UIImage]()
+    static var imageCache = [String : UIImage]()
     
-    init(url: String) {
+    init(url: String?) {
+        guard let url = url else { return }
         getImage(url)
     }
     
