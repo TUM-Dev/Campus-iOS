@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class MovieManager: CachedManager, SingleItemManager, CardManager {
+final class MovieManager: CachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Movie
     

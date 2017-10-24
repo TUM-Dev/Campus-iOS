@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class CalendarManager: CachedManager, CardManager, SingleItemManager {
+final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager {
     
     typealias DataType = CalendarRow
     

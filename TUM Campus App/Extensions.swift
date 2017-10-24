@@ -32,11 +32,23 @@ extension Date {
     
 }
 
-
 extension SimpleManager {
     
     var location: CLLocation {
         return currentLocation()
+    }
+    
+}
+
+extension Array {
+    
+    func lastIndex(where criteria: (Element) throws -> Bool) rethrows -> Int? {
+        return try enumerated().reduce(nil) { last, value in
+            if try criteria(value.element) {
+                return value.offset
+            }
+            return last
+        }
     }
     
 }
@@ -54,6 +66,15 @@ extension Collection {
     func sorted(byLocation path: KeyPath<Element, CLLocation>) -> [Element] {
         let location = currentLocation()
         return self.sorted(ascending: { location.distance(from: $0[keyPath: path]) })
+    }
+    
+    func grouped<V: Hashable>(by path: KeyPath<Element, V>) -> [V : [Element]] {
+        return reduce([:]) { dict, element in
+            var dict = dict
+            let key = element[keyPath: path]
+            dict[key, default: []].append(element)
+            return dict
+        }
     }
     
 }

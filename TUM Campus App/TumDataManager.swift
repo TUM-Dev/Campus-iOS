@@ -42,14 +42,14 @@ class TumDataManager {
         return config.tumOnline.user
     }
     
-    var cardManager: [CardManager] {
+    var cardManagers: [CardManager] {
         return [
             calendarManager,
             movieManager,
             newsManager,
             tuitionManager,
             cafeteriaManager,
-        ]
+        ].sorted(ascending: \.indexInOrder)
     }
     
     var searchManagers: [SimpleSearchManager] {
@@ -60,10 +60,6 @@ class TumDataManager {
         ]
     }
     
-    func getToken() -> String {
-        return user?.token ?? ""
-    }
-    
     init?(user: User?, json: JSON) {
         guard let config = Config(user: user, json: json) else {
             return nil
@@ -71,12 +67,14 @@ class TumDataManager {
         self.config = config
     }
     
-    func getCardItems() -> Response<[DataElement]> {
-        return (self.cardManager.sorted(ascending: \.indexInOrder) => { $0.fetchSingle() }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+    func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
+        let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
+        return promises.bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
     
     func search(query: String) -> Response<[DataElement]> {
-        return (self.searchManagers => { $0.search(query: query) }).bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+        let promises = searchManagers => { $0.search(query: query) }
+        return promises.bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }
     
 }

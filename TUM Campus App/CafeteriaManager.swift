@@ -10,7 +10,7 @@ import Foundation
 import Sweeft
 import CoreLocation
 
-final class CafeteriaManager: CachedManager, SingleItemManager, CardManager {
+final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Cafeteria
     

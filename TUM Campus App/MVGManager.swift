@@ -9,7 +9,7 @@
 import CoreLocation
 import Sweeft
 
-final class MVGManager: NewManager, SimpleSingleManager {
+final class MVGManager: Manager, SimpleSingleManager {
     
     typealias DataType = Station
     
