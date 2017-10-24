@@ -65,7 +65,9 @@ extension MoreTableViewController {
         }
         if user?.data == nil {
             manager?.userDataManager.fetch().onResult { _ in
-                self.updateView()
+                DispatchQueue.main.async {
+                    self.updateView()
+                }
             }
         }
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
