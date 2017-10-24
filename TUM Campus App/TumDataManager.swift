@@ -67,7 +67,7 @@ class TumDataManager {
         self.config = config
     }
     
-    func getCardItems(skipCache: Bool = false) -> Response<[DataElement]> {
+    func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
         let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
         return promises.bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
     }

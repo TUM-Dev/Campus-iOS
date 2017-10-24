@@ -20,7 +20,7 @@ class CafeteriaViewController: UIViewController, DetailView {
     
     weak var delegate: DetailViewDelegate?
     
-    var categories = [(String,[CafeteriaMenu])]()
+    var categories = [(String, [CafeteriaMenu])]()
     var cafeterias = [Cafeteria]()
     var currentCafeteria: Cafeteria? {
         didSet {

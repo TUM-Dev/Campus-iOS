@@ -17,7 +17,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var refresh = UIRefreshControl()
     
     func refresh(_ sender: AnyObject?) {
-        manager?.getCardItems(skipCache: sender != nil).onSuccess { data in
+        manager?.loadCards(skipCache: sender != nil).onSuccess { data in
             if self.cards.count <= data.count {
                 for item in data {
                     if let lectureItem = item as? CalendarRow {
