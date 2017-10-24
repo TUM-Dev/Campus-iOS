@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class StudyRoomsManager: NewManager {
+final class StudyRoomsManager: Manager {
     
     typealias DataType = StudyRoomGroup
     

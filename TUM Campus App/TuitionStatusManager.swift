@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class TuitionStatusManager: CachedManager, SingleItemManager, CardManager {
+final class TuitionStatusManager: CachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Tuition
     

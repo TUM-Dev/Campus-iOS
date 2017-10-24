@@ -44,16 +44,20 @@ protocol SimpleManager {
     func fetch() -> Response<[DataElement]>
 }
 
-protocol NewManager: SimpleManager {
+protocol Manager: SimpleManager {
     associatedtype DataType: DataElement
     func fetch() -> Response<[DataType]>
 }
 
-protocol SimpleSingleManager: SimpleManager {
-    func fetchSingle() -> Response<DataElement?>
+extension Manager {
+    
+    func fetch() -> Promise<[DataElement], APIError> {
+        return fetch().map { $0.map { $0 as DataElement } }
+    }
+    
 }
 
-protocol CachedManager: NewManager {
+protocol CachedManager: Manager {
     var defaultMaxCache: CacheTime { get }
     func fetch(maxCache: CacheTime) -> Response<[DataType]>
 }
@@ -70,15 +74,12 @@ extension CachedManager {
     
 }
 
-extension NewManager {
-    
-    func fetch() -> Promise<[DataElement], APIError> {
-        return fetch().map { $0.map { $0 as DataElement } }
-    }
-    
+// MARK: Managers that can return a single item
+protocol SimpleSingleManager: SimpleManager {
+    func fetchSingle() -> Response<DataElement?>
 }
 
-protocol SingleItemManager: SimpleSingleManager, NewManager {
+protocol SingleItemManager: SimpleSingleManager, Manager {
     func toSingle(from items: [DataType]) -> DataElement?
 }
 
@@ -89,10 +90,47 @@ extension SingleItemManager {
     }
     
     func fetchSingle() -> Response<DataElement?> {
-        return fetch().map { self.toSingle(from: $0) }
+        return fetch().map(self.toSingle(from:))
     }
     
 }
+
+// MARK: Single Managers that are cached
+
+protocol SimpleSingleCachedManager: SimpleSingleManager {
+    var defaultMaxCache: CacheTime { get }
+    func fetchSingle(maxCache: CacheTime) -> Response<DataElement?>
+}
+
+extension SimpleSingleCachedManager {
+    
+    func updateSingle() -> Response<DataElement?> {
+        return fetchSingle(maxCache: .time(0))
+    }
+    
+    func fetchSingle() -> Response<DataElement?> {
+        return fetchSingle(maxCache: defaultMaxCache)
+    }
+    
+}
+
+protocol SingleItemCachedManager: SimpleSingleCachedManager, CachedManager {
+    func toSingle(from items: [DataType]) -> DataElement?
+}
+
+extension SingleItemCachedManager {
+    
+    func toSingle(from items: [DataType]) -> DataElement? {
+        return items.first
+    }
+    
+    func fetchSingle(maxCache: CacheTime) -> Promise<DataElement?, APIError> {
+        return fetch(maxCache: maxCache).map(self.toSingle(from:))
+    }
+    
+}
+
+// MARK: Single Manager with Card Key for sorting
 
 protocol CardManager: SimpleSingleManager {
     var cardKey: CardKey { get }
@@ -100,10 +138,20 @@ protocol CardManager: SimpleSingleManager {
 
 extension CardManager {
     
-    
     var indexInOrder: Int {
         let cards = PersistentCardOrder.value.cards
         return cards.index(of: cardKey) ?? cards.count
+    }
+    
+}
+
+extension CardManager {
+    
+    func fetchCard(skipCache: Bool = false) -> Response<DataElement?> {
+        guard skipCache, let manager = self as? SimpleSingleCachedManager else {
+            return fetchSingle()
+        }
+        return manager.updateSingle()
     }
     
 }
