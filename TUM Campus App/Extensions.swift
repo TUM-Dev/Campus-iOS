@@ -40,6 +40,19 @@ extension SimpleManager {
     
 }
 
+extension Array {
+    
+    func lastIndex(where criteria: (Element) throws -> Bool) rethrows -> Int? {
+        return try enumerated().reduce(nil) { last, value in
+            if try criteria(value.element) {
+                return value.offset
+            }
+            return last
+        }
+    }
+    
+}
+
 extension Collection {
     
     func mapped<V>() -> [V] {

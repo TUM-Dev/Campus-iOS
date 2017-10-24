@@ -22,9 +22,18 @@ class NewsTableViewController: UITableViewController, DetailView {
 
 extension NewsTableViewController {
     
-    func fetch() {
+    func fetch(scrolling: Bool = false) {
         delegate?.dataManager()?.newsManager.fetch().onSuccess(in: .main) { news in
             self.news = news
+            
+            guard scrolling, let index = news.lastIndex(where: { $0.date > .now }) else {
+                return
+            }
+            
+            let indexPath =  IndexPath(row: index, section: 0)
+            self.tableView.scrollToRow(at: indexPath,
+                                       at: UITableViewScrollPosition.top,
+                                       animated: false)
         }
     }
     
@@ -34,7 +43,7 @@ extension NewsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fetch()
+        self.fetch(scrolling: true)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension

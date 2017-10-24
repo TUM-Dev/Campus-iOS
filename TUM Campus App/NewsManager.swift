@@ -32,7 +32,7 @@ final class NewsManager: CachedManager, SingleItemCachedManager, CardManager {
     }
     
     func toSingle(from items: [News]) -> DataElement? {
-        return items.filter({ $0.date > .now }).first ?? items.last
+        return items.filter({ $0.date > .now }).last ?? items.first
     }
     
     func fetch(maxCache: CacheTime) -> Response<[News]> {
