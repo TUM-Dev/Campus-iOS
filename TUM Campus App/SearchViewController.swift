@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sweeft
 
 class SearchViewController: UITableViewController, DetailView {
     
@@ -16,14 +17,16 @@ class SearchViewController: UITableViewController, DetailView {
         }
     }
     
+    var promise: Response<[DataElement]>?
+    
     weak var delegate: DetailViewDelegate?
     var elements = [DataElement]()
     
     var currentElement: DataElement?
     
     func search(query: String) {
-        delegate?.dataManager()?.search(query: query).onSuccess(in: .main) { data in
-            guard query == self.searchTextField.text else { return }
+        promise?.cancel()
+        promise = delegate?.dataManager()?.search(query: query).onSuccess(in: .main) { data in
             self.elements = data
             self.tableView.reloadData()
         }
