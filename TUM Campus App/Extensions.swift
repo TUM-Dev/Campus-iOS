@@ -95,9 +95,15 @@ extension Promise {
         return self
     }
     
-    @discardableResult func onError(queue: DispatchQueue, call handler: @escaping (E) -> ()) -> Promise<T, E> {
+    @discardableResult func onError(in queue: DispatchQueue, call handler: @escaping (E) -> ()) -> Promise<T, E> {
         let promise = map(completionQueue: queue) { $0 as T }
         promise.onError(call: handler)
+        return self
+    }
+    
+    @discardableResult func onResult(in queue: DispatchQueue, call handler: @escaping (Result) -> ()) -> Promise<T, E> {
+        let promise = map(completionQueue: queue) { $0 as T }
+        promise.onResult(call: handler)
         return self
     }
     

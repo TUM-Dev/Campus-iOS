@@ -29,7 +29,7 @@ class WaitForTokenViewController: UIViewController, DetailView {
                 self.done()
             }
         }
-        .onError { _ in self.button.returnToOriginalState() }
+        .onError(in: .main) { _ in self.button.returnToOriginalState() }
     }
 
 }

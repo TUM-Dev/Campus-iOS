@@ -22,7 +22,7 @@ class SearchViewController: UITableViewController, DetailView {
     var currentElement: DataElement?
     
     func search(query: String) {
-        delegate?.dataManager()?.search(query: query).onSuccess { data in
+        delegate?.dataManager()?.search(query: query).onSuccess(in: .main) { data in
             guard query == self.searchTextField.text else { return }
             self.elements = data
             self.tableView.reloadData()

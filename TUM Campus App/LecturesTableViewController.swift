@@ -33,11 +33,9 @@ class LecturesTableViewController: UITableViewController, DetailViewDelegate, De
         let promise = delegate?.dataManager()?.lecturesManager.fetch()
         promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
             return mapped(lectures: lectures)
-        }.onSuccess { lectures in
+        }.onSuccess(in: .main) { lectures in
             self.lectures = lectures
             self.tableView.reloadData()
-        }.onError { error in
-            print(error)
         }
     }
 

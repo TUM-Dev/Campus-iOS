@@ -50,7 +50,7 @@ class DeparturesViewController : UITableViewController, DetailView {
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()
         }
-        .onError { error in
+        .onError(in: .main) { error in
             if case .invalidStatus(_, let data) = error {
                 print(data!.string!)
             }

@@ -23,7 +23,7 @@ class MovieTests: XCTestCase {
         
         let expectation = self.expectation(description: "Movies are all in the future or there are no movies")
         
-        manager.movieManager.fetch().onSuccess { movies in
+        manager.movieManager.fetch().onSuccess(in: .main) { movies in
             let dateNow = Date()
             let upcomingMovies = movies.filter { movie in
                 return movie.airDate >= dateNow
