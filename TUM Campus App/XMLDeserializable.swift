@@ -65,7 +65,7 @@ extension API {
                                                   auth: Auth = NoAuth.standard,
                                                   body: Data? = nil,
                                                   acceptableStatusCodes: [Int] = [200],
-                                                  completionQueue: DispatchQueue = .main,
+                                                  completionQueue: DispatchQueue = .global(),
                                                   maxCacheTime: CacheTime = .no) -> Response<T> {
         
         return doRepresentedRequest(with: method,
@@ -88,7 +88,7 @@ extension API {
                                                    auth: Auth = NoAuth.standard,
                                                    body: Data? = nil,
                                                    acceptableStatusCodes: [Int] = [200],
-                                                   completionQueue: DispatchQueue = .main,
+                                                   completionQueue: DispatchQueue = .global(),
                                                    at path: String...,
                                                    maxCacheTime: CacheTime = .no) -> Response<[T]> {
         
@@ -100,8 +100,7 @@ extension API {
                                     auth: auth,
                                     body: body,
                                     acceptableStatusCodes: acceptableStatusCodes,
-                                    completionQueue: completionQueue,
-                                    maxCacheTime: maxCacheTime).flatMap { (xml: XMLIndexer) in
+                                    maxCacheTime: maxCacheTime).flatMap(completionQueue: completionQueue) { (xml: XMLIndexer) in
         
             let array = xml.get(at: path)?.all ?? []
             return .successful(with: array ==> T.init)

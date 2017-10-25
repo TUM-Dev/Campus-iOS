@@ -69,12 +69,12 @@ class TumDataManager {
     
     func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
         let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
-        return promises.bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+        return promises.bulk.map { $0.flatMap { $0 } }
     }
     
     func search(query: String) -> Response<[DataElement]> {
         let promises = searchManagers => { $0.search(query: query) }
-        return promises.bulk.map(completionQueue: .main) { $0.flatMap { $0 } }
+        return promises.bulk.map { $0.flatMap { $0 } }
     }
     
 }
