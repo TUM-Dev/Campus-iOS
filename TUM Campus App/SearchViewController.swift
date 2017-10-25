@@ -71,10 +71,15 @@ extension SearchViewController: UITextFieldDelegate {
 extension SearchViewController {
     
     override func viewDidLoad() {
-        searchTextField.becomeFirstResponder()
+        super.viewDidLoad()
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = 102
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
