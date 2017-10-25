@@ -71,7 +71,7 @@ extension API {
                        queries: [String:CustomStringConvertible] = .empty,
                        auth: Auth = NoAuth.standard,
                        acceptableStatusCodes: [Int] = [200],
-                       completionQueue: DispatchQueue = .main,
+                       completionQueue: DispatchQueue = .global(),
                        maxCacheTime: CacheTime = .no) -> BookRentalHTML.Result {
         
         return doRepresentedRequest(with: method,
