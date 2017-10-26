@@ -50,42 +50,18 @@ extension CardViewController: DetailViewDelegate {
 
 extension CardViewController {
     
-    func setupLogo() {
-        let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? UIView }
-        guard let view = nib?.first else { return }
-        self.navigationItem.titleView = view
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupLogo()
+        setupTableView()
+        setupSearch()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
-
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        tableView.addSubview(refresh)
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
-        definesPresentationContext = true
-
-        let storyboard = UIStoryboard(name: "CardView", bundle: nil)
-        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? SearchResultsController else {
-            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
-        }
-        searchResultsController.delegate = self
-        search = UISearchController(searchResultsController: searchResultsController)
-        search?.searchResultsUpdater = searchResultsController
-        search?.searchBar.placeholder = "Search"
-        search?.obscuresBackgroundDuringPresentation = true
-        search?.hidesNavigationBarDuringPresentation = true
-        if #available(iOS 11.0, *) {
-            self.navigationItem.searchController = search
-        }
+        
         manager = (self.navigationController as? CampusNavigationController)?.manager
         refresh(nil)
     }
@@ -100,6 +76,38 @@ extension CardViewController {
         }
         if let mvc = segue.destination as? CalendarViewController {
             mvc.nextLectureItem = nextLecture
+        }
+    }
+    
+    func setupLogo() {
+        let bundle = Bundle.main
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? UIView }
+        guard let view = nib?.first else { return }
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        self.navigationItem.titleView = view
+    }
+    
+    func setupTableView() {
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refresh)
+        definesPresentationContext = true
+    }
+    
+    func setupSearch() {
+        let storyboard = UIStoryboard(name: "CardView", bundle: nil)
+        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? SearchResultsController else {
+            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
+        }
+        searchResultsController.delegate = self
+        search = UISearchController(searchResultsController: searchResultsController)
+        search?.searchResultsUpdater = searchResultsController
+        search?.searchBar.placeholder = "Search"
+        search?.obscuresBackgroundDuringPresentation = true
+        search?.hidesNavigationBarDuringPresentation = true
+        if #available(iOS 11.0, *) {
+            self.navigationItem.searchController = search
+        } else {
+            self.tableView.tableHeaderView = search?.searchBar
         }
     }
 }
