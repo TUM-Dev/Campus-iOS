@@ -51,7 +51,6 @@ extension LecturesTableViewController {
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
         
-        delegate?.dataManager().getLectures(self)
         self.fetch()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension

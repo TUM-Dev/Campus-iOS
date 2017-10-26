@@ -56,8 +56,6 @@ extension TuitionTableViewController {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
-        
-        delegate?.dataManager().getTuitionStatus(self)
     }
     
 }

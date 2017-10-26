@@ -49,7 +49,6 @@ extension NewsTableViewController {
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
         
-        delegate?.dataManager().getAllNews(self)
         self.fetch(scrolling: true)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight

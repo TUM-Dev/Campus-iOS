@@ -12,7 +12,9 @@ import Sweeft
 
 class SearchResultsController: UITableViewController {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
+    var promise: Response<[DataElement]>?
+    
     var currentElement: DataElement?
     public var elements: [DataElement] = [] {
         didSet {
@@ -93,21 +95,7 @@ class SearchResultsController: UITableViewController {
     
 }
 
-extension SearchResultsController: TumDataReceiver, ImageDownloadSubscriber {
-    
-    func receiveData(_ data: [DataElement]) {
-        elements = data
-        for element in elements {
-            if let downloader = element as? ImageDownloader {
-                downloader.subscribeToImage(self)
-            }
-        }
-        tableView.reloadData()
-    }
-    
-    func updateImageView() {
-        tableView.reloadData()
-    }
+extension SearchResultsController {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -119,9 +107,21 @@ extension SearchResultsController: TumDataReceiver, ImageDownloadSubscriber {
 
 extension SearchResultsController: DetailViewDelegate {
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager()
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
 }
 
+extension SearchResultsController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        promise?.cancel()
+        if let query = searchController.searchBar.text {
+            promise = delegate?.dataManager()?.search(query: query).onSuccess(in: .main) { elements in
+                self.elements = elements
+            }
+        }
+    }
+    
+}

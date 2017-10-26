@@ -19,8 +19,6 @@ class TumSexyTableViewController: UITableViewController, DetailView {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
-        
-        delegate?.dataManager().getSexyEntries(self)
     }
     
     func fetch() {
