@@ -12,10 +12,10 @@ import CalendarLib
 
 class CalendarViewController: UIViewController, DetailView {
     
-    @IBOutlet weak var dayPlannerView: MGCDayPlannerView!
-    var weekSelector: ASWeekSelectorView?
+    @IBOutlet weak var plannerView: MGCDayPlannerView!
+    var daySelector: ASWeekSelectorView?
     
-    var items = [String:[CalendarRow]]()
+    var items = [String : [CalendarRow]]()
     
     weak var delegate: DetailViewDelegate?
     
@@ -30,12 +30,10 @@ class CalendarViewController: UIViewController, DetailView {
     var todayBarButton = UIBarButtonItem()
     
     func showToday(_ sender: AnyObject?) {
-        let now = Date()
-        weekSelector?.setSelectedDate(now, animated: true)
-        updateTitle(now)
-        scrolling = true
-        scrollTo(now)
-        dayPlannerView.reloadAllEvents()
+        daySelector?.setSelectedDate(.now, animated: true)
+        updateTitle(.now)
+        goToTime(.now, scrollToTime: true)
+        plannerView.reloadAllEvents()
     }
     
     func updateCalendar(_ sender: AnyObject?) {
@@ -44,16 +42,11 @@ class CalendarViewController: UIViewController, DetailView {
     }
     
     func lecturesOfDate(_ date: Date) -> [CalendarRow] {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "yyyy MM dd"
-        let string = dateformatter.string(from: date)
-        return items[string] ?? []
+        return items[date.dayString] ?? []
     }
     
     func updateTitle(_ date: Date) {
-        let dateformatter = DateFormatter()
-        dateformatter.dateFormat = "MMMM dd"
-        title = dateformatter.string(from: date)
+        title = date.string(using: "MMMM dd")
     }
     
 }
@@ -66,11 +59,11 @@ extension CalendarViewController {
         self.fetch()
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
-        weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
-        weekSelector?.firstWeekday = 2
-        weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
-        weekSelector?.delegate = self
-        weekSelector?.selectedDate = .now
+        daySelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
+        daySelector?.firstWeekday = 2
+        daySelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
+        daySelector?.delegate = self
+        daySelector?.selectedDate = .now
         
         
         todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(self.showToday(_:)))
@@ -79,29 +72,31 @@ extension CalendarViewController {
         navigationItem.rightBarButtonItems = [refreshBarButton, todayBarButton]
         
         updateTitle(.now)
-        dayPlannerView.frame = CGRect(x: dayPlannerView.frame.origin.x, y: dayPlannerView.frame.origin.y, width: view.frame.width, height: dayPlannerView.frame.width)
-        dayPlannerView.dataSource = self
-        dayPlannerView.delegate = self
-        dayPlannerView.numberOfVisibleDays = 1
-        dayPlannerView.dayHeaderHeight = 0.0
-        dayPlannerView.showsAllDayEvents = false
-        self.view.addSubview(weekSelector!)
+        plannerView.frame = CGRect(x: plannerView.frame.origin.x,
+                                      y: plannerView.frame.origin.y,
+                                      width: view.frame.width,
+                                      height: plannerView.frame.width)
+        
+        plannerView.dataSource = self
+        plannerView.delegate = self
+        plannerView.numberOfVisibleDays = 1
+        plannerView.dayHeaderHeight = 0.0
+        plannerView.showsAllDayEvents = false
+        self.view.addSubview(daySelector!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if firstTimeAppearing {
             if let item = nextLectureItem {
-                let date = item.dtstart ?? Date()
-                weekSelector?.setSelectedDate(date, animated: true)
+                let date = item.start
+                daySelector?.setSelectedDate(date, animated: true)
                 updateTitle(date)
-                goToTime(date)
+                goToTime(date, scrollToTime: true)
             } else {
-                let now = Date()
-                
-                scrollTo(now, animated: false)
-                firstTimeAppearing = false
+                scrollTo(.now, scrollToTime: true, animated: false)
             }
+            firstTimeAppearing = false
         }
     }
     
@@ -110,13 +105,13 @@ extension CalendarViewController {
 extension CalendarViewController {
     
     func goToDay(_ date: Date) {
-        let newDate = lecturesOfDate(date).first?.dtstart ?? date
+        let newDate = lecturesOfDate(date).first?.start ?? date
         goToTime(newDate)
     }
     
-    func goToTime(_ date: Date) {
+    func goToTime(_ date: Date, scrollToTime: Bool = false) {
         scrolling = true
-        scrollTo(date)
+        scrollTo(date, scrollToTime: scrollToTime)
     }
     
     func sameDay(_ a: Date, b: Date) -> Bool {
@@ -125,17 +120,17 @@ extension CalendarViewController {
         return dateformatter.string(from: a) == dateformatter.string(from: b)
     }
     
-    func scrollTo(_ date: Date) {
-        scrollTo(date, animated: true)
+    func scrollTo(_ date: Date, scrollToTime: Bool) {
+        scrollTo(date, scrollToTime: scrollToTime, animated: true)
     }
     
-    func scrollTo(_ date: Date, animated: Bool) {
+    func scrollTo(_ date: Date, scrollToTime: Bool, animated: Bool) {
         let interval = TimeInterval(-1200.0)
         var newDate = Date(timeInterval: interval, since: date)
         if !sameDay(newDate, b: date) {
             newDate = date
         }
-        dayPlannerView.scroll(to: newDate, options: .dateTime, animated: animated)
+        plannerView.scroll(to: newDate, options: scrollToTime ? .dateTime : .date, animated: animated)
     }
     
 }
@@ -146,35 +141,37 @@ extension CalendarViewController {
         let manager = delegate?.dataManager()?.calendarManager
         let promise = skippingCache ? manager?.update() : manager?.fetch()
         promise?.onSuccess(in: .main) { entries in
-            
-            let dateformatter = DateFormatter()
-            dateformatter.dateFormat = "yyyy MM dd"
-            
-            self.items = entries.reduce([:]) { dict, item in
-                guard let start = item.dtstart else { return dict }
-                var dict = dict
-                dict[dateformatter.string(from: start), default: []].append(item)
-                return dict
-            }
-            
+            self.items = entries.grouped(by: \.start.dayString)
             self.updateTitle(.now)
-            
-            self.dayPlannerView.reloadAllEvents()
+            self.plannerView.reloadAllEvents()
+            self.daySelector?.refresh()
             self.navigationItem.rightBarButtonItems = [self.refreshBarButton, self.todayBarButton]
         }
     }
 }
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {
-
+    
     func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
         updateTitle(date)
         goToDay(date)
     }
     
+    func weekSelector(_ weekSelector: ASWeekSelectorView!, numberColorFor date: Date!) -> UIColor! {
+        return Constants.tumBlue
+    }
+    
+    func weekSelector(_ weekSelector: ASWeekSelectorView!, showIndicatorFor date: Date!) -> Bool {
+        return !lecturesOfDate(date).isEmpty
+    }
+    
 }
 
-extension CalendarViewController: MGCDayPlannerViewDataSource, MGCDayPlannerViewDelegate {
+extension CalendarViewController: MGCDayPlannerViewDataSource {
+    
+    func dayPlannerView(_ view: MGCDayPlannerView!, canMoveEventOf type: MGCEventType, at index: UInt, date: Date!, to targetType: MGCEventType, date targetDate: Date!) -> Bool {
+        return false
+    }
     
     func dayPlannerView(_ view: MGCDayPlannerView!, canCreateNewEventOf type: MGCEventType, at date: Date!) -> Bool {
         return false
@@ -184,31 +181,42 @@ extension CalendarViewController: MGCDayPlannerViewDataSource, MGCDayPlannerView
         return lecturesOfDate(date).count
     }
     
-    func dayPlannerView(_ view: MGCDayPlannerView!, canMoveEventOf type: MGCEventType, at index: UInt, date: Date!, to targetType: MGCEventType, date targetDate: Date!) -> Bool {
-        return false
-    }
-    
     func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOf type: MGCEventType, at index: UInt, date: Date!) -> MGCEventView! {
         let eventView = MGCStandardEventView()
         eventView.color = Constants.tumBlue
         let item = lecturesOfDate(date)[(Int)(index)]
         eventView.title = item.text
         eventView.subtitle = item.location
+        eventView.detail = item.description
         return eventView
     }
     
     func dayPlannerView(_ view: MGCDayPlannerView!, dateRangeForEventOf type: MGCEventType, at index: UInt, date: Date!) -> MGCDateRange! {
         let item = lecturesOfDate(date)[(Int)(index)]
-        return MGCDateRange(start: item.dtstart! as Date!, end: item.dtend! as Date!)
+        return MGCDateRange(start: item.start, end: item.end)
     }
+    
+}
+
+extension CalendarViewController: MGCDayPlannerViewDelegate {
     
     func dayPlannerView(_ view: MGCDayPlannerView!, willDisplay date: Date!) {
         if !scrolling {
-            weekSelector?.setSelectedDate(date, animated: true)
+            daySelector?.setSelectedDate(date, animated: true)
             updateTitle(date)
-        } else if sameDay(date, b: (weekSelector?.selectedDate)!) {
+        } else if sameDay(date, b: (daySelector?.selectedDate)!) {
             scrolling = false
         }
+    }
+    
+    func dayPlannerView(_ view: MGCDayPlannerView!, didSelectEventOf type: MGCEventType, at index: UInt, date: Date!) {
+        let item = lecturesOfDate(date)[(Int)(index)]
+        item.open(sender: self)
+    }
+    
+    func dayPlannerView(_ view: MGCDayPlannerView!, shouldSelectEventOf type: MGCEventType, at index: UInt, date: Date!) -> Bool {
+        let item = lecturesOfDate(date)[(Int)(index)]
+        return item.url != nil
     }
     
 }

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SafariServices
-
 import Sweeft
 
 final class News: DataElement {
@@ -38,14 +36,7 @@ final class News: DataElement {
     }
     
     func open(sender: UIViewController? = nil) {
-        guard let url = URL(string: link) else { return }
-        
-        if let sender = sender {
-            let safariViewController = SFSafariViewController(url: url)
-            sender.present(safariViewController, animated: true, completion: nil)
-        } else {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        link.url?.open(sender: sender)
     }
     
 }

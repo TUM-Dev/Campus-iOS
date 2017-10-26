@@ -7,6 +7,8 @@
 //
 
 import CoreLocation
+import UIKit
+import SafariServices
 import Sweeft
 
 private let locationManager = CLLocationManager()
@@ -18,7 +20,24 @@ private func currentLocation() -> CLLocation {
     return location ?? DefaultCampus.value.location
 }
 
+extension URL {
+    
+    func open(sender: UIViewController? = nil) {
+        if let sender = sender {
+            let safariViewController = SFSafariViewController(url: self)
+            sender.present(safariViewController, animated: true, completion: nil)
+        } else {
+            UIApplication.shared.open(self, options: [:], completionHandler: nil)
+        }
+    }
+    
+}
+
 extension Date {
+    
+    var dayString: String {
+        return string(using: "yyyy-MM-dd")
+    }
     
     func numberOfDaysUntilDateTime(_ toDateTime: Date, inTimeZone timeZone: TimeZone? = nil) -> Int {
         var calendar = Calendar.current

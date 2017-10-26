@@ -32,14 +32,13 @@ final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager
     }
     
     func toSingle(from items: [CalendarRow]) -> DataElement? {
-        let new = items |> { $0.dtstart! > .now }
-        return new.first
+        return items.first { $0.start > .now }
     }
     
     func fetch(maxCache: CacheTime) -> Response<[CalendarRow]> {
         return config.tumOnline.doXMLObjectsRequest(to: .calendar,
                                                     at: "events", "event",
-                                                    maxCacheTime: maxCache)
+                                                    maxCacheTime: maxCache).map { $0.filter { $0.status == "FT" } }
     }
     
 }
