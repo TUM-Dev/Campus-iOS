@@ -29,8 +29,10 @@ class StudyRoomGroup: DataElement {
             return nil
         }
         let numbers = json["raeume"].array ==> { $0.int }
-        let rooms = rooms.filter { numbers.contains($0.roomNumber) }
-        self.init(sortId: sortId, name: name, detail: detail, rooms: rooms)
+        self.init(sortId: sortId, 
+                  name: name, 
+                  detail: detail, 
+                  rooms: rooms.filter { numbers.contains($0.roomNumber) })
     }
 
     var text: String {
