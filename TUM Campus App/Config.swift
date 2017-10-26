@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-struct Config {
+final class Config {
     let tumCabe: TUMCabeAPI
     var tumOnline: TUMOnlineAPI
     let tumSexy: TUMSexyAPI
@@ -17,13 +17,6 @@ struct Config {
     let bookRentals: BookRentalAPI
     let mensaApp: MensaAppAPI
     let mvg: MVGAPI
-}
-
-extension Config {
-    
-    var user: User? {
-        return tumOnline.user
-    }
     
     init(tumCabeURL: String,
          tumOnlineURL: String,
@@ -35,20 +28,27 @@ extension Config {
          mvgKey: String,
          user: User?) {
         
-        self.init(tumCabe: TUMCabeAPI(baseURL: tumCabeURL),
-                  tumOnline: TUMOnlineAPI(baseURL: tumOnlineURL, user: user),
-                  tumSexy: TUMSexyAPI(baseURL: tumSexyURL),
-                  rooms: StudyRoomAPI(baseURL: roomsURL),
-                  bookRentals: BookRentalAPI(baseURL: rentalsURL),
-                  mensaApp: MensaAppAPI(baseURL: mensaAppURL),
-                  mvg: MVGAPI(baseURL: mvgURL, apiKey: mvgKey))
+        tumCabe = TUMCabeAPI(baseURL: tumCabeURL)
+        tumOnline = TUMOnlineAPI(baseURL: tumOnlineURL, user: user)
+        tumSexy = TUMSexyAPI(baseURL: tumSexyURL)
+        rooms = StudyRoomAPI(baseURL: roomsURL)
+        bookRentals = BookRentalAPI(baseURL: rentalsURL)
+        mensaApp = MensaAppAPI(baseURL: mensaAppURL)
+        mvg = MVGAPI(baseURL: mvgURL, apiKey: mvgKey)
+    }
+}
+
+extension Config {
+    
+    var user: User? {
+        return tumOnline.user
     }
     
 }
 
 extension Config {
     
-    init?(user: User?, json: JSON) {
+    convenience init?(user: User?, json: JSON) {
         
         guard let tumCabe = json["tumCabe"].string,
             let tumOnline = json["tumOnline"].string,

@@ -16,7 +16,7 @@ class TumOnlineLoginRequestManager {
         case waiting(lrzID: String, token: String)
     }
     
-    var config: Config
+    let config: Config
 
     var state: State? {
         switch PersistentUser.value {
