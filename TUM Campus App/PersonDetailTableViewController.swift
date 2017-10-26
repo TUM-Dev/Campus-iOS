@@ -11,8 +11,13 @@ import UIKit
 class PersonDetailTableViewController: UITableViewController, DetailView {
     
     var user: DataElement?
-    var delegate: DetailViewDelegate?
-    var contactInfo = [(ContactInfoType,String)]()
+    
+    weak var delegate: DetailViewDelegate?
+    
+    var contactInfo: [(ContactInfoType, String)] {
+        return (user as? UserData)?.contactInfo ?? []
+    }
+    
     var addingContact = false
     
     

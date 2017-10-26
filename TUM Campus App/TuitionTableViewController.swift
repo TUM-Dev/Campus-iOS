@@ -50,6 +50,7 @@ extension TuitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fetch()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false

@@ -11,7 +11,8 @@ import UIKit
 class LectureDetailsTableViewController: UITableViewController, DetailView {
     
     var lecture: DataElement?
-    var delegate: DetailViewDelegate?
+    
+    weak var delegate: DetailViewDelegate?
 
 }
 

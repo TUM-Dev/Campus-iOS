@@ -52,6 +52,7 @@ extension LecturesTableViewController {
         }
         
         delegate?.dataManager().getLectures(self)
+        self.fetch()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)

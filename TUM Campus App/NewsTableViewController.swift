@@ -50,6 +50,7 @@ extension NewsTableViewController {
         }
         
         delegate?.dataManager().getAllNews(self)
+        self.fetch(scrolling: true)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension

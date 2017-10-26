@@ -13,6 +13,7 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetch()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
@@ -20,6 +21,13 @@ class TumSexyTableViewController: UITableViewController, DetailView {
         }
         
         delegate?.dataManager().getSexyEntries(self)
+    }
+    
+    func fetch() {
+        delegate?.dataManager()?.tumSexyManager.fetch().onSuccess(in: .main) { entries in
+            self.entries = entries
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func visit(_ sender: Any) {

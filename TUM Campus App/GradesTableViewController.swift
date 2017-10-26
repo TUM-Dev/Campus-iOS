@@ -11,7 +11,8 @@ import UIKit
 class GradesTableViewController: UITableViewController, DetailViewDelegate, DetailView  {
 
     var grades = [Grade]()
-    var delegate: DetailViewDelegate?
+    
+    weak var delegate: DetailViewDelegate?
     
     func dataManager() -> TumDataManager? {
         return delegate?.dataManager()
@@ -38,6 +39,7 @@ extension GradesTableViewController {
         
         title = "Grades"
         delegate?.dataManager().getGrades(self)
+        self.fetch()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
     }

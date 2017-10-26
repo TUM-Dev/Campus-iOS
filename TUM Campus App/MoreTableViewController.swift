@@ -10,7 +10,7 @@ import UIKit
 import Sweeft
 import MessageUI
 
-class MoreTableViewController: UITableViewController, DetailView, ImageDownloadSubscriber, MFMailComposeViewControllerDelegate {
+class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -26,8 +26,11 @@ class MoreTableViewController: UITableViewController, DetailView, ImageDownloadS
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
     var delegate: DetailViewDelegate?
     
+    var manager: TumDataManager?
+    var binding: ImageViewBinding?
+    
     var user: User? {
-        return delegate?.dataManager().user
+        return manager?.user
     }
     
     var isLoggedIn: Bool {
@@ -48,8 +51,8 @@ class MoreTableViewController: UITableViewController, DetailView, ImageDownloadS
         }
     }
     
-    func updateImageView() {
-        updateView()
+    func dataManager() -> TumDataManager? {
+        return manager
     }
 
 }
@@ -64,8 +67,12 @@ extension MoreTableViewController {
             self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         }
         
+        if let mvc = navigationController as? CampusNavigationController {
+            manager = mvc.manager
+        }
+        
         if user?.data == nil {
-            delegate?.dataManager().getUserData() {
+            manager?.userDataManager.fetch().onResult(in: .main) { _ in
                 self.updateView()
             }
         }
@@ -157,7 +164,7 @@ extension MoreTableViewController {
             mailVC.setSubject(subject)
             mailVC.setMessageBody(body, isHTML: true)
             
-            present(mailVC, animated: true)
+            self.present(mailVC, animated: true)
         } else {
             print("error can't send mail")
         }
@@ -168,3 +175,4 @@ extension MoreTableViewController {
     }
     
 }
+
