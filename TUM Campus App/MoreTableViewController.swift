@@ -10,7 +10,7 @@ import UIKit
 import Sweeft
 import MessageUI
 
-class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMailComposeViewControllerDelegate {
+class MoreTableViewController: UITableViewController, DetailView, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,13 +24,12 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
     
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
-    var manager: TumDataManager?
     var binding: ImageViewBinding?
     
     var user: User? {
-        return manager?.user
+        return delegate?.dataManager()?.user
     }
     
     var isLoggedIn: Bool {
@@ -50,10 +49,6 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
             logoutLabel.textColor = .green
         }
     }
-    
-    func dataManager() -> TumDataManager? {
-        return manager
-    }
 
 }
 
@@ -67,15 +62,12 @@ extension MoreTableViewController {
             self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
         }
         
-        if let mvc = navigationController as? CampusNavigationController {
-            manager = mvc.manager
-        }
-        
         if user?.data == nil {
-            manager?.userDataManager.fetch().onResult(in: .main) { _ in
+            delegate?.dataManager()?.userDataManager.fetch().onResult(in: .main) { _ in
                 self.updateView()
             }
         }
+        
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             bibNumber.text = savedUsername
         } else {
@@ -95,11 +87,9 @@ extension MoreTableViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showPersonDetail" {
-            if user?.data != nil {
-                return true
-            }
+            return user?.data != nil
         }
-        return false
+        return true
     }
     
 }
@@ -143,7 +133,7 @@ extension MoreTableViewController {
             }
             
         case 5:
-            manager?.loginManager.logOut()
+            delegate?.dataManager()?.loginManager.logOut()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it
