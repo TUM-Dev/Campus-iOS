@@ -14,7 +14,7 @@ final class Movie: DataElement {
     let name: String
     let id: String
     let year: Int
-    let runtime: Int
+    let runtime: String
     let genre: String
     let director: String
     let actors: String
@@ -27,7 +27,7 @@ final class Movie: DataElement {
     init(name: String,
          id: String,
          year: Int,
-         runtime: Int,
+         runtime: String,
          rating: Double,
          genre: String,
          actors: String,
@@ -86,7 +86,7 @@ extension Movie: Deserializable {
         self.init(name: name,
                   id: id,
                   year: year,
-                  runtime: 0,
+                  runtime: runtime,
                   rating: rating,
                   genre: genre,
                   actors: actors,
