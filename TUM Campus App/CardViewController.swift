@@ -19,21 +19,14 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     
     func refresh(_ sender: AnyObject?) {
         manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { data in
-            if self.cards.count <= data.count {
-                for item in data {
-                    if let lectureItem = item as? CalendarRow {
-                        self.nextLecture = lectureItem
-                    }
-                }
-                self.cards = data
-                self.tableView.reloadData()
-            }
+            self.nextLecture = data.flatMap({ $0 as? CalendarRow }).first
+            self.cards = data
+            self.tableView.reloadData()
             self.refresh.endRefreshing()
         }
     }
     
     func didUpdateCards() {
-        cards.removeAll()
         refresh(nil)
         tableView.reloadData()
     }
@@ -72,6 +65,7 @@ extension CardViewController {
         }
         if let navCon = segue.destination as? UINavigationController,
             let mvc = navCon.topViewController as? EditCardsViewController {
+            
             mvc.delegate = self
         }
 

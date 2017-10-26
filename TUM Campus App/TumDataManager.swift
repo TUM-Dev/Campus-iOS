@@ -43,13 +43,14 @@ class TumDataManager {
     }
     
     var cardManagers: [CardManager] {
+        let order = PersistentCardOrder.value.cards
         return [
             calendarManager,
             movieManager,
             newsManager,
             tuitionManager,
             cafeteriaManager,
-        ].sorted(ascending: \.indexInOrder)
+        ].filter({ order.contains($0.cardKey) }).sorted(ascending: \.indexInOrder)
     }
     
     var searchManagers: [SimpleSearchManager] {
