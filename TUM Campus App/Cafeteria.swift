@@ -16,6 +16,13 @@ final class Cafeteria: DataElement {
     let name: String
     var menus = [String : [CafeteriaMenu]]()
     let location: CLLocation
+    
+    var hasMenuToday: Bool {
+        guard let menus = menus[Date.now.dayString] else {
+            return false
+        }
+        return !menus.isEmpty
+    }
 
     init(id: String, name: String, address: String, latitude: Double, longitude: Double) {
         
@@ -26,13 +33,13 @@ final class Cafeteria: DataElement {
     }
     
     func addMenu(_ menu: CafeteriaMenu) {
-        let key = menu.date.string(using: "yyyy MM dd")
+        let key = menu.date.dayString
         menus[key, default: []].append(menu)
 //        menus[key] = menus[key]?.sorted(ascending: \.typeNr)
     }
     
     func getMenusForDate(_ date: Date) -> [CafeteriaMenu] {
-        return menus[date.string(using: "yyyy MM dd")] ?? []
+        return menus[date.dayString] ?? []
     }
     
     func distance(_ from: CLLocation) -> CLLocationDistance {

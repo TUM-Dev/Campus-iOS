@@ -32,6 +32,10 @@ final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManage
         self.config = config
     }
     
+    func toSingle(from items: [Cafeteria]) -> DataElement? {
+        return items.first(where: { $0.hasMenuToday })
+    }
+    
     func fetchMenus(for cafeterias: [Cafeteria], maxCache: CacheTime) -> Response<[Cafeteria]> {
         return self.config.mensaApp.doJSONRequest(to: .exported,
                                                   queries: ["mensa_id" : "all"],
