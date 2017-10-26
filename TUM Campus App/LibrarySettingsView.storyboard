@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Library Settings View Controller-->
+        <!--Library Account-->
         <scene sceneID="WZZ-cc-8Zd">
             <objects>
-                <viewController id="fw4-Rt-rqp" customClass="LibrarySettingsViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Library Account" id="fw4-Rt-rqp" customClass="LibrarySettingsViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AvQ-xg-AUQ"/>
                         <viewControllerLayoutGuide type="bottom" id="eTx-38-U93"/>

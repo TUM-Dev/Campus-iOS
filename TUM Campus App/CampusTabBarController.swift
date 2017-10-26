@@ -9,12 +9,13 @@
 import UIKit
 import Sweeft
 
-class CampusTabBarController: UITabBarController {
+class CampusNavigationController: UINavigationController {
     
     var manager: TumDataManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         UITabBar.appearance().tintColor = Constants.tumBlue
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().barTintColor = UIColor.white
@@ -28,6 +29,10 @@ class CampusTabBarController: UITabBarController {
         manager = TumDataManager(user: PersistentUser.value.user, json: json)
         
         (ViewControllerProvider.loginNavigationViewController.childViewControllers.first as? LoginViewController)?.manager = manager
+=======
+        manager = TumDataManager()
+        manager?.getUserData()
+>>>>>>> Tim/RemoveTabBar
     }
 
 }

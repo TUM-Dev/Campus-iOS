@@ -13,6 +13,7 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         fetch()
     }
     
@@ -21,6 +22,15 @@ class TumSexyTableViewController: UITableViewController, DetailView {
             self.entries = entries
             self.tableView.reloadData()
         }
+=======
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
+        delegate?.dataManager().getSexyEntries(self)
+>>>>>>> Tim/RemoveTabBar
     }
     
     @IBAction func visit(_ sender: Any) {

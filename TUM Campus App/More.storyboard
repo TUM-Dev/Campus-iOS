@@ -55,7 +55,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tUg-C5-TOA" kind="show" id="dJ4-83-CmK"/>
+                                            <segue destination="tUg-C5-TOA" kind="show" identifier="showPersonDetail" id="dJ4-83-CmK"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -182,9 +182,6 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="4BW-3f-UHw" kind="show" id="kCa-xM-t1I"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="2LZ-Kl-aUw" imageView="SwH-nR-HbD" style="IBUITableViewCellStyleDefault" id="oAx-G5-j0H">
                                         <rect key="frame" x="0.0" y="469" width="375" height="44"/>
@@ -517,6 +514,7 @@
             </objects>
             <point key="canvasLocation" x="715" y="1203"/>
         </scene>
+<<<<<<< HEAD
         <!--Search-->
         <scene sceneID="W3O-lH-P9d">
             <objects>
@@ -525,6 +523,8 @@
             </objects>
             <point key="canvasLocation" x="722" y="1168"/>
         </scene>
+=======
+>>>>>>> Tim/RemoveTabBar
         <!--Cafeteria-->
         <scene sceneID="ced-AW-eg8">
             <objects>

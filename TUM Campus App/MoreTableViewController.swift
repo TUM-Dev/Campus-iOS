@@ -10,7 +10,11 @@ import UIKit
 import Sweeft
 import MessageUI
 
+<<<<<<< HEAD
 class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMailComposeViewControllerDelegate {
+=======
+class MoreTableViewController: UITableViewController, DetailView, ImageDownloadSubscriber, MFMailComposeViewControllerDelegate {
+>>>>>>> Tim/RemoveTabBar
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,12 +28,19 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
     
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
+<<<<<<< HEAD
     
     var manager: TumDataManager?
     var binding: ImageViewBinding?
     
     var user: User? {
         return manager?.user
+=======
+    var delegate: DetailViewDelegate?
+    
+    var user: User? {
+        return delegate?.dataManager().user
+>>>>>>> Tim/RemoveTabBar
     }
     
     var isLoggedIn: Bool {
@@ -50,8 +61,13 @@ class MoreTableViewController: UITableViewController, DetailViewDelegate, MFMail
         }
     }
     
+<<<<<<< HEAD
     func dataManager() -> TumDataManager? {
         return manager
+=======
+    func updateImageView() {
+        updateView()
+>>>>>>> Tim/RemoveTabBar
     }
 
 }
@@ -60,11 +76,22 @@ extension MoreTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+<<<<<<< HEAD
         if let mvc = tabBarController as? CampusTabBarController {
             manager = mvc.manager
         }
         if user?.data == nil {
             manager?.userDataManager.fetch().onResult(in: .main) { _ in
+=======
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        }
+        
+        if user?.data == nil {
+            delegate?.dataManager().getUserData() {
+>>>>>>> Tim/RemoveTabBar
                 self.updateView()
             }
         }
@@ -78,11 +105,23 @@ extension MoreTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var mvc = segue.destination as? DetailView {
-            mvc.delegate = self
+            mvc.delegate = delegate
         }
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
+<<<<<<< HEAD
+=======
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showPersonDetail" {
+            if user?.data != nil {
+                return true
+            }
+        }
+        return false
+>>>>>>> Tim/RemoveTabBar
     }
     
 }

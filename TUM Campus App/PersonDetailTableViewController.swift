@@ -11,6 +11,7 @@ import UIKit
 class PersonDetailTableViewController: UITableViewController, DetailView {
     
     var user: DataElement?
+<<<<<<< HEAD
     
     weak var delegate: DetailViewDelegate?
     
@@ -18,7 +19,12 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
         return (user as? UserData)?.contactInfo ?? []
     }
     
+=======
+    var delegate: DetailViewDelegate?
+    var contactInfo = [(ContactInfoType,String)]()
+>>>>>>> Tim/RemoveTabBar
     var addingContact = false
+    
     
     func addContact(_ sender: AnyObject?) {
         let handler = { () in
@@ -33,6 +39,9 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
             }
         }
     }
+    
+    
+    
 }
 
 extension PersonDetailTableViewController {
@@ -53,6 +62,12 @@ extension PersonDetailTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         title = user?.text

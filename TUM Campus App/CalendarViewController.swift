@@ -55,6 +55,12 @@ extension CalendarViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         title = "My Caledar"
         self.fetch()
         let size = CGSize(width: view.frame.width, height: 80.0)

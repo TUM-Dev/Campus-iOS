@@ -23,6 +23,11 @@ class LibrarySettingsViewController: UIViewController, DetailView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             usernameTextField.text = savedUsername
         }
