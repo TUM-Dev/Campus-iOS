@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--TUM Campus App-->
+        <!--Card View Controller-->
         <scene sceneID="gYy-N5-MtS">
             <objects>
                 <tableViewController id="u9w-Pv-4xV" customClass="CardViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
@@ -442,7 +442,7 @@
                             <outlet property="delegate" destination="u9w-Pv-4xV" id="dKB-FH-64U"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TUM Campus App" id="7Vq-9E-9u2">
+                    <navigationItem key="navigationItem" id="7Vq-9E-9u2">
                         <barButtonItem key="backBarButtonItem" title="TUM" id="9rI-DA-PZf"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="tlJ-YH-PiG">
                             <connections>
