@@ -29,10 +29,7 @@ class TumSexyTableViewController: UITableViewController, DetailView {
     }
     
     @IBAction func visit(_ sender: Any) {
-        guard let url = URL(string: "http://tum.sexy") else {
-            return
-        }
-        UIApplication.shared.open(url)
+        "http://tum.sexy".url?.open(sender: self)
     }
     
 }
@@ -54,7 +51,7 @@ extension TumSexyTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        entries[indexPath.row].open()
+        entries[indexPath.row].open(sender: self)
     }
     
 }
