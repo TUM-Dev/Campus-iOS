@@ -9,12 +9,14 @@
 
 import UIKit
 
-class LibrarySettingsViewController: UIViewController {
+class LibrarySettingsViewController: UIViewController, DetailView {
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var logoutButton: UIButton!
+    
+    weak var delegate: DetailViewDelegate?
     
     let keychainWrapper = KeychainWrapper()
 
@@ -37,7 +39,19 @@ class LibrarySettingsViewController: UIViewController {
         //Verify Credentials
        
         if usernameTextField.text != "" || passwordTextField.text != "" {
-            // TODO: Access BookRentalsManager
+            
+            let username = usernameTextField.text!
+            let password = passwordTextField.text!
+            
+            let promise = delegate?.dataManager()?.bookRentalManager.login(username: username,
+                                                                           password: password)
+            promise?.onSuccess(in: .main) { _ in
+                self.displayWarning(title: "Success", message: "Done")
+            }
+            .onError(in: .main) { error in
+                print(error)
+                self.displayWarning(title: "Error", message: "Username or password is wrong")
+            }
         } else {
             displayWarning(title: "Error", message: "Please enter a username or password")
         }
@@ -64,6 +78,9 @@ class LibrarySettingsViewController: UIViewController {
         alertView.addAction(okAction)
         self.present(alertView, animated: true, completion: nil)
     }
+    
+    // TODO: Refactor use of keychain wrapper
+    // TODO: Move this to the manager. This is really the managers job.
     
     func logout() {
         

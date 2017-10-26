@@ -10,7 +10,7 @@ import Foundation
 import Sweeft
 import Kanna
 
-final class NewBookRentalManager: SingleItemManager {
+final class BookRentalManager: SingleItemManager, CardManager {
     
     typealias DataType = BookRental
     
@@ -18,6 +18,10 @@ final class NewBookRentalManager: SingleItemManager {
     
     var requiresLogin: Bool {
         return false
+    }
+    
+    var cardKey: CardKey {
+        return .bookRental
     }
     
     init(config: Config) {
