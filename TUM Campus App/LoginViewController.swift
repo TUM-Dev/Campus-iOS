@@ -45,6 +45,7 @@ class LoginViewController: UIViewController {
 
         confirmButton.isEnabled = textFieldContentsAreValid()
         confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
+        confirmButton.backgroundColor = Constants.tumBlue
     }
 
     private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
