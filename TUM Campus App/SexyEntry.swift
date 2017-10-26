@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+import Sweeft
 
 // Very Sexy
 struct SexyEntry: DataElement {

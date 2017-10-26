@@ -16,14 +16,25 @@ class NewsTableViewController: UITableViewController, DetailView {
         }
     }
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
 
 }
 
-extension NewsTableViewController: TumDataReceiver {
+extension NewsTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        news = data.flatMap() { $0 as? News }
+    func fetch(scrolling: Bool = false) {
+        delegate?.dataManager()?.newsManager.fetch().onSuccess(in: .main) { news in
+            self.news = news
+            
+            guard scrolling, let index = news.lastIndex(where: { $0.date > .now }) else {
+                return
+            }
+            
+            let indexPath =  IndexPath(row: index, section: 0)
+            self.tableView.scrollToRow(at: indexPath,
+                                       at: UITableViewScrollPosition.top,
+                                       animated: false)
+        }
     }
     
 }
@@ -43,9 +54,6 @@ extension NewsTableViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        if let index = getRowOfUpcomingNews() {
-            tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.top, animated: true)
-        }
     }
     
 }
@@ -70,13 +78,4 @@ extension NewsTableViewController {
         news[indexPath.row].open(sender: self)
     }
     
-}
-
-extension NewsTableViewController {
-    func getRowOfUpcomingNews() -> Int? {
-        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
-            return news.index(of: nextNews) ?? 0
-        }
-        return nil
-    }
 }

@@ -9,22 +9,7 @@
 import Sweeft
 import UIKit
 
-final class User: ImageDownloader, ImageDownloadSubscriber {
-    
-    private static var internalSharedUser: User? = nil
-    
-    static var shared: User? {
-        get {
-            if internalSharedUser == nil {
-                internalSharedUser = PersistentUser.value.user
-            }
-            return internalSharedUser
-        }
-        set {
-            internalSharedUser = newValue
-        }
-        
-    }
+final class User {
     
     let token: String
     let lrzID: String?
@@ -35,24 +20,6 @@ final class User: ImageDownloader, ImageDownloadSubscriber {
     init(lrzID: String, token: String) {
         self.lrzID = lrzID
         self.token = token
-        super.init()
-    }
-    
-    func getUserData(_ data: UserData) {
-        self.data = data
-        name = data.name
-        id = data.id
-        if let image = data.image {
-            self.image = image
-            notifySubscribers()
-        } else {
-            data.subscribeToImage(self)
-        }
-    }
-    
-    func updateImageView() {
-        self.image = data?.image
-        notifySubscribers()
     }
     
 }

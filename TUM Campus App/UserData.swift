@@ -9,27 +9,27 @@
 import Sweeft
 import Contacts
 import UIKit
+import SWXMLHash
 
-
-class UserData: ImageDownloader, DataElement {
+final class UserData: DataElement {
     
     func getCellIdentifier() -> String {
         return "person"
     }
     
     let name: String
-    let picture: String
     let id: String
-    init(name: String, picture: String, id: String) {
+    let avatar: Image
+    
+    init(name: String, picture: String?, id: String) {
         self.name = name
         self.id = id
-        self.picture = (TUMOnlineWebServices.Home.rawValue + picture).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)?.replacingOccurrences(of: "amp;", with: "") ?? ""
-        super.init(url: self.picture)
+        self.avatar = .init(url: picture)
     }
     
     var title: String?
     
-    var contactInfo = [(ContactInfoType,String)]()
+    var contactInfo = [(ContactInfoType, String)]()
     
     var text: String {
         return name
@@ -55,9 +55,6 @@ class UserData: ImageDownloader, DataElement {
     
     func addContact(_ handler: () -> ()?) {
         let contact = CNMutableContact()
-        if let imageOfUser = image {
-            contact.imageData = UIImagePNGRepresentation(imageOfUser)
-        }
         contact.givenName = name
         var phones = [String]()
         var mobiles = [String]()
@@ -91,6 +88,21 @@ class UserData: ImageDownloader, DataElement {
             print("Error")
         }
         
+    }
+    
+}
+
+extension UserData {
+    
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI) {
+        guard let name = xml["vorname"].element?.text,
+            let lastname = xml["familienname"].element?.text,
+            let id = xml["obfuscated_id"].element?.text else {
+            
+            return nil
+        }
+        let url = xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
+        self.init(name: "\(name) \(lastname)", picture: url, id: id)
     }
     
 }

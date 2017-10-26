@@ -7,67 +7,51 @@
 //
 
 import Foundation
-import Alamofire
 import SWXMLHash
+import Sweeft
 
-class PersonDetailDataManager: Manager {
+final class PersonDetailDataManager: DetailsManager {
     
-    var main: TumDataManager?
+    typealias DataType = UserData
     
-    var request: Request?
+    var config: Config
     
-    var userQuery: UserData?
-    
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    init(config: Config) {
+        self.config = config
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        request?.cancel()
-        if let data = userQuery {
-            if !data.contactsLoaded {
-                let url = getURL()
-                request = Alamofire.request(url).responseString() { (response) in
-                    if let value = response.result.value {
-                        let parsedXML = SWXMLHash.parse(value)
-                        let dien = parsedXML["person"]["dienstlich"]
-                        let privat = parsedXML["person"]["privat"]
-                        var contactInfo = [(ContactInfoType,String?)]()
-                        contactInfo.append((.Email,parsedXML["person"]["email"].element?.text))
-                        contactInfo.append((.Phone,dien["telefon"].element?.text))
-                        contactInfo.append((.Phone,privat["telefon"].element?.text))
-                        let phones = parsedXML["person"]["telefon_nebenstellen"]["nebenstelle"].all
-                        for phone in phones {
-                            contactInfo.append((.Phone, phone["telefonnummer"].element?.text))
-                        }
-                        contactInfo.append((.Mobile,dien["mobiltelefon"].element?.text))
-                        contactInfo.append((.Mobile,privat["mobiltelefon"].element?.text))
-                        contactInfo.append((.Fax,dien["fax"].element?.text))
-                        contactInfo.append((.Fax,privat["fax"].element?.text))
-                        contactInfo.append((.Web,dien["www_homepage"].element?.text))
-                        contactInfo.append((.Web,privat["www_homepage"].element?.text))
-                        
-                        let titel = parsedXML["person"]["titel"].element?.text
-                        for data in contactInfo {
-                            if let infoValue = data.1, infoValue != "" {
-                                self.userQuery?.contactInfo.append((data.0,infoValue))
-                            }
-                        }
-                        self.userQuery?.title = titel
-                        handler([])
-                    }
+    func fetch(for data: UserData) -> Promise<UserData, APIError> {
+        guard !data.contactsLoaded else {
+            return .successful(with: data)
+        }
+        return config.tumOnline.doRepresentedRequest(to: .personDetails,
+                                                     queries: ["pIdentNr": data.id]).map { (xml: XMLIndexer) in
+            
+            let dien = xml["person"]["dienstlich"]
+            let privat = xml["person"]["privat"]
+            var contactInfo = [(ContactInfoType,String?)]()
+            contactInfo.append((.Email, xml["person"]["email"].element?.text))
+            contactInfo.append((.Phone, dien["telefon"].element?.text))
+            contactInfo.append((.Phone, privat["telefon"].element?.text))
+            let phones = xml["person"]["telefon_nebenstellen"]["nebenstelle"].all
+            for phone in phones {
+                contactInfo.append((.Phone, phone["telefonnummer"].element?.text))
+            }
+            contactInfo.append((.Mobile, dien["mobiltelefon"].element?.text))
+            contactInfo.append((.Mobile, privat["mobiltelefon"].element?.text))
+            contactInfo.append((.Fax, dien["fax"].element?.text))
+            contactInfo.append((.Fax, privat["fax"].element?.text))
+            contactInfo.append((.Web, dien["www_homepage"].element?.text))
+            contactInfo.append((.Web, privat["www_homepage"].element?.text))
+            
+            for item in contactInfo {
+                if let infoValue = item.1, infoValue != "" {
+                    data.contactInfo.append((item.0, infoValue))
                 }
             }
+            
+            return data
         }
     }
-    
-    func getURL() -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.PersonDetails.rawValue
-        if let token = main?.getToken(), let id = userQuery?.id {
-            return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&" + TUMOnlineWebServices.IDParameter.rawValue + "=" + id
-        }
-        return ""
-    }
-
     
 }

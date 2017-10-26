@@ -20,25 +20,26 @@ class NextLectureCardCell: CardTableViewCell {
         if let calendarItem = element as? CalendarRow {
             lectureTitelLabel.text = calendarItem.text
             locationLabel.text = calendarItem.location
+            
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "hh:mm"
+            
             let dayformatter = DateFormatter()
             dayformatter.dateFormat = "EEEE"
-            if let s = calendarItem.dtstart, let e = calendarItem.dtend {
-                let day = dayformatter.string(from: s as Date)
-                let start = dateformatter.string(from: s as Date)
-                let end = dateformatter.string(from: e as Date)
-                
-                let dateComponentsFormatter = DateComponentsFormatter()
-                dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
-                dateComponentsFormatter.maximumUnitCount = 2
-                dateComponentsFormatter.unitsStyle = .full
-                
-                timeLabel.text = day + ", " + start + " - " + end
-                
-                if let timeRemaining = dateComponentsFormatter.string(from: Date(), to: s) {
-                    timeRemainingLabel.text = "In \(timeRemaining)"
-                }
+            
+            let day = dayformatter.string(from: calendarItem.start)
+            let start = dateformatter.string(from: calendarItem.start)
+            let end = dateformatter.string(from: calendarItem.end)
+            
+            let dateComponentsFormatter = DateComponentsFormatter()
+            dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
+            dateComponentsFormatter.maximumUnitCount = 2
+            dateComponentsFormatter.unitsStyle = .full
+            
+            timeLabel.text = day + ", " + start + " - " + end
+            
+            if let timeRemaining = dateComponentsFormatter.string(from: .now, to: calendarItem.start) {
+                timeRemainingLabel.text = "In \(timeRemaining)"
             }
         }
     }

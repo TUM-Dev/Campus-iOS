@@ -7,7 +7,7 @@ import UIKit
 
 class TumSexyTableViewController: UITableViewController, DetailView {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var entries = [SexyEntry]()
     
@@ -49,15 +49,6 @@ extension TumSexyTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         entries[indexPath.row].open()
-    }
-    
-}
-
-extension TumSexyTableViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        entries = data.mapped()
-        tableView.reloadData()
     }
     
 }

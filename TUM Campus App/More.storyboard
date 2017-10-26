@@ -227,6 +227,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="TQa-O6-D48" kind="show" id="TvN-Fr-vfu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="HP8-zj-Qcz" imageView="JNl-1Z-Pmf" style="IBUITableViewCellStyleDefault" id="jek-ge-eeQ">
                                         <rect key="frame" x="0.0" y="557" width="375" height="44"/>
@@ -319,14 +322,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ona-U4-Tl3">
-                                                    <rect key="frame" x="55" y="0.0" width="285" height="43.5"/>
+                                                    <rect key="frame" x="56" y="0.0" width="284" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Align Justify-25" id="Eu3-oV-b1u">
-                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="16" y="9" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -343,14 +346,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Library Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hcL-c6-I1l">
-                                                    <rect key="frame" x="55" y="12" width="121" height="20.5"/>
+                                                    <rect key="frame" x="56" y="12" width="121" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="lecture" id="VSs-FY-mKo">
-                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="16" y="9" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="bib-nummer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vak-XP-9Y9">
@@ -378,14 +381,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8tK-cs-EjU">
-                                                    <rect key="frame" x="55" y="0.0" width="285" height="43.5"/>
+                                                    <rect key="frame" x="56" y="0.0" width="284" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Info Filled-25" id="m69-bz-a4O">
-                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="16" y="9" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -399,14 +402,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Send Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wcz-1g-Pdj">
-                                                    <rect key="frame" x="55" y="0.0" width="285" height="43.5"/>
+                                                    <rect key="frame" x="56" y="0.0" width="284" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Feedback Filled-25" id="09S-sd-1cp">
-                                                    <rect key="frame" x="15" y="9" width="25" height="25"/>
+                                                    <rect key="frame" x="16" y="9" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -461,7 +464,15 @@
                 <viewControllerPlaceholder storyboardName="Tution" id="pUb-YI-hpF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owI-lW-n4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="1142"/>
+            <point key="canvasLocation" x="719" y="1121"/>
+        </scene>
+        <!--MVV-->
+        <scene sceneID="S67-ia-WP8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MVV" id="TQa-O6-D48" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47x-ug-maZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="1036"/>
         </scene>
         <!--Calendar Detail-->
         <scene sceneID="4NO-Rg-oZd">
@@ -469,7 +480,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="UIViewController-ZUh-c6-LZ4" storyboardName="Calendar Detail" id="pha-VL-MLq" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L3G-Rw-oUu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778" y="1008"/>
+            <point key="canvasLocation" x="758" y="945"/>
         </scene>
         <!--EditCards-->
         <scene sceneID="0Aq-VZ-KIx">
@@ -477,7 +488,7 @@
                 <viewControllerPlaceholder storyboardName="EditCards" id="a9A-ZD-0Ok" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkj-Pe-Oo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="905"/>
+            <point key="canvasLocation" x="730" y="842"/>
         </scene>
         <!--PersonDetail-->
         <scene sceneID="EAx-Jc-ZoB">
@@ -485,7 +496,7 @@
                 <viewControllerPlaceholder storyboardName="PersonDetail" id="tUg-C5-TOA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXn-sI-iCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="766" y="963"/>
+            <point key="canvasLocation" x="746" y="900"/>
         </scene>
         <!--My Lectures-->
         <scene sceneID="GhR-At-gnr">
@@ -493,7 +504,7 @@
                 <viewControllerPlaceholder storyboardName="Lecture" referencedIdentifier="My Lectures" id="6xD-hA-J5b" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znd-Ik-wlx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="1055"/>
+            <point key="canvasLocation" x="745" y="991"/>
         </scene>
         <!--News-->
         <scene sceneID="79z-4O-Kvn">
@@ -501,7 +512,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="UITableViewController-1bS-dI-0wy" storyboardName="News" id="rvR-qf-Nzj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oWb-I2-Rn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="1224"/>
+            <point key="canvasLocation" x="715" y="1203"/>
         </scene>
         <!--Cafeteria-->
         <scene sceneID="ced-AW-eg8">
@@ -509,7 +520,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="UIViewController-jYG-21-njU" storyboardName="Cafeteria" id="Avg-KB-Ux0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fi2-6Y-59S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749" y="1262"/>
+            <point key="canvasLocation" x="731" y="1240"/>
         </scene>
         <!--Grade-->
         <scene sceneID="6xo-e8-8Pd">
@@ -517,7 +528,7 @@
                 <viewControllerPlaceholder storyboardName="Grade" id="sGE-MS-jnl" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tN8-zW-4np" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="1099"/>
+            <point key="canvasLocation" x="716" y="1078"/>
         </scene>
         <!--StudyRooms-->
         <scene sceneID="5MD-3n-nFJ">
@@ -525,7 +536,7 @@
                 <viewControllerPlaceholder storyboardName="StudyRooms" id="gGz-Ki-lHH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0x-WA-ARm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="764" y="1379"/>
+            <point key="canvasLocation" x="746" y="1357"/>
         </scene>
         <!--TumSexyView-->
         <scene sceneID="B7M-3E-1x6">
@@ -533,7 +544,7 @@
                 <viewControllerPlaceholder storyboardName="TumSexyView" id="c0X-ls-esQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLn-S1-33J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="1298"/>
+            <point key="canvasLocation" x="751" y="1276"/>
         </scene>
         <!--LibrarySettingsView-->
         <scene sceneID="2im-KB-qUU">
@@ -541,7 +552,7 @@
                 <viewControllerPlaceholder storyboardName="LibrarySettingsView" id="XgE-p0-4IH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT5-mT-RiU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="1341"/>
+            <point key="canvasLocation" x="780" y="1320"/>
         </scene>
     </scenes>
     <resources>

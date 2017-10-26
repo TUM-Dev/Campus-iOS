@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class Tuition: DataElement {
+import SWXMLHash
+
+final class Tuition: DataElement {
     
     let frist: Date
     let semester: String
@@ -29,10 +31,16 @@ class Tuition: DataElement {
     
 }
 
-extension Tuition: CardDisplayable {
+extension Tuition: XMLDeserializable {
     
-    var cardKey: CardKey {
-        return .tuition
+    convenience init?(from xml: XMLIndexer) {
+        guard let soll = xml["soll"].element?.text,
+            let frist = xml["frist"].element?.text.date(using: "yyyy-MM-dd"),
+            let semester = xml["semester_bezeichnung"].element?.text else {
+            
+            return nil
+        }
+        self.init(frist: frist, semester: semester, soll: soll)
     }
     
 }

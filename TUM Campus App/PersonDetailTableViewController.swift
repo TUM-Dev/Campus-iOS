@@ -34,16 +34,16 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
     
 }
 
-extension PersonDetailTableViewController: TumDataReceiver {
+extension PersonDetailTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        if let data = user as? UserData {
-            contactInfo = data.contactInfo
+    func fetch(for user: UserData) {
+        delegate?.dataManager()?.personDetailsManager.fetch(for: user).onSuccess(in: .main) { user in
+            self.user = user
+            self.tableView.reloadData()
+            if self.addingContact {
+                self.addContact(nil)
+            }
         }
-        if addingContact {
-            addContact(nil)
-        }
-        tableView.reloadData()
     }
     
 }
@@ -64,8 +64,7 @@ extension PersonDetailTableViewController {
         let barItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(PersonDetailTableViewController.addContact(_:)))
         navigationItem.rightBarButtonItem = barItem
         if let data = user as? UserData {
-            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
-            contactInfo = data.contactInfo
+            self.fetch(for: data)
         }
     }
     

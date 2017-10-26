@@ -6,9 +6,10 @@
 //  Copyright © 2017 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
+import SWXMLHash
 
-class Grade: DataElement {
+final class Grade: DataElement {
     let name: String
     let result: String
     let date: Date
@@ -34,4 +35,22 @@ class Grade: DataElement {
     var text: String {
         return name
     }
+}
+
+extension Grade: XMLDeserializable {
+    
+    convenience init?(from xml: XMLIndexer) {
+        guard let name = xml["lv_titel"].element?.text,
+            let result = xml["uninotenamekurz"].element?.text,
+            let date = xml["datum"].element?.text.date(using: "y-M-dd"),
+            let semester = xml["lv_semester"].element?.text,
+            let ects = xml["lv_credits"].element?.text,
+            let examiner = xml["pruefer_nachname"].element?.text,
+            let mode = xml["modus"].element?.text else {
+                
+            return nil
+        }
+        self.init(name: name, result: result, date: date, semester: semester, ects: Int(ects) ?? 0, examiner: examiner, mode: mode)
+    }
+    
 }

@@ -16,8 +16,8 @@ class CafeteriaCardTableViewCell: CardTableViewCell {
     override func setElement(_ element: DataElement) {
         if let cafeteria = element as? Cafeteria {
             cafeteriaLabel.text = cafeteria.name
-            let items = cafeteria.getMenusForDate(Date()).filter() { (item) in
-                return item.id != 0
+            let items = cafeteria.getMenusForDate(Date()).filter { (item) in
+                return item.id != "0"
             }
             var string = ""
             for item in items {

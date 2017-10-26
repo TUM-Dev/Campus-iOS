@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var manager: TumDataManager?
+    
     @IBAction func skip() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
@@ -117,8 +119,10 @@ extension LoginViewController {
         imageView.clipsToBounds = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
+            mvc.delegate = self
+        }
     }
     
 }
@@ -131,4 +135,13 @@ extension LoginViewController {
         }
         return ""
     }
+}
+
+
+extension LoginViewController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager? {
+        return manager
+    }
+    
 }

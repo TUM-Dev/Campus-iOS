@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Sweeft
 
 
 class SearchResultsController: UITableViewController {

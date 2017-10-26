@@ -10,15 +10,6 @@ import Sweeft
 
 struct CardOrder: Codable {
     var cards: [CardKey]
-    
-    var managers: [TumDataItems] {
-        return cards ==> { CardKey.managers | $0 }
-    }
-    
-    mutating func remove(cardFor data: DataElement) {
-        cards <| { $0 != (data as? CardDisplayable)?.cardKey }
-    }
-    
 }
 
 struct PersistentCardOrder: SingleStatus {

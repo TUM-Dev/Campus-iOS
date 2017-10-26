@@ -7,80 +7,33 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
+import Sweeft
 
-class MovieManager: Manager {
+final class MovieManager: CachedManager, SingleItemCachedManager, CardManager {
     
-    static var movies = [Movie]()
+    typealias DataType = Movie
     
-    var single = false
+    var config: Config
     
     var requiresLogin: Bool {
         return false
     }
     
-    required init(mainManager: TumDataManager) {
-        
+    var cardKey: CardKey {
+        return .tufilm
     }
     
-    init(single: Bool) {
-        self.single = single
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        if MovieManager.movies.isEmpty {
-            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
-                Alamofire.request(getURL(), method: .get, parameters: nil,
-                                  headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
-                    if let data = response.result.value {
-                        if let json = JSON(data).array {
-                            for item in json {
-                                if let rating = item["rating"].string, let description = item["description"].string, let director = item["director"].string, let name = item["title"].string, let runtime = item["runtime"].string, let date = item["date"].string, let cover = item["cover"].string, let created = item["created"].string, let year = item["year"].string, let genre = item["genre"].string, let id = item["link"].string, let actors = item["actors"].string {
-                                    let runTimeAsNumber = Int(runtime.components(separatedBy: " ")[0]) ?? 0
-                                    let ratingAsNumber = Double(rating) ?? 0.0
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                    
-                                    let poster = cover.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) ?? ""
-                                    let creationDate = dateFormatter.date(from: created) ?? Date()
-                                    let airdate = dateFormatter.date(from: date) ?? Date()
-                                    let yearAsNumber = Int(year) ?? 0
-                                    let movie = Movie(name: name, id: id, year: yearAsNumber, runtime: runTimeAsNumber, rating: ratingAsNumber, genre: genre, actors: actors, director: director, description: description, created: creationDate, airDate: airdate, poster: poster)
-                                    MovieManager.movies.append(movie)
-                                }
-                            }
-                            self.handleMovies(handler)
-                        }
-                    }
-                }
-            }
-        } else {
-            handleMovies(handler)
-        }
-        
+    init(config: Config) {
+        self.config = config
     }
     
-    func handleMovies(_ handler: ([DataElement]) -> ()) {
-        let onlyNew = MovieManager.movies.filter() { (movie) in
-            return movie.airDate.compare(Date()) == ComparisonResult.orderedDescending
-        }
-        if single {
-            if !onlyNew.isEmpty {
-                handler([onlyNew[0]])
-            }
-            
-        } else {
-            var returnableArray = [DataElement]()
-            for item in onlyNew {
-                returnableArray.append(item)
-            }
-            handler(returnableArray)
-        }
-    }
-    
-    func getURL() -> String {
-        return TumCabeApi.BaseURL.rawValue + TumCabeApi.Movie.rawValue
+    func fetch(maxCache: CacheTime) -> Response<[Movie]> {
+        return config.tumCabe.doObjectsRequest(to: .movie,
+                                               maxCacheTime: maxCache).map { $0 |> { $0.airDate >= .now } }
     }
     
 }

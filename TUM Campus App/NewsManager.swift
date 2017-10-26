@@ -7,85 +7,37 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
+import Sweeft
 
-class NewsManager: Manager {
+final class NewsManager: CachedManager, SingleItemCachedManager, CardManager {
     
-    static var news = [News]()
+    typealias DataType = News
     
-    var single = false
+    var config: Config
     
     var requiresLogin: Bool {
         return false
     }
     
-    required init(mainManager: TumDataManager) {
-        
+    var cardKey: CardKey {
+        return .news
     }
     
-    init(single: Bool) {
-        self.single = single
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        if NewsManager.news.isEmpty {
-            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
-                Alamofire.request(getURL(), method: .get, parameters: nil,
-                                  headers: ["X-DEVICE-ID": uuid]).responseJSON() { (response) in
-                    if let data = response.result.value {
-                        if let json = JSON(data).array {
-                            for item in json {
-                                let dateformatter = DateFormatter()
-                                dateformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                if let title = item["title"].string,
-                                            let link = item["link"].string,
-                                            let dateString = item["date"].string,
-                                            let id = item["news"].string,
-                                            let date = dateformatter.date(from: dateString) {
-                                    
-                                    let image = item["image"].string
-                                    let newsItem = News(id: id, date: date, title: title, link: link, image: image)
-                                    NewsManager.news.append(newsItem)
-                                }
-                            }
-                            self.handleNews(handler)
-                        }
-                    }
-                }
-            }
-        } else {
-            handleNews(handler)
-        }
+    init(config: Config) {
+        self.config = config
     }
     
-    func handleNews(_ handler: ([DataElement]) -> ()) {
-        if single {
-            if let story = getNextUpcomingNews() {
-                handler([story])
-            }
-        } else {
-            let items = NewsManager.news.sorted { (a, b) in
-                return a.date.compare(b.date as Date) == ComparisonResult.orderedDescending
-            }
-            var returnableArray = [DataElement]()
-            for item in items {
-                returnableArray.append(item)
-            }
-            handler(returnableArray)
-        }
+    func toSingle(from items: [News]) -> DataElement? {
+        return items.filter({ $0.date > .now }).last ?? items.first
     }
     
-    func getNextUpcomingNews(in news: [News] = NewsManager.news) -> News? {
-        let now = Date()
-        if let firstStory = news.filter({ $0.date > now }).last ?? news.first {
-            return firstStory
-        }
-        return nil
-    }
-    
-    func getURL() -> String {
-        return TumCabeApi.BaseURL.rawValue + TumCabeApi.News.rawValue
+    func fetch(maxCache: CacheTime) -> Response<[News]> {
+        return config.tumCabe.doObjectsRequest(to: .news,
+                                               maxCacheTime: maxCache).map { $0.sorted(descending: \.date) }
     }
     
 }

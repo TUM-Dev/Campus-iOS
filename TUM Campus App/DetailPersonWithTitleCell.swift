@@ -9,10 +9,12 @@
 import UIKit
 
 class DetailPersonWithTitleCell: CardTableViewCell {
+    
+    var binding: ImageViewBinding?
 
     override func setElement(_ element: DataElement) {
         if let user = element as? UserData {
-            avatarView.image = user.image ?? UIImage(named: "avatar")
+            binding = user.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             nameLabel.text = user.name
             titleLabel.text = user.title
         }

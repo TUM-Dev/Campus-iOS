@@ -8,11 +8,9 @@
 
 import UIKit
 
-class ViewControllerProvider {
+enum ViewControllerProvider {
     static private(set) var loginNavigationViewController: UIViewController = {
         let storyboard = UIStoryboard(name: "Setup", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "Login")
     }()
-    
-    private init(){}
 }

@@ -20,9 +20,17 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var search: UISearchController?
     
     func refresh(_ sender: AnyObject?) {
-        manager?.getCardItems(self)
-        if cards.count == 0 {
-            refresh.endRefreshing()
+        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { data in
+            if self.cards.count <= data.count {
+                for item in data {
+                    if let lectureItem = item as? CalendarRow {
+                        self.nextLecture = lectureItem
+                    }
+                }
+                self.cards = data
+                self.tableView.reloadData()
+            }
+            self.refresh.endRefreshing()
         }
     }
     
@@ -31,36 +39,15 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
         refresh(nil)
         tableView.reloadData()
     }
+    
 }
 
-extension CardViewController: ImageDownloadSubscriber, DetailViewDelegate {
+extension CardViewController: DetailViewDelegate {
     
-    func updateImageView() {
-        tableView.reloadData()
+    func dataManager() -> TumDataManager? {
+        return manager
     }
     
-    func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager()
-    }
-}
-
-extension CardViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        if cards.count <= data.count {
-            for item in data {
-                if let movieItem = item as? Movie {
-                    movieItem.subscribeToImage(self)
-                }
-                if let lectureItem = item as? CalendarRow {
-                    nextLecture = lectureItem
-                }
-            }
-            cards = data
-            DispatchQueue.main.async(execute: {self.tableView.reloadData()})
-        }
-        DispatchQueue.main.async(execute: {self.refresh.endRefreshing()})
-    }
 }
 
 extension CardViewController {

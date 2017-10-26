@@ -37,7 +37,7 @@ class MoreTableViewController: UITableViewController, DetailView, ImageDownloadS
     func updateView() {
         if isLoggedIn {
             nameLabel.text = user?.name
-            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
+            binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
         } else {
@@ -121,10 +121,6 @@ extension MoreTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         switch indexPath.section {
-        case 2:
-            if indexPath.row == 2 {
-                self.navigationController?.pushViewController(MVGNearbyStationsViewController(), animated: true)
-            }
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
@@ -140,9 +136,7 @@ extension MoreTableViewController {
             }
             
         case 5:
-            PersistentUser.reset()
-            User.shared = nil
-            Usage.value = false
+            manager?.loginManager.logOut()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it

@@ -9,12 +9,14 @@
 
 import UIKit
 
-class LibrarySettingsViewController: UIViewController {
+class LibrarySettingsViewController: UIViewController, DetailView {
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var logoutButton: UIButton!
+    
+    weak var delegate: DetailViewDelegate?
     
     let keychainWrapper = KeychainWrapper()
 
@@ -43,19 +45,17 @@ class LibrarySettingsViewController: UIViewController {
        
         if usernameTextField.text != "" || passwordTextField.text != "" {
             
-        let opac_url = TumOPACApi.OpacURL.rawValue
-        let api = BookRentalAPI(baseURL: opac_url)
-        
-        api.start()
-            .onSuccess { csid in
-                api.login(user: self.usernameTextField.text!, password: self.passwordTextField.text!, csid: csid)
-                    .onSuccess { result in
-                        self.saveInKeychain(username: self.usernameTextField.text!, password: self.passwordTextField.text!)
-                        self.displayWarning(title: "Success", message: "Done")
-                    }
-                    .onError { result in
-                        self.displayWarning(title: "Error", message: "Username or password is wrong")
-                    }
+            let username = usernameTextField.text!
+            let password = passwordTextField.text!
+            
+            let promise = delegate?.dataManager()?.bookRentalManager.login(username: username,
+                                                                           password: password)
+            promise?.onSuccess(in: .main) { _ in
+                self.displayWarning(title: "Success", message: "Done")
+            }
+            .onError(in: .main) { error in
+                print(error)
+                self.displayWarning(title: "Error", message: "Username or password is wrong")
             }
         } else {
             displayWarning(title: "Error", message: "Please enter a username or password")
@@ -84,14 +84,8 @@ class LibrarySettingsViewController: UIViewController {
         self.present(alertView, animated: true, completion: nil)
     }
     
-    func saveInKeychain(username: String, password: String) {
-        
-        UserDefaults.standard.set(username, forKey: "username")
-        UserDefaults.standard.set(true, forKey: "hasSavedPassword")
-        keychainWrapper.mySetObject(password, forKey:kSecValueData)
-        keychainWrapper.writeToKeychain()
-        UserDefaults.standard.synchronize()
-    }
+    // TODO: Refactor use of keychain wrapper
+    // TODO: Move this to the manager. This is really the managers job.
     
     func logout() {
         

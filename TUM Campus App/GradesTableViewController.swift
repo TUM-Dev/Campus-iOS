@@ -8,18 +8,20 @@
 
 import UIKit
 
-class GradesTableViewController: UITableViewController, TumDataReceiver, DetailViewDelegate, DetailView  {
+class GradesTableViewController: UITableViewController, DetailViewDelegate, DetailView  {
 
     var grades = [Grade]()
     var delegate: DetailViewDelegate?
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager()
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
-    func receiveData(_ data: [DataElement]) {
-        grades = data.flatMap() { $0 as? Grade }
-        tableView.reloadData()
+    func fetch() {
+        delegate?.dataManager()?.gradesManager.fetch().onSuccess(in: .main) { grades in
+            self.grades = grades
+            self.tableView.reloadData()
+        }
     }
     
 }

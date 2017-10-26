@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Sweeft
 
-class Movie:ImageDownloader, DataElement {
+final class Movie: DataElement {
     
     let name: String
     let id: String
     let year: Int
-    let runtime: Int
+    let runtime: String
     let genre: String
     let director: String
     let actors: String
@@ -21,8 +22,21 @@ class Movie:ImageDownloader, DataElement {
     let description: String
     let created: Date
     let airDate: Date
+    let poster: Image
     
-    init(name: String, id: String, year: Int, runtime: Int, rating: Double, genre: String, actors: String, director: String, description: String, created: Date, airDate: Date, poster: String) {
+    init(name: String,
+         id: String,
+         year: Int,
+         runtime: String,
+         rating: Double,
+         genre: String,
+         actors: String,
+         director: String,
+         description: String,
+         created: Date,
+         airDate: Date,
+         poster: String) {
+        
         self.name = name
         self.id = id
         self.runtime = runtime
@@ -34,7 +48,7 @@ class Movie:ImageDownloader, DataElement {
         self.description = description
         self.year = year
         self.actors = actors
-        super.init(url: poster)
+        self.poster = .init(url: poster)
     }
     
     func getCellIdentifier() -> String {
@@ -47,10 +61,40 @@ class Movie:ImageDownloader, DataElement {
     
 }
 
-extension Movie: CardDisplayable {
+extension Movie: Deserializable {
     
-    var cardKey: CardKey {
-        return .tufilm
+    convenience init?(from json: JSON) {
+        
+        guard let ratingString = json["rating"].string,
+            let rating = Double(ratingString),
+            let description = json["description"].string,
+            let director = json["director"].string,
+            let name = json["title"].string,
+            let runtime = json["runtime"].string,
+            let airDate = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
+            let cover = json["cover"].string,
+            let created = json["created"].date(using: "yyyy-MM-dd HH:mm:ss"),
+            let yearString = json["year"].string,
+            let year = Int(yearString),
+            let genre = json["genre"].string,
+            let id = json["link"].string,
+            let actors = json["actors"].string else {
+                
+            return nil
+        }
+        
+        self.init(name: name,
+                  id: id,
+                  year: year,
+                  runtime: runtime,
+                  rating: rating,
+                  genre: genre,
+                  actors: actors,
+                  director: director,
+                  description: description,
+                  created: created,
+                  airDate: airDate,
+                  poster: cover)
     }
     
 }

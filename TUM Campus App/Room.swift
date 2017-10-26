@@ -7,9 +7,9 @@
 //
 
 
-import SwiftyJSON
+import Sweeft
 
-class Room: DataElement {
+final class Room: DataElement {
     let code: String
     let name: String
     let building: String
@@ -24,6 +24,18 @@ class Room: DataElement {
         self.number = number
     }
     
+    func getCellIdentifier() -> String {
+        return "room"
+    }
+    
+    var text: String {
+        return name
+    }
+    
+}
+
+extension Room: Deserializable {
+    
     convenience init?(from json: JSON) {
         guard let code = json["room_id"].string,
             let architectNumber = json["arch_id"].string,
@@ -34,13 +46,5 @@ class Room: DataElement {
         }
         self.init(code: code, name: name, building: building, campus: campus, number: architectNumber)
     }
-    
-    func getCellIdentifier() -> String {
-        return "room"
-    }
-    
-    var text: String {
-        return name
-    }
-    
+
 }
