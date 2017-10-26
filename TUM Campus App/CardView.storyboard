@@ -449,7 +449,7 @@
                                 <segue destination="3Db-3m-P8t" kind="presentation" id="PNa-zK-Lk0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Account" id="tZ2-Dg-5OD">
+                        <barButtonItem key="rightBarButtonItem" title="Account" image="contact" id="tZ2-Dg-5OD">
                             <connections>
                                 <segue destination="0Ji-ZX-9B7" kind="show" id="2U1-is-aRK"/>
                             </connections>
@@ -772,6 +772,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="contact" width="33" height="33"/>
         <image name="movie" width="386" height="572"/>
     </resources>
     <inferredMetricsTieBreakers>
