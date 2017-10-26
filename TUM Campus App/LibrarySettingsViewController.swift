@@ -23,6 +23,8 @@ class LibrarySettingsViewController: UIViewController, DetailView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginButton.backgroundColor = Constants.tumBlue
+        
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
@@ -52,6 +54,8 @@ class LibrarySettingsViewController: UIViewController, DetailView {
                                                                            password: password)
             promise?.onSuccess(in: .main) { _ in
                 self.displayWarning(title: "Success", message: "Done")
+                self.loginButton.isHidden = true
+                self.logoutButton.isHidden = false
             }
             .onError(in: .main) { error in
                 print(error)
