@@ -117,7 +117,7 @@ extension PersonDetailTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row < contactInfo.count {
-            contactInfo[indexPath.row].0.handle(contactInfo[indexPath.row].1)
+            contactInfo[indexPath.row].0.handle(contactInfo[indexPath.row].1, sender: self)
         }
     }
     

@@ -22,7 +22,16 @@ protocol DetailsManager: DetailsForDataManager {
 
 protocol SimpleSearchManager {
     init(config: Config)
+    var categoryKey: SearchResultKey { get }
     func search(query: String) -> Response<[DataElement]>
+}
+
+extension SimpleSearchManager {
+    
+    func search(query: String) -> Response<SearchResults> {
+        return search(query: query).map { .init(key: self.categoryKey, results: $0) }
+    }
+    
 }
 
 protocol SearchManager: SimpleSearchManager {

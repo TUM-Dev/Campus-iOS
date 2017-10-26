@@ -125,9 +125,7 @@ extension MoreTableViewController {
             let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
-                if let url =  URL(string: "https://tumcabe.in.tum.de/") {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                "https://tumcabe.in.tum.de/".url?.open(sender: self)
             } else if indexPath.row == 1 {
                 sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
             }

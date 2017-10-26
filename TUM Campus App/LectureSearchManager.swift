@@ -14,6 +14,10 @@ final class LectureSearchManager: SearchManager {
     
     var config: Config
     
+    var categoryKey: SearchResultKey {
+        return .lecture
+    }
+    
     init(config: Config) {
         self.config = config
     }

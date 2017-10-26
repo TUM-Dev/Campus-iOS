@@ -72,9 +72,9 @@ class TumDataManager {
         return promises.bulk.map { $0.flatMap { $0 } }
     }
     
-    func search(query: String) -> Response<[DataElement]> {
-        let promises = searchManagers => { $0.search(query: query) }
-        return promises.bulk.flattened
+    func search(query: String) -> Response<[SearchResults]> {
+        let promises: [Response<SearchResults>] = searchManagers => { $0.search(query: query) }
+        return promises.bulk
     }
     
 }

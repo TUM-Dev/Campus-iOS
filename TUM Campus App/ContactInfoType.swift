@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 enum ContactInfoType: String {
     
     case Phone = "Phone"
@@ -16,7 +17,7 @@ enum ContactInfoType: String {
     case Fax = "Fax"
     case Web = "Webpage"
     
-    func handle(_ data: String) {
+    func handle(_ data: String, sender: UIViewController? = nil) {
         switch self {
         case .Phone:
             if let url = URL(string: "tel://\(data)") {
@@ -35,9 +36,7 @@ enum ContactInfoType: String {
             }
             return
         case .Web:
-            if let url = URL(string: data) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
+            data.url?.open(sender: sender)
             return
         }
     }

@@ -14,6 +14,10 @@ final class RoomFinderMapManager: SearchManager {
     
     var config: Config
     
+    var categoryKey: SearchResultKey {
+        return .room
+    }
+    
     init(config: Config) {
         self.config = config
     }

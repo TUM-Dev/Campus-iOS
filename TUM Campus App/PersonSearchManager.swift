@@ -22,6 +22,10 @@ final class PersonSearchManager: SearchManager {
         return false
     }
     
+    var categoryKey: SearchResultKey {
+        return .person
+    }
+    
     init(config: Config) {
         self.config = config
     }
