@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import Sweeft
 
 struct Departure {
     let departureTime: Date
@@ -22,16 +22,27 @@ struct Departure {
     let station: Station
     
     
-    init(json: JSON, station: Station) {
-        self.departureTime = Date(millisecondsSince1970: json["departureTime"].intValue)
-        self.product       = json["product"].stringValue
-        self.label         = json["label"].stringValue
-        self.destination   = json["destination"].stringValue
-        self.live          = json["live"].boolValue
-        self.lineBackgroundColor = json["lineBackgroundColor"].stringValue
-        self.departureId   = json["departureId"].intValue
-        self.sev           = json["sev"].boolValue
+    init?(json: JSON, station: Station) {
+        guard let departureTime = json["departureTime"].int,
+            let product = json["product"].string,
+            let label = json["label"].string,
+            let destination = json["destination"].string,
+            let live = json["live"].double?.bool,
+            let lineBackgroundColor = json["lineBackgroundColor"].string,
+            let departureId = json["departureId"].int,
+            let sev = json["sev"].double?.bool else {
+                
+                return nil
+        }
         
+        self.departureTime = Date(millisecondsSince1970: departureTime)
+        self.product = product
+        self.label = label
+        self.destination = destination
+        self.live = live
+        self.lineBackgroundColor = lineBackgroundColor
+        self.departureId = departureId
+        self.sev = sev
         self.station = station
     }
 }

@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class Lecture: DataElement {
+import SWXMLHash
+
+final class Lecture: DataElement {
     
     let id: String
     let lectureID: String
@@ -45,6 +47,34 @@ class Lecture: DataElement {
     
     var text: String {
         return name
+    }
+    
+}
+
+extension Lecture: XMLDeserializable {
+    
+    convenience init?(from xml: XMLIndexer) {
+        guard let name = xml["stp_sp_titel"].element?.text,
+            let id = xml["stp_sp_nr"].element?.text,
+            let swsString = xml["stp_sp_sst"].element?.text,
+            let lectureID = xml["stp_lv_nr"].element?.text,
+            let sws = Int(swsString),
+            let semester = xml["semester_name"].element?.text,
+            let chair = xml["org_name_betreut"].element?.text,
+            let contributors = xml["vortragende_mitwirkende"].element?.text,
+            let type = xml["stp_lv_art_name"].element?.text else {
+            
+            return nil
+        }
+        self.init(id: id,
+                  lectureID: lectureID,
+                  module: "", // TODO:
+                  name: name,
+                  semester: semester,
+                  sws: sws,
+                  chair: chair,
+                  contributors: contributors,
+                  type: type)
     }
     
 }

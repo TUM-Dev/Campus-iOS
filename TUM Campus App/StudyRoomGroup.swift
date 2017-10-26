@@ -6,27 +6,33 @@
 //  Copyright © 2016 LS1 TUM. All rights reserved.
 //
 
-import SwiftyJSON
+import Sweeft
 
 class StudyRoomGroup: DataElement {
     let sortId: Int
     let name: String
     let detail: String
-    var roomNumbers = [Int]()
+    let rooms: [StudyRoom]
     
-    init(sortId: Int, name: String, detail: String, roomNumbers: [Int]) {
+    init(sortId: Int, name: String, detail: String, rooms: [StudyRoom]) {
         self.sortId = sortId
         self.name = name
         self.detail = detail
-        self.roomNumbers = roomNumbers
+        self.rooms = rooms
     }
     
-    convenience init?(from json: JSON) {
-        guard let sortId = json["sortierung"].int, let name = json["name"].string, let detail = json["detail"].string, let roomNumbersArray = json["raeume"].array else {
+    convenience init?(from json: JSON, rooms: [StudyRoom]) {
+        guard let sortId = json["sortierung"].int,
+            let name = json["name"].string,
+            let detail = json["detail"].string else {
+            
             return nil
         }
-        let numbers = roomNumbersArray.map { $0.int! }
-        self.init(sortId: sortId, name: name, detail: detail, roomNumbers: numbers)
+        let numbers = json["raeume"].array ==> { $0.int }
+        self.init(sortId: sortId, 
+                  name: name, 
+                  detail: detail, 
+                  rooms: rooms.filter { numbers.contains($0.roomNumber) })
     }
 
     var text: String {

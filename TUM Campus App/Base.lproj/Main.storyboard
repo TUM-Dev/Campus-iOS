@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QD4-ji-tgD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6Qf-8m-xen">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Campus Tab Bar Controller-->
-        <scene sceneID="njx-ls-pRF">
-            <objects>
-                <tabBarController restorationIdentifier="TabBar" storyboardIdentifier="TabBar" id="QD4-ji-tgD" customClass="CampusTabBarController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="9sF-2I-tlw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="6Qf-8m-xen" kind="relationship" relationship="viewControllers" id="qd7-tm-A1s"/>
-                        <segue destination="gh2-pY-6as" kind="relationship" relationship="viewControllers" id="yaX-sO-3Rb"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h6b-g4-56A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-627" y="289"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Campus Navigation Controller-->
         <scene sceneID="oaX-dG-Alx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Qf-8m-xen" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Qf-8m-xen" customClass="CampusNavigationController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="featured" id="OMN-xt-TI8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nVD-4p-0Mh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -46,25 +28,6 @@
             </objects>
             <point key="canvasLocation" x="121" y="288"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jGd-80-S6j">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gh2-pY-6as" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="aq6-JR-mVX"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nwh-NT-6HS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="AU9-vU-qHG" kind="relationship" relationship="rootViewController" id="Zuz-lK-kHY"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wpX-s2-6tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="121" y="990"/>
-        </scene>
         <!--CardView-->
         <scene sceneID="qGH-kd-Nkf">
             <objects>
@@ -74,16 +37,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dnv-5B-JYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="636" y="287"/>
-        </scene>
-        <!--More-->
-        <scene sceneID="EuH-98-43y">
-            <objects>
-                <viewControllerPlaceholder storyboardName="More" id="AU9-vU-qHG" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="qBU-vm-BrM"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vF6-iB-tx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="658" y="990"/>
         </scene>
     </scenes>
 </document>

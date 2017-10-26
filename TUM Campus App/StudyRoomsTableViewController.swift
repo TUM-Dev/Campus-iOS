@@ -7,33 +7,27 @@
 //
 
 import UIKit
+import Sweeft
 import AYSlidingPickerView
 
 class StudyRoomsTableViewController: UITableViewController, DetailView {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
     var refresh = UIRefreshControl()
-    func refresh(_ sender: AnyObject?) {
-        roomGroups.removeAll()
-        studyRooms.removeAll()
-        delegate?.dataManager().getAllStudyRooms(self)
-    }
-
     
     var roomGroups = [StudyRoomGroup]()
-    var studyRooms = [StudyRoom]() // Rooms of all available groups
+    
     var currentGroup: StudyRoomGroup? {
         didSet {
             title = currentGroup?.name
-            currentRooms = self.studyRooms
-                .filter() { self.currentGroup?.roomNumbers.contains($0.roomNumber) ?? false }
-                .sorted() { $0.status.sortIndex < $1.status.sortIndex }
+            currentRooms = self.currentGroup?.rooms.sorted(ascending: \.status.sortIndex) ?? []
         }
     }
+    
     var currentRooms = [StudyRoom]() { // Rooms for the group that is currently selected
         didSet {
             tableView.reloadData()
@@ -41,22 +35,26 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
         }
     }
     
-}
-
-extension StudyRoomsTableViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) { // Is called twice, once with [StudyRoomGroups] as argument, once for [StudyRooms]
-        roomGroups.append(contentsOf: data.flatMap { $0 as? StudyRoomGroup })
-        studyRooms.append(contentsOf: data.flatMap { $0 as? StudyRoom })
-        currentGroup = roomGroups.first
-        setUpPickerView()
+    func refresh(_ sender: AnyObject?) {
+        delegate?.dataManager()?.studyRoomsManager.fetch().onSuccess(in: .main) { result in
+            self.roomGroups = result
+            self.currentGroup = self.roomGroups.first
+            self.setUpPickerView()
+        }
     }
+    
 }
 
 extension StudyRoomsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -93,8 +91,8 @@ extension StudyRoomsTableViewController {
 
 extension StudyRoomsTableViewController: DetailViewDelegate {
     
-    func dataManager() -> TumDataManager {
-        return delegate?.dataManager() ?? TumDataManager()
+    func dataManager() -> TumDataManager? {
+        return delegate?.dataManager()
     }
     
 }

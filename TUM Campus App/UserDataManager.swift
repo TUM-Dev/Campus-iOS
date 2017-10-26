@@ -7,46 +7,54 @@
 //
 
 import Foundation
-import Alamofire
+import Sweeft
 import SWXMLHash
 
-class UserDataManager: Manager {
+final class UserDataManager: DetailsForDataManager {
     
-    var main: TumDataManager?
+    typealias DataType = User
+    typealias ResponseType = UserData
     
-    var handler: (([DataElement]) -> ())?
+    let config: Config
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    init(config: Config) {
+        self.config = config
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        self.handler = handler
-        if let user = main?.user?.name {
-            main?.doPersonSearch(handler, query: user)
-        } else {
-            let url = getURL()
-            Alamofire.request(url).responseString() { (response) in
-                if let data = response.result.value {
-                    let parsedXML = SWXMLHash.parse(data)
-                    let rows = parsedXML["rowset"]["row"].all
-                    if rows.count == 1 {
-                        let person = rows[0]
-                        if let firstname = person["vorname"].element?.text, let lastname = person["familienname"].element?.text {
-                            let name = firstname + " " + lastname
-                            self.main?.doPersonSearch(handler, query: name)
-                        }
-                    }
+    func search(with id: String) -> Response<UserData> {
+        let manager = PersonSearchManager(config: config)
+        return manager.search(query: id).flatMap { users in
+            guard let user = users.first, users.count == 1 else {
+                return .errored(with: .noData)
+            }
+            return .successful(with: user)
+        }
+    }
+    
+    func fetch() -> Response<User> {
+        return config.tumOnline.user.map { user in
+            return self.fetch(for: user).map { (data: UserData) in
+                user.data = data
+                return user
+            }
+        } ?? .errored(with: .cannotPerformRequest)
+    }
+    
+    func fetch(for data: User) -> Response<UserData> {
+        guard let name = data.name else {
+            return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
+                
+                guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
+                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
+                        
+                    return .errored(with: .cannotPerformRequest)
                 }
+                let name = "\(first) \(last)"
+                data.name = name
+                return self.search(with: name)
             }
         }
+        return search(with: name)
     }
-    
-    func getURL() -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.Identity.rawValue
-        if let token = main?.getToken() {
-            return base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&"
-        }
-        return ""
-    }
+
 }

@@ -7,22 +7,10 @@
 //
 
 import UIKit
-import CoreLocation
 
-class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerDelegate {
+class MVGNearbyStationsViewController: UITableViewController, DetailView {
     
-    // Location stuff
-    let locationManager = CLLocationManager()
-    var currentLocation: CLLocation? {
-        didSet {
-            if let location = currentLocation {
-                updateDeparturesForLocation(location)
-            }
-        }
-    }
-    
-    // Public transport stuff
-    let api = MVG()
+    weak var delegate: DetailViewDelegate?
     
     var nearestStations = [Station]() {
         didSet {
@@ -35,12 +23,6 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
         
         title = "Nearby Stations"
         
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-        locationManager.requestWhenInUseAuthorization()
-        
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
@@ -49,29 +31,33 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+<<<<<<< HEAD
+        refresh()
+    }
+=======
         
         // Always start location updates when the app is opened
         refresh()
     }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+                
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+    }
 
+>>>>>>> Tim/RemoveTabBar
     
     func refresh() {
-        self.locationManager.startUpdatingLocation()
-    }
-    
-    func updateDeparturesForLocation(_ location: CLLocation) {
-        api.getNearbyStations(atLocation: location) { error, stations in
-            if let error = error {
-                self.showError("Error", error.localizedDescription)
-                return
-            }
-            
-            self.nearestStations = stations.sorted { $0.0.distance ?? 0 < $0.1.distance ?? 0 }
+        delegate?.dataManager()?.mvgManager.fetch().onSuccess(in: .main) { stations in
+            self.nearestStations = stations
             self.tableView.refreshControl?.endRefreshing()
         }
     }
-    
     
     // MARK: Table View
     
@@ -84,11 +70,8 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        cell.accessoryType = .disclosureIndicator
-        
-        return cell
+        return tableView.dequeueReusableCell(withIdentifier: "station", for: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -97,6 +80,8 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
         cell.textLabel?.text = station.name
         if let distance = station.distance {
             cell.detailTextLabel?.text = "\(distance) m"
+        } else {
+            cell.detailTextLabel?.text = ""
         }
     }
     
@@ -104,19 +89,10 @@ class MVGNearbyStationsViewController: UITableViewController, CLLocationManagerD
         let station = nearestStations[indexPath.row]
         
         let vc = DeparturesViewController(station: station)
+        vc.delegate = delegate
         
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    // MARK: Location Manager Delegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        
-        currentLocation = location
-        
-        manager.stopUpdatingLocation()
-    }
+
 }
 

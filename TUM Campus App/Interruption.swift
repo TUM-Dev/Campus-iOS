@@ -7,13 +7,14 @@
 //
 
 import Foundation
-import SwiftyJSON
-
+import Sweeft
 
 extension Date {
+    
     init(millisecondsSince1970: Int) {
         self.init(timeIntervalSince1970: TimeInterval(millisecondsSince1970 / 1000))
     }
+    
 }
 
 
@@ -29,39 +30,46 @@ struct Interruption {
     let modificationDate: Date
     
     
-    init(json: JSON) {
-        self.id = json["id"].intValue
-        self.title = json["title"].stringValue
+    init?(json: JSON) {
+        guard let id = json["id"].int,
+            let title = json["title"].string,
+            let text = json["text"].string,
+            let duration = Interruption.Duration(json: json["duration"]),
+            let modificationDate = json["modificationDate"].int else {
         
-        self.text = json["text"].stringValue
-        
-        self.duration = Interruption.Duration(json: json["duration"])
-        
-        if
-            let urlString = json["links"]["link"].arrayValue.first?["link"].string,
-            let urlTitle  = json["links"]["link"].arrayValue.first?["text"].string {
-            self.link = Link(url: URL(string: urlString)!, title: urlTitle)
-        } else {
-            self.link = Link(url: URL(string: "https://www.mvg.de/dienste/betriebsaenderungen.html")!, title: "Betriebsänderungen - MVV")
+            return nil
         }
         
-        self.modificationDate = Date(millisecondsSince1970: json["modificationDate"].intValue)
+        self.id = id
+        self.title = title
+        self.text = text
+        self.duration = duration
         
+        if let urlString = json["links"]["link"].array?.first?["link"].string,
+            let urlTitle  = json["links"]["link"].array?.first?["text"].string {
+            
+            self.link = Link(url: URL(string: urlString)!, title: urlTitle)
+        } else {
+            
+            self.link = Link(url: URL(string: "https://www.mvg.de/dienste/betriebsaenderungen.html")!,
+                             title: "Betriebsänderungen - MVV")
+        }
         
+        self.modificationDate = Date(millisecondsSince1970: modificationDate)
         
         // Parse lines
         
         var _lines: [Line] = []
         
-        for lineJSON in json["lines"]["line"].arrayValue {
-            let lineNumber = Int(lineJSON["line"].stringValue.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))!
+        for lineJSON in json["lines"]["line"].array.? {
+            let lineNumber = Int(lineJSON["line"].string!.trimmingCharacters(in: CharacterSet.decimalDigits.inverted))!
             
             let line: Line? = {
-                switch lineJSON["product"].stringValue {
-                case "U": return Line.ubahn(lineNumber)
-                case "B": return Line.bus(lineNumber)
-                case "T": return Line.tram(lineNumber)
-                case "S": return Line.sbahn(lineNumber)
+                switch lineJSON["product"].string {
+                case .some("U"): return Line.ubahn(lineNumber)
+                case .some("B"): return Line.bus(lineNumber)
+                case .some("T"): return Line.tram(lineNumber)
+                case .some("S"): return Line.sbahn(lineNumber)
                 default: return nil
                 }
             }()
@@ -84,10 +92,16 @@ extension Interruption {
         let text: String
         
         
-        init(json: JSON) {
-            self.start = Date(millisecondsSince1970: json["from"].intValue)
-            self.end = Date(millisecondsSince1970: json["until"].intValue)
-            self.text = json["text"].stringValue
+        init?(json: JSON) {
+            guard let from = json["from"].int,
+                let until = json["until"].int,
+                let text = json["text"].string else {
+                    
+                return nil
+            }
+            self.start = Date(millisecondsSince1970: from)
+            self.end = Date(millisecondsSince1970: until)
+            self.text = text
         }
     }
 }

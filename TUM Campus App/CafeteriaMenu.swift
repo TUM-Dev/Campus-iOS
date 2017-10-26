@@ -6,20 +6,31 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
+
 class CafeteriaMenu: DataElement {
     
     let date: Date
-    let id: Int
+    let id: String?
     let name: String
     let typeLong: String
-    let typeNr: Int
+    let typeNr: String?
     let typeShort: String
     let price: Price?
     let details: MenuDetail
+    let mensaId: String
     
     
-    init(id: Int, date: Date, typeShort: String, typeLong: String, typeNr: Int, name: String, price: Price?, details: MenuDetail) {
+    init(id: String?,
+         date: Date,
+         typeShort: String,
+         typeLong: String,
+         typeNr: String?,
+         name: String,
+         price: Price?,
+         details: MenuDetail,
+         mensaId: String) {
+        
         self.id = id
         self.date = date
         self.typeShort = typeShort
@@ -28,6 +39,7 @@ class CafeteriaMenu: DataElement {
         self.name = name
         self.price = price
         self.details = details
+        self.mensaId = mensaId
     }
     
     func getCellIdentifier() -> String {
@@ -38,4 +50,46 @@ class CafeteriaMenu: DataElement {
         return name
     }
     
+}
+
+extension CafeteriaMenu {
+    
+    convenience init?(from json: JSON) {
+        guard let mensaId = json["mensa_id"].string,
+            let date = json["date"].date(using: "yyyy-MM-dd"),
+            let typeShort = json["type_short"].string,
+            let typeLong = json["type_long"].string,
+            let name = json["name"].string else {
+            
+            return nil
+        }
+        
+        let details = CafeteriaConstants.parseMensaMenu(name)
+        
+        self.init(id: json["id"].string,
+                  date: date,
+                  typeShort: typeShort,
+                  typeLong: typeLong,
+                  typeNr: json["type_nr"].string,
+                  name: name,
+                  price: CafeteriaConstants.priceList[typeLong],
+                  details: details,
+                  mensaId: mensaId)
+    }
+    
+}
+
+
+struct Price {
+    var student: Double
+    var employee: Double
+    var guest: Double
+}
+
+struct MenuDetail {
+    var name: String
+    var nameWithoutAnnotations: String
+    var nameWithEmojiWithoutAnnotations: String
+    var annotations: [String]
+    var annotationDescriptions: [String]
 }
