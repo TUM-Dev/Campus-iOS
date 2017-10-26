@@ -13,10 +13,10 @@ import Sweeft
 class SearchResultsController: UITableViewController {
     
     weak var delegate: DetailViewDelegate?
-    var promise: Response<[DataElement]>?
+    var promise: Response<[SearchResults]>?
     
     var currentElement: DataElement?
-    public var elements: [DataElement] = [] {
+    public var elements: [SearchResults] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -73,23 +73,34 @@ class SearchResultsController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard !elements[section].results.isEmpty else {
+            return nil
+        }
+        return elements[section].key.description
+    }
+    
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        currentElement = elements[indexPath.row]
+        currentElement = elements[indexPath.section].results[indexPath.row]
         return indexPath
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return elements.count
+        return elements[section].results.count
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return elements.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: elements[indexPath.row].getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.setElement(elements[indexPath.row])
+        
+        let element = elements[indexPath.section].results[indexPath.row]
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: element.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        cell.setElement(element)
         cell.backgroundColor = .clear
+        
         return cell
     }
     
