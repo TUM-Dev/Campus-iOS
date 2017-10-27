@@ -25,11 +25,6 @@ class LibrarySettingsViewController: UIViewController, DetailView {
         
         loginButton.backgroundColor = Constants.tumBlue
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        }
-        
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             usernameTextField.text = savedUsername
         }
@@ -38,6 +33,14 @@ class LibrarySettingsViewController: UIViewController, DetailView {
             passwordTextField.text = "******"
             loginButton.isHidden = true
             logoutButton.isHidden = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
     }
 

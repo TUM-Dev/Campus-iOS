@@ -56,11 +56,6 @@ extension CalendarViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        }
-        
         title = "My Caledar"
         self.fetch()
         let size = CGSize(width: view.frame.width, height: 80.0)
@@ -89,6 +84,14 @@ extension CalendarViewController {
         plannerView.dayHeaderHeight = 0.0
         plannerView.showsAllDayEvents = false
         self.view.addSubview(daySelector!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

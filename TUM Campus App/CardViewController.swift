@@ -45,18 +45,20 @@ extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupLogo()
         setupTableView()
         setupSearch()
         
+        manager = (self.navigationController as? CampusNavigationController)?.manager
+        refresh(nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
-        
-        manager = (self.navigationController as? CampusNavigationController)?.manager
-        refresh(nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

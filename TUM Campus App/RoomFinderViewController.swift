@@ -59,17 +59,20 @@ extension RoomFinderViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        }
-        
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         if let roomUnwrapped = room as? Room {
             fetch(id: roomUnwrapped.number)
         } else if let roomUnwrapped = room as? StudyRoom {
             fetch(id: roomUnwrapped.architectNumber)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
     }
     

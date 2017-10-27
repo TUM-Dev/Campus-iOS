@@ -51,7 +51,10 @@ extension TuitionTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetch()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never

@@ -30,22 +30,14 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Always start location updates when the app is opened
-        refresh()
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-                
+        super.viewWillAppear(true)
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
+        // Always start location updates when the app is opened
+        refresh()
     }
-
     
     func refresh() {
         delegate?.dataManager()?.mvgManager.fetch().onSuccess(in: .main) { stations in
