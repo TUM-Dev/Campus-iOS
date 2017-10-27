@@ -13,6 +13,7 @@ import Sweeft
 class SearchResultsController: UITableViewController {
     
     weak var delegate: DetailViewDelegate?
+    weak var navCon: UINavigationController?
     var promise: Response<[SearchResults]>?
     
     var currentElement: DataElement?
@@ -40,39 +41,6 @@ class SearchResultsController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let navCon = segue.destination as? UINavigationController {
-            if var mvc = navCon.topViewController as? DetailView {
-                mvc.delegate = self
-            }
-            if let mvc = navCon.topViewController as? RoomFinderViewController {
-                mvc.room = currentElement
-            }
-            if let mvc = navCon.topViewController as? PersonDetailTableViewController {
-                mvc.user = currentElement
-            }
-            if let mvc = navCon.topViewController as? LectureDetailsTableViewController {
-                mvc.lecture = currentElement
-            }
-        }
-        if var mvc = segue.destination as? DetailView {
-            mvc.delegate = self
-        }
-        if let mvc = segue.destination as? RoomFinderViewController {
-            mvc.room = currentElement
-        }
-        if let mvc = segue.destination as? PersonDetailTableViewController {
-            mvc.user = currentElement
-        }
-        if let mvc = segue.destination as? LectureDetailsTableViewController {
-            mvc.lecture = currentElement
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard !elements[section].results.isEmpty else {
             return nil
@@ -83,6 +51,39 @@ class SearchResultsController: UITableViewController {
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         currentElement = elements[indexPath.section].results[indexPath.row]
         return indexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch currentElement!.getCellIdentifier() {
+            
+        case "person":
+            let storyboard = UIStoryboard(name: "PersonDetail", bundle: nil)
+            if let personDetailTableViewController = storyboard.instantiateViewController(withIdentifier: "PersonDetailTableViewController") as? PersonDetailTableViewController {
+                personDetailTableViewController.user = currentElement
+                personDetailTableViewController.delegate = self
+                navCon?.pushViewController(personDetailTableViewController, animated: true)
+            }
+        case "lecture":
+            let storyboard = UIStoryboard(name: "LectureDetail", bundle: nil)
+            if let lectureDetailViewController = storyboard.instantiateViewController(withIdentifier: "LectureDetailsTableViewController") as? LectureDetailsTableViewController {
+                lectureDetailViewController.lecture = currentElement
+                lectureDetailViewController.delegate = self
+                navCon?.pushViewController(lectureDetailViewController, animated: true)
+            }
+        case "room":
+            let storyboard = UIStoryboard(name: "RoomFinder", bundle: nil)
+            if let roomFinderView = storyboard.instantiateViewController(withIdentifier: "RoomFinderViewController") as? RoomFinderViewController {
+                roomFinderView.room = currentElement
+                roomFinderView.delegate = self
+                navCon?.pushViewController(roomFinderView, animated: true)
+            }
+        default:
+            break
+        }
+        
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

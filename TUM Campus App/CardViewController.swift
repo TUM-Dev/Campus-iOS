@@ -94,6 +94,7 @@ extension CardViewController {
             fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
         searchResultsController.delegate = self
+        searchResultsController.navCon = self.navigationController
         search = UISearchController(searchResultsController: searchResultsController)
         search?.searchResultsUpdater = searchResultsController
         search?.searchBar.placeholder = "Search"
