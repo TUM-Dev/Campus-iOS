@@ -51,6 +51,7 @@ extension CardViewController {
         
         manager = (self.navigationController as? CampusNavigationController)?.manager
         refresh(nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
