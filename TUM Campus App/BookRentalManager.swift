@@ -40,6 +40,7 @@ final class BookRentalManager: SingleItemManager, CardManager {
             // TODO: store session maybe
             return api.rentals()
         }
+        .mapError(to: .empty)
     }
     
     func getUsername() -> String {

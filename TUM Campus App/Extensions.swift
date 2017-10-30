@@ -108,6 +108,10 @@ extension Bundle {
 
 extension Promise {
     
+    func mapError(to defaultValue: T) -> Promise<T, E> {
+        return map { Result.value($0.value ?? defaultValue) }
+    }
+    
     @discardableResult func onSuccess(in queue: DispatchQueue, call handler: @escaping (T) -> ()) -> Promise<T, E> {
         let promise = map(completionQueue: queue) { $0 as T }
         promise.onSuccess(call: handler)
