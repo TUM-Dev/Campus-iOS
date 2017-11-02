@@ -5,6 +5,7 @@
     "studyRooms": "http://www.devapp.it.tum.de/iris/",
     "bookRentals": "https://opac.ub.tum.de/InfoGuideClient.tumsis",
     "mensaApp": "http://lu32kap.typo3.lrz.de/mensaapp",
+    "betaApp": "https://tca-ios-beta.herokuapp.com",
     "mvg": "https://www.mvg.de",
     "mvgKey": "5af1beca494712ed38d313714d4caff6"
 }
