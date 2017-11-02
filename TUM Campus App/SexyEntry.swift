@@ -50,7 +50,7 @@ extension SexyEntry {
 
 extension SexyEntry: Searchable {
     
-    static func ==(lhs: SexyEntry, rhs: SexyEntry) -> Bool {
+    static func == (lhs: SexyEntry, rhs: SexyEntry) -> Bool {
         
         return lhs.name == rhs.name &&
             lhs.link == rhs.link &&
