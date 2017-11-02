@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+import Sweeft
 
 // Very Sexy
 struct SexyEntry: DataElement {
@@ -28,11 +28,8 @@ struct SexyEntry: DataElement {
 
 extension SexyEntry {
     
-    func open() {
-        guard let url = URL(string: link) else {
-            return
-        }
-        UIApplication.shared.open(url)
+    func open(sender: UIViewController? = nil) {
+        link.url?.open(sender: sender)
     }
     
 }

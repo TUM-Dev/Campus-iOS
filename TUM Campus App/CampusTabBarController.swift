@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Sweeft
 
-class CampusTabBarController: UITabBarController {
+class CampusNavigationController: UINavigationController {
     
     var manager: TumDataManager?
 
@@ -17,8 +18,16 @@ class CampusTabBarController: UITabBarController {
         UITabBar.appearance().tintColor = Constants.tumBlue
         UITabBar.appearance().backgroundColor = UIColor.white
         UITabBar.appearance().barTintColor = UIColor.white
-        manager = TumDataManager()
-        manager?.getUserData()
+        
+        guard let json = Bundle.main.url(forResource: "config", withExtension: "json")
+            .flatMap({ try? Data(contentsOf: $0) })
+            .flatMap(JSON.init(data:)) else {
+                
+                return
+        }
+        manager = TumDataManager(user: PersistentUser.value.user, json: json)
+        
+        (ViewControllerProvider.loginNavigationViewController.childViewControllers.first as? LoginViewController)?.manager = manager
     }
 
 }

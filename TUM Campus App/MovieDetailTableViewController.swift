@@ -24,10 +24,13 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
+    
+    var binding: ImageViewBinding?
 
     var currentMovie: Movie? {
         didSet {
+            binding = nil
             if let movie = currentMovie {
                 let info = movie.name.components(separatedBy: ": ")
                 titleLabel.text = movie.text
@@ -40,7 +43,7 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
                 actorsLabel.text = movie.actors
                 directorLabel.text = movie.director
                 descriptionLabel.text = movie.description
-                posterView.image = movie.image
+                binding = movie.poster.bind(to: posterView, default: #imageLiteral(resourceName: "movie"))
                 tableView.reloadData()
             }
         }
@@ -49,19 +52,14 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     var movies = [Movie]()
 }
 
-extension MovieDetailTableViewController: TumDataReceiver {
+extension MovieDetailTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        movies.removeAll()
-        for element in data {
-            if let movieElement = element as? Movie {
-                movies.append(movieElement)
-                if currentMovie == nil {
-                    currentMovie = movieElement
-                }
-            }
+    func fetch() {
+        delegate?.dataManager()?.movieManager.fetch().onSuccess(in: .main) { movies in
+            self.movies = movies
+            self.currentMovie = movies.first
+            self.setUpPickerView()
         }
-        setUpPickerView()
     }
     
 }
@@ -70,9 +68,18 @@ extension MovieDetailTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        delegate?.dataManager().getMovies(self)
+        self.fetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
     }
     
 }

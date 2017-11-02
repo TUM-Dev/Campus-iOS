@@ -6,49 +6,31 @@
 //
 
 import XCTest
+import Sweeft
 
 @testable import Campus
 
 class MovieTests: XCTestCase {
-    var manager = TumDataManager()
     
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testReceivedDataAreMovies() {
-        func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
-            let movies = data.flatMap { $0 as? Movie }
-            XCTAssertTrue(data.count == movies.count, expectation.description)
-            expectation.fulfill()
-        }
-        
-        let expect = expectation(description: "Received data items can be initialized to movies")
-        let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
-        
-        manager.getMovies(tmpReceiver)
-        waitForExpectations(timeout: 5) { error in }
-    }
+    lazy var manager: TumDataManager = {
+        return Bundle.main.url(forResource: "config", withExtension: "json")
+            .flatMap({ try? Data(contentsOf: $0) })
+            .flatMap(JSON.init(data:))
+            .flatMap { TumDataManager(user: PersistentUser.value.user, json: $0) }!
+    }()
     
     func testOnlyUpcomingMovies() {
-        func receiveData(_ data: [DataElement], expectation: XCTestExpectation) {
-            let movies = data.flatMap { $0 as? Movie }
+        
+        let expectation = self.expectation(description: "Movies are all in the future or there are no movies")
+        
+        manager.movieManager.fetch().onSuccess(in: .main) { movies in
             let dateNow = Date()
-            let upcomingMovies = movies.filter() { movie in
+            let upcomingMovies = movies.filter { movie in
                 return movie.airDate >= dateNow
             }
             XCTAssertTrue(movies.isEmpty || movies.count == upcomingMovies.count, expectation.description)
             expectation.fulfill()
         }
-        
-        let expect = expectation(description: "Movies are all in the future or there are no movies")
-        let tmpReceiver = MockReceiver(receiveData: receiveData, expectation: expect)
-        
-        manager.getMovies(tmpReceiver)
         waitForExpectations(timeout: 5) { error in }
     }
     

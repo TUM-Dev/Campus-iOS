@@ -35,12 +35,4 @@ enum CardKey: Int, Codable {
     
     static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental,]
     
-    static var managers: [CardKey: TumDataItems] = [
-        .tufilm: .MovieCard,
-        .calendar: .CalendarCard,
-        .news: .NewsCard,
-        .cafeteria: .CafeteriasCard,
-        .tuition: .TuitionStatusSingle,
-        .bookRental: .BookRentalCard,
-        ]
 }

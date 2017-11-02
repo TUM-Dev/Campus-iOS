@@ -16,14 +16,25 @@ class NewsTableViewController: UITableViewController, DetailView {
         }
     }
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
 
 }
 
-extension NewsTableViewController: TumDataReceiver {
+extension NewsTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        news = data.flatMap() { $0 as? News }
+    func fetch(scrolling: Bool = false) {
+        delegate?.dataManager()?.newsManager.fetch().onSuccess(in: .main) { news in
+            self.news = news
+            
+            guard scrolling, let index = news.lastIndex(where: { $0.date > .now }) else {
+                return
+            }
+            
+            let indexPath =  IndexPath(row: index, section: 0)
+            self.tableView.scrollToRow(at: indexPath,
+                                       at: UITableViewScrollPosition.top,
+                                       animated: false)
+        }
     }
     
 }
@@ -32,13 +43,19 @@ extension NewsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getAllNews(self)
+ 
+        self.fetch(scrolling: true)
         title = "News"
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
-        if let index = getRowOfUpcomingNews() {
-            tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: UITableViewScrollPosition.top, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
     }
     
@@ -64,13 +81,4 @@ extension NewsTableViewController {
         news[indexPath.row].open(sender: self)
     }
     
-}
-
-extension NewsTableViewController {
-    func getRowOfUpcomingNews() -> Int? {
-        if let nextNews = delegate?.dataManager().getNextUpcomingNews() as News? {
-            return news.index(of: nextNews) ?? 0
-        }
-        return nil
-    }
 }

@@ -7,38 +7,40 @@
 //
 
 import Foundation
-import Alamofire
 import Sweeft
 import Kanna
 
-
-class BookRentalManager: Manager {
-
-    let opac_url = TumOPACApi.OpacURL.rawValue
-    var main: TumDataManager
+final class BookRentalManager: SingleItemManager, CardManager {
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    typealias DataType = BookRental
+    
+    var config: Config
+    
+    var requiresLogin: Bool {
+        return false
     }
     
-    static var rentals = [DataElement]()
-
-
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        
-        let api = BookRentalAPI(baseURL: opac_url)
-        
-        api.start().flatMap { csid in
-            return api.login(user: self.getUsername(), password: self.getPassword(), csid: csid)
+    var cardKey: CardKey {
+        return .bookRental
+    }
+    
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func fetch() -> Response<[BookRental]> {
+        let api = config.bookRentals
+        return api.start().flatMap { csid in
+            
+            return api.login(user: self.getUsername(),
+                             password: self.getPassword(),
+                             csid: csid)
         }
         .flatMap { session in
             // TODO: store session maybe
             return api.rentals()
         }
-        .onSuccess { rentals in
-            BookRentalManager.rentals = rentals
-            handler(rentals)
-        }
+        .mapError(to: .empty)
     }
     
     func getUsername() -> String {
@@ -48,4 +50,27 @@ class BookRentalManager: Manager {
     func getPassword() -> String {
         return KeychainWrapper().myObject(forKey: "v_Data") as? String ?? ""
     }
+    
+    func saveInKeychain(username: String, password: String) {
+        
+        let keychainWrapper = KeychainWrapper()
+        
+        UserDefaults.standard.set(username, forKey: "username")
+        UserDefaults.standard.set(true, forKey: "hasSavedPassword")
+        keychainWrapper.mySetObject(password, forKey: kSecValueData)
+        keychainWrapper.writeToKeychain()
+        UserDefaults.standard.synchronize()
+    }
+    
+    func login(username: String, password: String) -> Response<Bool> {
+        let api = config.bookRentals
+        return api.start().flatMap { (csid: String) in
+            return api.login(user: username, password: password, csid: csid)
+        }
+        .map { (result: BookRentalAPISession) in
+            self.saveInKeychain(username: username, password: password)
+            return true
+        }
+    }
+    
 }

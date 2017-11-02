@@ -1,3 +1,24 @@
+## [1.3.0] - Unreleased
+### Added
+- Added 💸 Ca$hing 💸 for better performance
+- Added Headers to Search to mark the type of results
+
+### Changed
+- Seach bar is now in the Card View
+- Links now open within the App to avoid annoying app switches
+- If the app doesn't have permissions to access your location it will now assume you're at the campus.
+- Pulling to refresh on the Card View will now skip all caches.
+
+### Fixed
+- Fixed memory leaks caused by memory cycles.
+- Fixed Cafeteria Card. It only shows a Cafeteria that has something on the menu that day
+- Fixed Calendar View not changing the day after a few swipes.
+- Fixed More View displaying the wrong name.
+
+### Removed
+- Removed Tab Bar in favor of a Bar Button at the Top
+
+
 ## [1.2.0] - 2017-10-20
 ### Added
 - Added a brand new sleek design to the Cards View

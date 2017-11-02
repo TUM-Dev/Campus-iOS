@@ -10,7 +10,7 @@ import UIKit
 import Sweeft
 import MessageUI
 
-class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, DetailViewDelegate, MFMailComposeViewControllerDelegate {
+class MoreTableViewController: UITableViewController, DetailView, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,13 +24,12 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     
     let secionsForLoggedInUsers = [0, 1]
     let unhighlightedSectionsIfNotLoggedIn = [1] // Best Variable name ever!
+    weak var delegate: DetailViewDelegate?
     
-    var manager: TumDataManager?
+    var binding: ImageViewBinding?
     
     var user: User? {
-        didSet {
-            updateView()
-        }
+        return delegate?.dataManager()?.user
     }
     
     var isLoggedIn: Bool {
@@ -40,7 +39,7 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
     func updateView() {
         if isLoggedIn {
             nameLabel.text = user?.name
-            avatarView.image = user?.image ?? #imageLiteral(resourceName: "avatar")
+            binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
         } else {
@@ -50,14 +49,6 @@ class MoreTableViewController: UITableViewController, ImageDownloadSubscriber, D
             logoutLabel.textColor = .green
         }
     }
-    
-    func updateImageView() {
-        updateView()
-    }
-    
-    func dataManager() -> TumDataManager {
-        return manager ?? TumDataManager()
-    }
 
 }
 
@@ -65,16 +56,18 @@ extension MoreTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if let mvc = tabBarController as? CampusTabBarController {
-            user = User.shared
-            manager = mvc.manager
-            
-            if user?.data == nil {
-                manager?.getUserData() {
-                    self.updateView()
-                }
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .automatic
+        }
+        
+        if user?.data == nil {
+            delegate?.dataManager()?.userDataManager.fetch().onResult(in: .main) { _ in
+                self.updateView()
             }
         }
+        
         if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
             bibNumber.text = savedUsername
         } else {
@@ -85,16 +78,18 @@ extension MoreTableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var mvc = segue.destination as? DetailView {
-            mvc.delegate = self
+            mvc.delegate = delegate
         }
         if let mvc = segue.destination as? PersonDetailTableViewController {
             mvc.user = user?.data
         }
-        if let mvc = segue.destination as? SearchViewController {
-            if (tableView.indexPathForSelectedRow?.section == 2 && tableView.indexPathForSelectedRow?.row == 0) {
-                mvc.searchManagers = [TumDataItems.RoomSearch]
-            }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showPersonDetail" {
+            return user?.data != nil
         }
+        return true
     }
     
 }
@@ -123,10 +118,6 @@ extension MoreTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         switch indexPath.section {
-        case 2:
-            if indexPath.row == 2 {
-                self.navigationController?.pushViewController(MVGNearbyStationsViewController(), animated: true)
-            }
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
@@ -134,17 +125,13 @@ extension MoreTableViewController {
             let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
-                if let url =  URL(string: "https://tumcabe.in.tum.de/") {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                "https://tumcabe.in.tum.de/".url?.open(sender: self)
             } else if indexPath.row == 1 {
                 sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
             }
             
         case 5:
-            PersistentUser.reset()
-            User.shared = nil
-            Usage.value = false
+            delegate?.dataManager()?.loginManager.logOut()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it
@@ -165,7 +152,7 @@ extension MoreTableViewController {
             mailVC.setSubject(subject)
             mailVC.setMessageBody(body, isHTML: true)
             
-            present(mailVC, animated: true)
+            self.present(mailVC, animated: true)
         } else {
             print("error can't send mail")
         }
@@ -176,3 +163,4 @@ extension MoreTableViewController {
     }
     
 }
+

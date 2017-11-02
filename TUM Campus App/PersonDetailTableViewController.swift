@@ -12,11 +12,14 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
     
     var user: DataElement?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
-    var contactInfo = [(ContactInfoType,String)]()
+    var contactInfo: [(ContactInfoType, String)] {
+        return (user as? UserData)?.contactInfo ?? []
+    }
     
     var addingContact = false
+    
     
     func addContact(_ sender: AnyObject?) {
         let handler = { () in
@@ -31,18 +34,21 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
             }
         }
     }
+    
+    
+    
 }
 
-extension PersonDetailTableViewController: TumDataReceiver {
+extension PersonDetailTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        if let data = user as? UserData {
-            contactInfo = data.contactInfo
+    func fetch(for user: UserData) {
+        delegate?.dataManager()?.personDetailsManager.fetch(for: user).onSuccess(in: .main) { user in
+            self.user = user
+            self.tableView.reloadData()
+            if self.addingContact {
+                self.addContact(nil)
+            }
         }
-        if addingContact {
-            addContact(nil)
-        }
-        tableView.reloadData()
     }
     
 }
@@ -51,14 +57,22 @@ extension PersonDetailTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         title = user?.text
         let barItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(PersonDetailTableViewController.addContact(_:)))
         navigationItem.rightBarButtonItem = barItem
         if let data = user as? UserData {
-            delegate?.dataManager().getPersonDetails(self.receiveData, user: data)
-            contactInfo = data.contactInfo
+            self.fetch(for: data)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
     }
     
@@ -106,7 +120,7 @@ extension PersonDetailTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row < contactInfo.count {
-            contactInfo[indexPath.row].0.handle(contactInfo[indexPath.row].1)
+            contactInfo[indexPath.row].0.handle(contactInfo[indexPath.row].1, sender: self)
         }
     }
     

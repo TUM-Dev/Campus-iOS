@@ -6,8 +6,8 @@
 //  Copyright © 2017 Lukas Kollmer. All rights reserved.
 //
 
-import Foundation
-import SwiftyJSON
+import CoreLocation
+import Sweeft
 
 public enum Line {
     case bus(Int)
@@ -22,12 +22,34 @@ public enum Line {
     case other(Int)
 }
 
-
-// TODO make decodable
+extension Line {
+    
+    init?(key: String, number: Int) {
+        switch key {
+        case "bus":
+            self = .bus(number)
+        case "nachtbus":
+            self = .nachtbus(number)
+        case "tram":
+            self = .tram(number)
+        case "nachttram":
+            self = .nachttram(number)
+        case "ubahn":
+            self = .ubahn(number)
+        case "sbahn":
+            self = .sbahn(number)
+        case "otherlines":
+            self = .other(number)
+        default:
+            return nil
+        }
+    }
+    
+}
 
 public struct Station: Hashable {
-    public var hashValue: Int { return self.id }
     
+    public var hashValue: Int { return self.id.hashValue }
     
     public let name: String
     public let id: Int
@@ -39,27 +61,27 @@ public struct Station: Hashable {
     public let hasZoomData: Bool
     public let hasLiveData: Bool
     
-    public let latitude: Float
-    public let longitude: Float
+    public let latitude: Double
+    public let longitude: Double
     
     public let lines: [Line]
     
     /// Distance from the search location
     public let distance: Int?
+}
+
+extension Station: Deserializable {
     
-    
-    init?(json: JSON) {
-        guard
-            let name = json["name"].string,
+    public init?(from json: JSON) {
+        guard let name = json["name"].string,
             let id   = json["id"].int,
             let type   = json["type"].string,
-            let hasLiveData = json["hasLiveData"].bool,
-            let hasZoomData = json["hasZoomData"].bool,
-            let latitude = json["latitude"].float,
-            let longitude = json["longitude"].float,
+            let hasLiveData = json["hasLiveData"].double?.bool,
+            let hasZoomData = json["hasZoomData"].double?.bool,
+            let latitude = json["latitude"].double,
+            let longitude = json["longitude"].double,
             let place = json["place"].string,
-            let lines = json["lines"].dictionary
-            else { return nil }
+            let lines = json["lines"].dict else { return nil }
         
         self.name = name
         self.id = id
@@ -69,51 +91,37 @@ public struct Station: Hashable {
         self.latitude = latitude
         self.longitude = longitude
         self.place = place
-        
         self.distance = json["distance"].int
         
-        
-        
-        var parsedLines = [Line]()
-        
-        
-        for (key, value) in lines {
-            let lineNumbers = value.arrayValue.map { $0.intValue }
-            
-            for lineNumber in lineNumbers {
-                let newLine = { () -> Line? in
-                    switch key {
-                    case "bus":
-                        return .bus(lineNumber)
-                    case "nachtbus":
-                        return .nachtbus(lineNumber)
-                        
-                    case "tram":
-                        return .tram(lineNumber)
-                    case "nachttram":
-                        return .nachttram(lineNumber)
-                        
-                    case "ubahn":
-                        return .ubahn(lineNumber)
-                    case "sbahn":
-                        return .sbahn(lineNumber)
-                        
-                    case "otherlines":
-                        return .other(lineNumber)
-                    default: return nil
-                    }
-                }()
-                
-                if let newLine = newLine {
-                    parsedLines.append(newLine)
-                }
+        self.lines = lines.flatMap { key, value -> [Line] in
+            guard let numbers = value.array?.flatMap({ $0.int }) else {
+                return []
             }
-            
-            
+            return numbers.flatMap { Line(key: key, number: $0) }
         }
-        
-        self.lines = parsedLines
     }
+    
+}
+
+extension Station {
+    
+    var location: CLLocation {
+        return .init(latitude: latitude, longitude: longitude)
+    }
+    
+}
+
+extension Station: DataElement {
+    
+    var text: String {
+        return name
+    }
+    
+    func getCellIdentifier() -> String {
+        return "station"
+    }
+    
+    
 }
 
 public func ==(lhs: Station, rhs: Station) -> Bool {

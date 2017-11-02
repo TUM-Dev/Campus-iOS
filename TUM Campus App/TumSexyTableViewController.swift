@@ -7,20 +7,32 @@ import UIKit
 
 class TumSexyTableViewController: UITableViewController, DetailView {
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var entries = [SexyEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getSexyEntries(self)
+        fetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+    }
+    
+    func fetch() {
+        delegate?.dataManager()?.tumSexyManager.fetch().onSuccess(in: .main) { entries in
+            self.entries = entries
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func visit(_ sender: Any) {
-        guard let url = URL(string: "http://tum.sexy") else {
-            return
-        }
-        UIApplication.shared.open(url)
+        "http://tum.sexy".url?.open(sender: self)
     }
     
 }
@@ -42,16 +54,7 @@ extension TumSexyTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        entries[indexPath.row].open()
-    }
-    
-}
-
-extension TumSexyTableViewController: TumDataReceiver {
-    
-    func receiveData(_ data: [DataElement]) {
-        entries = data.mapped()
-        tableView.reloadData()
+        entries[indexPath.row].open(sender: self)
     }
     
 }

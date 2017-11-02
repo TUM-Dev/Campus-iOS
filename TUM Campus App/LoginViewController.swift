@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var manager: TumDataManager?
+    
     @IBAction func skip() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
@@ -43,6 +45,7 @@ class LoginViewController: UIViewController {
 
         confirmButton.isEnabled = textFieldContentsAreValid()
         confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
+        confirmButton.backgroundColor = Constants.tumBlue
     }
 
     private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
@@ -117,8 +120,10 @@ extension LoginViewController {
         imageView.clipsToBounds = true
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var mvc = segue.destination as? DetailView {
+            mvc.delegate = self
+        }
     }
     
 }
@@ -131,4 +136,13 @@ extension LoginViewController {
         }
         return ""
     }
+}
+
+
+extension LoginViewController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager? {
+        return manager
+    }
+    
 }

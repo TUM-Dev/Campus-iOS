@@ -6,7 +6,7 @@
 //  Copyright © 2016 LS1 TUM. All rights reserved.
 //
 
-import SwiftyJSON
+import Sweeft
 
 class StudyRoom: DataElement {
     
@@ -25,7 +25,17 @@ class StudyRoom: DataElement {
     
     let buildingName: String
     
-    init(status: StudyRoomStatus, roomNumber: Int, code: String, architectNumber: String, name: String, occupiedUntil: Date?, occupiedFor: Int, occupiedFrom: Date?, occupiedIn: Int, occupiedBy: String, buildingName: String) {
+    init(status: StudyRoomStatus,
+         roomNumber: Int,
+         code: String,
+         architectNumber: String,
+         name: String,
+         occupiedUntil: Date?,
+         occupiedFor: Int,
+         occupiedFrom: Date?,
+         occupiedIn: Int,
+         occupiedBy: String,
+         buildingName: String) {
         
         self.status = status
         self.roomNumber = roomNumber

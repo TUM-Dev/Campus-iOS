@@ -6,49 +6,24 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Alamofire
 import Sweeft
-import SwiftyJSON
 
-class RoomSearchManager: SearchManager {
+final class RoomSearchManager: SearchManager {
     
-    var request: Request?
+    typealias DataType = Room
     
-    var main: TumDataManager?
+    var config: Config
     
-    var requiresLogin: Bool {
-        return false
+    var categoryKey: SearchResultKey {
+        return .room
     }
     
-    var query: String?
-    
-    func setQuery(_ query: String) {
-        self.query = query
+    init(config: Config) {
+        self.config = config
     }
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    func search(query: String) -> Promise<[Room], APIError> {
+        return config.tumCabe.doObjectsRequest(to: .searchRooms, arguments: ["query" : query])
     }
-    
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        request?.cancel()
-        let url = getURL()
-        request = Alamofire.request(url).responseJSON() { (response) in
-            if let value = response.result.value {
-                let parsed = JSON(value)
-                parsed.array ==> Room.init | handler
-            }
-        }
-    }
-    
-    func getURL() -> String {
-        let base = RoomFinderApi.BaseUrl.rawValue + RoomFinderApi.SearchRooms.rawValue
-        if let search = query {
-            let url = base + search
-            if let value = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) {
-                return value
-            }
-        }
-        return ""
-    }
+
 }

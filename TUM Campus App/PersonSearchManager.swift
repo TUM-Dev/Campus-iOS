@@ -6,58 +6,36 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
-import Alamofire
+import Sweeft
 import SWXMLHash
 
-class PersonSearchManager: SearchManager {
+final class PersonSearchManager: SearchManager {
     
-    var request: Request?
+    typealias DataType = UserData
     
-    var main: TumDataManager?
+    var config: Config
     
-    var query: String?
+    var cache = [UserData]()
+    var isLoaded = false
     
-    func setQuery(_ query: String) {
-        self.query = query
+    var requiresLogin: Bool {
+        return false
     }
     
-    required init(mainManager: TumDataManager) {
-        main = mainManager
+    var categoryKey: SearchResultKey {
+        return .person
     }
     
-    func fetchData(_ handler: @escaping ([DataElement]) -> ()) {
-        request?.cancel()
-        let url = getURL()
-        request = Alamofire.request(url).responseString() { (response) in
-            if let value = response.result.value {
-                let parsedXML = SWXMLHash.parse(value)
-                let rows = parsedXML["rowset"]["row"].all
-                if !rows.isEmpty {
-                    var people = [DataElement]()
-                    for i in 0...min(rows.count-1,20) {
-                        let row = rows[i]
-                        if let name = row["vorname"].element?.text, let lastname = row["familienname"].element?.text, let id = row["obfuscated_id"].element?.text {
-                            let image = row["bild_url"].element?.text ?? ""
-                            let newUser = UserData(name: name+" "+lastname, picture: image, id: id)
-                            people.append(newUser)
-                        }
-                    }
-                    handler(people)
-                }
-            }
+    init(config: Config) {
+        self.config = config
+    }
+    
+    func search(query: String) -> Promise<[UserData], APIError> {
+        return config.tumOnline.doRepresentedRequest(to: .personSearch,
+                                                     queries: ["pSuche" : query]).map { (xml: XMLIndexer) in
+            
+            return xml.get(at: ["rowset", "row"])?.all ==> { UserData(from: $0, api: self.config.tumOnline) }
         }
-    }
-    
-    func getURL() -> String {
-        let base = TUMOnlineWebServices.BaseUrl.rawValue + TUMOnlineWebServices.PersonSearch.rawValue
-        if let token = main?.getToken(), let search = query {
-            let url = base + "?" + TUMOnlineWebServices.TokenParameter.rawValue + "=" + token + "&pSuche=" + search
-            if let value = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed) {
-                return value
-            }
-        }
-        return ""
     }
     
 }

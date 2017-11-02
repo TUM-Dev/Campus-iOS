@@ -9,12 +9,12 @@
 import UIKit
 import AYSlidingPickerView
 
-class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, DetailView {
+class RoomFinderViewController: UIViewController, DetailView {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     var room: DataElement?
     
     var barItem: UIBarButtonItem?
@@ -27,39 +27,29 @@ class RoomFinderViewController: UIViewController, ImageDownloadSubscriber, Detai
     
     var pickerView = AYSlidingPickerView()
     
-    func updateImageView() {
-        refreshImage()
-    }
+    var binding: ImageViewBinding?
     
     func refreshImage() {
-        if let image = currentMap?.image {
-            title = currentMap?.description
-            imageView.image = image
-            scrollView.zoomScale = 1.0
-            scrollView.contentSize = imageView.bounds.size
-            scrollView.minimumZoomScale = 1.0
-            scrollView.maximumZoomScale = 5.0
-        } else {
-            currentMap?.subscribeToImage(self)
-        }
+        binding = currentMap?.image.bind(to: imageView, default: nil)
+        title = currentMap?.description
+        scrollView.zoomScale = 1.0
+        scrollView.contentSize = imageView.bounds.size
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 5.0
     }
     
 }
 
-extension RoomFinderViewController: TumDataReceiver {
+extension RoomFinderViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        maps.removeAll()
-        for item in data {
-            if let map = item as? Map {
-                maps.append(map)
+    func fetch(id: String) {
+        delegate?.dataManager()?.roomMapsManager.search(query: id).onSuccess(in: .main) { maps in
+            self.maps = maps.sorted { $0.scale < $1.scale }
+            if !maps.isEmpty {
+                self.currentMap = self.maps.first
             }
+            self.setUpPickerView()
         }
-        maps = maps.sorted {$0.scale < $1.scale} // Sort maps by their scale, so the smallest one is displayed as default
-        if !maps.isEmpty {
-            currentMap = maps.first
-        }
-        setUpPickerView()
     }
     
 }
@@ -68,13 +58,26 @@ extension RoomFinderViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
         if let roomUnwrapped = room as? Room {
-            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.number)
+            fetch(id: roomUnwrapped.number)
         } else if let roomUnwrapped = room as? StudyRoom {
-            delegate?.dataManager().getMapsForRoom(self, roomID: roomUnwrapped.architectNumber)
+            fetch(id: roomUnwrapped.architectNumber)
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        pickerView.removeFromSuperview()
     }
     
 }
@@ -125,7 +128,11 @@ extension RoomFinderViewController {
         pickerView.selectedIndex = 0
         pickerView.closeOnSelection = true
         pickerView.didDismissHandler = { self.hideMaps(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(RoomFinderViewController.showMaps(_:)))
+        
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"),
+                                  style: UIBarButtonItemStyle.plain,
+                                  target: self,
+                                  action:  #selector(RoomFinderViewController.showMaps(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

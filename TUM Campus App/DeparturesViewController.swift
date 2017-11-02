@@ -8,7 +8,10 @@
 
 import UIKit
 
-class DeparturesViewController : UITableViewController {
+class DeparturesViewController : UITableViewController, DetailView {
+    
+    weak var delegate: DetailViewDelegate?
+    
     let station: Station
     
     var departures: [Departure]? {
@@ -43,13 +46,15 @@ class DeparturesViewController : UITableViewController {
     }
     
     func refresh() {
-        MVG.default.getDepartures(forStation: station) { error, departures in
-            if let error = error {
-                self.showError("Error", error.localizedDescription)
-                return
-            }
+        delegate?.dataManager()?.mvgManager.fetch(for: station).onSuccess(in: .main) { departures in
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()
+        }
+        .onError(in: .main) { error in
+            if case .invalidStatus(_, let data) = error {
+                print(data!.string!)
+            }
+            self.showError("Error", error.localizedDescription)
         }
     }
     

@@ -8,5 +8,5 @@
 
 import Foundation
 protocol DetailView {
-    var delegate: DetailViewDelegate? { get set }
+    weak var delegate: DetailViewDelegate? { get set }
 }

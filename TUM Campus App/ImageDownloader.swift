@@ -6,54 +6,61 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import Alamofire
+import Sweeft
 
-class ImageDownloader {
+class ImageViewBinding {
+    // Empty class used to signal when the reference has changed
+}
+
+protocol ImageContainer {
+    var image: Image? { get }
+}
+
+class Image {
     
-    static var imageCache = [String:UIImage]()
+    let url: String?
+    private var promise: Response<UIImage>?
     
-    init(url: String) {
-        getImage(url)
+    init(url: String?) {
+        self.url = url
     }
     
-    init() {}
-    
-    var request: Request?
-    
-    var image: UIImage?
- 
-    var subscribersToImage = [ImageDownloadSubscriber]()
-    
-    func notifySubscribers() {
-        for s in self.subscribersToImage {
-            s.updateImageView()
+    func bind(to imageView: UIImageView,
+              default image: UIImage?) -> ImageViewBinding {
+        
+        promise = promise ?? url.map { .new(from: $0) }
+        let binding = ImageViewBinding()
+        imageView.image = image
+        promise?.onSuccess(in: .main) { [weak binding, weak imageView] image in
+            guard binding != nil else { return }
+            imageView?.image = image
         }
+        return binding
     }
     
-    func subscribeToImage(_ subscriber: ImageDownloadSubscriber) {
-        subscribersToImage.append(subscriber)
+}
+
+extension Response where T == UIImage {
+    
+    static func new(from url: String) -> Response<T> {
+        return UIImage.download(url: url)
     }
     
-    func clearSubscribers() {
-        subscribersToImage.removeAll()
-        request?.cancel()
-    }
+}
+
+extension UIImage {
     
-    func getImage(_ urlString: String) {
-        if let cachedImage = ImageDownloader.imageCache[urlString] {
-            self.image = cachedImage
-            notifySubscribers()
-        } else {
-            request = Alamofire.request(urlString).validate().responseData() { (response) in
-                if let data = response.result.value, let imageFromData = UIImage(data: data) {
-                    ImageDownloader.imageCache[urlString] = imageFromData
-                    self.image = imageFromData
-                    self.notifySubscribers()
+    static func download(url string: String) -> Response<UIImage> {
+        return string.url.map { url in
+            return async {
+                let data = try Data(contentsOf: url)
+                guard let image = UIImage(data: data) else {
+                    throw APIError.invalidResponse
                 }
+                return image
             }
-        }
+        } ?? .errored(with: .cannotPerformRequest)
     }
     
 }

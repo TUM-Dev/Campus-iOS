@@ -10,177 +10,73 @@ import Sweeft
 
 class TumDataManager {
     
-    var cardItems: [TumDataItems] {
-        return PersistentCardOrder.value.managers
-    }
+    lazy var calendarManager: CalendarManager = { CalendarManager(config: self.config) }()
+    lazy var movieManager: MovieManager = { MovieManager(config: self.config) }()
+    lazy var newsManager: NewsManager = { NewsManager(config: self.config) }()
+    lazy var tuitionManager: TuitionStatusManager = { TuitionStatusManager(config: self.config) }()
+    lazy var bookRentalManager: BookRentalManager = { BookRentalManager(config: self.config) }()
+    lazy var studyRoomsManager: StudyRoomsManager = { StudyRoomsManager(config: self.config) }()
+    lazy var lecturesManager: PersonalLectureManager = { PersonalLectureManager(config: self.config) }()
+    lazy var gradesManager: PersonalGradeManager = { PersonalGradeManager(config: self.config) }()
+    lazy var tumSexyManager: TumSexyManager = { TumSexyManager(config: self.config) }()
+    lazy var cafeteriaManager: CafeteriaManager = { CafeteriaManager(config: self.config) }()
+    lazy var mvgManager: MVGManager = { MVGManager(config: self.config) }()
     
-    let searchManagers: [TumDataItems] = [.PersonSearch, .LectureSearch, .RoomSearch]
+    lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
+    lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()
+    lazy var roomMapsManager: RoomFinderMapManager = { RoomFinderMapManager(config: self.config) }()
+    
+    lazy var roomSearchManager: RoomSearchManager = { RoomSearchManager(config: self.config) }()
+    lazy var personSearchManager: PersonSearchManager = { PersonSearchManager(config: self.config) }()
+    lazy var lectureSearchManager: LectureSearchManager = { LectureSearchManager(config: self.config) }()
+    lazy var userDataManager: UserDataManager = { UserDataManager(config: self.config) }()
+    
+    lazy var loginManager: TumOnlineLoginRequestManager = { TumOnlineLoginRequestManager(config: self.config) }()
     
     var isLoggedIn: Bool {
         return user?.token != nil
     }
     
+    private(set) var config: Config
     var user: User? {
-        return User.shared
+        return config.tumOnline.user
     }
     
-    lazy var managers: [TumDataItems:Manager] = [
-        .Cafeterias: CafeteriaManager(mainManager: self),
-        .CafeteriasCard: CafeteriaManager(mainManager: self, single: true),
-        .CafeteriaMenu: CafeteriaMenuManager(mainManager: self),
-        .TuitionStatus: TuitionStatusManager(mainManager: self),
-        .TuitionStatusSingle: TuitionStatusManager(mainManager: self, single: true),
-        .MovieCard: MovieManager(single: true),
-        .MoviesCollection: MovieManager(mainManager: self),
-        .CalendarCard: CalendarManager(mainManager: self, single: true),
-        .CalendarFull: CalendarManager(mainManager: self),
-        .UserData: UserDataManager(mainManager: self),
-        .PersonSearch: PersonSearchManager(mainManager: self),
-        .LectureItems: PersonalLectureManager(mainManager: self),
-        .LectureSearch: LectureSearchManager(mainManager: self),
-        .GradeItems: PersonalGradeManager(mainManager: self),
-        .RoomSearch: RoomSearchManager(mainManager: self),
-        .RoomMap: RoomFinderMapManager(mainManager: self),
-        .PersonDetail: PersonDetailDataManager(mainManager: self),
-        .LectureDetails: LectureDetailsManager(mainManager: self),
-        .NewsCard: NewsManager(single: true),
-        .NewsCollection: NewsManager(single: false),
-        .StudyRooms: StudyRoomsManager(mainManager: self),
-        .TUMSexy : TumSexyManager(mainManager: self),
-        .BookRental: BookRentalManager(mainManager: self),
-        .BookRentalCard: BookRentalManager(mainManager: self),
-    ]
-    
-    func getToken() -> String {
-        return user?.token ?? ""
+    var cardManagers: [CardManager] {
+        let order = PersistentCardOrder.value.cards
+        return [
+            calendarManager,
+            movieManager,
+            newsManager,
+            tuitionManager,
+            cafeteriaManager,
+            bookRentalManager,
+        ].filter({ order.contains($0.cardKey) }).sorted(ascending: \.indexInOrder)
     }
     
-    func getPersonDetails(_ handler: @escaping (_ data: [DataElement]) -> (), user: UserData) {
-        if let manager = managers[.PersonDetail] as? PersonDetailDataManager {
-            manager.userQuery = user
-            manager.fetchData(handler)
+    var searchManagers: [SimpleSearchManager] {
+        return [
+            roomSearchManager,
+            personSearchManager,
+            lectureSearchManager
+        ]
+    }
+    
+    init?(user: User?, json: JSON) {
+        guard let config = Config(user: user, json: json) else {
+            return nil
         }
+        self.config = config
     }
     
-    func getLectureDetails(_ receiver: TumDataReceiver, lecture: Lecture) {
-        if let manager = managers[.LectureDetails] as? LectureDetailsManager {
-            manager.query = lecture
-            manager.fetchData(receiver.receiveData)
-        }
+    func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
+        let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
+        return promises.bulk.map { $0.flatMap { $0 } }
     }
     
-    func getGrades(_ receiver: TumDataReceiver) {
-        managers[.GradeItems]?.fetchData(receiver.receiveData)
+    func search(query: String) -> Response<[SearchResults]> {
+        let promises: [Response<SearchResults>] = searchManagers => { $0.search(query: query) }
+        return promises.bulk
     }
     
-    func getLectures(_ receiver: TumDataReceiver) {
-        managers[.LectureItems]?.fetchData(receiver.receiveData)
-    }
-    
-    func getCalendar(_ receiver: TumDataReceiver) {
-        managers[.CalendarFull]?.fetchData(receiver.receiveData)
-    }
-    
-    func updateCalendar(_ receiver: TumDataReceiver) {
-        managers[.CalendarFull]?.updateData(receiver.receiveData)
-    }
-    
-    func getCardItems(_ receiver: TumDataReceiver) {
-        let request = BulkRequest(receiver: receiver, sorter: {
-            if let item = $0 as? CardDisplayable {
-                return PersistentCardOrder.value.cards.index(of: item.cardKey).?
-            }
-            return -1
-        })
-        let filter: (Manager) -> Bool = isLoggedIn ? **{ true } : { !$0.requiresLogin }
-        cardItems ==> { managers[$0] } |> filter => {
-            $0.fetchData() { (data) in
-                request.receiveData(data)
-            }
-        }
-    }
-    
-    func search(_ receiver: TumDataReceiver, query: String, searchIn managersToSearchIn:[TumDataItems]? = nil) {
-        let tmpSearchManagers = managersToSearchIn != nil ? Array(Set(searchManagers).intersection(managersToSearchIn!)) : searchManagers
-        let request = BulkRequest(receiver: receiver)
-        
-        let filter: (Manager) -> Bool = isLoggedIn ? **{ true } : { !$0.requiresLogin }
-        tmpSearchManagers ==> { managers[$0] as? SearchManager } |> filter => { manager in
-            manager.setQuery(query)
-            manager.fetchData() { (data) in
-                request.receiveData(data)
-            }
-        }
-    }
-    
-    func getMapsForRoom(_ receiver: TumDataReceiver, roomID: String) {
-        if let mapManager = managers[.RoomMap] as? RoomFinderMapManager {
-            mapManager.setQuery(roomID)
-            mapManager.fetchData(receiver.receiveData)
-        }
-    }
-    
-    func getCafeteriaForID(_ id: String) -> Cafeteria? {
-        if let cafeteriaManager = managers[.Cafeterias] as? CafeteriaManager {
-            return cafeteriaManager.getCafeteriaForID(id)
-        }
-        return nil
-    }
-    
-    func getCafeterias(_ receiver: TumDataReceiver) {
-        managers[.Cafeterias]?.fetchData(receiver.receiveData)
-    }
-    
-    func getCafeteriaMenus(_ handler: @escaping (_ data: [DataElement]) -> ()) {
-        managers[.CafeteriaMenu]?.fetchData(handler)
-    }
-    
-    func getMovies(_ receiver: TumDataReceiver) {
-        managers[.MoviesCollection]?.fetchData(receiver.receiveData)
-    }
-    
-    func getTuitionStatus(_ receiver: TumDataReceiver) {
-        managers[.TuitionStatus]?.fetchData(receiver.receiveData)
-    }
-    
-    func doPersonSearch(_ handler: @escaping (_ data: [DataElement]) -> (), query: String) {
-        if let manager = managers[.PersonSearch] as? PersonSearchManager {
-            manager.query = query
-            manager.fetchData(handler)
-        }
-    }
-    
-    func getAllNews(_ receiver: TumDataReceiver) {
-        managers[.NewsCollection]?.fetchData(receiver.receiveData)
-    }
-    
-    func getNextUpcomingNews() -> News? {
-        return (managers[.NewsCollection] as? NewsManager)?.getNextUpcomingNews()
-    }
-    
-    func getAllStudyRooms(_ receiver: TumDataReceiver) {
-        managers[.StudyRooms]?.fetchData(receiver.receiveData)
-    }
-    
-    func getUserData() {
-        getUserData(success: nil)
-    }
-    
-    func getUserData(success: (() -> ())?){
-        let handler = { (data: [DataElement]) in
-            if let first = data.first as? UserData {
-                self.user?.getUserData(first)
-                success?()
-            }
-        }
-        managers[.UserData]?.fetchData(handler)
-    }
-    
-    func getSexyEntries(_ receiver: TumDataReceiver) {
-        managers[.TUMSexy]?.fetchData(receiver.receiveData)
-    }
-    
-    func getRentals(_ receiver: TumDataReceiver) {
-        managers[.BookRental]?.fetchData(receiver.receiveData)
-    }
 }

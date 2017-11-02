@@ -16,7 +16,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
-    var delegate: DetailViewDelegate?
+    weak var delegate: DetailViewDelegate?
     
     var semesters = [Tuition]()
     
@@ -34,17 +34,14 @@ class TuitionTableViewController: UITableViewController, DetailView {
 
 }
 
-extension TuitionTableViewController: TumDataReceiver {
+extension TuitionTableViewController {
     
-    func receiveData(_ data: [DataElement]) {
-        semesters.removeAll()
-        for item in data {
-            if let semester = item as? Tuition {
-                semesters.append(semester)
-            }
+    func fetch() {
+        delegate?.dataManager()?.tuitionManager.fetch().onSuccess(in: .main) { semesters in
+            self.semesters = semesters
+            self.currentSemester = semesters.first
+            self.setUpPickerView()
         }
-        currentSemester = semesters.first
-        setUpPickerView()
     }
     
 }
@@ -53,7 +50,15 @@ extension TuitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate?.dataManager().getTuitionStatus(self)
+        self.fetch()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
+        }
     }
     
 }
