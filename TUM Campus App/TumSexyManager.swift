@@ -39,7 +39,9 @@ final class TumSexyManager: CachedManager, SearchManager {
                 return self.search(query: query)
             }
         }
-        return .successful(with: tree.search(query: query).array)
+        return async(runQueue: .global()) {
+            return tree.search(query: query).array
+        }
     }
     
     func fetch(maxCache: CacheTime) -> Response<[SexyEntry]> {
