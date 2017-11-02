@@ -6,6 +6,7 @@ use_frameworks!
 
 target 'Campus' do
     pod 'Sweeft', '~> 0.13.3'
+    pod 'Fuzzi', :git => 'https://github.com/mathiasquintero/Fuzzi.git'
     pod 'MCSwipeTableViewCell', '~> 2.1.4'
     pod 'AYSlidingPickerView'
     pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'

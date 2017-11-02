@@ -27,6 +27,14 @@ class CampusNavigationController: UINavigationController {
         }
         manager = TumDataManager(user: PersistentUser.value.user, json: json)
         
+        manager?.tumSexyManager.fetch().onSuccess { entries in
+            guard let tree = entries.tree() else {
+                return
+            }
+            let results = tree.search(query: "Quinter")
+            print(results)
+        }
+        
         (ViewControllerProvider.loginNavigationViewController.childViewControllers.first as? LoginViewController)?.manager = manager
     }
 
