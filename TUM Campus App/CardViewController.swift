@@ -9,7 +9,7 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UITableViewController, EditCardsViewControllerDelegate {
+class CardViewController: UIViewController {
     
     var manager: TumDataManager?
     var cards: [DataElement] = []
@@ -17,31 +17,8 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var refresh = UIRefreshControl()
     var search: UISearchController?
     
-    func refresh(_ sender: AnyObject?) {
-        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { data in
-            self.nextLecture = data.flatMap({ $0 as? CalendarRow }).first
-            self.cards = data
-            self.tableView.reloadData()
-            self.refresh.endRefreshing()
-        }
-    }
+    @IBOutlet var tableView: UITableView!
     
-    func didUpdateCards() {
-        refresh(nil)
-        tableView.reloadData()
-    }
-    
-}
-
-extension CardViewController: DetailViewDelegate {
-    
-    func dataManager() -> TumDataManager? {
-        return manager
-    }
-    
-}
-
-extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +48,7 @@ extension CardViewController {
             
             mvc.delegate = self
         }
-
+        
         if let mvc = segue.destination as? CalendarViewController {
             mvc.nextLectureItem = nextLecture
         }
@@ -109,27 +86,55 @@ extension CardViewController {
             self.tableView.tableHeaderView = search?.searchBar
         }
     }
+    
 }
 
-extension CardViewController {
+extension CardViewController: EditCardsViewControllerDelegate {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func refresh(_ sender: AnyObject?) {
+        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { data in
+            self.nextLecture = data.flatMap({ $0 as? CalendarRow }).first
+            self.cards = data
+            self.tableView.reloadData()
+            self.refresh.endRefreshing()
+        }
+    }
+    
+    func didUpdateCards() {
+        refresh(nil)
+        tableView.reloadData()
+    }
+}
+
+
+extension CardViewController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager? {
+        return manager
+    }
+    
+}
+
+
+extension CardViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return max(cards.count, 1)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 480
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
         cell.setElement(item)
@@ -137,7 +142,7 @@ extension CardViewController {
 		return cell
     }
     
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
