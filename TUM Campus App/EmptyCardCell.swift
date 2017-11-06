@@ -10,12 +10,11 @@ import UIKit
 
 class EmptyCardCell: CardTableViewCell {
     
-    override func setElement(_ element: DataElement) {
-        assert(element is EmptyCard)
-    }
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    override func setElement(_ element: DataElement) {
+        assert(element is EmptyCard)
+    }
     
 }

@@ -149,3 +149,21 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        //return cards[collectionView.tag].count
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
+        return cell
+    }
+    
+}
+
+
