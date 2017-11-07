@@ -93,13 +93,12 @@ class CardViewController: UIViewController {
 extension CardViewController: EditCardsViewControllerDelegate {
     
     func refresh(_ sender: AnyObject?) {
-        manager?.loadCollections(skipCache: sender != nil) => { $0.onSuccess(in: .main) { data in
-            if data.count > 0 {
-                self.collections[data.first!.getCellIdentifier()] = data
-                self.tableView.reloadData()
-                self.refresh.endRefreshing()
-                }
-            }
+        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { categories in
+            // TODO:
+//            self.collections[data.first!.getCellIdentifier()] = data
+            print(categories)
+            self.tableView.reloadData()
+            self.refresh.endRefreshing()
         }
     }
 

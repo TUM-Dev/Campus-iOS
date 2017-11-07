@@ -10,7 +10,7 @@ import Foundation
 import Sweeft
 import Kanna
 
-final class BookRentalManager: SingleItemManager, CardManager {
+final class BookRentalManager: SimpleTypedCardManager {
     
     typealias DataType = BookRental
     

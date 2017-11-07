@@ -10,7 +10,7 @@ import Foundation
 import Sweeft
 import CoreLocation
 
-final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManager {
+final class CafeteriaManager: CachedManager, TypedCachedCardManager {
     
     typealias DataType = Cafeteria
     
@@ -32,8 +32,8 @@ final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManage
         self.config = config
     }
     
-    func toSingle(from items: [Cafeteria]) -> DataElement? {
-        return items.first(where: { $0.hasMenuToday })
+    func cardsItems(from elements: [Cafeteria]) -> [Cafeteria] {
+        return elements.filter({ $0.hasMenuToday }).array(withFirst: 3)
     }
     
     func fetchMenus(for cafeterias: [Cafeteria], maxCache: CacheTime) -> Response<[Cafeteria]> {
