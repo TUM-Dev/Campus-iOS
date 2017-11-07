@@ -46,7 +46,7 @@ final class TumSexyManager: MemoryCachedManager, SearchManager {
     init(config: Config) {
         self.config = config
     }
-
+  
     func search(query: String) -> Promise<[SexyEntry], APIError> {
         guard let tree = defaultMaxCache.validValue(in: indexCache)?.tree else {
             return fetch().flatMap { _ in
@@ -57,7 +57,7 @@ final class TumSexyManager: MemoryCachedManager, SearchManager {
             return tree.search(query: query)
         }
     }
-
+    
     func performRequest(maxCache: CacheTime) -> Response<[SexyEntry]> {
         return config.tumSexy.doJSONRequest(to: .sexy,
                                             maxCacheTime: maxCache).map { (json: JSON) in
