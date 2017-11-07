@@ -35,7 +35,7 @@ final class TumSexyManager: CachedManager, SearchManager {
     func search(query: String) -> Promise<[SexyEntry], APIError> {
         guard let tree = tree else {
             return fetch().flatMap { entries in
-                self.tree = entries.tree()
+                self.tree = entries.searchTree()
                 return self.search(query: query)
             }
         }
