@@ -54,7 +54,7 @@ final class TumSexyManager: MemoryCachedManager, SearchManager {
             }
         }
         return async(runQueue: .global()) {
-            return tree.search(query: query).array
+            return tree.search(query: query)
         }
     }
 
