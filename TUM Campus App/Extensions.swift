@@ -113,7 +113,9 @@ extension Promise {
     }
     
     @discardableResult func onSuccess(in queue: DispatchQueue, call handler: @escaping (T) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
+        let promise = map(completionQueue: queue) { value in
+            return value as T
+        }
         promise.onSuccess(call: handler)
         return self
     }
