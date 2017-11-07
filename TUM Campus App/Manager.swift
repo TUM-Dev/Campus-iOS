@@ -88,6 +88,14 @@ struct Cache<Value> {
     let date: Date
 }
 
+extension Cache {
+    
+    func map<Transformed>(_ transform: (Value) throws -> Transformed) rethrows -> Cache<Transformed> {
+        return .init(value: try transform(value), date: date)
+    }
+    
+}
+
 extension CacheTime {
     
     func validValue<Value>(in cache: Cache<Value>?) -> Value? {
