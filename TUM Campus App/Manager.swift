@@ -88,21 +88,6 @@ struct Cache<Value> {
     let date: Date
 }
 
-extension CacheTime {
-    
-    func validValue<Value>(in cache: Cache<Value>?) -> Value? {
-        switch (self, cache) {
-        case (.forever, .some(let cached)):
-            return cached.value
-        case (.time(let interval), .some(let cached)) where cached.date.addingTimeInterval(interval) > .now:
-            return cached.value
-        default:
-            return nil
-        }
-    }
-    
-}
-
 protocol MemoryCachedManager: class, CachedManager {
     var cache: Cache<[DataType]>? { get set }
     func performRequest(maxCache: CacheTime) -> Response<[DataType]>
@@ -111,12 +96,16 @@ protocol MemoryCachedManager: class, CachedManager {
 extension MemoryCachedManager {
     
     func fetch(maxCache: CacheTime) -> Promise<[DataType], APIError> {
-        guard let value = maxCache.validValue(in: cache) else {
+        switch (maxCache, cache) {
+        case (.forever, .some(let cached)):
+            return .successful(with: cached.value)
+        case (.time(let interval), .some(let cached)) where cached.date.addingTimeInterval(interval) > .now:
+            return .successful(with: cached.value)
+        default:
             return performRequest(maxCache: maxCache).onResult { result in
                 self.cache = result.value.map { .init(value: $0, date: .now) }
             }
         }
-        return .successful(with: value)
     }
     
 }
