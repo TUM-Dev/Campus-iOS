@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager {
+final class CalendarManager: CachedManager, SimpleTypedCardManager {
     
     typealias DataType = CalendarRow
     
@@ -31,8 +31,8 @@ final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager
         self.config = config
     }
     
-    func toSingle(from items: [CalendarRow]) -> DataElement? {
-        return items.first { $0.start > .now }
+    func cardsItems(from elements: [CalendarRow]) -> [CalendarRow] {
+        return elements.filter({ $0.start > .now }).array(withFirst: 5)
     }
     
     func fetch(maxCache: CacheTime) -> Response<[CalendarRow]> {

@@ -9,7 +9,7 @@
 import CoreLocation
 import Sweeft
 
-final class MVGManager: Manager, SimpleSingleManager {
+final class MVGManager: Manager {
     
     typealias DataType = Station
     
@@ -21,15 +21,6 @@ final class MVGManager: Manager, SimpleSingleManager {
     
     init(config: Config) {
         self.config = config
-    }
-    
-    func fetchSingle() -> Response<DataElement?> {
-        return fetch().flatMap { stations in
-            guard let station = stations.first else { return .successful(with: nil) }
-            return self.fetch(for: station).map { departures in
-                return DetailedStation(station: station, departures: departures)
-            }
-        }
     }
     
     func fetch() -> Response<[Station]> {
