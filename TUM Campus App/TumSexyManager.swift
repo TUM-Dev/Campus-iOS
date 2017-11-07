@@ -24,13 +24,10 @@ final class TumSexyManager: MemoryCachedManager, SearchManager {
     
     var cache: Cache<[SexyEntry]>? {
         get {
-            return indexCache.map { .init(value: $0.value.entries, date: $0.date) }
+            return indexCache.map { $0.map { $0.entries } }
         }
         set {
-            indexCache = newValue.map { cache in
-                let index = SexyIndex(entries: cache.value, tree: cache.value.searchTree())
-                return .init(value: index, date: cache.date)
-            }
+            indexCache = newValue.map { $0.map { .init(entries: $0, tree: $0.searchTree()) } }
         }
     }
     
