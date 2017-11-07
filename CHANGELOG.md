@@ -2,6 +2,7 @@
 ### Added
 - Added 💸 Ca$hing 💸 for better performance
 - Added Headers to Search to mark the type of results
+- Added support to search for TUM.sexy links
 
 ### Changed
 - Seach bar is now in the Card View

@@ -5,8 +5,8 @@
 
 import UIKit
 
-class SexyEntryTableViewCell: UITableViewCell {
-
+class SexyEntryTableViewCell: CardTableViewCell {
+    
     var entry: SexyEntry? {
         didSet {
             textLabel?.text = entry?.descriptionText
@@ -16,6 +16,10 @@ class SexyEntryTableViewCell: UITableViewCell {
             }
             detailTextLabel?.text = "\(name).tum.sexy"
         }
+    }
+    
+    override func setElement(_ element: DataElement) {
+        entry = element as? SexyEntry
     }
 
 }
