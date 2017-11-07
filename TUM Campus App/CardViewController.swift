@@ -13,6 +13,7 @@ class CardViewController: UIViewController {
     
     var manager: TumDataManager?
     var cards: [DataElement] = []
+    var collections: [String: [DataElement]] = [:]
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
@@ -92,14 +93,16 @@ class CardViewController: UIViewController {
 extension CardViewController: EditCardsViewControllerDelegate {
     
     func refresh(_ sender: AnyObject?) {
-        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { data in
-            self.nextLecture = data.flatMap({ $0 as? CalendarRow }).first
-            self.cards = data
-            self.tableView.reloadData()
-            self.refresh.endRefreshing()
+        manager?.loadCollections(skipCache: sender != nil) => { $0.onSuccess(in: .main) { data in
+            if data.count > 0 {
+                self.collections[data.first!.getCellIdentifier()] = data
+                self.tableView.reloadData()
+                self.refresh.endRefreshing()
+                }
+            }
         }
     }
-    
+
     func didUpdateCards() {
         refresh(nil)
         tableView.reloadData()
@@ -166,4 +169,27 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
-
+extension Array {
+    
+    func select<T>(elementsOfType type: T.Type, amount: Int? = nil) -> Array<Element> {
+        
+        var array = Array<Element>()
+        if var count = amount {
+            for element in self {
+                if element is T && count > 0 {
+                    array.append(element)
+                    count -= 1
+                }
+            }
+        } else {
+            for element in self {
+                if element is T {
+                    array.append(element)
+                }
+            }
+        }
+        
+        return array
+    }
+    
+}

@@ -13,3 +13,4 @@ protocol DataElement {
     func getCellIdentifier() -> String
     var text: String { get }
 }
+
