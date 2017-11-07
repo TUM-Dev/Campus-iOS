@@ -7,12 +7,14 @@
 //
 
 import Sweeft
+import Fuzzi
 
-final class TumSexyManager: CachedManager {
+final class TumSexyManager: CachedManager, SearchManager {
     
     typealias DataType = SexyEntry
     
     var config: Config
+    var tree: SearchTree<SexyEntry>?
     
     var requiresLogin: Bool {
         return false
@@ -22,8 +24,24 @@ final class TumSexyManager: CachedManager {
         return .time(.aboutOneWeek)
     }
     
+    var categoryKey: SearchResultKey {
+        return .sexy
+    }
+    
     init(config: Config) {
         self.config = config
+    }
+    
+    func search(query: String) -> Response<[SexyEntry]> {
+        guard let tree = tree else {
+            return fetch().flatMap { entries in
+                self.tree = entries.searchTree()
+                return self.search(query: query)
+            }
+        }
+        return async(runQueue: .global()) {
+            return tree.search(query: query)
+        }
     }
     
     func fetch(maxCache: CacheTime) -> Response<[SexyEntry]> {
