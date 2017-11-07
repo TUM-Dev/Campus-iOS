@@ -83,6 +83,33 @@ extension CachedManager {
     
 }
 
+struct Cache<Value> {
+    let value: Value
+    let date: Date
+}
+
+protocol MemoryCachedManager: class, CachedManager {
+    var cache: Cache<[DataType]>? { get set }
+    func performRequest(maxCache: CacheTime) -> Response<[DataType]>
+}
+
+extension MemoryCachedManager {
+    
+    func fetch(maxCache: CacheTime) -> Promise<[DataType], APIError> {
+        switch (maxCache, cache) {
+        case (.forever, .some(let cached)):
+            return .successful(with: cached.value)
+        case (.time(let interval), .some(let cached)) where cached.date.addingTimeInterval(interval) > .now:
+            return .successful(with: cached.value)
+        default:
+            return performRequest(maxCache: maxCache).onResult { result in
+                self.cache = result.value.map { .init(value: $0, date: .now) }
+            }
+        }
+    }
+    
+}
+
 // MARK: Managers that can return a single item
 protocol SimpleSingleManager: SimpleManager {
     func fetchSingle() -> Response<DataElement?>
