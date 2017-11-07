@@ -32,7 +32,7 @@ final class TumSexyManager: CachedManager, SearchManager {
         self.config = config
     }
     
-    func search(query: String) -> Promise<[SexyEntry], APIError> {
+    func search(query: String) -> Response<[SexyEntry]> {
         guard let tree = tree else {
             return fetch().flatMap { entries in
                 self.tree = entries.searchTree()
@@ -40,7 +40,7 @@ final class TumSexyManager: CachedManager, SearchManager {
             }
         }
         return async(runQueue: .global()) {
-            return tree.search(query: query).array
+            return tree.search(query: query)
         }
     }
     
