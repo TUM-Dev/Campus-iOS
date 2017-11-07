@@ -168,28 +168,3 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
 }
-
-extension Array {
-    
-    func select<T>(elementsOfType type: T.Type, amount: Int? = nil) -> Array<Element> {
-        
-        var array = Array<Element>()
-        if var count = amount {
-            for element in self {
-                if element is T && count > 0 {
-                    array.append(element)
-                    count -= 1
-                }
-            }
-        } else {
-            for element in self {
-                if element is T {
-                    array.append(element)
-                }
-            }
-        }
-        
-        return array
-    }
-    
-}
