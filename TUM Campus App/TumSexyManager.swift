@@ -8,11 +8,12 @@
 
 import Sweeft
 
-final class TumSexyManager: CachedManager {
+final class TumSexyManager: MemoryCachedManager {
     
     typealias DataType = SexyEntry
     
     var config: Config
+    var cache: Cache<[SexyEntry]>?
     
     var requiresLogin: Bool {
         return false
@@ -26,7 +27,7 @@ final class TumSexyManager: CachedManager {
         self.config = config
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[SexyEntry]> {
+    func performRequest(maxCache: CacheTime) -> Response<[SexyEntry]> {
         return config.tumSexy.doJSONRequest(to: .sexy,
                                             maxCacheTime: maxCache).map { (json: JSON) in
             return json.dict ==> SexyEntry.init
