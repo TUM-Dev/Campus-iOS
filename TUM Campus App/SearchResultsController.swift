@@ -78,6 +78,8 @@ class SearchResultsController: UITableViewController {
                 roomFinderView.delegate = self
                 navCon?.pushViewController(roomFinderView, animated: true)
             }
+        case "sexy":
+            (currentElement as? SexyEntry)?.open(sender: navCon)
         default:
             break
         }
