@@ -9,12 +9,13 @@
 import Sweeft
 import Fuzzi
 
-final class TumSexyManager: CachedManager, SearchManager {
+final class TumSexyManager: MemoryCachedManager, SearchManager {
     
     typealias DataType = SexyEntry
     
     var config: Config
     var tree: SearchTree<SexyEntry>?
+    var cache: Cache<[SexyEntry]>?
     
     var requiresLogin: Bool {
         return false
@@ -31,7 +32,7 @@ final class TumSexyManager: CachedManager, SearchManager {
     init(config: Config) {
         self.config = config
     }
-    
+
     func search(query: String) -> Promise<[SexyEntry], APIError> {
         guard let tree = tree else {
             return fetch().flatMap { entries in
@@ -43,8 +44,8 @@ final class TumSexyManager: CachedManager, SearchManager {
             return tree.search(query: query).array
         }
     }
-    
-    func fetch(maxCache: CacheTime) -> Response<[SexyEntry]> {
+
+    func performRequest(maxCache: CacheTime) -> Response<[SexyEntry]> {
         return config.tumSexy.doJSONRequest(to: .sexy,
                                             maxCacheTime: maxCache).map { (json: JSON) in
             return json.dict ==> SexyEntry.init
