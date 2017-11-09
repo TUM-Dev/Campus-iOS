@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MCSwipeTableViewCell
 
 class TUFilmCardCell: CardTableViewCell {
     
