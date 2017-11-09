@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsCardCell: CardTableViewCell {
+class NewsCardCell: CardTableViewCell, SingleDataElementPresentable {
     
     @IBOutlet weak var detailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -16,7 +16,7 @@ class NewsCardCell: CardTableViewCell {
     
     var binding: ImageViewBinding?
     
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         binding = nil
         if let newsItem = element as? News {
             titleLabel.text = newsItem.title

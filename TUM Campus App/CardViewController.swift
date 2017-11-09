@@ -138,8 +138,16 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.setElement(item)
+        
+        if let cell = cell as? SingleDataElementPresentable {
+             cell.setElement(item)
+        }
+        if let cell = cell as? MultipleDataElementsPresentable {
+            //set delegate
+        }
+        
         cell.selectionStyle = .none
 		return cell
     }

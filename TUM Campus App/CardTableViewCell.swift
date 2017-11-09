@@ -8,6 +8,16 @@
 
 import UIKit
 
+
+protocol SingleDataElementPresentable {
+    func setElement(_ element: DataElement)
+}
+
+protocol MultipleDataElementsPresentable {
+    func setupDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
+}
+
+
 @IBDesignable class CardTableViewCell: UITableViewCell {
 	
 	@IBInspectable var topGradientColor: UIColor = UIColor.white
@@ -32,9 +42,4 @@ import UIKit
         super.layoutSubviews()
         self.configureBackgroundGradient()
     }
-    	
-	func setElement(_ element: DataElement) {
-		fatalError("setElement not implemented")
-	}
-	
 }

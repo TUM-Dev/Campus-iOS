@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BookRentalsCardCell: CardTableViewCell {
+class BookRentalsCardCell: CardTableViewCell, SingleDataElementPresentable {
 
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
@@ -16,7 +16,7 @@ class BookRentalsCardCell: CardTableViewCell {
     @IBOutlet var prolongLabel: UILabel!
 
     
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let rentalItem = element as? BookRental {
             titleLabel.text = rentalItem.title
             authorLabel.text = rentalItem.author

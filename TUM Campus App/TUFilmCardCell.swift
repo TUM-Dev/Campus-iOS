@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TUFilmCardCell: CardTableViewCell {
+class TUFilmCardCell: CardTableViewCell, SingleDataElementPresentable {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -16,7 +16,7 @@ class TUFilmCardCell: CardTableViewCell {
     
     var binding: ImageViewBinding?
     
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         binding = nil
         if let movie = element as? Movie{
             titleLabel.text = movie.text

@@ -8,12 +8,12 @@
 
 import UIKit
 
-class CafeteriaCardTableViewCell: CardTableViewCell {
+class CafeteriaCardTableViewCell: CardTableViewCell, SingleDataElementPresentable {
     
     @IBOutlet weak var cafeteriaLabel: UILabel!
     @IBOutlet weak var itemsLabel: UILabel!
 
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let cafeteria = element as? Cafeteria {
             cafeteriaLabel.text = cafeteria.name
             let items = cafeteria.getMenusForDate(Date()).filter { (item) in
