@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RoomResultTableViewCell: CardTableViewCell {
+class RoomResultTableViewCell: CardTableViewCell, SingleDataElementPresentable {
 
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let room = element as? Room {
             roomNameLabel.text = room.name
             buildingNameLabel.text = room.building
