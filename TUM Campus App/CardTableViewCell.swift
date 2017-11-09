@@ -14,7 +14,9 @@ protocol SingleDataElementPresentable {
 }
 
 protocol MultipleDataElementsPresentable {
-    func setupDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
+    
+    weak var collectionView: UICollectionView! { get set }
+    func setDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
 }
 
 

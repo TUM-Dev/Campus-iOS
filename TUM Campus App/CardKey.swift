@@ -15,6 +15,7 @@ enum CardKey: Int, Codable {
     case cafeteria
     case tuition
     case bookRental
+    case mvg
     
     var description: String {
         switch self {
@@ -30,9 +31,11 @@ enum CardKey: Int, Codable {
             return "Tuition"
         case .bookRental:
             return "Book Rental"
+        case .mvg:
+            return "MVG"
         }
     }
     
-    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental,]
+    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental, .mvg,]
     
 }

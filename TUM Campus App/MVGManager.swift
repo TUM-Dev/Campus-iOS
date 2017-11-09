@@ -9,7 +9,9 @@
 import CoreLocation
 import Sweeft
 
-final class MVGManager: Manager {
+final class MVGManager: SimpleTypedCardManager {
+    
+    var cardKey: CardKey = .mvg
     
     typealias DataType = Station
     

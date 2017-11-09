@@ -51,6 +51,7 @@ class TumDataManager {
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,
+            mvgManager,
         ].filter({ order.contains($0.cardKey) }).sorted(ascending: \.indexInOrder)
     }
     

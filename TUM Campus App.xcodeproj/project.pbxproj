@@ -109,6 +109,7 @@
 		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
 		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
 		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
+		226ED0091FB4DADC009DB716 /* MVVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED0081FB4DADC009DB716 /* MVVCollectionViewCell.swift */; };
 		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
@@ -117,6 +118,7 @@
 		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
 		22F4B6B41EA802960086D49A /* BookRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B31EA802960086D49A /* BookRental.swift */; };
 		22F4B6B61EA80E3C0086D49A /* BookRentalsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */; };
+		22F66D251FB46C140020704A /* MVVCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F66D241FB46C140020704A /* MVVCardCell.swift */; };
 		301195E91E464A6A0012B133 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195E81E464A6A0012B133 /* Grade.swift */; };
 		301195EC1E464C830012B133 /* Grade.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301195EB1E464C830012B133 /* Grade.storyboard */; };
 		301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301195ED1E464F560012B133 /* GradesTableViewController.swift */; };
@@ -294,6 +296,7 @@
 		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
 		1272671411F9035D9B894A44 /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		222F90F91EB7BD69002F9289 /* Campus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
+		226ED0081FB4DADC009DB716 /* MVVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVCollectionViewCell.swift; sourceTree = "<group>"; };
 		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
 		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
 		22F4B6B31EA802960086D49A /* BookRental.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRental.swift; sourceTree = "<group>"; };
 		22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalsCard.swift; sourceTree = "<group>"; };
+		22F66D241FB46C140020704A /* MVVCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVCardCell.swift; sourceTree = "<group>"; };
 		24903A680C6A8A498F797A7C /* Pods_Campus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Campus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		301195E81E464A6A0012B133 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		301195EB1E464C830012B133 /* Grade.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Grade.storyboard; sourceTree = "<group>"; };
@@ -719,6 +723,8 @@
 				0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */,
 				22F4B6B51EA80E3C0086D49A /* BookRentalsCard.swift */,
 				0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */,
+				22F66D241FB46C140020704A /* MVVCardCell.swift */,
+				226ED0081FB4DADC009DB716 /* MVVCollectionViewCell.swift */,
 				22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */,
 			);
 			name = Cards;
@@ -1265,6 +1271,7 @@
 				0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */,
 				0EB473D01C1B4F0F00F17F44 /* Map.swift in Sources */,
 				0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */,
+				22F66D251FB46C140020704A /* MVVCardCell.swift in Sources */,
 				0E6B534C1EA449F0002B5058 /* SexyEntryTableViewCell.swift in Sources */,
 				807C48171F4091E300CAD35D /* Station.swift in Sources */,
 				0EB161881C1A0EB2001A08FC /* LectureTableViewCell.swift in Sources */,
@@ -1377,6 +1384,7 @@
 				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
 				0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */,
 				0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */,
+				226ED0091FB4DADC009DB716 /* MVVCollectionViewCell.swift in Sources */,
 				0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

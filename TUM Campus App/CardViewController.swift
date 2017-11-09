@@ -13,7 +13,7 @@ class CardViewController: UIViewController {
     
     var manager: TumDataManager?
     var cards: [DataElement] = []
-    var collections: [String: [DataElement]] = [:]
+    var categories: [CardCategory] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
@@ -95,8 +95,8 @@ extension CardViewController: EditCardsViewControllerDelegate {
     func refresh(_ sender: AnyObject?) {
         manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { categories in
             // TODO:
-//            self.collections[data.first!.getCellIdentifier()] = data
-            print(categories)
+            self.cards = categories.flatMap{ $0.elements.first }
+            self.categories = categories
             self.tableView.reloadData()
             self.refresh.endRefreshing()
         }
@@ -145,7 +145,7 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
              cell.setElement(item)
         }
         if let cell = cell as? MultipleDataElementsPresentable {
-            //set delegate
+            cell.setDataSource(dataSource: self, id: indexPath.row)
         }
         
         cell.selectionStyle = .none
@@ -163,13 +163,19 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        //return cards[collectionView.tag].count
-        return 0
+        return categories[collectionView.tag].elements.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let item = categories[collectionView.tag].elements[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.getCellIdentifier(), for: indexPath)
+        
+        if let cell = cell as? SingleDataElementPresentable {
+            cell.setElement(item)
+        }
         
         return cell
     }
