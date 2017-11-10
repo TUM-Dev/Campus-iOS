@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Fuzzi
 import Sweeft
 
 // Very Sexy
-struct SexyEntry: DataElement {
+struct SexyEntry: DataElement, Codable {
     
     let name: String
     let link: String
@@ -21,7 +22,7 @@ struct SexyEntry: DataElement {
     }
     
     func getCellIdentifier() -> String {
-        return ""
+        return "sexy"
     }
     
 }
@@ -43,6 +44,28 @@ extension SexyEntry {
             return nil
         }
         self.init(name: name, link: link, descriptionText: descriptionText)
+    }
+    
+}
+
+extension SexyEntry: Searchable {
+    
+    static func == (lhs: SexyEntry, rhs: SexyEntry) -> Bool {
+        
+        return lhs.name == rhs.name &&
+            lhs.link == rhs.link &&
+            lhs.descriptionText == rhs.descriptionText
+    }
+    
+    var hashValue: Int {
+        return name.hashValue ^ link.hashValue ^ descriptionText.hashValue
+    }
+    
+    var searchableProperties: [KeyPath<SexyEntry, String>] {
+        return [
+            \.name,
+            \.descriptionText,
+        ]
     }
     
 }

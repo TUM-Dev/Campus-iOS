@@ -139,6 +139,10 @@ extension MoreTableViewController {
             // user logged in and out and wanted to log in again in the same session.
             (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
             self.present(loginViewController, animated: true)
+        
+        case 6:
+            delegate?.dataManager()?.config.betaApp.open(sender: self)
+            
         default:
             break
         }

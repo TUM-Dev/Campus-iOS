@@ -17,6 +17,7 @@ final class Config {
     let bookRentals: BookRentalAPI
     let mensaApp: MensaAppAPI
     let mvg: MVGAPI
+    let betaApp: URL
     
     init(tumCabeURL: String,
          tumOnlineURL: String,
@@ -26,6 +27,7 @@ final class Config {
          mensaAppURL: String,
          mvgURL: String,
          mvgKey: String,
+         betaApp: URL,
          user: User?) {
         
         tumCabe = TUMCabeAPI(baseURL: tumCabeURL)
@@ -35,6 +37,7 @@ final class Config {
         bookRentals = BookRentalAPI(baseURL: rentalsURL)
         mensaApp = MensaAppAPI(baseURL: mensaAppURL)
         mvg = MVGAPI(baseURL: mvgURL, apiKey: mvgKey)
+        self.betaApp = betaApp
     }
 }
 
@@ -57,7 +60,8 @@ extension Config {
             let rentals = json["bookRentals"].string,
             let mensaApp = json["mensaApp"].string,
             let mvg = json["mvg"].string,
-            let mvgKey = json["mvgKey"].string else {
+            let mvgKey = json["mvgKey"].string,
+            let betaApp = json["betaApp"].url else {
                 
             return nil
         }
@@ -69,6 +73,7 @@ extension Config {
                   mensaAppURL: mensaApp,
                   mvgURL: mvg,
                   mvgKey: mvgKey,
+                  betaApp: betaApp,
                   user: user)
     }
     

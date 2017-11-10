@@ -59,7 +59,8 @@ class TumDataManager {
         return [
             roomSearchManager,
             personSearchManager,
-            lectureSearchManager
+            lectureSearchManager,
+            tumSexyManager,
         ]
     }
     
