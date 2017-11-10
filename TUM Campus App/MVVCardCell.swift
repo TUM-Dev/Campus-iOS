@@ -12,6 +12,8 @@ import UIKit
 class MVVCardCell: CardTableViewCell, MultipleDataElementsPresentable {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
     
     func setDataSource<T>(dataSource: T, id: Int) where T : UICollectionViewDataSource & UICollectionViewDelegate {
         collectionView.tag = id
@@ -20,5 +22,4 @@ class MVVCardCell: CardTableViewCell, MultipleDataElementsPresentable {
         collectionView.reloadData()
     }
 }
-
 

@@ -32,13 +32,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="NO CARDS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-7O-sTo">
-                                            <rect key="frame" x="24" y="24" width="128" height="29"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NO CARDS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-7O-sTo">
+                                            <rect key="frame" x="24" y="27" width="128" height="26"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Personalize Your Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Personalize Your Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
                                             <rect key="frame" x="24" y="69" width="317" height="26.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <color key="textColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,7 +59,7 @@
                                                 <segue destination="3Db-3m-P8t" kind="show" id="7t5-4Y-use"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="You can add remove cards and change their order." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23G-Bt-rki">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="You can add remove cards and change their order." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23G-Bt-rki">
                                             <rect key="frame" x="24" y="112" width="327" height="42.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
@@ -436,22 +436,22 @@
                                     <outlet property="titleLabel" destination="g9d-wh-PLp" id="ApZ-lw-ZWd"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="station" rowHeight="240" id="qyp-gn-XW8" customClass="MVVCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1588" width="375" height="240"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="station" rowHeight="280" id="qyp-gn-XW8" customClass="MVVCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="1588" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="qyp-gn-XW8" id="bcD-QZ-UjK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qyp-gn-XW8" id="bcD-QZ-UjK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MVV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ox8-vp-7OZ">
-                                            <rect key="frame" x="16" y="27" width="57.5" height="29"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MVG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ox8-vp-7OZ">
+                                            <rect key="frame" x="16" y="19" width="57.5" height="34"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" name="systemPurpleColor" catalog="System" colorSpace="catalog"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-Bu-Qko">
-                                            <rect key="frame" x="0.0" y="72" width="375" height="168"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-Bu-Qko">
+                                            <rect key="frame" x="0.0" y="69" width="375" height="200"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="YCL-Nx-iLi"/>
                                             </constraints>
@@ -469,15 +469,20 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="338" height="40"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggK-KV-pMa">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggK-KV-pMa">
                                                                 <rect key="frame" x="11" y="7" width="315" height="27"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstItem="ggK-KV-pMa" firstAttribute="top" secondItem="tT4-cN-DoW" secondAttribute="topMargin" constant="-13" id="NRg-ke-2d3"/>
+                                                        <constraint firstItem="ggK-KV-pMa" firstAttribute="centerX" secondItem="tT4-cN-DoW" secondAttribute="centerX" id="Yei-xx-APF"/>
+                                                        <constraint firstItem="ggK-KV-pMa" firstAttribute="centerY" secondItem="tT4-cN-DoW" secondAttribute="centerY" id="laJ-yX-jTy"/>
+                                                        <constraint firstItem="ggK-KV-pMa" firstAttribute="leading" secondItem="tT4-cN-DoW" secondAttribute="leadingMargin" constant="-5" id="rnF-u6-sC5"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outlet property="label1" destination="ggK-KV-pMa" id="a43-zR-by9"/>
                                                     </connections>
@@ -490,14 +495,15 @@
                                         <constraint firstItem="2IX-Bu-Qko" firstAttribute="leading" secondItem="bcD-QZ-UjK" secondAttribute="leading" id="2rn-BE-diU"/>
                                         <constraint firstAttribute="trailing" secondItem="2IX-Bu-Qko" secondAttribute="trailing" id="9Lg-Bl-PkB"/>
                                         <constraint firstItem="ox8-vp-7OZ" firstAttribute="leading" secondItem="bcD-QZ-UjK" secondAttribute="leadingMargin" constant="8" id="AbW-2J-32L"/>
-                                        <constraint firstItem="ox8-vp-7OZ" firstAttribute="top" secondItem="bcD-QZ-UjK" secondAttribute="topMargin" constant="16" id="CmO-Qa-Wa3"/>
-                                        <constraint firstAttribute="bottom" secondItem="2IX-Bu-Qko" secondAttribute="bottom" id="fun-Q3-iH9"/>
+                                        <constraint firstItem="ox8-vp-7OZ" firstAttribute="top" secondItem="bcD-QZ-UjK" secondAttribute="topMargin" constant="8" id="Bxe-cy-tOw"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2IX-Bu-Qko" secondAttribute="bottom" id="fun-Q3-iH9"/>
                                         <constraint firstItem="2IX-Bu-Qko" firstAttribute="top" secondItem="ox8-vp-7OZ" secondAttribute="bottom" constant="16" id="t89-O9-ob4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="collectionView" destination="2IX-Bu-Qko" id="i5Q-8C-tMz"/>
+                                    <outlet property="collectionViewHeight" destination="YCL-Nx-iLi" id="vQe-17-7xz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

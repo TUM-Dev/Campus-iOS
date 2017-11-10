@@ -146,9 +146,13 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if let cell = cell as? MultipleDataElementsPresentable {
             cell.setDataSource(dataSource: self, id: indexPath.row)
+            cell.collectionView.reloadData()
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
         }
         
+        cell.frame = tableView.bounds;
         cell.selectionStyle = .none
+        cell.layoutIfNeeded()
 		return cell
     }
     

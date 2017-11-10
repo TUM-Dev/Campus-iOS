@@ -16,6 +16,7 @@ protocol SingleDataElementPresentable {
 protocol MultipleDataElementsPresentable {
     
     weak var collectionView: UICollectionView! { get set }
+    weak var collectionViewHeight: NSLayoutConstraint! { get set }
     func setDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
 }
 
