@@ -5,7 +5,7 @@
 
 import UIKit
 
-class SexyEntryTableViewCell: CardTableViewCell {
+class SexyEntryTableViewCell: CardTableViewCell, SingleDataElementPresentable {
     
     var entry: SexyEntry? {
         didSet {
@@ -18,7 +18,7 @@ class SexyEntryTableViewCell: CardTableViewCell {
         }
     }
     
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         entry = element as? SexyEntry
     }
 
