@@ -8,12 +8,13 @@
 
 import Sweeft
 
-final class PersonalGradeManager: CachedManager {
+final class PersonalGradeManager: TypedCachedCardManager {
+   
     
     typealias DataType = Grade
     
     var config: Config
-    
+    var cardKey: CardKey = .grades
     var requiresLogin: Bool {
         return false
     }

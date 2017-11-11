@@ -8,12 +8,12 @@
 
 import Sweeft
 
-final class PersonalLectureManager: CachedManager {
+final class PersonalLectureManager: TypedCachedCardManager {
     
     typealias DataType = Lecture
     
     var config: Config
-    
+    var cardKey: CardKey = .lectures
     var requiresLogin: Bool {
         return false
     }
