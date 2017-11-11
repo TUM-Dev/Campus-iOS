@@ -15,8 +15,4 @@ class StudyRoomCard: CardTableViewCell, MultipleDataElementsPresentable {
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     
-    func setDataSource<T>(dataSource: T, id: Int) where T : UICollectionViewDataSource, T : UICollectionViewDelegate {
-        
-    }
-    
 }

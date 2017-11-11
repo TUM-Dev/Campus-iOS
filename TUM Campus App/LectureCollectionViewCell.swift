@@ -12,8 +12,14 @@ import UIKit
 
 class LectureCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
+    @IBOutlet weak var label1: UILabel!
+    
+    
     func setElement(_ element: DataElement) {
         
+        if let element = element as? Lecture {
+            label1.text = element.name
+        }
     }
     
 }

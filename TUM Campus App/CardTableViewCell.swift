@@ -20,6 +20,16 @@ protocol MultipleDataElementsPresentable {
     func setDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
 }
 
+extension MultipleDataElementsPresentable {
+    
+    func setDataSource<T>(dataSource: T, id: Int) where T : UICollectionViewDataSource & UICollectionViewDelegate {
+        collectionView.tag = id
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
+        collectionView.reloadData()
+    }
+}
+
 
 @IBDesignable class CardTableViewCell: UITableViewCell {
 	

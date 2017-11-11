@@ -11,9 +11,14 @@ import UIKit
 
 class StudyRoomCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
+    @IBOutlet weak var label1: UILabel!
+    
+    
     func setElement(_ element: DataElement) {
         
+        if let element = element as? StudyRoomGroup {
+            label1.text = element.name
+        }
     }
     
 }
-
