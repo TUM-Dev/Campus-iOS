@@ -19,7 +19,6 @@ final class TumSexyManager: MemoryCachedManager, SearchManager {
     typealias DataType = SexyEntry
     
     var config: Config
-    var tree: SearchTree<SexyEntry>?
     var indexCache: Cache<SexyIndex>?
     
     var cache: Cache<[SexyEntry]>? {
