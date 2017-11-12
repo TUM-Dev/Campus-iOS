@@ -21,7 +21,7 @@ class NewsCardCell: CardTableViewCell, SingleDataElementPresentable {
         if let newsItem = element as? News {
             titleLabel.text = newsItem.title
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm a - dd MMM, YYYY"
+            dateFormatter.dateFormat = " dd MMM, YYYY, hh:mm a"
             dateLabel.text = dateFormatter.string(from: newsItem.date as Date)
             binding = newsItem.image.bind(to: detailImageView, default: nil)
         }

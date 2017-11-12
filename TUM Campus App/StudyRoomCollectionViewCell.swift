@@ -18,6 +18,8 @@ class StudyRoomCollectionViewCell: UICollectionViewCell, SingleDataElementPresen
         
         if let element = element as? StudyRoomGroup {
             label1.text = element.name
+            let availabelRooms = element.rooms.reduce(0, {if $1.status == .Free { return $0 + 1}; return $0 })
+            label1.text! += " \(availabelRooms)"
         }
     }
     

@@ -120,6 +120,7 @@
 		22B6E2DB1FB67FF20028EFBC /* LecturesCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6E2DA1FB67FF20028EFBC /* LecturesCard.swift */; };
 		22B6E2DD1FB6801C0028EFBC /* StudyRoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6E2DC1FB6801C0028EFBC /* StudyRoomCollectionViewCell.swift */; };
 		22B6E2DF1FB680560028EFBC /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6E2DE1FB680560028EFBC /* LectureCollectionViewCell.swift */; };
+		22B6E2E11FB90BA80028EFBC /* BordereLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B6E2E01FB90BA80028EFBC /* BordereLabel.swift */; };
 		22D58D201F9A6AA3006EBCC9 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */; };
 		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
 		22F4B6B41EA802960086D49A /* BookRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B31EA802960086D49A /* BookRental.swift */; };
@@ -314,6 +315,7 @@
 		22B6E2DA1FB67FF20028EFBC /* LecturesCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturesCard.swift; sourceTree = "<group>"; };
 		22B6E2DC1FB6801C0028EFBC /* StudyRoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		22B6E2DE1FB680560028EFBC /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
+		22B6E2E01FB90BA80028EFBC /* BordereLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BordereLabel.swift; sourceTree = "<group>"; };
 		22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
 		22F4B6B31EA802960086D49A /* BookRental.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRental.swift; sourceTree = "<group>"; };
@@ -744,6 +746,7 @@
 				22B6E2DA1FB67FF20028EFBC /* LecturesCard.swift */,
 				22B6E2DE1FB680560028EFBC /* LectureCollectionViewCell.swift */,
 				22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */,
+				22B6E2E01FB90BA80028EFBC /* BordereLabel.swift */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -1357,6 +1360,7 @@
 				0EB161841C1A05B6001A08FC /* Lecture.swift in Sources */,
 				0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */,
 				0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */,
+				22B6E2E11FB90BA80028EFBC /* BordereLabel.swift in Sources */,
 				0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */,
 				807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */,
 				0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */,
