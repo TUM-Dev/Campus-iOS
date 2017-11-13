@@ -124,9 +124,7 @@ extension MemoryCachedManager {
                 self.cache = result.value.map { .init(value: $0, date: .now) }
             }
         }
-        return .new(completionQueue: .main) { setter in
-            setter.success(with: value)
-        }
+        return .successful(with: value)
     }
     
 }
