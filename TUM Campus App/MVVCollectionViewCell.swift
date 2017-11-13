@@ -11,13 +11,18 @@ import UIKit
 
 class MVVCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
-    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var destinationLabel: UILabel!
+    @IBOutlet weak var numberLabel: BorderedLabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     
     func setElement(_ element: DataElement) {
         
         if let element = element as? Station {
-            label1.text = element.name
+            //Just random data todo: fix this
+            destinationLabel.text = element.place
+            numberLabel.text = String(describing: element.id)
+            timeLabel.text = String(describing: element.distance!)
         }
     }
     

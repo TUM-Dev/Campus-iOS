@@ -11,15 +11,17 @@ import UIKit
 
 class StudyRoomCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
-    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var roomGroupNameLabel: UILabel!
+    @IBOutlet weak var availableRoomsLabel: CircularLabel!
     
     
     func setElement(_ element: DataElement) {
         
         if let element = element as? StudyRoomGroup {
-            label1.text = element.name
-            let availabelRooms = element.rooms.reduce(0) { $1.status == .Free ? $0 + 1 : $0 }
-            label1.text! += " \(availabelRooms)"
+            roomGroupNameLabel.text = element.name
+            let availableRooms = element.rooms.reduce(0) { $1.status == .Free ? $0 + 1 : $0 }
+            availableRoomsLabel.text = "\(availableRooms)"
+            availableRoomsLabel.backgroundColor = availableRooms > 0 ? .green : .red
         }
     }
     

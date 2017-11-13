@@ -12,13 +12,17 @@ import UIKit
 
 class LectureCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
-    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var semesterLabel: UILabel!
+    @IBOutlet weak var lectureNameLabel: UILabel!
+    @IBOutlet weak var lectureTypeLabel: CircularLabel!
     
     
     func setElement(_ element: DataElement) {
         
         if let element = element as? Lecture {
-            label1.text = element.name
+            lectureNameLabel.text = element.name
+            semesterLabel.text = element.semester
+            lectureTypeLabel.text = String(describing: element.type.first ?? "?")
         }
     }
     
