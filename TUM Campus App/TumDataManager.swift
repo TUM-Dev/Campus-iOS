@@ -50,7 +50,8 @@ class TumDataManager {
         return [
             calendarManager,
             movieManager,
-            newsManager,
+            tumNewsManager,
+            tuFilmNewsManager,
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,

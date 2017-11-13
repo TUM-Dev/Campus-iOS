@@ -69,3 +69,25 @@ extension News: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+extension News.Source {
+    
+    var titleColor: UIColor {
+        switch self {
+        case .regular:
+            return Constants.newsTitleColor
+        case .movie:
+            return Constants.tuFilmTitleColor
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .regular:
+            return "News"
+        case .movie:
+            return "TU Film"
+        }
+    }
+    
+}
