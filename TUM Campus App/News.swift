@@ -11,14 +11,21 @@ import Sweeft
 
 final class News: DataElement {
     
+    enum Source: String {
+        case movie = "2"
+        case regular = "1"
+    }
+    
     let id: String
+    let source: Source
     let date: Date
     let title: String
     let link: String
     let image: Image
     
-    init(id: String, date: Date, title: String, link: String, image: String? = nil) {
+    init(id: String, source: Source, date: Date, title: String, link: String, image: String? = nil) {
         self.id = id
+        self.source = source
         self.date = date
         self.title = title
         self.link = link
@@ -45,13 +52,14 @@ extension News: Deserializable {
     
     convenience init?(from json: JSON) {
         guard let title = json["title"].string,
+            let source = json["src"].string.flatMap(Source.init(rawValue:)),
             let link = json["link"].string,
             let date = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
             let id = json["news"].string else {
                 
             return nil
         }
-        self.init(id: id, date: date, title: title, link: link, image: json["image"].string)
+        self.init(id: id, source: source, date: date, title: title, link: link, image: json["image"].string)
     }
     
 }

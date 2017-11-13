@@ -22,6 +22,9 @@ class TumDataManager {
     lazy var cafeteriaManager: CafeteriaManager = { CafeteriaManager(config: self.config) }()
     lazy var mvgManager: MVGManager = { MVGManager(config: self.config) }()
     
+    lazy var tuFilmNewsManager: TUFilmNewsManager = { TUFilmNewsManager(newsManager: self.newsManager) }()
+    lazy var tumNewsManager: TUMNewsManager = { TUMNewsManager(newsManager: self.newsManager) }()
+    
     lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
     lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()
     lazy var roomMapsManager: RoomFinderMapManager = { RoomFinderMapManager(config: self.config) }()
