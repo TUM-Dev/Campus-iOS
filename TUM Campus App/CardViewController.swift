@@ -139,12 +139,11 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) ?? CardTableViewCell()
         
         if let cell = cell as? SingleDataElementPresentable {
              cell.setElement(item)
-        }
-        if let cell = cell as? MultipleDataElementsPresentable {
+        } else if let cell = cell as? MultipleDataElementsPresentable {
             cell.setDataSource(dataSource: self, id: indexPath.row)
             cell.collectionView.reloadData()
             cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
