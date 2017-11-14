@@ -21,7 +21,7 @@ class StudyRoomCollectionViewCell: UICollectionViewCell, SingleDataElementPresen
             roomGroupNameLabel.text = element.name
             let availableRooms = element.rooms.reduce(0) { $1.status == .Free ? $0 + 1 : $0 }
             availableRoomsLabel.text = "\(availableRooms)"
-            availableRoomsLabel.backgroundColor = availableRooms > 0 ? .green : .red
+            availableRoomsLabel.backgroundColor = availableRooms > 0 ? #colorLiteral(red: 0.3068726243, green: 0.8835613666, blue: 0.4050915909, alpha: 1) : #colorLiteral(red: 1, green: 0.3732958912, blue: 0.357054006, alpha: 1)
         }
     }
     

@@ -757,17 +757,17 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-OU-qtf">
-                                                                <rect key="frame" x="8" y="1" width="303" height="37"/>
+                                                                <rect key="frame" x="8" y="1" width="300" height="37"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bv-5j-8cN" customClass="CircularLabel" customModule="Campus" customModuleProvider="target">
-                                                                <rect key="frame" x="319" y="7" width="25" height="25"/>
+                                                                <rect key="frame" x="316" y="5.5" width="28" height="28"/>
                                                                 <color key="backgroundColor" red="0.30687262426073947" green="0.88356136658031093" blue="0.40509159088052571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="25" id="dhd-8d-Ohl"/>
-                                                                    <constraint firstAttribute="height" constant="25" id="zFM-xn-82b"/>
+                                                                    <constraint firstAttribute="width" constant="28" id="dhd-8d-Ohl"/>
+                                                                    <constraint firstAttribute="height" constant="28" id="zFM-xn-82b"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
