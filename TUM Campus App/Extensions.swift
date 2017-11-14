@@ -178,6 +178,15 @@ extension UIColor {
 
 extension API {
     
+    func removeCache(for endpoint: Endpoint,
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty) {
+        
+        let url = self.url(for: endpoint, arguments: arguments, queries: queries)
+        let cacheKey = url.relativePath.replacingOccurrences(of: "/", with: "_")
+        cache.delete(at: cacheKey)
+    }
+    
     func clearCache() {
         cache.clear()
     }

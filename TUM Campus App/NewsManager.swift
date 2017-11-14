@@ -36,9 +36,21 @@ final class NewsManager: MemoryCachedManager, SingleItemCachedManager, CardManag
         return items.filter({ $0.date > .now }).last ?? items.first
     }
     
-    func performRequest(maxCache: CacheTime) -> Response<[News]> {
+    private func fetch(from news: String) -> Response<[News]> {
         return config.tumCabe.doObjectsRequest(to: .news,
-                                               maxCacheTime: maxCache).map { $0.sorted(descending: \.date) }
+                                               arguments: ["news" : news],
+                                               maxCacheTime: .forever).flatMap { (results: [News]) in
+            
+            guard let lastId = results.max({ $0.id }) else {
+                self.config.tumCabe.removeCache(for: .news, arguments: ["news" : news])
+                return .successful(with: results)
+            }
+            return self.fetch(from: lastId).map { results + $0 }
+        }
+    }
+    
+    func performRequest(maxCache: CacheTime) -> Promise<[News], APIError> {
+        return fetch(from: "").map { $0.sorted(descending: \.date) }
     }
     
 }
