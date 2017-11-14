@@ -17,39 +17,36 @@ private func mapped(lectures: [Lecture]) -> [(String, [Lecture])] {
     }
 }
 
-class LecturesTableViewController: UITableViewController, DetailViewDelegate, DetailView {
+class LecturesTableViewController: RefreshableTableViewController<Lecture>, DetailViewDelegate, DetailView {
     
-    var lectures = [(String,[Lecture])]()
+    override var values: [Lecture] {
+        get {
+            return lectures.flatMap { $1 }
+        }
+        set {
+            lectures = mapped(lectures: newValue)
+        }
+    }
+    
+    var lectures = [(String,[Lecture])]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     weak var delegate: DetailViewDelegate?
-    
     var currentLecture: DataElement?
     
     func dataManager() -> TumDataManager? {
         return delegate?.dataManager()
     }
     
-    func fetch() {
-        let promise = delegate?.dataManager()?.lecturesManager.fetch()
-        promise?.map(completionQueue: .main) { (lectures: [Lecture]) -> [(String, [Lecture])] in
-            return mapped(lectures: lectures)
-        }.onSuccess(in: .main) { lectures in
-            self.lectures = lectures
-            self.tableView.reloadData()
-        }
+    override func fetch(skipCache: Bool) -> Promise<[Lecture], APIError>? {
+        return delegate?.dataManager()?.lecturesManager.fetch(skipCache: skipCache)
     }
-
-}
-
-extension LecturesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.fetch()
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,18 +55,6 @@ extension LecturesTableViewController {
             mvc.delegate = self
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        }
-    }
-    
-}
-
-extension LecturesTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return lectures.count

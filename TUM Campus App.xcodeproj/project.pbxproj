@@ -105,6 +105,7 @@
 		0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */; };
 		0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */; };
 		0EEBD1101E058F3A00798B41 /* EmptyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */; };
+		0EF3D5051FBB13A900D05DE0 /* RefreshableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF3D5041FBB13A900D05DE0 /* RefreshableTableViewController.swift */; };
 		0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE51D414D39001649F1 /* NewsManager.swift */; };
 		0EF4CEE81D414D40001649F1 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE71D414D40001649F1 /* News.swift */; };
 		0EF4CEEA1D4154C5001649F1 /* NewsCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */; };
@@ -293,6 +294,7 @@
 		0EDD932C1EB7910A0022E9BC /* StudyRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomAPI.swift; sourceTree = "<group>"; };
 		0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCard.swift; sourceTree = "<group>"; };
 		0EEBD10F1E058F3A00798B41 /* EmptyCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCardCell.swift; sourceTree = "<group>"; };
+		0EF3D5041FBB13A900D05DE0 /* RefreshableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshableTableViewController.swift; sourceTree = "<group>"; };
 		0EF4CEE51D414D39001649F1 /* NewsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		0EF4CEE71D414D40001649F1 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		0EF4CEE91D4154C5001649F1 /* NewsCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCardCell.swift; sourceTree = "<group>"; };
@@ -884,6 +886,7 @@
 			isa = PBXGroup;
 			children = (
 				E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */,
+				0EF3D5041FBB13A900D05DE0 /* RefreshableTableViewController.swift */,
 			);
 			name = "UI Services";
 			sourceTree = "<group>";
@@ -1336,6 +1339,7 @@
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
+				0EF3D5051FBB13A900D05DE0 /* RefreshableTableViewController.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,
 				0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */,
 				5007C69E1E06786E0014B065 /* StudyRoomStatus.swift in Sources */,
