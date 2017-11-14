@@ -11,11 +11,6 @@ import Sweeft
 
 final class News: DataElement {
     
-    enum Source: String {
-        case movie = "2"
-        case regular = "1"
-    }
-    
     let id: String
     let source: Source
     let date: Date
@@ -52,7 +47,7 @@ extension News: Deserializable {
     
     convenience init?(from json: JSON) {
         guard let title = json["title"].string,
-            let source = json["src"].string.flatMap(Source.init(rawValue:)),
+            let source = json["src"].string.flatMap(Int.init).map(News.Source.init(rawValue:)),
             let link = json["link"].string,
             let date = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
             let id = json["news"].string else {
@@ -68,26 +63,4 @@ extension News: Equatable {
     static func == (lhs: News, rhs: News) -> Bool {
         return lhs.id == rhs.id
     }
-}
-
-extension News.Source {
-    
-    var titleColor: UIColor {
-        switch self {
-        case .regular:
-            return Constants.newsTitleColor
-        case .movie:
-            return Constants.tuFilmTitleColor
-        }
-    }
-    
-    var title: String {
-        switch self {
-        case .regular:
-            return "News"
-        case .movie:
-            return "TU Film"
-        }
-    }
-    
 }

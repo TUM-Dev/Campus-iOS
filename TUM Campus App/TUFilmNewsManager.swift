@@ -19,7 +19,7 @@ final class TUFilmNewsManager: SourceNewsManager {
     }
     
     var source: News.Source {
-        return .movie
+        return .movies
     }
     
     init(newsManager: NewsManager) {

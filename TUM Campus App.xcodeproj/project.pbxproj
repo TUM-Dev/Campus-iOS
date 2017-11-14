@@ -93,6 +93,8 @@
 		0EC28AE21E05523C00FF1E40 /* CardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE11E05523C00FF1E40 /* CardKey.swift */; };
 		0EC28AE51E05549300FF1E40 /* EditCards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EC28AE31E05549300FF1E40 /* EditCards.storyboard */; };
 		0EC28AE71E05555400FF1E40 /* EditCardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */; };
+		0EC479CA1FBA6A6700FC36EB /* NewsSpreadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC479C91FBA6A6700FC36EB /* NewsSpreadManager.swift */; };
+		0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC479CB1FBA6EEC00FC36EB /* NewsSource.swift */; };
 		0EC9D01E1FBA504A00061DF1 /* TUMNewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9D01D1FBA504A00061DF1 /* TUMNewsManager.swift */; };
 		0EC9D0201FBA514500061DF1 /* SourceNewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9D01F1FBA514500061DF1 /* SourceNewsManager.swift */; };
 		0EC9D0221FBA52B200061DF1 /* TUFilmNewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC9D0211FBA52B200061DF1 /* TUFilmNewsManager.swift */; };
@@ -279,6 +281,8 @@
 		0EC28AE11E05523C00FF1E40 /* CardKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardKey.swift; sourceTree = "<group>"; };
 		0EC28AE41E05549300FF1E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EditCards.storyboard; sourceTree = "<group>"; };
 		0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCardsViewController.swift; sourceTree = "<group>"; };
+		0EC479C91FBA6A6700FC36EB /* NewsSpreadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSpreadManager.swift; sourceTree = "<group>"; };
+		0EC479CB1FBA6EEC00FC36EB /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
 		0EC9D01D1FBA504A00061DF1 /* TUMNewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMNewsManager.swift; sourceTree = "<group>"; };
 		0EC9D01F1FBA514500061DF1 /* SourceNewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceNewsManager.swift; sourceTree = "<group>"; };
 		0EC9D0211FBA52B200061DF1 /* TUFilmNewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUFilmNewsManager.swift; sourceTree = "<group>"; };
@@ -574,6 +578,7 @@
 				5007C6A51E068AA60014B065 /* StudyRoomGroup.swift */,
 				0EB473CF1C1B4F0F00F17F44 /* Map.swift */,
 				0EF4CEE71D414D40001649F1 /* News.swift */,
+				0EC479CB1FBA6EEC00FC36EB /* NewsSource.swift */,
 				0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */,
 				0EBC0DBF1C177FBE002D7A00 /* ImageDownloader.swift */,
 				22F4B6B31EA802960086D49A /* BookRental.swift */,
@@ -667,6 +672,7 @@
 				0EC9D01F1FBA514500061DF1 /* SourceNewsManager.swift */,
 				0EC9D0211FBA52B200061DF1 /* TUFilmNewsManager.swift */,
 				0EC9D01D1FBA504A00061DF1 /* TUMNewsManager.swift */,
+				0EC479C91FBA6A6700FC36EB /* NewsSpreadManager.swift */,
 			);
 			name = "TumCabe JSON Managers";
 			sourceTree = "<group>";
@@ -1296,6 +1302,7 @@
 				22A92C2F1F9CE512005F4407 /* SearchResultsController.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				5007C6A81E0693240014B065 /* StudyRoomsTableViewController.swift in Sources */,
+				0EC479CA1FBA6A6700FC36EB /* NewsSpreadManager.swift in Sources */,
 				229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */,
 				0E3B214C1C13D2900035ED70 /* CardTableViewCell.swift in Sources */,
 				301195EE1E464F560012B133 /* GradesTableViewController.swift in Sources */,
@@ -1348,6 +1355,7 @@
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,
+				0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,

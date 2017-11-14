@@ -33,7 +33,7 @@ extension SourceNewsManager {
     }
     
     func fetch(maxCache: CacheTime) -> Response<[DataType]> {
-        return newsManager.fetch(maxCache: maxCache).map { $0 |> { $0.source == self.source } }
+        return newsManager.fetch(maxCache: maxCache).map { $0 |> { self.source.contains($0.source) } }
     }
     
 }
