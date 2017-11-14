@@ -47,7 +47,7 @@ extension News: Deserializable {
     
     convenience init?(from json: JSON) {
         guard let title = json["title"].string,
-            let source = json["src"].string.flatMap(Int.init).map(News.Source.init(rawValue:)),
+            let source = json["src"].string.flatMap(Int.init).map(News.Source.init(identifier:)),
             let link = json["link"].string,
             let date = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
             let id = json["news"].string else {
