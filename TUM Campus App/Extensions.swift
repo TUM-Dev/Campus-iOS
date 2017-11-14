@@ -182,9 +182,11 @@ extension API {
                      arguments: [String:CustomStringConvertible] = .empty,
                      queries: [String:CustomStringConvertible] = .empty) {
         
-        let url = self.url(for: endpoint, arguments: arguments, queries: queries)
-        let cacheKey = url.relativePath.replacingOccurrences(of: "/", with: "_")
-        cache.delete(at: cacheKey)
+        .global() >>> {
+            let url = self.url(for: endpoint, arguments: arguments, queries: queries)
+            let cacheKey = url.relativePath.replacingOccurrences(of: "/", with: "_")
+            self.cache.delete(at: cacheKey)
+        }
     }
     
     func clearCache() {
