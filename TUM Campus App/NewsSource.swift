@@ -37,7 +37,7 @@ extension News.Source {
     static let alumni = News.Source(identifier: 14)
     static let impulsiv = News.Source(identifier: 15)
     
-    static let all = News.Source(rawValue: Int.max)
+    static let all = News.Source(rawValue: .max)
     
     static let newsSpread: News.Source = [
         .newsspreadFMI,

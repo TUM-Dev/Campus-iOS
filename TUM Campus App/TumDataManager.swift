@@ -24,6 +24,7 @@ class TumDataManager {
     
     lazy var tuFilmNewsManager: TUFilmNewsManager = { TUFilmNewsManager(newsManager: self.newsManager) }()
     lazy var tumNewsManager: TUMNewsManager = { TUMNewsManager(newsManager: self.newsManager) }()
+    lazy var newsSpreadManager: NewsSpreadManager = { NewsSpreadManager(newsManager: self.newsManager) }()
     
     lazy var lectureDetailsManager: LectureDetailsManager = { LectureDetailsManager(config: self.config) }()
     lazy var personDetailsManager: PersonDetailDataManager = { PersonDetailDataManager(config: self.config) }()
