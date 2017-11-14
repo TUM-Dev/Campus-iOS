@@ -28,7 +28,12 @@ class LecturesTableViewController: RefreshableTableViewController<Lecture>, Deta
         }
     }
     
-    var lectures = [(String,[Lecture])]()
+    var lectures = [(String,[Lecture])]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     weak var delegate: DetailViewDelegate?
     var currentLecture: DataElement?
     
