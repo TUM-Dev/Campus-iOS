@@ -48,7 +48,6 @@ extension SearchManager {
 }
 
 protocol SimpleManager {
-    init(config: Config)
     var requiresLogin: Bool { get }
     func fetch() -> Response<[DataElement]>
 }
