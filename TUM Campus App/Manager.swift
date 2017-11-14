@@ -80,6 +80,10 @@ extension CachedManager {
         return fetch(maxCache: defaultMaxCache)
     }
     
+    func fetch(skipCache: Bool) -> Response<[DataType]> {
+        return skipCache ? update() : fetch()
+    }
+    
 }
 
 // MARK: Managers that can return a single item
