@@ -48,7 +48,6 @@ extension SearchManager {
 }
 
 protocol SimpleManager {
-    init(config: Config)
     var requiresLogin: Bool { get }
     func fetch() -> Response<[DataElement]>
 }
@@ -79,6 +78,10 @@ extension CachedManager {
     
     func fetch() -> Response<[DataType]> {
         return fetch(maxCache: defaultMaxCache)
+    }
+    
+    func fetch(skipCache: Bool) -> Response<[DataType]> {
+        return skipCache ? update() : fetch()
     }
     
 }

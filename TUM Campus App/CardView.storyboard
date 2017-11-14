@@ -33,13 +33,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="NO CARDS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-7O-sTo">
-                                            <rect key="frame" x="24" y="27" width="128" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="NO CARDS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn6-7O-sTo">
+                                            <rect key="frame" x="24" y="24" width="128" height="29"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Personalize Your Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Personalize Your Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4G-9L-8wP">
                                             <rect key="frame" x="24" y="69" width="317" height="26.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <color key="textColor" red="0.35487467050552368" green="0.7854425311088562" blue="0.98154765367507935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,6 +140,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="lME-ch-Qre" id="XrL-2Q-xqg"/>
                                     <outlet property="detailImageView" destination="EXr-FU-UK1" id="CLG-Ik-ug5"/>
+                                    <outlet property="sourceLabel" destination="p6q-qG-S9C" id="fmP-rl-gWB"/>
                                     <outlet property="titleLabel" destination="Cz4-SO-gOQ" id="ACb-Ws-t5H"/>
                                     <segue destination="7VU-7x-HwV" kind="show" id="DAS-ty-SsW"/>
                                 </connections>

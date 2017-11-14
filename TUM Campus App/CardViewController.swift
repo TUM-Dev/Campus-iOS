@@ -11,6 +11,8 @@ import UIKit
 
 class CardViewController: UIViewController {
     
+    @IBOutlet var tableView: UITableView!
+    
     var manager: TumDataManager?
     var cards: [DataElement] = []
     var categories: [CardCategory] = []
@@ -18,8 +20,9 @@ class CardViewController: UIViewController {
     var refresh = UIRefreshControl()
     var search: UISearchController?
     
-    @IBOutlet var tableView: UITableView!
-    
+}
+
+extension CardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
