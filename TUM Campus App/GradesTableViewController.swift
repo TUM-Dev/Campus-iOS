@@ -7,10 +7,9 @@
 //
 
 import UIKit
+import Sweeft
 
-class GradesTableViewController: UITableViewController, DetailViewDelegate, DetailView  {
-
-    var grades = [Grade]()
+class GradesTableViewController: RefreshableTableViewController<Grade>, DetailViewDelegate, DetailView  {
     
     weak var delegate: DetailViewDelegate?
     
@@ -18,51 +17,31 @@ class GradesTableViewController: UITableViewController, DetailViewDelegate, Deta
         return delegate?.dataManager()
     }
     
-    func fetch() {
-        delegate?.dataManager()?.gradesManager.fetch().onSuccess(in: .main) { grades in
-            self.grades = grades
-            self.tableView.reloadData()
-        }
+    override func fetch(skipCache: Bool) -> Promise<[Grade], APIError>? {
+        return delegate?.dataManager()?.gradesManager.fetch(skipCache: skipCache)
     }
-    
-}
-
-extension GradesTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Grades"
-        self.fetch()
-        tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-            self.navigationController?.navigationItem.largeTitleDisplayMode = .never
-        }
-    }
-    
-}
-
-extension GradesTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return grades.count
+        return values.count
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "grade") as? GradeTableViewCell ?? GradeTableViewCell()
-        cell.grade = grades[indexPath.row]
+        cell.grade = values[indexPath.row]
         return cell
     }
     
 }
-
