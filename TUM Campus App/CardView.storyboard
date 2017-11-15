@@ -946,7 +946,7 @@
                 <viewControllerPlaceholder storyboardName="MVV" id="2K7-hw-l28" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEH-jb-mk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="446"/>
+            <point key="canvasLocation" x="1190" y="459"/>
         </scene>
         <!--Grade-->
         <scene sceneID="ANo-y0-Dgc">
@@ -954,7 +954,7 @@
                 <viewControllerPlaceholder storyboardName="Grade" id="qkU-ao-ty7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBO-iK-Kw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="477"/>
+            <point key="canvasLocation" x="1190" y="416"/>
         </scene>
         <!--Lecture-->
         <scene sceneID="6qe-ui-AKK">
@@ -962,7 +962,7 @@
                 <viewControllerPlaceholder storyboardName="Lecture" id="u9h-5G-YLy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrB-lY-tir" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="512"/>
+            <point key="canvasLocation" x="1197" y="503"/>
         </scene>
         <!--StudyRooms-->
         <scene sceneID="fgN-wK-ae2">
@@ -970,7 +970,7 @@
                 <viewControllerPlaceholder storyboardName="StudyRooms" id="VUT-K2-GGg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3BS-qh-Eyt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="544"/>
+            <point key="canvasLocation" x="1215" y="542"/>
         </scene>
         <!--Cafeteria-->
         <scene sceneID="DLc-6R-pZj">
