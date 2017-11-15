@@ -8,21 +8,10 @@
 
 import UIKit
 
-class BookRentalsCardCell: CardTableViewCell, SingleDataElementPresentable {
-
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var authorLabel: UILabel!
-    @IBOutlet var deadlineLabel: UILabel!
-    @IBOutlet var prolongLabel: UILabel!
-
+class BookRentalsCardCell: CardTableViewCell, MultipleDataElementsPresentable {
     
-    func setElement(_ element: DataElement) {
-        if let rentalItem = element as? BookRental {
-            titleLabel.text = rentalItem.title
-            authorLabel.text = rentalItem.author
-            deadlineLabel.text = rentalItem.deadline
-            prolongLabel.text = rentalItem.prolong.rawValue // TODO: Remap to localized string when available
-        }
-    }
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
         
 }
