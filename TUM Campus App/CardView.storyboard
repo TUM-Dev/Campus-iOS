@@ -185,52 +185,97 @@
                                     <segue destination="7VU-7x-HwV" kind="show" id="DAS-ty-SsW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="166" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="518" width="375" height="166"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cafeteria" rowHeight="200" id="QRk-VH-QTm" customClass="CafeteriaCardTableViewCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="518" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QRk-VH-QTm" id="8fA-Gv-n7a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Cafeteria Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NF0-fN-izc">
-                                            <rect key="frame" x="24" y="72" width="135.5" height="24"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAFETERIA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dER-dW-wHN">
                                             <rect key="frame" x="24" y="27" width="137" height="29"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" red="0.25884935259819031" green="0.73931771516799927" blue="0.33807790279388428" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="items" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3w-zB-bmv">
-                                            <rect key="frame" x="24" y="110" width="327" height="21"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8lM-uX-bjK">
+                                            <rect key="frame" x="16" y="72" width="343" height="117"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="117" id="z43-h9-tzm"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="drV-yL-KvS">
+                                                <size key="itemSize" width="343" height="68"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cafeteria" id="u8d-4Y-ljC" customClass="CafeteriaCollectionViewCell" customModule="Campus" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="oMq-3e-z6u">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="68"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="A6i-z1-G6h">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f8-L1-uwx">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgJ-ca-WOx">
+                                                                                <rect key="frame" x="304" y="0.0" width="39" height="20.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZU-aQ-WeB">
+                                                                        <rect key="frame" x="0.0" y="24.5" width="343" height="43.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstItem="oMq-3e-z6u" firstAttribute="leading" secondItem="u8d-4Y-ljC" secondAttribute="leading" id="12u-1d-D9l"/>
+                                                        <constraint firstItem="oMq-3e-z6u" firstAttribute="top" secondItem="u8d-4Y-ljC" secondAttribute="top" id="DDU-mr-25N"/>
+                                                        <constraint firstAttribute="bottom" secondItem="oMq-3e-z6u" secondAttribute="bottom" id="FVC-Fh-gKZ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="oMq-3e-z6u" secondAttribute="trailing" id="RsF-c2-kNW"/>
+                                                    </constraints>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="W3w-zB-bmv" secondAttribute="trailing" constant="8" id="1oN-eY-Xfo"/>
                                         <constraint firstItem="dER-dW-wHN" firstAttribute="top" secondItem="8fA-Gv-n7a" secondAttribute="topMargin" constant="16" id="3G6-qk-q4u"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="W3w-zB-bmv" secondAttribute="bottom" constant="24" id="8hm-PX-M2g"/>
-                                        <constraint firstItem="W3w-zB-bmv" firstAttribute="leading" secondItem="NF0-fN-izc" secondAttribute="leading" id="ZxF-nY-Loe"/>
-                                        <constraint firstItem="W3w-zB-bmv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NF0-fN-izc" secondAttribute="bottom" constant="8" id="aHh-st-jiy"/>
+                                        <constraint firstItem="8lM-uX-bjK" firstAttribute="top" secondItem="dER-dW-wHN" secondAttribute="bottom" constant="16" id="Q8o-8N-IK6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8lM-uX-bjK" secondAttribute="trailing" id="RdA-ek-iVR"/>
                                         <constraint firstItem="dER-dW-wHN" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="cCd-ZG-GiB"/>
-                                        <constraint firstItem="NF0-fN-izc" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" constant="8" id="eRh-TF-Y4Y"/>
-                                        <constraint firstItem="NF0-fN-izc" firstAttribute="top" secondItem="dER-dW-wHN" secondAttribute="bottom" constant="16" id="qRO-XG-1hD"/>
+                                        <constraint firstItem="8lM-uX-bjK" firstAttribute="leading" secondItem="8fA-Gv-n7a" secondAttribute="leadingMargin" id="nsW-pB-1bZ"/>
+                                        <constraint firstItem="8lM-uX-bjK" firstAttribute="bottom" secondItem="8fA-Gv-n7a" secondAttribute="bottomMargin" id="vYf-7Y-Vid"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="cafeteriaLabel" destination="NF0-fN-izc" id="WIh-NE-92u"/>
-                                    <outlet property="itemsLabel" destination="W3w-zB-bmv" id="bRZ-P9-LEA"/>
+                                    <outlet property="collectionView" destination="8lM-uX-bjK" id="JqH-Fn-WF5"/>
+                                    <outlet property="collectionViewHeight" destination="z43-h9-tzm" id="Z3x-jV-Gl5"/>
                                     <segue destination="dal-lx-uvI" kind="show" id="8TT-2h-nPZ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tuition" rowHeight="150" id="Cqz-ah-oLK" customClass="TuitionCardTableViewCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="684" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="718" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cqz-ah-oLK" id="Lgz-Z4-dlR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -291,7 +336,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="834" width="375" height="246"/>
+                                <rect key="frame" x="0.0" y="868" width="375" height="246"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
@@ -348,7 +393,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="268" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1080" width="375" height="268"/>
+                                <rect key="frame" x="0.0" y="1114" width="375" height="268"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
@@ -413,7 +458,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookRental" rowHeight="240" id="zT4-lK-HIn" customClass="BookRentalsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1348" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="1382" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zT4-lK-HIn" id="q4n-nw-muo">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -522,7 +567,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="station" rowHeight="280" id="qyp-gn-XW8" customClass="MVVCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1588" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="1622" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qyp-gn-XW8" id="bcD-QZ-UjK">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -617,7 +662,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="lecture" rowHeight="280" id="DBu-AW-5CE" customClass="LecturesCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1868" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="1902" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DBu-AW-5CE" id="3Wm-Be-AvX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -716,7 +761,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="grade" rowHeight="280" id="P8E-6v-OWn" customClass="GradesCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="2148" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="2182" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P8E-6v-OWn" id="926-p5-jjI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -811,7 +856,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="studyRoomGroup" rowHeight="280" id="SCZ-Zl-2nT" customClass="StudyRoomCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="2428" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="2462" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SCZ-Zl-2nT" id="9cs-aH-piR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>

@@ -115,6 +115,7 @@
 		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
 		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
 		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
+		224818381FBDCDBA00124676 /* CafeteriaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224818371FBDCDBA00124676 /* CafeteriaCollectionViewCell.swift */; };
 		226ED0091FB4DADC009DB716 /* MVVCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED0081FB4DADC009DB716 /* MVVCollectionViewCell.swift */; };
 		22704EA51FBBB80000709309 /* BookRentalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22704EA41FBBB80000709309 /* BookRentalCollectionViewCell.swift */; };
 		22704EA91FBBC44A00709309 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22704EA81FBBC44A00709309 /* NewsCollectionViewCell.swift */; };
@@ -317,6 +318,7 @@
 		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
 		1272671411F9035D9B894A44 /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		222F90F91EB7BD69002F9289 /* Campus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
+		224818371FBDCDBA00124676 /* CafeteriaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaCollectionViewCell.swift; sourceTree = "<group>"; };
 		226ED0081FB4DADC009DB716 /* MVVCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVCollectionViewCell.swift; sourceTree = "<group>"; };
 		22704EA41FBBB80000709309 /* BookRentalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRentalCollectionViewCell.swift; sourceTree = "<group>"; };
 		22704EA81FBBC44A00709309 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -751,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				0E1DD13A1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift */,
+				224818371FBDCDBA00124676 /* CafeteriaCollectionViewCell.swift */,
 				0E3B214B1C13D2900035ED70 /* CardTableViewCell.swift */,
 				0E424F6A1BE1853C00B5DFCB /* TUFilmCardCell.swift */,
 				0E64AC641C0DF59100060FB0 /* NextLectureCardCell.swift */,
@@ -1324,6 +1327,7 @@
 				22B6E2D91FB67F3E0028EFBC /* StudyRoomsCard.swift in Sources */,
 				22B6E2D51FB67E730028EFBC /* GradesCardCell.swift in Sources */,
 				301195F01E464FBD0012B133 /* GradeTableViewCell.swift in Sources */,
+				224818381FBDCDBA00124676 /* CafeteriaCollectionViewCell.swift in Sources */,
 				0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */,
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				22B6E2DF1FB680560028EFBC /* LectureCollectionViewCell.swift in Sources */,
