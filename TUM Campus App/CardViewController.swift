@@ -16,6 +16,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
+    var logoView: TUMLogoView?
     
     func refresh(_ sender: AnyObject?) {
         manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
@@ -79,10 +80,19 @@ extension CardViewController {
     
     func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? UIView }
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
         guard let view = nib?.first else { return }
+        logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         self.navigationItem.titleView = view
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tumLogogTap(sender:)))
+        gestureRecognizer.numberOfTapsRequired = 3
+        view.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @IBAction func tumLogogTap(sender: AnyObject) {
+        guard let view = logoView else { return }
+        view.imageView.image = UIImage(named: "logo-rainbow")
     }
     
     func setupTableView() {

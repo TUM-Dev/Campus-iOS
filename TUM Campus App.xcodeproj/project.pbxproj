@@ -115,6 +115,7 @@
 		0EF790EF1EA8223D005CB9AB /* BookRetanlAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */; };
 		0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */; };
 		0EF790F31EA82F2E005CB9AB /* BookRentalHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */; };
+		222E86151FBDDB44009AAFBA /* TUMLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222E86141FBDDB44009AAFBA /* TUMLogoView.swift */; };
 		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
@@ -305,6 +306,7 @@
 		0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalSession.swift; sourceTree = "<group>"; };
 		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
 		1272671411F9035D9B894A44 /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		222E86141FBDDB44009AAFBA /* TUMLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMLogoView.swift; sourceTree = "<group>"; };
 		222F90F91EB7BD69002F9289 /* Campus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
 		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
 		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				0E57252F1C1647BD00E5471D /* TUM Campus App-Bridging-Header.h */,
 				807C480E1F4090EF00CAD35D /* MVV */,
 				0E40D9BB1F9A560000F4332A /* TUMLogoView.xib */,
+				222E86141FBDDB44009AAFBA /* TUMLogoView.swift */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -1354,6 +1357,7 @@
 				0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */,
 				0E5A61DD1C13536C006017DB /* TumOnlineLoginRequestManager.swift in Sources */,
 				807C48191F4092A800CAD35D /* DeparturesViewController.swift in Sources */,
+				222E86151FBDDB44009AAFBA /* TUMLogoView.swift in Sources */,
 				0E5A61E11C135E07006017DB /* LoginViewController.swift in Sources */,
 				0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */,
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
