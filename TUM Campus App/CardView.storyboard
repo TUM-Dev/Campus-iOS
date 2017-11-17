@@ -335,65 +335,85 @@
                                     <segue destination="pUb-YI-hpF" kind="show" identifier="showTuition" id="q6U-kJ-jps"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="246" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="868" width="375" height="246"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="film" rowHeight="280" id="lej-d0-U2l" customClass="TUFilmCardCell" customModule="Campus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="868" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lej-d0-U2l" id="V2f-ss-IEJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELI-9f-uy1">
-                                            <rect key="frame" x="263.5" y="67" width="95.5" height="144"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="95.5" id="02c-fZ-7Rs"/>
-                                                <constraint firstAttribute="height" constant="144" id="FaW-7n-LC4"/>
-                                                <constraint firstAttribute="width" secondItem="ELI-9f-uy1" secondAttribute="height" multiplier="71:107" id="vQx-OZ-HaY"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Titel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSq-0e-n7z">
-                                            <rect key="frame" x="16" y="67" width="239.5" height="24"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TU FILM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCV-wn-kNP">
-                                            <rect key="frame" x="16" y="27" width="95.5" height="24"/>
+                                            <rect key="frame" x="16" y="27" width="95.5" height="29"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
                                             <color key="textColor" red="0.0032691548112779856" green="0.43776732683181763" blue="0.90755176544189453" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsc-fa-32i">
-                                            <rect key="frame" x="16" y="191.5" width="239" height="19.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nmF-j4-rpI">
+                                            <rect key="frame" x="0.0" y="72" width="375" height="197"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="197" id="V9p-di-Zda"/>
+                                            </constraints>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7ey-eF-RGR">
+                                                <size key="itemSize" width="144" height="186"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="film" id="S7u-aT-EE7" customClass="TUFilmCollectionViewCell" customModule="Campus" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="5.5" width="144" height="186"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="144" height="186"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="247" verticalCompressionResistancePriority="749" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="JNk-wl-1hw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="144" height="161"/>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmT-9M-WXZ">
+                                                                <rect key="frame" x="0.0" y="165" width="144" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="JNk-wl-1hw" secondAttribute="trailing" id="15d-L0-chL"/>
+                                                        <constraint firstItem="JNk-wl-1hw" firstAttribute="top" secondItem="S7u-aT-EE7" secondAttribute="top" id="C7W-qL-CgQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gmT-9M-WXZ" secondAttribute="bottom" id="WEm-G3-GkR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gmT-9M-WXZ" secondAttribute="trailing" id="ZeA-UZ-IQW"/>
+                                                        <constraint firstItem="gmT-9M-WXZ" firstAttribute="leading" secondItem="S7u-aT-EE7" secondAttribute="leading" id="jsM-cS-EZP"/>
+                                                        <constraint firstItem="gmT-9M-WXZ" firstAttribute="top" secondItem="JNk-wl-1hw" secondAttribute="bottom" constant="4" id="nX2-ep-6JB"/>
+                                                        <constraint firstItem="JNk-wl-1hw" firstAttribute="leading" secondItem="S7u-aT-EE7" secondAttribute="leading" id="oNB-zy-ZFY"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="moviePosterImageView" destination="JNk-wl-1hw" id="Xi6-dr-9VW"/>
+                                                        <outlet property="movieTitleLabel" destination="gmT-9M-WXZ" id="fW2-4F-Ybb"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                        </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="ELI-9f-uy1" firstAttribute="leading" secondItem="hsc-fa-32i" secondAttribute="trailing" constant="8" id="2Rv-uU-WPW"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ELI-9f-uy1" secondAttribute="bottom" constant="24" id="3WT-UX-stu"/>
-                                        <constraint firstItem="ELI-9f-uy1" firstAttribute="leading" secondItem="rSq-0e-n7z" secondAttribute="trailing" constant="8" id="7UD-LX-A1G"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ELI-9f-uy1" secondAttribute="trailing" constant="8" id="8aS-S4-98k"/>
-                                        <constraint firstItem="hsc-fa-32i" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leadingMargin" constant="8" id="9Jf-xx-vji"/>
+                                        <constraint firstAttribute="trailing" secondItem="nmF-j4-rpI" secondAttribute="trailing" id="1gx-hE-ppq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="nmF-j4-rpI" secondAttribute="bottom" id="63e-cz-wZV"/>
                                         <constraint firstItem="FCV-wn-kNP" firstAttribute="top" secondItem="V2f-ss-IEJ" secondAttribute="topMargin" constant="16" id="Bbp-gn-AUy"/>
-                                        <constraint firstItem="rSq-0e-n7z" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leadingMargin" constant="8" id="LTr-8r-jUb"/>
-                                        <constraint firstItem="rSq-0e-n7z" firstAttribute="top" secondItem="FCV-wn-kNP" secondAttribute="bottom" constant="16" id="N7J-lw-BDL"/>
-                                        <constraint firstItem="hsc-fa-32i" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rSq-0e-n7z" secondAttribute="bottom" constant="8" id="USR-u1-7Yt"/>
+                                        <constraint firstItem="nmF-j4-rpI" firstAttribute="top" secondItem="FCV-wn-kNP" secondAttribute="bottom" constant="16" id="GJG-60-PYN"/>
+                                        <constraint firstItem="nmF-j4-rpI" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leading" id="Uua-Rf-Iqi"/>
                                         <constraint firstItem="FCV-wn-kNP" firstAttribute="leading" secondItem="V2f-ss-IEJ" secondAttribute="leadingMargin" constant="8" id="Xn3-k1-ZIm"/>
-                                        <constraint firstItem="hsc-fa-32i" firstAttribute="bottom" secondItem="ELI-9f-uy1" secondAttribute="bottom" id="cbo-0V-yy4"/>
-                                        <constraint firstItem="ELI-9f-uy1" firstAttribute="top" secondItem="rSq-0e-n7z" secondAttribute="top" id="m6J-QF-2jY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="dateLabel" destination="hsc-fa-32i" id="73l-85-O9h"/>
-                                    <outlet property="posterImageView" destination="ELI-9f-uy1" id="1l6-hH-4NN"/>
-                                    <outlet property="titleLabel" destination="rSq-0e-n7z" id="5Cg-sq-vcI"/>
+                                    <outlet property="collectionView" destination="nmF-j4-rpI" id="m5e-7d-3Xi"/>
+                                    <outlet property="collectionViewHeight" destination="V9p-di-Zda" id="12h-1R-N4o"/>
                                     <segue destination="DM2-F6-YFe" kind="show" identifier="showMovies" id="PG7-sY-fS4"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="calendarRow" rowHeight="268" id="3MF-sy-cmU" customClass="NextLectureCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1114" width="375" height="268"/>
+                                <rect key="frame" x="0.0" y="1148" width="375" height="268"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3MF-sy-cmU" id="43C-yg-bx9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
@@ -458,7 +478,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookRental" rowHeight="240" id="zT4-lK-HIn" customClass="BookRentalsCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1382" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="1416" width="375" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zT4-lK-HIn" id="q4n-nw-muo">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -567,7 +587,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="station" rowHeight="280" id="qyp-gn-XW8" customClass="MVVCardCell" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1622" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="1656" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qyp-gn-XW8" id="bcD-QZ-UjK">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -662,7 +682,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="lecture" rowHeight="280" id="DBu-AW-5CE" customClass="LecturesCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1902" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="1936" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DBu-AW-5CE" id="3Wm-Be-AvX">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -761,7 +781,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="grade" rowHeight="280" id="P8E-6v-OWn" customClass="GradesCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="2182" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="2216" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P8E-6v-OWn" id="926-p5-jjI">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
@@ -856,7 +876,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" selectionStyle="default" indentationWidth="10" reuseIdentifier="studyRoomGroup" rowHeight="280" id="SCZ-Zl-2nT" customClass="StudyRoomCard" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="2462" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="2496" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SCZ-Zl-2nT" id="9cs-aH-piR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
