@@ -11,7 +11,8 @@ import UIKit
 import SafariServices
 import Sweeft
 
-private let locationManager = CLLocationManager()
+private var locationManager: CLLocationManager = DispatchQueue.main.sync { CLLocationManager() }
+
 
 private func currentLocation() -> CLLocation {
     locationManager.startUpdatingLocation()
