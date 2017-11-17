@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureTableViewCell: CardTableViewCell {
+class LectureTableViewCell: UITableViewCell, SingleDataElementPresentable {
 
     func setElement(_ element: DataElement) {
         if let lecture = element as? Lecture {
