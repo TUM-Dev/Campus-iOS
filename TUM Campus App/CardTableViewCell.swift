@@ -10,6 +10,7 @@ import UIKit
 
 
 protocol SingleDataElementPresentable {
+    
     func setElement(_ element: DataElement)
 }
 

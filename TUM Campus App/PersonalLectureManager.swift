@@ -32,4 +32,9 @@ final class PersonalLectureManager: TypedCachedCardManager {
                                                     maxCacheTime: maxCache)
     }
     
+    func cardsItems(from elements: [DataType]) -> [DataType] {
+        
+        return elements.filter({$0.semester == elements[0].semester})
+    }
+    
 }
