@@ -20,7 +20,7 @@ Features already implemented:
 
 ## Contributing
 You're welcome to contribute to this app!
-Check out our detailed information at [CONTIRBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
+Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
 ## Publishing a new version
 - You can use _fastlane snapshot_ to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the AutomatedScreenshots.swift test
