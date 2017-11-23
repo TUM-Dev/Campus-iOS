@@ -147,7 +147,7 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = cell as? SingleDataElementPresentable {
              cell.setElement(item)
         } else if let cell = cell as? MultipleDataElementsPresentable {
-            cell.setDataSource(dataSource: self, id: indexPath.row)
+            cell.setDataSource(dataSource: self, index: IndexPath(index: indexPath.row))
             cell.collectionView.reloadData()
             cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
         }
@@ -164,26 +164,47 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
 extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return categories[collectionView.tag].elements.count
+        guard let collectionView = collectionView as? IndexableCollectionView else { fatalError("wrong cell type") }
+        guard let index = collectionView.index else { fatalError("missing index property") }
+        
+        switch index.count {
+        case 1: return categories[index[0]].elements.count
+        case 2: return categories[index[0]].elements[index[1]].detailElements.count
+        default: return 0
+        }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let item = categories[collectionView.tag].elements[indexPath.row]
+        guard let collectionView = collectionView as? IndexableCollectionView else { fatalError("wrong cell type") }
+        guard let index = collectionView.index else { fatalError("missing index property") }
+
+        var item: DataElement {
+            switch index.count {
+            case 1: return categories[index[0]].elements[indexPath.row]
+            case 2: return categories[index[0]].elements[index[1]].detailElements[indexPath.row]
+            default: fatalError()
+            }
+        }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.getCellIdentifier(), for: indexPath)
         
         if let cell = cell as? SingleDataElementPresentable {
             cell.setElement(item)
-        }
-        
+        } else if let cell = cell as? MultipleRootDataElementsPresentable {
+            cell.setRootElement(item)
+            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            cell.collectionView.reloadData()
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+        } else if let cell = cell as? MultipleDataElementsPresentable {
+            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            cell.collectionView.reloadData()
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+    }
         return cell
     }
-    
 }

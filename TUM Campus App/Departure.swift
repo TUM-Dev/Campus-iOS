@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-struct Departure {
+public struct Departure {
     let departureTime: Date
     let product: String
     let label: String
@@ -45,4 +45,16 @@ struct Departure {
         self.sev = sev
         self.station = station
     }
+}
+
+extension Departure: DataElement {
+    
+    func getCellIdentifier() -> String {
+        return "station"
+    }
+    
+    var text: String {
+        return label
+    }
+    
 }

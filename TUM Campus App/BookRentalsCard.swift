@@ -10,8 +10,6 @@ import UIKit
 
 class BookRentalsCardCell: CardTableViewCell, MultipleDataElementsPresentable {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: IndexableCollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
-        
 }

@@ -12,5 +12,12 @@ import UIKit
 protocol DataElement {
     func getCellIdentifier() -> String
     var text: String { get }
+    var detailElements: [DataElement] { get }
 }
 
+extension DataElement {
+    
+    var detailElements: [DataElement] {
+        return []
+    }
+}

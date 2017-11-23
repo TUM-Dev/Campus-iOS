@@ -11,7 +11,6 @@ import Sweeft
 
 class NewsCardCell: CardTableViewCell, MultipleDataElementsPresentable {
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var collectionView: IndexableCollectionView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
-
 }

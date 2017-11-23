@@ -47,7 +47,7 @@ extension Line {
     
 }
 
-public struct Station: Hashable {
+public class Station: Hashable, Deserializable {
     
     public var hashValue: Int { return self.id.hashValue }
     
@@ -65,14 +65,13 @@ public struct Station: Hashable {
     public let longitude: Double
     
     public let lines: [Line]
+    public var departures: [Departure] = []
     
     /// Distance from the search location
     public let distance: Int?
-}
-
-extension Station: Deserializable {
     
-    public init?(from json: JSON) {
+    
+    public required init?(from json: JSON) {
         guard let name = json["name"].string,
             let id   = json["id"].int,
             let type   = json["type"].string,
@@ -100,8 +99,8 @@ extension Station: Deserializable {
             return numbers.flatMap { Line(key: key, number: $0) }
         }
     }
-    
 }
+
 
 extension Station {
     
@@ -119,6 +118,10 @@ extension Station: DataElement {
     
     func getCellIdentifier() -> String {
         return "station"
+    }
+    
+    var detailElements: [DataElement] {
+        return departures
     }
     
     

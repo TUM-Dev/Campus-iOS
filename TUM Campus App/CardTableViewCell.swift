@@ -16,15 +16,20 @@ protocol SingleDataElementPresentable {
 
 protocol MultipleDataElementsPresentable {
     
-    weak var collectionView: UICollectionView! { get set }
-    weak var collectionViewHeight: NSLayoutConstraint! { get set }
-    func setDataSource<T>(dataSource: T, id: Int) where T: UICollectionViewDelegate & UICollectionViewDataSource
+    var collectionView: IndexableCollectionView! { get set }
+    var collectionViewHeight: NSLayoutConstraint! { get set }
+    func setDataSource<T>(dataSource: T, index: IndexPath) where T: UICollectionViewDelegate & UICollectionViewDataSource
+}
+
+protocol MultipleRootDataElementsPresentable: MultipleDataElementsPresentable {
+    
+    func setRootElement(_ element: DataElement)
 }
 
 extension MultipleDataElementsPresentable {
     
-    func setDataSource<T>(dataSource: T, id: Int) where T : UICollectionViewDataSource & UICollectionViewDelegate {
-        collectionView.tag = id
+    func setDataSource<T>(dataSource: T, index: IndexPath) where T : UICollectionViewDataSource & UICollectionViewDelegate {
+        collectionView.index = index
         collectionView.delegate = dataSource
         collectionView.dataSource = dataSource
         collectionView.reloadData()

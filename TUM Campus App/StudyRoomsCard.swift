@@ -11,8 +11,6 @@ import UIKit
 
 class StudyRoomCard: CardTableViewCell, MultipleDataElementsPresentable {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: IndexableCollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
-    
 }
