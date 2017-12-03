@@ -40,23 +40,24 @@ class DepartureCollectionViewCell: UICollectionViewCell, SingleDataElementPresen
         }
     }
     
-    func updateTimeRemaining(departure: Departure) {
-//        let secondsLeft = departure.departureTime.timeIntervalSinceNow
-//        
-//        let timeLeft: String
-//        
-//        if abs(secondsLeft) < 60 {
-//            timeLeft = "\(Int(secondsLeft)) sec"
-//        } else {
-//            timeLeft = "\(Int(secondsLeft / 60)) min"
-//        }
-//        
-//        timeLabel.text = timeLeft
+    override func prepareForReuse() {
+        timer?.invalidate()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func updateTimeRemaining(departure: Departure) {
+        let secondsLeft = departure.departureTime.timeIntervalSinceNow
+
+        let timeLeft: String
+
+        if abs(secondsLeft) < 60 {
+            timeLeft = "\(Int(secondsLeft)) sec"
+        } else {
+            timeLeft = "\(Int(secondsLeft / 60)) min"
+        }
+
+        timeLabel.text = timeLeft
     }
+    
 }
 
 
