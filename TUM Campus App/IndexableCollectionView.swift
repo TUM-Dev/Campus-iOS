@@ -12,4 +12,6 @@ import UIKit
 class IndexableCollectionView: UICollectionView {
     
     var index: IndexPath?
+    @IBInspectable var cellWidth: CGFloat = -1
+    @IBInspectable var cellHeight: CGFloat = 64
 }

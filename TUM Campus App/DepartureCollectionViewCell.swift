@@ -17,7 +17,6 @@ class DepartureCollectionViewCell: UICollectionViewCell, SingleDataElementPresen
     
     private var timer: Timer?
     
-
     
     func setElement(_ element: DataElement) {
     
@@ -42,17 +41,21 @@ class DepartureCollectionViewCell: UICollectionViewCell, SingleDataElementPresen
     }
     
     func updateTimeRemaining(departure: Departure) {
-        let secondsLeft = departure.departureTime.timeIntervalSinceNow
-        
-        let timeLeft: String
-        
-        if abs(secondsLeft) < 60 {
-            timeLeft = "\(Int(secondsLeft)) sec"
-        } else {
-            timeLeft = "\(Int(secondsLeft / 60)) min"
-        }
-        
-        timeLabel.text = timeLeft
+//        let secondsLeft = departure.departureTime.timeIntervalSinceNow
+//        
+//        let timeLeft: String
+//        
+//        if abs(secondsLeft) < 60 {
+//            timeLeft = "\(Int(secondsLeft)) sec"
+//        } else {
+//            timeLeft = "\(Int(secondsLeft / 60)) min"
+//        }
+//        
+//        timeLabel.text = timeLeft
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 }
 

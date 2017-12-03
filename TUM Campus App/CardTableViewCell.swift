@@ -36,7 +36,6 @@ extension MultipleDataElementsPresentable {
     }
 }
 
-
 @IBDesignable class CardTableViewCell: UITableViewCell {
 	
 	@IBInspectable var topGradientColor: UIColor = UIColor.white

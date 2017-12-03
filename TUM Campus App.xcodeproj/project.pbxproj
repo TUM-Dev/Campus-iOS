@@ -123,7 +123,6 @@
 		226ED0091FB4DADC009DB716 /* StationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226ED0081FB4DADC009DB716 /* StationCollectionViewCell.swift */; };
 		22704EA51FBBB80000709309 /* BookRentalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22704EA41FBBB80000709309 /* BookRentalCollectionViewCell.swift */; };
 		22704EA91FBBC44A00709309 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22704EA81FBBC44A00709309 /* NewsCollectionViewCell.swift */; };
-		2285A9C01FC7551500194A49 /* ShadowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2285A9BF1FC7551500194A49 /* ShadowCollectionViewCell.swift */; };
 		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
@@ -331,7 +330,6 @@
 		226ED0081FB4DADC009DB716 /* StationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCollectionViewCell.swift; sourceTree = "<group>"; };
 		22704EA41FBBB80000709309 /* BookRentalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRentalCollectionViewCell.swift; sourceTree = "<group>"; };
 		22704EA81FBBC44A00709309 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
-		2285A9BF1FC7551500194A49 /* ShadowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowCollectionViewCell.swift; sourceTree = "<group>"; };
 		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
 		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
@@ -787,7 +785,6 @@
 				22D58D1F1F9A6AA3006EBCC9 /* BorderedButton.swift */,
 				22B6E2E01FB90BA80028EFBC /* BordereLabel.swift */,
 				22522A151FC5C1070093EB5A /* IndexableCollectionView.swift */,
-				2285A9BF1FC7551500194A49 /* ShadowCollectionViewCell.swift */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -1464,7 +1461,6 @@
 				0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
 				0E3B21591C13DD3C0035ED70 /* TuitionCardTableViewCell.swift in Sources */,
-				2285A9C01FC7551500194A49 /* ShadowCollectionViewCell.swift in Sources */,
 				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
 				0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */,
 				0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */,

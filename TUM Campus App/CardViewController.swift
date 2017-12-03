@@ -155,6 +155,9 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
         cell.frame = tableView.bounds;
         cell.selectionStyle = .none
         cell.layoutIfNeeded()
+        if let cell = cell as? MultipleDataElementsPresentable {
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+        }
 		return cell
     }
     
@@ -164,7 +167,7 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -192,19 +195,31 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.getCellIdentifier(), for: indexPath)
-        
-        if let cell = cell as? SingleDataElementPresentable {
-            cell.setElement(item)
-        } else if let cell = cell as? MultipleRootDataElementsPresentable {
-            cell.setRootElement(item)
-            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
-            cell.collectionView.reloadData()
-            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+  
+        if let cell1 = cell as? SingleDataElementPresentable {
+            cell1.setElement(item)
+            
+        } else if let rootCell = cell as? MultipleRootDataElementsPresentable {
+            rootCell.collectionView.cellWidth = collectionView.bounds.width - 32
+            rootCell.setRootElement(item)
+            rootCell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            rootCell.collectionViewHeight.constant = rootCell.collectionView.collectionViewLayout.collectionViewContentSize.height
+            rootCell.collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.collectionViewLayout.invalidateLayout()
+
         } else if let cell = cell as? MultipleDataElementsPresentable {
             cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
-            cell.collectionView.reloadData()
             cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
-    }
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let collectionView = collectionView as? IndexableCollectionView else { return CGSize.zero }
+        let width = collectionView.cellWidth == -1 ? collectionView.bounds.width : collectionView.cellWidth
+        return CGSize(width: width, height: collectionView.cellHeight)
     }
 }
