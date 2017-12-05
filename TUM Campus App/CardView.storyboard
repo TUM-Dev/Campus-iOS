@@ -225,10 +225,10 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="12H-5b-bb3" customClass="IndexableCollectionView" customModule="Campus" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="314"/>
+                                                                <rect key="frame" x="0.0" y="47" width="343" height="267"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="314" id="AQt-5o-3vs"/>
+                                                                    <constraint firstAttribute="height" constant="267" id="AQt-5o-3vs"/>
                                                                 </constraints>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yug-uE-of7">
                                                                     <size key="itemSize" width="334" height="42"/>
@@ -288,15 +288,29 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </collectionView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FAt-Uw-rhQ">
+                                                                <rect key="frame" x="12" y="8" width="323" height="31"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="31" id="SdH-Qr-rwz"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                     </view>
                                                     <constraints>
                                                         <constraint firstItem="12H-5b-bb3" firstAttribute="leading" secondItem="u8d-4Y-ljC" secondAttribute="leading" id="6J6-nN-dyf"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="FAt-Uw-rhQ" secondAttribute="trailing" id="9nS-7P-dZc"/>
+                                                        <constraint firstItem="FAt-Uw-rhQ" firstAttribute="top" secondItem="u8d-4Y-ljC" secondAttribute="top" constant="8" id="Y62-Od-QkR"/>
                                                         <constraint firstAttribute="bottom" secondItem="12H-5b-bb3" secondAttribute="bottom" id="ZVR-ec-LaE"/>
-                                                        <constraint firstItem="12H-5b-bb3" firstAttribute="top" secondItem="u8d-4Y-ljC" secondAttribute="top" id="mTi-FG-dWK"/>
+                                                        <constraint firstItem="12H-5b-bb3" firstAttribute="top" secondItem="FAt-Uw-rhQ" secondAttribute="bottom" constant="8" id="a35-qF-4Ap"/>
+                                                        <constraint firstItem="FAt-Uw-rhQ" firstAttribute="leading" secondItem="u8d-4Y-ljC" secondAttribute="leadingMargin" constant="4" id="m34-4j-6nN"/>
                                                         <constraint firstAttribute="trailing" secondItem="12H-5b-bb3" secondAttribute="trailing" id="rsC-3N-Tx9"/>
                                                     </constraints>
                                                     <connections>
+                                                        <outlet property="cafeteriaNameLabel" destination="FAt-Uw-rhQ" id="xKF-be-tSi"/>
                                                         <outlet property="collectionView" destination="12H-5b-bb3" id="0c5-Rg-Jlj"/>
                                                         <outlet property="collectionViewHeight" destination="AQt-5o-3vs" id="c2Z-yc-ya9"/>
                                                     </connections>
@@ -304,7 +318,7 @@
                                             </cells>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellHeight">
-                                                    <real key="value" value="314"/>
+                                                    <real key="value" value="267"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </collectionView>

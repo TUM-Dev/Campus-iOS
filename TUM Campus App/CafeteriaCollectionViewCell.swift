@@ -9,8 +9,18 @@
 import UIKit
 
 
-class CafeteriaCollectionViewCell: UICollectionViewCell, MultipleDataElementsPresentable {
+class CafeteriaCollectionViewCell: UICollectionViewCell, MultipleRootDataElementsPresentable {
 
     @IBOutlet var collectionView: IndexableCollectionView!
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var cafeteriaNameLabel: UILabel!
+    
+    
+    func setRootElement(_ element: DataElement) {
+        
+        guard let cafeteria = element as? Cafeteria else { return }
+        
+        cafeteriaNameLabel.text = cafeteria.name
+        
+    }
 }
