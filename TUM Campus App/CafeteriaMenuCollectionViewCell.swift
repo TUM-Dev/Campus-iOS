@@ -11,20 +11,18 @@ import UIKit
 
 class CafeteriaMenuCollectionViewCell: UICollectionViewCell, SingleDataElementPresentable {
     
-    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     
     func setElement(_ element: DataElement) {
         if let menu = element as? CafeteriaMenu {
-            //            cafeteriaLabel.text = cafeteria.name
-            //            let items = cafeteria.getMenusForDate(Date()).filter { (item) in
-            //                return item.id != "0"
-            //            }
-            //            var string = ""
-            //            for item in items {
-            //                string += "\u{2022} " + item.name + "\n"
-            //            }
-            //            itemsLabel.text = string
+            nameLabel.text = menu.details.name
+            if let price = menu.price?.student {
+                priceLabel.text = "\(price)"
+            } else {
+                priceLabel.text = ""
+            }
         }
     }
     
