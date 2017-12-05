@@ -204,7 +204,7 @@
                                             <color key="textColor" red="0.25884935259819031" green="0.73931771516799927" blue="0.33807790279388428" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8lM-uX-bjK" customClass="IndexableCollectionView" customModule="Campus" customModuleProvider="target">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8lM-uX-bjK" customClass="IndexableCollectionView" customModule="Campus" customModuleProvider="target">
                                             <rect key="frame" x="16" y="72" width="343" height="317"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -225,9 +225,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="314"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="12H-5b-bb3" customClass="IndexableCollectionView" customModule="Campus" customModuleProvider="target">
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="12H-5b-bb3" customClass="IndexableCollectionView" customModule="Campus" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="314"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="314" id="AQt-5o-3vs"/>
                                                                     <constraint firstAttribute="width" constant="343" id="gQl-SS-Ut1"/>
