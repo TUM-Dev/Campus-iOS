@@ -15,10 +15,22 @@ class StationCollectionViewCell: UICollectionViewCell, MultipleRootDataElementsP
     @IBOutlet weak var stationName: UILabel!
     @IBOutlet var collectionView: IndexableCollectionView!
     
+    var station: DetailedStation?
+    
     func setRootElement(_ element: DataElement) {
-        
-        guard let station = element as? Station else { return }
-        stationName.text = station.name
+        self.station?.delegate = nil
+        guard let station = element as? DetailedStation else { return }
+        self.station = station
+        self.station?.delegate = self
+        stationName.text = station.station.name
+    }
+    
+}
+
+extension StationCollectionViewCell: DetailedStationDelegate {
+    
+    func station(_ station: DetailedStation, didUpdate departures: [Departure]) {
+        collectionView.reloadData()
     }
     
 }

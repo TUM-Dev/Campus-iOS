@@ -17,7 +17,7 @@ final class Cafeteria: DataElement {
     var menus = [String : [CafeteriaMenu]]()
     let location: CLLocation
     var detailElements: [DataElement] {
-        return menus.flatMap({$1})
+        return menus.flatMap { $1 }
     }
     
     var hasMenuToday: Bool {
