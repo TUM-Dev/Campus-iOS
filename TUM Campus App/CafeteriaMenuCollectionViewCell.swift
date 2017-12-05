@@ -19,7 +19,7 @@ class CafeteriaMenuCollectionViewCell: UICollectionViewCell, SingleDataElementPr
         if let menu = element as? CafeteriaMenu {
             nameLabel.text = menu.details.name
             if let price = menu.price?.student {
-                priceLabel.text = "\(price)"
+                priceLabel.text = "\(price)€"
             } else {
                 priceLabel.text = ""
             }
