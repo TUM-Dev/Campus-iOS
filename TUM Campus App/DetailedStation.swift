@@ -26,7 +26,7 @@ class DetailedStation {
     weak var delegate: DetailedStationDelegate?
     
     var relevantDepartures: [Departure] {
-        let departuresInTimeRange = allDepartures |> { $0.departureTime.timeIntervalSinceNow > departureTimeSlackInterval }
+        let departuresInTimeRange = allDepartures |> { $0.departureTime.timeIntervalSinceNow > -departureTimeSlackInterval }
         return departuresInTimeRange.array(withFirst: 5)
     }
     
