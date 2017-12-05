@@ -9,11 +9,11 @@
 import CoreLocation
 import Sweeft
 
-final class MVGManager: SimpleTypedCardManager {
-    
-    var cardKey: CardKey = .mvg
+final class MVGManager: Manager, CardManager {
     
     typealias DataType = Station
+    
+    let cardKey: CardKey = .mvg
     
     var config: Config
     
@@ -25,51 +25,34 @@ final class MVGManager: SimpleTypedCardManager {
         self.config = config
     }
     
-//    func fetch() -> Response<[Station]> {
-//        return config.mvg.doObjectsRequest(to: .getNearbyStations,
-//                                           queries: ["latitude" : location.coordinate.latitude,
-//                                                     "longitude" : location.coordinate.longitude],
-//                                           at: ["locations"]).map { $0.sorted(byLocation: \.location) }
-//    }
-    
     func fetch() -> Response<[Station]> {
-        let promise: Response<[Station]> = config.mvg.doObjectsRequest(to: .getNearbyStations,
-                                                   queries: ["latitude" : location.coordinate.latitude,
-                                                             "longitude" : location.coordinate.longitude],
-                                                   at: ["locations"]).map { $0.sorted(byLocation: \.location) }
-        return promise.flatMap { (stations: [Station]) in
-            return self.fetchDepartures(for: stations)
+        return config.mvg.doObjectsRequest(to: .getNearbyStations,
+                                           queries: ["latitude" : location.coordinate.latitude,
+                                                     "longitude" : location.coordinate.longitude],
+                                           at: ["locations"]).map { $0.sorted(byLocation: \.location) }
+    }
+    
+    func fetchCardsItems() -> Response<CardCategory?> {
+        let stations = fetch().map { $0.array(withFirst: 3) }
+        return stations.map { (stations: [Station]) in
+            guard !stations.isEmpty else {
+                return nil
+            }
+            let elements = stations => DetailedStation.init <** self
+            return CardCategory(key: self.cardKey, elements: elements)
         }
     }
     
-    func fetchDepartures(for stations: [Station]) -> Response<[Station]> {
-        
-        let map = stations.flatMap {self.fetchDeparture(for: $0)}
-        
-        let bulk = map.bulk.onSuccess { return $0 }
-        return bulk
-    }
-    
-    func fetchDeparture(for data: Station) -> Response<Station> {
-        
-        return config.mvg.doJSONRequest(to: .departure, arguments: ["id" : data.id], queries: [ "footway": 0 ]).map { (json: JSON) in
-            let departures = json["departures"].array ==> Departure.init <** data
-            data.departures = departures.array(withFirst: 5)
-                return data
-        }
-    }
 }
 
 extension MVGManager: DetailsForDataManager {
     
     func fetch(for data: Station) -> Response<[Departure]> {
         
-        return config.mvg.doJSONRequest(to: .departure,
-                                        arguments: ["id" : data.id],
-                                        queries: [ "footway": 0 ]).map { (json: JSON) in
-            
-            return json["departures"].array ==> Departure.init <** data
-        }
+        return config.mvg.doObjectsRequest(to: .departure,
+                                           arguments: ["id" : data.id],
+                                           queries: [ "footway": 0 ],
+                                           at: ["departures"])
     }
     
 }
