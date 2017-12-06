@@ -196,15 +196,15 @@ extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.getCellIdentifier(), for: indexPath)
   
-        if let cell1 = cell as? SingleDataElementPresentable {
-            cell1.setElement(item)
+        if let cell = cell as? SingleDataElementPresentable {
+            cell.setElement(item)
             
-        } else if let rootCell = cell as? MultipleRootDataElementsPresentable {
-            rootCell.collectionView.cellWidth = collectionView.bounds.width - 32
-            rootCell.setRootElement(item)
-            rootCell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
-            rootCell.collectionViewHeight.constant = rootCell.collectionView.collectionViewLayout.collectionViewContentSize.height
-            rootCell.collectionView.collectionViewLayout.invalidateLayout()
+        } else if let cell = cell as? MultipleRootDataElementsPresentable {
+            cell.collectionView.cellWidth = collectionView.bounds.width - 32
+            cell.setRootElement(item)
+            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+            cell.collectionView.collectionViewLayout.invalidateLayout()
 
         } else if let cell = cell as? MultipleDataElementsPresentable {
             cell.collectionView.cellWidth = collectionView.bounds.width - 32
