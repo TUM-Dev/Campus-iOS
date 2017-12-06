@@ -121,7 +121,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UDa-u5-qbC">
-                                                                <rect key="frame" x="262" y="4" width="72" height="72"/>
+                                                                <rect key="frame" x="266" y="4" width="72" height="72"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="UDa-u5-qbC" secondAttribute="height" id="aM5-cc-Geb"/>
                                                                 </constraints>
@@ -133,13 +133,13 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAt-34-cWR">
-                                                                <rect key="frame" x="0.0" y="24" width="254" height="21"/>
+                                                                <rect key="frame" x="0.0" y="24" width="258" height="21"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svL-we-K1E">
-                                                                <rect key="frame" x="0.0" y="56.5" width="254" height="19.5"/>
+                                                                <rect key="frame" x="0.0" y="56.5" width="258" height="19.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -158,7 +158,7 @@
                                                         <constraint firstItem="UDa-u5-qbC" firstAttribute="leading" secondItem="IAt-34-cWR" secondAttribute="trailing" constant="8" id="c27-IQ-iG8"/>
                                                         <constraint firstItem="UDa-u5-qbC" firstAttribute="leading" secondItem="svL-we-K1E" secondAttribute="trailing" constant="8" id="q1S-Sz-aMl"/>
                                                         <constraint firstItem="IAt-34-cWR" firstAttribute="leading" secondItem="i6d-f9-sgs" secondAttribute="leading" id="sG5-a3-e7o"/>
-                                                        <constraint firstAttribute="trailing" secondItem="UDa-u5-qbC" secondAttribute="trailing" constant="4" id="uRQ-6n-SmO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UDa-u5-qbC" secondAttribute="trailing" id="uRQ-6n-SmO"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="dateLabel" destination="svL-we-K1E" id="WTq-0z-DWO"/>
@@ -880,16 +880,16 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Fzp-z5-3Wl">
-                                                                        <rect key="frame" x="46" y="8.5" width="294" height="37.5"/>
+                                                                        <rect key="frame" x="46" y="8.5" width="310" height="37.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttf-AW-hwa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="294" height="20.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="310" height="20.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16/17 WS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad1-vz-BLq">
-                                                                                <rect key="frame" x="0.0" y="20.5" width="294" height="17"/>
+                                                                                <rect key="frame" x="0.0" y="20.5" width="310" height="17"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -904,7 +904,7 @@
                                                         <constraint firstItem="6Gt-gt-9NU" firstAttribute="bottom" secondItem="QfQ-Z0-r2J" secondAttribute="bottom" id="PUs-pi-nRF"/>
                                                         <constraint firstItem="6Gt-gt-9NU" firstAttribute="top" secondItem="QfQ-Z0-r2J" secondAttribute="top" id="aQ4-WT-FeN"/>
                                                         <constraint firstItem="6Gt-gt-9NU" firstAttribute="leading" secondItem="QfQ-Z0-r2J" secondAttribute="leading" id="q5o-r6-dbi"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="6Gt-gt-9NU" secondAttribute="trailing" id="tjz-5p-daJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6Gt-gt-9NU" secondAttribute="trailing" id="tjz-5p-daJ"/>
                                                     </constraints>
                                                     <size key="customSize" width="356" height="54"/>
                                                     <connections>
@@ -1072,13 +1072,13 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-OU-qtf">
-                                                                <rect key="frame" x="0.0" y="1" width="308" height="37"/>
+                                                                <rect key="frame" x="0.0" y="1" width="316" height="37"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bv-5j-8cN" customClass="CircularLabel" customModule="Campus" customModuleProvider="target">
-                                                                <rect key="frame" x="316" y="5.5" width="28" height="28"/>
+                                                                <rect key="frame" x="324" y="5.5" width="28" height="28"/>
                                                                 <color key="backgroundColor" red="0.30687262426073947" green="0.88356136658031093" blue="0.40509159088052571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="28" id="dhd-8d-Ohl"/>
@@ -1092,7 +1092,7 @@
                                                     </view>
                                                     <constraints>
                                                         <constraint firstItem="5bv-5j-8cN" firstAttribute="centerY" secondItem="Wtt-MH-XKR" secondAttribute="centerY" id="95D-PV-RyD"/>
-                                                        <constraint firstAttribute="trailing" secondItem="5bv-5j-8cN" secondAttribute="trailing" constant="8" id="EdP-qa-fEr"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5bv-5j-8cN" secondAttribute="trailing" id="EdP-qa-fEr"/>
                                                         <constraint firstItem="Uep-OU-qtf" firstAttribute="top" secondItem="Wtt-MH-XKR" secondAttribute="top" constant="1" id="MlT-Wu-F0T"/>
                                                         <constraint firstItem="Uep-OU-qtf" firstAttribute="leading" secondItem="Wtt-MH-XKR" secondAttribute="leading" id="OxZ-tc-Ezt"/>
                                                         <constraint firstAttribute="bottom" secondItem="Uep-OU-qtf" secondAttribute="bottom" constant="1" id="TRi-Fk-sgA"/>
