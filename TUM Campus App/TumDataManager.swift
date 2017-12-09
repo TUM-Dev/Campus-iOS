@@ -56,6 +56,10 @@ class TumDataManager {
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,
+            mvgManager,
+            gradesManager,
+            studyRoomsManager,
+            lecturesManager,
         ].filter({ order.contains($0.cardKey) }).sorted(ascending: \.indexInOrder)
     }
     
@@ -75,7 +79,7 @@ class TumDataManager {
         self.config = config
     }
     
-    func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
+    func loadCards(skipCache: Bool = false) -> Response<[CardCategory]> {
         let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
         return promises.bulk.map { $0.flatMap { $0 } }
     }

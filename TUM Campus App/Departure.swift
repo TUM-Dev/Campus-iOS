@@ -6,10 +6,9 @@
 //  Copyright © 2017 Lukas Kollmer. All rights reserved.
 //
 
-import Foundation
 import Sweeft
 
-struct Departure {
+public struct Departure: Deserializable {
     let departureTime: Date
     let product: String
     let label: String
@@ -19,10 +18,8 @@ struct Departure {
     let departureId: Int
     let sev: Bool
     
-    let station: Station
     
-    
-    init?(json: JSON, station: Station) {
+    public init?(from json: JSON) {
         guard let departureTime = json["departureTime"].int,
             let product = json["product"].string,
             let label = json["label"].string,
@@ -43,6 +40,17 @@ struct Departure {
         self.lineBackgroundColor = lineBackgroundColor
         self.departureId = departureId
         self.sev = sev
-        self.station = station
     }
+}
+
+extension Departure: DataElement {
+    
+    func getCellIdentifier() -> String {
+        return "station"
+    }
+    
+    var text: String {
+        return label
+    }
+    
 }

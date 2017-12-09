@@ -86,66 +86,16 @@ extension CachedManager {
     
 }
 
-// MARK: Managers that can return a single item
-protocol SimpleSingleManager: SimpleManager {
-    func fetchSingle() -> Response<DataElement?>
-}
-
-protocol SingleItemManager: SimpleSingleManager, Manager {
-    func toSingle(from items: [DataType]) -> DataElement?
-}
-
-extension SingleItemManager {
-    
-    func toSingle(from items: [DataType]) -> DataElement? {
-        return items.first
-    }
-    
-    func fetchSingle() -> Response<DataElement?> {
-        return fetch().map(self.toSingle(from:))
-    }
-    
-}
-
-// MARK: Single Managers that are cached
-
-protocol SimpleSingleCachedManager: SimpleSingleManager {
-    var defaultMaxCache: CacheTime { get }
-    func fetchSingle(maxCache: CacheTime) -> Response<DataElement?>
-}
-
-extension SimpleSingleCachedManager {
-    
-    func updateSingle() -> Response<DataElement?> {
-        return fetchSingle(maxCache: .time(0))
-    }
-    
-    func fetchSingle() -> Response<DataElement?> {
-        return fetchSingle(maxCache: defaultMaxCache)
-    }
-    
-}
-
-protocol SingleItemCachedManager: SimpleSingleCachedManager, CachedManager {
-    func toSingle(from items: [DataType]) -> DataElement?
-}
-
-extension SingleItemCachedManager {
-    
-    func toSingle(from items: [DataType]) -> DataElement? {
-        return items.first
-    }
-    
-    func fetchSingle(maxCache: CacheTime) -> Promise<DataElement?, APIError> {
-        return fetch(maxCache: maxCache).map(self.toSingle(from:))
-    }
-    
-}
-
 // MARK: Single Manager with Card Key for sorting
 
-protocol CardManager: SimpleSingleManager {
+struct CardCategory {
+    let key: CardKey
+    let elements: [DataElement]
+}
+
+protocol CardManager {
     var cardKey: CardKey { get }
+    func fetchCardsItems() -> Response<CardCategory?>
 }
 
 extension CardManager {
@@ -159,11 +109,82 @@ extension CardManager {
 
 extension CardManager {
     
-    func fetchCard(skipCache: Bool = false) -> Response<DataElement?> {
-        guard skipCache, let manager = self as? SimpleSingleCachedManager else {
-            return fetchSingle()
+    func fetchCard(skipCache: Bool = false) -> Response<CardCategory?> {
+        guard skipCache, let manager = self as? CachedCardManager else {
+            return fetchCardsItems()
         }
-        return manager.updateSingle()
+        return manager.updateCardItems()
+    }
+    
+}
+
+protocol CachedCardManager: CardManager {
+    var defaultMaxCache: CacheTime { get }
+    func fetchCardItems(maxCache: CacheTime) -> Response<CardCategory?>
+}
+
+extension CachedCardManager {
+    
+    func fetchCardsItems() -> Response<CardCategory?> {
+        return fetchCardItems(maxCache: defaultMaxCache)
+    }
+    
+    func updateCardItems() -> Response<CardCategory?> {
+        return fetchCardItems(maxCache: .time(0))
+    }
+    
+}
+
+protocol TypedCardManager: CardManager {
+    associatedtype DataType: DataElement
+    func fetchCardItems() -> Response<[DataElement]>
+}
+
+extension TypedCardManager {
+    
+    func fetchCardsItems() -> Response<CardCategory?> {
+        return fetchCardItems().map { (elements: [DataElement]) in
+            guard !elements.isEmpty else {
+                return nil
+            }
+            return .init(key: self.cardKey, elements: elements)
+        }
+    }
+    
+}
+
+protocol SimpleTypedCardManager: TypedCardManager, Manager {
+    func cardsItems(from elements: [DataType]) -> [DataType]
+}
+
+extension SimpleTypedCardManager {
+    
+    func cardsItems(from elements: [DataType]) -> [DataType] {
+        return elements.array(withFirst: 3)
+    }
+    
+    func fetchCardItems() -> Response<[DataElement]> {
+        return fetch().map { self.cardsItems(from: $0) }
+    }
+    
+}
+
+protocol TypedCachedCardManager: SimpleTypedCardManager, CachedCardManager, CachedManager { }
+
+extension TypedCachedCardManager {
+    
+    func fetchCardsItems() -> Promise<CardCategory?, APIError> {
+        return fetchCardItems(maxCache: defaultMaxCache)
+    }
+    
+    func fetchCardItems(maxCache: CacheTime) -> Response<CardCategory?> {
+        return fetch(maxCache: maxCache).map { (elements: [DataType]) in
+            let elements = self.cardsItems(from: elements)
+            guard !elements.isEmpty else {
+                return nil
+            }
+            return .init(key: self.cardKey, elements: elements)
+        }
     }
     
 }

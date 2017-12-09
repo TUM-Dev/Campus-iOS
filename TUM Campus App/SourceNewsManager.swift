@@ -8,7 +8,7 @@
 
 import Sweeft
 
-protocol SourceNewsManager: SingleItemCachedManager, CardManager where DataType == News {
+protocol SourceNewsManager: TypedCachedCardManager where DataType == News {
     var newsManager: NewsManager { get }
     var source: News.Source { get }
     init(newsManager: NewsManager)

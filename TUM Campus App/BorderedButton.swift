@@ -12,6 +12,7 @@ import UIKit
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        layer.masksToBounds = true
         layer.cornerRadius = frame.size.height / 3.9
     }
 }

@@ -8,6 +8,34 @@
 
 import UIKit
 
+
+protocol SingleDataElementPresentable {
+    
+    func setElement(_ element: DataElement)
+}
+
+protocol MultipleDataElementsPresentable {
+    
+    var collectionView: IndexableCollectionView! { get set }
+    var collectionViewHeight: NSLayoutConstraint! { get set }
+    func setDataSource<T>(dataSource: T, index: IndexPath) where T: UICollectionViewDelegate & UICollectionViewDataSource
+}
+
+protocol MultipleRootDataElementsPresentable: MultipleDataElementsPresentable {
+    
+    func setRootElement(_ element: DataElement)
+}
+
+extension MultipleDataElementsPresentable {
+    
+    func setDataSource<T>(dataSource: T, index: IndexPath) where T : UICollectionViewDataSource & UICollectionViewDelegate {
+        collectionView.index = index
+        collectionView.delegate = dataSource
+        collectionView.dataSource = dataSource
+        collectionView.reloadData()
+    }
+}
+
 @IBDesignable class CardTableViewCell: UITableViewCell {
 	
 	@IBInspectable var topGradientColor: UIColor = UIColor.white
@@ -32,9 +60,4 @@ import UIKit
         super.layoutSubviews()
         self.configureBackgroundGradient()
     }
-    	
-	func setElement(_ element: DataElement) {
-		fatalError("setElement not implemented")
-	}
-	
 }

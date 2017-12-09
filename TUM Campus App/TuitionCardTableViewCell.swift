@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TuitionCardTableViewCell: CardTableViewCell {
+class TuitionCardTableViewCell: CardTableViewCell, SingleDataElementPresentable {
     
     
     @IBOutlet weak var deadLineLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
 
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let tuitionElement = element as? Tuition {
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "MMM dd, yyyy"

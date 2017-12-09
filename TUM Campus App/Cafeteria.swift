@@ -16,6 +16,9 @@ final class Cafeteria: DataElement {
     let name: String
     var menus = [String : [CafeteriaMenu]]()
     let location: CLLocation
+    var detailElements: [DataElement] {
+        return menus.flatMap { $1 }
+    }
     
     var hasMenuToday: Bool {
         guard let menus = menus[Date.now.dayString] else {

@@ -9,7 +9,7 @@
 import Foundation
 import Sweeft
 
-final class NewsManager: CachedManager, SingleItemCachedManager, CardManager {
+final class NewsManager: CachedManager, TypedCachedCardManager {
     
     typealias DataType = News
     
@@ -31,8 +31,10 @@ final class NewsManager: CachedManager, SingleItemCachedManager, CardManager {
         self.config = config
     }
     
-    func toSingle(from items: [News]) -> DataElement? {
-        return items.filter({ $0.date > .now }).last ?? items.first
+    func cardsItems(from elements: [News]) -> [News] {
+        let future = elements.filter { $0.date > .now }
+        let past = elements.filter { $0.date <= .now }
+        return future.array(withLast: 1) + past.array(withFirst: 4)
     }
     
     func fetch(maxCache: CacheTime) -> Response<[News]> {

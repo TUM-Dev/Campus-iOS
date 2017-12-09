@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LectureTableViewCell: CardTableViewCell {
+class LectureTableViewCell: UITableViewCell, SingleDataElementPresentable {
 
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let lecture = element as? Lecture {
             titleLabel.text = lecture.name
             let text = lecture.type + " - " + lecture.semester

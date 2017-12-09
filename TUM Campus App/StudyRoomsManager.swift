@@ -9,12 +9,13 @@
 import Foundation
 import Sweeft
 
-final class StudyRoomsManager: Manager {
+final class StudyRoomsManager: SimpleTypedCardManager {
+    
     
     typealias DataType = StudyRoomGroup
     
     var config: Config
-    
+    var cardKey: CardKey = .studyRooms
     var requiresLogin: Bool {
         return false
     }

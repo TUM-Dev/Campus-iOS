@@ -8,12 +8,12 @@
 
 import Sweeft
 
-final class PersonalLectureManager: CachedManager {
+final class PersonalLectureManager: TypedCachedCardManager {
     
     typealias DataType = Lecture
     
     var config: Config
-    
+    var cardKey: CardKey = .lectures
     var requiresLogin: Bool {
         return false
     }
@@ -30,6 +30,11 @@ final class PersonalLectureManager: CachedManager {
         return config.tumOnline.doXMLObjectsRequest(to: .personalLectures,
                                                     at: "rowset", "row",
                                                     maxCacheTime: maxCache)
+    }
+    
+    func cardsItems(from elements: [DataType]) -> [DataType] {
+        
+        return elements.filter({$0.semester == elements[0].semester})
     }
     
 }

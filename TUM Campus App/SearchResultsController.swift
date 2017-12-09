@@ -100,8 +100,11 @@ class SearchResultsController: UITableViewController {
         
         let element = elements[indexPath.section].results[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: element.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.setElement(element)
+        let cell = tableView.dequeueReusableCell(withIdentifier: element.getCellIdentifier(), for: indexPath)
+        
+        if let cell = cell as? SingleDataElementPresentable {
+            cell.setElement(element)
+        }
         cell.backgroundColor = .clear
         
         return cell

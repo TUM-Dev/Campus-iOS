@@ -70,8 +70,10 @@ class LecturesTableViewController: RefreshableTableViewController<Lecture>, Deta
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = lectures[indexPath.section].1[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.setElement(item)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) ?? CardTableViewCell()
+        if let cell = cell as? SingleDataElementPresentable {
+            cell.setElement(item)
+        }
         return cell
     }
     

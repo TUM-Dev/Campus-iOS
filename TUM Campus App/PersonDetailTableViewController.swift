@@ -102,7 +102,9 @@ extension PersonDetailTableViewController {
         if indexPath.section == 0 {
             if let data = user {
                 let cell = tableView.dequeueReusableCell(withIdentifier: data.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-                cell.setElement(data)
+                if let cell = cell as? SingleDataElementPresentable {
+                    cell.setElement(data)
+                }
                 return cell
             }
         }

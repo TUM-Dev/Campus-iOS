@@ -8,11 +8,11 @@
 
 import UIKit
 
-class DetailPersonWithTitleCell: CardTableViewCell {
+class DetailPersonWithTitleCell: CardTableViewCell, SingleDataElementPresentable {
     
     var binding: ImageViewBinding?
 
-    override func setElement(_ element: DataElement) {
+    func setElement(_ element: DataElement) {
         if let user = element as? UserData {
             binding = user.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             nameLabel.text = user.name

@@ -9,35 +9,16 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UITableViewController, EditCardsViewControllerDelegate {
+class CardViewController: UIViewController {
+    
+    @IBOutlet var tableView: UITableView!
     
     var manager: TumDataManager?
     var cards: [DataElement] = []
+    var categories: [CardCategory] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
-    
-    func refresh(_ sender: AnyObject?) {
-        manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
-            self.nextLecture = data.value?.flatMap({ $0 as? CalendarRow }).first
-            self.cards = data.value ?? []
-            self.tableView.reloadData()
-            self.refresh.endRefreshing()
-        }
-    }
-    
-    func didUpdateCards() {
-        refresh(nil)
-        tableView.reloadData()
-    }
-    
-}
-
-extension CardViewController: DetailViewDelegate {
-    
-    func dataManager() -> TumDataManager? {
-        return manager
-    }
     
 }
 
@@ -71,7 +52,7 @@ extension CardViewController {
             
             mvc.delegate = self
         }
-
+        
         if let mvc = segue.destination as? CalendarViewController {
             mvc.nextLectureItem = nextLecture
         }
@@ -109,38 +90,135 @@ extension CardViewController {
             self.tableView.tableHeaderView = search?.searchBar
         }
     }
+    
 }
 
-extension CardViewController {
+extension CardViewController: EditCardsViewControllerDelegate {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func refresh(_ sender: AnyObject?) {
+        manager?.loadCards(skipCache: sender != nil).onSuccess(in: .main) { categories in
+            // TODO:
+            self.cards = categories.flatMap{ $0.elements.first }
+            self.categories = categories
+            self.tableView.reloadData()
+            self.refresh.endRefreshing()
+        }
+    }
+
+    func didUpdateCards() {
+        refresh(nil)
+        tableView.reloadData()
+    }
+}
+
+
+extension CardViewController: DetailViewDelegate {
+    
+    func dataManager() -> TumDataManager? {
+        return manager
+    }
+    
+}
+
+
+extension CardViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return max(cards.count, 1)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
-    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 480
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = cards | indexPath.row ?? EmptyCard()
-        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
-        cell.setElement(item)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: item.getCellIdentifier()) ?? CardTableViewCell()
+        
+        if let cell = cell as? SingleDataElementPresentable {
+             cell.setElement(item)
+        } else if let cell = cell as? MultipleDataElementsPresentable {
+            cell.setDataSource(dataSource: self, index: IndexPath(index: indexPath.row))
+            cell.collectionView.reloadData()
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+        }
+        
+        cell.frame = tableView.bounds;
         cell.selectionStyle = .none
+        cell.layoutIfNeeded()
+        if let cell = cell as? MultipleDataElementsPresentable {
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+        }
 		return cell
     }
     
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
 }
 
+extension CardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        guard let collectionView = collectionView as? IndexableCollectionView else { fatalError("wrong cell type") }
+        guard let index = collectionView.index else { fatalError("missing index property") }
+        
+        switch index.count {
+        case 1: return categories[index[0]].elements.count
+        case 2: return categories[index[0]].elements[index[1]].detailElements.count
+        default: return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let collectionView = collectionView as? IndexableCollectionView else { fatalError("wrong cell type") }
+        guard let index = collectionView.index else { fatalError("missing index property") }
 
+        var item: DataElement {
+            switch index.count {
+            case 1: return categories[index[0]].elements[indexPath.row]
+            case 2: return categories[index[0]].elements[index[1]].detailElements[indexPath.row]
+            default: fatalError()
+            }
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.getCellIdentifier(), for: indexPath)
+  
+        if let cell = cell as? SingleDataElementPresentable {
+            cell.setElement(item)
+            
+        } else if let cell = cell as? MultipleRootDataElementsPresentable {
+            cell.collectionView.cellWidth = collectionView.bounds.width - 32
+            cell.setRootElement(item)
+            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+
+        } else if let cell = cell as? MultipleDataElementsPresentable {
+            cell.collectionView.cellWidth = collectionView.bounds.width - 32
+            cell.setDataSource(dataSource: self, index: IndexPath(arrayLiteral: index[0], indexPath.row))
+            cell.collectionViewHeight.constant = cell.collectionView.collectionViewLayout.collectionViewContentSize.height
+            cell.collectionView.collectionViewLayout.invalidateLayout()
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let collectionView = collectionView as? IndexableCollectionView else { return CGSize.zero }
+        let width = collectionView.cellWidth == -1 ? collectionView.bounds.width : collectionView.cellWidth
+        return CGSize(width: width, height: collectionView.cellHeight)
+    }
+}
