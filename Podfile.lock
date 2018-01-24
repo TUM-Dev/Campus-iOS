@@ -1,5 +1,5 @@
 PODS:
-  - ASWeekSelectorView (1.0)
+  - ASWeekSelectorView (1.0.2)
   - AYSlidingPickerView (0.1.4)
   - CalendarLib (2.0):
     - OrderedDictionary (~> 1.2)
@@ -9,8 +9,8 @@ PODS:
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.14.0)
-  - SWXMLHash (4.2.3)
+  - Sweeft (0.14.4)
+  - SWXMLHash (4.2.5)
   - TKSubmitTransition (0.2)
 
 DEPENDENCIES:
@@ -32,14 +32,14 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PZPullToRefresh:
-    :commit: bebc997af293f0bc9fee607da8bcd27f7956e0a8
+    :commit: 34f9e5cb846d31f0e56a6fe4efb1dcf8f0f70093
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   TKSubmitTransition:
     :commit: 00549e57dd72e9a7d93f0a5707653accdc4a1991
     :git: https://github.com/jvitor/TKSubmitTransition.git
 
 SPEC CHECKSUMS:
-  ASWeekSelectorView: 31479a963ec0bb1f0a05c5b075d6ed4aa8f9f381
+  ASWeekSelectorView: a0df45ecb2dafb92f1ff589db95ba97bd51d05c4
   AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   Fuzzi: afa573f7fb07e0f3b0bf744140ef4ae777d3c40e
@@ -47,8 +47,8 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: 84cfdc2b529ccb7900bb5b7278499b1aa49080c5
-  SWXMLHash: 6ab10e1cb4567d88cd3634be0bf331a7839945dd
+  Sweeft: 4c93caa9a21c2e2b5d8fb29df91133c55c6ff326
+  SWXMLHash: eb16013c6f654853980822e0a778c9d66e017dde
   TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
 PODFILE CHECKSUM: 53af310649e4e9c15c90e80399516dd907199777

@@ -109,7 +109,7 @@ extension Bundle {
 extension Promise {
     
     func mapError(to defaultValue: T) -> Promise<T, E> {
-        return map { Result.value($0.value ?? defaultValue) }
+        return mapResult { .value($0.value ?? defaultValue) }
     }
     
 }
