@@ -1,4 +1,4 @@
-## [1.3.0] - Unreleased
+## [1.3.0] - 2018-01-24
 ### Added
 - Added 💸 Ca$hing 💸 for better performance
 - Added Headers to Search to mark the type of results
