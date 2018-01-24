@@ -52,7 +52,6 @@ class TumDataManager {
             calendarManager,
             movieManager,
             tumNewsManager,
-            tuFilmNewsManager,
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,
