@@ -32,7 +32,7 @@ class TUM_Campus_AppUITests: XCTestCase {
     func testMoreToCalendarStartsAtTheCurrentDate() {
         let app = XCUIApplication()
         sleep(60)
-        app.tabBars.buttons["More"].tap()
+        app.navigationBars.buttons.allElementsBoundByIndex[1].tap()
         sleep(10)
         app.tables.staticTexts["Calendar"].tap()
         

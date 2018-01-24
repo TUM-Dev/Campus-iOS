@@ -26,7 +26,7 @@ class ScreenshotUITests: XCTestCase {
     
     func testAllScreenshots() {
         snapshot("0_CardsOverview")
-        app.tabBars.buttons["More"].tap()
+        app.navigationBars.buttons.allElementsBoundByIndex[1].tap()
         snapshot("1_MoreOverview")
         let tablesQuery = app.tables
         tablesQuery.staticTexts["Calendar"].tap()
