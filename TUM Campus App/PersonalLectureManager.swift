@@ -8,11 +8,12 @@
 
 import Sweeft
 
-final class PersonalLectureManager: CachedManager {
+final class PersonalLectureManager: MemoryCachedManager {
     
     typealias DataType = Lecture
     
     var config: Config
+    var cache: Cache<[Lecture]>?
     
     var requiresLogin: Bool {
         return false
@@ -26,7 +27,7 @@ final class PersonalLectureManager: CachedManager {
         self.config = config
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[Lecture]> {
+    func performRequest(maxCache: CacheTime) -> Response<[Lecture]> {
         return config.tumOnline.doXMLObjectsRequest(to: .personalLectures,
                                                     at: "rowset", "row",
                                                     maxCacheTime: maxCache)

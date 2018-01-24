@@ -9,12 +9,26 @@
 import Sweeft
 import Fuzzi
 
-final class TumSexyManager: CachedManager, SearchManager {
+struct SexyIndex {
+    let entries: [SexyEntry]
+    let tree: SearchTree<SexyEntry>?
+}
+
+final class TumSexyManager: MemoryCachedManager, SearchManager {
     
     typealias DataType = SexyEntry
     
     var config: Config
-    var tree: SearchTree<SexyEntry>?
+    var indexCache: Cache<SexyIndex>?
+    
+    var cache: Cache<[SexyEntry]>? {
+        get {
+            return indexCache.map { $0.map { $0.entries } }
+        }
+        set {
+            indexCache = newValue.map { $0.map { .init(entries: $0, tree: $0.searchTree()) } }
+        }
+    }
     
     var requiresLogin: Bool {
         return false
@@ -31,11 +45,10 @@ final class TumSexyManager: CachedManager, SearchManager {
     init(config: Config) {
         self.config = config
     }
-    
-    func search(query: String) -> Response<[SexyEntry]> {
-        guard let tree = tree else {
-            return fetch().flatMap { entries in
-                self.tree = entries.searchTree()
+  
+    func search(query: String) -> Promise<[SexyEntry], APIError> {
+        guard let tree = defaultMaxCache.validValue(in: indexCache)?.tree else {
+            return fetch().flatMap { _ in
                 return self.search(query: query)
             }
         }
@@ -44,7 +57,7 @@ final class TumSexyManager: CachedManager, SearchManager {
         }
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[SexyEntry]> {
+    func performRequest(maxCache: CacheTime) -> Response<[SexyEntry]> {
         return config.tumSexy.doJSONRequest(to: .sexy,
                                             maxCacheTime: maxCache).map { (json: JSON) in
             return json.dict ==> SexyEntry.init

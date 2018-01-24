@@ -27,6 +27,7 @@ class CafeteriaViewController: UIViewController, DetailView {
             if let cafe = currentCafeteria {
                 title = cafe.name
             }
+            weekSelector?.refresh()
             reloadItems()
         }
     }
@@ -152,6 +153,14 @@ extension CafeteriaViewController: ASWeekSelectorViewDelegate {
     
     func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
         currentDate = date
+    }
+    
+    func weekSelector(_ weekSelector: ASWeekSelectorView!, numberColorFor date: Date!) -> UIColor! {
+        return Constants.tumBlue
+    }
+    
+    func weekSelector(_ weekSelector: ASWeekSelectorView!, showIndicatorFor date: Date!) -> Bool {
+        return currentCafeteria.map { !$0.getMenusForDate(date).isEmpty } ?? false
     }
     
 }

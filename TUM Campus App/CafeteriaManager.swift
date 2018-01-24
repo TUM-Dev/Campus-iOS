@@ -10,11 +10,12 @@ import Foundation
 import Sweeft
 import CoreLocation
 
-final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManager {
+final class CafeteriaManager: MemoryCachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Cafeteria
     
     var config: Config
+    var cache: Cache<[Cafeteria]>?
     
     var requiresLogin: Bool {
         return false
@@ -54,7 +55,7 @@ final class CafeteriaManager: CachedManager, SingleItemCachedManager, CardManage
         }
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[Cafeteria]> {
+    func performRequest(maxCache: CacheTime) -> Response<[Cafeteria]> {
         
         let promise = config.tumCabe.doObjectsRequest(to: .cafeteria,
                                                       maxCacheTime: maxCache) as Response<[Cafeteria]>

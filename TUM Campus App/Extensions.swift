@@ -112,24 +112,6 @@ extension Promise {
         return map { Result.value($0.value ?? defaultValue) }
     }
     
-    @discardableResult func onSuccess(in queue: DispatchQueue, call handler: @escaping (T) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onSuccess(call: handler)
-        return self
-    }
-    
-    @discardableResult func onError(in queue: DispatchQueue, call handler: @escaping (E) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onError(call: handler)
-        return self
-    }
-    
-    @discardableResult func onResult(in queue: DispatchQueue, call handler: @escaping (Result) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onResult(call: handler)
-        return self
-    }
-    
 }
 
 extension TimeInterval {
@@ -180,7 +162,7 @@ extension UIColor {
         var int = UInt32()
         Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
-        switch hex.characters.count {
+        switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6: // RGB (24-bit)
@@ -195,6 +177,17 @@ extension UIColor {
 }
 
 extension API {
+    
+    func removeCache(for endpoint: Endpoint,
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty) {
+        
+        .global() >>> {
+            let url = self.url(for: endpoint, arguments: arguments, queries: queries)
+            let cacheKey = url.relativePath.replacingOccurrences(of: "/", with: "_")
+            self.cache.delete(at: cacheKey)
+        }
+    }
     
     func clearCache() {
         cache.clear()

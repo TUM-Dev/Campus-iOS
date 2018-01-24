@@ -9,11 +9,12 @@
 import Foundation
 import Sweeft
 
-final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager {
+final class CalendarManager: MemoryCachedManager, CardManager, SingleItemCachedManager {
     
     typealias DataType = CalendarRow
     
     var config: Config
+    var cache: Cache<[CalendarRow]>?
     
     var defaultMaxCache: CacheTime {
         return .time(.aboutOneWeek)
@@ -35,7 +36,7 @@ final class CalendarManager: CachedManager, CardManager, SingleItemCachedManager
         return items.first { $0.start > .now }
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[CalendarRow]> {
+    func performRequest(maxCache: CacheTime) -> Response<[CalendarRow]> {
         return config.tumOnline.doXMLObjectsRequest(to: .calendar,
                                                     at: "events", "event",
                                                     maxCacheTime: maxCache).map { $0.filter { $0.status == "FT" } }
