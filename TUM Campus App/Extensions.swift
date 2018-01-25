@@ -207,3 +207,116 @@ extension FileCache {
     }
     
 }
+
+extension CGContext {
+    
+    func addRoundedRectToPath(rect: CGRect, ovalWidth: CGFloat, ovalHeight: CGFloat) {
+        if ovalWidth == 0 || ovalHeight == 0 {
+            return self.addRect(rect)
+        }
+        saveGState()
+        setStrokeColor(Constants.tumBlue.cgColor)
+        translateBy(x: rect.minX, y: rect.minY)
+        scaleBy(x: ovalWidth, y: ovalHeight)
+        
+        let relativeWidth = rect.width / ovalWidth
+        let relativeHeight = rect.height / ovalHeight
+        
+        move(to: .init(x: relativeWidth, y: relativeHeight / 2))
+        addArc(tangent1End: .init(x: relativeWidth, y: relativeHeight),
+               tangent2End: .init(x: relativeWidth / 2, y: relativeHeight),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: 0, y: relativeHeight),
+               tangent2End: .init(x: 0, y: relativeHeight / 2),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: 0, y: 0),
+               tangent2End: .init(x: relativeWidth / 2, y: 0),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: relativeWidth, y: 0),
+               tangent2End: .init(x: relativeWidth, y: relativeHeight / 2),
+               radius: 1.0)
+        
+        restoreGState()
+    }
+    
+}
+
+extension UIImage {
+    
+    func resized(to newSize: CGSize, scale: CGFloat = 0.0) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
+        self.draw(in: .init(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image ?? self
+    }
+    
+    func withRoundedCorners(radius: CGFloat, borderSize: CGFloat) -> UIImage {
+        let scale = max(self.scale, 1.0)
+        let scaledBorderSize = scale * borderSize
+        let scaledRadius = scale * radius
+        
+        guard let cgImage = self.cgImage,
+            let colorSpace = cgImage.colorSpace else {
+                
+            return self
+        }
+        
+        let width = size.width * scale
+        let height = size.height * scale
+        
+        let context = CGContext.init(data: nil,
+                                     width: Int(width),
+                                     height: Int(height),
+                                     bitsPerComponent: cgImage.bitsPerComponent,
+                                     bytesPerRow: cgImage.bytesPerRow,
+                                     space: colorSpace,
+                                     bitmapInfo: cgImage.bitmapInfo.rawValue)
+        
+        context?.setFillColor(UIColor.white.cgColor)
+        context?.fill(.init(x: 0, y: 0, width: width, height: height))
+        context?.beginPath()
+        let rect = CGRect(x: scaledBorderSize,
+                          y: scaledBorderSize,
+                          width: width - borderSize * 2,
+                          height: height - borderSize * 2)
+        context?.addRoundedRectToPath(rect: rect, ovalWidth: scaledRadius, ovalHeight: scaledRadius)
+        context?.closePath()
+        context?.clip()
+        context?.draw(cgImage, in: .init(x: 0, y: 0, width: width, height: height))
+        
+        let ref = context?.makeImage()
+        
+        guard let image = ref.map({ UIImage(cgImage: $0, scale: scale, orientation: .up) }) else {
+            return self
+        }
+        
+        return image
+    }
+    
+    func squared() -> UIImage {
+        
+        guard let cgImage = self.cgImage else {
+            return self
+        }
+        
+        let width = cgImage.width
+        let height = cgImage.height
+        let cropSize = min(width, height)
+        
+        let x = Double(width - cropSize) / 2.0
+        let y = Double(height - cropSize) / 2.0
+        
+        let rect = CGRect(x: CGFloat(x),
+                          y: CGFloat(y),
+                          width: CGFloat(cropSize),
+                          height: CGFloat(cropSize))
+        
+        let newImage = cgImage.cropping(to: rect) ?? cgImage
+        
+        return UIImage(cgImage: newImage,
+                       scale: 0.0,
+                       orientation: self.imageOrientation)
+    }
+    
+}
