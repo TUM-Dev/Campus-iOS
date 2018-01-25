@@ -88,6 +88,7 @@ extension Config {
         rooms.clearCache()
         mensaApp.clearCache()
         mvg.clearCache()
+        Data.cache.clear()
     }
     
 }

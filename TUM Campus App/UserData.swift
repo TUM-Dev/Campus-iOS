@@ -21,10 +21,10 @@ final class UserData: DataElement {
     let id: String
     let avatar: Image
     
-    init(name: String, picture: String?, id: String) {
+    init(name: String, picture: String?, id: String, maxCache: CacheTime) {
         self.name = name
         self.id = id
-        self.avatar = .init(url: picture)
+        self.avatar = .init(url: picture, maxCache: maxCache)
     }
     
     var title: String?
@@ -94,7 +94,7 @@ final class UserData: DataElement {
 
 extension UserData {
     
-    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI) {
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         guard let name = xml["vorname"].element?.text,
             let lastname = xml["familienname"].element?.text,
             let id = xml["obfuscated_id"].element?.text else {
@@ -102,7 +102,7 @@ extension UserData {
             return nil
         }
         let url = xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
-        self.init(name: "\(name) \(lastname)", picture: url, id: id)
+        self.init(name: "\(name) \(lastname)", picture: url, id: id, maxCache: maxCache)
     }
     
 }

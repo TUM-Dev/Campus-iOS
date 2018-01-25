@@ -21,19 +21,9 @@ final class UserDataManager: DetailsForDataManager {
         self.config = config
     }
     
-    func search(with id: String) -> Response<UserData> {
-        let manager = PersonSearchManager(config: config)
-        return manager.search(query: id).flatMap { users in
-            guard let user = users.first, users.count == 1 else {
-                return .errored(with: .noData)
-            }
-            return .successful(with: user)
-        }
-    }
-    
-    func fetch() -> Response<User> {
+    func fetch(skipCache: Bool = false) -> Response<User> {
         return config.tumOnline.user.map { user in
-            return self.fetch(for: user).map { (data: UserData) in
+            return self.fetch(for: user, maxCache: skipCache ? .no : .forever).map { (data: UserData) in
                 user.data = data
                 return user
             }
@@ -41,20 +31,41 @@ final class UserDataManager: DetailsForDataManager {
     }
     
     func fetch(for data: User) -> Response<UserData> {
-        guard let name = data.name else {
-            return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
+        return fetch(for: data, maxCache: .no)
+    }
+
+}
+
+// MARK: Requests
+
+extension UserDataManager {
+    
+    fileprivate func search(with id: String, maxCache: CacheTime) -> Response<UserData> {
+        let manager = PersonSearchManager(config: config)
+        return manager.search(query: id, maxCache: maxCache).flatMap { users in
+            guard let user = users.first, users.count == 1 else {
+                return .errored(with: .noData)
+            }
+            return .successful(with: user)
+        }
+    }
+    
+    fileprivate func fetch(for user: User, maxCache: CacheTime) -> Response<UserData> {
+        guard let name = user.name else {
+            return config.tumOnline.doRepresentedRequest(to: .identify,
+                                                         maxCacheTime: maxCache).flatMap { (xml: XMLIndexer) in
                 
                 guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
                     let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
                         
-                    return .errored(with: .cannotPerformRequest)
+                        return .errored(with: .cannotPerformRequest)
                 }
                 let name = "\(first) \(last)"
-                data.name = name
-                return self.search(with: name)
+                user.name = name
+                return self.search(with: name, maxCache: maxCache)
             }
         }
-        return search(with: name)
+        return search(with: name, maxCache: maxCache)
     }
-
+    
 }
