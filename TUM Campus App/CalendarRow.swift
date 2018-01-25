@@ -87,7 +87,7 @@ extension CalendarRow: XMLDeserializable {
 extension CalendarRow {
     
     var irrelevantAfter: Date {
-        return min(start.addingTimeInterval(15 * .oneMinute), end)
+        return min(start.addingTimeInterval(30 * .oneMinute), end.addingTimeInterval(-15 * .oneMinute))
     }
     
 }
