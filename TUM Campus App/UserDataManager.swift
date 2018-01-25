@@ -23,7 +23,7 @@ final class UserDataManager: DetailsForDataManager {
     
     func fetch(skipCache: Bool = false) -> Response<User> {
         return config.tumOnline.user.map { user in
-            return self.fetch(for: user, maxCache: skipCache ? .no : .forever).map { (data: UserData) in
+            return self.fetch(for: user, maxCache: skipCache ? .time(0.0) : .forever).map { (data: UserData) in
                 user.data = data
                 return user
             }
