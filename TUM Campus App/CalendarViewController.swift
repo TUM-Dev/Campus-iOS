@@ -192,8 +192,8 @@ extension CalendarViewController: MGCDayPlannerViewDataSource {
     
     func dayPlannerView(_ view: MGCDayPlannerView!, viewForEventOf type: MGCEventType, at index: UInt, date: Date!) -> MGCEventView! {
         let eventView = MGCStandardEventView()
-        eventView.color = Constants.tumBlue
         let item = lecturesOfDate(date)[(Int)(index)]
+        eventView.color = item.status == "FT" ? Constants.tumBlue : UIColor.gray.withAlphaComponent(0.5)
         eventView.title = item.text
         eventView.subtitle = item.location
         eventView.detail = item.description

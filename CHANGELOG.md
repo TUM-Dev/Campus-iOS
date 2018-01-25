@@ -1,4 +1,4 @@
-## [1.3.0] - Unreleased
+## [1.3.0] - 2018-01-24
 ### Added
 - Added 💸 Ca$hing 💸 for better performance
 - Added Headers to Search to mark the type of results
@@ -9,12 +9,14 @@
 - Links now open within the App to avoid annoying app switches
 - If the app doesn't have permissions to access your location it will now assume you're at the campus.
 - Pulling to refresh on the Card View will now skip all caches.
+- Calendar now displays canceled events grayed out.
 
 ### Fixed
 - Fixed memory leaks caused by memory cycles.
 - Fixed Cafeteria Card. It only shows a Cafeteria that has something on the menu that day
 - Fixed Calendar View not changing the day after a few swipes.
 - Fixed More View displaying the wrong name.
+- Fixed TU Film Links
 
 ### Removed
 - Removed Tab Bar in favor of a Bar Button at the Top
