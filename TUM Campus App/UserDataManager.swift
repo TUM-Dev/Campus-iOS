@@ -40,9 +40,10 @@ final class UserDataManager: DetailsForDataManager {
 
 extension UserDataManager {
     
-    fileprivate func search(with id: String, maxCache: CacheTime) -> Response<UserData> {
+    fileprivate func search(with name: String, id: String? = nil, maxCache: CacheTime) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
-        return manager.search(query: id, maxCache: maxCache).flatMap { users in
+        return manager.search(query: name, maxCache: maxCache).flatMap { users in
+            let users = id.map { id in users.filter { $0.id == id } } ?? users
             guard let user = users.first, users.count == 1 else {
                 return .errored(with: .noData)
             }
@@ -60,9 +61,10 @@ extension UserDataManager {
                         
                         return .errored(with: .cannotPerformRequest)
                 }
+                let id = xml.get(at: ["rowset", "row", "obfuscated_id"])?.element?.text
                 let name = "\(first) \(last)"
                 user.name = name
-                return self.search(with: name, maxCache: maxCache)
+                return self.search(with: name, id: id, maxCache: maxCache)
             }
         }
         return search(with: name, maxCache: maxCache)
