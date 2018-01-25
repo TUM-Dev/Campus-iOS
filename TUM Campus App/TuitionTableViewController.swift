@@ -26,7 +26,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "MMM dd, yyyy"
                 deadLineLabel.text = dateformatter.string(from: semester.frist as Date)
-                balanceLabel.text = semester.soll + " €"
+                balanceLabel.text = String(format: "%.2f", semester.soll) + " €"
                 title = semester.semester
             }
         }
