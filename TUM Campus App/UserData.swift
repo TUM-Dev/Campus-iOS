@@ -53,7 +53,7 @@ final class UserData: DataElement {
         return phones => CNPhoneNumber.init >>> getLabeledFunc(label: CNLabelPhoneNumberMain)
     }
     
-    func addContact(_ handler: () -> ()?) {
+    func addContact(_ handler: (() -> ())?) {
         let contact = CNMutableContact()
         contact.givenName = name
         var phones = [String]()
@@ -78,16 +78,22 @@ final class UserData: DataElement {
         contact.urlAddresses = websites => { $0 as NSString } >>> getLabeledFunc(label: CNLabelURLAddressHomePage)
             
         contact.organizationName = "Technische Universität München"
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier:nil)
-        do {
-            try store.execute(saveRequest)
-            handler()
-        } catch {
-            print("Error")
-        }
         
+        avatar.fetch().onResult(in: .main) { result in
+            
+            contact.imageData = result.value?.flatMap { $0 }
+                                             .flatMap { UIImagePNGRepresentation($0) }
+            
+            let store = CNContactStore()
+            let saveRequest = CNSaveRequest()
+            saveRequest.add(contact, toContainerWithIdentifier:nil)
+            do {
+                try store.execute(saveRequest)
+                handler?()
+            } catch {
+                print("Error")
+            }
+        }
     }
     
 }
