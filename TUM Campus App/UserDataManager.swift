@@ -22,8 +22,11 @@ final class UserDataManager: DetailsForDataManager {
     }
     
     func fetch(skipCache: Bool = false) -> Response<User> {
+        if skipCache {
+            Data.cache.clear()
+        }
         return config.tumOnline.user.map { user in
-            return self.fetch(for: user, maxCache: skipCache ? .time(0.0) : .forever).map { (data: UserData) in
+            return self.fetch(for: user, maxCache: .forever).map { (data: UserData) in
                 user.data = data
                 return user
             }
@@ -40,10 +43,10 @@ final class UserDataManager: DetailsForDataManager {
 
 extension UserDataManager {
     
-    fileprivate func search(with name: String, id: String? = nil, maxCache: CacheTime) -> Response<UserData> {
+    fileprivate func search(with name: String, maxCache: CacheTime) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
         return manager.search(query: name, maxCache: maxCache).flatMap { users in
-            let users = id.map { id in users.filter { $0.id == id } } ?? users
+            
             guard let user = users.first, users.count == 1 else {
                 return .errored(with: .noData)
             }
@@ -57,17 +60,38 @@ extension UserDataManager {
                                                          maxCacheTime: maxCache).flatMap { (xml: XMLIndexer) in
                 
                 guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
-                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
+                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text,
+                    let id = xml.get(at: ["rowset", "row", "obfuscated_id"])?.element?.text else {
                         
-                        return .errored(with: .cannotPerformRequest)
+                        return .errored(with: .invalidResponse)
                 }
-                let id = xml.get(at: ["rowset", "row", "obfuscated_id"])?.element?.text
+                
+                let key = CurrentAccountType.value.key
+                let currentId = xml.get(at: ["rowset", "row", "obfuscated_ids", key])?.element?.text
+                let picture = currentId?.imageURL(in: self.config)
+                                                            
                 let name = "\(first) \(last)"
-                user.name = name
-                return self.search(with: name, id: id, maxCache: maxCache)
+                return .successful(with: .init(name: name, picture: picture, id: id, maxCache: maxCache))
             }
         }
         return search(with: name, maxCache: maxCache)
+    }
+    
+}
+
+fileprivate extension String {
+    
+    func imageURL(in config: Config) -> String? {
+        
+        let split = self.components(separatedBy: "*")
+        guard split.count == 2 else { return nil }
+        
+        return config.tumOnline
+                     .base
+                     .appendingPathComponent("visitenkarte.showImage")
+                     .appendingQuery(key: "pPersonenGruppe", value: split[0])
+                     .appendingQuery(key: "pPersonenId", value: split[1])
+                     .absoluteString
     }
     
 }

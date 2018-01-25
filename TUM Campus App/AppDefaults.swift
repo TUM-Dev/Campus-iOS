@@ -13,4 +13,5 @@ enum AppDefaults: String, StatusKey {
     case cards
     case usage
     case campus
+    case accountType
 }

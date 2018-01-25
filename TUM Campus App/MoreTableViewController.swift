@@ -38,7 +38,7 @@ class MoreTableViewController: UITableViewController, DetailView, MFMailComposeV
     
     func updateView() {
         if isLoggedIn {
-            nameLabel.text = user?.name
+            nameLabel.text = user?.data?.name
             binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
