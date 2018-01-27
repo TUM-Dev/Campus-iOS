@@ -98,7 +98,7 @@ final class UserData: DataElement {
     
 }
 
-extension UserData {
+extension UserData: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         guard let name = xml["vorname"].element?.text,
@@ -107,8 +107,30 @@ extension UserData {
             
             return nil
         }
-        let url = xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
+        
+        let key = CurrentAccountType.value.key
+        let path = ["obfuscated_ids", key]
+        
+        let url = xml.get(at: path)?.element?.text.imageURL(in: api) ??
+            xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
+        
         self.init(name: "\(name) \(lastname)", picture: url, id: id, maxCache: maxCache)
+    }
+    
+}
+
+fileprivate extension String {
+    
+    func imageURL(in api: TUMOnlineAPI) -> String? {
+        
+        let split = self.components(separatedBy: "*")
+        guard split.count == 2 else { return nil }
+        
+        return api.base
+            .appendingPathComponent("visitenkarte.showImage")
+            .appendingQuery(key: "pPersonenGruppe", value: split[0])
+            .appendingQuery(key: "pPersonenId", value: split[1])
+            .absoluteString
     }
     
 }

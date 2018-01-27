@@ -17,20 +17,8 @@ extension XMLIndexer: DataRepresentable {
     
 }
 
-protocol XMLDeserializable: DataRepresentable {
-    init?(from xml: XMLIndexer)
-}
-
-extension XMLDeserializable {
-    
-    init?(data: Data) {
-        let xml = SWXMLHash.parse(data)
-        guard let value = Self(from: xml) else {
-            return nil
-        }
-        self = value
-    }
-    
+protocol XMLDeserializable {
+    init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime)
 }
 
 extension XMLIndexer {
@@ -49,13 +37,13 @@ extension XMLIndexer {
 
 extension XMLIndexer: XMLDeserializable {
     
-    init?(from xml: XMLIndexer) {
+    init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         self = xml
     }
     
 }
 
-extension API {
+extension TUMOnlineAPI {
     
     func doXMLObjectRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
                                                   to endpoint: Endpoint,
@@ -66,6 +54,7 @@ extension API {
                                                   body: Data? = nil,
                                                   acceptableStatusCodes: [Int] = [200],
                                                   completionQueue: DispatchQueue = .global(),
+                                                  at path: String...,
                                                   maxCacheTime: CacheTime = .no) -> Response<T> {
         
         return doRepresentedRequest(with: method,
@@ -76,8 +65,18 @@ extension API {
                                     auth: auth,
                                     body: body,
                                     acceptableStatusCodes: acceptableStatusCodes,
-                                    completionQueue: completionQueue,
-                                    maxCacheTime: maxCacheTime)
+                                    maxCacheTime: maxCacheTime).flatMap(completionQueue: completionQueue) { (xml: XMLIndexer) in
+            
+            if let errorMessage = xml.get(at: ["error", "message"])?.element?.text {
+                self.handle(error: .init(message: errorMessage), from: method, at: endpoint)
+            }
+            
+            guard let underlyingData = xml.get(at: path).flatMap({ T(from: $0, api: self, maxCache: maxCacheTime) })  else {
+                return .errored(with: .invalidResponse)
+            }
+            
+            return .successful(with: underlyingData)
+        }
     }
     
     func doXMLObjectsRequest<T: XMLDeserializable>(with method: HTTPMethod = .get,
@@ -101,9 +100,12 @@ extension API {
                                     body: body,
                                     acceptableStatusCodes: acceptableStatusCodes,
                                     maxCacheTime: maxCacheTime).flatMap(completionQueue: completionQueue) { (xml: XMLIndexer) in
-        
+            
+            if let errorMessage = xml.get(at: ["error", "message"])?.element?.text {
+                self.handle(error: .init(message: errorMessage), from: method, at: endpoint)
+            }
             let array = xml.get(at: path)?.all ?? []
-            return .successful(with: array ==> T.init)
+            return .successful(with: array ==> { T.init(from: $0, api: self, maxCache: maxCacheTime) })
         }
     }
     
