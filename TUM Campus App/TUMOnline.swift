@@ -34,7 +34,7 @@ final class TUMOnlineAPI: API {
     
     let baseURL: String
     var user: User?
-    private var errorHandlers = [(Error) -> ()]()
+    private var internalErrorHandlers = [(Error) -> ()]()
     private let queue = DispatchQueue(label: "de.tum.campusapp.TUMOnlineAPI")
     
     var baseQueries: [String : String] {
@@ -53,13 +53,13 @@ final class TUMOnlineAPI: API {
     
     func onError(call handler: @escaping (Error) -> ()) {
         queue.async(flags: .barrier) {
-            self.errorHandlers.append(handler)
+            self.internalErrorHandlers.append(handler)
         }
     }
     
     func handle(error: Error, from method: HTTPMethod, at endpoint: TUMOnlineEndpoint) {
         removeCache(for: endpoint)
-        let errorHandlers = queue.sync { self.errorHandlers }
+        let errorHandlers = queue.sync { self.internalErrorHandlers }
         errorHandlers.forEach { $0(error) }
     }
     
