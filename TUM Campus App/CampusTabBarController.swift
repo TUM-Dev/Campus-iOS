@@ -31,9 +31,9 @@ class CampusNavigationController: UINavigationController {
         
         (loginViewController.childViewControllers.first as? LoginViewController)?.manager = manager
         
-        manager?.config.tumOnline.onError { error in
+        manager?.config.tumOnline.onError { [weak self] error in
             guard case .invalidToken = error, PersistentUser.isLoggedIn else { return }
-            self.checkToken(loginViewController: loginViewController)
+            self?.checkToken(loginViewController: loginViewController)
         }
     }
     
