@@ -31,14 +31,10 @@ final class PersonSearchManager: SearchManager {
     }
     
     func search(query: String, maxCache: CacheTime) -> Response<[UserData]> {
-        return config.tumOnline.doRepresentedRequest(to: .personSearch,
-                                                     queries: ["pSuche" : query],
-                                                     maxCacheTime: maxCache).map { (xml: XMLIndexer) in
-                                                        
-            return xml.get(at: ["rowset", "row"])?.all ==> { UserData(from: $0,
-                                                                      api: self.config.tumOnline,
-                                                                      maxCache: maxCache) }
-        }
+        return config.tumOnline.doXMLObjectsRequest(to: .personSearch,
+                                                    queries: ["pSuche" : query],
+                                                    at: "rowset", "row",
+                                                    maxCacheTime: maxCache)
     }
     
     func search(query: String) -> Promise<[UserData], APIError> {
