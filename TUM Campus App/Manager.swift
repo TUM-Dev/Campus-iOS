@@ -121,6 +121,10 @@ protocol MemoryCachedManager: class, CachedManager {
 
 extension MemoryCachedManager {
     
+    func clearCache() {
+        cache = nil
+    }
+    
     func fetch(maxCache: CacheTime) -> Promise<[DataType], APIError> {
         guard let value = maxCache.validValue(in: cache) else {
             return performRequest(maxCache: maxCache).onResult { result in

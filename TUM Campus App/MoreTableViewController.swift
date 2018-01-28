@@ -131,7 +131,7 @@ extension MoreTableViewController {
             }
             
         case 5:
-            delegate?.dataManager()?.loginManager.logOut()
+            delegate?.dataManager()?.logout()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it
