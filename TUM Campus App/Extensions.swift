@@ -320,3 +320,11 @@ extension UIImage {
     }
     
 }
+
+extension JSON {
+    
+    var strings: [String] {
+        return array ==> { $0.string }
+    }
+    
+}

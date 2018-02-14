@@ -78,6 +78,9 @@ class CertificatePinningAPI<EndpointType: APIEndpoint>: NSObject, CustomAPI {
     
     typealias Endpoint = EndpointType
     
+    var baseHeaders: [String : String] { return .empty }
+    var baseQueries: [String : String] { return .empty }
+    
     let baseURL: String
     let sha256Fingerprints: [String]
     
@@ -85,9 +88,6 @@ class CertificatePinningAPI<EndpointType: APIEndpoint>: NSObject, CustomAPI {
         self.baseURL = baseURL
         self.sha256Fingerprints = sha256Fingerprints
     }
-    
-    var baseHeaders: [String : String] { return .empty }
-    var baseQueries: [String : String] { return .empty }
     
     func urlSession(_ session: URLSession,
                     didReceive challenge: URLAuthenticationChallenge,
