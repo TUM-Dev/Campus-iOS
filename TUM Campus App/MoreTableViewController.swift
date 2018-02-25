@@ -121,13 +121,13 @@ extension MoreTableViewController {
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
-            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
-            let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
                 "https://tumcabe.in.tum.de/".url?.open(sender: self)
             } else if indexPath.row == 1 {
-                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
+                sendEmail(recipient: "app@tum.de",
+                          subject: "[iOS]",
+                          body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(Bundle.main.version) <br> Build Version: \(Bundle.main.build)")
             }
             
         case 5:
