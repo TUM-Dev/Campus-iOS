@@ -38,7 +38,7 @@
 		0E4825AB1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */; };
 		0E4825AD1C2C88E800C756A5 /* ContactInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */; };
 		0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */; };
-		0E4DC2A620339F8000708C01 /* CertificatePinningAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4DC2A520339F8000708C01 /* CertificatePinningAPI.swift */; };
+		0E4DC2A620339F8000708C01 /* RootCertificatePinningAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4DC2A520339F8000708C01 /* RootCertificatePinningAPI.swift */; };
 		0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52817A1C0E2F7500762EA3 /* Manager.swift */; };
 		0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E52817C1C0E306200762EA3 /* DataElement.swift */; };
 		0E5573671EB996B2006E9DBD /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E5573661EB996B2006E9DBD /* config.json */; };
@@ -226,7 +226,7 @@
 		0E4825AA1C2B7D0B00C756A5 /* PersonDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailTableViewController.swift; sourceTree = "<group>"; };
 		0E4825AC1C2C88E800C756A5 /* ContactInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoType.swift; sourceTree = "<group>"; };
 		0E4825AE1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPersonWithTitleCell.swift; sourceTree = "<group>"; };
-		0E4DC2A520339F8000708C01 /* CertificatePinningAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificatePinningAPI.swift; sourceTree = "<group>"; };
+		0E4DC2A520339F8000708C01 /* RootCertificatePinningAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCertificatePinningAPI.swift; sourceTree = "<group>"; };
 		0E52817A1C0E2F7500762EA3 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		0E52817C1C0E306200762EA3 /* DataElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataElement.swift; sourceTree = "<group>"; };
 		0E5573661EB996B2006E9DBD /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
@@ -788,7 +788,7 @@
 				0E893EF91EB3D8190058027F /* XMLDeserializable.swift */,
 				0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */,
 				0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */,
-				0E4DC2A520339F8000708C01 /* CertificatePinningAPI.swift */,
+				0E4DC2A520339F8000708C01 /* RootCertificatePinningAPI.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -1373,7 +1373,7 @@
 				5007C6AA1E0693420014B065 /* StudyRoomsTableViewCell.swift in Sources */,
 				0EC10C231C171F730024F902 /* UserData.swift in Sources */,
 				0EDD932B1EB78AF30022E9BC /* TUMSexyAPI.swift in Sources */,
-				0E4DC2A620339F8000708C01 /* CertificatePinningAPI.swift in Sources */,
+				0E4DC2A620339F8000708C01 /* RootCertificatePinningAPI.swift in Sources */,
 				0E5A61E51C13639E006017DB /* WaitForTokenViewController.swift in Sources */,
 				0E64AC5D1C0DEBAB00060FB0 /* CalendarRow.swift in Sources */,
 				0EC10C211C171D100024F902 /* MovieManager.swift in Sources */,

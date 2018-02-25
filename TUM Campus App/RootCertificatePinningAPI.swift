@@ -41,8 +41,8 @@ private func certificates(trust: SecTrust) -> [Data]? {
 }
 
 /// SHA256 Hash of the Data of the individual certificats in trust
-private func certificateSHA256Fingerprints(trust: SecTrust) -> [String]? {
-    return certificates(trust: trust).map { $0.map { $0.sha256 } }
+private func rootCertificateSHA256Fingerprint(trust: SecTrust) -> String? {
+    return certificates(trust: trust)?.last.map { $0.sha256 }
 }
 
 extension Data {
@@ -74,7 +74,7 @@ extension Data {
 }
 
 /// Has to be a class because urlSession Delegate methods protocol to be an @objc protocol
-class CertificatePinningAPI<EndpointType: APIEndpoint>: NSObject, CustomAPI {
+class RootCertificatePinningAPI<EndpointType: APIEndpoint>: NSObject, CustomAPI {
     
     typealias Endpoint = EndpointType
     
@@ -99,8 +99,8 @@ class CertificatePinningAPI<EndpointType: APIEndpoint>: NSObject, CustomAPI {
             let trust = challenge.protectionSpace.serverTrust,
             let host = base.host,
             validate(trust: trust, for: host),
-            let certificates = certificateSHA256Fingerprints(trust: trust),
-            fingerprints.isSubset(of: certificates) else {
+            let certificate = rootCertificateSHA256Fingerprint(trust: trust),
+            fingerprints.contains(certificate) else {
                 
             return completionHandler(.cancelAuthenticationChallenge, nil)
         }

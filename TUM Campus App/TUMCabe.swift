@@ -18,7 +18,7 @@ enum TUMCabeEndpoint: String, APIEndpoint {
     case mapImage = "roomfinder/room/map/{room}/{id}"
 }
 
-class TUMCabeAPI: CertificatePinningAPI<TUMCabeEndpoint> {
+class TUMCabeAPI: RootCertificatePinningAPI<TUMCabeEndpoint> {
     
     override var baseHeaders: [String : String] {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
