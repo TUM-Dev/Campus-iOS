@@ -17,9 +17,11 @@ final class Config {
     let bookRentals: BookRentalAPI
     let mensaApp: MensaAppAPI
     let mvg: MVGAPI
+    let tumCabeHomepage: URL
     let betaApp: URL
     
     init(tumCabeURL: String,
+         tumCabeFingerprints: [String],
          tumOnlineURL: String,
          tumSexyURL: String,
          roomsURL: String,
@@ -27,16 +29,18 @@ final class Config {
          mensaAppURL: String,
          mvgURL: String,
          mvgKey: String,
+         tumCabeHomepage: URL,
          betaApp: URL,
          user: User?) {
         
-        tumCabe = TUMCabeAPI(baseURL: tumCabeURL)
+        tumCabe = TUMCabeAPI(baseURL: tumCabeURL, sha256Fingerprints: tumCabeFingerprints)
         tumOnline = TUMOnlineAPI(baseURL: tumOnlineURL, user: user)
         tumSexy = TUMSexyAPI(baseURL: tumSexyURL)
         rooms = StudyRoomAPI(baseURL: roomsURL)
         bookRentals = BookRentalAPI(baseURL: rentalsURL)
         mensaApp = MensaAppAPI(baseURL: mensaAppURL)
         mvg = MVGAPI(baseURL: mvgURL, apiKey: mvgKey)
+        self.tumCabeHomepage = tumCabeHomepage
         self.betaApp = betaApp
     }
 }
@@ -61,11 +65,13 @@ extension Config {
             let mensaApp = json["mensaApp"].string,
             let mvg = json["mvg"].string,
             let mvgKey = json["mvgKey"].string,
+            let tumCabeHomepage = json["tumCabeHomepage"].url,
             let betaApp = json["betaApp"].url else {
                 
             return nil
         }
         self.init(tumCabeURL: tumCabe,
+                  tumCabeFingerprints: json["tumCabeFingerprints"].strings,
                   tumOnlineURL: tumOnline,
                   tumSexyURL: tumSexy,
                   roomsURL: rooms,
@@ -73,6 +79,7 @@ extension Config {
                   mensaAppURL: mensaApp,
                   mvgURL: mvg,
                   mvgKey: mvgKey,
+                  tumCabeHomepage: tumCabeHomepage,
                   betaApp: betaApp,
                   user: user)
     }

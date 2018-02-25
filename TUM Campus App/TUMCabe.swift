@@ -18,13 +18,9 @@ enum TUMCabeEndpoint: String, APIEndpoint {
     case mapImage = "roomfinder/room/map/{room}/{id}"
 }
 
-struct TUMCabeAPI: API {
+class TUMCabeAPI: RootCertificatePinningAPI<TUMCabeEndpoint> {
     
-    typealias Endpoint = TUMCabeEndpoint
-    
-    let baseURL: String
-    
-    var baseHeaders: [String : String] {
+    override var baseHeaders: [String : String] {
         guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
             
             return .empty
@@ -32,7 +28,9 @@ struct TUMCabeAPI: API {
         return [
             "X-DEVICE-ID": uuid,
             "X-APP-VERSION": Bundle.main.version,
+            "X-APP-BUILD": Bundle.main.build,
             "X-OS-VERSION": UIDevice.current.systemVersion,
+            "User-Agent": Bundle.main.userAgent,
         ]
     }
     

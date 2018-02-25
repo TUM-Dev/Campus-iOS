@@ -75,10 +75,11 @@ class TumOnlineLoginRequestManager {
     }
     
     private func start(id: String) -> Response<Bool> {
+        let tokenName = "TCA - \(UIDevice.current.name)"
         return config.tumOnline.doRepresentedRequest(to: .tokenRequest,
                                                      queries: [
                                                         "pUsername" : id,
-                                                        "pTokenName" : "TumCampusApp-\(Bundle.main.version)"
+                                                        "pTokenName" : tokenName,
                                                      ]).flatMap { (xml: XMLIndexer) in
             
                 guard let token = xml["token"].element?.text else {

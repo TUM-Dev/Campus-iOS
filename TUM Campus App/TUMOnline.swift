@@ -42,7 +42,13 @@ final class TUMOnlineAPI: API {
             return .empty
         }
         return [
-            "pToken": token
+            "pToken": token,
+        ]
+    }
+    
+    var baseHeaders: [String : String] {
+        return [
+            "User-Agent": Bundle.main.userAgent,
         ]
     }
     

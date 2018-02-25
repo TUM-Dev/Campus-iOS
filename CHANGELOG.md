@@ -1,3 +1,17 @@
+## [1.3.1] - Unreleased
+### Added
+- Added User Profile Picture to "More" Button.
+
+### Changed
+- Current User Information and Profile Image is now being cached as well.
+- Pinning Campus App API Root CA Certificate for improved security.
+- TUM Online Token Name now includes device nickname for identification convenience.
+- Updated User-Agent Header now displays the App Version and Build Number
+
+### Fixed
+- Fixed displaying no user information for the current user in case the name is shared by multiple people.
+
+
 ## [1.3.0] - 2018-01-24
 ### Added
 - Added 💸 Ca$hing 💸 for better performance
