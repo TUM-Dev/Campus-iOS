@@ -14,7 +14,7 @@ class GradeTableViewCell: CardTableViewCell {
         didSet {
             if let grade = grade {
                 titleLabel.text = grade.name
-                resultLabel.text  = "Restult: " + grade.result
+                resultLabel.text  = "Result: " + grade.result
                 let date = "Date: \(grade.date.string(using: "dd.MM.yyyy"))"
                 let semester = "Semester: \(grade.semester)"
                 let ects = "ECTS: \(grade.ects)"
