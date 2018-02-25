@@ -17,10 +17,9 @@ class GradeTableViewCell: CardTableViewCell {
                 resultLabel.text  = "Result: " + grade.result
                 let date = "Date: \(grade.date.string(using: "dd.MM.yyyy"))"
                 let semester = "Semester: \(grade.semester)"
-                let ects = "ECTS: \(grade.ects)"
                 let examiner = "Examiner: \(grade.examiner)"
                 let mode = "Mode: \(grade.mode)"
-                detailsLabel.text =  date + ", " + semester +  ", " + ects
+                detailsLabel.text =  date + ", " + semester
                 secondDetailsLabel.text =  examiner + ", " + mode
             }
         }
