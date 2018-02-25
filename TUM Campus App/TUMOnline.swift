@@ -23,12 +23,19 @@ enum TUMOnlineEndpoint: String, APIEndpoint {
     case identify = "wbservicesbasic.id"
 }
 
-struct TUMOnlineAPI: API {
+final class TUMOnlineAPI: API {
+    
+    enum Error: Swift.Error {
+        case invalidToken
+        case unknwon(String)
+    }
     
     typealias Endpoint = TUMOnlineEndpoint
     
     let baseURL: String
     var user: User?
+    private var internalErrorHandlers = [(Error) -> ()]()
+    private let queue = DispatchQueue(label: "de.tum.campusapp.TUMOnlineAPI")
     
     var baseQueries: [String : String] {
         guard let token = user?.token else {
@@ -37,6 +44,37 @@ struct TUMOnlineAPI: API {
         return [
             "pToken": token
         ]
+    }
+    
+    init(baseURL: String, user: User?) {
+        self.baseURL = baseURL
+        self.user = user
+    }
+    
+    func onError(call handler: @escaping (Error) -> ()) {
+        queue.async(flags: .barrier) {
+            self.internalErrorHandlers.append(handler)
+        }
+    }
+    
+    func handle(error: Error, from method: HTTPMethod, at endpoint: TUMOnlineEndpoint) {
+        removeCache(for: endpoint)
+        let errorHandlers = queue.sync { self.internalErrorHandlers }
+        errorHandlers.forEach { $0(error) }
+    }
+    
+}
+
+extension TUMOnlineAPI.Error {
+    
+    init(message: String) {
+        
+        switch message {
+        case "Token ist nicht bestätigt oder ungültig!":
+            self = .invalidToken
+        default:
+            self = .unknwon(message)
+        }
     }
     
 }

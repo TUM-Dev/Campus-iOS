@@ -6,7 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import SWXMLHash
 
 final class Lecture: DataElement {
@@ -53,7 +53,7 @@ final class Lecture: DataElement {
 
 extension Lecture: XMLDeserializable {
     
-    convenience init?(from xml: XMLIndexer) {
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         guard let name = xml["stp_sp_titel"].element?.text,
             let id = xml["stp_sp_nr"].element?.text,
             let swsString = xml["stp_sp_sst"].element?.text,

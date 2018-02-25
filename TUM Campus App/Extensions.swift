@@ -320,3 +320,12 @@ extension UIImage {
     }
     
 }
+
+extension Collection {
+    
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
+    }
+    
+}

@@ -38,7 +38,7 @@ class MoreTableViewController: UITableViewController, DetailView, MFMailComposeV
     
     func updateView() {
         if isLoggedIn {
-            nameLabel.text = user?.name
+            nameLabel.text = user?.data?.name
             binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
@@ -131,7 +131,7 @@ extension MoreTableViewController {
             }
             
         case 5:
-            delegate?.dataManager()?.loginManager.logOut()
+            delegate?.dataManager()?.logout()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it
