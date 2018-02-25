@@ -7,9 +7,15 @@
 - Pinning Campus App API Root CA Certificate for improved security.
 - TUM Online Token Name now includes device nickname for identification convenience.
 - Updated User-Agent Header now displays the App Version and Build Number
+- Only displaying Tuition Status in Card View when not payed.
+- Changed up the App Icon with a bigger TUM Logo. True excellence has been achieved ;)
 
 ### Fixed
 - Fixed displaying no user information for the current user in case the name is shared by multiple people.
+- Fixed Typo "Restults" from the grades view.
+
+### Removed
+- Removed faulty ECTS label from grades.
 
 
 ## [1.3.0] - 2018-01-24

@@ -32,6 +32,10 @@ final class TuitionStatusManager: MemoryCachedManager, SingleItemCachedManager, 
         self.config = config
     }
     
+    func toSingle(from items: [Tuition]) -> DataElement? {
+        return items.first { !$0.isPaid }
+    }
+    
     func performRequest(maxCache: CacheTime) -> Response<[Tuition]> {
         return config.tumOnline.doXMLObjectsRequest(to: .tuitionStatus,
                                                     at: "rowset", "row",
