@@ -38,7 +38,7 @@ extension Tuition: XMLDeserializable {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "de_DE")
       
-        guard let soll = xml["soll"].element?.text,
+        guard let soll = (xml["soll"].element?.text).flatMap(formatter.number(from:)),
             let frist = xml["frist"].element?.text.date(using: "yyyy-MM-dd"),
             let semester = xml["semester_bezeichnung"].element?.text else {
             
