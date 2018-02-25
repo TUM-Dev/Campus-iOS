@@ -28,7 +28,9 @@ class TUMCabeAPI: RootCertificatePinningAPI<TUMCabeEndpoint> {
         return [
             "X-DEVICE-ID": uuid,
             "X-APP-VERSION": Bundle.main.version,
+            "X-APP-BUILD": Bundle.main.build,
             "X-OS-VERSION": UIDevice.current.systemVersion,
+            "User-Agent": Bundle.main.userAgent,
         ]
     }
     

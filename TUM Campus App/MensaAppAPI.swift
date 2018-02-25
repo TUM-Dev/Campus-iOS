@@ -18,4 +18,10 @@ struct MensaAppAPI: API {
     
     let baseURL: String
     
+    var baseHeaders: [String : String] {
+        return [
+            "User-Agent": Bundle.main.userAgent,
+        ]
+    }
+    
 }

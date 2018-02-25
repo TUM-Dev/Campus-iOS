@@ -23,6 +23,7 @@ struct MVGAPI: API {
     var baseHeaders: [String : String] {
         return [
             "X-MVG-Authorization-Key": apiKey,
+            "User-Agent": Bundle.main.userAgent,
         ]
     }
     
