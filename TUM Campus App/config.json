@@ -8,7 +8,8 @@
     "studyRooms": "http://www.devapp.it.tum.de/iris/",
     "bookRentals": "https://opac.ub.tum.de/InfoGuideClient.tumsis",
     "mensaApp": "http://lu32kap.typo3.lrz.de/mensaapp",
-    "betaApp": "https://tumcabe.in.tum.de/iosbeta",
+    "betaApp": "https://app.tum.de/iosbeta",
+    "tumCabeHomepage": "https://app.tum.de/",
     "mvg": "https://www.mvg.de",
     "mvgKey": "5af1beca494712ed38d313714d4caff6"
 }

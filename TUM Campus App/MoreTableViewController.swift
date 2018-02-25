@@ -32,6 +32,10 @@ class MoreTableViewController: UITableViewController, DetailView, MFMailComposeV
         return delegate?.dataManager()?.user
     }
     
+    var config: Config? {
+        return delegate?.dataManager()?.config
+    }
+    
     var isLoggedIn: Bool {
         return user != nil
     }
@@ -123,7 +127,7 @@ extension MoreTableViewController {
             let systemVersion = UIDevice.current.systemVersion
             
             if indexPath.row == 0 {
-                "https://tumcabe.in.tum.de/".url?.open(sender: self)
+                config?.tumCabeHomepage.open(sender: self)
             } else if indexPath.row == 1 {
                 sendEmail(recipient: "app@tum.de",
                           subject: "[iOS]",
