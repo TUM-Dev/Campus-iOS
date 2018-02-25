@@ -52,7 +52,7 @@ extension Tuition: XMLDeserializable {
 extension Tuition {
     
     var isPaid: Bool {
-        return soll == 0
+        return soll <= 0
     }
     
 }
