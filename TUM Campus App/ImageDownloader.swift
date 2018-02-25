@@ -28,11 +28,16 @@ class Image {
         self.maxCache = maxCache
     }
     
+    @discardableResult func fetch() -> Response<UIImage?> {
+        promise = promise ?? url.map { .new(from: $0, maxCache: self.maxCache) }
+        return promise?.map { .some($0) } ?? .successful(with: nil)
+    }
+    
     func bind(to imageView: UIImageView,
               default image: UIImage?,
               mapping transform: @escaping (UIImage) -> UIImage = { $0 }) -> ImageViewBinding {
         
-        promise = promise ?? url.map { .new(from: $0, maxCache: self.maxCache) }
+        fetch()
         let binding = ImageViewBinding()
         imageView.image = image
         promise?.onSuccess(in: .main) { [weak binding, weak imageView] image in

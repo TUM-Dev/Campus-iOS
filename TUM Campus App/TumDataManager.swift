@@ -74,6 +74,19 @@ class TumDataManager {
         self.config = config
     }
     
+    func logout() {
+        loginManager.logOut()
+        
+        lecturesManager.clearCache()
+        gradesManager.clearCache()
+        tuitionManager.clearCache()
+        calendarManager.clearCache()
+        cafeteriaManager.clearCache()
+        movieManager.clearCache()
+        newsManager.clearCache()
+        tumSexyManager.clearCache()
+    }
+    
     func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {
         let promises = cardManagers => { $0.fetchCard(skipCache: skipCache) }
         return promises.bulk.map { $0.flatMap { $0 } }

@@ -46,6 +46,7 @@ final class NewsManager: MemoryCachedManager, SingleItemCachedManager, CardManag
                 return .successful(with: results)
             }
             return self.fetch(from: lastId).map { results + $0 }
+                                           .mapError(to: results)
         }
     }
     

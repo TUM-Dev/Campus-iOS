@@ -14,6 +14,7 @@
 		0E1073AD1C1A4086004C93CF /* RoomSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */; };
 		0E1073B11C1A4BE2004C93CF /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073B01C1A4BE2004C93CF /* Room.swift */; };
 		0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */; };
+		0E1ACAB8201A278300D68F5D /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1ACAB7201A278300D68F5D /* AccountType.swift */; };
 		0E1DD13B1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1DD13A1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift */; };
 		0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */; };
 		0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2E33961E047BDB00E6F707 /* AppDefaults.swift */; };
@@ -198,6 +199,7 @@
 		0E1073AC1C1A4086004C93CF /* RoomSearchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomSearchManager.swift; sourceTree = "<group>"; };
 		0E1073B01C1A4BE2004C93CF /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomResultTableViewCell.swift; sourceTree = "<group>"; };
+		0E1ACAB7201A278300D68F5D /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		0E1DD13A1C1B001300A7DF4A /* CafeteriaCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaCardTableViewCell.swift; sourceTree = "<group>"; };
 		0E2E33941E047B4C00E6F707 /* PersistentUserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentUserData.swift; sourceTree = "<group>"; };
 		0E2E33961E047BDB00E6F707 /* AppDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		0E64AC551C0DE46C00060FB0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0E1ACAB7201A278300D68F5D /* AccountType.swift */,
 				0EC28ADD1E053F7900FF1E40 /* CardOrder.swift */,
 				0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */,
 				0EEBD10D1E058E5F00798B41 /* EmptyCard.swift */,
@@ -1330,6 +1333,7 @@
 				0E893EF81EB3D7DE0058027F /* TUMOnline.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
 				0EA0F5EA1F993CBA008C5229 /* MensaAppAPI.swift in Sources */,
+				0E1ACAB8201A278300D68F5D /* AccountType.swift in Sources */,
 				301195F21E4658FA0012B133 /* PersonalGradeManager.swift in Sources */,
 				0EEBD10E1E058E5F00798B41 /* EmptyCard.swift in Sources */,
 				0EA0F5E81F9938C9008C5229 /* CafeteriaConstants.swift in Sources */,

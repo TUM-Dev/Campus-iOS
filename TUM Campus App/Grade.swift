@@ -39,7 +39,7 @@ final class Grade: DataElement {
 
 extension Grade: XMLDeserializable {
     
-    convenience init?(from xml: XMLIndexer) {
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         guard let name = xml["lv_titel"].element?.text,
             let result = xml["uninotenamekurz"].element?.text,
             let date = xml["datum"].element?.text.date(using: "y-M-dd"),

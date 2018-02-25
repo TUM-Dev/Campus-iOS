@@ -326,5 +326,13 @@ extension JSON {
     var strings: [String] {
         return array ==> { $0.string }
     }
+}
+
+extension Collection {
+    
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
+    }
     
 }

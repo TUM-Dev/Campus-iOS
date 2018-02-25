@@ -22,10 +22,20 @@ final class UserDataManager: DetailsForDataManager {
     }
     
     func fetch(skipCache: Bool = false) -> Response<User> {
+        if skipCache {
+            Data.cache.clear()
+            config.tumOnline.removeCache(for: .identify)
+        }
         return config.tumOnline.user.map { user in
-            return self.fetch(for: user, maxCache: skipCache ? .time(0.0) : .forever).map { (data: UserData) in
+            return self.fetch(for: user, maxCache: .forever).map { (data: UserData) in
                 user.data = data
                 return user
+            }
+            .mapResult { (result: Result<User, APIError>)  in
+                if case .error = result {
+                    user.data = nil
+                }
+                return result
             }
         } ?? .errored(with: .cannotPerformRequest)
     }
@@ -40,9 +50,10 @@ final class UserDataManager: DetailsForDataManager {
 
 extension UserDataManager {
     
-    fileprivate func search(with id: String, maxCache: CacheTime) -> Response<UserData> {
+    fileprivate func search(with name: String, maxCache: CacheTime) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
-        return manager.search(query: id, maxCache: maxCache).flatMap { users in
+        return manager.search(query: name, maxCache: maxCache).flatMap { users in
+            
             guard let user = users.first, users.count == 1 else {
                 return .errored(with: .noData)
             }
@@ -52,18 +63,9 @@ extension UserDataManager {
     
     fileprivate func fetch(for user: User, maxCache: CacheTime) -> Response<UserData> {
         guard let name = user.name else {
-            return config.tumOnline.doRepresentedRequest(to: .identify,
-                                                         maxCacheTime: maxCache).flatMap { (xml: XMLIndexer) in
-                
-                guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
-                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
-                        
-                        return .errored(with: .cannotPerformRequest)
-                }
-                let name = "\(first) \(last)"
-                user.name = name
-                return self.search(with: name, maxCache: maxCache)
-            }
+            return config.tumOnline.doXMLObjectRequest(to: .identify,
+                                                       at: "rowset", "row",
+                                                       maxCacheTime: maxCache)
         }
         return search(with: name, maxCache: maxCache)
     }
