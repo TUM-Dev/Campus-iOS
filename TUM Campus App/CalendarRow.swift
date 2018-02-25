@@ -64,7 +64,7 @@ final class CalendarRow: DataElement {
 
 extension CalendarRow: XMLDeserializable {
     
-    convenience init?(from xml: XMLIndexer) {
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         
         guard let title = xml["title"].element?.text,
             let start = xml["dtstart"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),

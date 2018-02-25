@@ -101,7 +101,15 @@ extension Collection {
 extension Bundle {
     
     var version: String {
+        return infoDictionary?["CFBundleShortVersionString"] as? String ?? "1"
+    }
+    
+    var build: String {
         return infoDictionary?["CFBundleVersion"] as? String ?? "1.0"
+    }
+    
+    var userAgent: String {
+        return "TCA iOS \(version)/\(build)"
     }
     
 }
@@ -317,6 +325,22 @@ extension UIImage {
         return UIImage(cgImage: newImage,
                        scale: 0.0,
                        orientation: self.imageOrientation)
+    }
+    
+}
+
+extension JSON {
+    
+    var strings: [String] {
+        return array ==> { $0.string }
+    }
+}
+
+extension Collection {
+    
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
     }
     
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2015 LS1 TUM. All rights reserved.
 //
 
-import Foundation
+import Sweeft
 import SWXMLHash
 
 final class Tuition: DataElement {
@@ -32,12 +32,13 @@ final class Tuition: DataElement {
 }
 
 extension Tuition: XMLDeserializable {
-    
-    convenience init?(from xml: XMLIndexer) {
+
+    convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
+        
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "de_DE")
-        
-        guard let soll = (xml["soll"].element?.text).flatMap(formatter.number(from:)),
+      
+        guard let soll = xml["soll"].element?.text,
             let frist = xml["frist"].element?.text.date(using: "yyyy-MM-dd"),
             let semester = xml["semester_bezeichnung"].element?.text else {
             

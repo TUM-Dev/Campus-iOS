@@ -32,13 +32,17 @@ class MoreTableViewController: UITableViewController, DetailView, MFMailComposeV
         return delegate?.dataManager()?.user
     }
     
+    var config: Config? {
+        return delegate?.dataManager()?.config
+    }
+    
     var isLoggedIn: Bool {
         return user != nil
     }
     
     func updateView() {
         if isLoggedIn {
-            nameLabel.text = user?.name
+            nameLabel.text = user?.data?.name
             binding = user?.data?.avatar.bind(to: avatarView, default: #imageLiteral(resourceName: "avatar"))
             logoutLabel.text = "Log Out"
             logoutLabel.textColor = .red
@@ -121,17 +125,17 @@ extension MoreTableViewController {
         case 4:
             
             let systemVersion = UIDevice.current.systemVersion
-            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]! as! String
-            let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"]! as! String
             
             if indexPath.row == 0 {
-                "https://tumcabe.in.tum.de/".url?.open(sender: self)
+                config?.tumCabeHomepage.open(sender: self)
             } else if indexPath.row == 1 {
-                sendEmail(recipient: "tca-support.os.in@tum.de", subject: "[iOS]", body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(appVersion) <br> Build Version: \(buildVersion)")
+                sendEmail(recipient: "app@tum.de",
+                          subject: "[iOS]",
+                          body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(Bundle.main.version) <br> Build Version: \(Bundle.main.build)")
             }
             
         case 5:
-            delegate?.dataManager()?.loginManager.logOut()
+            delegate?.dataManager()?.logout()
             
             let loginViewController = ViewControllerProvider.loginNavigationViewController
             // Since this is a shared object, we want to bring it into a usable state for the user before showing it

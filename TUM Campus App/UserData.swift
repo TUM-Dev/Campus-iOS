@@ -53,7 +53,7 @@ final class UserData: DataElement {
         return phones => CNPhoneNumber.init >>> getLabeledFunc(label: CNLabelPhoneNumberMain)
     }
     
-    func addContact(_ handler: () -> ()?) {
+    func addContact(_ handler: (() -> ())?) {
         let contact = CNMutableContact()
         contact.givenName = name
         var phones = [String]()
@@ -78,21 +78,27 @@ final class UserData: DataElement {
         contact.urlAddresses = websites => { $0 as NSString } >>> getLabeledFunc(label: CNLabelURLAddressHomePage)
             
         contact.organizationName = "Technische Universität München"
-        let store = CNContactStore()
-        let saveRequest = CNSaveRequest()
-        saveRequest.add(contact, toContainerWithIdentifier:nil)
-        do {
-            try store.execute(saveRequest)
-            handler()
-        } catch {
-            print("Error")
-        }
         
+        avatar.fetch().onResult(in: .main) { result in
+            
+            contact.imageData = result.value?.flatMap { $0 }
+                                             .flatMap { UIImagePNGRepresentation($0) }
+            
+            let store = CNContactStore()
+            let saveRequest = CNSaveRequest()
+            saveRequest.add(contact, toContainerWithIdentifier:nil)
+            do {
+                try store.execute(saveRequest)
+                handler?()
+            } catch {
+                print("Error")
+            }
+        }
     }
     
 }
 
-extension UserData {
+extension UserData: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
         guard let name = xml["vorname"].element?.text,
@@ -101,8 +107,30 @@ extension UserData {
             
             return nil
         }
-        let url = xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
+        
+        let key = CurrentAccountType.value.key
+        let path = ["obfuscated_ids", key]
+        
+        let url = xml.get(at: path)?.element?.text.imageURL(in: api) ??
+            xml["bild_url"].element.map { "\(api.baseURL)/\($0.text)" }
+        
         self.init(name: "\(name) \(lastname)", picture: url, id: id, maxCache: maxCache)
+    }
+    
+}
+
+fileprivate extension String {
+    
+    func imageURL(in api: TUMOnlineAPI) -> String? {
+        
+        let split = self.components(separatedBy: "*")
+        guard split.count == 2 else { return nil }
+        
+        return api.base
+            .appendingPathComponent("visitenkarte.showImage")
+            .appendingQuery(key: "pPersonenGruppe", value: split[0])
+            .appendingQuery(key: "pPersonenId", value: split[1])
+            .absoluteString
     }
     
 }
