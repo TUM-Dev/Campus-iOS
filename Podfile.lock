@@ -9,7 +9,7 @@ PODS:
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.14.4)
+  - Sweeft (0.15.1)
   - SWXMLHash (4.2.5)
   - TKSubmitTransition (0.2)
 
@@ -47,7 +47,7 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: 4c93caa9a21c2e2b5d8fb29df91133c55c6ff326
+  Sweeft: d454063b77bbd4e90f227c7ced77f0deb2e271e7
   SWXMLHash: eb16013c6f654853980822e0a778c9d66e017dde
   TKSubmitTransition: 70aba90834d8da5d5a4044cdcbbcc1fc43edca7b
 
