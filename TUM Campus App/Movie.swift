@@ -98,3 +98,11 @@ extension Movie: Deserializable {
     }
     
 }
+
+extension Movie {
+    
+    var url: URL? {
+        return id.url
+    }
+    
+}

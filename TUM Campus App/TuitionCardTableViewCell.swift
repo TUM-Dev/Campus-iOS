@@ -19,7 +19,7 @@ class TuitionCardTableViewCell: CardTableViewCell {
             let dateformatter = DateFormatter()
             dateformatter.dateFormat = "MMM dd, yyyy"
             deadLineLabel.text = dateformatter.string(from: tuitionElement.frist as Date)
-            balanceLabel.text = tuitionElement.soll + " €"
+            balanceLabel.text = String(format: "%.2f", tuitionElement.soll) + " €"
         }
     }
 

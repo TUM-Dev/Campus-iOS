@@ -21,9 +21,39 @@ final class UserDataManager: DetailsForDataManager {
         self.config = config
     }
     
-    func search(with id: String) -> Response<UserData> {
+    func fetch(skipCache: Bool = false) -> Response<User> {
+        if skipCache {
+            Data.cache.clear()
+            config.tumOnline.removeCache(for: .identify)
+        }
+        return config.tumOnline.user.map { user in
+            return self.fetch(for: user, maxCache: .forever).map { (data: UserData) in
+                user.data = data
+                return user
+            }
+            .mapResult { (result: Result<User, APIError>)  in
+                if case .error = result {
+                    user.data = nil
+                }
+                return result
+            }
+        } ?? .errored(with: .cannotPerformRequest)
+    }
+    
+    func fetch(for data: User) -> Response<UserData> {
+        return fetch(for: data, maxCache: .no)
+    }
+
+}
+
+// MARK: Requests
+
+extension UserDataManager {
+    
+    fileprivate func search(with name: String, maxCache: CacheTime) -> Response<UserData> {
         let manager = PersonSearchManager(config: config)
-        return manager.search(query: id).flatMap { users in
+        return manager.search(query: name, maxCache: maxCache).flatMap { users in
+            
             guard let user = users.first, users.count == 1 else {
                 return .errored(with: .noData)
             }
@@ -31,30 +61,13 @@ final class UserDataManager: DetailsForDataManager {
         }
     }
     
-    func fetch() -> Response<User> {
-        return config.tumOnline.user.map { user in
-            return self.fetch(for: user).map { (data: UserData) in
-                user.data = data
-                return user
-            }
-        } ?? .errored(with: .cannotPerformRequest)
+    fileprivate func fetch(for user: User, maxCache: CacheTime) -> Response<UserData> {
+        guard let name = user.name else {
+            return config.tumOnline.doXMLObjectRequest(to: .identify,
+                                                       at: "rowset", "row",
+                                                       maxCacheTime: maxCache)
+        }
+        return search(with: name, maxCache: maxCache)
     }
     
-    func fetch(for data: User) -> Response<UserData> {
-        guard let name = data.name else {
-            return config.tumOnline.doRepresentedRequest(to: .identify).flatMap { (xml: XMLIndexer) in
-                
-                guard let first = xml.get(at: ["rowset", "row", "vorname"])?.element?.text,
-                    let last = xml.get(at: ["rowset", "row", "familienname"])?.element?.text else {
-                        
-                    return .errored(with: .cannotPerformRequest)
-                }
-                let name = "\(first) \(last)"
-                data.name = name
-                return self.search(with: name)
-            }
-        }
-        return search(with: name)
-    }
-
 }

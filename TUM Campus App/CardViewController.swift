@@ -11,12 +11,16 @@ import UIKit
 
 class CardViewController: UITableViewController, EditCardsViewControllerDelegate {
     
+    @IBOutlet weak var probileButtonItem: UIBarButtonItem!
+    
     var manager: TumDataManager?
     var cards: [DataElement] = []
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
     var logoView: TUMLogoView?
+    
+    var binding: ImageViewBinding?
     
     func refresh(_ sender: AnyObject?) {
         manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
@@ -25,11 +29,29 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
             self.tableView.reloadData()
             self.refresh.endRefreshing()
         }
+        if manager?.user?.data == nil || sender != nil {
+            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
+                self.updateProfileButton()
+            }
+        }
     }
     
     func didUpdateCards() {
         refresh(nil)
         tableView.reloadData()
+    }
+    
+    func updateProfileButton() {
+        if let data = manager?.user?.data {
+            binding = data.avatar.bind(to: probileButtonItem, default: #imageLiteral(resourceName: "contact")) { image in
+                
+                let squared = image.squared()
+                return squared.withRoundedCorners(radius: squared.size.height / 2.0, borderSize: 0.0)
+            }
+        } else {
+            binding = nil
+            probileButtonItem.image = #imageLiteral(resourceName: "contact")
+        }
     }
     
 }
@@ -52,15 +74,17 @@ extension CardViewController {
         
         manager = (self.navigationController as? CampusNavigationController)?.manager
         refresh(nil)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = false
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
+        
+        updateProfileButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -27,7 +27,24 @@ class CampusNavigationController: UINavigationController {
         }
         manager = TumDataManager(user: PersistentUser.value.user, json: json)
         
-        (ViewControllerProvider.loginNavigationViewController.childViewControllers.first as? LoginViewController)?.manager = manager
+        let loginViewController = ViewControllerProvider.loginNavigationViewController
+        
+        (loginViewController.childViewControllers.first as? LoginViewController)?.manager = manager
+        
+        manager?.config.tumOnline.onError { [weak self] error in
+            guard case .invalidToken = error, PersistentUser.isLoggedIn else { return }
+            self?.checkToken(loginViewController: loginViewController)
+        }
+    }
+    
+    func checkToken(loginViewController: UIViewController) {
+        manager?.loginManager.fetch().onSuccess(in: .main) { [weak self] tokenCorrect in
+            guard !tokenCorrect else { return }
+            self?.manager?.loginManager.logOut()
+            
+            (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
+            self?.present(loginViewController, animated: true)
+        }
     }
 
 }

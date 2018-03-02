@@ -21,6 +21,8 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var directorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var websiteCell: UITableViewCell!
+    
     var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
@@ -121,6 +123,19 @@ extension MovieDetailTableViewController {
         pickerView.didDismissHandler = { self.hideMovies(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(MovieDetailTableViewController.showMovies(_:)))
         navigationItem.rightBarButtonItem = barItem
+    }
+    
+}
+
+extension MovieDetailTableViewController {
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return tableView.cellForRow(at: indexPath) == websiteCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView.cellForRow(at: indexPath) == websiteCell else { return }
+        currentMovie?.url?.open(sender: self)
     }
     
 }

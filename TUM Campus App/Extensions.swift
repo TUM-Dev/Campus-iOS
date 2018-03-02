@@ -101,7 +101,15 @@ extension Collection {
 extension Bundle {
     
     var version: String {
+        return infoDictionary?["CFBundleShortVersionString"] as? String ?? "1"
+    }
+    
+    var build: String {
         return infoDictionary?["CFBundleVersion"] as? String ?? "1.0"
+    }
+    
+    var userAgent: String {
+        return "TCA iOS \(version)/\(build)"
     }
     
 }
@@ -109,25 +117,7 @@ extension Bundle {
 extension Promise {
     
     func mapError(to defaultValue: T) -> Promise<T, E> {
-        return map { Result.value($0.value ?? defaultValue) }
-    }
-    
-    @discardableResult func onSuccess(in queue: DispatchQueue, call handler: @escaping (T) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onSuccess(call: handler)
-        return self
-    }
-    
-    @discardableResult func onError(in queue: DispatchQueue, call handler: @escaping (E) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onError(call: handler)
-        return self
-    }
-    
-    @discardableResult func onResult(in queue: DispatchQueue, call handler: @escaping (Result) -> ()) -> Promise<T, E> {
-        let promise = map(completionQueue: queue) { $0 as T }
-        promise.onResult(call: handler)
-        return self
+        return mapResult { .value($0.value ?? defaultValue) }
     }
     
 }
@@ -180,7 +170,7 @@ extension UIColor {
         var int = UInt32()
         Scanner(string: hex).scanHexInt32(&int)
         let a, r, g, b: UInt32
-        switch hex.characters.count {
+        switch hex.count {
         case 3: // RGB (12-bit)
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
         case 6: // RGB (24-bit)
@@ -195,6 +185,17 @@ extension UIColor {
 }
 
 extension API {
+    
+    func removeCache(for endpoint: Endpoint,
+                     arguments: [String:CustomStringConvertible] = .empty,
+                     queries: [String:CustomStringConvertible] = .empty) {
+        
+        .global() >>> {
+            let url = self.url(for: endpoint, arguments: arguments, queries: queries)
+            let cacheKey = url.relativePath.replacingOccurrences(of: "/", with: "_")
+            self.cache.delete(at: cacheKey)
+        }
+    }
     
     func clearCache() {
         cache.clear()
@@ -211,6 +212,135 @@ extension FileCache {
     
     func clear() {
         try? FileManager.default.removeItem(at: searchPathURL)
+    }
+    
+}
+
+extension CGContext {
+    
+    func addRoundedRectToPath(rect: CGRect, ovalWidth: CGFloat, ovalHeight: CGFloat) {
+        if ovalWidth == 0 || ovalHeight == 0 {
+            return self.addRect(rect)
+        }
+        saveGState()
+        setStrokeColor(Constants.tumBlue.cgColor)
+        translateBy(x: rect.minX, y: rect.minY)
+        scaleBy(x: ovalWidth, y: ovalHeight)
+        
+        let relativeWidth = rect.width / ovalWidth
+        let relativeHeight = rect.height / ovalHeight
+        
+        move(to: .init(x: relativeWidth, y: relativeHeight / 2))
+        addArc(tangent1End: .init(x: relativeWidth, y: relativeHeight),
+               tangent2End: .init(x: relativeWidth / 2, y: relativeHeight),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: 0, y: relativeHeight),
+               tangent2End: .init(x: 0, y: relativeHeight / 2),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: 0, y: 0),
+               tangent2End: .init(x: relativeWidth / 2, y: 0),
+               radius: 1.0)
+        addArc(tangent1End: .init(x: relativeWidth, y: 0),
+               tangent2End: .init(x: relativeWidth, y: relativeHeight / 2),
+               radius: 1.0)
+        
+        restoreGState()
+    }
+    
+}
+
+extension UIImage {
+    
+    func resized(to newSize: CGSize, scale: CGFloat = 0.0) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
+        self.draw(in: .init(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image ?? self
+    }
+    
+    func withRoundedCorners(radius: CGFloat, borderSize: CGFloat) -> UIImage {
+        let scale = max(self.scale, 1.0)
+        let scaledBorderSize = scale * borderSize
+        let scaledRadius = scale * radius
+        
+        guard let cgImage = self.cgImage,
+            let colorSpace = cgImage.colorSpace else {
+                
+            return self
+        }
+        
+        let width = size.width * scale
+        let height = size.height * scale
+        
+        let context = CGContext.init(data: nil,
+                                     width: Int(width),
+                                     height: Int(height),
+                                     bitsPerComponent: cgImage.bitsPerComponent,
+                                     bytesPerRow: cgImage.bytesPerRow,
+                                     space: colorSpace,
+                                     bitmapInfo: cgImage.bitmapInfo.rawValue)
+        
+        context?.setFillColor(UIColor.white.cgColor)
+        context?.fill(.init(x: 0, y: 0, width: width, height: height))
+        context?.beginPath()
+        let rect = CGRect(x: scaledBorderSize,
+                          y: scaledBorderSize,
+                          width: width - borderSize * 2,
+                          height: height - borderSize * 2)
+        context?.addRoundedRectToPath(rect: rect, ovalWidth: scaledRadius, ovalHeight: scaledRadius)
+        context?.closePath()
+        context?.clip()
+        context?.draw(cgImage, in: .init(x: 0, y: 0, width: width, height: height))
+        
+        let ref = context?.makeImage()
+        
+        guard let image = ref.map({ UIImage(cgImage: $0, scale: scale, orientation: .up) }) else {
+            return self
+        }
+        
+        return image
+    }
+    
+    func squared() -> UIImage {
+        
+        guard let cgImage = self.cgImage else {
+            return self
+        }
+        
+        let width = cgImage.width
+        let height = cgImage.height
+        let cropSize = min(width, height)
+        
+        let x = Double(width - cropSize) / 2.0
+        let y = Double(height - cropSize) / 2.0
+        
+        let rect = CGRect(x: CGFloat(x),
+                          y: CGFloat(y),
+                          width: CGFloat(cropSize),
+                          height: CGFloat(cropSize))
+        
+        let newImage = cgImage.cropping(to: rect) ?? cgImage
+        
+        return UIImage(cgImage: newImage,
+                       scale: 0.0,
+                       orientation: self.imageOrientation)
+    }
+    
+}
+
+extension JSON {
+    
+    var strings: [String] {
+        return array ==> { $0.string }
+    }
+}
+
+extension Collection {
+    
+    var nonEmpty: Self? {
+        guard !isEmpty else { return nil }
+        return self
     }
     
 }

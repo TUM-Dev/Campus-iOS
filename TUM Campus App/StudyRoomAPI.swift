@@ -24,4 +24,10 @@ struct StudyRoomAPI: API {
         ]
     }
     
+    var baseHeaders: [String : String] {
+        return [
+            "User-Agent": Bundle.main.userAgent,
+        ]
+    }
+    
 }

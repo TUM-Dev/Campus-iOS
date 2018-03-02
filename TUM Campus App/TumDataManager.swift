@@ -52,7 +52,6 @@ class TumDataManager {
             calendarManager,
             movieManager,
             tumNewsManager,
-            tuFilmNewsManager,
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,
@@ -73,6 +72,19 @@ class TumDataManager {
             return nil
         }
         self.config = config
+    }
+    
+    func logout() {
+        loginManager.logOut()
+        
+        lecturesManager.clearCache()
+        gradesManager.clearCache()
+        tuitionManager.clearCache()
+        calendarManager.clearCache()
+        cafeteriaManager.clearCache()
+        movieManager.clearCache()
+        newsManager.clearCache()
+        tumSexyManager.clearCache()
     }
     
     func loadCards(skipCache: Bool = false) -> Response<[DataElement]> {

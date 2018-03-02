@@ -9,11 +9,12 @@
 import Foundation
 import Sweeft
 
-final class MovieManager: CachedManager, SingleItemCachedManager, CardManager {
+final class MovieManager: MemoryCachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Movie
     
     var config: Config
+    var cache: Cache<[Movie]>?
     
     var requiresLogin: Bool {
         return false
@@ -31,7 +32,7 @@ final class MovieManager: CachedManager, SingleItemCachedManager, CardManager {
         self.config = config
     }
     
-    func fetch(maxCache: CacheTime) -> Response<[Movie]> {
+    func performRequest(maxCache: CacheTime) -> Response<[Movie]> {
         return config.tumCabe.doObjectsRequest(to: .movie,
                                                maxCacheTime: maxCache).map { $0 |> { $0.airDate >= .now } }
     }
