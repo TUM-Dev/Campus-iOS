@@ -108,15 +108,9 @@ extension CardViewController {
         guard let view = nib?.first else { return }
         logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.navigationItem.titleView = view
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tumLogogTap(sender:)))
-        gestureRecognizer.numberOfTapsRequired = 3
-        view.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    @IBAction func tumLogogTap(sender: AnyObject) {
-        guard let view = logoView else { return }
-        view.imageView.image = UIImage(named: "logo-rainbow")
     }
     
     func setupTableView() {
