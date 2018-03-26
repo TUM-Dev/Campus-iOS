@@ -18,6 +18,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     var nextLecture: CalendarRow?
     var refresh = UIRefreshControl()
     var search: UISearchController?
+    var logoView: TUMLogoView?
     
     var binding: ImageViewBinding?
     
@@ -103,9 +104,12 @@ extension CardViewController {
     
     func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? UIView }
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
         guard let view = nib?.first else { return }
+        logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
         self.navigationItem.titleView = view
     }
     
