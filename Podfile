@@ -5,15 +5,15 @@ platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
-    pod 'Sweeft', '~> 0.15'
+    pod 'Sweeft', '~> 0.15.2'
     pod 'Fuzzi', '~> 0.1.0'
     pod 'AYSlidingPickerView'
     pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'
     pod 'ASWeekSelectorView', '~> 1.0'
     pod 'CalendarLib', '~> 2.0'
-    pod 'SWXMLHash', '~> 4.2.3'
-    pod 'TKSubmitTransition', :git => 'https://github.com/jvitor/TKSubmitTransition.git'
-    pod 'Kanna', '~> 2.1.0'
+    pod 'SWXMLHash', '~> 4.6.0'
+    pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :branch => 'swift4'
+    pod 'Kanna', '~> 4.0.0'
     
     target 'TUM Campus AppUITests' do
         inherit! :search_paths
@@ -26,9 +26,28 @@ target 'Campus' do
 end
 
 post_install do |installer|
+    
+    targets_swift_4 = ['Kanna','TKSubmitTransition','SWXMLHash','CalendarLib','ASWeekSelectorView','PZPullToRefresh','AYSlidingPickerView','Fuzzi']
+    
     installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.2'
+        if targets_swift_4.include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.0'
+                if config.name == 'Release'
+                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+                    else
+                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
+                end
+            end
+            else
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '3.3'
+                if config.name == 'Release'
+                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
+                    else
+                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
+                end
+            end
         end
     end
 end
