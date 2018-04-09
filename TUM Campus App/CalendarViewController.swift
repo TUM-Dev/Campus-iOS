@@ -161,16 +161,16 @@ extension CalendarViewController {
 
 extension CalendarViewController: ASWeekSelectorViewDelegate {
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, didSelect date: Date) {
         updateTitle(date)
         goToDay(date)
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, numberColorFor date: Date!) -> UIColor! {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, numberColorFor date: Date) -> UIColor? {
         return Constants.tumBlue
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, showIndicatorFor date: Date!) -> Bool {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, showIndicatorFor date: Date) -> Bool {
         return !lecturesOfDate(date).isEmpty
     }
     

@@ -151,15 +151,15 @@ extension CafeteriaViewController {
 
 extension CafeteriaViewController: ASWeekSelectorViewDelegate {
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, didSelect date: Date) {
         currentDate = date
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, numberColorFor date: Date!) -> UIColor! {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, numberColorFor date: Date) -> UIColor? {
         return Constants.tumBlue
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, showIndicatorFor date: Date!) -> Bool {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, showIndicatorFor date: Date) -> Bool {
         return currentCafeteria.map { !$0.getMenusForDate(date).isEmpty } ?? false
     }
     
