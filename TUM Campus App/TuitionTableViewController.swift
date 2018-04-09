@@ -88,14 +88,14 @@ extension TuitionTableViewController {
         navigationItem.rightBarButtonItem = barItem
     }
     
-    func showSemesters(_ send: AnyObject?) {
+    @objc func showSemesters(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
         barItem?.image = UIImage(named: "collapse")
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func hideSemesters(_ send: AnyObject?) {
+    @objc func hideSemesters(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
         barItem?.image = UIImage(named: "expand")

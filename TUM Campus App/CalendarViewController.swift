@@ -29,14 +29,14 @@ class CalendarViewController: UIViewController, DetailView {
     var stopRefreshBarButton = UIBarButtonItem()
     var todayBarButton = UIBarButtonItem()
     
-    func showToday(_ sender: AnyObject?) {
+    @objc func showToday(_ sender: AnyObject?) {
         daySelector?.setSelectedDate(.now, animated: true)
         updateTitle(.now)
         goToTime(.now, scrollToTime: true)
         plannerView.reloadAllEvents()
     }
     
-    func updateCalendar(_ sender: AnyObject?) {
+    @objc func updateCalendar(_ sender: AnyObject?) {
         navigationItem.rightBarButtonItems = [stopRefreshBarButton, todayBarButton]
         fetch(skippingCache: true)
     }

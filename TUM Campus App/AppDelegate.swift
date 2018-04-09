@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func setupAppearance() {
         UINavigationBar.appearance().barTintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: Constants.tumBlue]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: Constants.tumBlue]
         UINavigationBar.appearance().tintColor = Constants.tumBlue
     }
     
