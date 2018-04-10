@@ -33,15 +33,12 @@ post_install do |installer|
         if targets_swift_4.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.0'
-                if config.name == 'Release'
-                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
-                    else
-                    config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
-                end
             end
             else
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.3'
+            end
+            target.build_configurations.each do |config|
                 if config.name == 'Release'
                     config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
                     else
