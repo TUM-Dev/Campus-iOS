@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var secondTextField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     
+    var logoView: TUMLogoView?
     var manager: TumDataManager?
     
     @IBAction func skip() {
@@ -91,6 +92,17 @@ class LoginViewController: UIViewController {
         textField.layer.borderWidth = isHighlighted ? 1 : 0
         textField.layer.borderColor = isHighlighted ? UIColor.red.cgColor : UIColor(hexString: "0xC7C7CD").cgColor
     }
+    
+    private func setupLogo() {
+        let bundle = Bundle.main
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
+        guard let view = nib?.first else { return }
+        logoView = view
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        self.navigationItem.titleView = view
+    }
 }
 
 extension LoginViewController {
@@ -107,17 +119,7 @@ extension LoginViewController {
         confirmButton.setTitle("🍻", for: .normal)
         confirmButton.setTitle("🎓", for: .disabled)
 
-        let logo = UIImage(named: "logo-blue")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        self.navigationItem.titleView = imageView
-        if let bounds = imageView.superview?.bounds {
-            imageView.frame = CGRect(x: bounds.origin.x + 10,
-                                     y: bounds.origin.y + 10,
-                                     width: bounds.width - 20,
-                                     height: bounds.height-20)
-        }
-        imageView.clipsToBounds = true
+       setupLogo()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
