@@ -32,7 +32,6 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     var dataSources: [TUMDataSource] = []
     var manager: TumDataManager
     var delegate: TUMDataSourceDelegate?
-    let updateQueue = DispatchQueue(label: "ComposedDataSourceUpdateQueue", qos: .utility , attributes: .concurrent)
     
     init(manager: TumDataManager) {
         self.manager = manager
@@ -47,19 +46,15 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func refresh() {
-        updateQueue.async {
-            let group = DispatchGroup()
-            self.dataSources.forEach{$0.refresh(group: group)}
-            let res = group.wait(timeout: .now() + 10)
-            switch res {
-            case .success: DispatchQueue.main.async{ self.delegate?.didRefreshDataSources() }
-            case .timedOut: DispatchQueue.main.async{ self.delegate?.didTimeOutRefreshingDataSource() }
-            }
+        let group = DispatchGroup()
+        dataSources.forEach{$0.refresh(group: group)}
+        group.notify(queue: .main) {
+            self.delegate?.didRefreshDataSources()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.filter{!$0.isEmpty}.count
+        return dataSources.filter{!$0.isEmpty}.count - 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
