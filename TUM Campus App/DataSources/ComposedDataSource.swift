@@ -54,7 +54,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.filter{!$0.isEmpty}.count - 3
+        return dataSources.filter{!$0.isEmpty}.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
