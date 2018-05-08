@@ -9,8 +9,8 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
-    
+class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate, UICollectionViewDelegateFlowLayout {
+
     @IBOutlet weak var profileButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,6 +23,9 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     var search: UISearchController?
     var logoView: TUMLogoView?
     var binding: ImageViewBinding?
+    var flowLayout: UICollectionViewFlowLayout?
+    var collectionViewSizeChanged: Bool = false
+    let margin: CGFloat = 10.0
     
     
     //MARK: - UICollectionView
@@ -30,12 +33,9 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         manager = (self.navigationController as? CampusNavigationController)?.manager
-        
         setupCollectionView()
         setupLogo()
         setupSearch()
-        
-        //        refresh(nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,10 +48,35 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         updateProfileButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        refresh(sender: nil)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionViewSizeChanged = true
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if collectionViewSizeChanged {
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if collectionViewSizeChanged {
+            collectionViewSizeChanged = false
+            collectionView.performBatchUpdates({}, completion: nil)
+        }
+    }
+    
+    
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    
         if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
@@ -64,11 +89,12 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         }
     }
     
+    
     //MARK: - Setup UI
     
     func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.compactMap { $0 as? TUMLogoView }
         guard let view = nib?.first else { return }
         logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
@@ -77,16 +103,34 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         self.navigationItem.titleView = view
     }
     
+    @objc func refresh(sender: AnyObject?) {
+        composedDataSource?.refresh()
+//        TODO fix this
+//        if manager?.user?.data == nil || sender != nil {
+//            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
+//                self.updateProfileButton()
+//            }
+//        }
+    }
+    
     func setupCollectionView() {
         guard let manager = manager else { return }
         
         composedDataSource = ComposedDataSource(manager: manager)
         composedDataSource?.delegate = self
+        collectionView.delegate = self
         collectionView.dataSource = composedDataSource
-        composedDataSource?.refresh()
-        //        refresh.addTarget(self, action: #selector(CardViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: UIControlEvents.valueChanged)
         collectionView.addSubview(refresh)
+        flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
+    }
+    
+    func setupFlowLayout() {
+        guard let flowLayout = flowLayout else { return }
+        flowLayout.minimumInteritemSpacing = margin
+        flowLayout.minimumLineSpacing = margin
+        flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: 0.0, right: margin)
     }
     
     func setupSearch() {
@@ -105,28 +149,10 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         if #available(iOS 11.0, *) {
             self.navigationItem.searchController = search
         } else {
-            fatalError("This doesnt work anymore")
-            //            self.tableView.tableHeaderView = search?.searchBar
+            print("This doesnt work anymore")
+            //TODO Fix this
+            //self.tableView.tableHeaderView = search?.searchBar
         }
-    }
-
-//    @objc func refresh(_ sender: AnyObject?) {
-//        manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
-//            self.nextLecture = data.value?.flatMap({ $0 as? CalendarRow }).first
-//            self.cards = data.value ?? []
-//            self.collectionView.reloadData()
-//            self.refresh.endRefreshing()
-//        }
-//        if manager?.user?.data == nil || sender != nil {
-//            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
-//                self.updateProfileButton()
-//            }
-//        }
-//    }
-//
-    func didUpdateCards() {
-//        refresh(nil)
-        collectionView.reloadData()
     }
     
     func updateProfileButton() {
@@ -142,22 +168,47 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         }
     }
     
+    
     //MARK: - TUMDataSourceDelegate
     
-    func didRefreshDataSources() {
-        print("Did Refresh")
-        collectionView.reloadData()
+    func didBeginRefreshingDataSources() {
+        refresh.beginRefreshing()
     }
     
-    func didTimeOutRefreshingDataSource() {
-        print("Timeout :(")
-        //Handle error load again / Display error message
+    func didRefreshDataSources() {
+        collectionView.reloadData()
+        refresh.endRefreshing()
     }
+    
     
     //MARK: - DetailViewDelegate
     
     func dataManager() -> TumDataManager? {
         return manager
+    }
+    
+    
+    //MARK: - EditCardsViewControllerDelegate
+    
+    func didUpdateCards() {
+        //TODO fix this
+        refresh(sender: nil)
+    }
+    
+    
+    //MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = 200.0
+        let width: CGFloat
+        
+        if traitCollection.userInterfaceIdiom == .phone {
+            width = collectionView.frame.size.width
+        } else {
+            width = floor(collectionView.frame.size.width - 1.0 * margin) / 2
+        }
+        
+        return CGSize(width: width, height: height)
     }
     
 }

@@ -17,6 +17,7 @@ class CalendarDataSource: NSObject, TUMDataSource {
     var cardReuseID = "CalendarCard"
     var data: [CalendarRow] = []
     var isEmpty: Bool { return data.isEmpty }
+    var cardKey: CardKey { return manager.cardKey }
 
     
     init(manager: CalendarManager) {

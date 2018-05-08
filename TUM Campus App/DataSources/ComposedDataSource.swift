@@ -10,7 +10,7 @@ import UIKit
 
 protocol TUMDataSourceDelegate {
     func didRefreshDataSources()
-    func didTimeOutRefreshingDataSource()
+    func didBeginRefreshingDataSources()
 }
 
 protocol TUMDataSource: UICollectionViewDataSource {
@@ -18,6 +18,7 @@ protocol TUMDataSource: UICollectionViewDataSource {
     var cellReuseID: String {get}
     var cardReuseID: String {get}
     var isEmpty: Bool {get}
+    var cardKey: CardKey {get}
     func refresh(group: DispatchGroup)
 }
 
@@ -32,6 +33,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     var dataSources: [TUMDataSource] = []
     var manager: TumDataManager
     var delegate: TUMDataSourceDelegate?
+    var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
     
     init(manager: TumDataManager) {
         self.manager = manager
@@ -46,6 +48,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func refresh() {
+        delegate?.didBeginRefreshingDataSources()
         let group = DispatchGroup()
         dataSources.forEach{$0.refresh(group: group)}
         group.notify(queue: .main) {
@@ -54,24 +57,28 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSources.filter{!$0.isEmpty}.count
+        return dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let dataSource = dataSources[indexPath.row]
+        //TODO Maybe this is not that efficient...
+        let dataSource = dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath)
         let collectionViewFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: collectionView.frame.size)
-        //Think of a better way for more reuse...!
+        //TODO Think of a better way for more reuse...!
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let childCollectionView = UICollectionView(frame: collectionViewFrame, collectionViewLayout: layout)
         childCollectionView.dataSource = dataSource
         childCollectionView.register(dataSource.cellType , forCellWithReuseIdentifier: dataSource.cellReuseID)
         childCollectionView.backgroundColor = .red
+        childCollectionView.isPagingEnabled = true
+        //TODO appending a new subview every time
         cell.addSubview(childCollectionView)
 
         return cell
     }
+
 }
 
 

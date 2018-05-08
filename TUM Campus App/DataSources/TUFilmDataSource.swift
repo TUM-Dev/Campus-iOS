@@ -17,6 +17,7 @@ class TUFilmDataSource: NSObject, TUMDataSource {
     var cardReuseID = "TUFilmCard"
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
+    var cardKey: CardKey { return manager.cardKey }
 
     
     init(manager: TUFilmNewsManager) {

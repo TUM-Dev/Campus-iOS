@@ -17,6 +17,7 @@ class TuitionDataSource: NSObject, TUMDataSource {
     var cardReuseID = "TuitionCard"
     var data: [Tuition] = []
     var isEmpty: Bool { return data.isEmpty }
+    var cardKey: CardKey { return manager.cardKey }
 
     
     init(manager: TuitionStatusManager) {

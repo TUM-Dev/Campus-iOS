@@ -18,7 +18,8 @@ class NewsDataSource: NSObject, TUMDataSource {
     var cardReuseID = "NewsCard"
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
-    
+    var cardKey: CardKey { return manager.cardKey }
+
     
     init(manager newsManager: NewsManager) {
         self.manager = newsManager
