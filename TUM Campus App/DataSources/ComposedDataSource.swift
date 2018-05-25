@@ -14,35 +14,51 @@ protocol TUMDataSourceDelegate {
 }
 
 protocol TUMDataSource: UICollectionViewDataSource {
-    var cellType: AnyClass {get set}
+    var sectionColor: UIColor {get}
+    var cellType: AnyClass {get}
     var cellReuseID: String {get}
     var cardReuseID: String {get}
     var isEmpty: Bool {get}
     var cardKey: CardKey {get}
+    var flowLayoutDelegate: UICollectionViewDelegateFlowLayout {get}
+    var preferredHeight: CGFloat {get}
     func refresh(group: DispatchGroup)
 }
 
 extension TUMDataSource {
-    var cellReuseID: String { return String(describing: self)+"Cell" }
-    var cardReuseID: String { return String(describing: self) }
+    var sectionColor: UIColor { return Constants.tumBlue }
+    var cellReuseID: String {
+        return cardKey.description.replacingOccurrences(of: " ", with: "")+"Cell"
+    }
+    var cardReuseID: String {
+        return cardKey.description.replacingOccurrences(of: " ", with: "")+"Card"
+    }
+    var preferredHeight: CGFloat { return 220.0 }
 }
 
 
-class ComposedDataSource: NSObject, UICollectionViewDataSource {
+class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var dataSources: [TUMDataSource] = []
     var manager: TumDataManager
     var delegate: TUMDataSourceDelegate?
     var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
+    let margin: CGFloat = 20.0
+
     
     init(manager: TumDataManager) {
         self.manager = manager
         self.dataSources = [
             NewsDataSource(manager: manager.newsManager),
+            NewsSpreadDataSource(manager: manager.newsSpreadManager),
             CafeteriaDataSource(manager: manager.cafeteriaManager),
             TUFilmDataSource(manager: manager.tuFilmNewsManager),
             CalendarDataSource(manager: manager.calendarManager),
             TuitionDataSource(manager: manager.tuitionManager),
+            MVGStationDataSource(manager: manager.mvgManager),
+            GradesDataSource(manager: manager.gradesManager),
+            LecturesDataSource(manager: manager.lecturesManager),
+            StudyRoomsDataSource(manager: manager.studyRoomsManager),
         ]
         super.init()
     }
@@ -57,28 +73,56 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        TODO
+//        dataSources.sorted { (<#TUMDataSource#>, <#TUMDataSource#>) -> Bool in <#code#> }
         return dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //TODO Maybe this is not that efficient...
         let dataSource = dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath)
-        let collectionViewFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: collectionView.frame.size)
-        //TODO Think of a better way for more reuse...!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dataSource.cardReuseID, for: indexPath) as! DataSourceCollectionViewCell
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let childCollectionView = UICollectionView(frame: collectionViewFrame, collectionViewLayout: layout)
-        childCollectionView.dataSource = dataSource
-        childCollectionView.register(dataSource.cellType , forCellWithReuseIdentifier: dataSource.cellReuseID)
-        childCollectionView.backgroundColor = .red
-        childCollectionView.isPagingEnabled = true
-        //TODO appending a new subview every time
-        cell.addSubview(childCollectionView)
 
+        cell.collectionView.register(UINib(nibName: String(describing: dataSource.cellType), bundle: .main), forCellWithReuseIdentifier: dataSource.cellReuseID)
+        cell.collectionView.collectionViewLayout = layout
+        cell.cardNameLabel.text = dataSource.cardKey.description.uppercased()
+        cell.cardNameLabel.textColor = dataSource.sectionColor
+        cell.collectionView.backgroundColor = .clear
+        cell.collectionView.dataSource = dataSource
+        cell.collectionView.delegate = dataSource.flowLayoutDelegate
+        cell.collectionView.reloadData()
+        
         return cell
     }
-
+    
+    //MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return margin
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let dataSource = dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}[indexPath.row]
+        let height: CGFloat
+        let width: CGFloat
+        
+        if collectionView.traitCollection.userInterfaceIdiom == .phone {
+            height = dataSource.preferredHeight
+            width = collectionView.frame.size.width
+        } else {
+            height = 400
+            width = floor(collectionView.frame.size.width - 1.0 * margin) / 2
+        }
+        
+        return CGSize(width: width, height: height)
+    }
+    
 }
 
 

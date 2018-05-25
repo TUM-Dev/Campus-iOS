@@ -12,16 +12,22 @@ import UIKit
 class TuitionDataSource: NSObject, TUMDataSource {
     
     var manager: TuitionStatusManager
-    var cellType: AnyClass = TuitionCollectionViewCell.self
-    var cellReuseID = "TuitionCardCell"
-    var cardReuseID = "TuitionCard"
+    let cellType: AnyClass = TuitionCollectionViewCell.self
     var data: [Tuition] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
+    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
+    let dateFormatter = DateFormatter()
+    let numberFormatter = NumberFormatter()
+    let preferredHeight: CGFloat = 120.0
 
     
     init(manager: TuitionStatusManager) {
         self.manager = manager
+        self.dateFormatter.dateStyle = .short
+        self.dateFormatter.timeStyle = .none
+        self.numberFormatter.numberStyle = .currency
+        self.numberFormatter.currencySymbol = "€"
         super.init()
     }
     
@@ -38,9 +44,11 @@ class TuitionDataSource: NSObject, TUMDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TuitionCollectionViewCell
+        let tuition = data[indexPath.row]
         
-        cell.backgroundColor = .orange
+        cell.balanceLabel.text = numberFormatter.string(from: NSNumber(value: tuition.soll))
+        cell.deadlineLabel.text = dateFormatter.string(from: tuition.frist)
         
         return cell
     }

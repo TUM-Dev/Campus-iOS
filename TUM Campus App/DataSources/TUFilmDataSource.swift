@@ -12,12 +12,11 @@ import UIKit
 class TUFilmDataSource: NSObject, TUMDataSource {
     
     var manager: TUFilmNewsManager
-    var cellType: AnyClass = TUFilmCollectionViewCell.self
-    var cellReuseID = "TUFilmCardCell"
-    var cardReuseID = "TUFilmCard"
+    let cellType: AnyClass = TUFilmCollectionViewCell.self
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
+    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
 
     
     init(manager: TUFilmNewsManager) {
@@ -39,10 +38,13 @@ class TUFilmDataSource: NSObject, TUMDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath)
-
-        cell.backgroundColor = .cyan
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
+        let movie = data[indexPath.row]
         
+        cell.titleLabel.text = String(movie.text.split(separator: ":").last ?? "")
+        cell.binding = movie.image.bind(to: cell.moviePosterImageView, default: #imageLiteral(resourceName: "movie"))
+        cell.moviePosterImageView.clipsToBounds = true
+
         return cell
     }
     
