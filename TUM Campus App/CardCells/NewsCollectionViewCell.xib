@@ -6,6 +6,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,24 +16,82 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="NewsCollectionViewCell" customModule="Campus" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="406" height="84"/>
+            <rect key="frame" x="0.0" y="0.0" width="477" height="162"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="406" height="84"/>
+                <rect key="frame" x="0.0" y="0.0" width="477" height="162"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HjF-ox-x7A">
-                        <rect key="frame" x="20" y="20" width="43" height="44"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="JSu-p4-977" customClass="RoundedImageView" customModule="Campus" customModuleProvider="target">
+                        <rect key="frame" x="397" y="0.0" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="JSu-p4-977" secondAttribute="height" id="Bgz-Cv-bOc"/>
+                            <constraint firstAttribute="width" constant="80" id="JPU-dd-JBO"/>
+                            <constraint firstAttribute="height" constant="80" id="azT-6x-YA6"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZc-nf-g33">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="20.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalCompressionResistancePriority="748" verticalCompressionResistancePriority="748" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Detail" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOG-eJ-hqY">
+                        <rect key="frame" x="0.0" y="20.5" width="397" height="128"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEr-h4-tzo">
+                        <rect key="frame" x="0.0" y="148.5" width="376" height="13.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAS-YP-z5M">
+                        <rect key="frame" x="384" y="148.5" width="93" height="13.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="JSu-p4-977" firstAttribute="leadingMargin" secondItem="vEr-h4-tzo" secondAttribute="trailing" constant="29" id="2DS-4w-PBd"/>
+                <constraint firstItem="nAS-YP-z5M" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JSu-p4-977" secondAttribute="bottom" constant="8" id="9Sh-Tj-PfG"/>
+                <constraint firstAttribute="trailing" secondItem="nAS-YP-z5M" secondAttribute="trailing" id="Dm2-9E-QLJ"/>
+                <constraint firstItem="tOG-eJ-hqY" firstAttribute="top" secondItem="rZc-nf-g33" secondAttribute="bottom" id="G2u-6W-fGC"/>
+                <constraint firstItem="vEr-h4-tzo" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="JQb-UO-Lsk"/>
+                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="JSu-p4-977" secondAttribute="bottom" id="PQi-Jy-vQ4"/>
+                <constraint firstItem="tOG-eJ-hqY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="PSR-1j-yMn"/>
+                <constraint firstItem="rZc-nf-g33" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WkA-bI-qbH"/>
+                <constraint firstItem="nAS-YP-z5M" firstAttribute="leading" secondItem="vEr-h4-tzo" secondAttribute="trailing" constant="8" id="bty-TT-S1X"/>
+                <constraint firstItem="JSu-p4-977" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cDe-s6-5E7"/>
+                <constraint firstItem="JSu-p4-977" firstAttribute="leading" secondItem="tOG-eJ-hqY" secondAttribute="trailing" id="eoF-I4-lge"/>
+                <constraint firstItem="rZc-nf-g33" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lDA-lZ-G0u"/>
+                <constraint firstItem="JSu-p4-977" firstAttribute="trailing" secondItem="gTV-IL-0wX" secondAttribute="trailing" id="lhZ-6X-Jhd"/>
+                <constraint firstItem="JSu-p4-977" firstAttribute="leading" secondItem="rZc-nf-g33" secondAttribute="trailing" constant="4" id="mtv-F0-bxq"/>
+                <constraint firstAttribute="bottomMargin" secondItem="nAS-YP-z5M" secondAttribute="bottom" id="pTU-fk-vkF"/>
+                <constraint firstItem="vEr-h4-tzo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pYb-wN-L9c"/>
+                <constraint firstItem="vEr-h4-tzo" firstAttribute="top" secondItem="tOG-eJ-hqY" secondAttribute="bottom" id="t76-5r-abw"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="406" height="84"/>
-            <point key="canvasLocation" x="61" y="62"/>
+            <size key="customSize" width="566" height="237"/>
+            <connections>
+                <outlet property="dateLabel" destination="vEr-h4-tzo" id="VCf-PG-Qy4"/>
+                <outlet property="detailLabel" destination="tOG-eJ-hqY" id="YBj-xE-bcq"/>
+                <outlet property="imageView" destination="JSu-p4-977" id="rSv-wV-0Hd"/>
+                <outlet property="sourceLabel" destination="nAS-YP-z5M" id="YtN-6B-7qZ"/>
+                <outlet property="titleLabel" destination="rZc-nf-g33" id="rTT-JB-xWV"/>
+            </connections>
+            <point key="canvasLocation" x="79.5" y="209"/>
         </collectionViewCell>
     </objects>
 </document>
