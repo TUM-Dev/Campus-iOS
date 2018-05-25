@@ -9,10 +9,11 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate, UICollectionViewDelegateFlowLayout {
+class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
 
     @IBOutlet weak var profileButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     
     var manager: TumDataManager?
     var composedDataSource: ComposedDataSource?
@@ -25,7 +26,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     var binding: ImageViewBinding?
     var flowLayout: UICollectionViewFlowLayout?
     var collectionViewSizeChanged: Bool = false
-    let margin: CGFloat = 10.0
+    let margin: CGFloat = 20.0
     
     
     //MARK: - UICollectionView
@@ -105,12 +106,11 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     
     @objc func refresh(sender: AnyObject?) {
         composedDataSource?.refresh()
-//        TODO fix this
-//        if manager?.user?.data == nil || sender != nil {
-//            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
-//                self.updateProfileButton()
-//            }
-//        }
+        if manager?.user?.data == nil || sender != nil {
+            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
+                self.updateProfileButton()
+            }
+        }
     }
     
     func setupCollectionView() {
@@ -121,7 +121,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
         refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: UIControlEvents.valueChanged)
-        collectionView.addSubview(refresh)
+        collectionView.refreshControl = refresh
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
     }
@@ -147,11 +147,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         search?.hidesNavigationBarDuringPresentation = true
         
         if #available(iOS 11.0, *) {
-            self.navigationItem.searchController = search
-        } else {
-            print("This doesnt work anymore")
-            //TODO Fix this
-            //self.tableView.tableHeaderView = search?.searchBar
+            navigationItem.searchController = search
         }
     }
     
@@ -168,6 +164,38 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
         }
     }
     
+    //MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return margin
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+        guard let composedDataSource = composedDataSource else {
+            return CGSize(width: collectionView.frame.size.width, height: 400)
+        }
+        
+        let dataSource = composedDataSource.dataSources.filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
+        
+        let height: CGFloat
+        let width: CGFloat
+        
+        if collectionView.traitCollection.userInterfaceIdiom == .phone {
+            height = dataSource.preferredHeight
+            width = collectionView.frame.size.width
+        } else {
+            height = 400
+            width = floor(collectionView.frame.size.width - 1.0 * margin) / 2
+        }
+        
+        return CGSize(width: width, height: height)
+    }
+    
     
     //MARK: - TUMDataSourceDelegate
     
@@ -176,8 +204,8 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     }
     
     func didRefreshDataSources() {
-        collectionView.reloadData()
         refresh.endRefreshing()
+        collectionView.reloadData()
     }
     
     
@@ -191,24 +219,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, TUMDataSou
     //MARK: - EditCardsViewControllerDelegate
     
     func didUpdateCards() {
-        //TODO fix this
         refresh(sender: nil)
-    }
-    
-    
-    //MARK: - UICollectionViewDelegateFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = 200.0
-        let width: CGFloat
-        
-        if traitCollection.userInterfaceIdiom == .phone {
-            width = collectionView.frame.size.width
-        } else {
-            width = floor(collectionView.frame.size.width - 1.0 * margin) / 2
-        }
-        
-        return CGSize(width: width, height: height)
     }
     
 }
