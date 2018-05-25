@@ -41,7 +41,7 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
     
     @objc func refresh() {
         delegate?.dataManager()?.mvgManager.fetch().onSuccess(in: .main) { stations in
-            self.nearestStations = stations
+            self.nearestStations = stations.map { $0.station }
             self.tableView.refreshControl?.endRefreshing()
         }
     }

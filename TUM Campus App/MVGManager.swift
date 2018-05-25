@@ -9,11 +9,17 @@
 import CoreLocation
 import Sweeft
 
-final class MVGManager: Manager, SimpleSingleManager {
+final class MVGManager: MemoryCachedManager, SingleItemCachedManager, CardManager {
     
     typealias DataType = Station
     
     var config: Config
+    var cardKey: CardKey = .mvg
+    var cache: Cache<[Station]>?
+    
+    var defaultMaxCache: CacheTime {
+        return .time(.oneMinute)
+    }
     
     var requiresLogin: Bool {
         return false
@@ -23,8 +29,17 @@ final class MVGManager: Manager, SimpleSingleManager {
         self.config = config
     }
     
+    func performRequest(maxCache: CacheTime) -> Promise<[Station], APIError> {
+        return config.mvg.doObjectsRequest(
+            to: .getNearbyStations,
+            queries: ["latitude" : location.coordinate.latitude, "longitude" : location.coordinate.longitude],
+            at: ["locations"],
+            maxCacheTime: maxCache).map { $0.sorted(byLocation: \.location)
+        }
+    }
+    
     func fetchSingle() -> Response<DataElement?> {
-        return fetch().flatMap { stations in
+        return prefetch().flatMap { stations in
             guard let station = stations.first else { return .successful(with: nil) }
             return self.fetch(for: station).map { departures in
                 return DetailedStation(station: station, departures: departures)
@@ -32,7 +47,18 @@ final class MVGManager: Manager, SimpleSingleManager {
         }
     }
     
-    func fetch() -> Response<[Station]> {
+    func fetch() -> Response<[DetailedStation]> {
+        return prefetch().flatMap { stations in
+            return stations.flatMap { station in
+                return self.fetch(for: station).map { departures in
+                    return DetailedStation(station: station, departures: departures)
+                }
+            }.bulk
+        }
+    }
+    
+    
+    func prefetch() -> Response<[Station]> {
         return config.mvg.doObjectsRequest(to: .getNearbyStations,
                                            queries: ["latitude" : location.coordinate.latitude,
                                                      "longitude" : location.coordinate.longitude],

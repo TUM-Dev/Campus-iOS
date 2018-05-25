@@ -61,6 +61,16 @@ extension News.Source {
         switch self {
         case .movies:
             return Constants.tuFilmTitleColor
+        case .impulsiv:
+            return Constants.tumBlue
+        case News.Source.newsSpread:
+            return .orange
+        case News.Source.pressNews:
+            return .blue
+        case News.Source.studentNews:
+            return .red
+        case News.Source.tumNews:
+            return Constants.tumBlue
         default:
             return Constants.newsTitleColor
         }
@@ -70,6 +80,16 @@ extension News.Source {
         switch self {
         case .movies:
             return "TU Film"
+        case .impulsiv:
+            return "Impulsiv"
+        case News.Source.newsSpread:
+            return "Newsspread"
+        case News.Source.pressNews:
+            return "Press News"
+        case News.Source.studentNews:
+            return "Student News"
+        case News.Source.tumNews:
+            return "TUM News"
         default:
             return "News"
         }
