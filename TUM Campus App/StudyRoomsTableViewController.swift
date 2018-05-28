@@ -35,7 +35,7 @@ class StudyRoomsTableViewController: UITableViewController, DetailView {
         }
     }
     
-    func refresh(_ sender: AnyObject?) {
+    @objc func refresh(_ sender: AnyObject?) {
         delegate?.dataManager()?.studyRoomsManager.fetch().onSuccess(in: .main) { result in
             self.roomGroups = result
             self.currentGroup = self.roomGroups.first
@@ -102,14 +102,14 @@ extension StudyRoomsTableViewController: DetailViewDelegate {
 
 extension StudyRoomsTableViewController {
     
-    func showRooms(_ send: AnyObject?) {
+    @objc func showRooms(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(StudyRoomsTableViewController.hideRooms(_:))
         barItem?.image = UIImage(named: "collapse")
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func hideRooms(_ send: AnyObject?) {
+    @objc func hideRooms(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(StudyRoomsTableViewController.showRooms(_:))
         barItem?.image = UIImage(named: "expand")

@@ -21,7 +21,7 @@ class PersonDetailTableViewController: UITableViewController, DetailView {
     var addingContact = false
     
     
-    func addContact(_ sender: AnyObject?) {
+    @objc func addContact(_ sender: AnyObject?) {
         let handler = { () in
             DoneHUD.showInView(self.view, message: "Contact Added")
         }

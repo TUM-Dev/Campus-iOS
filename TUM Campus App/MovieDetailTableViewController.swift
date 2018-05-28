@@ -88,14 +88,14 @@ extension MovieDetailTableViewController {
 
 extension MovieDetailTableViewController {
    
-    func showMovies(_ send: AnyObject?) {
+    @objc func showMovies(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(MovieDetailTableViewController.hideMovies(_:))
         barItem?.image = UIImage(named: "collapse")
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func hideMovies(_ send: AnyObject?) {
+    @objc func hideMovies(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
         barItem?.image = UIImage(named: "expand")

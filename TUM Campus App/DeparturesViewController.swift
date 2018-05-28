@@ -45,7 +45,7 @@ class DeparturesViewController : UITableViewController, DetailView {
         refresh()
     }
     
-    func refresh() {
+    @objc func refresh() {
         delegate?.dataManager()?.mvgManager.fetch(for: station).onSuccess(in: .main) { departures in
             self.departures = departures
             self.tableView.refreshControl?.endRefreshing()
@@ -58,7 +58,7 @@ class DeparturesViewController : UITableViewController, DetailView {
         }
     }
     
-    func openInMaps() {
+    @objc func openInMaps() {
         // TODO add a pin to the map
         
         // https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
