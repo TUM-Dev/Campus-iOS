@@ -22,7 +22,7 @@ class CardViewController: UITableViewController, EditCardsViewControllerDelegate
     
     var binding: ImageViewBinding?
     
-    func refresh(_ sender: AnyObject?) {
+    @objc func refresh(_ sender: AnyObject?) {
         manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
             self.nextLecture = data.value?.flatMap({ $0 as? CalendarRow }).first
             self.cards = data.value ?? []

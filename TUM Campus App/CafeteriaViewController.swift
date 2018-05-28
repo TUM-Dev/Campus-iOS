@@ -97,7 +97,7 @@ extension CafeteriaViewController {
 
 extension CafeteriaViewController {
     
-    func showCafeterias(_ send: AnyObject?) {
+    @objc func showCafeterias(_ send: AnyObject?) {
         pickerView.show()
         barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
         barItem?.image = UIImage(named: "collapse")
@@ -105,7 +105,7 @@ extension CafeteriaViewController {
         
     }
     
-    func hideCafeterias(_ send: AnyObject?) {
+    @objc func hideCafeterias(_ send: AnyObject?) {
         pickerView.dismiss()
         barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
         barItem?.image = UIImage(named: "expand")
@@ -151,15 +151,15 @@ extension CafeteriaViewController {
 
 extension CafeteriaViewController: ASWeekSelectorViewDelegate {
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, didSelect date: Date!) {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, didSelect date: Date) {
         currentDate = date
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, numberColorFor date: Date!) -> UIColor! {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, numberColorFor date: Date) -> UIColor? {
         return Constants.tumBlue
     }
     
-    func weekSelector(_ weekSelector: ASWeekSelectorView!, showIndicatorFor date: Date!) -> Bool {
+    func weekSelector(_ weekSelector: ASWeekSelectorView, showIndicatorFor date: Date) -> Bool {
         return currentCafeteria.map { !$0.getMenusForDate(date).isEmpty } ?? false
     }
     

@@ -38,7 +38,7 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
         }
     }
     
-    func refresh(_ sender: AnyObject? = nil) {
+    @objc func refresh(_ sender: AnyObject? = nil) {
         fetch(skipCache: sender != nil)?.onResult(in: .main) { result in
             self.values = result.value ?? []
             self.refresh.endRefreshing()

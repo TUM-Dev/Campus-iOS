@@ -49,7 +49,7 @@ extension WaitForTokenViewController {
     }
     
     func done() {
-        button.startFinishAnimation(delay: TimeInterval(0)) {
+        button.startFinishAnimation(TimeInterval(0)) {
             if self.presentingViewController != nil {
                 self.dismiss(animated: true, completion: nil)
             } else {

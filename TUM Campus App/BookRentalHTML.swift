@@ -54,7 +54,7 @@ extension BookRentalHTML {
 extension BookRentalHTML: DataRepresentable {
     
     init?(data: Data) {
-        guard let html = Kanna.HTML(html: data, encoding: .utf8) else {
+        guard let html = try? Kanna.HTML(html: data, encoding: .utf8) else {
             return nil
         }
         self.init(html: html)
