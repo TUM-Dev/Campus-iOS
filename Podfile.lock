@@ -20,7 +20,7 @@ DEPENDENCIES:
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
-  - Sweeft (from `https://github.com/TG908/Sweeft.git`, tag `0.15.3`)
+  - Sweeft (~> 0.15.2)
   - SWXMLHash (~> 4.6.0)
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
 
@@ -54,10 +54,10 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: 89d3d1b18635c862a6284483bae9b235a450f049
+  Sweeft: 07c455af2b0b9f8d282fd92571fbabb0d1632436
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: e9c19aa1c2bb2ed0927d4b10b8f44de4d61707ed
+PODFILE CHECKSUM: eeeb8249aadfffb51b76edeaf806aee4b14770c7
 
 COCOAPODS: 1.4.0
