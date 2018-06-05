@@ -25,8 +25,6 @@ class TuitionCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

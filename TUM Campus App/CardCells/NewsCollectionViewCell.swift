@@ -28,7 +28,6 @@ class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     
-    
     var binding: ImageViewBinding?
 
     override func awakeFromNib() {

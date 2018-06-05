@@ -39,7 +39,6 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
         super.init()
     }
     
-    
     func refresh(group: DispatchGroup) {
         group.enter()
         manager.fetch().onSuccess(in: .main) { data in
