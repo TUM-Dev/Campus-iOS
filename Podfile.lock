@@ -9,7 +9,7 @@ PODS:
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.15.2)
+  - Sweeft (0.15.3)
   - SWXMLHash (4.6.0)
   - TKSubmitTransition (2.0)
 
@@ -20,16 +20,27 @@ DEPENDENCIES:
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
-  - Sweeft (~> 0.15.2)
+  - Sweeft (from `https://github.com/TG908/Sweeft.git`, branch `master`)
   - SWXMLHash (~> 4.6.0)
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ASWeekSelectorView
+    - AYSlidingPickerView
+    - CalendarLib
+    - Fuzzi
+    - Kanna
+    - OrderedDictionary
+    - OSCache
+    - SWXMLHash
 
 EXTERNAL SOURCES:
   PZPullToRefresh:
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   Sweeft:
+    :branch: master
     :git: https://github.com/TG908/Sweeft.git
-    :tag: 0.15.3
   TKSubmitTransition:
     :branch: swift4
     :git: https://github.com/entotsu/TKSubmitTransition.git
@@ -39,8 +50,8 @@ CHECKOUT OPTIONS:
     :commit: 34f9e5cb846d31f0e56a6fe4efb1dcf8f0f70093
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   Sweeft:
+    :commit: b57b02d909c7540a077314216c13b6f85ef5ecb6
     :git: https://github.com/TG908/Sweeft.git
-    :tag: 0.15.3
   TKSubmitTransition:
     :commit: 29fac6072451a4def5cde567075bfc62a728bb1f
     :git: https://github.com/entotsu/TKSubmitTransition.git
@@ -54,10 +65,10 @@ SPEC CHECKSUMS:
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: 07c455af2b0b9f8d282fd92571fbabb0d1632436
+  Sweeft: 7421bac377e41a4678cdb711822536445e404091
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: eeeb8249aadfffb51b76edeaf806aee4b14770c7
+PODFILE CHECKSUM: 03da9314d7f0d962d5219e4629a3a62d446aa20a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

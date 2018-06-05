@@ -5,7 +5,7 @@ platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
-    pod 'Sweeft', '~> 0.15.2'
+    pod 'Sweeft', :git => 'https://github.com/TG908/Sweeft.git', :branch => 'master'
     pod 'Fuzzi', '~> 0.1.1'
     pod 'AYSlidingPickerView'
     pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'
