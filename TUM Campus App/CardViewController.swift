@@ -28,45 +28,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var collectionViewSizeChanged: Bool = false
     let margin: CGFloat = 20.0
     
-    @objc func refresh(_ sender: AnyObject?) {
-        manager?.loadCards(skipCache: sender != nil).onResult(in: .main) { data in
-            self.nextLecture = data.value?.flatMap({ $0 as? CalendarRow }).first
-            self.cards = data.value ?? []
-            self.tableView.reloadData()
-            self.refresh.endRefreshing()
-        }
-        if manager?.user?.data == nil || sender != nil {
-            manager?.userDataManager.fetch(skipCache: sender != nil).onResult(in: .main) { _ in
-                self.updateProfileButton()
-            }
-        }
-    }
-    
-    func didUpdateCards() {
-        refresh(nil)
-        tableView.reloadData()
-    }
-    
-    func updateProfileButton() {
-        if let data = manager?.user?.data {
-            binding = data.avatar.bind(to: probileButtonItem, default: #imageLiteral(resourceName: "contact")) { image in
-                
-                let squared = image.squared()
-                return squared.withRoundedCorners(radius: squared.size.height / 2.0, borderSize: 0.0)
-            }
-        } else {
-            binding = nil
-            probileButtonItem.image = #imageLiteral(resourceName: "contact")
-        }
-    }
-    
-}
-
-extension CardViewController: DetailViewDelegate {
-    
-    func dataManager() -> TumDataManager? {
-        return manager
-    }
     
     //MARK: - UICollectionView
     
@@ -262,3 +223,4 @@ extension CardViewController: DetailViewDelegate {
     }
     
 }
+
