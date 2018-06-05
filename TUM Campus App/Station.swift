@@ -106,10 +106,10 @@ extension Station: Deserializable {
         self.distance = json["distance"].int
         
         self.lines = lines.flatMap { key, value -> [Line] in
-            guard let numbers = value.array?.flatMap({ $0.int }) else {
+            guard let numbers = value.array?.compactMap({ $0.int }) else {
                 return []
             }
-            return numbers.flatMap { Line(key: key, number: $0) }
+            return numbers.compactMap { Line(key: key, number: $0) }
         }
     }
     
