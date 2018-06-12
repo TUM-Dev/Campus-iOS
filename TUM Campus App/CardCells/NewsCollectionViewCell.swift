@@ -23,7 +23,6 @@ import UIKit
 class NewsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var detailLabel: UITextView!
     @IBOutlet weak var imageView: RoundedImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!

@@ -29,7 +29,7 @@ class NewsDataSource: NSObject, TUMDataSource {
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 200.0
+    let preferredHeight: CGFloat = 160.0
     
     init(manager newsManager: NewsManager) {
         self.manager = newsManager
@@ -55,7 +55,6 @@ class NewsDataSource: NSObject, TUMDataSource {
         let newsElement = data[indexPath.row]
         
         cell.titleLabel.text = newsElement.title
-        cell.detailLabel.text = newsElement.text
         cell.dateLabel.text = dateFormatter.string(from: newsElement.date)
         cell.binding = newsElement.image.bind(to: cell.imageView, default: #imageLiteral(resourceName: "movie"))
         cell.sourceLabel.text = newsElement.source.title
