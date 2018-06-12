@@ -20,13 +20,14 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
     
     override func loadView() {
         super.loadView()
-        
         title = "Nearby Stations"
         
         tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.beginRefreshing()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem =
+            UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,7 +58,6 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         return tableView.dequeueReusableCell(withIdentifier: "station", for: indexPath)
     }
     

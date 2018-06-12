@@ -32,16 +32,17 @@ class DeparturesViewController : UITableViewController, DetailView {
     
     override func loadView() {
         super.loadView()
-        
         title = station.name
         
-        tableView.register(DepartureTableViewCell.self, forCellReuseIdentifier: DepartureTableViewCell.Identifier)
+        tableView.register(DepartureTableViewCell.self,
+                           forCellReuseIdentifier: DepartureTableViewCell.Identifier)
         
         tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.beginRefreshing()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "🗺️", style: .plain, target: self, action: #selector(openInMaps))
-        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(title: "Maps", style: .plain, target: self, action: #selector(openInMaps))
         refresh()
     }
     
@@ -83,9 +84,8 @@ class DeparturesViewController : UITableViewController, DetailView {
         return departures?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = DepartureTableViewCell(departure: departures![indexPath.row])
-        
-        return cell
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return DepartureTableViewCell(departure: departures![indexPath.row])
     }
 }

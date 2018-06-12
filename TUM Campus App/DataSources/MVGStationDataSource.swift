@@ -57,8 +57,8 @@ class MVGStationDataSource: NSObject, TUMDataSource {
         let departureDataSource = departureDataSources[indexPath.row]
 //        TODO distance
         
-        let uiNib = UINib(nibName: String(describing: departureDataSource.cellType), bundle: .main)
-        cell.collectionView.register(UINib, forCellWithReuseIdentifier: departureDataSource.cellReuseID)
+        let nib = UINib(nibName: String(describing: departureDataSource.cellType), bundle: .main)
+        cell.collectionView.register(nib, forCellWithReuseIdentifier: departureDataSource.cellReuseID)
         
         cell.stationNameLabel.text = station.station.name
         cell.collectionView.dataSource = departureDataSource
