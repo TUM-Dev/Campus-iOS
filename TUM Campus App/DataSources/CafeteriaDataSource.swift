@@ -34,7 +34,6 @@ class CafeteriaDataSource: NSObject, TUMDataSource {
     var menuDataSources: [MenuDataSource] = []
     let distanceFormatter = MKDistanceFormatter()
     
-    
     init(manager: CafeteriaManager) {
         self.manager = manager
         self.distanceFormatter.unitStyle = .abbreviated

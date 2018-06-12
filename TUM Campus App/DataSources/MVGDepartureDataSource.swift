@@ -41,8 +41,10 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! MVGDepartureCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! MVGDepartureCollectionViewCell
         let departure = data[indexPath.row]
         
         cell.destinationLabel.text = departure.destination
@@ -55,7 +57,6 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
         }
         
         cell.departureLabel.text = dateComponentsFormatter.string(from: departure.departureTime.timeIntervalSinceNow) ?? ""
-        
         return cell
     }
     

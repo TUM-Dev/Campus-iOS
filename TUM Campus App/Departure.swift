@@ -33,7 +33,6 @@ struct Departure {
     
     let station: Station
     
-    
     init?(json: JSON, station: Station) {
         guard let departureTime = json["departureTime"].int,
             let product = json["product"].string,
@@ -43,7 +42,6 @@ struct Departure {
             let lineBackgroundColor = json["lineBackgroundColor"].string,
             let departureId = json["departureId"].int,
             let sev = json["sev"].double?.bool else {
-                
                 return nil
         }
         

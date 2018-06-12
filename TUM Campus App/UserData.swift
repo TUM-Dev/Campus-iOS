@@ -72,6 +72,7 @@ final class UserData: DataElement {
         var emails = [String]()
         var websites = [String]()
         var fax = [String]()
+        
         for item in contactInfo {
             switch item.0 {
             case .Email: emails.append(item.1)
@@ -91,9 +92,9 @@ final class UserData: DataElement {
         contact.organizationName = "Technische Universität München"
         
         avatar.fetch().onResult(in: .main) { result in
-            
-            contact.imageData = result.value?.flatMap { $0 }
-                                             .flatMap { UIImagePNGRepresentation($0) }
+            contact.imageData = result.value?
+                .flatMap { $0 }
+                .flatMap { UIImagePNGRepresentation($0) }
             
             let store = CNContactStore()
             let saveRequest = CNSaveRequest()

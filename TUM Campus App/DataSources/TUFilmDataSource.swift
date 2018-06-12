@@ -29,7 +29,6 @@ class TUFilmDataSource: NSObject, TUMDataSource {
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
-
     
     init(manager: TUFilmNewsManager) {
         self.manager = manager
@@ -49,7 +48,6 @@ class TUFilmDataSource: NSObject, TUMDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
         let movie = data[indexPath.row]
         

@@ -37,7 +37,6 @@ final class Cafeteria: DataElement {
     }
 
     init(id: String, name: String, address: String, latitude: Double, longitude: Double) {
-        
         self.id = id
         self.name = name
         self.address = address
@@ -71,13 +70,11 @@ final class Cafeteria: DataElement {
 extension Cafeteria: Deserializable {
     
     convenience init?(from json: JSON) {
-        
         guard let id = json["id"].string,
             let name = json["name"].string,
             let address = json["address"].string,
             let latitude = json["latitude"].string.flatMap(Double.init),
             let longitude = json["longitude"].string.flatMap(Double.init) else {
-                
             return nil
         }
         

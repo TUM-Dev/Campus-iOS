@@ -48,7 +48,6 @@ final class Movie: DataElement {
          created: Date,
          airDate: Date,
          poster: String) {
-        
         self.name = name
         self.id = id
         self.runtime = runtime
@@ -76,7 +75,6 @@ final class Movie: DataElement {
 extension Movie: Deserializable {
     
     convenience init?(from json: JSON) {
-        
         guard let ratingString = json["rating"].string,
             let rating = Double(ratingString),
             let description = json["description"].string,
@@ -91,7 +89,6 @@ extension Movie: Deserializable {
             let genre = json["genre"].string,
             let id = json["link"].string,
             let actors = json["actors"].string else {
-                
             return nil
         }
         

@@ -25,10 +25,5 @@ class MenuCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dishLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var dishDetailLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
 }

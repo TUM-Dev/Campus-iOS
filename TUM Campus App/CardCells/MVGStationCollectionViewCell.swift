@@ -24,10 +24,5 @@ class MVGStationCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
 }

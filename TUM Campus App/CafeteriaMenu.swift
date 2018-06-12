@@ -32,7 +32,6 @@ class CafeteriaMenu: DataElement {
     let details: MenuDetail
     let mensaId: String
     
-    
     init(id: String?,
          date: Date,
          typeShort: String,
@@ -42,7 +41,6 @@ class CafeteriaMenu: DataElement {
          price: Price?,
          details: MenuDetail,
          mensaId: String) {
-        
         self.id = id
         self.date = date
         self.typeShort = typeShort
@@ -72,12 +70,10 @@ extension CafeteriaMenu {
             let typeShort = json["type_short"].string,
             let typeLong = json["type_long"].string,
             let name = json["name"].string else {
-            
             return nil
         }
         
         let details = CafeteriaConstants.parseMensaMenu(name)
-        
         self.init(id: json["id"].string,
                   date: date,
                   typeShort: typeShort,
@@ -90,7 +86,6 @@ extension CafeteriaMenu {
     }
     
 }
-
 
 struct Price {
     var student: Double

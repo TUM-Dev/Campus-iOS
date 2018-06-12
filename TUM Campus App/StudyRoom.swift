@@ -48,7 +48,6 @@ class StudyRoom: DataElement {
          occupiedIn: Int,
          occupiedBy: String,
          buildingName: String) {
-        
         self.status = status
         self.roomNumber = roomNumber
         self.code = code
@@ -80,7 +79,10 @@ class StudyRoom: DataElement {
         dateformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let occupiedUntil = dateformatter.date(from: occupiedUntilString)
         let occupiedFrom = dateformatter.date(from: occupiedFromString)
-        self.init(status: status, roomNumber: roomNumber, code: code, architectNumber: architectNumber, name: name, occupiedUntil: occupiedUntil, occupiedFor: occupiedFor, occupiedFrom: occupiedFrom, occupiedIn: occupiedIn, occupiedBy: occupiedBy, buildingName: buildingName)
+        self.init(status: status, roomNumber: roomNumber, code: code,
+                  architectNumber: architectNumber, name: name, occupiedUntil: occupiedUntil,
+                  occupiedFor: occupiedFor, occupiedFrom: occupiedFrom, occupiedIn: occupiedIn,
+                  occupiedBy: occupiedBy, buildingName: buildingName)
     }
     
     // Returns a verbose string like "Free" or "Occupied until 14:45"

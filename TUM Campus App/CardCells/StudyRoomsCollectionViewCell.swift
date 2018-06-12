@@ -25,9 +25,4 @@ class StudyRoomsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var availableRoomsLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
 }

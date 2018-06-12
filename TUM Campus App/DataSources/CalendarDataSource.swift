@@ -32,7 +32,6 @@ class CalendarDataSource: NSObject, TUMDataSource {
     let dateFormatter = DateFormatter()
     let dateComponentsFormatter = DateComponentsFormatter()
     let preferredHeight: CGFloat = 200.0
-
     
     init(manager: CalendarManager) {
         self.manager = manager

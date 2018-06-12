@@ -96,7 +96,6 @@ struct PersistentUser: SingleStatus {
     static let key: AppDefaults = .login
     
     static var defaultValue: PersistendUserData {
-        
         guard let previousValue = fetchCredentialsFromDefaults() else {
             return .no
         }

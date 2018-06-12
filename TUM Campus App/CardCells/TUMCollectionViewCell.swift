@@ -29,7 +29,6 @@ import UIKit
     var gradientView: UIView!
     
     func configureBackgroundGradient() {
-
         gradientView = UIView(frame: frame)
         gradientLayer.colors = [topGradientColor.cgColor, bottomGradientColor.cgColor]
         gradientLayer.locations = [0.0, 1.0]

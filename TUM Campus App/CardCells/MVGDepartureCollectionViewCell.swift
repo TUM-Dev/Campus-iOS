@@ -25,10 +25,5 @@ class MVGDepartureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lineLabel: UILabel!
     @IBOutlet weak var destinationLabel: UILabel!
     @IBOutlet weak var departureLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
 }

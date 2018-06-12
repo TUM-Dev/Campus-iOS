@@ -44,7 +44,6 @@ final class CalendarRow: DataElement {
          geo: CLLocation? = nil,
          location: String?,
          url: URL?) {
-        
         self.start = start
         self.end = end
         self.title = title
@@ -77,12 +76,10 @@ final class CalendarRow: DataElement {
 extension CalendarRow: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
-        
         guard let title = xml["title"].element?.text,
             let start = xml["dtstart"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
             let end = xml["dtend"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
             let status = xml["status"].element?.text else {
-                
                 return nil
         }
         self.init(start: start,

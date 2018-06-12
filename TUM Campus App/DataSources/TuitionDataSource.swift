@@ -20,7 +20,6 @@
 
 import UIKit
 
-
 class TuitionDataSource: NSObject, TUMDataSource {
     
     var manager: TuitionStatusManager
@@ -32,7 +31,6 @@ class TuitionDataSource: NSObject, TUMDataSource {
     let dateFormatter = DateFormatter()
     let numberFormatter = NumberFormatter()
     let preferredHeight: CGFloat = 128.0
-
     
     init(manager: TuitionStatusManager) {
         self.manager = manager
@@ -51,12 +49,15 @@ class TuitionDataSource: NSObject, TUMDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TuitionCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! TuitionCollectionViewCell
         let tuition = data[indexPath.row]
         
         cell.balanceLabel.text = numberFormatter.string(from: NSNumber(value: tuition.soll))

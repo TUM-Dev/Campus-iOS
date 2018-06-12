@@ -37,9 +37,9 @@ class StudyRoomGroup: DataElement {
         guard let sortId = json["sortierung"].int,
             let name = json["name"].string,
             let detail = json["detail"].string else {
-            
             return nil
         }
+        
         let numbers = json["raeume"].array ==> { $0.int }
         self.init(sortId: sortId, 
                   name: name, 
@@ -53,4 +53,5 @@ class StudyRoomGroup: DataElement {
     func getCellIdentifier() -> String {
         return "studyRoomGroup"
     }
+    
 }

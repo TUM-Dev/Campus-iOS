@@ -37,7 +37,8 @@ final class Lecture: DataElement {
     
     var details = [(String,String)]()
     
-    init(id: String, lectureID: String, module: String, name: String, semester: String, sws: Int, chair: String, contributors: String, type: String) {
+    init(id: String, lectureID: String, module: String, name: String,
+         semester: String, sws: Int, chair: String, contributors: String, type: String) {
         self.id = id
         self.lectureID = lectureID
         self.module = module
@@ -75,9 +76,9 @@ extension Lecture: XMLDeserializable {
             let chair = xml["org_name_betreut"].element?.text,
             let contributors = xml["vortragende_mitwirkende"].element?.text,
             let type = xml["stp_lv_art_name"].element?.text else {
-            
             return nil
         }
+        
         self.init(id: id,
                   lectureID: lectureID,
                   module: "", // TODO:

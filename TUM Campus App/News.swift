@@ -63,7 +63,6 @@ extension News: Deserializable {
             let link = json["link"].string,
             let date = json["date"].date(using: "yyyy-MM-dd HH:mm:ss"),
             let id = json["news"].string else {
-                
             return nil
         }
         self.init(id: id, source: source, date: date, title: title, link: link, image: json["image"].string)

@@ -87,7 +87,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
         if var mvc = segue.destination as? DetailView {
             mvc.delegate = self
         }
@@ -127,7 +126,9 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func setupCollectionView() {
-        guard let manager = manager else { return }
+        guard let manager = manager else {
+            return
+        }
         
         composedDataSource = ComposedDataSource(manager: manager)
         composedDataSource?.delegate = self
@@ -149,7 +150,8 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func setupSearch() {
         let storyboard = UIStoryboard(name: "CardView", bundle: nil)
-        guard let searchResultsController = storyboard.instantiateViewController(withIdentifier: "SearchResultsController") as? SearchResultsController else {
+        guard let searchResultsController = storyboard.instantiateViewController(
+            withIdentifier: "SearchResultsController") as? SearchResultsController else {
             fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
         }
         searchResultsController.delegate = self

@@ -29,7 +29,6 @@ class MenuDataSource: NSObject, UICollectionViewDataSource {
     let cellReuseID = "MenuCardCell"
     let cardReuseID = "MenuCard"
     
-    
     init(data: [CafeteriaMenu]) {
         self.data = data
         super.init()
@@ -43,7 +42,6 @@ class MenuDataSource: NSObject, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! MenuCollectionViewCell
         let dish = data[indexPath.row]
-    
         
         cell.dishLabel.text = dish.details.nameWithEmojiWithoutAnnotations
         cell.dishDetailLabel.text = ""

@@ -25,10 +25,5 @@ class LecturesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var lectureNameLabel: UILabel!
     @IBOutlet weak var semesterLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
 }

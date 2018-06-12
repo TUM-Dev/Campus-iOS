@@ -25,7 +25,6 @@ protocol EditCardsViewControllerDelegate {
     func didUpdateCards()
 }
 
-
 class EditCardsViewController: UITableViewController {
     
     var delegate: EditCardsViewControllerDelegate?
@@ -57,7 +56,6 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         switch section {
         case 0:
             return "Enabled"
@@ -69,7 +67,6 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
         case 0:
             return enabled.count
@@ -86,8 +83,8 @@ class EditCardsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        
+    override func tableView(_ tableView: UITableView,
+                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         switch indexPath.section {
         case 0:
             return .delete
@@ -106,7 +103,8 @@ class EditCardsViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         if destinationIndexPath.section == 0 {
             enabled.move(itemAt: sourceIndexPath.row, to: destinationIndexPath.row)
@@ -120,8 +118,9 @@ class EditCardsViewController: UITableViewController {
         print("Editing!!!")
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
             enabled.remove(at: indexPath.row)

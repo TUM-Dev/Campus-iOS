@@ -29,9 +29,4 @@ class NewsCollectionViewCell: UICollectionViewCell {
     
     var binding: ImageViewBinding?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
 }

@@ -86,10 +86,10 @@ extension Grade: XMLDeserializable {
             let ects = xml["lv_credits"].element?.text,
             let examiner = xml["pruefer_nachname"].element?.text,
             let mode = xml["modus"].element?.text else {
-                
             return nil
         }
-        self.init(name: name, result: result, date: date, semester: semester, ects: Int(ects) ?? 0, examiner: examiner, mode: mode)
+        self.init(name: name, result: result, date: date, semester: semester,
+                  ects: Int(ects) ?? 0, examiner: examiner, mode: mode)
     }
     
 }

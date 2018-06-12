@@ -69,7 +69,11 @@ class Image {
         promise?.onSuccess(in: .main) { [weak binding, weak barButton] image in
             guard binding != nil else { return }
             let transformed = transform(image)
-            let newImage = barButton?.image.map { transformed.resized(to: $0.size, scale: $0.scale).withRenderingMode(.alwaysOriginal) } ?? transformed
+            let newImage = barButton?.image.map {
+                transformed
+                    .resized(to: $0.size, scale: $0.scale)
+                    .withRenderingMode(.alwaysOriginal)
+            } ?? transformed
             barButton?.image = newImage
         }
         return binding

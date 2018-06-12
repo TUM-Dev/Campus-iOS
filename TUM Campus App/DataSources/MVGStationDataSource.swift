@@ -49,12 +49,17 @@ class MVGStationDataSource: NSObject, TUMDataSource {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! MVGStationCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! MVGStationCollectionViewCell
         let station = data[indexPath.row]
         let departureDataSource = departureDataSources[indexPath.row]
 //        TODO distance
-        cell.collectionView.register(UINib(nibName: String(describing: departureDataSource.cellType), bundle: .main), forCellWithReuseIdentifier: departureDataSource.cellReuseID)
+        
+        let uiNib = UINib(nibName: String(describing: departureDataSource.cellType), bundle: .main)
+        cell.collectionView.register(UINib, forCellWithReuseIdentifier: departureDataSource.cellReuseID)
+        
         cell.stationNameLabel.text = station.station.name
         cell.collectionView.dataSource = departureDataSource
         cell.collectionView.delegate = departureDataSource.flowLayoutDelegate
