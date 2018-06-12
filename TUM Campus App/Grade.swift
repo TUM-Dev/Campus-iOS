@@ -30,6 +30,33 @@ final class Grade: DataElement {
     let examiner: String
     let mode: String
     
+    var gradeColor: UIColor? {
+        switch Double(result.replacingOccurrences(of: ",", with: "."))  {
+        case .some(let grade):
+            switch grade {
+            case 1.0: return GradeColor.grade_1_0.colorValue
+            case 1.3: return GradeColor.grade_1_3.colorValue
+            case 1.4: return GradeColor.grade_1_4.colorValue
+            case 1.7: return GradeColor.grade_1_7.colorValue
+            case 2.0: return GradeColor.grade_2_0.colorValue
+            case 2.3: return GradeColor.grade_2_3.colorValue
+            case 2.4: return GradeColor.grade_2_4.colorValue
+            case 2.7: return GradeColor.grade_2_7.colorValue
+            case 3.0: return GradeColor.grade_3_0.colorValue
+            case 3.3: return GradeColor.grade_3_3.colorValue
+            case 3.4: return GradeColor.grade_3_4.colorValue
+            case 3.7: return GradeColor.grade_3_7.colorValue
+            case 4.0: return GradeColor.grade_4_0.colorValue
+            case 4.3: return GradeColor.grade_4_3.colorValue
+            case 4.4: return GradeColor.grade_4_4.colorValue
+            case 4.7: return GradeColor.grade_4_7.colorValue
+            case 5.0: return GradeColor.grade_5_0.colorValue
+            default: return GradeColor.unknown.colorValue
+            }
+        case .none: return GradeColor.unknown.colorValue
+        }
+    }
+    
     init(name: String, result: String, date: Date, semester: String, ects: Int, examiner: String, mode: String) {
         self.name = name
         self.result = result

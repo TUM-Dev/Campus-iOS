@@ -31,7 +31,7 @@ class TuitionDataSource: NSObject, TUMDataSource {
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
     let numberFormatter = NumberFormatter()
-    let preferredHeight: CGFloat = 120.0
+    let preferredHeight: CGFloat = 128.0
 
     
     init(manager: TuitionStatusManager) {

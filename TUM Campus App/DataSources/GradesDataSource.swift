@@ -28,7 +28,7 @@ class GradesDataSource: NSObject, TUMDataSource {
     let cardKey: CardKey = .grades
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [Grade] = []
-    var preferredHeight: CGFloat = 230.0
+    var preferredHeight: CGFloat = 228.0
     
     init(manager: PersonalGradeManager) {
         self.manager = manager
@@ -54,20 +54,9 @@ class GradesDataSource: NSObject, TUMDataSource {
         cell.gradeLabel.text = grade.result
         cell.nameLabel.text = grade.name
         cell.semesterLabel.text = grade.semester
-        
-        switch Double(grade.result.replacingOccurrences(of: ",", with: "."))  {
-        case .some(let grade):
-            switch grade {
-            case 1.0..<2.0: cell.gradeLabel.textColor = .green
-            case 2.0..<3.0: cell.gradeLabel.textColor = .yellow
-            case 3.0..<4.0: cell.gradeLabel.textColor = .orange
-            default: cell.gradeLabel.textColor = .red
-            }
-        case .none: break
-        }
+        cell.gradeLabel.backgroundColor = grade.gradeColor
         
         return cell
     }
-    
 
 }

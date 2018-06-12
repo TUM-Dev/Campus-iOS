@@ -20,7 +20,6 @@
 import UIKit
 import Sweeft
 
-
 class NewsDataSource: NSObject, TUMDataSource {
 
     var manager: NewsManager
@@ -30,8 +29,7 @@ class NewsDataSource: NSObject, TUMDataSource {
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 195.0
-
+    let preferredHeight: CGFloat = 200.0
     
     init(manager newsManager: NewsManager) {
         self.manager = newsManager

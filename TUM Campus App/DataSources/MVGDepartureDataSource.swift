@@ -42,7 +42,6 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! MVGDepartureCollectionViewCell
         let departure = data[indexPath.row]
         

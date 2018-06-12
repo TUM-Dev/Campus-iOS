@@ -26,7 +26,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     @IBOutlet weak var profileButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     var manager: TumDataManager?
     var composedDataSource: ComposedDataSource?
     var dataSources: [TUMDataSource] = []
@@ -39,7 +38,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var flowLayout: UICollectionViewFlowLayout?
     var collectionViewSizeChanged: Bool = false
     let margin: CGFloat = 20.0
-    
     
     //MARK: - UICollectionView
     
@@ -65,7 +63,8 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         refresh(sender: nil)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize,
+                                     with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         collectionViewSizeChanged = true
     }
@@ -85,7 +84,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    
     //MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,13 +100,16 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    
     //MARK: - Setup UI
     
     func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.compactMap { $0 as? TUMLogoView }
+        let nib = bundle
+            .loadNibNamed("TUMLogoView", owner: nil, options: nil)?
+            .compactMap { $0 as? TUMLogoView }
+        
         guard let view = nib?.first else { return }
+        
         logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         view.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -132,7 +133,8 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         composedDataSource?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
+                          for: UIControlEvents.valueChanged)
         collectionView.refreshControl = refresh
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
@@ -178,21 +180,21 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return margin
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let composedDataSource = composedDataSource else {
             return CGSize(width: collectionView.frame.size.width, height: 400)
         }
         
-        let dataSource = composedDataSource.dataSources.filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
+        let dataSource = composedDataSource.dataSources
+            .filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
         
         let height: CGFloat
         let width: CGFloat
@@ -208,7 +210,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return CGSize(width: width, height: height)
     }
     
-    
     //MARK: - TUMDataSourceDelegate
     
     func didBeginRefreshingDataSources() {
@@ -220,13 +221,11 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView.reloadData()
     }
     
-    
     //MARK: - DetailViewDelegate
     
     func dataManager() -> TumDataManager? {
         return manager
     }
-    
     
     //MARK: - EditCardsViewControllerDelegate
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-65-vWe" customClass="RoundedImageView" customModule="Campus" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="176" height="277.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="176" height="272.5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="radius">
                                 <real key="value" value="13"/>
@@ -29,8 +29,8 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-rA-Y4t">
-                        <rect key="frame" x="0.0" y="281.5" width="176" height="13.5"/>
-                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                        <rect key="frame" x="0.0" y="280.5" width="176" height="14.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -43,7 +43,7 @@
                 <constraint firstAttribute="trailing" secondItem="OI1-rA-Y4t" secondAttribute="trailing" id="WqI-9K-swx"/>
                 <constraint firstAttribute="trailing" secondItem="XFX-65-vWe" secondAttribute="trailing" id="hRA-fi-gs5"/>
                 <constraint firstItem="XFX-65-vWe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iXr-sO-rQ9"/>
-                <constraint firstItem="OI1-rA-Y4t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XFX-65-vWe" secondAttribute="bottom" constant="4" id="khv-eT-0gh"/>
+                <constraint firstItem="OI1-rA-Y4t" firstAttribute="top" secondItem="XFX-65-vWe" secondAttribute="bottom" constant="8" id="khv-eT-0gh"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="176" height="295"/>

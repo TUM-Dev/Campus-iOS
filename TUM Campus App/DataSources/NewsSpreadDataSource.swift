@@ -21,7 +21,6 @@
 import UIKit
 import Sweeft
 
-
 class NewsSpreadDataSource: NSObject, TUMDataSource {
     
     var manager: NewsSpreadManager
@@ -32,7 +31,6 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
     let preferredHeight: CGFloat = 180.0
     
     var flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateLandscapeItemFlowLayout()
-    
     
     init(manager: NewsSpreadManager) {
         self.manager = manager
@@ -51,14 +49,15 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
         return data.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! NewsSpreadCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! NewsSpreadCollectionViewCell
         let newsElement = data[indexPath.row]
         
         cell.binding = newsElement.image.bind(to: cell.imageView, default: #imageLiteral(resourceName: "movie"))
 
         return cell
     }
-    
     
 }

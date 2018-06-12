@@ -30,7 +30,7 @@ class CafeteriaDataSource: NSObject, TUMDataSource {
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
-    let preferredHeight: CGFloat = 330.0
+    let preferredHeight: CGFloat = 366.0
     var menuDataSources: [MenuDataSource] = []
     let distanceFormatter = MKDistanceFormatter()
     

@@ -40,13 +40,14 @@ final class NewsManager: MemoryCachedManager, SingleItemCachedManager, CardManag
         return config.tumCabe.doObjectsRequest(to: .news,
                                                arguments: ["news" : news],
                                                maxCacheTime: .forever).flatMap { (results: [News]) in
-            
             guard let lastId = results.max({ $0.id }) else {
                 self.config.tumCabe.removeCache(for: .news, arguments: ["news" : news])
                 return .successful(with: results)
             }
-            return self.fetch(from: lastId).map { results + $0 }
-                                           .mapError(to: results)
+                                                
+            return self.fetch(from: lastId)
+                       .map { results + $0 }
+                       .mapError(to: results)
         }
     }
     

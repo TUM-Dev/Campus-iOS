@@ -201,6 +201,8 @@
 		807C48191F4092A800CAD35D /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48181F4092A800CAD35D /* DeparturesViewController.swift */; };
 		807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */; };
 		807C481D1F4093FC00CAD35D /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */; };
+		9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */; };
+		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
 		B20DF5B992DFD30580046509 /* Pods_TUM_Campus_AppUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */; };
 		E1369C9D1F87D25E00D6766E /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
@@ -441,6 +443,8 @@
 		807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		88D5EC6E4CF40FB09D2EEFE1 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewNoStartInset.swift; sourceTree = "<group>"; };
+		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 		AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
@@ -673,6 +677,7 @@
 				807C48131F40918500CAD35D /* MVV */,
 				0E64AC681C0DFAD400060FB0 /* Managers */,
 				0E6F114D1FA27D1E00DB01EB /* SearchResultKey.swift */,
+				9D77671620D0494D00F9A4FD /* GradeColor.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -918,6 +923,7 @@
 				227B481620A3472C00AE3373 /* TUMCollectionViewCell.swift */,
 				227B481820A3487700AE3373 /* DataSourceCollectionViewCell.swift */,
 				22763FD020B176CE008D5A89 /* RoundedLabel.swift */,
+				9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */,
 			);
 			path = CardCells;
 			sourceTree = "<group>";
@@ -1062,7 +1068,6 @@
 				0E424F421BE16DBD00B5DFCB /* Frameworks */,
 				0E424F431BE16DBD00B5DFCB /* Resources */,
 				8D8C5F282F14F0418556891A /* [CP] Embed Pods Frameworks */,
-				8B8EEAF448EA284D43CDD27C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1081,8 +1086,6 @@
 				0E424F551BE16DBE00B5DFCB /* Sources */,
 				0E424F561BE16DBE00B5DFCB /* Frameworks */,
 				0E424F571BE16DBE00B5DFCB /* Resources */,
-				DCDBA29E5BDD73750FF18D05 /* [CP] Embed Pods Frameworks */,
-				94E63E0F23E0200DD02F8D36 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1102,8 +1105,6 @@
 				504C29251E2BBB9C007583E2 /* Sources */,
 				504C29261E2BBB9C007583E2 /* Frameworks */,
 				504C29271E2BBB9C007583E2 /* Resources */,
-				D462006C11A068CEFDD51E22 /* [CP] Embed Pods Frameworks */,
-				4CA3CA1EB201EB66E5012698 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1262,21 +1263,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4CA3CA1EB201EB66E5012698 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5C4F7A97179AC594E757A588 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1293,21 +1279,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B8EEAF448EA284D43CDD27C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Campus/Pods-Campus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8D8C5F282F14F0418556891A /* [CP] Embed Pods Frameworks */ = {
@@ -1348,21 +1319,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Campus/Pods-Campus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		94E63E0F23E0200DD02F8D36 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C515922059C2A6B2F17CB370 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1379,36 +1335,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D462006C11A068CEFDD51E22 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DCDBA29E5BDD73750FF18D05 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE8C429CF5D7A184393D26A1 /* [CP] Check Pods Manifest.lock */ = {
@@ -1449,6 +1375,7 @@
 				0EF4CEF01D416751001649F1 /* DetailView.swift in Sources */,
 				0EC9D0201FBA514500061DF1 /* SourceNewsManager.swift in Sources */,
 				22763FCB20ADBA21008D5A89 /* NewsSpreadDataSource.swift in Sources */,
+				9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */,
 				0EAB3B951F9D76280074FB1E /* MVGAPI.swift in Sources */,
 				0E6F114E1FA27D1E00DB01EB /* SearchResultKey.swift in Sources */,
 				0E5DF1E31C14748F000F47D1 /* TumStyleConstants.swift in Sources */,
@@ -1503,6 +1430,7 @@
 				227D215B209920DE00C651BB /* NewsCollectionViewCell.swift in Sources */,
 				227D215820988B7C00C651BB /* TuitionDataSource.swift in Sources */,
 				0E52817B1C0E2F7500762EA3 /* Manager.swift in Sources */,
+				9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */,
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
 				227D2160209B345C00C651BB /* CafeteriaCollectionViewCell.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
@@ -1811,7 +1739,6 @@
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-
 			};
 			name = Release;
 		};

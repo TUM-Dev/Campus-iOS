@@ -48,7 +48,6 @@ extension TUMDataSource {
     var preferredHeight: CGFloat { return 220.0 }
 }
 
-
 class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var dataSources: [TUMDataSource] = []
@@ -56,7 +55,6 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     var delegate: TUMDataSourceDelegate?
     var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
     let margin: CGFloat = 20.0
-
     
     init(manager: TumDataManager) {
         self.manager = manager

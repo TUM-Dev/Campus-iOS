@@ -28,8 +28,7 @@ class LecturesDataSource: NSObject, TUMDataSource {
     let cardKey: CardKey = .lectures
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [Lecture] = []
-    var preferredHeight: CGFloat = 240.0
-
+    var preferredHeight: CGFloat = 252.0
     
     init(manager: PersonalLectureManager) {
         self.manager = manager

@@ -29,7 +29,7 @@ class MVGStationDataSource: NSObject, TUMDataSource {
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     var data: [DetailedStation] = []
     var departureDataSources: [MVGDepartureDataSource] = []
-    var preferredHeight: CGFloat = 230.0
+    var preferredHeight: CGFloat = 290.0
     
     init(manager: MVGManager) {
         self.manager = manager

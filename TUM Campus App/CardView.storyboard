@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -26,7 +26,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5uR-6G-Qb6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hN5-mG-8Yb">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hN5-mG-8Yb">
                                     <size key="itemSize" width="375" height="239"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -41,7 +41,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TNS-Va-YKW">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m30-dU-CKz">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -52,7 +52,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mff-Dk-71f">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -61,12 +61,12 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="Mff-Dk-71f" firstAttribute="top" secondItem="P82-xk-VVS" secondAttribute="top" constant="16" id="Hu1-PO-3HV"/>
                                             <constraint firstItem="TNS-Va-YKW" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" id="Hyj-3W-JFi"/>
                                             <constraint firstAttribute="trailing" secondItem="TNS-Va-YKW" secondAttribute="trailing" id="Rw7-RN-Ao1"/>
-                                            <constraint firstItem="Mff-Dk-71f" firstAttribute="top" secondItem="P82-xk-VVS" secondAttribute="top" id="UKo-8w-hgg"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" constant="20" id="c4a-CX-sib"/>
                                             <constraint firstAttribute="trailing" secondItem="Mff-Dk-71f" secondAttribute="trailing" constant="20" id="evV-v2-BGN"/>
-                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="20" id="haZ-Ck-uSd"/>
+                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="16" id="haZ-Ck-uSd"/>
                                             <constraint firstItem="TNS-Va-YKW" firstAttribute="top" secondItem="Mff-Dk-71f" secondAttribute="bottom" constant="8" id="nGJ-1p-LDM"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
@@ -84,14 +84,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CafeteriaCard" id="HF8-aR-Uu6" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="210" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aFz-cX-4lM">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z2L-jI-4fH">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -102,7 +102,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-4F-mwr">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -117,7 +117,7 @@
                                             <constraint firstItem="4Li-4F-mwr" firstAttribute="leading" secondItem="HF8-aR-Uu6" secondAttribute="leading" constant="20" id="QmN-8K-8mV"/>
                                             <constraint firstItem="aFz-cX-4lM" firstAttribute="top" secondItem="4Li-4F-mwr" secondAttribute="bottom" constant="8" id="RJB-BH-Wpa"/>
                                             <constraint firstAttribute="trailing" secondItem="aFz-cX-4lM" secondAttribute="trailing" id="Ta2-S2-FKU"/>
-                                            <constraint firstItem="4Li-4F-mwr" firstAttribute="top" secondItem="HF8-aR-Uu6" secondAttribute="top" id="jgU-g8-PFK"/>
+                                            <constraint firstItem="4Li-4F-mwr" firstAttribute="top" secondItem="HF8-aR-Uu6" secondAttribute="top" constant="16" id="jgU-g8-PFK"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -134,14 +134,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TUFilmCard" id="2yx-Tf-rvO" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="420" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="400" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dez-f1-jlZ">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CW3-dG-vek">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -152,7 +152,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2q-T4-l5v">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="F2q-T4-l5v" firstAttribute="top" secondItem="2yx-Tf-rvO" secondAttribute="top" id="0ix-XA-eCI"/>
+                                            <constraint firstItem="F2q-T4-l5v" firstAttribute="top" secondItem="2yx-Tf-rvO" secondAttribute="top" constant="16" id="0ix-XA-eCI"/>
                                             <constraint firstItem="F2q-T4-l5v" firstAttribute="leading" secondItem="2yx-Tf-rvO" secondAttribute="leading" constant="20" id="Lsw-Hs-yBP"/>
                                             <constraint firstItem="Dez-f1-jlZ" firstAttribute="top" secondItem="F2q-T4-l5v" secondAttribute="bottom" constant="8" id="OY6-Yz-khb"/>
                                             <constraint firstAttribute="trailing" secondItem="Dez-f1-jlZ" secondAttribute="trailing" id="S5Z-YN-1WJ"/>
@@ -184,14 +184,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarCard" id="vr6-cB-RNd" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="630" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="600" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9v9-dn-sjX">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pbo-Lr-kan">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -202,7 +202,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QM-O1-3cg">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -213,7 +213,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="9v9-dn-sjX" secondAttribute="trailing" id="39v-eM-xCi"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="leading" secondItem="vr6-cB-RNd" secondAttribute="leading" id="JML-ju-5DY"/>
-                                            <constraint firstItem="7QM-O1-3cg" firstAttribute="top" secondItem="vr6-cB-RNd" secondAttribute="top" id="RsQ-XS-QBV"/>
+                                            <constraint firstItem="7QM-O1-3cg" firstAttribute="top" secondItem="vr6-cB-RNd" secondAttribute="top" constant="16" id="RsQ-XS-QBV"/>
                                             <constraint firstAttribute="trailing" secondItem="7QM-O1-3cg" secondAttribute="trailing" constant="20" id="anj-G7-ybd"/>
                                             <constraint firstAttribute="bottom" secondItem="9v9-dn-sjX" secondAttribute="bottom" constant="20" id="cfk-ER-lT2"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="top" secondItem="7QM-O1-3cg" secondAttribute="bottom" constant="8" id="dEZ-zw-ziC"/>
@@ -234,14 +234,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TuitionCard" id="1QD-8Z-lkh" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="840" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="800" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g8f-NB-9rh">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SoA-vO-yih">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -252,7 +252,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDI-rL-5ID">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                         <constraints>
                                             <constraint firstItem="g8f-NB-9rh" firstAttribute="leading" secondItem="1QD-8Z-lkh" secondAttribute="leading" id="8Rd-Id-wiB"/>
                                             <constraint firstItem="mDI-rL-5ID" firstAttribute="leading" secondItem="1QD-8Z-lkh" secondAttribute="leading" constant="20" id="8th-3x-oC4"/>
-                                            <constraint firstItem="mDI-rL-5ID" firstAttribute="top" secondItem="1QD-8Z-lkh" secondAttribute="top" id="Cif-ee-M80"/>
+                                            <constraint firstItem="mDI-rL-5ID" firstAttribute="top" secondItem="1QD-8Z-lkh" secondAttribute="top" constant="16" id="Cif-ee-M80"/>
                                             <constraint firstAttribute="trailing" secondItem="mDI-rL-5ID" secondAttribute="trailing" constant="20" id="JDG-lE-GEm"/>
                                             <constraint firstAttribute="trailing" secondItem="g8f-NB-9rh" secondAttribute="trailing" id="vdV-q6-b7R"/>
                                             <constraint firstItem="g8f-NB-9rh" firstAttribute="top" secondItem="mDI-rL-5ID" secondAttribute="bottom" constant="8" id="wy6-zT-bKE"/>
@@ -284,14 +284,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GradesCard" id="Iz4-A4-iEi" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1050" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="1000" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PjP-1t-CqD">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XqF-hD-Kkh">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -302,7 +302,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVI-1X-Y43">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -313,7 +313,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PjP-1t-CqD" secondAttribute="trailing" id="2wQ-4J-Dbr"/>
                                             <constraint firstItem="PjP-1t-CqD" firstAttribute="top" secondItem="KVI-1X-Y43" secondAttribute="bottom" constant="8" id="Hfb-bA-tmb"/>
-                                            <constraint firstItem="KVI-1X-Y43" firstAttribute="top" secondItem="Iz4-A4-iEi" secondAttribute="top" id="KhQ-Fm-fFF"/>
+                                            <constraint firstItem="KVI-1X-Y43" firstAttribute="top" secondItem="Iz4-A4-iEi" secondAttribute="top" constant="16" id="KhQ-Fm-fFF"/>
                                             <constraint firstItem="KVI-1X-Y43" firstAttribute="leading" secondItem="Iz4-A4-iEi" secondAttribute="leading" constant="20" id="VSK-yn-n1D"/>
                                             <constraint firstAttribute="trailing" secondItem="KVI-1X-Y43" secondAttribute="trailing" constant="20" id="e5O-Xn-ZBw"/>
                                             <constraint firstAttribute="bottom" secondItem="PjP-1t-CqD" secondAttribute="bottom" constant="20" id="jBQ-73-45D"/>
@@ -334,14 +334,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LecturesCard" id="yld-r3-3ZW" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1260" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="1200" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b6d-5d-7m9">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NOc-is-fm9">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -352,7 +352,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFC-P0-8k1">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -361,9 +361,9 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="qFC-P0-8k1" firstAttribute="top" secondItem="yld-r3-3ZW" secondAttribute="top" id="3Ak-Zi-cdo"/>
+                                            <constraint firstItem="qFC-P0-8k1" firstAttribute="top" secondItem="yld-r3-3ZW" secondAttribute="top" constant="16" id="3Ak-Zi-cdo"/>
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="leading" secondItem="yld-r3-3ZW" secondAttribute="leading" id="5UO-d2-mX6"/>
-                                            <constraint firstAttribute="bottom" secondItem="b6d-5d-7m9" secondAttribute="bottom" constant="20" id="95I-XT-4Vr"/>
+                                            <constraint firstAttribute="bottom" secondItem="b6d-5d-7m9" secondAttribute="bottom" constant="16" id="95I-XT-4Vr"/>
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="top" secondItem="qFC-P0-8k1" secondAttribute="bottom" constant="8" id="HuJ-JF-g2N"/>
                                             <constraint firstAttribute="trailing" secondItem="qFC-P0-8k1" secondAttribute="trailing" constant="20" id="SLa-Rf-LIu"/>
                                             <constraint firstAttribute="trailing" secondItem="b6d-5d-7m9" secondAttribute="trailing" id="Wbw-DR-2bR"/>
@@ -384,14 +384,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="StudyRoomsCard" id="dhm-Si-y3t" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1470" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="1400" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SCr-ec-cwd">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="UOV-3h-8YP">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -402,7 +402,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiD-IX-k2U">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -411,10 +411,10 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="XiD-IX-k2U" firstAttribute="top" secondItem="dhm-Si-y3t" secondAttribute="top" id="2BN-lU-XwJ"/>
+                                            <constraint firstItem="XiD-IX-k2U" firstAttribute="top" secondItem="dhm-Si-y3t" secondAttribute="top" constant="16" id="2BN-lU-XwJ"/>
                                             <constraint firstAttribute="trailing" secondItem="SCr-ec-cwd" secondAttribute="trailing" id="9zQ-Q1-BK1"/>
                                             <constraint firstItem="XiD-IX-k2U" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" constant="20" id="KVZ-oG-nC0"/>
-                                            <constraint firstAttribute="bottom" secondItem="SCr-ec-cwd" secondAttribute="bottom" constant="20" id="TTZ-ph-zdp"/>
+                                            <constraint firstAttribute="bottom" secondItem="SCr-ec-cwd" secondAttribute="bottom" constant="16" id="TTZ-ph-zdp"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="top" secondItem="XiD-IX-k2U" secondAttribute="bottom" constant="8" id="cVi-Sa-aKS"/>
                                             <constraint firstAttribute="trailing" secondItem="XiD-IX-k2U" secondAttribute="trailing" constant="20" id="fWQ-e8-fKt"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" id="pza-dO-p4O"/>
@@ -434,14 +434,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MVGCard" id="B8u-Br-bzJ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1680" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="1600" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BOc-sb-STS">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="132"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eLP-k7-vEn">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -452,7 +452,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8TS-GF-EIZ">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -463,7 +463,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="8TS-GF-EIZ" secondAttribute="trailing" constant="20" id="OfY-OE-NtV"/>
                                             <constraint firstItem="BOc-sb-STS" firstAttribute="top" secondItem="8TS-GF-EIZ" secondAttribute="bottom" constant="8" id="bmb-jX-D5d"/>
-                                            <constraint firstItem="8TS-GF-EIZ" firstAttribute="top" secondItem="B8u-Br-bzJ" secondAttribute="top" id="cIB-zw-3he"/>
+                                            <constraint firstItem="8TS-GF-EIZ" firstAttribute="top" secondItem="B8u-Br-bzJ" secondAttribute="top" constant="16" id="cIB-zw-3he"/>
                                             <constraint firstItem="8TS-GF-EIZ" firstAttribute="leading" secondItem="B8u-Br-bzJ" secondAttribute="leading" constant="20" id="dtf-cL-M3R"/>
                                             <constraint firstAttribute="bottom" secondItem="BOc-sb-STS" secondAttribute="bottom" constant="20" id="g5f-ez-Lwb"/>
                                             <constraint firstItem="BOc-sb-STS" firstAttribute="leading" secondItem="B8u-Br-bzJ" secondAttribute="leading" id="sal-mI-MoQ"/>
@@ -484,14 +484,14 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NewsspreadCard" id="7cy-dv-GeQ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1890" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="1800" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iv8-F7-Ium">
-                                                    <rect key="frame" x="0.0" y="32" width="375" height="148"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hGT-cb-d8x">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -502,7 +502,7 @@
                                                     <cells/>
                                                 </collectionView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Syy-kY-MO9">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="24"/>
+                                                    <rect key="frame" x="20" y="16" width="335" height="24"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -513,11 +513,11 @@
                                         <constraints>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="top" secondItem="Syy-kY-MO9" secondAttribute="bottom" constant="8" id="EKV-LF-yuH"/>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" id="FGK-23-lhu"/>
-                                            <constraint firstAttribute="bottom" secondItem="iv8-F7-Ium" secondAttribute="bottom" constant="20" id="Gvf-Zq-41y"/>
+                                            <constraint firstAttribute="bottom" secondItem="iv8-F7-Ium" secondAttribute="bottom" constant="16" id="Gvf-Zq-41y"/>
                                             <constraint firstItem="Syy-kY-MO9" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" constant="20" id="ToL-gR-0RG"/>
                                             <constraint firstAttribute="trailing" secondItem="Syy-kY-MO9" secondAttribute="trailing" constant="20" id="X7C-eE-v8e"/>
                                             <constraint firstAttribute="trailing" secondItem="iv8-F7-Ium" secondAttribute="trailing" id="a5h-5d-RVL"/>
-                                            <constraint firstItem="Syy-kY-MO9" firstAttribute="top" secondItem="7cy-dv-GeQ" secondAttribute="top" id="wTp-PO-omK"/>
+                                            <constraint firstItem="Syy-kY-MO9" firstAttribute="top" secondItem="7cy-dv-GeQ" secondAttribute="top" constant="16" id="wTp-PO-omK"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
