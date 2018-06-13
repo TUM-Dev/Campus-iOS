@@ -23,7 +23,5 @@ import UIKit
 class NewsSpreadCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    var binding: ImageViewBinding?
 
 }

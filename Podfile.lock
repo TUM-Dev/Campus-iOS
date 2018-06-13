@@ -6,6 +6,7 @@ PODS:
     - OSCache (~> 1.2)
   - Fuzzi (0.1.1)
   - Kanna (4.0.0)
+  - Kingfisher (4.8.0)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - CalendarLib (~> 2.0)
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
+  - Kingfisher (~> 4.0)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
   - Sweeft (from `https://github.com/TG908/Sweeft.git`, branch `master`)
   - SWXMLHash (~> 4.6.0)
@@ -31,6 +33,7 @@ SPEC REPOS:
     - CalendarLib
     - Fuzzi
     - Kanna
+    - Kingfisher
     - OrderedDictionary
     - OSCache
     - SWXMLHash
@@ -62,6 +65,7 @@ SPEC CHECKSUMS:
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   Fuzzi: be301db91f05b4d3191756601e326f5b6d500932
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
@@ -69,6 +73,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: 03da9314d7f0d962d5219e4629a3a62d446aa20a
+PODFILE CHECKSUM: 45f56fd327ffe99e34ff279e0fd6190c92dac879
 
 COCOAPODS: 1.5.0

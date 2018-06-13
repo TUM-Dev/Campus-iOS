@@ -55,7 +55,9 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
             withReuseIdentifier: cellReuseID, for: indexPath) as! NewsSpreadCollectionViewCell
         let newsElement = data[indexPath.row]
         
-        cell.binding = newsElement.image.bind(to: cell.imageView, default: #imageLiteral(resourceName: "movie"))
+        if let imageUrl = newsElement.imageUrl {
+            cell.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+        }
 
         return cell
     }

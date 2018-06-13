@@ -48,7 +48,6 @@ class Image {
     func bind(to imageView: UIImageView,
               default image: UIImage?,
               mapping transform: @escaping (UIImage) -> UIImage = { $0 }) -> ImageViewBinding {
-        
         fetch()
         let binding = ImageViewBinding()
         imageView.image = image
@@ -62,7 +61,6 @@ class Image {
     func bind(to barButton: UIBarButtonItem,
               default image: UIImage? = nil,
               mapping transform: @escaping (UIImage) -> UIImage = { $0 }) -> ImageViewBinding {
-        
         promise = promise ?? url.map { .new(from: $0, maxCache: self.maxCache) }
         let binding = ImageViewBinding()
         barButton.image = image
@@ -112,7 +110,6 @@ extension Data {
 }
 
 extension UIImage {
-    
     
     static func download(url string: String, maxCache: CacheTime = .no) -> Response<UIImage> {
         return Data.download(url: string, maxCache: maxCache).flatMap { data in

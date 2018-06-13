@@ -46,19 +46,25 @@ class NewsDataSource: NSObject, TUMDataSource {
         }
     }
         
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! NewsCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! NewsCollectionViewCell
         let newsElement = data[indexPath.row]
         
         cell.titleLabel.text = newsElement.title
         cell.dateLabel.text = dateFormatter.string(from: newsElement.date)
-        cell.binding = newsElement.image.bind(to: cell.imageView, default: #imageLiteral(resourceName: "movie"))
         cell.sourceLabel.text = newsElement.source.title
         cell.sourceLabel.textColor = newsElement.source.titleColor
+        
+        if let imageUrl = newsElement.imageUrl {
+            cell.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+        }
         
         return cell
     }

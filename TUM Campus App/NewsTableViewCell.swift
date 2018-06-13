@@ -26,15 +26,17 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var detailImageView: UIImageView!
     
-    var binding: ImageViewBinding?
-    
     var newsItem: News? {
         didSet {
-            binding = nil
-            if let newsItem = newsItem {
-                titleLabel.text = newsItem.title
-                dateLabel.text = newsItem.date.string(using: "hh:mm a - dd MMM, YYYY")
-                binding = newsItem.image.bind(to: detailImageView, default: nil)
+            guard let newsItem = newsItem else {
+                return
+            }
+            
+            titleLabel.text = newsItem.title
+            dateLabel.text = newsItem.date.string(using: "hh:mm a - dd MMM, YYYY")
+            
+            if let imageUrl = newsItem.imageUrl {
+                detailImageView.kf.setImage(with: URL(string: imageUrl))
             }
         }
     }

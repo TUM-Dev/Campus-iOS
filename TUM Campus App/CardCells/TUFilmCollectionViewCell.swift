@@ -24,7 +24,5 @@ class TUFilmCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var moviePosterImageView: RoundedImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
-    var binding: ImageViewBinding?
 
 }

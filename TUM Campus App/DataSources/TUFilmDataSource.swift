@@ -19,7 +19,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class TUFilmDataSource: NSObject, TUMDataSource {
     
@@ -52,8 +52,11 @@ class TUFilmDataSource: NSObject, TUMDataSource {
         let movie = data[indexPath.row]
         
         cell.titleLabel.text = String(movie.text.split(separator: ":").last ?? "")
-        cell.binding = movie.image.bind(to: cell.moviePosterImageView, default: #imageLiteral(resourceName: "movie"))
         cell.moviePosterImageView.clipsToBounds = true
+        
+        if let imageUrl = movie.imageUrl {
+            cell.moviePosterImageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+        }
 
         return cell
     }

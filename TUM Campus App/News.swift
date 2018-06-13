@@ -28,15 +28,15 @@ final class News: DataElement {
     let date: Date
     let title: String
     let link: String
-    let image: Image
+    let imageUrl: String?
     
-    init(id: String, source: Source, date: Date, title: String, link: String, image: String? = nil) {
+    init(id: String, source: Source, date: Date, title: String, link: String, imageUrl: String? = nil) {
         self.id = id
         self.source = source
         self.date = date
         self.title = title
         self.link = link
-        self.image = .init(url: image)
+        self.imageUrl = imageUrl
     }
     
     var text: String {
@@ -65,7 +65,7 @@ extension News: Deserializable {
             let id = json["news"].string else {
             return nil
         }
-        self.init(id: id, source: source, date: date, title: title, link: link, image: json["image"].string)
+        self.init(id: id, source: source, date: date, title: title, link: link, imageUrl: json["image"].string)
     }
     
 }
