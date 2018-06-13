@@ -38,7 +38,7 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return max(data.count, 6)
     }
     
     func collectionView(_ collectionView: UICollectionView,

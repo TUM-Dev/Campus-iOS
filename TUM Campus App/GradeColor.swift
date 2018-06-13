@@ -43,11 +43,11 @@ enum GradeColor : String {
         case .grade_2_0:
             return UIColor(hexString: "#c6e618")
         case .grade_2_3:
-            return UIColor(hexString: "#ede003")
-        case .grade_2_4:
-            return UIColor(hexString: "#ede003")
-        case .grade_2_7:
             return UIColor(hexString: "#fddf18")
+        case .grade_2_4:
+            return UIColor(hexString: "#fddf18")
+        case .grade_2_7:
+            return UIColor(hexString: "#ede003")
         case .grade_3_0:
             return UIColor(hexString: "#fdbf19")
         case .grade_3_3:
