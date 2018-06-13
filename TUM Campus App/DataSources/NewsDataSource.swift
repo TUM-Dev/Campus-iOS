@@ -63,7 +63,10 @@ class NewsDataSource: NSObject, TUMDataSource {
         cell.sourceLabel.textColor = newsElement.source.titleColor
         
         if let imageUrl = newsElement.imageUrl {
-            cell.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+            cell.imageView.kf.setImage(with: URL(string: imageUrl),
+                                       options: [.transition(.fade(0.2))])
+        } else {
+            cell.imageView.image = nil
         }
         
         return cell

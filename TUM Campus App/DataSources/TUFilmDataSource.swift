@@ -55,7 +55,10 @@ class TUFilmDataSource: NSObject, TUMDataSource {
         cell.moviePosterImageView.clipsToBounds = true
         
         if let imageUrl = movie.imageUrl {
-            cell.moviePosterImageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+            cell.moviePosterImageView.kf.setImage(with: URL(string: imageUrl),
+                                                  placeholder: #imageLiteral(resourceName: "movie"), options: [.transition(.fade(0.2))])
+        } else {
+            cell.moviePosterImageView.image = nil
         }
 
         return cell

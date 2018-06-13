@@ -53,10 +53,14 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: cellReuseID, for: indexPath) as! NewsSpreadCollectionViewCell
+        
         let newsElement = data[indexPath.row]
         
         if let imageUrl = newsElement.imageUrl {
-            cell.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: #imageLiteral(resourceName: "movie"))
+            cell.imageView.kf.setImage(with: URL(string: imageUrl),
+                                       placeholder: #imageLiteral(resourceName: "movie"), options: [.transition(.fade(0.2))])
+        } else {
+            cell.imageView.image = nil
         }
 
         return cell
