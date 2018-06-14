@@ -7,19 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        initFirebase()
         setupAppearance()
         conditionallyShowLoginViewController()
 
         return true
+    }
+    
+    private func initFirebase() {
+        FirebaseApp.configure()
     }
 
     private func setupAppearance() {

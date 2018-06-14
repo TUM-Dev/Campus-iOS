@@ -201,6 +201,7 @@
 		807C48191F4092A800CAD35D /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48181F4092A800CAD35D /* DeparturesViewController.swift */; };
 		807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */; };
 		807C481D1F4093FC00CAD35D /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */; };
+		9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */; };
 		9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */; };
 		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
 		B20DF5B992DFD30580046509 /* Pods_TUM_Campus_AppUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */; };
@@ -443,6 +444,7 @@
 		807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		88D5EC6E4CF40FB09D2EEFE1 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewNoStartInset.swift; sourceTree = "<group>"; };
 		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 		AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 		0E424F471BE16DBE00B5DFCB /* TUM Campus App */ = {
 			isa = PBXGroup;
 			children = (
+				9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */,
 				0E5573661EB996B2006E9DBD /* config.json */,
 				0E424F4C1BE16DBE00B5DFCB /* Main.storyboard */,
 				0E64AC551C0DE46C00060FB0 /* Models */,
@@ -1206,6 +1209,7 @@
 				50200E1E1DF497EB00B6FBE3 /* RoomFinder.storyboard in Resources */,
 				0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */,
 				227D2169209B347F00C651BB /* CalendarCollectionViewCell.xib in Resources */,
+				9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */,
 				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
 				0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */,
 				221E45C420A71A7300A92084 /* MenuCollectionViewCell.xib in Resources */,
@@ -1292,6 +1296,7 @@
 				"${BUILT_PRODUCTS_DIR}/AYSlidingPickerView/AYSlidingPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/CalendarLib/CalendarLib.framework",
 				"${BUILT_PRODUCTS_DIR}/Fuzzi/Fuzzi.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OSCache/OSCache.framework",
@@ -1300,6 +1305,7 @@
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/Sweeft/Sweeft.framework",
 				"${BUILT_PRODUCTS_DIR}/TKSubmitTransition/TKSubmitTransition.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1307,6 +1313,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AYSlidingPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalendarLib.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fuzzi.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OSCache.framework",
@@ -1315,6 +1322,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sweeft.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKSubmitTransition.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

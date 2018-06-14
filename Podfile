@@ -15,6 +15,7 @@ target 'Campus' do
     pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :branch => 'swift4'
     pod 'Kanna', '~> 4.0.0'
 	pod 'Kingfisher', '~> 4.0'
+	pod 'Firebase', '~> 5.2'
     
     target 'TUM Campus AppUITests' do
         inherit! :search_paths
