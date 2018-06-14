@@ -5,7 +5,7 @@ platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
-    pod 'Sweeft', '~> 0.15.2'
+    pod 'Sweeft', :git => 'https://github.com/TG908/Sweeft.git', :branch => 'master'
     pod 'Fuzzi', '~> 0.1.1'
     pod 'AYSlidingPickerView'
     pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'
@@ -14,6 +14,8 @@ target 'Campus' do
     pod 'SWXMLHash', '~> 4.6.0'
     pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :branch => 'swift4'
     pod 'Kanna', '~> 4.0.0'
+	pod 'Kingfisher', '~> 4.0'
+	pod 'Firebase', '~> 5.2'
     
     target 'TUM Campus AppUITests' do
         inherit! :search_paths

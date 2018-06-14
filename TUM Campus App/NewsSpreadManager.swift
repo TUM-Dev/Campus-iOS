@@ -14,6 +14,10 @@ final class NewsSpreadManager: SourceNewsManager {
     
     unowned var newsManager: NewsManager
     
+    var cardKey: CardKey {
+        return .newsspread
+    }
+    
     var source: News.Source {
         return .newsSpread
     }

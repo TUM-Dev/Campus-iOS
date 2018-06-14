@@ -52,9 +52,14 @@ class TumDataManager {
             calendarManager,
             movieManager,
             tumNewsManager,
+            newsSpreadManager,
             tuitionManager,
             cafeteriaManager,
             bookRentalManager,
+            mvgManager,
+            gradesManager,
+            studyRoomsManager,
+            lecturesManager
         ].filter({ order.contains($0.cardKey) }).sorted(ascending: \.indexInOrder)
     }
     

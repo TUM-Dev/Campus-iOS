@@ -2,8 +2,20 @@
 //  Departure.swift
 //  Abfahrt
 //
-//  Created by Lukas Kollmer on 17.06.17.
-//  Copyright © 2017 Lukas Kollmer. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import Foundation
@@ -21,7 +33,6 @@ struct Departure {
     
     let station: Station
     
-    
     init?(json: JSON, station: Station) {
         guard let departureTime = json["departureTime"].int,
             let product = json["product"].string,
@@ -31,7 +42,6 @@ struct Departure {
             let lineBackgroundColor = json["lineBackgroundColor"].string,
             let departureId = json["departureId"].int,
             let sev = json["sev"].double?.bool else {
-                
                 return nil
         }
         

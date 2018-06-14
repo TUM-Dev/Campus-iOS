@@ -2,8 +2,20 @@
 //  StudyRoom.swift
 //  TUM Campus App
 //
-//  Created by Max Muth on 17.12.16.
-//  Copyright © 2016 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import Sweeft
@@ -36,7 +48,6 @@ class StudyRoom: DataElement {
          occupiedIn: Int,
          occupiedBy: String,
          buildingName: String) {
-        
         self.status = status
         self.roomNumber = roomNumber
         self.code = code
@@ -68,7 +79,10 @@ class StudyRoom: DataElement {
         dateformatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let occupiedUntil = dateformatter.date(from: occupiedUntilString)
         let occupiedFrom = dateformatter.date(from: occupiedFromString)
-        self.init(status: status, roomNumber: roomNumber, code: code, architectNumber: architectNumber, name: name, occupiedUntil: occupiedUntil, occupiedFor: occupiedFor, occupiedFrom: occupiedFrom, occupiedIn: occupiedIn, occupiedBy: occupiedBy, buildingName: buildingName)
+        self.init(status: status, roomNumber: roomNumber, code: code,
+                  architectNumber: architectNumber, name: name, occupiedUntil: occupiedUntil,
+                  occupiedFor: occupiedFor, occupiedFrom: occupiedFrom, occupiedIn: occupiedIn,
+                  occupiedBy: occupiedBy, buildingName: buildingName)
     }
     
     // Returns a verbose string like "Free" or "Occupied until 14:45"

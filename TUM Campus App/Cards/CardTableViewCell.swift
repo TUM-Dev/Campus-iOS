@@ -9,9 +9,9 @@
 import UIKit
 
 @IBDesignable class CardTableViewCell: UITableViewCell {
-	
-	@IBInspectable var topGradientColor: UIColor = UIColor.white
-	@IBInspectable var bottomGradientColor: UIColor = UIColor.black
+    
+    @IBInspectable var topGradientColor: UIColor = UIColor.white
+    @IBInspectable var bottomGradientColor: UIColor = UIColor.black
     
     let gradientLayer = CAGradientLayer()
     
@@ -27,14 +27,14 @@ import UIKit
         super.awakeFromNib()
         self.configureBackgroundGradient()
     }
-	
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.configureBackgroundGradient()
     }
-    	
-	func setElement(_ element: DataElement) {
-		fatalError("setElement not implemented")
-	}
-	
+        
+    func setElement(_ element: DataElement) {
+        fatalError("setElement not implemented")
+    }
+    
 }

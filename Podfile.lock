@@ -1,15 +1,40 @@
 PODS:
-  - ASWeekSelectorView (1.0.2)
+  - ASWeekSelectorView (1.0.3)
   - AYSlidingPickerView (0.1.4)
   - CalendarLib (2.0):
     - OrderedDictionary (~> 1.2)
     - OSCache (~> 1.2)
+  - Firebase (5.2.0):
+    - Firebase/Core (= 5.2.0)
+  - Firebase/Core (5.2.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.0.1)
+  - Firebase/CoreOnly (5.2.0):
+    - FirebaseCore (= 5.0.3)
+  - FirebaseAnalytics (5.0.1):
+    - FirebaseCore (~> 5.0)
+    - FirebaseInstanceID (~> 3.0)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.0.3):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseInstanceID (3.1.0):
+    - FirebaseCore (~> 5.0)
   - Fuzzi (0.1.1)
+  - GoogleToolboxForMac/Defines (2.1.4)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
+    - GoogleToolboxForMac/Defines (= 2.1.4)
   - Kanna (4.0.0)
+  - Kingfisher (4.8.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
   - PZPullToRefresh (0.0.9)
-  - Sweeft (0.15.2)
+  - Sweeft (0.15.3)
   - SWXMLHash (4.6.0)
   - TKSubmitTransition (2.0)
 
@@ -17,16 +42,39 @@ DEPENDENCIES:
   - ASWeekSelectorView (~> 1.0)
   - AYSlidingPickerView
   - CalendarLib (~> 2.0)
+  - Firebase (~> 5.2)
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
+  - Kingfisher (~> 4.0)
   - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
-  - Sweeft (~> 0.15.2)
+  - Sweeft (from `https://github.com/TG908/Sweeft.git`, branch `master`)
   - SWXMLHash (~> 4.6.0)
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ASWeekSelectorView
+    - AYSlidingPickerView
+    - CalendarLib
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - Fuzzi
+    - GoogleToolboxForMac
+    - Kanna
+    - Kingfisher
+    - nanopb
+    - OrderedDictionary
+    - OSCache
+    - SWXMLHash
 
 EXTERNAL SOURCES:
   PZPullToRefresh:
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
+  Sweeft:
+    :branch: master
+    :git: https://github.com/TG908/Sweeft.git
   TKSubmitTransition:
     :branch: swift4
     :git: https://github.com/entotsu/TKSubmitTransition.git
@@ -35,23 +83,33 @@ CHECKOUT OPTIONS:
   PZPullToRefresh:
     :commit: 34f9e5cb846d31f0e56a6fe4efb1dcf8f0f70093
     :git: https://github.com/mathiasquintero/PZPullToRefresh.git
+  Sweeft:
+    :commit: b57b02d909c7540a077314216c13b6f85ef5ecb6
+    :git: https://github.com/TG908/Sweeft.git
   TKSubmitTransition:
     :commit: 29fac6072451a4def5cde567075bfc62a728bb1f
     :git: https://github.com/entotsu/TKSubmitTransition.git
 
 SPEC CHECKSUMS:
-  ASWeekSelectorView: a0df45ecb2dafb92f1ff589db95ba97bd51d05c4
+  ASWeekSelectorView: 396acc65f14aa09441528fbd0b2ec46989d8cb4a
   AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
+  Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
+  FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
+  FirebaseCore: a3c87242451633fff8490183898075ce77d168d2
+  FirebaseInstanceID: 05d779cbb97bd5bd5c51a38a903fc9cfe1b2454a
   Fuzzi: be301db91f05b4d3191756601e326f5b6d500932
+  GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
   PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
-  Sweeft: 07c455af2b0b9f8d282fd92571fbabb0d1632436
+  Sweeft: 7421bac377e41a4678cdb711822536445e404091
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: eeeb8249aadfffb51b76edeaf806aee4b14770c7
+PODFILE CHECKSUM: 1f9bedcc65a2dcea0b263ca08f281e441e481a4f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

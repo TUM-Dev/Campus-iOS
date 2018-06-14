@@ -11,13 +11,17 @@ import Sweeft
 import Kanna
 
 final class BookRentalManager: SingleItemManager, CardManager {
-    
+
     typealias DataType = BookRental
     
     var config: Config
-    
+    var cache: Cache<[BookRental]>?
     var requiresLogin: Bool {
         return false
+    }
+    
+    var defaultMaxCache: CacheTime {
+        return .time(.aboutOneDay)
     }
     
     var cardKey: CardKey {

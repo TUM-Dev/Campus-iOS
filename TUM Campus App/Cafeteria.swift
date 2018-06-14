@@ -2,8 +2,20 @@
 //  Cafeteria.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 12/1/15.
-//  Copyright © 2015 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import Sweeft
@@ -25,7 +37,6 @@ final class Cafeteria: DataElement {
     }
 
     init(id: String, name: String, address: String, latitude: Double, longitude: Double) {
-        
         self.id = id
         self.name = name
         self.address = address
@@ -59,13 +70,11 @@ final class Cafeteria: DataElement {
 extension Cafeteria: Deserializable {
     
     convenience init?(from json: JSON) {
-        
         guard let id = json["id"].string,
             let name = json["name"].string,
             let address = json["address"].string,
             let latitude = json["latitude"].string.flatMap(Double.init),
             let longitude = json["longitude"].string.flatMap(Double.init) else {
-                
             return nil
         }
         

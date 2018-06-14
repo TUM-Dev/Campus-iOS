@@ -2,8 +2,20 @@
 //  EditCardsViewController.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 12/17/16.
-//  Copyright © 2016 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import UIKit
@@ -12,7 +24,6 @@ import Sweeft
 protocol EditCardsViewControllerDelegate {
     func didUpdateCards()
 }
-
 
 class EditCardsViewController: UITableViewController {
     
@@ -45,7 +56,6 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
         switch section {
         case 0:
             return "Enabled"
@@ -57,7 +67,6 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         switch section {
         case 0:
             return enabled.count
@@ -74,8 +83,8 @@ class EditCardsViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        
+    override func tableView(_ tableView: UITableView,
+                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         switch indexPath.section {
         case 0:
             return .delete
@@ -94,7 +103,8 @@ class EditCardsViewController: UITableViewController {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
         if destinationIndexPath.section == 0 {
             enabled.move(itemAt: sourceIndexPath.row, to: destinationIndexPath.row)
@@ -108,8 +118,9 @@ class EditCardsViewController: UITableViewController {
         print("Editing!!!")
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
             enabled.remove(at: indexPath.row)

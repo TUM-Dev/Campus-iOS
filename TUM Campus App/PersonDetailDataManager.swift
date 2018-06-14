@@ -26,7 +26,6 @@ final class PersonDetailDataManager: DetailsManager {
         }
         return config.tumOnline.doRepresentedRequest(to: .personDetails,
                                                      queries: ["pIdentNr": data.id]).map { (xml: XMLIndexer) in
-            
             let dien = xml["person"]["dienstlich"]
             let privat = xml["person"]["privat"]
             var contactInfo = [(ContactInfoType,String?)]()

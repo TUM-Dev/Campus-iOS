@@ -2,8 +2,20 @@
 //  Movie.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 10/28/15.
-//  Copyright © 2015 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import UIKit
@@ -36,7 +48,6 @@ final class Movie: DataElement {
          created: Date,
          airDate: Date,
          poster: String) {
-        
         self.name = name
         self.id = id
         self.runtime = runtime
@@ -64,7 +75,6 @@ final class Movie: DataElement {
 extension Movie: Deserializable {
     
     convenience init?(from json: JSON) {
-        
         guard let ratingString = json["rating"].string,
             let rating = Double(ratingString),
             let description = json["description"].string,
@@ -79,7 +89,6 @@ extension Movie: Deserializable {
             let genre = json["genre"].string,
             let id = json["link"].string,
             let actors = json["actors"].string else {
-                
             return nil
         }
         

@@ -2,8 +2,20 @@
 //  CalendarRow.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 12/1/15.
-//  Copyright © 2015 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import Foundation
@@ -32,7 +44,6 @@ final class CalendarRow: DataElement {
          geo: CLLocation? = nil,
          location: String?,
          url: URL?) {
-        
         self.start = start
         self.end = end
         self.title = title
@@ -65,12 +76,10 @@ final class CalendarRow: DataElement {
 extension CalendarRow: XMLDeserializable {
     
     convenience init?(from xml: XMLIndexer, api: TUMOnlineAPI, maxCache: CacheTime) {
-        
         guard let title = xml["title"].element?.text,
             let start = xml["dtstart"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
             let end = xml["dtend"].element?.text.date(using: "yyyy-MM-dd HH:mm:ss"),
             let status = xml["status"].element?.text else {
-                
                 return nil
         }
         self.init(start: start,

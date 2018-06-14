@@ -2,8 +2,20 @@
 //  ImageDownloader.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 12/8/15.
-//  Copyright © 2015 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import UIKit
@@ -36,7 +48,6 @@ class Image {
     func bind(to imageView: UIImageView,
               default image: UIImage?,
               mapping transform: @escaping (UIImage) -> UIImage = { $0 }) -> ImageViewBinding {
-        
         fetch()
         let binding = ImageViewBinding()
         imageView.image = image
@@ -50,14 +61,17 @@ class Image {
     func bind(to barButton: UIBarButtonItem,
               default image: UIImage? = nil,
               mapping transform: @escaping (UIImage) -> UIImage = { $0 }) -> ImageViewBinding {
-        
         promise = promise ?? url.map { .new(from: $0, maxCache: self.maxCache) }
         let binding = ImageViewBinding()
         barButton.image = image
         promise?.onSuccess(in: .main) { [weak binding, weak barButton] image in
             guard binding != nil else { return }
             let transformed = transform(image)
-            let newImage = barButton?.image.map { transformed.resized(to: $0.size, scale: $0.scale).withRenderingMode(.alwaysOriginal) } ?? transformed
+            let newImage = barButton?.image.map {
+                transformed
+                    .resized(to: $0.size, scale: $0.scale)
+                    .withRenderingMode(.alwaysOriginal)
+            } ?? transformed
             barButton?.image = newImage
         }
         return binding
@@ -96,7 +110,6 @@ extension Data {
 }
 
 extension UIImage {
-    
     
     static func download(url string: String, maxCache: CacheTime = .no) -> Response<UIImage> {
         return Data.download(url: string, maxCache: maxCache).flatMap { data in

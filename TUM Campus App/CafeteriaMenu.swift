@@ -2,8 +2,20 @@
 //  CafeteriaMenu.swift
 //  TUM Campus App
 //
-//  Created by Mathias Quintero on 12/1/15.
-//  Copyright © 2015 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import Sweeft
@@ -20,7 +32,6 @@ class CafeteriaMenu: DataElement {
     let details: MenuDetail
     let mensaId: String
     
-    
     init(id: String?,
          date: Date,
          typeShort: String,
@@ -30,7 +41,6 @@ class CafeteriaMenu: DataElement {
          price: Price?,
          details: MenuDetail,
          mensaId: String) {
-        
         self.id = id
         self.date = date
         self.typeShort = typeShort
@@ -60,12 +70,10 @@ extension CafeteriaMenu {
             let typeShort = json["type_short"].string,
             let typeLong = json["type_long"].string,
             let name = json["name"].string else {
-            
             return nil
         }
         
         let details = CafeteriaConstants.parseMensaMenu(name)
-        
         self.init(id: json["id"].string,
                   date: date,
                   typeShort: typeShort,
@@ -78,7 +86,6 @@ extension CafeteriaMenu {
     }
     
 }
-
 
 struct Price {
     var student: Double

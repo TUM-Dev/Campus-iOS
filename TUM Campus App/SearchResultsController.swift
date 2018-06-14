@@ -2,8 +2,20 @@
 //  SearchResultsController.swift
 //  Campus
 //
-//  Created by Tim Gymnich on 22.10.17.
-//  Copyright © 2017 LS1 TUM. All rights reserved.
+//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
+//  Copyright (c) 2018 TCA
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, version 3.
+//
+//  This program is distributed in the hope that it will be useful, but
+//  WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+//  General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 
 import UIKit
@@ -54,26 +66,27 @@ class SearchResultsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch currentElement!.getCellIdentifier() {
-            
         case "person":
             let storyboard = UIStoryboard(name: "PersonDetail", bundle: nil)
-            if let personDetailTableViewController = storyboard.instantiateViewController(withIdentifier: "PersonDetailTableViewController") as? PersonDetailTableViewController {
+            if let personDetailTableViewController =
+                storyboard.instantiateInitialViewController() as? PersonDetailTableViewController {
                 personDetailTableViewController.user = currentElement
                 personDetailTableViewController.delegate = self
                 navCon?.pushViewController(personDetailTableViewController, animated: true)
             }
         case "lecture":
             let storyboard = UIStoryboard(name: "LectureDetail", bundle: nil)
-            if let lectureDetailViewController = storyboard.instantiateViewController(withIdentifier: "LectureDetailsTableViewController") as? LectureDetailsTableViewController {
+            if let lectureDetailViewController =
+                storyboard.instantiateInitialViewController() as? LectureDetailsTableViewController {
                 lectureDetailViewController.lecture = currentElement
                 lectureDetailViewController.delegate = self
                 navCon?.pushViewController(lectureDetailViewController, animated: true)
             }
         case "room":
             let storyboard = UIStoryboard(name: "RoomFinder", bundle: nil)
-            if let roomFinderView = storyboard.instantiateViewController(withIdentifier: "RoomFinderViewController") as? RoomFinderViewController {
+            if let roomFinderView =
+                storyboard.instantiateInitialViewController() as? RoomFinderViewController {
                 roomFinderView.room = currentElement
                 roomFinderView.delegate = self
                 navCon?.pushViewController(roomFinderView, animated: true)
@@ -83,7 +96,6 @@ class SearchResultsController: UITableViewController {
         default:
             break
         }
-        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -97,10 +109,10 @@ class SearchResultsController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let element = elements[indexPath.section].results[indexPath.row]
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: element.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: element.getCellIdentifier()) as? CardTableViewCell ?? CardTableViewCell()
+        
         cell.setElement(element)
         cell.backgroundColor = .clear
         
