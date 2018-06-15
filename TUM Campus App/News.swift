@@ -28,8 +28,9 @@ final class News: DataElement {
     let date: Date
     let title: String
     let link: String
-    let image: String?
+    let imageUrl: String?
     
+    /*
     // In the case of news (not TUFilm movies), the image URL is stored in link.
     // This computed property returns the appropriate URL depending on availability.
     var imageUrl: String? {
@@ -41,6 +42,7 @@ final class News: DataElement {
             return nil
         }
     }
+    */
     
     init(id: String, source: Source, date: Date, title: String, link: String, imageUrl: String? = nil) {
         self.id = id
@@ -48,7 +50,7 @@ final class News: DataElement {
         self.date = date
         self.title = title
         self.link = link
-        self.image = imageUrl
+        self.imageUrl = imageUrl
     }
     
     var text: String {
