@@ -22,7 +22,8 @@ import UIKit
 import Sweeft
 
 protocol EditCardsViewControllerDelegate {
-    func didUpdateCards()
+    func didChangeCardOrder()
+    func didFinishCardOrderEditing()
 }
 
 class EditCardsViewController: UITableViewController {
@@ -34,7 +35,7 @@ class EditCardsViewController: UITableViewController {
         }
         set {
             PersistentCardOrder.value.cards = newValue
-            delegate?.didUpdateCards()
+            delegate?.didChangeCardOrder()
         }
     }
     
@@ -105,7 +106,6 @@ class EditCardsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
         if destinationIndexPath.section == 0 {
             enabled.move(itemAt: sourceIndexPath.row, to: destinationIndexPath.row)
         } else {
@@ -134,6 +134,7 @@ class EditCardsViewController: UITableViewController {
     }
     
     @IBAction func pressedDone(_ sender: Any) {
+        delegate?.didFinishCardOrderEditing()
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

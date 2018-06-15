@@ -53,8 +53,25 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     var dataSources: [TUMDataSource] = []
     var manager: TumDataManager
     var delegate: TUMDataSourceDelegate?
-    var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
+    var cardKeys: [CardKey] {
+        let result = PersistentCardOrder.value.cards
+        return result
+    }
     let margin: CGFloat = 20.0
+    
+    var sortedDataSources: [TUMDataSource] {
+        return dataSources
+            .filter { !$0.isEmpty }
+            .filter { cardKeys.contains($0.cardKey) }
+            .sorted { (lhs, rhs) -> Bool in
+                guard let leftIndex = cardKeys.index(of: lhs.cardKey),
+                    let rightIndex = cardKeys.index(of: rhs.cardKey) else {
+                        return false
+                }
+                
+                return leftIndex < rightIndex
+            }
+    }
     
     init(manager: TumDataManager) {
         self.manager = manager
@@ -83,19 +100,19 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        TODO
-//        dataSources.sorted { (<#TUMDataSource#>, <#TUMDataSource#>) -> Bool in <#code#> }
-        return dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}.count
+        return sortedDataSources.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //TODO Maybe this is not that efficient...
-        let dataSource = dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: dataSource.cardReuseID, for: indexPath) as! DataSourceCollectionViewCell
+        let dataSource = sortedDataSources[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: dataSource.cardReuseID, for: indexPath) as! DataSourceCollectionViewCell
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
 
-        cell.collectionView.register(UINib(nibName: String(describing: dataSource.cellType), bundle: .main), forCellWithReuseIdentifier: dataSource.cellReuseID)
+        let nib = UINib(nibName: String(describing: dataSource.cellType), bundle: .main)
+        cell.collectionView.register(nib, forCellWithReuseIdentifier: dataSource.cellReuseID)
         cell.collectionView.collectionViewLayout = layout
         cell.cardNameLabel.text = dataSource.cardKey.description.uppercased()
         cell.cardNameLabel.textColor = dataSource.sectionColor
@@ -109,16 +126,22 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     
     //MARK: - UICollectionViewDelegateFlowLayout
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return margin
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let dataSource = dataSources.filter{!$0.isEmpty && cardKeys.contains($0.cardKey)}[indexPath.row]
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let dataSource = sortedDataSources[indexPath.row]
         let height: CGFloat
         let width: CGFloat
         

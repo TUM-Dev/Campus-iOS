@@ -10,7 +10,8 @@ import Foundation
 import Sweeft
 import Kanna
 
-final class BookRentalManager: SingleItemManager, CardManager {
+@available(*, deprecated)
+final class BookRentalManager: SingleItemManager /*, CardManager*/ {
 
     typealias DataType = BookRental
     
@@ -25,7 +26,7 @@ final class BookRentalManager: SingleItemManager, CardManager {
     }
     
     var cardKey: CardKey {
-        return .bookRental
+        return CardKey.calendar // DUMMY
     }
     
     init(config: Config) {
