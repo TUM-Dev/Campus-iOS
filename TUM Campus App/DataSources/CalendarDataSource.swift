@@ -47,6 +47,11 @@ class CalendarDataSource: NSObject, TUMDataSource {
         group.enter()
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data.filter{ $0.start.timeIntervalSinceNow > 0}
+            // TODO
+            self.data = [
+                CalendarRow(start: Date(millisecondsSince1970: 1529095298), end: Date(millisecondsSince1970: 1529195298), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil),
+                CalendarRow(start: Date(millisecondsSince1970: 1529095338), end: Date(millisecondsSince1970: 1529195998), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
+            ]
             group.leave()
         }
     }

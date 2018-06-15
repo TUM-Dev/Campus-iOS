@@ -29,7 +29,7 @@ class NewsDataSource: NSObject, TUMDataSource {
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 160.0
+    let preferredHeight: CGFloat = 162.0
     
     init(manager newsManager: NewsManager) {
         self.manager = newsManager

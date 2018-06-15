@@ -204,6 +204,7 @@
 		9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */; };
 		9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */; };
 		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
+		9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */; };
 		B20DF5B992DFD30580046509 /* Pods_TUM_Campus_AppUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */; };
 		E1369C9D1F87D25E00D6766E /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
@@ -447,6 +448,7 @@
 		9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewNoStartInset.swift; sourceTree = "<group>"; };
 		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
+		9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBlurredBackground.swift; sourceTree = "<group>"; };
 		AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
@@ -927,6 +929,7 @@
 				227B481820A3487700AE3373 /* DataSourceCollectionViewCell.swift */,
 				22763FD020B176CE008D5A89 /* RoundedLabel.swift */,
 				9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */,
+				9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */,
 			);
 			path = CardCells;
 			sourceTree = "<group>";
@@ -1494,6 +1497,7 @@
 				0EC10C211C171D100024F902 /* MovieManager.swift in Sources */,
 				220EFFB120A866EC009D0337 /* MVGDepartureCollectionViewCell.swift in Sources */,
 				807C48151F4091DD00CAD35D /* Interruption.swift in Sources */,
+				9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */,
 				0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */,
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				227D215620988B6700C651BB /* CalendarDataSource.swift in Sources */,
