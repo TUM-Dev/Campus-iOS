@@ -30,20 +30,6 @@ final class News: DataElement {
     let link: String
     let imageUrl: String?
     
-    /*
-    // In the case of news (not TUFilm movies), the image URL is stored in link.
-    // This computed property returns the appropriate URL depending on availability.
-    var imageUrl: String? {
-        if let image = image, !image.isEmpty {
-            return image
-        } else if link.hasSuffix(".jpeg") {
-            return link
-        } else {
-            return nil
-        }
-    }
-    */
-    
     init(id: String, source: Source, date: Date, title: String, link: String, imageUrl: String? = nil) {
         self.id = id
         self.source = source
