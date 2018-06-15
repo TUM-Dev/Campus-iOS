@@ -42,9 +42,6 @@ extension News.Source {
     static let newsspreadFMI = News.Source(identifier: 7)
     static let newsspreadChemistry = News.Source(identifier: 8)
     static let newsspreadSG = News.Source(identifier: 9)
-    static let newsspreadWI = News.Source(identifier: 10)
-    static let newsspreadPhysics = News.Source(identifier: 11)
-    static let newsspreadLab = News.Source(identifier: 12)
     static let newsspreadWeihenstephan = News.Source(identifier: 13)
     static let alumni = News.Source(identifier: 14)
     static let impulsiv = News.Source(identifier: 15)
@@ -55,11 +52,8 @@ extension News.Source {
         .newsspreadFMI,
         .newsspreadChemistry,
         .newsspreadSG,
-        .newsspreadWI,
-        .newsspreadPhysics,
-        .newsspreadLab,
-        .newsspreadWeihenstephan,
-        ]
+        .newsspreadWeihenstephan
+    ]
     
     static var restOfNews: News.Source {
         return News.Source.all.subtracting([.movies, .newsSpread])
