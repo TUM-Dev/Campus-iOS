@@ -23,6 +23,7 @@ import AYSlidingPickerView
 
 class RoomFinderViewController: UIViewController, DetailView {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -33,6 +34,8 @@ class RoomFinderViewController: UIViewController, DetailView {
     var maps = [Map]()
     var currentMap: Map? {
         didSet {
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
             refreshImage()
         }
     }
@@ -55,13 +58,17 @@ class RoomFinderViewController: UIViewController, DetailView {
 extension RoomFinderViewController {
     
     func fetch(id: String) {
-        delegate?.dataManager()?.roomMapsManager.search(query: id).onSuccess(in: .main) { maps in
-            self.maps = maps.sorted { $0.scale < $1.scale }
-            if !maps.isEmpty {
-                self.currentMap = self.maps.first
+        activityIndicator.startAnimating()
+        delegate?.dataManager()?
+            .roomMapsManager
+            .search(query: id)
+            .onSuccess(in: .main) { maps in
+                self.maps = maps.sorted { $0.scale < $1.scale }
+                if !maps.isEmpty {
+                    self.currentMap = self.maps.first
+                }
+                self.setUpPickerView()
             }
-            self.setUpPickerView()
-        }
     }
     
 }
@@ -73,6 +80,7 @@ extension RoomFinderViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         scrollView.delegate = self
+        
         if let roomUnwrapped = room as? Room {
             fetch(id: roomUnwrapped.number)
         } else if let roomUnwrapped = room as? StudyRoom {
@@ -116,6 +124,12 @@ extension RoomFinderViewController: UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let offsetX = max((scrollView.bounds.width - scrollView.contentSize.width) * 0.5, 0)
+        let offsetY = max((scrollView.bounds.height - scrollView.contentSize.height) * 0.5, 0)
+        self.scrollView.contentInset = UIEdgeInsetsMake(offsetY, offsetX, 0, 0)
     }
     
 }
