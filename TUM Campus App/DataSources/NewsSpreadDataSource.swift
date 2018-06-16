@@ -21,8 +21,9 @@
 import UIKit
 import Sweeft
 
-class NewsSpreadDataSource: NSObject, TUMDataSource {
+class NewsSpreadDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: NewsSpreadManager
     var cellType: AnyClass = NewsSpreadCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
@@ -30,9 +31,11 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
     var data: [News] = []
     let preferredHeight: CGFloat = 180.0
     
-    var flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateLandscapeItemFlowLayout()
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateLandscapeItemFlowLayout(delegate: self)
     
-    init(manager: NewsSpreadManager) {
+    init(parent: CardViewController, manager: NewsSpreadManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -43,6 +46,11 @@ class NewsSpreadDataSource: NSObject, TUMDataSource {
             self.data = data
             group.leave()
         }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        item.open(sender: parent)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

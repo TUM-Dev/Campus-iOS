@@ -20,18 +20,23 @@
 import UIKit
 import Sweeft
 
-class NewsDataSource: NSObject, TUMDataSource {
-
+class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
+    
+    let parent: CardViewController
     var manager: NewsManager
     let cellType: AnyClass = NewsCollectionViewCell.self
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
+    
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    
     let dateFormatter = DateFormatter()
     let preferredHeight: CGFloat = 162.0
     
-    init(manager newsManager: NewsManager) {
+    init(parent: CardViewController, manager newsManager: NewsManager) {
+        self.parent = parent
         self.manager = newsManager
         self.dateFormatter.dateStyle = .medium
         self.dateFormatter.timeStyle = .none
@@ -44,6 +49,11 @@ class NewsDataSource: NSObject, TUMDataSource {
             self.data = data.filter { $0.source != News.Source.movies }
             group.leave()
         }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        item.open(sender: parent)
     }
         
     func collectionView(_ collectionView: UICollectionView,

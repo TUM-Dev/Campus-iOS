@@ -37,6 +37,10 @@ protocol TUMDataSource: UICollectionViewDataSource {
     func refresh(group: DispatchGroup)
 }
 
+protocol TUMInteractiveDataSource {
+    func onItemSelected(at indexPath: IndexPath)
+}
+
 extension TUMDataSource {
     var sectionColor: UIColor { return Constants.tumBlue }
     var cellReuseID: String {
@@ -56,15 +60,15 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
     let margin: CGFloat = 20.0
     
-    init(manager: TumDataManager) {
+    init(parent: CardViewController, manager: TumDataManager) {
         self.manager = manager
         self.dataSources = [
-            NewsDataSource(manager: manager.newsManager),
-            NewsSpreadDataSource(manager: manager.newsSpreadManager),
+            NewsDataSource(parent: parent, manager: manager.newsManager),
+            NewsSpreadDataSource(parent: parent, manager: manager.newsSpreadManager),
             CafeteriaDataSource(manager: manager.cafeteriaManager),
-            TUFilmDataSource(manager: manager.tuFilmNewsManager),
-            CalendarDataSource(manager: manager.calendarManager),
-            TuitionDataSource(manager: manager.tuitionManager),
+            TUFilmDataSource(parent: parent, manager: manager.tuFilmNewsManager),
+            CalendarDataSource(parent: parent, manager: manager.calendarManager),
+            TuitionDataSource(parent: parent, manager: manager.tuitionManager),
             MVGStationDataSource(manager: manager.mvgManager),
             GradesDataSource(manager: manager.gradesManager),
             LecturesDataSource(manager: manager.lecturesManager),

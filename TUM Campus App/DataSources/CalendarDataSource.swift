@@ -21,19 +21,23 @@
 import UIKit
 
 
-class CalendarDataSource: NSObject, TUMDataSource {
+class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: CalendarManager
     let cellType: AnyClass = CalendarCollectionViewCell.self
     var data: [CalendarRow] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
     let dateComponentsFormatter = DateComponentsFormatter()
     let preferredHeight: CGFloat = 200.0
     
-    init(manager: CalendarManager) {
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    
+    init(parent: CardViewController, manager: CalendarManager) {
+        self.parent = parent
         self.manager = manager
         self.dateFormatter.dateStyle = .full
         self.dateFormatter.timeStyle = .short
@@ -53,6 +57,16 @@ class CalendarDataSource: NSObject, TUMDataSource {
                 CalendarRow(start: Date(millisecondsSince1970: 1529095338), end: Date(millisecondsSince1970: 1529195998), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
             ]
             group.leave()
+        }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let calendarElement = data[indexPath.row]
+        let storyboard = UIStoryboard(name: "Calendar Detail", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? CalendarViewController {
+            destination.nextLectureItem = calendarElement
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     

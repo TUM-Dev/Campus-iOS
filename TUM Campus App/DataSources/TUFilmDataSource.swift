@@ -21,16 +21,19 @@
 import UIKit
 import Kingfisher
 
-class TUFilmDataSource: NSObject, TUMDataSource {
+class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: TUFilmNewsManager
     let cellType: AnyClass = TUFilmCollectionViewCell.self
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateThreeItemHorizontalFlowLayout(delegate: self)
     
-    init(manager: TUFilmNewsManager) {
+    init(parent: CardViewController, manager: TUFilmNewsManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -43,12 +46,27 @@ class TUFilmDataSource: NSObject, TUMDataSource {
         }
     }
     
+    func onItemSelected(at indexPath: IndexPath) {
+        let movie = data[indexPath.row]
+        movie.open(sender: parent)
+        
+        // TODO
+        /*
+        let storyboard = UIStoryboard(name: "Movie", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? MovieDetailTableViewController {
+            // TODO
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+        */
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
         let movie = data[indexPath.row]
         
         cell.titleLabel.text = String(movie.text.split(separator: ":").last ?? "")
