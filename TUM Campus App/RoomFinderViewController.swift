@@ -34,8 +34,8 @@ class RoomFinderViewController: UIViewController, DetailView {
     var maps = [Map]()
     var currentMap: Map? {
         didSet {
-            activityIndicator.isHidden = false
-            activityIndicator.startAnimating()
+            //activityIndicator.isHidden = false
+            //activityIndicator.startAnimating()
             refreshImage()
         }
     }
@@ -58,11 +58,14 @@ class RoomFinderViewController: UIViewController, DetailView {
 extension RoomFinderViewController {
     
     func fetch(id: String) {
+        activityIndicator.isHidden = false
         activityIndicator.startAnimating()
+        
         delegate?.dataManager()?
             .roomMapsManager
             .search(query: id)
             .onSuccess(in: .main) { maps in
+                self.activityIndicator.stopAnimating()
                 self.maps = maps.sorted { $0.scale < $1.scale }
                 if !maps.isEmpty {
                     self.currentMap = self.maps.first
