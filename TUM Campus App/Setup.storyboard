@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,163 +21,131 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the TUM Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-Sw-wBW">
-                                <rect key="frame" x="67" y="108.5" width="242" height="63.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made for Students by Students" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTf-tU-Eg3">
-                                <rect key="frame" x="69" y="179" width="238" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter your TUM Kennung to Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-9L-lor">
-                                <rect key="frame" x="17.5" y="290" width="340" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ga" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLP-9l-x36">
-                                <rect key="frame" x="109" y="319" width="46.5" height="30"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <connections>
-                                    <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="pLN-Xg-cHE"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="59" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-yr-cNe">
-                                <rect key="frame" x="164.5" y="319" width="46" height="30"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
-                                <connections>
-                                    <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="YiS-xp-OXh"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kif" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-YR-9PD">
-                                <rect key="frame" x="224.5" y="319" width="46.5" height="30"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <connections>
-                                    <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="kdl-Jb-xvX"/>
-                                </connections>
-                            </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiV-A8-7nM">
-                                <rect key="frame" x="68" y="224" width="240" height="36"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="zyC-Di-pRq"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDU-z4-ShP">
-                                <rect key="frame" x="68" y="72" width="240" height="36.5"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="Xnt-6o-She"/>
-                                    <constraint firstAttribute="width" constant="240" id="f88-pM-GFc"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Xnt-6o-She"/>
-                                    </mask>
-                                </variation>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pj-cI-PxK">
-                                <rect key="frame" x="91.5" y="357" width="193" height="30"/>
-                                <state key="normal" title="I don't have a TUM Kennung"/>
-                                <connections>
-                                    <action selector="skip" destination="IcY-YJ-gjf" eventType="touchUpInside" id="2tj-Px-lUN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-rT-Ctc" customClass="BorderedButton" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="291" y="319" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KlA-ak-yv3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
-                                <state key="normal" title="🎓">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirm" destination="IcY-YJ-gjf" eventType="touchUpInside" id="STo-oM-JVv"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qTm-2F-rwT">
+                                <rect key="frame" x="53.5" y="213" width="268" height="241"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fEw-OR-9IJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="268" height="112.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Qb1-F6-hLs">
+                                                <rect key="frame" x="0.0" y="0.0" width="268" height="112.5"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-blue" translatesAutoresizingMaskIntoConstraints="NO" id="EAP-2r-iZd">
+                                                        <rect key="frame" x="22" y="0.0" width="224" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="yvb-PR-hJ2"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P2H-wl-76q">
+                                                        <rect key="frame" x="0.0" y="68" width="268" height="44.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to TUM Campus App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-Sw-wBW">
+                                                                <rect key="frame" x="0.0" y="0.0" width="268" height="24"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by students, for students" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTf-tU-Eg3">
+                                                                <rect key="frame" x="0.0" y="24" width="268" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yDl-ua-koQ">
+                                        <rect key="frame" x="0.0" y="136.5" width="268" height="104.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T92-Ib-C9G">
+                                                <rect key="frame" x="0.0" y="0.0" width="268" height="58.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your TUM ID to get started." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-9L-lor">
+                                                        <rect key="frame" x="0.0" y="0.0" width="268" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FBz-zb-jxr">
+                                                        <rect key="frame" x="0.0" y="28.5" width="268" height="30"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vNl-96-vpw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="212" height="30"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ga" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLP-9l-x36">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                                        <connections>
+                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="pLN-Xg-cHE"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="59" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-yr-cNe">
+                                                                        <rect key="frame" x="73" y="0.0" width="66" height="30"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                                                                        <connections>
+                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="YiS-xp-OXh"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kif" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-YR-9PD">
+                                                                        <rect key="frame" x="147" y="0.0" width="65" height="30"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                                        <connections>
+                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="kdl-Jb-xvX"/>
+                                                                        </connections>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="2aH-YR-9PD" secondAttribute="width" id="YiC-ek-G5t"/>
+                                                                    <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="bLP-9l-x36" secondAttribute="width" id="hf3-fN-2o0"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-rT-Ctc">
+                                                                <rect key="frame" x="228" y="0.0" width="40" height="30"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="KlA-ak-yv3"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="ntk-An-pve"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                                <state key="normal" title="🎓">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="confirm" destination="IcY-YJ-gjf" eventType="touchUpInside" id="STo-oM-JVv"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pj-cI-PxK">
+                                                <rect key="frame" x="0.0" y="74.5" width="268" height="30"/>
+                                                <state key="normal" title="Continue without TUM ID"/>
+                                                <connections>
+                                                    <action selector="skip" destination="IcY-YJ-gjf" eventType="touchUpInside" id="2tj-Px-lUN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="leading" secondItem="bLP-9l-x36" secondAttribute="trailing" constant="9" id="2iM-u1-WSo"/>
-                            <constraint firstItem="2o9-rT-Ctc" firstAttribute="centerY" secondItem="2aH-YR-9PD" secondAttribute="centerY" id="3xX-5U-8SN"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="8" symbolic="YES" id="4Ty-UG-ScP"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="top" secondItem="UTf-tU-Eg3" secondAttribute="bottom" constant="8" symbolic="YES" id="5FW-bt-Yqe"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="height" secondItem="SDU-z4-ShP" secondAttribute="height" id="6Gv-jF-SLY"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="6T7-Kw-DIu"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="7E2-Oq-xgh"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="top" secondItem="XYB-9L-lor" secondAttribute="bottom" constant="8" symbolic="YES" id="7bZ-OO-RqY"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="2aH-YR-9PD" secondAttribute="width" id="7jf-26-LLW"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="ACH-1V-acR"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SDU-z4-ShP" secondAttribute="bottom" constant="8" symbolic="YES" id="B3I-dE-kHP"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="CbV-Tu-Siu"/>
-                            <constraint firstItem="UTf-tU-Eg3" firstAttribute="top" secondItem="UPm-Sw-wBW" secondAttribute="bottom" constant="7.5" id="Cl7-1X-Gsv"/>
-                            <constraint firstItem="UTf-tU-Eg3" firstAttribute="centerX" secondItem="UPm-Sw-wBW" secondAttribute="centerX" id="D7n-Lc-rsG"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="8" symbolic="YES" id="H3u-FK-O1j"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="bLP-9l-x36" secondAttribute="width" id="Hu4-dz-h1v"/>
-                            <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="30.5" id="Isi-kn-4fU"/>
-                            <constraint firstItem="2o9-rT-Ctc" firstAttribute="leading" secondItem="2aH-YR-9PD" secondAttribute="trailing" constant="20" id="JGG-rd-75v"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="SDU-z4-ShP" secondAttribute="trailing" constant="161" id="KJ6-Dg-SKi"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="height" secondItem="SDU-z4-ShP" secondAttribute="height" id="LKp-O9-lYF"/>
-                            <constraint firstItem="6pj-cI-PxK" firstAttribute="top" secondItem="XiW-yr-cNe" secondAttribute="bottom" constant="8" id="M8b-Gq-jFW"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="8" id="MH7-0U-QTk"/>
-                            <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="8" symbolic="YES" id="N1J-La-VY9"/>
-                            <constraint firstItem="XYB-9L-lor" firstAttribute="top" secondItem="uiV-A8-7nM" secondAttribute="bottom" constant="8" symbolic="YES" id="N7m-rd-sU6"/>
-                            <constraint firstItem="bLP-9l-x36" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5ED-tm-PaK" secondAttribute="leadingMargin" constant="20" id="Vlr-qg-9ip"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="centerY" secondItem="bLP-9l-x36" secondAttribute="centerY" id="Wca-K2-KhU"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" secondItem="SDU-z4-ShP" secondAttribute="bottom" constant="8" id="XgA-0e-jXC"/>
-                            <constraint firstItem="6pj-cI-PxK" firstAttribute="centerX" secondItem="XiW-yr-cNe" secondAttribute="centerX" id="Z38-yR-f4U"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="ZdH-yP-I6N"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="Zss-Yi-urx"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" secondItem="x8d-8s-UkD" secondAttribute="bottom" constant="40" id="ZwM-Q0-Ik2"/>
-                            <constraint firstItem="SDU-z4-ShP" firstAttribute="leading" secondItem="5ED-tm-PaK" secondAttribute="leadingMargin" constant="159" id="bOL-Ec-YmU"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="cze-pI-Lel"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="width" secondItem="SDU-z4-ShP" secondAttribute="width" id="d6L-BS-bVI"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="d7P-nO-aAs"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="centerY" secondItem="2aH-YR-9PD" secondAttribute="centerY" id="dQB-yz-s2d"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5ED-tm-PaK" secondAttribute="leadingMargin" constant="8" id="dbD-2p-Mze"/>
-                            <constraint firstItem="XYB-9L-lor" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="gaZ-xo-nw5"/>
-                            <constraint firstItem="XiW-yr-cNe" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="h40-JN-Ies"/>
-                            <constraint firstItem="2aH-YR-9PD" firstAttribute="leading" secondItem="XiW-yr-cNe" secondAttribute="trailing" constant="14" id="hAa-UC-NMV"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="centerX" secondItem="SDU-z4-ShP" secondAttribute="centerX" id="j2A-KX-l2v"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="top" secondItem="UTf-tU-Eg3" secondAttribute="bottom" constant="23.5" id="kDZ-ZT-aox"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="UPm-Sw-wBW" secondAttribute="trailing" constant="8" id="kw8-vX-ulR"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2aH-YR-9PD" secondAttribute="trailing" constant="20" id="xl1-cU-dot"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="top" secondItem="UTf-tU-Eg3" secondAttribute="bottom" constant="8" symbolic="YES" id="yQv-by-YIq"/>
-                            <constraint firstItem="UPm-Sw-wBW" firstAttribute="top" secondItem="SDU-z4-ShP" secondAttribute="bottom" id="yrd-Ab-a2o"/>
-                            <constraint firstItem="uiV-A8-7nM" firstAttribute="height" secondItem="SDU-z4-ShP" secondAttribute="height" id="z8d-mK-xFy"/>
+                            <constraint firstItem="qTm-2F-rwT" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="emx-jX-uiS"/>
+                            <constraint firstItem="qTm-2F-rwT" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="v83-If-tWN"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="CbV-Tu-Siu"/>
-                                <exclude reference="H3u-FK-O1j"/>
-                                <exclude reference="KJ6-Dg-SKi"/>
-                                <exclude reference="MH7-0U-QTk"/>
-                                <exclude reference="ZdH-yP-I6N"/>
-                                <exclude reference="bOL-Ec-YmU"/>
-                                <exclude reference="B3I-dE-kHP"/>
-                                <exclude reference="XgA-0e-jXC"/>
-                                <exclude reference="ZwM-Q0-Ik2"/>
-                                <exclude reference="5FW-bt-Yqe"/>
-                                <exclude reference="LKp-O9-lYF"/>
-                                <exclude reference="Zss-Yi-urx"/>
-                                <exclude reference="d6L-BS-bVI"/>
-                                <exclude reference="j2A-KX-l2v"/>
-                                <exclude reference="yQv-by-YIq"/>
-                                <exclude reference="z8d-mK-xFy"/>
-                                <exclude reference="N1J-La-VY9"/>
-                                <exclude reference="N7m-rd-sU6"/>
-                                <exclude reference="h40-JN-Ies"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="oUQ-eW-EmN"/>
                     <connections>
@@ -205,45 +172,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Authorize our App in TUM Online" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
-                                <rect key="frame" x="31" y="109.5" width="312" height="63.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To authorize please click on the link we sent you per email. Check the 'activated' box and allow all permissions." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtM-Nf-drQ">
-                                <rect key="frame" x="24" y="199" width="327" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-8k-q52" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
-                                <rect key="frame" x="112" y="308" width="150" height="50"/>
-                                <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="RxJ-Jc-she"/>
-                                    <constraint firstAttribute="width" constant="150" id="hFq-aD-zuK"/>
-                                </constraints>
-                                <state key="normal" title="Check Authorization">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="refresh:" destination="ccx-El-vP2" eventType="touchUpInside" id="iv0-Gc-GcH"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hBd-8S-j8f">
+                                <rect key="frame" x="-329.5" y="109.5" width="992.5" height="288.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-Lt-PcY">
+                                        <rect key="frame" x="20" y="20" width="952.5" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Authorize in TUMonline" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
+                                                <rect key="frame" x="345.5" y="0.0" width="261.5" height="31.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We sent you a link via e-mail. Click on it to get to TUMonline. Then check the “Activated” checkbox and allow all permissions." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtM-Nf-drQ">
+                                                <rect key="frame" x="0.0" y="31.5" width="952.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-8k-q52" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
+                                        <rect key="frame" x="431.5" y="218.5" width="170" height="50"/>
+                                        <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RxJ-Jc-she"/>
+                                            <constraint firstAttribute="width" constant="170" id="hFq-aD-zuK"/>
+                                        </constraints>
+                                        <state key="normal" title="Check authorization">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="refresh:" destination="ccx-El-vP2" eventType="touchUpInside" id="iv0-Gc-GcH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="VtM-Nf-drQ" firstAttribute="centerX" secondItem="tPw-hA-lTj" secondAttribute="centerX" id="3R6-TU-LgJ"/>
-                            <constraint firstItem="9mt-oH-hhO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tPw-hA-lTj" secondAttribute="leadingMargin" constant="8" id="5cg-gW-zbe"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="9mt-oH-hhO" secondAttribute="trailing" constant="8" id="6j7-lb-UUe"/>
-                            <constraint firstItem="VtM-Nf-drQ" firstAttribute="top" secondItem="9mt-oH-hhO" secondAttribute="bottom" constant="26" id="Cdz-cB-9Mv"/>
-                            <constraint firstItem="TgS-8k-q52" firstAttribute="centerY" secondItem="tPw-hA-lTj" secondAttribute="centerY" id="EQC-49-27q"/>
-                            <constraint firstItem="TgS-8k-q52" firstAttribute="top" secondItem="9mt-oH-hhO" secondAttribute="bottom" constant="135" id="UU8-cf-l0o"/>
-                            <constraint firstItem="VtM-Nf-drQ" firstAttribute="leading" secondItem="tPw-hA-lTj" secondAttribute="leadingMargin" constant="8" id="b4x-Tl-IFl"/>
-                            <constraint firstItem="TgS-8k-q52" firstAttribute="centerX" secondItem="tPw-hA-lTj" secondAttribute="centerX" id="gE1-11-VRA"/>
-                            <constraint firstItem="TgS-8k-q52" firstAttribute="centerX" secondItem="9mt-oH-hhO" secondAttribute="centerX" id="p6c-X0-OAN"/>
-                            <constraint firstItem="TgS-8k-q52" firstAttribute="top" secondItem="VtM-Nf-drQ" secondAttribute="bottom" constant="43" id="wKL-Mi-u9E"/>
+                            <constraint firstItem="hBd-8S-j8f" firstAttribute="leading" secondItem="tPw-hA-lTj" secondAttribute="leading" constant="16" id="2pL-KJ-b53"/>
+                            <constraint firstAttribute="trailing" secondItem="hBd-8S-j8f" secondAttribute="trailing" constant="16" id="HQu-xH-cSk"/>
+                            <constraint firstItem="hBd-8S-j8f" firstAttribute="centerY" secondItem="tPw-hA-lTj" secondAttribute="centerY" id="N22-dH-xnj"/>
+                            <constraint firstItem="hBd-8S-j8f" firstAttribute="centerX" secondItem="tPw-hA-lTj" secondAttribute="centerX" id="Z0o-9g-Nui"/>
                         </constraints>
                     </view>
                     <connections>
@@ -252,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGJ-uP-7of" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="-443.02848575712147"/>
+            <point key="canvasLocation" x="1033" y="-443"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="D0p-0J-rdy">
@@ -273,4 +244,7 @@
             <point key="canvasLocation" x="-627" y="-443"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo-blue" width="224" height="118"/>
+    </resources>
 </document>
