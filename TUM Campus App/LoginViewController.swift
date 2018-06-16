@@ -61,7 +61,9 @@ class LoginViewController: UIViewController {
         confirmButton.backgroundColor = Constants.tumBlue
     }
 
-    private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
+    private func handleTextFieldInput(currentTextField: UITextField,
+                                      previousTextField: UITextField? = nil,
+                                      nextTextField: UITextField? = nil, characterLimit: Int) {
         let text = currentTextField.text ?? ""
 
         if text.count >= characterLimit {
@@ -107,7 +109,9 @@ class LoginViewController: UIViewController {
     
     private func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
+        let nib = bundle
+            .loadNibNamed("TUMLogoView", owner: nil, options: nil)?
+            .compactMap { $0 as? TUMLogoView }
         guard let view = nib?.first else { return }
         logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 32)
@@ -132,6 +136,16 @@ extension LoginViewController {
         confirmButton.setTitle("🎓", for: .disabled)
 
        setupLogo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
