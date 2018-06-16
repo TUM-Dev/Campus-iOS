@@ -110,9 +110,9 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         guard let view = nib?.first else { return }
         
         logoView = view
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 32)
         view.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
         self.navigationItem.titleView = view
     }
     
