@@ -31,7 +31,7 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var cardKey: CardKey { return manager.cardKey }
     let dateFormatter = DateFormatter()
     let dateComponentsFormatter = DateComponentsFormatter()
-    let preferredHeight: CGFloat = 200.0
+    let preferredHeight: CGFloat = 176.0
     
     lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
         UICollectionViewDelegateSingleItemFlowLayout(delegate: self)

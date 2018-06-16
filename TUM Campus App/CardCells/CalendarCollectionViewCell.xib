@@ -13,23 +13,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CalendarCollectionViewCell" customModule="Campus" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="338" height="213"/>
+            <rect key="frame" x="0.0" y="0.0" width="338" height="103"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="338" height="213"/>
+                <rect key="frame" x="0.0" y="0.0" width="338" height="103"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-R6-81E" customClass="RoundBlurredBackground" customModule="Campus" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="338" height="103"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JyE-yB-Ohn">
-                        <rect key="frame" x="0.0" y="0.0" width="338" height="38.5"/>
+                        <rect key="frame" x="12" y="12" width="314" height="38.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-zY-ZCA">
-                                <rect key="frame" x="0.0" y="0.0" width="338" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-zY-ZCA">
+                                <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-5F-JsO">
-                                <rect key="frame" x="0.0" y="20.5" width="338" height="18"/>
+                                <rect key="frame" x="0.0" y="20.5" width="314" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -37,17 +45,17 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jP3-7N-sT1">
-                        <rect key="frame" x="0.0" y="184" width="338" height="29"/>
+                        <rect key="frame" x="12" y="55" width="314" height="36"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1n-Oq-DCg">
-                                <rect key="frame" x="0.0" y="0.0" width="338" height="14.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1n-Oq-DCg">
+                                <rect key="frame" x="0.0" y="0.0" width="314" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9P-cH-QyH">
-                                <rect key="frame" x="0.0" y="14.5" width="338" height="14.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <rect key="frame" x="0.0" y="18" width="314" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -56,23 +64,27 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="JyE-yB-Ohn" secondAttribute="trailing" id="0rK-dh-2XM"/>
-                <constraint firstAttribute="bottom" secondItem="jP3-7N-sT1" secondAttribute="bottom" id="1ng-zN-G6Y"/>
-                <constraint firstItem="jP3-7N-sT1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5wf-Ho-Wex"/>
-                <constraint firstItem="JyE-yB-Ohn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LFv-3o-sbB"/>
-                <constraint firstAttribute="trailing" secondItem="jP3-7N-sT1" secondAttribute="trailing" id="Obf-w7-l2T"/>
-                <constraint firstItem="jP3-7N-sT1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JyE-yB-Ohn" secondAttribute="bottom" constant="8" id="Rrs-Id-aub"/>
-                <constraint firstItem="JyE-yB-Ohn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hKN-Qz-rBJ"/>
+                <constraint firstAttribute="trailing" secondItem="JyE-yB-Ohn" secondAttribute="trailing" constant="12" id="0rK-dh-2XM"/>
+                <constraint firstAttribute="bottom" secondItem="jP3-7N-sT1" secondAttribute="bottom" constant="12" id="1ng-zN-G6Y"/>
+                <constraint firstItem="jP3-7N-sT1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="5wf-Ho-Wex"/>
+                <constraint firstAttribute="trailing" secondItem="4cg-R6-81E" secondAttribute="trailing" id="8wx-ja-5KM"/>
+                <constraint firstItem="JyE-yB-Ohn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="LFv-3o-sbB"/>
+                <constraint firstAttribute="trailing" secondItem="jP3-7N-sT1" secondAttribute="trailing" constant="12" id="Obf-w7-l2T"/>
+                <constraint firstItem="4cg-R6-81E" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Ot1-7M-ozC"/>
+                <constraint firstItem="jP3-7N-sT1" firstAttribute="top" secondItem="JyE-yB-Ohn" secondAttribute="bottom" constant="4" id="YdK-Sp-UCC"/>
+                <constraint firstAttribute="bottom" secondItem="4cg-R6-81E" secondAttribute="bottom" id="d1F-R1-QEO"/>
+                <constraint firstItem="JyE-yB-Ohn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="hKN-Qz-rBJ"/>
+                <constraint firstItem="4cg-R6-81E" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pde-nQ-3Hv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="338" height="213"/>
+            <size key="customSize" width="338" height="103"/>
             <connections>
                 <outlet property="dateLabel" destination="fQY-5F-JsO" id="syI-sG-qc1"/>
                 <outlet property="locationLabel" destination="A1n-Oq-DCg" id="hcL-C4-anx"/>
                 <outlet property="timeLeftLabel" destination="A9P-cH-QyH" id="rlf-b7-ggv"/>
                 <outlet property="titleLabel" destination="y7X-zY-ZCA" id="7HC-jR-5zU"/>
             </connections>
-            <point key="canvasLocation" x="196" y="115.5"/>
+            <point key="canvasLocation" x="196" y="60.5"/>
         </collectionViewCell>
     </objects>
 </document>

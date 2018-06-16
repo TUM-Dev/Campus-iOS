@@ -50,7 +50,7 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let movie = data[indexPath.row]
         movie.open(sender: parent)
         
-        // TODO
+        // TODO: Switch to MovieDetailTableViewController at some point
         /*
         let storyboard = UIStoryboard(name: "Movie", bundle: nil)
         if let destination = storyboard.instantiateInitialViewController() as? MovieDetailTableViewController {
