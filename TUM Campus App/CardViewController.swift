@@ -231,6 +231,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - EditCardsViewControllerDelegate
     
     func didChangeCardOrder() {
+        composedDataSource?.invalidateSortedDataSources()
         collectionView.reloadData()
     }
     

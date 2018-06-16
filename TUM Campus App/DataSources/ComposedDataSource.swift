@@ -46,6 +46,13 @@ extension TUMDataSource {
         return cardKey.description.replacingOccurrences(of: " ", with: "")+"Card"
     }
     var preferredHeight: CGFloat { return 220.0 }
+    var indexInOrder: Int {
+        let cards = PersistentCardOrder.value.cards
+        guard let index = cards.index(of: cardKey) else {
+            return cards.lastIndex
+        }
+        return cards.startIndex.distance(to: index)
+    }
 }
 
 class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -53,24 +60,20 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     var dataSources: [TUMDataSource] = []
     var manager: TumDataManager
     var delegate: TUMDataSourceDelegate?
-    var cardKeys: [CardKey] {
-        let result = PersistentCardOrder.value.cards
-        return result
-    }
+    var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
     let margin: CGFloat = 20.0
     
+    private var sortedDataSourcesCache: [TUMDataSource]?
     var sortedDataSources: [TUMDataSource] {
-        return dataSources
-            .filter { !$0.isEmpty }
-            .filter { cardKeys.contains($0.cardKey) }
-            .sorted { (lhs, rhs) -> Bool in
-                guard let leftIndex = cardKeys.index(of: lhs.cardKey),
-                    let rightIndex = cardKeys.index(of: rhs.cardKey) else {
-                        return false
-                }
-                
-                return leftIndex < rightIndex
-            }
+        if sortedDataSourcesCache == nil {
+            let keys = Set(cardKeys)
+            sortedDataSourcesCache = dataSources
+                .filter { !$0.isEmpty }
+                .filter { keys.contains($0.cardKey) }
+                .sorted(ascending: \.indexInOrder)
+        }
+        
+        return sortedDataSourcesCache!
     }
     
     init(manager: TumDataManager) {
@@ -90,11 +93,16 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         super.init()
     }
     
+    func invalidateSortedDataSources() {
+        sortedDataSourcesCache = nil
+    }
+    
     func refresh() {
         delegate?.didBeginRefreshingDataSources()
         let group = DispatchGroup()
         dataSources.forEach{$0.refresh(group: group)}
         group.notify(queue: .main) {
+            self.invalidateSortedDataSources()
             self.delegate?.didRefreshDataSources()
         }
     }
