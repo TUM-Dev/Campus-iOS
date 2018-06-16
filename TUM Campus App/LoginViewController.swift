@@ -22,6 +22,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var numbersTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
@@ -58,13 +59,14 @@ class LoginViewController: UIViewController {
 
         confirmButton.isEnabled = textFieldContentsAreValid()
         confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
-        confirmButton.backgroundColor = Constants.tumBlue
     }
 
     private func handleTextFieldInput(currentTextField: UITextField,
                                       previousTextField: UITextField? = nil,
                                       nextTextField: UITextField? = nil, characterLimit: Int) {
-        let text = currentTextField.text ?? ""
+        guard let text = currentTextField.text else {
+            return
+        }
 
         if text.count >= characterLimit {
             currentTextField.text = String(text.prefix(characterLimit))
@@ -81,7 +83,6 @@ class LoginViewController: UIViewController {
             }
         } else if text.isEmpty {
             guard let previousTextField = previousTextField else { return }
-
             previousTextField.becomeFirstResponder()
         }
     }
@@ -131,11 +132,11 @@ extension LoginViewController {
         }
         
         firstTextField.becomeFirstResponder()
-
-        confirmButton.setTitle("🍻", for: .normal)
-        confirmButton.setTitle("🎓", for: .disabled)
-
-       setupLogo()
+        
+        confirmButton.setTitle("Continue 🍻", for: .normal)
+        confirmButton.setTitle("Continue 🎓", for: .disabled)
+        
+        setupLogo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,12 +158,13 @@ extension LoginViewController {
 }
 
 extension LoginViewController {
-
+    
     func getLRZ() -> String {
-        if let first = firstTextField.text, let numbers = numbersTextField.text, let second = secondTextField.text {
-            return first + numbers + second
+        guard let first = firstTextField.text,
+            let numbers = numbersTextField.text, let second = secondTextField.text else {
+                return ""
         }
-        return ""
+        return first + numbers + second
     }
 }
 
