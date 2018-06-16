@@ -139,6 +139,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
                           for: UIControlEvents.valueChanged)
         collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
         
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
