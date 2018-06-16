@@ -52,10 +52,12 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data.filter{ $0.start.timeIntervalSinceNow > 0}
             // TODO
+            // FOR TESTING PURPOSES
+            /*
             self.data = [
-                CalendarRow(start: Date(millisecondsSince1970: 1529095298), end: Date(millisecondsSince1970: 1529195298), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil),
-                CalendarRow(start: Date(millisecondsSince1970: 1529095338), end: Date(millisecondsSince1970: 1529195998), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
+                CalendarRow(start: Date(millisecondsSince1970: 1529139600000), end: Date(millisecondsSince1970: 1529139690000), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
             ]
+            */
             group.leave()
         }
     }
@@ -75,15 +77,24 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! CalendarCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! CalendarCollectionViewCell
         let calendarElement = data[indexPath.row]
 
         cell.titleLabel.text = calendarElement.title
         cell.dateLabel.text = dateFormatter.string(from: calendarElement.start)
         cell.locationLabel.text = calendarElement.location
-        cell.timeLeftLabel.text = "in \(dateComponentsFormatter.string(from: .now, to: calendarElement.start) ?? "")"
-        cell.timeLeftLabel.textColor = .red
-    
+        
+        let timeLeft = Calendar.current.dateComponents([.day, .hour, .minute],
+                                                       from: .now, to: calendarElement.start)
+        
+        if let timeLeftText = dateComponentsFormatter.string(from: timeLeft) {
+            cell.timeLeftLabel.text = "in \(timeLeftText)"
+            cell.timeLeftLabel.isHidden = false
+        } else {
+            cell.timeLeftLabel.isHidden = true
+        }
+        
         return cell
     }
     
