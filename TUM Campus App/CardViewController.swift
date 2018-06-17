@@ -216,10 +216,23 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func didBeginRefreshingDataSources() {
         refresh.beginRefreshing()
+        collectionView.backgroundView = nil
     }
     
     func didRefreshDataSources() {
         refresh.endRefreshing()
+        collectionView.reloadData()
+    }
+    
+    func didEncounterNetworkTimout() {
+        refresh.endRefreshing()
+        let errorView = UILabel(frame: collectionView.frame)
+        errorView.text = "Network Timeout"
+        errorView.textAlignment = .center
+        errorView.textColor = UIColor.lightGray
+        errorView.font = UIFont.systemFont(ofSize: 26.0)
+        collectionView.backgroundView = errorView
+        composedDataSource?.dataSources = []    //Fixme should be invalidate cache
         collectionView.reloadData()
     }
     

@@ -23,6 +23,7 @@ import UIKit
 protocol TUMDataSourceDelegate {
     func didRefreshDataSources()
     func didBeginRefreshingDataSources()
+    func didEncounterNetworkTimout()
 }
 
 protocol TUMDataSource: UICollectionViewDataSource {
@@ -55,6 +56,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
     var delegate: TUMDataSourceDelegate?
     var cardKeys: [CardKey] { return PersistentCardOrder.value.cards }
     let margin: CGFloat = 20.0
+    let updateQueue = DispatchQueue(label: "TUMCampusApp.BackgroundQueue", qos: .userInitiated)
     
     init(manager: TumDataManager) {
         self.manager = manager
@@ -77,8 +79,16 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         delegate?.didBeginRefreshingDataSources()
         let group = DispatchGroup()
         dataSources.forEach{$0.refresh(group: group)}
-        group.notify(queue: .main) {
-            self.delegate?.didRefreshDataSources()
+        updateQueue.async {
+            let result = group.wait(timeout: .now() + .seconds(10))
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.delegate?.didRefreshDataSources()
+                case .timedOut:
+                    self.delegate?.didEncounterNetworkTimout()
+                }
+            }
         }
     }
     
