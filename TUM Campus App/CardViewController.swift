@@ -38,7 +38,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var flowLayout: UICollectionViewFlowLayout?
     var collectionViewSizeChanged: Bool = false
     let margin: CGFloat = 20.0
-    var loadingAnimation: Bool = false
     
     //MARK: - UICollectionView
     
@@ -216,15 +215,12 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - TUMDataSourceDelegate
     
     func didBeginRefreshingDataSources() {
-        if loadingAnimation {
-            refresh.beginRefreshing()
-        }
+        refresh.beginRefreshing()
     }
     
     func didRefreshDataSources() {
         refresh.endRefreshing()
         collectionView.reloadData()
-        loadingAnimation = true
     }
     
     //MARK: - DetailViewDelegate
