@@ -99,13 +99,20 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OnboardingIllustration" translatesAutoresizingMaskIntoConstraints="NO" id="0Ai-AE-HSb">
+                                <rect key="frame" x="0.0" y="455" width="375" height="212"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="qTm-2F-rwT" secondAttribute="trailing" constant="16" id="6zG-Sw-gD6"/>
+                            <constraint firstItem="hyy-26-BYg" firstAttribute="top" secondItem="0Ai-AE-HSb" secondAttribute="bottom" id="QwL-FI-Eux"/>
+                            <constraint firstItem="0Ai-AE-HSb" firstAttribute="leading" secondItem="5ED-tm-PaK" secondAttribute="leading" id="bGd-bP-tbn"/>
                             <constraint firstItem="qTm-2F-rwT" firstAttribute="centerY" secondItem="5ED-tm-PaK" secondAttribute="centerY" id="emx-jX-uiS"/>
                             <constraint firstItem="qTm-2F-rwT" firstAttribute="leading" secondItem="5ED-tm-PaK" secondAttribute="leadingMargin" constant="16" id="jZJ-w2-S1o"/>
+                            <constraint firstItem="0Ai-AE-HSb" firstAttribute="top" secondItem="6pj-cI-PxK" secondAttribute="bottom" constant="8" id="oMc-Qh-EWO"/>
                             <constraint firstItem="qTm-2F-rwT" firstAttribute="centerX" secondItem="5ED-tm-PaK" secondAttribute="centerX" id="v83-If-tWN"/>
+                            <constraint firstAttribute="trailing" secondItem="0Ai-AE-HSb" secondAttribute="trailing" id="wcH-Gk-3PF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oUQ-eW-EmN"/>
@@ -202,6 +209,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="OnboardingIllustration" width="922" height="975"/>
         <image name="logo-blue" width="224" height="118"/>
     </resources>
 </document>
