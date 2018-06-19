@@ -195,8 +195,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             return CGSize(width: collectionView.frame.size.width, height: 400)
         }
         
-        let dataSource = composedDataSource.dataSources
-            .filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
+        let dataSource = composedDataSource.sortedDataSources[indexPath.row]
         
         let height: CGFloat
         let width: CGFloat
@@ -231,7 +230,12 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     //MARK: - EditCardsViewControllerDelegate
     
-    func didUpdateCards() {
+    func didChangeCardOrder() {
+        composedDataSource?.invalidateSortedDataSources()
+        collectionView.reloadData()
+    }
+    
+    func didFinishCardOrderEditing() {
         refresh(sender: nil)
     }
     
