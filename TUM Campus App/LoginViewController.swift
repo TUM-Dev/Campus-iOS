@@ -22,7 +22,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var contentStackView: UIStackView!
     @IBOutlet weak var firstTextField: UITextField!
     @IBOutlet weak var numbersTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
@@ -31,81 +30,71 @@ class LoginViewController: UIViewController {
     var logoView: TUMLogoView?
     var manager: TumDataManager?
     
-    @IBAction func skip() {
+    @IBAction func continueWithoutTumId() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func confirm() {
-        PersistentUser.value = .requestingToken(lrzID: getLRZ())
+    private func openTokenAuthorizationView(tumId: String) {
+        PersistentUser.value = .requestingToken(lrzID: tumId)
         performSegue(withIdentifier: "waitForConfirmation", sender: self)
     }
     
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        if sender === firstTextField {
-            handleTextFieldInput(currentTextField: firstTextField,
-                                 nextTextField: numbersTextField,
-                                 characterLimit: 2)
-        } else if sender === numbersTextField {
-            handleTextFieldInput(currentTextField: numbersTextField,
-                                 previousTextField: firstTextField,
-                                 nextTextField: secondTextField,
-                                 characterLimit: 2)
-        } else if sender === secondTextField {
-            handleTextFieldInput(currentTextField: secondTextField,
-                                 previousTextField: numbersTextField,
-                                 characterLimit: 3)
-        }
-
-        confirmButton.isEnabled = textFieldContentsAreValid()
-        confirmButton.alpha = textFieldContentsAreValid() ? 1 : 0.5
+    @IBAction func openInputDialog() {
+        let alert = UIAlertController(title: "Login", message: "Enter your TUM ID", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil) // TODO
+        alert.addAction(
+            UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        )
+        alert.addAction(
+            UIAlertAction(title: "Continue", style: .default) { action in
+                guard let text = alert.textFields![0].text else {
+                    return
+                }
+                self.handleDialogConfirmation(text)
+            }
+        )
+        present(alert, animated: true, completion: nil)
     }
-
-    private func handleTextFieldInput(currentTextField: UITextField,
-                                      previousTextField: UITextField? = nil,
-                                      nextTextField: UITextField? = nil, characterLimit: Int) {
-        guard let text = currentTextField.text else {
+    
+    private func handleDialogConfirmation(_ input: String) {
+        if (input.count != 7) {
+            displayErrorDialog(message: "A valid TUM ID consists of 7 characters.")
             return
         }
-
-        if text.count >= characterLimit {
-            currentTextField.text = String(text.prefix(characterLimit))
-
-            let substring = String(text.characters.dropFirst(characterLimit))
-            if let nextTextField = nextTextField {
-                nextTextField.becomeFirstResponder()
-                if !substring.isEmpty {
-                    nextTextField.text = substring
-                    textFieldEditingChanged(nextTextField)
-                }
-            } else {
-                currentTextField.resignFirstResponder()
-            }
-        } else if text.isEmpty {
-            guard let previousTextField = previousTextField else { return }
-            previousTextField.becomeFirstResponder()
+        
+        // Get the first two characters
+        let prefixIndex = input.index(input.startIndex, offsetBy: 2)
+        
+        // Get the last three characters
+        let digitsIndex = input.index(prefixIndex, offsetBy: 2)
+        
+        // Get the two digits in the middle
+        //let suffixIndex = input.index(digitsIndex, offsetBy: 3)
+        
+        let prefix = String(input[..<prefixIndex])
+        let suffix = String(input[digitsIndex...])
+        let digits = String(input[prefixIndex..<digitsIndex])
+        
+        let isPrefixValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: prefix))
+        let areDigitsValid = Int(digits) != nil
+        let isSuffixValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: suffix))
+        
+        if isPrefixValid && areDigitsValid && isSuffixValid {
+            openTokenAuthorizationView(tumId: input)
+        } else {
+            displayErrorDialog(message: "You entered an invalid TUM ID.")
         }
     }
-
-    func textFieldContentsAreValid() -> Bool {
-        guard let firstText = firstTextField.text, firstText.count == 2,
-            let numbersText = numbersTextField.text, numbersText.count == 2,
-            let secondText = secondTextField.text, secondText.count == 3 else { return false }
-
-        let isFirstTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: firstText))
-        let isNumbersTextValid = Int(numbersText) != nil
-        let isSecondTextValid = CharacterSet.letters.isSuperset(of: CharacterSet(charactersIn: secondText))
-
-        highlightTextfield(textField: firstTextField, isHighlighted: !isFirstTextValid)
-        highlightTextfield(textField: numbersTextField, isHighlighted: !isNumbersTextValid)
-        highlightTextfield(textField: secondTextField, isHighlighted: !isSecondTextValid)
-
-        return isFirstTextValid && isNumbersTextValid && isSecondTextValid
-    }
-
-    private func highlightTextfield(textField: UITextField, isHighlighted: Bool) {
-        textField.layer.borderWidth = isHighlighted ? 1 : 0
-        textField.layer.borderColor = isHighlighted ? UIColor.red.cgColor : UIColor(hexString: "0xC7C7CD").cgColor
+    
+    private func displayErrorDialog(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(
+            UIAlertAction(title: "OK", style: .default) { action in
+                self.openInputDialog()
+            }
+        )
+        present(alert, animated: true, completion: nil)
     }
     
     private func setupLogo() {
@@ -131,11 +120,6 @@ extension LoginViewController {
             performSegue(withIdentifier: "waitForConfirmation", sender: self)
         }
         
-        firstTextField.becomeFirstResponder()
-        
-        confirmButton.setTitle("Continue 🍻", for: .normal)
-        confirmButton.setTitle("Continue 🎓", for: .disabled)
-        
         setupLogo()
     }
     
@@ -156,18 +140,6 @@ extension LoginViewController {
     }
     
 }
-
-extension LoginViewController {
-    
-    func getLRZ() -> String {
-        guard let first = firstTextField.text,
-            let numbers = numbersTextField.text, let second = secondTextField.text else {
-                return ""
-        }
-        return first + numbers + second
-    }
-}
-
 
 extension LoginViewController: DetailViewDelegate {
     

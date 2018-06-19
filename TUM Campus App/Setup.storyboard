@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="qTm-2F-rwT">
-                                <rect key="frame" x="32" y="188" width="311" height="291"/>
+                                <rect key="frame" x="32" y="220.5" width="311" height="226.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fEw-OR-9IJ">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="116.5"/>
@@ -59,84 +59,40 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yDl-ua-koQ">
-                                        <rect key="frame" x="0.0" y="140.5" width="311" height="150.5"/>
+                                        <rect key="frame" x="0.0" y="140.5" width="311" height="86"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T92-Ib-C9G">
-                                                <rect key="frame" x="0.0" y="0.0" width="311" height="104.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your TUM ID to get started" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYB-9L-lor">
-                                                        <rect key="frame" x="31" y="0.0" width="249" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FBz-zb-jxr">
-                                                        <rect key="frame" x="79" y="28.5" width="153.5" height="76"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vNl-96-vpw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="153.5" height="30"/>
-                                                                <subviews>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ga" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLP-9l-x36">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                                                        <connections>
-                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="pLN-Xg-cHE"/>
-                                                                        </connections>
-                                                                    </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="59" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XiW-yr-cNe">
-                                                                        <rect key="frame" x="54" y="0.0" width="45.5" height="30"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
-                                                                        <connections>
-                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="YiS-xp-OXh"/>
-                                                                        </connections>
-                                                                    </textField>
-                                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kif" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2aH-YR-9PD">
-                                                                        <rect key="frame" x="107.5" y="0.0" width="46" height="30"/>
-                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                                                        <connections>
-                                                                            <action selector="textFieldEditingChanged:" destination="IcY-YJ-gjf" eventType="editingChanged" id="kdl-Jb-xvX"/>
-                                                                        </connections>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="2aH-YR-9PD" secondAttribute="width" id="YiC-ek-G5t"/>
-                                                                    <constraint firstItem="XiW-yr-cNe" firstAttribute="width" secondItem="bLP-9l-x36" secondAttribute="width" id="hf3-fN-2o0"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o9-rT-Ctc">
-                                                                <rect key="frame" x="11.5" y="46" width="130" height="30"/>
-                                                                <color key="backgroundColor" red="0.0" green="0.396078431372549" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="130" id="1t2-GF-ltg"/>
-                                                                    <constraint firstAttribute="height" constant="30" id="KlA-ak-yv3"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
-                                                                <state key="normal" title="Continue 🎓">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                </state>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                        <integer key="value" value="6"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="confirm" destination="IcY-YJ-gjf" eventType="touchUpInside" id="STo-oM-JVv"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gia-2e-kbr">
+                                                        <rect key="frame" x="55.5" y="0.0" width="200" height="40"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.39607843139999999" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Q5T-wY-nna"/>
+                                                            <constraint firstAttribute="width" constant="200" id="gbP-OB-54C"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <state key="normal" title="Connect with TUMonline">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="openInputDialog" destination="IcY-YJ-gjf" eventType="touchUpInside" id="T9m-Gh-f6L"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pj-cI-PxK">
-                                                <rect key="frame" x="0.0" y="120.5" width="311" height="30"/>
+                                                <rect key="frame" x="0.0" y="56" width="311" height="30"/>
                                                 <state key="normal" title="Continue without TUM ID">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="skip" destination="IcY-YJ-gjf" eventType="touchUpInside" id="2tj-Px-lUN"/>
+                                                    <action selector="continueWithoutTumId" destination="IcY-YJ-gjf" eventType="touchUpInside" id="2tj-Px-lUN"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -154,11 +110,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="oUQ-eW-EmN"/>
                     <connections>
-                        <outlet property="confirmButton" destination="2o9-rT-Ctc" id="xh1-q9-9g0"/>
-                        <outlet property="contentStackView" destination="qTm-2F-rwT" id="wxi-pb-k5S"/>
-                        <outlet property="firstTextField" destination="bLP-9l-x36" id="F8A-zF-L0I"/>
-                        <outlet property="numbersTextField" destination="XiW-yr-cNe" id="i55-7G-MC4"/>
-                        <outlet property="secondTextField" destination="2aH-YR-9PD" id="ZgV-gl-RMx"/>
                         <segue destination="ccx-El-vP2" kind="show" identifier="waitForConfirmation" id="Ku6-Gu-fxc"/>
                     </connections>
                 </viewController>
@@ -179,19 +130,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hBd-8S-j8f">
-                                <rect key="frame" x="-329.5" y="109.5" width="992.5" height="288.5"/>
+                                <rect key="frame" x="16" y="246" width="343" height="175.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-Lt-PcY">
-                                        <rect key="frame" x="20" y="20" width="952.5" height="52"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-Lt-PcY">
+                                        <rect key="frame" x="9" y="0.0" width="325" height="109.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Authorize in TUMonline" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
-                                                <rect key="frame" x="375.5" y="0.0" width="203" height="24"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorize in TUMonline" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mt-oH-hhO">
+                                                <rect key="frame" x="61" y="0.0" width="203" height="24"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We sent you a link via e-mail. Click on it to get to TUMonline. Then check the “Activated” checkbox and allow all permissions." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtM-Nf-drQ">
-                                                <rect key="frame" x="0.0" y="31.5" width="952.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sent you a link via e-mail. Click on it to get to TUMonline. Then check the “Activated” checkbox and allow all permissions." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VtM-Nf-drQ">
+                                                <rect key="frame" x="0.0" y="28" width="325" height="81.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -199,7 +150,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgS-8k-q52" customClass="TKTransitionSubmitButton" customModule="TKSubmitTransition">
-                                        <rect key="frame" x="431.5" y="218.5" width="170" height="50"/>
+                                        <rect key="frame" x="86.5" y="125.5" width="170" height="50"/>
                                         <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RxJ-Jc-she"/>
