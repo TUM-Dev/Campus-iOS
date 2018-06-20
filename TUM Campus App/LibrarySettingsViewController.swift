@@ -56,9 +56,8 @@ class LibrarySettingsViewController: UIViewController, DetailView {
     }
 
     @IBAction func loginButtonPressed(_ sender: Any) {
-        
         //Verify Credentials
-       
+       /*
         if usernameTextField.text != "" || passwordTextField.text != "" {
             
             let username = usernameTextField.text!
@@ -81,7 +80,7 @@ class LibrarySettingsViewController: UIViewController, DetailView {
         
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
-        
+        */
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {

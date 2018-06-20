@@ -110,9 +110,9 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         guard let view = nib?.first else { return }
         
         logoView = view
-        view.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 32)
         view.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
         self.navigationItem.titleView = view
     }
     
@@ -195,8 +195,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             return CGSize(width: collectionView.frame.size.width, height: 400)
         }
         
-        let dataSource = composedDataSource.dataSources
-            .filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
+        let dataSource = composedDataSource.sortedDataSources[indexPath.row]
         
         let height: CGFloat
         let width: CGFloat
@@ -231,7 +230,12 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     //MARK: - EditCardsViewControllerDelegate
     
-    func didUpdateCards() {
+    func didChangeCardOrder() {
+        composedDataSource?.invalidateSortedDataSources()
+        collectionView.reloadData()
+    }
+    
+    func didFinishCardOrderEditing() {
         refresh(sender: nil)
     }
     
