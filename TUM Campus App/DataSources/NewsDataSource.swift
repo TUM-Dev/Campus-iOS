@@ -68,7 +68,7 @@ class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return min(data.count, 10)
     }
     
     func collectionView(_ collectionView: UICollectionView,

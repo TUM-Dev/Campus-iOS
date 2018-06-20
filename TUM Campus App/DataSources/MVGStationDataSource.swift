@@ -57,7 +57,7 @@ class MVGStationDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return min(data.count, 5)
     }
     
     func collectionView(_ collectionView: UICollectionView,
