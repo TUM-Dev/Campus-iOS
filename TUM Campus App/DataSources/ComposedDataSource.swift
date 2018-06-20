@@ -66,7 +66,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         self.dataSources = [
             NewsDataSource(parent: parent, manager: manager.newsManager),
             NewsSpreadDataSource(parent: parent, manager: manager.newsSpreadManager),
-            CafeteriaDataSource(manager: manager.cafeteriaManager),
+            CafeteriaDataSource(parent: parent, manager: manager.cafeteriaManager),
             TUFilmDataSource(parent: parent, manager: manager.tuFilmNewsManager),
             CalendarDataSource(parent: parent, manager: manager.calendarManager),
             TuitionDataSource(parent: parent, manager: manager.tuitionManager),

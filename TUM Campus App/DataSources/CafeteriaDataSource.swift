@@ -22,8 +22,9 @@ import UIKit
 import MapKit
 
 
-class CafeteriaDataSource: NSObject, TUMDataSource {
+class CafeteriaDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: CafeteriaManager
     let cellType: AnyClass = CafeteriaCollectionViewCell.self
     var data: [Cafeteria] = []
@@ -34,7 +35,8 @@ class CafeteriaDataSource: NSObject, TUMDataSource {
     var menuDataSources: [MenuDataSource] = []
     let distanceFormatter = MKDistanceFormatter()
     
-    init(manager: CafeteriaManager) {
+    init(parent: CardViewController, manager: CafeteriaManager) {
+        self.parent = parent
         self.manager = manager
         self.distanceFormatter.unitStyle = .abbreviated
         super.init()
@@ -46,6 +48,14 @@ class CafeteriaDataSource: NSObject, TUMDataSource {
             self.data = data.filter {$0.hasMenuToday}//$0.distance(self.manager.location) < 2500}
             self.menuDataSources = data.map { MenuDataSource(data: $0.getMenusForDate(.now)) }
             group.leave()
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "Cafeteria", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? CafeteriaViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     
