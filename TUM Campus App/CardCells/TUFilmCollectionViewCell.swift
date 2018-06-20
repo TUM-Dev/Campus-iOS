@@ -22,7 +22,7 @@ import UIKit
 
 class TUFilmCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var moviePosterImageView: RoundedImageView!
+    @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
 
 }
