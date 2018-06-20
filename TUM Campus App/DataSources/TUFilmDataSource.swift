@@ -29,6 +29,7 @@ class TUFilmDataSource: NSObject, TUMDataSource {
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
     let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
+    let preferredHeight: CGFloat = 263.0
     
     init(manager: TUFilmNewsManager) {
         self.manager = manager
