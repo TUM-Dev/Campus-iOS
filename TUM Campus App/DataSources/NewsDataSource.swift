@@ -41,7 +41,8 @@ class NewsDataSource: NSObject, TUMDataSource {
     func refresh(group: DispatchGroup) {
         group.enter()
         manager.fetch().onSuccess(in: .main) { data in
-            self.data = data.filter { $0.source != News.Source.movies }
+            self.data = data
+                .filter { $0.source != News.Source.movies && $0.source != News.Source.newsSpread }
             group.leave()
         }
     }
