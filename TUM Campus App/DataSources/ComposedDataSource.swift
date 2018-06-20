@@ -108,6 +108,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
             DispatchQueue.main.async {
                 switch result {
                 case .success:
+                    self.invalidateSortedDataSources()
                     self.delegate?.didRefreshDataSources()
                 case .timedOut:
                     self.delegate?.didEncounterNetworkTimout()

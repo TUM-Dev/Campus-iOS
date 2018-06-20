@@ -230,7 +230,6 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
         errorView.retryButton.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: .touchUpInside)
         collectionView.backgroundView = errorView
-//        composedDataSource?.invalidateCache()
         collectionView.reloadData()
     }
     
