@@ -25,5 +25,6 @@ class CafeteriaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cafeteriaName: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var distanceLabel: UILabel!
-
+    @IBOutlet weak var placeholderLabel: UILabel!
+    
 }

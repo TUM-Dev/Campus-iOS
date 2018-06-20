@@ -62,6 +62,11 @@ class CafeteriaDataSource: NSObject, TUMDataSource {
         //TODO: display menu for tomorrow if today is over
         let menuTomorrow = cafeteria.getMenusForDate(.now + .aboutOneDay)
         
+        // Display a placeholder label if no cafeteria data is available
+        let isMenuEmpty = menuDataSource.data.isEmpty
+        cell.placeholderLabel.isHidden = !isMenuEmpty
+        cell.collectionView.isHidden = isMenuEmpty
+        
         cell.collectionView.register(UINib(nibName: String(describing: menuDataSource.cellType), bundle: .main), forCellWithReuseIdentifier: menuDataSource.cellReuseID)
         cell.cafeteriaName.text = cafeteria.name
         cell.distanceLabel.text = distanceFormatter.string(fromDistance: cafeteria.distance(manager.location))
