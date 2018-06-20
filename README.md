@@ -1,13 +1,13 @@
 [![Travis](https://api.travis-ci.org/TCA-Team/iOS.svg?branch=master)]()
 
-# TumCampusApp - an unoffical guide through university life
+# TumCampusApp - an unofficial guide through university life
 
 The [TUM Campus App (TCA)](https://itunes.apple.com/app/id1217412716) is an open source project, developed by volunteers and available on the App Store.
 
 The TCA mostly targets phones, but can also be used on tablets or any other device that runs iOS. This is the repo for the iOS Version of the TUM Campus App.
 
 ## Work In Progress
-This app is currenlty being developed and is not yet released to the public via the App Store. We are working on setting up the correct pipelines and hope to publish it in the SS 2017.
+This app is currently being developed and is not yet released to the public via the App Store. We are working on setting up the correct pipelines and hope to publish it in the SS 2017.
 
 Features already implemented:
 * Calendar Access

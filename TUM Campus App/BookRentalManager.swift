@@ -10,7 +10,8 @@ import Foundation
 import Sweeft
 import Kanna
 
-final class BookRentalManager: SingleItemManager, CardManager {
+@available(*, deprecated)
+final class BookRentalManager: SingleItemManager {
 
     typealias DataType = BookRental
     
@@ -22,10 +23,6 @@ final class BookRentalManager: SingleItemManager, CardManager {
     
     var defaultMaxCache: CacheTime {
         return .time(.aboutOneDay)
-    }
-    
-    var cardKey: CardKey {
-        return .bookRental
     }
     
     init(config: Config) {

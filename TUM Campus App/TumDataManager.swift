@@ -14,7 +14,7 @@ class TumDataManager {
     lazy var movieManager: MovieManager = { MovieManager(config: self.config) }()
     lazy var newsManager: NewsManager = { NewsManager(config: self.config) }()
     lazy var tuitionManager: TuitionStatusManager = { TuitionStatusManager(config: self.config) }()
-    lazy var bookRentalManager: BookRentalManager = { BookRentalManager(config: self.config) }()
+    //lazy var bookRentalManager: BookRentalManager = { BookRentalManager(config: self.config) }()
     lazy var studyRoomsManager: StudyRoomsManager = { StudyRoomsManager(config: self.config) }()
     lazy var lecturesManager: PersonalLectureManager = { PersonalLectureManager(config: self.config) }()
     lazy var gradesManager: PersonalGradeManager = { PersonalGradeManager(config: self.config) }()
@@ -55,7 +55,7 @@ class TumDataManager {
             newsSpreadManager,
             tuitionManager,
             cafeteriaManager,
-            bookRentalManager,
+            //bookRentalManager,
             mvgManager,
             gradesManager,
             studyRoomsManager,
