@@ -226,13 +226,11 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func didEncounterNetworkTimout() {
         refresh.endRefreshing()
-        let errorView = UILabel(frame: collectionView.frame)
-        errorView.text = "Network Timeout"
-        errorView.textAlignment = .center
-        errorView.textColor = UIColor.lightGray
-        errorView.font = UIFont.systemFont(ofSize: 26.0)
+        guard let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?.first as? ErrorView else {
+            return
+        }
         collectionView.backgroundView = errorView
-        composedDataSource?.dataSources = []    //Fixme should be invalidate cache
+//        composedDataSource?.invalidateCache()
         collectionView.reloadData()
     }
     
