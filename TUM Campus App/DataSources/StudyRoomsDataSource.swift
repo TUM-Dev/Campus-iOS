@@ -20,8 +20,9 @@
 
 import UIKit
 
-class StudyRoomsDataSource: NSObject, TUMDataSource {
+class StudyRoomsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: StudyRoomsManager
     var cellType: AnyClass = StudyRoomsCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
@@ -29,7 +30,8 @@ class StudyRoomsDataSource: NSObject, TUMDataSource {
     var flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [StudyRoomGroup] = []
     
-    init(manager: StudyRoomsManager) {
+    init(parent: CardViewController, manager: StudyRoomsManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -39,6 +41,14 @@ class StudyRoomsDataSource: NSObject, TUMDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data
             group.leave()
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "StudyRooms", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? StudyRoomsTableViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     

@@ -72,6 +72,14 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         }
     }
     
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "Calendar Detail", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? CalendarViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }

@@ -57,12 +57,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jd-km-Bmv">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="P82-xk-VVS" eventType="touchUpInside" id="4Kb-so-KT9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1jd-km-Bmv" secondAttribute="trailing" constant="20" id="DCU-XW-QCo"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="top" secondItem="P82-xk-VVS" secondAttribute="top" constant="16" id="Hu1-PO-3HV"/>
                                             <constraint firstItem="TNS-Va-YKW" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" id="Hyj-3W-JFi"/>
+                                            <constraint firstItem="1jd-km-Bmv" firstAttribute="centerY" secondItem="Mff-Dk-71f" secondAttribute="centerY" id="M83-8N-TPM"/>
                                             <constraint firstAttribute="trailing" secondItem="TNS-Va-YKW" secondAttribute="trailing" id="Rw7-RN-Ao1"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" constant="20" id="c4a-CX-sib"/>
                                             <constraint firstAttribute="trailing" secondItem="Mff-Dk-71f" secondAttribute="trailing" constant="20" id="evV-v2-BGN"/>
@@ -107,17 +116,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hs3-ta-eFd">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="HF8-aR-Uu6" eventType="touchUpInside" id="eZr-hi-CuG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="aFz-cX-4lM" secondAttribute="bottom" constant="20" id="5wd-Ok-VHR"/>
+                                            <constraint firstAttribute="trailing" secondItem="hs3-ta-eFd" secondAttribute="trailing" constant="20" id="729-mJ-u7k"/>
                                             <constraint firstAttribute="trailing" secondItem="4Li-4F-mwr" secondAttribute="trailing" constant="20" id="IVP-15-ArK"/>
                                             <constraint firstItem="aFz-cX-4lM" firstAttribute="leading" secondItem="HF8-aR-Uu6" secondAttribute="leading" id="Lai-Ei-ihP"/>
                                             <constraint firstItem="4Li-4F-mwr" firstAttribute="leading" secondItem="HF8-aR-Uu6" secondAttribute="leading" constant="20" id="QmN-8K-8mV"/>
                                             <constraint firstItem="aFz-cX-4lM" firstAttribute="top" secondItem="4Li-4F-mwr" secondAttribute="bottom" constant="8" id="RJB-BH-Wpa"/>
                                             <constraint firstAttribute="trailing" secondItem="aFz-cX-4lM" secondAttribute="trailing" id="Ta2-S2-FKU"/>
                                             <constraint firstItem="4Li-4F-mwr" firstAttribute="top" secondItem="HF8-aR-Uu6" secondAttribute="top" constant="16" id="jgU-g8-PFK"/>
+                                            <constraint firstItem="hs3-ta-eFd" firstAttribute="centerY" secondItem="4Li-4F-mwr" secondAttribute="centerY" id="tFN-Ys-URp"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -207,13 +225,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXJ-Ul-oMU">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="vr6-cB-RNd" eventType="touchUpInside" id="ziN-gn-VUy"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="9v9-dn-sjX" secondAttribute="trailing" id="39v-eM-xCi"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="leading" secondItem="vr6-cB-RNd" secondAttribute="leading" id="JML-ju-5DY"/>
+                                            <constraint firstAttribute="trailing" secondItem="tXJ-Ul-oMU" secondAttribute="trailing" constant="20" id="PhK-Kf-6cX"/>
                                             <constraint firstItem="7QM-O1-3cg" firstAttribute="top" secondItem="vr6-cB-RNd" secondAttribute="top" constant="16" id="RsQ-XS-QBV"/>
+                                            <constraint firstItem="tXJ-Ul-oMU" firstAttribute="centerY" secondItem="7QM-O1-3cg" secondAttribute="centerY" id="Ws0-At-Rf3"/>
                                             <constraint firstAttribute="trailing" secondItem="7QM-O1-3cg" secondAttribute="trailing" constant="20" id="anj-G7-ybd"/>
                                             <constraint firstAttribute="bottom" secondItem="9v9-dn-sjX" secondAttribute="bottom" constant="20" id="cfk-ER-lT2"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="top" secondItem="7QM-O1-3cg" secondAttribute="bottom" constant="8" id="dEZ-zw-ziC"/>
@@ -407,17 +434,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owV-4V-ILe">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="dhm-Si-y3t" eventType="touchUpInside" id="BOg-KM-iyg"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="XiD-IX-k2U" firstAttribute="top" secondItem="dhm-Si-y3t" secondAttribute="top" constant="16" id="2BN-lU-XwJ"/>
                                             <constraint firstAttribute="trailing" secondItem="SCr-ec-cwd" secondAttribute="trailing" id="9zQ-Q1-BK1"/>
+                                            <constraint firstItem="owV-4V-ILe" firstAttribute="centerY" secondItem="XiD-IX-k2U" secondAttribute="centerY" id="GaA-zF-CZL"/>
                                             <constraint firstItem="XiD-IX-k2U" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" constant="20" id="KVZ-oG-nC0"/>
                                             <constraint firstAttribute="bottom" secondItem="SCr-ec-cwd" secondAttribute="bottom" constant="16" id="TTZ-ph-zdp"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="top" secondItem="XiD-IX-k2U" secondAttribute="bottom" constant="8" id="cVi-Sa-aKS"/>
                                             <constraint firstAttribute="trailing" secondItem="XiD-IX-k2U" secondAttribute="trailing" constant="20" id="fWQ-e8-fKt"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" id="pza-dO-p4O"/>
+                                            <constraint firstAttribute="trailing" secondItem="owV-4V-ILe" secondAttribute="trailing" constant="20" id="xK0-Y4-iE2"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -457,11 +493,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLO-nL-gYt">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="B8u-Br-bzJ" eventType="touchUpInside" id="l3H-oR-WOh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="fLO-nL-gYt" firstAttribute="centerY" secondItem="8TS-GF-EIZ" secondAttribute="centerY" id="7Mp-5Q-CHH"/>
                                             <constraint firstAttribute="trailing" secondItem="8TS-GF-EIZ" secondAttribute="trailing" constant="20" id="OfY-OE-NtV"/>
+                                            <constraint firstAttribute="trailing" secondItem="fLO-nL-gYt" secondAttribute="trailing" constant="20" id="a8t-HI-pIP"/>
                                             <constraint firstItem="BOc-sb-STS" firstAttribute="top" secondItem="8TS-GF-EIZ" secondAttribute="bottom" constant="8" id="bmb-jX-D5d"/>
                                             <constraint firstItem="8TS-GF-EIZ" firstAttribute="top" secondItem="B8u-Br-bzJ" secondAttribute="top" constant="16" id="cIB-zw-3he"/>
                                             <constraint firstItem="8TS-GF-EIZ" firstAttribute="leading" secondItem="B8u-Br-bzJ" secondAttribute="leading" constant="20" id="dtf-cL-M3R"/>
@@ -507,13 +552,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q69-Aa-a5I">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="7cy-dv-GeQ" eventType="touchUpInside" id="IRn-5j-XF4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="q69-Aa-a5I" secondAttribute="trailing" constant="20" id="0hn-YJ-F6h"/>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="top" secondItem="Syy-kY-MO9" secondAttribute="bottom" constant="8" id="EKV-LF-yuH"/>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" id="FGK-23-lhu"/>
                                             <constraint firstAttribute="bottom" secondItem="iv8-F7-Ium" secondAttribute="bottom" constant="16" id="Gvf-Zq-41y"/>
+                                            <constraint firstItem="q69-Aa-a5I" firstAttribute="centerY" secondItem="Syy-kY-MO9" secondAttribute="centerY" id="P2V-Df-j1C"/>
                                             <constraint firstItem="Syy-kY-MO9" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" constant="20" id="ToL-gR-0RG"/>
                                             <constraint firstAttribute="trailing" secondItem="Syy-kY-MO9" secondAttribute="trailing" constant="20" id="X7C-eE-v8e"/>
                                             <constraint firstAttribute="trailing" secondItem="iv8-F7-Ium" secondAttribute="trailing" id="a5h-5d-RVL"/>

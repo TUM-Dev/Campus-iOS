@@ -30,7 +30,7 @@ class UICollectionViewDelegateLandscapeItemFlowLayout: NSObject, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.onItemSelected(at: indexPath)
+        self.delegate?.onItemSelected?(at: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView,

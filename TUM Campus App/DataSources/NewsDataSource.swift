@@ -55,6 +55,14 @@ class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let item = data[indexPath.row]
         item.open(sender: parent)
     }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? NewsTableViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
         
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {

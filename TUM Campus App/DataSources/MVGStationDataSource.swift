@@ -20,8 +20,9 @@
 
 import UIKit
 
-class MVGStationDataSource: NSObject, TUMDataSource {
+class MVGStationDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: MVGManager
     let cellType: AnyClass = MVGStationCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
@@ -31,7 +32,8 @@ class MVGStationDataSource: NSObject, TUMDataSource {
     var departureDataSources: [MVGDepartureDataSource] = []
     var preferredHeight: CGFloat = 290.0
     
-    init(manager: MVGManager) {
+    init(parent: CardViewController, manager: MVGManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -42,6 +44,14 @@ class MVGStationDataSource: NSObject, TUMDataSource {
             self.data = data
             self.departureDataSources = data.map { MVGDepartureDataSource(data: $0.departures) }
             group.leave()
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "MVV", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? MVGNearbyStationsViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     

@@ -37,8 +37,9 @@ protocol TUMDataSource: UICollectionViewDataSource {
     func refresh(group: DispatchGroup)
 }
 
-protocol TUMInteractiveDataSource {
-    func onItemSelected(at indexPath: IndexPath)
+@objc protocol TUMInteractiveDataSource {
+    @objc optional func onItemSelected(at indexPath: IndexPath)
+    @objc optional func onShowMore()
 }
 
 extension TUMDataSource {
@@ -69,10 +70,10 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
             TUFilmDataSource(parent: parent, manager: manager.tuFilmNewsManager),
             CalendarDataSource(parent: parent, manager: manager.calendarManager),
             TuitionDataSource(parent: parent, manager: manager.tuitionManager),
-            MVGStationDataSource(manager: manager.mvgManager),
+            MVGStationDataSource(parent: parent, manager: manager.mvgManager),
             GradesDataSource(manager: manager.gradesManager),
             LecturesDataSource(manager: manager.lecturesManager),
-            StudyRoomsDataSource(manager: manager.studyRoomsManager),
+            StudyRoomsDataSource(parent: parent, manager: manager.studyRoomsManager)
         ]
         super.init()
     }
@@ -107,6 +108,12 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         cell.collectionView.dataSource = dataSource
         cell.collectionView.delegate = dataSource.flowLayoutDelegate
         cell.collectionView.reloadData()
+        
+        cell.onShowAll = {
+            if let dataSource = dataSource as? TUMInteractiveDataSource {
+                dataSource.onShowMore?()
+            }
+        }
         
         return cell
     }
