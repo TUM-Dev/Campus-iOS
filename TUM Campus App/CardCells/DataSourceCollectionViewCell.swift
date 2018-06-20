@@ -26,6 +26,7 @@ class DataSourceCollectionViewCell: TUMCollectionViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cardNameLabel: UILabel!
+    @IBOutlet weak var showAllButton: UIButton?
     
     @IBAction func showAll() {
         if let onShowAll = onShowAll {

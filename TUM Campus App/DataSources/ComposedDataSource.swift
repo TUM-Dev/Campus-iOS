@@ -104,6 +104,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         cell.collectionView.collectionViewLayout = layout
         cell.cardNameLabel.text = dataSource.cardKey.description.uppercased()
         cell.cardNameLabel.textColor = dataSource.sectionColor
+        cell.showAllButton?.setTitleColor(dataSource.sectionColor, for: .normal)
         cell.collectionView.backgroundColor = .clear
         cell.collectionView.dataSource = dataSource
         cell.collectionView.delegate = dataSource.flowLayoutDelegate

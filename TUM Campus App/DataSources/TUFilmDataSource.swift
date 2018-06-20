@@ -60,6 +60,16 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         */
     }
     
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? NewsTableViewController {
+            destination.delegate = parent
+            destination.values = data
+            destination.navigationTitle = manager.source.title
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }

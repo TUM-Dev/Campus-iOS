@@ -60,6 +60,8 @@ class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let storyboard = UIStoryboard(name: "News", bundle: nil)
         if let destination = storyboard.instantiateInitialViewController() as? NewsTableViewController {
             destination.delegate = parent
+            destination.values = data
+            destination.navigationTitle = "News"
             parent.navigationController?.pushViewController(destination, animated: true)
         }
     }

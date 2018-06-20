@@ -90,6 +90,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="Mff-Dk-71f" id="v8d-md-Rsp"/>
                                             <outlet property="collectionView" destination="TNS-Va-YKW" id="Zhu-ce-z1G"/>
+                                            <outlet property="showAllButton" destination="1jd-km-Bmv" id="l2U-N0-LL3"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CafeteriaCard" id="HF8-aR-Uu6" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -149,6 +150,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="4Li-4F-mwr" id="739-DO-Ibk"/>
                                             <outlet property="collectionView" destination="aFz-cX-4lM" id="sDY-5M-ncT"/>
+                                            <outlet property="showAllButton" destination="hs3-ta-eFd" id="wpC-Za-qLT"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TUFilmCard" id="2yx-Tf-rvO" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -175,13 +177,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6w-Vv-I3x">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="2yx-Tf-rvO" eventType="touchUpInside" id="WhO-72-CUf"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="F2q-T4-l5v" firstAttribute="top" secondItem="2yx-Tf-rvO" secondAttribute="top" constant="16" id="0ix-XA-eCI"/>
+                                            <constraint firstAttribute="trailing" secondItem="y6w-Vv-I3x" secondAttribute="trailing" constant="20" id="G4S-W4-htw"/>
                                             <constraint firstItem="F2q-T4-l5v" firstAttribute="leading" secondItem="2yx-Tf-rvO" secondAttribute="leading" constant="20" id="Lsw-Hs-yBP"/>
                                             <constraint firstItem="Dez-f1-jlZ" firstAttribute="top" secondItem="F2q-T4-l5v" secondAttribute="bottom" constant="8" id="OY6-Yz-khb"/>
+                                            <constraint firstItem="y6w-Vv-I3x" firstAttribute="centerY" secondItem="F2q-T4-l5v" secondAttribute="centerY" id="Qdy-r5-fQO"/>
                                             <constraint firstAttribute="trailing" secondItem="Dez-f1-jlZ" secondAttribute="trailing" id="S5Z-YN-1WJ"/>
                                             <constraint firstItem="Dez-f1-jlZ" firstAttribute="leading" secondItem="2yx-Tf-rvO" secondAttribute="leading" id="U7Y-8u-LTk"/>
                                             <constraint firstAttribute="bottom" secondItem="Dez-f1-jlZ" secondAttribute="bottom" constant="20" id="acn-xY-xm9"/>
@@ -199,6 +210,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="F2q-T4-l5v" id="uBe-eb-kXq"/>
                                             <outlet property="collectionView" destination="Dez-f1-jlZ" id="i0T-Ud-Cxc"/>
+                                            <outlet property="showAllButton" destination="y6w-Vv-I3x" id="eln-o4-zim"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarCard" id="vr6-cB-RNd" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -258,6 +270,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="7QM-O1-3cg" id="6mo-ZN-zK5"/>
                                             <outlet property="collectionView" destination="9v9-dn-sjX" id="B62-uX-GXY"/>
+                                            <outlet property="showAllButton" destination="tXJ-Ul-oMU" id="RTx-CB-tTa"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TuitionCard" id="1QD-8Z-lkh" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -467,6 +480,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="XiD-IX-k2U" id="JPV-pV-UJP"/>
                                             <outlet property="collectionView" destination="SCr-ec-cwd" id="lXm-Gh-Udr"/>
+                                            <outlet property="showAllButton" destination="owV-4V-ILe" id="Jeq-4b-g95"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MVGCard" id="B8u-Br-bzJ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -526,6 +540,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="8TS-GF-EIZ" id="6cH-LK-gE7"/>
                                             <outlet property="collectionView" destination="BOc-sb-STS" id="bdz-HH-r6D"/>
+                                            <outlet property="showAllButton" destination="fLO-nL-gYt" id="xuL-tf-LHe"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NewsspreadCard" id="7cy-dv-GeQ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -585,6 +600,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="Syy-kY-MO9" id="C1z-Ye-hCT"/>
                                             <outlet property="collectionView" destination="iv8-F7-Ium" id="fwh-y6-xtB"/>
+                                            <outlet property="showAllButton" destination="q69-Aa-a5I" id="i5q-Se-WOq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

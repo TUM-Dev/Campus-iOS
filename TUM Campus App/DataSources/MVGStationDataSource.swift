@@ -51,6 +51,7 @@ class MVGStationDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let storyboard = UIStoryboard(name: "MVV", bundle: nil)
         if let destination = storyboard.instantiateInitialViewController() as? MVGNearbyStationsViewController {
             destination.delegate = parent
+            destination.nearestStations = data.map { $0.station }
             parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
