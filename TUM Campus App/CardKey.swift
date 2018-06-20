@@ -27,7 +27,6 @@ enum CardKey: Int, Codable {
     case newsspread
     case cafeteria
     case tuition
-    case bookRental
     case mvg
     case grades
     case studyRooms
@@ -47,8 +46,6 @@ enum CardKey: Int, Codable {
             return "Newsspread"
         case .tuition:
             return "Tuition"
-        case .bookRental:
-            return "Book Rental"
         case .mvg:
             return "MVG"
         case .grades:
@@ -60,6 +57,7 @@ enum CardKey: Int, Codable {
         }
     }
     
-    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition, .bookRental, .mvg, .grades, .studyRooms, .lectures, .newsspread]
+    static var all: [CardKey] = [.tufilm, .calendar, .news, .cafeteria, .tuition,
+                                 .mvg, .grades, .studyRooms, .lectures, .newsspread]
     
 }
