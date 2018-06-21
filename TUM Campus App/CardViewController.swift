@@ -224,7 +224,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func didEncounterNetworkTimout() {
-        refresh.endRefreshing()
+        refreshControl.endRefreshing()
         guard let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?.first as? ErrorView else {
             return
         }
