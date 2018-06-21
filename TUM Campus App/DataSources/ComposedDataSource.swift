@@ -111,6 +111,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
                     self.invalidateSortedDataSources()
                     self.delegate?.didRefreshDataSources()
                 case .timedOut:
+                    self.sortedDataSourcesCache = []
                     self.delegate?.didEncounterNetworkTimout()
                 }
             }
