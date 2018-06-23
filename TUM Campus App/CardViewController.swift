@@ -32,7 +32,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
     var dataSources: [TUMDataSource] = []
     var cards: [DataElement] = []
     var nextLecture: CalendarRow?
-    var refresh = UIRefreshControl()
+    var refreshControl = UIRefreshControl()
     var search: UISearchController?
     var logoView: TUMLogoView?
     var binding: ImageViewBinding?
@@ -135,9 +135,9 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         composedDataSource?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
+        refreshControl.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
                           for: UIControlEvents.valueChanged)
-        collectionView.refreshControl = refresh
+        collectionView.refreshControl = refreshControl
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
     }
@@ -215,12 +215,12 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
     // MARK: - TUMDataSourceDelegate
     
     func didBeginRefreshingDataSources() {
-        refresh.beginRefreshing()
+        refreshControl.beginRefreshing()
     }
     
     func didRefreshDataSources() {
-        refresh.endRefreshing()
         collectionView.reloadData()
+        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 1)
     }
     
     // MARK: - DetailViewDelegate

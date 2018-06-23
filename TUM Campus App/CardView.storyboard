@@ -4,8 +4,9 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <deployment version="4144" identifier="iOS"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,18 +14,14 @@
         <scene sceneID="4B6-DI-vaj">
             <objects>
                 <viewController id="Av0-G7-ZLu" customClass="CardViewController" customModule="Campus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2ok-u3-NSW"/>
-                        <viewControllerLayoutGuide type="bottom" id="y44-bj-aCS"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tig-md-ByO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5uR-6G-Qb6">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hN5-mG-8Yb">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="hN5-mG-8Yb">
                                     <size key="itemSize" width="375" height="239"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -606,11 +603,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="5uR-6G-Qb6" secondAttribute="trailing" id="RuF-9J-Ghi"/>
-                            <constraint firstItem="y44-bj-aCS" firstAttribute="top" secondItem="5uR-6G-Qb6" secondAttribute="bottom" id="TOD-KC-LMd"/>
-                            <constraint firstItem="5uR-6G-Qb6" firstAttribute="leading" secondItem="tig-md-ByO" secondAttribute="leading" id="qsv-i9-Huy"/>
-                            <constraint firstItem="5uR-6G-Qb6" firstAttribute="top" secondItem="2ok-u3-NSW" secondAttribute="bottom" id="veh-UP-oB8"/>
+                            <constraint firstItem="gJo-sm-Nf0" firstAttribute="trailing" secondItem="5uR-6G-Qb6" secondAttribute="trailing" id="RuF-9J-Ghi"/>
+                            <constraint firstItem="gJo-sm-Nf0" firstAttribute="bottom" secondItem="5uR-6G-Qb6" secondAttribute="bottom" id="TOD-KC-LMd"/>
+                            <constraint firstItem="5uR-6G-Qb6" firstAttribute="leading" secondItem="gJo-sm-Nf0" secondAttribute="leading" id="qsv-i9-Huy"/>
+                            <constraint firstItem="5uR-6G-Qb6" firstAttribute="top" secondItem="tig-md-ByO" secondAttribute="top" id="veh-UP-oB8"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="gJo-sm-Nf0"/>
                     </view>
                     <navigationItem key="navigationItem" id="5jH-aX-eW4">
                         <barButtonItem key="backBarButtonItem" title="TUM" id="UuB-Hx-xN6"/>

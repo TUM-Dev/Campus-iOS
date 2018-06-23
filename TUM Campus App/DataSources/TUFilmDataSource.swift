@@ -29,8 +29,8 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateThreeItemHorizontalFlowLayout(delegate: self)
+    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
+    let preferredHeight: CGFloat = 265.0
     
     init(parent: CardViewController, manager: TUFilmNewsManager) {
         self.parent = parent
@@ -74,12 +74,13 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         return min(data.count, 5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
         let movie = data[indexPath.row]
         
-        cell.titleLabel.text = String(movie.text.split(separator: ":").last ?? "")
+        let title = movie.text.split(separator: ":").last ?? "No title"
+        cell.titleLabel.text = title.trimmingCharacters(in: .whitespaces)
         cell.moviePosterImageView.clipsToBounds = false
         
         if let imageUrl = movie.imageUrl {
