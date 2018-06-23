@@ -80,7 +80,7 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let movie = data[indexPath.row]
         
         cell.titleLabel.text = String(movie.text.split(separator: ":").last ?? "")
-        cell.moviePosterImageView.clipsToBounds = true
+        cell.moviePosterImageView.clipsToBounds = false
         
         if let imageUrl = movie.imageUrl {
             cell.moviePosterImageView.kf.setImage(with: URL(string: imageUrl),

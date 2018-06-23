@@ -92,7 +92,7 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         cell.titleLabel.text = calendarElement.title
         cell.dateLabel.text = dateFormatter.string(from: calendarElement.start)
         cell.locationLabel.text = calendarElement.location
-        
+
         let timeLeft = Calendar.current.dateComponents([.day, .hour, .minute],
                                                        from: .now, to: calendarElement.start)
         

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -41,7 +39,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TNS-Va-YKW">
-                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
+                                                    <rect key="frame" x="0.0" y="56" width="375" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m30-dU-CKz">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -75,8 +73,8 @@
                                             <constraint firstAttribute="trailing" secondItem="TNS-Va-YKW" secondAttribute="trailing" id="Rw7-RN-Ao1"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" constant="20" id="c4a-CX-sib"/>
                                             <constraint firstAttribute="trailing" secondItem="Mff-Dk-71f" secondAttribute="trailing" constant="20" id="evV-v2-BGN"/>
-                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="16" id="haZ-Ck-uSd"/>
-                                            <constraint firstItem="TNS-Va-YKW" firstAttribute="top" secondItem="Mff-Dk-71f" secondAttribute="bottom" constant="8" id="nGJ-1p-LDM"/>
+                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="24" id="haZ-Ck-uSd"/>
+                                            <constraint firstItem="TNS-Va-YKW" firstAttribute="top" secondItem="Mff-Dk-71f" secondAttribute="bottom" constant="16" id="nGJ-1p-LDM"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -715,7 +713,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfW-of-AC4">
-                                            <rect key="frame" x="100" y="43" width="267" height="20.5"/>
+                                            <rect key="frame" x="99.5" y="43" width="267.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

@@ -127,6 +127,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         let nib = UINib(nibName: String(describing: dataSource.cellType), bundle: .main)
         cell.collectionView.register(nib, forCellWithReuseIdentifier: dataSource.cellReuseID)
         cell.collectionView.collectionViewLayout = layout
+        cell.collectionView.clipsToBounds = false
         cell.cardNameLabel.text = dataSource.cardKey.description.uppercased()
         cell.cardNameLabel.textColor = dataSource.sectionColor
         cell.showAllButton?.setTitleColor(dataSource.sectionColor, for: .normal)

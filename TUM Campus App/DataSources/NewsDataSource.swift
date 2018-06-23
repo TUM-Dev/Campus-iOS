@@ -33,7 +33,7 @@ class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
     
     let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 162.0
+    let preferredHeight: CGFloat = 178.0
     
     init(parent: CardViewController, manager newsManager: NewsManager) {
         self.parent = parent
