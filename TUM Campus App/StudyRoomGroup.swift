@@ -55,3 +55,11 @@ class StudyRoomGroup: DataElement {
     }
     
 }
+
+extension StudyRoomGroup: Equatable {
+    
+    static func == (lhs: StudyRoomGroup, rhs: StudyRoomGroup) -> Bool {
+        return lhs.sortId == rhs.sortId
+    }
+    
+}

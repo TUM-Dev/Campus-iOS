@@ -27,8 +27,10 @@ class StudyRoomsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var cellType: AnyClass = StudyRoomsCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey = .studyRooms
-    var flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [StudyRoomGroup] = []
+    
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateThreeItemVerticalFlowLayout(delegate: self)
     
     init(parent: CardViewController, manager: StudyRoomsManager) {
         self.parent = parent
@@ -44,11 +46,21 @@ class StudyRoomsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         }
     }
     
+    func onItemSelected(at indexPath: IndexPath) {
+        let studyRoomGroup = data[indexPath.row]
+        openStudyRooms(with: studyRoomGroup)
+    }
+    
     func onShowMore() {
+        openStudyRooms()
+    }
+    
+    private func openStudyRooms(with currentGroup: StudyRoomGroup? = nil) {
         let storyboard = UIStoryboard(name: "StudyRooms", bundle: nil)
         if let destination = storyboard.instantiateInitialViewController() as? StudyRoomsTableViewController {
             destination.delegate = parent
             destination.roomGroups = data
+            destination.currentGroup = currentGroup
             parent.navigationController?.pushViewController(destination, animated: true)
         }
     }

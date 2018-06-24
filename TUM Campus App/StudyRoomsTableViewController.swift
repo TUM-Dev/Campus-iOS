@@ -66,7 +66,22 @@ extension StudyRoomsTableViewController {
         
         refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresh)
-        refresh(nil)
+        
+        if roomGroups.isEmpty {
+            // Only refresh if the ViewController has not been provided with values already.
+            // This is the case when this ViewController is opened from the StudyRooms card.
+            refresh(nil)
+        } else {
+            // If this ViewController has already been provided with values, we already have all
+            // the information required to set up the picker view.
+            guard let currentGroup = currentGroup else {
+                setUpPickerView()
+                return
+            }
+            
+            let currentIndex = roomGroups.index(of: currentGroup) ?? 0
+            setUpPickerView(with: currentIndex)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,7 +143,7 @@ extension StudyRoomsTableViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
-    func setUpPickerView() {
+    func setUpPickerView(with index: Int = 0) {
         var items = [AnyObject]()
         for group in roomGroups {
             let item = AYSlidingPickerViewItem(title: group.name) { (did) in
@@ -143,7 +158,7 @@ extension StudyRoomsTableViewController {
         pickerView = AYSlidingPickerView.sharedInstance()
         pickerView.mainView = navigationController?.view ?? view
         pickerView.items = items
-        pickerView.selectedIndex = 0
+        pickerView.selectedIndex = UInt(index)
         pickerView.closeOnSelection = true
         pickerView.didDismissHandler = { self.hideRooms(nil) }
         barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
