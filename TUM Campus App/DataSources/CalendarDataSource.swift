@@ -39,11 +39,11 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     init(parent: CardViewController, manager: CalendarManager) {
         self.parent = parent
         self.manager = manager
-        self.dateFormatter.dateStyle = .full
+        self.dateFormatter.dateStyle = .medium
         self.dateFormatter.timeStyle = .short
-        self.dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
+        self.dateComponentsFormatter.allowedUnits = [.month, .day, .hour, .minute]
         self.dateComponentsFormatter.maximumUnitCount = 2
-        self.dateComponentsFormatter.unitsStyle = .full
+        self.dateComponentsFormatter.unitsStyle = .short
         super.init()
     }
     
@@ -53,11 +53,9 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
             self.data = data.filter{ $0.start.timeIntervalSinceNow > 0}
             // TODO
             // FOR TESTING PURPOSES
-            /*
             self.data = [
-                CalendarRow(start: Date(millisecondsSince1970: 1529139600000), end: Date(millisecondsSince1970: 1529139690000), title: "Title 1", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
+                CalendarRow(start: Date(millisecondsSince1970: 1529139600000), end: Date(millisecondsSince1970: 1529139690000), title: "Title 1 longlonglongnosdjbgoisnfiorsviowfvnejlrgvbrwogihnrwglonglonglong", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
             ]
-            */
             group.leave()
         }
     }
