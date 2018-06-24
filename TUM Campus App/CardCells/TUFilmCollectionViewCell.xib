@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="176" height="295"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-65-vWe" customClass="RoundedImageView" customModule="Campus" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-65-vWe">
                         <rect key="frame" x="0.0" y="0.0" width="176" height="264"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="XFX-65-vWe" secondAttribute="height" multiplier="2:3" id="qmp-bJ-69e"/>
