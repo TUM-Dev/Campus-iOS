@@ -48,6 +48,7 @@ class StudyRoomsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let storyboard = UIStoryboard(name: "StudyRooms", bundle: nil)
         if let destination = storyboard.instantiateInitialViewController() as? StudyRoomsTableViewController {
             destination.delegate = parent
+            destination.roomGroups = data
             parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
