@@ -20,8 +20,9 @@
 
 import UIKit
 
-class LecturesDataSource: NSObject, TUMDataSource {
+class LecturesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: PersonalLectureManager
     let cellType: AnyClass = LecturesCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
@@ -30,7 +31,8 @@ class LecturesDataSource: NSObject, TUMDataSource {
     var data: [Lecture] = []
     var preferredHeight: CGFloat = 252.0
     
-    init(manager: PersonalLectureManager) {
+    init(parent: CardViewController, manager: PersonalLectureManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -40,6 +42,15 @@ class LecturesDataSource: NSObject, TUMDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data
             group.leave()
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "Lecture", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? LecturesTableViewController {
+            destination.delegate = parent
+            destination.values = data
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     

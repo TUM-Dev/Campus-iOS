@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <deployment version="4144" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -392,6 +394,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-rk-aBF">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="yld-r3-3ZW" eventType="touchUpInside" id="voD-Eb-NPo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -400,9 +409,11 @@
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="leading" secondItem="yld-r3-3ZW" secondAttribute="leading" id="5UO-d2-mX6"/>
                                             <constraint firstAttribute="bottom" secondItem="b6d-5d-7m9" secondAttribute="bottom" constant="16" id="95I-XT-4Vr"/>
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="top" secondItem="qFC-P0-8k1" secondAttribute="bottom" constant="8" id="HuJ-JF-g2N"/>
+                                            <constraint firstItem="FaM-rk-aBF" firstAttribute="centerY" secondItem="qFC-P0-8k1" secondAttribute="centerY" id="QgY-BA-XNw"/>
                                             <constraint firstAttribute="trailing" secondItem="qFC-P0-8k1" secondAttribute="trailing" constant="20" id="SLa-Rf-LIu"/>
                                             <constraint firstAttribute="trailing" secondItem="b6d-5d-7m9" secondAttribute="trailing" id="Wbw-DR-2bR"/>
                                             <constraint firstItem="qFC-P0-8k1" firstAttribute="leading" secondItem="yld-r3-3ZW" secondAttribute="leading" constant="20" id="sHk-mK-eQ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="FaM-rk-aBF" secondAttribute="trailing" constant="20" id="zHH-32-kev"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -416,6 +427,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="qFC-P0-8k1" id="GZR-8i-If1"/>
                                             <outlet property="collectionView" destination="b6d-5d-7m9" id="5zZ-rQ-pC2"/>
+                                            <outlet property="showAllButton" destination="FaM-rk-aBF" id="q52-Qx-78e"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="StudyRoomsCard" id="dhm-Si-y3t" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">

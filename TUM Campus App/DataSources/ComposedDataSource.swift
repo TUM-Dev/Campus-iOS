@@ -92,7 +92,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
             TuitionDataSource(parent: parent, manager: manager.tuitionManager),
             MVGStationDataSource(parent: parent, manager: manager.mvgManager),
             GradesDataSource(manager: manager.gradesManager),
-            LecturesDataSource(manager: manager.lecturesManager),
+            LecturesDataSource(parent: parent, manager: manager.lecturesManager),
             StudyRoomsDataSource(parent: parent, manager: manager.studyRoomsManager)
         ]
         super.init()
