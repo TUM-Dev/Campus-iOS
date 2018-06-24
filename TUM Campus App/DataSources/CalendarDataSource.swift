@@ -51,11 +51,6 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         group.enter()
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data.filter{ $0.start.timeIntervalSinceNow > 0}
-            // TODO
-            // FOR TESTING PURPOSES
-            self.data = [
-                CalendarRow(start: Date(millisecondsSince1970: 1529139600000), end: Date(millisecondsSince1970: 1529139690000), title: "Title 1 longlonglongnosdjbgoisnfiorsviowfvnejlrgvbrwogihnrwglonglonglong", description: "Description 1", status: "Status 1", location: "Location 1", url: nil)
-            ]
             group.leave()
         }
     }
