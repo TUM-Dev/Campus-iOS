@@ -91,7 +91,7 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
             CalendarDataSource(parent: parent, manager: manager.calendarManager),
             TuitionDataSource(parent: parent, manager: manager.tuitionManager),
             MVGStationDataSource(parent: parent, manager: manager.mvgManager),
-            GradesDataSource(manager: manager.gradesManager),
+            GradesDataSource(parent: parent, manager: manager.gradesManager),
             LecturesDataSource(parent: parent, manager: manager.lecturesManager),
             StudyRoomsDataSource(parent: parent, manager: manager.studyRoomsManager)
         ]

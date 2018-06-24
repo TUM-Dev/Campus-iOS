@@ -20,8 +20,9 @@
 
 import UIKit
 
-class GradesDataSource: NSObject, TUMDataSource {
+class GradesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: PersonalGradeManager
     let cellType: AnyClass = GradesCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
@@ -30,7 +31,8 @@ class GradesDataSource: NSObject, TUMDataSource {
     var data: [Grade] = []
     var preferredHeight: CGFloat = 228.0
     
-    init(manager: PersonalGradeManager) {
+    init(parent: CardViewController, manager: PersonalGradeManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -40,6 +42,15 @@ class GradesDataSource: NSObject, TUMDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data
             group.leave()
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "Grade", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? GradesTableViewController {
+            destination.delegate = parent
+            destination.values = data
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     
