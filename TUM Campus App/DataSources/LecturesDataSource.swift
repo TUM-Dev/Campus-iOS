@@ -27,9 +27,11 @@ class LecturesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     let cellType: AnyClass = LecturesCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
     let cardKey: CardKey = .lectures
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [Lecture] = []
     var preferredHeight: CGFloat = 252.0
+    
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateThreeItemVerticalFlowLayout(delegate: self)
     
     init(parent: CardViewController, manager: PersonalLectureManager) {
         self.parent = parent
@@ -42,6 +44,17 @@ class LecturesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data
             group.leave()
+        }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "LectureDetail", bundle: nil)
+        let lecture = data[indexPath.row]
+        
+        if let destination = storyboard.instantiateInitialViewController() as? LectureDetailsTableViewController {
+            destination.delegate = parent
+            destination.lecture = lecture
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     
