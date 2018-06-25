@@ -215,11 +215,22 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     func didBeginRefreshingDataSources() {
         refreshControl.beginRefreshing()
+        collectionView.backgroundView = nil
     }
     
     func didRefreshDataSources() {
         collectionView.reloadData()
         refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 1)
+    }
+    
+    func didEncounterNetworkTimout() {
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
+        guard let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?.first as? ErrorView else {
+            return
+        }
+        errorView.retryButton.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: .touchUpInside)
+        collectionView.backgroundView = errorView
     }
     
     //MARK: - DetailViewDelegate
