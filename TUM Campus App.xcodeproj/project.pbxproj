@@ -156,6 +156,8 @@
 		227D2165209B347000C651BB /* TUFilmCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227D2163209B347000C651BB /* TUFilmCollectionViewCell.xib */; };
 		227D2168209B347F00C651BB /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227D2166209B347F00C651BB /* CalendarCollectionViewCell.swift */; };
 		227D2169209B347F00C651BB /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227D2167209B347F00C651BB /* CalendarCollectionViewCell.xib */; };
+		228DEAF820DB0DC600934F72 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228DEAF720DB0DC600934F72 /* ErrorView.xib */; };
+		228DEAFA20DB0DDB00934F72 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228DEAF920DB0DDB00934F72 /* ErrorView.swift */; };
 		229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */; };
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
@@ -392,6 +394,8 @@
 		227D2163209B347000C651BB /* TUFilmCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TUFilmCollectionViewCell.xib; sourceTree = "<group>"; };
 		227D2166209B347F00C651BB /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		227D2167209B347F00C651BB /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
+		228DEAF720DB0DC600934F72 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		228DEAF920DB0DDB00934F72 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		229795861EAC1F67004A7F9B /* LibrarySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySettingsViewController.swift; sourceTree = "<group>"; };
 		229795881EAC228E004A7F9B /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
@@ -634,6 +638,8 @@
 				50200E0F1DF4941500B6FBE3 /* CardView.storyboard */,
 				0E424F4A1BE16DBE00B5DFCB /* CardViewController.swift */,
 				0EC28AE31E05549300FF1E40 /* EditCards.storyboard */,
+				228DEAF720DB0DC600934F72 /* ErrorView.xib */,
+				228DEAF920DB0DDB00934F72 /* ErrorView.swift */,
 				0EC28AE61E05555400FF1E40 /* EditCardsViewController.swift */,
 				22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */,
 				0E1073B21C1A5281004C93CF /* RoomResultTableViewCell.swift */,
@@ -1232,6 +1238,7 @@
 				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
 				22C83C6720A9DDEF00AB556D /* MVGStationCollectionViewCell.xib in Resources */,
 				2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */,
+				228DEAF820DB0DC600934F72 /* ErrorView.xib in Resources */,
 				0E5573671EB996B2006E9DBD /* config.json in Resources */,
 				0E424F4E1BE16DBE00B5DFCB /* Main.storyboard in Resources */,
 				50200E201DF4980700B6FBE3 /* Lecture.storyboard in Resources */,
@@ -1478,6 +1485,7 @@
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
 				22763FD320B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift in Sources */,
 				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,
+				228DEAFA20DB0DDB00934F72 /* ErrorView.swift in Sources */,
 				0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,

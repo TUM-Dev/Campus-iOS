@@ -216,6 +216,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
     
     func didBeginRefreshingDataSources() {
         refreshControl.beginRefreshing()
+        collectionView.backgroundView = nil
     }
     
     func didRefreshDataSources() {
@@ -223,7 +224,17 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 1)
     }
     
-    // MARK: - DetailViewDelegate
+    func didEncounterNetworkTimout() {
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
+        guard let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?.first as? ErrorView else {
+            return
+        }
+        errorView.retryButton.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: .touchUpInside)
+        collectionView.backgroundView = errorView
+    }
+    
+    //MARK: - DetailViewDelegate
     
     func dataManager() -> TumDataManager? {
         return manager
