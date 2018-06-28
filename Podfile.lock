@@ -1,6 +1,5 @@
 PODS:
   - ASWeekSelectorView (1.0.3)
-  - AYSlidingPickerView (0.1.4)
   - CalendarLib (2.0):
     - OrderedDictionary (~> 1.2)
     - OSCache (~> 1.2)
@@ -40,7 +39,6 @@ PODS:
 
 DEPENDENCIES:
   - ASWeekSelectorView (~> 1.0)
-  - AYSlidingPickerView
   - CalendarLib (~> 2.0)
   - Firebase (~> 5.2)
   - Fuzzi (~> 0.1.1)
@@ -52,9 +50,8 @@ DEPENDENCIES:
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - ASWeekSelectorView
-    - AYSlidingPickerView
     - CalendarLib
     - Firebase
     - FirebaseAnalytics
@@ -92,7 +89,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ASWeekSelectorView: 396acc65f14aa09441528fbd0b2ec46989d8cb4a
-  AYSlidingPickerView: ce4d1dcadb741ee2a7b6ffce8f5863c0afc8d55f
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
@@ -110,6 +106,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: 1f9bedcc65a2dcea0b263ca08f281e441e481a4f
+PODFILE CHECKSUM: 1d0029baca529433948077fcbc05a2af4c8a966d
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

@@ -20,14 +20,12 @@
 
 import UIKit
 import ASWeekSelectorView
-import AYSlidingPickerView
 
 class CafeteriaViewController: UIViewController, DetailView {
     
     @IBOutlet weak var tableView: UITableView!
     
     var weekSelector: ASWeekSelectorView?
-    var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
     weak var delegate: DetailViewDelegate?
@@ -95,6 +93,8 @@ extension CafeteriaViewController {
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(weekSelector!)
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
+        navigationItem.rightBarButtonItem = barItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,43 +107,16 @@ extension CafeteriaViewController {
     
 }
 
-extension CafeteriaViewController {
+extension CafeteriaViewController: TUMPickerControllerDelegate {
+    typealias Element = Cafeteria
     
     @objc func showCafeterias(_ send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
-        barItem?.image = UIImage(named: "collapse")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
+        let pickerView = TUMPickerController(elements: cafeterias, selected: currentCafeteria, delegate: self)
+        present(pickerView, animated: true)
     }
     
-    @objc func hideCafeterias(_ send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
-        barItem?.image = UIImage(named: "expand")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-    
-    func setUpPickerView() {
-        var items = [AnyObject]()
-        for item in cafeterias {
-            let item = AYSlidingPickerViewItem(title: item.name) { (did) in
-                if did {
-                    self.currentCafeteria = item
-                    self.barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
-                    self.barItem?.image = UIImage(named: "expand")
-                }
-            }
-            items.append(item!)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = navigationController?.view ?? view
-        pickerView.items = items
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        pickerView.didDismissHandler = { self.hideCafeterias(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
-        navigationItem.rightBarButtonItem = barItem
+    func didSelect(element: Cafeteria) {
+        currentCafeteria = element
     }
     
 }
@@ -154,7 +127,6 @@ extension CafeteriaViewController {
         delegate?.dataManager()?.cafeteriaManager.fetch().onSuccess(in: .main) { cafeterias in
             self.cafeterias = cafeterias
             self.currentCafeteria = cafeterias.first
-            self.setUpPickerView()
             self.reloadItems()
         }
     }

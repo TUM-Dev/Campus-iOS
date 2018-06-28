@@ -19,7 +19,6 @@
 //
 
 import UIKit
-import AYSlidingPickerView
 
 class MovieDetailTableViewController: UITableViewController, DetailView {
     
@@ -35,7 +34,6 @@ class MovieDetailTableViewController: UITableViewController, DetailView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var websiteCell: UITableViewCell!
     
-    var pickerView = AYSlidingPickerView()
     var barItem: UIBarButtonItem?
     
     weak var delegate: DetailViewDelegate?
@@ -72,7 +70,7 @@ extension MovieDetailTableViewController {
         delegate?.dataManager()?.movieManager.fetch().onSuccess(in: .main) { movies in
             self.movies = movies
             self.currentMovie = movies.first
-            self.setUpPickerView()
+//            self.setUpPickerView()
         }
     }
     
@@ -97,45 +95,17 @@ extension MovieDetailTableViewController {
     
 }
 
-extension MovieDetailTableViewController {
-   
+extension MovieDetailTableViewController: TUMPickerControllerDelegate {
+    typealias Element = Movie
+    
     @objc func showMovies(_ send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = #selector(MovieDetailTableViewController.hideMovies(_:))
-        barItem?.image = UIImage(named: "collapse")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        let pickerView = TUMPickerController(elements: movies, delegate: self)
+        present(pickerView, animated: true)
     }
     
-    @objc func hideMovies(_ send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
-        barItem?.image = UIImage(named: "expand")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    func didSelect(element: Movie) {
+        currentMovie = element
     }
-    
-    func setUpPickerView() {
-        var items = [AnyObject]()
-        for movie in movies {
-            let item = AYSlidingPickerViewItem(title: movie.name) { (did) in
-                if did {
-                    self.currentMovie = movie
-                    self.barItem?.action = #selector(MovieDetailTableViewController.showMovies(_:))
-                    self.barItem?.image = UIImage(named: "expand")
-                    self.tableView.reloadData()
-                }
-            }
-            items.append(item!)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = navigationController?.view ?? view
-        pickerView.items = items
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        pickerView.didDismissHandler = { self.hideMovies(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(MovieDetailTableViewController.showMovies(_:)))
-        navigationItem.rightBarButtonItem = barItem
-    }
-    
 }
 
 extension MovieDetailTableViewController {
