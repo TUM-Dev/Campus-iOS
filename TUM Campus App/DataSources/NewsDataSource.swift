@@ -20,18 +20,23 @@
 import UIKit
 import Sweeft
 
-class NewsDataSource: NSObject, TUMDataSource {
-
+class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
+    
+    let parent: CardViewController
     var manager: NewsManager
     let cellType: AnyClass = NewsCollectionViewCell.self
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
-    let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 160.0
     
-    init(manager newsManager: NewsManager) {
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    
+    let dateFormatter = DateFormatter()
+    let preferredHeight: CGFloat = 178.0
+    
+    init(parent: CardViewController, manager newsManager: NewsManager) {
+        self.parent = parent
         self.manager = newsManager
         self.dateFormatter.dateStyle = .medium
         self.dateFormatter.timeStyle = .none
@@ -46,10 +51,25 @@ class NewsDataSource: NSObject, TUMDataSource {
             group.leave()
         }
     }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let item = data[indexPath.row]
+        item.open(sender: parent)
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? NewsTableViewController {
+            destination.delegate = parent
+            destination.values = data
+            destination.navigationTitle = "News"
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
         
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return min(data.count, 10)
     }
     
     func collectionView(_ collectionView: UICollectionView,

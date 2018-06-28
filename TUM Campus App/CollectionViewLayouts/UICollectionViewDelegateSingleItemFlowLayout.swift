@@ -20,10 +20,19 @@
 
 import UIKit
 
-class UICollectionViewDelegateSingleItemFlowLayout: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class UICollectionViewDelegateSingleItemFlowLayout:
+    NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    let delegate: TUMInteractiveDataSource?
     let margin: CGFloat = 20.0
     
+    init(delegate: TUMInteractiveDataSource? = nil) {
+        self.delegate = delegate
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.onItemSelected?(at: indexPath)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return margin

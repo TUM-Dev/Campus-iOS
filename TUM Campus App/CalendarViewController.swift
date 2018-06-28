@@ -78,7 +78,6 @@ extension CalendarViewController {
         daySelector?.delegate = self
         daySelector?.selectedDate = .now
         
-        
         todayBarButton = UIBarButtonItem(title: "Today", style: UIBarButtonItemStyle.plain, target: self, action:  #selector(self.showToday(_:)))
         refreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.refresh, target: self, action: #selector(self.updateCalendar(_:)))
         stopRefreshBarButton = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: nil)

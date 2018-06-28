@@ -20,19 +20,23 @@
 
 import UIKit
 
-class TuitionDataSource: NSObject, TUMDataSource {
+class TuitionDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: TuitionStatusManager
     let cellType: AnyClass = TuitionCollectionViewCell.self
     var data: [Tuition] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
     let numberFormatter = NumberFormatter()
     let preferredHeight: CGFloat = 128.0
     
-    init(manager: TuitionStatusManager) {
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    
+    init(parent: CardViewController, manager: TuitionStatusManager) {
+        self.parent = parent
         self.manager = manager
         self.dateFormatter.dateStyle = .short
         self.dateFormatter.timeStyle = .none
@@ -46,6 +50,14 @@ class TuitionDataSource: NSObject, TUMDataSource {
         manager.fetch().onSuccess(in: .main) { data in
             self.data = data
             group.leave()
+        }
+    }
+    
+    func onItemSelected(at indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Tution", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? TuitionTableViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
         }
     }
     

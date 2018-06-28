@@ -21,7 +21,8 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
+class CardViewController: UIViewController, UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
 
     @IBOutlet weak var profileButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -130,7 +131,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             return
         }
         
-        composedDataSource = ComposedDataSource(manager: manager)
+        composedDataSource = ComposedDataSource(parent: self, manager: manager)
         composedDataSource?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
@@ -180,7 +181,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -211,7 +212,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return CGSize(width: width, height: height)
     }
     
-    //MARK: - TUMDataSourceDelegate
+    // MARK: - TUMDataSourceDelegate
     
     func didBeginRefreshingDataSources() {
         refreshControl.beginRefreshing()
@@ -239,7 +240,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return manager
     }
     
-    //MARK: - EditCardsViewControllerDelegate
+    // MARK: - EditCardsViewControllerDelegate
     
     func didChangeCardOrder() {
         composedDataSource?.invalidateSortedDataSources()

@@ -21,17 +21,21 @@
 import UIKit
 import Kingfisher
 
-class TUFilmDataSource: NSObject, TUMDataSource {
+class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: TUFilmNewsManager
     let cellType: AnyClass = TUFilmCollectionViewCell.self
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemHorizontalFlowLayout()
     let preferredHeight: CGFloat = 265.0
     
-    init(manager: TUFilmNewsManager) {
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateThreeItemHorizontalFlowLayout(delegate: self)
+    
+    init(parent: CardViewController, manager: TUFilmNewsManager) {
+        self.parent = parent
         self.manager = manager
         super.init()
     }
@@ -44,8 +48,32 @@ class TUFilmDataSource: NSObject, TUMDataSource {
         }
     }
     
+    func onItemSelected(at indexPath: IndexPath) {
+        let movie = data[indexPath.row]
+        movie.open(sender: parent)
+        
+        // TODO: Switch to MovieDetailTableViewController at some point
+        /*
+        let storyboard = UIStoryboard(name: "Movie", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? MovieDetailTableViewController {
+            // TODO
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+        */
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? NewsTableViewController {
+            destination.delegate = parent
+            destination.values = data
+            destination.navigationTitle = manager.source.title
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return min(data.count, 5)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -55,7 +83,7 @@ class TUFilmDataSource: NSObject, TUMDataSource {
         
         let title = movie.text.split(separator: ":").last ?? "No title"
         cell.titleLabel.text = title.trimmingCharacters(in: .whitespaces)
-        cell.moviePosterImageView.clipsToBounds = true
+        cell.moviePosterImageView.clipsToBounds = false
         
         if let imageUrl = movie.imageUrl {
             cell.moviePosterImageView.kf.setImage(with: URL(string: imageUrl),

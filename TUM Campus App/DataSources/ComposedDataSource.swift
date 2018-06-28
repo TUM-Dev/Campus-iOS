@@ -38,6 +38,11 @@ protocol TUMDataSource: UICollectionViewDataSource {
     func refresh(group: DispatchGroup)
 }
 
+@objc protocol TUMInteractiveDataSource {
+    @objc optional func onItemSelected(at indexPath: IndexPath)
+    @objc optional func onShowMore()
+}
+
 extension TUMDataSource {
     var sectionColor: UIColor { return Constants.tumBlue }
     var cellReuseID: String {
@@ -78,19 +83,19 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         return sortedDataSourcesCache!
     }
     
-    init(manager: TumDataManager) {
+    init(parent: CardViewController, manager: TumDataManager) {
         self.manager = manager
         self.dataSources = [
-            NewsDataSource(manager: manager.newsManager),
-            NewsSpreadDataSource(manager: manager.newsSpreadManager),
-            CafeteriaDataSource(manager: manager.cafeteriaManager),
-            TUFilmDataSource(manager: manager.tuFilmNewsManager),
-            CalendarDataSource(manager: manager.calendarManager),
-            TuitionDataSource(manager: manager.tuitionManager),
-            MVGStationDataSource(manager: manager.mvgManager),
-            GradesDataSource(manager: manager.gradesManager),
-            LecturesDataSource(manager: manager.lecturesManager),
-            StudyRoomsDataSource(manager: manager.studyRoomsManager),
+            NewsDataSource(parent: parent, manager: manager.newsManager),
+            NewsSpreadDataSource(parent: parent, manager: manager.newsSpreadManager),
+            CafeteriaDataSource(parent: parent, manager: manager.cafeteriaManager),
+            TUFilmDataSource(parent: parent, manager: manager.tuFilmNewsManager),
+            CalendarDataSource(parent: parent, manager: manager.calendarManager),
+            TuitionDataSource(parent: parent, manager: manager.tuitionManager),
+            MVGStationDataSource(parent: parent, manager: manager.mvgManager),
+            GradesDataSource(parent: parent, manager: manager.gradesManager),
+            LecturesDataSource(parent: parent, manager: manager.lecturesManager),
+            StudyRoomsDataSource(parent: parent, manager: manager.studyRoomsManager)
         ]
         super.init()
     }
@@ -133,12 +138,20 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         let nib = UINib(nibName: String(describing: dataSource.cellType), bundle: .main)
         cell.collectionView.register(nib, forCellWithReuseIdentifier: dataSource.cellReuseID)
         cell.collectionView.collectionViewLayout = layout
+        cell.collectionView.clipsToBounds = false
         cell.cardNameLabel.text = dataSource.cardKey.description.uppercased()
         cell.cardNameLabel.textColor = dataSource.sectionColor
+        cell.showAllButton?.setTitleColor(dataSource.sectionColor, for: .normal)
         cell.collectionView.backgroundColor = .clear
         cell.collectionView.dataSource = dataSource
         cell.collectionView.delegate = dataSource.flowLayoutDelegate
         cell.collectionView.reloadData()
+        
+        cell.onShowAll = {
+            if let dataSource = dataSource as? TUMInteractiveDataSource {
+                dataSource.onShowMore?()
+            }
+        }
         
         return cell
     }

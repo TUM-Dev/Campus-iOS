@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Av0-G7-ZLu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4144" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +38,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TNS-Va-YKW">
-                                                    <rect key="frame" x="0.0" y="48" width="375" height="136"/>
+                                                    <rect key="frame" x="0.0" y="56" width="375" height="120"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m30-dU-CKz">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -52,17 +54,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jd-km-Bmv">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="P82-xk-VVS" eventType="touchUpInside" id="4Kb-so-KT9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="1jd-km-Bmv" secondAttribute="trailing" constant="20" id="DCU-XW-QCo"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="top" secondItem="P82-xk-VVS" secondAttribute="top" constant="16" id="Hu1-PO-3HV"/>
                                             <constraint firstItem="TNS-Va-YKW" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" id="Hyj-3W-JFi"/>
+                                            <constraint firstItem="1jd-km-Bmv" firstAttribute="centerY" secondItem="Mff-Dk-71f" secondAttribute="centerY" id="M83-8N-TPM"/>
                                             <constraint firstAttribute="trailing" secondItem="TNS-Va-YKW" secondAttribute="trailing" id="Rw7-RN-Ao1"/>
                                             <constraint firstItem="Mff-Dk-71f" firstAttribute="leading" secondItem="P82-xk-VVS" secondAttribute="leading" constant="20" id="c4a-CX-sib"/>
                                             <constraint firstAttribute="trailing" secondItem="Mff-Dk-71f" secondAttribute="trailing" constant="20" id="evV-v2-BGN"/>
-                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="16" id="haZ-Ck-uSd"/>
-                                            <constraint firstItem="TNS-Va-YKW" firstAttribute="top" secondItem="Mff-Dk-71f" secondAttribute="bottom" constant="8" id="nGJ-1p-LDM"/>
+                                            <constraint firstAttribute="bottom" secondItem="TNS-Va-YKW" secondAttribute="bottom" constant="24" id="haZ-Ck-uSd"/>
+                                            <constraint firstItem="TNS-Va-YKW" firstAttribute="top" secondItem="Mff-Dk-71f" secondAttribute="bottom" constant="16" id="nGJ-1p-LDM"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -76,6 +87,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="Mff-Dk-71f" id="v8d-md-Rsp"/>
                                             <outlet property="collectionView" destination="TNS-Va-YKW" id="Zhu-ce-z1G"/>
+                                            <outlet property="showAllButton" destination="1jd-km-Bmv" id="l2U-N0-LL3"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CafeteriaCard" id="HF8-aR-Uu6" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -102,17 +114,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hs3-ta-eFd">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="HF8-aR-Uu6" eventType="touchUpInside" id="eZr-hi-CuG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="aFz-cX-4lM" secondAttribute="bottom" constant="20" id="5wd-Ok-VHR"/>
+                                            <constraint firstAttribute="trailing" secondItem="hs3-ta-eFd" secondAttribute="trailing" constant="20" id="729-mJ-u7k"/>
                                             <constraint firstAttribute="trailing" secondItem="4Li-4F-mwr" secondAttribute="trailing" constant="20" id="IVP-15-ArK"/>
                                             <constraint firstItem="aFz-cX-4lM" firstAttribute="leading" secondItem="HF8-aR-Uu6" secondAttribute="leading" id="Lai-Ei-ihP"/>
                                             <constraint firstItem="4Li-4F-mwr" firstAttribute="leading" secondItem="HF8-aR-Uu6" secondAttribute="leading" constant="20" id="QmN-8K-8mV"/>
                                             <constraint firstItem="aFz-cX-4lM" firstAttribute="top" secondItem="4Li-4F-mwr" secondAttribute="bottom" constant="8" id="RJB-BH-Wpa"/>
                                             <constraint firstAttribute="trailing" secondItem="aFz-cX-4lM" secondAttribute="trailing" id="Ta2-S2-FKU"/>
                                             <constraint firstItem="4Li-4F-mwr" firstAttribute="top" secondItem="HF8-aR-Uu6" secondAttribute="top" constant="16" id="jgU-g8-PFK"/>
+                                            <constraint firstItem="hs3-ta-eFd" firstAttribute="centerY" secondItem="4Li-4F-mwr" secondAttribute="centerY" id="tFN-Ys-URp"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -126,6 +147,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="4Li-4F-mwr" id="739-DO-Ibk"/>
                                             <outlet property="collectionView" destination="aFz-cX-4lM" id="sDY-5M-ncT"/>
+                                            <outlet property="showAllButton" destination="hs3-ta-eFd" id="wpC-Za-qLT"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TUFilmCard" id="2yx-Tf-rvO" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -152,13 +174,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6w-Vv-I3x">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="2yx-Tf-rvO" eventType="touchUpInside" id="WhO-72-CUf"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="F2q-T4-l5v" firstAttribute="top" secondItem="2yx-Tf-rvO" secondAttribute="top" constant="16" id="0ix-XA-eCI"/>
+                                            <constraint firstAttribute="trailing" secondItem="y6w-Vv-I3x" secondAttribute="trailing" constant="20" id="G4S-W4-htw"/>
                                             <constraint firstItem="F2q-T4-l5v" firstAttribute="leading" secondItem="2yx-Tf-rvO" secondAttribute="leading" constant="20" id="Lsw-Hs-yBP"/>
                                             <constraint firstItem="Dez-f1-jlZ" firstAttribute="top" secondItem="F2q-T4-l5v" secondAttribute="bottom" constant="8" id="OY6-Yz-khb"/>
+                                            <constraint firstItem="y6w-Vv-I3x" firstAttribute="centerY" secondItem="F2q-T4-l5v" secondAttribute="centerY" id="Qdy-r5-fQO"/>
                                             <constraint firstAttribute="trailing" secondItem="Dez-f1-jlZ" secondAttribute="trailing" id="S5Z-YN-1WJ"/>
                                             <constraint firstItem="Dez-f1-jlZ" firstAttribute="leading" secondItem="2yx-Tf-rvO" secondAttribute="leading" id="U7Y-8u-LTk"/>
                                             <constraint firstAttribute="bottom" secondItem="Dez-f1-jlZ" secondAttribute="bottom" constant="20" id="acn-xY-xm9"/>
@@ -176,6 +207,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="F2q-T4-l5v" id="uBe-eb-kXq"/>
                                             <outlet property="collectionView" destination="Dez-f1-jlZ" id="i0T-Ud-Cxc"/>
+                                            <outlet property="showAllButton" destination="y6w-Vv-I3x" id="eln-o4-zim"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CalendarCard" id="vr6-cB-RNd" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -202,13 +234,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXJ-Ul-oMU">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="vr6-cB-RNd" eventType="touchUpInside" id="ziN-gn-VUy"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="9v9-dn-sjX" secondAttribute="trailing" id="39v-eM-xCi"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="leading" secondItem="vr6-cB-RNd" secondAttribute="leading" id="JML-ju-5DY"/>
+                                            <constraint firstAttribute="trailing" secondItem="tXJ-Ul-oMU" secondAttribute="trailing" constant="20" id="PhK-Kf-6cX"/>
                                             <constraint firstItem="7QM-O1-3cg" firstAttribute="top" secondItem="vr6-cB-RNd" secondAttribute="top" constant="16" id="RsQ-XS-QBV"/>
+                                            <constraint firstItem="tXJ-Ul-oMU" firstAttribute="centerY" secondItem="7QM-O1-3cg" secondAttribute="centerY" id="Ws0-At-Rf3"/>
                                             <constraint firstAttribute="trailing" secondItem="7QM-O1-3cg" secondAttribute="trailing" constant="20" id="anj-G7-ybd"/>
                                             <constraint firstAttribute="bottom" secondItem="9v9-dn-sjX" secondAttribute="bottom" constant="20" id="cfk-ER-lT2"/>
                                             <constraint firstItem="9v9-dn-sjX" firstAttribute="top" secondItem="7QM-O1-3cg" secondAttribute="bottom" constant="8" id="dEZ-zw-ziC"/>
@@ -226,6 +267,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="7QM-O1-3cg" id="6mo-ZN-zK5"/>
                                             <outlet property="collectionView" destination="9v9-dn-sjX" id="B62-uX-GXY"/>
+                                            <outlet property="showAllButton" destination="tXJ-Ul-oMU" id="RTx-CB-tTa"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="TuitionCard" id="1QD-8Z-lkh" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -302,6 +344,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-sB-z1P">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="Iz4-A4-iEi" eventType="touchUpInside" id="Imy-ns-BDN"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,9 +358,11 @@
                                             <constraint firstAttribute="trailing" secondItem="PjP-1t-CqD" secondAttribute="trailing" id="2wQ-4J-Dbr"/>
                                             <constraint firstItem="PjP-1t-CqD" firstAttribute="top" secondItem="KVI-1X-Y43" secondAttribute="bottom" constant="8" id="Hfb-bA-tmb"/>
                                             <constraint firstItem="KVI-1X-Y43" firstAttribute="top" secondItem="Iz4-A4-iEi" secondAttribute="top" constant="16" id="KhQ-Fm-fFF"/>
+                                            <constraint firstItem="SYf-sB-z1P" firstAttribute="centerY" secondItem="KVI-1X-Y43" secondAttribute="centerY" id="OmK-dl-YTF"/>
                                             <constraint firstItem="KVI-1X-Y43" firstAttribute="leading" secondItem="Iz4-A4-iEi" secondAttribute="leading" constant="20" id="VSK-yn-n1D"/>
                                             <constraint firstAttribute="trailing" secondItem="KVI-1X-Y43" secondAttribute="trailing" constant="20" id="e5O-Xn-ZBw"/>
                                             <constraint firstAttribute="bottom" secondItem="PjP-1t-CqD" secondAttribute="bottom" constant="20" id="jBQ-73-45D"/>
+                                            <constraint firstAttribute="trailing" secondItem="SYf-sB-z1P" secondAttribute="trailing" constant="20" id="ltD-JT-geO"/>
                                             <constraint firstItem="PjP-1t-CqD" firstAttribute="leading" secondItem="Iz4-A4-iEi" secondAttribute="leading" id="zps-Ia-qNZ"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
@@ -326,6 +377,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="KVI-1X-Y43" id="lmx-JX-HGV"/>
                                             <outlet property="collectionView" destination="PjP-1t-CqD" id="rX0-8D-GQk"/>
+                                            <outlet property="showAllButton" destination="SYf-sB-z1P" id="EKM-YQ-N7D"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LecturesCard" id="yld-r3-3ZW" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -352,6 +404,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-rk-aBF">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="yld-r3-3ZW" eventType="touchUpInside" id="voD-Eb-NPo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -360,9 +419,11 @@
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="leading" secondItem="yld-r3-3ZW" secondAttribute="leading" id="5UO-d2-mX6"/>
                                             <constraint firstAttribute="bottom" secondItem="b6d-5d-7m9" secondAttribute="bottom" constant="16" id="95I-XT-4Vr"/>
                                             <constraint firstItem="b6d-5d-7m9" firstAttribute="top" secondItem="qFC-P0-8k1" secondAttribute="bottom" constant="8" id="HuJ-JF-g2N"/>
+                                            <constraint firstItem="FaM-rk-aBF" firstAttribute="centerY" secondItem="qFC-P0-8k1" secondAttribute="centerY" id="QgY-BA-XNw"/>
                                             <constraint firstAttribute="trailing" secondItem="qFC-P0-8k1" secondAttribute="trailing" constant="20" id="SLa-Rf-LIu"/>
                                             <constraint firstAttribute="trailing" secondItem="b6d-5d-7m9" secondAttribute="trailing" id="Wbw-DR-2bR"/>
                                             <constraint firstItem="qFC-P0-8k1" firstAttribute="leading" secondItem="yld-r3-3ZW" secondAttribute="leading" constant="20" id="sHk-mK-eQ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="FaM-rk-aBF" secondAttribute="trailing" constant="20" id="zHH-32-kev"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -376,6 +437,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="qFC-P0-8k1" id="GZR-8i-If1"/>
                                             <outlet property="collectionView" destination="b6d-5d-7m9" id="5zZ-rQ-pC2"/>
+                                            <outlet property="showAllButton" destination="FaM-rk-aBF" id="q52-Qx-78e"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="StudyRoomsCard" id="dhm-Si-y3t" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -402,17 +464,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owV-4V-ILe">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="dhm-Si-y3t" eventType="touchUpInside" id="BOg-KM-iyg"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="XiD-IX-k2U" firstAttribute="top" secondItem="dhm-Si-y3t" secondAttribute="top" constant="16" id="2BN-lU-XwJ"/>
                                             <constraint firstAttribute="trailing" secondItem="SCr-ec-cwd" secondAttribute="trailing" id="9zQ-Q1-BK1"/>
+                                            <constraint firstItem="owV-4V-ILe" firstAttribute="centerY" secondItem="XiD-IX-k2U" secondAttribute="centerY" id="GaA-zF-CZL"/>
                                             <constraint firstItem="XiD-IX-k2U" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" constant="20" id="KVZ-oG-nC0"/>
                                             <constraint firstAttribute="bottom" secondItem="SCr-ec-cwd" secondAttribute="bottom" constant="16" id="TTZ-ph-zdp"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="top" secondItem="XiD-IX-k2U" secondAttribute="bottom" constant="8" id="cVi-Sa-aKS"/>
                                             <constraint firstAttribute="trailing" secondItem="XiD-IX-k2U" secondAttribute="trailing" constant="20" id="fWQ-e8-fKt"/>
                                             <constraint firstItem="SCr-ec-cwd" firstAttribute="leading" secondItem="dhm-Si-y3t" secondAttribute="leading" id="pza-dO-p4O"/>
+                                            <constraint firstAttribute="trailing" secondItem="owV-4V-ILe" secondAttribute="trailing" constant="20" id="xK0-Y4-iE2"/>
                                         </constraints>
                                         <size key="customSize" width="375" height="200"/>
                                         <userDefinedRuntimeAttributes>
@@ -426,6 +497,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="XiD-IX-k2U" id="JPV-pV-UJP"/>
                                             <outlet property="collectionView" destination="SCr-ec-cwd" id="lXm-Gh-Udr"/>
+                                            <outlet property="showAllButton" destination="owV-4V-ILe" id="Jeq-4b-g95"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MVGCard" id="B8u-Br-bzJ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -452,11 +524,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLO-nL-gYt">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="B8u-Br-bzJ" eventType="touchUpInside" id="l3H-oR-WOh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="fLO-nL-gYt" firstAttribute="centerY" secondItem="8TS-GF-EIZ" secondAttribute="centerY" id="7Mp-5Q-CHH"/>
                                             <constraint firstAttribute="trailing" secondItem="8TS-GF-EIZ" secondAttribute="trailing" constant="20" id="OfY-OE-NtV"/>
+                                            <constraint firstAttribute="trailing" secondItem="fLO-nL-gYt" secondAttribute="trailing" constant="20" id="a8t-HI-pIP"/>
                                             <constraint firstItem="BOc-sb-STS" firstAttribute="top" secondItem="8TS-GF-EIZ" secondAttribute="bottom" constant="8" id="bmb-jX-D5d"/>
                                             <constraint firstItem="8TS-GF-EIZ" firstAttribute="top" secondItem="B8u-Br-bzJ" secondAttribute="top" constant="16" id="cIB-zw-3he"/>
                                             <constraint firstItem="8TS-GF-EIZ" firstAttribute="leading" secondItem="B8u-Br-bzJ" secondAttribute="leading" constant="20" id="dtf-cL-M3R"/>
@@ -476,6 +557,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="8TS-GF-EIZ" id="6cH-LK-gE7"/>
                                             <outlet property="collectionView" destination="BOc-sb-STS" id="bdz-HH-r6D"/>
+                                            <outlet property="showAllButton" destination="fLO-nL-gYt" id="xuL-tf-LHe"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NewsspreadCard" id="7cy-dv-GeQ" customClass="DataSourceCollectionViewCell" customModule="Campus" customModuleProvider="target">
@@ -502,13 +584,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q69-Aa-a5I">
+                                                    <rect key="frame" x="298" y="13" width="57" height="30"/>
+                                                    <state key="normal" title="Show all"/>
+                                                    <connections>
+                                                        <action selector="showAll" destination="7cy-dv-GeQ" eventType="touchUpInside" id="IRn-5j-XF4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="q69-Aa-a5I" secondAttribute="trailing" constant="20" id="0hn-YJ-F6h"/>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="top" secondItem="Syy-kY-MO9" secondAttribute="bottom" constant="8" id="EKV-LF-yuH"/>
                                             <constraint firstItem="iv8-F7-Ium" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" id="FGK-23-lhu"/>
                                             <constraint firstAttribute="bottom" secondItem="iv8-F7-Ium" secondAttribute="bottom" constant="16" id="Gvf-Zq-41y"/>
+                                            <constraint firstItem="q69-Aa-a5I" firstAttribute="centerY" secondItem="Syy-kY-MO9" secondAttribute="centerY" id="P2V-Df-j1C"/>
                                             <constraint firstItem="Syy-kY-MO9" firstAttribute="leading" secondItem="7cy-dv-GeQ" secondAttribute="leading" constant="20" id="ToL-gR-0RG"/>
                                             <constraint firstAttribute="trailing" secondItem="Syy-kY-MO9" secondAttribute="trailing" constant="20" id="X7C-eE-v8e"/>
                                             <constraint firstAttribute="trailing" secondItem="iv8-F7-Ium" secondAttribute="trailing" id="a5h-5d-RVL"/>
@@ -526,6 +617,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="Syy-kY-MO9" id="C1z-Ye-hCT"/>
                                             <outlet property="collectionView" destination="iv8-F7-Ium" id="fwh-y6-xtB"/>
+                                            <outlet property="showAllButton" destination="q69-Aa-a5I" id="i5q-Se-WOq"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

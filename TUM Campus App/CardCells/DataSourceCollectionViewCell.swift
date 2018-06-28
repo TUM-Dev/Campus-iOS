@@ -22,7 +22,16 @@ import UIKit
 
 class DataSourceCollectionViewCell: TUMCollectionViewCell {
     
+    var onShowAll: (() -> ())?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var cardNameLabel: UILabel!
+    @IBOutlet weak var showAllButton: UIButton?
+    
+    @IBAction func showAll() {
+        if let onShowAll = onShowAll {
+            onShowAll()
+        }
+    }
     
 }

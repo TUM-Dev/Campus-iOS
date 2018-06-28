@@ -23,8 +23,13 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
         title = "Nearby Stations"
         
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.beginRefreshing()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        if nearestStations.isEmpty {
+            // Only refresh if the ViewController has not been provided with values already.
+            // This is the case when this ViewController is opened from a News or Newspread card.
+            tableView.refreshControl?.beginRefreshing()
+        }
         
         navigationItem.backBarButtonItem =
             UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

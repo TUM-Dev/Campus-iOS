@@ -82,7 +82,6 @@ extension MovieDetailTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         self.fetch()
