@@ -30,8 +30,8 @@ class LecturesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var data: [Lecture] = []
     var preferredHeight: CGFloat = 252.0
     
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateThreeItemVerticalFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayout =
+        FixedColumnsVerticalItemsFlowLayout(delegate: self)
     
     init(parent: CardViewController, manager: PersonalLectureManager) {
         self.parent = parent

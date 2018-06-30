@@ -27,10 +27,12 @@ class MVGStationDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     let cellType: AnyClass = MVGStationCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
     let cardKey: CardKey = .mvg
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     var data: [DetailedStation] = []
     var departureDataSources: [MVGDepartureDataSource] = []
     var preferredHeight: CGFloat = 290.0
+    
+    lazy var flowLayoutDelegate: ColumnsFlowLayout =
+        FixedColumnsFlowLayout(delegate: self)
     
     init(parent: CardViewController, manager: MVGManager) {
         self.parent = parent

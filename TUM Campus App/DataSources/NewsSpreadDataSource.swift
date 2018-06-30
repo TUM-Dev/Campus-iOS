@@ -31,8 +31,8 @@ class NewsSpreadDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var data: [News] = []
     let preferredHeight: CGFloat = 180.0
     
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateLandscapeItemFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayout =
+        VariableColumnsFlowLayout(aspectRatio: CGFloat(2/1), delegate: self)
     
     init(parent: CardViewController, manager: NewsSpreadManager) {
         self.parent = parent

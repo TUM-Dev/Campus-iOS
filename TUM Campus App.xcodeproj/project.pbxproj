@@ -208,6 +208,10 @@
 		9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */; };
 		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
 		9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */; };
+		9DCF48BE20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */; };
+		9DE0FD5720E80890009B75F9 /* FixedColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */; };
+		9DE0FD5920E8089A009B75F9 /* VariableColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayout.swift */; };
+		9DE0FD5B20E808DB009B75F9 /* ColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */; };
 		B20DF5B992DFD30580046509 /* Pods_TUM_Campus_AppUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */; };
 		E1369C9D1F87D25E00D6766E /* ViewControllerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */; };
 /* End PBXBuildFile section */
@@ -455,6 +459,10 @@
 		9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewNoStartInset.swift; sourceTree = "<group>"; };
 		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 		9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBlurredBackground.swift; sourceTree = "<group>"; };
+		9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsVerticalItemsFlowLayout.swift; sourceTree = "<group>"; };
+		9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsFlowLayout.swift; sourceTree = "<group>"; };
+		9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableColumnsFlowLayout.swift; sourceTree = "<group>"; };
+		9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnsFlowLayout.swift; sourceTree = "<group>"; };
 		AD841ED43FDB8AA12A1C09C2 /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		D6D05C011AFF89BE3FA3F6AD /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
 		E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
@@ -970,6 +978,10 @@
 				227B480420A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift */,
 				220EFFA620A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift */,
 				22763FD220B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift */,
+				9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */,
+				9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */,
+				9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */,
+				9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayout.swift */,
 			);
 			path = CollectionViewLayouts;
 			sourceTree = "<group>";
@@ -1437,6 +1449,7 @@
 				0E5A61DF1C135750006017DB /* User.swift in Sources */,
 				0E0C68241E8A4355007001F1 /* Usage.swift in Sources */,
 				22C83C6620A9DDEF00AB556D /* MVGStationCollectionViewCell.swift in Sources */,
+				9DE0FD5920E8089A009B75F9 /* VariableColumnsFlowLayout.swift in Sources */,
 				220EFFA120A85BC6009D0337 /* MVGStationDataSource.swift in Sources */,
 				0E893EF81EB3D7DE0058027F /* TUMOnline.swift in Sources */,
 				0E3B21341C13B5760035ED70 /* CampusTabBarController.swift in Sources */,
@@ -1457,6 +1470,7 @@
 				0E52817D1C0E306200762EA3 /* DataElement.swift in Sources */,
 				227D2160209B345C00C651BB /* CafeteriaCollectionViewCell.swift in Sources */,
 				0E4825AF1C2CAEC500C756A5 /* DetailPersonWithTitleCell.swift in Sources */,
+				9DE0FD5B20E808DB009B75F9 /* ColumnsFlowLayout.swift in Sources */,
 				0EF3D5051FBB13A900D05DE0 /* RefreshableTableViewController.swift in Sources */,
 				220EFF9F20A85BB9009D0337 /* GradesDataSource.swift in Sources */,
 				0E3B21441C13C1B60035ED70 /* Tuition.swift in Sources */,
@@ -1489,6 +1503,7 @@
 				0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
+				9DE0FD5720E80890009B75F9 /* FixedColumnsFlowLayout.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
 				0EC10C251C171FEF0024F902 /* UserDataManager.swift in Sources */,
 				227B480820A3428100AE3373 /* TuitionCollectionViewCell.swift in Sources */,
@@ -1516,6 +1531,7 @@
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0EC9D01E1FBA504A00061DF1 /* TUMNewsManager.swift in Sources */,
 				227D215220988B5300C651BB /* CafeteriaDataSource.swift in Sources */,
+				9DCF48BE20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift in Sources */,
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
 				301195E91E464A6A0012B133 /* Grade.swift in Sources */,
 				227B480520A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift in Sources */,

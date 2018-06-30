@@ -31,8 +31,8 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var cardKey: CardKey { return manager.cardKey }
     let preferredHeight: CGFloat = 265.0
     
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateThreeItemHorizontalFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayout =
+        VariableColumnsFlowLayout(aspectRatio: CGFloat(9/20), delegate: self)
     
     init(parent: CardViewController, manager: TUFilmNewsManager) {
         self.parent = parent
