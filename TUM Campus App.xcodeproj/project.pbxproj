@@ -119,7 +119,6 @@
 		220EFFA120A85BC6009D0337 /* MVGStationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFA020A85BC6009D0337 /* MVGStationDataSource.swift */; };
 		220EFFA320A85BCE009D0337 /* LecturesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFA220A85BCE009D0337 /* LecturesDataSource.swift */; };
 		220EFFA520A85BD8009D0337 /* StudyRoomsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFA420A85BD8009D0337 /* StudyRoomsDataSource.swift */; };
-		220EFFA720A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFA620A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift */; };
 		220EFFAA20A8652C009D0337 /* StudyRoomsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFA820A8652C009D0337 /* StudyRoomsCollectionViewCell.swift */; };
 		220EFFAB20A8652C009D0337 /* StudyRoomsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220EFFA920A8652C009D0337 /* StudyRoomsCollectionViewCell.xib */; };
 		220EFFB120A866EC009D0337 /* MVGDepartureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFAF20A866EC009D0337 /* MVGDepartureCollectionViewCell.swift */; };
@@ -133,11 +132,7 @@
 		22763FCE20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22763FCC20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.swift */; };
 		22763FCF20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22763FCD20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.xib */; };
 		22763FD120B176CE008D5A89 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22763FD020B176CE008D5A89 /* RoundedLabel.swift */; };
-		22763FD320B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22763FD220B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift */; };
 		22763FE420B217C9008D5A89 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22763FDB20B217C9008D5A89 /* CardTableViewCell.swift */; };
-		227B480120A2177900AE3373 /* UICollectionViewDelegateSingleItemFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B480020A2177900AE3373 /* UICollectionViewDelegateSingleItemFlowLayout.swift */; };
-		227B480320A2182F00AE3373 /* UICollectionViewDelegateThreeItemVerticalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B480220A2182F00AE3373 /* UICollectionViewDelegateThreeItemVerticalFlowLayout.swift */; };
-		227B480520A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B480420A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift */; };
 		227B480820A3428100AE3373 /* TuitionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B480620A3428100AE3373 /* TuitionCollectionViewCell.swift */; };
 		227B480920A3428100AE3373 /* TuitionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 227B480720A3428100AE3373 /* TuitionCollectionViewCell.xib */; };
 		227B481720A3472C00AE3373 /* TUMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B481620A3472C00AE3373 /* TUMCollectionViewCell.swift */; };
@@ -209,6 +204,7 @@
 		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
 		9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */; };
 		9DCF48BE20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */; };
+		9DCF48C020E8277000516853 /* UICollectionViewDelegateListFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF48BF20E8277000516853 /* UICollectionViewDelegateListFlowLayout.swift */; };
 		9DE0FD5720E80890009B75F9 /* FixedColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */; };
 		9DE0FD5920E8089A009B75F9 /* VariableColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayout.swift */; };
 		9DE0FD5B20E808DB009B75F9 /* ColumnsFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */; };
@@ -360,7 +356,6 @@
 		220EFFA020A85BC6009D0337 /* MVGStationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGStationDataSource.swift; sourceTree = "<group>"; };
 		220EFFA220A85BCE009D0337 /* LecturesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturesDataSource.swift; sourceTree = "<group>"; };
 		220EFFA420A85BD8009D0337 /* StudyRoomsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomsDataSource.swift; sourceTree = "<group>"; };
-		220EFFA620A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateListFlowLayout.swift; sourceTree = "<group>"; };
 		220EFFA820A8652C009D0337 /* StudyRoomsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomsCollectionViewCell.swift; sourceTree = "<group>"; };
 		220EFFA920A8652C009D0337 /* StudyRoomsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudyRoomsCollectionViewCell.xib; sourceTree = "<group>"; };
 		220EFFAF20A866EC009D0337 /* MVGDepartureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGDepartureCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -375,11 +370,7 @@
 		22763FCC20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsSpreadCollectionViewCell.swift; path = "TUM Campus App/NewsSpreadCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		22763FCD20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsSpreadCollectionViewCell.xib; path = "TUM Campus App/NewsSpreadCollectionViewCell.xib"; sourceTree = SOURCE_ROOT; };
 		22763FD020B176CE008D5A89 /* RoundedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
-		22763FD220B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateLandscapeItemFlowLayout.swift; sourceTree = "<group>"; };
 		22763FDB20B217C9008D5A89 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
-		227B480020A2177900AE3373 /* UICollectionViewDelegateSingleItemFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateSingleItemFlowLayout.swift; sourceTree = "<group>"; };
-		227B480220A2182F00AE3373 /* UICollectionViewDelegateThreeItemVerticalFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateThreeItemVerticalFlowLayout.swift; sourceTree = "<group>"; };
-		227B480420A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift; sourceTree = "<group>"; };
 		227B480620A3428100AE3373 /* TuitionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCollectionViewCell.swift; sourceTree = "<group>"; };
 		227B480720A3428100AE3373 /* TuitionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TuitionCollectionViewCell.xib; sourceTree = "<group>"; };
 		227B481620A3472C00AE3373 /* TUMCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -460,6 +451,7 @@
 		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 		9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBlurredBackground.swift; sourceTree = "<group>"; };
 		9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsVerticalItemsFlowLayout.swift; sourceTree = "<group>"; };
+		9DCF48BF20E8277000516853 /* UICollectionViewDelegateListFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateListFlowLayout.swift; sourceTree = "<group>"; };
 		9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsFlowLayout.swift; sourceTree = "<group>"; };
 		9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableColumnsFlowLayout.swift; sourceTree = "<group>"; };
 		9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnsFlowLayout.swift; sourceTree = "<group>"; };
@@ -973,11 +965,7 @@
 		22F76F2C20A1D5FE007BA4DE /* CollectionViewLayouts */ = {
 			isa = PBXGroup;
 			children = (
-				227B480020A2177900AE3373 /* UICollectionViewDelegateSingleItemFlowLayout.swift */,
-				227B480220A2182F00AE3373 /* UICollectionViewDelegateThreeItemVerticalFlowLayout.swift */,
-				227B480420A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift */,
-				220EFFA620A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift */,
-				22763FD220B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift */,
+				9DCF48BF20E8277000516853 /* UICollectionViewDelegateListFlowLayout.swift */,
 				9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayout.swift */,
 				9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayout.swift */,
 				9DCF48BD20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift */,
@@ -1400,7 +1388,6 @@
 				0EF4CEEE1D415DB5001649F1 /* NewsTableViewCell.swift in Sources */,
 				0E692BB81C162CD200266417 /* CalendarViewController.swift in Sources */,
 				0EB473D01C1B4F0F00F17F44 /* Map.swift in Sources */,
-				227B480320A2182F00AE3373 /* UICollectionViewDelegateThreeItemVerticalFlowLayout.swift in Sources */,
 				0EB473CE1C1B4A9500F17F44 /* RoomFinderViewController.swift in Sources */,
 				0E6B534C1EA449F0002B5058 /* SexyEntryTableViewCell.swift in Sources */,
 				807C48171F4091E300CAD35D /* Station.swift in Sources */,
@@ -1477,7 +1464,6 @@
 				227B481920A3487700AE3373 /* DataSourceCollectionViewCell.swift in Sources */,
 				0E64AC5F1C0DEC6F00060FB0 /* CalendarRowSet.swift in Sources */,
 				5007C69E1E06786E0014B065 /* StudyRoomStatus.swift in Sources */,
-				220EFFA720A863E4009D0337 /* UICollectionViewDelegateListFlowLayout.swift in Sources */,
 				220EFF9020A85B21009D0337 /* GradesCollectionViewCell.swift in Sources */,
 				0EB473C81C1B224700F17F44 /* MenuTableViewCell.swift in Sources */,
 				0E64AC591C0DE4E100060FB0 /* Cafeteria.swift in Sources */,
@@ -1497,7 +1483,6 @@
 				0EDD932D1EB7910A0022E9BC /* StudyRoomAPI.swift in Sources */,
 				0E2E33951E047B4C00E6F707 /* PersistentUserData.swift in Sources */,
 				0EC10C271C1738420024F902 /* PersonSearchManager.swift in Sources */,
-				22763FD320B17DA8008D5A89 /* UICollectionViewDelegateLandscapeItemFlowLayout.swift in Sources */,
 				807C48111F40917E00CAD35D /* MVGManager.swift in Sources */,
 				228DEAFA20DB0DDB00934F72 /* ErrorView.swift in Sources */,
 				0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */,
@@ -1533,8 +1518,8 @@
 				227D215220988B5300C651BB /* CafeteriaDataSource.swift in Sources */,
 				9DCF48BE20E8147B00516853 /* FixedColumnsVerticalItemsFlowLayout.swift in Sources */,
 				0E3B21481C13C3790035ED70 /* TuitionStatusManager.swift in Sources */,
+				9DCF48C020E8277000516853 /* UICollectionViewDelegateListFlowLayout.swift in Sources */,
 				301195E91E464A6A0012B133 /* Grade.swift in Sources */,
-				227B480520A3380E00AE3373 /* UICollectionViewDelegateThreeItemHorizontalFlowLayout.swift in Sources */,
 				0E6C20661C4C44F20059B7C2 /* LectureDetailTableViewCell.swift in Sources */,
 				221E45C020A4C21F00A92084 /* MenuDataSource.swift in Sources */,
 				0EB161861C1A0E6A001A08FC /* LecturesTableViewController.swift in Sources */,
@@ -1554,7 +1539,6 @@
 				0E60CD481C14845700B29948 /* DetailViewDelegate.swift in Sources */,
 				0E6B53471EA447F3002B5058 /* TumSexyTableViewController.swift in Sources */,
 				0E3B21521C13DB550035ED70 /* LoginDefaultKeys.swift in Sources */,
-				227B480120A2177900AE3373 /* UICollectionViewDelegateSingleItemFlowLayout.swift in Sources */,
 				22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */,
 				0ECD97111F9D8C6C0070441D /* DetailedStation.swift in Sources */,
 				0E1073B31C1A5281004C93CF /* RoomResultTableViewCell.swift in Sources */,

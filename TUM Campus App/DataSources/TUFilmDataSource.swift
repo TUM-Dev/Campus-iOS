@@ -29,10 +29,10 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var data: [News] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let preferredHeight: CGFloat = 265.0
+    let preferredHeight: CGFloat = 240.0
     
     lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        VariableColumnsFlowLayout(aspectRatio: CGFloat(9/20), delegate: self)
+        VariableColumnsFlowLayout(aspectRatio: CGFloat(2.0/3.0), delegate: self)
     
     init(parent: CardViewController, manager: TUFilmNewsManager) {
         self.parent = parent
@@ -81,8 +81,6 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! TUFilmCollectionViewCell
         let movie = data[indexPath.row]
         
-        let title = movie.text.split(separator: ":").last ?? "No title"
-        cell.titleLabel.text = title.trimmingCharacters(in: .whitespaces)
         cell.moviePosterImageView.clipsToBounds = false
         
         if let imageUrl = movie.imageUrl {

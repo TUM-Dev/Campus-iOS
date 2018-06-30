@@ -21,9 +21,7 @@ class VariableColumnsFlowLayout: ColumnsFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.size.height
-        let width = height * aspectRatio
-        //let width = collectionView.frame.size.width * 0.8 / columns
-        //let height = width / aspectRatio
+        let width = floor(height * aspectRatio)
         return CGSize(width: width, height: height)
     }
 
