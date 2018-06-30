@@ -32,7 +32,7 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var preferredHeight: CGFloat {
         // On 4-inch screens, display smaller movie posters
         let screenWidth = UIScreen.main.bounds.width
-        return (screenWidth == 320) ? 200.0 : 260.0
+        return (screenWidth == 320) ? 200.0 : 240.0
     }
     
     lazy var flowLayoutDelegate: ColumnsFlowLayout =
