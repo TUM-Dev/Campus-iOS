@@ -22,11 +22,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var numbersTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
-    @IBOutlet weak var confirmButton: UIButton!
-    
     var logoView: TUMLogoView?
     var manager: TumDataManager?
     
@@ -68,9 +63,6 @@ class LoginViewController: UIViewController {
         
         // Get the last three characters
         let digitsIndex = input.index(prefixIndex, offsetBy: 2)
-        
-        // Get the two digits in the middle
-        //let suffixIndex = input.index(digitsIndex, offsetBy: 3)
         
         let prefix = String(input[..<prefixIndex])
         let suffix = String(input[digitsIndex...])
