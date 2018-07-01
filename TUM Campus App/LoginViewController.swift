@@ -37,7 +37,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func openInputDialog() {
         let alert = UIAlertController(title: "Login", message: "Enter your TUM ID", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
+        alert.addTextField { textField in
+            textField.placeholder = "ga12abc"
+        }
         alert.addAction(
             UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         )
