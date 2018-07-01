@@ -21,25 +21,29 @@
 import UIKit
 
 
-class CalendarDataSource: NSObject, TUMDataSource {
+class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     
+    let parent: CardViewController
     var manager: CalendarManager
     let cellType: AnyClass = CalendarCollectionViewCell.self
     var data: [CalendarRow] = []
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateSingleItemFlowLayout()
     let dateFormatter = DateFormatter()
     let dateComponentsFormatter = DateComponentsFormatter()
-    let preferredHeight: CGFloat = 200.0
+    let preferredHeight: CGFloat = 176.0
     
-    init(manager: CalendarManager) {
+    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
+        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    
+    init(parent: CardViewController, manager: CalendarManager) {
+        self.parent = parent
         self.manager = manager
-        self.dateFormatter.dateStyle = .full
+        self.dateFormatter.dateStyle = .medium
         self.dateFormatter.timeStyle = .short
-        self.dateComponentsFormatter.allowedUnits = [.year,.month,.weekOfYear,.day,.hour,.minute,.second]
+        self.dateComponentsFormatter.allowedUnits = [.month, .day, .hour, .minute]
         self.dateComponentsFormatter.maximumUnitCount = 2
-        self.dateComponentsFormatter.unitsStyle = .full
+        self.dateComponentsFormatter.unitsStyle = .short
         super.init()
     }
     
@@ -51,20 +55,47 @@ class CalendarDataSource: NSObject, TUMDataSource {
         }
     }
     
+    func onItemSelected(at indexPath: IndexPath) {
+        let calendarElement = data[indexPath.row]
+        let storyboard = UIStoryboard(name: "Calendar Detail", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? CalendarViewController {
+            destination.nextLectureItem = calendarElement
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+    
+    func onShowMore() {
+        let storyboard = UIStoryboard(name: "Calendar Detail", bundle: nil)
+        if let destination = storyboard.instantiateInitialViewController() as? CalendarViewController {
+            destination.delegate = parent
+            parent.navigationController?.pushViewController(destination, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return min(data.count, 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID, for: indexPath) as! CalendarCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: cellReuseID, for: indexPath) as! CalendarCollectionViewCell
         let calendarElement = data[indexPath.row]
 
         cell.titleLabel.text = calendarElement.title
         cell.dateLabel.text = dateFormatter.string(from: calendarElement.start)
         cell.locationLabel.text = calendarElement.location
-        cell.timeLeftLabel.text = "in \(dateComponentsFormatter.string(from: .now, to: calendarElement.start) ?? "")"
-        cell.timeLeftLabel.textColor = .red
-    
+
+        let timeLeft = Calendar.current.dateComponents([.day, .hour, .minute],
+                                                       from: .now, to: calendarElement.start)
+        
+        if let timeLeftText = dateComponentsFormatter.string(from: timeLeft) {
+            cell.timeLeftLabel.text = "in \(timeLeftText)"
+            cell.timeLeftLabel.isHidden = false
+        } else {
+            cell.timeLeftLabel.isHidden = true
+        }
+        
         return cell
     }
     

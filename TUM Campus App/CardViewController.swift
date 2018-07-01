@@ -21,7 +21,8 @@
 import Sweeft
 import UIKit
 
-class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
+class CardViewController: UIViewController, UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout, TUMDataSourceDelegate, EditCardsViewControllerDelegate, DetailViewDelegate {
 
     @IBOutlet weak var profileButtonItem: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -31,7 +32,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     var dataSources: [TUMDataSource] = []
     var cards: [DataElement] = []
     var nextLecture: CalendarRow?
-    var refresh = UIRefreshControl()
+    var refreshControl = UIRefreshControl()
     var search: UISearchController?
     var logoView: TUMLogoView?
     var binding: ImageViewBinding?
@@ -130,13 +131,13 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             return
         }
         
-        composedDataSource = ComposedDataSource(manager: manager)
+        composedDataSource = ComposedDataSource(parent: self, manager: manager)
         composedDataSource?.delegate = self
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
-        refresh.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
+        refreshControl.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
                           for: UIControlEvents.valueChanged)
-        collectionView.refreshControl = refresh
+        collectionView.refreshControl = refreshControl
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true
     }
@@ -180,7 +181,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    //MARK: - UICollectionViewDelegateFlowLayout
+    // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -195,8 +196,7 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             return CGSize(width: collectionView.frame.size.width, height: 400)
         }
         
-        let dataSource = composedDataSource.dataSources
-            .filter {!$0.isEmpty && composedDataSource.cardKeys.contains($0.cardKey)}[indexPath.row]
+        let dataSource = composedDataSource.sortedDataSources[indexPath.row]
         
         let height: CGFloat
         let width: CGFloat
@@ -212,15 +212,26 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return CGSize(width: width, height: height)
     }
     
-    //MARK: - TUMDataSourceDelegate
+    // MARK: - TUMDataSourceDelegate
     
     func didBeginRefreshingDataSources() {
-        refresh.beginRefreshing()
+        refreshControl.beginRefreshing()
+        collectionView.backgroundView = nil
     }
     
     func didRefreshDataSources() {
-        refresh.endRefreshing()
         collectionView.reloadData()
+        refreshControl.perform(#selector(UIRefreshControl.endRefreshing), with: nil, afterDelay: 1)
+    }
+    
+    func didEncounterNetworkTimout() {
+        collectionView.reloadData()
+        refreshControl.endRefreshing()
+        guard let errorView = Bundle.main.loadNibNamed("ErrorView", owner: self, options: nil)?.first as? ErrorView else {
+            return
+        }
+        errorView.retryButton.addTarget(self, action: #selector(CardViewController.refresh(sender:)), for: .touchUpInside)
+        collectionView.backgroundView = errorView
     }
     
     //MARK: - DetailViewDelegate
@@ -229,9 +240,14 @@ class CardViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return manager
     }
     
-    //MARK: - EditCardsViewControllerDelegate
+    // MARK: - EditCardsViewControllerDelegate
     
-    func didUpdateCards() {
+    func didChangeCardOrder() {
+        composedDataSource?.invalidateSortedDataSources()
+        collectionView.reloadData()
+    }
+    
+    func didFinishCardOrderEditing() {
         refresh(sender: nil)
     }
     

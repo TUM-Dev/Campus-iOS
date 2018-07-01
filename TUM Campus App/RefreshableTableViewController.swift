@@ -25,6 +25,12 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
     
     var refresh = UIRefreshControl()
     
+    var navigationTitle: String? {
+        didSet {
+            title = navigationTitle
+        }
+    }
+    
     var values = [Value]() {
         didSet {
             tableView.reloadData()
@@ -33,9 +39,13 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
-        refresh()
+        
+        if values.isEmpty {
+            // Only refresh if the ViewController has not been provided with values already.
+            // This is the case when this ViewController is opened from a News or Newspread card.
+            refresh()
+        }
         
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -58,7 +68,6 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
     }
     
     func setupTableView() {
-        
         refresh.addTarget(self,
                           action: #selector(RefreshableTableViewController<Value>.refresh(_:)),
                           for: UIControlEvents.valueChanged)

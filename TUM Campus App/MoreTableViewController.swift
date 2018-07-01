@@ -25,7 +25,6 @@ class MoreTableViewController: UITableViewController, DetailView, MFMailComposeV
     
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet var bibNumber: UILabel!
     @IBOutlet weak var avatarView: UIImageView! {
         didSet {
             avatarView.clipsToBounds = true
@@ -83,11 +82,6 @@ extension MoreTableViewController {
             }
         }
         
-        if let savedUsername = UserDefaults.standard.value(forKey: "username") as? String {
-            bibNumber.text = savedUsername
-        } else {
-            bibNumber.text = "Not logged in"
-        }
         updateView()
     }
     

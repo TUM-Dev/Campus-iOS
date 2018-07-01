@@ -48,7 +48,11 @@ class NewsTableViewController: RefreshableTableViewController<News>, DetailView 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "News"
+        
+        if navigationTitle == nil {
+            // The title has not been set during initialization of this ViewController
+            navigationTitle = "News"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
