@@ -128,7 +128,6 @@ extension MoreTableViewController {
 
         switch indexPath.section {
         case 4:
-            
             let systemVersion = UIDevice.current.systemVersion
             
             if indexPath.row == 0 {
@@ -138,23 +137,35 @@ extension MoreTableViewController {
                           subject: "[iOS]",
                           body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(Bundle.main.version) <br> Build Version: \(Bundle.main.build)")
             }
-            
         case 5:
-            delegate?.dataManager()?.logout()
-            
-            let loginViewController = ViewControllerProvider.loginNavigationViewController
-            // Since this is a shared object, we want to bring it into a usable state for the user before showing it
-            // Without popping to the root view controller, we would show the wait for token view controller if the
-            // user logged in and out and wanted to log in again in the same session.
-            (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
-            self.present(loginViewController, animated: true)
-        
+            displayLogoutDialog()
         case 6:
             delegate?.dataManager()?.config.betaApp.open(sender: self)
-            
         default:
             break
         }
+    }
+    
+    private func displayLogoutDialog() {
+        let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(
+            UIAlertAction(title: "Log Out", style: .destructive) { action in
+                self.logout()
+            }
+        )
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func logout() {
+        delegate?.dataManager()?.logout()
+        
+        let loginViewController = ViewControllerProvider.loginNavigationViewController
+        // Since this is a shared object, we want to bring it into a usable state for the user before showing it
+        // Without popping to the root view controller, we would show the wait for token view controller if the
+        // user logged in and out and wanted to log in again in the same session.
+        (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
+        self.present(loginViewController, animated: true)
     }
     
     func sendEmail(recipient: String, subject: String, body: String) {
