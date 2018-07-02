@@ -24,7 +24,7 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
     
     let cellType: AnyClass = MVGDepartureCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateListFlowLayout()
+    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = ListFlowLayoutDelegate()
     var data: [Departure] = []
     let cellReuseID = "DepartureCardCell"
     let cardReuseID = "DepartureCard"

@@ -33,8 +33,8 @@ class CalendarDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     let dateComponentsFormatter = DateComponentsFormatter()
     let preferredHeight: CGFloat = 176.0
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        FixedColumnsFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: CalendarManager) {
         self.parent = parent

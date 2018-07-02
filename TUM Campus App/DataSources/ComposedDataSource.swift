@@ -33,7 +33,7 @@ protocol TUMDataSource: UICollectionViewDataSource {
     var cardReuseID: String {get}
     var isEmpty: Bool {get}
     var cardKey: CardKey {get}
-    var flowLayoutDelegate: ColumnsFlowLayout {get}
+    var flowLayoutDelegate: ColumnsFlowLayoutDelegate {get}
     var preferredHeight: CGFloat {get}
     func refresh(group: DispatchGroup)
 }

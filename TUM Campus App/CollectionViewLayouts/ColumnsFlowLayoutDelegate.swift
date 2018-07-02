@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColumnsFlowLayout: NSObject, UICollectionViewDelegateFlowLayout {
+class ColumnsFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
     let delegate: TUMInteractiveDataSource?
     let margin: CGFloat = 20.0
@@ -21,7 +21,7 @@ class ColumnsFlowLayout: NSObject, UICollectionViewDelegateFlowLayout {
         return UIDevice.current.orientation.isLandscape
     }
     
-    var columns: CGFloat {
+    var columns: Int {
         if isPhone {
             return 1
         } else if !isLandscape {

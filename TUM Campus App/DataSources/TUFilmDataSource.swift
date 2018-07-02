@@ -35,8 +35,8 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
         return (screenWidth == 320) ? 200.0 : 240.0
     }
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        VariableColumnsFlowLayout(aspectRatio: CGFloat(2.0/3.0), delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        VariableColumnsFlowLayoutDelegate(aspectRatio: CGFloat(2.0/3.0), delegate: self)
     
     init(parent: CardViewController, manager: TUFilmNewsManager) {
         self.parent = parent

@@ -31,8 +31,8 @@ class MVGStationDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var departureDataSources: [MVGDepartureDataSource] = []
     var preferredHeight: CGFloat = 290.0
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        FixedColumnsFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: MVGManager) {
         self.parent = parent

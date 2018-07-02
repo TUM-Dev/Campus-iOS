@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VariableColumnsFlowLayout: ColumnsFlowLayout {
+class VariableColumnsFlowLayoutDelegate: ColumnsFlowLayoutDelegate {
     
     let aspectRatio: CGFloat
     

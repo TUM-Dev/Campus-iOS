@@ -32,8 +32,8 @@ class TuitionDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     let numberFormatter = NumberFormatter()
     let preferredHeight: CGFloat = 128.0
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        FixedColumnsFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: TuitionStatusManager) {
         self.parent = parent

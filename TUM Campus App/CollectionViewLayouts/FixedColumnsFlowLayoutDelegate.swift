@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FixedColumnsFlowLayout: ColumnsFlowLayout {
+class FixedColumnsFlowLayoutDelegate: ColumnsFlowLayoutDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width * 0.8 / columns
+        let width = collectionView.frame.size.width * 0.8 / CGFloat(columns)
         let height = collectionView.frame.size.height
         return CGSize(width: width, height: height)
     }

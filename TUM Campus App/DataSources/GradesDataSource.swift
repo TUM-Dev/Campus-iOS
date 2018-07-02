@@ -30,8 +30,8 @@ class GradesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var data: [Grade] = []
     var preferredHeight: CGFloat = 228.0
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        FixedColumnsVerticalItemsFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsVerticalItemsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: PersonalGradeManager) {
         self.parent = parent

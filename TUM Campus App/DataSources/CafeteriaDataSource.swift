@@ -34,8 +34,8 @@ class CafeteriaDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var menuDataSources: [MenuDataSource] = []
     let distanceFormatter = MKDistanceFormatter()
     
-    lazy var flowLayoutDelegate: ColumnsFlowLayout =
-        FixedColumnsFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: CafeteriaManager) {
         self.parent = parent
