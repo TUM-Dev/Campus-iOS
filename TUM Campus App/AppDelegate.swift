@@ -39,6 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController?.present(loginViewController, animated: true, completion: nil)
         }
     }
+    
+    func application(_ application: UIApplication,
+                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return UIInterfaceOrientationMask.portrait
+        } else {
+            return UIInterfaceOrientationMask.all
+        }
+    }
 
 }
 
