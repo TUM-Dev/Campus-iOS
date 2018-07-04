@@ -8,8 +8,16 @@
 
 import UIKit
 
+/**
+ This class subclasses ColumnsFlowLayoutDelegate and provides the size of a UICollectionView's
+ items. It uses a fixed height and computes the item width based on the aspect ratio of its
+ content.
+ */
 class VariableColumnsFlowLayoutDelegate: ColumnsFlowLayoutDelegate {
     
+    /**
+     The width-to-height aspect ratio of the content
+     */
     let aspectRatio: CGFloat
     
     init(aspectRatio: CGFloat, delegate: TUMInteractiveDataSource? = nil) {

@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ This abstract class provides the size of a UICollectionView's items and delegates selection
+ events to a TUMInteractiveDataSource.
+ */
 class ColumnsFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {
     
     let delegate: TUMInteractiveDataSource?
@@ -17,14 +21,18 @@ class ColumnsFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
     
-    var isLandscape: Bool {
-        return UIDevice.current.orientation.isLandscape
+    var isPortrait: Bool {
+        return UIDevice.current.orientation.isPortrait
     }
     
+    /**
+     Determines the number of columns to display, which depends on the device type and the device
+     orientation.
+     */
     var columns: Int {
         if isPhone {
             return 1
-        } else if !isLandscape {
+        } else if isPortrait {
             return 2
         } else {
             return 3
