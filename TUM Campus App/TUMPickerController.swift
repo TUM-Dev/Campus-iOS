@@ -46,15 +46,11 @@ class TUMPickerController<Element: DataElement>: UIAlertController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     fileprivate func handle(selection element: Element) {
         delegate?.didSelectOption(element)
     }
 
+    
 }
 
 extension TUMPickerController where Element: AnyObject {
