@@ -49,7 +49,6 @@ class TUMPickerController<Element: DataElement>: UIAlertController {
     fileprivate func handle(selection element: Element) {
         delegate?.didSelectOption(element)
     }
-
     
 }
 
@@ -62,7 +61,6 @@ extension TUMPickerController where Element: AnyObject {
                   delegate: delegate)
     }
     
-    
 }
 
 fileprivate extension DataElement {
@@ -74,6 +72,5 @@ fileprivate extension DataElement {
         action.setValue(isSelected, forKey: "checked")
         return action
     }
-    
     
 }
