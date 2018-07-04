@@ -27,17 +27,13 @@ Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-T
 - App Store metadata is managed in the directory _fastlane/metadata/_. Go edit those and they'll be updated on the store with the next release
 - Members of the Apple Developer Team of this app can run _fastlane deliver_ to update the metadata on iTunes Connect (run _fastlane deliver init_ first)
 
-## Disclaimer:
-This is not an official app of the Technische Universität München. There's no support or warranty (you can however send us an email [tca-support.os.in@tum.de](mailto:tca-support.os.in@tum.de) or open an issue here on Github). The app is developed by students and for students, so use it at your own risk. We try to keep your data safe with only using TUMonline tokens and not saving your password. For further information you should have a look at our privacy policy and the terms and conditions of the lecture chat.
-
 ## Policies:
-[Privacy policy](https://tumcabe.in.tum.de/landing/privacy/)  
-[T&Cs of the lecture chat](https://tumcabe.in.tum.de/landing/chatterms/)
+[Privacy policy](https://app.tum.de/landing/privacy/)  
+[T&Cs of the lecture chat](https://app.tum.de/landing/chatterms/)
 
 ## Support:
-You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](https://github.com/TCA-Team/TumCampusApp) or via E-Mail [tca-support.os.in@tum.de](mailto:tca-support.os.in@tum.de)
+You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](https://github.com/TCA-Team/iOS) or via E-Mail [app@tum.de](mailto:app@tum.de)
 
 ## License:
 Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
 
-## [Follow us on Facebook](https://www.facebook.com/TUMCampus)
