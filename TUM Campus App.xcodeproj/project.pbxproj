@@ -157,6 +157,7 @@
 		2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 229795891EAC228E004A7F9B /* KeychainWrapper.m */; };
 		2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */; };
 		22A92C2F1F9CE512005F4407 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */; };
+		22ACC1E620E54363003A0243 /* TUMPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACC1E520E54363003A0243 /* TUMPickerController.swift */; };
 		22C83C6620A9DDEF00AB556D /* MVGStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C83C6420A9DDEF00AB556D /* MVGStationCollectionViewCell.swift */; };
 		22C83C6720A9DDEF00AB556D /* MVGStationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C83C6520A9DDEF00AB556D /* MVGStationCollectionViewCell.xib */; };
 		22F4B6B21EA802350086D49A /* BookRentalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F4B6B11EA802350086D49A /* BookRentalManager.swift */; };
@@ -396,6 +397,7 @@
 		229795891EAC228E004A7F9B /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		2297958B1EACB858004A7F9B /* LibrarySettingsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LibrarySettingsView.storyboard; sourceTree = "<group>"; };
 		22A92C2E1F9CE512005F4407 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		22ACC1E520E54363003A0243 /* TUMPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMPickerController.swift; sourceTree = "<group>"; };
 		22C83C6420A9DDEF00AB556D /* MVGStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGStationCollectionViewCell.swift; sourceTree = "<group>"; };
 		22C83C6520A9DDEF00AB556D /* MVGStationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVGStationCollectionViewCell.xib; sourceTree = "<group>"; };
 		22F4B6B11EA802350086D49A /* BookRentalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalManager.swift; sourceTree = "<group>"; };
@@ -1052,6 +1054,7 @@
 			children = (
 				E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */,
 				0EF3D5041FBB13A900D05DE0 /* RefreshableTableViewController.swift */,
+				22ACC1E520E54363003A0243 /* TUMPickerController.swift */,
 			);
 			name = "UI Services";
 			sourceTree = "<group>";
@@ -1306,7 +1309,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Campus/Pods-Campus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ASWeekSelectorView/ASWeekSelectorView.framework",
-				"${BUILT_PRODUCTS_DIR}/AYSlidingPickerView/AYSlidingPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/CalendarLib/CalendarLib.framework",
 				"${BUILT_PRODUCTS_DIR}/Fuzzi/Fuzzi.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -1323,7 +1325,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASWeekSelectorView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AYSlidingPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalendarLib.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fuzzi.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -1414,6 +1415,7 @@
 				22763FE420B217C9008D5A89 /* CardTableViewCell.swift in Sources */,
 				0EBC0DC01C177FBE002D7A00 /* ImageDownloader.swift in Sources */,
 				5007C6A81E0693240014B065 /* StudyRoomsTableViewController.swift in Sources */,
+				22ACC1E620E54363003A0243 /* TUMPickerController.swift in Sources */,
 				0EC479CA1FBA6A6700FC36EB /* NewsSpreadManager.swift in Sources */,
 				220EFF9420A85B36009D0337 /* LecturesCollectionViewCell.swift in Sources */,
 				229795871EAC1F67004A7F9B /* LibrarySettingsViewController.swift in Sources */,

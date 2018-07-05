@@ -18,14 +18,11 @@
 //  along with this program. If not, see <http://www.gnu.org/licenses/>.
 //
 import UIKit
-import AYSlidingPickerView
 
 class TuitionTableViewController: UITableViewController, DetailView {
     
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var deadLineLabel: UILabel!
-    var pickerView = AYSlidingPickerView()
-    var barItem: UIBarButtonItem?
+    @IBOutlet weak var deadlineLabel: UILabel!
     
     weak var delegate: DetailViewDelegate?
     
@@ -36,7 +33,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
             if let semester = currentSemester {
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "MMM dd, yyyy"
-                deadLineLabel.text = dateformatter.string(from: semester.frist as Date)
+                deadlineLabel.text = dateformatter.string(from: semester.frist as Date)
                 balanceLabel.text = String(format: "%.2f", semester.soll) + " €"
                 title = semester.semester
             }
@@ -74,43 +71,22 @@ extension TuitionTableViewController {
     
 }
 
-extension TuitionTableViewController {
+extension TuitionTableViewController: TUMPickerControllerDelegate {
     
     func setUpPickerView() {
-        var items = [AnyObject]()
-        for semester in semesters {
-            let item = AYSlidingPickerViewItem(title: semester.semester) { (did) in
-                if did {
-                    self.currentSemester = semester
-                    self.barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
-                    self.barItem?.image = UIImage(named: "expand")
-                    self.tableView.reloadData()
-                }
-            }
-            items.append(item!)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.items = items
-        pickerView.mainView = navigationController?.view ?? view
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        pickerView.didDismissHandler = { self.hideSemesters(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action: #selector(TuitionTableViewController.showSemesters(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
-    @objc func showSemesters(_ send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = #selector(TuitionTableViewController.hideSemesters(_:))
-        barItem?.image = UIImage(named: "collapse")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    @objc func showSemesters(_ sender: UIBarButtonItem?) {
+        let pickerView = TUMPickerController(elements: semesters, selected: currentSemester, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = sender
+        present(pickerView, animated: true)
     }
     
-    @objc func hideSemesters(_ send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = #selector(TuitionTableViewController.showSemesters(_:))
-        barItem?.image = UIImage(named: "expand")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    func didSelect(element: Tuition) {
+        currentSemester = element
     }
     
 }
