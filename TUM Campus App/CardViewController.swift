@@ -186,7 +186,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -198,16 +198,8 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         
         let dataSource = composedDataSource.sortedDataSources[indexPath.row]
         
-        let height: CGFloat
-        let width: CGFloat
-        
-        if collectionView.traitCollection.userInterfaceIdiom == .phone {
-            height = dataSource.preferredHeight
-            width = collectionView.frame.size.width
-        } else {
-            height = 400
-            width = floor(collectionView.frame.size.width - 1.0 * margin) / 2
-        }
+        let height = dataSource.preferredHeight
+        let width = collectionView.frame.size.width
         
         return CGSize(width: width, height: height)
     }

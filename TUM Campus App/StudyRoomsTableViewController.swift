@@ -20,15 +20,10 @@
 
 import UIKit
 import Sweeft
-import AYSlidingPickerView
 
 class StudyRoomsTableViewController: UITableViewController, DetailView {
     
     weak var delegate: DetailViewDelegate?
-    
-    var pickerView = AYSlidingPickerView()
-    var barItem: UIBarButtonItem?
-    
     var refresh = UIRefreshControl()
     
     var roomGroups = [StudyRoomGroup]()
@@ -61,7 +56,7 @@ extension StudyRoomsTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
@@ -102,11 +97,11 @@ extension StudyRoomsTableViewController {
             self.navigationController?.navigationItem.largeTitleDisplayMode = .never
         }
     }
-
+    
 }
 
 extension StudyRoomsTableViewController {
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentRooms.count
     }
@@ -127,42 +122,23 @@ extension StudyRoomsTableViewController: DetailViewDelegate {
     
 }
 
-extension StudyRoomsTableViewController {
+extension StudyRoomsTableViewController: TUMPickerControllerDelegate {
     
-    @objc func showRooms(_ send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = #selector(StudyRoomsTableViewController.hideRooms(_:))
-        barItem?.image = UIImage(named: "collapse")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    @objc func showRooms(_ send: UIBarButtonItem?) {
+        let pickerView = TUMPickerController(elements: roomGroups, selected: currentGroup, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
+        present(pickerView, animated: true)
     }
     
-    @objc func hideRooms(_ send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = #selector(StudyRoomsTableViewController.showRooms(_:))
-        barItem?.image = UIImage(named: "expand")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    func didSelect(element: StudyRoomGroup) {
+        currentGroup = element
     }
     
     func setUpPickerView(with index: Int = 0) {
-        var items = [AnyObject]()
-        for group in roomGroups {
-            let item = AYSlidingPickerViewItem(title: group.name) { (did) in
-                if did {
-                    self.currentGroup = group
-                    self.barItem?.action = #selector(StudyRoomsTableViewController.showRooms(_:))
-                    self.barItem?.image = UIImage(named: "expand")
-                }
-            }
-            items.append(item!)
-        }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = navigationController?.view ?? view
-        pickerView.items = items
-        pickerView.selectedIndex = UInt(index)
-        pickerView.closeOnSelection = true
-        pickerView.didDismissHandler = { self.hideRooms(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
 }
+

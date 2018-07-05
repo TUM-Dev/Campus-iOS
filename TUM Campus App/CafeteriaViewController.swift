@@ -20,15 +20,12 @@
 
 import UIKit
 import ASWeekSelectorView
-import AYSlidingPickerView
 
 class CafeteriaViewController: UIViewController, DetailView {
     
     @IBOutlet weak var tableView: UITableView!
     
     var weekSelector: ASWeekSelectorView?
-    var pickerView = AYSlidingPickerView()
-    var barItem: UIBarButtonItem?
     
     weak var delegate: DetailViewDelegate?
     
@@ -83,6 +80,7 @@ extension CafeteriaViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         self.fetch()
+        
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
         weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
@@ -90,11 +88,17 @@ extension CafeteriaViewController {
         weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
         weekSelector?.delegate = self
         weekSelector?.selectedDate = Date()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(weekSelector!)
+        
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action:  #selector(CafeteriaViewController.showCafeterias(_:)))
+        navigationItem.rightBarButtonItem = barItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,43 +111,27 @@ extension CafeteriaViewController {
     
 }
 
-extension CafeteriaViewController {
+extension CafeteriaViewController: TUMPickerControllerDelegate {
+    typealias Element = Cafeteria
     
-    @objc func showCafeterias(_ send: AnyObject?) {
-        pickerView.show()
-        barItem?.action = #selector(CafeteriaViewController.hideCafeterias(_:))
-        barItem?.image = UIImage(named: "collapse")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    @objc func showCafeterias(_ send: UIBarButtonItem?) {
+        let pickerView = TUMPickerController(elements: cafeterias, selected: currentCafeteria, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
         
-    }
-    
-    @objc func hideCafeterias(_ send: AnyObject?) {
-        pickerView.dismiss()
-        barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
-        barItem?.image = UIImage(named: "expand")
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-    
-    func setUpPickerView() {
-        var items = [AnyObject]()
-        for item in cafeterias {
-            let item = AYSlidingPickerViewItem(title: item.name) { (did) in
-                if did {
-                    self.currentCafeteria = item
-                    self.barItem?.action = #selector(CafeteriaViewController.showCafeterias(_:))
-                    self.barItem?.image = UIImage(named: "expand")
-                }
-            }
-            items.append(item!)
+        if (UIDevice.current.userInterfaceIdiom == .phone) {
+            let maxHeight = view.frame.height - UIApplication.shared.statusBarFrame.height * 2
+            let heightConstraint = NSLayoutConstraint(
+                item: pickerView.view, attribute: .height,
+                relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: maxHeight)
+            pickerView.view.addConstraint(heightConstraint)
         }
-        pickerView = AYSlidingPickerView.sharedInstance()
-        pickerView.mainView = navigationController?.view ?? view
-        pickerView.items = items
-        pickerView.selectedIndex = 0
-        pickerView.closeOnSelection = true
-        pickerView.didDismissHandler = { self.hideCafeterias(nil) }
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
-        navigationItem.rightBarButtonItem = barItem
+        
+        present(pickerView, animated: true)
+    }
+    
+    func didSelect(element: Cafeteria) {
+        currentCafeteria = element
     }
     
 }
@@ -154,7 +142,6 @@ extension CafeteriaViewController {
         delegate?.dataManager()?.cafeteriaManager.fetch().onSuccess(in: .main) { cafeterias in
             self.cafeterias = cafeterias
             self.currentCafeteria = cafeterias.first
-            self.setUpPickerView()
             self.reloadItems()
         }
     }

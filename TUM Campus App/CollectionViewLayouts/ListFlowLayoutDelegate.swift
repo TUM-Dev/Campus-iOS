@@ -1,5 +1,5 @@
 //
-//  UICollectionViewDelegateLandscapeItemFlowLayout.swift
+//  UICollectionViewDelegateListFlowLayout.swift
 //  Campus
 //
 //  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
@@ -20,37 +20,33 @@
 
 import UIKit
 
-class UICollectionViewDelegateLandscapeItemFlowLayout: NSObject, UICollectionViewDelegateFlowLayout {
+class ListFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {
 
-    let delegate: TUMInteractiveDataSource?
     let margin: CGFloat = 20.0
-    
-    init(delegate: TUMInteractiveDataSource? = nil) {
-        self.delegate = delegate
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.onItemSelected?(at: indexPath)
-    }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return margin
+        return margin / 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return margin / 4
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+        return UIEdgeInsets.zero
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = floor(collectionView.frame.size.height)
-        let width: CGFloat = floor(collectionView.frame.size.width * 0.65 - margin)
-        
+        let height: CGFloat = floor(collectionView.frame.size.height / 6 - margin / 4)
+        let width: CGFloat = floor(collectionView.frame.size.width)
         return CGSize(width: width, height: height)
     }
     

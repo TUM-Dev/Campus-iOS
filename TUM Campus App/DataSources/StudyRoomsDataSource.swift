@@ -29,8 +29,8 @@ class StudyRoomsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var cardKey: CardKey = .studyRooms
     var data: [StudyRoomGroup] = []
     
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateThreeItemVerticalFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsVerticalItemsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: StudyRoomsManager) {
         self.parent = parent
