@@ -24,7 +24,7 @@ class MenuDataSource: NSObject, UICollectionViewDataSource {
     
     let cellType: AnyClass = MenuCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateListFlowLayout()
+    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = ListFlowLayoutDelegate()
     var data: [CafeteriaMenu] = []
     let cellReuseID = "MenuCardCell"
     let cardReuseID = "MenuCard"

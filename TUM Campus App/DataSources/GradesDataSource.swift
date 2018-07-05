@@ -27,9 +27,11 @@ class GradesDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     let cellType: AnyClass = GradesCollectionViewCell.self
     var isEmpty: Bool { return data.isEmpty }
     let cardKey: CardKey = .grades
-    let flowLayoutDelegate: UICollectionViewDelegateFlowLayout = UICollectionViewDelegateThreeItemVerticalFlowLayout()
     var data: [Grade] = []
     var preferredHeight: CGFloat = 228.0
+    
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsVerticalItemsFlowLayoutDelegate(delegate: self)
     
     init(parent: CardViewController, manager: PersonalGradeManager) {
         self.parent = parent
