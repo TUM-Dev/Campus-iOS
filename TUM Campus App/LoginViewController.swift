@@ -45,16 +45,23 @@ class LoginViewController: UIViewController {
         )
         alert.addAction(
             UIAlertAction(title: "Continue", style: .default) { action in
-                guard let text = alert.textFields![0].text else {
+                guard let input = alert.textFields?.first?.text else {
                     return
                 }
-                self.handleDialogConfirmation(text)
+                self.handleDialogConfirmation(input)
             }
         )
         present(alert, animated: true, completion: nil)
     }
     
     private func handleDialogConfirmation(_ input: String) {
+        
+        // *************
+        //
+        // TODO: Make sure login for App Store review still works!
+        //
+        // *************
+        
         if (input.count != 7) {
             displayErrorDialog(message: "A valid TUM ID consists of 7 characters.")
             return
