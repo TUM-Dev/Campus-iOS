@@ -98,8 +98,9 @@ extension RoomFinderViewController {
 
 extension RoomFinderViewController: TUMPickerControllerDelegate {
     
-    @objc func showMaps(_ send: AnyObject?) {
+    @objc func showMaps(_ send: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: maps, selected: currentMap, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
         present(pickerView, animated: true)
     }
     

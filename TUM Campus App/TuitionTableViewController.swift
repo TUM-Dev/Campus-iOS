@@ -75,12 +75,14 @@ extension TuitionTableViewController {
 extension TuitionTableViewController: TUMPickerControllerDelegate {
     
     func setUpPickerView() {
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
+        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain,
+                                  target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
-    @objc func showSemesters(_ send: AnyObject?) {
+    @objc func showSemesters(_ send: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: semesters, selected: currentSemester, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
         present(pickerView, animated: true)
     }
     

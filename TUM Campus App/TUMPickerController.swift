@@ -36,9 +36,12 @@ class TUMPickerController<Element: DataElement>: UIAlertController {
         self.delegate = delegate
         self.elements = elements
         super.init(nibName: nil, bundle: nil)
-        let actions = elements.enumerated().map { $0.element.action(for: self,
-                                                                    isSelected: $0.offset == selectedIndex) }
-        actions.forEach(addAction)
+        
+        elements
+            .enumerated()
+            .map { $0.element.action(for: self, isSelected: $0.offset == selectedIndex) }
+            .forEach(addAction)
+        
         addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     }
     
@@ -54,8 +57,8 @@ class TUMPickerController<Element: DataElement>: UIAlertController {
 
 extension TUMPickerController where Element: AnyObject {
     
-    convenience init(elements: [Element], selected: Element?, delegate: TUMPickerControllerDelegateProtocol? = nil) {
-        
+    convenience init(elements: [Element], selected: Element?,
+                     delegate: TUMPickerControllerDelegateProtocol? = nil) {
         self.init(elements: elements,
                   selectedIndex: elements.index { $0 === selected },
                   delegate: delegate)

@@ -50,7 +50,7 @@ DEPENDENCIES:
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ASWeekSelectorView
     - CalendarLib
     - Firebase
@@ -108,4 +108,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1d0029baca529433948077fcbc05a2af4c8a966d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

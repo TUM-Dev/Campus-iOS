@@ -127,8 +127,9 @@ extension StudyRoomsTableViewController: DetailViewDelegate {
 
 extension StudyRoomsTableViewController: TUMPickerControllerDelegate {
     
-    @objc func showRooms(_ send: AnyObject?) {
+    @objc func showRooms(_ send: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: roomGroups, selected: currentGroup, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
         present(pickerView, animated: true)
     }
     

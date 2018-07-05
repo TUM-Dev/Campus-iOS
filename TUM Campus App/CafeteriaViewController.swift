@@ -110,8 +110,9 @@ extension CafeteriaViewController {
 extension CafeteriaViewController: TUMPickerControllerDelegate {
     typealias Element = Cafeteria
     
-    @objc func showCafeterias(_ send: AnyObject?) {
+    @objc func showCafeterias(_ send: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: cafeterias, selected: currentCafeteria, delegate: self)
+        pickerView.popoverPresentationController?.barButtonItem = send
         present(pickerView, animated: true)
     }
     
