@@ -113,6 +113,16 @@ extension CafeteriaViewController: TUMPickerControllerDelegate {
     @objc func showCafeterias(_ send: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: cafeterias, selected: currentCafeteria, delegate: self)
         pickerView.popoverPresentationController?.barButtonItem = send
+        
+        if (UIDevice.current.userInterfaceIdiom == .phone) {
+            let maxHeight = view.frame.height - UIApplication.shared.statusBarFrame.height * 2
+            let heightConstraint = NSLayoutConstraint(
+                item: pickerView.view, attribute: .height,
+                relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: nil,
+                attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: maxHeight)
+            pickerView.view.addConstraint(heightConstraint)
+        }
+        
         present(pickerView, animated: true)
     }
     
