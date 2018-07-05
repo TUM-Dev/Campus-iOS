@@ -29,11 +29,11 @@ class NewsDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     var isEmpty: Bool { return data.isEmpty }
     var cardKey: CardKey { return manager.cardKey }
     
-    lazy var flowLayoutDelegate: UICollectionViewDelegateFlowLayout =
-        UICollectionViewDelegateSingleItemFlowLayout(delegate: self)
+    lazy var flowLayoutDelegate: ColumnsFlowLayoutDelegate =
+        FixedColumnsFlowLayoutDelegate(delegate: self)
     
     let dateFormatter = DateFormatter()
-    let preferredHeight: CGFloat = 178.0
+    let preferredHeight: CGFloat = 186.0
     
     init(parent: CardViewController, manager newsManager: NewsManager) {
         self.parent = parent
