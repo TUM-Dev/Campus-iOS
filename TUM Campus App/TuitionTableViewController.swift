@@ -22,8 +22,7 @@ import UIKit
 class TuitionTableViewController: UITableViewController, DetailView {
     
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var deadLineLabel: UILabel!
-    var barItem: UIBarButtonItem?
+    @IBOutlet weak var deadlineLabel: UILabel!
     
     weak var delegate: DetailViewDelegate?
     
@@ -34,7 +33,7 @@ class TuitionTableViewController: UITableViewController, DetailView {
             if let semester = currentSemester {
                 let dateformatter = DateFormatter()
                 dateformatter.dateFormat = "MMM dd, yyyy"
-                deadLineLabel.text = dateformatter.string(from: semester.frist as Date)
+                deadlineLabel.text = dateformatter.string(from: semester.frist as Date)
                 balanceLabel.text = String(format: "%.2f", semester.soll) + " €"
                 title = semester.semester
             }
@@ -75,14 +74,14 @@ extension TuitionTableViewController {
 extension TuitionTableViewController: TUMPickerControllerDelegate {
     
     func setUpPickerView() {
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain,
-                                  target: self, action:  #selector(TuitionTableViewController.showSemesters(_:)))
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action: #selector(TuitionTableViewController.showSemesters(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
-    @objc func showSemesters(_ send: UIBarButtonItem?) {
+    @objc func showSemesters(_ sender: UIBarButtonItem?) {
         let pickerView = TUMPickerController(elements: semesters, selected: currentSemester, delegate: self)
-        pickerView.popoverPresentationController?.barButtonItem = send
+        pickerView.popoverPresentationController?.barButtonItem = sender
         present(pickerView, animated: true)
     }
     

@@ -26,7 +26,6 @@ class CafeteriaViewController: UIViewController, DetailView {
     @IBOutlet weak var tableView: UITableView!
     
     var weekSelector: ASWeekSelectorView?
-    var barItem: UIBarButtonItem?
     
     weak var delegate: DetailViewDelegate?
     
@@ -81,6 +80,7 @@ extension CafeteriaViewController {
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
         self.fetch()
+        
         let size = CGSize(width: view.frame.width, height: 80.0)
         let origin = CGPoint(x: view.frame.origin.x, y: view.frame.origin.y+64)
         weekSelector = ASWeekSelectorView(frame: CGRect(origin: origin, size: size))
@@ -88,12 +88,16 @@ extension CafeteriaViewController {
         weekSelector?.letterTextColor = UIColor(white: 0.5, alpha: 1.0)
         weekSelector?.delegate = self
         weekSelector?.selectedDate = Date()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(weekSelector!)
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(CafeteriaViewController.showCafeterias(_:)))
+        
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action:  #selector(CafeteriaViewController.showCafeterias(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

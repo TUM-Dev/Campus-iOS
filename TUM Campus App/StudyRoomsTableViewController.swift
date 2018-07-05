@@ -24,9 +24,6 @@ import Sweeft
 class StudyRoomsTableViewController: UITableViewController, DetailView {
     
     weak var delegate: DetailViewDelegate?
-    
-    var barItem: UIBarButtonItem?
-    
     var refresh = UIRefreshControl()
     
     var roomGroups = [StudyRoomGroup]()
@@ -138,7 +135,8 @@ extension StudyRoomsTableViewController: TUMPickerControllerDelegate {
     }
     
     func setUpPickerView(with index: Int = 0) {
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: UIBarButtonItemStyle.plain, target: self, action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action:  #selector(StudyRoomsTableViewController.showRooms(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     

@@ -121,10 +121,8 @@ extension RoomFinderViewController: UIScrollViewDelegate {
 extension RoomFinderViewController {
     
     func setUpPickerView() {
-        barItem = UIBarButtonItem(image: UIImage(named: "expand"),
-                                  style: UIBarButtonItemStyle.plain,
-                                  target: self,
-                                  action:  #selector(RoomFinderViewController.showMaps(_:)))
+        let barItem = UIBarButtonItem(image: UIImage(named: "expand"), style: .plain, target: self,
+                                      action:  #selector(RoomFinderViewController.showMaps(_:)))
         navigationItem.rightBarButtonItem = barItem
     }
     
