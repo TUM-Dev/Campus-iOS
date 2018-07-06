@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Crashlytics
+import Fabric
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initFirebase()
         setupAppearance()
         conditionallyShowLoginViewController()
-
         return true
     }
     

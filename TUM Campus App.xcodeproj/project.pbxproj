@@ -1086,6 +1086,7 @@
 				0E424F421BE16DBD00B5DFCB /* Frameworks */,
 				0E424F431BE16DBD00B5DFCB /* Resources */,
 				8D8C5F282F14F0418556891A /* [CP] Embed Pods Frameworks */,
+				9DE731D520EF8B8100C896FC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1342,6 +1343,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Campus/Pods-Campus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9DE731D520EF8B8100C896FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n    echo \"Running Crashlytics\"\n    \"${PODS_ROOT}/Fabric/run\"\nfi";
 		};
 		C515922059C2A6B2F17CB370 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1733,6 +1747,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Campus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
