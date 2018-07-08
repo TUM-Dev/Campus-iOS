@@ -3,6 +3,9 @@ PODS:
   - CalendarLib (2.0):
     - OrderedDictionary (~> 1.2)
     - OSCache (~> 1.2)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
+  - Fabric (1.7.7)
   - Firebase (5.2.0):
     - Firebase/Core (= 5.2.0)
   - Firebase/Core (5.2.0):
@@ -40,6 +43,8 @@ PODS:
 DEPENDENCIES:
   - ASWeekSelectorView (~> 1.0)
   - CalendarLib (~> 2.0)
+  - Crashlytics (~> 3.10.2)
+  - Fabric (~> 1.7.7)
   - Firebase (~> 5.2)
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
@@ -53,6 +58,8 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - ASWeekSelectorView
     - CalendarLib
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -90,6 +97,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ASWeekSelectorView: 396acc65f14aa09441528fbd0b2ec46989d8cb4a
   CalendarLib: 040a8a655376581d8dc7c3c63196ddcf5223f471
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseCore: a3c87242451633fff8490183898075ce77d168d2
@@ -106,6 +115,6 @@ SPEC CHECKSUMS:
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: 1d0029baca529433948077fcbc05a2af4c8a966d
+PODFILE CHECKSUM: 91d31162e06e46f2d2bf4acc5b0ea5f013a55db7
 
 COCOAPODS: 1.5.0
