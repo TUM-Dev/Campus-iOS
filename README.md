@@ -6,11 +6,16 @@ The [TUM Campus App (TCA)](https://itunes.apple.com/app/id1217412716) is an open
 
 The TCA mostly targets phones, but can also be used on tablets or any other device that runs iOS. This is the repo for the iOS Version of the TUM Campus App.
 
-# Join the Beta
+# Ge the App
 
 <a href="https://beta.tumcampusapp.de">
-<img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" width="42">
+<img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" width="42"> Test the Beta
 </a>
+<br>
+<a href="https://itunes.apple.com/us/app/tum-campus-app/id1217412716?mt=8">
+<img src="https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" height="42"> Download the App
+</a>
+
 
 ## Work In Progress
 This app is currently being developed and is not yet released to the public via the App Store. We are working on setting up the correct pipelines and hope to publish it in the SS 2017.
