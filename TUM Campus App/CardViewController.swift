@@ -93,6 +93,8 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         }
         if let navCon = segue.destination as? UINavigationController,
             let mvc = navCon.topViewController as? EditCardsViewController {
+            navCon.modalPresentationStyle = .formSheet
+            navCon.modalTransitionStyle = .coverVertical
             mvc.delegate = self
         }
         if let mvc = segue.destination as? CalendarViewController {
