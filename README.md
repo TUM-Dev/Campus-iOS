@@ -9,7 +9,7 @@ The TCA mostly targets phones, but can also be used on tablets or any other devi
 # Join the Beta
 
 <a href="https://beta.tumcampusapp.de">
-<img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png height="42" width="42">
+<img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" width="42">
 </a>
 
 ## Work In Progress
