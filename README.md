@@ -43,3 +43,8 @@ You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](htt
 ## License:
 Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
 
+## Screenshots:
+
+
+<img src="https://user-images.githubusercontent.com/7985149/42518719-cda45d64-8462-11e8-81d6-1bf97b09a404.PNG" height="512" align="right">
+
