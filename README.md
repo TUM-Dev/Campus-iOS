@@ -45,4 +45,4 @@ Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
 
 ## Screenshots:
 
-<img src="https://user-images.githubusercontent.com/7985149/42519126-a09c18a6-8463-11e8-815d-c16593f1a1e1.PNG" height="128" align="left"> <img src="https://user-images.githubusercontent.com/7985149/42519133-a1f37d48-8463-11e8-8330-765bfb117421.PNG" height="128" align="middle"> <img src="https://user-images.githubusercontent.com/7985149/42518719-cda45d64-8462-11e8-81d6-1bf97b09a404.PNG" height="128" align="right">
+<img src="https://user-images.githubusercontent.com/7985149/42519126-a09c18a6-8463-11e8-815d-c16593f1a1e1.PNG" height="400"> <img src="https://user-images.githubusercontent.com/7985149/42519133-a1f37d48-8463-11e8-8330-765bfb117421.PNG" height="400"> <img src="https://user-images.githubusercontent.com/7985149/42518719-cda45d64-8462-11e8-81d6-1bf97b09a404.PNG" height="400">
