@@ -1,4 +1,4 @@
-<img src="https://api.travis-ci.org/TCA-Team/iOS.svg?branch=master"><a href="https://beta.tumcampusapp.de">
+![Travis](https://api.travis-ci.org/TCA-Team/iOS.svg?branch=master)
 <img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" align="right">
 </a>
 <a href="https://itunes.apple.com/us/app/tum-campus-app/id1217412716?mt=8">
