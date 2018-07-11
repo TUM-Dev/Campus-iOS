@@ -155,13 +155,13 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         let storyboard = UIStoryboard(name: "CardView", bundle: nil)
         guard let searchResultsController = storyboard.instantiateViewController(
             withIdentifier: "SearchResultsController") as? SearchResultsController else {
-            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
+            fatalError("Unable to instantiate a SearchResultsViewController from the storyboard.")
         }
         searchResultsController.delegate = self
         searchResultsController.navCon = self.navigationController
         search = UISearchController(searchResultsController: searchResultsController)
         search?.searchResultsUpdater = searchResultsController
-        search?.searchBar.placeholder = "Search"
+        search?.searchBar.placeholder = "Rooms, Lectures, People..."
         search?.obscuresBackgroundDuringPresentation = true
         search?.hidesNavigationBarDuringPresentation = true
         
