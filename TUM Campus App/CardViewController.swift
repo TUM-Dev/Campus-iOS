@@ -167,6 +167,15 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = search
+        } else {
+            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(displaySearch))
+            navigationItem.rightBarButtonItems?.append(searchButton)
+        }
+    }
+    
+    @objc func displaySearch() {
+        if let search = search {
+            present(search, animated: true, completion: nil)
         }
     }
     
