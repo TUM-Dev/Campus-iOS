@@ -22,15 +22,17 @@ import UIKit
 
 
 class TUMLogoView: UIView {
+    private static let defaultLogo = #imageLiteral(resourceName: "logo-blue")
+    private static let rainbowLogo = #imageLiteral(resourceName: "logo-rainbow")
     
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBAction func tumLogoTap(sender: AnyObject) {
-        imageView.image = #imageLiteral(resourceName: "logo-rainbow")
+    @objc private func toggleLogo() {
+        imageView.image = imageView.image == TUMLogoView.defaultLogo ? TUMLogoView.rainbowLogo : TUMLogoView.defaultLogo
     }
     
     override func awakeFromNib() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tumLogoTap(sender:)))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleLogo))
         gestureRecognizer.numberOfTapsRequired = 3
         addGestureRecognizer(gestureRecognizer)
     }
