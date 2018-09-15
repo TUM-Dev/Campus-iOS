@@ -35,7 +35,6 @@ PODS:
   - nanopb/encode (0.3.8)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
-  - PZPullToRefresh (0.0.9)
   - Sweeft (0.15.3)
   - SWXMLHash (4.6.0)
   - TKSubmitTransition (2.0)
@@ -49,13 +48,12 @@ DEPENDENCIES:
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
   - Kingfisher (~> 4.0)
-  - PZPullToRefresh (from `https://github.com/mathiasquintero/PZPullToRefresh.git`)
   - Sweeft (from `https://github.com/TG908/Sweeft.git`, branch `master`)
   - SWXMLHash (~> 4.6.0)
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - ASWeekSelectorView
     - CalendarLib
     - Crashlytics
@@ -74,8 +72,6 @@ SPEC REPOS:
     - SWXMLHash
 
 EXTERNAL SOURCES:
-  PZPullToRefresh:
-    :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   Sweeft:
     :branch: master
     :git: https://github.com/TG908/Sweeft.git
@@ -84,9 +80,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/entotsu/TKSubmitTransition.git
 
 CHECKOUT OPTIONS:
-  PZPullToRefresh:
-    :commit: 34f9e5cb846d31f0e56a6fe4efb1dcf8f0f70093
-    :git: https://github.com/mathiasquintero/PZPullToRefresh.git
   Sweeft:
     :commit: b57b02d909c7540a077314216c13b6f85ef5ecb6
     :git: https://github.com/TG908/Sweeft.git
@@ -110,11 +103,10 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
-  PZPullToRefresh: 5141d8ea10cf8966c8d9697482fe670b5613045b
   Sweeft: 7421bac377e41a4678cdb711822536445e404091
   SWXMLHash: 3c39a53723202800e9e1a87f14b2fe7ac1da98ec
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: 91d31162e06e46f2d2bf4acc5b0ea5f013a55db7
+PODFILE CHECKSUM: a6f5636dd15a83683d41c36033e5697c2fcf19fa
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
