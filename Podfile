@@ -7,7 +7,6 @@ use_frameworks!
 target 'Campus' do
     pod 'Sweeft', :git => 'https://github.com/TG908/Sweeft.git', :branch => 'master'
     pod 'Fuzzi', '~> 0.1.1'
-    pod 'PZPullToRefresh', :git => 'https://github.com/mathiasquintero/PZPullToRefresh.git'
     pod 'ASWeekSelectorView', '~> 1.0'
     pod 'CalendarLib', '~> 2.0'
     pod 'SWXMLHash', '~> 4.6.0'
@@ -30,7 +29,7 @@ end
 
 post_install do |installer|
     
-    targets_swift_4 = ['Kanna','TKSubmitTransition','SWXMLHash','CalendarLib','ASWeekSelectorView','PZPullToRefresh','AYSlidingPickerView','Fuzzi']
+    targets_swift_4 = ['Kanna','TKSubmitTransition','SWXMLHash','CalendarLib','ASWeekSelectorView','AYSlidingPickerView','Fuzzi']
     
     installer.pods_project.targets.each do |target|
         if targets_swift_4.include? target.name
