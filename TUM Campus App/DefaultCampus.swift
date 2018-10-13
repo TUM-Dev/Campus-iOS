@@ -21,9 +21,11 @@
 import CoreLocation
 import Sweeft
 
-enum Campus: Int, Codable {
-    case garching
-    case center
+enum Campus: String, Codable, CaseIterable {
+    case garching = "Campus Garching"
+    case center = "München Stammgelände"
+    case weihenstephan = "Wissenschaftszentrum Weihenstephan"
+    case straubing = "Straubing"
 }
 
 extension Campus {
@@ -34,6 +36,10 @@ extension Campus {
             return .init(latitude: 48.264483, longitude: 11.670999)
         case .center:
             return .init(latitude: 48.149073, longitude: 11.567485)
+        case .weihenstephan:
+            return .init(latitude: 48.4028346, longitude: 11.7230664)
+        case .straubing:
+            return .init(latitude: 48.8851851, longitude: 12.5832536)
         }
     }
     
