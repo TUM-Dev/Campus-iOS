@@ -9,7 +9,7 @@ target 'Campus' do
     pod 'Fuzzi', '~> 0.1.1'
     pod 'ASWeekSelectorView', '~> 1.0'
     pod 'CalendarLib', '~> 2.0'
-    pod 'SWXMLHash', '~> 4.6.0'
+    pod 'SWXMLHash', '~> 4.7.4'
     pod 'TKSubmitTransition', :git => 'https://github.com/entotsu/TKSubmitTransition.git', :branch => 'swift4'
     pod 'Kanna', '~> 4.0.0'
 	pod 'Kingfisher', '~> 4.0'
@@ -29,14 +29,10 @@ end
 
 post_install do |installer|
     
-    targets_swift_4 = ['Kanna','TKSubmitTransition','SWXMLHash','CalendarLib','ASWeekSelectorView','AYSlidingPickerView','Fuzzi']
+    targets_swift_3 = ['Sweeft', 'TKSubmitTransition']
     
     installer.pods_project.targets.each do |target|
-        if targets_swift_4.include? target.name
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.0'
-            end
-            else
+        if targets_swift_3.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.3'
             end
