@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048B08F52175E2850028348E /* MVGDepartureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */; };
+		048B08F62175E2850028348E /* MVGDepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */; };
 		0E0C68241E8A4355007001F1 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68231E8A4355007001F1 /* Usage.swift */; };
 		0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */; };
 		0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */; };
@@ -198,7 +200,6 @@
 		807C48151F4091DD00CAD35D /* Interruption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48141F4091DD00CAD35D /* Interruption.swift */; };
 		807C48171F4091E300CAD35D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48161F4091E300CAD35D /* Station.swift */; };
 		807C48191F4092A800CAD35D /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C48181F4092A800CAD35D /* DeparturesViewController.swift */; };
-		807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */; };
 		807C481D1F4093FC00CAD35D /* Hauptbahnhof.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */; };
 		9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */; };
 		9D2C64BE20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C64BD20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift */; };
@@ -237,6 +238,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MVGDepartureTableViewCell.xib; sourceTree = "<group>"; };
+		048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGDepartureTableViewCell.swift; sourceTree = "<group>"; };
 		0E0C68231E8A4355007001F1 /* Usage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyManager.swift; sourceTree = "<group>"; };
 		0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexyEntry.swift; sourceTree = "<group>"; };
@@ -444,7 +447,6 @@
 		807C48141F4091DD00CAD35D /* Interruption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interruption.swift; sourceTree = "<group>"; };
 		807C48161F4091E300CAD35D /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		807C48181F4092A800CAD35D /* DeparturesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
-		807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepartureTableViewCell.swift; sourceTree = "<group>"; };
 		807C481C1F4093FC00CAD35D /* Hauptbahnhof.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Hauptbahnhof.gpx; sourceTree = "<group>"; };
 		88D5EC6E4CF40FB09D2EEFE1 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9D10C2AA20D289AA00DB41EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1028,8 +1030,9 @@
 			children = (
 				807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */,
 				807C48181F4092A800CAD35D /* DeparturesViewController.swift */,
-				807C481A1F4092B300CAD35D /* DepartureTableViewCell.swift */,
 				0ECD970E1F9D87D60070441D /* MVV.storyboard */,
+				048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */,
+				048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */,
 			);
 			name = MVV;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
 				22763FCF20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.xib in Resources */,
 				50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */,
+				048B08F52175E2850028348E /* MVGDepartureTableViewCell.xib in Resources */,
 				227D2161209B345C00C651BB /* CafeteriaCollectionViewCell.xib in Resources */,
 				50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */,
 				220EFF9520A85B36009D0337 /* LecturesCollectionViewCell.xib in Resources */,
@@ -1484,7 +1488,6 @@
 				0EC10C1F1C171CFB0024F902 /* CafeteriaManager.swift in Sources */,
 				0EF4CEE61D414D39001649F1 /* NewsManager.swift in Sources */,
 				0EF790F11EA82EC2005CB9AB /* BookRentalSession.swift in Sources */,
-				807C481B1F4092B300CAD35D /* DepartureTableViewCell.swift in Sources */,
 				220EFFAA20A8652C009D0337 /* StudyRoomsCollectionViewCell.swift in Sources */,
 				0EB161821C1A0540001A08FC /* PersonalLectureManager.swift in Sources */,
 				0E5A61DD1C13536C006017DB /* TumOnlineLoginRequestManager.swift in Sources */,
@@ -1524,6 +1527,7 @@
 				2209106020DED21D0015D838 /* RoundBackgroundWithShadow.swift in Sources */,
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				227D215620988B6700C651BB /* CalendarDataSource.swift in Sources */,
+				048B08F62175E2850028348E /* MVGDepartureTableViewCell.swift in Sources */,
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0EC9D01E1FBA504A00061DF1 /* TUMNewsManager.swift in Sources */,
 				227D215220988B5300C651BB /* CafeteriaDataSource.swift in Sources */,

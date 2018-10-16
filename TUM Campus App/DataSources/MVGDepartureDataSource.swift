@@ -28,12 +28,10 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
     var data: [Departure] = []
     let cellReuseID = "DepartureCardCell"
     let cardReuseID = "DepartureCard"
-    let dateComponentsFormatter = DateComponentsFormatter()
     
     init(data: [Departure]) {
         self.data = data
-        dateComponentsFormatter.unitsStyle = .short
-        dateComponentsFormatter.maximumUnitCount = 1
+
         super.init()
     }
     
@@ -56,7 +54,7 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
             cell.lineLabel.text = departure.label
         }
         
-        cell.departureLabel.text = dateComponentsFormatter.string(from: departure.departureTime.timeIntervalSinceNow) ?? ""
+        cell.departureLabel.text = DateComponentsFormatter.shortTimeFormatter.string(from: departure.departureTime.timeIntervalSinceNow) ?? ""
         return cell
     }
     
