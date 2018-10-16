@@ -85,7 +85,7 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
-                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+                            editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         switch indexPath.section {
         case 0:
             return .delete
@@ -119,7 +119,7 @@ class EditCardsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCellEditingStyle,
+                            commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:

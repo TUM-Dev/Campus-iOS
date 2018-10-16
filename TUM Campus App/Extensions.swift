@@ -75,7 +75,7 @@ extension Array {
 extension Collection {
     
     func mapped<V>() -> [V] {
-        return flatMap { $0 as? V }
+        return compactMap { $0 as? V }
     }
     
     func first<V: Equatable>(where path: KeyPath<Element, V>, equals value: V) -> Element? {

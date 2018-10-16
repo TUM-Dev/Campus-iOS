@@ -71,7 +71,7 @@ extension PersonDetailTableViewController {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         title = user?.text
         let barItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(PersonDetailTableViewController.addContact(_:)))
         navigationItem.rightBarButtonItem = barItem
