@@ -26,6 +26,17 @@ enum Campus: String, Codable, CaseIterable {
     case center = "München Stammgelände"
     case weihenstephan = "Wissenschaftszentrum Weihenstephan"
     case straubing = "Straubing"
+    
+    init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        let raw = try container.decode(String.self)
+        self.init(rawValue: raw)!
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        try container.encode(self.rawValue)
+    }
 }
 
 extension Campus {
