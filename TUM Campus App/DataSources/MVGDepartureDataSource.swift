@@ -41,22 +41,11 @@ class MVGDepartureDataSource: NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: cellReuseID, for: indexPath) as! MVGDepartureCollectionViewCell
-        let departure = data[indexPath.row]
-        
-        cell.destinationLabel.text = departure.destination
-        cell.lineLabel.backgroundColor = UIColor(hexString: departure.lineBackgroundColor)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseID,
+                                                      for: indexPath) as! MVGDepartureCollectionViewCell
 
-        if ["u", "s"].contains(departure.product) {
-            cell.lineLabel.text = "\(departure.product.uppercased())\(departure.label)"
-        } else {
-            cell.lineLabel.text = departure.label
-        }
-        
-        cell.departureLabel.text = DateComponentsFormatter.shortTimeFormatter.string(from: departure.departureTime.timeIntervalSinceNow) ?? ""
+        cell.configure(with: data[indexPath.row])
+
         return cell
     }
-    
 }
-

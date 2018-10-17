@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		048B08F52175E2850028348E /* MVGDepartureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */; };
-		048B08F62175E2850028348E /* MVGDepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */; };
+		048B08FC21760AF30028348E /* DepartureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B08FB21760AF30028348E /* DepartureView.xib */; };
+		048B08FE21760B770028348E /* DepartureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B08FD21760B770028348E /* DepartureView.swift */; };
+		048B09012176664B0028348E /* MVGDepartureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B08FF2176664A0028348E /* MVGDepartureTableViewCell.swift */; };
+		048B09022176664B0028348E /* MVGDepartureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048B09002176664B0028348E /* MVGDepartureTableViewCell.xib */; };
 		0E0C68241E8A4355007001F1 /* Usage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68231E8A4355007001F1 /* Usage.swift */; };
 		0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */; };
 		0E0C682A1E8A4DCD007001F1 /* SexyEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */; };
@@ -238,8 +240,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MVGDepartureTableViewCell.xib; sourceTree = "<group>"; };
-		048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGDepartureTableViewCell.swift; sourceTree = "<group>"; };
+		048B08FB21760AF30028348E /* DepartureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureView.xib; sourceTree = "<group>"; };
+		048B08FD21760B770028348E /* DepartureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureView.swift; sourceTree = "<group>"; };
+		048B08FF2176664A0028348E /* MVGDepartureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGDepartureTableViewCell.swift; sourceTree = "<group>"; };
+		048B09002176664B0028348E /* MVGDepartureTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MVGDepartureTableViewCell.xib; sourceTree = "<group>"; };
 		0E0C68231E8A4355007001F1 /* Usage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Usage.swift; sourceTree = "<group>"; };
 		0E0C68271E8A4DC5007001F1 /* TumSexyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TumSexyManager.swift; sourceTree = "<group>"; };
 		0E0C68291E8A4DCD007001F1 /* SexyEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SexyEntry.swift; sourceTree = "<group>"; };
@@ -1031,8 +1035,10 @@
 				807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */,
 				807C48181F4092A800CAD35D /* DeparturesViewController.swift */,
 				0ECD970E1F9D87D60070441D /* MVV.storyboard */,
-				048B08F42175E2840028348E /* MVGDepartureTableViewCell.swift */,
-				048B08F32175E2840028348E /* MVGDepartureTableViewCell.xib */,
+				048B08FF2176664A0028348E /* MVGDepartureTableViewCell.swift */,
+				048B09002176664B0028348E /* MVGDepartureTableViewCell.xib */,
+				048B08FD21760B770028348E /* DepartureView.swift */,
+				048B08FB21760AF30028348E /* DepartureView.xib */,
 			);
 			name = MVV;
 			sourceTree = "<group>";
@@ -1228,6 +1234,7 @@
 				9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */,
 				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
 				0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */,
+				048B08FC21760AF30028348E /* DepartureView.xib in Resources */,
 				221E45C420A71A7300A92084 /* MenuCollectionViewCell.xib in Resources */,
 				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
 				50200E101DF4941500B6FBE3 /* CardView.storyboard in Resources */,
@@ -1241,6 +1248,7 @@
 				227B480920A3428100AE3373 /* TuitionCollectionViewCell.xib in Resources */,
 				50200E241DF498F400B6FBE3 /* News.storyboard in Resources */,
 				22C83C6720A9DDEF00AB556D /* MVGStationCollectionViewCell.xib in Resources */,
+				048B09022176664B0028348E /* MVGDepartureTableViewCell.xib in Resources */,
 				2297958C1EACB858004A7F9B /* LibrarySettingsView.storyboard in Resources */,
 				228DEAF820DB0DC600934F72 /* ErrorView.xib in Resources */,
 				0E5573671EB996B2006E9DBD /* config.json in Resources */,
@@ -1251,7 +1259,6 @@
 				50200E0E1DF493BF00B6FBE3 /* Tution.storyboard in Resources */,
 				22763FCF20ADBE65008D5A89 /* NewsSpreadCollectionViewCell.xib in Resources */,
 				50200E221DF498B700B6FBE3 /* PersonDetail.storyboard in Resources */,
-				048B08F52175E2850028348E /* MVGDepartureTableViewCell.xib in Resources */,
 				227D2161209B345C00C651BB /* CafeteriaCollectionViewCell.xib in Resources */,
 				50200E1A1DF497A700B6FBE3 /* Cafeteria.storyboard in Resources */,
 				220EFF9520A85B36009D0337 /* LecturesCollectionViewCell.xib in Resources */,
@@ -1502,6 +1509,7 @@
 				228DEAFA20DB0DDB00934F72 /* ErrorView.swift in Sources */,
 				0EC479CC1FBA6EEC00FC36EB /* NewsSource.swift in Sources */,
 				5007C6A61E068AA60014B065 /* StudyRoomGroup.swift in Sources */,
+				048B08FE21760B770028348E /* DepartureView.swift in Sources */,
 				22F4B6B41EA802960086D49A /* BookRental.swift in Sources */,
 				9DE0FD5720E80890009B75F9 /* FixedColumnsFlowLayoutDelegate.swift in Sources */,
 				0E5DF1E11C145613000F47D1 /* CalendarManager.swift in Sources */,
@@ -1527,7 +1535,7 @@
 				2209106020DED21D0015D838 /* RoundBackgroundWithShadow.swift in Sources */,
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
 				227D215620988B6700C651BB /* CalendarDataSource.swift in Sources */,
-				048B08F62175E2850028348E /* MVGDepartureTableViewCell.swift in Sources */,
+				048B09012176664B0028348E /* MVGDepartureTableViewCell.swift in Sources */,
 				0E424F6D1BE1865C00B5DFCB /* Movie.swift in Sources */,
 				0EC9D01E1FBA504A00061DF1 /* TUMNewsManager.swift in Sources */,
 				227D215220988B5300C651BB /* CafeteriaDataSource.swift in Sources */,

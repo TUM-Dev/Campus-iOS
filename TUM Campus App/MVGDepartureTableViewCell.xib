@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,51 +15,29 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="MVGDepartureTableViewCell" customModule="Campus" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cey-rs-pvx">
-                        <rect key="frame" x="16" y="11" width="288" height="22"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" text="U6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3RR-c8-0DY" customClass="RoundedLabel" customModule="Campus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="22"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="3RR-c8-0DY" secondAttribute="height" multiplier="25:12" id="daI-Jx-R7v"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rFE-4f-XKg">
-                                <rect key="frame" x="54" y="0.0" width="185.5" height="22"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="5 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0f-Hy-slP">
-                                <rect key="frame" x="247.5" y="0.0" width="40.5" height="22"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-nf-cAv" customClass="DepartureView" customModule="Campus" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8.5" width="304" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="M4p-f2-fbg"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="cey-rs-pvx" secondAttribute="bottom" id="Bfi-Ha-Dhi"/>
-                    <constraint firstItem="cey-rs-pvx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="YMb-SB-XVH"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="cey-rs-pvx" secondAttribute="trailing" id="iOS-hu-7dm"/>
-                    <constraint firstItem="cey-rs-pvx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tbX-ne-OYw"/>
+                    <constraint firstItem="yAT-nf-cAv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ldq-hG-Lta"/>
+                    <constraint firstAttribute="trailing" secondItem="yAT-nf-cAv" secondAttribute="trailing" constant="8" id="a6q-Fz-TNe"/>
+                    <constraint firstAttribute="bottom" secondItem="yAT-nf-cAv" secondAttribute="bottom" constant="8" id="exr-5W-TBw"/>
+                    <constraint firstItem="yAT-nf-cAv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="uGg-aq-Ts2"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="departureLabel" destination="A0f-Hy-slP" id="Ppm-pK-bdg"/>
-                <outlet property="destinationLabel" destination="rFE-4f-XKg" id="dvg-Bo-pfY"/>
-                <outlet property="lineLabel" destination="3RR-c8-0DY" id="q4K-05-AVk"/>
+                <outlet property="departureView" destination="yAT-nf-cAv" id="gJP-Ne-1OH"/>
             </connections>
+            <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>
         </tableViewCell>
     </objects>
 </document>
