@@ -5,7 +5,7 @@ platform :ios, '10.2'
 use_frameworks!
 
 target 'Campus' do
-    pod 'Sweeft', :git => 'https://github.com/TG908/Sweeft.git', :branch => 'master'
+    pod 'Sweeft', :git => 'https://github.com/nerdsupremacist/Sweeft.git', :branch => 'master'
     pod 'Fuzzi', '~> 0.1.1'
     pod 'ASWeekSelectorView', '~> 1.0'
     pod 'CalendarLib', '~> 2.0'

@@ -62,7 +62,7 @@ PODS:
   - nanopb/encode (0.3.8)
   - OrderedDictionary (1.4)
   - OSCache (1.2.1)
-  - Sweeft (0.15.3)
+  - Sweeft (0.15.2)
   - SWXMLHash (4.7.4)
   - TKSubmitTransition (2.0)
 
@@ -75,7 +75,7 @@ DEPENDENCIES:
   - Fuzzi (~> 0.1.1)
   - Kanna (~> 4.0.0)
   - Kingfisher (~> 4.0)
-  - Sweeft (from `https://github.com/TG908/Sweeft.git`, branch `master`)
+  - Sweeft (from `https://github.com/nerdsupremacist/Sweeft.git`, branch `master`)
   - SWXMLHash (~> 4.7.4)
   - TKSubmitTransition (from `https://github.com/entotsu/TKSubmitTransition.git`, branch `swift4`)
 
@@ -102,15 +102,15 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Sweeft:
     :branch: master
-    :git: https://github.com/TG908/Sweeft.git
+    :git: https://github.com/nerdsupremacist/Sweeft.git
   TKSubmitTransition:
     :branch: swift4
     :git: https://github.com/entotsu/TKSubmitTransition.git
 
 CHECKOUT OPTIONS:
   Sweeft:
-    :commit: b57b02d909c7540a077314216c13b6f85ef5ecb6
-    :git: https://github.com/TG908/Sweeft.git
+    :commit: d95af83a7abc27ffab66e076466e91f2a8f2ae49
+    :git: https://github.com/nerdsupremacist/Sweeft.git
   TKSubmitTransition:
     :commit: 29fac6072451a4def5cde567075bfc62a728bb1f
     :git: https://github.com/entotsu/TKSubmitTransition.git
@@ -132,10 +132,10 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OrderedDictionary: 138c8d2e358d3a0c9adda15c6c7db24e8e3b09e6
   OSCache: 826996b68e8542a8a3d8af1ab0a0fc3070d8f357
-  Sweeft: 7421bac377e41a4678cdb711822536445e404091
+  Sweeft: 89d3d1b18635c862a6284483bae9b235a450f049
   SWXMLHash: b35739a5cfd915c3b482977aa720d6708e260a90
   TKSubmitTransition: 647b907508da58ba864141e3c4382442ec536d40
 
-PODFILE CHECKSUM: b8ef9ffd7f450622fef346fe8cf5e4cd68daadf8
+PODFILE CHECKSUM: 226bb8c09114d5a789fb98e80c567472a1662462
 
 COCOAPODS: 1.5.3
