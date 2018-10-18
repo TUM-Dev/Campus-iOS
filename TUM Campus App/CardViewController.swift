@@ -93,6 +93,8 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         }
         if let navCon = segue.destination as? UINavigationController,
             let mvc = navCon.topViewController as? EditCardsViewController {
+            navCon.modalPresentationStyle = .formSheet
+            navCon.modalTransitionStyle = .coverVertical
             mvc.delegate = self
         }
         if let mvc = segue.destination as? CalendarViewController {
@@ -153,18 +155,27 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         let storyboard = UIStoryboard(name: "CardView", bundle: nil)
         guard let searchResultsController = storyboard.instantiateViewController(
             withIdentifier: "SearchResultsController") as? SearchResultsController else {
-            fatalError("Unable to instatiate a SearchResultsViewController from the storyboard.")
+            fatalError("Unable to instantiate a SearchResultsViewController from the storyboard.")
         }
         searchResultsController.delegate = self
         searchResultsController.navCon = self.navigationController
         search = UISearchController(searchResultsController: searchResultsController)
         search?.searchResultsUpdater = searchResultsController
-        search?.searchBar.placeholder = "Search"
+        search?.searchBar.placeholder = "Rooms, Lectures, People..."
         search?.obscuresBackgroundDuringPresentation = true
         search?.hidesNavigationBarDuringPresentation = true
         
         if #available(iOS 11.0, *) {
             navigationItem.searchController = search
+        } else {
+            let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(displaySearch))
+            navigationItem.rightBarButtonItems?.append(searchButton)
+        }
+    }
+    
+    @objc func displaySearch() {
+        if let search = search {
+            present(search, animated: true, completion: nil)
         }
     }
     

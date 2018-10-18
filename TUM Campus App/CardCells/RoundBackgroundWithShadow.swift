@@ -23,7 +23,7 @@ extension Shadow where Self: UIView {
     }
     
     func addShadow() {
-        layer.shadowOffset = CGSize(width: 0, height: 8)
+        layer.shadowOffset = CGSize(width: 0, height: 4)
         layer.shadowOpacity = shadowOpacity
         layer.shadowRadius = shadowRadius
         clipsToBounds = false
@@ -39,17 +39,20 @@ class ShadowView: UIView, Shadow {
             layer.cornerRadius = cornerRadius
         }
     }
-    @IBInspectable var shadowColor: CGColor = UIColor.black.cgColor {
+    
+    @IBInspectable var shadowColor: UIColor = UIColor.lightGray {
         didSet {
-            layer.shadowColor = shadowColor
+            layer.shadowColor = shadowColor.cgColor
         }
     }
+    
     @IBInspectable var shadowRadius: CGFloat = 8.0 {
         didSet {
             layer.shadowRadius = shadowRadius
         }
     }
-    @IBInspectable var shadowOpacity: Float = 0.2 {
+    
+    @IBInspectable var shadowOpacity: Float = 0.3 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
@@ -70,17 +73,20 @@ class ShadowImageView: UIImageView, Shadow {
             layer.cornerRadius = cornerRadius
         }
     }
-    @IBInspectable var shadowColor: CGColor = UIColor.black.cgColor {
+    
+    @IBInspectable var shadowColor: UIColor = UIColor.lightGray {
         didSet {
-            layer.shadowColor = shadowColor
+            layer.shadowColor = shadowColor.cgColor
         }
     }
+    
     @IBInspectable var shadowRadius: CGFloat = 8.0 {
         didSet {
             layer.shadowRadius = shadowRadius
         }
     }
-    @IBInspectable var shadowOpacity: Float = 0.4 {
+    
+    @IBInspectable var shadowOpacity: Float = 0.3 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }

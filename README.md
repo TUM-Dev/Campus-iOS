@@ -1,4 +1,10 @@
-[![Travis](https://api.travis-ci.org/TCA-Team/iOS.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/TCA-Team/iOS.svg?branch=master)](https://travis-ci.org/TCA-Team/iOS)
+<a href="https://beta.tumcampusapp.de">
+<img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" align="right">
+</a>
+<a href="https://itunes.apple.com/us/app/tum-campus-app/id1217412716?mt=8">
+<img src="https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" height="42" align="right">
+</a>
 
 # TumCampusApp - an unofficial guide through university life
 

@@ -204,7 +204,6 @@
 		9D2C64BE20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D2C64BD20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift */; };
 		9D77671120D033F800F9A4FD /* UITextViewNoStartInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */; };
 		9D77671720D0494D00F9A4FD /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77671620D0494D00F9A4FD /* GradeColor.swift */; };
-		9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */; };
 		9DCF48C020E8277000516853 /* ListFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCF48BF20E8277000516853 /* ListFlowLayoutDelegate.swift */; };
 		9DE0FD5720E80890009B75F9 /* FixedColumnsFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayoutDelegate.swift */; };
 		9DE0FD5920E8089A009B75F9 /* VariableColumnsFlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayoutDelegate.swift */; };
@@ -452,7 +451,6 @@
 		9D2C64BD20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixedColumnsVerticalItemsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewNoStartInset.swift; sourceTree = "<group>"; };
 		9D77671620D0494D00F9A4FD /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
-		9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBlurredBackground.swift; sourceTree = "<group>"; };
 		9DCF48BF20E8277000516853 /* ListFlowLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableColumnsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
@@ -939,7 +937,6 @@
 				227B481820A3487700AE3373 /* DataSourceCollectionViewCell.swift */,
 				22763FD020B176CE008D5A89 /* RoundedLabel.swift */,
 				9D77671020D033F800F9A4FD /* UITextViewNoStartInset.swift */,
-				9DCEDE5C20D461D300896635 /* RoundBlurredBackground.swift */,
 				2209105F20DED21D0015D838 /* RoundBackgroundWithShadow.swift */,
 			);
 			path = CardCells;
@@ -1317,7 +1314,6 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/OSCache/OSCache.framework",
 				"${BUILT_PRODUCTS_DIR}/OrderedDictionary/OrderedDictionary.framework",
-				"${BUILT_PRODUCTS_DIR}/PZPullToRefresh/PZPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/Sweeft/Sweeft.framework",
 				"${BUILT_PRODUCTS_DIR}/TKSubmitTransition/TKSubmitTransition.framework",
@@ -1333,7 +1329,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OSCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OrderedDictionary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PZPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sweeft.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TKSubmitTransition.framework",
@@ -1525,7 +1520,6 @@
 				0EC10C211C171D100024F902 /* MovieManager.swift in Sources */,
 				220EFFB120A866EC009D0337 /* MVGDepartureCollectionViewCell.swift in Sources */,
 				807C48151F4091DD00CAD35D /* Interruption.swift in Sources */,
-				9DCEDE5D20D461D300896635 /* RoundBlurredBackground.swift in Sources */,
 				0E0C68281E8A4DC5007001F1 /* TumSexyManager.swift in Sources */,
 				2209106020DED21D0015D838 /* RoundBackgroundWithShadow.swift in Sources */,
 				0EBC0DBE1C17797D002D7A00 /* MoreTableViewController.swift in Sources */,
