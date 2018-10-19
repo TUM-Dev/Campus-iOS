@@ -12,11 +12,11 @@ open class DoneHUD: NSObject {
     fileprivate static let sharedObject = DoneHUD()
     let doneView = DoneView()
 
-    open static func showInView(_ view: UIView) {
+    public static func showInView(_ view: UIView) {
         DoneHUD.sharedObject.showInView(view, message: nil)
     }
     
-    open static func showInView(_ view: UIView, message: String?) {
+    public static func showInView(_ view: UIView, message: String?) {
         DoneHUD.sharedObject.showInView(view, message: message)
     }
     

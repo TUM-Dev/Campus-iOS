@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
         if text.count >= characterLimit {
             currentTextField.text = String(text.prefix(characterLimit))
 
-            let substring = String(text.characters.dropFirst(characterLimit))
+            let substring = String(text.dropFirst(characterLimit))
             if let nextTextField = nextTextField {
                 nextTextField.becomeFirstResponder()
                 if !substring.isEmpty {
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
     
     private func setupLogo() {
         let bundle = Bundle.main
-        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.flatMap { $0 as? TUMLogoView }
+        let nib = bundle.loadNibNamed("TUMLogoView", owner: nil, options: nil)?.compactMap { $0 as? TUMLogoView }
         guard let view = nib?.first else { return }
         logoView = view
         view.frame = CGRect(x: 0, y: 0, width: 100, height: 32)

@@ -37,7 +37,7 @@ class NewsTableViewController: RefreshableTableViewController<News>, DetailView 
             }
             let indexPath =  IndexPath(row: index, section: 0)
             self.tableView.scrollToRow(at: indexPath,
-                                       at: UITableViewScrollPosition.top,
+                                       at: UITableView.ScrollPosition.top,
                                        animated: false)
         }
     }
