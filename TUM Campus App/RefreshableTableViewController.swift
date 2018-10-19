@@ -48,7 +48,7 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
         }
         
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
@@ -70,7 +70,7 @@ class RefreshableTableViewController<Value: DataElement>: UITableViewController 
     func setupTableView() {
         refresh.addTarget(self,
                           action: #selector(RefreshableTableViewController<Value>.refresh(_:)),
-                          for: UIControlEvents.valueChanged)
+                          for: UIControl.Event.valueChanged)
         
         tableView.addSubview(refresh)
         definesPresentationContext = true

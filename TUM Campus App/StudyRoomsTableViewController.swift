@@ -59,7 +59,7 @@ extension StudyRoomsTableViewController {
         
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(StudyRoomsTableViewController.refresh(_:)), for: UIControl.Event.valueChanged)
         tableView.addSubview(refresh)
         
         if roomGroups.isEmpty {

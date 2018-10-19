@@ -78,7 +78,7 @@ extension CafeteriaViewController {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         self.fetch()
         
         let size = CGSize(width: view.frame.width, height: 80.0)
@@ -122,8 +122,8 @@ extension CafeteriaViewController: TUMPickerControllerDelegate {
             let maxHeight = view.frame.height - UIApplication.shared.statusBarFrame.height * 2
             let heightConstraint = NSLayoutConstraint(
                 item: pickerView.view, attribute: .height,
-                relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: nil,
-                attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: maxHeight)
+                relatedBy: NSLayoutConstraint.Relation.lessThanOrEqual, toItem: nil,
+                attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: maxHeight)
             pickerView.view.addConstraint(heightConstraint)
         }
         
