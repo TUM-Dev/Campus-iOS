@@ -37,10 +37,10 @@ class SearchResultsController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !UIAccessibilityIsReduceTransparencyEnabled() {
+        if !UIAccessibility.isReduceTransparencyEnabled {
             self.view.backgroundColor = .clear
             
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
             blurEffectView.frame = self.view.bounds
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

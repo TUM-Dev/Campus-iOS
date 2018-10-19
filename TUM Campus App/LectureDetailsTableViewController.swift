@@ -45,7 +45,7 @@ extension LectureDetailsTableViewController {
         super.viewDidLoad()
         
         tableView.estimatedRowHeight = tableView.rowHeight
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         if let lectureUnwrapped = lecture as? Lecture {
             
             title = lectureUnwrapped.text

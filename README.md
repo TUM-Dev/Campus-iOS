@@ -6,23 +6,27 @@
 <img src="https://devimages-cdn.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" height="42" align="right">
 </a>
 
-# TumCampusApp - an unofficial guide through university life
+# Tum Campus App - An Unofficial Guide Through University Life
 
-The [TUM Campus App (TCA)](https://itunes.apple.com/app/id1217412716) is an open source project, developed by volunteers and available on the App Store.
+The TUM Campus App (TCA) is an open source project, developed by volunteers and [available on the App Store](https://itunes.apple.com/app/id1217412716).
 
-The TCA mostly targets phones, but can also be used on tablets or any other device that runs iOS. This is the repo for the iOS Version of the TUM Campus App.
+It mostly targets phones, but can also be used on tablets or any other device that runs iOS. This is the repo for the iOS version of the TUM Campus App.
 
-## Work In Progress
-This app is currently being developed and is not yet released to the public via the App Store. We are working on setting up the correct pipelines and hope to publish it in the SS 2017.
+## Features
 
-Features already implemented:
-* Calendar Access
-* Lecture Details
-* Personal Contact Information
-* Room Maps
-* Tuition Fees Information
-* Universal (Person, Room, Lecture) Search
-* Cafeteria Information
+- [x] Calendar Access
+- [x] Lecture Details
+- [x] Grades
+- [x] Tuition Fees Information
+- [x] Study Room Availability
+- [x] MVG Departure Times
+- [x] News Feed
+- [x] Cafeteria Menus
+- [x] TU Film Schedule
+- [x] Personal Contact Information
+- [x] Room Maps
+- [x] Universal Search: Persons, Rooms, Lectures
+- [x] [TUM.sexy](https://tum.sexy) Redirects
 
 ## Contributing
 You're welcome to contribute to this app!
@@ -33,13 +37,16 @@ Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-T
 - App Store metadata is managed in the directory _fastlane/metadata/_. Go edit those and they'll be updated on the store with the next release
 - Members of the Apple Developer Team of this app can run _fastlane deliver_ to update the metadata on iTunes Connect (run _fastlane deliver init_ first)
 
-## Policies:
+## Beta
+If you want to participate in the beta of this app, enter your details [here](https://beta.tumcampusapp.de) to get invited via TestFlight.
+
+## Policies
 [Privacy policy](https://app.tum.de/landing/privacy/)  
 [T&Cs of the lecture chat](https://app.tum.de/landing/chatterms/)
 
-## Support:
+## Support
 You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](https://github.com/TCA-Team/iOS) or via E-Mail [app@tum.de](mailto:app@tum.de)
 
-## License:
+## License
 Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
 

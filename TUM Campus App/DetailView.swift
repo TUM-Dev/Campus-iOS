@@ -20,5 +20,5 @@
 
 import Foundation
 protocol DetailView {
-    weak var delegate: DetailViewDelegate? { get set }
+    var delegate: DetailViewDelegate? { get set }
 }
