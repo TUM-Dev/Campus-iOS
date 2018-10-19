@@ -138,7 +138,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         collectionView.delegate = self
         collectionView.dataSource = composedDataSource
         refreshControl.addTarget(self, action: #selector(CardViewController.refresh(sender:)),
-                          for: UIControlEvents.valueChanged)
+                          for: UIControl.Event.valueChanged)
         collectionView.refreshControl = refreshControl
         flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         definesPresentationContext = true

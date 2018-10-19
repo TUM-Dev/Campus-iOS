@@ -94,7 +94,7 @@ final class UserData: DataElement {
         avatar.fetch().onResult(in: .main) { result in
             contact.imageData = result.value?
                 .flatMap { $0 }
-                .flatMap { UIImagePNGRepresentation($0) }
+                .flatMap { $0.pngData() }
             
             let store = CNContactStore()
             let saveRequest = CNSaveRequest()

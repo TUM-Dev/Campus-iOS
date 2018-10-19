@@ -49,7 +49,7 @@ final class MVGManager: MemoryCachedManager, SingleItemCachedManager, CardManage
     
     func fetch() -> Response<[DetailedStation]> {
         return prefetch().flatMap { stations in
-            return stations.flatMap { station in
+            return stations.compactMap { station in
                 return self.fetch(for: station).map { departures in
                     return DetailedStation(station: station, departures: departures)
                 }
