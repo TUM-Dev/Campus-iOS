@@ -35,7 +35,7 @@ private func certificates(trust: SecTrust) -> [Data]? {
     guard certificateCount > 0 else {
         return nil
     }
-    let certificates = (0..<certificateCount).flatMap { SecTrustGetCertificateAtIndex(trust, $0) }
+    let certificates = (0..<certificateCount).compactMap { SecTrustGetCertificateAtIndex(trust, $0) }
     let data = certificates.map { SecCertificateCopyData($0) as Data }
     return data
 }

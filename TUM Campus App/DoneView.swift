@@ -102,8 +102,8 @@ open class DoneView: UIView {
         // Set default setting to line
         self.lineLayer.fillColor = UIColor.clear.cgColor
         self.lineLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        self.lineLayer.lineJoin = kCALineJoinRound
-        self.lineLayer.lineCap = kCALineCapRound
+        self.lineLayer.lineJoin = CAShapeLayerLineJoin.round
+        self.lineLayer.lineCap = CAShapeLayerLineCap.round
         self.lineLayer.contentsScale = self.layer.contentsScale
         self.lineLayer.lineWidth = 8
         self.lineLayer.strokeColor = UIColor.black.cgColor
