@@ -47,7 +47,7 @@ class TUFilmDataSource: NSObject, TUMDataSource, TUMInteractiveDataSource {
     func refresh(group: DispatchGroup) {
         group.enter()
         manager.fetch().onSuccess(in: .main) { data in
-            self.data = data
+            self.data = data.filter( { return $0.date > Date.now }).sorted(ascending: { return $0.date })
             group.leave()
         }
     }
