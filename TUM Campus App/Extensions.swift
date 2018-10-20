@@ -51,6 +51,15 @@ extension Date {
     
 }
 
+extension DateComponentsFormatter {
+    static let shortTimeFormatter: DateComponentsFormatter = {
+        let dateComponentsFormatter = DateComponentsFormatter()
+        dateComponentsFormatter.unitsStyle = .short
+        dateComponentsFormatter.maximumUnitCount = 1
+        return dateComponentsFormatter
+    }()
+}
+
 extension SimpleManager {
     
     var location: CLLocation {

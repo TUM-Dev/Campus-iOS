@@ -22,8 +22,9 @@ import UIKit
 
 class MVGDepartureCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var lineLabel: UILabel!
-    @IBOutlet weak var destinationLabel: UILabel!
-    @IBOutlet weak var departureLabel: UILabel!
+    @IBOutlet private weak var departureView: DepartureView!
 
+    func configure(with departure: Departure) {
+        departureView.configure(with: departure)
+    }
 }

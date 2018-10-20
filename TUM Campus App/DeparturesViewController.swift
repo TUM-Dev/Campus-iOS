@@ -12,7 +12,8 @@ class DeparturesViewController : UITableViewController, DetailView {
     
     weak var delegate: DetailViewDelegate?
     
-    let station: Station
+    private let station: Station
+    private let cellType: AnyClass = MVGDepartureTableViewCell.self
     
     var departures: [Departure]? {
         didSet {
@@ -33,10 +34,10 @@ class DeparturesViewController : UITableViewController, DetailView {
     override func loadView() {
         super.loadView()
         title = station.name
-        
-        tableView.register(DepartureTableViewCell.self,
-                           forCellReuseIdentifier: DepartureTableViewCell.Identifier)
-        
+
+        tableView.register(UINib(nibName: String(describing: cellType), bundle: .main),
+                           forCellReuseIdentifier: MVGDepartureTableViewCell.Identifier)
+
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.beginRefreshing()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -86,6 +87,11 @@ class DeparturesViewController : UITableViewController, DetailView {
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return DepartureTableViewCell(departure: departures![indexPath.row])
+        guard let departures = departures else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: MVGDepartureTableViewCell.Identifier, for: indexPath) as! MVGDepartureTableViewCell
+
+        cell.configure(with: departures[indexPath.row])
+
+        return cell
     }
 }
