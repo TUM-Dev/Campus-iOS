@@ -87,10 +87,9 @@ extension CafeteriaMenu {
     
 }
 
-struct Price {
-    var student: Double
-    var employee: Double
-    var guest: Double
+enum Price {
+    case service(student: Double, employee: Double, guest: Double)
+    case selfService
 }
 
 struct MenuDetail {
