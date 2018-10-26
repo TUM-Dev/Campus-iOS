@@ -53,12 +53,20 @@ class MenuDataSource: NSObject, UICollectionViewDataSource {
                 cell.dishDetailLabel.text!.append(description)
             }
         }
-
-        if let priceValue = dish.price?.student {
-            cell.priceLabel.text = String(format:"%.2f€", priceValue)
-        } else {
-            cell.priceLabel.text = ""
+        
+        switch dish.price {
+        case let .service(student, employee, guest)?:
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            formatter.locale = Locale(identifier: "de_DE")
+            cell.priceLabel.text = formatter.string(for: student)
+        case .selfService?:
+            cell.priceLabel.text = "n/a"
+        case .none:
+            cell.priceLabel.text = "n/a"
         }
+        
+        cell.priceLabel.textColor = .gray
 
         return cell
     }

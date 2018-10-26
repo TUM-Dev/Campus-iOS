@@ -29,15 +29,18 @@ class MenuTableViewCell: CardTableViewCell {
             dishLabel.text = menu.details.nameWithEmojiWithoutAnnotations
             
             //Price Label
-            if let menuPrice = menu.price?.student {
+            switch menu.price {
+            case let .service(student, employee, guest)?:
                 let formatter = NumberFormatter()
                 formatter.numberStyle = .currency
                 formatter.locale = Locale(identifier: "de_DE")
-                priceLabel.text = formatter.string(for: menuPrice)
-
-            } else {
-                priceLabel.text = ""
+                priceLabel.text = formatter.string(for: student)
+            case .selfService?:
+                priceLabel.text = "n/a"
+            case .none:
+                priceLabel.text = "n/a"
             }
+
             priceLabel.textColor = .gray
 
             
