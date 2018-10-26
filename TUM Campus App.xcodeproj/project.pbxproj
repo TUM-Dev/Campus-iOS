@@ -128,6 +128,8 @@
 		220EFFB120A866EC009D0337 /* MVGDepartureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFAF20A866EC009D0337 /* MVGDepartureCollectionViewCell.swift */; };
 		220EFFB220A866EC009D0337 /* MVGDepartureCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220EFFB020A866EC009D0337 /* MVGDepartureCollectionViewCell.xib */; };
 		220EFFB420A8673F009D0337 /* MVGDepartureDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFFB320A8673F009D0337 /* MVGDepartureDataSource.swift */; };
+		2219FCC421728AF2002CA1BC /* DefaultCampus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2219FCC321728AF2002CA1BC /* DefaultCampus.storyboard */; };
+		2219FCC621728C68002CA1BC /* DefaultCampusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2219FCC521728C68002CA1BC /* DefaultCampusViewController.swift */; };
 		221E45C020A4C21F00A92084 /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E45BF20A4C21F00A92084 /* MenuDataSource.swift */; };
 		221E45C320A71A7300A92084 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E45C120A71A7300A92084 /* MenuCollectionViewCell.swift */; };
 		221E45C420A71A7300A92084 /* MenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 221E45C220A71A7300A92084 /* MenuCollectionViewCell.xib */; };
@@ -368,6 +370,8 @@
 		220EFFAF20A866EC009D0337 /* MVGDepartureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGDepartureCollectionViewCell.swift; sourceTree = "<group>"; };
 		220EFFB020A866EC009D0337 /* MVGDepartureCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MVGDepartureCollectionViewCell.xib; sourceTree = "<group>"; };
 		220EFFB320A8673F009D0337 /* MVGDepartureDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGDepartureDataSource.swift; sourceTree = "<group>"; };
+		2219FCC321728AF2002CA1BC /* DefaultCampus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DefaultCampus.storyboard; sourceTree = "<group>"; };
+		2219FCC521728C68002CA1BC /* DefaultCampusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusViewController.swift; sourceTree = "<group>"; };
 		221E45BF20A4C21F00A92084 /* MenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		221E45C120A71A7300A92084 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		221E45C220A71A7300A92084 /* MenuCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -585,6 +589,7 @@
 				0EB473D51C1B649100F17F44 /* Lecture View */,
 				0E6B53481EA447FD002B5058 /* TUM Sexy */,
 				229795831EAC1DFC004A7F9B /* Library Settings */,
+				2219FCC221728ACC002CA1BC /* Default Campus */,
 				0E8FA93B1C1814FA0077BD7A /* More View */,
 				0EF4CEF41D4169B5001649F1 /* Detail View Protocols */,
 				E1369C9B1F87D22200D6766E /* UI Services */,
@@ -882,6 +887,15 @@
 				0E4DC2A520339F8000708C01 /* RootCertificatePinningAPI.swift */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		2219FCC221728ACC002CA1BC /* Default Campus */ = {
+			isa = PBXGroup;
+			children = (
+				2219FCC321728AF2002CA1BC /* DefaultCampus.storyboard */,
+				2219FCC521728C68002CA1BC /* DefaultCampusViewController.swift */,
+			);
+			name = "Default Campus";
 			sourceTree = "<group>";
 		};
 		22763FD420B217BC008D5A89 /* Cards */ = {
@@ -1234,6 +1248,7 @@
 				9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */,
 				50200E181DF496A800B6FBE3 /* More.storyboard in Resources */,
 				0ECD970F1F9D87D60070441D /* MVV.storyboard in Resources */,
+				2219FCC421728AF2002CA1BC /* DefaultCampus.storyboard in Resources */,
 				048B08FC21760AF30028348E /* DepartureView.xib in Resources */,
 				221E45C420A71A7300A92084 /* MenuCollectionViewCell.xib in Resources */,
 				50200E121DF4948C00B6FBE3 /* Movie.storyboard in Resources */,
@@ -1447,6 +1462,7 @@
 				2297958A1EAC228E004A7F9B /* KeychainWrapper.m in Sources */,
 				9D2C64BE20EA047B0078E536 /* FixedColumnsVerticalItemsFlowLayoutDelegate.swift in Sources */,
 				807C48121F40917E00CAD35D /* Departure.swift in Sources */,
+				2219FCC621728C68002CA1BC /* DefaultCampusViewController.swift in Sources */,
 				5007C6A01E06788F0014B065 /* StudyRoomsManager.swift in Sources */,
 				0E2E33971E047BDB00E6F707 /* AppDefaults.swift in Sources */,
 				0E0EE9511D410E4E00E667A8 /* Extensions.swift in Sources */,
