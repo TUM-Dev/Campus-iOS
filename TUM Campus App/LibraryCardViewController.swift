@@ -11,10 +11,6 @@ import AVFoundation
 
 class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var barcodeImageView: UIImageView!
-    @IBOutlet weak var idNumber: UILabel!
     @IBOutlet weak var shadowView: UIView! {
         didSet {
             shadowView.layer.shadowOpacity = 0.7
@@ -25,16 +21,20 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
         }
     }
     
-    @IBOutlet weak var cardView: UIView! {
+    @IBOutlet var cardView: UIView! {
         didSet {
             cardView.layer.cornerRadius = 8
             cardView.layer.masksToBounds = true
-            cardView.backgroundColor = Constants.tumBlue
         }
     }
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
+    
+    lazy var studentIDFront: StudentIDFront = StudentIDFront.fromNib()
+    lazy var studentIDBack: StudentIDBack = StudentIDBack.fromNib()
+    
+    var front = true
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
@@ -42,6 +42,9 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.studentIDFront.frame = self.cardView.frame
+        cardView.addSubview(studentIDFront)
+        
 //        startBarcodeScanner()
         found(code: "01234567890")
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(flip))
@@ -123,10 +126,10 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
     
     func found(code: String) {
         let barCode = barcodeFromString(string: code)
-        barcodeImageView.image = barCode
-        idNumber.text = code
-        view.backgroundColor = .white
-        nameLabel.text = PersistentUser.value.user?.lrzID
+//        barcodeImageView.image = barCode
+//        idNumber.text = code
+//        view.backgroundColor = .white
+//        nameLabel.text = PersistentUser.value.user?.lrzID
 //        previewLayer.removeFromSuperlayer()
     }
     
@@ -138,9 +141,26 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
         return UIImage(ciImage: (filter?.outputImage)!)
     }
     
+    
     @objc func flip() {
-        UIView.transition(with: cardView, duration: 1, options: [.transitionFlipFromRight], animations: {
-        })
+        if front {
+            UIView.transition(from: studentIDFront, to: studentIDBack, duration: 1, options: [.transitionFlipFromRight]) { _ in
+                self.studentIDBack.frame = self.cardView.frame
+            }
+            front = false
+        } else {
+            UIView.transition(from: studentIDBack, to: studentIDFront, duration: 1, options: [.transitionFlipFromLeft]) { _ in
+                self.studentIDFront.frame = self.cardView.frame
+            }
+            front = true
+        }
     }
 
+}
+
+extension UIView {
+    class func fromNib<T: UIView>() -> T {
+        return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+    
 }
