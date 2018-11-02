@@ -121,6 +121,16 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="birthdayLabel" destination="1xr-gI-1P2" id="PeE-wl-nbk"/>
+                <outlet property="chipNrLabel" destination="gjQ-KK-1t7" id="zLz-0d-g2V"/>
+                <outlet property="courseOfStudiesLabel" destination="EmI-5V-Oed" id="xW5-Rt-umm"/>
+                <outlet property="givenNameLabel" destination="1TF-mK-ESh" id="6Ho-D0-LMJ"/>
+                <outlet property="lastNameLabel" destination="WG3-UP-oBv" id="USi-w3-IVH"/>
+                <outlet property="matrikelNrLabel" destination="2aJ-VQ-VqW" id="js6-L9-uub"/>
+                <outlet property="photoView" destination="712-yQ-X3v" id="osH-on-vfF"/>
+                <outlet property="validLabel" destination="kVb-9v-MCg" id="O7c-KG-69D"/>
+            </connections>
             <point key="canvasLocation" x="136.80000000000001" y="-51.724137931034484"/>
         </view>
         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="idR-jI-b1L">

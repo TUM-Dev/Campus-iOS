@@ -9,6 +9,10 @@
 import UIKit
 
 class StudentIDBack: UIView {
+    
+    @IBOutlet weak var barcodeView: UIImageView!
+    @IBOutlet weak var bibliotheksnummerLabel: UILabel!
+    
 
     override func draw(_ rect: CGRect) {
         self.layer.cornerRadius = 8

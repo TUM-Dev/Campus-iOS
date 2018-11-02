@@ -43,7 +43,10 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
     override func viewDidLoad() {
         super.viewDidLoad()
         self.studentIDFront.frame = self.cardView.frame
+        self.studentIDBack.frame = self.cardView.frame
+
         cardView.addSubview(studentIDFront)
+
         
 //        startBarcodeScanner()
         found(code: "01234567890")
@@ -126,11 +129,8 @@ class LibraryCardViewController: UITableViewController, AVCaptureMetadataOutputO
     
     func found(code: String) {
         let barCode = barcodeFromString(string: code)
-//        barcodeImageView.image = barCode
-//        idNumber.text = code
-//        view.backgroundColor = .white
-//        nameLabel.text = PersistentUser.value.user?.lrzID
-//        previewLayer.removeFromSuperlayer()
+        studentIDBack.barcodeView.image = barCode
+        studentIDBack.bibliotheksnummerLabel.text = code
     }
     
     func barcodeFromString(string: String) -> UIImage? {

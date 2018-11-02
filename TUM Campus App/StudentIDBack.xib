@@ -16,18 +16,44 @@
             <rect key="frame" x="0.0" y="0.0" width="425" height="275"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jgq-o9-c6D">
-                    <rect key="frame" x="52" y="42" width="38" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-V5-M9E">
+                    <rect key="frame" x="8" y="8" width="409" height="56"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nej-Wa-JwM">
+                    <rect key="frame" x="113.5" y="68" width="198.5" height="16"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bibliotheksnummer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zVK-OK-bqf">
+                            <rect key="frame" x="0.0" y="0.0" width="116.5" height="16"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="0123456789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-p8-ONR">
+                            <rect key="frame" x="120.5" y="0.0" width="78" height="16"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="nej-Wa-JwM" firstAttribute="top" secondItem="uHk-V5-M9E" secondAttribute="bottom" constant="4" id="722-CS-TgU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nej-Wa-JwM" secondAttribute="bottom" constant="8" id="HyQ-qh-7WL"/>
+                <constraint firstItem="nej-Wa-JwM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="XIP-8q-Sit"/>
+                <constraint firstItem="uHk-V5-M9E" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Y01-Xc-BbT"/>
+                <constraint firstItem="uHk-V5-M9E" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1:5" constant="1" id="mv4-4X-bTN"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uHk-V5-M9E" secondAttribute="trailing" constant="8" id="o7r-QP-CmY"/>
+                <constraint firstItem="uHk-V5-M9E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="pKw-rf-TfF"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="134.40000000000001" y="-48.575712143928037"/>
+            <connections>
+                <outlet property="barcodeView" destination="uHk-V5-M9E" id="M2h-PX-EZs"/>
+                <outlet property="bibliotheksnummerLabel" destination="aFA-p8-ONR" id="XdY-T3-smX"/>
+            </connections>
+            <point key="canvasLocation" x="133.59999999999999" y="-49.025487256371818"/>
         </view>
     </objects>
 </document>
