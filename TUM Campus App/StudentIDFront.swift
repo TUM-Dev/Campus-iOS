@@ -18,6 +18,7 @@ class StudentIDFront: UIView {
     @IBOutlet weak var courseOfStudiesLabel: UILabel!
     @IBOutlet weak var validLabel: UILabel!
     @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
         self.layer.cornerRadius = 8

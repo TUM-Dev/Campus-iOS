@@ -73,7 +73,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="BYQ-0z-Kfw">
-                    <rect key="frame" x="14" y="224.5" width="397" height="36.5"/>
+                    <rect key="frame" x="14" y="224.5" width="89.5" height="36.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="gültig bis:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h84-o9-VdH">
                             <rect key="frame" x="0.0" y="0.0" width="59.5" height="16"/>
@@ -95,33 +95,54 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MDN-wp-Vc2">
+                    <rect key="frame" x="347.5" y="224.5" width="63.5" height="36.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guthaben:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbY-QV-2O1">
+                            <rect key="frame" x="0.0" y="0.0" width="63.5" height="16"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HGL-oB-daj">
+                            <rect key="frame" x="0.0" y="16" width="63.5" height="20.5"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="EmI-5V-Oed" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UcI-Sy-Q9f" secondAttribute="bottom" constant="4" id="0UP-f2-pbC"/>
                 <constraint firstItem="BYQ-0z-Kfw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="0gf-mm-Pih"/>
+                <constraint firstItem="MDN-wp-Vc2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BYQ-0z-Kfw" secondAttribute="trailing" constant="8" id="0hS-Wd-QoR"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BYQ-0z-Kfw" secondAttribute="bottom" constant="14" id="1j5-ni-Km5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MDN-wp-Vc2" secondAttribute="trailing" constant="14" id="8ad-6h-M2I"/>
                 <constraint firstItem="gjQ-KK-1t7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EOb-pC-Ty7" secondAttribute="bottom" constant="8" id="9tW-Ri-wnI"/>
                 <constraint firstItem="BYQ-0z-Kfw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EmI-5V-Oed" secondAttribute="bottom" constant="4" id="Abx-L1-cTQ"/>
                 <constraint firstItem="gjQ-KK-1t7" firstAttribute="firstBaseline" secondItem="UcI-Sy-Q9f" secondAttribute="baseline" constant="20" symbolType="layoutAnchor" id="E84-or-Yqa"/>
                 <constraint firstItem="gjQ-KK-1t7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UcI-Sy-Q9f" secondAttribute="trailing" constant="4" id="GVz-hM-5ci"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BYQ-0z-Kfw" secondAttribute="trailing" constant="14" id="MPr-eG-WFn"/>
                 <constraint firstItem="712-yQ-X3v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="Oku-V8-xlr"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EOb-pC-Ty7" secondAttribute="trailing" constant="14" id="RJr-rm-q8V"/>
                 <constraint firstItem="EmI-5V-Oed" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gjQ-KK-1t7" secondAttribute="bottom" constant="4" id="SYw-jP-kJ3"/>
                 <constraint firstItem="UcI-Sy-Q9f" firstAttribute="leading" secondItem="712-yQ-X3v" secondAttribute="trailing" constant="4" id="Vap-d7-Ta6"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MDN-wp-Vc2" secondAttribute="bottom" constant="14" id="ZaD-b9-UqM"/>
                 <constraint firstItem="EOb-pC-Ty7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UcI-Sy-Q9f" secondAttribute="trailing" constant="4" id="a1X-Gq-0V7"/>
                 <constraint firstItem="EOb-pC-Ty7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="a46-RB-zHb"/>
                 <constraint firstItem="712-yQ-X3v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="d94-A6-wA9"/>
                 <constraint firstItem="UcI-Sy-Q9f" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="g7S-fn-AeW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EmI-5V-Oed" secondAttribute="trailing" constant="14" id="gKs-rh-TYo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gjQ-KK-1t7" secondAttribute="trailing" constant="14" id="jnx-ZT-8Ad"/>
+                <constraint firstItem="MDN-wp-Vc2" firstAttribute="top" secondItem="EmI-5V-Oed" secondAttribute="bottom" constant="4" id="jxk-87-x3N"/>
                 <constraint firstItem="EmI-5V-Oed" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="riv-Lz-EUv"/>
                 <constraint firstItem="EmI-5V-Oed" firstAttribute="top" secondItem="712-yQ-X3v" secondAttribute="bottom" constant="4" id="t2H-k7-eQi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="balanceLabel" destination="HGL-oB-daj" id="2nz-2P-swH"/>
                 <outlet property="birthdayLabel" destination="1xr-gI-1P2" id="PeE-wl-nbk"/>
                 <outlet property="chipNrLabel" destination="gjQ-KK-1t7" id="zLz-0d-g2V"/>
                 <outlet property="courseOfStudiesLabel" destination="EmI-5V-Oed" id="xW5-Rt-umm"/>
