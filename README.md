@@ -33,9 +33,9 @@ You're welcome to contribute to this app!
 Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
 ## Publishing a new version
-- You can use _fastlane snapshot_ to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the AutomatedScreenshots.swift test
-- App Store metadata is managed in the directory _fastlane/metadata/_. Go edit those and they'll be updated on the store with the next release
-- Members of the Apple Developer Team of this app can run _fastlane deliver_ to update the metadata on iTunes Connect (run _fastlane deliver init_ first)
+- You can use `fastlane snapshot` to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the [`AutomatedScreenshots.swift`](./AutomatedScreenshots/AutomatedScreenshots.swift) test
+- App Store metadata is managed in the directory [`fastlane/metadata/`](./fastlane/metadata). Go edit those and they'll be updated on the store with the next release
+- Members of the Apple Developer Team of this app can run `fastlane deliver` to update the metadata on iTunes Connect (run `fastlane deliver init` first)
 
 ## Beta
 If you want to participate in the beta of this app, enter your details [here](https://beta.tumcampusapp.de) to get invited via TestFlight.
