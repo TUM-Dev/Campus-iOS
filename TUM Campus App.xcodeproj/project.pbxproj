@@ -15,6 +15,12 @@
 		2277E91D21D93C3400D7FF3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91B21D93C3400D7FF3F /* LaunchScreen.storyboard */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
+		22B00ADF21D9400700E65C86 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B00ADE21D9400700E65C86 /* Alamofire.framework */; };
+		22B00AE821D940A100E65C86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AE721D940A100E65C86 /* User.swift */; };
+		22B00AEA21D940DC00E65C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AE921D940DC00E65C86 /* Constants.swift */; };
+		22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEB21D9436F00E65C86 /* APIs.swift */; };
+		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
+		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
+		22B00ADE21D9400700E65C86 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
+		22B00AE721D940A100E65C86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		22B00AE921D940DC00E65C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		22B00AEB21D9436F00E65C86 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
+		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B00ADF21D9400700E65C86 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +97,7 @@
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
+				22B00ADD21D93F5E00E65C86 /* Frameworks */,
 				2277E90D21D93C3300D7FF3F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -102,12 +116,16 @@
 			isa = PBXGroup;
 			children = (
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
+				22B00AE921D940DC00E65C86 /* Constants.swift */,
+				22B00AEB21D9436F00E65C86 /* APIs.swift */,
+				22B00AE621D9409600E65C86 /* Login */,
 				2277E91121D93C3300D7FF3F /* ViewController.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91B21D93C3400D7FF3F /* LaunchScreen.storyboard */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
+				22B00AED21D9445300E65C86 /* Extensions.swift */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -130,6 +148,23 @@
 			path = "TUM Campus AppUITests";
 			sourceTree = "<group>";
 		};
+		22B00ADD21D93F5E00E65C86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22B00ADE21D9400700E65C86 /* Alamofire.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		22B00AE621D9409600E65C86 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
+				22B00AE721D940A100E65C86 /* User.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +173,7 @@
 			buildConfigurationList = 2277E93721D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUM Campus App" */;
 			buildPhases = (
 				2277E90821D93C3300D7FF3F /* Sources */,
+				22B00ADA21D93EAB00E65C86 /* ShellScript */,
 				2277E90921D93C3300D7FF3F /* Frameworks */,
 				2277E90A21D93C3300D7FF3F /* Resources */,
 			);
@@ -256,13 +292,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		22B00ADA21D93EAB00E65C86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework\n",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2277E90821D93C3300D7FF3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
+				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
+				22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */,
+				22B00AE821D940A100E65C86 /* User.swift in Sources */,
+				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				2277E91221D93C3300D7FF3F /* ViewController.swift in Sources */,
+				22B00AEA21D940DC00E65C86 /* Constants.swift in Sources */,
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +503,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -459,6 +526,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
