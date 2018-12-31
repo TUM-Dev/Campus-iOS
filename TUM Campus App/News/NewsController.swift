@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  NewsController.swift
 //  TUM Campus App
 //
 //  Created by Tim Gymnich on 12/30/18.
@@ -9,6 +9,10 @@
 import Foundation
 
 
-struct User {
-    var token: String
+class NewsController {
+    
+    func fetchNews() {
+        
+    }
+    
 }

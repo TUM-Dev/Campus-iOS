@@ -101,14 +101,14 @@ struct TUMOnlineAPI: API {
     static let baseURL = "https://campus.tum.de/tumonline"
     static var user: User?
     
-    static var baseQueries: [String : String] {
-        guard let token = user?.token else {
-            return [:]
-        }
-        return [
-            "pToken": token,
-        ]
-    }
+//    static var baseQueries: [String : String] {
+//        guard let token = user?.token else {
+//            return [:]
+//        }
+//        return [
+//            "pToken": token,
+//        ]
+//    }
     
     static let baseHeaders = ["User-Agent": Bundle.main.userAgent]
 }

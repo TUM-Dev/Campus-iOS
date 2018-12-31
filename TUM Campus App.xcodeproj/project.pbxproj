@@ -16,11 +16,13 @@
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		22B00ADF21D9400700E65C86 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B00ADE21D9400700E65C86 /* Alamofire.framework */; };
-		22B00AE821D940A100E65C86 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AE721D940A100E65C86 /* User.swift */; };
 		22B00AEA21D940DC00E65C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AE921D940DC00E65C86 /* Constants.swift */; };
 		22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEB21D9436F00E65C86 /* APIs.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
+		22B00AF221D94D5100E65C86 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* UserController.swift */; };
+		22B00AF521D94DBD00E65C86 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF421D94DBD00E65C86 /* NewsController.swift */; };
+		22B00AF921DA7AE800E65C86 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF821DA7AE800E65C86 /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,11 +59,13 @@
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
 		22B00ADE21D9400700E65C86 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
-		22B00AE721D940A100E65C86 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22B00AE921D940DC00E65C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22B00AEB21D9436F00E65C86 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		22B00AF121D94D5100E65C86 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		22B00AF421D94DBD00E65C86 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
+		22B00AF821DA7AE800E65C86 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				22B00AE921D940DC00E65C86 /* Constants.swift */,
 				22B00AEB21D9436F00E65C86 /* APIs.swift */,
 				22B00AE621D9409600E65C86 /* Login */,
+				22B00AF321D94D9800E65C86 /* News */,
 				2277E91121D93C3300D7FF3F /* ViewController.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
@@ -159,10 +164,19 @@
 		22B00AE621D9409600E65C86 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				22B00AF821DA7AE800E65C86 /* Credentials.swift */,
+				22B00AF121D94D5100E65C86 /* UserController.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
-				22B00AE721D940A100E65C86 /* User.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		22B00AF321D94D9800E65C86 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				22B00AF421D94DBD00E65C86 /* NewsController.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,13 +333,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B00AF221D94D5100E65C86 /* UserController.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
+				22B00AF921DA7AE800E65C86 /* Credentials.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
 				22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */,
-				22B00AE821D940A100E65C86 /* User.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				2277E91221D93C3300D7FF3F /* ViewController.swift in Sources */,
 				22B00AEA21D940DC00E65C86 /* Constants.swift in Sources */,
+				22B00AF521D94DBD00E65C86 /* NewsController.swift in Sources */,
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
