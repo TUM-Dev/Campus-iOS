@@ -15,14 +15,16 @@
 		2277E91D21D93C3400D7FF3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91B21D93C3400D7FF3F /* LaunchScreen.storyboard */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
-		22B00ADF21D9400700E65C86 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22B00ADE21D9400700E65C86 /* Alamofire.framework */; };
 		22B00AEA21D940DC00E65C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AE921D940DC00E65C86 /* Constants.swift */; };
 		22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEB21D9436F00E65C86 /* APIs.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
-		22B00AF221D94D5100E65C86 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* UserController.swift */; };
+		22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* LoginController.swift */; };
 		22B00AF521D94DBD00E65C86 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF421D94DBD00E65C86 /* NewsController.swift */; };
 		22B00AF921DA7AE800E65C86 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF821DA7AE800E65C86 /* Credentials.swift */; };
+		7D8F0A78E0CDBCB4F7800145 /* Pods_TUM_Campus_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0ACFDCDD4D501FB5E2D76E7 /* Pods_TUM_Campus_AppTests.framework */; };
+		A77050A0E2C7E73AD8F74EEA /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BF454732417257AD56D886 /* Pods_TUM_Campus_App.framework */; };
+		F2F9BF18FC6442907F8F84C5 /* Pods_TUM_Campus_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903BD4E29F3A330A45493C74 /* Pods_TUM_Campus_AppUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUM Campus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TUM Campus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91121D93C3300D7FF3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,14 +61,21 @@
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
-		22B00ADE21D9400700E65C86 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 		22B00AE921D940DC00E65C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22B00AEB21D9436F00E65C86 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		22B00AF121D94D5100E65C86 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		22B00AF121D94D5100E65C86 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22B00AF421D94DBD00E65C86 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		22B00AF821DA7AE800E65C86 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		903BD4E29F3A330A45493C74 /* Pods_TUM_Campus_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
+		BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		F0ACFDCDD4D501FB5E2D76E7 /* Pods_TUM_Campus_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7BF454732417257AD56D886 /* Pods_TUM_Campus_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B00ADF21D9400700E65C86 /* Alamofire.framework in Frameworks */,
+				A77050A0E2C7E73AD8F74EEA /* Pods_TUM_Campus_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D8F0A78E0CDBCB4F7800145 /* Pods_TUM_Campus_AppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F9BF18FC6442907F8F84C5 /* Pods_TUM_Campus_AppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,8 +113,9 @@
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
-				22B00ADD21D93F5E00E65C86 /* Frameworks */,
 				2277E90D21D93C3300D7FF3F /* Products */,
+				6DF447CCB464A697A5FBD43C /* Pods */,
+				AEF34E66FB4536FB02EEF379 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,19 +166,11 @@
 			path = "TUM Campus AppUITests";
 			sourceTree = "<group>";
 		};
-		22B00ADD21D93F5E00E65C86 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				22B00ADE21D9400700E65C86 /* Alamofire.framework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
 		22B00AE621D9409600E65C86 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				22B00AF821DA7AE800E65C86 /* Credentials.swift */,
-				22B00AF121D94D5100E65C86 /* UserController.swift */,
+				22B00AF121D94D5100E65C86 /* LoginController.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
 			);
 			path = Login;
@@ -179,6 +184,29 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		6DF447CCB464A697A5FBD43C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */,
+				0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */,
+				76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */,
+				C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */,
+				FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */,
+				BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEF34E66FB4536FB02EEF379 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7BF454732417257AD56D886 /* Pods_TUM_Campus_App.framework */,
+				F0ACFDCDD4D501FB5E2D76E7 /* Pods_TUM_Campus_AppTests.framework */,
+				903BD4E29F3A330A45493C74 /* Pods_TUM_Campus_AppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,10 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93721D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUM Campus App" */;
 			buildPhases = (
+				F1810613ABFB2B38652F661E /* [CP] Check Pods Manifest.lock */,
 				2277E90821D93C3300D7FF3F /* Sources */,
-				22B00ADA21D93EAB00E65C86 /* ShellScript */,
 				2277E90921D93C3300D7FF3F /* Frameworks */,
 				2277E90A21D93C3300D7FF3F /* Resources */,
+				5FF4381CE38E6BD1F13A6884 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -204,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93A21D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUM Campus AppTests" */;
 			buildPhases = (
+				12AADF1971257F4E5CEED866 /* [CP] Check Pods Manifest.lock */,
 				2277E91F21D93C3400D7FF3F /* Sources */,
 				2277E92021D93C3400D7FF3F /* Frameworks */,
 				2277E92121D93C3400D7FF3F /* Resources */,
@@ -222,6 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93D21D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUM Campus AppUITests" */;
 			buildPhases = (
+				FEDF82BAD40775E8AAE0B3EF /* [CP] Check Pods Manifest.lock */,
 				2277E92A21D93C3400D7FF3F /* Sources */,
 				2277E92B21D93C3400D7FF3F /* Frameworks */,
 				2277E92C21D93C3400D7FF3F /* Resources */,
@@ -307,24 +338,81 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22B00ADA21D93EAB00E65C86 /* ShellScript */ = {
+		12AADF1971257F4E5CEED866 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			outputFileListPaths = (
-			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework\n",
+				"$(DERIVED_FILE_DIR)/Pods-TUM Campus AppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5FF4381CE38E6BD1F13A6884 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Ono/Ono.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Ono.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1810613ABFB2B38652F661E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TUM Campus App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEDF82BAD40775E8AAE0B3EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TUM Campus AppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -333,7 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B00AF221D94D5100E65C86 /* UserController.swift in Sources */,
+				22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
 				22B00AF921DA7AE800E65C86 /* Credentials.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
@@ -515,6 +603,7 @@
 		};
 		2277E93821D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,6 +627,7 @@
 		};
 		2277E93921D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -561,6 +651,7 @@
 		};
 		2277E93B21D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -582,6 +673,7 @@
 		};
 		2277E93C21D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -603,6 +695,7 @@
 		};
 		2277E93E21D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -623,6 +716,7 @@
 		};
 		2277E93F21D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
