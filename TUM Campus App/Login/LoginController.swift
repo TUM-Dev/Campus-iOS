@@ -13,35 +13,31 @@ import KeychainAccess
 enum LoginError: Error {
     case missingToken
     case invalidToken
+    case unknown
 }
 
 class LoginController {
     
+    typealias Callback<T> = (Result<T>) -> ()
+    
+    private static var keychain = Keychain(service: "de.tum.tumonline")
     private(set) var tumID: String? {
-        get {
-            let keychain = Keychain(service: "de.tum.tumonline")
-            return keychain["tumID"]
-        }
+        get { return LoginController.keychain["tumID"] }
         set {
-            let keychain = Keychain(service: "de.tum.tumonline")
             if let newValue = newValue {
-                keychain["tumID"] = newValue
+                LoginController.keychain["tumID"] = newValue
             } else {
-                keychain["tumID"] = nil
+                LoginController.keychain["tumID"] = nil
             }
         }
     }
     private(set) var token: String? {
-        get {
-            let keychain = Keychain(service: "de.tum.tumonline")
-            return keychain["token"]
-        }
+        get { return LoginController.keychain["token"] }
         set {
-            let keychain = Keychain(service: "de.tum.tumonline")
             if let newValue = newValue {
-                keychain["token"] = newValue
+                LoginController.keychain["token"] = newValue
             } else {
-                keychain["token"] = nil
+                LoginController.keychain["token"] = nil
             }
         }
     }
@@ -50,24 +46,34 @@ class LoginController {
     }
     
     
-    func createToken(tumID: String) throws {
+    func createToken(tumID: String, callback: @escaping Callback<String>) {
         let tokenName = "TCA - \(UIDevice.current.name)"
         
         Alamofire.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName)).responseXML { xml in
-            guard let token = xml.value?["token"].element?.text else {
-//                return .failure(LoginError.invalidToken)
+            guard let newToken = xml.value?["token"].element?.text else {
+                callback(.failure(LoginError.invalidToken))
                 return
             }
+            
+            self.token = newToken
+            callback(.success(newToken))
         }
     }
     
-    func confirmToken() throws {
+    func confirmToken(callback: @escaping Callback<Bool>) {
         guard let token = token else {
-            throw LoginError.missingToken
+            callback(.failure(LoginError.missingToken))
+            return // Or maybe handle the error???
         }
         
         Alamofire.request(TUMOnlineAPI.tokenConfirmation(token: token)).responseXML { xml in
-            
+            if xml.value?["confirmed"].element?.text == "true" {
+                callback(.success(true))
+            } else if xml.value?["confirmed"].element?.text == "false" {
+                callback(.failure(LoginError.invalidToken))
+            } else {
+                callback(.failure(LoginError.unknown))
+            }
         }
     }
     

@@ -13,7 +13,10 @@ class CampusNavigationController: UINavigationController {
     var loginController: LoginController = LoginController()
     
     override func viewDidLoad() {
-        
+        // Decide what to do based on this result
+        loginController.confirmToken { result in
+            print(result)
+        }
     }
     
 }
