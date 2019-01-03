@@ -95,7 +95,7 @@ enum TUMOnlineEndpoint: String, APIEndpoint {
     case identify = "wbservicesbasic.id"
 }
 
-struct TUMOnlineAPI: API {
+struct TUMOnlineAPI2: API {
     typealias Endpoint = TUMOnlineEndpoint
     
     static let baseURL = "https://campus.tum.de/tumonline"
