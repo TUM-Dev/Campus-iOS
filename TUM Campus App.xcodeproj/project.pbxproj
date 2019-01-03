@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22008FB521DEC7ED000E5AF5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22008FB421DEC668000E5AF5 /* Login.storyboard */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
+		22008FB421DEC668000E5AF5 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "/Users/tim/Developer/iOS/TUM Campus App/Login/Login.storyboard"; sourceTree = "<absolute>"; };
 		2277E90C21D93C3300D7FF3F /* TUM Campus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TUM Campus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		22B00AE621D9409600E65C86 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				22008FB421DEC668000E5AF5 /* Login.storyboard */,
 				22B00AF121D94D5100E65C86 /* LoginController.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
 				22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */,
@@ -342,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22008FB521DEC7ED000E5AF5 /* Login.storyboard in Resources */,
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,

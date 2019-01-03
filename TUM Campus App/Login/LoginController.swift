@@ -90,4 +90,8 @@ class LoginController {
         token = nil
     }
     
+    func skipLogin() {
+        // save to keychain
+    }
+    
 }

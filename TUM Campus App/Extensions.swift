@@ -73,3 +73,18 @@ extension DataRequest {
 extension UIColor {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
 }
+
+extension UIButton {
+    /// Animate a button, adding effect of "something went wrong". Useful for login button for example.
+    func wiggle() {
+        let feedbackGenerator = UINotificationFeedbackGenerator()
+        let wiggleAnim = CABasicAnimation(keyPath: "position")
+        wiggleAnim.duration = 0.05
+        wiggleAnim.repeatCount = 5
+        wiggleAnim.autoreverses = true
+        wiggleAnim.fromValue = CGPoint(x: self.center.x - 4.0, y: self.center.y)
+        wiggleAnim.toValue = CGPoint(x: self.center.x + 4.0, y: self.center.y)
+        layer.add(wiggleAnim, forKey: "position")
+        feedbackGenerator.notificationOccurred(.error)
+    }
+}
