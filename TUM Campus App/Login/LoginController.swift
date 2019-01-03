@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import SwiftKeychainWrapper
+import KeychainAccess
 
 enum LoginError: Error {
     case missingToken
@@ -18,22 +18,30 @@ enum LoginError: Error {
 class LoginController {
     
     private(set) var tumID: String? {
-        get { return KeychainWrapper.standard.string(forKey: "tumID") }
+        get {
+            let keychain = Keychain(service: "de.tum.tumonline")
+            return keychain["tumID"]
+        }
         set {
+            let keychain = Keychain(service: "de.tum.tumonline")
             if let newValue = newValue {
-                KeychainWrapper.standard.set(newValue, forKey: "tumID")
+                keychain["tumID"] = newValue
             } else {
-                KeychainWrapper.standard.removeObject(forKey: "tumID")
+                keychain["tumID"] = nil
             }
         }
     }
     private(set) var token: String? {
-        get { return KeychainWrapper.standard.string(forKey: "token") }
+        get {
+            let keychain = Keychain(service: "de.tum.tumonline")
+            return keychain["token"]
+        }
         set {
+            let keychain = Keychain(service: "de.tum.tumonline")
             if let newValue = newValue {
-                KeychainWrapper.standard.set(newValue, forKey: "token")
+                keychain["token"] = newValue
             } else {
-                KeychainWrapper.standard.removeObject(forKey: "token")
+                keychain["token"] = nil
             }
         }
     }

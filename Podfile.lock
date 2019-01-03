@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (4.8.0)
-  - SwiftKeychainWrapper (3.2.0)
+  - KeychainAccess (3.1.2)
   - SWXMLHash (4.7.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
-  - SwiftKeychainWrapper (~> 3.2)
+  - KeychainAccess
   - SWXMLHash (~> 4.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - SwiftKeychainWrapper
+    - KeychainAccess
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: 9354747c95d2dd75f773c4e981b3c50c3e93c366
+PODFILE CHECKSUM: c43e4987e3724db6d6846c68880e657d5d7e22aa
 
 COCOAPODS: 1.5.3

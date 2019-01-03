@@ -7,7 +7,7 @@ target 'TUM Campus App' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'SWXMLHash', '~> 4.7'
-  pod 'SwiftKeychainWrapper', '~> 3.2'
+  pod 'KeychainAccess'
 
   target 'TUM Campus AppTests' do
     inherit! :search_paths
