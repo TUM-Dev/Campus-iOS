@@ -1,24 +1,24 @@
 PODS:
   - Alamofire (4.8.0)
-  - Ono (2.1.1)
+  - SwiftKeychainWrapper (3.2.0)
   - SWXMLHash (4.7.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
-  - Ono (~> 2.1)
+  - SwiftKeychainWrapper (~> 3.2)
   - SWXMLHash (~> 4.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - Ono
+    - SwiftKeychainWrapper
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  Ono: 13c25831a4a66b30df93bd1fa57cf70f13c62699
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: f5c9eea854d881e9f3120bc0c3b10c89db4cc6a6
+PODFILE CHECKSUM: 9354747c95d2dd75f773c4e981b3c50c3e93c366
 
 COCOAPODS: 1.5.3
