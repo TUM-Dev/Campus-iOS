@@ -6,24 +6,7 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
-import Foundation
 import Alamofire
-
-/*
- 
- case personSearch = "wbservicesbasic.personenSuche"
- case tokenRequest = "wbservicesbasic.requestToken"
- case tokenConfirmation = "wbservicesbasic.isTokenConfirmed"
- case tuitionStatus = "wbservicesbasic.studienbeitragsstatus"
- case calendar = "wbservicesbasic.kalender"
- case personDetails = "wbservicesbasic.personenDetails"
- case personalLectures = "wbservicesbasic.veranstaltungenEigene"
- case personalGrades = "wbservicesbasic.noten"
- case lectureSearch = "wbservicesbasic.veranstaltungenSuche"
- case lectureDetails = "wbservicesbasic.veranstaltungenDetails"
- case identify = "wbservicesbasic.id"
- 
- */
 
 
 enum TUMOnlineAPI: URLRequestConvertible {
@@ -94,8 +77,6 @@ enum TUMOnlineAPI: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pLVNr": lvNr])
         case let .identify(token):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
-        default:
-            break
         }
         
         return urlRequest
