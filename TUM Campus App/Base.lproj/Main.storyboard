@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9sV-Yv-lfS">
-                                <rect key="frame" x="8" y="128" width="359" height="76.5"/>
+                                <rect key="frame" x="8" y="122" width="359" height="76.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-blue" translatesAutoresizingMaskIntoConstraints="NO" id="uFc-Io-bQu">
                                         <rect key="frame" x="135" y="0.0" width="89" height="44.5"/>
@@ -86,8 +86,8 @@
                                     <constraint firstItem="uFc-Io-bQu" firstAttribute="width" secondItem="aId-nA-ZKf" secondAttribute="width" multiplier="1:3" id="uCg-9p-gtY"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hhs-Js-wMF">
-                                <rect key="frame" x="8" y="244.5" width="359" height="142.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="hhs-Js-wMF">
+                                <rect key="frame" x="8" y="238.5" width="359" height="174.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your TUM ID to get started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-6G-cjY">
                                         <rect key="frame" x="50" y="0.0" width="259" height="20.5"/>
@@ -96,7 +96,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="krB-t4-hqt">
-                                        <rect key="frame" x="99.5" y="28.5" width="160" height="30"/>
+                                        <rect key="frame" x="99.5" y="38.5" width="160" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ga" textAlignment="center" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wQH-pX-820">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
@@ -121,30 +121,48 @@
                                             <constraint firstAttribute="width" constant="160" id="CmU-5c-uqm"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-Ig-Mjw">
-                                        <rect key="frame" x="128.5" y="66.5" width="102" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Continue 🎓"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-Ig-Mjw" customClass="ShadowButton" customModule="TUM_Campus_App" customModuleProvider="target">
+                                        <rect key="frame" x="114.5" y="86.5" width="130" height="36"/>
+                                        <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="Ox9-AJ-enD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Continue 🎓">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="K2j-hu-wC3" kind="show" id="bMQ-Nc-K8M"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmE-gS-ZAI">
-                                        <rect key="frame" x="77.5" y="108.5" width="204" height="34"/>
+                                        <rect key="frame" x="77.5" y="140.5" width="204" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Continue without TUM ID"/>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="tower" translatesAutoresizingMaskIntoConstraints="NO" id="3Zk-xe-mX3">
+                                <rect key="frame" x="0.0" y="433" width="375" height="234"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3Zk-xe-mX3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hhs-Js-wMF" secondAttribute="bottom" constant="8" id="2ZH-yK-F8y"/>
                             <constraint firstItem="hhs-Js-wMF" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" constant="8" id="8mI-ri-h3J"/>
-                            <constraint firstItem="9sV-Yv-lfS" firstAttribute="top" secondItem="spu-6u-faN" secondAttribute="top" constant="64" id="IpB-UV-jSi"/>
+                            <constraint firstItem="9sV-Yv-lfS" firstAttribute="top" secondItem="spu-6u-faN" secondAttribute="top" constant="58" id="IpB-UV-jSi"/>
                             <constraint firstItem="spu-6u-faN" firstAttribute="trailing" secondItem="9sV-Yv-lfS" secondAttribute="trailing" constant="8" id="JEh-bi-PXm"/>
+                            <constraint firstItem="3Zk-xe-mX3" firstAttribute="bottom" secondItem="spu-6u-faN" secondAttribute="bottom" id="UZn-5g-ucF"/>
                             <constraint firstItem="9sV-Yv-lfS" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" constant="8" id="ZEv-TI-R8J"/>
                             <constraint firstItem="hhs-Js-wMF" firstAttribute="top" secondItem="9sV-Yv-lfS" secondAttribute="bottom" constant="40" id="ZkI-fZ-Z6X"/>
                             <constraint firstItem="spu-6u-faN" firstAttribute="trailing" secondItem="hhs-Js-wMF" secondAttribute="trailing" constant="8" id="j8M-SI-xJU"/>
+                            <constraint firstItem="3Zk-xe-mX3" firstAttribute="trailing" secondItem="spu-6u-faN" secondAttribute="trailing" id="pHK-FF-lHx"/>
+                            <constraint firstItem="3Zk-xe-mX3" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" id="ywb-Zw-TGX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="spu-6u-faN"/>
                     </view>
@@ -158,34 +176,30 @@
         <scene sceneID="0Qj-gh-3l6">
             <objects>
                 <viewController title="Authorize Token" id="K2j-hu-wC3" customClass="TokenConfirmationViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="UpX-AF-5s8">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="UpX-AF-5s8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiT-aA-pnO">
-                                <rect key="frame" x="118" y="475" width="139" height="30"/>
-                                <state key="normal" title="Check Authorization"/>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IOE-NU-A02">
-                                <rect key="frame" x="8" y="160" width="359" height="196"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="IOE-NU-A02">
+                                <rect key="frame" x="16" y="124" width="343" height="162"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="x7h-Zo-4Pw">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Di-so-gBT">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Di-so-gBT" customClass="CircularLabel" customModule="TUM_Campus_App" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="iba-OP-xRm"/>
+                                                    <constraint firstAttribute="height" constant="42" id="iba-OP-xRm"/>
                                                     <constraint firstAttribute="width" secondItem="2Di-so-gBT" secondAttribute="height" id="m88-Yb-jjY"/>
-                                                    <constraint firstAttribute="width" constant="60" id="rpY-9d-xi7"/>
+                                                    <constraint firstAttribute="width" constant="42" id="rpY-9d-xi7"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email and click on the link to confirm your token" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0y-pP-dw4">
-                                                <rect key="frame" x="76" y="9.5" width="283" height="41"/>
+                                                <rect key="frame" x="58" y="0.5" width="285" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -193,22 +207,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Fxc-Mz-jdJ">
-                                        <rect key="frame" x="0.0" y="68" width="359" height="60"/>
+                                        <rect key="frame" x="0.0" y="60" width="343" height="42"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiV-le-TK1">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiV-le-TK1" customClass="CircularLabel" customModule="TUM_Campus_App" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="Dda-pJ-B8v"/>
+                                                    <constraint firstAttribute="width" constant="42" id="Dda-pJ-B8v"/>
                                                     <constraint firstAttribute="width" secondItem="eiV-le-TK1" secondAttribute="height" id="ZUv-sp-01g"/>
-                                                    <constraint firstAttribute="height" constant="60" id="qnw-ry-ImQ"/>
+                                                    <constraint firstAttribute="height" constant="42" id="qnw-ry-ImQ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kr2-bA-ohh">
-                                                <rect key="frame" x="76" y="0.0" width="283" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Token Verwaltung" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kr2-bA-ohh">
+                                                <rect key="frame" x="58" y="0.0" width="285" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -216,22 +230,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="WA4-ni-E7K">
-                                        <rect key="frame" x="0.0" y="136" width="359" height="60"/>
+                                        <rect key="frame" x="0.0" y="120" width="343" height="42"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-Vh-VZn">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-Vh-VZn" customClass="CircularLabel" customModule="TUM_Campus_App" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
                                                 <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="60" id="0Zi-p7-N2Z"/>
-                                                    <constraint firstAttribute="height" constant="60" id="kAi-9t-GFV"/>
+                                                    <constraint firstAttribute="width" constant="42" id="0Zi-p7-N2Z"/>
+                                                    <constraint firstAttribute="height" constant="42" id="kAi-9t-GFV"/>
                                                     <constraint firstAttribute="width" secondItem="Q7E-Vh-VZn" secondAttribute="height" id="laY-c5-d8i"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwq-26-KgQ">
-                                                <rect key="frame" x="76" y="0.0" width="283" height="60"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click on the newly created Token and enable your desried permissions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwq-26-KgQ">
+                                                <rect key="frame" x="58" y="0.0" width="285" height="42"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -240,21 +254,36 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-TU-8ev" customClass="ShadowButton" customModule="TUM_Campus_App" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="599" width="200" height="48"/>
+                                <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="gB2-n1-wl2"/>
+                                    <constraint firstAttribute="height" constant="48" id="xnF-jv-A5c"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Check Authorization">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IOE-NU-A02" firstAttribute="top" secondItem="vj0-dQ-dZF" secondAttribute="top" constant="96" id="0Bb-Pl-DJI"/>
-                            <constraint firstItem="IOE-NU-A02" firstAttribute="leading" secondItem="vj0-dQ-dZF" secondAttribute="leading" constant="8" id="H4s-Np-dJM"/>
-                            <constraint firstItem="YiT-aA-pnO" firstAttribute="top" secondItem="IOE-NU-A02" secondAttribute="bottom" constant="119" id="Jbo-2u-Bvf"/>
-                            <constraint firstItem="vj0-dQ-dZF" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="YiT-aA-pnO" secondAttribute="bottom" constant="8" id="T1i-4L-afr"/>
-                            <constraint firstAttribute="trailing" secondItem="IOE-NU-A02" secondAttribute="trailing" constant="8" id="mQt-Ye-2Yg"/>
+                            <constraint firstItem="vj0-dQ-dZF" firstAttribute="bottom" secondItem="bEr-TU-8ev" secondAttribute="bottom" constant="20" id="BkP-va-2hf"/>
+                            <constraint firstItem="bEr-TU-8ev" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vj0-dQ-dZF" secondAttribute="leading" constant="16" id="J72-Q4-lFj"/>
+                            <constraint firstItem="IOE-NU-A02" firstAttribute="top" secondItem="vj0-dQ-dZF" secondAttribute="top" constant="60" id="LZr-8s-SYj"/>
+                            <constraint firstItem="vj0-dQ-dZF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bEr-TU-8ev" secondAttribute="trailing" constant="16" id="aGo-vy-cdM"/>
+                            <constraint firstItem="bEr-TU-8ev" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IOE-NU-A02" secondAttribute="bottom" constant="16" id="fRc-sx-bTu"/>
+                            <constraint firstItem="IOE-NU-A02" firstAttribute="leading" secondItem="vj0-dQ-dZF" secondAttribute="leading" constant="16" id="gJP-WH-JrA"/>
+                            <constraint firstItem="vj0-dQ-dZF" firstAttribute="trailing" secondItem="IOE-NU-A02" secondAttribute="trailing" constant="16" id="hUY-b1-0TG"/>
+                            <constraint firstItem="bEr-TU-8ev" firstAttribute="centerX" secondItem="UpX-AF-5s8" secondAttribute="centerX" id="tcM-pK-TyD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vj0-dQ-dZF"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDh-dU-dLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1156" y="-1084"/>
+            <point key="canvasLocation" x="-1156" y="-1084.4077961019491"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9wo-pQ-oAY">
@@ -294,5 +323,6 @@
     </scenes>
     <resources>
         <image name="logo-blue" width="53.759998321533203" height="28.319999694824219"/>
+        <image name="tower" width="221.27999877929688" height="234"/>
     </resources>
 </document>
