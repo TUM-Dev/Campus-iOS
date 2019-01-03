@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Ono
 import SWXMLHash
 import Alamofire
 
@@ -69,4 +68,8 @@ extension DataRequest {
             completionHandler: completionHandler
         )
     }
+}
+
+extension UIColor {
+    static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
 }
