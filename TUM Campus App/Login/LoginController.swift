@@ -8,43 +8,72 @@
 
 import UIKit
 import Alamofire
+import SwiftKeychainWrapper
+
+enum LoginError: Error {
+    case missingToken
+    case invalidToken
+}
 
 class LoginController {
     
-    func login() {
-        // Check if there is already a token...
-        // createToken()
-        // confirmToken()
-    }
-    
-    private func createToken() {
-        let tokenName = "TCA - \(UIDevice.current.name)"
-        let lrzID = "ga94zuh"
-        
-        Alamofire.request(TUMOnlineAPI.tokenRequest(tumID: lrzID, tokenName: tokenName)).responseXML { xml in
-            guard let token = xml.value?["token"].element?.text else {
-                return //Error
+    private(set) var tumID: String? {
+        get { return KeychainWrapper.standard.string(forKey: "tumID") }
+        set {
+            if let newValue = newValue {
+                KeychainWrapper.standard.set(newValue, forKey: "tumID")
+            } else {
+                KeychainWrapper.standard.removeObject(forKey: "tumID")
             }
         }
-                                                            
-        
-//        self.loginStarted(with: token)
-//        return self.confirm(token: token)
+    }
+    private(set) var token: String? {
+        get { return KeychainWrapper.standard.string(forKey: "token") }
+        set {
+            if let newValue = newValue {
+                KeychainWrapper.standard.set(newValue, forKey: "token")
+            } else {
+                KeychainWrapper.standard.removeObject(forKey: "token")
+            }
+        }
+    }
+    private(set) var key = {
+        //TOOD
     }
     
-    private func confirmToken() {
-        // confirm Token
-        // update Model
-        // fetchUserData()
+    
+    func createToken(tumID: String) throws {
+        let tokenName = "TCA - \(UIDevice.current.name)"
+        
+        Alamofire.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName)).responseXML { xml in
+            guard let token = xml.value?["token"].element?.text else {
+//                return .failure(LoginError.invalidToken)
+                return
+            }
+        }
+    }
+    
+    func confirmToken() throws {
+        guard let token = token else {
+            throw LoginError.missingToken
+        }
+        
+        Alamofire.request(TUMOnlineAPI.tokenConfirmation(token: token)).responseXML { xml in
+            
+        }
+    }
+    
+    func uploadKey() {
+        // TOOD
+    }
+    
+    func registerKey() {
+        // TOOD
     }
     
     func logout() {
-        // updateModel
+        tumID = nil
+        token = nil
     }
-    
-    func fetchUserData() {
-        
-    }
-    
     
 }
