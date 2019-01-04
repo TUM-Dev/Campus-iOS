@@ -251,6 +251,9 @@
                                 <state key="normal" title="Check Authorization">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didSelectCheckAuthorization:" destination="K2j-hu-wC3" eventType="touchUpInside" id="OsA-4v-sLG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -266,6 +269,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vj0-dQ-dZF"/>
                     </view>
+                    <connections>
+                        <outlet property="checkAuthorizationButton" destination="bEr-TU-8ev" id="aP4-4C-kOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDh-dU-dLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -55,17 +55,19 @@ class LoginViewController: UIViewController {
             switch result {
             case .success:
                 let storyboard = UIStoryboard(name: "Login", bundle: .main)
-                let confirmVC = storyboard.instantiateViewController(withIdentifier: "TokenConfirmationViewController")
+                guard let confirmVC = storyboard.instantiateViewController(withIdentifier: "TokenConfirmationViewController") as? TokenConfirmationViewController else { return }
+                confirmVC.loginController = self?.loginController
                 self?.navigationController?.pushViewController(confirmVC, animated: true)
             case .failure:
+                // TODO display error message
                 self?.continueButton.wiggle()
             }
         }
     }
     
     @IBAction func didSelectContinueWithoutTumID(_ sender: Any) {
-        // TODO write in Keychain that no login is used
-       self.dismiss(animated: true)
+        loginController?.skipLogin()
+        self.dismiss(animated: true)
     }
     
     

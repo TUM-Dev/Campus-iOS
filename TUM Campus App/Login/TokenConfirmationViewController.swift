@@ -10,6 +10,9 @@ import UIKit
 
 class TokenConfirmationViewController: UIViewController {
     
+    @IBOutlet weak var checkAuthorizationButton: ShadowButton!
+    
+    
     var loginController: LoginController?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -17,4 +20,16 @@ class TokenConfirmationViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
     }
     
+    @IBAction func didSelectCheckAuthorization(_ sender: Any) {
+        loginController?.confirmToken() { [weak self] result in
+            switch result {
+            case .success:
+                let feedbackGenerator = UINotificationFeedbackGenerator()
+                feedbackGenerator.notificationOccurred(.success)
+                self?.navigationController?.dismiss(animated: true)
+            case .failure:
+                self?.checkAuthorizationButton.wiggle()
+            }
+        }
+    }
 }
