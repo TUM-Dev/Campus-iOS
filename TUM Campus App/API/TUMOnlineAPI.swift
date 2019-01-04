@@ -8,7 +8,6 @@
 
 import Alamofire
 
-
 enum TUMOnlineAPI: URLRequestConvertible {
     case personSearch(token: String, search: String)
     case tokenRequest(tumID: String, tokenName: String?)
