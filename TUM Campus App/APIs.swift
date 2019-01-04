@@ -148,7 +148,7 @@ enum TUMCabeEndpoint: String, APIEndpoint {
     case mapImage = "roomfinder/room/map/{room}/{id}"
 }
 
-class TUMCabeAPI: API {
+class TUMCabeAPI2: API {
     typealias Endpoint = TUMCabeEndpoint
     
     static let baseURL = "https://app.tum.de/api/"
