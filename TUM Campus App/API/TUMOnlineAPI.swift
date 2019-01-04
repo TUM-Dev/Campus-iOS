@@ -33,17 +33,17 @@ enum TUMOnlineAPI: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .personSearch: return "wbservicesbasic.personenSuche"
-        case .tokenRequest: return "wbservicesbasic.requestToken"
-        case .tokenConfirmation: return "wbservicesbasic.isTokenConfirmed"
-        case .tuitionStatus: return "wbservicesbasic.studienbeitragsstatus"
-        case .calendar: return "wbservicesbasic.kalender"
-        case .personDetails: return "wbservicesbasic.personenDetails"
-        case .personalLectures: return "wbservicesbasic.veranstaltungenEigene"
-        case .personalGrades: return "wbservicesbasic.noten"
-        case .lectureSearch: return "wbservicesbasic.veranstaltungenSuche"
-        case .lectureDetails: return "wbservicesbasic.veranstaltungenDetails"
-        case .identify: return "wbservicesbasic.id"
+        case .personSearch:         return "wbservicesbasic.personenSuche"
+        case .tokenRequest:         return "wbservicesbasic.requestToken"
+        case .tokenConfirmation:    return "wbservicesbasic.isTokenConfirmed"
+        case .tuitionStatus:        return "wbservicesbasic.studienbeitragsstatus"
+        case .calendar:             return "wbservicesbasic.kalender"
+        case .personDetails:        return "wbservicesbasic.personenDetails"
+        case .personalLectures:     return "wbservicesbasic.veranstaltungenEigene"
+        case .personalGrades:       return "wbservicesbasic.noten"
+        case .lectureSearch:        return "wbservicesbasic.veranstaltungenSuche"
+        case .lectureDetails:       return "wbservicesbasic.veranstaltungenDetails"
+        case .identify:             return "wbservicesbasic.id"
         }
     }
     
