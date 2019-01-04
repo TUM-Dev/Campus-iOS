@@ -10,7 +10,8 @@ import UIKit
 
 class CampusTabBarController: UITabBarController {
     
-    var loginController: LoginController = LoginController()
+    let loginController: LoginController = LoginController()
+    lazy var coreDataStack = appDelegate.persistentContainer
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
