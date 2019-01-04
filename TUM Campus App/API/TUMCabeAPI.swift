@@ -12,7 +12,7 @@ import Alamofire
 enum TUMCabeAPI: URLRequestConvertible {
     case movie
     case cafeteria
-    case news(news: Any)
+    case news(news: String)
     case roomSearch(query: String)
     case roomMaps(room: String)
     case mapImage(room: String, id: String)
