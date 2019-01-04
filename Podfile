@@ -6,6 +6,8 @@ target 'TUM Campus App' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage', '~> 3.5'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'SWXMLHash', '~> 4.7'
   pod 'KeychainAccess'
 

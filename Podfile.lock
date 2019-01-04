@@ -1,24 +1,34 @@
 PODS:
   - Alamofire (4.8.0)
+  - AlamofireImage (3.5.0):
+    - Alamofire (~> 4.8)
+  - AlamofireNetworkActivityIndicator (2.3.0):
+    - Alamofire (~> 4.7)
   - KeychainAccess (3.1.2)
   - SWXMLHash (4.7.6)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - AlamofireImage (~> 3.5)
+  - AlamofireNetworkActivityIndicator (~> 2.2)
   - KeychainAccess
   - SWXMLHash (~> 4.7)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AlamofireImage
+    - AlamofireNetworkActivityIndicator
     - KeychainAccess
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
+  AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
 
-PODFILE CHECKSUM: c43e4987e3724db6d6846c68880e657d5d7e22aa
+PODFILE CHECKSUM: 6726aaf6480861ec6653d9477257dd5adb81a23e
 
 COCOAPODS: 1.5.3

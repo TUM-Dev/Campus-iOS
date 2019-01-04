@@ -17,8 +17,11 @@ class NewsImporter {
     }
     
     func fetchNews() {
-        Alamofire.request(TUMCabeAPI.news(news: "")).responseJSON { response in
-            response.value
+        Alamofire.request(TUMCabeAPI.news(news: "")).responseJSON { [weak self] response in
+            guard let self = self else { return }
+            guard let json = response.result.value as? [String: Any] else { return }
+            let news = News.init(entity: News.entity(), insertInto: self.context)
+            
         }
     }
 }

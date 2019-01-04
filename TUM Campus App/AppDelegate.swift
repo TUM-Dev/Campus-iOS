@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AlamofireNetworkActivityIndicator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .tumBlue
         UITabBar.appearance().tintColor = .tumBlue
         UIButton.appearance().tintColor = .tumBlue
+        
+        NetworkActivityIndicatorManager.shared.isEnabled = true
     }
 
     // MARK: - Core Data stack
