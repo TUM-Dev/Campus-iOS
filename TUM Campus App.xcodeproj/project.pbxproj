@@ -20,7 +20,7 @@
 		22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* LoginController.swift */; };
 		22B00AF521D94DBD00E65C86 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF421D94DBD00E65C86 /* NewsController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
-		22BC2CE021DE35FD00FF7C00 /* CampusNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CDF21DE35FD00FF7C00 /* CampusNavigationController.swift */; };
+		22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */; };
 		22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */; };
 		22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */; };
 		22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */; };
@@ -69,7 +69,7 @@
 		22B00AF121D94D5100E65C86 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22B00AF421D94DBD00E65C86 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
-		22BC2CDF21DE35FD00FF7C00 /* CampusNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusNavigationController.swift; sourceTree = "<group>"; };
+		22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTabBarController.swift; sourceTree = "<group>"; };
 		22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationViewController.swift; sourceTree = "<group>"; };
 		22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				22B00AFE21DD877300E65C86 /* API */,
 				22B00AE621D9409600E65C86 /* Login */,
 				22B00AF321D94D9800E65C86 /* News */,
-				22BC2CDF21DE35FD00FF7C00 /* CampusNavigationController.swift */,
+				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
@@ -461,7 +461,7 @@
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,
-				22BC2CE021DE35FD00FF7C00 /* CampusNavigationController.swift in Sources */,
+				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
 				22B00AF521D94DBD00E65C86 /* NewsController.swift in Sources */,
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 			);

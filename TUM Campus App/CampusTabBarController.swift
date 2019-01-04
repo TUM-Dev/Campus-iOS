@@ -1,5 +1,5 @@
 //
-//  CampusNavigationController.swift
+//  CampusTabBarController.swift
 //  TUM Campus App
 //
 //  Created by Tim Gymnich on 1/3/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CampusNavigationController: UINavigationController {
+class CampusTabBarController: UITabBarController {
     
     var loginController: LoginController = LoginController()
     
