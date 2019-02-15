@@ -17,11 +17,17 @@ class NewsImporter {
     }
     
     func fetchNews() {
-        Alamofire.request(TUMCabeAPI.news(news: "")).responseJSON { [weak self] response in
+        
+        let dateFormatter = DateFormatter.yyyyMMddhhmmss
+        Alamofire.request(TUMCabeAPI.news(news: "")).responseData { [weak self] response in
             guard let self = self else { return }
-            guard let json = response.result.value as? [String: Any] else { return }
-            let news = News.init(entity: News.entity(), insertInto: self.context)
-            
+            guard let data = response.data else { return }
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMddhhmmss)
+            decoder.userInfo[.context] = self.context
+            let x = try! decoder.decode([News].self, from: data)
+            print(x)
+            try! self.context.save()
         }
     }
 }

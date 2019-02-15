@@ -94,3 +94,16 @@ extension UIViewController {
         return UIApplication.shared.delegate as! AppDelegate
     }
 }
+
+extension CodingUserInfoKey {
+    static let context = CodingUserInfoKey(rawValue: "context")!
+}
+
+extension DateFormatter {
+    /// yyyy-MM-dd HH:mm:ss
+    static let yyyyMMddhhmmss: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+}

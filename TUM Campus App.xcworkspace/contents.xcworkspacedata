@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/tim/Developer/iOS/TUM Campus App/Login/Login.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:TUM Campus App.xcodeproj">
    </FileRef>
    <FileRef
