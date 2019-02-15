@@ -21,6 +21,8 @@ class LoginController {
     typealias Callback<T> = (Result<T>) -> ()
     
     private static var keychain = Keychain(service: "de.tum.tumonline")
+        .synchronizable(true)
+        .accessibility(.afterFirstUnlock)
     private(set) var tumID: String? {
         get { return LoginController.keychain["tumID"] }
         set {
