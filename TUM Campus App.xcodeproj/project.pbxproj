@@ -18,6 +18,7 @@
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		228BDD5F21E63B1000DB9061 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228BDD5E21E63AC400DB9061 /* Login.storyboard */; };
+		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEB21D9436F00E65C86 /* APIs.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
@@ -73,6 +74,7 @@
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
 		228BDD5E21E63AC400DB9061 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "/Users/tim/Developer/iOS/TUM Campus App/Login/Login.storyboard"; sourceTree = "<absolute>"; };
+		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		22B00AEB21D9436F00E65C86 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -190,8 +192,9 @@
 			isa = PBXGroup;
 			children = (
 				228BDD5E21E63AC400DB9061 /* Login.storyboard */,
-				22B00AF121D94D5100E65C86 /* LoginController.swift */,
 				22E5303B2217698300A29992 /* Credentials.swift */,
+				2294545C22198B25008E41B7 /* AuthenticationHandler.swift */,
+				22B00AF121D94D5100E65C86 /* LoginController.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
 				22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */,
 			);
@@ -496,6 +499,7 @@
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,
+				2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */,
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
