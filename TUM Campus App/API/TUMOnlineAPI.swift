@@ -82,7 +82,8 @@ enum TUMOnlineAPI: URLRequestConvertible {
         case let .personDetails(token, identNumber):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pIdentNr": identNumber])
         case let .personalLectures(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
+            return urlRequest
+//            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
         case let .personalGrades(token):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
         case let .lectureSearch(token, search):

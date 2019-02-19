@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-// XMLDecoder cannot use [Event].self so we have to wrap the events in Calendar.self
+// XMLDecoder cannot use [Event].self so we have to wrap the events in Calendar.self. This is probably a bug in parsing the root node.
 struct Calendar: Decodable {
     var events: [Event]
     
@@ -59,7 +59,7 @@ struct Calendar: Decodable {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let nr = try container.decodeIfPresent(Int64.self, forKey: .nr)
+        let nr = try container.decode(Int64.self, forKey: .nr)
         let status = try container.decode(String.self, forKey: .status)
         let url = try container.decode(String.self, forKey: .url)   // TODO: use URL instead of String
         let title = try container.decode(String.self, forKey: .title)
@@ -69,7 +69,7 @@ struct Calendar: Decodable {
         let location = try container.decode(String.self, forKey: .location)
         
         self.init(entity: Event.entity(), insertInto: context)
-        self.nr = nr ?? 3
+        self.nr = nr
         self.status = status
         self.url = url
         self.title = title

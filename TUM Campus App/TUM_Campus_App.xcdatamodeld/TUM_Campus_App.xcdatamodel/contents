@@ -15,6 +15,28 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Lecture" representedClassName=".Lecture" syncable="YES" codeGenerationType="category">
+        <attribute name="dauer_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="org_kennung_betreut" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="org_name_betreut" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="org_nr_betreut" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sj_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_lv_art_kurz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_lv_art_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_lv_nr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_sp_nr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_sp_sst" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stp_sp_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vortragende_mitwirkendew" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="stp_sp_nr"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="News" representedClassName=".News" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,16 +50,9 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="User" representedClassName=".User" syncable="YES" codeGenerationType="class">
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="tumID" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
         <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
-        <element name="User" positionX="-45" positionY="0" width="128" height="120"/>
+        <element name="Lecture" positionX="0" positionY="261" width="128" height="270"/>
     </elements>
 </model>
