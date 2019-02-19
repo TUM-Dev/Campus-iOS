@@ -56,7 +56,8 @@ class LoginController {
         switch credentials {
         case .none: callback(.failure(LoginError.missingToken))
         case .noTumID?: callback(.failure(LoginError.missingToken))
-        case .tumID(_, let token)?, .tumIDAndKey(_,let token, _)?:
+        case .tumID(_, let token)?,
+             .tumIDAndKey(_,let token, _)?:
             Alamofire.request(TUMOnlineAPI.tokenConfirmation(token: token)).responseXML { xml in
                 if xml.value?["confirmed"].element?.text == "true" {
                     callback(.success(true))
@@ -69,15 +70,40 @@ class LoginController {
         }
     }
     
-    func createKey() {
-        // TODO
+    func createKey() throws -> Data {
+//        let tag = "com.example.keys.mykey".data(using: .utf8)!
+        let attributes: [String: Any] =
+            [kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+             kSecAttrKeySizeInBits as String: 2048,
+//             kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: true,
+//                                             kSecAttrApplicationTag as String: tag]
+        ]
+        
+        var error: Unmanaged<CFError>?
+        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
+            throw error!.takeRetainedValue() as Error
+        }
+        
+        guard let cfdata = SecKeyCopyExternalRepresentation(privateKey, &error) else {
+            throw error!.takeRetainedValue() as Error
+        }
+        
+        let data = cfdata as Data
+        
+        switch credentials {
+        case .tumID(let tumID, let token)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
+        case .tumIDAndKey(let tumID, let token, _)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
+        default: break
+        }
+        
+        return data
     }
     
-    func uploadKey() {
-        // TOOD
+    func uploadKey(callback: @escaping Callback<Data>) {
+        let key = try? createKey()
     }
     
-    func registerKey() {
+    func registerKey(callback: @escaping Callback<Bool>) {
         // TOOD
     }
     
