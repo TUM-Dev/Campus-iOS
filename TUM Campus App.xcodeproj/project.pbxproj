@@ -11,6 +11,7 @@
 		223D12EB21DF898F0053305B /* NewsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EA21DF898F0053305B /* NewsImporter.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
 		223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12F021E014C60053305B /* NewsTableViewController.swift */; };
+		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -60,6 +61,7 @@
 		223D12EA21DF898F0053305B /* NewsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImporter.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		223D12F021E014C60053305B /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		22683D68221C5E0200C70883 /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUM Campus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TUM Campus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				22E5303E22176DDE00A29992 /* Event.swift */,
 				22E5304022176DE600A29992 /* CalendarImporter.swift */,
+				22683D68221C5E0200C70883 /* CalendarTableViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				223D12EB21DF898F0053305B /* NewsImporter.swift in Sources */,
 				22E5304122176DE600A29992 /* CalendarImporter.swift in Sources */,
 				22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */,
+				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,

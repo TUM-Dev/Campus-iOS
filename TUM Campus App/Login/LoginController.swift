@@ -39,9 +39,11 @@ class LoginController {
         }
     }
     
+    // TODO: Migrate data from old tum campus app
+    
     func createToken(tumID: String, callback: @escaping Callback<String>) {
         let tokenName = "TCA - \(UIDevice.current.name)"
-        
+                
         Alamofire.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName)).responseXML { xml in
             guard let newToken = xml.value?["token"].element?.text else {
                 callback(.failure(LoginError.invalidToken))

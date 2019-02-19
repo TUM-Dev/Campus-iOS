@@ -17,8 +17,6 @@ class NewsImporter {
     }
     
     func fetchNews() {
-        
-        let dateFormatter = DateFormatter.yyyyMMddhhmmss
         Alamofire.request(TUMCabeAPI.news(news: "")).responseData { [weak self] response in
             guard let self = self else { return }
             guard let data = response.data else { return }
