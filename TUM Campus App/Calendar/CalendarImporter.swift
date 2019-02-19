@@ -8,6 +8,7 @@
 
 import CoreData
 import Alamofire
+import XMLParsing
 
 class CalendarImporter {
     var context: NSManagedObjectContext
@@ -23,11 +24,16 @@ class CalendarImporter {
     }
     
     func fetchEvents() {
-        sessionManager.request(TUMOnlineAPI.calendar(token: "")).responseXML { [weak self] xml in
-            guard let strongSelf = self else { return }
-            let calendar = xml.value?["events"].children.first
-            print(calendar)
-            try! strongSelf.context.save()
+        sessionManager.request(TUMOnlineAPI.calendar(token: "")).responseData { [weak self] response in
+            guard let self = self else { return }
+            guard let data = response.data else { return }
+            let decoder = XMLDecoder()
+            decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMddhhmmss)
+            decoder.userInfo[.context] = self.context
+
+            let calendar = try! decoder.decode(Calendar.self, from: data)
+            print(calendar.events)
+            try! self.context.save()
         }
     }
 }

@@ -40,8 +40,8 @@ import CoreData
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
-
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         let id = try container.decode(String.self, forKey: .id)
         let sourceString = try container.decode(String.self, forKey: .source)
         guard let source = Int64(sourceString) else {
@@ -50,7 +50,7 @@ import CoreData
         let date = try container.decode(Date.self, forKey: .date)
         let title = try container.decode(String.self, forKey: .title)
         let link = try container.decode(String.self, forKey: .link)
-        let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
+        let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)    // TODO: use URL istead of String
         
         self.init(entity: News.entity(), insertInto: context)
         self.id = id

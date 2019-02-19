@@ -9,6 +9,7 @@ target 'TUM Campus App' do
   pod 'AlamofireImage', '~> 3.5'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   pod 'SWXMLHash', '~> 4.7'
+  pod 'XMLParsing', :git => 'https://github.com/ShawnMoore/XMLParsing.git'
   pod 'KeychainAccess'
 
   target 'TUM Campus AppTests' do

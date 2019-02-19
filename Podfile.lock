@@ -6,6 +6,7 @@ PODS:
     - Alamofire (~> 4.7)
   - KeychainAccess (3.1.2)
   - SWXMLHash (4.7.6)
+  - XMLParsing (0.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - KeychainAccess
   - SWXMLHash (~> 4.7)
+  - XMLParsing (from `https://github.com/ShawnMoore/XMLParsing.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,13 +24,23 @@ SPEC REPOS:
     - KeychainAccess
     - SWXMLHash
 
+EXTERNAL SOURCES:
+  XMLParsing:
+    :git: https://github.com/ShawnMoore/XMLParsing.git
+
+CHECKOUT OPTIONS:
+  XMLParsing:
+    :commit: 594272e4df40798c53ae1735ee65f3f387291670
+    :git: https://github.com/ShawnMoore/XMLParsing.git
+
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
   AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
+  XMLParsing: 085edb6fa22c71d6b53a79299f990a91e7414d19
 
-PODFILE CHECKSUM: 6726aaf6480861ec6653d9477257dd5adb81a23e
+PODFILE CHECKSUM: 3ed25fbbdc301a9c4e1121cd3a1760a86730d303
 
 COCOAPODS: 1.5.3

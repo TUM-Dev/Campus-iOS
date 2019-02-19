@@ -66,7 +66,7 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         
         switch urlString {
         case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.hasSuffix($0) }:
-            return try! URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
+            return try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
             // TODO
             fallthrough

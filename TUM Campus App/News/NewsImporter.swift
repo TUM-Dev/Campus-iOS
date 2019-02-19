@@ -23,8 +23,8 @@ class NewsImporter {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMddhhmmss)
             decoder.userInfo[.context] = self.context
-            let x = try! decoder.decode([News].self, from: data)
-            print(x)
+            let news = try! decoder.decode([News].self, from: data)
+            print(news)
             try! self.context.save()
         }
     }
