@@ -46,6 +46,20 @@ enum TUMOnlineAPI: URLRequestConvertible {
         }
     }
     
+    static var requiresAuth: [String] = [
+        "wbservicesbasic.personenSuche",
+        "wbservicesbasic.isTokenConfirmed",
+        "wbservicesbasic.studienbeitragsstatus",
+        "wbservicesbasic.kalender",
+        "wbservicesbasic.personenDetails",
+        "wbservicesbasic.veranstaltungenEigene",
+        "wbservicesbasic.noten",
+        "wbservicesbasic.veranstaltungenSuche",
+        "wbservicesbasic.veranstaltungenDetails",
+        "wbservicesbasic.id",
+        ]
+
+    
     // MARK: URLRequestConvertible
     
     func asURLRequest() throws -> URLRequest {
@@ -63,7 +77,8 @@ enum TUMOnlineAPI: URLRequestConvertible {
         case let .tuitionStatus(token):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
         case let .calendar(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
+            return urlRequest
+            /*urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])*/
         case let .personDetails(token, identNumber):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pIdentNr": identNumber])
         case let .personalLectures(token):

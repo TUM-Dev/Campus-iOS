@@ -42,6 +42,8 @@ enum TUMCabeAPI: URLRequestConvertible {
         }
     }
     
+    static var requiresAuth: [String] = []
+    
     func asURLRequest() throws -> URLRequest {
         let url = try TUMCabeAPI.baseURLString.asURL()
         let urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
