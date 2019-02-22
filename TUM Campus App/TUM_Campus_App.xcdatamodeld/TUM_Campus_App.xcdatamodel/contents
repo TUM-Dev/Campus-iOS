@@ -56,7 +56,24 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Movie" representedClassName=".Movie" syncable="YES" codeGenerationType="category">
+        <attribute name="actors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cover" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kino" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="movieDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="kino"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="News" representedClassName=".News" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -75,7 +92,7 @@
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
         <element name="Grade" positionX="0" positionY="306" width="128" height="210"/>
         <element name="Lecture" positionX="0" positionY="261" width="128" height="270"/>
-        <element name="Movie" positionX="0" positionY="306" width="128" height="60"/>
+        <element name="Movie" positionX="0" positionY="306" width="128" height="240"/>
         <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
     </elements>
 </model>

@@ -52,7 +52,7 @@ class MovieTableViewController: UITableViewController, EntityTableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
         let movie = fetchedResultsController.object(at: indexPath)
 
-//        cell.textLabel?.text = movie.title
+        cell.textLabel?.text = movie.title
         return cell
     }
     
