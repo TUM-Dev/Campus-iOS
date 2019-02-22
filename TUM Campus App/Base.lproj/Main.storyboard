@@ -155,11 +155,45 @@
                             <outlet property="delegate" destination="vxh-8B-OXt" id="BAH-LF-Bmn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="8aI-uv-X94"/>
+                    <navigationItem key="navigationItem" id="8aI-uv-X94">
+                        <barButtonItem key="rightBarButtonItem" title="Cafeteria" id="wmV-1j-rRn">
+                            <connections>
+                                <segue destination="fja-mh-vls" kind="show" id="q6d-nu-7kV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w5-I1-yL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="-17"/>
+        </scene>
+        <!--Cafeterias Table View Controller-->
+        <scene sceneID="W2H-jm-BMt">
+            <objects>
+                <tableViewController id="fja-mh-vls" customClass="CafeteriasTableViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3VK-u0-goi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CafeteriaCell" id="Sk8-Tb-GbQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sk8-Tb-GbQ" id="FEO-Gx-atc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fja-mh-vls" id="oSz-jC-1Av"/>
+                            <outlet property="delegate" destination="fja-mh-vls" id="nkc-UF-dc8"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awQ-b9-LmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1699" y="1"/>
         </scene>
         <!--Lectures-->
         <scene sceneID="db1-bO-zhV">

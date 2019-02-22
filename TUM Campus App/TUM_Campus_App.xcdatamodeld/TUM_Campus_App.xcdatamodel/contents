@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Cafeteria" representedClassName=".Cafeteria" syncable="YES" codeGenerationType="category">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mensa" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES" codeGenerationType="category">
         <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dtend" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -88,6 +100,34 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Person" representedClassName=".Person" syncable="YES" codeGenerationType="class">
+        <attribute name="bild_url" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="familienname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="geschlecht" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="obfuscated_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vorname" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="obfuscated_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Profile" representedClassName=".Profile" syncable="YES" codeGenerationType="category">
+        <attribute name="familienname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kennung" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscated_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscated_id_bedienstete" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscated_id_extern" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscated_id_studierende" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vorname" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="obfuscated_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES" codeGenerationType="category">
         <attribute name="frist" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="semester_bezeichnung" optional="YES" attributeType="String" syncable="YES"/>
@@ -106,5 +146,8 @@
         <element name="Movie" positionX="0" positionY="306" width="128" height="240"/>
         <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
         <element name="Tuition" positionX="9" positionY="315" width="128" height="105"/>
+        <element name="Profile" positionX="18" positionY="324" width="128" height="150"/>
+        <element name="Person" positionX="36" positionY="342" width="128" height="150"/>
+        <element name="Cafeteria" positionX="54" positionY="351" width="128" height="120"/>
     </elements>
 </model>
