@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import XMLParsing
 
-protocol Entity: Decodable, NSFetchRequestResult {}
+protocol Entity: Decodable, NSFetchRequestResult { }
 
 
 class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {

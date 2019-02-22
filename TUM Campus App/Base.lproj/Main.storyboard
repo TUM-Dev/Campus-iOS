@@ -32,11 +32,45 @@
                             <outlet property="delegate" destination="qk0-ED-wHP" id="ff4-9F-Dzo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="f0J-5Q-ByA"/>
+                    <navigationItem key="navigationItem" id="f0J-5Q-ByA">
+                        <barButtonItem key="rightBarButtonItem" title="Tuition" id="ilC-IW-wR3">
+                            <connections>
+                                <segue destination="PTS-bk-aYu" kind="show" id="MdY-2f-5r2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oid-Z5-e33" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="-682"/>
+        </scene>
+        <!--Tuition Table View Controller-->
+        <scene sceneID="wX2-Ub-9Yy">
+            <objects>
+                <tableViewController id="PTS-bk-aYu" customClass="TuitionTableViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hOY-lM-Tx9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TuitionCell" id="PTQ-AA-X4m">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PTQ-AA-X4m" id="MGE-nv-PRr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PTS-bk-aYu" id="oCV-T5-Gyu"/>
+                            <outlet property="delegate" destination="PTS-bk-aYu" id="kaz-2t-j9d"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ga0-bc-hjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="-674"/>
         </scene>
         <!--Campus Tab Bar Controller-->
         <scene sceneID="dN7-yR-w0Y">

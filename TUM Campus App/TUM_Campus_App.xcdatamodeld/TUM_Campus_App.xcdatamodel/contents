@@ -88,11 +88,23 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Tuition" representedClassName=".Tuition" syncable="YES" codeGenerationType="category">
+        <attribute name="frist" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="semester_bezeichnung" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="soll" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="semester_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <elements>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
         <element name="Grade" positionX="0" positionY="306" width="128" height="210"/>
         <element name="Lecture" positionX="0" positionY="261" width="128" height="270"/>
         <element name="Movie" positionX="0" positionY="306" width="128" height="240"/>
         <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
+        <element name="Tuition" positionX="9" positionY="315" width="128" height="105"/>
     </elements>
 </model>
