@@ -90,7 +90,7 @@ extension UIButton {
 }
 
 extension UIViewController {
-    var appDelegate:AppDelegate {
+    var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
 }
@@ -104,6 +104,12 @@ extension DateFormatter {
     static let yyyyMMddhhmmss: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+    /// "yyyy-MM-dd"
+    static let yyyyMMdd: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
 }

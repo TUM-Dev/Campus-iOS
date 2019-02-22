@@ -20,6 +20,13 @@ class LoginController {
     
     typealias Callback<T> = (Result<T>) -> ()
     
+    lazy var sessionManager: SessionManager = {
+        let manager = SessionManager()
+        manager.adapter = AuthenticationHandler(delegate: nil)
+        manager.retrier = AuthenticationHandler(delegate: nil)
+        return manager
+    }()
+    
     private static let keychain = Keychain(service: "de.tum.tumonline")
         .synchronizable(true)
         .accessibility(.afterFirstUnlock)
@@ -60,7 +67,7 @@ class LoginController {
         case .noTumID?: callback(.failure(LoginError.missingToken))
         case .tumID(_, let token)?,
              .tumIDAndKey(_,let token, _)?:
-            Alamofire.request(TUMOnlineAPI.tokenConfirmation(token: token)).responseXML { xml in
+            sessionManager.request(TUMOnlineAPI.tokenConfirmation).responseXML { xml in
                 if xml.value?["confirmed"].element?.text == "true" {
                     callback(.success(true))
                 } else if xml.value?["confirmed"].element?.text == "false" {
@@ -111,6 +118,7 @@ class LoginController {
     
     func logout() {
         credentials = nil
+        // delete user data!
     }
     
     func skipLogin() {

@@ -18,18 +18,18 @@ struct Calendar: Decodable {
     }
 }
 
-@objc class Event: NSManagedObject, Decodable {
+@objc class Event: NSManagedObject, Entity {
     
 /*
      <event>
-     <nr>886515989</nr>
-     <status>FT</status>
-     <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950369994</url>
-     <title>Programmoptimierung (IN2053) VI</title>
-     <description>fix; Abhaltung; </description>
-     <dtstart>2019-01-16 10:00:00</dtstart>
-     <dtend>2019-01-16 12:00:00</dtend>
-     <location>00.13.009A, Seminarraum (5613.EG.009A)</location>
+        <nr>886515989</nr>
+        <status>FT</status>
+        <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950369994</url>
+        <title>Programmoptimierung (IN2053) VI</title>
+        <description>fix; Abhaltung; </description>
+        <dtstart>2019-01-16 10:00:00</dtstart>
+        <dtend>2019-01-16 12:00:00</dtend>
+        <location>00.13.009A, Seminarraum (5613.EG.009A)</location>
      </event>
 */
 

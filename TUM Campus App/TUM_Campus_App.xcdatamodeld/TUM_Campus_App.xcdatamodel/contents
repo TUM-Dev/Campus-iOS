@@ -15,6 +15,24 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Grade" representedClassName=".Grade" syncable="YES" codeGenerationType="category">
+        <attribute name="datum" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="exam_typ_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lv_nummer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lv_semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lv_titel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pruefer_nachname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="st_studium_nr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studienbezeichnung" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studienidentifikator" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uninotenamekurz" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="lv_nummer"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Lecture" representedClassName=".Lecture" syncable="YES" codeGenerationType="category">
         <attribute name="dauer_info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="org_kennung_betreut" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +55,9 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Movie" representedClassName=".Movie" syncable="YES" codeGenerationType="category">
+        <attribute name="kino" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="News" representedClassName=".News" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -52,7 +73,9 @@
     </entity>
     <elements>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
-        <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
+        <element name="Grade" positionX="0" positionY="306" width="128" height="210"/>
         <element name="Lecture" positionX="0" positionY="261" width="128" height="270"/>
+        <element name="Movie" positionX="0" positionY="306" width="128" height="60"/>
+        <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
     </elements>
 </model>

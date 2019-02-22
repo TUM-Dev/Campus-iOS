@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class News: NSManagedObject, Decodable {
+@objc class News: NSManagedObject, Entity {
     
     /*
      "news": "513322",

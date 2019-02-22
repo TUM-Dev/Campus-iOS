@@ -9,17 +9,17 @@
 import Alamofire
 
 enum TUMOnlineAPI: URLRequestConvertible {
-    case personSearch(token: String, search: String)
+    case personSearch(search: String)
     case tokenRequest(tumID: String, tokenName: String?)
-    case tokenConfirmation(token: String)
-    case tuitionStatus(token: String)
-    case calendar(token: String)
-    case personDetails(token: String, identNumber: String)
-    case personalLectures(token: String)
-    case personalGrades(token: String)
-    case lectureSearch(token: String, search: String)
-    case lectureDetails(token: String, lvNr: String)
-    case identify(token: String)
+    case tokenConfirmation
+    case tuitionStatus
+    case calendar
+    case personDetails(identNumber: String)
+    case personalLectures
+    case personalGrades
+    case lectureSearch(search: String)
+    case lectureDetails(lvNr: String)
+    case identify
     
     static let baseURLString = "https://campus.tum.de/tumonline"
     
@@ -67,33 +67,20 @@ enum TUMOnlineAPI: URLRequestConvertible {
         var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
         
         switch self {
-        case let .personSearch(token, search):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pSuche": search])
+        case let .personSearch(search):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pSuche": search])
         case let .tokenRequest(tumID, tokenName):
             let tokenName = tokenName ?? "TCA - \(UIDevice.current.name)"
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pUsername" : tumID, "pTokenName" : tokenName])
-        case let .tokenConfirmation(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
-        case let .tuitionStatus(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
-        case let .calendar(token):
-            return urlRequest
-            /*urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])*/
-        case let .personDetails(token, identNumber):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pIdentNr": identNumber])
-        case let .personalLectures(token):
-            return urlRequest
-//            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
-        case let .personalGrades(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
-        case let .lectureSearch(token, search):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pSuche": search])
-        case let .lectureDetails(token, lvNr):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token, "pLVNr": lvNr])
-        case let .identify(token):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": token])
+        case let .personDetails(identNumber):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pIdentNr": identNumber])
+        case let .lectureSearch(search):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pSuche": search])
+        case let .lectureDetails(lvNr):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pLVNr": lvNr])
+        default:
+            break
         }
-        
         return urlRequest
     }
 }

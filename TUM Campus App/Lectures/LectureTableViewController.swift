@@ -8,19 +8,25 @@
 
 import UIKit
 import CoreData
+import XMLParsing
+import Alamofire
 
-class LecturesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+    typealias ImporterType = Importer<Lecture, Lectures, XMLDecoder>
+    var endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
+    lazy var importer = ImporterType(context: context, endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    lazy var coreDataStack = appDelegate.persistentContainer
-    var lectureImporter: LectureImporter?
-    var lectures: [Lecture] = []
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Lecture> = {
+    lazy var context: NSManagedObjectContext = {
+        let context = coreDataStack.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        return context
+    }()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Lecture> = {
         let fetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
-        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "semester_id", ascending: false)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -28,20 +34,17 @@ class LecturesTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        lectureImporter = LectureImporter(context: context)
-        lectureImporter?.fetchLectures()
+        importer.performFetch()
         try! fetchedResultsController.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         try! fetchedResultsController.performFetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let news = fetchedResultsController.fetchedObjects
-        return news?.count ?? 0
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,6 +56,4 @@ class LecturesTableViewController: UITableViewController, NSFetchedResultsContro
         return cell
     }
     
-    
 }
-

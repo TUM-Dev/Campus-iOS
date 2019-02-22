@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		22195063221C8CCC00169A2B /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195062221C8CCC00169A2B /* Lecture.swift */; };
-		22195065221C8CDD00169A2B /* LectureImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195064221C8CDD00169A2B /* LectureImporter.swift */; };
 		22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195066221C8CEA00169A2B /* LectureTableViewController.swift */; };
 		223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12E821DF82180053305B /* TUMCabeAPI.swift */; };
-		223D12EB21DF898F0053305B /* NewsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EA21DF898F0053305B /* NewsImporter.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
 		223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12F021E014C60053305B /* NewsTableViewController.swift */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
+		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
+		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
+		22692D9B221E1618002C5720 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9A221E1618002C5720 /* Grade.swift */; };
+		22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9E221E19F6002C5720 /* GradeTableViewController.swift */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -28,6 +30,8 @@
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* LoginController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
+		22B9D634222000F300854D55 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D633222000F300854D55 /* Movie.swift */; };
+		22B9D6382220024C00854D55 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6372220024C00854D55 /* MovieTableViewController.swift */; };
 		22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */; };
 		22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */; };
 		22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */; };
@@ -35,7 +39,6 @@
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* Event.swift */; };
-		22E5304122176DE600A29992 /* CalendarImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5304022176DE600A29992 /* CalendarImporter.swift */; };
 		7D8F0A78E0CDBCB4F7800145 /* Pods_TUM_Campus_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0ACFDCDD4D501FB5E2D76E7 /* Pods_TUM_Campus_AppTests.framework */; };
 		A77050A0E2C7E73AD8F74EEA /* Pods_TUM_Campus_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7BF454732417257AD56D886 /* Pods_TUM_Campus_App.framework */; };
 		F2F9BF18FC6442907F8F84C5 /* Pods_TUM_Campus_AppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903BD4E29F3A330A45493C74 /* Pods_TUM_Campus_AppUITests.framework */; };
@@ -61,13 +64,15 @@
 /* Begin PBXFileReference section */
 		0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 		22195062221C8CCC00169A2B /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
-		22195064221C8CDD00169A2B /* LectureImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureImporter.swift; sourceTree = "<group>"; };
 		22195066221C8CEA00169A2B /* LectureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureTableViewController.swift; sourceTree = "<group>"; };
 		223D12E821DF82180053305B /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
-		223D12EA21DF898F0053305B /* NewsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImporter.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		223D12F021E014C60053305B /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		22683D68221C5E0200C70883 /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
+		22692D95221DCE29002C5720 /* EntityImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
+		22692D97221E0F05002C5720 /* EntityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTableViewController.swift; sourceTree = "<group>"; };
+		22692D9A221E1618002C5720 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		22692D9E221E19F6002C5720 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUM Campus App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TUM Campus App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +93,8 @@
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AF121D94D5100E65C86 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
+		22B9D633222000F300854D55 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		22B9D6372220024C00854D55 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTabBarController.swift; sourceTree = "<group>"; };
 		22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationViewController.swift; sourceTree = "<group>"; };
 		22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,7 +102,6 @@
 		22D4FCD921DE713600DF1F4B /* ShadowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViews.swift; sourceTree = "<group>"; };
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		22E5304022176DE600A29992 /* CalendarImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarImporter.swift; sourceTree = "<group>"; };
 		76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		903BD4E29F3A330A45493C74 /* Pods_TUM_Campus_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,10 +144,27 @@
 			isa = PBXGroup;
 			children = (
 				22195062221C8CCC00169A2B /* Lecture.swift */,
-				22195064221C8CDD00169A2B /* LectureImporter.swift */,
 				22195066221C8CEA00169A2B /* LectureTableViewController.swift */,
 			);
 			path = Lectures;
+			sourceTree = "<group>";
+		};
+		22692D92221DCDF3002C5720 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				22692D95221DCE29002C5720 /* EntityImporter.swift */,
+				22692D97221E0F05002C5720 /* EntityTableViewController.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		22692D99221E15E9002C5720 /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				22692D9A221E1618002C5720 /* Grade.swift */,
+				22692D9E221E19F6002C5720 /* GradeTableViewController.swift */,
+			);
+			path = Grades;
 			sourceTree = "<group>";
 		};
 		2277E90321D93C3300D7FF3F = {
@@ -175,9 +198,12 @@
 				22D4FCD621DE6E0F00DF1F4B /* UI Components */,
 				22B00AFE21DD877300E65C86 /* API */,
 				22B00AE621D9409600E65C86 /* Login */,
+				22692D92221DCDF3002C5720 /* Entity */,
 				22B00AF321D94D9800E65C86 /* News */,
 				22E5303D22176DBE00A29992 /* Calendar */,
 				22195061221C8CB200169A2B /* Lectures */,
+				22692D99221E15E9002C5720 /* Grades */,
+				22B9D632222000E700854D55 /* Movie */,
 				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
@@ -224,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				223D12EE21E00B9E0053305B /* News.swift */,
-				223D12EA21DF898F0053305B /* NewsImporter.swift */,
 				223D12F021E014C60053305B /* NewsTableViewController.swift */,
 			);
 			path = News;
@@ -237,6 +262,15 @@
 				223D12E821DF82180053305B /* TUMCabeAPI.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		22B9D632222000E700854D55 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				22B9D633222000F300854D55 /* Movie.swift */,
+				22B9D6372220024C00854D55 /* MovieTableViewController.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 		22D4FCD621DE6E0F00DF1F4B /* UI Components */ = {
@@ -252,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				22E5303E22176DDE00A29992 /* Event.swift */,
-				22E5304022176DE600A29992 /* CalendarImporter.swift */,
 				22683D68221C5E0200C70883 /* CalendarTableViewController.swift */,
 			);
 			path = Calendar;
@@ -511,21 +544,24 @@
 				22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */,
+				22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */,
+				22692D9B221E1618002C5720 /* Grade.swift in Sources */,
 				223D12EF21E00B9E0053305B /* News.swift in Sources */,
 				22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
-				22195065221C8CDD00169A2B /* LectureImporter.swift in Sources */,
 				22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
-				223D12EB21DF898F0053305B /* NewsImporter.swift in Sources */,
-				22E5304122176DE600A29992 /* CalendarImporter.swift in Sources */,
 				22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */,
+				22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,
 				2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */,
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
+				22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */,
+				22B9D634222000F300854D55 /* Movie.swift in Sources */,
+				22B9D6382220024C00854D55 /* MovieTableViewController.swift in Sources */,
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 				22195063221C8CCC00169A2B /* Lecture.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,

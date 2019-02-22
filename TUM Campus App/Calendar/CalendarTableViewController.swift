@@ -8,50 +8,54 @@
 
 import UIKit
 import CoreData
+import XMLParsing
+import Alamofire
 
-class CalendarTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+    typealias ImporterType = Importer<Event,Calendar,XMLDecoder>
     
-    lazy var coreDataStack = appDelegate.persistentContainer
-    var calendarImporter: CalendarImporter?
-    var calendar: [Event] = []
-    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Event> = {
+    var endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
+    lazy var importer = ImporterType(context: context, endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    
+    lazy var context: NSManagedObjectContext = {
+        let context = coreDataStack.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        return context
+    }()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Event> = {
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
-        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dtstart", ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-        
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        calendarImporter = CalendarImporter(context: context)
-        calendarImporter?.fetchEvents()
+        importer.performFetch()
         try! fetchedResultsController.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         try! fetchedResultsController.performFetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let news = fetchedResultsController.fetchedObjects
-        return news?.count ?? 0
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
         let event = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = event.title
         
         return cell
     }
-    
     
 }
