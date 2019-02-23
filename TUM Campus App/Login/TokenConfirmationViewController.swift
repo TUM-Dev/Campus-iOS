@@ -13,7 +13,7 @@ class TokenConfirmationViewController: UIViewController {
     @IBOutlet weak var checkAuthorizationButton: ShadowButton!
     
     
-    var loginController: LoginController?
+    var loginController: AuthenticationHandler?
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true

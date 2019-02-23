@@ -27,7 +27,6 @@
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
-		22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* LoginController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
 		22B9D634222000F300854D55 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D633222000F300854D55 /* Movie.swift */; };
 		22B9D6382220024C00854D55 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6372220024C00854D55 /* MovieTableViewController.swift */; };
@@ -100,7 +99,6 @@
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		22B00AF121D94D5100E65C86 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
 		22B9D633222000F300854D55 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		22B9D6372220024C00854D55 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +259,6 @@
 				228BDD5E21E63AC400DB9061 /* Login.storyboard */,
 				22E5303B2217698300A29992 /* Credentials.swift */,
 				2294545C22198B25008E41B7 /* AuthenticationHandler.swift */,
-				22B00AF121D94D5100E65C86 /* LoginController.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
 				22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */,
 			);
@@ -596,7 +593,6 @@
 			files = (
 				22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */,
 				223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */,
-				22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */,
 				22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */,

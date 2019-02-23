@@ -17,13 +17,20 @@ protocol AuthenticationHandlerDelegate {
     func shouldActivateToken()
 }
 
-/// Handles authentication for both TUMOnline and TUMCabe
+/// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
 class AuthenticationHandler: RequestAdapter, RequestRetrier {
-    private typealias RefreshCompletion = (Result<String>) -> Void
+    typealias Completion = (Result<String>) -> Void
     private let lock = NSLock()
     private var isRefreshing = false
     private var requestsToRetry: [RequestRetryCompletion] = []
     var delegate: AuthenticationHandlerDelegate?
+    
+    lazy var sessionManager: SessionManager = {
+        let manager = SessionManager()
+        manager.adapter = AuthenticationHandler(delegate: nil)
+        manager.retrier = AuthenticationHandler(delegate: nil)
+        return manager
+    }()
     
     private static let keychain = Keychain(service: "de.tum.tumonline")
         .synchronizable(true)
@@ -53,6 +60,7 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     // MARK: - RequestAdapter
     
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
         guard let urlString = urlRequest.url?.absoluteString else { return urlRequest }
         var pToken: String
         
@@ -68,11 +76,13 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.hasSuffix($0) }:
             return try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
-            // TODO
-            fallthrough
-        default:
             return urlRequest
+        case urlString where urlString.hasPrefix(MVGAPI.baseURL):
+            urlRequest.addValue(MVGAPI.apiKey, forHTTPHeaderField: "X-MVG-Authorization-Key")
+        default:
+            break
         }
+        return urlRequest
     }
     
     // MARK: - RequestRetrier
@@ -148,9 +158,9 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         }
     }
     
-    // MARK: - Private - Refresh Tokens
+    // TODO: Migrate data from old tum campus app
     
-    private func createToken(tumID: String, completion: @escaping RefreshCompletion) {
+    func createToken(tumID: String, completion: @escaping Completion) {
         guard !isRefreshing else { return }
         isRefreshing = true
         let tokenName = "TCA - \(UIDevice.current.name)"
@@ -165,6 +175,70 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
             completion(.success(newToken))
             strongSelf.isRefreshing = false
         }
+    }
+    
+    func confirmToken(callback: @escaping (Result<Bool>) -> Void) {
+        switch credentials {
+        case .none: callback(.failure(LoginError.missingToken))
+        case .noTumID?: callback(.failure(LoginError.missingToken))
+        case .tumID(_, let token)?,
+             .tumIDAndKey(_,let token, _)?:
+            sessionManager.request(TUMOnlineAPI.tokenConfirmation).responseXML { xml in
+                if xml.value?["confirmed"].element?.text == "true" {
+                    callback(.success(true))
+                } else if xml.value?["confirmed"].element?.text == "false" {
+                    callback(.failure(LoginError.invalidToken))
+                } else {
+                    callback(.failure(LoginError.unknown))
+                }
+            }
+        }
+    }
+    
+    func createKey() throws -> Data {
+        //        let tag = "com.example.keys.mykey".data(using: .utf8)!
+        let attributes: [String: Any] =
+            [kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+             kSecAttrKeySizeInBits as String: 2048,
+             //             kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: true,
+                //                                             kSecAttrApplicationTag as String: tag]
+        ]
+        
+        var error: Unmanaged<CFError>?
+        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
+            throw error!.takeRetainedValue() as Error
+        }
+        
+        guard let cfdata = SecKeyCopyExternalRepresentation(privateKey, &error) else {
+            throw error!.takeRetainedValue() as Error
+        }
+        
+        let data = cfdata as Data
+        
+        switch credentials {
+        case .tumID(let tumID, let token)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
+        case .tumIDAndKey(let tumID, let token, _)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
+        default: break
+        }
+        
+        return data
+    }
+    
+    func uploadKey(callback: @escaping (Result<Data>) -> Void) {
+        let key = try? createKey()
+    }
+    
+    func registerKey(callback: @escaping (Result<Bool>) -> Void) {
+        // TOOD
+    }
+    
+    func logout() {
+        credentials = nil
+        // delete user data!
+    }
+    
+    func skipLogin() {
+        credentials = .noTumID
     }
     
     

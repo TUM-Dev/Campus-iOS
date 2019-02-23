@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var numbersTextField: UITextField!
     @IBOutlet weak var secondTextField: UITextField!
     
-    var loginController: LoginController?
+    var loginController: AuthenticationHandler?
     var tumID: String? {
         guard let firstText = firstTextField.text, let number = numbersTextField.text, let secondText = secondTextField.text else { return nil }
             return firstText + number + secondText
