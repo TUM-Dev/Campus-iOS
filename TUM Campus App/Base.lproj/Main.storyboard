@@ -70,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga0-bc-hjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1714" y="-674"/>
+            <point key="canvasLocation" x="1713" y="-682"/>
         </scene>
         <!--Campus Tab Bar Controller-->
         <scene sceneID="dN7-yR-w0Y">
@@ -193,7 +193,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awQ-b9-LmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1699" y="1"/>
+            <point key="canvasLocation" x="1713" y="-17"/>
         </scene>
         <!--Lectures-->
         <scene sceneID="db1-bO-zhV">

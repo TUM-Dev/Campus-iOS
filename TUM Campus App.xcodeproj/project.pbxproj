@@ -25,7 +25,6 @@
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		228BDD5F21E63B1000DB9061 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228BDD5E21E63AC400DB9061 /* Login.storyboard */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
-		22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEB21D9436F00E65C86 /* APIs.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00AF221D94D5100E65C86 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AF121D94D5100E65C86 /* LoginController.swift */; };
@@ -37,6 +36,9 @@
 		22B9D64322208BF300854D55 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64222208BF300854D55 /* Profile.swift */; };
 		22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6442220B36600854D55 /* Cafeteria.swift */; };
 		22B9D6472220B4A400854D55 /* CafeteriasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6462220B4A400854D55 /* CafeteriasTableViewController.swift */; };
+		22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */; };
+		22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */; };
+		22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64C2220BE4200854D55 /* MVGAPI.swift */; };
 		22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */; };
 		22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */; };
 		22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */; };
@@ -93,7 +95,6 @@
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
 		228BDD5E21E63AC400DB9061 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "/Users/tim/Developer/iOS/TUM Campus App/Login/Login.storyboard"; sourceTree = "<absolute>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
-		22B00AEB21D9436F00E65C86 /* APIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIs.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AF121D94D5100E65C86 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -105,6 +106,9 @@
 		22B9D64222208BF300854D55 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		22B9D6442220B36600854D55 /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		22B9D6462220B4A400854D55 /* CafeteriasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasTableViewController.swift; sourceTree = "<group>"; };
+		22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPI.swift; sourceTree = "<group>"; };
+		22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
+		22B9D64C2220BE4200854D55 /* MVGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
 		22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTabBarController.swift; sourceTree = "<group>"; };
 		22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationViewController.swift; sourceTree = "<group>"; };
 		22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -204,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
-				22B00AEB21D9436F00E65C86 /* APIs.swift */,
 				22D4FCD621DE6E0F00DF1F4B /* UI Components */,
 				22B00AFE21DD877300E65C86 /* API */,
 				22B00AE621D9409600E65C86 /* Login */,
@@ -273,6 +276,9 @@
 			children = (
 				22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */,
 				223D12E821DF82180053305B /* TUMCabeAPI.swift */,
+				22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */,
+				22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */,
+				22B9D64C2220BE4200854D55 /* MVGAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -592,7 +598,7 @@
 				22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */,
 				22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
-				22B00AEC21D9436F00E65C86 /* APIs.swift in Sources */,
+				22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */,
 				22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
@@ -608,8 +614,10 @@
 				22195063221C8CCC00169A2B /* Lecture.swift in Sources */,
 				22B9D6472220B4A400854D55 /* CafeteriasTableViewController.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
+				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
 				22E5303F22176DDE00A29992 /* Event.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
+				22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
