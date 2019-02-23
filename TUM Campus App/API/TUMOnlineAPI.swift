@@ -20,6 +20,7 @@ enum TUMOnlineAPI: URLRequestConvertible {
     case lectureSearch(search: String)
     case lectureDetails(lvNr: String)
     case identify
+    case secretUpload
     
     static let baseURLString = "https://campus.tum.de/tumonline"
     
@@ -43,6 +44,7 @@ enum TUMOnlineAPI: URLRequestConvertible {
         case .lectureSearch:        return "wbservicesbasic.veranstaltungenSuche"
         case .lectureDetails:       return "wbservicesbasic.veranstaltungenDetails"
         case .identify:             return "wbservicesbasic.id"
+        case .secretUpload:         return "wbservicesbasic.secretUpload"
         }
     }
     
