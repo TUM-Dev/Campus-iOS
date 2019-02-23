@@ -54,5 +54,8 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
         return cell
     }
     
-    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        tableView.reloadData()
+    }
+
 }
