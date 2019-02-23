@@ -11,6 +11,12 @@ import Alamofire
 import SWXMLHash
 import KeychainAccess
 
+enum LoginError: Error {
+    case missingToken
+    case invalidToken
+    case unknown
+}
+
 protocol AuthenticationHandlerDelegate {
     func shouldEnterTumID() -> String?
     func shouldEnableTokenPermissions()
