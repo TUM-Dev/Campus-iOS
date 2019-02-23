@@ -67,6 +67,20 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Menu" representedClassName=".Menu" syncable="YES" codeGenerationType="category">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mensa_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Movie" representedClassName=".Movie" syncable="YES" codeGenerationType="category">
         <attribute name="actors" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="cover" optional="YES" attributeType="URI" syncable="YES"/>
@@ -114,6 +128,19 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="Price" representedClassName=".Price" syncable="YES" codeGenerationType="category">
+        <attribute name="person_typ" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="preis" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="type_nr"/>
+                <constraint value="person_typ"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Profile" representedClassName=".Profile" syncable="YES" codeGenerationType="category">
         <attribute name="familienname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kennung" optional="YES" attributeType="String" syncable="YES"/>
@@ -125,6 +152,20 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="obfuscated_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SideDish" representedClassName=".SideDish" syncable="YES" codeGenerationType="category">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mensa_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+                <constraint value="date"/>
+                <constraint value="mensa_id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -141,13 +182,16 @@
     </entity>
     <elements>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
-        <element name="Grade" positionX="0" positionY="306" width="128" height="210"/>
-        <element name="Lecture" positionX="0" positionY="261" width="128" height="270"/>
-        <element name="Movie" positionX="0" positionY="306" width="128" height="240"/>
-        <element name="News" positionX="12.01171875" positionY="274.76953125" width="128" height="135"/>
-        <element name="Tuition" positionX="9" positionY="315" width="128" height="105"/>
-        <element name="Profile" positionX="18" positionY="324" width="128" height="150"/>
-        <element name="Person" positionX="36" positionY="342" width="128" height="150"/>
-        <element name="Cafeteria" positionX="54" positionY="351" width="128" height="120"/>
+        <element name="Grade" positionX="-22.85546875" positionY="358.3046875" width="128" height="210"/>
+        <element name="Lecture" positionX="-194.1875" positionY="332.53125" width="128" height="270"/>
+        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="240"/>
+        <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
+        <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
+        <element name="Profile" positionX="209.23828125" positionY="532.37109375" width="128" height="150"/>
+        <element name="Person" positionX="223.25390625" positionY="168.24609375" width="128" height="150"/>
+        <element name="Cafeteria" positionX="209.6796875" positionY="355.09765625" width="128" height="120"/>
+        <element name="Menu" positionX="18" positionY="396" width="128" height="150"/>
+        <element name="SideDish" positionX="27" positionY="405" width="128" height="120"/>
+        <element name="Price" positionX="36" positionY="414" width="128" height="120"/>
     </elements>
 </model>
