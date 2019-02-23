@@ -32,7 +32,7 @@ enum TUMDevAppAPI: URLRequestConvertible {
     static var requiresAuth: [String] = []
     
     func asURLRequest() throws -> URLRequest {
-        let url = try TUMOnlineAPI.baseURLString.asURL()
+        let url = try TUMDevAppAPI.baseURLString.asURL()
         var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
         
         switch self {

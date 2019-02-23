@@ -38,8 +38,8 @@ enum MVGAPI: URLRequestConvertible {
     static var requiresAuth: [String] = []
     
     func asURLRequest() throws -> URLRequest {
-        let url = try TUMOnlineAPI.baseURLString.asURL()
-        var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
+        let url = try MVGAPI.baseURL.asURL()
+        var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method)
         
         switch self {
             
