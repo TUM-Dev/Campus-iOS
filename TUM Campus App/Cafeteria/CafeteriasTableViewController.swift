@@ -10,16 +10,23 @@ import UIKit
 import CoreData
 import Alamofire
 
+struct MensaAPIResponse: Decodable {
+    var mensa_menu: [Menu]
+    var mensa_beilagen: [SideDish]
+    var mensa_preise: [Price]
+}
+
 class CafeteriasTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Cafeteria,[Cafeteria],JSONDecoder>
     var endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
     lazy var importer = ImporterType(context: context, endpoint: endpoint)
+    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(context: context, endpoint: TUMDevAppAPI.cafeterias, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     lazy var fetchedResultsController: NSFetchedResultsController<ImporterType.EntityType> = {
         let fetchRequest: NSFetchRequest<ImporterType.EntityType> = ImporterType.EntityType.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "mensa", ascending: false)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -34,6 +41,7 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.performFetch()
+        menuImporter.performFetch()
         try! fetchedResultsController.performFetch()
     }
     
@@ -51,6 +59,7 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
         let cafeteria = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = cafeteria.name
+        cell.detailTextLabel?.text = "\(cafeteria.menu?.count ?? 0) / \(cafeteria.sides?.count ?? 0)"
         return cell
     }
     

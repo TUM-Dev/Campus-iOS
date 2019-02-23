@@ -22,7 +22,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         let fetchRequest: NSFetchRequest<ImporterType.EntityType> = ImporterType.EntityType.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lv_semester", ascending: false)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
         fetchedResultsController.delegate = self
         
         return fetchedResultsController

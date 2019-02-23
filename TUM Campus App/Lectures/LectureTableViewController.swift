@@ -26,7 +26,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         let fetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "semester_id", ascending: false)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
         fetchedResultsController.delegate = self
         
         return fetchedResultsController

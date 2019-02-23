@@ -27,7 +27,7 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dtstart", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
         fetchedResultsController.delegate = self
         
         return fetchedResultsController

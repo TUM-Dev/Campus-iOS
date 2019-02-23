@@ -6,6 +6,8 @@
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mensa" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menu" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="cafeteria" inverseEntity="Menu" syncable="YES"/>
+        <relationship name="sides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SideDish" inverseName="cafeteria" inverseEntity="SideDish" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -39,6 +41,7 @@
         <attribute name="studienbezeichnung" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studienidentifikator" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uninotenamekurz" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="grade" inverseEntity="Lecture" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="lv_nummer"/>
@@ -61,6 +64,7 @@
         <attribute name="stp_sp_sst" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stp_sp_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vortragende_mitwirkendew" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="lecture" inverseEntity="Grade" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="stp_sp_nr"/>
@@ -75,6 +79,8 @@
         <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="menu" inverseEntity="Cafeteria" syncable="YES"/>
+        <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Price" inverseName="menus" inverseEntity="Price" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -134,6 +140,7 @@
         <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="price" inverseEntity="Menu" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="type_nr"/>
@@ -149,6 +156,7 @@
         <attribute name="obfuscated_id_extern" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="obfuscated_id_studierende" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vorname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="obfuscated_id"/>
@@ -161,6 +169,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="sides" inverseEntity="Cafeteria" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -181,17 +190,17 @@
         </uniquenessConstraints>
     </entity>
     <elements>
+        <element name="Cafeteria" positionX="156.2578125" positionY="367.41015625" width="128" height="148"/>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
-        <element name="Grade" positionX="-22.85546875" positionY="358.3046875" width="128" height="210"/>
-        <element name="Lecture" positionX="-194.1875" positionY="332.53125" width="128" height="270"/>
+        <element name="Grade" positionX="-22.85546875" positionY="358.3046875" width="128" height="223"/>
+        <element name="Lecture" positionX="-194.1875" positionY="332.53125" width="128" height="283"/>
+        <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="178"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="240"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
+        <element name="Person" positionX="153.94921875" positionY="166.671875" width="128" height="150"/>
+        <element name="Price" positionX="533.71484375" positionY="418.29296875" width="128" height="133"/>
+        <element name="Profile" positionX="155.81640625" positionY="544.68359375" width="128" height="163"/>
+        <element name="SideDish" positionX="344.25390625" positionY="501.76953125" width="128" height="133"/>
         <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
-        <element name="Profile" positionX="209.23828125" positionY="532.37109375" width="128" height="150"/>
-        <element name="Person" positionX="223.25390625" positionY="168.24609375" width="128" height="150"/>
-        <element name="Cafeteria" positionX="209.6796875" positionY="355.09765625" width="128" height="120"/>
-        <element name="Menu" positionX="18" positionY="396" width="128" height="150"/>
-        <element name="SideDish" positionX="27" positionY="405" width="128" height="120"/>
-        <element name="Price" positionX="36" positionY="414" width="128" height="120"/>
     </elements>
 </model>

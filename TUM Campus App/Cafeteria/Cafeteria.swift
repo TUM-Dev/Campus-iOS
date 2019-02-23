@@ -56,12 +56,22 @@ import CoreData
         }
         let name = try container.decode(String.self, forKey: .name)
         
+        let menuFetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
+        menuFetchRequest.predicate = NSPredicate(format: "\(Menu.CodingKeys.mensa_id.rawValue) == %d", id)
+        let menu = try context.fetch(menuFetchRequest)
+        
+        let sidesFetchRequest: NSFetchRequest<SideDish> = SideDish.fetchRequest()
+        sidesFetchRequest.predicate = NSPredicate(format: "\(SideDish.CodingKeys.mensa_id.rawValue) == %d", id)
+        let sides = try context.fetch(sidesFetchRequest)
+        
         self.init(entity: Cafeteria.entity(), insertInto: context)
         self.id = id
         self.latitude = latitude
         self.longitude = longitude
         self.mensa = mensa
         self.name = name
+        self.menu = NSSet(array: menu)
+        self.sides = NSSet(array: sides)
     }
     
 }
