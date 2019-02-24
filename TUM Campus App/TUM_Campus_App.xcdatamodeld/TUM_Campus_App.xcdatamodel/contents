@@ -63,7 +63,7 @@
         <attribute name="stp_sp_nr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stp_sp_sst" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stp_sp_title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vortragende_mitwirkendew" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vortragende_mitwirkende" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="lecture" inverseEntity="Grade" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -101,6 +101,7 @@
         <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="movie" inverseEntity="TicketEvent" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="kino"/>
@@ -178,6 +179,85 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="StudyRoom" representedClassName=".StudyRoom" syncable="YES" codeGenerationType="category">
+        <attribute name="belegung_ab" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="belegung_bis" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="belegung_durch" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="belegung_fuer" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="belegung_in" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="gebaeude_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gebaeude_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gebaeude_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="raum_code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="raum_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="raum_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="raum_nr_architekt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="raum_nummer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoomAttribute" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="raeume" inverseEntity="StudyRoomGroup" syncable="YES"/>
+    </entity>
+    <entity name="StudyRoomAttribute" representedClassName=".StudyRoomAttribute" syncable="YES" codeGenerationType="class">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="StudyRoomGroup" representedClassName=".StudyRoomGroup" syncable="YES" codeGenerationType="category">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sortierung" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="raeume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom" syncable="YES"/>
+    </entity>
+    <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
+        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="file" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="kino" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="locality" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="news_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="ticket" inverseEntity="Movie" syncable="YES"/>
+        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="event_ticket" inverseEntity="TicketType" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="event"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TicketPayment" representedClassName="TicketPayment" syncable="YES" codeGenerationType="category">
+        <attribute name="maxTickets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minTickets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stripe_publishable_key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="terms" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ticket_type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="stripe_publishable_key"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TicketType" representedClassName=".TicketType" syncable="YES" codeGenerationType="category">
+        <attribute name="contingent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sold" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_payment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="event_ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="ticket_type" inverseEntity="TicketPayment" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="ticket_type"/>
+                <constraint value="event"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES" codeGenerationType="category">
         <attribute name="frist" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="semester_bezeichnung" optional="YES" attributeType="String" syncable="YES"/>
@@ -189,18 +269,30 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="TUMSexyLink" representedClassName=".TUMSexyLink" syncable="YES" codeGenerationType="category">
+        <attribute name="link_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moodle_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Cafeteria" positionX="156.2578125" positionY="367.41015625" width="128" height="148"/>
+        <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="148"/>
         <element name="Event" positionX="-18" positionY="153" width="128" height="165"/>
-        <element name="Grade" positionX="-22.85546875" positionY="358.3046875" width="128" height="223"/>
-        <element name="Lecture" positionX="-194.1875" positionY="332.53125" width="128" height="283"/>
+        <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
+        <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="283"/>
         <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="178"/>
-        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="240"/>
+        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="253"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
-        <element name="Person" positionX="153.94921875" positionY="166.671875" width="128" height="150"/>
-        <element name="Price" positionX="533.71484375" positionY="418.29296875" width="128" height="133"/>
-        <element name="Profile" positionX="155.81640625" positionY="544.68359375" width="128" height="163"/>
+        <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
+        <element name="Price" positionX="503.1015625" positionY="423.5625" width="128" height="133"/>
+        <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="163"/>
         <element name="SideDish" positionX="344.25390625" positionY="501.76953125" width="128" height="133"/>
         <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
+        <element name="TicketEvent" positionX="151.0546875" positionY="715.74609375" width="128" height="238"/>
+        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="178"/>
+        <element name="TicketPayment" positionX="319.5625" positionY="662.66796875" width="128" height="118"/>
+        <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
+        <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>
+        <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="75"/>
+        <element name="TUMSexyLink" positionX="162" positionY="369" width="128" height="88"/>
     </elements>
 </model>

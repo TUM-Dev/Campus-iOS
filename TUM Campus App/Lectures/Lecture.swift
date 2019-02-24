@@ -54,7 +54,7 @@ struct Lectures: Decodable {
      @NSManaged public var stp_sp_nr: String?
      @NSManaged public var stp_sp_sst: String?
      @NSManaged public var stp_sp_title: String?
-     @NSManaged public var vortragende_mitwirkendew: String?
+     @NSManaged public var vortragende_mitwirkende: String?
  */
     
     enum CodingKeys: String, CodingKey {
@@ -94,7 +94,11 @@ struct Lectures: Decodable {
         let stp_sp_nr = try container.decode(String.self, forKey: .stp_sp_nr)
         let stp_sp_sst = try container.decode(String.self, forKey: .stp_sp_sst)
         let stp_sp_title = try container.decode(String.self, forKey: .stp_sp_titel)
-        let vortragende_mitwirkendew = try container.decode(String.self, forKey: .vortragende_mitwirkende)
+        let vortragende_mitwirkende = try container.decode(String.self, forKey: .vortragende_mitwirkende)
+        
+        let gradeFetchRequest: NSFetchRequest<Grade> = Grade.fetchRequest()
+        gradeFetchRequest.predicate = NSPredicate(format: "\(Grade.CodingKeys.lv_nummer.rawValue) == %@", stp_lv_nr)
+        let grade = try context.fetch(gradeFetchRequest).first
         
         self.init(entity: Lecture.entity(), insertInto: context)
         self.dauer_info = dauer_info
@@ -111,7 +115,8 @@ struct Lectures: Decodable {
         self.stp_sp_nr = stp_sp_nr
         self.stp_sp_sst = stp_sp_sst
         self.stp_sp_title = stp_sp_title
-        self.vortragende_mitwirkendew = vortragende_mitwirkendew
+        self.vortragende_mitwirkende = vortragende_mitwirkende
+        self.grade = grade
     }
 
 }

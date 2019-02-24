@@ -82,6 +82,10 @@ struct Grades: Decodable {
         let studienbezeichnung = try container.decode(String.self, forKey: .studienbezeichnung)
         let studienidentifikator = try container.decode(String.self, forKey: .studienidentifikator)
         let uninotenamekurz = try container.decode(String.self, forKey: .uninotenamekurz)
+        
+        let lectureFetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
+        lectureFetchRequest.predicate = NSPredicate(format: "\(Lecture.CodingKeys.stp_lv_nr.rawValue) == %@", lv_nummer)
+        let lecture = try context.fetch(lectureFetchRequest).first
 
         self.init(entity: Grade.entity(), insertInto: context)
         self.datum = datum
@@ -95,5 +99,6 @@ struct Grades: Decodable {
         self.studienbezeichnung = studienbezeichnung
         self.studienidentifikator = studienidentifikator
         self.uninotenamekurz = uninotenamekurz
+        self.lecture = lecture
     }
 }
