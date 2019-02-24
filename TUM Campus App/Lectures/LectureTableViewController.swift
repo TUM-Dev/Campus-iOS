@@ -35,7 +35,6 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.performFetch()
-        try! fetchedResultsController.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +48,8 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath)
-        let lecture = fetchedResultsController.object(at: indexPath)
-        
+        guard let lecture = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+
         cell.textLabel?.text = lecture.stp_sp_title
         
         return cell

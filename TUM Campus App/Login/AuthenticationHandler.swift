@@ -68,18 +68,19 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
         guard let urlString = urlRequest.url?.absoluteString else { return urlRequest }
-        var pToken: String
+        var pToken: String?
         
         switch credentials {
         case .tumID(_, let token)?,
              .tumIDAndKey(_, let token, _)?:
             pToken = token
         default:
-            throw LoginError.missingToken
+            break
         }
         
         switch urlString {
         case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.hasSuffix($0) }:
+            guard let pToken = pToken else { throw LoginError.missingToken }
             return try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
             return urlRequest

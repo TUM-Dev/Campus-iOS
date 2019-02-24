@@ -37,7 +37,6 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.performFetch()
-        try! fetchedResultsController.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,8 +50,8 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        let event = fetchedResultsController.object(at: indexPath)
-        
+        guard let event = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+
         cell.textLabel?.text = event.title
         
         return cell

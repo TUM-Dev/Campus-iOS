@@ -11,17 +11,25 @@ import UIKit
 class CampusTabBarController: UITabBarController {
     
     lazy var coreDataStack = appDelegate.persistentContainer
-    
     let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loginController.confirmToken { [weak self] result in
-            switch result {
-            case .success:
-                break
-            case .failure:
-                self?.presentLoginViewController()
+        login()
+    }
+    
+    private func login() {
+        switch loginController.credentials {
+        case .none: self.presentLoginViewController()
+        case .noTumID?: break
+        case .tumID?, .tumIDAndKey?:
+            loginController.confirmToken { [weak self] result in
+                switch result {
+                case .success:
+                    break
+                case .failure:
+                    self?.presentLoginViewController()
+                }
             }
         }
     }

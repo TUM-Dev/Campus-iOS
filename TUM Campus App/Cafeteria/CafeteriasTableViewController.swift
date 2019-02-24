@@ -42,7 +42,6 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
         super.viewDidLoad()
         importer.performFetch()
         menuImporter.performFetch()
-        try! fetchedResultsController.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +55,8 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        let cafeteria = fetchedResultsController.object(at: indexPath)
-        
+        guard let cafeteria = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+
         cell.textLabel?.text = cafeteria.name
         cell.detailTextLabel?.text = "\(cafeteria.menu?.count ?? 0) / \(cafeteria.sides?.count ?? 0)"
         return cell

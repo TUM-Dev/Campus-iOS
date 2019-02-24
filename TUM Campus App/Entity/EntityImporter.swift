@@ -54,6 +54,7 @@ protocol ImporterProtocol: class {
 extension ImporterProtocol {
     func performFetch() {
         sessionManager.request(endpoint).responseData { [weak self] response in
+            guard response.error == nil else { return }
             guard let self = self else { return }
             guard let data = response.data else { return }
             let decoder = DecoderType.instantiate()
