@@ -18,7 +18,7 @@ struct Calendar: Decodable {
     }
 }
 
-@objc class Event: NSManagedObject, Entity {
+@objc final class Event: NSManagedObject, Entity {
     
 /*
      <event>

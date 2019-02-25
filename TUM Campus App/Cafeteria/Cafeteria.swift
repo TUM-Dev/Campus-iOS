@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-@objc class Cafeteria: NSManagedObject, Entity {
+@objc final class Cafeteria: NSManagedObject, Entity {
     
     /*
      {

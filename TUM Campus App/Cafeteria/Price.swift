@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class Price: NSManagedObject, Entity {
+@objc final class Price: NSManagedObject, Entity {
     
     /*
  

@@ -13,42 +13,28 @@ import Alamofire
 class NewsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<News,[News],JSONDecoder>
     
-    var endpoint: URLRequestConvertible = TUMCabeAPI.news(news: "")
-    lazy var importer = ImporterType(context: context, endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-
-    lazy var fetchedResultsController: NSFetchedResultsController<ImporterType.EntityType> = {
-        let fetchRequest: NSFetchRequest<ImporterType.EntityType> = ImporterType.EntityType.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
+    let endpoint: URLRequestConvertible = TUMCabeAPI.news(news: "")
+    lazy var importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    lazy var context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        return context
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! fetchedResultsController.performFetch()
+        try! importer.fetchedResultsController.performFetch()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        guard let article = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        guard let article = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.textLabel?.text = article.title
         

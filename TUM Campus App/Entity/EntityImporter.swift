@@ -11,13 +11,17 @@ import CoreData
 import Alamofire
 import XMLParsing
 
-protocol Entity: Decodable, NSFetchRequestResult { }
+protocol Entity: Decodable, NSFetchRequestResult {
+    static func fetchRequest() -> NSFetchRequest<Self>
+}
 
 
 class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
-    var context: NSManagedObjectContext
-    var endpoint: URLRequestConvertible
+    let endpoint: URLRequestConvertible
+    let sortDescriptors: [NSSortDescriptor]
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
+    weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
+    
     lazy var sessionManager: SessionManager = {
         let manager = SessionManager()
         manager.adapter = AuthenticationHandler(delegate: nil)
@@ -25,14 +29,30 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
         return manager
     }()
     
-    required init(context: NSManagedObjectContext, endpoint: URLRequestConvertible) {
-        self.context = context
+    lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
+        let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
+        fetchRequest.sortDescriptors = sortDescriptors
+
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = fetchedResultsControllerDelegate
+        
+        return fetchedResultsController
+    }()
+    
+    lazy var context: NSManagedObjectContext = {
+        let context = coreDataStack.newBackgroundContext()
+        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        return context
+    }()
+    
+    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...) {
         self.endpoint = endpoint
+        self.sortDescriptors = sortDescriptor
     }
     
-    required init(context: NSManagedObjectContext, endpoint: URLRequestConvertible, dateDecodingStrategy: DecoderType.DateDecodingStrategy) {
-        self.context = context
+    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy:  DecoderType.DateDecodingStrategy) {
         self.endpoint = endpoint
+        self.sortDescriptors = sortDescriptor
         self.dateDecodingStrategy = dateDecodingStrategy
     }
 }
@@ -42,13 +62,18 @@ protocol ImporterProtocol: class {
     associatedtype DecoderType: DecoderProtocol
     associatedtype EntityType: Entity
     associatedtype EntityContainer: Decodable
+    
     var context: NSManagedObjectContext { get }
+    var fetchedResultsController: NSFetchedResultsController<EntityType> { get }
+    var sortDescriptors: [NSSortDescriptor] { get }
     var sessionManager: SessionManager { get }
     var endpoint: URLRequestConvertible { get }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
+    
     func performFetch()
-    init(context: NSManagedObjectContext, endpoint: URLRequestConvertible)
-    init(context: NSManagedObjectContext, endpoint: URLRequestConvertible, dateDecodingStrategy:  DecoderType.DateDecodingStrategy)
+    
+    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...)
+    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy:  DecoderType.DateDecodingStrategy)
 }
 
 extension ImporterProtocol {
@@ -68,6 +93,8 @@ extension ImporterProtocol {
         }
     }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }
+    var appDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+    var coreDataStack: NSPersistentContainer { return appDelegate.persistentContainer }
 }
 
 protocol DecoderProtocol: class {
@@ -78,9 +105,7 @@ protocol DecoderProtocol: class {
     static func instantiate() -> Self
 }
 
-protocol DecodingStrategyProtocol {
-    
-}
+protocol DecodingStrategyProtocol { }
 
 extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 

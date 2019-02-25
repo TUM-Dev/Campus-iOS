@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class StudyRoom: NSManagedObject, Entity {
+@objc final class StudyRoom: NSManagedObject, Entity {
     
     enum CodingKeys: String, CodingKey {
         case no

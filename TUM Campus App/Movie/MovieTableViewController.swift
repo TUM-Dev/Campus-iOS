@@ -13,43 +13,28 @@ import Alamofire
 class MovieTableViewController: UITableViewController, EntityTableViewControllerProtocol {
    typealias ImporterType = Importer<Movie,[Movie],JSONDecoder>
     
-    var endpoint: URLRequestConvertible = TUMCabeAPI.movie
-
-    lazy var fetchedResultsController: NSFetchedResultsController<ImporterType.EntityType> = {
-        let fetchRequest: NSFetchRequest<ImporterType.EntityType> = ImporterType.EntityType.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
-    
-    lazy var importer: ImporterType = ImporterType(context: context, endpoint: endpoint, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
-    
-    lazy var context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        return context
-    }()
+    let endpoint: URLRequestConvertible = TUMCabeAPI.movie
+    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    lazy var importer: ImporterType = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! fetchedResultsController.performFetch()
+        try! importer.fetchedResultsController.performFetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        guard let movie = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        guard let movie = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.textLabel?.text = movie.title
         return cell

@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class Profile: NSManagedObject, Entity {
+@objc final class Profile: NSManagedObject, Entity {
     
     /*
      <row>

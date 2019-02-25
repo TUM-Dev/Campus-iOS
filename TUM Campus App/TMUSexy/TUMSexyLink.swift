@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class TUMSexyLink: NSManagedObject, Entity {
+@objc final class TUMSexyLink: NSManagedObject, Entity {
     
     enum CodingKeys: String, CodingKey {
         case no

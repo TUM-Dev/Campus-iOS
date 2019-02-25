@@ -9,7 +9,7 @@
 import CoreData
 
 
-class SideDish: NSManagedObject, Entity {
+@objc final class SideDish: NSManagedObject, Entity {
     
     /*
      {

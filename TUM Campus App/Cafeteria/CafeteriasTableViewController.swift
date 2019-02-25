@@ -18,44 +18,32 @@ struct MensaAPIResponse: Decodable {
 
 class CafeteriasTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Cafeteria,[Cafeteria],JSONDecoder>
-    var endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
-    lazy var importer = ImporterType(context: context, endpoint: endpoint)
-    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(context: context, endpoint: TUMDevAppAPI.cafeterias, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
-    lazy var fetchedResultsController: NSFetchedResultsController<ImporterType.EntityType> = {
-        let fetchRequest: NSFetchRequest<ImporterType.EntityType> = ImporterType.EntityType.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "mensa", ascending: false)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
+    let endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
+    let sortDescriptor = NSSortDescriptor(key: "mensa", ascending: false)
+    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
+    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(key: "date", ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
-    lazy var context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        return context
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
         menuImporter.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! fetchedResultsController.performFetch()
+        try! importer.fetchedResultsController.performFetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
-        guard let cafeteria = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        guard let cafeteria = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.textLabel?.text = cafeteria.name
         cell.detailTextLabel?.text = "\(cafeteria.menu?.count ?? 0) / \(cafeteria.sides?.count ?? 0)"

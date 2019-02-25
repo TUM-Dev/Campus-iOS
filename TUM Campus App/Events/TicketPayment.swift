@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class TicketPayment: NSManagedObject, Entity {
+@objc final class TicketPayment: NSManagedObject, Entity {
     
     enum CodingKeys: String, CodingKey {
         case no

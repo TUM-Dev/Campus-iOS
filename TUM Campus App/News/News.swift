@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class News: NSManagedObject, Entity {
+@objc final class News: NSManagedObject, Entity {
     
     /*
      "news": "513322",

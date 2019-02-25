@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc class Menu: NSManagedObject, Entity {
+@objc final class Menu: NSManagedObject, Entity {
     
     /*
      {

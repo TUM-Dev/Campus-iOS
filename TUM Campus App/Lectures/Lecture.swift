@@ -9,7 +9,7 @@
 import CoreData
 
 // XMLDecoder cannot use [Lecture].self so we have to wrap the lectues in Lectures. This is probably a bug in parsing the root node.
-struct Lectures: Decodable {
+struct LectureAPIResponse: Decodable {
     var lectures: [Lecture]
     
     enum CodingKeys: String, CodingKey {
@@ -17,7 +17,7 @@ struct Lectures: Decodable {
     }
 }
 
-@objc class Lecture: NSManagedObject, Entity {
+@objc final class Lecture: NSManagedObject, Entity {
     
     /*
      <row>

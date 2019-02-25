@@ -12,43 +12,31 @@ import XMLParsing
 import Alamofire
 
 class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
-    typealias ImporterType = Importer<Lecture, Lectures, XMLDecoder>
-    var endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
-    lazy var importer = ImporterType(context: context, endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    typealias ImporterType = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     
-    lazy var context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
-        return context
-    }()
+    let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
+    let sortDescriptor = NSSortDescriptor(key: "semester_id", ascending: false)
+    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Lecture> = {
-        let fetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "semester_id", ascending: false)]
-        
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: cellReuseID)
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! fetchedResultsController.performFetch()
+        try! importer.fetchedResultsController.performFetch()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath)
-        guard let lecture = fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.textLabel?.text = lecture.stp_sp_title
         

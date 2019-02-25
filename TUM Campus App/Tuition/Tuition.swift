@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class TuitionFees: Decodable {
+class TuitionAPIResponse: Decodable {
     var fees: [Tuition]
     
     enum CodingKeys: String, CodingKey {
@@ -19,7 +19,7 @@ class TuitionFees: Decodable {
 }
 
 
-@objc class Tuition: NSManagedObject, Entity {
+@objc final class Tuition: NSManagedObject, Entity {
     
     /*
      <row>
