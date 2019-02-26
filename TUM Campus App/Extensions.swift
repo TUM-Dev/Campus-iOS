@@ -113,3 +113,19 @@ extension DateFormatter {
         return formatter
     }()
 }
+
+extension SessionManager {
+    static var defaultSessionManager: SessionManager {
+        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: TUMCabeAPI.serverTrustPolicies))
+        manager.adapter = AuthenticationHandler(delegate: nil)
+        manager.retrier = AuthenticationHandler(delegate: nil)
+        return manager
+    }
+    
+    static func defaultSessionManager(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> SessionManager {
+        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: TUMCabeAPI.serverTrustPolicies))
+        manager.adapter = AuthenticationHandler(delegate: delegate)
+        manager.retrier = AuthenticationHandler(delegate: delegate)
+        return manager
+    }
+}

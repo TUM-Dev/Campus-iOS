@@ -15,6 +15,7 @@
 		224CB35B222568EC0002945A /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35A222568EC0002945A /* EventsTableViewController.swift */; };
 		224CB35D222571360002945A /* TicketImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35C222571360002945A /* TicketImporter.swift */; };
 		224CB35F222590660002945A /* StudyRoomGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */; };
+		224CB3632225A47C0002945A /* TUMCabe.cer in Resources */ = {isa = PBXBuildFile; fileRef = 224CB3622225A4000002945A /* TUMCabe.cer */; };
 		2258EDB422221DB70079C2ED /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB322221DB70079C2ED /* TicketType.swift */; };
 		2258EDB622221DCC0079C2ED /* TicketEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB522221DCC0079C2ED /* TicketEvent.swift */; };
 		2258EDB822221DE20079C2ED /* TicketPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB722221DE20079C2ED /* TicketPayment.swift */; };
@@ -89,6 +90,7 @@
 		224CB35A222568EC0002945A /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		224CB35C222571360002945A /* TicketImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketImporter.swift; sourceTree = "<group>"; };
 		224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupsTableViewController.swift; sourceTree = "<group>"; };
+		224CB3622225A4000002945A /* TUMCabe.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = TUMCabe.cer; sourceTree = "<group>"; };
 		2258EDB322221DB70079C2ED /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		2258EDB522221DCC0079C2ED /* TicketEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketEvent.swift; sourceTree = "<group>"; };
 		2258EDB722221DE20079C2ED /* TicketPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPayment.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			children = (
 				22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */,
 				223D12E821DF82180053305B /* TUMCabeAPI.swift */,
+				224CB3622225A4000002945A /* TUMCabe.cer */,
 				22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */,
 				22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */,
 				22B9D64C2220BE4200854D55 /* MVGAPI.swift */,
@@ -532,6 +535,7 @@
 				228BDD5F21E63B1000DB9061 /* Login.storyboard in Resources */,
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
+				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

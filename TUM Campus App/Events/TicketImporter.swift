@@ -20,12 +20,7 @@ class TicketImporter: ImporterProtocol {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
-    lazy var sessionManager: SessionManager = {
-        let manager = SessionManager()
-        manager.adapter = AuthenticationHandler(delegate: nil)
-        manager.retrier = AuthenticationHandler(delegate: nil)
-        return manager
-    }()
+    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
@@ -55,19 +50,22 @@ class TicketImporter: ImporterProtocol {
     }
     
     func performFetch() {
-        sessionManager.request(endpoint).responseData { [weak self] response in
-            guard response.error == nil else { return }
-            guard let self = self else { return }
-            guard let data = response.data else { return }
-            let decoder = DecoderType.instantiate()
-            decoder.userInfo[.context] = self.context
-            if let strategy = self.dateDecodingStrategy {
-                decoder.dateDecodingStrategy = strategy
-            }
-            let events = try! decoder.decode(EntityContainer.self, from: data)
-            try! self.context.save()
-            
-            self.fetchTickets(for: events)
+        sessionManager.request(endpoint)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: JSONDecoder.contentType)
+            .responseData { [weak self] response in
+                guard response.error == nil else { return }
+                guard let self = self else { return }
+                guard let data = response.data else { return }
+                let decoder = DecoderType.instantiate()
+                decoder.userInfo[.context] = self.context
+                if let strategy = self.dateDecodingStrategy {
+                    decoder.dateDecodingStrategy = strategy
+                }
+                let events = try! decoder.decode(EntityContainer.self, from: data)
+                try! self.context.save()
+                
+                self.fetchTickets(for: events)
         }
     }
     
@@ -76,14 +74,17 @@ class TicketImporter: ImporterProtocol {
         let events = (try? context.fetch(eventFetchRequest)) ?? []
         for event in events where event.ticketType == nil {
             context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-            sessionManager.request(TUMCabeAPI.ticketTypes(event: Int(event.event))).responseData { [weak self] response in
-                guard response.error == nil else { return }
-                guard let self = self else { return }
-                guard let data = response.data else { return }
-                let decoder = JSONDecoder()
-                decoder.userInfo[.context] = self.context
-                _ = try! decoder.decode([TicketType].self, from: data)
-                try! self.context.save()
+            sessionManager.request(TUMCabeAPI.ticketTypes(event: Int(event.event)))
+                .validate(statusCode: 200..<300)
+                .validate(contentType: JSONDecoder.contentType)
+                .responseData { [weak self] response in
+                    guard response.error == nil else { return }
+                    guard let self = self else { return }
+                    guard let data = response.data else { return }
+                    let decoder = JSONDecoder()
+                    decoder.userInfo[.context] = self.context
+                    _ = try! decoder.decode([TicketType].self, from: data)
+                    try! self.context.save()
             }
             context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
         }

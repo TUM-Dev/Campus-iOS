@@ -31,12 +31,7 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private var requestsToRetry: [RequestRetryCompletion] = []
     var delegate: AuthenticationHandlerDelegate?
     
-    lazy var sessionManager: SessionManager = {
-        let manager = SessionManager()
-        manager.adapter = AuthenticationHandler(delegate: nil)
-        manager.retrier = AuthenticationHandler(delegate: nil)
-        return manager
-    }()
+    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
     
     private static let keychain = Keychain(service: "de.tum.tumonline")
         .synchronizable(true)
@@ -101,9 +96,10 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         if let data = request.delegate.data {
             let xml = SWXMLHash.parse(data)
             
-            // TODO
             
             /*
+             TODO:
+             
              Decide if token is invalid or not authorized:
              
              <?xml version="1.0" encoding="utf-8"?>
@@ -172,7 +168,10 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         isRefreshing = true
         let tokenName = "TCA - \(UIDevice.current.name)"
         
-        Alamofire.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName)).responseXML { [weak self] xml in
+        sessionManager.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["text/xml"])
+            .responseXML { [weak self] xml in
             guard let strongSelf = self else { return }
             guard let newToken = xml.value?["token"].element?.text else {
                 completion(.failure(LoginError.invalidToken))
@@ -190,7 +189,10 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         case .noTumID?: callback(.failure(LoginError.missingToken))
         case .tumID(_, let token)?,
              .tumIDAndKey(_,let token, _)?:
-            sessionManager.request(TUMOnlineAPI.tokenConfirmation).responseXML { xml in
+            sessionManager.request(TUMOnlineAPI.tokenConfirmation)
+                .validate(statusCode: 200..<300)
+                .validate(contentType: ["text/xml"])
+                .responseXML { xml in
                 if xml.value?["confirmed"].element?.text == "true" {
                     callback(.success(true))
                 } else if xml.value?["confirmed"].element?.text == "false" {

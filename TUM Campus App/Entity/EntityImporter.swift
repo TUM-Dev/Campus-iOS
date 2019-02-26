@@ -22,12 +22,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
-    lazy var sessionManager: SessionManager = {
-        let manager = SessionManager()
-        manager.adapter = AuthenticationHandler(delegate: nil)
-        manager.retrier = AuthenticationHandler(delegate: nil)
-        return manager
-    }()
+    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
@@ -78,19 +73,20 @@ protocol ImporterProtocol: class {
 
 extension ImporterProtocol {
     func performFetch() {
-        sessionManager.request(endpoint).responseData { [weak self] response in
-            guard response.error == nil else { return }
-            guard let self = self else { return }
-            guard let data = response.data else { return }
-            let decoder = DecoderType.instantiate()
-            decoder.userInfo[.context] = self.context
-            if let strategy = self.dateDecodingStrategy {
-                decoder.dateDecodingStrategy = strategy
-            }
-            print(String(data: data, encoding: .utf8))
-            let entities = try! decoder.decode(EntityContainer.self, from: data)
-//            print(entities)
-            try! self.context.save()
+        sessionManager.request(endpoint)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: DecoderType.contentType)
+            .responseData { [weak self] response in
+                guard response.error == nil else { return }
+                guard let self = self else { return }
+                guard let data = response.data else { return }
+                let decoder = DecoderType.instantiate()
+                decoder.userInfo[.context] = self.context
+                if let strategy = self.dateDecodingStrategy {
+                    decoder.dateDecodingStrategy = strategy
+                }
+                _ = try! decoder.decode(EntityContainer.self, from: data)
+                try! self.context.save()
         }
     }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }
@@ -103,6 +99,7 @@ protocol DecoderProtocol: class {
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
     var userInfo: [CodingUserInfoKey : Any] { get set }
     var dateDecodingStrategy: DateDecodingStrategy { get set }
+    static var contentType: [String] { get }
     static func instantiate() -> Self
 }
 
@@ -113,6 +110,7 @@ extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 
 extension JSONDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["application/json"] }
     static func instantiate() -> Self {
         //  infers the type of self from the calling context:
         func helper<T>() -> T {
@@ -124,6 +122,7 @@ extension JSONDecoder: DecoderProtocol {
 }
 
 extension XMLDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["text/xml"] }
     static func instantiate() -> Self {
         // infers the type of self from the calling context
         func helper<T>() -> T {

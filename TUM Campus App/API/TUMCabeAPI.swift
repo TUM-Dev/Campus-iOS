@@ -28,7 +28,11 @@ enum TUMCabeAPI: URLRequestConvertible {
     static let baseURLString = "https://app.tum.de/api"
     static let betaAppURLString = "https://beta.tumcampusapp.de"
     static let tumCabeHomepageURLString = "https://app.tum.de"
-    static let tumCabeFingerprints = ["06 87 26 03 31 A7 24 03 D9 09 F1 05 E6 9B CF 0D 32 E1 BD 24 93 FF C6 D9 20 6D 11 BC D6 77 07 39"]
+    static let serverTrustPolicies: [String: ServerTrustPolicy] = [
+        "app.tum.de": .pinCertificates(
+            certificates: ServerTrustPolicy.certificates(),
+            validateCertificateChain: true,
+            validateHost: true)]
     static let baseHeaders: [String : String] = ["X-DEVICE-ID": UIDevice.current.identifierForVendor?.uuidString ?? "not available",
                                                  "X-APP-VERSION": Bundle.main.version,
                                                  "X-APP-BUILD": Bundle.main.build,
