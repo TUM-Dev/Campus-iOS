@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-struct TUMSexyAPIResponse: Decodable {
-    var links: [String: TUMSexyLink]
-}
-
 class TUMSexyTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<TUMSexyLink,[String: TUMSexyLink],JSONDecoder>
     
