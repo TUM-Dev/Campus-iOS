@@ -187,8 +187,8 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         switch credentials {
         case .none: callback(.failure(LoginError.missingToken))
         case .noTumID?: callback(.failure(LoginError.missingToken))
-        case .tumID(_, let token)?,
-             .tumIDAndKey(_,let token, _)?:
+        case .tumID?,
+             .tumIDAndKey?:
             sessionManager.request(TUMOnlineAPI.tokenConfirmation)
                 .validate(statusCode: 200..<300)
                 .validate(contentType: ["text/xml"])

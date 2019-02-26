@@ -26,6 +26,7 @@ import CoreData
         case raum_nummer
         case res_nr
         case status
+        case attribute
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -47,6 +48,7 @@ import CoreData
         let raum_nummer = try container.decode(String.self, forKey: .raum_nummer)
         let res_nr = try container.decode(Int64.self, forKey: .res_nr)
         let status = try container.decode(String.self, forKey: .status)
+        let attributes = try container.decode([StudyRoomAttribute].self, forKey: .attribute)
         
         self.init(entity: StudyRoom.entity(), insertInto: context)
         self.belegung_ab = belegung_ab
@@ -64,5 +66,6 @@ import CoreData
         self.raum_nummer = raum_nummer
         self.res_nr = res_nr
         self.status = status
+        self.attributes = NSSet(array: attributes)
     }
 }
