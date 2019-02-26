@@ -8,7 +8,7 @@
 
 import Alamofire
 
-enum TUMSexyAPI: URLRequestConvertible {
+struct TUMSexyAPI: URLRequestConvertible {
     static let baseURLString = "https://json.tum.sexy"
     
     var method: HTTPMethod {

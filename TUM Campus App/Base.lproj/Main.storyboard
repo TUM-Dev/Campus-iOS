@@ -443,11 +443,45 @@
                             <outlet property="delegate" destination="rbL-SZ-eMk" id="CMq-By-bru"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0sp-il-C5R"/>
+                    <navigationItem key="navigationItem" id="0sp-il-C5R">
+                        <barButtonItem key="rightBarButtonItem" title="TUM.sexy" id="BWy-U6-Rjn">
+                            <connections>
+                                <segue destination="7yZ-ET-jSI" kind="show" id="tpz-ze-EvG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acq-oL-gsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="2178"/>
+        </scene>
+        <!--Sexy Table View Controller-->
+        <scene sceneID="8Gt-lw-P8J">
+            <objects>
+                <tableViewController id="7yZ-ET-jSI" customClass="TUMSexyTableViewController" customModule="TUM_Campus_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZlY-da-nXm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TUMSexyLinkCell" id="ei0-lF-KO2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ei0-lF-KO2" id="aUo-7y-onI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7yZ-ET-jSI" id="p7h-QS-JfV"/>
+                            <outlet property="delegate" destination="7yZ-ET-jSI" id="mSy-PJ-1n2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o5c-uh-Knn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="2178"/>
         </scene>
     </scenes>
 </document>
