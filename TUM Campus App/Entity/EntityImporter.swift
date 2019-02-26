@@ -87,6 +87,7 @@ extension ImporterProtocol {
             if let strategy = self.dateDecodingStrategy {
                 decoder.dateDecodingStrategy = strategy
             }
+            print(String(data: data, encoding: .utf8))
             let entities = try! decoder.decode(EntityContainer.self, from: data)
 //            print(entities)
             try! self.context.save()

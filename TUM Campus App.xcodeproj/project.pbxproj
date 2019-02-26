@@ -14,6 +14,7 @@
 		223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12F021E014C60053305B /* NewsTableViewController.swift */; };
 		224CB35B222568EC0002945A /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35A222568EC0002945A /* EventsTableViewController.swift */; };
 		224CB35D222571360002945A /* TicketImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35C222571360002945A /* TicketImporter.swift */; };
+		224CB35F222590660002945A /* StudyRoomGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */; };
 		2258EDB422221DB70079C2ED /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB322221DB70079C2ED /* TicketType.swift */; };
 		2258EDB622221DCC0079C2ED /* TicketEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB522221DCC0079C2ED /* TicketEvent.swift */; };
 		2258EDB822221DE20079C2ED /* TicketPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB722221DE20079C2ED /* TicketPayment.swift */; };
@@ -87,6 +88,7 @@
 		223D12F021E014C60053305B /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		224CB35A222568EC0002945A /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		224CB35C222571360002945A /* TicketImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketImporter.swift; sourceTree = "<group>"; };
+		224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupsTableViewController.swift; sourceTree = "<group>"; };
 		2258EDB322221DB70079C2ED /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		2258EDB522221DCC0079C2ED /* TicketEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketEvent.swift; sourceTree = "<group>"; };
 		2258EDB722221DE20079C2ED /* TicketPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPayment.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				2258EDBA22221EE80079C2ED /* StudRoom.swift */,
 				2258EDBC22221EF00079C2ED /* StudyRoomGroup.swift */,
+				224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */,
 			);
 			path = StudyRooms;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				2258EDB622221DCC0079C2ED /* TicketEvent.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
+				224CB35F222590660002945A /* StudyRoomGroupsTableViewController.swift in Sources */,
 				2258EDB422221DB70079C2ED /* TicketType.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,

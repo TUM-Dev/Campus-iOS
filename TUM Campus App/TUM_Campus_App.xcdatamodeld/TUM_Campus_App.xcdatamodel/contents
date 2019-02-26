@@ -197,6 +197,11 @@
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoomAttribute" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="raeume" inverseEntity="StudyRoomGroup" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="raum_nr"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="StudyRoomAttribute" representedClassName=".StudyRoomAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
@@ -208,6 +213,11 @@
         <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sortierung" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="raeume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="nr"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
         <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
@@ -273,6 +283,11 @@
         <attribute name="link_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="moodle_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="target"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="148"/>
@@ -285,14 +300,14 @@
         <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
         <element name="Price" positionX="503.1015625" positionY="423.5625" width="128" height="133"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="163"/>
-        <element name="SideDish" positionX="344.25390625" positionY="501.76953125" width="128" height="133"/>
+        <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="133"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="75"/>
         <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>
-        <element name="TicketEvent" positionX="151.0546875" positionY="715.74609375" width="128" height="30"/>
-        <element name="TicketPayment" positionX="319.5625" positionY="662.66796875" width="128" height="30"/>
+        <element name="TicketEvent" positionX="-8.93359375" positionY="606.54296875" width="128" height="30"/>
+        <element name="TicketPayment" positionX="155.875" positionY="611.3359375" width="128" height="30"/>
         <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="30"/>
-        <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
-        <element name="TUMSexyLink" positionX="162" positionY="369" width="128" height="88"/>
+        <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
+        <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
     </elements>
 </model>
