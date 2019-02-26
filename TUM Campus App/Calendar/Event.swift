@@ -33,17 +33,6 @@ struct Calendar: Decodable {
      </event>
 */
 
-/*
-    @NSManaged public var descriptionText: String?
-    @NSManaged public var dtstart: Date?
-    @NSManaged public var dtend: Date?
-    @NSManaged public var location: String?
-    @NSManaged public var nr: Int64
-    @NSManaged public var status: String?
-    @NSManaged public var title: String?
-    @NSManaged public var url: String?
- */
-    
     enum CodingKeys: String, CodingKey {
         case descriptionText = "description"
         case dtstart = "dtstart"

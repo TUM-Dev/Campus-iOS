@@ -41,7 +41,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
     
     lazy var context: NSManagedObjectContext = {
         let context = coreDataStack.newBackgroundContext()
-        context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return context
     }()
     
@@ -88,7 +88,7 @@ extension ImporterProtocol {
                 decoder.dateDecodingStrategy = strategy
             }
             let entities = try! decoder.decode(EntityContainer.self, from: data)
-            print(entities)
+//            print(entities)
             try! self.context.save()
         }
     }

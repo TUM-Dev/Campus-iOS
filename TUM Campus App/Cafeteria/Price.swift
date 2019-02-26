@@ -11,15 +11,13 @@ import CoreData
 @objc final class Price: NSManagedObject, Entity {
     
     /*
- 
- */
-    
-    /*
-    @NSManaged public var person_typ: String?
-    @NSManaged public var preis: NSDecimalNumber?
-    @NSManaged public var type_long: String?
-    @NSManaged public var type_nr: Int64
-    @NSManaged public var type_short: String?
+     {
+        "person_typ": "st",
+        "type_short": "tg",
+        "type_long": "Tagesgericht 1",
+        "type_nr": "1",
+        "preis": "1"
+     },
  */
     
     enum CodingKeys: String, CodingKey {

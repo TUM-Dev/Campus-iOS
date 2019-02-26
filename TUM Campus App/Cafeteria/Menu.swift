@@ -22,16 +22,6 @@ import CoreData
      },
  */
     
-    /*
-     @NSManaged public var date: Date?
-     @NSManaged public var id: Int64
-     @NSManaged public var mensa_id: Int64
-     @NSManaged public var name: String?
-     @NSManaged public var type_long: String?
-     @NSManaged public var type_nr: Int64
-     @NSManaged public var type_short: String?
- */
-    
     enum CodingKeys: String, CodingKey {
        case date
        case id

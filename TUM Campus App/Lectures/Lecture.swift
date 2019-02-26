@@ -39,24 +39,6 @@ struct LectureAPIResponse: Decodable {
      </row>
  */
     
-    /*
-     @NSManaged public var dauer_info: String?
-     @NSManaged public var org_kennung_betreut: String?
-     @NSManaged public var org_name_betreut: String?
-     @NSManaged public var org_nr_betreut: String?
-     @NSManaged public var semester: String?
-     @NSManaged public var semester_id: String?
-     @NSManaged public var semester_name: String?
-     @NSManaged public var sj_name: String?
-     @NSManaged public var stp_lv_art_kurz: String?
-     @NSManaged public var stp_lv_art_name: String?
-     @NSManaged public var stp_lv_nr: String?
-     @NSManaged public var stp_sp_nr: String?
-     @NSManaged public var stp_sp_sst: String?
-     @NSManaged public var stp_sp_title: String?
-     @NSManaged public var vortragende_mitwirkende: String?
- */
-    
     enum CodingKeys: String, CodingKey {
         case stp_sp_nr = "stp_sp_nr"
         case stp_lv_nr = "stp_lv_nr"

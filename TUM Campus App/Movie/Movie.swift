@@ -30,22 +30,6 @@ import CoreData
      }
      */
     
-    /*
-     @NSManaged public var actors: String?
-     @NSManaged public var cover: URL?
-     @NSManaged public var created: Date?
-     @NSManaged public var date: Date?
-     @NSManaged public var director: String?
-     @NSManaged public var genre: String?
-     @NSManaged public var kino: String?
-     @NSManaged public var link: URL?
-     @NSManaged public var movieDescription: String?
-     @NSManaged public var rating: String?
-     @NSManaged public var runtime: String?
-     @NSManaged public var title: String?
-     @NSManaged public var year: String?
-     */
-    
     enum CodingKeys: String, CodingKey {
         case actors = "actors"
         case cover = "cover"

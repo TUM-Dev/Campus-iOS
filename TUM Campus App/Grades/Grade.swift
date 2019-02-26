@@ -39,20 +39,6 @@ struct GradesAPIResponse: Decodable {
      </row>
  */
     
-     /*
-     @NSManaged public var datum: Date?
-     @NSManaged public var exam_typ_name: String?
-     @NSManaged public var lv_nummer: String?
-     @NSManaged public var lv_semester: String?
-     @NSManaged public var lv_titel: String?
-     @NSManaged public var modus: String?
-     @NSManaged public var pruefer_nachname: String?
-     @NSManaged public var st_studium_nr: String?
-     @NSManaged public var studienbezeichnung: String?
-     @NSManaged public var studienidentifikator: String?
-     @NSManaged public var uninotenamekurz: String?
- */
-    
     enum CodingKeys: String, CodingKey {
         case datum
         case exam_typ_name

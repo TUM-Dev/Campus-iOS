@@ -211,7 +211,7 @@
     </entity>
     <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
         <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="event_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="file" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="kino" optional="YES" attributeType="String" syncable="YES"/>
@@ -229,7 +229,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="TicketPayment" representedClassName="TicketPayment" syncable="YES" codeGenerationType="category">
+    <entity name="TicketPayment" representedClassName=".TicketPayment" syncable="YES" codeGenerationType="category">
         <attribute name="maxTickets" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minTickets" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stripe_publishable_key" optional="YES" attributeType="String" syncable="YES"/>
@@ -243,7 +243,7 @@
     </entity>
     <entity name="TicketType" representedClassName=".TicketType" syncable="YES" codeGenerationType="category">
         <attribute name="contingent" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sold" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ticket_description" optional="YES" attributeType="String" syncable="YES"/>
@@ -286,13 +286,13 @@
         <element name="Price" positionX="503.1015625" positionY="423.5625" width="128" height="133"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="163"/>
         <element name="SideDish" positionX="344.25390625" positionY="501.76953125" width="128" height="133"/>
-        <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
-        <element name="TicketEvent" positionX="151.0546875" positionY="715.74609375" width="128" height="238"/>
-        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="178"/>
-        <element name="TicketPayment" positionX="319.5625" positionY="662.66796875" width="128" height="118"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
-        <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="75"/>
+        <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>
+        <element name="TicketEvent" positionX="151.0546875" positionY="715.74609375" width="128" height="30"/>
+        <element name="TicketPayment" positionX="319.5625" positionY="662.66796875" width="128" height="30"/>
+        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="30"/>
+        <element name="Tuition" positionX="-28.5703125" positionY="627.37890625" width="128" height="105"/>
         <element name="TUMSexyLink" positionX="162" positionY="369" width="128" height="88"/>
     </elements>
 </model>

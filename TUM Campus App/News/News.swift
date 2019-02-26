@@ -20,15 +20,6 @@ import CoreData
      "image": "https://app.tum.de/File/news/newspread/ce274425d460c28ded9ed9a4ab525de9.jpg"
      */
     
-    /*
-     @NSManaged public var date: Date?
-     @NSManaged public var id: String?
-     @NSManaged public var imageURL: String?
-     @NSManaged public var link: String?
-     @NSManaged public var source: Int64
-     @NSManaged public var title: String?
-     */
-    
     enum CodingKeys: String, CodingKey {
         case id = "news"
         case source = "src"

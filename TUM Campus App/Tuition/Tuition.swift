@@ -30,13 +30,6 @@ class TuitionAPIResponse: Decodable {
      </row>
  */
     
-    /*
-     @NSManaged public var frist: Date?
-     @NSManaged public var semester_bezeichnung: String?
-     @NSManaged public var semester_id: String?
-     @NSManaged public var soll: Int64
- */
-    
     enum CodingKeys: String, CodingKey {
        case frist
        case semester_bezeichnung

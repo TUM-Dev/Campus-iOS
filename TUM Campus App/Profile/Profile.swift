@@ -24,16 +24,6 @@ import CoreData
      </row>
  */
     
-    /*
-     @NSManaged public var familienname: String?
-     @NSManaged public var kennung: String?
-     @NSManaged public var obfuscated_id: String?
-     @NSManaged public var obfuscated_id_bedienstete: String?
-     @NSManaged public var obfuscated_id_extern: String?
-     @NSManaged public var obfuscated_id_studierende: String?
-     @NSManaged public var vorname: String?
- */
-    
     enum CodingKeys: String, CodingKey {
         case familienname
         case kennung

@@ -23,15 +23,6 @@ import CoreData
      }
  */
     
-    /*
-     @NSManaged public var id: Int64
-     @NSManaged public var latitude: String?
-     @NSManaged public var longitude: String?
-     @NSManaged public var mensa: Int64
-     @NSManaged public var name: String?
- */
-    
-    
     enum CodingKeys: String, CodingKey {
         case id
         case latitude
