@@ -31,29 +31,29 @@ class TuitionAPIResponse: Decodable {
  */
     
     enum CodingKeys: String, CodingKey {
-       case frist
-       case semester_bezeichnung
-       case semester_id
-       case soll
+       case deadline = "frist"
+       case semester = "semester_bezeichnung"
+       case semesterID = "semester_id"
+       case amount = "soll"
     }
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let frist = try container.decode(Date.self, forKey: .frist)
-        let semester_bezeichnung = try container.decode(String.self, forKey: .semester_bezeichnung)
-        let semester_id = try container.decode(String.self, forKey: .semester_id)
-        let soll_string = try container.decode(String.self, forKey: .soll)
-        guard let soll = Int64(soll_string) else {
-            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for soll could not be converted to Int64"))
+        let deadline = try container.decode(Date.self, forKey: .deadline)
+        let semester = try container.decode(String.self, forKey: .semester)
+        let semesterID = try container.decode(String.self, forKey: .semesterID)
+        let amountString = try container.decode(String.self, forKey: .amount)
+        guard let amount = Decimal(string: amountString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for amount could not be converted to Int64"))
         }
         
         self.init(entity: Tuition.entity(), insertInto: context)
-        self.frist = frist
-        self.semester_bezeichnung = semester_bezeichnung
-        self.semester_id = semester_id
-        self.soll = soll
+        self.deadline = deadline
+        self.semester = semester
+        self.semesterID = semesterID
+        self.amount = NSDecimalNumber(decimal: amount)
     }
     
 }
