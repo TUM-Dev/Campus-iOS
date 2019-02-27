@@ -54,7 +54,7 @@
 		22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64C2220BE4200854D55 /* MVGAPI.swift */; };
 		22B9D6502220C5FC00854D55 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64F2220C5FC00854D55 /* Menu.swift */; };
 		22B9D6522220C60900854D55 /* SideDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6512220C60900854D55 /* SideDish.swift */; };
-		22B9D6542220C61200854D55 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6532220C61200854D55 /* Price.swift */; };
+		22B9D6542220C61200854D55 /* MenuPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6532220C61200854D55 /* MenuPrice.swift */; };
 		22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */; };
 		22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */; };
 		22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */; };
@@ -140,7 +140,7 @@
 		22B9D64C2220BE4200854D55 /* MVGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
 		22B9D64F2220C5FC00854D55 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		22B9D6512220C60900854D55 /* SideDish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDish.swift; sourceTree = "<group>"; };
-		22B9D6532220C61200854D55 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
+		22B9D6532220C61200854D55 /* MenuPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPrice.swift; sourceTree = "<group>"; };
 		22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTabBarController.swift; sourceTree = "<group>"; };
 		22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationViewController.swift; sourceTree = "<group>"; };
 		22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 				22B9D6442220B36600854D55 /* Cafeteria.swift */,
 				22B9D64F2220C5FC00854D55 /* Menu.swift */,
 				22B9D6512220C60900854D55 /* SideDish.swift */,
-				22B9D6532220C61200854D55 /* Price.swift */,
+				22B9D6532220C61200854D55 /* MenuPrice.swift */,
 				22B9D6462220B4A400854D55 /* CafeteriasTableViewController.swift */,
 			);
 			path = Cafeteria;
@@ -697,7 +697,7 @@
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 				22195063221C8CCC00169A2B /* Lecture.swift in Sources */,
 				22B9D6472220B4A400854D55 /* CafeteriasTableViewController.swift in Sources */,
-				22B9D6542220C61200854D55 /* Price.swift in Sources */,
+				22B9D6542220C61200854D55 /* MenuPrice.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
 				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
 				22B9D6502220C5FC00854D55 /* Menu.swift in Sources */,

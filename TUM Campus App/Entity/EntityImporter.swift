@@ -97,8 +97,10 @@ extension ImporterProtocol {
                 do {
                     _ = try decoder.decode(EntityContainer.self, from: data)
                     try self.context.save()
-                } catch let decodingError {
-                    error?(decodingError)
+                } catch let apiError where error is APIError {
+                    error?(apiError)
+                } catch let error {
+                    fatalError(error.localizedDescription)
                 }
         }
     }

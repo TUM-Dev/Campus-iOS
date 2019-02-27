@@ -25,13 +25,13 @@ import CoreData
  */
     
     enum CodingKeys: String, CodingKey {
-        case familienname
-        case kennung
-        case obfuscated_id
-        case obfuscated_id_bedienstete
-        case obfuscated_id_extern
-        case obfuscated_id_studierende
-        case vorname
+        case surname = "familienname"
+        case tumID = "kennung"
+        case obfuscatedID = "obfuscated_id"
+        case obfuscatedIDEmployee = "obfuscated_id_bedienstete"
+        case obfuscatedIDExtern = "obfuscated_id_extern"
+        case obfuscatedIDStudent = "obfuscated_id_studierende"
+        case firstname = "vorname"
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -39,22 +39,22 @@ import CoreData
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         
-        let familienname = try container.decode(String.self, forKey: .familienname)
-        let kennung = try container.decode(String.self, forKey: .kennung)
-        let obfuscated_id = try container.decode(String.self, forKey: .obfuscated_id)
-        let obfuscated_id_bedienstete = try container.decode(String.self, forKey: .obfuscated_id_bedienstete)
-        let obfuscated_id_extern = try container.decode(String.self, forKey: .obfuscated_id_extern)
-        let obfuscated_id_studierende = try container.decode(String.self, forKey: .obfuscated_id_studierende)
-        let vorname = try container.decode(String.self, forKey: .vorname)
+        let surname = try container.decode(String.self, forKey: .surname)
+        let tumID = try container.decode(String.self, forKey: .tumID)
+        let obfuscatedID = try container.decode(String.self, forKey: .obfuscatedID)
+        let obfuscatedIDEmployee = try container.decode(String.self, forKey: .obfuscatedIDEmployee)
+        let obfuscatedIDExtern = try container.decode(String.self, forKey: .obfuscatedIDExtern)
+        let obfuscatedIDStudent = try container.decode(String.self, forKey: .obfuscatedIDStudent)
+        let firstname = try container.decode(String.self, forKey: .firstname)
         
         self.init(entity: Profile.entity(), insertInto: context)
-        self.familienname = familienname
-        self.kennung = kennung
-        self.obfuscated_id = obfuscated_id
-        self.obfuscated_id_bedienstete = obfuscated_id_bedienstete
-        self.obfuscated_id_extern = obfuscated_id_extern
-        self.obfuscated_id_studierende = obfuscated_id_studierende
-        self.vorname = vorname
+        self.surname = surname
+        self.tumID = tumID
+        self.obfuscatedID = obfuscatedID
+        self.obfuscatedIDEmployee = obfuscatedIDEmployee
+        self.obfuscatedIDExtern = obfuscatedIDExtern
+        self.obfuscatedIDStudent = obfuscatedIDStudent
+        self.firstname = firstname
     }
     
 }

@@ -80,10 +80,24 @@
         <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="menu" inverseEntity="Cafeteria" syncable="YES"/>
-        <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Price" inverseName="menus" inverseEntity="Price" syncable="YES"/>
+        <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MenuPrice" inverseName="menus" inverseEntity="MenuPrice" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MenuPrice" representedClassName=".MenuPrice" syncable="YES" codeGenerationType="category">
+        <attribute name="personType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="price" inverseEntity="Menu" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="typeNumber"/>
+                <constraint value="personType"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -135,32 +149,18 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Price" representedClassName=".Price" syncable="YES" codeGenerationType="category">
-        <attribute name="person_typ" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="preis" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="price" inverseEntity="Menu" syncable="YES"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="type_nr"/>
-                <constraint value="person_typ"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="Profile" representedClassName=".Profile" syncable="YES" codeGenerationType="category">
-        <attribute name="familienname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="kennung" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscated_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscated_id_bedienstete" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscated_id_extern" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscated_id_studierende" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vorname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscatedID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscatedIDEmployee" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscatedIDExtern" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obfuscatedIDStudent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tumID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="obfuscated_id"/>
+                <constraint value="obfuscatedID"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -305,8 +305,8 @@
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
         <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
-        <element name="Price" positionX="503.1015625" positionY="423.5625" width="128" height="133"/>
-        <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="163"/>
+        <element name="MenuPrice" positionX="503.1015625" positionY="423.5625" width="128" height="135"/>
+        <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="165"/>
         <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="30"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="30"/>
