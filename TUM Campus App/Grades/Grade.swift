@@ -64,13 +64,13 @@ struct GradesAPIResponse: Decodable {
         let title = try container.decode(String.self, forKey: .title)
         let modus = try container.decode(String.self, forKey: .modus)
         let examiner = try container.decode(String.self, forKey: .examiner)
-        let studyNumber = try container.decode(String.self, forKey: .studyNumber)
+        let studyNumber = try container.decode(Int64.self, forKey: .studyNumber)
         let studyDesignation = try container.decode(String.self, forKey: .studyDesignation)
         let studyID = try container.decode(String.self, forKey: .studyID)
         let grade = try container.decode(String.self, forKey: .grade)
         
         let lectureFetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
-        lectureFetchRequest.predicate = NSPredicate(format: "lvNumber == %d", lvNumber)
+        lectureFetchRequest.predicate = NSPredicate(format: "title CONTAINS %@", title)
         let lecture = try context.fetch(lectureFetchRequest).first
 
         self.init(entity: Grade.entity(), insertInto: context)

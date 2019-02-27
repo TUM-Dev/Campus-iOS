@@ -39,7 +39,7 @@
         <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studyDesignation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studyID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studyNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studyNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="grade" inverseEntity="Lecture" syncable="YES"/>
         <uniquenessConstraints>
