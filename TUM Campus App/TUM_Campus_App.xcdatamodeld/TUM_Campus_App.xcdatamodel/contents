@@ -287,8 +287,8 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TUMSexyLink" representedClassName=".TUMSexyLink" syncable="YES" codeGenerationType="category">
-        <attribute name="link_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="moodle_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moodleID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>

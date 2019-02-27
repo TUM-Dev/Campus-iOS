@@ -12,7 +12,7 @@ import CoreData
 class TUMSexyTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<TUMSexyLink,[String: TUMSexyLink],JSONDecoder>
     
-    let sortDescriptor = NSSortDescriptor(key: "link_description", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
     lazy var importer: ImporterType = ImporterType(endpoint: TUMSexyAPI(), sortDescriptor: sortDescriptor)
 
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class TUMSexyTableViewController: UITableViewController, EntityTableViewControll
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
         guard let link = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
         
-        cell.textLabel?.text = link.link_description
+        cell.textLabel?.text = link.linkDescription
         return cell
     }
     
