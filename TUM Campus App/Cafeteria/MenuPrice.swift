@@ -8,7 +8,7 @@
 
 import CoreData
 
-@objc final class Price: NSManagedObject, Entity {
+@objc final class MenuPrice: NSManagedObject, Entity {
     
     /*
      {
@@ -21,39 +21,39 @@ import CoreData
  */
     
     enum CodingKeys: String, CodingKey {
-       case person_typ
-       case preis
-       case type_long
-       case type_nr
-       case type_short
+       case personType = "person_typ"
+       case price = "preis"
+       case type = "type_long"
+       case typeNumber = "type_nr"
+       case typeTag = "type_short"
     }
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let person_typ = try container.decode(String.self, forKey: .person_typ)
-        let preis_string = try container.decode(String.self, forKey: .preis)
-        guard let preis = Decimal(string: preis_string) else {
+        let personType = try container.decode(String.self, forKey: .personType)
+        let priceString = try container.decode(String.self, forKey: .price)
+        guard let price = Decimal(string: priceString) else {
             throw DecodingError.typeMismatch(Decimal.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for preis could not be converted to Decimal"))
         }
-        let type_long = try container.decode(String.self, forKey: .type_long)
-        let type_nr_string = try container.decode(String.self, forKey: .type_nr)
-        guard let type_nr = Int64(type_nr_string) else {
+        let type = try container.decode(String.self, forKey: .type)
+        let typeNumberString = try container.decode(String.self, forKey: .typeNumber)
+        guard let typeNumber = Int64(typeNumberString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for type_nr could not be converted to Int64"))
         }
-        let type_short = try container.decode(String.self, forKey: .type_short)
+        let typeTag = try container.decode(String.self, forKey: .typeTag)
         
         let menuFetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        menuFetchRequest.predicate = NSPredicate(format: "\(Menu.CodingKeys.typeNumber.rawValue) == %d", type_nr)
+        menuFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Menu.typeNumber), typeNumber)
         let menus = try context.fetch(menuFetchRequest)
-        
-        self.init(entity: Price.entity(), insertInto: context)
-        self.person_typ = person_typ
-        self.preis = NSDecimalNumber(decimal: preis)
-        self.type_long = type_long
-        self.type_nr = type_nr
-        self.type_short = type_short
+
+        self.init(entity: MenuPrice.entity(), insertInto: context)
+        self.personType = personType
+        self.price = NSDecimalNumber(decimal: price)
+        self.type = type
+        self.typeNumber = typeNumber
+        self.typeTag = typeTag
         self.menus = NSSet(array: menus)
     }
 }

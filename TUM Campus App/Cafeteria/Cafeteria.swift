@@ -48,11 +48,11 @@ import CoreData
         let name = try container.decode(String.self, forKey: .name)
         
         let menuFetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        menuFetchRequest.predicate = NSPredicate(format: "mensaID == %d", id)
+        menuFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Menu.mensaID) , id)
         let menu = try context.fetch(menuFetchRequest)
         
         let sidesFetchRequest: NSFetchRequest<SideDish> = SideDish.fetchRequest()
-        sidesFetchRequest.predicate = NSPredicate(format: "mensaID == %d", id)
+        sidesFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(SideDish.mensaID) , id)
         let sides = try context.fetch(sidesFetchRequest)
         
         self.init(entity: Cafeteria.entity(), insertInto: context)

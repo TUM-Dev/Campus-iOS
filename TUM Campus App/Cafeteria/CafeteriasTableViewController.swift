@@ -13,23 +13,27 @@ import Alamofire
 struct MensaAPIResponse: Decodable {
     var mensa_menu: [Menu]
     var mensa_beilagen: [SideDish]
-    var mensa_preise: [Price]
+    var mensa_preise: [MenuPrice]
 }
 
 class CafeteriasTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Cafeteria,[Cafeteria],JSONDecoder>
     
     let endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
-    let sortDescriptor = NSSortDescriptor(key: "mensa", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \ImporterType.EntityType.mensa, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
-    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(key: "date", ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(keyPath: \Menu.date, ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
-        importer.performFetch()
-        menuImporter.performFetch()
+        importer.performFetch() { error in
+            print(error)
+        }
+        menuImporter.performFetch() { error in
+            print(error)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

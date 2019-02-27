@@ -23,13 +23,13 @@ import CoreData
  */
     
     enum CodingKeys: String, CodingKey {
-       case date
-       case id
-       case mensaID
-       case name
-       case type
-       case typeNumber
-       case typeTag
+       case date = "date"
+       case id = "id"
+       case mensaID = "mensa_id"
+       case name = "name"
+       case type = "type_long"
+       case typeNumber = "type_nr"
+       case typeTag = "type_short"
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -54,11 +54,11 @@ import CoreData
         let typeTag = try container.decode(String.self, forKey: .typeTag)
         
         let cafeteriaFetchRequest: NSFetchRequest<Cafeteria> = Cafeteria.fetchRequest()
-        cafeteriaFetchRequest.predicate = NSPredicate(format: "id == %d", mensaID)
+        cafeteriaFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Cafeteria.id) , mensaID)
         let cafeteria = try context.fetch(cafeteriaFetchRequest).first
         
-        let priceFetchRequest: NSFetchRequest<Price> = Price.fetchRequest()
-        priceFetchRequest.predicate = NSPredicate(format: "\(Price.CodingKeys.type_nr.rawValue) == %d", typeNumber)
+        let priceFetchRequest: NSFetchRequest<MenuPrice> = MenuPrice.fetchRequest()
+        priceFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(MenuPrice.typeNumber), typeNumber)
         let prices = try context.fetch(priceFetchRequest)
         
         self.init(entity: Menu.entity(), insertInto: context)
