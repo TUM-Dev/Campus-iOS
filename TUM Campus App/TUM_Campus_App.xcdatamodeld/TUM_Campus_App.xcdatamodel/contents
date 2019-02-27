@@ -30,21 +30,21 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Grade" representedClassName=".Grade" syncable="YES" codeGenerationType="category">
-        <attribute name="datum" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="exam_typ_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lv_nummer" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lv_semester" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lv_titel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="examiner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="examType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="grade" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lvNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="pruefer_nachname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="st_studium_nr" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studienbezeichnung" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studienidentifikator" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uninotenamekurz" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studyDesignation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studyNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="grade" inverseEntity="Lecture" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="lv_nummer"/>
+                <constraint value="lvNumber"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -299,7 +299,7 @@
     <elements>
         <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="148"/>
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="30"/>
-        <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
+        <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="225"/>
         <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
         <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="178"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="253"/>

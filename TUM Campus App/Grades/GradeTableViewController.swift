@@ -17,7 +17,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
-    let sortDescriptor = NSSortDescriptor(key: "lv_semester", ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: "semester", ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     
@@ -25,7 +25,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch { error in
-            
+            print(error)
         }
     }
     
@@ -42,7 +42,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
         guard let grade = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = grade.lv_titel
+        cell.textLabel?.text = grade.title
         return cell
     }
     

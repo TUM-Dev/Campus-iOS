@@ -79,7 +79,7 @@ struct LectureAPIResponse: Decodable {
         let speaker = try container.decode(String.self, forKey: .speaker)
         
         let gradeFetchRequest: NSFetchRequest<Grade> = Grade.fetchRequest()
-        gradeFetchRequest.predicate = NSPredicate(format: "lv_nummer == %d", lvNumber)
+        gradeFetchRequest.predicate = NSPredicate(format: "lvNumber == %d", lvNumber)
         let grade = try context.fetch(gradeFetchRequest).first
         
         self.init(entity: Lecture.entity(), insertInto: context)

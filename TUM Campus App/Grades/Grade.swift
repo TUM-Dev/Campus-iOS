@@ -40,51 +40,51 @@ struct GradesAPIResponse: Decodable {
  */
     
     enum CodingKeys: String, CodingKey {
-        case datum
-        case exam_typ_name
-        case lv_nummer
-        case lv_semester
-        case lv_titel
-        case modus
-        case pruefer_nachname
-        case st_studium_nr
-        case studienbezeichnung
-        case studienidentifikator
-        case uninotenamekurz
+        case date = "datum"
+        case examType = "exam_typ_name"
+        case lvNumber = "lv_nummer"
+        case semester = "lv_semester"
+        case title = "lv_titel"
+        case modus = "modus"
+        case examiner = "pruefer_nachname"
+        case studyNumber = "st_studium_nr"
+        case studyDesignation = "studienbezeichnung"
+        case studyID = "studienidentifikator"
+        case grade = "uninotenamekurz"
     }
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let datum = try container.decode(Date.self, forKey: .datum)
-        let exam_typ_name = try container.decode(String.self, forKey: .exam_typ_name)
-        let lv_nummer = try container.decode(String.self, forKey: .lv_nummer)
-        let lv_semester = try container.decode(String.self, forKey: .lv_semester)
-        let lv_titel = try container.decode(String.self, forKey: .lv_titel)
+        let date = try container.decode(Date.self, forKey: .date)
+        let examType = try container.decode(String.self, forKey: .examType)
+        let lvNumber = try container.decode(String.self, forKey: .lvNumber)
+        let semester = try container.decode(String.self, forKey: .semester)
+        let title = try container.decode(String.self, forKey: .title)
         let modus = try container.decode(String.self, forKey: .modus)
-        let pruefer_nachname = try container.decode(String.self, forKey: .pruefer_nachname)
-        let st_studium_nr = try container.decode(String.self, forKey: .st_studium_nr)
-        let studienbezeichnung = try container.decode(String.self, forKey: .studienbezeichnung)
-        let studienidentifikator = try container.decode(String.self, forKey: .studienidentifikator)
-        let uninotenamekurz = try container.decode(String.self, forKey: .uninotenamekurz)
+        let examiner = try container.decode(String.self, forKey: .examiner)
+        let studyNumber = try container.decode(String.self, forKey: .studyNumber)
+        let studyDesignation = try container.decode(String.self, forKey: .studyDesignation)
+        let studyID = try container.decode(String.self, forKey: .studyID)
+        let grade = try container.decode(String.self, forKey: .grade)
         
         let lectureFetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
-        lectureFetchRequest.predicate = NSPredicate(format: "\(Lecture.CodingKeys.stp_lv_nr.rawValue) == %@", lv_nummer)
+        lectureFetchRequest.predicate = NSPredicate(format: "lvNumber == %d", lvNumber)
         let lecture = try context.fetch(lectureFetchRequest).first
 
         self.init(entity: Grade.entity(), insertInto: context)
-        self.datum = datum
-        self.exam_typ_name = exam_typ_name
-        self.lv_nummer = lv_nummer
-        self.lv_semester = lv_semester
-        self.lv_titel = lv_titel
+        self.date = date
+        self.examType = examType
+        self.lvNumber = lvNumber
+        self.semester = semester
+        self.title = title
         self.modus = modus
-        self.pruefer_nachname = pruefer_nachname
-        self.st_studium_nr = st_studium_nr
-        self.studienbezeichnung = studienbezeichnung
-        self.studienidentifikator = studienidentifikator
-        self.uninotenamekurz = uninotenamekurz
+        self.examiner = examiner
+        self.studyNumber = studyNumber
+        self.studyDesignation = studyDesignation
+        self.studyID = studyID
+        self.grade = grade
         self.lecture = lecture
     }
 }
