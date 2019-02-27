@@ -40,21 +40,21 @@ struct LectureAPIResponse: Decodable {
  */
     
     enum CodingKeys: String, CodingKey {
-        case stp_sp_nr = "stp_sp_nr"
-        case stp_lv_nr = "stp_lv_nr"
-        case stp_sp_titel = "stp_sp_titel"
-        case dauer_info = "dauer_info"
+        case id = "stp_sp_nr"
+        case lvNumber = "stp_lv_nr"
+        case title = "stp_sp_titel"
+        case duration = "dauer_info"
         case stp_sp_sst = "stp_sp_sst"
-        case stp_lv_art_name = "stp_lv_art_name"
-        case stp_lv_art_kurz = "stp_lv_art_kurz"
-        case sj_name = "sj_name"
-        case semester = "semester"
-        case semester_name = "semester_name"
-        case semester_id = "semester_id"
-        case org_nr_betreut = "org_nr_betreut"
-        case org_name_betreut = "org_name_betreut"
-        case org_kennung_betreut = "org_kennung_betreut"
-        case vortragende_mitwirkende = "vortragende_mitwirkende"
+        case eventType = "stp_lv_art_name"
+        case eventTypeTag = "stp_lv_art_kurz"
+        case semesterYear = "sj_name"
+        case semesterType = "semester"
+        case semester = "semester_name"
+        case semesterID = "semester_id"
+        case organisationNumber = "org_nr_betreut"
+        case organisation = "org_name_betreut"
+        case organisationTag = "org_kennung_betreut"
+        case speaker = "vortragende_mitwirkende"
     }
     
     
@@ -62,42 +62,42 @@ struct LectureAPIResponse: Decodable {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let dauer_info = try container.decode(String.self, forKey: .dauer_info)
-        let org_kennung_betreut = try container.decode(String.self, forKey: .org_kennung_betreut)
-        let org_name_betreut = try container.decode(String.self, forKey: .org_name_betreut)
-        let org_nr_betreut = try container.decode(String.self, forKey: .org_nr_betreut)
+        let duration = try container.decode(Decimal.self, forKey: .duration)
+        let organisationTag = try container.decode(String.self, forKey: .organisationTag)
+        let organisation = try container.decode(String.self, forKey: .organisation)
+        let organisationNumber = try container.decode(Int64.self, forKey: .organisationNumber)
+        let semesterType = try container.decode(String.self, forKey: .semesterType)
+        let semesterID = try container.decode(String.self, forKey: .semesterID)
         let semester = try container.decode(String.self, forKey: .semester)
-        let semester_id = try container.decode(String.self, forKey: .semester_id)
-        let semester_name = try container.decode(String.self, forKey: .semester_name)
-        let sj_name = try container.decode(String.self, forKey: .sj_name)
-        let stp_lv_art_kurz = try container.decode(String.self, forKey: .stp_lv_art_kurz)
-        let stp_lv_art_name = try container.decode(String.self, forKey: .stp_lv_art_name)
-        let stp_lv_nr = try container.decode(String.self, forKey: .stp_lv_nr)
-        let stp_sp_nr = try container.decode(String.self, forKey: .stp_sp_nr)
+        let semesterYear = try container.decode(String.self, forKey: .semesterYear)
+        let eventTypeTag = try container.decode(String.self, forKey: .eventTypeTag)
+        let eventType = try container.decode(String.self, forKey: .eventType)
+        let lvNumber = try container.decode(Int64.self, forKey: .lvNumber)
+        let id = try container.decode(Int64.self, forKey: .id)
         let stp_sp_sst = try container.decode(String.self, forKey: .stp_sp_sst)
-        let stp_sp_title = try container.decode(String.self, forKey: .stp_sp_titel)
-        let vortragende_mitwirkende = try container.decode(String.self, forKey: .vortragende_mitwirkende)
+        let title = try container.decode(String.self, forKey: .title)
+        let speaker = try container.decode(String.self, forKey: .speaker)
         
         let gradeFetchRequest: NSFetchRequest<Grade> = Grade.fetchRequest()
-        gradeFetchRequest.predicate = NSPredicate(format: "\(Grade.CodingKeys.lv_nummer.rawValue) == %@", stp_lv_nr)
+        gradeFetchRequest.predicate = NSPredicate(format: "lv_nummer == %d", lvNumber)
         let grade = try context.fetch(gradeFetchRequest).first
         
         self.init(entity: Lecture.entity(), insertInto: context)
-        self.dauer_info = dauer_info
-        self.org_kennung_betreut = org_kennung_betreut
-        self.org_name_betreut = org_name_betreut
-        self.org_nr_betreut = org_nr_betreut
+        self.duration = NSDecimalNumber(decimal: duration)
+        self.organisationTag = organisationTag
+        self.organisation = organisation
+        self.organisationNumber = organisationNumber
+        self.semesterType = semesterType
+        self.semesterID = semesterID
         self.semester = semester
-        self.semester_id = semester_id
-        self.semester_name = semester_name
-        self.sj_name = sj_name
-        self.stp_lv_art_kurz = stp_lv_art_kurz
-        self.stp_lv_art_name = stp_lv_art_name
-        self.stp_lv_nr = stp_lv_nr
-        self.stp_sp_nr = stp_sp_nr
+        self.semesterYear = semesterYear
+        self.eventTypeTag = eventTypeTag
+        self.eventType = eventType
+        self.lvNumber = lvNumber
+        self.id = id
         self.stp_sp_sst = stp_sp_sst
-        self.stp_sp_title = stp_sp_title
-        self.vortragende_mitwirkende = vortragende_mitwirkende
+        self.title = title
+        self.speaker = speaker
         self.grade = grade
     }
 

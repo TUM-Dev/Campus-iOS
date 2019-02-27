@@ -49,25 +49,25 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Lecture" representedClassName=".Lecture" syncable="YES" codeGenerationType="category">
-        <attribute name="dauer_info" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="org_kennung_betreut" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="org_name_betreut" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="org_nr_betreut" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
+        <attribute name="eventType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventTypeTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lvNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="organisation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="organisationNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="organisationTag" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semester_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semester_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sj_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_lv_art_kurz" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_lv_art_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_lv_nr" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_sp_nr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semesterID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semesterType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semesterYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="speaker" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stp_sp_sst" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_sp_title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vortragende_mitwirkende" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="lecture" inverseEntity="Grade" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="stp_sp_nr"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -300,7 +300,7 @@
         <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="148"/>
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="30"/>
         <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
-        <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="283"/>
+        <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
         <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="178"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="253"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>

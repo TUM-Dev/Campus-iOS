@@ -15,7 +15,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     typealias ImporterType = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
-    let sortDescriptor = NSSortDescriptor(key: "semester_id", ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: "semesterID", ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     
@@ -38,7 +38,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath)
         guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = lecture.stp_sp_title
+        cell.textLabel?.text = lecture.title
         
         return cell
     }
