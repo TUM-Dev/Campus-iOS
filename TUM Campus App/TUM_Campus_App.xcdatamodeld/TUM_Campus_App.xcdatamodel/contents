@@ -166,16 +166,16 @@
     </entity>
     <entity name="SideDish" representedClassName=".SideDish" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="mensa_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="sides" inverseEntity="Cafeteria" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
                 <constraint value="date"/>
-                <constraint value="mensa_id"/>
+                <constraint value="mensaID"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -307,7 +307,7 @@
         <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
         <element name="Price" positionX="503.1015625" positionY="423.5625" width="128" height="133"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="163"/>
-        <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="133"/>
+        <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="30"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="30"/>
         <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>

@@ -52,7 +52,7 @@ import CoreData
         let menu = try context.fetch(menuFetchRequest)
         
         let sidesFetchRequest: NSFetchRequest<SideDish> = SideDish.fetchRequest()
-        sidesFetchRequest.predicate = NSPredicate(format: "\(SideDish.CodingKeys.mensa_id.rawValue) == %d", id)
+        sidesFetchRequest.predicate = NSPredicate(format: "mensaID == %d", id)
         let sides = try context.fetch(sidesFetchRequest)
         
         self.init(entity: Cafeteria.entity(), insertInto: context)

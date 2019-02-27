@@ -23,10 +23,10 @@ import CoreData
     
     enum CodingKeys: String, CodingKey {
         case date
-        case mensa_id
+        case mensaID
         case name
-        case type_long
-        case type_short
+        case type
+        case typeTag
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -34,24 +34,24 @@ import CoreData
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let date = try container.decode(Date.self, forKey: .date)
-        let mensa_id_string = try container.decode(String.self, forKey: .mensa_id)
-        guard let mensa_id = Int64(mensa_id_string) else {
+        let mensa_id_string = try container.decode(String.self, forKey: .mensaID)
+        guard let mensaID = Int64(mensa_id_string) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for mensa_id could not be converted to Int64"))
         }
         let name = try container.decode(String.self, forKey: .name)
-        let type_long = try container.decode(String.self, forKey: .type_long)
-        let type_short = try container.decode(String.self, forKey: .type_short)
+        let type = try container.decode(String.self, forKey: .type)
+        let typeTag = try container.decode(String.self, forKey: .typeTag)
         
         let cafeteriaFetchRequest: NSFetchRequest<Cafeteria> = Cafeteria.fetchRequest()
-        cafeteriaFetchRequest.predicate = NSPredicate(format: "\(Cafeteria.CodingKeys.id.rawValue) == %d", mensa_id)
+        cafeteriaFetchRequest.predicate = NSPredicate(format: "id == %d", mensaID)
         let cafeteria = try context.fetch(cafeteriaFetchRequest).first
         
         self.init(entity: SideDish.entity(), insertInto: context)
         self.date = date
-        self.mensa_id = mensa_id
+        self.mensaID = mensaID
         self.name = name
-        self.type_long = type_long
-        self.type_short = type_short
+        self.type = type
+        self.typeTag = typeTag
         self.cafeteria = cafeteria
     }
     
