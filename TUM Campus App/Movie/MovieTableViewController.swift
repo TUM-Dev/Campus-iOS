@@ -14,7 +14,7 @@ class MovieTableViewController: UITableViewController, EntityTableViewController
    typealias ImporterType = Importer<Movie,[Movie],JSONDecoder>
     
     let endpoint: URLRequestConvertible = TUMCabeAPI.movie
-    let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \Movie.date, ascending: false)
     lazy var importer: ImporterType = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
     
     override func viewDidLoad() {

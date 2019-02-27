@@ -40,8 +40,9 @@ import CoreData
         }
         let date = try container.decode(Date.self, forKey: .date)
         let title = try container.decode(String.self, forKey: .title)
-        let link = try container.decode(String.self, forKey: .link)
-        let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)    // TODO: use URL istead of String
+        let link = try container.decode(URL.self, forKey: .link)
+        let imageURLString = try container.decode(String.self, forKey: .imageURL)
+        let imageURL = URL(string: imageURLString.replacingOccurrences(of: " ", with: "%20"))
         
         self.init(entity: News.entity(), insertInto: context)
         self.id = id

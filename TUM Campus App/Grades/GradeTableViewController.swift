@@ -17,7 +17,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
-    let sortDescriptor = NSSortDescriptor(key: "semester", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     

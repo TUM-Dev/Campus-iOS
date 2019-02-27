@@ -16,7 +16,7 @@ class TuitionTableViewController: UITableViewController, EntityTableViewControll
     typealias ImporterType = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.tuitionStatus
-    let sortDescriptor = NSSortDescriptor(key: "semesterID", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     override func viewDidLoad() {

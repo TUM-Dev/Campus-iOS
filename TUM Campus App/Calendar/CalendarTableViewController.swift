@@ -15,7 +15,7 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     typealias ImporterType = Importer<CalendarEvent,Calendar,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
-    let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: true)
+    let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     
