@@ -38,6 +38,10 @@ extension DataRequest {
     static func xmlResponseSerializer() -> DataResponseSerializer<XMLIndexer> {
         return DataResponseSerializer { (_, response, data, error) -> Result<XMLIndexer> in
             
+            if let error = error {
+                return .failure(error)
+            }
+            
             let result = Request.serializeResponseData(response: response, data: data, error: nil)
             
             guard case let .success(validData) = result else {
