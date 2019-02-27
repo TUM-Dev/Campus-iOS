@@ -12,8 +12,9 @@ import Alamofire
 import XMLParsing
 
 
-class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {    
-    typealias ImporterType = Importer<Grade,GradesAPIResponse,XMLDecoder>
+class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+    typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
+    typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
     let sortDescriptor = NSSortDescriptor(key: "lv_semester", ascending: false)
@@ -23,7 +24,9 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
-        importer.performFetch()
+        importer.performFetch { error in
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

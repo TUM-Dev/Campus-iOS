@@ -193,13 +193,15 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 .validate(statusCode: 200..<300)
                 .validate(contentType: ["text/xml"])
                 .responseXML { xml in
-                if xml.value?["confirmed"].element?.text == "true" {
-                    callback(.success(true))
-                } else if xml.value?["confirmed"].element?.text == "false" {
-                    callback(.failure(LoginError.invalidToken))
-                } else {
-                    callback(.failure(LoginError.unknown))
-                }
+                    if let error = xml.error {
+                        callback(.failure(error))
+                    } else if xml.value?["confirmed"].element?.text == "true" {
+                        callback(.success(true))
+                    } else if xml.value?["confirmed"].element?.text == "false" {
+                        callback(.failure(LoginError.invalidToken))
+                    } else {
+                        callback(.failure(LoginError.unknown))
+                    }
             }
         }
     }
