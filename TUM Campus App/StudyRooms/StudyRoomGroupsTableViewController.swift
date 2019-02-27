@@ -20,7 +20,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
     typealias ImporterType = Importer<StudyRoomGroup,StudyRoomAPIResponse,JSONDecoder>
     
     let endpoint: URLRequestConvertible = TUMDevAppAPI.rooms
-    let sortDescriptor = NSSortDescriptor(key: "sortierung", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
     lazy var importer: ImporterType = Importer(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
     override func viewDidLoad() {
@@ -43,7 +43,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
         guard let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
         
         cell.textLabel?.text = roomGroup.name
-        cell.detailTextLabel?.text = "\(roomGroup.raeume?.count ?? 0)"
+        cell.detailTextLabel?.text = "\(roomGroup.rooms?.count ?? 0)"
         return cell
     }
     

@@ -180,26 +180,26 @@
         </uniquenessConstraints>
     </entity>
     <entity name="StudyRoom" representedClassName=".StudyRoom" syncable="YES" codeGenerationType="category">
-        <attribute name="belegung_ab" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="belegung_bis" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="belegung_durch" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="belegung_fuer" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="belegung_in" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="gebaeude_code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gebaeude_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gebaeude_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="raum_code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="raum_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="raum_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="buildingCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buildingName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buildingNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupiedBy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupiedFor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="occupiedFrom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupiedIn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="occupiedUntil" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="raum_nr_architekt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="raum_nummer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoomAttribute" inverseName="studyRoom" inverseEntity="StudyRoomAttribute" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="raeume" inverseEntity="StudyRoomGroup" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="rooms" inverseEntity="StudyRoomGroup" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="raum_nr"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -216,13 +216,13 @@
     </entity>
     <entity name="StudyRoomGroup" representedClassName=".StudyRoomGroup" syncable="YES" codeGenerationType="category">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sortierung" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="raeume" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom" syncable="YES"/>
+        <attribute name="sorting" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="nr"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
