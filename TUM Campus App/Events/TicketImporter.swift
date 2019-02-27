@@ -74,7 +74,7 @@ class TicketImporter: ImporterProtocol {
         let events = (try? context.fetch(eventFetchRequest)) ?? []
         for event in events where event.ticketType == nil {
             context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
-            sessionManager.request(TUMCabeAPI.ticketTypes(event: Int(event.event)))
+            sessionManager.request(TUMCabeAPI.ticketTypes(event: Int(event.id)))
                 .validate(statusCode: 200..<300)
                 .validate(contentType: JSONDecoder.contentType)
                 .responseData { [weak self] response in

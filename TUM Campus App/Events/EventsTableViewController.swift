@@ -14,8 +14,8 @@ class EventsTableViewController: UITableViewController, EntityTableViewControlle
     typealias ImporterType = TicketImporter
     
     let endpoint = TUMCabeAPI.events
-    let sortDescriptor = NSSortDescriptor(key: "start", ascending: false)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
+    let sortDescriptor = NSSortDescriptor(keyPath: \TicketEvent.start, ascending: false)
+    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     
     override func viewDidLoad() {

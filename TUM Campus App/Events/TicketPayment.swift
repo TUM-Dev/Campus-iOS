@@ -20,25 +20,34 @@ import CoreData
  */
     
     enum CodingKeys: String, CodingKey {
-        case maxTickets
-        case minTickets
-        case stripe_publishable_key
-        case terms
+        case maxTickets = "maxTickets"
+        case minTickets = "minTickets"
+        case stripeKey = "stripe_publishable_key"
+        case terms = "terms"
     }
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let maxTickets = try container.decode(String.self, forKey: .maxTickets)
-        let minTickets = try container.decode(String.self, forKey: .minTickets)
-        let stripe_publishable_key = try container.decode(String.self, forKey: .stripe_publishable_key)
-        let terms = try container.decode(String.self, forKey: .terms)
+        let maxTicketsString = try container.decode(String.self, forKey: .maxTickets)
+        guard let maxTickets = Int64(maxTicketsString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for maxTickets could not be converted to Int64"))
+        }
+        let minTicketsString = try container.decode(String.self, forKey: .minTickets)
+        guard let minTickets = Int64(minTicketsString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for minTickets could not be converted to Int64"))
+        }
+        let stripeKey = try container.decode(String.self, forKey: .stripeKey)
+        let termsString = try container.decode(String.self, forKey: .terms)
+        guard let terms = URL(string: termsString.replacingOccurrences(of: " ", with: "%20")) else {
+            throw DecodingError.typeMismatch(URL.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for terns could not be converted to URL"))
+        }
         
         self.init(entity: TicketPayment.entity(), insertInto: context)
         self.maxTickets = maxTickets
         self.minTickets = minTickets
-        self.stripe_publishable_key = stripe_publishable_key
+        self.stripeKey = stripeKey
         self.terms = terms
     }
     

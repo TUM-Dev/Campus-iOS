@@ -28,15 +28,15 @@ import CoreData
     
     enum CodingKeys: String, CodingKey {
         case end = "end"
-        case event = "event"
-        case event_description = "description"
+        case id = "event"
+        case eventDescription = "description"
         case file = "file"
-        case kino = "kino"
+        case kinoID = "kino"
         case link = "link"
         case locality = "locality"
-        case news_id = "news"
+        case newsID = "news"
         case start = "start"
-        case ticket_group = "ticket_group"
+        case groupID = "ticket_group"
         case title = "title"
     }
     
@@ -44,36 +44,45 @@ import CoreData
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let end = try container.decode(String.self, forKey: .end)
-        let eventString = try container.decode(String.self, forKey: .event)
-        guard let event = Int64(eventString) else {
+        let end = try container.decode(Date.self, forKey: .end)
+        let eventString = try container.decode(String.self, forKey: .id)
+        guard let id = Int64(eventString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for event could not be converted to Int64"))
         }
-        let event_description = try container.decode(String.self, forKey: .event_description)
-        let file = try container.decode(String.self, forKey: .file)
-        let kino = try container.decode(String.self, forKey: .kino)
-        let link = try container.decode(String.self, forKey: .link)
+        let eventDescription = try container.decode(String.self, forKey: .eventDescription)
+        let fileString = try container.decode(String.self, forKey: .file)
+        guard let file = URL(string: fileString.replacingOccurrences(of: " ", with: "%20")) else {
+            throw DecodingError.typeMismatch(URL.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for file could not be converted to URL"))
+        }
+        let kinoString = try container.decode(String.self, forKey: .kinoID)
+        guard let kinoID = Int64(kinoString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for kino could not be converted to Int64"))
+        }
+        let linkString = try container.decode(String.self, forKey: .link)
+        guard let link = URL(string: linkString.replacingOccurrences(of: " ", with: "%20")) else {
+            throw DecodingError.typeMismatch(URL.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for link could not be converted to URL"))
+        }
         let locality = try container.decode(String.self, forKey: .locality)
-        let news_id = try container.decode(String.self, forKey: .news_id)
-        let start = try container.decode(String.self, forKey: .start)
-        let ticket_group = try container.decode(String.self, forKey: .ticket_group)
+        let newsID = try container.decode(String.self, forKey: .newsID)
+        let start = try container.decode(Date.self, forKey: .start)
+        let groupID = try container.decode(String.self, forKey: .groupID)
         let title = try container.decode(String.self, forKey: .title)
         
         let movieFetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        movieFetchRequest.predicate = NSPredicate(format: "\(Movie.CodingKeys.id.rawValue) == %@", kino)
+        movieFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Movie.id), kinoID)
         let movie = try context.fetch(movieFetchRequest).first
         
         self.init(entity: TicketEvent.entity(), insertInto: context)
         self.end = end
-        self.event = event
-        self.event_description = event_description
+        self.id = id
+        self.eventDescription = eventDescription
         self.file = file
-        self.kino = kino
+        self.kinoID = kinoID
         self.link = link
         self.locality = locality
-        self.news_id = news_id
+        self.newsID = newsID
         self.start = start
-        self.ticket_group = ticket_group
+        self.groupID = groupID
         self.title = title
         self.movie = movie
     }

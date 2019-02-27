@@ -227,51 +227,51 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
-        <attribute name="end" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="event_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="file" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="kino" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="file" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="groupID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="kinoID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="locality" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="news_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticket_group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="newsID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="ticket" inverseEntity="Movie" syncable="YES"/>
-        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="event_ticket" inverseEntity="TicketType" syncable="YES"/>
+        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="ticket" inverseEntity="TicketType" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="event"/>
+                <constraint value="id"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="TicketPayment" representedClassName=".TicketPayment" syncable="YES" codeGenerationType="category">
-        <attribute name="maxTickets" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="minTickets" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stripe_publishable_key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="terms" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ticket_type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType" syncable="YES"/>
+        <attribute name="maxTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="minTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="stripeKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="terms" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="stripe_publishable_key"/>
+                <constraint value="stripeKey"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
     <entity name="TicketType" representedClassName=".TicketType" syncable="YES" codeGenerationType="category">
         <attribute name="contingent" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="event" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="paymentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sold" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticket_description" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticket_payment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticket_type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="event_ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent" syncable="YES"/>
-        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="ticket_type" inverseEntity="TicketPayment" syncable="YES"/>
+        <attribute name="ticketDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="type" inverseEntity="TicketPayment" syncable="YES"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
-                <constraint value="ticket_type"/>
-                <constraint value="event"/>
+                <constraint value="id"/>
+                <constraint value="eventID"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -311,9 +311,9 @@
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="30"/>
         <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>
-        <element name="TicketEvent" positionX="-8.93359375" positionY="606.54296875" width="128" height="30"/>
-        <element name="TicketPayment" positionX="155.875" positionY="611.3359375" width="128" height="30"/>
-        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="30"/>
+        <element name="TicketEvent" positionX="-8.93359375" positionY="606.54296875" width="128" height="240"/>
+        <element name="TicketPayment" positionX="155.875" positionY="611.3359375" width="128" height="120"/>
+        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="180"/>
         <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
         <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
     </elements>
