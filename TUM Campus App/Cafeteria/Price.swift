@@ -45,7 +45,7 @@ import CoreData
         let type_short = try container.decode(String.self, forKey: .type_short)
         
         let menuFetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        menuFetchRequest.predicate = NSPredicate(format: "\(Menu.CodingKeys.type_nr.rawValue) == %d", type_nr)
+        menuFetchRequest.predicate = NSPredicate(format: "\(Menu.CodingKeys.typeNumber.rawValue) == %d", type_nr)
         let menus = try context.fetch(menuFetchRequest)
         
         self.init(entity: Price.entity(), insertInto: context)

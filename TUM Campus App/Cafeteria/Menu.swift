@@ -25,11 +25,11 @@ import CoreData
     enum CodingKeys: String, CodingKey {
        case date
        case id
-       case mensa_id
+       case mensaID
        case name
-       case type_long
-       case type_nr
-       case type_short
+       case type
+       case typeNumber
+       case typeTag
     }
     
     required convenience init(from decoder: Decoder) throws {
@@ -41,34 +41,34 @@ import CoreData
         guard let id = Int64(idString) else {
              throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for id could not be converted to Int64"))
         }
-        let mensa_id_string = try container.decode(String.self, forKey: .mensa_id)
-        guard let mensa_id = Int64(mensa_id_string) else {
+        let mensa_id_string = try container.decode(String.self, forKey: .mensaID)
+        guard let mensaID = Int64(mensa_id_string) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for mensa_id could not be converted to Int64"))
         }
         let name = try container.decode(String.self, forKey: .name)
-        let type_long = try container.decode(String.self, forKey: .type_long)
-        let type_nr_string = try container.decode(String.self, forKey: .type_nr)
-        guard let type_nr = Int64(type_nr_string) else {
+        let type = try container.decode(String.self, forKey: .type)
+        let type_nr_string = try container.decode(String.self, forKey: .typeNumber)
+        guard let typeNumber = Int64(type_nr_string) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for type_nr could not be converted to Int64"))
         }
-        let type_short = try container.decode(String.self, forKey: .type_short)
+        let typeTag = try container.decode(String.self, forKey: .typeTag)
         
         let cafeteriaFetchRequest: NSFetchRequest<Cafeteria> = Cafeteria.fetchRequest()
-        cafeteriaFetchRequest.predicate = NSPredicate(format: "\(Cafeteria.CodingKeys.id.rawValue) == %d", mensa_id)
+        cafeteriaFetchRequest.predicate = NSPredicate(format: "id == %d", mensaID)
         let cafeteria = try context.fetch(cafeteriaFetchRequest).first
         
         let priceFetchRequest: NSFetchRequest<Price> = Price.fetchRequest()
-        priceFetchRequest.predicate = NSPredicate(format: "\(Price.CodingKeys.type_nr.rawValue) == %d", type_nr)
+        priceFetchRequest.predicate = NSPredicate(format: "\(Price.CodingKeys.type_nr.rawValue) == %d", typeNumber)
         let prices = try context.fetch(priceFetchRequest)
         
         self.init(entity: Menu.entity(), insertInto: context)
         self.date = date
         self.id = id
-        self.mensa_id = mensa_id
+        self.mensaID = mensaID
         self.name = name
-        self.type_long = type_long
-        self.type_nr = type_nr
-        self.type_short = type_short
+        self.type = type
+        self.typeNumber = typeNumber
+        self.typeTag = typeTag
         self.cafeteria = cafeteria
         self.price = NSSet(array: prices)
     }

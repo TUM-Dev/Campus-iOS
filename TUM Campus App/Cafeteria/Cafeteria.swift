@@ -48,7 +48,7 @@ import CoreData
         let name = try container.decode(String.self, forKey: .name)
         
         let menuFetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        menuFetchRequest.predicate = NSPredicate(format: "\(Menu.CodingKeys.mensa_id.rawValue) == %d", id)
+        menuFetchRequest.predicate = NSPredicate(format: "mensaID == %d", id)
         let menu = try context.fetch(menuFetchRequest)
         
         let sidesFetchRequest: NSFetchRequest<SideDish> = SideDish.fetchRequest()

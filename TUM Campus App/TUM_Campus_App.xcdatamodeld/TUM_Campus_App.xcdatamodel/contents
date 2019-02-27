@@ -74,11 +74,11 @@
     <entity name="Menu" representedClassName=".Menu" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="mensa_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_long" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="type_short" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="menu" inverseEntity="Cafeteria" syncable="YES"/>
         <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Price" inverseName="menus" inverseEntity="Price" syncable="YES"/>
         <uniquenessConstraints>
@@ -301,7 +301,7 @@
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="165"/>
         <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="225"/>
         <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
-        <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="178"/>
+        <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="30"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
         <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
