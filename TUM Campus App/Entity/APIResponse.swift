@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  APIResponse.swift
 //  TUM Campus App
 //
 //  Created by Tim Gymnich on 2/27/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Response<ResponseType: Decodable, ErrorType: APIError>: Decodable {
+struct APIResponse<ResponseType: Decodable, ErrorType: APIError>: Decodable {
     var response: ResponseType
     
     init(from decoder: Decoder) throws {
@@ -21,14 +21,7 @@ struct Response<ResponseType: Decodable, ErrorType: APIError>: Decodable {
     }
 }
 
-protocol APIError: Error, Decodable {
-    
-}
-
-struct TUMOnlineError: Decodable {
-    var message: String
-}
-
+protocol APIError: Error, Decodable { }
 
 enum TUMOnlineAPIError: APIError {
     case noPermission
@@ -37,12 +30,12 @@ enum TUMOnlineAPIError: APIError {
     case unkown(String)
     
     enum CodingKeys: String, CodingKey {
-        case error = "message"
+        case message = "message"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let error = try container.decode(String.self, forKey: .error)
+        let error = try container.decode(String.self, forKey: .message)
         
         switch error {
         case let str where str.contains("Keine Rechte für Funktion"):
