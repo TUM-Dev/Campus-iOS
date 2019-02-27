@@ -9,12 +9,14 @@
 import Foundation
 import CoreData
 import Alamofire
-import XMLParsing
 
 protocol Entity: Decodable, NSFetchRequestResult {
     static func fetchRequest() -> NSFetchRequest<Self>
 }
 
+enum ImporterError: Error {
+    case invalidData
+}
 
 class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
     let endpoint: URLRequestConvertible
@@ -57,7 +59,8 @@ protocol ImporterProtocol: class {
     associatedtype DecoderType: DecoderProtocol
     associatedtype EntityType: Entity
     associatedtype EntityContainer: Decodable
-    
+    typealias ErrorHandler = (Error) -> Void
+
     var context: NSManagedObjectContext { get }
     var fetchedResultsController: NSFetchedResultsController<EntityType> { get }
     var sortDescriptors: [NSSortDescriptor] { get }
@@ -65,70 +68,41 @@ protocol ImporterProtocol: class {
     var endpoint: URLRequestConvertible { get }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
     
-    func performFetch()
+    func performFetch(error: ErrorHandler?)
     
     init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...)
     init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy:  DecoderType.DateDecodingStrategy)
 }
 
 extension ImporterProtocol {
-    func performFetch() {
+    func performFetch(error: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
             .validate(contentType: DecoderType.contentType)
             .responseData { [weak self] response in
-                guard response.error == nil else { return }
                 guard let self = self else { return }
-                guard let data = response.data else { return }
+                if let responseError = response.error {
+                    error?(responseError)
+                    return
+                }
+                guard let data = response.data else {
+                    error?(ImporterError.invalidData)
+                    return
+                }
                 let decoder = DecoderType.instantiate()
                 decoder.userInfo[.context] = self.context
                 if let strategy = self.dateDecodingStrategy {
                     decoder.dateDecodingStrategy = strategy
                 }
-                _ = try! decoder.decode(EntityContainer.self, from: data)
-                try! self.context.save()
+                do {
+                    _ = try decoder.decode(EntityContainer.self, from: data)
+                    try self.context.save()
+                } catch let decodingError {
+                    error?(decodingError)
+                }
         }
     }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }
     var appDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
     var coreDataStack: NSPersistentContainer { return appDelegate.persistentContainer }
-}
-
-protocol DecoderProtocol: class {
-    associatedtype DateDecodingStrategy: DecodingStrategyProtocol
-    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
-    var userInfo: [CodingUserInfoKey : Any] { get set }
-    var dateDecodingStrategy: DateDecodingStrategy { get set }
-    static var contentType: [String] { get }
-    static func instantiate() -> Self
-}
-
-protocol DecodingStrategyProtocol { }
-
-extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
-
-extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
-
-extension JSONDecoder: DecoderProtocol {
-    static var contentType: [String] { return ["application/json"] }
-    static func instantiate() -> Self {
-        //  infers the type of self from the calling context:
-        func helper<T>() -> T {
-            let decoder = JSONDecoder()
-            return decoder as! T
-        }
-        return helper()
-    }
-}
-
-extension XMLDecoder: DecoderProtocol {
-    static var contentType: [String] { return ["text/xml"] }
-    static func instantiate() -> Self {
-        // infers the type of self from the calling context
-        func helper<T>() -> T {
-            let decoder = XMLDecoder()
-            return decoder as! T
-        }
-        return helper()
-    }
 }
