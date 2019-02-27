@@ -11,14 +11,14 @@ import CoreData
 
 // XMLDecoder cannot use [Event].self so we have to wrap the events in Calendar.self. This is probably a bug in parsing the root node.
 struct Calendar: Decodable {
-    var events: [Event]
+    var events: [CalendarEvent]
     
     enum CodingKeys: String, CodingKey {
         case events = "event"
     }
 }
 
-@objc final class Event: NSManagedObject, Entity {
+@objc final class CalendarEvent: NSManagedObject, Entity {
     
 /*
      <event>
@@ -35,8 +35,8 @@ struct Calendar: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case descriptionText = "description"
-        case dtstart = "dtstart"
-        case dtend = "dtend"
+        case startDate = "dtstart"
+        case endDate = "dtend"
         case location = "location"
         case nr = "nr"
         case status = "status"
@@ -50,21 +50,21 @@ struct Calendar: Decodable {
         
         let nr = try container.decode(Int64.self, forKey: .nr)
         let status = try container.decode(String.self, forKey: .status)
-        let url = try container.decode(String.self, forKey: .url)   // TODO: use URL instead of String
+        let url = try container.decode(URL.self, forKey: .url)
         let title = try container.decode(String.self, forKey: .title)
         let descriptionText = try container.decode(String.self, forKey: .descriptionText)
-        let dtstart = try container.decode(Date.self, forKey: .dtstart)
-        let dtend = try container.decode(Date.self, forKey: .dtend)
+        let startDate = try container.decode(Date.self, forKey: .startDate)
+        let endDate = try container.decode(Date.self, forKey: .endDate)
         let location = try container.decode(String.self, forKey: .location)
         
-        self.init(entity: Event.entity(), insertInto: context)
+        self.init(entity: CalendarEvent.entity(), insertInto: context)
         self.nr = nr
         self.status = status
         self.url = url
         self.title = title
         self.descriptionText = descriptionText
-        self.dtstart = dtstart
-        self.dtend = dtend
+        self.startDate = startDate
+        self.endDate = endDate
         self.location = location
     }
     
