@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Alamofire
+import Foundation
 
 class CampusTabBarController: UITabBarController {
-    
     lazy var coreDataStack = appDelegate.persistentContainer
     let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
     
@@ -27,8 +28,11 @@ class CampusTabBarController: UITabBarController {
                 switch result {
                 case .success:
                     break
+                case .failure(let error as URLError) where error.code  == URLError.Code.notConnectedToInternet:
+                    // We are offline so we cannot confirm the token right now
+                    break
                 case .failure:
-                    self?.presentLoginViewController()
+                self?.presentLoginViewController()
                 }
             }
         }
