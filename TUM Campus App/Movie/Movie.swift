@@ -37,7 +37,7 @@ import CoreData
         case date = "date"
         case director = "director"
         case genre = "genre"
-        case kino = "kino"
+        case id = "kino"
         case link = "link"
         case movieDescription = "description"
         case rating = "rating"
@@ -59,7 +59,10 @@ import CoreData
         let date = try container.decode(Date.self, forKey: .date)
         let director = try container.decode(String.self, forKey: .director)
         let genre = try container.decode(String.self, forKey: .genre)
-        let kino = try container.decode(String.self, forKey: .kino)
+        let idString = try container.decode(String.self, forKey: .id)
+        guard let id = Int64(idString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for id could not be converted to Int64"))
+        }
         let linkString = try container.decode(String.self, forKey: .link)
         guard let link = URL(string: linkString.replacingOccurrences(of: " ", with: "%20")) else {
             throw DecodingError.typeMismatch(URL.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for link could not be converted to URL"))
@@ -77,7 +80,7 @@ import CoreData
         self.date = date
         self.director = director
         self.genre = genre
-        self.kino = kino
+        self.id = id
         self.link = link
         self.movieDescription = movieDescription
         self.rating = rating

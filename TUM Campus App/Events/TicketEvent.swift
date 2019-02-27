@@ -60,7 +60,7 @@ import CoreData
         let title = try container.decode(String.self, forKey: .title)
         
         let movieFetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        movieFetchRequest.predicate = NSPredicate(format: "\(Movie.CodingKeys.kino.rawValue) == %@", kino)
+        movieFetchRequest.predicate = NSPredicate(format: "\(Movie.CodingKeys.id.rawValue) == %@", kino)
         let movie = try context.fetch(movieFetchRequest).first
         
         self.init(entity: TicketEvent.entity(), insertInto: context)
