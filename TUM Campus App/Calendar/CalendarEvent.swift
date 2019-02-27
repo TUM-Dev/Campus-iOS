@@ -38,7 +38,7 @@ struct Calendar: Decodable {
         case startDate = "dtstart"
         case endDate = "dtend"
         case location = "location"
-        case nr = "nr"
+        case id = "nr"
         case status = "status"
         case title = "title"
         case url = "url"
@@ -48,7 +48,7 @@ struct Calendar: Decodable {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        let nr = try container.decode(Int64.self, forKey: .nr)
+        let id = try container.decode(Int64.self, forKey: .id)
         let status = try container.decode(String.self, forKey: .status)
         let url = try container.decode(URL.self, forKey: .url)
         let title = try container.decode(String.self, forKey: .title)
@@ -58,7 +58,7 @@ struct Calendar: Decodable {
         let location = try container.decode(String.self, forKey: .location)
         
         self.init(entity: CalendarEvent.entity(), insertInto: context)
-        self.nr = nr
+        self.id = id
         self.status = status
         self.url = url
         self.title = title
