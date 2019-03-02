@@ -127,8 +127,20 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="URI" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="source" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sourceID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="news" inverseEntity="NewsSource" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="NewsSource" representedClassName=".NewsSource" syncable="YES" codeGenerationType="category">
+        <attribute name="icon" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="news" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="News" inverseName="source" inverseEntity="News" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -302,10 +314,10 @@
         <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="225"/>
         <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
         <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="30"/>
-        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
-        <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="135"/>
-        <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
         <element name="MenuPrice" positionX="503.1015625" positionY="423.5625" width="128" height="135"/>
+        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
+        <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="150"/>
+        <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="165"/>
         <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="30"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
@@ -316,5 +328,6 @@
         <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="180"/>
         <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
         <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
+        <element name="NewsSource" positionX="9" positionY="288" width="128" height="105"/>
     </elements>
 </model>

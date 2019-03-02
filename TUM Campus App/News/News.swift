@@ -22,7 +22,7 @@ import CoreData
     
     enum CodingKeys: String, CodingKey {
         case id = "news"
-        case source = "src"
+        case sourceID = "src"
         case date = "date"
         case title = "title"
         case link = "link"
@@ -34,8 +34,8 @@ import CoreData
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let id = try container.decode(String.self, forKey: .id)
-        let sourceString = try container.decode(String.self, forKey: .source)
-        guard let source = Int64(sourceString) else {
+        let sourceString = try container.decode(String.self, forKey: .sourceID)
+        guard let sourceID = Int64(sourceString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for source could not be converted to Int64"))
         }
         let date = try container.decode(Date.self, forKey: .date)
@@ -44,13 +44,18 @@ import CoreData
         let imageURLString = try container.decode(String.self, forKey: .imageURL)
         let imageURL = URL(string: imageURLString.replacingOccurrences(of: " ", with: "%20"))
         
+        let sourceFetchRequest: NSFetchRequest<NewsSource> = NewsSource.fetchRequest()
+        sourceFetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(NewsSource.id) , sourceID)
+        let source = try context.fetch(sourceFetchRequest).first
+        
         self.init(entity: News.entity(), insertInto: context)
         self.id = id
-        self.source = source
+        self.sourceID = sourceID
         self.date = date
         self.title = title
         self.link = link
         self.imageURL = imageURL
+        self.source = source
     }
     
 }

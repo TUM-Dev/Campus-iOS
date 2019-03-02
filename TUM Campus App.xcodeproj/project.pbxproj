@@ -20,6 +20,7 @@
 		224CB3692225ACAD0002945A /* TUMSexyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3682225ACAD0002945A /* TUMSexyTableViewController.swift */; };
 		224CB36B2226B7980002945A /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB36A2226B7980002945A /* APIResponse.swift */; };
 		224CB36F2226C6240002945A /* DecoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB36E2226C6240002945A /* DecoderProtocol.swift */; };
+		224CB389222AA6620002945A /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB388222AA6620002945A /* NewsSource.swift */; };
 		2258EDB422221DB70079C2ED /* TicketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB322221DB70079C2ED /* TicketType.swift */; };
 		2258EDB622221DCC0079C2ED /* TicketEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB522221DCC0079C2ED /* TicketEvent.swift */; };
 		2258EDB822221DE20079C2ED /* TicketPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDB722221DE20079C2ED /* TicketPayment.swift */; };
@@ -99,6 +100,7 @@
 		224CB3682225ACAD0002945A /* TUMSexyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyTableViewController.swift; sourceTree = "<group>"; };
 		224CB36A2226B7980002945A /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		224CB36E2226C6240002945A /* DecoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderProtocol.swift; sourceTree = "<group>"; };
+		224CB388222AA6620002945A /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
 		2258EDB322221DB70079C2ED /* TicketType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketType.swift; sourceTree = "<group>"; };
 		2258EDB522221DCC0079C2ED /* TicketEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketEvent.swift; sourceTree = "<group>"; };
 		2258EDB722221DE20079C2ED /* TicketPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketPayment.swift; sourceTree = "<group>"; };
@@ -292,9 +294,9 @@
 				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
+				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
-				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				22B00AED21D9445300E65C86 /* Extensions.swift */,
 			);
 			path = "TUM Campus App";
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				223D12EE21E00B9E0053305B /* News.swift */,
+				224CB388222AA6620002945A /* NewsSource.swift */,
 				223D12F021E014C60053305B /* NewsTableViewController.swift */,
 			);
 			path = News;
@@ -674,6 +677,7 @@
 				22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */,
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
+				224CB389222AA6620002945A /* NewsSource.swift in Sources */,
 				22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */,
 				22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,

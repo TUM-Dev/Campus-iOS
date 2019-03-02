@@ -12,6 +12,8 @@ enum TUMCabeAPI: URLRequestConvertible {
     case movie
     case cafeteria
     case news(news: String)
+    case newsSources
+    case newsAlert
     case roomSearch(query: String)
     case roomMaps(room: String)
     case mapImage(room: String, id: String)
@@ -40,21 +42,23 @@ enum TUMCabeAPI: URLRequestConvertible {
     
     var path: String {
         switch self {
-        case .movie:                        return "kino"
-        case .cafeteria:                    return "mensen"
-        case .news(let news):               return "news/\(news)"
-        case .roomSearch(let query):        return "roomfinder/room/search/\(query)"
-        case .roomMaps(let room):           return "roomfinder/room/availableMaps/\(room)"
-        case .mapImage(let room, let id):   return "roomfinder/room/map/\(room)/\(id)"
-        case .registerDevice(let publicKey):return "device/register/\(publicKey)"
-        case .events:                       return "event/list"
-        case .myEvents:                     return "event/ticket/my"
-        case .ticketTypes(let event):       return "event/ticket/type/\(event)"
-        case .ticketStats(let event):       return "event/ticket/status/\(event)"
-        case .ticketReservation:            return "event/ticket/reserve"
-        case .ticketReservationCancellation:return "event/ticket/reserve/cancel"
-        case .ticketPurchase:               return "event/ticket/payment/stripe/purchase"
-        case .stripeKey:                    return "event/ticket/payment/stripe/ephemeralkey"
+        case .movie:                            return "kino"
+        case .cafeteria:                        return "mensen"
+        case .news(let news):                   return "news/\(news)"
+        case .newsSources:                      return "news/sources"
+        case .newsAlert:                        return "news/alert"
+        case .roomSearch(let query):            return "roomfinder/room/search/\(query)"
+        case .roomMaps(let room):               return "roomfinder/room/availableMaps/\(room)"
+        case .mapImage(let room, let id):       return "roomfinder/room/map/\(room)/\(id)"
+        case .registerDevice(let publicKey):    return "device/register/\(publicKey)"
+        case .events:                           return "event/list"
+        case .myEvents:                         return "event/ticket/my"
+        case .ticketTypes(let event):           return "event/ticket/type/\(event)"
+        case .ticketStats(let event):           return "event/ticket/status/\(event)"
+        case .ticketReservation:                return "event/ticket/reserve"
+        case .ticketReservationCancellation:    return "event/ticket/reserve/cancel"
+        case .ticketPurchase:                   return "event/ticket/payment/stripe/purchase"
+        case .stripeKey:                        return "event/ticket/payment/stripe/ephemeralkey"
         }
     }
     
