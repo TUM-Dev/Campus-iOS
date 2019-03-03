@@ -11,6 +11,7 @@ PODS:
   - KeychainAccess (3.1.2)
   - Kingfisher (5.0.1)
   - Neon (0.4.0)
+  - ScrollableDatepicker (2.2.0)
   - SWXMLHash (4.7.6)
   - XMLParsing (0.0.3)
 
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - CalendarKit
   - KeychainAccess
   - Kingfisher (~> 5.0)
+  - ScrollableDatepicker (~> 2.2)
   - SWXMLHash (~> 4.7)
   - XMLParsing (from `https://github.com/ShawnMoore/XMLParsing.git`)
 
@@ -34,6 +36,7 @@ SPEC REPOS:
     - KeychainAccess
     - Kingfisher
     - Neon
+    - ScrollableDatepicker
     - SWXMLHash
 
 EXTERNAL SOURCES:
@@ -54,9 +57,10 @@ SPEC CHECKSUMS:
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  ScrollableDatepicker: 0f14e38bcd3517e6632220af11e47d29e0f982db
   SWXMLHash: f6e0933ce74f2626669dc544851bc9fc1941670d
   XMLParsing: 085edb6fa22c71d6b53a79299f990a91e7414d19
 
-PODFILE CHECKSUM: 3780a991c349aa249fecfc5593022e7a3cc95861
+PODFILE CHECKSUM: ee35c411dfe46141edbde4335330a7aa5241527e
 
 COCOAPODS: 1.5.3

@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 // XMLDecoder cannot use [Event].self so we have to wrap the events in Calendar.self. This is probably a bug in parsing the root node.
-struct Calendar: Decodable {
+struct CalendarAPIResponse: Decodable {
     var events: [CalendarEvent]
     
     enum CodingKeys: String, CodingKey {

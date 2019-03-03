@@ -16,13 +16,14 @@ struct MensaAPIResponse: Decodable {
     var mensa_preise: [MenuPrice]
 }
 
-class CafeteriasTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+class CafeteriasCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     typealias ImporterType = Importer<Cafeteria,[Cafeteria],JSONDecoder>
     
     let endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
     let sortDescriptor = NSSortDescriptor(keyPath: \ImporterType.EntityType.mensa, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
     lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(keyPath: \Menu.date, ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+    var selectedIndexPath: IndexPath? = nil
     
     
     override func viewDidLoad() {
@@ -41,21 +42,38 @@ class CafeteriasTableViewController: UITableViewController, EntityTableViewContr
         try! importer.fetchedResultsController.performFetch()
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let targetViewController = segue.destination as? CafeteriaDetailCollectionViewController, let indexPath = selectedIndexPath else { return }
+        guard let cafeteria = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return }
+        targetViewController.cafeteria = cafeteria
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CafeteriaCell", for: indexPath) as! CafeteriaCollectionViewCell
         guard let cafeteria = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
-
-        cell.textLabel?.text = cafeteria.name
-        cell.detailTextLabel?.text = "\(cafeteria.menu?.count ?? 0) / \(cafeteria.sides?.count ?? 0)"
+        cell.configure(cafeteria)
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
+        collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(240))
     }
 
 }

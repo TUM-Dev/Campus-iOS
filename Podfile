@@ -13,6 +13,7 @@ target 'TUM Campus App' do
   pod 'KeychainAccess'
   pod 'Kingfisher', '~> 5.0'
   pod 'CalendarKit'
+  pod 'ScrollableDatepicker', '~> 2.2'
 
   target 'TUM Campus AppTests' do
     inherit! :search_paths

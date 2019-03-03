@@ -8,9 +8,14 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 
-@objc final class Cafeteria: NSManagedObject, Entity {
+@objc final class Cafeteria: NSManagedObject, Entity, MKAnnotation {
+    
+    var coordinate: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
     
     /*
      {
@@ -39,8 +44,14 @@ import CoreData
         guard let id = Int64(idString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for id could not be converted to Int64"))
         }
-        let latitude = try container.decode(String.self, forKey: .latitude)
-        let longitude = try container.decode(String.self, forKey: .longitude)
+        let latitudeString = try container.decode(String.self, forKey: .latitude)
+        guard let latitude = Double(latitudeString) else {
+            throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for latitude could not be converted to Double"))
+        }
+        let longitudeString = try container.decode(String.self, forKey: .longitude)
+        guard let longitude = Double(longitudeString) else {
+            throw DecodingError.typeMismatch(Double.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for longitude could not be converted to Double"))
+        }
         let mensaString = try container.decode(String.self, forKey: .mensa)
         guard let mensa = Int64(mensaString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for mensa could not be converted to Int64"))

@@ -12,7 +12,7 @@ import XMLParsing
 import Alamofire
 
 class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
-    typealias ImporterType = Importer<CalendarEvent,Calendar,XMLDecoder>
+    typealias ImporterType = Importer<CalendarEvent,CalendarAPIResponse,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
     let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)

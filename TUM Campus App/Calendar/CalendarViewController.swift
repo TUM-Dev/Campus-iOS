@@ -13,19 +13,18 @@ import Alamofire
 import XMLParsing
 
 class CalendarViewController: DayViewController, NSFetchedResultsControllerDelegate {
-    typealias ImporterType = Importer<CalendarEvent,Calendar,XMLDecoder>
+    typealias ImporterType = Importer<CalendarEvent,CalendarAPIResponse,XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
     let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch() { error in
             print(error)
         }
-        dayView.reloadData()
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
