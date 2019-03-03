@@ -133,3 +133,28 @@ extension SessionManager {
         return manager
     }
 }
+
+extension NSMutableAttributedString {
+    @discardableResult func bold(_ text: String, color: UIColor = .black) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Bold", size: 12)!, .foregroundColor: color]
+        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
+        append(boldString)
+        
+        return self
+    }
+    
+    @discardableResult func normal(_ text: String, color: UIColor = .black) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!, .foregroundColor: color]
+        let normal = NSAttributedString(string: text, attributes: attrs)
+        append(normal)
+        
+        return self
+    }
+    
+    var newLine: NSMutableAttributedString {
+        let newLine = NSAttributedString(string: "\n")
+        append(newLine)
+        
+        return self
+    }
+}
