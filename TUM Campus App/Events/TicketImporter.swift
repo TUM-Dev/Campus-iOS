@@ -17,6 +17,7 @@ class TicketImporter: ImporterProtocol {
     
     var sortDescriptors: [NSSortDescriptor]
     var endpoint: URLRequestConvertible
+    var predicate: NSPredicate?
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
@@ -38,13 +39,9 @@ class TicketImporter: ImporterProtocol {
         return context
     }()
     
-    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...) {
+    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate? = nil, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = nil) {
         self.endpoint = endpoint
-        self.sortDescriptors = sortDescriptor
-    }
-    
-    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy: JSONDecoder.DateDecodingStrategy) {
-        self.endpoint = endpoint
+        self.predicate = predicate
         self.sortDescriptors = sortDescriptor
         self.dateDecodingStrategy = dateDecodingStrategy
     }

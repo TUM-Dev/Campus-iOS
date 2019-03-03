@@ -21,6 +21,7 @@ enum ImporterError: Error {
 class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
     let endpoint: URLRequestConvertible
     let sortDescriptors: [NSSortDescriptor]
+    var predicate: NSPredicate?
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
@@ -29,6 +30,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
         fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.predicate = predicate
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = fetchedResultsControllerDelegate
@@ -42,13 +44,9 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
         return context
     }()
     
-    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...) {
+    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate? = nil, dateDecodingStrategy:  DecoderType.DateDecodingStrategy? = nil) {
         self.endpoint = endpoint
-        self.sortDescriptors = sortDescriptor
-    }
-    
-    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy:  DecoderType.DateDecodingStrategy) {
-        self.endpoint = endpoint
+        self.predicate = predicate
         self.sortDescriptors = sortDescriptor
         self.dateDecodingStrategy = dateDecodingStrategy
     }
@@ -63,15 +61,15 @@ protocol ImporterProtocol: class {
 
     var context: NSManagedObjectContext { get }
     var fetchedResultsController: NSFetchedResultsController<EntityType> { get }
-    var sortDescriptors: [NSSortDescriptor] { get }
     var sessionManager: SessionManager { get }
     var endpoint: URLRequestConvertible { get }
+    var sortDescriptors: [NSSortDescriptor] { get }
+    var predicate: NSPredicate? { get }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
     
     func performFetch(error: ErrorHandler?)
     
-    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor...)
-    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., dateDecodingStrategy:  DecoderType.DateDecodingStrategy)
+    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate?, dateDecodingStrategy:  DecoderType.DateDecodingStrategy?)
 }
 
 extension ImporterProtocol {

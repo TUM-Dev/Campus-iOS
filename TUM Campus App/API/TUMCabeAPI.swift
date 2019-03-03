@@ -11,7 +11,7 @@ import Alamofire
 enum TUMCabeAPI: URLRequestConvertible {
     case movie
     case cafeteria
-    case news(news: String)
+    case news
     case newsSources
     case newsAlert
     case roomSearch(query: String)
@@ -44,7 +44,7 @@ enum TUMCabeAPI: URLRequestConvertible {
         switch self {
         case .movie:                            return "kino"
         case .cafeteria:                        return "mensen"
-        case .news(let news):                   return "news/\(news)"
+        case .news:                             return "news"
         case .newsSources:                      return "news/sources"
         case .newsAlert:                        return "news/alert"
         case .roomSearch(let query):            return "roomfinder/room/search/\(query)"

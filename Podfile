@@ -11,6 +11,8 @@ target 'TUM Campus App' do
   pod 'SWXMLHash', '~> 4.7'
   pod 'XMLParsing', :git => 'https://github.com/ShawnMoore/XMLParsing.git'
   pod 'KeychainAccess'
+  pod 'Kingfisher', '~> 5.0'
+  pod 'CalendarKit'
 
   target 'TUM Campus AppTests' do
     inherit! :search_paths

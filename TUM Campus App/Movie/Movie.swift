@@ -85,7 +85,7 @@ import CoreData
         self.movieDescription = movieDescription
         self.rating = rating
         self.runtime = runtime
-        self.title = title
+        self.title = String(title.split(separator: ":")[1])
         self.year = year
     }
 }
