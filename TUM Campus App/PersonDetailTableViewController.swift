@@ -105,7 +105,7 @@ extension PersonDetailTableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 && !contactInfo.isEmpty {
-            return "Contact Info"
+            return NSLocalizedString("Contact Info", comment: "")
         }
         return nil
     }

@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Title"; ObjectID = "axI-Ls-mfJ"; */
+"axI-Ls-mfJ.text" = "Titel";
+
+/* Class = "UITableViewSection"; headerTitle = "Current Balance"; ObjectID = "dYC-KS-xJA"; */
+"dYC-KS-xJA.headerTitle" = "Offener Betrag";
+
+/* Class = "UITableViewSection"; headerTitle = "Deadline"; ObjectID = "PAg-Ob-k4X"; */
+"PAg-Ob-k4X.headerTitle" = "Frist";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "zE1-GN-TZ0"; */
+"zE1-GN-TZ0.text" = "Titel";
+

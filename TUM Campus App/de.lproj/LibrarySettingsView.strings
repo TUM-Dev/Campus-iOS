@@ -1,0 +1,18 @@
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "1kQ-jX-46Z"; */
+"1kQ-jX-46Z.normalTitle" = "Ausloggen";
+
+/* Class = "UIViewController"; title = "Library Account"; ObjectID = "fw4-Rt-rqp"; */
+"fw4-Rt-rqp.title" = "Bibliotheksaccount";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "IAo-BS-z4V"; */
+"IAo-BS-z4V.text" = "Passwort";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "QjD-gV-dC3"; */
+"QjD-gV-dC3.normalTitle" = "Einloggen";
+
+/* Class = "UILabel"; text = "Login with your TUM OPAC account"; ObjectID = "toH-TC-jsO"; */
+"toH-TC-jsO.text" = "Mit TUM OPAC Account einloggen";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "X7a-Mj-YXe"; */
+"X7a-Mj-YXe.text" = "Benutzername";
+

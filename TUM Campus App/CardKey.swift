@@ -35,25 +35,25 @@ enum CardKey: Int, Codable {
     var description: String {
         switch self {
         case .tufilm:
-            return "TU Film"
+            return NSLocalizedString("TU Film", comment: "")
         case .calendar:
-            return "Calendar"
+            return NSLocalizedString("Calendar", comment: "")
         case .cafeteria:
-            return "Cafeteria"
+            return NSLocalizedString("Cafeteria", comment: "")
         case .news:
-            return "News"
+            return NSLocalizedString("News", comment: "")
         case .newsspread:
-            return "Newsspread"
+            return NSLocalizedString("Newsspread", comment: "")
         case .tuition:
-            return "Tuition"
+            return NSLocalizedString("Tuition", comment: "")
         case .mvg:
-            return "MVG"
+            return NSLocalizedString("MVG", comment: "")
         case .grades:
-            return "Grades"
+            return NSLocalizedString("Grades", comment: "")
         case .studyRooms:
-            return "Study Rooms"
+            return NSLocalizedString("Study Rooms", comment: "")
         case .lectures:
-            return "Lectures"
+            return NSLocalizedString("Lectures", comment: "")
         }
     }
     

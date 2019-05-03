@@ -37,13 +37,13 @@ extension SearchResultKey {
     var description: String {
         switch self {
         case .room:
-            return "Rooms"
+            return NSLocalizedString("Rooms", comment: "")
         case .lecture:
-            return "Lecture"
+            return NSLocalizedString("Lecture", comment: "")
         case .person:
-            return "People"
+            return NSLocalizedString("People", comment: "")
         case .sexy:
-            return "TUM Sexy"
+            return NSLocalizedString("TUM Sexy", comment: "")
         }
     }
     

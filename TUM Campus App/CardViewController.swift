@@ -161,7 +161,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate,
         searchResultsController.navCon = self.navigationController
         search = UISearchController(searchResultsController: searchResultsController)
         search?.searchResultsUpdater = searchResultsController
-        search?.searchBar.placeholder = "Rooms, Lectures, People..."
+        search?.searchBar.placeholder = NSLocalizedString("Rooms, Lectures, People...", comment: "")
         search?.obscuresBackgroundDuringPresentation = true
         search?.hidesNavigationBarDuringPresentation = true
         

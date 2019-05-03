@@ -59,9 +59,9 @@ class EditCardsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Enabled"
+            return NSLocalizedString("Enabled", comment: "")
         case 1:
-            return "Disabled"
+            return NSLocalizedString("Disabled", comment: "")
         default:
             return nil
         }

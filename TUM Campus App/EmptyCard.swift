@@ -23,7 +23,7 @@ import Foundation
 class EmptyCard: DataElement {
     
     var text: String {
-        return "You have no cards in your view!"
+        return NSLocalizedString("You have no cards in your view!", comment: "")
     }
     
     func getCellIdentifier() -> String {

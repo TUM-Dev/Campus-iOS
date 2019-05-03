@@ -1,0 +1,12 @@
+/* Bundle name */
+"CFBundleName" = "Campus";
+
+/* Privacy - Calendars Usage Description */
+"NSCalendarsUsageDescription" = "Die TUM Campus App kann Ereignisse zu deinem Kalender hinzufügen.";
+
+/* Privacy - Contacts Usage Description */
+"NSContactsUsageDescription" = "Die TUM Campus App möchte auf deine Kontakte zugreifen.";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Die TUM Campus App möchte deinen Standort verwenden, um Cafeterias u.a. nach Entfernung zu sortieren. Andernfalls werden sie in alphabetischer Reihenfolge angezeigt.";
+

@@ -1,0 +1,54 @@
+/* Class = "UILabel"; text = "Year"; ObjectID = "1Mm-5j-99X"; */
+"1Mm-5j-99X.text" = "Jahr";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "3ok-qd-NhE"; */
+"3ok-qd-NhE.text" = "Wertung";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "8v4-ku-sgp"; */
+"8v4-ku-sgp.text" = "Datum";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "27V-Tn-v2v"; */
+"27V-Tn-v2v.text" = "Titel";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "A3S-Ar-n0o"; */
+"A3S-Ar-n0o.text" = "Titel";
+
+/* Class = "UITableViewSection"; headerTitle = "Genre"; ObjectID = "CFW-dP-ZmV"; */
+"CFW-dP-ZmV.headerTitle" = "Genre";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "d0I-0b-aSK"; */
+"d0I-0b-aSK.text" = "Detail";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "EYG-iK-Sou"; */
+"EYG-iK-Sou.text" = "Titel";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "F3a-dA-4nt"; */
+"F3a-dA-4nt.text" = "Detail";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "FCl-WA-Bqx"; */
+"FCl-WA-Bqx.text" = "Detail";
+
+/* Class = "UITableViewSection"; headerTitle = "Actors"; ObjectID = "gPw-In-Pb2"; */
+"gPw-In-Pb2.headerTitle" = "Darsteller";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "JDl-Q5-keQ"; */
+"JDl-Q5-keQ.text" = "Titel";
+
+/* Class = "UILabel"; text = "TU Film Website"; ObjectID = "O4R-5V-sRA"; */
+"O4R-5V-sRA.text" = "TU Film Website";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "REj-pd-YJT"; */
+"REj-pd-YJT.text" = "Detail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "S5z-lU-kAx"; */
+"S5z-lU-kAx.text" = "Label";
+
+/* Class = "UITableViewSection"; headerTitle = "Description"; ObjectID = "VcL-xR-sMh"; */
+"VcL-xR-sMh.headerTitle" = "Beschreibung";
+
+/* Class = "UITableViewSection"; headerTitle = "Director"; ObjectID = "yyb-Bc-MqY"; */
+"yyb-Bc-MqY.headerTitle" = "Regisseur";
+
+/* Class = "UILabel"; text = "Runtime"; ObjectID = "Z2k-li-ujh"; */
+"Z2k-li-ujh.text" = "Spieldauer";
+

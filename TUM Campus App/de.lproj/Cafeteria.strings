@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Annotations"; ObjectID = "LxF-pP-8QA"; */
+"LxF-pP-8QA.text" = "Anmerkungen";
+
+/* Class = "UILabel"; text = "Dish"; ObjectID = "OeE-So-w9T"; */
+"OeE-So-w9T.text" = "Gericht";
+
+/* Class = "UILabel"; text = "No Menu Available"; ObjectID = "OFA-4C-Oe0"; */
+"OFA-4C-Oe0.text" = "Kein Speiseplan verfügbar";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "y1P-xt-UZg"; */
+"y1P-xt-UZg.text" = "Preis";
+

@@ -1,0 +1,69 @@
+/* Class = "UILabel"; text = "Name"; ObjectID = "1r3-0d-1B6"; */
+"1r3-0d-1B6.text" = "Name";
+
+/* Class = "UILabel"; text = "Study Rooms"; ObjectID = "2LZ-Kl-aUw"; */
+"2LZ-Kl-aUw.text" = "Lernräume";
+
+/* Class = "UINavigationItem"; title = "More"; ObjectID = "8SK-Dc-hd8"; */
+"8SK-Dc-hd8.title" = "Mehr";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "8tK-cs-EjU"; */
+"8tK-cs-EjU.text" = "Über";
+
+/* Class = "UILabel"; text = "Cafeterias"; ObjectID = "bbY-jo-IhR"; */
+"bbY-jo-IhR.text" = "Cafeterias";
+
+/* Class = "UILabel"; text = "MVV"; ObjectID = "BiB-81-lnB"; */
+"BiB-81-lnB.text" = "MVV";
+
+/* Class = "UILabel"; text = "Join Beta!"; ObjectID = "bzf-OA-i3t"; */
+"bzf-OA-i3t.text" = "Join Beta!";
+
+/* Class = "UITableViewSection"; headerTitle = "We also have a public beta!"; ObjectID = "E81-In-kiD"; */
+"E81-In-kiD.headerTitle" = "Wir haben auch eine Public Beta!";
+
+/* Class = "UITableViewSection"; headerTitle = "More"; ObjectID = "h8h-iA-oFQ"; */
+"h8h-iA-oFQ.headerTitle" = "Mehr";
+
+/* Class = "UILabel"; text = "News"; ObjectID = "HP8-zj-Qcz"; */
+"HP8-zj-Qcz.text" = "News";
+
+/* Class = "UITableViewSection"; headerTitle = "My TUM"; ObjectID = "IU2-I4-FGv"; */
+"IU2-I4-FGv.headerTitle" = "Meine TUM";
+
+/* Class = "UILabel"; text = "Cards"; ObjectID = "ona-U4-Tl3"; */
+"ona-U4-Tl3.text" = "Kacheln";
+
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "QdH-pl-42C"; */
+"QdH-pl-42C.headerTitle" = "Allgemein";
+
+/* Class = "UILabel"; text = "Default Campus"; ObjectID = "RlJ-rL-gbB"; */
+"RlJ-rL-gbB.text" = "Standard-Campus";
+
+/* Class = "UILabel"; text = "My Lectures"; ObjectID = "SSf-b9-wcQ"; */
+"SSf-b9-wcQ.text" = "Meine Vorlesungen";
+
+/* Class = "UILabel"; text = "Grades"; ObjectID = "TQ8-Wb-fMD"; */
+"TQ8-Wb-fMD.text" = "Noten";
+
+/* Class = "UILabel"; text = "Tuition Fees"; ObjectID = "vgV-ut-2tr"; */
+"vgV-ut-2tr.text" = "Rückmeldung";
+
+/* Class = "UILabel"; text = "All the Redirects!"; ObjectID = "wBE-Th-o1S"; */
+"wBE-Th-o1S.text" = "Alle Weiterleitungen!";
+
+/* Class = "UILabel"; text = "Send Feedback"; ObjectID = "Wcz-1g-Pdj"; */
+"Wcz-1g-Pdj.text" = "Feedback senden";
+
+/* Class = "UILabel"; text = "Calendar"; ObjectID = "WPk-2a-h2X"; */
+"WPk-2a-h2X.text" = "Kalender";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "xbg-sf-Cvw"; */
+"xbg-sf-Cvw.headerTitle" = "Einstellungen";
+
+/* Class = "UILabel"; text = "Log Out"; ObjectID = "xLM-JZ-VN5"; */
+"xLM-JZ-VN5.text" = "Ausloggen";
+
+/* Class = "UILabel"; text = "TUM.sexy"; ObjectID = "ZXw-Ui-2ke"; */
+"ZXw-Ui-2ke.text" = "TUM.sexy";
+

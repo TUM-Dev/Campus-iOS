@@ -85,19 +85,19 @@ extension News.Source {
     var title: String {
         switch self {
         case .movies:
-            return "TU Film"
+            return NSLocalizedString("TU Film", comment: "")
         case .impulsiv:
-            return "Impulsiv"
+            return NSLocalizedString("Impulsiv", comment: "")
         case News.Source.newsSpread:
-            return "Newsspread"
+            return NSLocalizedString("Newsspread", comment: "")
         case News.Source.pressNews:
-            return "Press News"
+            return NSLocalizedString("Press News", comment: "")
         case News.Source.studentNews:
-            return "Student News"
+            return NSLocalizedString("Student News", comment: "")
         case News.Source.tumNews:
-            return "TUM News"
+            return NSLocalizedString("TUM News", comment: "")
         default:
-            return "News"
+            return NSLocalizedString("News", comment: "")
         }
     }
     

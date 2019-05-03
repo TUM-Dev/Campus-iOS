@@ -1,0 +1,36 @@
+/* Class = "UITextField"; placeholder = "kif"; ObjectID = "2aH-YR-9PD"; */
+"2aH-YR-9PD.placeholder" = "kif";
+
+/* Class = "UIButton"; normalTitle = "🎓"; ObjectID = "2o9-rT-Ctc"; */
+"2o9-rT-Ctc.normalTitle" = "🎓";
+
+/* Class = "UIButton"; normalTitle = "I don't have a TUM Kennung"; ObjectID = "6pj-cI-PxK"; */
+"6pj-cI-PxK.normalTitle" = "Ich habe keine TUM Kennung";
+
+/* Class = "UILabel"; text = "Please Authorize our App in TUM Online"; ObjectID = "9mt-oH-hhO"; */
+"9mt-oH-hhO.text" = "Bitte autorisiere die App in TUM online";
+
+/* Class = "UITextField"; placeholder = "ga"; ObjectID = "bLP-9l-x36"; */
+"bLP-9l-x36.placeholder" = "ga";
+
+/* Class = "UIViewController"; title = "Confirm Authorization"; ObjectID = "ccx-El-vP2"; */
+"ccx-El-vP2.title" = "Authorisierung bestätigen";
+
+/* Class = "UIButton"; normalTitle = "Check Authorization"; ObjectID = "TgS-8k-q52"; */
+"TgS-8k-q52.normalTitle" = "Authorisierung prüfen";
+
+/* Class = "UILabel"; text = "Welcome to the TUM Campus App"; ObjectID = "UPm-Sw-wBW"; */
+"UPm-Sw-wBW.text" = "Willkommen in der TUM Campus App";
+
+/* Class = "UILabel"; text = "Made for Students by Students"; ObjectID = "UTf-tU-Eg3"; */
+"UTf-tU-Eg3.text" = "Von Studenten für Studenten";
+
+/* Class = "UILabel"; text = "To authorize please click on the link we sent you per email. Check the 'activated' box and allow all permissions."; ObjectID = "VtM-Nf-drQ"; */
+"VtM-Nf-drQ.text" = "Klicke bitte auf den Link, den wir dir per E-Mail gesendet haben, um dich zu authorisieren. Setze einen Haken bei dem 'aktiviert'-Kästchen und erlaube alle Rechte. ";
+
+/* Class = "UITextField"; placeholder = "59"; ObjectID = "XiW-yr-cNe"; */
+"XiW-yr-cNe.placeholder" = "59";
+
+/* Class = "UILabel"; text = "Please Enter your TUM Kennung to Continue"; ObjectID = "XYB-9L-lor"; */
+"XYB-9L-lor.text" = "Bitte gib deine TUM Kennung ein um weiterzumachen.";
+

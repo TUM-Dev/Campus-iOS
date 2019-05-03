@@ -89,15 +89,15 @@ class StudyRoom: DataElement {
     var nextEvent: String {
         switch status {
         case .Free:
-            return "Free"
+            return NSLocalizedString("Free", comment: "")
         case .Occupied:
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
             if (occupiedUntil != nil) {
                 let time = dateFormatter.string(from: occupiedUntil!)
-                return "Occupied until \(time)"
+                return NSLocalizedString("Occupied until \(time)", comment: "")
             } else {
-                return "Occupied"
+                return NSLocalizedString("Occupied", comment: "")
             }
         }
     }

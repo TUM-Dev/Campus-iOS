@@ -1,0 +1,15 @@
+
+/* Class = "UIBarButtonItem"; title = "Visit"; ObjectID = "4sP-CQ-bFE"; */
+"4sP-CQ-bFE.title" = "Visit";
+
+/* Class = "UINavigationItem"; title = "TUM.sexy"; ObjectID = "EjA-eX-eIC"; */
+"EjA-eX-eIC.title" = "TUM.sexy";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ZPd-ND-bbE"; */
+"ZPd-ND-bbE.text" = "Title";
+
+/* Class = "UITableViewController"; title = "TUM.sexy"; ObjectID = "gaM-gc-b8z"; */
+"gaM-gc-b8z.title" = "TUM.sexy";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "k61-H0-yGc"; */
+"k61-H0-yGc.text" = "Detail";
