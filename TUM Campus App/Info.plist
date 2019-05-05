@@ -32,7 +32,7 @@
 		<true/>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>The TUM Campus App cann add events to your calendar.</string>
+	<string>The TUM Campus App can add events to your calendar.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>The TUM Campus App would like to access your contacts.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

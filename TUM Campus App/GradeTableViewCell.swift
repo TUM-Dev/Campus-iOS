@@ -26,11 +26,11 @@ class GradeTableViewCell: CardTableViewCell {
         didSet {
             if let grade = grade {
                 titleLabel.text = grade.name
-                resultLabel.text  = "Result: " + grade.result
-                let date = "Date: \(grade.date.string(using: "dd.MM.yyyy"))"
-                let semester = "Semester: \(grade.semester)"
-                let examiner = "Examiner: \(grade.examiner)"
-                let mode = "Mode: \(grade.mode)"
+                resultLabel.text  = NSLocalizedString("Result: ", comment: "") + grade.result
+                let date = NSLocalizedString("Date: ", comment: "") + (grade.date.string(using: "dd.MM.yyyy"))
+                let semester = NSLocalizedString("Semester: ", comment: "") + grade.semester
+                let examiner = NSLocalizedString("Examiner: ", comment: "") + grade.examiner
+                let mode = NSLocalizedString("Mode: ", comment: "") + grade.mode
                 detailsLabel.text =  date + ", " + semester
                 secondDetailsLabel.text =  examiner + ", " + mode
             }

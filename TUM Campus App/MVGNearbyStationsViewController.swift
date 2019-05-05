@@ -20,7 +20,7 @@ class MVGNearbyStationsViewController: UITableViewController, DetailView {
     
     override func loadView() {
         super.loadView()
-        title = "Nearby Stations"
+        title = NSLocalizedString("Nearby Stations", comment: "")
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)

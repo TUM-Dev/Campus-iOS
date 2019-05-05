@@ -216,6 +216,7 @@
 		E97C3E3D227C5624003728F0 /* DefaultCampus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97C3E3F227C5624003728F0 /* DefaultCampus.storyboard */; };
 		E97C3E46227C5677003728F0 /* MVV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97C3E48227C5677003728F0 /* MVV.storyboard */; };
 		E996C12F227C5E1D00B6DBF8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E996C12D227C5E1D00B6DBF8 /* InfoPlist.strings */; };
+		E9B38AD9227F2C0900C9953B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B38AD7227F2C0900C9953B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +355,7 @@
 		0EF790EE1EA8223D005CB9AB /* BookRetanlAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRetanlAPI.swift; sourceTree = "<group>"; };
 		0EF790F01EA82EC2005CB9AB /* BookRentalSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalSession.swift; sourceTree = "<group>"; };
 		0EF790F21EA82F2E005CB9AB /* BookRentalHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookRentalHTML.swift; sourceTree = "<group>"; };
+		1CF2803EF57F6E7690917D70 /* Pods-TUM Campus AppUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		2209105F20DED21D0015D838 /* RoundBackgroundWithShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundBackgroundWithShadow.swift; sourceTree = "<group>"; };
 		220EFF8E20A85B21009D0337 /* GradesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCollectionViewCell.swift; sourceTree = "<group>"; };
 		220EFF8F20A85B21009D0337 /* GradesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -423,10 +425,12 @@
 		504C292B1E2BBB9C007583E2 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		504C292D1E2BBB9C007583E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AFC9851E6C8ECF00E7886A /* Pods_Campus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Campus.framework; path = "../../Library/Developer/Xcode/DerivedData/Campus_App-abdlonhukuicsjbpypswdmfoclts/Build/Products/Debug-iphonesimulator/Pods_Campus.framework"; sourceTree = "<group>"; };
+		50DBF6CC1BB51D9EDB9AF6E6 /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		50F798DE1E71615400FA4E49 /* AutomatedScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutomatedScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F798E01E71615400FA4E49 /* AutomatedScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomatedScreenshots.swift; sourceTree = "<group>"; };
 		50F798E21E71615400FA4E49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50F798E81E71618400FA4E49 /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = ../fastlane/SnapshotHelper.swift; sourceTree = "<group>"; };
+		5C2DA84726C7357C55D04BE6 /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		63ABF4E4DF444D3822681E59 /* Pods_TUM_Campus_AppUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E5FE2E8CB9088FB285EB17 /* Pods_TUM_Campus_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUM_Campus_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807C480C1F4090E600CAD35D /* MVGNearbyStationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGNearbyStationsViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 		9DE0FD5620E80890009B75F9 /* FixedColumnsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedColumnsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		9DE0FD5820E8089A009B75F9 /* VariableColumnsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableColumnsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
 		9DE0FD5A20E808DB009B75F9 /* ColumnsFlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnsFlowLayoutDelegate.swift; sourceTree = "<group>"; };
+		A773E136D48CE5C1D84D69EB /* Pods-Campus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.release.xcconfig"; sourceTree = "<group>"; };
+		ACCD90C1D41258EFE4878E29 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUnitTests/Pods-TUM Campus AppUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1369C9C1F87D25E00D6766E /* ViewControllerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProvider.swift; sourceTree = "<group>"; };
 		E97C3DC6227C3C56003728F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		E97C3DC7227C3C56003728F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/EditCards.strings; sourceTree = "<group>"; };
@@ -506,6 +512,8 @@
 		E97C3E4A227C567B003728F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MVV.strings; sourceTree = "<group>"; };
 		E97C3E4C227C567C003728F0 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MVV.strings; sourceTree = "<group>"; };
 		E996C12E227C5E1D00B6DBF8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E9B38AD8227F2C0900C9953B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FCE3B02B1EA118FF7085D4A7 /* Pods-Campus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Campus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Campus/Pods-Campus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -555,6 +563,7 @@
 				0E424F4F1BE16DBE00B5DFCB /* Assets.xcassets */,
 				0E424F511BE16DBE00B5DFCB /* LaunchScreen.storyboard */,
 				0E424F541BE16DBE00B5DFCB /* Info.plist */,
+				E9B38AD7227F2C0900C9953B /* Localizable.strings */,
 				E996C12D227C5E1D00B6DBF8 /* InfoPlist.strings */,
 			);
 			name = "Assisting Files and Frameworks";
@@ -1119,6 +1128,12 @@
 		F378FBA46D95A7D54F58A390 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				FCE3B02B1EA118FF7085D4A7 /* Pods-Campus.debug.xcconfig */,
+				A773E136D48CE5C1D84D69EB /* Pods-Campus.release.xcconfig */,
+				5C2DA84726C7357C55D04BE6 /* Pods-TUM Campus AppUITests.debug.xcconfig */,
+				50DBF6CC1BB51D9EDB9AF6E6 /* Pods-TUM Campus AppUITests.release.xcconfig */,
+				ACCD90C1D41258EFE4878E29 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */,
+				1CF2803EF57F6E7690917D70 /* Pods-TUM Campus AppUnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1278,6 +1293,7 @@
 				0E40D9BC1F9A560000F4332A /* TUMLogoView.xib in Resources */,
 				227D2169209B347F00C651BB /* CalendarCollectionViewCell.xib in Resources */,
 				9D10C2AB20D289AA00DB41EE /* GoogleService-Info.plist in Resources */,
+				E9B38AD9227F2C0900C9953B /* Localizable.strings in Resources */,
 				E97C3DC9227C533E003728F0 /* More.storyboard in Resources */,
 				E97C3E46227C5677003728F0 /* MVV.storyboard in Resources */,
 				E97C3E3D227C5624003728F0 /* DefaultCampus.storyboard in Resources */,
@@ -1879,6 +1895,14 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
+		E9B38AD7227F2C0900C9953B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9B38AD8227F2C0900C9953B /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1988,6 +2012,7 @@
 		};
 		0E424F631BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCE3B02B1EA118FF7085D4A7 /* Pods-Campus.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2011,6 +2036,7 @@
 		};
 		0E424F641BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A773E136D48CE5C1D84D69EB /* Pods-Campus.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2031,6 +2057,7 @@
 		};
 		0E424F661BE16DBE00B5DFCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C2DA84726C7357C55D04BE6 /* Pods-TUM Campus AppUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2045,6 +2072,7 @@
 		};
 		0E424F671BE16DBE00B5DFCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50DBF6CC1BB51D9EDB9AF6E6 /* Pods-TUM Campus AppUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2059,6 +2087,7 @@
 		};
 		504C29301E2BBB9C007583E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACCD90C1D41258EFE4878E29 /* Pods-TUM Campus AppUnitTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2076,6 +2105,7 @@
 		};
 		504C29311E2BBB9C007583E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CF2803EF57F6E7690917D70 /* Pods-TUM Campus AppUnitTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

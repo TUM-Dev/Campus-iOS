@@ -35,7 +35,7 @@ class GradesTableViewController: RefreshableTableViewController<Grade>, DetailVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationTitle = "Grades"
+        navigationTitle = NSLocalizedString("Grades", comment: "")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
