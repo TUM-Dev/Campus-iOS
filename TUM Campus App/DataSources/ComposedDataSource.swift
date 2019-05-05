@@ -111,13 +111,13 @@ class ComposedDataSource: NSObject, UICollectionViewDataSource, UICollectionView
         updateQueue.async {
             let result = group.wait(timeout: .now() + .seconds(10))
             DispatchQueue.main.async {
-                switch result {
-                case .success:
+                //switch result {
+                //case .success:
                     self.invalidateSortedDataSources()
                     self.delegate?.didRefreshDataSources()
-                case .timedOut:
-                    self.sortedDataSourcesCache = []
-                    self.delegate?.didEncounterNetworkTimout()
+                //case .timedOut:
+                    //self.sortedDataSourcesCache = []
+                    //self.delegate?.didEncounterNetworkTimout()
                 }
             }
         }
