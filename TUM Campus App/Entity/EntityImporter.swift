@@ -53,11 +53,10 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
 }
 
 
-protocol ImporterProtocol: class {
+protocol ImporterProtocol {
     associatedtype DecoderType: DecoderProtocol
     associatedtype EntityType: Entity
     associatedtype EntityContainer: Decodable
-    typealias ErrorHandler = (Error) -> Void
 
     var context: NSManagedObjectContext { get }
     var fetchedResultsController: NSFetchedResultsController<EntityType> { get }
@@ -67,18 +66,18 @@ protocol ImporterProtocol: class {
     var predicate: NSPredicate? { get }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
     
-    func performFetch(error: ErrorHandler?)
-    
     init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate?, dateDecodingStrategy:  DecoderType.DateDecodingStrategy?)
 }
+
+typealias ErrorHandler = (Error) -> Void
 
 extension ImporterProtocol {
     func performFetch(error: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
             .validate(contentType: DecoderType.contentType)
-            .responseData { [weak self] response in
-                guard let self = self else { return }
+            .responseData { response in
+//                guard let self = self else { return }
                 if let responseError = response.error {
                     error?(responseError)
                     return

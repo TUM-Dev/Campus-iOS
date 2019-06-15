@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import CoreData
 
-class TicketImporter: ImporterProtocol {
+class TicketImporter: ImporterProtocol {    
     typealias DecoderType = JSONDecoder
     typealias EntityType = TicketEvent
     typealias EntityContainer = [TicketEvent]

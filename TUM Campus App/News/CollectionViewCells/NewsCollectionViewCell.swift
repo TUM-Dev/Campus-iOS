@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlamofireImage
 import Kingfisher
 
 class NewsCollectionViewCell: UICollectionViewCell {

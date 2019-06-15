@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2277E90B21D93C3300D7FF3F"
-               BuildableName = "TUM Campus App.app"
-               BlueprintName = "TUM Campus App"
+               BuildableName = "TUMCampusApp.app"
+               BlueprintName = "TUMCampusApp"
                ReferencedContainer = "container:TUM Campus App.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -27,14 +27,23 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2277E90B21D93C3300D7FF3F"
+            BuildableName = "TUMCampusApp.app"
+            BlueprintName = "TUMCampusApp"
+            ReferencedContainer = "container:TUM Campus App.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2277E92221D93C3400D7FF3F"
-               BuildableName = "TUM Campus AppTests.xctest"
-               BlueprintName = "TUM Campus AppTests"
+               BuildableName = "TUMCampusAppTests.xctest"
+               BlueprintName = "TUMCampusAppTests"
                ReferencedContainer = "container:TUM Campus App.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,23 +52,12 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2277E92D21D93C3400D7FF3F"
-               BuildableName = "TUM Campus AppUITests.xctest"
-               BlueprintName = "TUM Campus AppUITests"
+               BuildableName = "TUMCampusAppUITests.xctest"
+               BlueprintName = "TUMCampusAppUITests"
                ReferencedContainer = "container:TUM Campus App.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2277E90B21D93C3300D7FF3F"
-            BuildableName = "TUM Campus App.app"
-            BlueprintName = "TUM Campus App"
-            ReferencedContainer = "container:TUM Campus App.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -76,8 +74,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2277E90B21D93C3300D7FF3F"
-            BuildableName = "TUM Campus App.app"
-            BlueprintName = "TUM Campus App"
+            BuildableName = "TUMCampusApp.app"
+            BlueprintName = "TUMCampusApp"
             ReferencedContainer = "container:TUM Campus App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -87,8 +85,6 @@
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -101,8 +97,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2277E90B21D93C3300D7FF3F"
-            BuildableName = "TUM Campus App.app"
-            BlueprintName = "TUM Campus App"
+            BuildableName = "TUMCampusApp.app"
+            BlueprintName = "TUMCampusApp"
             ReferencedContainer = "container:TUM Campus App.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

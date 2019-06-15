@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import TUM_Campus_App
+@testable import TUMCampusApp
 
 class TUM_Campus_AppTests: XCTestCase {
 
