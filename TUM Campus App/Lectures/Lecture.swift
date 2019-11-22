@@ -57,6 +57,7 @@ struct LectureAPIResponse: Decodable {
         case speaker = "vortragende_mitwirkende"
     }
     
+    static let sectionNameKeyPath: String? = "semester"
     
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
