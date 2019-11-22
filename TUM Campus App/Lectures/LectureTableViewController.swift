@@ -30,6 +30,10 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         try! importer.fetchedResultsController.performFetch()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return importer.fetchedResultsController.sections?.count ?? 0
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }

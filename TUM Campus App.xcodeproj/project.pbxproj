@@ -52,8 +52,8 @@
 		2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91921D93C3400D7FF3F /* Assets.xcassets */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
-		228BDD5F21E63B1000DB9061 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 228BDD5E21E63AC400DB9061 /* Login.storyboard */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
+		229C2DFB2388614A00786BAA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229C2DFA2388614A00786BAA /* Login.storyboard */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
@@ -153,8 +153,8 @@
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
-		228BDD5E21E63AC400DB9061 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Login.storyboard; path = "/Users/tim/Developer/iOS/TUM Campus App/Login/Login.storyboard"; sourceTree = "<absolute>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		229C2DFA2388614A00786BAA /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
@@ -372,7 +372,7 @@
 		22B00AE621D9409600E65C86 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				228BDD5E21E63AC400DB9061 /* Login.storyboard */,
+				229C2DFA2388614A00786BAA /* Login.storyboard */,
 				22E5303B2217698300A29992 /* Credentials.swift */,
 				2294545C22198B25008E41B7 /* AuthenticationHandler.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
@@ -609,8 +609,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				228BDD5F21E63B1000DB9061 /* Login.storyboard in Resources */,
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
+				229C2DFB2388614A00786BAA /* Login.storyboard in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,

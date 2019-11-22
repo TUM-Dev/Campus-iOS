@@ -32,7 +32,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: "semester", cacheName: nil)
         fetchedResultsController.delegate = fetchedResultsControllerDelegate
         
         return fetchedResultsController
