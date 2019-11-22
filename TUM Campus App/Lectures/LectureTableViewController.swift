@@ -30,8 +30,13 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         try! importer.fetchedResultsController.performFetch()
     }
     
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return importer.fetchedResultsController.sections?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return importer.fetchedResultsController.sections?[section].indexTitle
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,10 +44,11 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath) as! LectureCell
         guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = lecture.title
+        cell.titleLabel.text = lecture.title
+        cell.detailsLabel.text = "Speaker: "+(lecture.speaker ?? "")
         
         return cell
     }
