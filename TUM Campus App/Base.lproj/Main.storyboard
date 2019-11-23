@@ -599,7 +599,7 @@
         <scene sceneID="vhB-J7-tOY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xfx-5j-asa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cafeteria" id="RRw-AB-qv3"/>
+                    <tabBarItem key="tabBarItem" title="Cafeteria" image="book" catalog="system" id="RRw-AB-qv3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IVM-Bt-bKi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -618,7 +618,7 @@
         <scene sceneID="oFn-SG-CKV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bhz-9b-FUx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" id="N3e-89-A85"/>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="N3e-89-A85"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8gj-XT-sTE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -767,7 +767,7 @@
         <scene sceneID="db1-bO-zhV">
             <objects>
                 <navigationController id="bOC-gY-Bx5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lectures" id="7hW-Zh-aNm"/>
+                    <tabBarItem key="tabBarItem" title="Lectures" image="studentdesk" catalog="system" id="7hW-Zh-aNm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V1O-Hn-4hi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -944,7 +944,7 @@
         <scene sceneID="XBv-gt-bg9">
             <objects>
                 <navigationController id="zW3-gf-VWs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Grades" id="jzO-tR-0Gw"/>
+                    <tabBarItem key="tabBarItem" title="Grades" image="checkmark.seal" catalog="system" id="jzO-tR-0Gw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sQk-gl-g6q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1041,22 +1041,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudyRoomGroupCell" textLabel="lwJ-Oc-FCX" detailTextLabel="W9v-4n-SPe" style="IBUITableViewCellStyleValue1" id="F7t-Pu-RaQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudyRoomGroupCell" textLabel="Kzy-jo-Fxf" detailTextLabel="U92-Rw-MYE" rowHeight="72" style="IBUITableViewCellStyleValue1" id="F7t-Pu-RaQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F7t-Pu-RaQ" id="GIz-dH-IFj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lwJ-Oc-FCX">
-                                            <rect key="frame" x="16" y="12" width="33.5" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kzy-jo-Fxf">
+                                            <rect key="frame" x="16" y="26" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W9v-4n-SPe">
-                                            <rect key="frame" x="315" y="12" width="44" height="20.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U92-Rw-MYE">
+                                            <rect key="frame" x="315" y="26" width="44" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -1081,13 +1081,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpd-Vw-mlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="2194"/>
+            <point key="canvasLocation" x="876" y="2193.5532233883059"/>
         </scene>
         <!--Study Rooms-->
         <scene sceneID="grr-qt-fFP">
             <objects>
                 <navigationController id="uAz-ze-7gD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Study Rooms" id="V2v-gg-WvC"/>
+                    <tabBarItem key="tabBarItem" title="Study Rooms" image="house" catalog="system" id="V2v-gg-WvC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RuT-q5-l6A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1166,8 +1166,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="64" height="50"/>
+        <image name="calendar" catalog="system" width="64" height="52"/>
+        <image name="checkmark.seal" catalog="system" width="64" height="60"/>
+        <image name="house" catalog="system" width="64" height="54"/>
         <image name="logo-blue" width="224" height="118"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>
+        <image name="studentdesk" catalog="system" width="62" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="oDN-gj-Gkq"/>
