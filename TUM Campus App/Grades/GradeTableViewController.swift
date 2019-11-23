@@ -32,17 +32,37 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         try! importer.fetchedResultsController.performFetch()
+        
     }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let numOfSections : Int = importer.fetchedResultsController.sections?.count ?? 0
+        if numOfSections>0
+        {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            self.SetBackgroundLabel(with: "No Grades")
+        }
+        return numOfSections
+       }
+       
+   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return importer.fetchedResultsController.sections?[section].name
+   }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! GradeCell
         guard let grade = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = grade.title
+        cell.titleLabel.text = grade.title
+        cell.gradeLabel.text = grade.grade
         return cell
     }
     

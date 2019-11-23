@@ -158,3 +158,15 @@ extension NSMutableAttributedString {
         return self
     }
 }
+
+extension UITableViewController{
+    func SetBackgroundLabel(with text : String){
+        let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.text          = text
+        noDataLabel.font = UIFont.systemFont(ofSize: 24)
+        noDataLabel.textColor     = UIColor.gray
+        noDataLabel.textAlignment = .center
+        tableView.backgroundView  = noDataLabel
+        tableView.separatorStyle  = .none
+    }
+}
