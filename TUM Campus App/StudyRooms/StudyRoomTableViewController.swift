@@ -75,6 +75,14 @@ class StudyRoomTableViewController: UITableViewController{
         cell.roomNameLabel.text = rooms[indexPath.row].name
         cell.roomNumberLabel.text = rooms[indexPath.row].code
         cell.roomStatusLabel.text = rooms[indexPath.row].status
+        switch cell.roomStatusLabel.text {
+        case "frei":
+            cell.roomStatusLabel.textColor = .systemGreen
+        case "belegt":
+            cell.roomStatusLabel.textColor = .systemRed
+        default:
+            cell.roomStatusLabel.textColor = .systemGray
+        }
         
         return cell
     }
