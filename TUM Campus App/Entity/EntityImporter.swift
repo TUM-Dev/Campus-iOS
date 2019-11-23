@@ -75,9 +75,10 @@ protocol ImporterProtocol {
 }
 
 typealias ErrorHandler = (Error) -> Void
+typealias SuccessHandler = () -> Void
 
 extension ImporterProtocol {
-    func performFetch(errorHandler: ErrorHandler? = nil) {
+    func performFetch(success successHandler: SuccessHandler? = nil, error errorHandler: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
             .validate(contentType: DecoderType.contentType)
@@ -100,11 +101,14 @@ extension ImporterProtocol {
                     try self.context.save()
                 } catch let apiError as APIError {
                     errorHandler?(apiError)
+                    return
                 } catch let decodingError as DecodingError {
                     errorHandler?(decodingError)
+                    return
                 } catch let error {
                     fatalError(error.localizedDescription)
                 }
+                successHandler?()
         }
     }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }

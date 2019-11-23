@@ -8,6 +8,15 @@
 
 import CoreData
 
+struct ProfileAPIResponse: Decodable {
+    var rows: [Profile]?
+    
+    enum CodingKeys: String, CodingKey {
+        case rows = "row"
+    }
+}
+
+
 @objc final class Profile: NSManagedObject, Entity {
     
     /*
@@ -34,6 +43,22 @@ import CoreData
         case firstname = "vorname"
     }
     
+    enum Role: String {
+        case student = "student"
+        case extern = "extern"
+        case employee = "employee"
+    }
+    
+    var role: Role {
+        if obfuscatedIDStudent != nil {
+            return .student
+        } else if obfuscatedIDEmployee != nil {
+            return .employee
+        } else {
+            return .extern
+        }
+    }
+    
     required convenience init(from decoder: Decoder) throws {
         guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -42,9 +67,9 @@ import CoreData
         let surname = try container.decode(String.self, forKey: .surname)
         let tumID = try container.decode(String.self, forKey: .tumID)
         let obfuscatedID = try container.decode(String.self, forKey: .obfuscatedID)
-        let obfuscatedIDEmployee = try container.decode(String.self, forKey: .obfuscatedIDEmployee)
-        let obfuscatedIDExtern = try container.decode(String.self, forKey: .obfuscatedIDExtern)
-        let obfuscatedIDStudent = try container.decode(String.self, forKey: .obfuscatedIDStudent)
+        let obfuscatedIDEmployee = try container.decodeIfPresent(String.self, forKey: .obfuscatedIDEmployee)
+        let obfuscatedIDExtern = try container.decodeIfPresent(String.self, forKey: .obfuscatedIDExtern)
+        let obfuscatedIDStudent = try container.decodeIfPresent(String.self, forKey: .obfuscatedIDStudent)
         let firstname = try container.decode(String.self, forKey: .firstname)
         
         self.init(entity: Profile.entity(), insertInto: context)

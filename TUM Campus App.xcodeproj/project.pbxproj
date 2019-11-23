@@ -63,6 +63,7 @@
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
+		22B8E7BA2389C91600CFEDEE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B8E7B92389C91600CFEDEE /* ProfileTableViewController.swift */; };
 		22B9D634222000F300854D55 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D633222000F300854D55 /* Movie.swift */; };
 		22B9D6382220024C00854D55 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6372220024C00854D55 /* MovieTableViewController.swift */; };
 		22B9D63A22207BA100854D55 /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D63922207BA100854D55 /* Tuition.swift */; };
@@ -170,6 +171,7 @@
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
+		22B8E7B92389C91600CFEDEE /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		22B9D633222000F300854D55 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		22B9D6372220024C00854D55 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
 		22B9D63922207BA100854D55 /* Tuition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				22B9D64222208BF300854D55 /* Profile.swift */,
+				22B8E7B92389C91600CFEDEE /* ProfileTableViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */,
 				22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
+				22B8E7BA2389C91600CFEDEE /* ProfileTableViewController.swift in Sources */,
 				224CB3692225ACAD0002945A /* TUMSexyTableViewController.swift in Sources */,
 				2258EDB622221DCC0079C2ED /* TicketEvent.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
