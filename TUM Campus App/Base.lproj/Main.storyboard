@@ -655,16 +655,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yxc-vY-Ti2">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yxc-vY-Ti2">
                                             <rect key="frame" x="16" y="8" width="343" height="59"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzl-Pv-gZF" userLabel="Title">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="38.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzl-Pv-gZF" userLabel="Title">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="29.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-ZW-cBx" userLabel="Date">
-                                                    <rect key="frame" x="0.0" y="38.5" width="343" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcU-ZW-cBx" userLabel="Date">
+                                                    <rect key="frame" x="0.0" y="29.5" width="343" height="29.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -691,6 +691,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="8aI-uv-X94">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="calendar.circle" catalog="system" id="SOz-TH-roF">
+                            <connections>
+                                <segue destination="7Rf-ED-wVB" kind="show" id="WhE-yw-Xmd"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="LOd-Yu-1gj">
                             <color key="tintColor" name="tumBlue"/>
                             <connections>
@@ -764,10 +769,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6qR-bu-Js5"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cri-OM-Kuj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INc-1a-leB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-1406"/>
+            <point key="canvasLocation" x="2817" y="-39"/>
         </scene>
         <!--Lectures-->
         <scene sceneID="db1-bO-zhV">
@@ -1513,7 +1519,8 @@
         <image name="Tum.sexy" width="29" height="29"/>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
-        <image name="checkmark.shield" catalog="system" width="64" height="60"/>
+        <image name="calendar.circle" catalog="system" width="64" height="60"/>
+        <image name="checkmark.seal" catalog="system" width="64" height="60"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="logo-blue" width="224" height="118"/>
         <image name="person.crop.circle" catalog="system" width="64" height="60"/>

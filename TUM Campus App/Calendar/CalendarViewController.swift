@@ -20,6 +20,9 @@ class CalendarViewController: DayViewController, NSFetchedResultsControllerDeleg
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     override func viewDidLoad() {
+        navigationController?.navigationBar.isTranslucent = false
+        tabBarController?.tabBar.isTranslucent = false
+        
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch() { error in
             print(error)
