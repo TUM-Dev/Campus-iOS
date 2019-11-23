@@ -77,18 +77,17 @@ protocol ImporterProtocol {
 typealias ErrorHandler = (Error) -> Void
 
 extension ImporterProtocol {
-    func performFetch(error: ErrorHandler? = nil) {
+    func performFetch(errorHandler: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
             .validate(contentType: DecoderType.contentType)
             .responseData { response in
-//                guard let self = self else { return }
                 if let responseError = response.error {
-                    error?(responseError)
+                    errorHandler?(responseError)
                     return
                 }
                 guard let data = response.data else {
-                    error?(ImporterError.invalidData)
+                    errorHandler?(ImporterError.invalidData)
                     return
                 }
                 let decoder = DecoderType.instantiate()
@@ -99,8 +98,10 @@ extension ImporterProtocol {
                 do {
                     _ = try decoder.decode(EntityContainer.self, from: data)
                     try self.context.save()
-                } catch let apiError where error is APIError {
-                    error?(apiError)
+                } catch let apiError as APIError {
+                    errorHandler?(apiError)
+                } catch let decodingError as DecodingError {
+                    errorHandler?(decodingError)
                 } catch let error {
                     fatalError(error.localizedDescription)
                 }
