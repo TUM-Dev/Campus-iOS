@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 import Alamofire
 
-protocol Entity: Decodable, NSFetchRequestResult {
+protocol Entity: Decodable, NSFetchRequestResult, NSObject {
     static func fetchRequest() -> NSFetchRequest<Self>
-    static var sectionNameKeyPath: String? { get }
+    static var sectionNameKeyPath: KeyPath<Self, String?>? { get }
 }
 
 extension Entity {
-    static var sectionNameKeyPath: String? { nil }
+    static var sectionNameKeyPath: KeyPath<Self, String?>? { nil }
 }
 
 enum ImporterError: Error {
@@ -37,7 +37,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: EntityType.sectionNameKeyPath, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: EntityType.sectionNameKeyPath?.stringValue, cacheName: nil)
         fetchedResultsController.delegate = fetchedResultsControllerDelegate
         
         return fetchedResultsController

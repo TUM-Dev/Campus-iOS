@@ -158,3 +158,9 @@ extension NSMutableAttributedString {
         return self
     }
 }
+
+extension KeyPath where Root: NSObject {
+    var stringValue: String {
+        return NSExpression(forKeyPath: self).keyPath
+    }
+}
