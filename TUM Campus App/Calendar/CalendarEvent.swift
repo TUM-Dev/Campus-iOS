@@ -50,12 +50,12 @@ struct CalendarAPIResponse: Decodable {
         
         let id = try container.decode(Int64.self, forKey: .id)
         let status = try container.decode(String.self, forKey: .status)
-        let url = try container.decode(URL.self, forKey: .url)
+        let url = try container.decodeIfPresent(URL.self, forKey: .url)
         let title = try container.decode(String.self, forKey: .title)
-        let descriptionText = try container.decode(String.self, forKey: .descriptionText)
+        let descriptionText = try container.decodeIfPresent(String.self, forKey: .descriptionText)
         let startDate = try container.decode(Date.self, forKey: .startDate)
         let endDate = try container.decode(Date.self, forKey: .endDate)
-        let location = try container.decode(String.self, forKey: .location)
+        let location = try container.decodeIfPresent(String.self, forKey: .location)
         
         self.init(entity: CalendarEvent.entity(), insertInto: context)
         self.id = id
