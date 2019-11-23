@@ -32,14 +32,12 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections : Int = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections>0
-        {
+        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
+        if numOfSections > 0 {
             tableView.separatorStyle = .singleLine
             tableView.backgroundView = nil
         }
-        else
-        {
+        else {
             setBackgroundLabel(with: "No Lectures")
         }
         return numOfSections
