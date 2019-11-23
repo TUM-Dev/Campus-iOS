@@ -27,7 +27,6 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         importer.performFetch()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "dd MMM y || HH:mm"
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +57,7 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         if let startDate = event.startDate {
             cell.dateLabel.text = dateFormatter.string(from: startDate)
         }
+        cell.selectionStyle = .none
         
         return cell
     }

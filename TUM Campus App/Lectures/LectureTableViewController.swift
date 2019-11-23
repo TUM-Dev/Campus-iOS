@@ -57,6 +57,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
 
         cell.titleLabel.text = lecture.title
         cell.detailsLabel.text = "Speaker: "+(lecture.speaker ?? "")
+        cell.selectionStyle = .none
         
         return cell
     }
