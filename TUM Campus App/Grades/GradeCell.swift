@@ -13,24 +13,23 @@ class GradeCell: UITableViewCell {
     var gradeString : String = "1,0"
     
     
-    
-    @IBOutlet weak var titleLabel: UILabel!{
-        didSet{
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
             titleLabel.textColor = UIColor.tumBlue
             titleLabel.numberOfLines = 0
             titleLabel.sizeToFit()
         }
     }
-    @IBOutlet weak var blockView: UIView!{
-        didSet{
+    @IBOutlet weak var blockView: UIView! {
+        didSet {
             blockView.layer.cornerRadius = blockView.bounds.size.width/2
             blockView.clipsToBounds = true
-                    }
+        }
     }
     
     
-    @IBOutlet weak var gradeLabel: UILabel!{
-        didSet{
+    @IBOutlet weak var gradeLabel: UILabel! {
+        didSet {
             if let doubleGrade = Double(gradeString.replacingOccurrences(of: ",", with: ".")){
                 switch doubleGrade {
                 case 0.0...3.9:
