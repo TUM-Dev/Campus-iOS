@@ -36,15 +36,12 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections : Int = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections>0
-        {
+        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
+        if numOfSections > 0 {
             tableView.separatorStyle = .singleLine
             tableView.backgroundView = nil
-        }
-        else
-        {
-            self.SetBackgroundLabel(with: "No Calendar Events")
+        } else {
+            setBackgroundLabel(with: "No Calendar Events")
         }
         return numOfSections
     }
