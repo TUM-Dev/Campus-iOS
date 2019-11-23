@@ -67,16 +67,27 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! StudyRoomGroupedTableViewCell
         guard let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
         
-        cell.textLabel?.text = roomGroup.name
-        cell.detailTextLabel?.text = "\(roomGroup.rooms?.count ?? 0)"
+        cell.titleLabel.text = roomGroup.name
+        cell.numberLabel.text = "\(roomGroup.rooms?.count ?? 0)"
         return cell
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         tableView.reloadData()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "studyRooms") {
+            guard let roomsVC = segue.destination as? StudyRoomTableViewController,
+                let indexPath = tableView.indexPathForSelectedRow,
+                let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row],
+                let rooms = roomGroup.rooms?.allObjects as? [StudyRoom] else { return }
+            roomsVC.rooms = rooms
+        }
     }
     
 }
