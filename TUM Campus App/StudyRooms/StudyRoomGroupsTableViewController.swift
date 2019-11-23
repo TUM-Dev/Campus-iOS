@@ -11,8 +11,24 @@ import CoreData
 import Alamofire
 
 struct StudyRoomAPIResponse: Decodable {
-    var raeume: [StudyRoom]
-    var gruppen: [StudyRoomGroup]
+    var rooms: [StudyRoom]
+    var groups: [StudyRoomGroup]
+    
+    enum CodingKeys: String, CodingKey {
+        case rooms = "raeume"
+        case groups = "gruppen"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // initializing order matters! rooms first, groups seconds :(
+        let rooms = try container.decode([StudyRoom].self, forKey: .rooms)
+        let groups = try container.decode([StudyRoomGroup].self, forKey: .groups)
+        
+        self.rooms = rooms
+        self.groups = groups
+    }
 }
 
 
