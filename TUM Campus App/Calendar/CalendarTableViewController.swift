@@ -55,10 +55,9 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.titleLabel.text = event.title
-        if let startDate = event.startDate{
+        if let startDate = event.startDate {
             cell.dateLabel.text = dateFormatter.string(from: startDate)
         }
-        
         
         return cell
     }
