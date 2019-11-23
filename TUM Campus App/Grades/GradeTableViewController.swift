@@ -63,6 +63,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
 
         cell.titleLabel.text = grade.title
         cell.gradeLabel.text = grade.grade
+        cell.selectionStyle = .none
         return cell
     }
     

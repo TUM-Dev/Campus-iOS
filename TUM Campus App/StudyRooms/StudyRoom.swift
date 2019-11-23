@@ -1,5 +1,5 @@
 //
-//  StudRoom.swift
+//  StudyRoom.swift
 //  TUM Campus App
 //
 //  Created by Tim Gymnich on 2/24/19.
