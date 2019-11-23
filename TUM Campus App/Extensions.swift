@@ -159,7 +159,19 @@ extension NSMutableAttributedString {
     }
 }
 
-extension KeyPath where Root: NSObject {
+extension UITableViewController {
+    func setBackgroundLabel(with text: String) {
+        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        noDataLabel.text = text
+        noDataLabel.font = UIFont.systemFont(ofSize: 24)
+        noDataLabel.textColor = .gray
+        noDataLabel.textAlignment = .center
+        tableView.backgroundView = noDataLabel
+        tableView.separatorStyle = .none
+    }
+}
+
+ extension KeyPath where Root: NSObject {
     var stringValue: String {
         return NSExpression(forKeyPath: self).keyPath
     }

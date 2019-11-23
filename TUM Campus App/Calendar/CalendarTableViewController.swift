@@ -18,11 +18,16 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
+    var dateFormatter = DateFormatter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "dd MMM y || HH:mm"
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,15 +35,29 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         try! importer.fetchedResultsController.performFetch()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
+        if numOfSections > 0 {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
+        } else {
+            setBackgroundLabel(with: "No Calendar Events")
+        }
+        return numOfSections
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! CalendarEventCell
         guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = event.title
+        cell.titleLabel.text = event.title
+        if let startDate = event.startDate {
+            cell.dateLabel.text = dateFormatter.string(from: startDate)
+        }
         
         return cell
     }
