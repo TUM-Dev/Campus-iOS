@@ -1,5 +1,5 @@
 //
-//  StudRoom.swift
+//  StudyRoom.swift
 //  TUM Campus App
 //
 //  Created by Tim Gymnich on 2/24/19.
@@ -20,12 +20,12 @@ import CoreData
         case buildingName = "gebaeude_name"
         case buildingNumber = "gebaeude_nr"
         case code = "raum_code"
-        case name = "raum_name"
+        case name = "raum_name"//
         case id = "raum_nr"
         case raum_nr_architekt = "raum_nr_architekt"
-        case number = "raum_nummer"
+        case number = "raum_nummer"//
         case res_nr = "res_nr"
-        case status = "status"
+        case status = "status"//
         case attributes = "attribute"
     }
     
