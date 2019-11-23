@@ -10,7 +10,7 @@ import CoreData
 
 // XMLDecoder cannot use [Lecture].self so we have to wrap the lectues in Lectures. This is probably a bug in parsing the root node.
 struct LectureAPIResponse: Decodable {
-    var lectures: [Lecture]
+    var lectures: [Lecture]?
     
     enum CodingKeys: String, CodingKey {
         case lectures = "row"
