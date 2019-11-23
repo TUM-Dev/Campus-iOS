@@ -15,7 +15,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
     typealias ImporterType = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     
     let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
-    let sortDescriptor = NSSortDescriptor(key: "semesterID", ascending: false)
+    let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     
