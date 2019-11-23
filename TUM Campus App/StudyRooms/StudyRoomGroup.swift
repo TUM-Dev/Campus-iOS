@@ -29,7 +29,7 @@ import CoreData
         let room_nrs = try container.decode([Int64].self, forKey: .rooms)
         
         let roomFetchRequest: NSFetchRequest<StudyRoom> = StudyRoom.fetchRequest()
-        roomFetchRequest.predicate = NSPredicate(format: "\(StudyRoom.CodingKeys.id.rawValue) IN %@", room_nrs)
+        roomFetchRequest.predicate = NSPredicate(format: "%K IN %@", #keyPath(StudyRoom.id), room_nrs)
         let rooms = try context.fetch(roomFetchRequest)
 
         self.init(entity: StudyRoomGroup.entity(), insertInto: context)
