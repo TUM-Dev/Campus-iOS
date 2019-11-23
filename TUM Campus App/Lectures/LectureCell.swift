@@ -12,7 +12,6 @@ class LectureCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {
-            titleLabel.textColor = .tumBlue
             titleLabel.numberOfLines = 0
             titleLabel.sizeToFit()
         }

@@ -12,7 +12,6 @@ class CalendarEventCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!{
         didSet {
-            titleLabel.textColor = UIColor.tumBlue
             titleLabel.numberOfLines = 0
             titleLabel.sizeToFit()
         }
