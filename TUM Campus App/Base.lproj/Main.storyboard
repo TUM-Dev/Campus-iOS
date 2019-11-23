@@ -850,7 +850,7 @@
         <!--Profile-->
         <scene sceneID="Acj-X2-b8r">
             <objects>
-                <tableViewController id="gbQ-h1-TlK" sceneMemberID="viewController">
+                <tableViewController id="gbQ-h1-TlK" customClass="ProfileTableViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="s3M-CN-CRs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1038,7 +1038,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Join the Beta" id="ysW-fW-qY4">
+                            <tableViewSection headerTitle="We have a beta" id="ysW-fW-qY4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vNV-r8-TtS">
                                         <rect key="frame" x="0.0" y="476.5" width="375" height="43.5"/>
@@ -1048,21 +1048,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0cJ-wk-ZLI">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="21.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the Beta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29g-Mj-eAk">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0cJ-wk-ZLI" firstAttribute="top" secondItem="JKp-I8-SC1" secondAttribute="top" constant="8" id="1gy-ai-J6J"/>
+                                                <constraint firstItem="0cJ-wk-ZLI" firstAttribute="top" secondItem="JKp-I8-SC1" secondAttribute="top" constant="11" id="1gy-ai-J6J"/>
                                                 <constraint firstItem="0cJ-wk-ZLI" firstAttribute="leading" secondItem="JKp-I8-SC1" secondAttribute="leadingMargin" id="fye-KZ-2Yi"/>
-                                                <constraint firstAttribute="bottom" secondItem="0cJ-wk-ZLI" secondAttribute="bottom" constant="8" id="iw2-Pc-fia"/>
+                                                <constraint firstAttribute="bottom" secondItem="0cJ-wk-ZLI" secondAttribute="bottom" constant="11" id="iw2-Pc-fia"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="0cJ-wk-ZLI" secondAttribute="trailing" id="mDi-Ai-Ktk"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1080,22 +1080,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KBN-MI-gOl">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="21.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8G-mW-9Pj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="27.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8G-mW-9Pj">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="KBN-MI-gOl" secondAttribute="bottom" constant="8" id="3nm-fW-zDh"/>
+                                                <constraint firstAttribute="bottom" secondItem="KBN-MI-gOl" secondAttribute="bottom" constant="11" id="3nm-fW-zDh"/>
                                                 <constraint firstItem="KBN-MI-gOl" firstAttribute="leading" secondItem="Y6q-ul-COy" secondAttribute="leadingMargin" id="CRt-JU-Jro"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="KBN-MI-gOl" secondAttribute="trailing" id="Nyw-GH-yHY"/>
-                                                <constraint firstItem="KBN-MI-gOl" firstAttribute="top" secondItem="Y6q-ul-COy" secondAttribute="top" constant="8" id="Vjc-Ga-zFe"/>
+                                                <constraint firstItem="KBN-MI-gOl" firstAttribute="top" secondItem="Y6q-ul-COy" secondAttribute="top" constant="11" id="Vjc-Ga-zFe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>

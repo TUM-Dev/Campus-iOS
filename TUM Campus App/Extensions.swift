@@ -93,10 +93,8 @@ extension UIButton {
     }
 }
 
-extension UIViewController {
-    var appDelegate: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
+var appDelegate: AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
 }
 
 extension CodingUserInfoKey {

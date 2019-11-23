@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SWXMLHash
 import KeychainAccess
+import CoreData
 
 enum LoginError: Error {
     case missingToken
@@ -31,6 +32,7 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private var requestsToRetry: [RequestRetryCompletion] = []
     var delegate: AuthenticationHandlerDelegate?
     
+    lazy var coreDataStack = appDelegate.persistentContainer
     lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
     
     private static let keychain = Keychain(service: "de.tum.tumonline")
@@ -245,7 +247,20 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     
     func logout() {
         credentials = nil
-        // delete user data!
+        
+        let fetchRequests = [
+            Grade.fetchRequest(),
+            Lecture.fetchRequest(),
+            CalendarEvent.fetchRequest(),
+            Profile.fetchRequest(),
+            Tuition.fetchRequest(),
+            TicketEvent.fetchRequest(),
+            TicketPayment.fetchRequest(),
+            TicketType.fetchRequest(),
+        ]
+        
+        let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0) }
+        deleteRequests.forEach { _ = try? coreDataStack.persistentStoreCoordinator.execute($0, with: coreDataStack.viewContext) }
     }
     
     func skipLogin() {
