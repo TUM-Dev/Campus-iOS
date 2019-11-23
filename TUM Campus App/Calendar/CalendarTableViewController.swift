@@ -18,15 +18,18 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    var dateFormatter = DateFormatter()
+    var startDateFormatter = DateFormatter()
+    var endDateFormatter = DateFormatter()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "dd MMM y || HH:mm"
+        startDateFormatter.locale = Locale.current
+        startDateFormatter.dateFormat = "dd MMM y || HH:mm"
+        endDateFormatter.locale = Locale.current
+        endDateFormatter.dateFormat = "HH:mm"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +58,9 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
 
         cell.titleLabel.text = event.title
         if let startDate = event.startDate {
-            cell.dateLabel.text = dateFormatter.string(from: startDate)
+            if let endDate = event.endDate {
+                cell.dateLabel.text = startDateFormatter.string(from: startDate) + " - " + endDateFormatter.string(from: endDate)
+            }
         }
         cell.selectionStyle = .none
         
