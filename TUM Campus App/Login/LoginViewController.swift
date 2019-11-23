@@ -98,7 +98,6 @@ class LoginViewController: UIViewController {
         
         continueButton.isEnabled = textFieldContentsAreValid()
         continueButton.alpha = textFieldContentsAreValid() ? 1 : 0.6
-        continueButton.backgroundColor = .tumBlue
     }
     
     private func handleTextFieldInput(currentTextField: UITextField, previousTextField: UITextField? = nil, nextTextField: UITextField? = nil, characterLimit: Int) {
