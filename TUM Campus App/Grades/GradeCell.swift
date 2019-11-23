@@ -10,7 +10,7 @@ import UIKit
 
 class GradeCell: UITableViewCell {
     
-    var gradeString : String = "1,0"
+    var gradeString : String?
     
     
     @IBOutlet weak var titleLabel: UILabel! {
@@ -27,21 +27,23 @@ class GradeCell: UITableViewCell {
         }
     }
     
-    
     @IBOutlet weak var gradeLabel: UILabel! {
         didSet {
-            if let doubleGrade = Double(gradeString.replacingOccurrences(of: ",", with: ".")){
-                switch doubleGrade {
-                case 0.0...3.9:
-                    blockView.backgroundColor = UIColor.green
-                default:
-                    blockView.backgroundColor = UIColor.red
+            if let gradeString = gradeString {
+                if let doubleGrade = Double(gradeString.replacingOccurrences(of: ",", with: ".")){
+                        switch doubleGrade {
+                        case 0.0...3.9:
+                            blockView.backgroundColor = UIColor.green
+                        default:
+                            blockView.backgroundColor = UIColor.red
+                        }
+                    }else{
+                        blockView.backgroundColor = UIColor.gray
+                    }
+                    gradeLabel.text = gradeString
+                    gradeLabel.font = UIFont.boldSystemFont(ofSize: 12)
                 }
-            }else{
-                blockView.backgroundColor = UIColor.gray
             }
-            gradeLabel.text = gradeString
-            gradeLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        }
+            
     }
 }

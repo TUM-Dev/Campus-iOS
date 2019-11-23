@@ -40,7 +40,7 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         }
         else
         {
-            self.SetBackgroundLabel(with: "No Lectures")
+            setBackgroundLabel(with: "No Lectures")
         }
         return numOfSections
     }

@@ -38,7 +38,7 @@ struct GradesAPIResponse: Decodable {
         <lv_credits isnull="true"></lv_credits>
      </row>
  */
-    static let sectionNameKeyPath: KeyPath<Self, String?>? = \Grade.semester
+    static let sectionNameKeyPath: KeyPath<Grade, String?>? = \Grade.semester
     
     enum CodingKeys: String, CodingKey {
         case date = "datum"

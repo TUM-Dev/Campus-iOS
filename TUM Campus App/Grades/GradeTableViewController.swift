@@ -44,7 +44,7 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         }
         else
         {
-            self.SetBackgroundLabel(with: "No Grades")
+            setBackgroundLabel(with: "No Grades")
         }
         return numOfSections
        }

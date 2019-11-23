@@ -25,7 +25,7 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
-        dateFormatter.locale = Locale(identifier: "de_DE")
+        dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "dd MMM y || HH:mm"
         
     }

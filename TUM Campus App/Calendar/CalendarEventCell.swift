@@ -11,13 +11,16 @@ import UIKit
 class CalendarEventCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!{
-        didSet{
+        didSet {
             titleLabel.textColor = UIColor.tumBlue
             titleLabel.numberOfLines = 0
             titleLabel.sizeToFit()
         }
     }
-    @IBOutlet weak var dateLabel: UILabel!
     
-    
+    @IBOutlet weak var dateLabel: UILabel!{
+        didSet{
+            dateLabel.font = UIFont.systemFont(ofSize: 12)
+        }
+    }
 }
