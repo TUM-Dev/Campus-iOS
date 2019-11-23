@@ -18,7 +18,7 @@ class StudyCollectionViewController: UICollectionViewController, UICollectionVie
     typealias GradeImporter = Importer<Grade,GradeAPIResponse,XMLDecoder>
     typealias GradeAPIResponse = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
 
-    let lectureSortDescriptor = NSSortDescriptor(key: "semesterID", ascending: false)
+    let lectureSortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
     lazy var lectureImporter = LectureImporter(endpoint: TUMOnlineAPI.personalLectures, sortDescriptor: lectureSortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     let tuitionSortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)

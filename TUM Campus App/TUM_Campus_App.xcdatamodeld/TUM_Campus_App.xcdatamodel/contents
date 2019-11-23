@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Cafeteria" representedClassName=".Cafeteria" syncable="YES" codeGenerationType="category">
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="mensa" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="menu" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="cafeteria" inverseEntity="Menu" syncable="YES"/>
-        <relationship name="sides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SideDish" inverseName="cafeteria" inverseEntity="SideDish" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="mensa" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="menu" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="cafeteria" inverseEntity="Menu"/>
+        <relationship name="sides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SideDish" inverseName="cafeteria" inverseEntity="SideDish"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -15,14 +15,14 @@
         </uniquenessConstraints>
     </entity>
     <entity name="CalendarEvent" representedClassName=".CalendarEvent" syncable="YES" codeGenerationType="category">
-        <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -30,18 +30,18 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Grade" representedClassName=".Grade" syncable="YES" codeGenerationType="category">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="examiner" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="examType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="grade" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lvNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="modus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studyDesignation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studyID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="studyNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="grade" inverseEntity="Lecture" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="examiner" optional="YES" attributeType="String"/>
+        <attribute name="examType" optional="YES" attributeType="String"/>
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="lvNumber" optional="YES" attributeType="String"/>
+        <attribute name="modus" optional="YES" attributeType="String"/>
+        <attribute name="semester" optional="YES" attributeType="String"/>
+        <attribute name="studyDesignation" optional="YES" attributeType="String"/>
+        <attribute name="studyID" optional="YES" attributeType="String"/>
+        <attribute name="studyNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="lecture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lecture" inverseName="grade" inverseEntity="Lecture"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="lvNumber"/>
@@ -49,22 +49,22 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Lecture" representedClassName=".Lecture" syncable="YES" codeGenerationType="category">
-        <attribute name="duration" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="eventType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eventTypeTag" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="lvNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="organisation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="organisationNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="organisationTag" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semesterID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semesterType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semesterYear" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="speaker" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="stp_sp_sst" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="lecture" inverseEntity="Grade" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="eventType" optional="YES" attributeType="String"/>
+        <attribute name="eventTypeTag" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lvNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="organisation" optional="YES" attributeType="String"/>
+        <attribute name="organisationNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="organisationTag" optional="YES" attributeType="String"/>
+        <attribute name="semester" optional="YES" attributeType="String"/>
+        <attribute name="semesterID" optional="YES" attributeType="String"/>
+        <attribute name="semesterType" optional="YES" attributeType="String"/>
+        <attribute name="semesterYear" optional="YES" attributeType="String"/>
+        <attribute name="speaker" optional="YES" attributeType="String"/>
+        <attribute name="stp_sp_sst" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="grade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="lecture" inverseEntity="Grade"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -72,15 +72,15 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Menu" representedClassName=".Menu" syncable="YES" codeGenerationType="category">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="menu" inverseEntity="Cafeteria" syncable="YES"/>
-        <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MenuPrice" inverseName="menus" inverseEntity="MenuPrice" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="typeTag" optional="YES" attributeType="String"/>
+        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="menu" inverseEntity="Cafeteria"/>
+        <relationship name="price" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MenuPrice" inverseName="menus" inverseEntity="MenuPrice"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -88,12 +88,12 @@
         </uniquenessConstraints>
     </entity>
     <entity name="MenuPrice" representedClassName=".MenuPrice" syncable="YES" codeGenerationType="category">
-        <attribute name="personType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="price" inverseEntity="Menu" syncable="YES"/>
+        <attribute name="personType" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="typeNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="typeTag" optional="YES" attributeType="String"/>
+        <relationship name="menus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Menu" inverseName="price" inverseEntity="Menu"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="typeNumber"/>
@@ -102,20 +102,20 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Movie" representedClassName=".Movie" syncable="YES" codeGenerationType="category">
-        <attribute name="actors" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="cover" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="movieDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="runtime" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="movie" inverseEntity="TicketEvent" syncable="YES"/>
+        <attribute name="actors" optional="YES" attributeType="String"/>
+        <attribute name="cover" optional="YES" attributeType="URI"/>
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="director" optional="YES" attributeType="String"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="movieDescription" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="String"/>
+        <attribute name="runtime" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="year" optional="YES" attributeType="String"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="movie" inverseEntity="TicketEvent"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -123,13 +123,13 @@
         </uniquenessConstraints>
     </entity>
     <entity name="News" representedClassName=".News" syncable="YES" codeGenerationType="category">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageURL" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="sourceID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="news" inverseEntity="NewsSource" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="imageURL" optional="YES" attributeType="URI"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="sourceID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsSource" inverseName="news" inverseEntity="NewsSource"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -137,10 +137,10 @@
         </uniquenessConstraints>
     </entity>
     <entity name="NewsSource" representedClassName=".NewsSource" syncable="YES" codeGenerationType="category">
-        <attribute name="icon" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="news" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="News" inverseName="source" inverseEntity="News" syncable="YES"/>
+        <attribute name="icon" optional="YES" attributeType="URI"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="news" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="News" inverseName="source" inverseEntity="News"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -148,13 +148,13 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES" codeGenerationType="class">
-        <attribute name="bild_url" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="familienname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="geschlecht" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="obfuscated_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="titel" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="vorname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bild_url" optional="YES" attributeType="URI"/>
+        <attribute name="familienname" optional="YES" attributeType="String"/>
+        <attribute name="geschlecht" optional="YES" attributeType="String"/>
+        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="obfuscated_id" optional="YES" attributeType="String"/>
+        <attribute name="titel" optional="YES" attributeType="String"/>
+        <attribute name="vorname" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="obfuscated_id"/>
@@ -162,14 +162,14 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Profile" representedClassName=".Profile" syncable="YES" codeGenerationType="category">
-        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscatedID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscatedIDEmployee" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscatedIDExtern" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="obfuscatedIDStudent" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tumID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="obfuscatedID" optional="YES" attributeType="String"/>
+        <attribute name="obfuscatedIDEmployee" optional="YES" attributeType="String"/>
+        <attribute name="obfuscatedIDExtern" optional="YES" attributeType="String"/>
+        <attribute name="obfuscatedIDStudent" optional="YES" attributeType="String"/>
+        <attribute name="surname" optional="YES" attributeType="String"/>
+        <attribute name="tumID" optional="YES" attributeType="String"/>
+        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="obfuscatedID"/>
@@ -177,12 +177,12 @@
         </uniquenessConstraints>
     </entity>
     <entity name="SideDish" representedClassName=".SideDish" syncable="YES" codeGenerationType="category">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="typeTag" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="sides" inverseEntity="Cafeteria" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="mensaID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="typeTag" optional="YES" attributeType="String"/>
+        <relationship name="cafeteria" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cafeteria" inverseName="sides" inverseEntity="Cafeteria"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -192,23 +192,23 @@
         </uniquenessConstraints>
     </entity>
     <entity name="StudyRoom" representedClassName=".StudyRoom" syncable="YES" codeGenerationType="category">
-        <attribute name="buildingCode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="buildingName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="buildingNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="occupiedBy" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="occupiedFor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="occupiedFrom" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="occupiedIn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="occupiedUntil" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="raum_nr_architekt" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoomAttribute" inverseName="studyRoom" inverseEntity="StudyRoomAttribute" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="rooms" inverseEntity="StudyRoomGroup" syncable="YES"/>
+        <attribute name="buildingCode" optional="YES" attributeType="String"/>
+        <attribute name="buildingName" optional="YES" attributeType="String"/>
+        <attribute name="buildingNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="occupiedBy" optional="YES" attributeType="String"/>
+        <attribute name="occupiedFor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="occupiedFrom" optional="YES" attributeType="String"/>
+        <attribute name="occupiedIn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="occupiedUntil" optional="YES" attributeType="String"/>
+        <attribute name="raum_nr_architekt" optional="YES" attributeType="String"/>
+        <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoomAttribute" inverseName="studyRoom" inverseEntity="StudyRoomAttribute"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoomGroup" inverseName="rooms" inverseEntity="StudyRoomGroup"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -216,9 +216,9 @@
         </uniquenessConstraints>
     </entity>
     <entity name="StudyRoomAttribute" representedClassName=".StudyRoomAttribute" syncable="YES" codeGenerationType="category">
-        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="studyRoom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="attributes" inverseEntity="StudyRoom" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="studyRoom" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="attributes" inverseEntity="StudyRoom"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="name"/>
@@ -227,11 +227,11 @@
         </uniquenessConstraints>
     </entity>
     <entity name="StudyRoomGroup" representedClassName=".StudyRoomGroup" syncable="YES" codeGenerationType="category">
-        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sorting" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sorting" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudyRoom" inverseName="group" inverseEntity="StudyRoom"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -239,19 +239,19 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
-        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="eventDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="file" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="groupID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="kinoID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="link" optional="YES" attributeType="URI" syncable="YES"/>
-        <attribute name="locality" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="newsID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="ticket" inverseEntity="Movie" syncable="YES"/>
-        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="ticket" inverseEntity="TicketType" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String"/>
+        <attribute name="file" optional="YES" attributeType="URI"/>
+        <attribute name="groupID" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kinoID" optional="YES" attributeType="Integer 64" defaultValueString="0"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="locality" optional="YES" attributeType="String"/>
+        <attribute name="newsID" optional="YES" attributeType="String"/>
+        <attribute name="start" optional="YES" attributeType="Date"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="ticket" inverseEntity="Movie"/>
+        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="ticket" inverseEntity="TicketType"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -259,11 +259,11 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TicketPayment" representedClassName=".TicketPayment" syncable="YES" codeGenerationType="category">
-        <attribute name="maxTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="minTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="stripeKey" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="terms" optional="YES" attributeType="URI" syncable="YES"/>
-        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType" syncable="YES"/>
+        <attribute name="maxTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stripeKey" optional="YES" attributeType="String"/>
+        <attribute name="terms" optional="YES" attributeType="URI"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="stripeKey"/>
@@ -271,15 +271,15 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TicketType" representedClassName=".TicketType" syncable="YES" codeGenerationType="category">
-        <attribute name="contingent" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="eventID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="paymentID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sold" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ticketDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="type" inverseEntity="TicketPayment" syncable="YES"/>
-        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent" syncable="YES"/>
+        <attribute name="contingent" optional="YES" attributeType="String"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentID" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="sold" optional="YES" attributeType="String"/>
+        <attribute name="ticketDescription" optional="YES" attributeType="String"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="type" inverseEntity="TicketPayment"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -288,10 +288,10 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES" codeGenerationType="category">
-        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="semester" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="semesterID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0"/>
+        <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="semester" optional="YES" attributeType="String"/>
+        <attribute name="semesterID" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="semesterID"/>
@@ -299,9 +299,9 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TUMSexyLink" representedClassName=".TUMSexyLink" syncable="YES" codeGenerationType="category">
-        <attribute name="linkDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="moodleID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="linkDescription" optional="YES" attributeType="String"/>
+        <attribute name="moodleID" optional="YES" attributeType="String"/>
+        <attribute name="target" optional="YES" attributeType="String"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="target"/>
@@ -311,12 +311,13 @@
     <elements>
         <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="150"/>
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="165"/>
-        <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="225"/>
+        <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
         <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
         <element name="Menu" positionX="341.89453125" positionY="323.0625" width="128" height="30"/>
         <element name="MenuPrice" positionX="503.1015625" positionY="423.5625" width="128" height="135"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="150"/>
+        <element name="NewsSource" positionX="9" positionY="288" width="128" height="105"/>
         <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="165"/>
         <element name="SideDish" positionX="355.84765625" positionY="522.59765625" width="128" height="30"/>
@@ -328,6 +329,5 @@
         <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="180"/>
         <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
         <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
-        <element name="NewsSource" positionX="9" positionY="288" width="128" height="105"/>
     </elements>
 </model>
