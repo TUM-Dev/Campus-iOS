@@ -34,6 +34,18 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
         try! importer.fetchedResultsController.performFetch()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
+        if numOfSections > 0 {
+            tableView.separatorStyle = .singleLine
+            tableView.backgroundView = nil
+        }
+        else {
+            setBackgroundLabel(with: "No Study Rooms")
+        }
+        return numOfSections
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
