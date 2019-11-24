@@ -24,6 +24,7 @@ class CalendarViewController: DayViewController, NSFetchedResultsControllerDeleg
         importer.performFetch() { error in
             print(error)
         }
+        
         super.viewDidLoad()
     }
     

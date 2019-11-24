@@ -30,6 +30,9 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         startDateFormatter.dateFormat = "dd MMM y || HH:mm"
         endDateFormatter.locale = Locale.current
         endDateFormatter.dateFormat = "HH:mm"
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Calendar"
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -19,10 +19,14 @@ class TuitionTableViewController: UITableViewController, EntityTableViewControll
     let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
+    var deadlineDateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
+        deadlineDateFormatter.locale = Locale.current
+        deadlineDateFormatter.dateFormat = "dd MMM y"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +39,15 @@ class TuitionTableViewController: UITableViewController, EntityTableViewControll
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! TuitionCell
         guard let tuition = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.textLabel?.text = tuition.semester
+        cell.semesterLabel.text = tuition.semester
+        guard let amount = tuition.amount,
+            let deadline = tuition.deadline else{return cell}
+        cell.amountLabel.text = "Amount : \(amount)€"
+        cell.deadlineLabel.text = "Deadline : \(deadlineDateFormatter.string(from: deadline))"
+        
         return cell
     }
     
