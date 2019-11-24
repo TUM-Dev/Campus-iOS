@@ -14,6 +14,7 @@
 		19BA03F023897FEE00B85982 /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
 		19EC3F652388669600D484E7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EC3F642388669600D484E7 /* Login.storyboard */; };
 		19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC3F6623886C6800D484E7 /* LectureCell.swift */; };
+		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
 		22195063221C8CCC00169A2B /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195062221C8CCC00169A2B /* Lecture.swift */; };
 		22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195066221C8CEA00169A2B /* LectureTableViewController.swift */; };
 		222B3F6F222C5388003B2918 /* CafeteriaDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B3F6E222C5388003B2918 /* CafeteriaDetailCollectionViewController.swift */; };
@@ -115,6 +116,7 @@
 		19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		19EC3F642388669600D484E7 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		19EC3F6623886C6800D484E7 /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
+		19F7DB21238A112E00082444 /* TuitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCell.swift; sourceTree = "<group>"; };
 		22195062221C8CCC00169A2B /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		22195066221C8CEA00169A2B /* LectureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureTableViewController.swift; sourceTree = "<group>"; };
 		222B3F6E222C5388003B2918 /* CafeteriaDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaDetailCollectionViewController.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				22B9D63922207BA100854D55 /* Tuition.swift */,
 				22B9D63E22207CB000854D55 /* TuitionTableViewController.swift */,
+				19F7DB21238A112E00082444 /* TuitionCell.swift */,
 			);
 			path = Tuition;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
 				223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */,
 				224CB390222ADAD10002945A /* NewsCollectionViewCell.swift in Sources */,
+				19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */,
 				224CB394222ADB020002945A /* MovieCollectionViewCell.swift in Sources */,
 				22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */,
 				19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */,
