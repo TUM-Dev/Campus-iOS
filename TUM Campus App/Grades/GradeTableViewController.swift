@@ -27,6 +27,8 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         importer.performFetch { error in
             print(error)
         }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Grades"
     }
     
     override func viewWillAppear(_ animated: Bool) {

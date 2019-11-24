@@ -43,6 +43,8 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Study Rooms"
     }
     
     override func viewWillAppear(_ animated: Bool) {

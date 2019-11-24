@@ -15,6 +15,8 @@ class StudyRoomTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Study Rooms"
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if let lhsCode = lhs.code{
                 if let rhsCode = rhs.code{

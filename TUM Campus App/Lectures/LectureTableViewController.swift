@@ -23,6 +23,9 @@ class LecturesTableViewController: UITableViewController, EntityTableViewControl
         super.viewDidLoad()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.title = "Lectures"
     }
     
     override func viewWillAppear(_ animated: Bool) {
