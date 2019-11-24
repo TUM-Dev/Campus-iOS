@@ -275,7 +275,7 @@
 			path = Events;
 			sourceTree = "<group>";
 		};
-		2258EDB922221EA60079C2ED /* StudyRooms */ = {
+		2258EDB922221EA60079C2ED /* StudyRoomsGrouped */ = {
 			isa = PBXGroup;
 			children = (
 				2258EDBA22221EE80079C2ED /* StudyRoom.swift */,
@@ -286,7 +286,7 @@
 				19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */,
 				19382F212389D4AD007BEC88 /* StudyRoomCell.swift */,
 			);
-			path = StudyRooms;
+			path = StudyRoomsGrouped;
 			sourceTree = "<group>";
 		};
 		2258EDBE22222B430079C2ED /* TUMSexy */ = {
@@ -358,7 +358,7 @@
 				22B9D6402220844000854D55 /* Cafeteria */,
 				22B9D6412220851D00854D55 /* Profile */,
 				2258EDB222221D6B0079C2ED /* Events */,
-				2258EDB922221EA60079C2ED /* StudyRooms */,
+				2258EDB922221EA60079C2ED /* StudyRoomsGrouped */,
 				2258EDBE22222B430079C2ED /* TUMSexy */,
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
 				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,

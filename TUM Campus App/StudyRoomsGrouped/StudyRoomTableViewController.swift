@@ -12,6 +12,8 @@ import CoreData
 class StudyRoomTableViewController: UITableViewController{
     var rooms : [StudyRoom] = []
     
+    var dateFomatter = DateFormatter()
+    var secondDateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +67,11 @@ class StudyRoomTableViewController: UITableViewController{
             }
             return false
         })
+        
+        dateFomatter.locale = Locale.init(identifier: "de_DE")
+        dateFomatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        secondDateFormatter.locale = Locale.current
+        secondDateFormatter.dateFormat = "HH:mm"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,16 +83,22 @@ class StudyRoomTableViewController: UITableViewController{
         
         cell.roomNameLabel.text = rooms[indexPath.row].name
         cell.roomNumberLabel.text = rooms[indexPath.row].code
-        cell.roomStatusLabel.text = rooms[indexPath.row].status
-        switch cell.roomStatusLabel.text {
+        switch rooms[indexPath.row].status {
         case "frei":
             cell.roomStatusLabel.textColor = .systemGreen
+            cell.roomStatusLabel.text = "Free"
         case "belegt":
             cell.roomStatusLabel.textColor = .systemRed
+            
+            guard let occupiedUntilString = rooms[indexPath.row].occupiedUntil else{return cell}
+            guard let occupiedUntilDate = dateFomatter.date(from: occupiedUntilString) else{return cell}
+            
+            cell.roomStatusLabel.text = "Occupied until \(secondDateFormatter.string(from: occupiedUntilDate))"
+            
         default:
             cell.roomStatusLabel.textColor = .systemGray
+            cell.roomStatusLabel.text = "Unknown"
         }
-        
         return cell
     }
 }
