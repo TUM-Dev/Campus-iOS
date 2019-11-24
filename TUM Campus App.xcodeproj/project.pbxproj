@@ -280,9 +280,9 @@
 			children = (
 				2258EDBA22221EE80079C2ED /* StudyRoom.swift */,
 				2258EDBC22221EF00079C2ED /* StudyRoomGroup.swift */,
-				19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */,
 				224CB3662225A7F00002945A /* StudyRoomAttribute.swift */,
 				224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */,
+				19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */,
 				19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */,
 				19382F212389D4AD007BEC88 /* StudyRoomCell.swift */,
 			);
