@@ -89,6 +89,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
                 let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row],
                 let rooms = roomGroup.rooms?.allObjects as? [StudyRoom] else { return }
             roomsVC.rooms = rooms
+            roomsVC.title = roomGroup.name
         }
     }
     
