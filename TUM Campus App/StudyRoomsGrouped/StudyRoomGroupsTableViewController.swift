@@ -44,6 +44,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         self.title = "Study Rooms"
     }
     
