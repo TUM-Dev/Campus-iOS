@@ -44,6 +44,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         self.title = "Study Rooms"
     }
     
@@ -89,6 +90,7 @@ class StudyRoomGroupsTableViewController: UITableViewController, EntityTableView
                 let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row],
                 let rooms = roomGroup.rooms?.allObjects as? [StudyRoom] else { return }
             roomsVC.rooms = rooms
+            roomsVC.title = roomGroup.name
         }
     }
     
