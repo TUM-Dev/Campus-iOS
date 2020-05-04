@@ -23,6 +23,7 @@ class TuitionTableViewController: UITableViewController, EntityTableViewControll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
         deadlineDateFormatter.locale = Locale.current

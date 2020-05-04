@@ -17,6 +17,7 @@ class StudyRoomTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         navigationItem.largeTitleDisplayMode = .never
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if let lhsCode = lhs.code{

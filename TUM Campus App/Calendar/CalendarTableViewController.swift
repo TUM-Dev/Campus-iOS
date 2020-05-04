@@ -24,13 +24,14 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
         startDateFormatter.locale = Locale.current
         startDateFormatter.dateFormat = "dd MMM y || HH:mm"
         endDateFormatter.locale = Locale.current
         endDateFormatter.dateFormat = "HH:mm"
-        
+
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Calendar"
     }

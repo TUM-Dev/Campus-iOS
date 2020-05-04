@@ -19,6 +19,7 @@ class MovieTableViewController: UITableViewController, EntityTableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
     }
