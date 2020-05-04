@@ -21,7 +21,7 @@ class TicketImporter: ImporterProtocol {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
-    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
+    lazy var sessionManager: Session = Session.defaultSession
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()

@@ -1,45 +1,41 @@
 PODS:
-  - Alamofire (4.9.1)
-  - AlamofireImage (3.6.0):
-    - Alamofire (~> 4.9)
-  - AlamofireNetworkActivityIndicator (2.4.0):
-    - Alamofire (~> 4.8)
-  - CalendarKit (0.7.2):
+  - Alamofire (5.1.0)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
+  - AlamofireNetworkActivityIndicator (3.1.0):
+    - Alamofire (~> 5.1)
+  - CalendarKit (0.13.9):
     - DateToolsSwift
-    - Neon
-  - DateToolsSwift (4.0.0)
-  - KeychainAccess (3.2.0)
-  - Kingfisher (5.10.1):
-    - Kingfisher/Core (= 5.10.1)
-  - Kingfisher/Core (5.10.1)
-  - Neon (0.4.0)
+  - DateToolsSwift (5.0.0)
+  - KeychainAccess (4.2.0)
+  - Kingfisher (5.13.4):
+    - Kingfisher/Core (= 5.13.4)
+  - Kingfisher/Core (5.13.4)
   - ScrollableDatepicker (2.2.0)
   - SWXMLHash (5.0.1)
   - XMLParsing (0.0.3)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.9)
-  - AlamofireImage (~> 3.6)
-  - AlamofireNetworkActivityIndicator (~> 2.4)
-  - CalendarKit
-  - KeychainAccess
-  - Kingfisher (~> 5.10)
+  - Alamofire (~> 5.1)
+  - AlamofireImage (~> 4.1)
+  - AlamofireNetworkActivityIndicator (~> 3.1)
+  - CalendarKit (~> 0.13)
+  - KeychainAccess (~> 4.2)
+  - Kingfisher (~> 5.13)
   - ScrollableDatepicker (~> 2.2)
   - SWXMLHash (~> 5.0)
   - XMLParsing (from `https://github.com/ShawnMoore/XMLParsing.git`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - CalendarKit
-    - DateToolsSwift
-    - KeychainAccess
-    - Neon
-    - ScrollableDatepicker
   trunk:
     - Alamofire
     - AlamofireImage
     - AlamofireNetworkActivityIndicator
+    - CalendarKit
+    - DateToolsSwift
+    - KeychainAccess
     - Kingfisher
+    - ScrollableDatepicker
     - SWXMLHash
 
 EXTERNAL SOURCES:
@@ -52,18 +48,17 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ShawnMoore/XMLParsing.git
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
-  AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
-  CalendarKit: edd2d45f4c5b01339fd7e8c27c204c8dd2d43d5f
-  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
-  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
-  Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
-  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
+  AlamofireNetworkActivityIndicator: 6564782bd7b9e6c430ae67d9277af01907b01ca4
+  CalendarKit: 781330ab3151e10b115afd4ccfd2b45f6738ac26
+  DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
+  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   ScrollableDatepicker: 0f14e38bcd3517e6632220af11e47d29e0f982db
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
   XMLParsing: 085edb6fa22c71d6b53a79299f990a91e7414d19
 
-PODFILE CHECKSUM: 565a8d579f12d71dc9856444ba3982fc893b1943
+PODFILE CHECKSUM: e6e0d709f6e4bb7720199afea81dcf385cb14055
 
 COCOAPODS: 1.8.4

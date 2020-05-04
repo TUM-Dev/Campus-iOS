@@ -17,7 +17,7 @@ enum MVGAPI: URLRequestConvertible {
     
     static let baseURL = "https://www.mvg.de"
     static let apiKey = "5af1beca494712ed38d313714d4caff6"
-    static let baseHeaders = ["X-MVG-Authorization-Key": apiKey]
+    static let baseHeaders: HTTPHeaders = ["X-MVG-Authorization-Key": apiKey]
     
     var path: String {
         switch self {

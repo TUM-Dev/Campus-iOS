@@ -30,7 +30,7 @@ class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: Deco
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     
-    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
+    lazy var sessionManager: Session = Session.defaultSession
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
@@ -65,7 +65,7 @@ protocol ImporterProtocol {
 
     var context: NSManagedObjectContext { get }
     var fetchedResultsController: NSFetchedResultsController<EntityType> { get }
-    var sessionManager: SessionManager { get }
+    var sessionManager: Session { get }
     var endpoint: URLRequestConvertible { get }
     var sortDescriptors: [NSSortDescriptor] { get }
     var predicate: NSPredicate? { get }

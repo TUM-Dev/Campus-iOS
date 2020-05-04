@@ -34,43 +34,45 @@ enum BackendError: Error {
     case objectSerialization(reason: String)
 }
 
-extension DataRequest {
-    static func xmlResponseSerializer() -> DataResponseSerializer<XMLIndexer> {
-        return DataResponseSerializer { (_, response, data, error) -> Result<XMLIndexer> in
-            
-            if let error = error {
-                return .failure(error)
-            }
-            
-            let result = Request.serializeResponseData(response: response, data: data, error: nil)
-            
-            guard case let .success(validData) = result else {
-                return .failure(BackendError.dataSerialization(error: result.error! as! AFError))
-            }
-            
-            let xmlParser = SWXMLHash.config { config in config.detectParsingErrors = true }
-            let xml = xmlParser.parse(validData)
-            
-            switch xml {
-            case let .xmlError(error):
-                return .failure(BackendError.xmlSerialization(error: error))
-            default:
-                return .success(xml)
-            }
+final class XMLSerializer: ResponseSerializer {
+    let dataPreprocessor: DataPreprocessor
+    let emptyResponseCodes: Set<Int>
+    let emptyRequestMethods: Set<HTTPMethod>
+    let config: (SWXMLHashOptions) -> Void
+
+    public init(dataPreprocessor: DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor,
+                emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
+                emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
+                config: @escaping (SWXMLHashOptions) -> Void = { config in config.detectParsingErrors = true }) {
+        self.dataPreprocessor = dataPreprocessor
+        self.emptyResponseCodes = emptyResponseCodes
+        self.emptyRequestMethods = emptyRequestMethods
+        self.config = config
+    }
+
+    func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> XMLIndexer {
+        let result = try DataResponseSerializer().serialize(request: request, response: response, data: data, error: error)
+        let xmlParser = SWXMLHash.config(config)
+        let xml = xmlParser.parse(result)
+
+        switch xml {
+        case let .xmlError(error):
+            throw BackendError.xmlSerialization(error: error)
+        default:
+            return xml
         }
     }
-    
+}
+
+extension DataRequest {
+
     @discardableResult
-    func responseXML(
-        queue: DispatchQueue? = nil,
-        completionHandler: @escaping (DataResponse<XMLIndexer>) -> Void)
-        -> Self
-    {
-        return response(
-            queue: queue,
-            responseSerializer: DataRequest.xmlResponseSerializer(),
-            completionHandler: completionHandler
-        )
+    public func responseXML(queue: DispatchQueue = .main,
+                             completionHandler: @escaping (AFDataResponse<XMLIndexer>) -> Void) -> Self {
+
+        response(queue: queue,
+                 responseSerializer: XMLSerializer(),
+                 completionHandler: completionHandler)
     }
 }
 
@@ -116,18 +118,20 @@ extension DateFormatter {
     }()
 }
 
-extension SessionManager {
-    static var defaultSessionManager: SessionManager {
-        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: TUMCabeAPI.serverTrustPolicies))
-        manager.adapter = AuthenticationHandler(delegate: nil)
-        manager.retrier = AuthenticationHandler(delegate: nil)
+extension Session {
+    static var defaultSession: Session {
+        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: nil), retrier: AuthenticationHandler(delegate: nil))
+        let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
+//        let manager = Session(interceptor: adapterAndRetrier, serverTrustManager: trustManager)
+        let manager = Session(interceptor: adapterAndRetrier)
         return manager
     }
     
-    static func defaultSessionManager(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> SessionManager {
-        let manager = SessionManager(serverTrustPolicyManager: ServerTrustPolicyManager(policies: TUMCabeAPI.serverTrustPolicies))
-        manager.adapter = AuthenticationHandler(delegate: delegate)
-        manager.retrier = AuthenticationHandler(delegate: delegate)
+    static func defaultSession(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> Session {
+        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: delegate), retrier: AuthenticationHandler(delegate: delegate))
+        let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
+//        let manager = Session(interceptor: adapterAndRetrier, serverTrustManager: trustManager)
+        let manager = Session(interceptor: adapterAndRetrier)
         return manager
     }
 }

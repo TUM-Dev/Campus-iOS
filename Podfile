@@ -5,14 +5,14 @@ target 'TUMCampusApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'Alamofire', '~> 4.9'
-  pod 'AlamofireImage', '~> 3.6'
-  pod 'AlamofireNetworkActivityIndicator', '~> 2.4'
+  pod 'Alamofire', '~> 5.1'
+  pod 'AlamofireImage', '~> 4.1'
+  pod 'AlamofireNetworkActivityIndicator', '~> 3.1'
   pod 'SWXMLHash', '~> 5.0'
   pod 'XMLParsing', :git => 'https://github.com/ShawnMoore/XMLParsing.git'
-  pod 'KeychainAccess'
-  pod 'Kingfisher', '~> 5.10'
-  pod 'CalendarKit'
+  pod 'KeychainAccess', '~> 4.2'
+  pod 'Kingfisher', '~> 5.13'
+  pod 'CalendarKit', '~> 0.13'
   pod 'ScrollableDatepicker', '~> 2.2'
 
   target 'TUMCampusAppTests' do

@@ -26,14 +26,14 @@ protocol AuthenticationHandlerDelegate {
 
 /// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
 class AuthenticationHandler: RequestAdapter, RequestRetrier {
-    typealias Completion = (Result<String>) -> Void
+    typealias Completion = (Result<String,Error>) -> Void
     private let lock = NSLock()
     private var isRefreshing = false
-    private var requestsToRetry: [RequestRetryCompletion] = []
+    private var requestsToRetry: [(RetryResult) -> Void] = []
     var delegate: AuthenticationHandlerDelegate?
     
     lazy var coreDataStack = appDelegate.persistentContainer
-    lazy var sessionManager: SessionManager = SessionManager.defaultSessionManager
+    lazy var sessionManager: Session = Session.defaultSession
     
     private static let keychain = Keychain(service: "de.tum.tumonline")
         .synchronizable(true)
@@ -62,9 +62,9 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
     
     // MARK: - RequestAdapter
     
-    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
-        guard let urlString = urlRequest.url?.absoluteString else { return urlRequest }
+        guard let urlString = urlRequest.url?.absoluteString else { return completion(.success(urlRequest)) }
         var pToken: String?
         
         switch credentials {
@@ -77,54 +77,59 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         
         switch urlString {
         case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.hasSuffix($0) }:
-            guard let pToken = pToken else { throw LoginError.missingToken }
-            return try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
+            guard let pToken = pToken else { return completion(.failure(LoginError.missingToken)) }
+            do {
+                let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
+                return completion(.success(encodedRequest))
+            } catch let error {
+                return completion(.failure(error))
+            }
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
-            return urlRequest
+            return completion(.success(urlRequest))
         case urlString where urlString.hasPrefix(MVGAPI.baseURL):
             urlRequest.addValue(MVGAPI.apiKey, forHTTPHeaderField: "X-MVG-Authorization-Key")
+            return completion(.success(urlRequest))
         default:
-            break
+            return completion(.success(urlRequest))
         }
-        return urlRequest
     }
     
     // MARK: - RequestRetrier
-    
-    func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
+
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         lock.lock() ; defer { lock.unlock() }
         // TODO status code is 200 so this doesn't work
-        
-        if let data = request.delegate.data {
-            let xml = SWXMLHash.parse(data)
-            
-            
-            /*
-             TODO:
-             
-             Decide if token is invalid or not authorized:
-             
-             <?xml version="1.0" encoding="utf-8"?>
-             <error>
-             <message>Token ist ungültig!</message>
-             </error>
-             
-             <?xml version="1.0" encoding="utf-8"?>
-             <error>
-             <message>Token ist nicht bestätigt!</message>
-             </error>
-             
-             */
-        }
-        
+
+//        if let data = request.delegate.data {
+//            let xml = SWXMLHash.parse(data)
+//
+//
+//            /*
+//             TODO:
+//
+//             Decide if token is invalid or not authorized:
+//
+//             <?xml version="1.0" encoding="utf-8"?>
+//             <error>
+//             <message>Token ist ungültig!</message>
+//             </error>
+//
+//             <?xml version="1.0" encoding="utf-8"?>
+//             <error>
+//             <message>Token ist nicht bestätigt!</message>
+//             </error>
+//
+//             */
+//        }
+
         var tumID: String
         requestsToRetry.append(completion)
-        
+
         guard isRefreshing else {
-            completion(false, 0.0)
+            completion(.doNotRetry)
             return
         }
-        
+
         switch credentials {
         case .none,
              .noTumID?:
@@ -135,12 +140,12 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
              .tumIDAndKey(let id,_,_)?:
             tumID = id
         }
-        
+
         createToken(tumID: tumID) { [weak self] result in
             guard let strongSelf = self else { return }
             let shouldRetry: Bool
             strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
-            
+
             switch result {
             case .success(let token):
                 // Auth succeeded retry failed request.
@@ -151,14 +156,14 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 case .tumID(let tumID, _)?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
                 case .tumIDAndKey(let tumID, _, let key)?: strongSelf.credentials = .tumIDAndKey(tumID: tumID, token: token, key: key)
                 }
-                
+
             default:
                 // Auth failed don't retry.
                 shouldRetry = false
                 break
             }
-            
-            strongSelf.requestsToRetry.forEach { $0(shouldRetry, 0.0) }
+
+            strongSelf.requestsToRetry.forEach { $0(.retry) }
             strongSelf.requestsToRetry.removeAll()
         }
     }
@@ -175,17 +180,19 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
             .validate(contentType: ["text/xml"])
             .responseXML { [weak self] xml in
             guard let strongSelf = self else { return }
-            guard let newToken = xml.value?["token"].element?.text else {
+                guard let newToken = xml.value?["token"].element?.text else {
+                print(xml)
+                strongSelf.isRefreshing = false
                 completion(.failure(LoginError.invalidToken))
                 return
             }
             strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
-            completion(.success(newToken))
             strongSelf.isRefreshing = false
+            completion(.success(newToken))
         }
     }
     
-    func confirmToken(callback: @escaping (Result<Bool>) -> Void) {
+    func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) {
         switch credentials {
         case .none: callback(.failure(LoginError.missingToken))
         case .noTumID?: callback(.failure(LoginError.missingToken))
@@ -237,11 +244,11 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
         return data
     }
     
-    func uploadKey(callback: @escaping (Result<Data>) -> Void) {
+    func uploadKey(callback: @escaping (Result<Data,Error>) -> Void) {
         let key = try? createKey()
     }
     
-    func registerKey(callback: @escaping (Result<Bool>) -> Void) {
+    func registerKey(callback: @escaping (Result<Bool,Error>) -> Void) {
         // TOOD
     }
     
