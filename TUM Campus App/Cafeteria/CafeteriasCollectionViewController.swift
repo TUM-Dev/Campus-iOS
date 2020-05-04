@@ -35,6 +35,9 @@ class CafeteriasCollectionViewController: UICollectionViewController, UICollecti
         menuImporter.performFetch() { error in
             print(error)
         }
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Cafeterias"
     }
     
     override func viewWillAppear(_ animated: Bool) {

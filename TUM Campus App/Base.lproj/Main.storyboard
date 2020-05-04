@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHE-Lh-fSC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pHE-Lh-fSC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -619,7 +620,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="fja-mh-vls" kind="relationship" relationship="rootViewController" id="G1l-1m-aRB"/>
+                        <segue destination="ZLq-Pr-QWu" kind="relationship" relationship="rootViewController" id="uzT-ij-Lzi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dff-Ag-uJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -713,6 +714,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w5-I1-yL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="15"/>
+        </scene>
+        <!--Cafeterias Collection View Controller-->
+        <scene sceneID="RPh-Ug-SaX">
+            <objects>
+                <collectionViewController id="ZLq-Pr-QWu" customClass="CafeteriasCollectionViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tw2-1y-lwk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MmF-xf-TTM">
+                            <size key="itemSize" width="357" height="109"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4HA-67-mQz" customClass="CafeteriaCollectionViewCell" customModule="TUMCampusApp" customModuleProvider="target">
+                                <rect key="frame" x="9" y="0.0" width="357" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W1T-1U-P2M">
+                                    <rect key="frame" x="0.0" y="0.0" width="357" height="109"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FF8-bs-HXN">
+                                            <rect key="frame" x="239" y="0.0" width="118" height="110"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </mapView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-1p-ihP">
+                                            <rect key="frame" x="18" y="24" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ0-vr-lBR">
+                                            <rect key="frame" x="18" y="59" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="357" height="109"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ZLq-Pr-QWu" id="tls-Cs-qxS"/>
+                            <outlet property="delegate" destination="ZLq-Pr-QWu" id="EF8-nz-g2Y"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="gkd-AN-vxF"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M7H-Jq-IBV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="-1346.176911544228"/>
         </scene>
         <!--Cafeterias Table View Controller-->
         <scene sceneID="W2H-jm-BMt">
@@ -1303,16 +1360,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WR3-cN-xGW">
-                                            <rect key="frame" x="16" y="8" width="343" height="56"/>
+                                            <rect key="frame" x="16" y="16" width="343" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IXk-4p-ZRm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="56"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcw-L0-8EV" userLabel="numberLabel">
-                                                    <rect key="frame" x="301" y="0.0" width="42" height="56"/>
+                                                    <rect key="frame" x="301" y="0.0" width="42" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="tumBlue"/>
                                                     <nil key="highlightedColor"/>
@@ -1323,8 +1380,8 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="WR3-cN-xGW" secondAttribute="trailing" constant="16" id="CVo-Zr-dl7"/>
                                         <constraint firstItem="WR3-cN-xGW" firstAttribute="leading" secondItem="GIz-dH-IFj" secondAttribute="leading" constant="16" id="SSb-DO-CPs"/>
-                                        <constraint firstItem="WR3-cN-xGW" firstAttribute="top" secondItem="GIz-dH-IFj" secondAttribute="top" constant="8" id="SlV-Wk-Ee2"/>
-                                        <constraint firstAttribute="bottom" secondItem="WR3-cN-xGW" secondAttribute="bottom" constant="8" id="kha-cQ-zsc"/>
+                                        <constraint firstItem="WR3-cN-xGW" firstAttribute="top" secondItem="GIz-dH-IFj" secondAttribute="top" constant="16" id="SlV-Wk-Ee2"/>
+                                        <constraint firstAttribute="bottom" secondItem="WR3-cN-xGW" secondAttribute="bottom" constant="16" id="kha-cQ-zsc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1419,7 +1476,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0d-UV-7Pq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901.5999999999999" y="2193.5532233883059"/>
+            <point key="canvasLocation" x="1882" y="2194"/>
         </scene>
         <!--Study Rooms-->
         <scene sceneID="grr-qt-fFP">
@@ -1517,31 +1574,28 @@
             <point key="canvasLocation" x="2816.8000000000002" y="714.69265367316348"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oDN-gj-Gkq"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="About" width="29" height="29"/>
         <image name="News" width="29" height="29"/>
         <image name="Tuition" width="29" height="29"/>
         <image name="Tum.sexy" width="29" height="29"/>
-        <image name="book" catalog="system" width="64" height="50"/>
-        <image name="calendar" catalog="system" width="64" height="52"/>
-        <image name="calendar.circle" catalog="system" width="64" height="60"/>
-        <image name="checkmark.seal" catalog="system" width="64" height="60"/>
-        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="calendar.circle" catalog="system" width="128" height="121"/>
+        <image name="checkmark.shield" catalog="system" width="128" height="121"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="logo-blue" width="224" height="118"/>
-        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
-        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="studentdesk" catalog="system" width="62" height="64"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="studentdesk" catalog="system" width="124" height="128"/>
         <namedColor name="tumBlue">
             <color red="0.0" green="0.39599999785423279" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tumBlueWhite">
             <color red="0.0" green="0.39599999785423279" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="tumBlueWhite">
-            <color red="0.0" green="0.39599999785423279" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="YdS-97-vv4"/>
-    </inferredMetricsTieBreakers>
 </document>
