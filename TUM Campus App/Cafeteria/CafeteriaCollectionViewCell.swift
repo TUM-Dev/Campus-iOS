@@ -22,6 +22,6 @@ class CafeteriaCollectionViewCell: UICollectionViewCell {
         mapView.showAnnotations([cafeteria], animated: false)
         mapView.isUserInteractionEnabled = false
         nameLabel.text = cafeteria.name ?? ""
-        addressLabel.text = "missing address \(cafeteria.menu?.count) / \(cafeteria.sides?.count)"
+        addressLabel.text = cafeteria.address
     }
 }

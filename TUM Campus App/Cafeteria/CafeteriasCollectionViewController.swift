@@ -10,19 +10,13 @@ import UIKit
 import CoreData
 import Alamofire
 
-struct MensaAPIResponse: Decodable {
-    var mensa_menu: [Menu]
-    var mensa_beilagen: [SideDish]
-    var mensa_preise: [MenuPrice]
-}
-
 class CafeteriasCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     typealias ImporterType = Importer<Cafeteria,[Cafeteria],JSONDecoder>
     
-    let endpoint: URLRequestConvertible = TUMCabeAPI.cafeteria
-    let sortDescriptor = NSSortDescriptor(keyPath: \ImporterType.EntityType.mensa, ascending: false)
+    let endpoint: URLRequestConvertible = EatAPI.canteens
+    let sortDescriptor = NSSortDescriptor(keyPath: \ImporterType.EntityType.name, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
-    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(keyPath: \Menu.date, ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+//    lazy var menuImporter = Importer<Menu,MensaAPIResponse,JSONDecoder>(endpoint: TUMDevAppAPI.cafeterias, sortDescriptor: NSSortDescriptor(keyPath: \Menu.date, ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     var selectedIndexPath: IndexPath? = nil
     
     
@@ -32,9 +26,9 @@ class CafeteriasCollectionViewController: UICollectionViewController, UICollecti
         importer.performFetch() { error in
             print(error)
         }
-        menuImporter.performFetch() { error in
-            print(error)
-        }
+//        menuImporter.performFetch() { error in
+//            print(error)
+//        }
 
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Cafeterias"

@@ -13,10 +13,10 @@ class MenuItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var detailsLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    func configure(_ menu: Menu) {
-        nameLabel.text = menu.name ?? ""
-        detailsLabel.text = menu.type ?? ""
-        let price: [MenuPrice]? = menu.price?.allObjects as? [MenuPrice]
-        priceLabel.text = price?.first?.price?.stringValue ?? "n/a"
-    }
+//    func configure(_ menu: Menu) {
+//        nameLabel.text = menu.name ?? ""
+//        detailsLabel.text = menu.type ?? ""
+//        let price: [MenuPrice]? = menu.price?.allObjects as? [MenuPrice]
+//        priceLabel.text = price?.first?.price?.stringValue ?? "n/a"
+//    }
 }
