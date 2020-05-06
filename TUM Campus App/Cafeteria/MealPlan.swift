@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import CoreData
 
-@objc final class MealPlan: NSManagedObject, Entity {
+struct MealPlan: Decodable {
 
     /*
      {
@@ -18,25 +17,14 @@ import CoreData
         "days": [...]
      }
      */
+
+    let week: Int
+    let year: Int
+    let days: [Menu]
     
     enum CodingKeys: String, CodingKey {
         case week = "number"
         case year
         case days
     }
-
-    required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        let year = try container.decode(Int64.self, forKey: .year)
-        let week = try container.decode(Int64.self, forKey: .week)
-        let days = try container.decode([Dish].self, forKey: .days)
-
-        self.init(entity: MealPlan.entity(), insertInto: context)
-        self.year = year
-        self.week = week
-        self.days = NSSet(object: days)
-    }
-
 }

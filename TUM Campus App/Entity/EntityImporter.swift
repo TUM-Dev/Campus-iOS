@@ -23,7 +23,7 @@ enum ImporterError: Error {
     case invalidData
 }
 
-class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
+final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
     let endpoint: URLRequestConvertible
     let sortDescriptors: [NSSortDescriptor]
     var predicate: NSPredicate?
@@ -70,8 +70,6 @@ protocol ImporterProtocol {
     var sortDescriptors: [NSSortDescriptor] { get }
     var predicate: NSPredicate? { get }
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
-    
-    init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate?, dateDecodingStrategy:  DecoderType.DateDecodingStrategy?)
 }
 
 typealias ErrorHandler = (Error) -> Void

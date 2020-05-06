@@ -16,12 +16,12 @@ class CafeteriaCollectionViewCell: UICollectionViewCell {
     
     func configure(_ cafeteria: Cafeteria) {
         mapView.showsUserLocation = true
-        mapView.showsPointsOfInterest = true
+        mapView.pointOfInterestFilter = MKPointOfInterestFilter(excluding: [])
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(cafeteria)
         mapView.showAnnotations([cafeteria], animated: false)
         mapView.isUserInteractionEnabled = false
-        nameLabel.text = cafeteria.name ?? ""
-        addressLabel.text = cafeteria.address
+        nameLabel.text = cafeteria.name
+        addressLabel.text = cafeteria.location.address
     }
 }

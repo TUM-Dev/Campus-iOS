@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Cafeteria" representedClassName=".Cafeteria" syncable="YES" codeGenerationType="category">
-        <attribute name="address" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="mealPlans" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealPlan"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="CalendarEvent" representedClassName=".CalendarEvent" syncable="YES" codeGenerationType="category">
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
@@ -25,26 +12,6 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="Dish" representedClassName=".Dish" syncable="YES" codeGenerationType="category">
-        <attribute name="dish_type" optional="YES" attributeType="String"/>
-        <attribute name="guest_price_per_unit" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="guest_unit" optional="YES" attributeType="String"/>
-        <attribute name="guests_base_price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="ingredients" optional="YES" attributeType="Transformable" customClassName="[String]"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="staff_base_price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="staff_price_per_unit" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="staff_unit" optional="YES" attributeType="String"/>
-        <attribute name="students_base_price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="students_price_per_unit" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
-        <attribute name="students_unit" optional="YES" attributeType="String"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="name"/>
-                <constraint value="dish_type"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -87,26 +54,6 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="MealPlan" representedClassName=".MealPlan" syncable="YES" codeGenerationType="category">
-        <attribute name="week" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="days" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealPlan"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="week"/>
-                <constraint value="year"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="Menu" representedClassName=".Menu" syncable="YES" codeGenerationType="category">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="dishes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Dish"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="date"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -303,11 +250,9 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Cafeteria" positionX="154.0625" positionY="368.26953125" width="128" height="133"/>
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="165"/>
         <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
         <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
-        <element name="MealPlan" positionX="18" positionY="297" width="128" height="88"/>
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="150"/>
         <element name="NewsSource" positionX="9" positionY="288" width="128" height="105"/>
@@ -321,7 +266,5 @@
         <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="180"/>
         <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
         <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
-        <element name="Dish" positionX="9" positionY="288" width="128" height="223"/>
-        <element name="Menu" positionX="18" positionY="297" width="128" height="73"/>
     </elements>
 </model>

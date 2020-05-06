@@ -7,7 +7,19 @@
 //
 
 import Foundation
-import CoreData
+
+struct Price2: Decodable {
+    let basePrice: Decimal?
+    let unitPrice: Decimal?
+    let unit: String?
+
+    enum CodingKeys: String, CodingKey {
+        case basePrice = "base_price"
+        case unitPrice = "price_per_unit"
+        case unit
+    }
+
+}
 
 enum Price: Decodable {
     case student(basePrice: Decimal, unitPrice: Decimal, unit: String)
@@ -42,22 +54,22 @@ enum Price: Decodable {
 
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let container = try! decoder.container(keyedBy: CodingKeys.self)
 
         if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try parameters.decode(String.self, forKey: .unit)
+            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
+            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
+            let unit = try! parameters.decode(String.self, forKey: .unit)
             self = .student(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
         } else if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try parameters.decode(String.self, forKey: .unit)
+            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
+            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
+            let unit = try! parameters.decode(String.self, forKey: .unit)
             self = .staff(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
         } else if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try parameters.decode(String.self, forKey: .unit)
+            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
+            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
+            let unit = try! parameters.decode(String.self, forKey: .unit)
             self = .guest(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
         } else {
             throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Key not found"))
@@ -66,7 +78,7 @@ enum Price: Decodable {
 
 }
 
-@objc final class Dish: NSManagedObject, Entity {
+struct Dish: Decodable {
 
     /*
      {
@@ -98,44 +110,74 @@ enum Price: Decodable {
     },
      */
 
+    let name: String
+    let prices: [String: Price2]
+    let ingredients: [String]
+    let dishType: String
+
+    lazy var namedIngredients: [String] = {
+        ingredients.map { (ingredientsLookup[$0] ?? $0) }
+    }()
+
+    private var ingredientsLookup = [
+        "GQB" : "GQB",
+        "MSC" : "MSC",
+
+        "1" : "dyed",
+        "2" : "preservative",
+        "3" : "antioxidant",
+        "4" : "flavor enhancers",
+        "5" : "sulphured",
+        "6" : "blackened (olive)",
+        "7" : "waxed",
+        "8" : "phosphates",
+        "9" : "sweeteners",
+        "10" : "contains a source of phenylalanine",
+        "11" : "sugar and sweeteners",
+        "13" : "cocoa-containing grease",
+        "14" : "gelatin",
+        "99" : "alcohol",
+
+        "f" : "meatless dish",
+        "v" : "vegan dish",
+        "S" : "pork",
+        "R" : "beef",
+        "K" : "veal",
+        "G" : "poultry", // mediziner mensa
+        "W" : "wild meat", // mediziner mensa
+        "L" : "lamb", // mediziner mensa
+        "Kn" : "garlic",
+        "Ei" : "chicken egg",
+        "En" : "peanut",
+        "Fi" : "fish",
+        "Gl" : "gluten-containing cereals",
+        "GlW" : "wheat",
+        "GlR" : "rye",
+        "GlG" : "barley",
+        "GlH" : "oats",
+        "GlD" : "spelt",
+        "Kr" : "crustaceans",
+        "Lu" : "lupines",
+        "Mi" : "milk and lactose",
+        "Sc" : "shell fruits",
+        "ScM" : "almonds",
+        "ScH" : "hazelnuts",
+        "ScW" : "Walnuts",
+        "ScC" : "cashew nuts",
+        "ScP" : "pistachios",
+        "Se" : "sesame seeds",
+        "Sf" : "mustard",
+        "Sl" : "celery",
+        "So" : "soy",
+        "Sw" : "sulfur dioxide and sulfites",
+        "Wt" : "mollusks",
+    ]
+
     enum CodingKeys: String, CodingKey {
         case name
         case prices
         case ingredients
-        case dish_type
+        case dishType = "dish_type"
     }
 
-    required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        let name = try container.decode(String.self, forKey: .name)
-        let prices = try container.decode([Price].self, forKey: .prices)
-        let ingredients = try container.decode([String].self, forKey: .ingredients)
-        let dish_type = try container.decode(String.self, forKey: .dish_type)
-
-        self.init(entity: Dish.entity(), insertInto: context)
-        self.name = name
-        self.ingredients = ingredients
-
-        for price in prices {
-            switch price {
-            case let .student(basePrice, unitPrice, unit):
-                self.students_base_price = NSDecimalNumber(decimal: basePrice)
-                self.students_price_per_unit = NSDecimalNumber(decimal: unitPrice)
-                self.students_unit = unit
-            case let .staff(basePrice, unitPrice, unit):
-                self.staff_base_price = NSDecimalNumber(decimal: basePrice)
-                self.staff_price_per_unit = NSDecimalNumber(decimal: unitPrice)
-                self.staff_unit = unit
-            case let .guest(basePrice, unitPrice, unit):
-                self.guests_base_price = NSDecimalNumber(decimal: basePrice)
-                self.guest_price_per_unit = NSDecimalNumber(decimal: unitPrice)
-                self.guest_unit = unit
-            }
-        }
-
-        self.dish_type = dish_type
-    }
-    
 }

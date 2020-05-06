@@ -8,8 +8,9 @@
 
 import Foundation
 import XMLParsing
+import Alamofire
 
-protocol DecoderProtocol: class {
+protocol DecoderProtocol: class, DataDecoder {
     associatedtype DateDecodingStrategy: DecodingStrategyProtocol
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
     var userInfo: [CodingUserInfoKey : Any] { get set }

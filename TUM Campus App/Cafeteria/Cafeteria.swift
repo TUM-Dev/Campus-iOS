@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 import MapKit
 
 struct Location: Decodable {
@@ -18,8 +17,7 @@ struct Location: Decodable {
     var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
 }
 
-@objc final class Cafeteria: NSManagedObject, Entity, MKAnnotation {
-    
+final class Cafeteria: NSObject, Decodable, MKAnnotation {
     /*
      "location": {
         "address": "Arcisstraße 17, München",
@@ -30,30 +28,17 @@ struct Location: Decodable {
      "canteen_id": "mensa-arcisstr"
      },
  */
+    let location: Location
+    let name: String
+    let id: String
 
-    var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
+    var coordinate: CLLocationCoordinate2D { location.coordinate }
     var title: String? { name }
 
     enum CodingKeys: String, CodingKey {
         case location
         case name
         case id = "canteen_id"
-    }
-    
-    required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let id = try container.decode(String.self, forKey: .id)
-        let name = try container.decode(String.self, forKey: .name)
-        let location = try container.decode(Location.self, forKey: .location)
-
-        self.init(entity: Cafeteria.entity(), insertInto: context)
-        self.id = id
-        self.name = name
-        self.address = location.address
-        self.longitude = location.longitude
-        self.latitude = location.latitude
     }
     
 }
