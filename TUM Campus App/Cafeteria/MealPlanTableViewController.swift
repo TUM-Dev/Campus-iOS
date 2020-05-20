@@ -10,17 +10,17 @@ import UIKit
 import Alamofire
 
 final class MealPlanTableViewController: UITableViewController {
-    var endpoint: URLRequestConvertible? {
+    private var endpoint: URLRequestConvertible? {
         guard let id = cafeteria?.id else { return nil }
         return EatAPI.menu(location: id, year: 2020, week: 10) // TODO: fix this
     }
-    let sessionManager: Session = Session.defaultSession
+    private let sessionManager: Session = Session.defaultSession
     var cafeteria: Cafeteria? {
         didSet {
             title = cafeteria?.name
         }
     }
-    var menus: [Menu] = [] {
+    private var menus: [Menu] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -34,6 +34,7 @@ final class MealPlanTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
         fetch()
     }
 

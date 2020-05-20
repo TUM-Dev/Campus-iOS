@@ -8,6 +8,6 @@
 
 import UIKit
 
-class EventCollectionViewCell: UICollectionViewCell {
+final class EventCollectionViewCell: UICollectionViewCell {
     
 }

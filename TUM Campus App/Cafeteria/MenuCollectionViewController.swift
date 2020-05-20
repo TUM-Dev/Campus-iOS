@@ -27,6 +27,7 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
         }
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -61,7 +62,6 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
             var basePriceString: String?
             var unitPriceString: String?
 
-
             if let basePrice = price.basePrice, basePrice != 0 {
                 basePriceString = formatter.string(for: basePrice)
             }
@@ -73,7 +73,6 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
             let divider: String = !(basePriceString?.isEmpty ?? true) && !(unitPriceString?.isEmpty ?? true) ? " + " : ""
 
             cell.priceLabel.text = (basePriceString ?? "") + divider + (unitPriceString ?? "")
-
         }
 
         cell.ingredientsLabel.text = dish.namedIngredients.joined(separator: ", ")
@@ -81,7 +80,7 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.9, height: CGFloat(120))
+        return CGSize(width: UIScreen.main.bounds.width * 0.9, height: CGFloat(130))
     }
 
 }

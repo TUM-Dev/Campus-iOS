@@ -8,11 +8,8 @@
 
 import UIKit
 
-class StudyRoomCell: UITableViewCell {
-    
+final class StudyRoomCell: UITableViewCell {
     @IBOutlet weak var roomNameLabel: UILabel!
-    
     @IBOutlet weak var roomNumberLabel: UILabel!
-    
     @IBOutlet weak var roomStatusLabel: UILabel!
 }

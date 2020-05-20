@@ -42,3 +42,13 @@ final class Cafeteria: NSObject, Decodable, MKAnnotation {
     }
     
 }
+
+extension Array where Element == Cafeteria {
+    mutating func sortByDistance(to location: CLLocation) {
+        self.sort { (lhs,rhs) in
+            let lhsDistance = lhs.coordinate.location.distance(from: location)
+            let rhsDistance = rhs.coordinate.location.distance(from: location)
+            return lhsDistance < rhsDistance
+        }
+    }
+}

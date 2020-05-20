@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LectureCell: UITableViewCell {
+final class LectureCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel! {
         didSet {

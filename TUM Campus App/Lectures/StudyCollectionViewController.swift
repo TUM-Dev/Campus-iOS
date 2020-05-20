@@ -12,19 +12,19 @@ import CoreData
 import XMLParsing
 
 
-class StudyCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
+final class StudyCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     typealias LectureImporter = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     typealias TuitionImporter = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
     typealias GradeImporter = Importer<Grade,GradeAPIResponse,XMLDecoder>
     typealias GradeAPIResponse = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
 
-    let lectureSortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
+    private let lectureSortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
     lazy var lectureImporter = LectureImporter(endpoint: TUMOnlineAPI.personalLectures, sortDescriptor: lectureSortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    let tuitionSortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
+    private let tuitionSortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
     lazy var tuitionImporter = TuitionImporter(endpoint: TUMOnlineAPI.tuitionStatus, sortDescriptor: tuitionSortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
 
-    let gradeSortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
+    private let gradeSortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
     lazy var gradeImporter = GradeImporter(endpoint: TUMOnlineAPI.personalGrades, sortDescriptor: gradeSortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     

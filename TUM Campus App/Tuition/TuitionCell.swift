@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TuitionCell: UITableViewCell {
+final class TuitionCell: UITableViewCell {
     @IBOutlet weak var semesterLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!

@@ -9,11 +9,11 @@
 import UIKit
 import CoreData
 
-class StudyRoomTableViewController: UITableViewController{
+final class StudyRoomTableViewController: UITableViewController{
     var rooms : [StudyRoom] = []
     
-    var dateFomatter = DateFormatter()
-    var secondDateFormatter = DateFormatter()
+    private var dateFomatter = DateFormatter()
+    private var secondDateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()

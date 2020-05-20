@@ -10,9 +10,9 @@ import UIKit
 import Alamofire
 import Foundation
 
-class CampusTabBarController: UITabBarController {
-    lazy var coreDataStack = appDelegate.persistentContainer
-    let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
+final class CampusTabBarController: UITabBarController {
+    private lazy var coreDataStack = appDelegate.persistentContainer
+    private let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 import Alamofire
 
-class EventsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class EventsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = TicketImporter
     
-    let endpoint = TUMCabeAPI.events
-    let sortDescriptor = NSSortDescriptor(keyPath: \TicketEvent.start, ascending: false)
+    private let endpoint = TUMCabeAPI.events
+    private let sortDescriptor = NSSortDescriptor(keyPath: \TicketEvent.start, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     

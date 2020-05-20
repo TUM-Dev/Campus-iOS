@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsCollectionView: UICollectionViewCell, UICollectionViewDataSource {
+final class EventsCollectionView: UICollectionViewCell, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self

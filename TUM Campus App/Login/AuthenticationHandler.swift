@@ -25,15 +25,16 @@ protocol AuthenticationHandlerDelegate {
 }
 
 /// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
-class AuthenticationHandler: RequestAdapter, RequestRetrier {
+final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     typealias Completion = (Result<String,Error>) -> Void
     private let lock = NSLock()
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
+
     var delegate: AuthenticationHandlerDelegate?
     
-    lazy var coreDataStack = appDelegate.persistentContainer
-    lazy var sessionManager: Session = Session.defaultSession
+    private lazy var coreDataStack = appDelegate.persistentContainer
+    private lazy var sessionManager: Session = Session.defaultSession
     
     private static let keychain = Keychain(service: "de.tum.tumonline")
         .synchronizable(true)
@@ -53,6 +54,7 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
             }
         }
     }
+    
     
     // MARK: - Initialization
     
@@ -143,13 +145,11 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
 
         createToken(tumID: tumID) { [weak self] result in
             guard let strongSelf = self else { return }
-            let shouldRetry: Bool
             strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
 
             switch result {
             case .success(let token):
                 // Auth succeeded retry failed request.
-                shouldRetry = true
                 switch strongSelf.credentials {
                 case .none: strongSelf.credentials = .tumID(tumID: tumID, token: token)
                 case .noTumID?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
@@ -159,7 +159,6 @@ class AuthenticationHandler: RequestAdapter, RequestRetrier {
 
             default:
                 // Auth failed don't retry.
-                shouldRetry = false
                 break
             }
 

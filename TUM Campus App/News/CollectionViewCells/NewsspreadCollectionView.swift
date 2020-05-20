@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsspreadCollectionView: UICollectionViewCell, UICollectionViewDataSource {
+final class NewsspreadCollectionView: UICollectionViewCell, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.dataSource = self

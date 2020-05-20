@@ -9,7 +9,5 @@
 import UIKit
 
 final class MenuSectionHeader: UICollectionReusableView {
-
     @IBOutlet weak var titleLabel: UILabel!
-    
 }

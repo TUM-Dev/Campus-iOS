@@ -12,7 +12,6 @@ target 'TUMCampusApp' do
   pod 'XMLParsing', :git => 'https://github.com/ShawnMoore/XMLParsing.git'
   pod 'KeychainAccess', '~> 4.2'
   pod 'Kingfisher', '~> 5.13'
-  pod 'CalendarKit', '~> 0.13'
   pod 'ScrollableDatepicker', '~> 2.2'
 
   target 'TUMCampusAppTests' do

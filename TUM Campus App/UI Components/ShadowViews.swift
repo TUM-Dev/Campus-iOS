@@ -32,7 +32,7 @@ extension Shadow where Self: UIView {
 }
 
 @IBDesignable
-class ShadowView: UIView, Shadow {
+final class ShadowView: UIView, Shadow {
     
     @IBInspectable var cornerRadius: CGFloat = 14.0 {
         didSet {
@@ -66,8 +66,8 @@ class ShadowView: UIView, Shadow {
 }
 
 @IBDesignable
-class ShadowButton: UIButton, Shadow {
-    
+final class ShadowButton: UIButton, Shadow {
+
     @IBInspectable var cornerRadius: CGFloat = 6.0 {
         didSet {
             layer.cornerRadius = cornerRadius
@@ -100,7 +100,7 @@ class ShadowButton: UIButton, Shadow {
 }
 
 @IBDesignable
-class ShadowLabel: UILabel, Shadow {
+final class ShadowLabel: UILabel, Shadow {
     
     @IBInspectable var cornerRadius: CGFloat = 6.0 {
         didSet {
@@ -129,7 +129,7 @@ class ShadowLabel: UILabel, Shadow {
 
 
 @IBDesignable
-class ShadowImageView: UIImageView, Shadow {
+final class ShadowImageView: UIImageView, Shadow {
     
     @IBInspectable var cornerRadius: CGFloat = 14.0 {
         didSet {

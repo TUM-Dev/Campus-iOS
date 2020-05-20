@@ -8,18 +8,19 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    
-    @IBOutlet weak var continueButton: ShadowButton!
-    @IBOutlet weak var firstTextField: UITextField!
-    @IBOutlet weak var numbersTextField: UITextField!
-    @IBOutlet weak var secondTextField: UITextField!
+final class LoginViewController: UIViewController {
+    @IBOutlet private weak var continueButton: ShadowButton!
+    @IBOutlet private weak var firstTextField: UITextField!
+    @IBOutlet private weak var numbersTextField: UITextField!
+    @IBOutlet private weak var secondTextField: UITextField!
     
     var loginController: AuthenticationHandler?
-    var tumID: String? {
+
+    private var tumID: String? {
         guard let firstText = firstTextField.text, let number = numbersTextField.text, let secondText = secondTextField.text else { return nil }
             return "\(firstText)\(number)\(secondText)"
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,17 +29,19 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)        
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     private func setupUI() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         view.addGestureRecognizer(tapGesture)
+
+        isModalInPresentation = true
 
         continueButton.isEnabled = false
         continueButton.alpha = 0.6
@@ -49,7 +52,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - ButtonActions
     
-    @IBAction func didSelectContinue(_ sender: Any) {
+    @IBAction private func didSelectContinue(_ sender: Any) {
         guard let tumID = tumID else { return }
         loginController?.createToken(tumID: tumID) { [weak self] result in
             switch result {
@@ -65,7 +68,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    @IBAction func didSelectContinueWithoutTumID(_ sender: Any) {
+    @IBAction private func didSelectContinueWithoutTumID(_ sender: Any) {
         loginController?.skipLogin()
         self.dismiss(animated: true)
     }
@@ -73,7 +76,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Keyboard
     
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+    @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
     }
     

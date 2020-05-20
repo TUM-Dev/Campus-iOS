@@ -11,29 +11,21 @@ import CoreData
 import XMLParsing
 import Alamofire
 
-class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<CalendarEvent,CalendarAPIResponse,XMLDecoder>
     
-    let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
-    let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
+    private let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
+    private let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-    
-    var startDateFormatter = DateFormatter()
-    var endDateFormatter = DateFormatter()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
         importer.performFetch()
-        startDateFormatter.locale = Locale.current
-        startDateFormatter.dateFormat = "dd MMM y || HH:mm"
-        endDateFormatter.locale = Locale.current
-        endDateFormatter.dateFormat = "HH:mm"
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Calendar"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Calendar"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,13 +52,7 @@ class CalendarTableViewController: UITableViewController, EntityTableViewControl
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! CalendarEventCell
         guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.titleLabel.text = event.title
-        if let startDate = event.startDate {
-            if let endDate = event.endDate {
-                cell.dateLabel.text = startDateFormatter.string(from: startDate) + " - " + endDateFormatter.string(from: endDate)
-            }
-        }
-        cell.selectionStyle = .none
+        cell.configure(event: event)
         
         return cell
     }

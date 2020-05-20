@@ -8,9 +8,7 @@
 
 import UIKit
 
-class StudyRoomGroupedTableViewCell: UITableViewCell {
-    
-    
+final class StudyRoomGroupedTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     

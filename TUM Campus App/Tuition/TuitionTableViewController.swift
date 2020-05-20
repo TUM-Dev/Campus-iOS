@@ -12,14 +12,14 @@ import CoreData
 import Alamofire
 
 
-class TuitionTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class TuitionTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
     
-    let endpoint: URLRequestConvertible = TUMOnlineAPI.tuitionStatus
-    let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
+    private let endpoint: URLRequestConvertible = TUMOnlineAPI.tuitionStatus
+    private let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
-    var deadlineDateFormatter = DateFormatter()
+    private var deadlineDateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()

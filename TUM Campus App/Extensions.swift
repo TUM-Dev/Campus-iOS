@@ -9,6 +9,7 @@
 import Foundation
 import SWXMLHash
 import Alamofire
+import CoreLocation
 
 extension Bundle {
     
@@ -122,7 +123,6 @@ extension Session {
     static var defaultSession: Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: nil), retrier: AuthenticationHandler(delegate: nil))
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-//        let manager = Session(interceptor: adapterAndRetrier, serverTrustManager: trustManager)
         let manager = Session(interceptor: adapterAndRetrier)
         return manager
     }
@@ -130,7 +130,6 @@ extension Session {
     static func defaultSession(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: delegate), retrier: AuthenticationHandler(delegate: delegate))
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-//        let manager = Session(interceptor: adapterAndRetrier, serverTrustManager: trustManager)
         let manager = Session(interceptor: adapterAndRetrier)
         return manager
     }
@@ -176,5 +175,96 @@ extension UITableViewController {
  extension KeyPath where Root: NSObject {
     var stringValue: String {
         return NSExpression(forKeyPath: self).keyPath
+    }
+}
+
+extension UIView {
+    static var nibName: String {  description().components(separatedBy: ".").last ?? "" }
+
+    static var identifier: String { nibName }
+
+    func fillSuperview(padding: UIEdgeInsets = .zero) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let superviewTopAnchor = superview?.topAnchor {
+            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
+        }
+
+        if let superviewBottomAnchor = superview?.bottomAnchor {
+            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom).isActive = true
+        }
+
+        if let superviewLeadingAnchor = superview?.leadingAnchor {
+            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
+        }
+
+        if let superviewTrailingAnchor = superview?.trailingAnchor {
+            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right).isActive = true
+        }
+    }
+}
+
+extension CLLocationCoordinate2D  {
+    var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
+}
+
+
+extension Date {
+
+    var calendar: Calendar {
+        return Calendar(identifier: Calendar.current.identifier) // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
+    }
+
+    var weekOfYear: Int {
+        return calendar.component(.weekOfYear, from: self)
+    }
+
+    var weekOfMonth: Int {
+        return calendar.component(.weekOfMonth, from: self)
+    }
+
+    var year: Int {
+        get {
+            return calendar.component(.year, from: self)
+        }
+        set {
+            guard newValue > 0 else { return }
+            let currentYear = calendar.component(.year, from: self)
+            let yearsToAdd = newValue - currentYear
+            if let date = calendar.date(byAdding: .year, value: yearsToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    var month: Int {
+        get {
+            return calendar.component(.month, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .month, in: .year, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentMonth = calendar.component(.month, from: self)
+            let monthsToAdd = newValue - currentMonth
+            if let date = calendar.date(byAdding: .month, value: monthsToAdd, to: self) {
+                self = date
+            }
+        }
+    }
+
+    var day: Int {
+        get {
+            return calendar.component(.day, from: self)
+        }
+        set {
+            let allowedRange = calendar.range(of: .day, in: .month, for: self)!
+            guard allowedRange.contains(newValue) else { return }
+
+            let currentDay = calendar.component(.day, from: self)
+            let daysToAdd = newValue - currentDay
+            if let date = calendar.date(byAdding: .day, value: daysToAdd, to: self) {
+                self = date
+            }
+        }
     }
 }

@@ -9,11 +9,11 @@
 import UIKit
 import Kingfisher
 
-class NewsCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var sourceImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+final class NewsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var sourceImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
     
     func configure(_ news: News) {
         if let sourceImageURL = news.source?.icon {

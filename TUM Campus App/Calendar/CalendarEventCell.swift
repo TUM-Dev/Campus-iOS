@@ -8,18 +8,31 @@
 
 import UIKit
 
-class CalendarEventCell: UITableViewCell {
+final class CalendarEventCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
 
-    @IBOutlet weak var titleLabel: UILabel!{
-        didSet {
-            titleLabel.numberOfLines = 0
-            titleLabel.sizeToFit()
+    private lazy var startDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "dd MMM y || HH:mm"
+        return formatter
+    }()
+
+    private var endDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+
+    func configure(event: CalendarEvent) {
+        titleLabel.text = event.title
+
+        if let startDate = event.startDate, let endDate = event.endDate {
+            dateLabel.text = startDateFormatter.string(from: startDate) + " - " + endDateFormatter.string(from: endDate)
         }
-    }
-    
-    @IBOutlet weak var dateLabel: UILabel!{
-        didSet{
-            dateLabel.font = UIFont.systemFont(ofSize: 12)
-        }
+
+        selectionStyle = .none
     }
 }

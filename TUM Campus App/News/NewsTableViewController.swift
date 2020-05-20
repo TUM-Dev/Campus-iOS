@@ -10,10 +10,10 @@ import UIKit
 import CoreData
 import Alamofire
 
-class NewsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class NewsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<News,[News],JSONDecoder>
     
-    let endpoint: URLRequestConvertible = TUMCabeAPI.news
+    private let endpoint: URLRequestConvertible = TUMCabeAPI.news
     lazy var importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     

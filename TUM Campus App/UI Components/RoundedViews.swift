@@ -8,8 +8,7 @@
 
 import UIKit
 
-@IBDesignable class RoundedLabel: UILabel {
-    
+@IBDesignable final class RoundedLabel: UILabel {
     @IBInspectable var radius: CGFloat = 6
     
     override func layoutSubviews() {
@@ -19,8 +18,7 @@ import UIKit
     }
 }
 
-@IBDesignable class RoundedButton: UIButton {
-    
+@IBDesignable final class RoundedButton: UIButton {
     @IBInspectable var radius: CGFloat = 6
     
     override func layoutSubviews() {
@@ -30,8 +28,7 @@ import UIKit
     }
 }
 
-@IBDesignable class RoundedImageView: UIImageView {
-    
+@IBDesignable final class RoundedImageView: UIImageView {
     @IBInspectable var radius: CGFloat = 12
     
     override func layoutSubviews() {
@@ -41,8 +38,7 @@ import UIKit
     }
 }
 
-@IBDesignable class CircularLabel: UILabel {
-    
+@IBDesignable final class CircularLabel: UILabel {
     @IBInspectable var radius: CGFloat = 2
     
     override func layoutSubviews() {

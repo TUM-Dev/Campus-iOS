@@ -12,12 +12,12 @@ import Alamofire
 import XMLParsing
 
 
-class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
     
-    let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
-    let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
+    private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
+    private let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     
@@ -64,9 +64,8 @@ class GradeTableViewController: UITableViewController, EntityTableViewController
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! GradeCell
         guard let grade = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.titleLabel.text = grade.title
-        cell.gradeLabel.text = grade.grade
-        cell.selectionStyle = .none
+        cell.configure(grade: grade)
+        
         return cell
     }
     

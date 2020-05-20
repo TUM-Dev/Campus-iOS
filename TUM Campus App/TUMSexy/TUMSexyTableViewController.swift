@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-class TUMSexyTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class TUMSexyTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<TUMSexyLink,[String: TUMSexyLink],JSONDecoder>
     
-    let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
+    private let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
     lazy var importer: ImporterType = ImporterType(endpoint: TUMSexyAPI(), sortDescriptor: sortDescriptor)
 
     override func viewDidLoad() {

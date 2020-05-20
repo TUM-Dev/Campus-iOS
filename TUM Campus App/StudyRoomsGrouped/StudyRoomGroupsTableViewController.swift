@@ -32,11 +32,11 @@ struct StudyRoomAPIResponse: Decodable {
 }
 
 
-class StudyRoomGroupsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class StudyRoomGroupsTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<StudyRoomGroup,StudyRoomAPIResponse,JSONDecoder>
     
-    let endpoint: URLRequestConvertible = TUMDevAppAPI.rooms
-    let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
+    private let endpoint: URLRequestConvertible = TUMDevAppAPI.rooms
+    private let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
     lazy var importer: ImporterType = Importer(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
     override func viewDidLoad() {

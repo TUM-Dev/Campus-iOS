@@ -8,41 +8,33 @@
 
 import UIKit
 
-class GradeCell: UITableViewCell {
-    
-    var gradeString : String?
-    
-    
-    @IBOutlet weak var titleLabel: UILabel! {
+final class GradeCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var blockView: UIView! {
         didSet {
-            titleLabel.numberOfLines = 0
-            titleLabel.sizeToFit()
-        }
-    }
-    @IBOutlet weak var blockView: UIView! {
-        didSet {
-            blockView.layer.cornerRadius = blockView.bounds.size.width/2
+            blockView.layer.cornerRadius = blockView.bounds.size.width / 2
             blockView.clipsToBounds = true
         }
     }
-    
-    @IBOutlet weak var gradeLabel: UILabel! {
-        didSet {
-            if let gradeString = gradeString {
-                if let doubleGrade = Double(gradeString.replacingOccurrences(of: ",", with: ".")){
-                        switch doubleGrade {
-                        case 0.0...3.9:
-                            blockView.backgroundColor = UIColor.green
-                        default:
-                            blockView.backgroundColor = UIColor.red
-                        }
-                    }else{
-                        blockView.backgroundColor = UIColor.gray
-                    }
-                    gradeLabel.text = gradeString
-                    gradeLabel.font = UIFont.boldSystemFont(ofSize: 12)
-                }
+    @IBOutlet private weak var gradeLabel: UILabel!
+
+    func configure(grade: Grade) {
+        selectionStyle = .none
+        titleLabel.text = grade.title
+        gradeLabel.text = grade.grade
+        if let gradeValue = Double(grade.grade?.replacingOccurrences(of: ",", with: ".") ?? "") {
+            switch gradeValue {
+            case 1.0..<2.0:
+                blockView.backgroundColor = UIColor.systemGreen
+            case 2.0..<3.0:
+                blockView.backgroundColor = UIColor.systemYellow
+            case 3.0...4.0:
+                blockView.backgroundColor = UIColor.systemOrange
+            case 4.3...5.0:
+                blockView.backgroundColor = UIColor.systemRed
+            default:
+                blockView.backgroundColor = UIColor.systemGray
             }
-            
+        }
     }
 }

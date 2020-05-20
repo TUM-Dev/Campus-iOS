@@ -11,11 +11,11 @@ import CoreData
 import XMLParsing
 import Alamofire
 
-class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     
-    let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
-    let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
+    private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
+    private let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
     

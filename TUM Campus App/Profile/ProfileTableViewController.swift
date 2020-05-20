@@ -11,20 +11,20 @@ import CoreData
 import Alamofire
 import XMLParsing
 
-class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ImporterType = Importer<Profile,ProfileAPIResponse,XMLDecoder>
     
-    let endpoint: URLRequestConvertible = TUMOnlineAPI.identify
-    let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
-    let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
-    let coreDataStack = appDelegate.persistentContainer
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var tumIDLabel: UILabel!
+    @IBOutlet private weak var signOutLabel: UILabel!
+
+    private let endpoint: URLRequestConvertible = TUMOnlineAPI.identify
+    private let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
+    private let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
+    private let coreDataStack = appDelegate.persistentContainer
 
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
-    
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var tumIDLabel: UILabel!
-    @IBOutlet weak var signOutLabel: UILabel!
     
     
     override func viewWillDisappear(_ animated: Bool) {

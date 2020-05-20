@@ -10,11 +10,11 @@ import UIKit
 import CoreData
 import Alamofire
 
-class MovieTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class MovieTableViewController: UITableViewController, EntityTableViewControllerProtocol {
    typealias ImporterType = Importer<Movie,[Movie],JSONDecoder>
     
-    let endpoint: URLRequestConvertible = TUMCabeAPI.movie
-    let sortDescriptor = NSSortDescriptor(keyPath: \Movie.date, ascending: false)
+    private let endpoint: URLRequestConvertible = TUMCabeAPI.movie
+    private let sortDescriptor = NSSortDescriptor(keyPath: \Movie.date, ascending: false)
     lazy var importer: ImporterType = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
     
     override func viewDidLoad() {

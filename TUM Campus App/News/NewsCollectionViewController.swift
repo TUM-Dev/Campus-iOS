@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class NewsCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
+final class NewsCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
     typealias NewsImporter = Importer<News,[News],JSONDecoder>
     typealias MovieImporter = Importer<Movie,[Movie],JSONDecoder>
     

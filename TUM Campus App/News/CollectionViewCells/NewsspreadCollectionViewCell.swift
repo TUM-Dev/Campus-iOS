@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsspreadCollectionViewCell: UICollectionViewCell {
+final class NewsspreadCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func configure(news: News) {

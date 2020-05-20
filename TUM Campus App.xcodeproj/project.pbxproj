@@ -20,6 +20,9 @@
 		222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D724632F8200B196B6 /* MenuCollectionViewController.swift */; };
 		222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */; };
 		222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470DB2463507700B196B6 /* MenuSectionHeader.swift */; };
+		2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */; };
+		2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */; };
+		2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */; };
 		223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12E821DF82180053305B /* TUMCabeAPI.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
 		223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12F021E014C60053305B /* NewsTableViewController.swift */; };
@@ -40,7 +43,6 @@
 		224CB3A1222AE0BA0002945A /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A0222AE0BA0002945A /* EventsCollectionView.swift */; };
 		224CB3A3222AE1A80002945A /* MoviesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A2222AE1A80002945A /* MoviesCollectionView.swift */; };
 		224CB3A5222AE1E00002945A /* NewsspreadCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A4222AE1E00002945A /* NewsspreadCollectionView.swift */; };
-		224CB3A7222C195E0002945A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A6222C195E0002945A /* CalendarViewController.swift */; };
 		224CB3A9222C47F90002945A /* StudyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A8222C47F90002945A /* StudyCollectionViewController.swift */; };
 		224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */; };
 		224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
@@ -124,6 +126,9 @@
 		222470D724632F8200B196B6 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		222470DB2463507700B196B6 /* MenuSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionHeader.swift; sourceTree = "<group>"; };
+		2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyHeaderCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaSectionHeader.swift; sourceTree = "<group>"; };
+		2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CafeteriaSectionHeader.xib; sourceTree = "<group>"; };
 		223D12E821DF82180053305B /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		223D12F021E014C60053305B /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
@@ -144,7 +149,6 @@
 		224CB3A0222AE0BA0002945A /* EventsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
 		224CB3A2222AE1A80002945A /* MoviesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionView.swift; sourceTree = "<group>"; };
 		224CB3A4222AE1E00002945A /* NewsspreadCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsspreadCollectionView.swift; sourceTree = "<group>"; };
-		224CB3A6222C195E0002945A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		224CB3A8222C47F90002945A /* StudyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCollectionViewController.swift; sourceTree = "<group>"; };
 		224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaCollectionViewCell.swift; sourceTree = "<group>"; };
 		224F37C02460C0CD00BEDA71 /* EatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
@@ -459,6 +463,9 @@
 				22F9629D246177D9004BF215 /* Menu.swift */,
 				22F9629B2460ED03004BF215 /* Dish.swift */,
 				22B9D6462220B4A400854D55 /* CafeteriasCollectionViewController.swift */,
+				2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */,
+				2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */,
+				2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */,
 				224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */,
 				22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */,
 				222470D724632F8200B196B6 /* MenuCollectionViewController.swift */,
@@ -492,7 +499,6 @@
 				22E5303E22176DDE00A29992 /* CalendarEvent.swift */,
 				22683D68221C5E0200C70883 /* CalendarTableViewController.swift */,
 				19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */,
-				224CB3A6222C195E0002945A /* CalendarViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
+				2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,12 +752,14 @@
 				224CB3A5222AE1E00002945A /* NewsspreadCollectionView.swift in Sources */,
 				19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */,
 				224CB396222ADB0F0002945A /* NewsspreadCollectionViewCell.swift in Sources */,
+				2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */,
 				19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */,
 				22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */,
 				223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
 				223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */,
+				2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */,
 				224CB390222ADAD10002945A /* NewsCollectionViewCell.swift in Sources */,
 				222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */,
 				19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */,
@@ -807,7 +816,6 @@
 				22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
 				19BA03F023897FEE00B85982 /* CalendarEventCell.swift in Sources */,
-				224CB3A7222C195E0002945A /* CalendarViewController.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
