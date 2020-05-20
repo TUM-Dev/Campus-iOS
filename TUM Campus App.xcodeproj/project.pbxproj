@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FF5D867B9EC14E7474D333F /* libPods-TUMCampusAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */; };
 		190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190AEA09238884D7004D2DCF /* GradeCell.swift */; };
 		19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */; };
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
@@ -89,9 +90,8 @@
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */; };
-		95812ABEE140FDC3B1C3E5C3 /* Pods_TUMCampusAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8684B25B9933156F9C44B79E /* Pods_TUMCampusAppTests.framework */; };
-		C2AC973FC91366F5F1FE3C7E /* Pods_TUMCampusAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713336E093C31D914D5794AF /* Pods_TUMCampusAppUITests.framework */; };
-		FE50BDD04B51E32A86FF4A48 /* Pods_TUMCampusApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C946185E47E328941A7F9D8 /* Pods_TUMCampusApp.framework */; };
+		BDB1C7C30BFA500FFFD04DF3 /* libPods-TUMCampusAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */; };
+		E011A9658490AF0FED466225 /* libPods-TUMCampusApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,16 +204,16 @@
 		22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewController.swift; sourceTree = "<group>"; };
 		52690DCBFDA3E665568E8F80 /* Pods-TUMCampusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppUITests/Pods-TUMCampusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		59E6F2A070029A51CD3F03E7 /* Pods-TUMCampusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppUITests/Pods-TUMCampusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6C946185E47E328941A7F9D8 /* Pods_TUMCampusApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUMCampusApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		713336E093C31D914D5794AF /* Pods_TUMCampusAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUMCampusAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8684B25B9933156F9C44B79E /* Pods_TUMCampusAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TUMCampusAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4942DB4CBFFB421F88F41F /* Pods-TUMCampusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp.release.xcconfig"; sourceTree = "<group>"; };
+		99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C57C182D6DD933596DC14AA /* Pods-TUMCampusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B5C15BCCC593BA90CEB2B5C2 /* Pods-TUMCampusAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppTests/Pods-TUMCampusAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
 		BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F85A6FD910D23BF6CC93C64D /* Pods-TUMCampusAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppTests/Pods-TUMCampusAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,7 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE50BDD04B51E32A86FF4A48 /* Pods_TUMCampusApp.framework in Frameworks */,
+				E011A9658490AF0FED466225 /* libPods-TUMCampusApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95812ABEE140FDC3B1C3E5C3 /* Pods_TUMCampusAppTests.framework in Frameworks */,
+				BDB1C7C30BFA500FFFD04DF3 /* libPods-TUMCampusAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2AC973FC91366F5F1FE3C7E /* Pods_TUMCampusAppUITests.framework in Frameworks */,
+				0FF5D867B9EC14E7474D333F /* libPods-TUMCampusAppUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,9 +525,9 @@
 		AEF34E66FB4536FB02EEF379 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6C946185E47E328941A7F9D8 /* Pods_TUMCampusApp.framework */,
-				8684B25B9933156F9C44B79E /* Pods_TUMCampusAppTests.framework */,
-				713336E093C31D914D5794AF /* Pods_TUMCampusAppUITests.framework */,
+				6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */,
+				99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */,
+				D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -543,7 +543,6 @@
 				2277E90821D93C3300D7FF3F /* Sources */,
 				2277E90921D93C3300D7FF3F /* Frameworks */,
 				2277E90A21D93C3300D7FF3F /* Resources */,
-				5FF4381CE38E6BD1F13A6884 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -687,23 +686,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5FF4381CE38E6BD1F13A6884 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F1810613ABFB2B38652F661E /* [CP] Check Pods Manifest.lock */ = {
