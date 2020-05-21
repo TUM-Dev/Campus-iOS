@@ -12,7 +12,7 @@ import XMLParsing
 import Alamofire
 
 final class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
-    typealias ImporterType = Importer<Lecture, LectureAPIResponse, XMLDecoder>
+    typealias ImporterType = Importer<Lecture, APIResponse<LectureAPIResponse,TUMOnlineAPIError>, XMLDecoder>
     
     private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
     private let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
@@ -23,14 +23,16 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
-        importer.performFetch()
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Lectures"
+
+        title = "Lectures"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        importer.performFetch { [weak self] error in
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        }
         try! importer.fetchedResultsController.performFetch()
     }
     
@@ -42,7 +44,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
             tableView.backgroundView = nil
         }
         else {
-            setBackgroundLabel(with: "No Lectures")
+//            setBackgroundLabel(with: "No Lectures")
         }
         return numOfSections
     }

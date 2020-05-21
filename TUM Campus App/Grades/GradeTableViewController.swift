@@ -25,28 +25,25 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
-        importer.performFetch { error in
-            print(error)
-        }
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Grades"
+
+        title = "Grades"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        importer.performFetch { [weak self] error in
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        }
         try! importer.fetchedResultsController.performFetch()
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         let numOfSections : Int = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections>0
-        {
+        if numOfSections > 0 {
             tableView.separatorStyle = .singleLine
             tableView.backgroundView = nil
-        }
-        else
-        {
+        } else {
             setBackgroundLabel(with: "No Grades")
         }
         return numOfSections

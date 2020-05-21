@@ -27,8 +27,11 @@ class TokenConfirmationViewController: UIViewController {
                 let feedbackGenerator = UINotificationFeedbackGenerator()
                 feedbackGenerator.notificationOccurred(.success)
                 self?.navigationController?.dismiss(animated: true)
-            case .failure:
+            case let .failure(error):
                 self?.checkAuthorizationButton.wiggle()
+                let alert = UIAlertController(title: "Authorization Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+                self?.present(alert, animated: true, completion: nil)
             }
         }
     }

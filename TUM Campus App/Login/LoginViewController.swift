@@ -61,9 +61,11 @@ final class LoginViewController: UIViewController {
                 guard let confirmVC = storyboard.instantiateViewController(withIdentifier: "TokenConfirmationViewController") as? TokenConfirmationViewController else { return }
                 confirmVC.loginController = self?.loginController
                 self?.navigationController?.pushViewController(confirmVC, animated: true)
-            case .failure:
-                // TODO display error message
+            case let .failure(error):
                 self?.continueButton.wiggle()
+                let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+                self?.present(alert, animated: true, completion: nil)
             }
         }
     }

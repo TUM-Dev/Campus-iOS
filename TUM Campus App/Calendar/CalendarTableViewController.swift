@@ -12,7 +12,7 @@ import XMLParsing
 import Alamofire
 
 final class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
-    typealias ImporterType = Importer<CalendarEvent,CalendarAPIResponse,XMLDecoder>
+    typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>
     
     private let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
     private let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
@@ -22,14 +22,16 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         importer.fetchedResultsControllerDelegate = self
-        importer.performFetch()
 
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Calendar"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        importer.performFetch(success: nil) { [weak self] error in
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        }
+        navigationController?.navigationBar.prefersLargeTitles = true
         try! importer.fetchedResultsController.performFetch()
     }
     

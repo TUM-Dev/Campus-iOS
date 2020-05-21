@@ -12,10 +12,36 @@ import SWXMLHash
 import KeychainAccess
 import CoreData
 
-enum LoginError: Error {
+enum LoginError: LocalizedError {
     case missingToken
     case invalidToken
+    case tokenNotConfirmed
+    case serverError(message: String)
     case unknown
+
+    public var errorDescription: String? {
+        switch self {
+        case .missingToken:
+            return "Missing token"
+        case .invalidToken:
+            return "Invalid token"
+        case .tokenNotConfirmed:
+            return "Token not confirmed"
+        case let .serverError(message):
+            return message
+        case .unknown:
+            return "Unknown error"
+        }
+    }
+
+    public var recoverySuggestion: String? {
+        switch self {
+        case .tokenNotConfirmed:
+            return "Go to TUMOnline and activate the token"
+        default:
+            return nil
+        }
+    }
 }
 
 protocol AuthenticationHandlerDelegate {
@@ -100,29 +126,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
 
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         lock.lock() ; defer { lock.unlock() }
-        // TODO status code is 200 so this doesn't work
-
-//        if let data = request.delegate.data {
-//            let xml = SWXMLHash.parse(data)
-//
-//
-//            /*
-//             TODO:
-//
-//             Decide if token is invalid or not authorized:
-//
-//             <?xml version="1.0" encoding="utf-8"?>
-//             <error>
-//             <message>Token ist ungültig!</message>
-//             </error>
-//
-//             <?xml version="1.0" encoding="utf-8"?>
-//             <error>
-//             <message>Token ist nicht bestätigt!</message>
-//             </error>
-//
-//             */
-//        }
 
         var tumID: String
         requestsToRetry.append(completion)
@@ -179,11 +182,12 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             .validate(contentType: ["text/xml"])
             .responseXML { [weak self] xml in
             guard let strongSelf = self else { return }
-                guard let newToken = xml.value?["token"].element?.text else {
-                print(xml)
+            guard let newToken = xml.value?["token"].element?.text else {
                 strongSelf.isRefreshing = false
-                completion(.failure(LoginError.invalidToken))
-                return
+                if let errorMessage = xml.value?["error"]["message"].element?.text {
+                    return completion(.failure(LoginError.serverError(message: errorMessage)))
+                }
+                return completion(.failure(LoginError.unknown))
             }
             strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
             strongSelf.isRefreshing = false
@@ -206,49 +210,12 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                     } else if xml.value?["confirmed"].element?.text == "true" {
                         callback(.success(true))
                     } else if xml.value?["confirmed"].element?.text == "false" {
-                        callback(.failure(LoginError.invalidToken))
+                        callback(.failure(LoginError.tokenNotConfirmed))
                     } else {
                         callback(.failure(LoginError.unknown))
                     }
             }
         }
-    }
-    
-    func createKey() throws -> Data {
-        //        let tag = "com.example.keys.mykey".data(using: .utf8)!
-        let attributes: [String: Any] =
-            [kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-             kSecAttrKeySizeInBits as String: 2048,
-             //             kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: true,
-                //                                             kSecAttrApplicationTag as String: tag]
-        ]
-        
-        var error: Unmanaged<CFError>?
-        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
-            throw error!.takeRetainedValue() as Error
-        }
-        
-        guard let cfdata = SecKeyCopyExternalRepresentation(privateKey, &error) else {
-            throw error!.takeRetainedValue() as Error
-        }
-        
-        let data = cfdata as Data
-        
-        switch credentials {
-        case .tumID(let tumID, let token)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
-        case .tumIDAndKey(let tumID, let token, _)?: credentials = .tumIDAndKey(tumID: tumID, token: token, key: data)
-        default: break
-        }
-        
-        return data
-    }
-    
-    func uploadKey(callback: @escaping (Result<Data,Error>) -> Void) {
-        let key = try? createKey()
-    }
-    
-    func registerKey(callback: @escaping (Result<Bool,Error>) -> Void) {
-        // TOOD
     }
     
     func logout() {
@@ -272,6 +239,5 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     func skipLogin() {
         credentials = .noTumID
     }
-    
-    
+
 }

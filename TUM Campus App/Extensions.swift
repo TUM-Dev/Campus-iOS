@@ -162,10 +162,11 @@ extension NSMutableAttributedString {
 
 extension UITableViewController {
     func setBackgroundLabel(with text: String) {
-        let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        let noDataLabel = UILabel()
         noDataLabel.text = text
-        noDataLabel.font = UIFont.systemFont(ofSize: 24)
-        noDataLabel.textColor = .gray
+        noDataLabel.numberOfLines = 0
+        noDataLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        noDataLabel.textColor = .systemGray
         noDataLabel.textAlignment = .center
         tableView.backgroundView = noDataLabel
         tableView.separatorStyle = .none
@@ -266,5 +267,20 @@ extension Date {
                 self = date
             }
         }
+    }
+}
+
+
+extension UIView {
+    func pinToSuperView() {
+        guard let superview = self.superview else {
+            fatalError("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `pinToSuperView()` to fix this.")
+        }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
+        self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
+        self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0).isActive = true
+        self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
+
     }
 }

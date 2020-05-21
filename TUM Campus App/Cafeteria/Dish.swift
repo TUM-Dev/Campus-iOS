@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Price2: Decodable {
+struct Price: Decodable {
     let basePrice: Decimal?
     let unitPrice: Decimal?
     let unit: String?
@@ -17,63 +17,6 @@ struct Price2: Decodable {
         case basePrice = "base_price"
         case unitPrice = "price_per_unit"
         case unit
-    }
-
-}
-
-enum Price: Decodable {
-    case student(basePrice: Decimal, unitPrice: Decimal, unit: String)
-    case staff(basePrice: Decimal, unitPrice: Decimal, unit: String)
-    case guest(basePrice: Decimal, unitPrice: Decimal, unit: String)
-
-    /*
-     "students": {
-        "base_price": 0.0,
-        "price_per_unit": 0.33,
-        "unit": "100g"
-     },
-     "staff": {
-        "base_price": 0.0,
-        "price_per_unit": 0.55,
-        "unit": "100g"
-     },
-     ...
-     */
-
-    enum CodingKeys: String, CodingKey {
-        case students
-        case staff
-        case guests
-    }
-
-    enum Parameters: String, CodingKey {
-        case basePrice = "base_price"
-        case unitPrice = "price_per_unit"
-        case unit
-    }
-
-
-    init(from decoder: Decoder) throws {
-        let container = try! decoder.container(keyedBy: CodingKeys.self)
-
-        if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try! parameters.decode(String.self, forKey: .unit)
-            self = .student(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
-        } else if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try! parameters.decode(String.self, forKey: .unit)
-            self = .staff(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
-        } else if let parameters = try? container.nestedContainer(keyedBy: Parameters.self, forKey: .students) {
-            let basePrice = try! parameters.decode(Decimal.self, forKey: .basePrice)
-            let unitPrice = try! parameters.decode(Decimal.self, forKey: .unitPrice)
-            let unit = try! parameters.decode(String.self, forKey: .unit)
-            self = .guest(basePrice: basePrice, unitPrice: unitPrice, unit: unit)
-        } else {
-            throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Key not found"))
-        }
     }
 
 }
@@ -111,7 +54,7 @@ struct Dish: Decodable {
      */
 
     let name: String
-    let prices: [String: Price2]
+    let prices: [String: Price]
     let ingredients: [String]
     let dishType: String
 
