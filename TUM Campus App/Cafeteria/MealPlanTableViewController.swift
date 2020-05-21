@@ -12,7 +12,7 @@ import Alamofire
 final class MealPlanTableViewController: UITableViewController {
     private var endpoint: URLRequestConvertible? {
         guard let id = cafeteria?.id else { return nil }
-        return EatAPI.menu(location: id, year: 2020, week: 10) // TODO: fix this
+        return EatAPI.menu(location: id)
     }
     private let sessionManager: Session = Session.defaultSession
     var cafeteria: Cafeteria? {
@@ -29,12 +29,12 @@ final class MealPlanTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
         fetch()
     }
 
