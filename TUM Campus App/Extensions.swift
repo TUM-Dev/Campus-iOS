@@ -12,19 +12,9 @@ import Alamofire
 import CoreLocation
 
 extension Bundle {
-    
-    var version: String {
-        return infoDictionary?["CFBundleShortVersionString"] as? String ?? "1"
-    }
-    
-    var build: String {
-        return infoDictionary?["CFBundleVersion"] as? String ?? "1.0"
-    }
-    
-    var userAgent: String {
-        return "TCA iOS \(version)/\(build)"
-    }
-    
+    var version: String { infoDictionary?["CFBundleShortVersionString"] as? String ?? "1" }
+    var build: String { infoDictionary?["CFBundleVersion"] as? String ?? "1.0" }
+    var userAgent: String { "TCA iOS \(version)/\(build)" }
 }
 
 enum BackendError: Error {
@@ -66,7 +56,6 @@ final class XMLSerializer: ResponseSerializer {
 }
 
 extension DataRequest {
-
     @discardableResult
     public func responseXML(queue: DispatchQueue = .main,
                              completionHandler: @escaping (AFDataResponse<XMLIndexer>) -> Void) -> Self {
@@ -135,31 +124,6 @@ extension Session {
     }
 }
 
-extension NSMutableAttributedString {
-    @discardableResult func bold(_ text: String, color: UIColor = .black) -> NSMutableAttributedString {
-        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Bold", size: 12)!, .foregroundColor: color]
-        let boldString = NSMutableAttributedString(string:text, attributes: attrs)
-        append(boldString)
-        
-        return self
-    }
-    
-    @discardableResult func normal(_ text: String, color: UIColor = .black) -> NSMutableAttributedString {
-        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!, .foregroundColor: color]
-        let normal = NSAttributedString(string: text, attributes: attrs)
-        append(normal)
-        
-        return self
-    }
-    
-    var newLine: NSMutableAttributedString {
-        let newLine = NSAttributedString(string: "\n")
-        append(newLine)
-        
-        return self
-    }
-}
-
 extension UITableViewController {
     func setBackgroundLabel(with text: String) {
         let noDataLabel = UILabel()
@@ -169,7 +133,6 @@ extension UITableViewController {
         noDataLabel.textColor = .systemGray
         noDataLabel.textAlignment = .center
         tableView.backgroundView = noDataLabel
-//        tableView.separatorStyle = .none
     }
 }
 
@@ -181,26 +144,17 @@ extension UITableViewController {
 
 extension UIView {
     static var nibName: String {  description().components(separatedBy: ".").last ?? "" }
-
     static var identifier: String { nibName }
 
     func fillSuperview(padding: UIEdgeInsets = .zero) {
-        translatesAutoresizingMaskIntoConstraints = false
-        if let superviewTopAnchor = superview?.topAnchor {
-            topAnchor.constraint(equalTo: superviewTopAnchor, constant: padding.top).isActive = true
+        guard let superview = self.superview else {
+            fatalError("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `pinToSuperView()` to fix this.")
         }
-
-        if let superviewBottomAnchor = superview?.bottomAnchor {
-            bottomAnchor.constraint(equalTo: superviewBottomAnchor, constant: -padding.bottom).isActive = true
-        }
-
-        if let superviewLeadingAnchor = superview?.leadingAnchor {
-            leadingAnchor.constraint(equalTo: superviewLeadingAnchor, constant: padding.left).isActive = true
-        }
-
-        if let superviewTrailingAnchor = superview?.trailingAnchor {
-            trailingAnchor.constraint(equalTo: superviewTrailingAnchor, constant: -padding.right).isActive = true
-        }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
+        self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
+        self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0).isActive = true
+        self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
     }
 }
 
@@ -210,18 +164,9 @@ extension CLLocationCoordinate2D  {
 
 
 extension Date {
-
-    var calendar: Calendar {
-        return Calendar(identifier: Calendar.current.identifier) // Workaround to segfault on corelibs foundation https://bugs.swift.org/browse/SR-10147
-    }
-
-    var weekOfYear: Int {
-        return calendar.component(.weekOfYear, from: self)
-    }
-
-    var weekOfMonth: Int {
-        return calendar.component(.weekOfMonth, from: self)
-    }
+    var calendar: Calendar { Calendar(identifier: Calendar.current.identifier) }
+    var weekOfYear: Int { calendar.component(.weekOfYear, from: self) }
+    var weekOfMonth: Int { calendar.component(.weekOfMonth, from: self) }
 
     var year: Int {
         get {
@@ -271,30 +216,10 @@ extension Date {
 }
 
 
-extension UIView {
-    func pinToSuperView() {
-        guard let superview = self.superview else {
-            fatalError("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `pinToSuperView()` to fix this.")
-        }
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.topAnchor.constraint(equalTo: superview.topAnchor, constant: 0).isActive = true
-        self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0).isActive = true
-        self.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 0).isActive = true
-        self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
-
-    }
-}
-
 extension UITableViewCell {
-    static var reuseIdentifier: String {
-        return NSStringFromClass(self).components(separatedBy: ".").last!
-    }
-
+    static var reuseIdentifier: String { NSStringFromClass(self).components(separatedBy: ".").last! }
 }
 
 extension UICollectionViewCell {
-    static var reuseIdentifier: String {
-        return NSStringFromClass(self).components(separatedBy: ".").last!
-    }
-
+    static var reuseIdentifier: String { NSStringFromClass(self).components(separatedBy: ".").last! }
 }

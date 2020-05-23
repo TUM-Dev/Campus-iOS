@@ -12,7 +12,6 @@
 		19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */; };
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
-		19BA03F023897FEE00B85982 /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
 		19EC3F652388669600D484E7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EC3F642388669600D484E7 /* Login.storyboard */; };
 		19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC3F6623886C6800D484E7 /* LectureCell.swift */; };
 		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
@@ -54,6 +53,7 @@
 		2258EDBB22221EE80079C2ED /* StudyRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBA22221EE80079C2ED /* StudyRoom.swift */; };
 		2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBC22221EF00079C2ED /* StudyRoomGroup.swift */; };
 		2258EDC022222B590079C2ED /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBF22222B590079C2ED /* TUMSexyLink.swift */; };
+		225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
 		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
@@ -763,6 +763,7 @@
 				22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */,
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
+				225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */,
 				224CB389222AA6620002945A /* NewsSource.swift in Sources */,
 				22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */,
 				22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */,
@@ -797,7 +798,6 @@
 				224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */,
 				22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
-				19BA03F023897FEE00B85982 /* CalendarEventCell.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
