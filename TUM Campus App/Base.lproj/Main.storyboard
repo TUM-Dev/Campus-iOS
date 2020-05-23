@@ -967,15 +967,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MqG-iq-hHO" userLabel="HStack View">
-                                            <rect key="frame" x="44" y="19" width="299" height="57"/>
+                                            <rect key="frame" x="44" y="11" width="315" height="73"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lv_title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-PW-7fE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="26"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="33.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-dN-1Wh" userLabel="grade">
-                                                    <rect key="frame" x="0.0" y="30" width="299" height="27"/>
+                                                    <rect key="frame" x="0.0" y="37.5" width="315" height="35.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -993,9 +993,9 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="7uq-Ms-mxS" firstAttribute="leading" secondItem="mBk-4y-O7a" secondAttribute="leading" constant="16" id="MOw-Yx-Z6y"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="MqG-iq-hHO" secondAttribute="bottom" constant="8" id="MiS-sg-7Kd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="MqG-iq-hHO" secondAttribute="trailing" constant="16" id="h4u-R1-XCd"/>
-                                        <constraint firstItem="MqG-iq-hHO" firstAttribute="top" secondItem="mBk-4y-O7a" secondAttribute="topMargin" constant="8" id="hIK-bW-GyV"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="MqG-iq-hHO" secondAttribute="bottom" id="MiS-sg-7Kd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="MqG-iq-hHO" secondAttribute="trailing" id="h4u-R1-XCd"/>
+                                        <constraint firstItem="MqG-iq-hHO" firstAttribute="top" secondItem="mBk-4y-O7a" secondAttribute="topMargin" id="hIK-bW-GyV"/>
                                         <constraint firstItem="MqG-iq-hHO" firstAttribute="leading" secondItem="7uq-Ms-mxS" secondAttribute="trailing" constant="16" id="lw1-Ig-lVY"/>
                                         <constraint firstItem="7uq-Ms-mxS" firstAttribute="centerY" secondItem="mBk-4y-O7a" secondAttribute="centerY" id="qMK-Ws-JsT"/>
                                     </constraints>
@@ -1377,7 +1377,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oDN-gj-Gkq"/>
+        <segue reference="YdS-97-vv4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="About" width="29" height="29"/>
