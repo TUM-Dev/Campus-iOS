@@ -34,10 +34,6 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case login
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -62,7 +58,6 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
             signOutLabel.textColor = .red
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (Section(rawValue: indexPath.section), indexPath.row) {

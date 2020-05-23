@@ -140,7 +140,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)")
+        assertionFailure("Failed to find user's location: \(error.localizedDescription)")
     }
     
 }
