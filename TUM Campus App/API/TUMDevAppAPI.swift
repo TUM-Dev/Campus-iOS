@@ -6,6 +6,7 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
 enum TUMDevAppAPI: URLRequestConvertible {

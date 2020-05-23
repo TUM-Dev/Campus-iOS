@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import UIKit
 
 enum TUMCabeAPI: URLRequestConvertible {
     case movie

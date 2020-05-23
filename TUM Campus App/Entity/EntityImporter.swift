@@ -6,7 +6,7 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit.UIApplication
 import CoreData
 import Alamofire
 

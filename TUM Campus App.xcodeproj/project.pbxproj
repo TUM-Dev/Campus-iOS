@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FF5D867B9EC14E7474D333F /* libPods-TUMCampusAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */; };
 		190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190AEA09238884D7004D2DCF /* GradeCell.swift */; };
 		19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */; };
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
@@ -54,6 +53,13 @@
 		2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBC22221EF00079C2ED /* StudyRoomGroup.swift */; };
 		2258EDC022222B590079C2ED /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBF22222B590079C2ED /* TUMSexyLink.swift */; };
 		225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
+		225AD74B2479D2D3001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74A2479D2D3001A969E /* SwiftPackageProductDependency */; };
+		225AD74E2479D2F3001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74D2479D2F3001A969E /* SwiftPackageProductDependency */; };
+		225AD7512479D307001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7502479D307001A969E /* SwiftPackageProductDependency */; };
+		225AD7542479D32C001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7532479D32C001A969E /* SwiftPackageProductDependency */; };
+		225AD7572479D33F001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7562479D33F001A969E /* SwiftPackageProductDependency */; };
+		225AD75A2479D358001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* SwiftPackageProductDependency */; };
+		225AD75D2479D390001A969E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD75C2479D390001A969E /* SwiftPackageProductDependency */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
 		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
@@ -90,8 +96,6 @@
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */; };
-		BDB1C7C30BFA500FFFD04DF3 /* libPods-TUMCampusAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */; };
-		E011A9658490AF0FED466225 /* libPods-TUMCampusApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +116,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.release.xcconfig"; sourceTree = "<group>"; };
 		190AEA09238884D7004D2DCF /* GradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomTableViewController.swift; sourceTree = "<group>"; };
 		19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupedTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,20 +205,6 @@
 		22F9629B2460ED03004BF215 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		22F9629D246177D9004BF215 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewController.swift; sourceTree = "<group>"; };
-		52690DCBFDA3E665568E8F80 /* Pods-TUMCampusAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppUITests/Pods-TUMCampusAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		59E6F2A070029A51CD3F03E7 /* Pods-TUMCampusAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppUITests/Pods-TUMCampusAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8B4942DB4CBFFB421F88F41F /* Pods-TUMCampusApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp.release.xcconfig"; sourceTree = "<group>"; };
-		99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C57C182D6DD933596DC14AA /* Pods-TUMCampusApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusApp/Pods-TUMCampusApp.debug.xcconfig"; sourceTree = "<group>"; };
-		B5C15BCCC593BA90CEB2B5C2 /* Pods-TUMCampusAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppTests/Pods-TUMCampusAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus App/Pods-TUM Campus App.debug.xcconfig"; sourceTree = "<group>"; };
-		BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppTests/Pods-TUM Campus AppTests.release.xcconfig"; sourceTree = "<group>"; };
-		D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TUMCampusAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F85A6FD910D23BF6CC93C64D /* Pods-TUMCampusAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUMCampusAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TUMCampusAppTests/Pods-TUMCampusAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TUM Campus AppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TUM Campus AppUITests/Pods-TUM Campus AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +212,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E011A9658490AF0FED466225 /* libPods-TUMCampusApp.a in Frameworks */,
+				225AD7572479D33F001A969E /* BuildFile in Frameworks */,
+				225AD75D2479D390001A969E /* BuildFile in Frameworks */,
+				225AD75A2479D358001A969E /* BuildFile in Frameworks */,
+				225AD74B2479D2D3001A969E /* BuildFile in Frameworks */,
+				225AD7542479D32C001A969E /* BuildFile in Frameworks */,
+				225AD74E2479D2F3001A969E /* BuildFile in Frameworks */,
+				225AD7512479D307001A969E /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +226,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB1C7C30BFA500FFFD04DF3 /* libPods-TUMCampusAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +233,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FF5D867B9EC14E7474D333F /* libPods-TUMCampusAppUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,8 +327,6 @@
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
 				2277E90D21D93C3300D7FF3F /* Products */,
-				6DF447CCB464A697A5FBD43C /* Pods */,
-				AEF34E66FB4536FB02EEF379 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -503,35 +494,6 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		6DF447CCB464A697A5FBD43C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B753E36A4A43DE8E70306454 /* Pods-TUM Campus App.debug.xcconfig */,
-				0148F1CD53E3B8D9F7A2D952 /* Pods-TUM Campus App.release.xcconfig */,
-				76EEA4BB7D992C4E5EFE7622 /* Pods-TUM Campus AppTests.debug.xcconfig */,
-				C9495E3A8AA39DDE225AC14C /* Pods-TUM Campus AppTests.release.xcconfig */,
-				FAA0BA19189D5DABE23638E7 /* Pods-TUM Campus AppUITests.debug.xcconfig */,
-				BC7D34130706550B7DE6774C /* Pods-TUM Campus AppUITests.release.xcconfig */,
-				9C57C182D6DD933596DC14AA /* Pods-TUMCampusApp.debug.xcconfig */,
-				8B4942DB4CBFFB421F88F41F /* Pods-TUMCampusApp.release.xcconfig */,
-				B5C15BCCC593BA90CEB2B5C2 /* Pods-TUMCampusAppTests.debug.xcconfig */,
-				F85A6FD910D23BF6CC93C64D /* Pods-TUMCampusAppTests.release.xcconfig */,
-				52690DCBFDA3E665568E8F80 /* Pods-TUMCampusAppUITests.debug.xcconfig */,
-				59E6F2A070029A51CD3F03E7 /* Pods-TUMCampusAppUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		AEF34E66FB4536FB02EEF379 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6D0CADAF92B2C940552493B6 /* libPods-TUMCampusApp.a */,
-				99D30215EF4062FBA3AC5B34 /* libPods-TUMCampusAppTests.a */,
-				D5AF23508D5B3EEEB063F780 /* libPods-TUMCampusAppUITests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -539,7 +501,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93721D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUMCampusApp" */;
 			buildPhases = (
-				F1810613ABFB2B38652F661E /* [CP] Check Pods Manifest.lock */,
 				2277E90821D93C3300D7FF3F /* Sources */,
 				2277E90921D93C3300D7FF3F /* Frameworks */,
 				2277E90A21D93C3300D7FF3F /* Resources */,
@@ -549,6 +510,15 @@
 			dependencies = (
 			);
 			name = TUMCampusApp;
+			packageProductDependencies = (
+				225AD74A2479D2D3001A969E /* SwiftPackageProductDependency */,
+				225AD74D2479D2F3001A969E /* SwiftPackageProductDependency */,
+				225AD7502479D307001A969E /* SwiftPackageProductDependency */,
+				225AD7532479D32C001A969E /* SwiftPackageProductDependency */,
+				225AD7562479D33F001A969E /* SwiftPackageProductDependency */,
+				225AD7592479D358001A969E /* SwiftPackageProductDependency */,
+				225AD75C2479D390001A969E /* SwiftPackageProductDependency */,
+			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
 			productType = "com.apple.product-type.application";
@@ -557,7 +527,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93A21D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUMCampusAppTests" */;
 			buildPhases = (
-				12AADF1971257F4E5CEED866 /* [CP] Check Pods Manifest.lock */,
 				2277E91F21D93C3400D7FF3F /* Sources */,
 				2277E92021D93C3400D7FF3F /* Frameworks */,
 				2277E92121D93C3400D7FF3F /* Resources */,
@@ -576,7 +545,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2277E93D21D93C3400D7FF3F /* Build configuration list for PBXNativeTarget "TUMCampusAppUITests" */;
 			buildPhases = (
-				FEDF82BAD40775E8AAE0B3EF /* [CP] Check Pods Manifest.lock */,
 				2277E92A21D93C3400D7FF3F /* Sources */,
 				2277E92B21D93C3400D7FF3F /* Frameworks */,
 				2277E92C21D93C3400D7FF3F /* Resources */,
@@ -628,6 +596,15 @@
 				Base,
 			);
 			mainGroup = 2277E90321D93C3300D7FF3F;
+			packageReferences = (
+				225AD7492479D2D3001A969E /* RemoteSwiftPackageReference */,
+				225AD74C2479D2F3001A969E /* RemoteSwiftPackageReference */,
+				225AD74F2479D307001A969E /* RemoteSwiftPackageReference */,
+				225AD7522479D32C001A969E /* RemoteSwiftPackageReference */,
+				225AD7552479D33F001A969E /* RemoteSwiftPackageReference */,
+				225AD7582479D358001A969E /* RemoteSwiftPackageReference */,
+				225AD75B2479D390001A969E /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -668,63 +645,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		12AADF1971257F4E5CEED866 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TUMCampusAppTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F1810613ABFB2B38652F661E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TUMCampusApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FEDF82BAD40775E8AAE0B3EF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TUMCampusAppUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2277E90821D93C3300D7FF3F /* Sources */ = {
@@ -969,7 +889,6 @@
 		};
 		2277E93821D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C57C182D6DD933596DC14AA /* Pods-TUMCampusApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
@@ -991,7 +910,6 @@
 		};
 		2277E93921D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B4942DB4CBFFB421F88F41F /* Pods-TUMCampusApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
@@ -1013,7 +931,6 @@
 		};
 		2277E93B21D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5C15BCCC593BA90CEB2B5C2 /* Pods-TUMCampusAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1035,7 +952,6 @@
 		};
 		2277E93C21D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F85A6FD910D23BF6CC93C64D /* Pods-TUMCampusAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1057,7 +973,6 @@
 		};
 		2277E93E21D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52690DCBFDA3E665568E8F80 /* Pods-TUMCampusAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1078,7 +993,6 @@
 		};
 		2277E93F21D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E6F2A070029A51CD3F03E7 /* Pods-TUMCampusAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1137,6 +1051,103 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		225AD7492479D2D3001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+		225AD74C2479D2F3001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+		225AD74F2479D307001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		225AD7522479D32C001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		225AD7552479D33F001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ShawnMoore/XMLParsing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+		225AD7582479D358001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		225AD75B2479D390001A969E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.13.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		225AD74A2479D2D3001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD7492479D2D3001A969E /* RemoteSwiftPackageReference */;
+			productName = Alamofire;
+		};
+		225AD74D2479D2F3001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD74C2479D2F3001A969E /* RemoteSwiftPackageReference */;
+			productName = AlamofireImage;
+		};
+		225AD7502479D307001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD74F2479D307001A969E /* RemoteSwiftPackageReference */;
+			productName = AlamofireNetworkActivityIndicator;
+		};
+		225AD7532479D32C001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD7522479D32C001A969E /* RemoteSwiftPackageReference */;
+			productName = SWXMLHash;
+		};
+		225AD7562479D33F001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD7552479D33F001A969E /* RemoteSwiftPackageReference */;
+			productName = XMLParsing;
+		};
+		225AD7592479D358001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD7582479D358001A969E /* RemoteSwiftPackageReference */;
+			productName = KeychainAccess;
+		};
+		225AD75C2479D390001A969E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD75B2479D390001A969E /* RemoteSwiftPackageReference */;
+			productName = KingfisherStatic;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */ = {

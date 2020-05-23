@@ -10,6 +10,7 @@ import Foundation
 import SWXMLHash
 import Alamofire
 import CoreLocation
+import UIKit
 
 extension Bundle {
     var version: String { infoDictionary?["CFBundleShortVersionString"] as? String ?? "1" }
