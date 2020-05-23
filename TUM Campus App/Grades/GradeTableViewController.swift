@@ -11,7 +11,6 @@ import CoreData
 import Alamofire
 import XMLParsing
 
-
 final class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
@@ -23,31 +22,59 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        importer.fetchedResultsControllerDelegate = self
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        setupTableView()
+        importer.fetchedResultsController.delegate = self
         title = "Grades"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        importer.performFetch { [weak self] error in
-            self?.setBackgroundLabel(with: error.localizedDescription)
-        }
-        try! importer.fetchedResultsController.performFetch()
         navigationController?.navigationBar.prefersLargeTitles = true
+        fetch(animated: animated)
     }
+
+    @objc private func fetch(animated: Bool = true) {
+        if animated {
+            tableView.refreshControl?.beginRefreshing()
+        }
+        importer.performFetch(success: { [weak self] in
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+        }, error: { [weak self] error in
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
+            _ = try? self?.importer.context.execute(deleteRequest)
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        })
+    }
+
+    private func setupTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
+    }
+
+    // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections : Int = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections > 0 {
-            tableView.separatorStyle = .singleLine
+        let numberOfSections = importer.fetchedResultsController.sections?.count
+
+        switch numberOfSections {
+        case let .some(count) where count > 0:
             tableView.backgroundView = nil
-        } else {
+        case let .some(count) where count == 0:
             setBackgroundLabel(with: "No Grades")
+        default:
+            break
         }
-        return numOfSections
-       }
+
+        return numberOfSections ?? 0
+    }
        
    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
        return importer.fetchedResultsController.sections?[section].name
@@ -58,13 +85,15 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! GradeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: GradeCell.reuseIdentifier, for: indexPath) as! GradeCell
         guard let grade = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.configure(grade: grade)
         
         return cell
     }
+
+    // MARK: NSFetchedResultsControllerDelegate
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         tableView.reloadData()

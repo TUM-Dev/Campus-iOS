@@ -39,31 +39,60 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     private let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
     lazy var importer: ImporterType = Importer(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        importer.fetchedResultsControllerDelegate = self
-        importer.performFetch()
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        setupTableView()
+        importer.fetchedResultsController.delegate = self
         title = "Study Rooms"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! importer.fetchedResultsController.performFetch()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        fetch(animated: animated)
     }
+
+    @objc private func fetch(animated: Bool = true) {
+        if animated {
+            tableView.refreshControl?.beginRefreshing()
+        }
+        importer.performFetch(success: { [weak self] in
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+        }, error: { [weak self] error in
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
+            _ = try? self?.importer.context.execute(deleteRequest)
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        })
+    }
+
+    private func setupTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
+//        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
+    }
+
+    // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections > 0 {
-            tableView.separatorStyle = .singleLine
+        let numberOfSections = importer.fetchedResultsController.sections?.count
+
+        switch numberOfSections {
+        case let .some(count) where count > 0:
             tableView.backgroundView = nil
-        }
-        else {
+        case let .some(count) where count == 0:
             setBackgroundLabel(with: "No Study Rooms")
+        default:
+            break
         }
-        return numOfSections
+
+        return numberOfSections ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,18 +100,21 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! StudyRoomGroupedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: StudyRoomGroupedTableViewCell.reuseIdentifier, for: indexPath) as! StudyRoomGroupedTableViewCell
         guard let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
         
         cell.titleLabel.text = roomGroup.name
         cell.numberLabel.text = "\(roomGroup.rooms?.count ?? 0)"
         return cell
     }
+
+    // MARK: - NSFetchedResultsControllerDelegate
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         tableView.reloadData()
     }
-    
+
+    // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "studyRooms") {

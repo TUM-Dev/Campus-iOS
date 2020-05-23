@@ -18,36 +18,36 @@ final class StudyRoomTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if let lhsCode = lhs.code{
                 if let rhsCode = rhs.code{
                     if lhsCode==rhsCode{
                         return true
-                    }else{
+                    } else {
                         return lhsCode<rhsCode
                     }
-                }else{
+                } else {
                     rhs.code = ""
                 }
-            }else{
+            } else {
                 lhs.code = ""
             }
             return lhs.code! < rhs.code!
         })
             
         rooms.sort(by: { (lhs, rhs) -> Bool in
-            if let lhsName = lhs.name{
-                if let rhsName = rhs.name{
-                    if lhsName==rhsName{
+            if let lhsName = lhs.name {
+                if let rhsName = rhs.name {
+                    if lhsName==rhsName {
                         return true
-                    }else{
+                    } else {
                         return lhsName>rhsName
                     }
-                }else{
+                } else {
                     rhs.name = ""
                 }
-            }else{
+            } else {
                 lhs.name = ""
             }
             return lhs.name! > rhs.name!
@@ -56,12 +56,12 @@ final class StudyRoomTableViewController: UITableViewController{
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if lhs.status==rhs.status{
                 return true
-            }else if lhs.status == "frei"{
+            } else if lhs.status == "frei" {
                 return true
-            }else if lhs.status == "belegt" {
-                if rhs.status == "frei"{
+            } else if lhs.status == "belegt" {
+                if rhs.status == "frei" {
                     return false
-                }else{
+                } else {
                     return true
                 }
             }
@@ -73,13 +73,20 @@ final class StudyRoomTableViewController: UITableViewController{
         secondDateFormatter.locale = Locale.current
         secondDateFormatter.dateFormat = "HH:mm"
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
+    // MARK: UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rooms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StudyRoomCell", for: indexPath) as! StudyRoomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: StudyRoomCell.reuseIdentifier, for: indexPath) as! StudyRoomCell
         
         cell.roomNameLabel.text = rooms[indexPath.row].name
         cell.roomNumberLabel.text = rooms[indexPath.row].code

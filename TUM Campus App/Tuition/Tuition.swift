@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 class TuitionAPIResponse: Decodable {
     var fees: [Tuition]
     

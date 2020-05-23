@@ -17,33 +17,61 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
     private let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
     private let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        importer.fetchedResultsControllerDelegate = self
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        setupTableView()
+        importer.fetchedResultsController.delegate = self
         title = "Calendar"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        importer.performFetch(success: nil) { [weak self] error in
-            self?.setBackgroundLabel(with: error.localizedDescription)
-        }
         navigationController?.navigationBar.prefersLargeTitles = true
-        try! importer.fetchedResultsController.performFetch()
+        fetch(animated: animated)
     }
+
+    @objc private func fetch(animated: Bool = true) {
+        if animated {
+            tableView.refreshControl?.beginRefreshing()
+        }
+        importer.performFetch(success: { [weak self] in
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+        }, error: { [weak self] error in
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
+            _ = try? self?.importer.context.execute(deleteRequest)
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        })
+    }
+
+    private func setupTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
+    }
+
+   // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections > 0 {
-            tableView.separatorStyle = .singleLine
+        let numberOfSections = importer.fetchedResultsController.sections?.count
+
+        switch numberOfSections {
+        case let .some(count) where count > 0:
             tableView.backgroundView = nil
-        } else {
+        case let .some(count) where count == 0:
             setBackgroundLabel(with: "No Calendar Events")
+        default:
+            break
         }
-        return numOfSections
+
+        return numberOfSections ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,13 +79,15 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath) as! CalendarEventCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CalendarEventCell.reuseIdentifier, for: indexPath) as! CalendarEventCell
         guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.configure(event: event)
-        
+
         return cell
     }
+
+    // MARK: - NSFetchedResultsControllerDelegate
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         tableView.reloadData()

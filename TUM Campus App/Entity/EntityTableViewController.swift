@@ -14,9 +14,4 @@ import Alamofire
 protocol EntityTableViewControllerProtocol: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     associatedtype ImporterType: ImporterProtocol
     var importer: ImporterType { get }
-    var cellReuseID: String { get }
-}
-
-extension EntityTableViewControllerProtocol {
-    var cellReuseID: String { return "\(ImporterType.EntityType.self)Cell" }
 }

@@ -323,8 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				22692D9A221E1618002C5720 /* Grade.swift */,
-				190AEA09238884D7004D2DCF /* GradeCell.swift */,
 				22692D9E221E19F6002C5720 /* GradeTableViewController.swift */,
+				190AEA09238884D7004D2DCF /* GradeCell.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";

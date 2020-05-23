@@ -25,17 +25,22 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
     private let coreDataStack = appDelegate.persistentContainer
 
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
-    
-    
+
+    private enum Section: Int {
+        case profile
+        case myTUM
+        case general
+        case beta
+        case login
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-//        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
-        
+
         importer.performFetch(success: {
             DispatchQueue.main.async {
                 let context = appDelegate.persistentContainer.viewContext
@@ -60,18 +65,18 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch (indexPath.section,indexPath.row) {
-        case (1,0):
+        switch (Section(rawValue: indexPath.section), indexPath.row) {
+        case (.myTUM, 0):
             performSegue(withIdentifier: "showTuition", sender: nil)
-        case (2,1):
+        case (.general, 1):
             performSegue(withIdentifier: "showTUMSexy", sender: nil)
-        case (4,0):
+        case (.login, 0):
             loginController.logout()
             presentLoginViewController()
         default:
             break
         }
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func presentLoginViewController() {

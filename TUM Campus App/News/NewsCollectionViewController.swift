@@ -36,16 +36,16 @@ final class NewsCollectionViewController: UICollectionViewController, NSFetchedR
         newsSourceImporter.performFetch() { error in
             print(error)
         }
-        newsImporter.fetchedResultsControllerDelegate = self
+        newsImporter.fetchedResultsController.delegate = self
 
         newsspreadImporter.performFetch()
-        newsspreadImporter.fetchedResultsControllerDelegate = self
+        newsspreadImporter.fetchedResultsController.delegate = self
 
         eventsImporter.performFetch()
         eventsImporter.fetchedResultsControllerDelegate = self
 
         movieImporter.performFetch()
-        movieImporter.fetchedResultsControllerDelegate = self
+        movieImporter.fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -17,7 +17,7 @@ class TokenConfirmationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .automatic
     }
     
     @IBAction func didSelectCheckAuthorization(_ sender: Any) {

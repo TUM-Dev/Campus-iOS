@@ -18,35 +18,60 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
     private let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        importer.fetchedResultsControllerDelegate = self
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        setupTableView()
+        importer.fetchedResultsController.delegate = self
         title = "Lectures"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
-        importer.performFetch { [weak self] error in
-            self?.setBackgroundLabel(with: error.localizedDescription)
-        }
-        try! importer.fetchedResultsController.performFetch()
+        fetch(animated: animated)
     }
-    
+
+    @objc private func fetch(animated: Bool = true) {
+        if animated {
+            tableView.refreshControl?.beginRefreshing()
+        }
+        importer.performFetch(success: { [weak self] in
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+        }, error: { [weak self] error in
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: Lecture.fetchRequest())
+            _ = try? self?.importer.context.execute(deleteRequest)
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.tableView.reloadData()
+            self?.setBackgroundLabel(with: error.localizedDescription)
+        })
+    }
+
+    private func setupTableView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+        tableView.tableFooterView = UIView()
+    }
+
+    // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numOfSections = importer.fetchedResultsController.sections?.count ?? 0
-        if numOfSections > 0 {
-            tableView.separatorStyle = .singleLine
+        let numberOfSections = importer.fetchedResultsController.sections?.count
+
+        switch numberOfSections {
+        case let .some(count) where count > 0:
             tableView.backgroundView = nil
+        case let .some(count) where count == 0:
+            setBackgroundLabel(with: "No Lectures")
+        default:
+            break
         }
-        else {
-//            setBackgroundLabel(with: "No Lectures")
-        }
-        return numOfSections
+
+        return numberOfSections ?? 0
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -58,7 +83,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LectureCell", for: indexPath) as! LectureCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: LectureCell.reuseIdentifier, for: indexPath) as! LectureCell
         guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.titleLabel.text = lecture.title
@@ -67,6 +92,8 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
         
         return cell
     }
+
+    // MARK: - NSFetchedResultsControllerDelegate
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         tableView.reloadData()

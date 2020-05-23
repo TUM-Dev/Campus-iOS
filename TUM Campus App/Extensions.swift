@@ -169,7 +169,7 @@ extension UITableViewController {
         noDataLabel.textColor = .systemGray
         noDataLabel.textAlignment = .center
         tableView.backgroundView = noDataLabel
-        tableView.separatorStyle = .none
+//        tableView.separatorStyle = .none
     }
 }
 
@@ -283,4 +283,18 @@ extension UIView {
         self.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 0).isActive = true
 
     }
+}
+
+extension UITableViewCell {
+    static var reuseIdentifier: String {
+        return NSStringFromClass(self).components(separatedBy: ".").last!
+    }
+
+}
+
+extension UICollectionViewCell {
+    static var reuseIdentifier: String {
+        return NSStringFromClass(self).components(separatedBy: ".").last!
+    }
+
 }

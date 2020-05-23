@@ -16,11 +16,10 @@ final class NewsTableViewController: UITableViewController, EntityTableViewContr
     private let endpoint: URLRequestConvertible = TUMCabeAPI.news
     lazy var importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        importer.fetchedResultsControllerDelegate = self
+        importer.fetchedResultsController.delegate = self
         importer.performFetch()
     }
     
@@ -34,7 +33,7 @@ final class NewsTableViewController: UITableViewController, EntityTableViewContr
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCollectionViewCell.reuseIdentifier, for: indexPath)
         guard let article = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
         cell.textLabel?.text = article.title

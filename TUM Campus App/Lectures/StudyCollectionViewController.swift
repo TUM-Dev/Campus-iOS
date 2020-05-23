@@ -11,7 +11,6 @@ import Alamofire
 import CoreData
 import XMLParsing
 
-
 final class StudyCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     typealias LectureImporter = Importer<Lecture, LectureAPIResponse, XMLDecoder>
     typealias TuitionImporter = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
@@ -30,9 +29,9 @@ final class StudyCollectionViewController: UICollectionViewController, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lectureImporter.fetchedResultsControllerDelegate = self
-        tuitionImporter.fetchedResultsControllerDelegate = self
-        gradeImporter.fetchedResultsControllerDelegate = self
+        lectureImporter.fetchedResultsController.delegate = self
+        tuitionImporter.fetchedResultsController.delegate = self
+        gradeImporter.fetchedResultsController.delegate = self
         lectureImporter.performFetch()
         tuitionImporter.performFetch()
         gradeImporter.performFetch()

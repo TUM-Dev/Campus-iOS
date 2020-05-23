@@ -28,8 +28,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
     let sortDescriptors: [NSSortDescriptor]
     var predicate: NSPredicate?
     var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
-    weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
-    
+
     lazy var sessionManager: Session = Session.defaultSession
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
@@ -38,7 +37,6 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
         fetchRequest.predicate = predicate
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: EntityType.sectionNameKeyPath?.stringValue, cacheName: nil)
-        fetchedResultsController.delegate = fetchedResultsControllerDelegate
         
         return fetchedResultsController
     }()

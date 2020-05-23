@@ -34,7 +34,7 @@ final class EventsTableViewController: UITableViewController, EntityTableViewCon
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: EventCollectionViewCell.reuseIdentifier, for: indexPath)
         guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
         
         cell.textLabel?.text = event.title

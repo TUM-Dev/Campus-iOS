@@ -27,8 +27,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     }
 
 
-    // MARK: - ViewController lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

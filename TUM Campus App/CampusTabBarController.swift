@@ -39,7 +39,7 @@ final class CampusTabBarController: UITabBarController {
     }
     
     private func presentLoginViewController() {
-        let storyboard = UIStoryboard.init(name: "Login", bundle: .main)
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
         guard let navCon = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
         guard let loginViewController = navCon.children.first as? LoginViewController else { return }
         loginViewController.loginController = loginController
