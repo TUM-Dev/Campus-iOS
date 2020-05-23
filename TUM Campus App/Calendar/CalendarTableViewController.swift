@@ -24,7 +24,7 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Calendar"
+        title = "Calendar".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +66,7 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         case let .some(count) where count > 0:
             tableView.backgroundView = nil
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Calendar Events")
+            setBackgroundLabel(with: "No Calendar Events".localized)
         default:
             break
         }

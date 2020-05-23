@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 
 final class CafeteriaSectionHeader: UICollectionReusableView {
-
     @IBOutlet weak var mapView: MKMapView!
 
     override func awakeFromNib() {

@@ -33,15 +33,15 @@ final class StudyRoomCell: UITableViewCell {
         switch room.status {
         case "frei":
             roomStatusLabel.textColor = .systemGreen
-            roomStatusLabel.text = "Free"
+            roomStatusLabel.text = "Free".localized
         case "belegt":
             roomStatusLabel.textColor = .systemRed
             if let occupiedUntilString = room.occupiedUntil, let occupiedUntilDate = StudyRoomCell.dateFomatter.date(from: occupiedUntilString) {
-                roomStatusLabel.text = "Occupied until \(StudyRoomCell.secondDateFormatter.string(from: occupiedUntilDate))"
+                roomStatusLabel.text = "\("Occupied until".localized) \(StudyRoomCell.secondDateFormatter.string(from: occupiedUntilDate))"
             }
         default:
             roomStatusLabel.textColor = .systemGray
-            roomStatusLabel.text = "Unknown"
+            roomStatusLabel.text = "Unknown".localized
         }
     }
 }

@@ -45,8 +45,8 @@ final class LoginViewController: UIViewController {
 
         continueButton.isEnabled = false
         continueButton.alpha = 0.6
-        continueButton.setTitle("Continue", for: .disabled)
-        continueButton.setTitle("Continue 🎓", for: .normal)
+        continueButton.setTitle("Continue".localized, for: .disabled)
+        continueButton.setTitle("Continue".localized + "🎓", for: .normal)
     }
     
     
@@ -63,8 +63,8 @@ final class LoginViewController: UIViewController {
                 self?.navigationController?.pushViewController(confirmVC, animated: true)
             case let .failure(error):
                 self?.continueButton.wiggle()
-                let alert = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+                let alert = UIAlertController(title: "Login Error".localized, message: error.localizedDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK".localized, style: .default))
                 self?.present(alert, animated: true, completion: nil)
             }
         }

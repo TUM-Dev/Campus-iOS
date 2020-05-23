@@ -85,7 +85,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CafeteriaSectionHeader.identifier)
         collectionView.contentInsetAdjustmentBehavior = .always
 
-        title = "Cafeterias"
+        title = "Cafeterias".localized
     }
 
     private func fetch() {

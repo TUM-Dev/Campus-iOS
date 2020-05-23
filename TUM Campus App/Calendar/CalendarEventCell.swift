@@ -32,7 +32,7 @@ final class CalendarEventCell: UITableViewCell {
         if let startDate = event.startDate, let endDate = event.endDate {
             dateLabel.text = "\(CalendarEventCell.startDateFormatter.string(from: startDate)) - \(CalendarEventCell.endDateFormatter.string(from: endDate))"
         } else {
-            dateLabel.text = "n/a"
+            dateLabel.text = "n/a".localized
         }
 
     }

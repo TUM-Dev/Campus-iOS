@@ -20,7 +20,7 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
         super.viewDidLoad()
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Usefull Links"
+        title = "Usefull Links".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
         case let .some(count) where count > 0:
             tableView.backgroundView = nil
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Links")
+            setBackgroundLabel(with: "No Links".localized)
         default:
             break
         }

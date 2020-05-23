@@ -224,3 +224,9 @@ extension UITableViewCell {
 extension UICollectionViewCell {
     static var reuseIdentifier: String { NSStringFromClass(self).components(separatedBy: ".").last! }
 }
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

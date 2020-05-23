@@ -22,22 +22,22 @@ enum LoginError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .missingToken:
-            return "Missing token"
+            return "Missing token".localized
         case .invalidToken:
-            return "Invalid token"
+            return "Invalid token".localized
         case .tokenNotConfirmed:
-            return "Token not confirmed"
+            return "Token not confirmed".localized
         case let .serverError(message):
             return message
         case .unknown:
-            return "Unknown error"
+            return "Unknown error".localized
         }
     }
 
     public var recoverySuggestion: String? {
         switch self {
         case .tokenNotConfirmed:
-            return "Go to TUMOnline and activate the token"
+            return "Go to TUMOnline and activate the token".localized
         default:
             return nil
         }

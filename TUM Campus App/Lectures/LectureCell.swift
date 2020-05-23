@@ -14,6 +14,6 @@ final class LectureCell: UITableViewCell {
 
     func configure(lecture: Lecture) {
         titleLabel.text = lecture.title
-        detailsLabel.text = "Speaker: \(lecture.speaker ?? "n/a")"
+        detailsLabel.text = "\("Speaker".localized): \(lecture.speaker ?? "n/a".localized)"
     }
 }

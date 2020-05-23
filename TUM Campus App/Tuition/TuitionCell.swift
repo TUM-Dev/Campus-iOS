@@ -30,11 +30,11 @@ final class TuitionCell: UITableViewCell {
     func configure(tuition: Tuition) {
         semesterLabel.text = tuition.semester
         if let amount = tuition.amount, let deadline = tuition.deadline {
-            amountLabel.text = "Amount : \(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a")"
-            deadlineLabel.text = "Deadline : \(TuitionCell.deadlineDateFormatter.string(from: deadline))"
+            amountLabel.text = "\("Amount".localized) : \(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a".localized)"
+            deadlineLabel.text = "\("Deadline".localized) : \(TuitionCell.deadlineDateFormatter.string(from: deadline))"
         } else {
-            amountLabel.text = "n/a"
-            deadlineLabel.text = "n/a"
+            amountLabel.text = "n/a".localized
+            deadlineLabel.text = "n/a".localized
         }
     }
 

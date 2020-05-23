@@ -50,11 +50,11 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         
         switch loginController.credentials {
         case .none, .noTumID:
-            nameLabel.text = "Not logged in"
-            signOutLabel.text = "Sign In"
+            nameLabel.text = "Not logged in".localized
+            signOutLabel.text = "Sign In".localized
             signOutLabel.textColor = .green
         default:
-            signOutLabel.text = "Sign Out"
+            signOutLabel.text = "Sign Out".localized
             signOutLabel.textColor = .red
         }
     }

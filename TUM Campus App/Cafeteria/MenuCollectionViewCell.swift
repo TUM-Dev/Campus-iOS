@@ -40,7 +40,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
 
             priceLabel.text = (basePriceString ?? "") + divider + (unitPriceString ?? "")
         } else {
-            priceLabel.text = "n/a"
+            priceLabel.text = "n/a".localized
         }
 
         ingredientsLabel.text = dish.namedIngredients.joined(separator: ", ")

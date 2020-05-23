@@ -24,7 +24,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Lectures"
+        title = "Lectures".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +66,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
         case let .some(count) where count > 0:
             tableView.backgroundView = nil
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Lectures")
+            setBackgroundLabel(with: "No Lectures".localized)
         default:
             break
         }

@@ -45,7 +45,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Study Rooms"
+        title = "Study Rooms".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,7 +87,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
         case let .some(count) where count > 0:
             tableView.backgroundView = nil
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Study Rooms")
+            setBackgroundLabel(with: "No Study Rooms".localized)
         default:
             break
         }

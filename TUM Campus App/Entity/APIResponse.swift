@@ -52,13 +52,13 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noPermission:
-            return "No Permission"
+            return "No Permission".localized
         case .tokenNotConfirmed:
-            return "Token not confirmed"
+            return "Token not confirmed".localized
         case .invalidToken:
-            return "Token invalid"
+            return "Token invalid".localized
         case let .unkown(message):
-            return "Unkonw error: \(message)"
+            return "\("Unkonw error".localized): \(message)"
 
         }
     }
@@ -66,11 +66,11 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
     public var recoverySuggestion: String? {
         switch self {
         case .noPermission:
-            return "Make sure to enable the right permissions for your token."
+            return "Make sure to enable the right permissions for your token.".localized
         case .tokenNotConfirmed:
-            return "Go to TUMonline and confirm your token."
+            return "Go to TUMonline and confirm your token.".localized
         case .invalidToken:
-            return "Try creating a new token."
+            return "Try creating a new token.".localized
         default:
             return nil
         }

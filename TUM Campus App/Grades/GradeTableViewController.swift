@@ -25,7 +25,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Grades"
+        title = "Grades".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +68,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         case let .some(count) where count > 0:
             tableView.backgroundView = nil
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Grades")
+            setBackgroundLabel(with: "No Grades".localized)
         default:
             break
         }

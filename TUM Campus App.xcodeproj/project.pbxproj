@@ -11,7 +11,6 @@
 		19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */; };
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
-		19EC3F652388669600D484E7 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19EC3F642388669600D484E7 /* Login.storyboard */; };
 		19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC3F6623886C6800D484E7 /* LectureCell.swift */; };
 		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
 		221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */; };
@@ -65,6 +64,8 @@
 		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
 		22692D9B221E1618002C5720 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9A221E1618002C5720 /* Grade.swift */; };
 		22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9E221E19F6002C5720 /* GradeTableViewController.swift */; };
+		22710B552479E0D30065D6E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22710B532479E0D30065D6E9 /* Localizable.strings */; };
+		22710B572479E1290065D6E9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22710B592479E1290065D6E9 /* Login.storyboard */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -121,7 +122,6 @@
 		19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupedTableViewCell.swift; sourceTree = "<group>"; };
 		19382F212389D4AD007BEC88 /* StudyRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomCell.swift; sourceTree = "<group>"; };
 		19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
-		19EC3F642388669600D484E7 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		19EC3F6623886C6800D484E7 /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
 		19F7DB21238A112E00082444 /* TuitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCell.swift; sourceTree = "<group>"; };
 		221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +167,11 @@
 		22692D97221E0F05002C5720 /* EntityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTableViewController.swift; sourceTree = "<group>"; };
 		22692D9A221E1618002C5720 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		22692D9E221E19F6002C5720 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
+		22710B522479E0A60065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22710B542479E0D30065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22710B562479E0EE0065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		22710B582479E1290065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Login.storyboard; sourceTree = "<group>"; };
+		22710B5A2479E13C0065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMCampusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -366,6 +371,7 @@
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
+				22710B532479E0D30065D6E9 /* Localizable.strings */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -394,7 +400,7 @@
 				22E5303B2217698300A29992 /* Credentials.swift */,
 				2294545C22198B25008E41B7 /* AuthenticationHandler.swift */,
 				22B00AEF21D9458600E65C86 /* LoginViewController.swift */,
-				19EC3F642388669600D484E7 /* Login.storyboard */,
+				22710B592479E1290065D6E9 /* Login.storyboard */,
 				22BC2CE121DE4DDB00FF7C00 /* TokenConfirmationViewController.swift */,
 				221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */,
 			);
@@ -594,6 +600,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 2277E90321D93C3300D7FF3F;
 			packageReferences = (
@@ -622,10 +629,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
-				19EC3F652388669600D484E7 /* Login.storyboard in Resources */,
+				22710B572479E1290065D6E9 /* Login.storyboard in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
+				22710B552479E0D30065D6E9 /* Localizable.strings in Resources */,
 				2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -760,10 +768,29 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		22710B532479E0D30065D6E9 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22710B542479E0D30065D6E9 /* Base */,
+				22710B562479E0EE0065D6E9 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		22710B592479E1290065D6E9 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22710B582479E1290065D6E9 /* de */,
+				22710B5A2479E13C0065D6E9 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
 		2277E91321D93C3300D7FF3F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2277E91421D93C3300D7FF3F /* Base */,
+				22710B522479E0A60065D6E9 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -775,6 +802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -836,6 +864,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
