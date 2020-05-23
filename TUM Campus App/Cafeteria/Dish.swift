@@ -58,9 +58,9 @@ struct Dish: Decodable {
     let ingredients: [String]
     let dishType: String
 
-    lazy var namedIngredients: [String] = {
+    var namedIngredients: [String] {
         ingredients.map { (ingredientsLookup[$0] ?? $0) }
-    }()
+    }
 
     private var ingredientsLookup = [
         "GQB" : "GQB",

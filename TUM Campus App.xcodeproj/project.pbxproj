@@ -45,7 +45,6 @@
 		224CB3A1222AE0BA0002945A /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A0222AE0BA0002945A /* EventsCollectionView.swift */; };
 		224CB3A3222AE1A80002945A /* MoviesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A2222AE1A80002945A /* MoviesCollectionView.swift */; };
 		224CB3A5222AE1E00002945A /* NewsspreadCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A4222AE1E00002945A /* NewsspreadCollectionView.swift */; };
-		224CB3A9222C47F90002945A /* StudyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3A8222C47F90002945A /* StudyCollectionViewController.swift */; };
 		224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */; };
 		224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
 		224F37C32460EA5A00BEDA71 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C22460EA5A00BEDA71 /* MealPlan.swift */; };
@@ -151,7 +150,6 @@
 		224CB3A0222AE0BA0002945A /* EventsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
 		224CB3A2222AE1A80002945A /* MoviesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionView.swift; sourceTree = "<group>"; };
 		224CB3A4222AE1E00002945A /* NewsspreadCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsspreadCollectionView.swift; sourceTree = "<group>"; };
-		224CB3A8222C47F90002945A /* StudyCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCollectionViewController.swift; sourceTree = "<group>"; };
 		224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaCollectionViewCell.swift; sourceTree = "<group>"; };
 		224F37C02460C0CD00BEDA71 /* EatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
 		224F37C22460EA5A00BEDA71 /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 				22195062221C8CCC00169A2B /* Lecture.swift */,
 				22195066221C8CEA00169A2B /* LectureTableViewController.swift */,
 				19EC3F6623886C6800D484E7 /* LectureCell.swift */,
-				224CB3A8222C47F90002945A /* StudyCollectionViewController.swift */,
 			);
 			path = Lectures;
 			sourceTree = "<group>";
@@ -795,7 +792,6 @@
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 				22195063221C8CCC00169A2B /* Lecture.swift in Sources */,
 				22B9D6472220B4A400854D55 /* CafeteriasCollectionViewController.swift in Sources */,
-				224CB3A9222C47F90002945A /* StudyCollectionViewController.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
 				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
 				224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */,

@@ -11,9 +11,6 @@ import CoreData
 
 final class StudyRoomTableViewController: UITableViewController{
     var rooms : [StudyRoom] = []
-    
-    private var dateFomatter = DateFormatter()
-    private var secondDateFormatter = DateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +19,7 @@ final class StudyRoomTableViewController: UITableViewController{
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if let lhsCode = lhs.code{
                 if let rhsCode = rhs.code{
-                    if lhsCode==rhsCode{
+                    if lhsCode == rhsCode{
                         return true
                     } else {
                         return lhsCode<rhsCode
@@ -67,11 +64,6 @@ final class StudyRoomTableViewController: UITableViewController{
             }
             return false
         })
-        
-        dateFomatter.locale = Locale.init(identifier: "de_DE")
-        dateFomatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        secondDateFormatter.locale = Locale.current
-        secondDateFormatter.dateFormat = "HH:mm"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,25 +79,10 @@ final class StudyRoomTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudyRoomCell.reuseIdentifier, for: indexPath) as! StudyRoomCell
-        
-        cell.roomNameLabel.text = rooms[indexPath.row].name
-        cell.roomNumberLabel.text = rooms[indexPath.row].code
-        switch rooms[indexPath.row].status {
-        case "frei":
-            cell.roomStatusLabel.textColor = .systemGreen
-            cell.roomStatusLabel.text = "Free"
-        case "belegt":
-            cell.roomStatusLabel.textColor = .systemRed
-            
-            guard let occupiedUntilString = rooms[indexPath.row].occupiedUntil else{return cell}
-            guard let occupiedUntilDate = dateFomatter.date(from: occupiedUntilString) else{return cell}
-            
-            cell.roomStatusLabel.text = "Occupied until \(secondDateFormatter.string(from: occupiedUntilDate))"
-            
-        default:
-            cell.roomStatusLabel.textColor = .systemGray
-            cell.roomStatusLabel.text = "Unknown"
-        }
+        let room = rooms[indexPath.row]
+
+        cell.configure(room: room)
+
         return cell
     }
 }

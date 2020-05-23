@@ -32,13 +32,9 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return categories.count
-    }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int { categories.count }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories[section].dishes.count
-    }
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { categories[section].dishes.count }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? MenuSectionHeader else { return UICollectionReusableView() }
@@ -50,31 +46,10 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCollectionViewCell
-        var dish = categories[indexPath.section].dishes[indexPath.row]
-        cell.nameLabel.text = dish.name
+        let dish = categories[indexPath.section].dishes[indexPath.row]
 
-        if let price = dish.prices["students"] {
-            let formatter = NumberFormatter()
-            formatter.currencySymbol = "€"
-            formatter.numberStyle = .currency
+        cell.configure(dish: dish)
 
-            var basePriceString: String?
-            var unitPriceString: String?
-
-            if let basePrice = price.basePrice, basePrice != 0 {
-                basePriceString = formatter.string(for: basePrice)
-            }
-
-            if let unitPrice = price.unitPrice, let unit = price.unit, unitPrice != 0 {
-                unitPriceString = formatter.string(for: unitPrice)?.appending(" / " + unit)
-            }
-
-            let divider: String = !(basePriceString?.isEmpty ?? true) && !(unitPriceString?.isEmpty ?? true) ? " + " : ""
-
-            cell.priceLabel.text = (basePriceString ?? "") + divider + (unitPriceString ?? "")
-        }
-
-        cell.ingredientsLabel.text = dish.namedIngredients.joined(separator: ", ")
         return cell
     }
 

@@ -73,8 +73,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case (.login, 0):
             loginController.logout()
             presentLoginViewController()
-        default:
-            break
+        default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -84,7 +83,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         guard let navCon = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
         guard let loginViewController = navCon.children.first as? LoginViewController else { return }
         loginViewController.loginController = loginController
-        self.present(navCon, animated: true)
+        present(navCon, animated: true)
     }
 
 }

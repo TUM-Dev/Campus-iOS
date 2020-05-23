@@ -86,9 +86,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
         let cell = tableView.dequeueReusableCell(withIdentifier: LectureCell.reuseIdentifier, for: indexPath) as! LectureCell
         guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
 
-        cell.titleLabel.text = lecture.title
-        cell.detailsLabel.text = "Speaker: "+(lecture.speaker ?? "")
-        cell.selectionStyle = .none
+        cell.configure(lecture: lecture)
         
         return cell
     }

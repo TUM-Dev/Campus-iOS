@@ -12,14 +12,14 @@ final class CalendarEventCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
 
-    private lazy var startDateFormatter: DateFormatter = {
+    private static let startDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "dd MMM y || HH:mm"
         return formatter
     }()
 
-    private var endDateFormatter: DateFormatter = {
+    private static let endDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "HH:mm"
@@ -30,9 +30,10 @@ final class CalendarEventCell: UITableViewCell {
         titleLabel.text = event.title
 
         if let startDate = event.startDate, let endDate = event.endDate {
-            dateLabel.text = startDateFormatter.string(from: startDate) + " - " + endDateFormatter.string(from: endDate)
+            dateLabel.text = "\(CalendarEventCell.startDateFormatter.string(from: startDate)) - \(CalendarEventCell.endDateFormatter.string(from: endDate))"
+        } else {
+            dateLabel.text = "n/a"
         }
 
-        selectionStyle = .none
     }
 }

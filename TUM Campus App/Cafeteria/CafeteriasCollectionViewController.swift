@@ -13,11 +13,16 @@ import MapKit
 final class CafeteriasCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate {
     private let endpoint: URLRequestConvertible = EatAPI.canteens
     private let sessionManager: Session = Session.defaultSession
-    private let locationManager: CLLocationManager = CLLocationManager()
+    private lazy var locationManager: CLLocationManager? = {
+        guard CLLocationManager.locationServicesEnabled() else { return nil }
+        let manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.startUpdatingLocation()
+        return manager
+    }()
     private var mapCentered = false
-
     private var stretchyHeaderView: CafeteriaSectionHeader?
-
     private var cafeterias: [Cafeteria] = []
     private var dataSource: UICollectionViewDiffableDataSource<Section, Cafeteria>?
 
@@ -37,7 +42,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
-        setupLocationManager()
         fetch()
     }
 
@@ -48,22 +52,16 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        locationManager.stopUpdatingLocation()
+        locationManager?.stopUpdatingLocation()
     }
 
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Cafeteria>(collectionView: collectionView) {
             [weak self] (collectionView: UICollectionView, indexPath: IndexPath, cafeteria: Cafeteria) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CafeteriaCell", for: indexPath) as! CafeteriaCollectionViewCell
-            cell.configure(cafeteria)
-            if let currentLocation = self?.locationManager.location {
-                let distanceFormatter = MKDistanceFormatter()
-                distanceFormatter.unitStyle = .abbreviated
-                let distance = cafeteria.coordinate.location.distance(from: currentLocation)
-                cell.distanceLabel.text = distanceFormatter.string(fromDistance: distance)
-            } else {
-                cell.distanceLabel.text = ""
-            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CafeteriaCollectionViewCell.reuseIdentifier, for: indexPath) as! CafeteriaCollectionViewCell
+
+            cell.configure(cafeteria: cafeteria, currentLocation: self?.locationManager?.location)
+
             return cell
         }
     }
@@ -75,14 +73,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
             header.mapView.addAnnotations(self?.cafeterias ?? [])
             header.mapView.delegate = self
             return header
-        }
-    }
-
-    private func setupLocationManager() {
-        if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-            locationManager.startUpdatingLocation()
         }
     }
 
@@ -101,7 +91,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     private func fetch() {
         sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [weak self] response in
             self?.cafeterias = response.value ?? []
-            if let currentLocation = self?.locationManager.location {
+            if let currentLocation = self?.locationManager?.location {
                 self?.cafeterias.sortByDistance(to: currentLocation)
             }
             self?.stretchyHeaderView?.mapView.addAnnotations(response.value ?? [])
@@ -113,7 +103,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         }
     }
 
-
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -124,18 +113,11 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     // MARK: - UICollectionViewDelegateFlowLayout
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.95, height: CGFloat(120))
-    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { CGSize(width: UIScreen.main.bounds.width * 0.95, height: CGFloat(120)) }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: view.frame.width, height: 340)
-    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize { .init(width: view.frame.width, height: 340) }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
-    }
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets { UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0) }
 
     // MARK: - CLLocationManagerDelegate
 
@@ -154,7 +136,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
         snapshot.appendSections([.main])
         snapshot.appendItems(cafeterias, toSection: .main)
-        self.dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

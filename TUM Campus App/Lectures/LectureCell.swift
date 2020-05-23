@@ -9,17 +9,11 @@
 import UIKit
 
 final class LectureCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var detailsLabel: UILabel!
 
-    @IBOutlet weak var titleLabel: UILabel! {
-        didSet {
-            titleLabel.numberOfLines = 0
-            titleLabel.sizeToFit()
-        }
-    }
-    
-    @IBOutlet weak var detailsLabel: UILabel! {
-        didSet {
-            detailsLabel.font = UIFont.systemFont(ofSize: 12)
-        }
+    func configure(lecture: Lecture) {
+        titleLabel.text = lecture.title
+        detailsLabel.text = "Speaker: \(lecture.speaker ?? "n/a")"
     }
 }

@@ -9,9 +9,42 @@
 import UIKit
 
 final class MenuCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var ingredientsLabel: UILabel!
+
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.currencySymbol = "€"
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+
+
+    func configure(dish: Dish) {
+        nameLabel.text = dish.name
+
+        if let price = dish.prices["students"] {
+            var basePriceString: String?
+            var unitPriceString: String?
+
+            if let basePrice = price.basePrice, basePrice != 0 {
+                basePriceString = MenuCollectionViewCell.priceFormatter.string(for: basePrice)
+            }
+
+            if let unitPrice = price.unitPrice, let unit = price.unit, unitPrice != 0 {
+                unitPriceString = MenuCollectionViewCell.priceFormatter.string(for: unitPrice)?.appending(" / " + unit)
+            }
+
+            let divider: String = !(basePriceString?.isEmpty ?? true) && !(unitPriceString?.isEmpty ?? true) ? " + " : ""
+
+            priceLabel.text = (basePriceString ?? "") + divider + (unitPriceString ?? "")
+        } else {
+            priceLabel.text = "n/a"
+        }
+
+        ingredientsLabel.text = dish.namedIngredients.joined(separator: ", ")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

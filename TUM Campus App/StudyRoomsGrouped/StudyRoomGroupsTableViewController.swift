@@ -102,9 +102,9 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StudyRoomGroupedTableViewCell.reuseIdentifier, for: indexPath) as! StudyRoomGroupedTableViewCell
         guard let roomGroup = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
-        
-        cell.titleLabel.text = roomGroup.name
-        cell.numberLabel.text = "\(roomGroup.rooms?.count ?? 0)"
+
+        cell.configure(group: roomGroup)
+
         return cell
     }
 

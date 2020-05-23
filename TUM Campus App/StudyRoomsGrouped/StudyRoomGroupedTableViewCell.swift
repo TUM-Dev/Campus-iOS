@@ -9,7 +9,11 @@
 import UIKit
 
 final class StudyRoomGroupedTableViewCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var numberLabel: UILabel!
+
+    func configure(group:  StudyRoomGroup) {
+        titleLabel.text = group.name
+        numberLabel.text = "\(group.rooms?.count ?? 0)"
+    }
 }
