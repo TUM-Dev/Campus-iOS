@@ -33,15 +33,11 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
             tableView.refreshControl?.beginRefreshing()
         }
         importer.performFetch(success: { [weak self] in
-            try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.refreshControl?.endRefreshing()
-        }, error: { [weak self] error in
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
-            _ = try? self?.importer.context.execute(deleteRequest)
             try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.reloadData()
+        }, error: { [weak self] _ in
             self?.tableView.refreshControl?.endRefreshing()
-            self?.setBackgroundLabel(with: error.localizedDescription)
         })
     }
 

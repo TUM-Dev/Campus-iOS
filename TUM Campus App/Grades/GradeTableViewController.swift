@@ -39,14 +39,15 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
             tableView.refreshControl?.beginRefreshing()
         }
         importer.performFetch(success: { [weak self] in
-            try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.refreshControl?.endRefreshing()
+            try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.reloadData()
         }, error: { [weak self] error in
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
+            self?.tableView.refreshControl?.endRefreshing()
+            guard error is TUMOnlineAPIError else { return }
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: Grade.fetchRequest())
             _ = try? self?.importer.context.execute(deleteRequest)
             try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.refreshControl?.endRefreshing()
             self?.tableView.reloadData()
             self?.setBackgroundLabel(with: error.localizedDescription)
         })

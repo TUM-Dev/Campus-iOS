@@ -38,13 +38,15 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
             tableView.refreshControl?.beginRefreshing()
         }
         importer.performFetch(success: { [weak self] in
-            try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.refreshControl?.endRefreshing()
+            try? self?.importer.fetchedResultsController.performFetch()
+            self?.tableView.reloadData()
         }, error: { [weak self] error in
+            self?.tableView.refreshControl?.endRefreshing()
+            guard error is TUMOnlineAPIError else { return }
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: Lecture.fetchRequest())
             _ = try? self?.importer.context.execute(deleteRequest)
             try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.refreshControl?.endRefreshing()
             self?.tableView.reloadData()
             self?.setBackgroundLabel(with: error.localizedDescription)
         })

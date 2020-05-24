@@ -59,15 +59,11 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
             tableView.refreshControl?.beginRefreshing()
         }
         importer.performFetch(success: { [weak self] in
-            try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.refreshControl?.endRefreshing()
-        }, error: { [weak self] error in
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
-            _ = try? self?.importer.context.execute(deleteRequest)
             try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.refreshControl?.endRefreshing()
             self?.tableView.reloadData()
-            self?.setBackgroundLabel(with: error.localizedDescription)
+        }, error: { [weak self] _ in
+            self?.tableView.refreshControl?.endRefreshing()
         })
     }
 
