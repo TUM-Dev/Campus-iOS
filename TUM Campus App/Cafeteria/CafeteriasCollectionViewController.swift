@@ -72,6 +72,8 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
             self?.stretchyHeaderView = header
             header.mapView.addAnnotations(self?.cafeterias ?? [])
             header.mapView.delegate = self
+            header.isAccessibilityElement = true
+            header.accessibilityLabel = "Cafeteria Map".localized
             return header
         }
     }

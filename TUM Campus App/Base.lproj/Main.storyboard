@@ -439,6 +439,9 @@
                     <navigationItem key="navigationItem" id="8aI-uv-X94">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="LOd-Yu-1gj">
                             <color key="tintColor" name="tumBlue"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="imH-MT-aws" kind="presentation" id="hys-4v-y6u"/>
                             </connections>
@@ -593,6 +596,9 @@
                     <navigationItem key="navigationItem" id="Fhk-rD-gIM">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="FGD-UB-y2p">
                             <color key="tintColor" name="tumBlue"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="imH-MT-aws" kind="showDetail" id="V0d-7M-17e"/>
                             </connections>
@@ -1015,6 +1021,9 @@
                     <navigationItem key="navigationItem" id="lar-CE-Q5g">
                         <barButtonItem key="rightBarButtonItem" image="person.crop.circle" catalog="system" id="vY4-jC-G5O">
                             <color key="tintColor" name="tumBlue"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="imH-MT-aws" kind="showDetail" id="YdS-97-vv4"/>
                             </connections>
@@ -1082,6 +1091,9 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="G6C-0G-tyB">
                         <barButtonItem key="rightBarButtonItem" image="person.crop.circle" catalog="system" id="LEd-ud-xri">
                             <color key="tintColor" name="tumBlue"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <segue destination="imH-MT-aws" kind="showDetail" id="oDN-gj-Gkq"/>
                             </connections>
@@ -1244,7 +1256,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="imH-MT-aws" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OKH-mf-mP5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1377,7 +1389,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hys-4v-y6u"/>
+        <segue reference="oDN-gj-Gkq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="About" width="29" height="29"/>

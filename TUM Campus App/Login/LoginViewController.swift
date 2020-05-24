@@ -47,6 +47,10 @@ final class LoginViewController: UIViewController {
         continueButton.alpha = 0.6
         continueButton.setTitle("Continue".localized, for: .disabled)
         continueButton.setTitle("Continue".localized + "🎓", for: .normal)
+
+        firstTextField.accessibilityLabel = "First 2 letters of TUM ID".localized
+        numbersTextField.accessibilityLabel = "2 numbers in the middle of TUM ID".localized
+        secondTextField.accessibilityLabel = "Last 3 letters of TUM ID".localized
     }
     
     
