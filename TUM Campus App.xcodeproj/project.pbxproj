@@ -59,6 +59,8 @@
 		225AD7572479D33F001A969E /* XMLParsing in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7562479D33F001A969E /* XMLParsing */; };
 		225AD75A2479D358001A969E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* KeychainAccess */; };
 		225AD75D2479D390001A969E /* KingfisherStatic in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD75C2479D390001A969E /* KingfisherStatic */; };
+		2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7F8247AC2C5004F99E6 /* Room.swift */; };
+		2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7FA247AC3E8004F99E6 /* RoomMap.swift */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
 		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
@@ -66,6 +68,7 @@
 		22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9E221E19F6002C5720 /* GradeTableViewController.swift */; };
 		22710B552479E0D30065D6E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22710B532479E0D30065D6E9 /* Localizable.strings */; };
 		22710B572479E1290065D6E9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22710B592479E1290065D6E9 /* Login.storyboard */; };
+		22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -162,6 +165,8 @@
 		2258EDBA22221EE80079C2ED /* StudyRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoom.swift; sourceTree = "<group>"; };
 		2258EDBC22221EF00079C2ED /* StudyRoomGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroup.swift; sourceTree = "<group>"; };
 		2258EDBF22222B590079C2ED /* TUMSexyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyLink.swift; sourceTree = "<group>"; };
+		2261E7F8247AC2C5004F99E6 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		2261E7FA247AC3E8004F99E6 /* RoomMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMap.swift; sourceTree = "<group>"; };
 		22683D68221C5E0200C70883 /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		22692D95221DCE29002C5720 /* EntityImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		22692D97221E0F05002C5720 /* EntityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTableViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +177,7 @@
 		22710B562479E0EE0065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22710B582479E1290065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Login.storyboard; sourceTree = "<group>"; };
 		22710B5A2479E13C0065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderViewController.swift; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMCampusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -324,6 +330,16 @@
 			path = Grades;
 			sourceTree = "<group>";
 		};
+		22710B5B247AB5E10065D6E9 /* Room Finder */ = {
+			isa = PBXGroup;
+			children = (
+				2261E7F8247AC2C5004F99E6 /* Room.swift */,
+				2261E7FA247AC3E8004F99E6 /* RoomMap.swift */,
+				22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */,
+			);
+			path = "Room Finder";
+			sourceTree = "<group>";
+		};
 		2277E90321D93C3300D7FF3F = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +378,7 @@
 				22B9D6412220851D00854D55 /* Profile */,
 				2258EDB222221D6B0079C2ED /* Events */,
 				2258EDB922221EA60079C2ED /* StudyRoomsGrouped */,
+				22710B5B247AB5E10065D6E9 /* Room Finder */,
 				2258EDBE22222B430079C2ED /* TUMSexy */,
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
 				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,
@@ -661,6 +678,7 @@
 			files = (
 				224CB3A5222AE1E00002945A /* NewsspreadCollectionView.swift in Sources */,
 				19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */,
+				2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */,
 				224CB396222ADB0F0002945A /* NewsspreadCollectionViewCell.swift in Sources */,
 				2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */,
 				19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */,
@@ -715,6 +733,7 @@
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
 				22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */,
 				22B9D634222000F300854D55 /* Movie.swift in Sources */,
+				22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */,
 				22F9629C2460ED03004BF215 /* Dish.swift in Sources */,
 				22B9D6382220024C00854D55 /* MovieTableViewController.swift in Sources */,
 				22B9D64322208BF300854D55 /* Profile.swift in Sources */,
@@ -725,6 +744,7 @@
 				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
 				224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */,
 				22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */,
+				2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */,

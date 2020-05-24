@@ -18,6 +18,7 @@ enum TUMCabeAPI: URLRequestConvertible {
     case roomSearch(query: String)
     case roomMaps(room: String)
     case mapImage(room: String, id: String)
+    case defaultMap(room: String)
     case registerDevice(publicKey: String)
     case events
     case myEvents
@@ -44,8 +45,9 @@ enum TUMCabeAPI: URLRequestConvertible {
         case .news:                             return "news"
         case .newsSources:                      return "news/sources"
         case .newsAlert:                        return "news/alert"
-        case .roomSearch(let query):            return "roomfinder/room/search/\(query)"
+        case .roomSearch:                       return "roomfinder/room/search/room"
         case .roomMaps(let room):               return "roomfinder/room/availableMaps/\(room)"
+        case .defaultMap(let room):             return "roomfinder/room/defaultMap/\(room)"
         case .mapImage(let room, let id):       return "roomfinder/room/map/\(room)/\(id)"
         case .registerDevice(let publicKey):    return "device/register/\(publicKey)"
         case .events:                           return "event/list"
@@ -69,7 +71,14 @@ enum TUMCabeAPI: URLRequestConvertible {
     
     func asURLRequest() throws -> URLRequest {
         let url = try TUMCabeAPI.baseURLString.asURL()
-        let urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
+        var urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
+
+        switch self {
+        case let .roomSearch(query):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["room": query])
+        default:
+            break
+        }
         return urlRequest
     }
 }
