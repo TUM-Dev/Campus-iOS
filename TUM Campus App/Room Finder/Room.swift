@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Room: Codable {
+struct Room: Codable, Hashable {
     /*
      {
         "room_id": "59773",
@@ -30,8 +30,8 @@ struct Room: Codable {
     let info: String
     let address: String
     let purpose: String
-    let campusShort: String
     let campus: String
+    let name: String
 
     enum CodingKeys: String, CodingKey {
         case roomId = "room_id"
@@ -41,8 +41,8 @@ struct Room: Codable {
         case info
         case address
         case purpose
-        case campusShort = "campus"
-        case campus = "name"
+        case campus
+        case name
     }
 
 }

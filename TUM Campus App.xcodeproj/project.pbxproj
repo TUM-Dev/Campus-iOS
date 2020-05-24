@@ -76,6 +76,8 @@
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
+		22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4589247AF15600CE5B29 /* RoomCell.swift */; };
+		22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458B247AF82300CE5B29 /* RoomViewController.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
@@ -192,6 +194,8 @@
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2277E94021D93C4B00D7FF3F /* Campus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Campus.entitlements; sourceTree = "<group>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		22AE458B247AF82300CE5B29 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				2261E7F8247AC2C5004F99E6 /* Room.swift */,
 				2261E7FA247AC3E8004F99E6 /* RoomMap.swift */,
 				22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */,
+				22AE4589247AF15600CE5B29 /* RoomCell.swift */,
+				22AE458B247AF82300CE5B29 /* RoomViewController.swift */,
 			);
 			path = "Room Finder";
 			sourceTree = "<group>";
@@ -683,6 +689,7 @@
 				2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */,
 				19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */,
 				22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */,
+				22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */,
 				223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
@@ -716,6 +723,7 @@
 				22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */,
 				22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */,
 				22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */,
+				22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */,
 				22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				22B8E7BA2389C91600CFEDEE /* ProfileTableViewController.swift in Sources */,

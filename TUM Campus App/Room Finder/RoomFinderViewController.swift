@@ -12,33 +12,34 @@ import Alamofire
 final class RoomFinderViewController: UITableViewController, UISearchResultsUpdating {
     private let sessionManager: Session = Session.defaultSession
     private var rooms: [Room] = []
+    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
+
+    private enum Section: CaseIterable {
+        case main
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Rooms"
+        searchController.searchBar.placeholder = "Search Rooms".localized
         navigationItem.searchController = searchController
         definesPresentationContext = true
         tableView.tableFooterView = UIView()
+        setupDataSource()
+        title = "Room Finder".localized
     }
 
+    private func setupDataSource() {
+        dataSource = UITableViewDiffableDataSource<Section, Room>(tableView: tableView) {
+            (tableView: UITableView, indexPath: IndexPath, room: Room) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: RoomCell.reuseIdentifier, for: indexPath) as! RoomCell
 
-    // MARK: - UITableViewDataSource
+            cell.configure(room: room)
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rooms.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
-        let room = rooms[indexPath.row]
-
-        cell.textLabel?.text = room.roomCode
-        cell.detailTextLabel?.text = room.campus
-
-        return cell
+            return cell
+        }
     }
 
     // MARK: - UISearchResultsUpdating
@@ -48,8 +49,10 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         guard let searchString = searchBar.text else { return }
         let endpoint = TUMCabeAPI.roomSearch(query: searchString)
         sessionManager.request(endpoint).responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
-            self?.rooms = response.value ?? []
-            self?.tableView.reloadData()
+            var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(response.value ?? [], toSection: .main)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 
