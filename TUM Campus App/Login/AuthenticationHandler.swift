@@ -241,3 +241,23 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
 
 }
+
+
+final class ForceHTTPSRedirectHandler: RedirectHandler {
+    func task(_ task: URLSessionTask,
+              willBeRedirectedTo request: URLRequest,
+              for response: HTTPURLResponse,
+              completion: @escaping (URLRequest?) -> Void) {
+
+        guard let url = request.url else { return completion(request) }
+
+        if url.scheme == "http" {
+            let modifiedURL = url.absoluteString.replacingOccurrences(of: "http", with: "https")
+            var modifiedRequest = request
+            modifiedRequest.url = URL(string: modifiedURL)
+            return completion(modifiedRequest)
+        }
+
+        return completion(request)
+    }
+}

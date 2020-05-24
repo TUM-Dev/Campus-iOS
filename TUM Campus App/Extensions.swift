@@ -113,14 +113,14 @@ extension Session {
     static var defaultSession: Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: nil), retrier: AuthenticationHandler(delegate: nil))
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier)
+        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler())
         return manager
     }
     
     static func defaultSession(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: delegate), retrier: AuthenticationHandler(delegate: delegate))
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier)
+        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler())
         return manager
     }
 }
@@ -136,6 +136,19 @@ extension UITableViewController {
         tableView.backgroundView = noDataLabel
     }
 }
+
+extension UICollectionView {
+    func setBackgroundLabel(with text: String) {
+        let noDataLabel = UILabel()
+        noDataLabel.text = text
+        noDataLabel.numberOfLines = 0
+        noDataLabel.font = UIFont.preferredFont(forTextStyle: .title2)
+        noDataLabel.textColor = .systemGray
+        noDataLabel.textAlignment = .center
+        backgroundView = noDataLabel
+    }
+}
+
 
  extension KeyPath where Root: NSObject {
     var stringValue: String {

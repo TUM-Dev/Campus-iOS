@@ -11,7 +11,6 @@ import Alamofire
 
 final class RoomFinderViewController: UITableViewController, UISearchResultsUpdating {
     private let sessionManager: Session = Session.defaultSession
-    private var rooms: [Room] = []
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     private enum Section: CaseIterable {
@@ -42,12 +41,23 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         }
     }
 
+    // MARK: - UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RoomViewController") as? RoomViewController,
+            let room = dataSource?.snapshot().itemIdentifiers[indexPath.row] else { return }
+
+        destination.room = room
+        navigationController?.pushViewController(destination, animated: true)
+    }
+
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         guard let searchString = searchBar.text else { return }
         let endpoint = TUMCabeAPI.roomSearch(query: searchString)
+        sessionManager.cancelAllRequests()
         sessionManager.request(endpoint).responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([.main])

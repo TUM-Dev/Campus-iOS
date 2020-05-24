@@ -78,6 +78,7 @@
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4589247AF15600CE5B29 /* RoomCell.swift */; };
 		22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458B247AF82300CE5B29 /* RoomViewController.swift */; };
+		22AE458E247B214200CE5B29 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458D247B214200CE5B29 /* MapCell.swift */; };
 		22B00AEE21D9445300E65C86 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AED21D9445300E65C86 /* Extensions.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
@@ -196,6 +197,7 @@
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		22AE458B247AF82300CE5B29 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		22AE458D247B214200CE5B29 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		22B00AED21D9445300E65C86 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */,
 				22AE4589247AF15600CE5B29 /* RoomCell.swift */,
 				22AE458B247AF82300CE5B29 /* RoomViewController.swift */,
+				22AE458D247B214200CE5B29 /* MapCell.swift */,
 			);
 			path = "Room Finder";
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				22F9629E246177D9004BF215 /* Menu.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,
+				22AE458E247B214200CE5B29 /* MapCell.swift in Sources */,
 				2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */,
 				224F37C32460EA5A00BEDA71 /* MealPlan.swift in Sources */,
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,

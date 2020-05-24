@@ -62,7 +62,7 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
             break
         }
 
-        return numberOfSections ?? 0
+        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

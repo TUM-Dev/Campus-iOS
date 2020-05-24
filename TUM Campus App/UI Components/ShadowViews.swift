@@ -23,13 +23,15 @@ extension Shadow where Self: UIView {
     }
     
     func addShadow() {
-        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowOffset = CGSize(width: 1, height: 4)
         layer.shadowOpacity = shadowOpacity
         layer.shadowRadius = shadowRadius
         layer.masksToBounds = false
     }
     
 }
+
+
 
 @IBDesignable
 final class ShadowView: UIView, Shadow {
@@ -40,7 +42,7 @@ final class ShadowView: UIView, Shadow {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = UIColor.lightGray {
+    @IBInspectable var shadowColor: UIColor = UIColor.systemGray {
         didSet {
             layer.shadowColor = shadowColor.cgColor
         }
@@ -52,7 +54,7 @@ final class ShadowView: UIView, Shadow {
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 0.3 {
+    @IBInspectable var shadowOpacity: Float = 0.1 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
@@ -74,7 +76,7 @@ final class ShadowButton: UIButton, Shadow {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = UIColor.lightGray {
+    @IBInspectable var shadowColor: UIColor = UIColor.systemGray {
         didSet {
             layer.shadowColor = shadowColor.cgColor
         }
@@ -86,7 +88,7 @@ final class ShadowButton: UIButton, Shadow {
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 0.3 {
+    @IBInspectable var shadowOpacity: Float = 0.1 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
@@ -137,7 +139,7 @@ final class ShadowImageView: UIImageView, Shadow {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = UIColor.lightGray {
+    @IBInspectable var shadowColor: UIColor = UIColor.systemGray {
         didSet {
             layer.shadowColor = shadowColor.cgColor
         }
@@ -149,7 +151,7 @@ final class ShadowImageView: UIImageView, Shadow {
         }
     }
     
-    @IBInspectable var shadowOpacity: Float = 0.3 {
+    @IBInspectable var shadowOpacity: Float = 0.1 {
         didSet {
             layer.shadowOpacity = shadowOpacity
         }
