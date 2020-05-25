@@ -48,7 +48,7 @@ enum TUMCabeAPI: URLRequestConvertible {
         case .newsAlert:                        return "news/alert"
         case .roomSearch(let room):             return "roomfinder/room/search/\(room.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? "")"
         case .roomMaps(let room):               return "roomfinder/room/availableMaps/\(room)"
-        case .roomCoordinates(let room):        return "/roomfinder/room/coordinatesById/\(room)"
+        case .roomCoordinates(let room):        return "roomfinder/room/coordinates/\(room)"
         case .defaultMap(let room):             return "roomfinder/room/defaultMap/\(room)"
         case .mapImage(let room, let id):       return "roomfinder/room/map/\(room)/\(id)"
         case .registerDevice(let publicKey):    return "device/register/\(publicKey)"

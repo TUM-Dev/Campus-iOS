@@ -14,8 +14,8 @@ final class StudyRoomTableViewController: UITableViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
-        navigationController?.navigationBar.prefersLargeTitles = false
         rooms.sort(by: { (lhs, rhs) -> Bool in
             if let lhsCode = lhs.code{
                 if let rhsCode = rhs.code{
@@ -64,11 +64,6 @@ final class StudyRoomTableViewController: UITableViewController{
             }
             return false
         })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.navigationBar.prefersLargeTitles = false
     }
 
     // MARK: UITableViewDataSource

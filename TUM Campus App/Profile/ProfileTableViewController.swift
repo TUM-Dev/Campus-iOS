@@ -30,7 +30,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case profile
         case myTUM
         case general
-        case beta
+        case contact
         case login
     }
 
@@ -65,6 +65,15 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
             performSegue(withIdentifier: "showTuition", sender: nil)
         case (.general, 1):
             performSegue(withIdentifier: "showTUMSexy", sender: nil)
+        case (.contact, 0):
+            guard let url = URL(string: "https://www.tum.app") else { return }
+            UIApplication.shared.open(url)
+        case (.contact, 1):
+            guard let url = URL(string: "https://github.com/TUM-Dev/Campus-iOS") else { return }
+            UIApplication.shared.open(url)
+        case (.contact, 2):
+            guard let url = URL(string: "https://www.tum.app") else { return }
+            UIApplication.shared.open(url)
         case (.login, 0):
             loginController.logout()
             presentLoginViewController()

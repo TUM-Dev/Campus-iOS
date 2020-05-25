@@ -17,10 +17,9 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet private weak var purposeLabel: UILabel!
     private let sessionManager: Session = Session.defaultSession
     private var maps: [UIImage]?
-    private var coordinates: CLLocationCoordinate2D?
     var room: Room? {
         didSet {
-            fetchMapImages()
+            fetch()
         }
     }
 
@@ -40,7 +39,7 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
-    private func fetchMapImages() {
+    private func fetch() {
         guard let room = room else { return }
         let mapsEndpoint = TUMCabeAPI.roomMaps(room: room.id)
         sessionManager.request(mapsEndpoint).responseDecodable(of: [RoomMap].self, decoder: JSONDecoder()) { [weak self] response in
@@ -59,8 +58,6 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
-
-        // TODO: rename function and fetch cords
     }
 
     // MARK: - UICollectionViewDataSource
@@ -100,10 +97,6 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 128, height: 128)
-    }
-
-    @IBAction private func showInMaps(_ sender: Any) {
-        // TODO
     }
 
 }

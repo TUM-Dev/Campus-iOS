@@ -42,7 +42,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         setupTableView()
         importer.fetchedResultsController.delegate = self
         title = "Study Rooms".localized
@@ -50,7 +50,6 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
         fetch(animated: animated)
     }
 
@@ -70,7 +69,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     private func setupTableView() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
-//        tableView.refreshControl = refreshControl
+//        tableView.refreshControl = refreshControl --this is buggy for some reason
         tableView.tableFooterView = UIView()
     }
 

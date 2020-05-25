@@ -76,3 +76,30 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
         }
     }
 }
+
+
+enum TUMOCabeAPIError: APIError, LocalizedError {
+    case unkown(String)
+
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let error = try container.decode(String.self, forKey: .message)
+
+        switch error {
+        default:
+            self = .unkown(error)
+        }
+    }
+
+    public var errorDescription: String? {
+        switch self {
+        case let .unkown(message):
+            return "\("Unkonw error".localized): \(message)"
+        }
+    }
+}
+

@@ -10,25 +10,17 @@ import UIKit
 import Alamofire
 
 final class MealPlanTableViewController: UITableViewController {
-    private var endpoint: URLRequestConvertible? {
-        guard let id = cafeteria?.id else { return nil }
-        return EatAPI.menu(location: id)
-    }
     private let sessionManager: Session = Session.defaultSession
-    var cafeteria: Cafeteria? {
-        didSet {
-            title = cafeteria?.name
-        }
-    }
-    private var menus: [Menu] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var menus: [Menu] = []
+    var cafeteria: Cafeteria?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        extendedLayoutIncludesOpaqueBars = true
         tableView.tableFooterView = UIView()
+        title = cafeteria?.name
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,14 +30,26 @@ final class MealPlanTableViewController: UITableViewController {
         fetch()
     }
 
-    private func fetch() {
-        guard let endpoint = endpoint else { return }
+    @objc private func fetch() {
+        guard let cafeteria = cafeteria else { return }
         let decoder = JSONDecoder()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(formatter)
-        sessionManager.request(endpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { response in
-            self.menus = response.value?.days.filter({ !$0.dishes.isEmpty }).sorted(by: >) ?? []
+        menus.removeAll()
+        let thisWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: Date().year, week: Date().weekOfYear)
+        sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
+            guard let value = response.value else { return }
+            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty }).sorted(by: >))
+            self?.tableView.reloadData()
+        }
+        let calendar = Calendar.current
+        guard let nextWeek = calendar.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
+        let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
+        sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
+            guard let value = response.value else { return }
+            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty }).sorted(by: >))
+            self?.tableView.reloadData()
         }
     }
 
