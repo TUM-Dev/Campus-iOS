@@ -475,12 +475,12 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" verticalHuggingPriority="253" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yEZ-3f-LXO">
                                                     <rect key="frame" x="0.0" y="26" width="267.5" height="41.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="241" text="name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-1p-ihP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="241" ambiguous="YES" text="name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-1p-ihP">
                                                             <rect key="frame" x="0.0" y="0.0" width="267.5" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ0-vr-lBR">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ0-vr-lBR">
                                                             <rect key="frame" x="0.0" y="28" width="267.5" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -946,10 +946,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KBN-MI-gOl">
-                                                    <rect key="frame" x="16" y="11" width="343" height="21.5"/>
+                                                    <rect key="frame" x="8" y="11" width="359" height="21.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8G-mW-9Pj">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="21.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="359" height="21.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1501,9 +1501,17 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQx-S2-Koq">
-                                <rect key="frame" x="16" y="305.5" width="343" height="30"/>
-                                <state key="normal" title="Show in Maps"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQx-S2-Koq" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
+                                <rect key="frame" x="117.5" y="305.5" width="140" height="42"/>
+                                <color key="backgroundColor" name="tumBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="5Iy-NE-2nd"/>
+                                    <constraint firstAttribute="width" constant="140" id="piD-ka-tkE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <state key="normal" title="Show in Maps">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="showInMaps:" destination="xQ1-bv-WIM" eventType="touchUpInside" id="K0B-SD-gj5"/>
                                 </connections>
@@ -1512,14 +1520,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="leading" secondItem="ICf-Ev-g81" secondAttribute="leading" id="2IH-0a-LO0"/>
-                            <constraint firstItem="jQx-S2-Koq" firstAttribute="leading" secondItem="ICf-Ev-g81" secondAttribute="leading" constant="16" id="BT7-Fo-1NN"/>
+                            <constraint firstItem="jQx-S2-Koq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ICf-Ev-g81" secondAttribute="leading" constant="16" id="BT7-Fo-1NN"/>
                             <constraint firstItem="jQx-S2-Koq" firstAttribute="top" secondItem="DXg-yy-qug" secondAttribute="bottom" constant="34" id="EVh-oe-gAF"/>
                             <constraint firstItem="ICf-Ev-g81" firstAttribute="trailing" secondItem="2SO-PD-x77" secondAttribute="trailing" constant="8" id="L3r-ga-CaC"/>
                             <constraint firstItem="2SO-PD-x77" firstAttribute="top" secondItem="ICf-Ev-g81" secondAttribute="top" id="UaA-JR-AYs"/>
                             <constraint firstItem="2SO-PD-x77" firstAttribute="leading" secondItem="ICf-Ev-g81" secondAttribute="leading" constant="8" id="Ujg-6c-9OC"/>
+                            <constraint firstItem="jQx-S2-Koq" firstAttribute="centerX" secondItem="93V-pX-FYV" secondAttribute="centerX" id="VgB-TI-sXs"/>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="top" secondItem="2SO-PD-x77" secondAttribute="bottom" constant="48" id="nDA-dR-1d0"/>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="trailing" secondItem="ICf-Ev-g81" secondAttribute="trailing" id="omP-si-9uj"/>
-                            <constraint firstItem="ICf-Ev-g81" firstAttribute="trailing" secondItem="jQx-S2-Koq" secondAttribute="trailing" constant="16" id="yid-kk-3im"/>
+                            <constraint firstItem="ICf-Ev-g81" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jQx-S2-Koq" secondAttribute="trailing" constant="16" id="yid-kk-3im"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ICf-Ev-g81"/>
                     </view>
@@ -1533,6 +1542,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sAv-hQ-dMY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5664.8000000000002" y="1831.9340329835084"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="hZt-st-p1j">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="KBP-tX-Y5p" customClass="MapViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sp4-gO-cJM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PO3-OP-CHn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8H-bF-4B9">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YE4-j8-svX" customClass="IconButton" customModule="TUMCampusApp" customModuleProvider="target">
+                                        <rect key="frame" x="327" y="16" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="sJl-Qg-n7O"/>
+                                            <constraint firstAttribute="width" constant="32" id="xxN-dX-7fq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" image="chevron.down.circle.fill" catalog="system"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="pointSize">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="dismiss:" destination="KBP-tX-Y5p" eventType="touchUpInside" id="wu8-Tr-9Qo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="p8H-bF-4B9" firstAttribute="leading" secondItem="PO3-OP-CHn" secondAttribute="leading" id="7BL-Ys-Lys"/>
+                                    <constraint firstItem="YE4-j8-svX" firstAttribute="top" secondItem="XBC-Cm-fTD" secondAttribute="top" constant="16" id="Esp-VS-ECp"/>
+                                    <constraint firstAttribute="trailing" secondItem="p8H-bF-4B9" secondAttribute="trailing" id="Sj1-VD-6B2"/>
+                                    <constraint firstItem="p8H-bF-4B9" firstAttribute="top" secondItem="PO3-OP-CHn" secondAttribute="top" id="TlK-DN-sT6"/>
+                                    <constraint firstItem="XBC-Cm-fTD" firstAttribute="trailing" secondItem="YE4-j8-svX" secondAttribute="trailing" constant="16" id="oB8-aE-JxX"/>
+                                    <constraint firstAttribute="bottom" secondItem="p8H-bF-4B9" secondAttribute="bottom" id="uGt-J6-XHL"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Kke-2k-zmp"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="XBC-Cm-fTD"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MJ3-94-1tA" firstAttribute="trailing" secondItem="PO3-OP-CHn" secondAttribute="trailing" id="7QU-cu-wm8"/>
+                            <constraint firstItem="PO3-OP-CHn" firstAttribute="top" secondItem="MJ3-94-1tA" secondAttribute="top" id="PDB-7h-rgY"/>
+                            <constraint firstAttribute="bottom" secondItem="PO3-OP-CHn" secondAttribute="bottom" id="chp-rh-zgZ"/>
+                            <constraint firstItem="PO3-OP-CHn" firstAttribute="leading" secondItem="MJ3-94-1tA" secondAttribute="leading" id="lGy-M3-B4R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MJ3-94-1tA"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="p8H-bF-4B9" id="kjT-kv-CBY"/>
+                        <outlet property="imageViewBottomConstraint" destination="uGt-J6-XHL" id="x46-g8-pGc"/>
+                        <outlet property="imageViewLeadingConstraint" destination="7BL-Ys-Lys" id="XIW-aW-IL7"/>
+                        <outlet property="imageViewTopConstraint" destination="TlK-DN-sT6" id="nin-Ko-L0E"/>
+                        <outlet property="imageViewTrailingConstraint" destination="Sj1-VD-6B2" id="O7S-0n-tyJ"/>
+                        <outlet property="scrollView" destination="PO3-OP-CHn" id="dsB-Qb-RN1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evW-LI-C5p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6458.3999999999996" y="1831.9340329835084"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ren-MN-LBL">
@@ -1684,6 +1759,7 @@
         <image name="book" catalog="system" width="128" height="101"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark.shield" catalog="system" width="128" height="121"/>
+        <image name="chevron.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="110"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>

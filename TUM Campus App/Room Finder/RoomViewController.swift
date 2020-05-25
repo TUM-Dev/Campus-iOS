@@ -16,7 +16,7 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var purposeLabel: UILabel!
     private let sessionManager: Session = Session.defaultSession
-    private var maps: [UIImage] = []
+    private var maps: [UIImage]?
     private var coordinates: CLLocationCoordinate2D?
     var room: Room? {
         didSet {
@@ -42,18 +42,24 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
 
     private func fetchMapImages() {
         guard let room = room else { return }
-        maps = []
         let mapsEndpoint = TUMCabeAPI.roomMaps(room: room.id)
         sessionManager.request(mapsEndpoint).responseDecodable(of: [RoomMap].self, decoder: JSONDecoder()) { [weak self] response in
-            response.value?.forEach {
+            guard let value = response.value else {
+                self?.collectionView.reloadData()
+                return
+            }
+            self?.maps = []
+            self?.maps?.reserveCapacity(response.value?.count ?? 3)
+            value.forEach {
                 let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: $0.id)
                 self?.sessionManager.request(mapImageEndpoint).responseData { [weak self] in
                     guard let imageData = $0.value, let image = UIImage(data: imageData) else { return }
-                    self?.maps.append(image)
+                    self?.maps?.append(image)
                     self?.collectionView.reloadData()
                 }
             }
         }
+
         // TODO: rename function and fetch cords
     }
 
@@ -62,19 +68,21 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch maps.count {
-        case 0:
+        switch maps?.count {
+        case let .some(count) where count == 0:
             collectionView.setBackgroundLabel(with: "Missing Map".localized)
-        default:
+        case let .some(count) where count > 0:
             collectionView.backgroundView = nil
+        default:
+            collectionView.setBackgroundLabel(with: "Missing Map".localized)
         }
 
-        return maps.count
+        return maps?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCell.reuseIdentifier, for: indexPath) as! MapCell
-        let mapImage = maps[indexPath.row]
+        let mapImage = maps?[indexPath.row]
         cell.imageView.image = mapImage
         return cell
     }
@@ -82,10 +90,10 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     // MARK: - UICollectionViewDelegate
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
-//        destination.cafeteria = dataSource?.itemIdentifier(for: indexPath)
+        guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
+        destination.image = maps?[indexPath.row]
 //        navigationController?.pushViewController(destination, animated: true)
-        // TODO
+        present(destination, animated: true)
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
