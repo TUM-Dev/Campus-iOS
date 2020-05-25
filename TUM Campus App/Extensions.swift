@@ -112,15 +112,17 @@ extension DateFormatter {
 extension Session {
     static var defaultSession: Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: nil), retrier: AuthenticationHandler(delegate: nil))
+        let cacher = ResponseCacher(behavior: .cache)
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler())
+        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler(), cachedResponseHandler: cacher)
         return manager
     }
     
     static func defaultSession(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> Session {
         let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: delegate), retrier: AuthenticationHandler(delegate: delegate))
+        let cacher = ResponseCacher(behavior: .cache)
         let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler())
+        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler(), cachedResponseHandler: cacher)
         return manager
     }
 }

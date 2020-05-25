@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Kingfisher
+import AlamofireImage
 
 final class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var sourceImageView: UIImageView!
@@ -17,12 +17,12 @@ final class NewsCollectionViewCell: UICollectionViewCell {
     
     func configure(_ news: News) {
         if let sourceImageURL = news.source?.icon {
-            imageView.kf.setImage(with: sourceImageURL, placeholder: #imageLiteral(resourceName: "logo-rainbow"), options: [.transition(.fade(0.2))])
+            imageView.af.setImage(withURL: sourceImageURL)
         } else {
             sourceImageView.image = #imageLiteral(resourceName: "logo-rainbow")
         }
         if let imageURL = news.imageURL {
-            imageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "avatar"), options: [.transition(.fade(0.2))])
+            imageView.af.setImage(withURL: imageURL)
         } else {
             imageView.image = #imageLiteral(resourceName: "avatar")
         }

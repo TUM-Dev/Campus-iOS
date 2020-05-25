@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 final class MapViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -16,12 +17,16 @@ final class MapViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet private weak var imageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var imageViewTrailingConstraint: NSLayoutConstraint!
 
-    var image: UIImage?
+    var room: Room?
+    var map: RoomMap?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         isModalInPresentation = true
-        imageView.image = image
+        if let room = room, let map = map {
+            let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: map.id)
+            imageView.af.setImage(withURLRequest: mapImageEndpoint, imageTransition: .crossDissolve(0.2))
+        }
         scrollView.delegate = self
         scrollView.backgroundColor = .systemBackground
     }

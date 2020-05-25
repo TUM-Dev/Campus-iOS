@@ -1501,34 +1501,15 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQx-S2-Koq" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
-                                <rect key="frame" x="117.5" y="305.5" width="140" height="42"/>
-                                <color key="backgroundColor" name="tumBlue"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="5Iy-NE-2nd"/>
-                                    <constraint firstAttribute="width" constant="140" id="piD-ka-tkE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                <state key="normal" title="Show in Maps">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="showInMaps:" destination="xQ1-bv-WIM" eventType="touchUpInside" id="K0B-SD-gj5"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="leading" secondItem="ICf-Ev-g81" secondAttribute="leading" id="2IH-0a-LO0"/>
-                            <constraint firstItem="jQx-S2-Koq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ICf-Ev-g81" secondAttribute="leading" constant="16" id="BT7-Fo-1NN"/>
-                            <constraint firstItem="jQx-S2-Koq" firstAttribute="top" secondItem="DXg-yy-qug" secondAttribute="bottom" constant="34" id="EVh-oe-gAF"/>
                             <constraint firstItem="ICf-Ev-g81" firstAttribute="trailing" secondItem="2SO-PD-x77" secondAttribute="trailing" constant="8" id="L3r-ga-CaC"/>
                             <constraint firstItem="2SO-PD-x77" firstAttribute="top" secondItem="ICf-Ev-g81" secondAttribute="top" id="UaA-JR-AYs"/>
                             <constraint firstItem="2SO-PD-x77" firstAttribute="leading" secondItem="ICf-Ev-g81" secondAttribute="leading" constant="8" id="Ujg-6c-9OC"/>
-                            <constraint firstItem="jQx-S2-Koq" firstAttribute="centerX" secondItem="93V-pX-FYV" secondAttribute="centerX" id="VgB-TI-sXs"/>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="top" secondItem="2SO-PD-x77" secondAttribute="bottom" constant="48" id="nDA-dR-1d0"/>
                             <constraint firstItem="DXg-yy-qug" firstAttribute="trailing" secondItem="ICf-Ev-g81" secondAttribute="trailing" id="omP-si-9uj"/>
-                            <constraint firstItem="ICf-Ev-g81" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jQx-S2-Koq" secondAttribute="trailing" constant="16" id="yid-kk-3im"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ICf-Ev-g81"/>
                     </view>

@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import AlamofireImage
 
 final class NewsspreadCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func configure(news: News) {
         if let imageURL = news.imageURL {
-            imageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "avatar"), options: [.transition(.fade(0.2))])
+            imageView.af.setImage(withURL: imageURL)
         } else {
             imageView.image = #imageLiteral(resourceName: "avatar")
         }

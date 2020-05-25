@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 final class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
@@ -14,7 +15,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
 
     func configure(_ movie: Movie) {
         if let coverURL = movie.cover {
-            imageView.kf.setImage(with: coverURL, placeholder: #imageLiteral(resourceName: "movie"), options: [.transition(.fade(0.2))])
+            imageView.af.setImage(withURL: coverURL)
         } else {
             imageView.image = #imageLiteral(resourceName: "movie")
         }

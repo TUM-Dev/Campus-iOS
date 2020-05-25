@@ -58,7 +58,6 @@
 		225AD7542479D32C001A969E /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7532479D32C001A969E /* SWXMLHash */; };
 		225AD7572479D33F001A969E /* XMLParsing in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7562479D33F001A969E /* XMLParsing */; };
 		225AD75A2479D358001A969E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* KeychainAccess */; };
-		225AD75D2479D390001A969E /* KingfisherStatic in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD75C2479D390001A969E /* KingfisherStatic */; };
 		2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7F8247AC2C5004F99E6 /* Room.swift */; };
 		2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7FA247AC3E8004F99E6 /* RoomMap.swift */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
@@ -234,7 +233,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				225AD7572479D33F001A969E /* XMLParsing in Frameworks */,
-				225AD75D2479D390001A969E /* KingfisherStatic in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
@@ -555,7 +553,6 @@
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7562479D33F001A969E /* XMLParsing */,
 				225AD7592479D358001A969E /* KeychainAccess */,
-				225AD75C2479D390001A969E /* KingfisherStatic */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -642,7 +639,6 @@
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7552479D33F001A969E /* XCRemoteSwiftPackageReference "XMLParsing" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				225AD75B2479D390001A969E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -1170,14 +1166,6 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		225AD75B2479D390001A969E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.13.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1210,11 +1198,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		225AD75C2479D390001A969E /* KingfisherStatic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 225AD75B2479D390001A969E /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = KingfisherStatic;
 		};
 /* End XCSwiftPackageProductDependency section */
 

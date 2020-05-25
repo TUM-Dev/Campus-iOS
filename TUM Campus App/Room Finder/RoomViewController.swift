@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import MapKit
 
 final class RoomViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -16,7 +17,7 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet private weak var purposeLabel: UILabel!
     private let sessionManager: Session = Session.defaultSession
-    private var maps: [UIImage]?
+    private var maps: [RoomMap]?
     var room: Room? {
         didSet {
             fetch()
@@ -47,16 +48,19 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
                 self?.collectionView.reloadData()
                 return
             }
-            self?.maps = []
-            self?.maps?.reserveCapacity(response.value?.count ?? 3)
-            value.forEach {
-                let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: $0.id)
-                self?.sessionManager.request(mapImageEndpoint).responseData { [weak self] in
-                    guard let imageData = $0.value, let image = UIImage(data: imageData) else { return }
-                    self?.maps?.append(image)
-                    self?.collectionView.reloadData()
-                }
-            }
+            self?.maps = value
+            self?.collectionView.reloadData()
+
+//            self?.maps = []
+//            self?.maps?.reserveCapacity(response.value?.count ?? 3)
+//            value.forEach {
+//                let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: $0.id)
+//                self?.sessionManager.request(mapImageEndpoint).responseData { [weak self] in
+//                    guard let imageData = $0.value, let image = UIImage(data: imageData) else { return }
+//                    self?.maps?.append(image)
+//                    self?.collectionView.reloadData()
+//                }
+//            }
         }
     }
 
@@ -79,8 +83,9 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCell.reuseIdentifier, for: indexPath) as! MapCell
-        let mapImage = maps?[indexPath.row]
-        cell.imageView.image = mapImage
+        guard let map = maps?[indexPath.row], let room = room else { return cell }
+        let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: map.id)
+        cell.imageView.af.setImage(withURLRequest: mapImageEndpoint, imageTransition: .crossDissolve(0.2))
         return cell
     }
 
@@ -88,8 +93,8 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController else { return }
-        destination.image = maps?[indexPath.row]
-//        navigationController?.pushViewController(destination, animated: true)
+        destination.room = room
+        destination.map = maps?[indexPath.row]
         present(destination, animated: true)
     }
 
