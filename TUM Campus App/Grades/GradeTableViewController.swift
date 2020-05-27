@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 import Alamofire
 import XMLParsing
+import Charts
 
 final class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
     typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
-    
+
+    @IBOutlet private weak var barChartView: BarChartView!
     private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
     private let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
@@ -42,6 +44,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
             self?.tableView.refreshControl?.endRefreshing()
             try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.reloadData()
+            self?.setupHeaderView()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
             guard error is TUMOnlineAPIError else { return }
@@ -49,6 +52,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
             _ = try? self?.importer.context.execute(deleteRequest)
             try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.reloadData()
+            self?.setupHeaderView()
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
     }
@@ -59,6 +63,76 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         tableView.refreshControl = refreshControl
         tableView.tableFooterView = UIView()
     }
+
+    private func setupHeaderView() {
+        guard let grades = importer.fetchedResultsController.fetchedObjects else { return }
+        let gradeValues = grades.compactMap { Decimal(string: $0.grade?.replacingOccurrences(of: ",", with: ".") ?? "") }
+        let gradeMap = gradeValues.reduce(into: [:]) { $0[$1] = ($0[$1] ?? 0) + 1 }.sorted { $0.key < $1.key }
+        let gradeStrings: [String] = gradeMap.compactMap {
+            let formatter = NumberFormatter()
+            formatter.alwaysShowsDecimalSeparator = true
+            formatter.minimumFractionDigits = 1
+            formatter.maximumFractionDigits = 1
+            return formatter.string(from: $0.key as NSDecimalNumber)
+        }
+        var dataEntries: [BarChartDataEntry] = []
+        var colors: [UIColor] = []
+
+        for grade in gradeMap.enumerated() {
+            let entry = BarChartDataEntry(x: Double(grade.offset), y: Double(grade.element.value))
+            dataEntries.append(entry)
+            switch grade.element.key {
+            case 1.0..<2.0:
+                colors.append(.systemGreen)
+            case 2.0..<3.0:
+                colors.append(.systemYellow)
+            case 3.0...4.0:
+                colors.append(.systemOrange)
+            case 4.3...5.0:
+                colors.append(.systemRed)
+            default:
+                colors.append(.systemGray)
+            }
+        }
+
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 0
+
+        let dataSet = BarChartDataSet(entries: dataEntries)
+        dataSet.colors = colors
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
+        let chartData = BarChartData(dataSet: dataSet)
+
+        let xAxis = barChartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .systemFont(ofSize: 10)
+        xAxis.drawAxisLineEnabled = true
+        xAxis.drawGridLinesEnabled = false
+        xAxis.valueFormatter = IndexAxisValueFormatter(values: gradeStrings)
+
+        let leftAxis = barChartView.leftAxis
+        leftAxis.labelFont = .systemFont(ofSize: 10)
+        leftAxis.drawAxisLineEnabled = true
+        leftAxis.drawGridLinesEnabled = true
+        leftAxis.axisMinimum = 0
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.granularity = 1.0
+
+        let rightAxis = barChartView.rightAxis
+        rightAxis.enabled = false
+
+        let legend = barChartView.legend
+        legend.enabled = false
+
+        barChartView.data = chartData
+        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutSine)
+        barChartView.drawGridBackgroundEnabled = false
+        barChartView.fitBars = true
+        barChartView.isUserInteractionEnabled = false
+        barChartView.drawValueAboveBarEnabled = true
+    }
+
+
 
     // MARK: UITableViewDataSource
     

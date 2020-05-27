@@ -13,6 +13,7 @@
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
 		19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC3F6623886C6800D484E7 /* LectureCell.swift */; };
 		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
+		220EB130247DBBA700DC4A6F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 220EB12F247DBBA700DC4A6F /* Charts */; };
 		221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */; };
 		22195063221C8CCC00169A2B /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195062221C8CCC00169A2B /* Lecture.swift */; };
 		22195067221C8CEA00169A2B /* LectureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195066221C8CEA00169A2B /* LectureTableViewController.swift */; };
@@ -234,6 +235,7 @@
 			files = (
 				225AD7572479D33F001A969E /* XMLParsing in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
+				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 				225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */,
@@ -553,6 +555,7 @@
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7562479D33F001A969E /* XMLParsing */,
 				225AD7592479D358001A969E /* KeychainAccess */,
+				220EB12F247DBBA700DC4A6F /* Charts */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -639,6 +642,7 @@
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7552479D33F001A969E /* XCRemoteSwiftPackageReference "XMLParsing" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -1118,6 +1122,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.5.0;
+			};
+		};
 		225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1169,6 +1181,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		220EB12F247DBBA700DC4A6F /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		225AD74A2479D2D3001A969E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */;
