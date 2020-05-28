@@ -28,7 +28,7 @@ final class GradeCell: UITableViewCell {
         gradeLabel.text = grade.grade
         lvNumberLabel.text = grade.lvNumber
         examinerLabel.text = grade.examiner
-        modusLabel.text = grade.modus
+        modusLabel.text = grade.modus?.components(separatedBy: " ").first
         if let gradeValue = Double(grade.grade?.replacingOccurrences(of: ",", with: ".") ?? "") {
             switch gradeValue {
             case 1.0..<2.0:

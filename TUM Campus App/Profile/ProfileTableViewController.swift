@@ -63,7 +63,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         switch (Section(rawValue: indexPath.section), indexPath.row) {
         case (.myTUM, 0):
             performSegue(withIdentifier: "showTuition", sender: nil)
-        case (.general, 1):
+        case (.general, 0):
             performSegue(withIdentifier: "showTUMSexy", sender: nil)
         case (.contact, 0):
             guard let url = URL(string: "https://www.tum.app") else { return }
