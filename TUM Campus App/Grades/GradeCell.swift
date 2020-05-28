@@ -10,7 +10,11 @@ import UIKit
 
 final class GradeCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var examinerLabel: UILabel!
+    @IBOutlet private weak var lvNumberLabel: UILabel!
+    @IBOutlet weak var modusLabel: UILabel!
     @IBOutlet private weak var blockView: UIView! {
+
         didSet {
             blockView.layer.cornerRadius = blockView.bounds.size.width / 2
             blockView.clipsToBounds = true
@@ -22,6 +26,9 @@ final class GradeCell: UITableViewCell {
         selectionStyle = .none
         titleLabel.text = grade.title
         gradeLabel.text = grade.grade
+        lvNumberLabel.text = grade.lvNumber
+        examinerLabel.text = grade.examiner
+        modusLabel.text = grade.modus
         if let gradeValue = Double(grade.grade?.replacingOccurrences(of: ",", with: ".") ?? "") {
             switch gradeValue {
             case 1.0..<2.0:
