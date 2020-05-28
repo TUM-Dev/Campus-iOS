@@ -10,10 +10,12 @@ import UIKit
 
 final class LectureCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var detailsLabel: UILabel!
+    @IBOutlet private weak var speakerLabel: UILabel!
+    @IBOutlet private weak var eventType: UILabel!
 
     func configure(lecture: Lecture) {
         titleLabel.text = lecture.title
-        detailsLabel.text = "\("Speaker".localized): \(lecture.speaker ?? "n/a".localized)"
+        speakerLabel.text = lecture.speaker
+        eventType.text = lecture.eventType
     }
 }

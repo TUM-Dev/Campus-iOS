@@ -11,6 +11,7 @@ import UIKit
 final class CalendarEventCell: UITableViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
 
     private static let startDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -28,7 +29,7 @@ final class CalendarEventCell: UITableViewCell {
 
     func configure(event: CalendarEvent) {
         titleLabel.text = event.title
-
+        locationLabel.text = event.location
         if let startDate = event.startDate, let endDate = event.endDate {
             dateLabel.text = "\(CalendarEventCell.startDateFormatter.string(from: startDate)) - \(CalendarEventCell.endDateFormatter.string(from: endDate))"
         } else {
