@@ -30,12 +30,12 @@ final class MovieTableViewController: UITableViewController, EntityTableViewCont
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieCollectionViewCell.reuseIdentifier, for: indexPath)
-        guard let movie = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        let movie = importer.fetchedResultsController.object(at: indexPath)
 
         cell.textLabel?.text = movie.title
         return cell

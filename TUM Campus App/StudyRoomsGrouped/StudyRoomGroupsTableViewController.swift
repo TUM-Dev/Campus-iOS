@@ -103,12 +103,6 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
         return cell
     }
 
-    // MARK: - NSFetchedResultsControllerDelegate
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
-    }
-
     // MARK: - Segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

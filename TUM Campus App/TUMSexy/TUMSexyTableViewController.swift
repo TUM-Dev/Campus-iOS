@@ -67,16 +67,10 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TUMSexyLinkCell", for: indexPath)
-        guard let link = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+        let link = importer.fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = link.linkDescription
         return cell
-    }
-
-    // MARK: NSFetchedResultsControllerDelegate
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
     }
     
 }

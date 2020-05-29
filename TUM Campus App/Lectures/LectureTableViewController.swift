@@ -81,22 +81,15 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return importer.fetchedResultsController.fetchedObjects?.count ?? 0
+        return importer.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: LectureCell.reuseIdentifier, for: indexPath) as! LectureCell
-        guard let lecture = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
-
+        let lecture = importer.fetchedResultsController.object(at: indexPath)
         cell.configure(lecture: lecture)
         
         return cell
-    }
-
-    // MARK: - NSFetchedResultsControllerDelegate
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
     }
     
 }
