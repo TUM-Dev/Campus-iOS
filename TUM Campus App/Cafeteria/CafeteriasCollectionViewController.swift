@@ -23,7 +23,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     }()
     private var mapCentered = false
     private var stretchyHeaderView: CafeteriaSectionHeader?
-    private var cafeterias: [Cafeteria] = []
+//    private var cafeterias: [Cafeteria] = []
     private var dataSource: UICollectionViewDiffableDataSource<Section, Cafeteria>?
 
 
@@ -70,7 +70,8 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         dataSource?.supplementaryViewProvider = { [weak self] (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CafeteriaSectionHeader.identifier, for: indexPath) as? CafeteriaSectionHeader else { return UICollectionReusableView() }
             self?.stretchyHeaderView = header
-            header.mapView.addAnnotations(self?.cafeterias ?? [])
+            let cafeterias = self?.dataSource?.snapshot().itemIdentifiers ?? []
+            header.mapView.addAnnotations(cafeterias)
             header.mapView.delegate = self
             header.isAccessibilityElement = true
             header.accessibilityLabel = "Cafeteria Map".localized
@@ -92,15 +93,15 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     private func fetch() {
         sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [weak self] response in
-            self?.cafeterias = response.value ?? []
+            var cafeterias: [Cafeteria] = response.value ?? []
             if let currentLocation = self?.locationManager?.location {
-                self?.cafeterias.sortByDistance(to: currentLocation)
+                cafeterias.sortByDistance(to: currentLocation)
             }
             self?.stretchyHeaderView?.mapView.addAnnotations(response.value ?? [])
 
             var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
             snapshot.appendSections([.main])
-            snapshot.appendItems(response.value ?? [], toSection: .main)
+            snapshot.appendItems(cafeterias, toSection: .main)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
@@ -133,6 +134,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
             mapCentered = true
         }
 
+        var cafeterias = dataSource?.snapshot().itemIdentifiers ?? []
         cafeterias.sortByDistance(to: location)
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()

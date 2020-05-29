@@ -54,6 +54,9 @@ final class MealPlanTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if menus.isEmpty {
+            setBackgroundLabel(with: "No Menu".localized)
+        }
         return menus.count
     }
 
