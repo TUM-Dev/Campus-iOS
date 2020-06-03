@@ -617,7 +617,6 @@
 					};
 					2277E92221D93C3400D7FF3F = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 2277E90B21D93C3300D7FF3F;
 					};
 					2277E92D21D93C3400D7FF3F = {
 						CreatedOnToolsVersion = 10.1;
@@ -1002,7 +1001,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
@@ -1015,7 +1013,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TUM Campus App.app/TUM Campus App";
 			};
 			name = Debug;
 		};
@@ -1023,7 +1020,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
@@ -1036,7 +1032,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TUM Campus App.app/TUM Campus App";
 			};
 			name = Release;
 		};
