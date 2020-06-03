@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>TUM Campus App uses your location to show you the distance to the next cafeteria</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>TUM Campus App uses your location to show you the distance to the next cafeteria</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -26,6 +22,10 @@
 	<string>13</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>TUM Campus App uses your location to show you the distance to the next cafeteria</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>TUM Campus App uses your location to show you the distance to the next cafeteria</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
