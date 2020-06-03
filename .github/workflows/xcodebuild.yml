@@ -19,4 +19,4 @@ jobs:
         key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
         restore-keys: ${{ runner.os }}-spm-
     - name: Build
-      run:  xcodebuild -scheme "TUM Campus App" -clonedSourcePackagesDirPath .cache
+      run:  xcodebuild -scheme "TUM Campus App"  -clonedSourcePackagesDirPath .cache -destination "platform=iOS Simulator,name=iPhone 11 Pro"
