@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/TUM-Dev/Campus-iOS.svg?branch=master)](https://travis-ci.org/TUM-Dev/Campus-iOS)
+![Xcodebuild](https://github.com/TUM-Dev/Campus-iOS/workflows/Xcodebuild/badge.svg?branch=master)
 <a href="https://beta.tumcampusapp.de">
 <img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" align="right">
 </a>
