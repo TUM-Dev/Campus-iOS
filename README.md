@@ -19,13 +19,9 @@ It mostly targets phones, but can also be used on tablets or any other device th
 - [x] Grades
 - [x] Tuition Fees Information
 - [x] Study Room Availability
-- [x] MVG Departure Times
-- [x] News Feed
 - [x] Cafeteria Menus
-- [x] TU Film Schedule
-- [x] Personal Contact Information
 - [x] Room Maps
-- [x] Universal Search: Persons, Rooms, Lectures
+- [x] Universal Search: Room
 - [x] [TUM.sexy](https://tum.sexy) Redirects
 
 ## Contributing
