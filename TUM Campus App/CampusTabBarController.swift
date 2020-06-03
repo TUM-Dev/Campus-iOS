@@ -2,61 +2,48 @@
 //  CampusTabBarController.swift
 //  TUM Campus App
 //
-//  This file is part of the TUM Campus App distribution https://github.com/TCA-Team/iOS
-//  Copyright (c) 2018 TCA
-//
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, version 3.
-//
-//  This program is distributed in the hope that it will be useful, but
-//  WITHOUT ANY WARRANTY; without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-//  General Public License for more details.
-//
-//  You should have received a copy of the GNU General Public License
-//  along with this program. If not, see <http://www.gnu.org/licenses/>.
+//  Created by Tim Gymnich on 1/3/19.
+//  Copyright © 2019 TUM. All rights reserved.
 //
 
 import UIKit
-import Sweeft
+import Alamofire
+import Foundation
 
-class CampusNavigationController: UINavigationController {
+final class CampusTabBarController: UITabBarController {
+    private lazy var coreDataStack = appDelegate.persistentContainer
+    private let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
     
-    var manager: TumDataManager?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        UITabBar.appearance().tintColor = Constants.tumBlue
-        UITabBar.appearance().backgroundColor = UIColor.white
-        UITabBar.appearance().barTintColor = UIColor.white
-        
-        guard let json = Bundle.main.url(forResource: "config", withExtension: "json")
-            .flatMap({ try? Data(contentsOf: $0) })
-            .flatMap(JSON.init(data:)) else {
-                
-                return
-        }
-        manager = TumDataManager(user: PersistentUser.value.user, json: json)
-        
-        let loginViewController = ViewControllerProvider.loginNavigationViewController
-        
-        (loginViewController.children.first as? LoginViewController)?.manager = manager
-        
-        manager?.config.tumOnline.onError { [weak self] error in
-            guard case .invalidToken = error, PersistentUser.isLoggedIn else { return }
-            self?.checkToken(loginViewController: loginViewController)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        login()
+    }
+    
+    private func login() {
+        switch loginController.credentials {
+        case .none: self.presentLoginViewController()
+        case .noTumID?: break
+        case .tumID?, .tumIDAndKey?:
+            loginController.confirmToken { [weak self] result in
+                switch result {
+                case .success:
+                    break
+                case .failure(let error as URLError) where error.code  == URLError.Code.notConnectedToInternet:
+                    // We are offline so we cannot confirm the token right now
+                    break
+                case .failure:
+                self?.presentLoginViewController()
+                }
+            }
         }
     }
     
-    func checkToken(loginViewController: UIViewController) {
-        manager?.loginManager.fetch().onSuccess(in: .main) { [weak self] tokenCorrect in
-            guard !tokenCorrect else { return }
-            self?.manager?.loginManager.logOut()
-            
-            (loginViewController as? UINavigationController)?.popToRootViewController(animated: false)
-            self?.present(loginViewController, animated: true)
-        }
+    private func presentLoginViewController() {
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        guard let navCon = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+        guard let loginViewController = navCon.children.first as? LoginViewController else { return }
+        loginViewController.loginController = loginController
+        self.present(navCon, animated: true)
     }
-
+    
 }
