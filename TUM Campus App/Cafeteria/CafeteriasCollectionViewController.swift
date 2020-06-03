@@ -13,17 +13,16 @@ import MapKit
 final class CafeteriasCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate {
     private let endpoint: URLRequestConvertible = EatAPI.canteens
     private let sessionManager: Session = Session.defaultSession
-    private lazy var locationManager: CLLocationManager? = {
-        guard CLLocationManager.locationServicesEnabled() else { return nil }
+    private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.requestWhenInUseAuthorization()
         manager.startUpdatingLocation()
         return manager
     }()
     private var mapCentered = false
     private var stretchyHeaderView: CafeteriaSectionHeader?
-//    private var cafeterias: [Cafeteria] = []
     private var dataSource: UICollectionViewDiffableDataSource<Section, Cafeteria>?
 
 
@@ -52,7 +51,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
     }
 
     private func setupDataSource() {
@@ -60,7 +59,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
             [weak self] (collectionView: UICollectionView, indexPath: IndexPath, cafeteria: Cafeteria) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CafeteriaCollectionViewCell.reuseIdentifier, for: indexPath) as! CafeteriaCollectionViewCell
 
-            cell.configure(cafeteria: cafeteria, currentLocation: self?.locationManager?.location)
+            cell.configure(cafeteria: cafeteria, currentLocation: self?.locationManager.location)
 
             return cell
         }
@@ -94,7 +93,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     private func fetch() {
         sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [weak self] response in
             var cafeterias: [Cafeteria] = response.value ?? []
-            if let currentLocation = self?.locationManager?.location {
+            if let currentLocation = self?.locationManager.location {
                 cafeterias.sortByDistance(to: currentLocation)
             }
             self?.stretchyHeaderView?.mapView.addAnnotations(response.value ?? [])
