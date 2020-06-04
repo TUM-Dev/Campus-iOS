@@ -126,13 +126,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
 
-        if !mapCentered {
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            stretchyHeaderView?.mapView.setRegion(region, animated: true)
-            mapCentered = true
-        }
-
         var cafeterias = dataSource?.snapshot().itemIdentifiers ?? []
         cafeterias.sortByDistance(to: location)
 
@@ -140,6 +133,16 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         snapshot.appendSections([.main])
         snapshot.appendItems(cafeterias, toSection: .main)
         dataSource?.apply(snapshot, animatingDifferences: true)
+
+        if !mapCentered {
+            var region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            if let closestCanteen = cafeterias.first {
+                let distance = closestCanteen.location.coordinate.location.distance(from: location)
+                region = MKCoordinateRegion(center: closestCanteen.coordinate, latitudinalMeters: 2.2 * distance, longitudinalMeters: 2.2 * distance)
+            }
+            stretchyHeaderView?.mapView.setRegion(region, animated: true)
+            mapCentered = true
+        }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
