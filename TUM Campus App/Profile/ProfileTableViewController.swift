@@ -10,19 +10,27 @@ import UIKit
 import CoreData
 import Alamofire
 import XMLParsing
+import MessageUI
 
-final class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol, MFMailComposeViewControllerDelegate {
     typealias ImporterType = Importer<Profile,ProfileAPIResponse,XMLDecoder>
     
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var tumIDLabel: UILabel!
     @IBOutlet private weak var signOutLabel: UILabel!
+    @IBOutlet private weak var versionLabel: UILabel!
+
 
     private let endpoint: URLRequestConvertible = TUMOnlineAPI.identify
     private let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
     private let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
     private let coreDataStack = appDelegate.persistentContainer
+    private var versionToggle = true {
+        didSet {
+            versionLabel.text = versionToggle ? "Version \(Bundle.main.version)" : Bundle.main.build
+        }
+    }
 
     lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
@@ -34,9 +42,16 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case login
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.toggleVersion))
+        versionLabel.addGestureRecognizer(tap)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        versionToggle = true
         importer.performFetch(success: {
             DispatchQueue.main.async {
                 let context = appDelegate.persistentContainer.viewContext
@@ -74,12 +89,31 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case (.contact, 2):
             guard let url = URL(string: "https://www.tum.app") else { return }
             UIApplication.shared.open(url)
+        case (.contact, 3):
+            let systemVersion = UIDevice.current.systemVersion
+            sendEmail(recipient: "app@tum.de",
+                      subject: "[iOS]",
+                      body: "<br><br>iOS Version: \(systemVersion) <br> App Version: \(Bundle.main.version) <br> Build Version: \(Bundle.main.build)")
         case (.login, 0):
             loginController.logout()
             presentLoginViewController()
         default: break
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    private func sendEmail(recipient: String, subject: String, body: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailVC = MFMailComposeViewController()
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([recipient])
+            mailVC.setSubject(subject)
+            mailVC.setMessageBody(body, isHTML: true)
+
+            self.present(mailVC, animated: true)
+        } else {
+            assertionFailure("error can't send mail")
+        }
     }
     
     private func presentLoginViewController() {
@@ -88,6 +122,18 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         guard let loginViewController = navCon.children.first as? LoginViewController else { return }
         loginViewController.loginController = loginController
         present(navCon, animated: true)
+    }
+
+    // MARK: - MFMailComposeViewControllerDelegate
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+
+    // MARK: - Tap
+
+    @objc private func toggleVersion() {
+        versionToggle.toggle()
     }
 
 }
