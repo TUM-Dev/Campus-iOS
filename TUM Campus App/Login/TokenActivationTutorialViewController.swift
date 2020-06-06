@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 final class TokenActivationTutorialViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView! {
@@ -15,5 +16,10 @@ final class TokenActivationTutorialViewController: UIViewController {
             imageView.isAccessibilityElement = true
             imageView.accessibilityLabel = "animation showing the token activation".localized
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
     }
 }

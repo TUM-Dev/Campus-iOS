@@ -11,6 +11,8 @@ import Alamofire
 import SWXMLHash
 import KeychainAccess
 import CoreData
+import FirebaseAnalytics
+import FirebaseCrashlytics
 
 enum LoginError: LocalizedError {
     case missingToken
@@ -110,6 +112,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
                 return completion(.success(encodedRequest))
             } catch let error {
+                Crashlytics.crashlytics().record(error: error)
                 return completion(.failure(error))
             }
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
@@ -191,6 +194,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             }
             strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
             strongSelf.isRefreshing = false
+            Analytics.logEvent("token_created", parameters: nil)
             completion(.success(newToken))
         }
     }
@@ -208,6 +212,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                     if let error = xml.error {
                         callback(.failure(error))
                     } else if xml.value?["confirmed"].element?.text == "true" {
+                        Analytics.logEvent("token_confirmed", parameters: nil)
                         callback(.success(true))
                     } else if xml.value?["confirmed"].element?.text == "false" {
                         callback(.failure(LoginError.tokenNotConfirmed))
@@ -219,6 +224,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
     
     func logout() {
+        Analytics.logEvent("logout", parameters: nil)
         credentials = nil
         
         let fetchRequests = [
@@ -237,6 +243,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
     
     func skipLogin() {
+        Analytics.logEvent("skip_login", parameters: nil)
         credentials = .noTumID
     }
 

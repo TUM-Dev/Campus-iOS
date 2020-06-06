@@ -9,6 +9,7 @@
 import UIKit.UIApplication
 import CoreData
 import Alamofire
+import FirebaseCrashlytics
 
 protocol Entity: Decodable, NSFetchRequestResult, NSObject {
     static func fetchRequest() -> NSFetchRequest<Self>
@@ -96,12 +97,15 @@ extension ImporterProtocol {
                     _ = try decoder.decode(EntityContainer.self, from: data)
                     try self.context.save()
                 } catch let apiError as APIError {
+                    Crashlytics.crashlytics().record(error: apiError)
                     errorHandler?(apiError)
                     return
                 } catch let decodingError as DecodingError {
+                    Crashlytics.crashlytics().record(error: decodingError)
                     errorHandler?(decodingError)
                     return
                 } catch let error {
+                    Crashlytics.crashlytics().record(error: error)
                     fatalError(error.localizedDescription)
                 }
                 successHandler?()
