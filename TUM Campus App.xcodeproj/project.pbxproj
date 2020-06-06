@@ -232,6 +232,7 @@
 		22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		22D4FCD921DE713600DF1F4B /* ShadowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViews.swift; sourceTree = "<group>"; };
+		22E4E4AF248C170100BA1977 /* TUM_Campus_App_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TUM_Campus_App_v1.xcdatamodel; sourceTree = "<group>"; };
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		22E67CA6248AE4390066682D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1044,6 +1045,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1086,6 +1088,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1341,6 +1344,7 @@
 		2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				22E4E4AF248C170100BA1977 /* TUM_Campus_App_v1.xcdatamodel */,
 				2277E91721D93C3300D7FF3F /* TUM_Campus_App.xcdatamodel */,
 			);
 			currentVersion = 2277E91721D93C3300D7FF3F /* TUM_Campus_App.xcdatamodel */;
