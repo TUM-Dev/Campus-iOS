@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AlamofireNetworkActivityIndicator
+import Firebase
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,8 +17,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        setupAppearance()
         // Override point for customization after application launch.
+        setupAppearance()
+        FirebaseApp.configure()
         return true
     }
 

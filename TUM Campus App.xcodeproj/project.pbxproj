@@ -100,6 +100,19 @@
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
+		22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22E67CA6248AE4390066682D /* GoogleService-Info.plist */; };
+		22E67CEC248AEB670066682D /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CBE248AE46D0066682D /* FirebaseCrashlytics.xcframework */; };
+		22E67CED248AEB6B0066682D /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAD248AE4620066682D /* FIRAnalyticsConnector.framework */; };
+		22E67CEE248AEB6E0066682D /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAF248AE4620066682D /* FirebaseAnalytics.framework */; };
+		22E67CEF248AEB710066682D /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAE248AE4620066682D /* FirebaseCore.xcframework */; };
+		22E67CF0248AEB730066682D /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CA8248AE4610066682D /* FirebaseCoreDiagnostics.xcframework */; };
+		22E67CF1248AEB760066682D /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CA9248AE4610066682D /* FirebaseInstallations.xcframework */; };
+		22E67CF2248AEB7C0066682D /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAB248AE4620066682D /* GoogleAppMeasurement.framework */; };
+		22E67CF3248AEB7F0066682D /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CB0248AE4620066682D /* GoogleDataTransport.xcframework */; };
+		22E67CF4248AEB820066682D /* GoogleDataTransportCCTSupport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAC248AE4620066682D /* GoogleDataTransportCCTSupport.xcframework */; };
+		22E67CF5248AEB850066682D /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAA248AE4610066682D /* GoogleUtilities.xcframework */; };
+		22E67CF6248AEB880066682D /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CB1248AE4620066682D /* nanopb.xcframework */; };
+		22E67CF7248AEB8A0066682D /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CB2248AE4630066682D /* PromisesObjC.xcframework */; };
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */; };
@@ -221,6 +234,22 @@
 		22D4FCD921DE713600DF1F4B /* ShadowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViews.swift; sourceTree = "<group>"; };
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		22E67CA6248AE4390066682D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22E67CA8248AE4610066682D /* FirebaseCoreDiagnostics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCoreDiagnostics.xcframework; sourceTree = "<group>"; };
+		22E67CA9248AE4610066682D /* FirebaseInstallations.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseInstallations.xcframework; sourceTree = "<group>"; };
+		22E67CAA248AE4610066682D /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		22E67CAB248AE4620066682D /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		22E67CAC248AE4620066682D /* GoogleDataTransportCCTSupport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleDataTransportCCTSupport.xcframework; sourceTree = "<group>"; };
+		22E67CAD248AE4620066682D /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		22E67CAE248AE4620066682D /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCore.xcframework; sourceTree = "<group>"; };
+		22E67CAF248AE4620066682D /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		22E67CB0248AE4620066682D /* GoogleDataTransport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleDataTransport.xcframework; sourceTree = "<group>"; };
+		22E67CB1248AE4620066682D /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
+		22E67CB2248AE4630066682D /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
+		22E67CBE248AE46D0066682D /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
+		22E67CC0248AE4790066682D /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
+		22E67CC1248AE4810066682D /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		22E67CDD248AEA010066682D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		22F9629B2460ED03004BF215 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		22F9629D246177D9004BF215 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewController.swift; sourceTree = "<group>"; };
@@ -233,11 +262,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E67CF3248AEB7F0066682D /* GoogleDataTransport.xcframework in Frameworks */,
+				22E67CEC248AEB670066682D /* FirebaseCrashlytics.xcframework in Frameworks */,
+				22E67CEF248AEB710066682D /* FirebaseCore.xcframework in Frameworks */,
 				225AD7572479D33F001A969E /* XMLParsing in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
+				22E67CF2248AEB7C0066682D /* GoogleAppMeasurement.framework in Frameworks */,
+				22E67CF5248AEB850066682D /* GoogleUtilities.xcframework in Frameworks */,
+				22E67CF1248AEB760066682D /* FirebaseInstallations.xcframework in Frameworks */,
+				22E67CF0248AEB730066682D /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
+				22E67CEE248AEB6E0066682D /* FirebaseAnalytics.framework in Frameworks */,
+				22E67CED248AEB6B0066682D /* FIRAnalyticsConnector.framework in Frameworks */,
+				22E67CF4248AEB820066682D /* GoogleDataTransportCCTSupport.xcframework in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
+				22E67CF7248AEB8A0066682D /* PromisesObjC.xcframework in Frameworks */,
+				22E67CF6248AEB880066682D /* nanopb.xcframework in Frameworks */,
 				225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */,
 				225AD7512479D307001A969E /* AlamofireNetworkActivityIndicator in Frameworks */,
 			);
@@ -362,6 +403,7 @@
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
 				2277E90D21D93C3300D7FF3F /* Products */,
+				22E67CC2248AE69D0066682D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -402,7 +444,10 @@
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
+				22E67CA6248AE4390066682D /* GoogleService-Info.plist */,
 				22710B532479E0D30065D6E9 /* Localizable.strings */,
+				22E67CA5248AE4220066682D /* Headers */,
+				22E67CA4248AE4090066682D /* Frameworks */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -530,6 +575,42 @@
 				19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		22E67CA4248AE4090066682D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22E67CBE248AE46D0066682D /* FirebaseCrashlytics.xcframework */,
+				22E67CAD248AE4620066682D /* FIRAnalyticsConnector.framework */,
+				22E67CAF248AE4620066682D /* FirebaseAnalytics.framework */,
+				22E67CAE248AE4620066682D /* FirebaseCore.xcframework */,
+				22E67CA8248AE4610066682D /* FirebaseCoreDiagnostics.xcframework */,
+				22E67CA9248AE4610066682D /* FirebaseInstallations.xcframework */,
+				22E67CAB248AE4620066682D /* GoogleAppMeasurement.framework */,
+				22E67CB0248AE4620066682D /* GoogleDataTransport.xcframework */,
+				22E67CAC248AE4620066682D /* GoogleDataTransportCCTSupport.xcframework */,
+				22E67CAA248AE4610066682D /* GoogleUtilities.xcframework */,
+				22E67CB1248AE4620066682D /* nanopb.xcframework */,
+				22E67CB2248AE4630066682D /* PromisesObjC.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		22E67CA5248AE4220066682D /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				22E67CC1248AE4810066682D /* module.modulemap */,
+				22E67CC0248AE4790066682D /* Firebase.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		22E67CC2248AE69D0066682D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22E67CDD248AEA010066682D /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -660,6 +741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
+				22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */,
 				22710B572479E1290065D6E9 /* Login.storyboard in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
@@ -958,42 +1040,84 @@
 		2277E93821D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 			};
 			name = Debug;
 		};
 		2277E93921D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 			};
 			name = Release;
 		};
