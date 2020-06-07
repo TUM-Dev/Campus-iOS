@@ -6,5 +6,9 @@
 	<array>
 		<string>group.tum.campusapp</string>
 	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)de.tum.campusapp</string>
+	</array>
 </dict>
 </plist>

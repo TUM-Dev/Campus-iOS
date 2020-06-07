@@ -64,7 +64,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private lazy var coreDataStack = appDelegate.persistentContainer
     private lazy var sessionManager: Session = Session.defaultSession
     
-    private static let keychain = Keychain(service: "de.tum.tumonline")
+    private static let keychain = Keychain(service: "de.tum.campusapp")
         .synchronizable(true)
         .accessibility(.afterFirstUnlock)
     
