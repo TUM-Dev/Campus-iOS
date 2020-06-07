@@ -133,6 +133,8 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
     // MARK: - Tap
 
     @objc private func toggleVersion() {
+        let feedbackGenerator = UISelectionFeedbackGenerator()
+        feedbackGenerator.selectionChanged()
         versionToggle.toggle()
     }
 
