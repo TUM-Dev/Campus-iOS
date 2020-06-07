@@ -20,7 +20,7 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
         super.viewDidLoad()
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Usefull Links".localized
+        title = "Useful Links".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
