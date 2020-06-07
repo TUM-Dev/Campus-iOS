@@ -72,6 +72,15 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
         cell.textLabel?.text = link.linkDescription
         return cell
     }
+
+    // MARK: UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let link = importer.fetchedResultsController.object(at: indexPath)
+        guard let urlString = link.target, let url = URL(string: urlString) else { return }
+        UIApplication.shared.open(url)
+    }
     
 }
 
