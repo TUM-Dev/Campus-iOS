@@ -1068,7 +1068,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFi-BG-lhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4774" y="3355"/>
+            <point key="canvasLocation" x="4774" y="2318"/>
         </scene>
         <!--Grades-->
         <scene sceneID="XBv-gt-bg9">
@@ -1418,7 +1418,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acq-oL-gsa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4774" y="2566"/>
+            <point key="canvasLocation" x="4774" y="1529"/>
         </scene>
         <!--Sexy Table View Controller-->
         <scene sceneID="8Gt-lw-P8J">
@@ -1518,34 +1518,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="347-Jo-e0O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4774" y="715"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="otY-qZ-mkx">
-            <objects>
-                <tableViewController id="7Pi-sy-P89" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VhO-XW-D5a">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ogu-vi-l2r">
-                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ogu-vi-l2r" id="NB5-4w-5UR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="7Pi-sy-P89" id="NZq-sY-GSs"/>
-                            <outlet property="delegate" destination="7Pi-sy-P89" id="QyX-hh-pZh"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Dc-6r-KDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4774" y="1428"/>
         </scene>
         <!--Room View Controller-->
         <scene sceneID="egu-0K-VEM">
