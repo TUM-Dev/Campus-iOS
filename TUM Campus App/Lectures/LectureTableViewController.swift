@@ -43,11 +43,14 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
             self?.tableView.reloadData()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
-            guard error is TUMOnlineAPIError else { return }
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: Lecture.fetchRequest())
-            _ = try? self?.importer.context.execute(deleteRequest)
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
+            switch error {
+            case is TUMOnlineAPIError:
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: Lecture.fetchRequest())
+                _ = try? self?.importer.context.execute(deleteRequest)
+                try? self?.importer.fetchedResultsController.performFetch()
+                self?.tableView.reloadData()
+            default: break
+            }
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
     }

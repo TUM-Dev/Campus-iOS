@@ -50,17 +50,6 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
             }
             self?.maps = value
             self?.collectionView.reloadData()
-
-//            self?.maps = []
-//            self?.maps?.reserveCapacity(response.value?.count ?? 3)
-//            value.forEach {
-//                let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: $0.id)
-//                self?.sessionManager.request(mapImageEndpoint).responseData { [weak self] in
-//                    guard let imageData = $0.value, let image = UIImage(data: imageData) else { return }
-//                    self?.maps?.append(image)
-//                    self?.collectionView.reloadData()
-//                }
-//            }
         }
     }
 

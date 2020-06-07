@@ -61,8 +61,9 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
             self?.tableView.refreshControl?.endRefreshing()
             try? self?.importer.fetchedResultsController.performFetch()
             self?.tableView.reloadData()
-        }, error: { [weak self] _ in
+        }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
+            self?.setBackgroundLabel(with: error.localizedDescription)
         })
     }
 

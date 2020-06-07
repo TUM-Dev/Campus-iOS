@@ -47,12 +47,15 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
             self?.setupHeaderView()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
-            guard error is TUMOnlineAPIError else { return }
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: Grade.fetchRequest())
-            _ = try? self?.importer.context.execute(deleteRequest)
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
-            self?.setupHeaderView()
+            switch error {
+            case is TUMOnlineAPIError:
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: Grade.fetchRequest())
+                _ = try? self?.importer.context.execute(deleteRequest)
+                try? self?.importer.fetchedResultsController.performFetch()
+                self?.tableView.reloadData()
+                self?.setupHeaderView()
+            default: break
+            }
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
     }

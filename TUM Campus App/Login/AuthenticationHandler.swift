@@ -16,8 +16,6 @@ import FirebaseCrashlytics
 
 enum LoginError: LocalizedError {
     case missingToken
-    case invalidToken
-    case tokenNotConfirmed
     case serverError(message: String)
     case unknown
 
@@ -25,23 +23,10 @@ enum LoginError: LocalizedError {
         switch self {
         case .missingToken:
             return "Missing token".localized
-        case .invalidToken:
-            return "Invalid token".localized
-        case .tokenNotConfirmed:
-            return "Token not confirmed".localized
         case let .serverError(message):
             return message
         case .unknown:
             return "Unknown error".localized
-        }
-    }
-
-    public var recoverySuggestion: String? {
-        switch self {
-        case .tokenNotConfirmed:
-            return "Go to TUMOnline and activate the token".localized
-        default:
-            return nil
         }
     }
 }
@@ -187,7 +172,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             guard let strongSelf = self else { return }
             guard let newToken = xml.value?["token"].element?.text else {
                 strongSelf.isRefreshing = false
-                if let errorMessage = xml.value?["error"]["message"].element?.text {
+                if let error = xml.error {
+                    return completion(.failure(error))
+                } else if let errorMessage = xml.value?["error"]["message"].element?.text {
                     return completion(.failure(LoginError.serverError(message: errorMessage)))
                 }
                 return completion(.failure(LoginError.unknown))
@@ -215,7 +202,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                         Analytics.logEvent("token_confirmed", parameters: nil)
                         callback(.success(true))
                     } else if xml.value?["confirmed"].element?.text == "false" {
-                        callback(.failure(LoginError.tokenNotConfirmed))
+                        callback(.failure(TUMOnlineAPIError.tokenNotConfirmed))
                     } else {
                         callback(.failure(LoginError.unknown))
                     }
