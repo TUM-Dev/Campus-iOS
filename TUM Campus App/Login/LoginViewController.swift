@@ -16,7 +16,21 @@ final class LoginViewController: UIViewController {
     
     var loginController: AuthenticationHandler?
 
+    private var advancedLogin: Bool = false {
+        didSet {
+            let feedbackGenereator = UINotificationFeedbackGenerator()
+            feedbackGenereator.notificationOccurred(.success)
+            firstTextField.placeholder = advancedLogin ? "Username" : "ga"
+            firstTextField.text = nil
+            numbersTextField.isHidden = advancedLogin
+            numbersTextField.text = nil
+            secondTextField.isHidden = advancedLogin
+            secondTextField.text = nil
+            updateContinueButton()
+        }
+    }
     private var tumID: String? {
+        guard !advancedLogin else { return firstTextField.text }
         guard let firstText = firstTextField.text, let number = numbersTextField.text, let secondText = secondTextField.text else { return nil }
             return "\(firstText)\(number)\(secondText)"
     }
@@ -52,7 +66,12 @@ final class LoginViewController: UIViewController {
         numbersTextField.accessibilityLabel = "2 numbers in the middle of TUM ID".localized
         secondTextField.accessibilityLabel = "Last 3 letters of TUM ID".localized
     }
-    
+
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            advancedLogin.toggle()
+        }
+    }
     
     // MARK: - ButtonActions
     
@@ -90,7 +109,9 @@ final class LoginViewController: UIViewController {
     // MARK: - TextFields
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        if sender === firstTextField {
+        if advancedLogin {
+
+        } else if sender === firstTextField {
             handleTextFieldInput(currentTextField: firstTextField,
                                  nextTextField: numbersTextField,
                                  characterLimit: 2)
@@ -104,7 +125,10 @@ final class LoginViewController: UIViewController {
                                  previousTextField: numbersTextField,
                                  characterLimit: 3)
         }
-        
+        updateContinueButton()
+    }
+
+    private func updateContinueButton() {
         continueButton.isEnabled = textFieldContentsAreValid()
         continueButton.alpha = textFieldContentsAreValid() ? 1 : 0.6
     }
@@ -136,6 +160,9 @@ final class LoginViewController: UIViewController {
     }
     
     private func textFieldContentsAreValid() -> Bool {
+        if !(firstTextField.text?.isEmpty ?? true), advancedLogin == true {
+            return true
+        }
         guard let firstText = firstTextField.text, firstText.count == 2,
             let numbersText = numbersTextField.text, numbersText.count == 2,
             let secondText = secondTextField.text, secondText.count == 3 else { return false }
