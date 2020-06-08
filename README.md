@@ -1,5 +1,5 @@
 ![Xcodebuild](https://github.com/TUM-Dev/Campus-iOS/workflows/Xcodebuild/badge.svg?branch=master)
-<a href="https://beta.tumcampusapp.de">
+<a href="https://testflight.apple.com/join/AlXCNNOS">
 <img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" align="right">
 </a>
 <a href="https://itunes.apple.com/us/app/tum-campus-app/id1217412716?mt=8">
