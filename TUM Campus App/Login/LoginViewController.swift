@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 final class LoginViewController: UIViewController {
     @IBOutlet private weak var continueButton: ShadowButton!
@@ -27,6 +28,7 @@ final class LoginViewController: UIViewController {
             secondTextField.isHidden = advancedLogin
             secondTextField.text = nil
             updateContinueButton()
+            Analytics.logEvent("advanced_login", parameters: nil)
         }
     }
     private var tumID: String? {
