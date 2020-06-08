@@ -192,7 +192,6 @@
 		22692D9E221E19F6002C5720 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
 		22710B542479E0D30065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		22710B562479E0EE0065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		22710B582479E1290065D6E9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Login.storyboard; sourceTree = "<group>"; };
 		22710B5A2479E13C0065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderViewController.swift; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMCampusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +208,7 @@
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		228761CF248D23190087D340 /* TUMCampusAppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TUMCampusAppDebug.entitlements; sourceTree = "<group>"; };
 		228A616B248DCE4B00398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		228A616C248DCF9000398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		22AE458B247AF82300CE5B29 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
@@ -902,8 +902,8 @@
 		22710B592479E1290065D6E9 /* Login.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				22710B582479E1290065D6E9 /* de */,
 				22710B5A2479E13C0065D6E9 /* Base */,
+				228A616C248DCF9000398C63 /* de */,
 			);
 			name = Login.storyboard;
 			sourceTree = "<group>";
