@@ -81,7 +81,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         case (.general, 0):
             performSegue(withIdentifier: "showTUMSexy", sender: nil)
         case (.contact, 0):
-            guard let url = URL(string: "https://www.tum.app") else { return }
+            guard let url = URL(string: "https://testflight.apple.com/join/AlXCNNOS") else { return }
             UIApplication.shared.open(url)
         case (.contact, 1):
             guard let url = URL(string: "https://github.com/TUM-Dev/Campus-iOS") else { return }
