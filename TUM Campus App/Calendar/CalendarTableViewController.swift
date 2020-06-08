@@ -23,7 +23,6 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-        importer.fetchedResultsController.delegate = self
         title = "Calendar".localized
     }
     
@@ -39,20 +38,33 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         }
         importer.performFetch(success: { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
+            self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
             switch error {
             case is TUMOnlineAPIError:
+                guard let context = self?.importer.context else { break }
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
-                _ = try? self?.importer.context.execute(deleteRequest)
-                try? self?.importer.fetchedResultsController.performFetch()
-                self?.tableView.reloadData()
+                _ = try? context.execute(deleteRequest) as? NSBatchDeleteResult
+                self?.reload()
             default: break
             }
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
+    }
+
+    private func reload() {
+        try? importer.fetchedResultsController.performFetch()
+        tableView.reloadData()
+        
+        switch importer.fetchedResultsController.fetchedObjects?.count {
+        case let .some(count) where count > 0:
+            tableView.backgroundView = nil
+        case let .some(count) where count == 0:
+            setBackgroundLabel(with: "No Calendar Events".localized)
+        default:
+            break
+        }
     }
 
     private func setupTableView() {
@@ -65,18 +77,7 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
    // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numberOfSections = importer.fetchedResultsController.sections?.count
-
-        switch numberOfSections {
-        case let .some(count) where count > 0:
-            tableView.backgroundView = nil
-        case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Calendar Events".localized)
-        default:
-            break
-        }
-
-        return numberOfSections ?? 0
+        return importer.fetchedResultsController.sections?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,5 +92,5 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
 
         return cell
     }
-    
+
 }

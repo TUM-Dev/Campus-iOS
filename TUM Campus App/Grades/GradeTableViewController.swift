@@ -42,22 +42,32 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         }
         importer.performFetch(success: { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
-            self?.setupHeaderView()
+            self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
             switch error {
             case is TUMOnlineAPIError:
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: Grade.fetchRequest())
                 _ = try? self?.importer.context.execute(deleteRequest)
-                try? self?.importer.fetchedResultsController.performFetch()
-                self?.tableView.reloadData()
-                self?.setupHeaderView()
+                self?.reload()
             default: break
             }
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
+    }
+
+    private func reload() {
+        try? importer.fetchedResultsController.performFetch()
+        tableView.reloadData()
+        setupHeaderView()
+        switch importer.fetchedResultsController.fetchedObjects?.count {
+        case let .some(count) where count > 0:
+            tableView.backgroundView = nil
+        case let .some(count) where count == 0:
+            setBackgroundLabel(with: "No Grades".localized)
+        default:
+            break
+        }
     }
 
     private func setupTableView() {
@@ -140,18 +150,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
     // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numberOfSections = importer.fetchedResultsController.sections?.count
-
-        switch numberOfSections {
-        case let .some(count) where count > 0:
-            tableView.backgroundView = nil
-        case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Grades".localized)
-        default:
-            break
-        }
-
-        return numberOfSections ?? 0
+        return importer.fetchedResultsController.sections?.count ?? 0
     }
        
    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

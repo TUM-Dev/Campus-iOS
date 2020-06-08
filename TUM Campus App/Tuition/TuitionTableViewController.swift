@@ -40,20 +40,32 @@ final class TuitionTableViewController: UITableViewController, EntityTableViewCo
         }
         importer.performFetch(success: { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
+            self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
             switch error {
             case is TUMOnlineAPIError:
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: Tuition.fetchRequest())
                 _ = try? self?.importer.context.execute(deleteRequest)
-                try? self?.importer.fetchedResultsController.performFetch()
-                self?.tableView.reloadData()
+                self?.reload()
             default: break
             }
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
+    }
+
+    private func reload() {
+        try? importer.fetchedResultsController.performFetch()
+        tableView.reloadData()
+
+        switch importer.fetchedResultsController.fetchedObjects?.count {
+        case let .some(count) where count > 0:
+            tableView.backgroundView = nil
+        case let .some(count) where count == 0:
+            setBackgroundLabel(with: "No Tuition Fees".localized)
+        default:
+            break
+        }
     }
 
     private func setupTableView() {

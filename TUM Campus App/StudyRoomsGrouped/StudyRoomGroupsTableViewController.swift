@@ -59,12 +59,25 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
         }
         importer.performFetch(success: { [weak self] in
             self?.tableView.refreshControl?.endRefreshing()
-            try? self?.importer.fetchedResultsController.performFetch()
-            self?.tableView.reloadData()
+            self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
             self?.setBackgroundLabel(with: error.localizedDescription)
         })
+    }
+
+    private func reload() {
+        try? importer.fetchedResultsController.performFetch()
+        tableView.reloadData()
+
+        switch importer.fetchedResultsController.fetchedObjects?.count {
+        case let .some(count) where count > 0:
+            tableView.backgroundView = nil
+        case let .some(count) where count == 0:
+            setBackgroundLabel(with: "No Study Rooms".localized)
+        default:
+            break
+        }
     }
 
     private func setupTableView() {
@@ -77,18 +90,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     // MARK: UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        let numberOfSections = importer.fetchedResultsController.sections?.count
-
-        switch numberOfSections {
-        case let .some(count) where count > 0:
-            tableView.backgroundView = nil
-        case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Study Rooms".localized)
-        default:
-            break
-        }
-
-        return numberOfSections ?? 0
+        return importer.fetchedResultsController.sections?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,5 +118,5 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
             roomsVC.title = roomGroup.name
         }
     }
-    
+
 }
