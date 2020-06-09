@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 final class RoomFinderViewController: UITableViewController, UISearchResultsUpdating {
+    private let errorMessageLabel = UILabel()
     private let sessionManager: Session = Session.defaultSession
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
@@ -19,6 +20,7 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Room Finder".localized
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -27,8 +29,12 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         navigationItem.searchController = searchController
         definesPresentationContext = true
         tableView.tableFooterView = UIView()
+        errorMessageLabel.textAlignment = .center
+        errorMessageLabel.textColor = .secondaryLabel
+        errorMessageLabel.font = .systemFont(ofSize: 19)
+        errorMessageLabel.numberOfLines = 0
+        
         setupDataSource()
-        title = "Room Finder".localized
     }
 
     private func setupDataSource() {
@@ -41,6 +47,18 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
             return cell
         }
     }
+    
+    /// Shows an error message stating that we were unable to find the room.
+    /// - parameter roomName: The name of the room we were searching for. `nil` to remove the error message
+    private func showUnableToFindRoomErrorMessage(roomName: String?) {
+        guard let roomName = roomName else {
+            tableView.backgroundView = nil
+            return
+        }
+        tableView.backgroundView = errorMessageLabel
+        errorMessageLabel.text = NSString(format: "Unable to find room".localized as NSString, roomName) as String
+    }
+    
 
     // MARK: - UITableViewDelegate
 
@@ -52,16 +70,35 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         navigationController?.pushViewController(destination, animated: true)
     }
 
+    
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        guard let searchString = searchBar.text else { return }
+        guard let searchString = searchController.searchBar.text else {
+            return
+        }
+        guard !searchString.isEmpty else {
+            // Cancel currently running requests and clear the table when searching for an empty string.
+            // This seems preferable over sending the empty string to the API and clearing the table via the (expectedly) empty response
+            sessionManager.cancelAllRequests()
+            showUnableToFindRoomErrorMessage(roomName: nil)
+            return
+        }
         let endpoint = TUMCabeAPI.roomSearch(query: searchString)
         sessionManager.cancelAllRequests()
-        sessionManager.request(endpoint).responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
+        let request = sessionManager.request(endpoint)
+        request.responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
+            guard !request.isCancelled else {
+                // cancelAllRequests doesn't seem to cancel all requests, so better check for this explicitly
+                return
+            }
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([.main])
+            if (response.value ?? []) == [] {
+                self?.showUnableToFindRoomErrorMessage(roomName: searchString)
+            } else {
+                self?.showUnableToFindRoomErrorMessage(roomName: nil)
+            }
             snapshot.appendItems(response.value ?? [], toSection: .main)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
