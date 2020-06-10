@@ -19,6 +19,7 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Room Finder".localized
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -28,7 +29,6 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         definesPresentationContext = true
         tableView.tableFooterView = UIView()
         setupDataSource()
-        title = "Room Finder".localized
     }
 
     private func setupDataSource() {
@@ -41,6 +41,7 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
             return cell
         }
     }
+    
 
     // MARK: - UITableViewDelegate
 
@@ -52,16 +53,40 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
         navigationController?.pushViewController(destination, animated: true)
     }
 
+    
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        guard let searchString = searchBar.text else { return }
+        guard let searchString = searchController.searchBar.text else {
+            return
+        }
+        guard !searchString.isEmpty else {
+            // Cancel currently running requests and clear the table when searching for an empty string.
+            // This seems preferable over sending the empty string to the API and clearing the table via the (expectedly) empty response
+            sessionManager.cancelAllRequests()
+            self.removeBackgroundLabel()
+            return
+        }
         let endpoint = TUMCabeAPI.roomSearch(query: searchString)
         sessionManager.cancelAllRequests()
-        sessionManager.request(endpoint).responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
+        let request = sessionManager.request(endpoint)
+        request.responseDecodable(of: [Room].self, decoder: JSONDecoder()) { [weak self] response in
+            guard !request.isCancelled else {
+                // cancelAllRequests doesn't seem to cancel all requests, so better check for this explicitly
+                return
+            }
+            let value = response.value ?? []
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([.main])
+            snapshot.appendItems(value, toSection: .main)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+
+            if value.isEmpty {
+                let errorMessage = NSString(format: "Unable to find room".localized as NSString, searchString) as String
+                self?.setBackgroundLabel(withText: errorMessage)
+            } else {
+                self?.removeBackgroundLabel()
+            }
             snapshot.appendItems(response.value ?? [], toSection: .main)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }

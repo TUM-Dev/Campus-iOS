@@ -60,11 +60,11 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch maps?.count {
         case let .some(count) where count == 0:
-            collectionView.setBackgroundLabel(with: "Missing Map".localized)
+            collectionView.setBackgroundLabel(withText: "Missing Map".localized)
         case let .some(count) where count > 0:
-            collectionView.backgroundView = nil
+            collectionView.removeBackgroundLabel()
         default:
-            collectionView.setBackgroundLabel(with: "Missing Map".localized)
+            collectionView.setBackgroundLabel(withText: "Missing Map".localized)
         }
 
         return maps?.count ?? 0

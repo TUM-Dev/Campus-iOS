@@ -62,7 +62,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
             self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
-            self?.setBackgroundLabel(with: error.localizedDescription)
+            self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
@@ -72,9 +72,9 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
 
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
-            tableView.backgroundView = nil
+            removeBackgroundLabel()
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Study Rooms".localized)
+            setBackgroundLabel(withText: "No Study Rooms".localized)
         default:
             break
         }

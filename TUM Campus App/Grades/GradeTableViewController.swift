@@ -52,7 +52,7 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
                 self?.reload()
             default: break
             }
-            self?.setBackgroundLabel(with: error.localizedDescription)
+            self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
@@ -62,9 +62,9 @@ final class GradeTableViewController: UITableViewController, EntityTableViewCont
         setupHeaderView()
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
-            tableView.backgroundView = nil
+            removeBackgroundLabel()
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Grades".localized)
+            setBackgroundLabel(withText: "No Grades".localized)
         default:
             break
         }

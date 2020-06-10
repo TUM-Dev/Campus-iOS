@@ -49,7 +49,7 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
                 self?.reload()
             default: break
             }
-            self?.setBackgroundLabel(with: error.localizedDescription)
+            self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
@@ -59,9 +59,9 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
-            tableView.backgroundView = nil
+            removeBackgroundLabel()
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Calendar Events".localized)
+            setBackgroundLabel(withText: "No Calendar Events".localized)
         default:
             break
         }
