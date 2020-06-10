@@ -37,7 +37,7 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
             self?.reload()
         }, error: { [weak self] error in
             self?.tableView.refreshControl?.endRefreshing()
-            self?.setBackgroundLabel(with: error.localizedDescription)
+            self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
@@ -47,9 +47,9 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
 
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
-            tableView.backgroundView = nil
+            removeBackgroundLabel()
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Links".localized)
+            setBackgroundLabel(withText: "No Links".localized)
         default:
             break
         }

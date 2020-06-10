@@ -49,7 +49,7 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
                 self?.reload()
             default: break
             }
-            self?.setBackgroundLabel(with: error.localizedDescription)
+            self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
@@ -59,9 +59,9 @@ final class LecturesTableViewController: UITableViewController, EntityTableViewC
 
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
-            tableView.backgroundView = nil
+            removeBackgroundLabel()
         case let .some(count) where count == 0:
-            setBackgroundLabel(with: "No Lectures".localized)
+            setBackgroundLabel(withText: "No Lectures".localized)
         default:
             break
         }

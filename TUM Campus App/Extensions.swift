@@ -127,32 +127,45 @@ extension Session {
     }
 }
 
-extension UITableViewController {
-    func setBackgroundLabel(with text: String) {
-        let noDataLabel = UILabel()
-        noDataLabel.text = text
-        noDataLabel.numberOfLines = 0
-        noDataLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        noDataLabel.textColor = .systemGray
-        noDataLabel.textAlignment = .center
-        tableView.backgroundView = noDataLabel
+
+protocol __SupportsBackgroundLabel: class {
+    var backgroundView: UIView? { get set }
+}
+
+extension __SupportsBackgroundLabel {
+    func setBackgroundLabel(withText text: String) {
+        let label = UILabel()
+        label.text = text
+        label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .title2)
+        label.textColor = .systemGray
+        label.textAlignment = .center
+        backgroundView = label
+    }
+    
+    func removeBackgroundLabel() {
+        backgroundView = nil
     }
 }
 
-extension UICollectionView {
-    func setBackgroundLabel(with text: String) {
-        let noDataLabel = UILabel()
-        noDataLabel.text = text
-        noDataLabel.numberOfLines = 0
-        noDataLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        noDataLabel.textColor = .systemGray
-        noDataLabel.textAlignment = .center
-        backgroundView = noDataLabel
+extension UITableView: __SupportsBackgroundLabel {}
+extension UICollectionView: __SupportsBackgroundLabel {}
+
+extension UITableViewController: __SupportsBackgroundLabel {
+    var backgroundView: UIView? {
+        get { tableView.backgroundView }
+        set { tableView.backgroundView = newValue }
+    }
+}
+extension UICollectionViewController: __SupportsBackgroundLabel {
+    var backgroundView: UIView? {
+        get { collectionView.backgroundView }
+        set { collectionView.backgroundView = newValue }
     }
 }
 
 
- extension KeyPath where Root: NSObject {
+extension KeyPath where Root: NSObject {
     var stringValue: String {
         return NSExpression(forKeyPath: self).keyPath
     }
