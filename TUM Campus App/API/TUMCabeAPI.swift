@@ -31,8 +31,6 @@ enum TUMCabeAPI: URLRequestConvertible {
     case stripeKey
     
     static let baseURLString = "https://app.tum.de/api"
-    static let betaAppURLString = "https://beta.tumcampusapp.de"
-    static let tumCabeHomepageURLString = "https://app.tum.de"
     static let serverTrustPolicies: [String: ServerTrustEvaluating] = ["app.tum.de" : PinnedCertificatesTrustEvaluator()]
     static let baseHeaders: HTTPHeaders = ["X-DEVICE-ID": UIDevice.current.identifierForVendor?.uuidString ?? "not available",
                                                  "X-APP-VERSION": Bundle.main.version,
