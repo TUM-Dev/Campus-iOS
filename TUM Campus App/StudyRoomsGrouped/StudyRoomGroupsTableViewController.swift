@@ -55,13 +55,19 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
 
     @objc private func fetch(animated: Bool = true) {
         if animated {
-            tableView.refreshControl?.beginRefreshing()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.refreshControl?.beginRefreshing()
+            }
         }
         importer.performFetch(success: { [weak self] in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             self?.reload()
         }, error: { [weak self] error in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
@@ -83,7 +89,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, EntityTab
     private func setupTableView() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
-//        tableView.refreshControl = refreshControl --this is buggy for some reason
+        tableView.refreshControl = refreshControl
         tableView.tableFooterView = UIView()
     }
 

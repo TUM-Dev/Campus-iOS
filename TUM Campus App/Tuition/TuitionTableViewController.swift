@@ -36,13 +36,19 @@ final class TuitionTableViewController: UITableViewController, EntityTableViewCo
 
     @objc private func fetch(animated: Bool = true) {
         if animated {
-            tableView.refreshControl?.beginRefreshing()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.refreshControl?.beginRefreshing()
+            }
         }
         importer.performFetch(success: { [weak self] in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             self?.reload()
         }, error: { [weak self] error in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             switch error {
             case is TUMOnlineAPIError:
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: Tuition.fetchRequest())

@@ -132,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="419" width="375" height="248"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3Zk-xe-mX3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hhs-Js-wMF" secondAttribute="bottom" constant="8" id="2ZH-yK-F8y"/>
                             <constraint firstItem="hhs-Js-wMF" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" constant="8" id="8mI-ri-h3J"/>
@@ -312,7 +312,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="vj0-dQ-dZF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4pB-wx-6ne" secondAttribute="trailing" constant="16" id="6cI-gT-rwL"/>
                             <constraint firstItem="4pB-wx-6ne" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IOE-NU-A02" secondAttribute="bottom" constant="8" id="Ci6-w9-Nrd"/>

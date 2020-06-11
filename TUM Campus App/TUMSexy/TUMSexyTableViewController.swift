@@ -19,24 +19,32 @@ final class TUMSexyTableViewController: UITableViewController, EntityTableViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        navigationController?.navigationBar.prefersLargeTitles = false
         importer.fetchedResultsController.delegate = self
         title = "Useful Links".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
         fetch(animated: animated)
     }
 
     @objc private func fetch(animated: Bool = true) {
         if animated {
-            tableView.refreshControl?.beginRefreshing()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.refreshControl?.beginRefreshing()
+            }
         }
         importer.performFetch(success: { [weak self] in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             self?.reload()
         }, error: { [weak self] error in
-            self?.tableView.refreshControl?.endRefreshing()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.refreshControl?.endRefreshing()
+            }
             self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }

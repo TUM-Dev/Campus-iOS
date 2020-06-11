@@ -45,6 +45,8 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.toggleVersion))
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.sizeToFit()
         versionLabel.addGestureRecognizer(tap)
     }
 
