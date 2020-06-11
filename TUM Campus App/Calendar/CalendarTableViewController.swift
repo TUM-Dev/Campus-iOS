@@ -23,7 +23,7 @@ final class CalendarTableViewController: UITableViewController, EntityTableViewC
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-        title = "Calendar".localized
+        title = "Events".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -86,6 +86,8 @@
 /* Class = "UITabBarItem"; title = "Calendar"; ObjectID = "N3e-89-A85"; */
 "N3e-89-A85.title" = "Calendar";
 
+"cpx-zd-HOx.title" = "Heute";
+
 /* Class = "UILabel"; text = "address"; ObjectID = "OQ0-vr-lBR"; */
 "OQ0-vr-lBR.text" = "address";
 
