@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Join the Beta"; ObjectID = "29g-Mj-eAk"; */
-"29g-Mj-eAk.text" = "Join the Beta";
+"29g-Mj-eAk.text" = "Werde Beta-Tester";
 
 /* Class = "UILabel"; text = "TUM ID"; ObjectID = "34H-Ri-CR8"; */
 "34H-Ri-CR8.text" = "TUM ID";
@@ -18,7 +18,7 @@
 "7JO-cs-wke.text" = "speaker";
 
 /* Class = "UITabBarItem"; title = "Lectures"; ObjectID = "7hW-Zh-aNm"; */
-"7hW-Zh-aNm.title" = "Lectures";
+"7hW-Zh-aNm.title" = "Vorlesungen";
 
 /* Class = "UILabel"; text = "Feedback"; ObjectID = "9NI-Zb-R0c"; */
 "9NI-Zb-R0c.text" = "Feedback";
@@ -98,7 +98,7 @@
 "PsM-8J-Utg.text" = "Label";
 
 /* Class = "UITabBarItem"; title = "Cafeteria"; ObjectID = "RRw-AB-qv3"; */
-"RRw-AB-qv3.title" = "Cafeteria";
+"RRw-AB-qv3.title" = "Mensa";
 
 /* Class = "UINavigationItem"; title = "Profil"; ObjectID = "TB6-oP-a7L"; */
 "TB6-oP-a7L.title" = "Profil";
@@ -107,7 +107,7 @@
 "TLw-2Y-aZY.text" = "Details";
 
 /* Class = "UITabBarItem"; title = "Study Rooms"; ObjectID = "V2v-gg-WvC"; */
-"V2v-gg-WvC.title" = "Study Rooms";
+"V2v-gg-WvC.title" = "Lernräume";
 
 /* Class = "UILabel"; text = "price"; ObjectID = "V5D-u9-qp8"; */
 "V5D-u9-qp8.text" = "price";
@@ -155,10 +155,10 @@
 "gyC-o4-377.text" = "lv number";
 
 /* Class = "UILabel"; text = "TUM Dev Website"; ObjectID = "jR9-Zg-wsN"; */
-"jR9-Zg-wsN.text" = "TUM Dev Website";
+"jR9-Zg-wsN.text" = "TUM Dev Webseite";
 
 /* Class = "UITabBarItem"; title = "Grades"; ObjectID = "jzO-tR-0Gw"; */
-"jzO-tR-0Gw.title" = "Grades";
+"jzO-tR-0Gw.title" = "Noten";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "lux-Zw-7kh"; */
 "lux-Zw-7kh.text" = "Price";
