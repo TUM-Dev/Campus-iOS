@@ -29,12 +29,30 @@
         }
       },
       {
+        "package": "CalendarKit",
+        "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
+        "state": {
+          "branch": "master",
+          "revision": "d645ec5dffcc3214fa8b5585e3e445033e0f2eeb",
+          "version": null
+        }
+      },
+      {
         "package": "Charts",
         "repositoryURL": "https://github.com/danielgindi/Charts.git",
         "state": {
           "branch": null,
           "revision": "7ac4a05e83d279bac305a472af9128c2a0eca3d7",
           "version": "3.5.0"
+        }
+      },
+      {
+        "package": "DateToolsSwift",
+        "repositoryURL": "https://github.com/maniramezan/DateTools.git",
+        "state": {
+          "branch": "mani_swiftpm",
+          "revision": "4df71163e824b75476edd853a57dd4e33e0e618b",
+          "version": null
         }
       },
       {

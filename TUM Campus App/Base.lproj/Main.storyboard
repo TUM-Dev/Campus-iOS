@@ -372,7 +372,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vxh-8B-OXt" kind="relationship" relationship="rootViewController" id="Kq1-Ur-RNh"/>
+                        <segue destination="3w0-XR-mHK" kind="relationship" relationship="rootViewController" id="z8p-sz-mJF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ger-uT-9eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,12 +470,54 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <segue destination="imH-MT-aws" kind="presentation" id="hys-4v-y6u"/>
+                                <segue destination="imH-MT-aws" kind="showDetail" id="hys-4v-y6u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w5-I1-yL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="15"/>
+        </scene>
+        <!--Calendar Week View Controller-->
+        <scene sceneID="OSj-PP-yTE">
+            <objects>
+                <viewController id="3w0-XR-mHK" customClass="CalendarWeekViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4BN-Nv-wLw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="RIT-aG-dy1"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vIL-09-IwW">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="list.bullet" catalog="system" id="Iaw-2z-IpD">
+                                <color key="tintColor" name="tumBlue"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="vxh-8B-OXt" kind="show" id="KxZ-y2-l6x"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Today" id="cpx-zd-HOx">
+                                <connections>
+                                    <action selector="showToday:" destination="3w0-XR-mHK" id="My5-qr-R3w"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="VuV-Kd-Udf">
+                            <color key="tintColor" name="tumBlue"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <segue destination="imH-MT-aws" kind="showDetail" id="8Ka-dg-vY4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JTK-aN-LCg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="15"/>
         </scene>
@@ -1701,6 +1743,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="imH-MT-aws" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="a7o-lG-Q9Q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OKH-mf-mP5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1835,7 +1878,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YdS-97-vv4"/>
+        <segue reference="8Ka-dg-vY4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RoomFinder" width="29" height="29"/>
@@ -1848,6 +1891,7 @@
         <image name="checkmark.shield" catalog="system" width="128" height="121"/>
         <image name="chevron.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="110"/>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <image name="number.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
