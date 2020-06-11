@@ -115,7 +115,7 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     // MARK: - UICollectionViewDelegateFlowLayout
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { CGSize(width: UIScreen.main.bounds.width * 0.95, height: CGFloat(120)) }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize { CGSize(width: UIScreen.main.bounds.width * 0.95, height: CGFloat(100)) }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize { .init(width: view.frame.width, height: 340) }
 
