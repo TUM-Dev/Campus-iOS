@@ -135,17 +135,23 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         dataSource?.apply(snapshot, animatingDifferences: true)
 
         if !mapCentered {
-            var region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             var closestCanteens = cafeterias.prefix(3).map { $0.coordinate }
             closestCanteens.append(location.coordinate)
-            region = MKCoordinateRegion(coordinates: closestCanteens)
+            let region: MKCoordinateRegion
+
+            if closestCanteens.count > 1 {
+                region = MKCoordinateRegion(coordinates: closestCanteens)
+            } else {
+                region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            }
+            
             stretchyHeaderView?.mapView.setRegion(region, animated: true)
             mapCentered = true
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        assertionFailure("Failed to find user's location: \(error.localizedDescription)")
+        print("Failed to find user's location: \(error.localizedDescription)")
     }
     
 }
