@@ -49,6 +49,11 @@ final class CalendarEventViewModel: EventDescriptor {
             attributedTitle.append(NSAttributedString(string: "\n"))
             attributedTitle.append(attributedLocation)
         }
+        if let description = event.descriptionText {
+            let attributedLocation = NSMutableAttributedString(string: description).font(.systemFont(ofSize: 12, weight: .light)).color(.secondaryLabel)
+            attributedTitle.append(NSAttributedString(string: "\n\n"))
+            attributedTitle.append(attributedLocation)
+        }
         self.attributedText = attributedTitle
     }
 

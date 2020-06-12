@@ -433,7 +433,7 @@
                                                                 <constraint firstAttribute="width" constant="18" id="ZUw-xw-taT"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-8U-Gef">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="r4d-8U-Gef">
                                                             <rect key="frame" x="22" y="0.0" width="321" height="18"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -453,6 +453,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="bcU-ZW-cBx" id="9bD-Dz-dZq"/>
+                                    <outlet property="locationIconImageView" destination="B5v-7F-9J0" id="1Aw-Ur-Odh"/>
                                     <outlet property="locationLabel" destination="r4d-8U-Gef" id="9eb-HL-8OU"/>
                                     <outlet property="titleLabel" destination="mzl-Pv-gZF" id="raQ-mL-k6O"/>
                                 </connections>
@@ -544,12 +545,12 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yEZ-3f-LXO">
                                                     <rect key="frame" x="0.0" y="25.5" width="267.5" height="42.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="241" verticalHuggingPriority="241" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-1p-ihP">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="241" verticalHuggingPriority="241" ambiguous="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-1p-ihP">
                                                             <rect key="frame" x="0.0" y="0.0" width="267.5" height="24"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ0-vr-lBR">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="address" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQ0-vr-lBR">
                                                             <rect key="frame" x="0.0" y="28" width="267.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1886,7 +1887,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="V0d-7M-17e"/>
+        <segue reference="hys-4v-y6u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="RoomFinder" width="29" height="29"/>
