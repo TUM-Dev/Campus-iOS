@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import XMLParsing
+import XMLCoder
 import Alamofire
 
 protocol DecoderProtocol: class, DataDecoder {

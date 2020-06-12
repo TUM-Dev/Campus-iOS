@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import Alamofire
-import XMLParsing
+import XMLCoder
 import MessageUI
 
 final class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol, MFMailComposeViewControllerDelegate {

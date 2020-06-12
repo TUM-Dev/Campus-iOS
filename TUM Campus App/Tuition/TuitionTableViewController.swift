@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import XMLParsing
+import XMLCoder
 import CoreData
 import Alamofire
 

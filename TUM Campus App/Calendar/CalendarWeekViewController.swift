@@ -2,7 +2,7 @@ import UIKit
 import CalendarKit
 import Alamofire
 import CoreData
-import XMLParsing
+import XMLCoder
 
 final class CalendarWeekViewController: DayViewController {
     typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>

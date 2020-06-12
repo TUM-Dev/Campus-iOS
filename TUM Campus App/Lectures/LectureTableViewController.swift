@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import XMLParsing
+import XMLCoder
 import Alamofire
 
 final class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {

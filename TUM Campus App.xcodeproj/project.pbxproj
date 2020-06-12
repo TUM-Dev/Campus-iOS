@@ -13,6 +13,7 @@
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
 		19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19EC3F6623886C6800D484E7 /* LectureCell.swift */; };
 		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
+		220603B024944493004869F7 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 220603AF24944493004869F7 /* XMLCoder */; };
 		220EB130247DBBA700DC4A6F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 220EB12F247DBBA700DC4A6F /* Charts */; };
 		221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */; };
 		22195063221C8CCC00169A2B /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195062221C8CCC00169A2B /* Lecture.swift */; };
@@ -60,7 +61,6 @@
 		225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74D2479D2F3001A969E /* AlamofireImage */; };
 		225AD7512479D307001A969E /* AlamofireNetworkActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7502479D307001A969E /* AlamofireNetworkActivityIndicator */; };
 		225AD7542479D32C001A969E /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7532479D32C001A969E /* SWXMLHash */; };
-		225AD7572479D33F001A969E /* XMLParsing in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7562479D33F001A969E /* XMLParsing */; };
 		225AD75A2479D358001A969E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* KeychainAccess */; };
 		2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7F8247AC2C5004F99E6 /* Room.swift */; };
 		2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7FA247AC3E8004F99E6 /* RoomMap.swift */; };
@@ -275,12 +275,12 @@
 				22E67CF3248AEB7F0066682D /* GoogleDataTransport.xcframework in Frameworks */,
 				22E67CEC248AEB670066682D /* FirebaseCrashlytics.xcframework in Frameworks */,
 				22E67CEF248AEB710066682D /* FirebaseCore.xcframework in Frameworks */,
-				225AD7572479D33F001A969E /* XMLParsing in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				22E67CF2248AEB7C0066682D /* GoogleAppMeasurement.framework in Frameworks */,
 				22E67CF5248AEB850066682D /* GoogleUtilities.xcframework in Frameworks */,
 				22E67CF1248AEB760066682D /* FirebaseInstallations.xcframework in Frameworks */,
+				220603B024944493004869F7 /* XMLCoder in Frameworks */,
 				22E67CF0248AEB730066682D /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				22E67CEE248AEB6E0066682D /* FirebaseAnalytics.framework in Frameworks */,
@@ -657,10 +657,10 @@
 				225AD74D2479D2F3001A969E /* AlamofireImage */,
 				225AD7502479D307001A969E /* AlamofireNetworkActivityIndicator */,
 				225AD7532479D32C001A969E /* SWXMLHash */,
-				225AD7562479D33F001A969E /* XMLParsing */,
 				225AD7592479D358001A969E /* KeychainAccess */,
 				220EB12F247DBBA700DC4A6F /* Charts */,
 				22508B632492559900B6740D /* CalendarKit */,
+				220603AF24944493004869F7 /* XMLCoder */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -744,10 +744,10 @@
 				225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				225AD74F2479D307001A969E /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */,
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
-				225AD7552479D33F001A969E /* XCRemoteSwiftPackageReference "XMLParsing" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
 				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -1274,6 +1274,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.11.1;
+			};
+		};
 		220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -1322,14 +1330,6 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		225AD7552479D33F001A969E /* XCRemoteSwiftPackageReference "XMLParsing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ShawnMoore/XMLParsing.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.3;
-			};
-		};
 		225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -1341,6 +1341,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		220603AF24944493004869F7 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
 		220EB12F247DBBA700DC4A6F /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */;
@@ -1370,11 +1375,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */;
 			productName = SWXMLHash;
-		};
-		225AD7562479D33F001A969E /* XMLParsing */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 225AD7552479D33F001A969E /* XCRemoteSwiftPackageReference "XMLParsing" */;
-			productName = XMLParsing;
 		};
 		225AD7592479D358001A969E /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
