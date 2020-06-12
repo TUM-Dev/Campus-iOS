@@ -18,7 +18,6 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyKilometer
         manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
         return manager
     }()
     private var mapCentered = false
@@ -46,12 +45,13 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mapCentered = false
+        locationManager.startUpdatingLocation()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationManager.stopUpdatingLocation()
+        mapCentered = false
     }
 
     private func setupDataSource() {
@@ -136,10 +136,9 @@ final class CafeteriasCollectionViewController: UICollectionViewController, UICo
 
         if !mapCentered {
             var region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            if let closestCanteen = cafeterias.first {
-                let distance = closestCanteen.location.coordinate.location.distance(from: location)
-                region = MKCoordinateRegion(center: closestCanteen.coordinate, latitudinalMeters: 2.2 * distance, longitudinalMeters: 2.2 * distance)
-            }
+            var closestCanteens = cafeterias.prefix(3).map { $0.coordinate }
+            closestCanteens.append(location.coordinate)
+            region = MKCoordinateRegion(coordinates: closestCanteens)
             stretchyHeaderView?.mapView.setRegion(region, animated: true)
             mapCentered = true
         }

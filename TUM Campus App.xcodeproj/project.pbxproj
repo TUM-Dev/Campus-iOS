@@ -23,6 +23,7 @@
 		2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */; };
 		2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */; };
 		2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */; };
+		222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */; };
 		223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12E821DF82180053305B /* TUMCabeAPI.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
 		223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12F021E014C60053305B /* NewsTableViewController.swift */; };
@@ -158,6 +159,7 @@
 		2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyHeaderCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaSectionHeader.swift; sourceTree = "<group>"; };
 		2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CafeteriaSectionHeader.xib; sourceTree = "<group>"; };
+		222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		223D12E821DF82180053305B /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		223D12F021E014C60053305B /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
@@ -450,11 +452,11 @@
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
-				22BDA8DB24927CE800F12FD1 /* Extensions */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
 				22E67CA6248AE4390066682D /* GoogleService-Info.plist */,
 				22710B532479E0D30065D6E9 /* Localizable.strings */,
+				22BDA8DB24927CE800F12FD1 /* Extensions */,
 				22E67CA5248AE4220066682D /* Headers */,
 				22E67CA4248AE4090066682D /* Frameworks */,
 			);
@@ -570,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				22BDA8DC24927D2300F12FD1 /* Extensions.swift */,
+				222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */,
 				22BDA8DE24927D2C00F12FD1 /* NSMutableString+Extensions.swift */,
 			);
 			path = Extensions;
@@ -809,6 +812,7 @@
 				223D12F121E014C60053305B /* NewsTableViewController.swift in Sources */,
 				2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */,
 				224CB390222ADAD10002945A /* NewsCollectionViewCell.swift in Sources */,
+				222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */,
 				222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */,
 				19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */,
 				222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */,
