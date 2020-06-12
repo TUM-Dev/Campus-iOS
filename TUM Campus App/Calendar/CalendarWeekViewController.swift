@@ -44,15 +44,15 @@ final class CalendarWeekViewController: DayViewController {
     @objc private func fetch(animated: Bool = true) {
         importer.performFetch(success: { [weak self] in
             self?.reload()
-            }, error: { [weak self] error in
-                switch error {
-                case is TUMOnlineAPIError:
-                    guard let context = self?.importer.context else { break }
-                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
-                    _ = try? context.execute(deleteRequest) as? NSBatchDeleteResult
-                    self?.reload()
-                default: break
-                }
+        }, error: { [weak self] error in
+            switch error {
+            case is TUMOnlineAPIError:
+                guard let context = self?.importer.context else { break }
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: CalendarEvent.fetchRequest())
+                _ = try? context.execute(deleteRequest) as? NSBatchDeleteResult
+                self?.reload()
+            default: break
+            }
         })
     }
 
