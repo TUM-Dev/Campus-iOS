@@ -25,7 +25,7 @@ final class TuitionTableViewController: UITableViewController, EntityTableViewCo
         navigationController?.navigationBar.prefersLargeTitles = false
         setupTableView()
         importer.fetchedResultsController.delegate = self
-        title = "Tuition fees"
+        title = "Tuition fees".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {
