@@ -213,7 +213,6 @@
 		2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TUMCampusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		228761CF248D23190087D340 /* TUMCampusAppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TUMCampusAppDebug.entitlements; sourceTree = "<group>"; };
 		228A616B248DCE4B00398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		228A616C248DCF9000398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
@@ -409,7 +408,6 @@
 		2277E90321D93C3300D7FF3F = {
 			isa = PBXGroup;
 			children = (
-				228761CF248D23190087D340 /* TUMCampusAppDebug.entitlements */,
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
@@ -1071,7 +1069,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = TUMCampusAppDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
