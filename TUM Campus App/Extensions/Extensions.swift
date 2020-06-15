@@ -249,7 +249,7 @@ extension UITableViewCell {
     static var reuseIdentifier: String { NSStringFromClass(self).components(separatedBy: ".").last! }
 }
 
-extension UICollectionViewCell {
+extension UICollectionReusableView {
     static var reuseIdentifier: String { NSStringFromClass(self).components(separatedBy: ".").last! }
 }
 

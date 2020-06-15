@@ -1,77 +1,42 @@
 //
-//  EntityImporter.swift
-//  TUM Campus App
+//  NewsImporter.swift
+//  TUMCampusApp
 //
-//  Created by Tim Gymnich on 2/20/19.
-//  Copyright © 2019 TUM. All rights reserved.
+//  Created by Tim Gymnich on 14.6.20.
+//  Copyright © 2020 TUM. All rights reserved.
 //
 
-import UIKit.UIApplication
-import CoreData
+import Foundation
 import Alamofire
+import CoreData
 import FirebaseCrashlytics
 
-protocol Entity: Decodable, NSFetchRequestResult, NSObject {
-    static func fetchRequest() -> NSFetchRequest<Self>
-    static var sectionNameKeyPath: KeyPath<Self, String?>? { get }
-}
+final class NewsImporter: ImporterProtocol {
+    typealias EntityType = NewsSource
+    typealias EntityContainer = [NewsSource]
+    typealias DecoderType = JSONDecoder
 
-extension Entity {
-    static var sectionNameKeyPath: KeyPath<Self, String?>? { nil }
-}
-
-enum ImporterError: Error {
-    case invalidData
-}
-
-final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
-    let endpoint: URLRequestConvertible
-    let sortDescriptors: [NSSortDescriptor]
-    var predicate: NSPredicate?
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
+    let endpoint: URLRequestConvertible = TUMCabeAPI.newsSources
+    let sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(keyPath: \NewsSource.title, ascending: true)]
+    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
 
     lazy var sessionManager: Session = Session.defaultSession
-    
+
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
         fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = predicate
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: EntityType.sectionNameKeyPath?.stringValue, cacheName: nil)
-        
+
         return fetchedResultsController
     }()
-    
+
     lazy var context: NSManagedObjectContext = {
         let context = coreDataStack.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return context
     }()
-    
-    required init(endpoint: URLRequestConvertible, sortDescriptor: NSSortDescriptor..., predicate: NSPredicate? = nil, dateDecodingStrategy:  DecoderType.DateDecodingStrategy? = nil) {
-        self.endpoint = endpoint
-        self.predicate = predicate
-        self.sortDescriptors = sortDescriptor
-        self.dateDecodingStrategy = dateDecodingStrategy
-    }
-}
 
-
-protocol ImporterProtocol {
-    associatedtype DecoderType: DecoderProtocol
-    associatedtype EntityType: Entity
-    associatedtype EntityContainer: Decodable
-
-    var context: NSManagedObjectContext { get }
-    var sessionManager: Session { get }
-    var endpoint: URLRequestConvertible { get }
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
-}
-
-typealias ErrorHandler = (Error) -> Void
-typealias SuccessHandler = () -> Void
-
-extension ImporterProtocol {
     func performFetch(success successHandler: SuccessHandler? = nil, error errorHandler: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
@@ -90,9 +55,34 @@ extension ImporterProtocol {
                 if let strategy = self.dateDecodingStrategy {
                     decoder.dateDecodingStrategy = strategy
                 }
+                let group = DispatchGroup()
                 do {
-                    _ = try decoder.decode(EntityContainer.self, from: data)
-                    try self.context.save()
+//                    try? self.context.save()
+                    let sources = try decoder.decode([NewsSource].self, from: data)
+                    sources.forEach {
+                        group.enter()
+                        let endpoint = TUMCabeAPI.news(source: $0.id.description)
+                        self.sessionManager.request(endpoint)
+                            .validate(statusCode: 200..<300)
+                            .validate(contentType: DecoderType.contentType)
+                            .responseData { response in
+                                defer { group.leave() }
+                                if let responseError = response.error {
+//                                    errorHandler?(responseError)
+                                    return
+                                }
+                                guard let data = response.data else {
+//                                    errorHandler?(ImporterError.invalidData)
+                                    return
+                                }
+                                let decoder = DecoderType.instantiate()
+                                decoder.userInfo[.context] = self.context
+                                if let strategy = self.dateDecodingStrategy {
+                                    decoder.dateDecodingStrategy = strategy
+                                }
+                                _ = try? decoder.decode([News].self, from: data)
+                        }
+                    }
                 } catch let apiError as APIError {
                     Crashlytics.crashlytics().record(error: apiError)
                     errorHandler?(apiError)
@@ -105,10 +95,11 @@ extension ImporterProtocol {
                     Crashlytics.crashlytics().record(error: error)
                     fatalError(error.localizedDescription)
                 }
-                successHandler?()
+                group.notify(queue: .main) {
+                    try? self.context.save()
+                    successHandler?()
+                }
         }
     }
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }
-    var appDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
-    var coreDataStack: NSPersistentContainer { return appDelegate.persistentContainer }
+
 }

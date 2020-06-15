@@ -1,117 +1,148 @@
 //
 //  NewsCollectionViewController.swift
-//  TUM Campus App
+//  TUMCampusApp
 //
-//  Created by Tim Gymnich on 3/2/19.
-//  Copyright © 2019 TUM. All rights reserved.
+//  Created by Tim Gymnich on 13.6.20.
+//  Copyright © 2020 TUM. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import Alamofire
 
-final class NewsCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
-    typealias NewsImporter = Importer<News,[News],JSONDecoder>
-    typealias MovieImporter = Importer<Movie,[Movie],JSONDecoder>
-    
-    let newsPredicate = NSPredicate(format: "%K < %d", #keyPath(News.sourceID), 7)
-    lazy var newsImporter = NewsImporter(endpoint: TUMCabeAPI.news, predicate: newsPredicate, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-    let newsCellIdentifier = "NewsCell"
-    
-    lazy var newsSourceImporter = Importer<NewsSource,[NewsSource],JSONDecoder>(endpoint: TUMCabeAPI.newsSources, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-    
-    let newsspreadPredicate = NSPredicate(format: "%K >= %d", #keyPath(News.sourceID), 7)
-    lazy var newsspreadImporter = NewsImporter(endpoint: TUMCabeAPI.news, predicate: newsspreadPredicate, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-    let newsspreadCellIdentifier = "NewsspreadCollectionView"
-    
-    lazy var eventsImporter = TicketImporter(endpoint: TUMCabeAPI.events, sortDescriptor: NSSortDescriptor(keyPath: \TicketEvent.start, ascending: false), dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-    let eventCellIdentifier = "EventCollectionView"
-    
-    lazy var movieImporter: MovieImporter = MovieImporter(endpoint: TUMCabeAPI.movie, sortDescriptor: NSSortDescriptor(keyPath: \Movie.date, ascending: false), dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
-    let movieCelIdentifier = "MovieCollectionView"
-    
-    
+final class NewsCollectionViewController: UICollectionViewController {
+    private var dataSource: UICollectionViewDiffableDataSource<NewsSource, News>!
+    private lazy var currentSnapshot = NSDiffableDataSourceSnapshot<NewsSource, News>()
+    private lazy var importer = NewsImporter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        newsImporter.performFetch()
-        newsSourceImporter.performFetch() { error in
-            print(error)
-        }
-        newsImporter.fetchedResultsController.delegate = self
-
-        newsspreadImporter.performFetch()
-        newsspreadImporter.fetchedResultsController.delegate = self
-
-        eventsImporter.performFetch()
-        eventsImporter.fetchedResultsControllerDelegate = self
-
-        movieImporter.performFetch()
-        movieImporter.fetchedResultsController.delegate = self
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "News".localized
+        setupCollectionView()
+        setupDataSource()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        try! newsImporter.fetchedResultsController.performFetch()
-        try! newsspreadImporter.fetchedResultsController.performFetch()
-        try! eventsImporter.fetchedResultsController.performFetch()
-        try! movieImporter.fetchedResultsController.performFetch()
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+    private func setupCollectionView() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        collectionView.collectionViewLayout = createLayout()
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0: return newsImporter.fetchedResultsController.fetchedObjects?.count ?? 0
-        case 1: return 1
-        case 2: return 1
-        case 3: return 1
-        default: return 0
+
+    private func createLayout() -> UICollectionViewLayout {
+        let sectionProvider = { (sectionIndex: Int,
+            layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                  heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+            let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ?
+                0.425 : 0.85)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth),
+                                                   heightDimension: .absolute(250))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .continuous
+            section.interGroupSpacing = 20
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+            section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+
+            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .estimated(44))
+
+            let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: titleSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top)
+
+            section.boundarySupplementaryItems = [titleSupplementary]
+            return section
         }
+
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 20
+
+        let layout = UICollectionViewCompositionalLayout(
+            sectionProvider: sectionProvider, configuration: config)
+        return layout
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newsCellIdentifier, for: indexPath) as! NewsCollectionViewCell
-            guard let news = newsImporter.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
-            cell.configure(news)
+
+    private func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<NewsSource, News>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, news: News) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCollectionViewCell.reuseIdentifier, for: indexPath) as! NewsCollectionViewCell
+
+            cell.configure(news: news)
+
             return cell
-        case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: newsspreadCellIdentifier, for: indexPath) as! NewsspreadCollectionView
-            cell.backgroundColor = .yellow
-            cell.news = newsspreadImporter.fetchedResultsController.fetchedObjects ?? []
-            return cell
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: eventCellIdentifier, for: indexPath) as! EventsCollectionView
-            cell.backgroundColor = .green
-            cell.events = eventsImporter.fetchedResultsController.fetchedObjects ?? []
-            return cell
-        case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: movieCelIdentifier, for: indexPath) as! MoviesCollectionView
-            cell.movies = movieImporter.fetchedResultsController.fetchedObjects ?? []
-            cell.backgroundColor = .blue
-            return cell
-        default:
-            fatalError("Invalid Section")
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch indexPath.section {
-        case 3:
-            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(200))
-        default:
-            return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(128))
+        dataSource.supplementaryViewProvider = { [weak self]
+            (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            guard let self = self else { return nil }
+            let titleSupplementary = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: NewsCategoryHeaderView.reuseIdentifier,
+                for: indexPath) as! NewsCategoryHeaderView
+
+            let newsSource = self.currentSnapshot.sectionIdentifiers[indexPath.section]
+            titleSupplementary.configure(source: newsSource)
+
+            return titleSupplementary
         }
+        fetch()
     }
-    
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        collectionView.reloadData()
+
+    @objc private func fetch(_ animated: Bool = false) {
+        if animated {
+            DispatchQueue.main.async {
+                self.collectionView.refreshControl?.beginRefreshing()
+            }
+        }
+        importer.performFetch(success: { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            self?.reload()
+        }, error: { [weak self] error in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            self?.setBackgroundLabel(withText: error.localizedDescription)
+        })
     }
-    
+
+    private func reload() {
+        try? importer.fetchedResultsController.performFetch()
+        currentSnapshot.deleteSections(currentSnapshot.sectionIdentifiers)
+        currentSnapshot.deleteAllItems()
+        guard let sources = importer.fetchedResultsController.fetchedObjects else { return }
+
+        for source in sources.filter({ ($0.news?.count ?? 0) > 0 }) {
+            guard var news = source.news?.allObjects as? [News] else { return }
+            news.sort { (lhs, rhs) -> Bool in
+                guard let lhs = lhs.date else { return true }
+                guard let rhs = rhs.date else { return false }
+                return lhs > rhs
+            }
+            currentSnapshot.appendSections([source])
+            currentSnapshot.appendItems(news, toSection: source)
+        }
+        dataSource.apply(currentSnapshot, animatingDifferences: true)
+    }
+
+    // MARK: - UICollectionViewDelegate
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let news = dataSource.itemIdentifier(for: indexPath), let link = news.link else { return }
+        UIApplication.shared.open(link)
+    }
+
 }
-
-

@@ -34,12 +34,12 @@ final class EventsTableViewController: UITableViewController, EntityTableViewCon
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EventCollectionViewCell.reuseIdentifier, for: indexPath)
-        guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
-        
-        cell.textLabel?.text = event.title
-        cell.detailTextLabel?.text = event.ticketType?.sold ?? "0"
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: EventCollectionViewCell.reuseIdentifier, for: indexPath)
+//        guard let event = importer.fetchedResultsController.fetchedObjects?[indexPath.row] else { return cell }
+//
+//        cell.textLabel?.text = event.title
+//        cell.detailTextLabel?.text = event.ticketType?.sold ?? "0"
+        return UITableViewCell()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

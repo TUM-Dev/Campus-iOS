@@ -12,7 +12,7 @@ import UIKit
 enum TUMCabeAPI: URLRequestConvertible {
     case movie
     case cafeteria
-    case news
+    case news(source: String)
     case newsSources
     case newsAlert
     case roomSearch(query: String)
@@ -41,7 +41,7 @@ enum TUMCabeAPI: URLRequestConvertible {
         switch self {
         case .movie:                            return "kino"
         case .cafeteria:                        return "mensen"
-        case .news:                             return "news"
+        case .news(let source):                             return "news/\(source)/getAll"
         case .newsSources:                      return "news/sources"
         case .newsAlert:                        return "news/alert"
         case .roomSearch(let room):             return "roomfinder/room/search/\(room.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? "")"
