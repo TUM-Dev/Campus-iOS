@@ -49,13 +49,13 @@ final class NewsCollectionViewController: UICollectionViewController {
             let tumFilmSection = self?.currentSnapshot.indexOfSection("TU Film")
             let groupFractionalWidth: CGFloat
             if layoutEnvironment.container.effectiveContentSize.width > 500 {
-                groupFractionalWidth = sectionIndex == tumFilmSection ?  0.2125 : 0.425
+                groupFractionalWidth = sectionIndex == tumFilmSection ?  0.2 : 0.425
             } else {
-                groupFractionalWidth = sectionIndex == tumFilmSection ? 0.425 : 0.85
+                groupFractionalWidth = sectionIndex == tumFilmSection ? 0.4 : 0.85
             }
 
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth),
-                                                   heightDimension: .absolute(sectionIndex == tumFilmSection ? 320 : 250))
+                                                   heightDimension: .absolute(sectionIndex == tumFilmSection ? 300 : 250))
 
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
@@ -163,7 +163,11 @@ final class NewsCollectionViewController: UICollectionViewController {
         }
 
         try? newsImporter.fetchedResultsController.performFetch()
-        if let sources = newsImporter.fetchedResultsController.fetchedObjects?.filter({ ($0.news?.count ?? 0) > 0 && $0.id != 2 }) {
+        if let sources = newsImporter.fetchedResultsController.fetchedObjects?
+            .filter({ ($0.news?.count ?? 0) > 0 })
+            .filter({ $0.id != 2 })
+            .filter({ $0.title != nil }) {
+
             // Exclude id from news sources which is TU Film siince its handled by another endpoint
             currentSnapshot.appendSections(sources.compactMap{ $0.title })
             for source in sources {
