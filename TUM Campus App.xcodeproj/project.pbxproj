@@ -57,7 +57,6 @@
 		2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7FA247AC3E8004F99E6 /* RoomMap.swift */; };
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
-		22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D97221E0F05002C5720 /* EntityTableViewController.swift */; };
 		22692D9B221E1618002C5720 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9A221E1618002C5720 /* Grade.swift */; };
 		22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9E221E19F6002C5720 /* GradeTableViewController.swift */; };
 		22710B552479E0D30065D6E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22710B532479E0D30065D6E9 /* Localizable.strings */; };
@@ -70,7 +69,6 @@
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
-		229C548F2495463F00EFD5A2 /* NewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C548E2495463F00EFD5A2 /* NewsDataSource.swift */; };
 		229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */; };
 		229C549724954BF700EFD5A2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549524954BF700EFD5A2 /* Movie.swift */; };
 		229C549824954BF700EFD5A2 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549624954BF700EFD5A2 /* MovieTableViewController.swift */; };
@@ -181,7 +179,6 @@
 		2261E7FA247AC3E8004F99E6 /* RoomMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomMap.swift; sourceTree = "<group>"; };
 		22683D68221C5E0200C70883 /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		22692D95221DCE29002C5720 /* EntityImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
-		22692D97221E0F05002C5720 /* EntityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTableViewController.swift; sourceTree = "<group>"; };
 		22692D9A221E1618002C5720 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		22692D9E221E19F6002C5720 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
 		22710B542479E0D30065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -203,7 +200,6 @@
 		228A616B248DCE4B00398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		228A616C248DCF9000398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
 		2294545C22198B25008E41B7 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
-		229C548E2495463F00EFD5A2 /* NewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataSource.swift; sourceTree = "<group>"; };
 		229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		229C549524954BF700EFD5A2 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		229C549624954BF700EFD5A2 /* MovieTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
@@ -355,7 +351,6 @@
 				229C549B24967AEC00EFD5A2 /* NewsImporter.swift */,
 				224CB36E2226C6240002945A /* DecoderProtocol.swift */,
 				224CB36A2226B7980002945A /* APIResponse.swift */,
-				22692D97221E0F05002C5720 /* EntityTableViewController.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -485,7 +480,6 @@
 			children = (
 				223D12EE21E00B9E0053305B /* News.swift */,
 				224CB388222AA6620002945A /* NewsSource.swift */,
-				229C548E2495463F00EFD5A2 /* NewsDataSource.swift */,
 				22EEF8BD249526B100DD9321 /* NewsCollectionViewController.swift */,
 				229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */,
 				229C549924964AC900EFD5A2 /* NewsCategoryHeaderView.swift */,
@@ -788,7 +782,6 @@
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
 				2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */,
-				229C548F2495463F00EFD5A2 /* NewsDataSource.swift in Sources */,
 				222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */,
 				222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */,
 				22EEF8BE249526B100DD9321 /* NewsCollectionViewController.swift in Sources */,
@@ -796,7 +789,6 @@
 				222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */,
 				22508B662492672F00B6740D /* CalendarWeekViewController.swift in Sources */,
 				229C549A24964AC900EFD5A2 /* NewsCategoryHeaderView.swift in Sources */,
-				22692D98221E0F05002C5720 /* EntityTableViewController.swift in Sources */,
 				19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */,
 				224CB35D222571360002945A /* TicketImporter.swift in Sources */,
 				19EC3F6723886C6800D484E7 /* LectureCell.swift in Sources */,

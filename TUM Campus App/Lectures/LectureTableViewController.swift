@@ -11,19 +11,18 @@ import CoreData
 import XMLCoder
 import Alamofire
 
-final class LecturesTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class LecturesTableViewController: UITableViewController {
     typealias ImporterType = Importer<Lecture, APIResponse<LectureAPIResponse,TUMOnlineAPIError>, XMLDecoder>
     
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalLectures
-    private let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    private static let endpoint = TUMOnlineAPI.personalLectures
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-        importer.fetchedResultsController.delegate = self
         title = "Lectures".localized
     }
     

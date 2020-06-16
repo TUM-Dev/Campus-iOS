@@ -6,22 +6,26 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 import CoreData
 
-final class TicketImporter: ImporterProtocol {
+final class TicketImporter {
     typealias DecoderType = JSONDecoder
     typealias EntityType = TicketEvent
     typealias EntityContainer = [TicketEvent]
+    typealias ErrorHandler = (Error) -> Void
+    typealias SuccessHandler = () -> Void
     
     var sortDescriptors: [NSSortDescriptor]
     var endpoint: URLRequestConvertible
     var predicate: NSPredicate?
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
+    private static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    let coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
     
-    lazy var sessionManager: Session = Session.defaultSession
+    let sessionManager: Session = Session.defaultSession
     
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()

@@ -9,18 +9,17 @@
 import UIKit
 import CoreData
 
-final class TUMSexyTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class TUMSexyTableViewController: UITableViewController {
     typealias ImporterType = Importer<TUMSexyLink,[String: TUMSexyLink],JSONDecoder>
     
-    private let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
-    lazy var importer: ImporterType = ImporterType(endpoint: TUMSexyAPI(), sortDescriptor: sortDescriptor)
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
+    private let importer = ImporterType(endpoint: TUMSexyAPI(), sortDescriptor: sortDescriptor)
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         navigationController?.navigationBar.prefersLargeTitles = false
-        importer.fetchedResultsController.delegate = self
         title = "Useful Links".localized
     }
     

@@ -12,19 +12,18 @@ import CoreData
 import Alamofire
 
 
-final class TuitionTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class TuitionTableViewController: UITableViewController {
     typealias ImporterType = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
     
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.tuitionStatus
-    private let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+    private static let endpoint = TUMOnlineAPI.tuitionStatus
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = false
         setupTableView()
-        importer.fetchedResultsController.delegate = self
         title = "Tuition fees".localized
     }
     

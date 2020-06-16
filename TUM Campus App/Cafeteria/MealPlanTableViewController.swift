@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 final class MealPlanTableViewController: UITableViewController {
-    private let sessionManager: Session = Session.defaultSession
+    private let sessionManager = Session.defaultSession
     private var menus: [Menu] = []
     var cafeteria: Cafeteria?
 

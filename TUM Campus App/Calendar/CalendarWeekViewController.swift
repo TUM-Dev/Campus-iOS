@@ -7,9 +7,9 @@ import XMLCoder
 final class CalendarWeekViewController: DayViewController {
     typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>
 
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
-    private let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    private static let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
 
 
     override func viewDidLoad() {

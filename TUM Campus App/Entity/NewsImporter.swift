@@ -6,23 +6,28 @@
 //  Copyright © 2020 TUM. All rights reserved.
 //
 
-import Foundation
+import UIKit.UIApplication
 import Alamofire
 import CoreData
 import FirebaseCrashlytics
 
-final class NewsImporter: ImporterProtocol {
+final class NewsImporter {
     typealias EntityType = NewsSource
     typealias EntityContainer = [NewsSource]
     typealias DecoderType = JSONDecoder
+    typealias ErrorHandler = (Error) -> Void
+    typealias SuccessHandler = () -> Void
+
+    static let sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(keyPath: \NewsSource.title, ascending: true)]
+
+    private static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    private static let coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
+
+    private let sessionManager: Session = Session.defaultSession
 
     let endpoint: URLRequestConvertible = TUMCabeAPI.newsSources
-    let sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(keyPath: \NewsSource.title, ascending: true)]
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
-
-    lazy var sessionManager: Session = Session.defaultSession
-
-    lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
+    let dateDecodingStrategy: DecoderType.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
+    let fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
         fetchRequest.sortDescriptors = sortDescriptors
 
@@ -30,8 +35,7 @@ final class NewsImporter: ImporterProtocol {
 
         return fetchedResultsController
     }()
-
-    lazy var context: NSManagedObjectContext = {
+    let context: NSManagedObjectContext = {
         let context = coreDataStack.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return context
@@ -57,7 +61,6 @@ final class NewsImporter: ImporterProtocol {
                 }
                 let group = DispatchGroup()
                 do {
-//                    try? self.context.save()
                     let sources = try decoder.decode([NewsSource].self, from: data)
                     sources.forEach {
                         group.enter()
@@ -67,14 +70,7 @@ final class NewsImporter: ImporterProtocol {
                             .validate(contentType: DecoderType.contentType)
                             .responseData { response in
                                 defer { group.leave() }
-                                if let responseError = response.error {
-//                                    errorHandler?(responseError)
-                                    return
-                                }
-                                guard let data = response.data else {
-//                                    errorHandler?(ImporterError.invalidData)
-                                    return
-                                }
+                                guard let data = response.data else { return }
                                 let decoder = DecoderType.instantiate()
                                 decoder.userInfo[.context] = self.context
                                 if let strategy = self.dateDecodingStrategy {

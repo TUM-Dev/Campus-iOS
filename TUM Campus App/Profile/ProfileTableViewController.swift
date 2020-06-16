@@ -12,7 +12,7 @@ import Alamofire
 import XMLCoder
 import MessageUI
 
-final class ProfileTableViewController: UITableViewController, EntityTableViewControllerProtocol, MFMailComposeViewControllerDelegate {
+final class ProfileTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     typealias ImporterType = Importer<Profile,ProfileAPIResponse,XMLDecoder>
     
     @IBOutlet private weak var profileImageView: UIImageView!
@@ -21,10 +21,9 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
     @IBOutlet private weak var signOutLabel: UILabel!
     @IBOutlet private weak var versionLabel: UILabel!
 
-
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.identify
-    private let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
-    private let loginController: AuthenticationHandler = AuthenticationHandler(delegate: nil)
+    private static let endpoint = TUMOnlineAPI.identify
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
+    private let loginController = AuthenticationHandler()
     private let coreDataStack = appDelegate.persistentContainer
     private var versionToggle = true {
         didSet {
@@ -32,7 +31,7 @@ final class ProfileTableViewController: UITableViewController, EntityTableViewCo
         }
     }
 
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
     private enum Section: Int {
         case profile

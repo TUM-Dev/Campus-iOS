@@ -6,7 +6,6 @@
 //  Copyright © 2018 TUM. All rights reserved.
 //
 
-import Foundation
 import SWXMLHash
 import Alamofire
 import CoreLocation
@@ -110,29 +109,21 @@ extension DateFormatter {
 }
 
 extension Session {
-    static var defaultSession: Session {
-        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: nil), retrier: AuthenticationHandler(delegate: nil))
+    static let defaultSession: Session = {
+        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(), retrier: AuthenticationHandler())
         let cacher = ResponseCacher(behavior: .cache)
 //        let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
         let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler(), cachedResponseHandler: cacher)
         return manager
-    }
-    
-    static func defaultSession(authenticationHandlerDelegate delegate: AuthenticationHandlerDelegate) -> Session {
-        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(delegate: delegate), retrier: AuthenticationHandler(delegate: delegate))
-        let cacher = ResponseCacher(behavior: .cache)
-//        let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler(), cachedResponseHandler: cacher)
-        return manager
-    }
+    }()
 }
 
 
-protocol __SupportsBackgroundLabel: class {
+protocol SupportsBackgroundLabel: class {
     var backgroundView: UIView? { get set }
 }
 
-extension __SupportsBackgroundLabel {
+extension SupportsBackgroundLabel {
     func setBackgroundLabel(withText text: String) {
         let label = UILabel()
         label.text = text
@@ -148,16 +139,16 @@ extension __SupportsBackgroundLabel {
     }
 }
 
-extension UITableView: __SupportsBackgroundLabel {}
-extension UICollectionView: __SupportsBackgroundLabel {}
+extension UITableView: SupportsBackgroundLabel {}
+extension UICollectionView: SupportsBackgroundLabel {}
 
-extension UITableViewController: __SupportsBackgroundLabel {
+extension UITableViewController: SupportsBackgroundLabel {
     var backgroundView: UIView? {
         get { tableView.backgroundView }
         set { tableView.backgroundView = newValue }
     }
 }
-extension UICollectionViewController: __SupportsBackgroundLabel {
+extension UICollectionViewController: SupportsBackgroundLabel {
     var backgroundView: UIView? {
         get { collectionView.backgroundView }
         set { collectionView.backgroundView = newValue }

@@ -31,24 +31,17 @@ enum LoginError: LocalizedError {
     }
 }
 
-protocol AuthenticationHandlerDelegate {
-    func shouldEnterTumID() -> String?
-    func shouldEnableTokenPermissions()
-    func shouldActivateToken()
-}
-
 /// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
 final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     typealias Completion = (Result<String,Error>) -> Void
+
     private let lock = NSLock()
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
 
-    var delegate: AuthenticationHandlerDelegate?
-    
     private lazy var coreDataStack = appDelegate.persistentContainer
-    private lazy var sessionManager: Session = Session.defaultSession
-    
+    private let sessionManager = Session()
+
     private static let keychain = Keychain(service: "de.tum.campusapp")
         .synchronizable(true)
         .accessibility(.afterFirstUnlock)
@@ -66,13 +59,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 AuthenticationHandler.keychain[data: "credentials"] = nil
             }
         }
-    }
-    
-    
-    // MARK: - Initialization
-    
-    public init(delegate: AuthenticationHandlerDelegate?) {
-        self.delegate = delegate
     }
     
     // MARK: - RequestAdapter
@@ -115,7 +101,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         lock.lock() ; defer { lock.unlock() }
 
-        var tumID: String
         requestsToRetry.append(completion)
 
         guard isRefreshing else {
@@ -123,12 +108,12 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             return
         }
 
+        let tumID: String
         switch credentials {
         case .none,
              .noTumID?:
-            guard let delegate = delegate else { return }
-            guard let id = delegate.shouldEnterTumID() else { return }
-            tumID = id
+            completion(.doNotRetry)
+            return
         case .tumID(let id,_)?,
              .tumIDAndKey(let id,_,_)?:
             tumID = id
@@ -187,6 +172,8 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
     
     func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) {
+        let sessionManager: Session = Session.defaultSession
+
         switch credentials {
         case .none: callback(.failure(LoginError.missingToken))
         case .noTumID?: callback(.failure(LoginError.missingToken))

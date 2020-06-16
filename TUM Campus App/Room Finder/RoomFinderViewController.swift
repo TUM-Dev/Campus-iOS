@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 final class RoomFinderViewController: UITableViewController, UISearchResultsUpdating {
-    private let sessionManager: Session = Session.defaultSession
+    private let sessionManager = Session.defaultSession
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     private enum Section: CaseIterable {

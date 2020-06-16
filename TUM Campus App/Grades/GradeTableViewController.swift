@@ -12,21 +12,21 @@ import Alamofire
 import XMLCoder
 import Charts
 
-final class GradeTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class GradeTableViewController: UITableViewController {
     typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
 
     @IBOutlet private weak var barChartView: BarChartView!
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.personalGrades
-    private let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+
+    private static let endpoint = TUMOnlineAPI.personalGrades
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
-        importer.fetchedResultsController.delegate = self
         title = "Grades".localized
     }
     

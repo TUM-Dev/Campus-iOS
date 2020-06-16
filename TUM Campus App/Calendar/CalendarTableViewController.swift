@@ -11,12 +11,12 @@ import CoreData
 import XMLCoder
 import Alamofire
 
-final class CalendarTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class CalendarTableViewController: UITableViewController {
     typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>
     
-    private let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
-    private let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
-    lazy var importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    private static let endpoint = TUMOnlineAPI.calendar
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
 
     
     override func viewDidLoad() {

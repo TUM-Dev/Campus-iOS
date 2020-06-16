@@ -11,8 +11,8 @@ import Alamofire
 import MapKit
 
 final class CafeteriasCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, MKMapViewDelegate, CLLocationManagerDelegate {
-    private let endpoint: URLRequestConvertible = EatAPI.canteens
-    private let sessionManager: Session = Session.defaultSession
+    private let endpoint = EatAPI.canteens
+    private let sessionManager = Session.defaultSession
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self

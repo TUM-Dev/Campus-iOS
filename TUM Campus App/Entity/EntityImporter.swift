@@ -24,14 +24,20 @@ enum ImporterError: Error {
     case invalidData
 }
 
-final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol>: ImporterProtocol {
-    let endpoint: URLRequestConvertible
-    let sortDescriptors: [NSSortDescriptor]
-    var predicate: NSPredicate?
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy?
+final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType: DecoderProtocol> {
+    typealias ErrorHandler = (Error) -> Void
+    typealias SuccessHandler = () -> Void
 
-    lazy var sessionManager: Session = Session.defaultSession
-    
+    let endpoint: URLRequestConvertible
+    let dateDecodingStrategy: DecoderType.DateDecodingStrategy?
+    let sortDescriptors: [NSSortDescriptor]
+    let predicate: NSPredicate?
+
+    private let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let sessionManager = Session.defaultSession
+
+    private lazy var coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
+
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
         fetchRequest.sortDescriptors = sortDescriptors
@@ -54,24 +60,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
         self.sortDescriptors = sortDescriptor
         self.dateDecodingStrategy = dateDecodingStrategy
     }
-}
 
-
-protocol ImporterProtocol {
-    associatedtype DecoderType: DecoderProtocol
-    associatedtype EntityType: Entity
-    associatedtype EntityContainer: Decodable
-
-    var context: NSManagedObjectContext { get }
-    var sessionManager: Session { get }
-    var endpoint: URLRequestConvertible { get }
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { get set }
-}
-
-typealias ErrorHandler = (Error) -> Void
-typealias SuccessHandler = () -> Void
-
-extension ImporterProtocol {
     func performFetch(success successHandler: SuccessHandler? = nil, error errorHandler: ErrorHandler? = nil) {
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
@@ -108,7 +97,5 @@ extension ImporterProtocol {
                 successHandler?()
         }
     }
-    var dateDecodingStrategy: DecoderType.DateDecodingStrategy? { return nil }
-    var appDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
-    var coreDataStack: NSPersistentContainer { return appDelegate.persistentContainer }
+
 }

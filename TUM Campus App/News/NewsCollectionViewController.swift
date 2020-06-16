@@ -12,8 +12,20 @@ import Alamofire
 
 final class NewsCollectionViewController: UICollectionViewController {
     private var dataSource: UICollectionViewDiffableDataSource<NewsSource, News>!
-    private lazy var currentSnapshot = NSDiffableDataSourceSnapshot<NewsSource, News>()
-    private lazy var importer = NewsImporter()
+    private var currentSnapshot = NSDiffableDataSourceSnapshot<NewsSource, News>()
+    private let importer = NewsImporter()
+
+    private enum Section: Int, CaseIterable {
+        case news
+        case movie
+
+        var columns: Int {
+            switch self {
+            case .news: return 1
+            case .movie: return 3
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,16 +134,15 @@ final class NewsCollectionViewController: UICollectionViewController {
         try? importer.fetchedResultsController.performFetch()
         currentSnapshot.deleteSections(currentSnapshot.sectionIdentifiers)
         currentSnapshot.deleteAllItems()
-        guard let sources = importer.fetchedResultsController.fetchedObjects else { return }
-
-        for source in sources.filter({ ($0.news?.count ?? 0) > 0 }) {
+        guard let sources = importer.fetchedResultsController.fetchedObjects?.filter({ ($0.news?.count ?? 0) > 0 }) else { return }
+        currentSnapshot.appendSections(sources)
+        for source in sources {
             guard var news = source.news?.allObjects as? [News] else { return }
             news.sort { (lhs, rhs) -> Bool in
                 guard let lhs = lhs.date else { return true }
                 guard let rhs = rhs.date else { return false }
                 return lhs > rhs
             }
-            currentSnapshot.appendSections([source])
             currentSnapshot.appendItems(news, toSection: source)
         }
         dataSource.apply(currentSnapshot, animatingDifferences: true)

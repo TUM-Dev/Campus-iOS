@@ -10,17 +10,16 @@ import UIKit
 import CoreData
 import Alamofire
 
-final class MovieTableViewController: UITableViewController, EntityTableViewControllerProtocol {
+final class MovieTableViewController: UITableViewController {
    typealias ImporterType = Importer<Movie,[Movie],JSONDecoder>
     
-    private let endpoint: URLRequestConvertible = TUMCabeAPI.movie
-    private let sortDescriptor = NSSortDescriptor(keyPath: \Movie.date, ascending: false)
-    lazy var importer: ImporterType = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
+    private static let endpoint = TUMCabeAPI.movie
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \Movie.date, ascending: false)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        importer.fetchedResultsController.delegate = self
         importer.performFetch()
     }
     
@@ -39,10 +38,6 @@ final class MovieTableViewController: UITableViewController, EntityTableViewCont
 //
 //        cell.textLabel?.text = movie.title
         return UITableViewCell()
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        tableView.reloadData()
     }
     
 }
