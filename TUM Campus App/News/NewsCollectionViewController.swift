@@ -11,21 +11,13 @@ import CoreData
 import Alamofire
 
 final class NewsCollectionViewController: UICollectionViewController {
-    private var dataSource: UICollectionViewDiffableDataSource<NewsSource, News>!
-    private var currentSnapshot = NSDiffableDataSourceSnapshot<NewsSource, News>()
-    private let importer = NewsImporter()
-
-    private enum Section: Int, CaseIterable {
-        case news
-        case movie
-
-        var columns: Int {
-            switch self {
-            case .news: return 1
-            case .movie: return 3
-            }
-        }
-    }
+    private var dataSource: UICollectionViewDiffableDataSource<String, AnyHashable>!
+    private var currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
+    private let newsImporter = NewsImporter()
+    private let movieImporter = Importer<Movie,[Movie],JSONDecoder>(
+        endpoint: TUMCabeAPI.movie,
+        sortDescriptor: NSSortDescriptor(keyPath: \Movie.date, ascending: false),
+        dateDecodingStrategy: .formatted(DateFormatter.yyyyMMddhhmmss))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +40,23 @@ final class NewsCollectionViewController: UICollectionViewController {
     }
 
     private func createLayout() -> UICollectionViewLayout {
-        let sectionProvider = { (sectionIndex: Int,
+        let sectionProvider = { [weak self] (sectionIndex: Int,
             layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                   heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-            let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ?
-                0.425 : 0.85)
+            let tumFilmSection = self?.currentSnapshot.indexOfSection("TU Film")
+            let groupFractionalWidth: CGFloat
+            if layoutEnvironment.container.effectiveContentSize.width > 500 {
+                groupFractionalWidth = sectionIndex == tumFilmSection ?  0.2125 : 0.425
+            } else {
+                groupFractionalWidth = sectionIndex == tumFilmSection ? 0.425 : 0.85
+            }
+
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth),
-                                                   heightDimension: .absolute(250))
+                                                   heightDimension: .absolute(sectionIndex == tumFilmSection ? 320 : 250))
+
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
 
             let section = NSCollectionLayoutSection(group: group)
@@ -87,13 +86,20 @@ final class NewsCollectionViewController: UICollectionViewController {
     }
 
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<NewsSource, News>(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, news: News) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCollectionViewCell.reuseIdentifier, for: indexPath) as! NewsCollectionViewCell
+        dataSource = UICollectionViewDiffableDataSource<String, AnyHashable>(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: AnyHashable) -> UICollectionViewCell? in
 
-            cell.configure(news: news)
-
-            return cell
+            if let news = item as? News {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsCollectionViewCell.reuseIdentifier, for: indexPath) as! NewsCollectionViewCell
+                cell.configure(news: news)
+                return cell
+            } else if let movie = item as? Movie {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
+                cell.configure(movie: movie)
+                return cell
+            } else {
+                return UICollectionViewCell()
+            }
         }
         dataSource.supplementaryViewProvider = { [weak self]
             (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
@@ -103,8 +109,8 @@ final class NewsCollectionViewController: UICollectionViewController {
                 withReuseIdentifier: NewsCategoryHeaderView.reuseIdentifier,
                 for: indexPath) as! NewsCategoryHeaderView
 
-            let newsSource = self.currentSnapshot.sectionIdentifiers[indexPath.section]
-            titleSupplementary.configure(source: newsSource)
+            let sectionTitle = self.currentSnapshot.sectionIdentifiers[indexPath.section]
+            titleSupplementary.configure(title: sectionTitle)
 
             return titleSupplementary
         }
@@ -112,39 +118,65 @@ final class NewsCollectionViewController: UICollectionViewController {
     }
 
     @objc private func fetch(_ animated: Bool = false) {
+        let group = DispatchGroup()
         if animated {
-            DispatchQueue.main.async {
-                self.collectionView.refreshControl?.beginRefreshing()
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.refreshControl?.beginRefreshing()
             }
         }
-        importer.performFetch(success: { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self?.collectionView.refreshControl?.endRefreshing()
-            }
-            self?.reload()
-        }, error: { [weak self] error in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self?.collectionView.refreshControl?.endRefreshing()
-            }
-            self?.setBackgroundLabel(withText: error.localizedDescription)
+
+        group.enter()
+        newsImporter.performFetch(success: {
+            group.leave()
+        }, error: { _ in
+            group.leave()
         })
+
+        group.enter()
+        movieImporter.performFetch(success: {
+            group.leave()
+        }, error: { _ in
+            group.leave()
+        })
+
+        group.notify(queue: .main) { [weak self] in
+            self?.collectionView.refreshControl?.endRefreshing()
+            self?.reload()
+        }
     }
 
     private func reload() {
-        try? importer.fetchedResultsController.performFetch()
         currentSnapshot.deleteSections(currentSnapshot.sectionIdentifiers)
         currentSnapshot.deleteAllItems()
-        guard let sources = importer.fetchedResultsController.fetchedObjects?.filter({ ($0.news?.count ?? 0) > 0 }) else { return }
-        currentSnapshot.appendSections(sources)
-        for source in sources {
-            guard var news = source.news?.allObjects as? [News] else { return }
-            news.sort { (lhs, rhs) -> Bool in
+
+        try? movieImporter.fetchedResultsController.performFetch()
+        if var movies = movieImporter.fetchedResultsController.fetchedObjects {
+
+            movies.sort { (lhs, rhs) -> Bool in
                 guard let lhs = lhs.date else { return true }
                 guard let rhs = rhs.date else { return false }
                 return lhs > rhs
             }
-            currentSnapshot.appendItems(news, toSection: source)
+            let section = "TU Film"
+            currentSnapshot.appendSections([section])
+            currentSnapshot.appendItems(movies, toSection: section)
         }
+
+        try? newsImporter.fetchedResultsController.performFetch()
+        if let sources = newsImporter.fetchedResultsController.fetchedObjects?.filter({ ($0.news?.count ?? 0) > 0 && $0.id != 2 }) {
+            // Exclude id from news sources which is TU Film siince its handled by another endpoint
+            currentSnapshot.appendSections(sources.compactMap{ $0.title })
+            for source in sources {
+                guard var news = source.news?.allObjects as? [News], let title = source.title else { return }
+                news.sort { (lhs, rhs) -> Bool in
+                    guard let lhs = lhs.date else { return true }
+                    guard let rhs = rhs.date else { return false }
+                    return lhs > rhs
+                }
+                currentSnapshot.appendItems(news, toSection: title)
+            }
+        }
+
         dataSource.apply(currentSnapshot, animatingDifferences: true)
     }
 
@@ -152,8 +184,11 @@ final class NewsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let news = dataSource.itemIdentifier(for: indexPath), let link = news.link else { return }
-        UIApplication.shared.open(link)
+        if let news = dataSource.itemIdentifier(for: indexPath) as? News, let link = news.link {
+            UIApplication.shared.open(link)
+        } else if let movie = dataSource.itemIdentifier(for: indexPath) as? Movie, let link = movie.link {
+            UIApplication.shared.open(link)
+        }
     }
 
 }

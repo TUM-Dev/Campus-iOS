@@ -14,4 +14,8 @@ final class NewsCategoryHeaderView: UICollectionReusableView {
     func configure(source: NewsSource) {
         self.titleLabel.text = source.title
     }
+
+    func configure(title: String) {
+        self.titleLabel.text = title
+    }
 }
