@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 
 final class NewsCollectionViewController: UICollectionViewController {
-    private var dataSource: UICollectionViewDiffableDataSource<String, AnyHashable>!
+    private var dataSource: UICollectionViewDiffableDataSource<String, AnyHashable>?
     private var currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
     private let newsImporter = NewsImporter()
     private let movieImporter = Importer<Movie,[Movie],JSONDecoder>(
@@ -101,7 +101,7 @@ final class NewsCollectionViewController: UICollectionViewController {
                 return UICollectionViewCell()
             }
         }
-        dataSource.supplementaryViewProvider = { [weak self]
+        dataSource?.supplementaryViewProvider = { [weak self]
             (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
             guard let self = self else { return nil }
             let titleSupplementary = collectionView.dequeueReusableSupplementaryView(
@@ -181,16 +181,16 @@ final class NewsCollectionViewController: UICollectionViewController {
             }
         }
 
-        dataSource.apply(currentSnapshot, animatingDifferences: true)
+        dataSource?.apply(currentSnapshot, animatingDifferences: true)
     }
 
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if let news = dataSource.itemIdentifier(for: indexPath) as? News, let link = news.link {
+        if let news = dataSource?.itemIdentifier(for: indexPath) as? News, let link = news.link {
             UIApplication.shared.open(link)
-        } else if let movie = dataSource.itemIdentifier(for: indexPath) as? Movie, let link = movie.link {
+        } else if let movie = dataSource?.itemIdentifier(for: indexPath) as? Movie, let link = movie.link {
             UIApplication.shared.open(link)
         }
     }
