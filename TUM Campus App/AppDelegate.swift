@@ -15,17 +15,44 @@ import Firebase
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var shortcutItemToProcess: UIApplicationShortcutItem?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupAppearance()
         FirebaseApp.configure()
+
+        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            shortcutItemToProcess = shortcutItem
+        }
+
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        let gradesShortcut = UIApplicationShortcutItem(type: "grades",
+                                                       localizedTitle: "Grades",
+                                                       localizedSubtitle: nil,
+                                                       icon: UIApplicationShortcutIcon(systemImageName: "studentdesk"))
+
+        let cafeteriaShortcut = UIApplicationShortcutItem(type: "cafeteria",
+                                                          localizedTitle: "Cafeterias",
+                                                          localizedSubtitle: nil,
+                                                          icon: UIApplicationShortcutIcon(systemImageName: "house"))
+
+        let studyRoomsShortcut = UIApplicationShortcutItem(type: "study_room",
+                                                           localizedTitle: "Study Rooms",
+                                                            localizedSubtitle: nil,
+                                                            icon: UIApplicationShortcutIcon(systemImageName: "book"))
+
+        let roomFinder = UIApplicationShortcutItem(type: "room_finder",
+                                                   localizedTitle: "Room Finder",
+                                                   localizedSubtitle: nil,
+                                                   icon: UIApplicationShortcutIcon(type: .search))
+
+        application.shortcutItems = [gradesShortcut, cafeteriaShortcut, studyRoomsShortcut, roomFinder]
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -39,12 +66,37 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        if let shortcutItem = shortcutItemToProcess {
+
+            let tabBarController = window?.rootViewController as? CampusTabBarController
+
+            switch shortcutItem.type {
+            case "grades": tabBarController?.selectedIndex = 2
+            case "cafeteria": tabBarController?.selectedIndex = 3
+            case "study_room": tabBarController?.selectedIndex = 4
+            case "room_finder":
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let roomFinder = storyboard.instantiateViewController(identifier: "RoomFinderViewController") as! RoomFinderViewController
+                let navigationController = UINavigationController(rootViewController: roomFinder)
+                tabBarController?.show(navigationController, sender: nil)
+            default: break
+            }
+
+            // Reset the shortcut item so it's never processed twice.
+            shortcutItemToProcess = nil
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        // Alternatively, a shortcut item may be passed in through this delegate method if the app was
+        // still in memory when the Home screen quick action was used. Again, store it for processing.
+        shortcutItemToProcess = shortcutItem
     }
     
     private func setupAppearance() {
