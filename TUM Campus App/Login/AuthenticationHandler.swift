@@ -11,8 +11,10 @@ import Alamofire
 import SWXMLHash
 import KeychainAccess
 import CoreData
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
 import FirebaseCrashlytics
+#endif
 
 enum LoginError: LocalizedError {
     case missingToken
@@ -83,7 +85,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
                 return completion(.success(encodedRequest))
             } catch let error {
+                #if !targetEnvironment(macCatalyst)
                 Crashlytics.crashlytics().record(error: error)
+                #endif
                 return completion(.failure(error))
             }
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
@@ -166,7 +170,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             }
             strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
             strongSelf.isRefreshing = false
+            #if !targetEnvironment(macCatalyst)
             Analytics.logEvent("token_created", parameters: nil)
+            #endif
             completion(.success(newToken))
         }
     }
@@ -197,7 +203,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
     
     func logout() {
+        #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("logout", parameters: nil)
+        #endif
         credentials = nil
         
         let fetchRequests = [
@@ -216,7 +224,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
     
     func skipLogin() {
+        #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("skip_login", parameters: nil)
+        #endif
         credentials = .noTumID
     }
 

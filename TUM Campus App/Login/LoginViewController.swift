@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 final class LoginViewController: UIViewController {
     @IBOutlet private weak var continueButton: ShadowButton!
@@ -28,7 +30,9 @@ final class LoginViewController: UIViewController {
             secondTextField.isHidden = advancedLogin
             secondTextField.text = nil
             updateContinueButton()
+            #if !targetEnvironment(macCatalyst)
             Analytics.logEvent("advanced_login", parameters: nil)
+            #endif
         }
     }
     private var tumID: String? {
@@ -86,7 +90,9 @@ final class LoginViewController: UIViewController {
                 guard let confirmVC = storyboard.instantiateViewController(withIdentifier: "TokenConfirmationViewController") as? TokenConfirmationViewController else { return }
                 confirmVC.loginController = self?.loginController
                 self?.navigationController?.pushViewController(confirmVC, animated: true)
+                #if !targetEnvironment(macCatalyst)
                 Analytics.logEvent("token_confirmed", parameters: nil)
+                #endif
             case let .failure(error):
                 self?.continueButton.wiggle()
                 let alert = UIAlertController(title: "Login Error".localized, message: error.localizedDescription, preferredStyle: .alert)

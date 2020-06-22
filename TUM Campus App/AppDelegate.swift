@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 import AlamofireNetworkActivityIndicator
+#if !targetEnvironment(macCatalyst)
 import Firebase
+#endif
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +22,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupAppearance()
+        #if !targetEnvironment(macCatalyst)
         FirebaseApp.configure()
+        #endif
 
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             shortcutItemToProcess = shortcutItem

@@ -11,6 +11,10 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+#if TARGET_OS_MACCATALYST
+
+
+#else
 
 #import <FirebaseCore/FirebaseCore.h>
 
@@ -170,3 +174,5 @@ Firebase Remote Config works as intended."
   #endif
 
 #endif  // defined(__has_include)
+
+#endif

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
+#endif
 
 final class TokenActivationTutorialViewController: UIViewController {
     @IBOutlet private weak var imageView: UIImageView! {
@@ -20,6 +22,8 @@ final class TokenActivationTutorialViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        #if !targetEnvironment(macCatalyst)
         Analytics.logEvent(AnalyticsEventTutorialBegin, parameters: nil)
+        #endif
     }
 }
