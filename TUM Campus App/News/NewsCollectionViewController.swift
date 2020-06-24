@@ -106,8 +106,8 @@ final class NewsCollectionViewController: UICollectionViewController {
             guard let self = self else { return nil }
             let titleSupplementary = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: NewsCategoryHeaderView.reuseIdentifier,
-                for: indexPath) as! NewsCategoryHeaderView
+                withReuseIdentifier: SimpleHeaderView.reuseIdentifier,
+                for: indexPath) as! SimpleHeaderView
 
             let sectionTitle = self.currentSnapshot.sectionIdentifiers[indexPath.section]
             titleSupplementary.configure(title: sectionTitle)

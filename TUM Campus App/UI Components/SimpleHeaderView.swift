@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LectureHeaderView: UICollectionReusableView {
+final class SimpleHeaderView: UICollectionReusableView {
     @IBOutlet private weak var titleLabel: UILabel!
 
     func configure(title: String) {

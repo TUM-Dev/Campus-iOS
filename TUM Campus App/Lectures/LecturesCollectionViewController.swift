@@ -20,8 +20,8 @@ final class LecturesCollectionViewController: UICollectionViewController {
 
     private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
 
-    var currentSnapshot = NSDiffableDataSourceSnapshot<String, Lecture>()
-    var dataSource: UICollectionViewDiffableDataSource<String, Lecture>?
+    private var currentSnapshot = NSDiffableDataSourceSnapshot<String, Lecture>()
+    private var dataSource: UICollectionViewDiffableDataSource<String, Lecture>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ final class LecturesCollectionViewController: UICollectionViewController {
         importer.performFetch(success: { [weak self] in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self?.collectionView.refreshControl?.endRefreshing()
-                self?.reload()
+                self?.reload(animated: animated)
             }
         }, error: { [weak self] error in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -56,14 +56,14 @@ final class LecturesCollectionViewController: UICollectionViewController {
             case is TUMOnlineAPIError:
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: Lecture.fetchRequest())
                 _ = try? self?.importer.context.execute(deleteRequest)
-                self?.reload()
+                self?.reload(animated: animated)
             default: break
             }
             self?.setBackgroundLabel(withText: error.localizedDescription)
         })
     }
 
-    private func reload() {
+    private func reload(animated: Bool = true) {
         try? importer.fetchedResultsController.performFetch()
 
         currentSnapshot = NSDiffableDataSourceSnapshot<String, Lecture>()
@@ -75,7 +75,7 @@ final class LecturesCollectionViewController: UICollectionViewController {
             currentSnapshot.appendItems(lectures, toSection: section.name)
         }
 
-        dataSource?.apply(currentSnapshot)
+        dataSource?.apply(currentSnapshot, animatingDifferences: animated)
 
         switch importer.fetchedResultsController.fetchedObjects?.count {
         case let .some(count) where count > 0:
@@ -109,8 +109,8 @@ final class LecturesCollectionViewController: UICollectionViewController {
             guard let self = self else { return nil }
             let titleSupplementary = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: LectureHeaderView.reuseIdentifier,
-                for: indexPath) as! LectureHeaderView
+                withReuseIdentifier: SimpleHeaderView.reuseIdentifier,
+                for: indexPath) as! SimpleHeaderView
 
             let sectionTitle = self.currentSnapshot.sectionIdentifiers[indexPath.section]
             titleSupplementary.configure(title: sectionTitle)
