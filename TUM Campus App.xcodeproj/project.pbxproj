@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190AEA09238884D7004D2DCF /* GradeCell.swift */; };
 		19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */; };
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
@@ -57,7 +56,6 @@
 		22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22683D68221C5E0200C70883 /* CalendarTableViewController.swift */; };
 		22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D95221DCE29002C5720 /* EntityImporter.swift */; };
 		22692D9B221E1618002C5720 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9A221E1618002C5720 /* Grade.swift */; };
-		22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22692D9E221E19F6002C5720 /* GradeTableViewController.swift */; };
 		2269BB2A24A3F62B0011F9DF /* SimpleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269BB2924A3F62B0011F9DF /* SimpleHeaderView.swift */; };
 		2269BB2C24A405B70011F9DF /* GradeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269BB2B24A405B70011F9DF /* GradeCollectionViewController.swift */; };
 		2269BB2E24A406B10011F9DF /* GradeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269BB2D24A406B10011F9DF /* GradeCollectionViewCell.swift */; };
@@ -70,6 +68,8 @@
 		2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91921D93C3400D7FF3F /* Assets.xcassets */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
+		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
+		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
 		2288B26D2499329E00E70E6C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */; };
@@ -140,7 +140,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		190AEA09238884D7004D2DCF /* GradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
 		19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomTableViewController.swift; sourceTree = "<group>"; };
 		19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupedTableViewCell.swift; sourceTree = "<group>"; };
 		19382F212389D4AD007BEC88 /* StudyRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomCell.swift; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		22683D68221C5E0200C70883 /* CalendarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		22692D95221DCE29002C5720 /* EntityImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		22692D9A221E1618002C5720 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
-		22692D9E221E19F6002C5720 /* GradeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeTableViewController.swift; sourceTree = "<group>"; };
 		2269BB2924A3F62B0011F9DF /* SimpleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderView.swift; sourceTree = "<group>"; };
 		2269BB2B24A405B70011F9DF /* GradeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCollectionViewController.swift; sourceTree = "<group>"; };
 		2269BB2D24A406B10011F9DF /* GradeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -202,6 +200,8 @@
 		2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TUMCampusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCollectionViewCell.swift; sourceTree = "<group>"; };
+		2283061E24A539E5000A10CD /* GradeChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeChartViewModel.swift; sourceTree = "<group>"; };
 		2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		228A616B248DCE4B00398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		228A616C248DCF9000398C63 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Login.strings; sourceTree = "<group>"; };
@@ -365,10 +365,10 @@
 			isa = PBXGroup;
 			children = (
 				22692D9A221E1618002C5720 /* Grade.swift */,
-				22692D9E221E19F6002C5720 /* GradeTableViewController.swift */,
-				190AEA09238884D7004D2DCF /* GradeCell.swift */,
+				2283061E24A539E5000A10CD /* GradeChartViewModel.swift */,
 				2269BB2B24A405B70011F9DF /* GradeCollectionViewController.swift */,
 				2269BB2D24A406B10011F9DF /* GradeCollectionViewCell.swift */,
+				2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -793,6 +793,7 @@
 				2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */,
 				222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */,
 				222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */,
+				2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */,
 				22EEF8BE249526B100DD9321 /* NewsCollectionViewController.swift in Sources */,
 				19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */,
 				222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */,
@@ -816,11 +817,11 @@
 				22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */,
 				22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */,
 				22BC2CE221DE4DDB00FF7C00 /* TokenConfirmationViewController.swift in Sources */,
+				2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */,
 				22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */,
 				22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */,
 				2269BB2A24A3F62B0011F9DF /* SimpleHeaderView.swift in Sources */,
 				2269BB2E24A406B10011F9DF /* GradeCollectionViewCell.swift in Sources */,
-				22692D9F221E19F6002C5720 /* GradeTableViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				22B8E7BA2389C91600CFEDEE /* ProfileTableViewController.swift in Sources */,
 				221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */,
@@ -857,7 +858,6 @@
 				2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
-				190AEA0A238884D7004D2DCF /* GradeCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
 				22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */,

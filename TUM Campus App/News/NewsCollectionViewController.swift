@@ -98,7 +98,7 @@ final class NewsCollectionViewController: UICollectionViewController {
                 cell.configure(movie: movie)
                 return cell
             } else {
-                return UICollectionViewCell()
+                return nil
             }
         }
         dataSource?.supplementaryViewProvider = { [weak self]
@@ -146,8 +146,7 @@ final class NewsCollectionViewController: UICollectionViewController {
     }
 
     private func reload() {
-        currentSnapshot.deleteSections(currentSnapshot.sectionIdentifiers)
-        currentSnapshot.deleteAllItems()
+        currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
 
         try? movieImporter.fetchedResultsController.performFetch()
         if var movies = movieImporter.fetchedResultsController.fetchedObjects {

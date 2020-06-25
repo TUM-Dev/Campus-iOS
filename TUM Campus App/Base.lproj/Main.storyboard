@@ -923,152 +923,6 @@
             </objects>
             <point key="canvasLocation" x="-73" y="1451"/>
         </scene>
-        <!--Grade Table View Controller-->
-        <scene sceneID="60K-fV-9Ni">
-            <objects>
-                <tableViewController id="OuH-i3-Eo0" customClass="GradeTableViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pAp-Rs-y8N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="mRy-7n-Bvs" customClass="BarChartView" customModule="Charts">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="206"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GradeCell" rowHeight="95" id="rog-Zl-vNQ" customClass="GradeCell" customModule="TUMCampusApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="234" width="375" height="95"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rog-Zl-vNQ" id="mBk-4y-O7a">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="MqG-iq-hHO" userLabel="HStack View">
-                                            <rect key="frame" x="28" y="11" width="331" height="73"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tqj-9Z-Bw7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="331" height="22.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" text="lv_title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybi-PW-7fE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="331" height="22.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TAh-lC-cPw">
-                                                    <rect key="frame" x="0.0" y="26.5" width="331" height="24.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LaK-dN-1Wh" userLabel="grade">
-                                                            <rect key="frame" x="0.0" y="0.0" width="331" height="24.5"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Hqt-7K-Xr3">
-                                                    <rect key="frame" x="0.0" y="55" width="331" height="18"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="pencil.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-vp-Hrb">
-                                                            <rect key="frame" x="0.0" y="0.5" width="18" height="17"/>
-                                                            <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="18" id="Jvm-Dc-UBB"/>
-                                                                <constraint firstAttribute="width" constant="18" id="XyW-li-UDO"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="modus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e63-eI-CHQ">
-                                                            <rect key="frame" x="22" y="0.0" width="41" height="18"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="bKT-us-6lz">
-                                                            <rect key="frame" x="67" y="0.5" width="18" height="17"/>
-                                                            <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="18" id="DWk-wu-beX"/>
-                                                                <constraint firstAttribute="width" constant="18" id="EX8-7K-sJK"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="examiner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-BY-9fy">
-                                                            <rect key="frame" x="89" y="0.0" width="55.5" height="18"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="number.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gVp-Uu-JVX">
-                                                            <rect key="frame" x="148.5" y="0.5" width="18" height="17"/>
-                                                            <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="18" id="3Z1-o5-CiP"/>
-                                                                <constraint firstAttribute="height" constant="18" id="GzP-A9-YtY"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="248" text="lv number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyC-o4-377">
-                                                            <rect key="frame" x="170.5" y="0.0" width="160.5" height="18"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                        </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7uq-Ms-mxS">
-                                            <rect key="frame" x="8" y="41.5" width="12" height="12"/>
-                                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="12" id="Of3-7Z-dVq"/>
-                                                <constraint firstAttribute="width" constant="12" id="riJ-an-2Oy"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="7uq-Ms-mxS" firstAttribute="leading" secondItem="mBk-4y-O7a" secondAttribute="leading" constant="8" id="MOw-Yx-Z6y"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="MqG-iq-hHO" secondAttribute="bottom" id="MiS-sg-7Kd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="MqG-iq-hHO" secondAttribute="trailing" id="h4u-R1-XCd"/>
-                                        <constraint firstItem="MqG-iq-hHO" firstAttribute="top" secondItem="mBk-4y-O7a" secondAttribute="topMargin" id="hIK-bW-GyV"/>
-                                        <constraint firstItem="MqG-iq-hHO" firstAttribute="leading" secondItem="7uq-Ms-mxS" secondAttribute="trailing" constant="8" id="lw1-Ig-lVY"/>
-                                        <constraint firstItem="7uq-Ms-mxS" firstAttribute="centerY" secondItem="mBk-4y-O7a" secondAttribute="centerY" id="qMK-Ws-JsT"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="blockView" destination="7uq-Ms-mxS" id="iY5-19-hFj"/>
-                                    <outlet property="examinerLabel" destination="w8d-BY-9fy" id="ZN4-Co-gaG"/>
-                                    <outlet property="gradeLabel" destination="LaK-dN-1Wh" id="cY2-Tm-qTh"/>
-                                    <outlet property="lvNumberLabel" destination="gyC-o4-377" id="Fpj-NU-gyu"/>
-                                    <outlet property="modusLabel" destination="e63-eI-CHQ" id="aAN-cC-Yko"/>
-                                    <outlet property="titleLabel" destination="Ybi-PW-7fE" id="Pcs-Yc-WM8"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="OuH-i3-Eo0" id="2qe-j6-eQ1"/>
-                            <outlet property="delegate" destination="OuH-i3-Eo0" id="3Sd-vS-Pvm"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="lar-CE-Q5g">
-                        <barButtonItem key="rightBarButtonItem" image="person.crop.circle" catalog="system" id="vY4-jC-G5O">
-                            <color key="tintColor" name="tumBlue"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="imH-MT-aws" kind="showDetail" id="YdS-97-vv4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="barChartView" destination="mRy-7n-Bvs" id="yOq-Ze-HL4"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VR6-vJ-bGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1801" y="1433"/>
-        </scene>
         <!--Study Room Groups Table View Controller-->
         <scene sceneID="wb1-aA-dzw">
             <objects>
@@ -1839,16 +1693,40 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="vQb-XE-i0L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gcb-OM-Jjq">
                             <size key="itemSize" width="357" height="124"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GradeChartCollectionViewCell" id="wMD-ie-32Y" customClass="GradeChartCollectionViewCell" customModule="TUMCampusApp" customModuleProvider="target">
+                                <rect key="frame" x="9" y="50" width="357" height="208"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="odc-M0-w3v">
+                                    <rect key="frame" x="0.0" y="0.0" width="357" height="208"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8km-yE-luw" customClass="BarChartView" customModule="Charts">
+                                            <rect key="frame" x="8" y="8" width="341" height="192"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8km-yE-luw" firstAttribute="top" secondItem="odc-M0-w3v" secondAttribute="topMargin" id="POR-Ah-Ydx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8km-yE-luw" secondAttribute="bottom" id="m1x-aK-3CN"/>
+                                        <constraint firstItem="8km-yE-luw" firstAttribute="leading" secondItem="odc-M0-w3v" secondAttribute="leadingMargin" id="mIg-Y3-15K"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="8km-yE-luw" secondAttribute="trailing" id="wzm-IA-mCd"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="357" height="208"/>
+                                <connections>
+                                    <outlet property="barChartView" destination="8km-yE-luw" id="4HO-AO-RhA"/>
+                                </connections>
+                            </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GradeCollectionViewCell" id="kL3-cq-Ub8" customClass="GradeCollectionViewCell" customModule="TUMCampusApp" customModuleProvider="target">
-                                <rect key="frame" x="9" y="0.0" width="357" height="124"/>
+                                <rect key="frame" x="9" y="268" width="357" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KrA-j8-LUc">
                                     <rect key="frame" x="0.0" y="0.0" width="357" height="124"/>
@@ -1958,6 +1836,27 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SimpleHeaderView" id="JyO-fF-VD3" customClass="SimpleHeaderView" customModule="TUMCampusApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV6-vW-TAl">
+                                    <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="mV6-vW-TAl" firstAttribute="leading" secondItem="JyO-fF-VD3" secondAttribute="leadingMargin" id="L62-7s-JxP"/>
+                                <constraint firstItem="mV6-vW-TAl" firstAttribute="trailing" secondItem="JyO-fF-VD3" secondAttribute="trailingMargin" id="LK0-7l-un7"/>
+                                <constraint firstItem="mV6-vW-TAl" firstAttribute="bottom" secondItem="JyO-fF-VD3" secondAttribute="bottomMargin" id="Qcs-Nx-g4f"/>
+                                <constraint firstItem="mV6-vW-TAl" firstAttribute="top" secondItem="JyO-fF-VD3" secondAttribute="topMargin" id="wzK-J1-3YK"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="titleLabel" destination="mV6-vW-TAl" id="9ej-QF-kGO"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="5nD-uY-U4M" id="C2E-MV-pQT"/>
                             <outlet property="delegate" destination="5nD-uY-U4M" id="7dg-St-22e"/>
@@ -1977,7 +1876,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIJ-jj-i6m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="1451"/>
+            <point key="canvasLocation" x="876" y="1450.5247376311845"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

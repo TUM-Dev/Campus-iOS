@@ -134,7 +134,7 @@ final class LecturesCollectionViewController: UICollectionViewController {
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 5
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 30, trailing: 15)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15)
 
         let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(44))
@@ -146,12 +146,15 @@ final class LecturesCollectionViewController: UICollectionViewController {
 
         let sectionBackgroundDecoration = NSCollectionLayoutDecorationItem.background(
             elementKind: LecturesCollectionViewController.sectionBackgroundDecorationElementKind)
-        sectionBackgroundDecoration.contentInsets = NSDirectionalEdgeInsets(top: titleSize.heightDimension.dimension, leading: 10, bottom: 25, trailing: 10)
+        sectionBackgroundDecoration.contentInsets = NSDirectionalEdgeInsets(top: titleSize.heightDimension.dimension, leading: 15, bottom: 10, trailing: 15)
         section.decorationItems = [sectionBackgroundDecoration]
 
         section.boundarySupplementaryItems = [titleSupplementary]
 
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.interSectionSpacing = 30
+
+        let layout = UICollectionViewCompositionalLayout(section: section, configuration: config)
         layout.register(
             SectionBackgroundDecorationView.self,
             forDecorationViewOfKind: LecturesCollectionViewController.sectionBackgroundDecorationElementKind)
