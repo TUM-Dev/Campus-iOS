@@ -30,6 +30,7 @@ final class NewsCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        fetch(animated)
     }
 
     private func setupCollectionView() {
@@ -114,11 +115,11 @@ final class NewsCollectionViewController: UICollectionViewController {
 
             return titleSupplementary
         }
-        fetch()
     }
 
     @objc private func fetch(_ animated: Bool = false) {
         let group = DispatchGroup()
+
         if animated {
             DispatchQueue.main.async { [weak self] in
                 self?.collectionView.refreshControl?.beginRefreshing()
@@ -140,12 +141,14 @@ final class NewsCollectionViewController: UICollectionViewController {
         })
 
         group.notify(queue: .main) { [weak self] in
-            self?.collectionView.refreshControl?.endRefreshing()
-            self?.reload()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.collectionView.refreshControl?.endRefreshing()
+            }
+            self?.reload(animated: animated)
         }
     }
 
-    private func reload() {
+    private func reload(animated: Bool = false) {
         currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
 
         try? movieImporter.fetchedResultsController.performFetch()
