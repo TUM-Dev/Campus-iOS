@@ -54,7 +54,7 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width * 0.9, height: CGFloat(130))
+        return CGSize(width: collectionView.bounds.width * 0.9, height: CGFloat(130))
     }
 
 }
