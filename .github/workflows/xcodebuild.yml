@@ -1,0 +1,22 @@
+name: xcodebuild
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: .cache
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: ${{ runner.os }}-spm-
+    - name: Build
+      run:  xcodebuild -scheme "TUM Campus App"  -clonedSourcePackagesDirPath .cache -destination "platform=iOS Simulator,name=iPhone 11 Pro"

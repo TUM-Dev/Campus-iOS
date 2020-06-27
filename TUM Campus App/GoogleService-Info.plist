@@ -2,16 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
-	<string>ca-app-pub-3940256099942544/2934735716</string>
-	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
-	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
 	<string>944892355389-l9qq6ekquoal46shionj0utr7sjbg4lp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.944892355389-l9qq6ekquoal46shionj0utr7sjbg4lp</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>944892355389-jat7kf35dqlvc2uvlsh3vbuq8ge6s6s5.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBOLE3F_D0GaiJqC6wJSzvXfaO33GjrduU</string>
+	<string>AIzaSyAcgSYu70ITyg2JyUc26038zhGH1Klo3cg</string>
 	<key>GCM_SENDER_ID</key>
 	<string>944892355389</string>
 	<key>PLIST_VERSION</key>
@@ -23,15 +21,15 @@
 	<key>STORAGE_BUCKET</key>
 	<string>tca-backend-0001.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:944892355389:ios:54e9cc39cd532d8c</string>
 	<key>DATABASE_URL</key>

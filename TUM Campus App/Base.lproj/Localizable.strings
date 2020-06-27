@@ -1,0 +1,52 @@
+/* 
+  Localizable.strings
+  TUM Campus App
+
+  Created by Tim Gymnich on 24.5.20.
+  Copyright © 2020 TUM. All rights reserved.
+*/
+
+"No Permission" = "No Permission";
+"Missing token" = "Missing token";
+"Invalid token" = "Invalid token";
+"Token not confirmed" = "Token not confirmed";
+"Unknown error" = "Unknown error";
+"Make sure to enable the right permissions for your token." = "Make sure to enable the right permissions for your token.";
+"Go to TUMOnline and confirm the token" = "Go to TUMOnline and confirm the token";
+"Try creating a new token." = "Try creating a new token.";
+"Continue" = "Continue";
+"Login Error" = "Login Error";
+"OK" = "OK";
+"Authorization Error" = "Authorization Error";
+"n/a" = "n/a";
+"Calendar" = "Calendar";
+"Events" = "Events";
+"No Calendar Events" = "No Calendar Events";
+"Lectures" = "Lectures";
+"No Lectures" = "No Lectures";
+"Grades" = "Grades";
+"No Grades" = "No Grades";
+"Tuition fees" = "Tuition fees";
+"Amount" = "Amount";
+"Deadline" = "Deadline";
+"Cafeterias" = "Cafeterias";
+"Not logged in" = "Not logged in";
+"Sign In" = "Sign In";
+"Sign Out" = "Sign Out";
+"Study Rooms" = "Study Rooms";
+"No Study Rooms" = "No Study Rooms";
+"Free" = "Free";
+"Occupied until" = "Occupied until";
+"Unknown" = "Unknown";
+"Useful Links" = "Useful Links";
+"No Links" = "No Links";
+"Cafeteria Map"  = "Cafeteria Map";
+"Search Rooms" = "Search Rooms";
+"Room Finder" = "Room Finder";
+"Unable to find room" = "Unable to find room '%@'";
+"No Menu" = "No Menu";
+
+"animation showing the token activation" = "animation showing the token activation";
+"First 2 letters of TUM ID" = "First 2 letters of TUM ID";
+"2 numbers in the middle of TUM ID" = "2 numbers in the middle of TUM ID";
+"Last 3 letters of TUM ID" = "Last 3 letters of TUM ID";

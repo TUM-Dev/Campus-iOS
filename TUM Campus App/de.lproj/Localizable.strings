@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  TUM Campus App
+
+  Created by Tim Gymnich on 24.5.20.
+  Copyright © 2020 TUM. All rights reserved.
+*/
+
+"No Permission" = "Keine Berechtigung";
+"Missing token" = "Token fehlt";
+"Invalid token" = "Ungültiges Token";
+"Token not confirmed" = "Token nicht bestätigt";
+"Unknown error" = "Unbekannter Error";
+"Make sure to enable the right permissions for your token." = "Stelle sicher, dass du die notwendigen Berechtigungen für dein Token aktiviert hast.";
+"Go to TUMOnline and confirm the token" = "Gehe auf TUMonline und bestätige dein Token";
+"Try creating a new token." = "Versuche ein neues Token zu erstellen.";
+"Continue" = "Weiter";
+"Login Error" = "Login Error";
+"OK" = "OK";
+"Authorization Error" = "Authorisierungs Error";
+"n/a" = "n/a";
+"Calendar" = "Kalender";
+"Events" = "Termine";
+"No Calendar Events" = "Keine Veranstaltungen";
+"Lectures" = "Vorlesungen";
+"No Lectures" = "Keine Vorlesungen";
+"Grades" = "Noten";
+"No Grades" = "Keine Noten";
+"Tuition fees" = "Studienbeiträge";
+"Amount" = "Betrag";
+"Deadline" = "Frist";
+"Cafeterias" = "Mensa";
+"Not logged in" = "Nicht angemeldet";
+"Sign In" = "Anmelden";
+"Sign Out" = "Abmelden";
+"Study Rooms" = "Lernräume";
+"No Study Rooms" = "Keine Lernräume";
+"Free" = "Frei";
+"Occupied until" = "Besetzt bis";
+"Unknown" = "Unbekannt";
+"Useful Links" = "Nützliche Links";
+"No Links" = "Keine Links";
+"Cafeteria Map" = "Mensa Landkarte";
+"Search Rooms" = "Räume suchen";
+"Room Finder" = "Room Finder";
+"Unable to find room" = "Raum '%@' konnte nicht gefunden werden";
+"No Menu" = "Kein Menü";

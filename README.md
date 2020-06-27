@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/TUM-Dev/Campus-iOS.svg?branch=master)](https://travis-ci.org/TUM-Dev/Campus-iOS)
-<a href="https://beta.tumcampusapp.de">
+![xcodebuild](https://github.com/TUM-Dev/Campus-iOS/workflows/xcodebuild/badge.svg?branch=master)
+<a href="https://testflight.apple.com/join/Zscde1Tz">
 <img src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" height="42" align="right">
 </a>
 <a href="https://itunes.apple.com/us/app/tum-campus-app/id1217412716?mt=8">
@@ -19,26 +19,22 @@ It mostly targets phones, but can also be used on tablets or any other device th
 - [x] Grades
 - [x] Tuition Fees Information
 - [x] Study Room Availability
-- [x] MVG Departure Times
-- [x] News Feed
 - [x] Cafeteria Menus
-- [x] TU Film Schedule
-- [x] Personal Contact Information
 - [x] Room Maps
-- [x] Universal Search: Persons, Rooms, Lectures
+- [x] Universal Search: Room
 - [x] [TUM.sexy](https://tum.sexy) Redirects
+
+## Screenshots
+| | |
+|-|-|
+|![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 44 05](https://user-images.githubusercontent.com/7985149/84211826-9050a800-aabc-11ea-8e6b-8ea4662a8b77.png)|![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 48 06](https://user-images.githubusercontent.com/7985149/84211831-93e42f00-aabc-11ea-8594-6d3d6240589e.png)|
 
 ## Contributing
 You're welcome to contribute to this app!
 Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
-## Publishing a new version
-- You can use `fastlane snapshot` to automatically generate localized screenshots. If you want to add a view, just record a UI Test and add it to the [`AutomatedScreenshots.swift`](./AutomatedScreenshots/AutomatedScreenshots.swift) test
-- App Store metadata is managed in the directory [`fastlane/metadata/`](./fastlane/metadata). Go edit those and they'll be updated on the store with the next release
-- Members of the Apple Developer Team of this app can run `fastlane deliver` to update the metadata on iTunes Connect (run `fastlane deliver init` first)
-
 ## Beta
-If you want to participate in the beta of this app, enter your details [here](https://beta.tumcampusapp.de) to get invited via TestFlight.
+If you want to participate in the beta of this app, enter your details [here](https://testflight.apple.com/join/Zscde1Tz) to get invited via TestFlight.
 
 ## Policies
 [Privacy policy](https://app.tum.de/landing/privacy/)  
