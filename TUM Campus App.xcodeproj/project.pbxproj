@@ -101,6 +101,8 @@
 		22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D210EE24A173F5000F3B2F /* LectureCollectionViewCell.swift */; };
 		22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */; };
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
+		22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */; };
+		22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
 		22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22E67CA6248AE4390066682D /* GoogleService-Info.plist */; };
@@ -237,6 +239,8 @@
 		22D210EE24A173F5000F3B2F /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
 		22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		22D4FCD921DE713600DF1F4B /* ShadowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViews.swift; sourceTree = "<group>"; };
+		22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchViewController.swift; sourceTree = "<group>"; };
+		22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchViewController.swift; sourceTree = "<group>"; };
 		22E4E4AF248C170100BA1977 /* TUM_Campus_App_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TUM_Campus_App_v1.xcdatamodel; sourceTree = "<group>"; };
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 		2223AB0F24AE5E4500D707F0 /* Lecture Search */ = {
 			isa = PBXGroup;
 			children = (
+				22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */,
 			);
 			path = "Lecture Search";
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				2223AB1124AE5EFB00D707F0 /* Person.swift */,
+				22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */,
 			);
 			path = "Person Search";
 			sourceTree = "<group>";
@@ -836,6 +842,7 @@
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
 				22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
+				22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */,
 				225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */,
 				224CB389222AA6620002945A /* NewsSource.swift in Sources */,
 				22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */,
@@ -881,6 +888,7 @@
 				22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */,
 				2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
+				22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
@@ -1077,7 +1085,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1104,7 +1112,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1126,7 +1134,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 22;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1153,7 +1161,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.3;
+				MARKETING_VERSION = 3.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

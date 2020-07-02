@@ -51,7 +51,7 @@ import CoreData
     static let sectionNameKeyPath: KeyPath<Lecture, String?>? = \Lecture.semesterID
     
     required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
+        let context = decoder.userInfo[.context] as? NSManagedObjectContext
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let duration = try container.decode(Decimal.self, forKey: .duration)
@@ -72,8 +72,8 @@ import CoreData
         
         let gradeFetchRequest: NSFetchRequest<Grade> = Grade.fetchRequest()
         gradeFetchRequest.predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Grade.title) , title)
-        let grade = try context.fetch(gradeFetchRequest).first
-        
+        let grade = try context?.fetch(gradeFetchRequest).first
+
         self.init(entity: Lecture.entity(), insertInto: context)
         self.duration = NSDecimalNumber(decimal: duration)
         self.organisationTag = organisationTag

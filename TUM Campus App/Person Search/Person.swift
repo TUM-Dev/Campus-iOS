@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Gender: Decodable {
+enum Gender: Decodable, Hashable {
     case male
     case female
     case nonBinary
@@ -25,7 +25,7 @@ enum Gender: Decodable {
     }
 }
 
-struct Person: Decodable {
+struct Person: Decodable, Hashable {
     let firstName: String
     let name: String
     let title: String?
@@ -55,12 +55,11 @@ struct Person: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case firstName = "vorname"
-        case name = "familienanem"
+        case name = "familienname"
         case title = "titel"
         case nr
         case obfuscatedID = "obfuscated_id"
         case gender = "geschlecht"
-        case imageURL = "bild_url"
     }
 
     init(from decoder: Decoder) throws {

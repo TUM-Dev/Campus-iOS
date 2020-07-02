@@ -44,7 +44,7 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
     }
     
 
-    // MARK: - DataSource
+    // MARK: - UICollectionViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RoomViewController") as? RoomViewController,
@@ -88,8 +88,6 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
             } else {
                 self?.removeBackgroundLabel()
             }
-            snapshot.appendItems(response.value ?? [], toSection: .main)
-            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 
