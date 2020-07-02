@@ -79,7 +79,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         }
         
         switch urlString {
-        case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.hasSuffix($0) }:
+        case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.contains($0) }:
             guard let pToken = pToken else { return completion(.failure(LoginError.missingToken)) }
             do {
                 let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
@@ -90,7 +90,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 #endif
                 return completion(.failure(error))
             }
-        case urlString where TUMCabeAPI.requiresAuth.contains { urlString.hasSuffix($0)}:
+        case urlString where TUMCabeAPI.requiresAuth.contains { urlString.contains($0)}:
             return completion(.success(urlRequest))
         case urlString where urlString.hasPrefix(MVGAPI.baseURL):
             urlRequest.addValue(MVGAPI.apiKey, forHTTPHeaderField: "X-MVG-Authorization-Key")
