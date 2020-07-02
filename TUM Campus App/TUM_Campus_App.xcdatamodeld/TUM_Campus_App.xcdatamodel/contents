@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CalendarEvent" representedClassName=".CalendarEvent" syncable="YES" codeGenerationType="category">
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
@@ -103,20 +103,6 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Person" representedClassName=".Person" syncable="YES" codeGenerationType="class">
-        <attribute name="bild_url" optional="YES" attributeType="URI"/>
-        <attribute name="familienname" optional="YES" attributeType="String"/>
-        <attribute name="geschlecht" optional="YES" attributeType="String"/>
-        <attribute name="nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="obfuscated_id" optional="YES" attributeType="String"/>
-        <attribute name="titel" optional="YES" attributeType="String"/>
-        <attribute name="vorname" optional="YES" attributeType="String"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="obfuscated_id"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
     <entity name="Profile" representedClassName=".Profile" syncable="YES" codeGenerationType="category">
         <attribute name="firstname" optional="YES" attributeType="String"/>
         <attribute name="obfuscatedID" optional="YES" attributeType="String"/>
@@ -125,7 +111,6 @@
         <attribute name="obfuscatedIDStudent" optional="YES" attributeType="String"/>
         <attribute name="surname" optional="YES" attributeType="String"/>
         <attribute name="tumID" optional="YES" attributeType="String"/>
-        <relationship name="info" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="obfuscatedID"/>
@@ -256,8 +241,7 @@
         <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="255"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="150"/>
         <element name="NewsSource" positionX="9" positionY="288" width="128" height="105"/>
-        <element name="Person" positionX="152.5859375" positionY="154.890625" width="128" height="150"/>
-        <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="165"/>
+        <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="148"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="300"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="30"/>
         <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="120"/>

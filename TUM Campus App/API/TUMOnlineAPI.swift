@@ -22,6 +22,7 @@ enum TUMOnlineAPI: URLRequestConvertible {
     case lectureDetails(lvNr: String)
     case identify
     case secretUpload
+    case profileImage(personGroup: Int, id: String)
     
     static let baseURLString = "https://campus.tum.de/tumonline"
     
@@ -46,6 +47,7 @@ enum TUMOnlineAPI: URLRequestConvertible {
         case .lectureDetails:       return "wbservicesbasic.veranstaltungenDetails"
         case .identify:             return "wbservicesbasic.id"
         case .secretUpload:         return "wbservicesbasic.secretUpload"
+        case .profileImage:         return "visitenkarte.showImage?pPersonenGruppe=3&pPersonenId=9C4E2144041FAB5D"
         }
     }
     
@@ -81,6 +83,8 @@ enum TUMOnlineAPI: URLRequestConvertible {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pSuche": search])
         case let .lectureDetails(lvNr):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pLVNr": lvNr])
+        case let .profileImage(personGroup, id):
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["pPersonenGruppe": personGroup, "pPersonenId": id])
         default:
             break
         }
