@@ -9,15 +9,6 @@
 import Foundation
 import CoreData
 
-// XMLDecoder cannot use [Grade].self so we have to wrap the grades in Grades. This is probably a bug in parsing the root node.
-struct GradesAPIResponse: Decodable {
-    var grades: [Grade]?
-    
-    enum CodingKeys: String, CodingKey {
-        case grades = "row"
-    }
-}
-
 @objc final class Grade: NSManagedObject, Entity {
     
     /*

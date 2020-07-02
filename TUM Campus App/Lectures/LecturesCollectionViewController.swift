@@ -12,7 +12,7 @@ import XMLCoder
 import Alamofire
 
 final class LecturesCollectionViewController: UICollectionViewController {
-    typealias ImporterType = Importer<Lecture, APIResponse<LectureAPIResponse,TUMOnlineAPIError>, XMLDecoder>
+    typealias ImporterType = Importer<Lecture, APIResponse<TUMOnlineAPIResponse<Lecture>,TUMOnlineAPIError>,XMLDecoder>
 
     private static let endpoint = TUMOnlineAPI.personalLectures
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)

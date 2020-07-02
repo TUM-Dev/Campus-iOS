@@ -13,7 +13,7 @@ import Alamofire
 
 
 final class TuitionTableViewController: UITableViewController {
-    typealias ImporterType = Importer<Tuition,TuitionAPIResponse,XMLDecoder>
+    typealias ImporterType = Importer<Tuition,TUMOnlineAPIResponse<Tuition>,XMLDecoder>
     
     private static let endpoint = TUMOnlineAPI.tuitionStatus
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)

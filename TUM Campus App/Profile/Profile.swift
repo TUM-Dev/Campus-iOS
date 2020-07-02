@@ -8,15 +8,6 @@
 
 import CoreData
 
-struct ProfileAPIResponse: Decodable {
-    var rows: [Profile]?
-    
-    enum CodingKeys: String, CodingKey {
-        case rows = "row"
-    }
-}
-
-
 @objc final class Profile: NSManagedObject, Entity {
     
     /*

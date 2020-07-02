@@ -13,7 +13,7 @@ import XMLCoder
 import Charts
 
 final class GradeCollectionViewController: UICollectionViewController {
-    typealias ResponseType = APIResponse<GradesAPIResponse, TUMOnlineAPIError>
+    typealias ResponseType = APIResponse<TUMOnlineAPIResponse<Grade>,TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
 
     private static let endpoint = TUMOnlineAPI.personalGrades
@@ -136,6 +136,8 @@ final class GradeCollectionViewController: UICollectionViewController {
 
             return titleSupplementary
         }
+
+        fetch(animated: false)
     }
 
     private func setupCollectionView() {

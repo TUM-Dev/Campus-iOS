@@ -21,6 +21,14 @@ struct APIResponse<ResponseType: Decodable, ErrorType: APIError>: Decodable {
     }
 }
 
+struct TUMOnlineAPIResponse<T: Decodable>: Decodable {
+    var rows: [T]?
+
+    enum CodingKeys: String, CodingKey {
+        case rows = "row"
+    }
+}
+
 protocol APIError: Error, Decodable { }
 
 enum TUMOnlineAPIError: APIError, LocalizedError {

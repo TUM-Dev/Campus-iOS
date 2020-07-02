@@ -44,7 +44,7 @@ final class RoomFinderViewController: UITableViewController, UISearchResultsUpda
     }
     
 
-    // MARK: - UITableViewDelegate
+    // MARK: - DataSource
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RoomViewController") as? RoomViewController,

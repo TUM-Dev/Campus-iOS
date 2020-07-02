@@ -9,14 +9,6 @@
 import Foundation
 import CoreData
 
-class TuitionAPIResponse: Decodable {
-    var fees: [Tuition]
-    
-    enum CodingKeys: String, CodingKey {
-        case fees = "row"
-    }
-}
-
 
 @objc final class Tuition: NSManagedObject, Entity {
     

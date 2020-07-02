@@ -13,7 +13,7 @@ import XMLCoder
 import MessageUI
 
 final class ProfileTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
-    typealias ImporterType = Importer<Profile,ProfileAPIResponse,XMLDecoder>
+    typealias ImporterType = Importer<Profile,TUMOnlineAPIResponse<Profile>,XMLDecoder>
     
     @IBOutlet private weak var profileImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
