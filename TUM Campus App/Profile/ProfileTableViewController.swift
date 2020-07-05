@@ -30,11 +30,12 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
             versionLabel.text = versionToggle ? "Version \(Bundle.main.version)" : Bundle.main.build
         }
     }
+    private var profile: Profile?
 
     private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
-    private enum Section: Int {
-        case profile
+    private enum Section: Int, CaseIterable {
+        case header
         case myTUM
         case general
         case contact
@@ -58,12 +59,13 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
                 let context = appDelegate.persistentContainer.viewContext
                 let profileRequest: NSFetchRequest<Profile> = Profile.fetchRequest()
                 if let profile = try? context.fetch(profileRequest).first {
+                    self.profile = profile
                     self.nameLabel.text = "\(profile.firstname ?? "") \(profile.surname ?? "")"
                     self.tumIDLabel.text = profile.tumID ?? profile.role.rawValue
                 }
             }
         })
-        
+
         switch loginController.credentials {
         case .none, .noTumID:
             nameLabel.text = "Not logged in".localized
@@ -77,6 +79,12 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch (Section(rawValue: indexPath.section), indexPath.row) {
+        case (.header, 0):
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            guard let profile = profile,
+                let detailVC = storyboard.instantiateViewController(withIdentifier: "PersonDetailCollectionViewController") as? PersonDetailCollectionViewController else { return }
+            navigationController?.pushViewController(detailVC, animated: true)
+            detailVC.setPerson(withProfile: profile)
         case (.myTUM, 0):
             performSegue(withIdentifier: "showTuition", sender: nil)
         case (.general, 0):

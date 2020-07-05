@@ -78,6 +78,8 @@
 		229C549724954BF700EFD5A2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549524954BF700EFD5A2 /* Movie.swift */; };
 		229C549C24967AEC00EFD5A2 /* NewsImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549B24967AEC00EFD5A2 /* NewsImporter.swift */; };
 		22A3F8BD24927722000071FE /* CalendarEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A3F8BC24927722000071FE /* CalendarEventViewModel.swift */; };
+		22ACCBB924B0EEDF00B18F37 /* PersonDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACCBB824B0EEDF00B18F37 /* PersonDetailHeaderCell.swift */; };
+		22ACCBBB24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ACCBBA24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift */; };
 		22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4589247AF15600CE5B29 /* RoomCell.swift */; };
 		22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458B247AF82300CE5B29 /* RoomViewController.swift */; };
 		22AE458E247B214200CE5B29 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458D247B214200CE5B29 /* MapCell.swift */; };
@@ -118,6 +120,9 @@
 		22E67CF5248AEB850066682D /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CAA248AE4610066682D /* GoogleUtilities.xcframework */; platformFilter = ios; };
 		22E67CF6248AEB880066682D /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CB1248AE4620066682D /* nanopb.xcframework */; platformFilter = ios; };
 		22E67CF7248AEB8A0066682D /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E67CB2248AE4630066682D /* PromisesObjC.xcframework */; platformFilter = ios; };
+		22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */; };
+		22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */; };
+		22EDE42924B0CCBF00DBEC03 /* PersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */; };
 		22EEF8BE249526B100DD9321 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEF8BD249526B100DD9321 /* NewsCollectionViewController.swift */; };
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
@@ -216,6 +221,8 @@
 		229C549524954BF700EFD5A2 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		229C549B24967AEC00EFD5A2 /* NewsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImporter.swift; sourceTree = "<group>"; };
 		22A3F8BC24927722000071FE /* CalendarEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventViewModel.swift; sourceTree = "<group>"; };
+		22ACCBB824B0EEDF00B18F37 /* PersonDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailHeaderCell.swift; sourceTree = "<group>"; };
+		22ACCBBA24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		22AE458B247AF82300CE5B29 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		22AE458D247B214200CE5B29 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
@@ -260,6 +267,9 @@
 		22E67CC0248AE4790066682D /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		22E67CC1248AE4810066682D /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		22E67CDD248AEA010066682D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
+		22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
 		22EEF8BD249526B100DD9321 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		22F9629B2460ED03004BF215 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		22F9629D246177D9004BF215 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -336,7 +346,12 @@
 			isa = PBXGroup;
 			children = (
 				2223AB1124AE5EFB00D707F0 /* Person.swift */,
+				22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */,
+				22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */,
 				22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */,
+				22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */,
+				22ACCBB824B0EEDF00B18F37 /* PersonDetailHeaderCell.swift */,
+				22ACCBBA24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift */,
 			);
 			path = "Person Search";
 			sourceTree = "<group>";
@@ -814,7 +829,9 @@
 				2269BB2C24A405B70011F9DF /* GradeCollectionViewController.swift in Sources */,
 				19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */,
 				22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */,
+				22ACCBBB24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift in Sources */,
 				22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */,
+				22ACCBB924B0EEDF00B18F37 /* PersonDetailHeaderCell.swift in Sources */,
 				223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
@@ -864,6 +881,7 @@
 				2258EDB422221DB70079C2ED /* TicketType.swift in Sources */,
 				22F9629E246177D9004BF215 /* Menu.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
+				22EDE42924B0CCBF00DBEC03 /* PersonDetailViewModel.swift in Sources */,
 				22BDA8DD24927D2300F12FD1 /* Extensions.swift in Sources */,
 				22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */,
 				229C549724954BF700EFD5A2 /* Movie.swift in Sources */,
@@ -874,6 +892,7 @@
 				2255F68B24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift in Sources */,
 				22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */,
 				229C549C24967AEC00EFD5A2 /* NewsImporter.swift in Sources */,
+				22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */,
 				22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */,
 				22F9629C2460ED03004BF215 /* Dish.swift in Sources */,
 				22BDA8DF24927D2C00F12FD1 /* NSMutableString+Extensions.swift in Sources */,
@@ -892,6 +911,7 @@
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
+				22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */,
 				22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

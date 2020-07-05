@@ -46,10 +46,20 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
         }
     }
 
+    // MARK: - UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let person = dataSource?.itemIdentifier(for: indexPath),
+            let detailVC = storyboard.instantiateViewController(withIdentifier: "PersonDetailCollectionViewController") as? PersonDetailCollectionViewController else { return }
+        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.setPerson(person)
+    }
+
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchString = searchController.searchBar.text else {
+        guard let searchString = searchController.searchBar.text, searchString.count > 2 else {
             return
         }
         guard !searchString.isEmpty else {
@@ -67,7 +77,6 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
                 // cancelAllRequests doesn't seem to cancel all requests, so better check for this explicitly
                 return
             }
-            print(response)
             let value = response.value?.rows ?? []
             var snapshot = NSDiffableDataSourceSnapshot<Section, Person>()
             snapshot.appendSections([.main])

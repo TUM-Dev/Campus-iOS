@@ -9,6 +9,17 @@
 import CoreData
 
 @objc final class Profile: NSManagedObject, Entity {
+
+    var personGroup: String? {
+        let split = obfuscatedID?.split(separator: "*")
+        guard let group = split?.first, split?.count == 2 else { return nil }
+        return String(group)
+    }
+    var id: String? {
+        let split = obfuscatedID?.split(separator: "*")
+        guard let id = split?.last, split?.count == 2 else { return nil }
+        return String(id)
+    }
     
     /*
      <row>
@@ -38,6 +49,14 @@ import CoreData
         case student = "student"
         case extern = "extern"
         case employee = "employee"
+
+        var localizedDesription: String {
+            switch self {
+            case .student: return "Student".localized
+            case .extern: return "Extern".localized
+            case .employee: return "Employee".localized
+            }
+        }
     }
     
     var role: Role {

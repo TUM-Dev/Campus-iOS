@@ -22,7 +22,7 @@ enum TUMOnlineAPI: URLRequestConvertible {
     case lectureDetails(lvNr: String)
     case identify
     case secretUpload
-    case profileImage(personGroup: Int, id: String)
+    case profileImage(personGroup: String, id: String)
     
     static let baseURLString = "https://campus.tum.de/tumonline"
     
