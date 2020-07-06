@@ -27,11 +27,11 @@ final class CampusTabBarController: UITabBarController {
                 switch result {
                 case .success:
                     break
-                case .failure(let error as URLError) where error.code  == URLError.Code.notConnectedToInternet:
+                case .failure(let error as AFError) where (error.underlyingError as? URLError)?.code  == URLError.Code.notConnectedToInternet:
                     // We are offline so we cannot confirm the token right now
                     break
                 case .failure:
-                self?.presentLoginViewController()
+                    self?.presentLoginViewController()
                 }
             }
         }
