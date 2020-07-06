@@ -203,14 +203,14 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
             contact.departmentName = organisation.name
         }
 
-        var phoneNumbers: [CNLabeledValue<CNPhoneNumber>] = person.privateContactInfo.compactMap { info in
+        var phoneNumbers: [CNLabeledValue<CNPhoneNumber>] = person.privateContact.compactMap { info in
             switch info {
             case .phone(let number), .mobilePhone(let number) : return CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: number))
             default: return nil
             }
         }
 
-        phoneNumbers.append(contentsOf: person.officialContactInfo.compactMap { info in
+        phoneNumbers.append(contentsOf: person.officialContact.compactMap { info in
             switch info {
             case .phone(let number), .mobilePhone(let number) : return CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: number))
             default: return nil
@@ -227,14 +227,14 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
             contact.imageData = imageData
         }
 
-        var urls: [CNLabeledValue<NSString>] = person.privateContactInfo.compactMap{ info in
+        var urls: [CNLabeledValue<NSString>] = person.privateContact.compactMap{ info in
             switch info {
             case .homepage(let urlString): return CNLabeledValue(label: CNLabelWork, value: urlString as NSString)
             default: return nil
             }
         }
 
-        urls.append(contentsOf: person.officialContactInfo.compactMap { info in
+        urls.append(contentsOf: person.officialContact.compactMap { info in
             switch info {
             case .homepage(let urlString): return CNLabeledValue(label: CNLabelWork, value: urlString as NSString)
             default: return nil

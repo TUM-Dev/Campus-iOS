@@ -28,21 +28,12 @@ struct PersonDetail: Decodable {
     let email: String
     let gender: Gender
     let officeHours: String?
-    private let officialContactInfoDictionary: [String: String]
-    var officialContactInfo: [ContactInfo] { officialContactInfoDictionary.compactMap { ContactInfo(key: $0.key, value: $0.value) } }
-    private let privateContactInfoDictionary: [String: String]
-    var privateContactInfo: [ContactInfo] { privateContactInfoDictionary.compactMap { ContactInfo(key: $0.key, value: $0.value) } }
-    let imageData: String?
-    var image: UIImage? {
-        guard let imageData = imageData, let data = Data(base64Encoded: imageData) else { return nil }
-        return UIImage(data: data)
-    }
-    private let organisationContainer: OrganisationContainer
-    var organisations: [Organisation] { organisationContainer.organisations }
-    private let roomContainer: RoomContainer
-    var rooms: [Room] { roomContainer.rooms }
-    private let phoneExtensionContainer: PhoneExtensionContainer
-    var phoneExtensions: [PhoneExtension] { phoneExtensionContainer.phoneExtensions }
+    let officialContact: [ContactInfo]
+    let privateContact: [ContactInfo]
+    let image: UIImage?
+    let organisations: [Organisation]
+    let rooms: [Room]
+    let phoneExtensions: [PhoneExtension]
 
 
     enum CodingKeys: String, CodingKey {
@@ -54,8 +45,8 @@ struct PersonDetail: Decodable {
         case email
         case gender = "geschlecht"
         case officeHours = "sprechstunde"
-        case officialContactInfoDictionary = "dienstlich"
-        case privateContactInfoDictionary = "privat"
+        case officialContact = "dienstlich"
+        case privateContact = "privat"
         case imageData = "image_data"
         case organisationContainer = "gruppen"
         case roomContainer = "raeume"
@@ -160,6 +151,39 @@ struct PersonDetail: Decodable {
             case shortLocationDescription = "kurz"
             case longLocationDescription = "lang"
         }
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        self.firstName = try container.decode(String.self, forKey: .firstName)
+        self.name = try container.decode(String.self, forKey: .name)
+
+        if let title = try container.decodeIfPresent(String.self, forKey: .title), !title.isEmpty {
+            self.title = title
+        } else {
+            self.title = nil
+        }
+
+        self.email = try container.decode(String.self, forKey: .email)
+
+        self.nr = try container.decode(String.self, forKey: .nr)
+        self.obfuscatedID = try container.decode(String.self, forKey: .obfuscatedID)
+        self.gender = try container.decode(Gender.self, forKey: .gender)
+        self.officeHours = try container.decode(String.self, forKey: .officeHours)
+
+        self.officialContact = try container.decode([String: String].self, forKey: .officialContact).compactMap { ContactInfo(key: $0.key, value: $0.value) }
+        self.privateContact = try container.decode([String: String].self, forKey: .privateContact).compactMap { ContactInfo(key: $0.key, value: $0.value) }
+
+        if let imageString = try container.decodeIfPresent(String.self, forKey: .imageData), let imageData = Data(base64Encoded: imageString)  {
+            self.image = UIImage(data: imageData)
+        } else {
+            self.image = nil
+        }
+
+        self.organisations = try container.decodeIfPresent(OrganisationContainer.self, forKey: .organisationContainer)?.organisations ?? []
+        self.rooms = try container.decodeIfPresent(RoomContainer.self, forKey: .roomContainer)?.rooms ?? []
+        self.phoneExtensions = try container.decodeIfPresent(PhoneExtensionContainer.self, forKey: .phoneExtensionContainer)?.phoneExtensions ?? []
     }
 
 }

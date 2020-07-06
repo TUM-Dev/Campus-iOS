@@ -40,7 +40,7 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
             (tableView: UITableView, indexPath: IndexPath, person: Person) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "PersonCell", for: indexPath)
 
-            cell.textLabel?.text = "\(person.title ?? "") \(person.firstName) \(person.name)"
+            cell.textLabel?.text = "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)"
 
             return cell
         }

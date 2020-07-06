@@ -67,7 +67,11 @@ struct Person: Decodable, Hashable {
 
         self.firstName = try container.decode(String.self, forKey: .firstName)
         self.name = try container.decode(String.self, forKey: .name)
-        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        if let title = try container.decodeIfPresent(String.self, forKey: .title), !title.isEmpty {
+            self.title = title
+        } else {
+            self.title = nil
+        }
         self.nr = try container.decode(String.self, forKey: .nr)
         self.obfuscatedID = try container.decode(String.self, forKey: .obfuscatedID)
         self.gender = try container.decode(Gender.self, forKey: .gender)

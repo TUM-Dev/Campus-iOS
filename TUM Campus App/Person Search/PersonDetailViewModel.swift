@@ -56,9 +56,9 @@ struct PersonDetailViewModel: Hashable {
     init(person: Person) {
         let header: Header
         if let personGroup = person.personGroup, let id = person.id {
-            header = Header(image: nil, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(person.title ?? "") \(person.firstName) \(person.name)")
+            header = Header(image: nil, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         } else {
-            header = Header(image: nil, imageURL: nil, name: "\(person.title ?? "") \(person.firstName) \(person.name)")
+            header = Header(image: nil, imageURL: nil, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         }
 
         self.sections = [Section(name: "Header", cells: [header])]
@@ -69,9 +69,9 @@ struct PersonDetailViewModel: Hashable {
 
         let header: Header
         if let personGroup = person.personGroup, let id = person.id {
-            header = Header(image: person.image, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(person.title ?? "") \(person.firstName) \(person.name)")
+            header = Header(image: person.image, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         } else {
-            header = Header(image: person.image, imageURL: nil, name: "\(person.title ?? "") \(person.firstName) \(person.name)")
+            header = Header(image: person.image, imageURL: nil, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         }
         sections.append(Section(name: "Header", cells: [header]))
 
@@ -82,7 +82,7 @@ struct PersonDetailViewModel: Hashable {
         }
         sections.append(Section(name: "General", cells: general))
 
-        let officialContact: [Cell] = person.officialContactInfo.map { info in
+        let officialContact: [Cell] = person.officialContact.map { info in
             switch info {
             case let .phone(number): return Cell(key: "Phone".localized, value: number, actionType: .call)
             case let .mobilePhone(number): return Cell(key: "Mobile".localized, value: number, actionType: .call)
@@ -93,7 +93,7 @@ struct PersonDetailViewModel: Hashable {
         }
         sections.append(Section(name: "Official Contact", cells: officialContact))
 
-        let privateContact: [Cell] = person.privateContactInfo.map { info in
+        let privateContact: [Cell] = person.privateContact.map { info in
             switch info {
             case let .phone(number): return Cell(key: "Phone".localized, value: number, actionType: .call)
             case let .mobilePhone(number): return Cell(key: "Mobile".localized, value: number, actionType: .call)
