@@ -49,7 +49,6 @@
 		225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
 		225AD74B2479D2D3001A969E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74A2479D2D3001A969E /* Alamofire */; };
 		225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74D2479D2F3001A969E /* AlamofireImage */; };
-		225AD7512479D307001A969E /* AlamofireNetworkActivityIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7502479D307001A969E /* AlamofireNetworkActivityIndicator */; };
 		225AD7542479D32C001A969E /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7532479D32C001A969E /* SWXMLHash */; };
 		225AD75A2479D358001A969E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* KeychainAccess */; };
 		2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7F8247AC2C5004F99E6 /* Room.swift */; };
@@ -312,7 +311,6 @@
 				22E67CF7248AEB8A0066682D /* PromisesObjC.xcframework in Frameworks */,
 				22E67CF6248AEB880066682D /* nanopb.xcframework in Frameworks */,
 				225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */,
-				225AD7512479D307001A969E /* AlamofireNetworkActivityIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +708,6 @@
 			packageProductDependencies = (
 				225AD74A2479D2D3001A969E /* Alamofire */,
 				225AD74D2479D2F3001A969E /* AlamofireImage */,
-				225AD7502479D307001A969E /* AlamofireNetworkActivityIndicator */,
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7592479D358001A969E /* KeychainAccess */,
 				220EB12F247DBBA700DC4A6F /* Charts */,
@@ -797,7 +794,6 @@
 			packageReferences = (
 				225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				225AD74F2479D307001A969E /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */,
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
@@ -1390,14 +1386,6 @@
 				minimumVersion = 4.1.0;
 			};
 		};
-		225AD74F2479D307001A969E /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.0;
-			};
-		};
 		225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
@@ -1441,11 +1429,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
-		};
-		225AD7502479D307001A969E /* AlamofireNetworkActivityIndicator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 225AD74F2479D307001A969E /* XCRemoteSwiftPackageReference "AlamofireNetworkActivityIndicator" */;
-			productName = AlamofireNetworkActivityIndicator;
 		};
 		225AD7532479D32C001A969E /* SWXMLHash */ = {
 			isa = XCSwiftPackageProductDependency;

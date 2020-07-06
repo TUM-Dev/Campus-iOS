@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import AlamofireNetworkActivityIndicator
 #if !targetEnvironment(macCatalyst)
 import Firebase
 #endif
@@ -106,9 +105,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupAppearance() {
         UINavigationBar.appearance().tintColor = .tumBlue
         UITabBar.appearance().tintColor = .tumBlue
-        UIButton.appearance().tintColor = .tumBlue
-        
-        NetworkActivityIndicatorManager.shared.isEnabled = true
+        UIButton.appearance().tintColor = .tumBlue        
     }
 
     // MARK: - Core Data stack

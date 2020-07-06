@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "AlamofireNetworkActivityIndicator",
-        "repositoryURL": "https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git",
-        "state": {
-          "branch": null,
-          "revision": "392bed083e8d193aca16bfa684ee24e4bcff0510",
-          "version": "3.1.0"
-        }
-      },
-      {
         "package": "CalendarKit",
         "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
         "state": {
