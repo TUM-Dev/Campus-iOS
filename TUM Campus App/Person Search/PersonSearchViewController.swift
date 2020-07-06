@@ -59,16 +59,12 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchString = searchController.searchBar.text, searchString.count > 2 else {
-            return
-        }
-        guard !searchString.isEmpty else {
-            // Cancel currently running requests and clear the table when searching for an empty string.
-            // This seems preferable over sending the empty string to the API and clearing the table via the (expectedly) empty response
+        guard let searchString = searchController.searchBar.text, searchString.count > 3 else {
             sessionManager.cancelAllRequests()
-            self.removeBackgroundLabel()
+            removeBackgroundLabel()
             return
         }
+
         let endpoint = TUMOnlineAPI.personSearch(search: searchString)
         sessionManager.cancelAllRequests()
         let request = sessionManager.request(endpoint)

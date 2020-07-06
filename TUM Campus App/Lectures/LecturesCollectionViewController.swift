@@ -161,4 +161,14 @@ final class LecturesCollectionViewController: UICollectionViewController {
         return layout
     }
 
+    // MARK: UICollectionViewDelegate
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let lecture = dataSource?.itemIdentifier(for: indexPath) else { return }
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "LectureDetailCollectionViewController") as? LectureDetailCollectionViewController else { return }
+        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.setLecture(lecture)
+    }
+
 }

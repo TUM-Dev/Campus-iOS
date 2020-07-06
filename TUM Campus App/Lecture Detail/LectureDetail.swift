@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LectureDetail {
+struct LectureDetail: Decodable {
 
     let id: Int64
     let lvNumber: Int64
@@ -18,11 +18,11 @@ struct LectureDetail {
     let eventType: String
     let eventTypeTag: String
     let semester: String
-    let semesterName: String
+    let semesterType: String
     let semesterID: String
     let semesterYear: String
     let organisationNumber: Int64
-    let organisationName: String
+    let organisation: String
     let organisationTag: String
     let speaker: String
 
@@ -94,7 +94,7 @@ struct LectureDetail {
         case examinationMode = "pruefmodus"
         case studienbehelfe
         case note = "anmerkun"
-        case curriculum = "stellung_im_stp_url"
+        case curriculumURL = "stellung_im_stp_url"
         case scheduledDatesURL = "termine_url"
         case examDateURL = "pruef_termine_url"
     }

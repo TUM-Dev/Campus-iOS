@@ -11,22 +11,6 @@ import Alamofire
 import XMLCoder
 import ContactsUI
 
-struct PersonHeaderViewModel {
-    var image: UIImage?
-    var name: String
-}
-
-struct QuickContactViewModel {
-    var icon: UIImage
-    var name: String
-    var action: Any
-}
-
-struct GeneralViewModel {
-    var key: String
-    var value: String
-}
-
 final class PersonDetailCollectionViewController: UICollectionViewController, CNContactViewControllerDelegate {
     private static let sectionBackgroundDecorationElementKind = "section-background-element-kind"
 

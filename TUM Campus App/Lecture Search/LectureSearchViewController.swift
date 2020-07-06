@@ -47,20 +47,26 @@ final class LectureSearchViewController: UITableViewController, UISearchResultsU
         }
     }
 
+    // MARK: - UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let lecture = dataSource?.itemIdentifier(for: indexPath),
+            let detailVC = storyboard.instantiateViewController(withIdentifier: "LectureDetailCollectionViewController") as? LectureDetailCollectionViewController else { return }
+        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.setLecture(lecture)
+    }
+
 
     // MARK: - UISearchResultsUpdating
 
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchString = searchController.searchBar.text else {
-            return
-        }
-        guard !searchString.isEmpty else {
-            // Cancel currently running requests and clear the table when searching for an empty string.
-            // This seems preferable over sending the empty string to the API and clearing the table via the (expectedly) empty response
+        guard let searchString = searchController.searchBar.text, searchString.count > 3 else {
             sessionManager.cancelAllRequests()
             self.removeBackgroundLabel()
             return
         }
+      
         let endpoint = TUMOnlineAPI.lectureSearch(search: searchString)
         sessionManager.cancelAllRequests()
         let request = sessionManager.request(endpoint)
@@ -76,7 +82,7 @@ final class LectureSearchViewController: UITableViewController, UISearchResultsU
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
 
             if value.isEmpty {
-                let errorMessage = NSString(format: "Unable to find lecture or tutrial".localized as NSString, searchString) as String
+                let errorMessage = NSString(format: "Unable to find lecture".localized as NSString, searchString) as String
                 self?.setBackgroundLabel(withText: errorMessage)
             } else {
                 self?.removeBackgroundLabel()

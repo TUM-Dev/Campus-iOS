@@ -38,10 +38,6 @@ struct PersonDetailViewModel: Hashable {
     init(profile: Profile) {
         var sections: [Section] = []
 
-        if let tumID = profile.tumID {
-            sections.append(Section(name: "General", cells: [Cell(key: "TUM ID".localized, value: tumID, actionType: .none)]))
-        }
-
         let header: Header
         if let personGroup = profile.personGroup, let id = profile.id {
             header = Header(image: nil, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(profile.firstname ?? "") \(profile.surname ?? "")")
@@ -49,6 +45,10 @@ struct PersonDetailViewModel: Hashable {
             header = Header(image: nil, imageURL: nil, name: "\(profile.firstname ?? "") \(profile.surname ?? "")")
         }
         sections.append(Section(name: "Header", cells: [header]))
+
+        if let tumID = profile.tumID {
+            sections.append(Section(name: "General", cells: [Cell(key: "TUM ID".localized, value: tumID, actionType: .none)]))
+        }
 
         self.sections = sections
     }
