@@ -11,22 +11,26 @@ import UIKit
 struct MovieDetailViewModel: Hashable {
     let sections: [Section]
 
-    struct Section: Hashable {
+    struct Section: Identifiable, Hashable {
+        let id = UUID()
         let name: String
         let cells: [AnyHashable]
     }
 
-    struct Header: Hashable {
+    struct Header: Identifiable, Hashable {
+        let id = UUID()
         let imageURL: URL?
         let title: String?
     }
 
-    struct Cell: Hashable {
+    struct Cell: Identifiable, Hashable {
+        let id = UUID()
         let key: String
         let value: String
     }
 
-    struct LinkCell: Hashable {
+    struct LinkCell: Identifiable, Hashable {
+        let id = UUID()
         let name: String
         let link: URL
     }

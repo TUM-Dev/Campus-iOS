@@ -11,13 +11,14 @@ import UIKit
 struct PersonDetailViewModel: Hashable {
     let sections: [Section]
 
-    struct Header: Hashable {
+    struct Header: Identifiable, Hashable {
+        let id = UUID()
         let image: UIImage?
         let imageURL: URL?
         let name: String
     }
 
-    struct Cell: Hashable {
+    struct Cell: Identifiable, Hashable {
         enum ActionType {
             case call
             case mail
@@ -25,12 +26,14 @@ struct PersonDetailViewModel: Hashable {
             case showRoom
         }
 
+        let id = UUID()
         let key: String
         let value: String
         let actionType: ActionType?
     }
 
-    struct Section: Hashable {
+    struct Section: Identifiable, Hashable {
+        let id = UUID()
         let name: String
         let cells: [AnyHashable]
     }

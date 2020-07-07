@@ -11,22 +11,26 @@ import Foundation
 struct LectureDetailViewModel: Hashable {
     var sections: [Section]
 
-    struct Section: Hashable {
+    struct Section: Identifiable, Hashable {
+        let id = UUID()
         let name: String
         let cells: [AnyHashable]
     }
 
-    struct Header: Hashable {
+    struct Header: Identifiable, Hashable {
+        let id = UUID()
         let title: String
         let subtitle: String
     }
 
-    struct Cell: Hashable {
+    struct Cell: Identifiable, Hashable {
+        let id = UUID()
         let key: String
         let value: String
     }
 
-    struct LinkCell: Hashable {
+    struct LinkCell: Identifiable, Hashable {
+        let id = UUID()
         let name: String
         let link: URL
     }

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSContactsUsageDescription</key>
-	<string>TUM Campus App can add contacts from TUM Online to your address book</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,6 +22,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSContactsUsageDescription</key>
+	<string>TUM Campus App can add contacts from TUM Online to your address book</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>TUM Campus App uses your location to show you the distance to the next cafeteria</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
