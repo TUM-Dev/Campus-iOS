@@ -192,8 +192,11 @@ final class NewsCollectionViewController: UICollectionViewController {
         collectionView.deselectItem(at: indexPath, animated: true)
         if let news = dataSource?.itemIdentifier(for: indexPath) as? News, let link = news.link {
             UIApplication.shared.open(link)
-        } else if let movie = dataSource?.itemIdentifier(for: indexPath) as? Movie, let link = movie.link {
-            UIApplication.shared.open(link)
+        } else if let movie = dataSource?.itemIdentifier(for: indexPath) as? Movie {
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            guard let detailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetailCollectionViewController") as? MovieDetailCollectionViewController else { return }
+            navigationController?.pushViewController(detailVC, animated: true)
+            detailVC.setMovie(movie)
         }
     }
 

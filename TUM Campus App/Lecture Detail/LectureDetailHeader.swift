@@ -9,25 +9,11 @@
 import UIKit
 
 final class LectureDetailHeader: UICollectionViewCell {
-    private let seperatorView = UIView()
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
 
-    func configure(viewModel: LectureDetailViewModel.Header, isLastCell: Bool = false) {
+    func configure(viewModel: LectureDetailViewModel.Header) {
         titleLabel.text = viewModel.title
         subtitleLabel.text = viewModel.subtitle
-
-        seperatorView.isHidden = isLastCell
-        seperatorView.translatesAutoresizingMaskIntoConstraints = false
-        seperatorView.backgroundColor = .separator
-        contentView.addSubview(seperatorView)
-
-        let inset = CGFloat(10)
-        NSLayoutConstraint.activate([
-            seperatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            seperatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            seperatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            seperatorView.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
     }
 }

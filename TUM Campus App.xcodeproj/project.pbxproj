@@ -64,6 +64,11 @@
 		22710B572479E1290065D6E9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22710B592479E1290065D6E9 /* Login.storyboard */; };
 		22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */; };
 		227395AE24B3D86B0024CD21 /* LectureDetailLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395AD24B3D86B0024CD21 /* LectureDetailLinkCell.swift */; };
+		227395B124B4ABCD0024CD21 /* MovieDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395B024B4ABCD0024CD21 /* MovieDetailCollectionViewController.swift */; };
+		227395B324B4ABE80024CD21 /* MovieDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395B224B4ABE80024CD21 /* MovieDetailHeader.swift */; };
+		227395B524B4ABF20024CD21 /* MovieDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395B424B4ABF20024CD21 /* MovieDetailCell.swift */; };
+		227395B724B4AC1F0024CD21 /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395B624B4AC1F0024CD21 /* MovieDetailViewModel.swift */; };
+		227395B924B4CB0E0024CD21 /* MovieDetailLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227395B824B4CB0E0024CD21 /* MovieDetailLinkCell.swift */; };
 		2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E90F21D93C3300D7FF3F /* AppDelegate.swift */; };
 		2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91321D93C3300D7FF3F /* Main.storyboard */; };
 		2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */; };
@@ -204,6 +209,11 @@
 		22710B5A2479E13C0065D6E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderViewController.swift; sourceTree = "<group>"; };
 		227395AD24B3D86B0024CD21 /* LectureDetailLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailLinkCell.swift; sourceTree = "<group>"; };
+		227395B024B4ABCD0024CD21 /* MovieDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		227395B224B4ABE80024CD21 /* MovieDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailHeader.swift; sourceTree = "<group>"; };
+		227395B424B4ABF20024CD21 /* MovieDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailCell.swift; sourceTree = "<group>"; };
+		227395B624B4AC1F0024CD21 /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
+		227395B824B4CB0E0024CD21 /* MovieDetailLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailLinkCell.swift; sourceTree = "<group>"; };
 		2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMCampusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E90F21D93C3300D7FF3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2277E91421D93C3300D7FF3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -430,6 +440,18 @@
 			path = "Room Finder";
 			sourceTree = "<group>";
 		};
+		227395AF24B4ABAD0024CD21 /* Movie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				227395B624B4AC1F0024CD21 /* MovieDetailViewModel.swift */,
+				227395B024B4ABCD0024CD21 /* MovieDetailCollectionViewController.swift */,
+				227395B224B4ABE80024CD21 /* MovieDetailHeader.swift */,
+				227395B424B4ABF20024CD21 /* MovieDetailCell.swift */,
+				227395B824B4CB0E0024CD21 /* MovieDetailLinkCell.swift */,
+			);
+			path = "Movie Detail";
+			sourceTree = "<group>";
+		};
 		2277E90321D93C3300D7FF3F = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +494,7 @@
 				2223AB1024AE5E5C00D707F0 /* Person Search */,
 				22A58B4224B3D2F3009A8918 /* Lecture Detail */,
 				2223AB0F24AE5E4500D707F0 /* Lecture Search */,
+				227395AF24B4ABAD0024CD21 /* Movie Detail */,
 				22710B5B247AB5E10065D6E9 /* Room Finder */,
 				2258EDBE22222B430079C2ED /* TUMSexy */,
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
@@ -898,6 +921,7 @@
 				22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */,
 				2269BB2A24A3F62B0011F9DF /* SimpleHeaderView.swift in Sources */,
 				2269BB2E24A406B10011F9DF /* GradeCollectionViewCell.swift in Sources */,
+				227395B124B4ABCD0024CD21 /* MovieDetailCollectionViewController.swift in Sources */,
 				22683D69221C5E0200C70883 /* CalendarTableViewController.swift in Sources */,
 				227395AE24B3D86B0024CD21 /* LectureDetailLinkCell.swift in Sources */,
 				22CFD18624B3873700A35FA6 /* LectureDetailCell.swift in Sources */,
@@ -936,11 +960,15 @@
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
 				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
 				224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */,
+				227395B324B4ABE80024CD21 /* MovieDetailHeader.swift in Sources */,
 				22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */,
 				2261E7FB247AC3E8004F99E6 /* RoomMap.swift in Sources */,
+				227395B924B4CB0E0024CD21 /* MovieDetailLinkCell.swift in Sources */,
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
 				22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */,
+				227395B724B4AC1F0024CD21 /* MovieDetailViewModel.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
+				227395B524B4ABF20024CD21 /* MovieDetailCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
 				22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */,

@@ -90,7 +90,7 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
 
             if let header = item as? PersonDetailViewModel.Header {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonDetailHeaderCell.reuseIdentifier, for: indexPath) as! PersonDetailHeaderCell
-                cell.configure(viewModel: header, isLastCell: isLastCell)
+                cell.configure(viewModel: header)
                 return cell
             } else if let item = item as? PersonDetailViewModel.Cell {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonDetailCollectionViewCell.reuseIdentifier, for: indexPath) as! PersonDetailCollectionViewCell

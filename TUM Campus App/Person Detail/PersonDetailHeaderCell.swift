@@ -12,14 +12,8 @@ import AlamofireImage
 final class PersonDetailHeaderCell: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
-    private let seperatorView = UIView()
 
-    func configure(viewModel: PersonDetailViewModel.Header, isLastCell: Bool = false) {
-        seperatorView.isHidden = isLastCell
-        seperatorView.translatesAutoresizingMaskIntoConstraints = false
-        seperatorView.backgroundColor = .separator
-        contentView.addSubview(seperatorView)
-
+    func configure(viewModel: PersonDetailViewModel.Header) {
         if let image = viewModel.image {
             imageView.image = image.af.imageRoundedIntoCircle()
         } else if let imageURL = viewModel.imageURL {
@@ -28,13 +22,5 @@ final class PersonDetailHeaderCell: UICollectionViewCell {
             imageView.image = UIImage(systemName: "person.crop.circle.fill")
         }
         nameLabel.text = viewModel.name
-
-        let inset = CGFloat(10)
-        NSLayoutConstraint.activate([
-            seperatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            seperatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            seperatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            seperatorView.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
     }
 }
