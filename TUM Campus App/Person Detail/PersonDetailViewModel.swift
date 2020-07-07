@@ -65,22 +65,18 @@ struct PersonDetailViewModel: Hashable {
     }
 
     init(person: PersonDetail) {
-        var sections: [Section] = []
-
         let header: Header
         if let personGroup = person.personGroup, let id = person.id {
             header = Header(image: person.image, imageURL: TUMOnlineAPI.profileImage(personGroup: personGroup, id: id).urlRequest?.url, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         } else {
             header = Header(image: person.image, imageURL: nil, name: "\(person.title?.appending(" ") ?? "")\(person.firstName) \(person.name)")
         }
-        sections.append(Section(name: "Header", cells: [header]))
 
         var general: [Cell] = []
         general.append(Cell(key: "E-Mail".localized, value: person.email, actionType: .mail))
         if let officeHours = person.officeHours, !officeHours.isEmpty {
             general.append(Cell(key: "Office Hours".localized, value: officeHours, actionType: .none))
         }
-        sections.append(Section(name: "General", cells: general))
 
         let officialContact: [Cell] = person.officialContact.map { info in
             switch info {
@@ -91,7 +87,6 @@ struct PersonDetailViewModel: Hashable {
             case let .homepage(urlString): return Cell(key: "Homepage".localized, value: urlString, actionType: .openURL)
             }
         }
-        sections.append(Section(name: "Official Contact", cells: officialContact))
 
         let privateContact: [Cell] = person.privateContact.map { info in
             switch info {
@@ -102,18 +97,22 @@ struct PersonDetailViewModel: Hashable {
             case let .homepage(urlString): return Cell(key: "Homepage".localized, value: urlString, actionType: .openURL)
             }
         }
-        sections.append(Section(name: "Private Contact", cells: privateContact))
 
         let phoneExtensions = person.phoneExtensions.map { Cell(key: "Office".localized, value: $0.phoneNumber, actionType: .call) }
-        sections.append(Section(name: "Phone Extensions", cells: phoneExtensions))
 
         let organisations = person.organisations.map { Cell(key: "Organisation".localized, value: $0.name, actionType: .none) }
-        sections.append(Section(name: "Organisations", cells: organisations))
 
         let rooms = person.rooms.map { Cell(key: "Room".localized, value: $0.shortLocationDescription, actionType: .showRoom) }
-        sections.append(Section(name: "Rooms", cells: rooms))
 
-        self.sections = sections.filter { !$0.cells.isEmpty }
+        self.sections = [
+            Section(name: "Header", cells: [header]),
+            Section(name: "General", cells: general),
+            Section(name: "Official Contact", cells: officialContact),
+            Section(name: "Private Contact", cells: privateContact),
+            Section(name: "Phone Extensions", cells: phoneExtensions),
+            Section(name: "Organisations", cells: organisations),
+            Section(name: "Rooms", cells: rooms)
+            ].filter { !$0.cells.isEmpty }
     }
 
 }

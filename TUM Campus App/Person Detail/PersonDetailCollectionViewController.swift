@@ -67,10 +67,10 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
     private func reload(animated: Bool = true) {
         guard let viewModel = viewModel else { return }
         currentSnapshot = NSDiffableDataSourceSnapshot<PersonDetailViewModel.Section, AnyHashable>()
+        currentSnapshot.appendSections(viewModel.sections)
 
         for section in viewModel.sections {
-            currentSnapshot.appendSections([section])
-            currentSnapshot.appendItems(section.cells)
+            currentSnapshot.appendItems(section.cells, toSection: section)
         }
 
         dataSource?.apply(currentSnapshot, animatingDifferences: animated)

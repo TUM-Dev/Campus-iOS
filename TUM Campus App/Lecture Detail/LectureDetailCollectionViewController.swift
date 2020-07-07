@@ -56,10 +56,10 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
     private func reload(animated: Bool = true) {
         guard let viewModel = viewModel else { return }
         currentSnapshot = NSDiffableDataSourceSnapshot<LectureDetailViewModel.Section, AnyHashable>()
+        currentSnapshot.appendSections(viewModel.sections)
 
         for section in viewModel.sections {
-            currentSnapshot.appendSections([section])
-            currentSnapshot.appendItems(section.cells)
+            currentSnapshot.appendItems(section.cells, toSection: section)
         }
 
         dataSource?.apply(currentSnapshot, animatingDifferences: animated)
