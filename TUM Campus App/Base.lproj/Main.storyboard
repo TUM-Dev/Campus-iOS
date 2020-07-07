@@ -973,7 +973,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="TB6-oP-a7L"/>
                     <connections>
+                        <outlet property="lectureSearchCell" destination="8M4-oN-9Tr" id="FF4-Sy-urL"/>
+                        <outlet property="lectureSearchLabel" destination="tes-Zq-3pG" id="2RZ-Qb-9kO"/>
                         <outlet property="nameLabel" destination="A9z-mM-YNj" id="uTL-nK-VYY"/>
+                        <outlet property="personSearchCell" destination="HFr-3N-IHO" id="90d-Fc-vk6"/>
+                        <outlet property="personSearchLabel" destination="Hkv-lo-cVB" id="UHC-aO-N3B"/>
                         <outlet property="profileImageView" destination="VDP-b4-Fam" id="IJq-gy-Mgm"/>
                         <outlet property="signOutLabel" destination="r8G-mW-9Pj" id="vYz-Fk-MgB"/>
                         <outlet property="tumIDLabel" destination="34H-Ri-CR8" id="t6b-QF-94D"/>

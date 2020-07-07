@@ -20,6 +20,10 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     @IBOutlet private weak var tumIDLabel: UILabel!
     @IBOutlet private weak var signOutLabel: UILabel!
     @IBOutlet private weak var versionLabel: UILabel!
+    @IBOutlet private weak var personSearchCell: UITableViewCell!
+    @IBOutlet private weak var personSearchLabel: UILabel!
+    @IBOutlet private weak var lectureSearchCell: UITableViewCell!
+    @IBOutlet private weak var lectureSearchLabel: UILabel!
 
     private static let endpoint = TUMOnlineAPI.identify
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
@@ -71,10 +75,19 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
             nameLabel.text = "Not logged in".localized
             signOutLabel.text = "Sign In".localized
             signOutLabel.textColor = .green
+            enableLoginOnlyFeatures(false)
         default:
             signOutLabel.text = "Sign Out".localized
             signOutLabel.textColor = .red
+            enableLoginOnlyFeatures(true)
         }
+    }
+
+    private func enableLoginOnlyFeatures(_ enable: Bool) {
+        lectureSearchCell.isUserInteractionEnabled = enable
+        lectureSearchLabel.isEnabled = enable
+        personSearchCell.isUserInteractionEnabled = enable
+        personSearchLabel.isEnabled = enable
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
