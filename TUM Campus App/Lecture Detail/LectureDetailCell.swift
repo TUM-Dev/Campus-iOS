@@ -10,8 +10,8 @@ import UIKit
 
 final class LectureDetailCell: UICollectionViewCell {
     private let seperatorView = UIView()
-    @IBOutlet weak var keyLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet private weak var keyLabel: UILabel!
+    @IBOutlet private weak var valueLabel: UILabel!
 
     func configure(viewModel: LectureDetailViewModel.Cell, isLastCell: Bool = false) {
         keyLabel.text = viewModel.key

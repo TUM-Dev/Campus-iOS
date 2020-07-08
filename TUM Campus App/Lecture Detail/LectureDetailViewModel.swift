@@ -9,7 +9,7 @@
 import Foundation
 
 struct LectureDetailViewModel: Hashable {
-    var sections: [Section]
+    let sections: [Section]
 
     struct Section: Identifiable, Hashable {
         let id = UUID()
@@ -39,7 +39,6 @@ struct LectureDetailViewModel: Hashable {
         let header = Header(title: lecture.title ?? "", subtitle: lecture.eventType ?? "")
 
         var general: [AnyHashable] = []
-
         if let duration = lecture.duration?.description {
             general.append(Cell(key: "Duration".localized, value: duration))
         }

@@ -10,7 +10,7 @@ import UIKit
 
 final class LectureDetailLinkCell: UICollectionViewCell {
     private let seperatorView = UIView()
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
 
     func configure(viewModel: LectureDetailViewModel.LinkCell, isLastCell: Bool = false) {
         nameLabel.text = viewModel.name

@@ -83,5 +83,4 @@ final class CalendarEventViewModel: EventDescriptor {
         textColor = .white
     }
 
-
 }

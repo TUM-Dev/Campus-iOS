@@ -20,7 +20,6 @@ final class MovieDetailCollectionViewController: UICollectionViewController {
 
     func setMovie(_ movie: Movie) {
         viewModel = MovieDetailViewModel(movie: movie)
-        reload(animated: true)
     }
 
     override func viewDidLoad() {
@@ -61,7 +60,7 @@ final class MovieDetailCollectionViewController: UICollectionViewController {
 
             if let header = item as? MovieDetailViewModel.Header {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailHeader.reuseIdentifier, for: indexPath) as! MovieDetailHeader
-                cell.configure(viewModel: header, isLastCell: isLastCell)
+                cell.configure(viewModel: header)
                 return cell
             } else if let item = item as? MovieDetailViewModel.Cell {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailCell.reuseIdentifier, for: indexPath) as! MovieDetailCell

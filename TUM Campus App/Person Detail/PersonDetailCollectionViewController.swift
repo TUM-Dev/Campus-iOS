@@ -29,14 +29,12 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
 
     func setPerson(_ person: Person) {
         viewModel = PersonDetailViewModel(person: person)
-        reload(animated: true)
         endpoint = TUMOnlineAPI.personDetails(identNumber: person.obfuscatedID)
         fetch(animated: true)
     }
 
     func setPerson(withProfile profile: Profile) {
         viewModel = PersonDetailViewModel(profile: profile)
-        reload(animated: true)
         guard let id = profile.obfuscatedID else { return }
         endpoint = TUMOnlineAPI.personDetails(identNumber: id)
         fetch(animated: true)
@@ -54,7 +52,7 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
         reload(animated: animated)
     }
 
-    @objc private func fetch(animated: Bool = true) {
+    private func fetch(animated: Bool = true) {
         guard let endpoint = endpoint else { return }
         sessionManager.request(endpoint).responseDecodable(of: PersonDetail.self, decoder: XMLDecoder()) { [weak self] response in
             guard let value = response.value else { return }

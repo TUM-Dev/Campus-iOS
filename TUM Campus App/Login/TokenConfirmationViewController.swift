@@ -8,11 +8,8 @@
 
 import UIKit
 
-class TokenConfirmationViewController: UIViewController {
-    
-    @IBOutlet weak var checkAuthorizationButton: ShadowButton!
-    
-    
+final class TokenConfirmationViewController: UIViewController {
+    @IBOutlet private weak var checkAuthorizationButton: ShadowButton!
     var loginController: AuthenticationHandler?
     
     override func viewWillAppear(_ animated: Bool) {

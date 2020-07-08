@@ -513,7 +513,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="T0A-pD-y4X">
-                            <rect key="frame" x="0.0" y="832.5" width="375" height="54"/>
+                            <rect key="frame" x="0.0" y="832" width="375" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cx-bG-yLI">
@@ -1402,7 +1402,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="9cA-Sd-cdH">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fuM-zA-e19">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle.badge.plus" catalog="system" id="fuM-zA-e19">
                             <connections>
                                 <action selector="addContactToAddressBook" destination="gsl-L3-Jsp" id="tcm-Yf-w8X"/>
                             </connections>
@@ -2439,6 +2439,7 @@
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="101"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="studentdesk" catalog="system" width="124" height="128"/>
         <namedColor name="tumBlue">

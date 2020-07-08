@@ -9,7 +9,6 @@
 import Foundation
 
 struct LectureDetail: Decodable {
-
     let id: Int64
     let lvNumber: Int64
     let title: String

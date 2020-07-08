@@ -10,10 +10,10 @@ import UIKit
 import AlamofireImage
 
 final class MovieDetailHeader: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
 
-    func configure(viewModel: MovieDetailViewModel.Header, isLastCell: Bool = false) {
+    func configure(viewModel: MovieDetailViewModel.Header) {
         if let imageURL = viewModel.imageURL {
             imageView.af.setImage(withURL: imageURL, placeholderImage: UIImage(named: "movie"), filter: RoundedCornersFilter(radius: 4), imageTransition: .crossDissolve(0.3))
         } else {

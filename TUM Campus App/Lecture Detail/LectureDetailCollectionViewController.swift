@@ -27,7 +27,6 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
 
     func setLecture(_ lecture: Lecture) {
         viewModel = LectureDetailViewModel(lecture: lecture)
-        reload(animated: true)
         endpoint = TUMOnlineAPI.lectureDetails(lvNr: lecture.lvNumber.description)
         fetch(animated: true)
     }
@@ -44,7 +43,7 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
         reload(animated: animated)
     }
 
-    @objc private func fetch(animated: Bool = true) {
+    private func fetch(animated: Bool = true) {
         guard let endpoint = endpoint else { return }
         sessionManager.request(endpoint).responseDecodable(of: TUMOnlineAPIResponse<LectureDetail>.self, decoder: XMLDecoder()) { [weak self] response in
             guard let value = response.value?.rows?.first else { return }
