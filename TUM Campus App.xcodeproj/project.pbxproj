@@ -797,6 +797,7 @@
 					};
 					2277E92221D93C3400D7FF3F = {
 						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 2277E90B21D93C3300D7FF3F;
 					};
 					2277E92D21D93C3400D7FF3F = {
 						CreatedOnToolsVersion = 10.1;
@@ -1076,6 +1077,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1094,9 +1099,11 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 			};
 			name = Debug;
 		};
@@ -1138,6 +1145,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
+					"$(inherited)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1149,9 +1160,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1165,27 +1178,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1193,7 +1187,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.4;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1201,7 +1194,6 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 			};
 			name = Debug;
 		};
@@ -1214,27 +1206,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1242,7 +1215,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 3.4;
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1250,7 +1222,6 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TUM Campus App/Headers\"";
 			};
 			name = Release;
 		};
@@ -1270,6 +1241,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TUMCampusApp.app/TUMCampusApp";
 			};
 			name = Debug;
 		};
@@ -1289,6 +1261,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TUMCampusApp.app/TUMCampusApp";
 			};
 			name = Release;
 		};
@@ -1306,9 +1279,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "TUM Campus App";
+				TEST_TARGET_NAME = TUMCampusApp;
 			};
 			name = Debug;
 		};
@@ -1326,9 +1300,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "TUM Campus App";
+				TEST_TARGET_NAME = TUMCampusApp;
 			};
 			name = Release;
 		};
