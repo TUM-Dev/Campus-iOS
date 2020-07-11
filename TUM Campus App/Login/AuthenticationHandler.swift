@@ -50,6 +50,13 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     
     private(set) var credentials: Credentials? {
         get {
+            // Used for unit tests
+            if let tumID = ProcessInfo.processInfo.environment["TUM_ID"], let token = ProcessInfo.processInfo.environment["TOKEN"] {
+                return Credentials.tumID(tumID: tumID, token: token)
+            } else if ProcessInfo.processInfo.arguments.contains("-skip-login") {
+                return Credentials.noTumID
+            }
+
             guard let data = AuthenticationHandler.keychain[data: "credentials"] else { return nil }
             return try? PropertyListDecoder().decode(Credentials.self, from: data)
         }
