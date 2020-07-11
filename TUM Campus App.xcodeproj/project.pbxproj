@@ -236,6 +236,7 @@
 		229C549524954BF700EFD5A2 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		229C549B24967AEC00EFD5A2 /* NewsImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImporter.swift; sourceTree = "<group>"; };
 		22A3F8BC24927722000071FE /* CalendarEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventViewModel.swift; sourceTree = "<group>"; };
+		22A57A2824B9438F0062B791 /* TUM Campus App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TUM Campus App.xctestplan"; sourceTree = "<group>"; };
 		22ACCBB824B0EEDF00B18F37 /* PersonDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailHeaderCell.swift; sourceTree = "<group>"; };
 		22ACCBBA24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
@@ -456,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
+				22A57A2824B9438F0062B791 /* TUM Campus App.xctestplan */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
 				2277E90D21D93C3300D7FF3F /* Products */,
