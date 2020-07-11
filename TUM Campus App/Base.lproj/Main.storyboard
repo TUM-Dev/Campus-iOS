@@ -1612,7 +1612,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zbS-cx-b0l">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="224.5"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-qn-g2D" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYT-qn-g2D" customClass="ShadowView" customModule="TUMCampusApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="373" height="180"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="247" verticalHuggingPriority="247" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-aq-t67">
