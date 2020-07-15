@@ -13,7 +13,7 @@ import Alamofire
 import FirebaseCrashlytics
 #endif
 
-protocol Entity: Decodable, NSFetchRequestResult, NSObject {
+protocol Entity: NSManagedObject, Decodable {
     static func fetchRequest() -> NSFetchRequest<Self>
     static var sectionNameKeyPath: KeyPath<Self, String?>? { get }
 }
@@ -76,12 +76,15 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
                     errorHandler?(ImporterError.invalidData)
                     return
                 }
+                
                 let decoder = DecoderType.instantiate()
                 decoder.userInfo[.context] = self.context
                 if let strategy = self.dateDecodingStrategy {
                     decoder.dateDecodingStrategy = strategy
                 }
                 do {
+                    let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
+                    try self.context.fetch(fetchRequest).forEach { self.context.delete($0) }
                     _ = try decoder.decode(EntityContainer.self, from: data)
                     try self.context.save()
                 } catch let apiError as APIError {
