@@ -10,20 +10,33 @@ import UIKit
 import Charts
 
 struct GradeChartViewModel: Hashable {
-    let gradeStrings: [String]
-    let chartData: BarChartData
+    let charts: [String: Chart]
 
-    private let formatter: NumberFormatter = {
+    struct Chart: Hashable {
+        let gradeStrings: [String]
+        let chartData: BarChartData
+    }
+
+
+    private static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 0
         return formatter
     }()
 
     init(grades: [Grade]) {
+        let studies = Dictionary(grouping: grades) { (grade: Grade) -> String in
+            return grade.studyID ?? ""
+        }
+
+        self.charts = studies.mapValues(GradeChartViewModel.generateChart(for:))
+    }
+
+    private static func generateChart(for grades: [Grade]) -> Chart {
         let gradeValues = grades.compactMap { Decimal(string: $0.grade?.replacingOccurrences(of: ",", with: ".") ?? "") }
         let gradeMap = gradeValues.reduce(into: [:]) { $0[$1] = ($0[$1] ?? 0) + 1 }.sorted { $0.key < $1.key }
 
-        self.gradeStrings = gradeMap.compactMap {
+        let gradeStrings: [String] = gradeMap.compactMap {
             let formatter = NumberFormatter()
             formatter.alwaysShowsDecimalSeparator = true
             formatter.minimumFractionDigits = 1
@@ -55,7 +68,9 @@ struct GradeChartViewModel: Hashable {
         dataSet.colors = colors
         dataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
 
-        self.chartData = BarChartData(dataSet: dataSet)
+        let chartData = BarChartData(dataSet: dataSet)
+
+        return Chart(gradeStrings: gradeStrings, chartData: chartData)
     }
 
 }

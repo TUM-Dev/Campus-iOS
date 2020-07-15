@@ -71,18 +71,26 @@ final class GradeCollectionViewController: UICollectionViewController {
 
         currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
 
-        if let grades = importer.fetchedResultsController.fetchedObjects {
-            let chart = GradeChartViewModel(grades: grades)
-            currentSnapshot.appendSections([GradeCollectionViewController.gradeChartSectionName])
-            currentSnapshot.appendItems([chart], toSection: GradeCollectionViewController.gradeChartSectionName)
-        }
-
         let sections = importer.fetchedResultsController.sections ?? []
         currentSnapshot.appendSections(sections.map { $0.name })
 
         for section in sections {
             guard let grades = section.objects as? [Grade] else { continue }
             currentSnapshot.appendItems(grades, toSection: section.name)
+        }
+
+
+        if let grades = importer.fetchedResultsController.fetchedObjects {
+
+            for (study,chart) in GradeChartViewModel(grades: grades).charts {
+                guard let section = sections.first(where: { section in
+                    guard let grades = section.objects as? [Grade] else { return false }
+                    return grades.first?.studyID == study
+                }) else { continue }
+
+                currentSnapshot.insertSections([study], beforeSection: section.name)
+                currentSnapshot.appendItems([chart], toSection: study)
+            }
         }
 
         dataSource?.apply(currentSnapshot, animatingDifferences: animated)
@@ -113,7 +121,7 @@ final class GradeCollectionViewController: UICollectionViewController {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GradeCollectionViewCell.reuseIdentifier, for: indexPath) as! GradeCollectionViewCell
                 cell.configure(grade: grade, lastCell: isLastCell)
                 return cell
-            } else if let chart = item as? GradeChartViewModel {
+            } else if let chart = item as? GradeChartViewModel.Chart {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GradeChartCollectionViewCell.reuseIdentifier, for: indexPath) as! GradeChartCollectionViewCell
                 cell.configure(chartViewModel: chart)
                 return cell
@@ -149,10 +157,10 @@ final class GradeCollectionViewController: UICollectionViewController {
 
     private func createLayout() -> UICollectionViewLayout {
         let sectionProvider =  { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let chartSection = self?.currentSnapshot.indexOfSection(GradeCollectionViewController.gradeChartSectionName)
+            let chartSection = self?.currentSnapshot.itemIdentifiers[sectionIndex] is GradeChartViewModel.Chart
 
             let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: sectionIndex == chartSection ? .absolute(240) : .estimated(88))
+                                              heightDimension: chartSection ? .absolute(240) : .estimated(88))
 
             let item = NSCollectionLayoutItem(layoutSize: size)
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
@@ -171,13 +179,13 @@ final class GradeCollectionViewController: UICollectionViewController {
 
             let sectionBackgroundDecoration = NSCollectionLayoutDecorationItem.background(
                 elementKind: GradeCollectionViewController.sectionBackgroundDecorationElementKind)
-            sectionBackgroundDecoration.contentInsets = NSDirectionalEdgeInsets(top: sectionIndex == chartSection ? 10 : titleSize.heightDimension.dimension,
+            sectionBackgroundDecoration.contentInsets = NSDirectionalEdgeInsets(top: chartSection ? 10 : titleSize.heightDimension.dimension,
                                                                                 leading: 15,
                                                                                 bottom: 10,
                                                                                 trailing: 15)
 
             section.decorationItems = [sectionBackgroundDecoration]
-            section.boundarySupplementaryItems = sectionIndex == chartSection ? [] : [titleSupplementary]
+            section.boundarySupplementaryItems = chartSection ? [] : [titleSupplementary]
 
             return section
         }

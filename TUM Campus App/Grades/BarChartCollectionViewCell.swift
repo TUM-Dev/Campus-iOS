@@ -14,7 +14,7 @@ final class GradeChartCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var barChartView: BarChartView!
     private var animate: Bool = true
 
-    func configure(chartViewModel: GradeChartViewModel) {
+    func configure(chartViewModel: GradeChartViewModel.Chart) {
         barChartView.data = chartViewModel.chartData
 
         let xAxis = barChartView.xAxis
