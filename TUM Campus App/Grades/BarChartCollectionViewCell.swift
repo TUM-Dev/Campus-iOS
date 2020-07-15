@@ -12,6 +12,7 @@ import Charts
 final class GradeChartCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var barChartView: BarChartView!
+    private var animate: Bool = true
 
     func configure(chartViewModel: GradeChartViewModel) {
         barChartView.data = chartViewModel.chartData
@@ -37,10 +38,16 @@ final class GradeChartCollectionViewCell: UICollectionViewCell {
         let legend = barChartView.legend
         legend.enabled = false
 
-        barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutSine)
+        if animate {
+            barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutSine)
+        }
         barChartView.drawGridBackgroundEnabled = false
         barChartView.fitBars = true
         barChartView.isUserInteractionEnabled = false
         barChartView.drawValueAboveBarEnabled = true
+    }
+
+    override func prepareForReuse() {
+        animate = false
     }
 }
