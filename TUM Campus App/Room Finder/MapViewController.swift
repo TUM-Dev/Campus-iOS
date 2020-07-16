@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireImage
+import Kingfisher
 
 final class MapViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -23,9 +23,10 @@ final class MapViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         isModalInPresentation = true
-        if let room = room, let map = map {
-            let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: map.id)
-            imageView.af.setImage(withURLRequest: mapImageEndpoint, imageTransition: .crossDissolve(0.2))
+        if let room = room,
+            let map = map,
+            let mapURL = TUMCabeAPI.mapImage(room: room.id, id: map.id).urlRequest?.url {
+            imageView.kf.setImage(with: mapURL, options: [.transition(.fade(0.2))])
         }
         scrollView.delegate = self
         scrollView.backgroundColor = .systemBackground

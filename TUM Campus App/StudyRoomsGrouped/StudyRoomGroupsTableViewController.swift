@@ -32,8 +32,14 @@ struct StudyRoomAPIResponse: Decodable {
 }
 
 
-final class StudyRoomGroupsTableViewController: UITableViewController {
+final class StudyRoomGroupsTableViewController: UITableViewController, ProfileImageSettable {
     typealias ImporterType = Importer<StudyRoomGroup,StudyRoomAPIResponse,JSONDecoder>
+
+    @IBOutlet private weak var profileImageBarButtonItem: UIBarButtonItem!
+    var profileImage: UIImage? {
+        get { return profileImageBarButtonItem.image }
+        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+    }
     
     private static let endpoint = TUMDevAppAPI.rooms
     private static let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
@@ -44,6 +50,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         setupTableView()
+        loadProfileImage()
         title = "Study Rooms".localized
     }
     

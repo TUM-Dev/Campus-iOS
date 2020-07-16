@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireImage
+import Kingfisher
 
 final class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
@@ -24,7 +24,7 @@ final class MovieCollectionViewCell: UICollectionViewCell {
 
     func configure(movie: Movie) {
         if let url = movie.cover {
-            imageView.af.setImage(withURL: url, placeholderImage: MovieCollectionViewCell.placeholder, imageTransition: .crossDissolve(0.3))
+            imageView.kf.setImage(with: url, placeholder: MovieCollectionViewCell.placeholder, options: [.transition(.fade(0.3))])
         } else {
             imageView.image = MovieCollectionViewCell.placeholder
         }

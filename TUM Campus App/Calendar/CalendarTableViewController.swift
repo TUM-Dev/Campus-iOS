@@ -11,8 +11,14 @@ import CoreData
 import XMLCoder
 import Alamofire
 
-final class CalendarTableViewController: UITableViewController {
+final class CalendarTableViewController: UITableViewController, ProfileImageSettable {
     typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>
+
+    @IBOutlet private weak var profileImageBarButtonItem: UIBarButtonItem!
+    var profileImage: UIImage? {
+        get { return profileImageBarButtonItem.image }
+        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+    }
     
     private static let endpoint = TUMOnlineAPI.calendar
     private static let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
@@ -23,6 +29,7 @@ final class CalendarTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
+        loadProfileImage()
         title = "Events".localized
     }
     

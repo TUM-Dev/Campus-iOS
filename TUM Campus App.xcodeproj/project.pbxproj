@@ -25,6 +25,8 @@
 		222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */; };
 		223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12E821DF82180053305B /* TUMCabeAPI.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
+		224BBF0A24BFAD280055DD4C /* AvatarNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */; };
+		224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 224BBF0E24BFBAEA0055DD4C /* Kingfisher */; };
 		224CB35B222568EC0002945A /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35A222568EC0002945A /* EventsTableViewController.swift */; };
 		224CB35D222571360002945A /* TicketImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35C222571360002945A /* TicketImporter.swift */; };
 		224CB35F222590660002945A /* StudyRoomGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */; };
@@ -48,7 +50,6 @@
 		2258EDC022222B590079C2ED /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBF22222B590079C2ED /* TUMSexyLink.swift */; };
 		225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */; };
 		225AD74B2479D2D3001A969E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74A2479D2D3001A969E /* Alamofire */; };
-		225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD74D2479D2F3001A969E /* AlamofireImage */; };
 		225AD7542479D32C001A969E /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7532479D32C001A969E /* SWXMLHash */; };
 		225AD75A2479D358001A969E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 225AD7592479D358001A969E /* KeychainAccess */; };
 		2261E7F9247AC2C5004F99E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2261E7F8247AC2C5004F99E6 /* Room.swift */; };
@@ -175,6 +176,7 @@
 		222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		223D12E821DF82180053305B /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNavigationBar.swift; sourceTree = "<group>"; };
 		224CB35A222568EC0002945A /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		224CB35C222571360002945A /* TicketImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketImporter.swift; sourceTree = "<group>"; };
 		224CB35E222590660002945A /* StudyRoomGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupsTableViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				22E67CEC248AEB670066682D /* FirebaseCrashlytics.xcframework in Frameworks */,
 				22E67CEF248AEB710066682D /* FirebaseCore.xcframework in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
+				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
 				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				22E67CF2248AEB7C0066682D /* GoogleAppMeasurement.framework in Frameworks */,
 				22E67CF5248AEB850066682D /* GoogleUtilities.xcframework in Frameworks */,
@@ -321,7 +324,6 @@
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 				22E67CF7248AEB8A0066682D /* PromisesObjC.xcframework in Frameworks */,
 				22E67CF6248AEB880066682D /* nanopb.xcframework in Frameworks */,
-				225AD74E2479D2F3001A969E /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +503,7 @@
 				2258EDBE22222B430079C2ED /* TUMSexy */,
 				2277E90F21D93C3300D7FF3F /* AppDelegate.swift */,
 				22BC2CDF21DE35FD00FF7C00 /* CampusTabBarController.swift */,
+				224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
@@ -732,12 +735,12 @@
 			name = TUMCampusApp;
 			packageProductDependencies = (
 				225AD74A2479D2D3001A969E /* Alamofire */,
-				225AD74D2479D2F3001A969E /* AlamofireImage */,
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7592479D358001A969E /* KeychainAccess */,
 				220EB12F247DBBA700DC4A6F /* Charts */,
 				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
+				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -819,12 +822,12 @@
 			mainGroup = 2277E90321D93C3300D7FF3F;
 			packageReferences = (
 				225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */,
-				225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
 				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -912,6 +915,7 @@
 				223D12EF21E00B9E0053305B /* News.swift in Sources */,
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
 				22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */,
+				224BBF0A24BFAD280055DD4C /* AvatarNavigationBar.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
 				22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */,
 				225AD73F2479CD14001A969E /* CalendarEventCell.swift in Sources */,
@@ -1367,6 +1371,14 @@
 				minimumVersion = 3.5.0;
 			};
 		};
+		224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.1;
+			};
+		};
 		22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
@@ -1381,14 +1393,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.2.0;
-			};
-		};
-		225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.0;
 			};
 		};
 		225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
@@ -1420,6 +1424,11 @@
 			package = 220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
+		224BBF0E24BFBAEA0055DD4C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		22508B632492559900B6740D /* CalendarKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */;
@@ -1429,11 +1438,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		225AD74D2479D2F3001A969E /* AlamofireImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 225AD74C2479D2F3001A969E /* XCRemoteSwiftPackageReference "AlamofireImage" */;
-			productName = AlamofireImage;
 		};
 		225AD7532479D32C001A969E /* SWXMLHash */ = {
 			isa = XCSwiftPackageProductDependency;

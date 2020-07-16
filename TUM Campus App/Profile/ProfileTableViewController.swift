@@ -12,7 +12,7 @@ import Alamofire
 import XMLCoder
 import MessageUI
 
-final class ProfileTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+final class ProfileTableViewController: UITableViewController, MFMailComposeViewControllerDelegate, ProfileImageSettable {
     typealias ImporterType = Importer<Profile,TUMOnlineAPIResponse<Profile>,XMLDecoder>
     
     @IBOutlet private weak var profileImageView: UIImageView!
@@ -24,6 +24,11 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     @IBOutlet private weak var personSearchLabel: UILabel!
     @IBOutlet private weak var lectureSearchCell: UITableViewCell!
     @IBOutlet private weak var lectureSearchLabel: UILabel!
+
+    var profileImage: UIImage? {
+        get { return profileImageView.image }
+        set { profileImageView.image = newValue?.imageRoundedIntoCircle() }
+    }
 
     private static let endpoint = TUMOnlineAPI.identify
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
@@ -52,6 +57,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.sizeToFit()
         versionLabel.addGestureRecognizer(tap)
+        loadProfileImage()
     }
 
     override func viewWillAppear(_ animated: Bool) {

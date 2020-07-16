@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireImage
+import Kingfisher
 
 final class NewsCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
@@ -24,7 +24,7 @@ final class NewsCollectionViewCell: UICollectionViewCell {
 
     func configure(news: News) {
         if let url = news.imageURL {
-            imageView.af.setImage(withURL: url, placeholderImage: NewsCollectionViewCell.placeholder, imageTransition: .crossDissolve(0.3))
+            imageView.kf.setImage(with: url, placeholder: NewsCollectionViewCell.placeholder, options: [.transition(.fade(0.3))])
         } else {
             imageView.image = NewsCollectionViewCell.placeholder
         }

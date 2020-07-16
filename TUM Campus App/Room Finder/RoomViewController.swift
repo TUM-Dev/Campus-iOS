@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import AlamofireImage
 import MapKit
 
 final class RoomViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -74,7 +73,8 @@ final class RoomViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapCell.reuseIdentifier, for: indexPath) as! MapCell
         guard let map = maps?[indexPath.row], let room = room else { return cell }
         let mapImageEndpoint = TUMCabeAPI.mapImage(room: room.id, id: map.id)
-        cell.imageView.af.setImage(withURLRequest: mapImageEndpoint, imageTransition: .crossDissolve(0.2))
+        guard let mapURL = mapImageEndpoint.urlRequest?.url else { return cell }
+        cell.imageView.kf.setImage(with: mapURL, options: [.transition(.fade(0.2))])
         return cell
     }
 

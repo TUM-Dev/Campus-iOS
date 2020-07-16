@@ -11,8 +11,14 @@ import CoreData
 import XMLCoder
 import Alamofire
 
-final class LecturesCollectionViewController: UICollectionViewController {
+final class LecturesCollectionViewController: UICollectionViewController, ProfileImageSettable {
     typealias ImporterType = Importer<Lecture, APIResponse<TUMOnlineAPIResponse<Lecture>,TUMOnlineAPIError>,XMLDecoder>
+
+    @IBOutlet private weak var profileImageBarButtonItem: UIBarButtonItem!
+    var profileImage: UIImage? {
+        get { return profileImageBarButtonItem.image }
+        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+    }
 
     private static let endpoint = TUMOnlineAPI.personalLectures
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
@@ -28,6 +34,7 @@ final class LecturesCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         setupTableView()
         setupDataSource()
+        loadProfileImage()
         title = "Lectures".localized
     }
 

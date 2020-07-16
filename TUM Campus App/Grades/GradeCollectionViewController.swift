@@ -12,9 +12,15 @@ import Alamofire
 import XMLCoder
 import Charts
 
-final class GradeCollectionViewController: UICollectionViewController {
+final class GradeCollectionViewController: UICollectionViewController, ProfileImageSettable {
     typealias ResponseType = APIResponse<TUMOnlineAPIResponse<Grade>,TUMOnlineAPIError>
     typealias ImporterType = Importer<Grade,ResponseType,XMLDecoder>
+
+    @IBOutlet private weak var profileBarButtonItem: UIBarButtonItem!
+    var profileImage: UIImage? {
+        get { return profileBarButtonItem.image }
+        set { profileBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+    }
 
     private static let endpoint = TUMOnlineAPI.personalGrades
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
@@ -32,6 +38,7 @@ final class GradeCollectionViewController: UICollectionViewController {
         setupCollectionView()
         setupDataSource()
         title = "Grades".localized
+        loadProfileImage()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -198,6 +205,10 @@ final class GradeCollectionViewController: UICollectionViewController {
             SectionBackgroundDecorationView.self,
             forDecorationViewOfKind: GradeCollectionViewController.sectionBackgroundDecorationElementKind)
         return layout
+    }
+
+    private func setupNavigationBarItem() {
+        
     }
 
 }

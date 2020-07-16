@@ -238,6 +238,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileImageBarButtonItem" destination="LOd-Yu-1gj" id="akY-WB-cD5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4w5-I1-yL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -280,6 +283,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileImageBarButtonItem" destination="VuV-Kd-Udf" id="4rQ-4V-qdX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTK-aN-LCg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -499,6 +505,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileImageBarButtonItem" destination="mwo-y0-ucQ" id="hKS-l0-CPG"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mo-qx-kzd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1072,6 +1081,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileImageBarButtonItem" destination="LEd-ud-xri" id="zZ8-jQ-R53"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpd-Vw-mlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2410,6 +2422,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="profileBarButtonItem" destination="Yav-3h-d0q" id="O05-h9-aqx"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIJ-jj-i6m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2417,7 +2432,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8Ka-dg-vY4"/>
+        <segue reference="oDN-gj-Gkq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Lectures" width="29" height="29"/>

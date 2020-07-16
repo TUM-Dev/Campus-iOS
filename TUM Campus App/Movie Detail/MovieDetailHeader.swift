@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AlamofireImage
+import Kingfisher
 
 final class MovieDetailHeader: UICollectionViewCell {
     @IBOutlet private weak var imageView: UIImageView!
@@ -15,9 +15,10 @@ final class MovieDetailHeader: UICollectionViewCell {
 
     func configure(viewModel: MovieDetailViewModel.Header) {
         if let imageURL = viewModel.imageURL {
-            imageView.af.setImage(withURL: imageURL, placeholderImage: UIImage(named: "movie"), filter: RoundedCornersFilter(radius: 4), imageTransition: .crossDissolve(0.3))
+            let processor = RoundCornerImageProcessor(cornerRadius: 4)
+            imageView.kf.setImage(with: imageURL, placeholder: UIImage(named: "movie"), options: [.transition(.fade(0.3)), .processor(processor)])
         } else {
-            imageView.image = UIImage(named: "movie")?.af.imageRounded(withCornerRadius: 4)
+            imageView.image = UIImage(named: "movie")?.imageRounded(withCornerRadius: 4)
         }
         titleLabel.text = viewModel.title
     }

@@ -4,8 +4,14 @@ import Alamofire
 import CoreData
 import XMLCoder
 
-final class CalendarWeekViewController: DayViewController {
+final class CalendarWeekViewController: DayViewController, ProfileImageSettable {
     typealias ImporterType = Importer<CalendarEvent,APIResponse<CalendarAPIResponse,TUMOnlineAPIError>,XMLDecoder>
+
+    @IBOutlet private weak var profileImageBarButtonItem: UIBarButtonItem!
+    var profileImage: UIImage? {
+        get { return profileImageBarButtonItem.image }
+        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+    }
 
     private static let endpoint: URLRequestConvertible = TUMOnlineAPI.calendar
     private static let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
@@ -14,6 +20,7 @@ final class CalendarWeekViewController: DayViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadProfileImage()
         setupUI()
     }
 

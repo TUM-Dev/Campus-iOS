@@ -70,9 +70,8 @@ import CoreData
     }
     
     required convenience init(from decoder: Decoder) throws {
-        guard let context = decoder.userInfo[.context] as? NSManagedObjectContext else { fatalError() }
+        let context = decoder.userInfo[.context] as? NSManagedObjectContext
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
         
         let surname = try container.decode(String.self, forKey: .surname)
         let tumID = try container.decode(String.self, forKey: .tumID)
