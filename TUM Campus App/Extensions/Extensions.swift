@@ -267,7 +267,7 @@ extension UIImage {
 
     public func imageAspectScaled(toFill size: CGSize, scale: CGFloat? = nil) -> UIImage {
         assert(size.width > 0 && size.height > 0, "You cannot safely scale an image to a zero width or height")
-
+        let scale = scale ?? UIScreen.main.scale
         let imageAspectRatio = self.size.width / self.size.height
         let canvasAspectRatio = size.width / size.height
 
@@ -291,14 +291,15 @@ extension UIImage {
         return scaledImage
     }
 
-    public func imageRoundedIntoCircle() -> UIImage {
+    public func imageRoundedIntoCircle(scale: CGFloat? = nil) -> UIImage {
         let radius = min(size.width, size.height) / 2.0
+        let scale = scale ?? UIScreen.main.scale
         var squareImage: UIImage = self
 
         if size.width != size.height {
             let squareDimension = min(size.width, size.height)
             let squareSize = CGSize(width: squareDimension, height: squareDimension)
-            squareImage = imageAspectScaled(toFill: squareSize)
+            squareImage = imageAspectScaled(toFill: squareSize, scale: scale)
         }
 
         UIGraphicsBeginImageContextWithOptions(squareImage.size, false, scale)
