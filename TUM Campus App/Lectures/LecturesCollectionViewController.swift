@@ -17,7 +17,7 @@ final class LecturesCollectionViewController: UICollectionViewController, Profil
     @IBOutlet private weak var profileImageBarButtonItem: UIBarButtonItem!
     var profileImage: UIImage? {
         get { return profileImageBarButtonItem.image }
-        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+        set { profileImageBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 32, height: 32)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
     }
 
     private static let endpoint = TUMOnlineAPI.personalLectures

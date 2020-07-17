@@ -19,7 +19,7 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
     @IBOutlet private weak var profileBarButtonItem: UIBarButtonItem!
     var profileImage: UIImage? {
         get { return profileBarButtonItem.image }
-        set { profileBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 28, height: 28)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
+        set { profileBarButtonItem.image = newValue?.imageAspectScaled(toFill: CGSize(width: 32, height: 32)).imageRoundedIntoCircle().withRenderingMode(.alwaysOriginal) }
     }
 
     private static let endpoint = TUMOnlineAPI.personalGrades
