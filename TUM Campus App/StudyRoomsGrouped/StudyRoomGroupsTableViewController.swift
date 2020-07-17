@@ -42,7 +42,7 @@ final class StudyRoomGroupsTableViewController: UITableViewController, ProfileIm
     }
     
     private static let endpoint = TUMDevAppAPI.rooms
-    private static let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.sorting, ascending: false)
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \StudyRoomGroup.name, ascending: false)
     private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor)
 
     

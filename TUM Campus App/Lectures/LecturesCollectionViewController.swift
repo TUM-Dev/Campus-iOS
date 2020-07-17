@@ -21,10 +21,11 @@ final class LecturesCollectionViewController: UICollectionViewController, Profil
     }
 
     private static let endpoint = TUMOnlineAPI.personalLectures
-    private static let sortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
+    private static let primarySortDescriptor = NSSortDescriptor(keyPath: \Lecture.semesterID, ascending: false)
+    private static let secondarySortDescriptor = NSSortDescriptor(keyPath: \Lecture.eventType, ascending: false)
     private static let sectionBackgroundDecorationElementKind = "section-background-element-kind"
 
-    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: primarySortDescriptor, secondarySortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
 
     private var currentSnapshot = NSDiffableDataSourceSnapshot<String, Lecture>()
     private var dataSource: UICollectionViewDiffableDataSource<String, Lecture>?

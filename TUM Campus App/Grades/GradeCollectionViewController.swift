@@ -23,14 +23,30 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
     }
 
     private static let endpoint = TUMOnlineAPI.personalGrades
-    private static let sortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
+    private static let primarySortDescriptor = NSSortDescriptor(keyPath: \Grade.semester, ascending: false)
+    private static let secondarySortDescriptor = NSSortDescriptor(keyPath: \Grade.title, ascending: false)
     private static let sectionBackgroundDecorationElementKind = "section-background-element-kind"
     private static let gradeChartSectionName = "Chart"
 
-    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: primarySortDescriptor, secondarySortDescriptor, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
 
-    private var currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
-    private var dataSource: UICollectionViewDiffableDataSource<String, AnyHashable>?
+    private var currentSnapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
+    private var dataSource: UICollectionViewDiffableDataSource<Section, AnyHashable>?
+
+    enum Section: Hashable {
+        case chart(study: String)
+        case grades(semester: String)
+
+        var title: String {
+            switch self {
+            case let .chart(study):
+                return study
+            case let .grades(semester):
+                return semester
+            }
+        }
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,14 +92,14 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
     private func reload(animated: Bool = true) {
         try? importer.fetchedResultsController.performFetch()
 
-        currentSnapshot = NSDiffableDataSourceSnapshot<String, AnyHashable>()
+        currentSnapshot = NSDiffableDataSourceSnapshot<Section, AnyHashable>()
 
         let sections = importer.fetchedResultsController.sections ?? []
-        currentSnapshot.appendSections(sections.map { $0.name })
+        currentSnapshot.appendSections(sections.map { .grades(semester: $0.name) })
 
         for section in sections {
             guard let grades = section.objects as? [Grade] else { continue }
-            currentSnapshot.appendItems(grades, toSection: section.name)
+            currentSnapshot.appendItems(grades, toSection: .grades(semester: section.name))
         }
 
 
@@ -95,8 +111,8 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
                     return grades.first?.studyID == study
                 }) else { continue }
 
-                currentSnapshot.insertSections([study], beforeSection: section.name)
-                currentSnapshot.appendItems([chart], toSection: study)
+                currentSnapshot.insertSections([.chart(study: study)], beforeSection: .grades(semester: section.name))
+                currentSnapshot.appendItems([chart], toSection: .chart(study: study))
             }
         }
 
@@ -115,7 +131,7 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
     // MARK: Setup
 
     private func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<String, AnyHashable>(collectionView: collectionView) { [weak self]
+        dataSource = UICollectionViewDiffableDataSource<Section, AnyHashable>(collectionView: collectionView) { [weak self]
             (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let self = self else {
                 return nil
@@ -146,8 +162,8 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
                 withReuseIdentifier: SimpleHeaderView.reuseIdentifier,
                 for: indexPath) as! SimpleHeaderView
 
-            let sectionTitle = self.currentSnapshot.sectionIdentifiers[indexPath.section]
-            titleSupplementary.configure(title: sectionTitle)
+            let section = self.currentSnapshot.sectionIdentifiers[indexPath.section]
+            titleSupplementary.configure(title: section.title)
 
             return titleSupplementary
         }
@@ -164,7 +180,13 @@ final class GradeCollectionViewController: UICollectionViewController, ProfileIm
 
     private func createLayout() -> UICollectionViewLayout {
         let sectionProvider =  { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            let chartSection = self?.currentSnapshot.itemIdentifiers[sectionIndex] is GradeChartViewModel.Chart
+
+            let chartSection: Bool
+            if case .chart = self?.currentSnapshot.sectionIdentifiers[sectionIndex] {
+                chartSection = true
+            } else {
+                chartSection = false
+            }
 
             let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: chartSection ? .absolute(240) : .estimated(88))
