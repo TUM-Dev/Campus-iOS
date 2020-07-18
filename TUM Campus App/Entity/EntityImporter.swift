@@ -36,7 +36,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
     private let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     private let sessionManager = Session.defaultSession
 
-    private lazy var coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
+    private let coreDataStack: NSPersistentContainer = AppDelegate.persistentContainer
 
     lazy var fetchedResultsController: NSFetchedResultsController<EntityType> = {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
@@ -44,7 +44,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
         fetchRequest.predicate = predicate
 
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: EntityType.sectionNameKeyPath?.stringValue, cacheName: nil)
-        
+
         return fetchedResultsController
     }()
     

@@ -23,7 +23,7 @@ final class TicketImporter {
     var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy?
     weak var fetchedResultsControllerDelegate: NSFetchedResultsControllerDelegate?
     private static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    let coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
+    private static let coreDataStack: NSPersistentContainer = AppDelegate.persistentContainer
     
     let sessionManager: Session = Session.defaultSession
     
@@ -31,13 +31,13 @@ final class TicketImporter {
         let fetchRequest: NSFetchRequest<EntityType> = EntityType.fetchRequest()
         fetchRequest.sortDescriptors = sortDescriptors
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: TicketImporter.coreDataStack.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = fetchedResultsControllerDelegate
         
         return fetchedResultsController
     }()
     
-    lazy var context: NSManagedObjectContext = {
+    let context: NSManagedObjectContext = {
         let context = coreDataStack.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
         return context

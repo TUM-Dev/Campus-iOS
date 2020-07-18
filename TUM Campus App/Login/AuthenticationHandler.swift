@@ -41,7 +41,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
 
-    private lazy var coreDataStack = appDelegate.persistentContainer
+    private let coreDataStack = AppDelegate.persistentContainer
     private let sessionManager = Session()
 
     private static let keychain = Keychain(service: "de.tum.campusapp")

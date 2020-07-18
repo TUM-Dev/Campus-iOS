@@ -33,7 +33,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     private static let endpoint = TUMOnlineAPI.identify
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
     private let loginController = AuthenticationHandler()
-    private let coreDataStack = appDelegate.persistentContainer
+    private let coreDataStack = AppDelegate.persistentContainer
     private var versionToggle = true {
         didSet {
             versionLabel.text = versionToggle ? "Version \(Bundle.main.version)" : Bundle.main.build
@@ -66,7 +66,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
         versionToggle = true
         importer.performFetch(success: {
             DispatchQueue.main.async {
-                let context = appDelegate.persistentContainer.viewContext
+                let context = AppDelegate.persistentContainer.viewContext
                 let profileRequest: NSFetchRequest<Profile> = Profile.fetchRequest()
                 if let profile = try? context.fetch(profileRequest).first {
                     self.profile = profile

@@ -21,7 +21,7 @@ final class NewsImporter {
     static let sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(keyPath: \NewsSource.title, ascending: true)]
 
     private static let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    private static let coreDataStack: NSPersistentContainer = appDelegate.persistentContainer
+    private static let coreDataStack: NSPersistentContainer = AppDelegate.persistentContainer
 
     private let sessionManager: Session = Session.defaultSession
 
