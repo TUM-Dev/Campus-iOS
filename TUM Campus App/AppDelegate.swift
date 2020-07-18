@@ -8,9 +8,7 @@
 
 import UIKit
 import CoreData
-#if !targetEnvironment(macCatalyst)
-import Firebase
-#endif
+import FirebaseCore
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,9 +23,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         setupAppearance()
-        #if !targetEnvironment(macCatalyst)
         FirebaseApp.configure()
-        #endif
 
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             shortcutItemToProcess = shortcutItem

@@ -9,9 +9,7 @@
 import UIKit.UIApplication
 import CoreData
 import Alamofire
-#if !targetEnvironment(macCatalyst)
 import FirebaseCrashlytics
-#endif
 
 protocol Entity: NSManagedObject, Decodable {
     static func fetchRequest() -> NSFetchRequest<Self>
@@ -88,21 +86,15 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
                     _ = try decoder.decode(EntityContainer.self, from: data)
                     try self.context.save()
                 } catch let apiError as APIError {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: apiError)
-                    #endif
                     errorHandler?(apiError)
                     return
                 } catch let decodingError as DecodingError {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: decodingError)
-                    #endif
                     errorHandler?(decodingError)
                     return
                 } catch let error {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: error)
-                    #endif
                     fatalError(error.localizedDescription)
                 }
                 successHandler?()

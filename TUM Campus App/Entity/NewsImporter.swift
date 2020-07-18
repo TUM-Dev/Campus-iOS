@@ -9,9 +9,7 @@
 import UIKit.UIApplication
 import Alamofire
 import CoreData
-#if !targetEnvironment(macCatalyst)
 import FirebaseCrashlytics
-#endif
 
 final class NewsImporter {
     typealias EntityType = NewsSource
@@ -82,21 +80,15 @@ final class NewsImporter {
                         }
                     }
                 } catch let apiError as APIError {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: apiError)
-                    #endif
                     errorHandler?(apiError)
                     return
                 } catch let decodingError as DecodingError {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: decodingError)
-                    #endif
                     errorHandler?(decodingError)
                     return
                 } catch let error {
-                    #if !targetEnvironment(macCatalyst)
                     Crashlytics.crashlytics().record(error: error)
-                    #endif
                     fatalError(error.localizedDescription)
                 }
                 group.notify(queue: .main) {

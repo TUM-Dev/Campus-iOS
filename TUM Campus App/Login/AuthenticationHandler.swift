@@ -11,9 +11,9 @@ import Alamofire
 import SWXMLHash
 import KeychainAccess
 import CoreData
+import FirebaseCrashlytics
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
-import FirebaseCrashlytics
 #endif
 
 enum LoginError: LocalizedError {
@@ -92,9 +92,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
                 let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
                 return completion(.success(encodedRequest))
             } catch let error {
-                #if !targetEnvironment(macCatalyst)
                 Crashlytics.crashlytics().record(error: error)
-                #endif
                 return completion(.failure(error))
             }
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.contains($0)}:
