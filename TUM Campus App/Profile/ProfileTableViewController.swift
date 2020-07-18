@@ -158,12 +158,17 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
         controller.dismiss(animated: true)
     }
 
-    // MARK: - Tap
+    // MARK: - Actions
 
     @objc private func toggleVersion() {
         let feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
         versionToggle.toggle()
     }
+
+    @IBAction func done(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
 
 }

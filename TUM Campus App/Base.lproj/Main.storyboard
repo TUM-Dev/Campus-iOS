@@ -522,7 +522,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="T0A-pD-y4X">
-                            <rect key="frame" x="0.0" y="832" width="375" height="54"/>
+                            <rect key="frame" x="0.0" y="832.5" width="375" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cx-bG-yLI">
@@ -980,7 +980,13 @@
                             <outlet property="delegate" destination="gbQ-h1-TlK" id="Jcr-Sa-IL8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="TB6-oP-a7L"/>
+                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="TB6-oP-a7L">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="keJ-fH-Dxk">
+                            <connections>
+                                <action selector="done:" destination="gbQ-h1-TlK" id="Lk8-WA-Hoq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lectureSearchCell" destination="8M4-oN-9Tr" id="FF4-Sy-urL"/>
                         <outlet property="lectureSearchLabel" destination="tes-Zq-3pG" id="2RZ-Qb-9kO"/>

@@ -45,6 +45,9 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        if ProcessInfo.processInfo.arguments.contains("-advanced-login") {
+            advancedLogin = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
