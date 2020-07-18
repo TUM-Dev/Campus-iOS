@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
-final class StudyRoomTableViewController: UITableViewController{
+final class StudyRoomTableViewController: UITableViewController {
     var rooms : [StudyRoom] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsSelection = true
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         rooms.sort(by: { (lhs, rhs) -> Bool in
@@ -80,4 +81,24 @@ final class StudyRoomTableViewController: UITableViewController{
 
         return cell
     }
+
+    // MARK: UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let room = rooms[indexPath.row]
+        let roomViewModel = Room(roomId: String(room.id),
+                       roomCode: room.code ?? "unknown",
+                       buildingNumber: String(room.buildingNumber),
+                       id: room.raum_nr_architekt ?? "",
+                       info: room.name ?? "unknown",
+                       address: room.buildingName ?? "unknown",
+                       purpose: "Study Room",
+                       campus: room.buildingName ?? "unknown",
+                       name: room.name ?? "unknown")
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+        guard let detailVC = storyboard.instantiateViewController(withIdentifier: "RoomViewController") as? RoomViewController else { return }
+        navigationController?.pushViewController(detailVC, animated: true)
+        detailVC.room = roomViewModel
+    }
+
 }
