@@ -17,6 +17,23 @@ final class CampusTabBarController: UITabBarController {
         super.viewDidAppear(animated)
         login()
     }
+
+    // MARK: - State Restoration (UIStateRestoring)
+
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+
+        coder.encode(selectedIndex, forKey: "selectedIndex")
+    }
+
+    override func decodeRestorableState(with coder: NSCoder) {
+        super.decodeRestorableState(with: coder)
+
+        if coder.containsValue(forKey: "selectedIndex") {
+            let decodedIndex = coder.decodeInt64(forKey: "selectedIndex")
+            selectedIndex = Int(decodedIndex)
+        }
+    }
     
     private func login() {
         switch loginController.credentials {
