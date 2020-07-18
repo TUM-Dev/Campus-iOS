@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "2777659076fda38bd4e487739ee331c7a65b5924",
-          "version": "5.2.1"
+          "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
+          "version": "5.2.2"
         }
       },
       {
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
         "state": {
           "branch": "master",
-          "revision": "d645ec5dffcc3214fa8b5585e3e445033e0f2eeb",
+          "revision": "d58acd5ae711c556dda6adbc187699159f216c77",
           "version": null
         }
       },
