@@ -282,7 +282,7 @@ extension UIImage {
         let scaledSize = CGSize(width: self.size.width * resizeFactor, height: self.size.height * resizeFactor)
         let origin = CGPoint(x: (size.width - scaledSize.width) / 2.0, y: (size.height - scaledSize.height) / 2.0)
 
-        UIGraphicsBeginImageContextWithOptions(size, isOpaque, scale ?? self.scale)
+        UIGraphicsBeginImageContextWithOptions(size, isOpaque, scale)
         draw(in: CGRect(origin: origin, size: scaledSize))
 
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext() ?? self
