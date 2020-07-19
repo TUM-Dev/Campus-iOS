@@ -19,7 +19,6 @@
 		2203560724C27FD200F5FAB7 /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F624C27FD100F5FAB7 /* FirebasePerformance.framework */; platformFilter = ios; };
 		2203560824C27FD200F5FAB7 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F724C27FD200F5FAB7 /* GoogleUtilities.xcframework */; };
 		2203560924C27FD200F5FAB7 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F824C27FD200F5FAB7 /* PromisesObjC.xcframework */; };
-		2203560A24C27FD200F5FAB7 /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F924C27FD200F5FAB7 /* FirebaseCrashlytics.xcframework */; };
 		2203560B24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FA24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework */; };
 		2203560C24C27FD200F5FAB7 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FB24C27FD200F5FAB7 /* FirebaseCore.xcframework */; };
 		2203560D24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FC24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework */; };
@@ -289,6 +288,7 @@
 		22CFD18724B3874300A35FA6 /* LectureDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailHeader.swift; sourceTree = "<group>"; };
 		22D210EC24A173CA000F3B2F /* LecturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturesCollectionViewController.swift; sourceTree = "<group>"; };
 		22D210EE24A173F5000F3B2F /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
+		22D3BE5124C445BF009D0DCF /* Munich.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Munich.gpx; sourceTree = "<group>"; };
 		22D458DD24C275AE00A6058B /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
 		22D458DF24C275BE00A6058B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		22D458E024C275C500A6058B /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
@@ -334,7 +334,6 @@
 				2203560524C27FD200F5FAB7 /* GoogleToolboxForMac.xcframework in Frameworks */,
 				2203561124C27FD200F5FAB7 /* GoogleDataTransport.xcframework in Frameworks */,
 				2203560224C27FD200F5FAB7 /* FirebaseRemoteConfig.xcframework in Frameworks */,
-				2203560A24C27FD200F5FAB7 /* FirebaseCrashlytics.xcframework in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				2203560724C27FD200F5FAB7 /* FirebasePerformance.framework in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
@@ -528,6 +527,7 @@
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
 				22E67CA6248AE4390066682D /* GoogleService-Info.plist */,
+				22D3BE5124C445BF009D0DCF /* Munich.gpx */,
 				22710B532479E0D30065D6E9 /* Localizable.strings */,
 				22BDA8DB24927CE800F12FD1 /* Extensions */,
 				22E67CA5248AE4220066682D /* Headers */,
@@ -813,7 +813,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = TUM;
 				TargetAttributes = {
 					2277E90B21D93C3300D7FF3F = {
@@ -1222,7 +1222,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
@@ -1257,7 +1257,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",

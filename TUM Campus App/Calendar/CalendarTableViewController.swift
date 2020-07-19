@@ -21,8 +21,9 @@ final class CalendarTableViewController: UITableViewController, ProfileImageSett
     }
     
     private static let endpoint = TUMOnlineAPI.calendar
-    private static let sortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
-    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: sortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+    private static let primarySortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.startDate, ascending: true)
+    private static let secondarySortDescriptor = NSSortDescriptor(keyPath: \CalendarEvent.title, ascending: true)
+    private let importer = ImporterType(endpoint: endpoint, sortDescriptor: primarySortDescriptor, secondarySortDescriptor, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
 
     
     override func viewDidLoad() {
