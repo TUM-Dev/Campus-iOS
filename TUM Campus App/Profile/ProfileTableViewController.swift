@@ -34,6 +34,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     private static let sortDescriptor = NSSortDescriptor(keyPath: \Profile.surname, ascending: false)
     private let loginController = AuthenticationHandler()
     private let coreDataStack = AppDelegate.persistentContainer
+    private var easterEggCounter = 0
     private var versionToggle = true {
         didSet {
             versionLabel.text = versionToggle ? "Version \(Bundle.main.version)" : Bundle.main.build
@@ -164,10 +165,35 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
         let feedbackGenerator = UISelectionFeedbackGenerator()
         feedbackGenerator.selectionChanged()
         versionToggle.toggle()
+        easterEggCounter += 1
+        if easterEggCounter % 10 == 0 {
+            let alert = UIAlertController(title: "App Icon", message: "Choose an app icon", preferredStyle: .actionSheet)
+            let defaultAction = UIAlertAction(title: "Default 🎓", style: .default) { _ in
+                UIApplication.shared.setAlternateIconName(nil)
+            }
+            let invertedAction = UIAlertAction(title: "Inverted 🔄", style: .default) { _ in
+                UIApplication.shared.setAlternateIconName("inverted")
+            }
+            let prideAction = UIAlertAction(title: "Pride 🏳️‍🌈", style: .default) { _ in
+                UIApplication.shared.setAlternateIconName("pride")
+            }
+            let maiTUMAction = UIAlertAction(title: "3D 📐", style: .default) { _ in
+                UIApplication.shared.setAlternateIconName("3D")
+            }
+            let wahlAction = UIAlertAction(title: "Outline 🖍", style: .default) { _ in
+                UIApplication.shared.setAlternateIconName("outline")
+            }
+            alert.addAction(defaultAction)
+            alert.addAction(invertedAction)
+            alert.addAction(prideAction)
+            alert.addAction(maiTUMAction)
+            alert.addAction(wahlAction)
+            present(alert, animated: true)
+        }
     }
 
     @IBAction func done(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 
 

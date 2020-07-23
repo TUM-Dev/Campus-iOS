@@ -39,6 +39,16 @@
 		2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */; };
 		2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */; };
 		222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */; };
+		22356AB724C9D52F00823C2A /* 3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AA724C9D52E00823C2A /* 3D@2x.png */; };
+		22356AB824C9D52F00823C2A /* outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AA824C9D52E00823C2A /* outline@3x.png */; };
+		22356AB924C9D52F00823C2A /* outline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AA924C9D52E00823C2A /* outline@2x.png */; };
+		22356ABD24C9D52F00823C2A /* white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AAD24C9D52F00823C2A /* white@2x.png */; };
+		22356ABE24C9D52F00823C2A /* white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AAE24C9D52F00823C2A /* white@3x.png */; };
+		22356ABF24C9D52F00823C2A /* default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AAF24C9D52F00823C2A /* default@3x.png */; };
+		22356AC124C9D52F00823C2A /* pride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AB124C9D52F00823C2A /* pride@2x.png */; };
+		22356AC324C9D52F00823C2A /* pride@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AB324C9D52F00823C2A /* pride@3x.png */; };
+		22356AC524C9D52F00823C2A /* 3D@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AB524C9D52F00823C2A /* 3D@3x.png */; };
+		22356AC624C9D52F00823C2A /* default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AB624C9D52F00823C2A /* default@2x.png */; };
 		223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12E821DF82180053305B /* TUMCabeAPI.swift */; };
 		223D12EF21E00B9E0053305B /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D12EE21E00B9E0053305B /* News.swift */; };
 		224BBF0A24BFAD280055DD4C /* AvatarNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */; };
@@ -196,6 +206,16 @@
 		2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaSectionHeader.swift; sourceTree = "<group>"; };
 		2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CafeteriaSectionHeader.xib; sourceTree = "<group>"; };
 		222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
+		22356AA724C9D52E00823C2A /* 3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D@2x.png"; sourceTree = "<group>"; };
+		22356AA824C9D52E00823C2A /* outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outline@3x.png"; sourceTree = "<group>"; };
+		22356AA924C9D52E00823C2A /* outline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outline@2x.png"; sourceTree = "<group>"; };
+		22356AAD24C9D52F00823C2A /* white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white@2x.png"; sourceTree = "<group>"; };
+		22356AAE24C9D52F00823C2A /* white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white@3x.png"; sourceTree = "<group>"; };
+		22356AAF24C9D52F00823C2A /* default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@3x.png"; sourceTree = "<group>"; };
+		22356AB124C9D52F00823C2A /* pride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pride@2x.png"; sourceTree = "<group>"; };
+		22356AB324C9D52F00823C2A /* pride@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pride@3x.png"; sourceTree = "<group>"; };
+		22356AB524C9D52F00823C2A /* 3D@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D@3x.png"; sourceTree = "<group>"; };
+		22356AB624C9D52F00823C2A /* default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@2x.png"; sourceTree = "<group>"; };
 		223D12E821DF82180053305B /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
 		223D12EE21E00B9E0053305B /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNavigationBar.swift; sourceTree = "<group>"; };
@@ -525,6 +545,7 @@
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
+				2293F8CD24C460CB00B6E66A /* Assets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
 				22E67CA6248AE4390066682D /* GoogleService-Info.plist */,
 				22D3BE5124C445BF009D0DCF /* Munich.gpx */,
@@ -552,6 +573,23 @@
 				2277E93421D93C3400D7FF3F /* Info.plist */,
 			);
 			path = "TUM Campus AppUITests";
+			sourceTree = "<group>";
+		};
+		2293F8CD24C460CB00B6E66A /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				22356AA724C9D52E00823C2A /* 3D@2x.png */,
+				22356AB524C9D52F00823C2A /* 3D@3x.png */,
+				22356AB624C9D52F00823C2A /* default@2x.png */,
+				22356AAF24C9D52F00823C2A /* default@3x.png */,
+				22356AA924C9D52E00823C2A /* outline@2x.png */,
+				22356AA824C9D52E00823C2A /* outline@3x.png */,
+				22356AB124C9D52F00823C2A /* pride@2x.png */,
+				22356AB324C9D52F00823C2A /* pride@3x.png */,
+				22356AAD24C9D52F00823C2A /* white@2x.png */,
+				22356AAE24C9D52F00823C2A /* white@3x.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		229C549424954BF700EFD5A2 /* Movie */ = {
@@ -869,14 +907,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22356AB824C9D52F00823C2A /* outline@3x.png in Resources */,
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
+				22356ABD24C9D52F00823C2A /* white@2x.png in Resources */,
 				22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */,
+				22356AB724C9D52F00823C2A /* 3D@2x.png in Resources */,
+				22356AC324C9D52F00823C2A /* pride@3x.png in Resources */,
 				22710B572479E1290065D6E9 /* Login.storyboard in Resources */,
+				22356AC624C9D52F00823C2A /* default@2x.png in Resources */,
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
+				22356ABF24C9D52F00823C2A /* default@3x.png in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
+				22356AC524C9D52F00823C2A /* 3D@3x.png in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
+				22356ABE24C9D52F00823C2A /* white@3x.png in Resources */,
 				22710B552479E0D30065D6E9 /* Localizable.strings in Resources */,
+				22356AC124C9D52F00823C2A /* pride@2x.png in Resources */,
 				2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */,
+				22356AB924C9D52F00823C2A /* outline@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,12 +1265,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
@@ -1252,12 +1299,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
