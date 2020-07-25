@@ -1270,7 +1270,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
@@ -1305,7 +1305,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",

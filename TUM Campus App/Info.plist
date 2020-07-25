@@ -49,16 +49,12 @@
 				<false/>
 			</dict>
 		</dict>
-		<key>UINewsstandIcon</key>
+		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string></string>
+				<string>default</string>
 			</array>
-			<key>UINewsstandBindingEdge</key>
-			<string>UINewsstandBindingEdgeLeft</string>
-			<key>UINewsstandBindingType</key>
-			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
 	<key>CFBundleIcons~ipad</key>
@@ -102,16 +98,12 @@
 				<false/>
 			</dict>
 		</dict>
-		<key>UINewsstandIcon</key>
+		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string></string>
+				<string>default</string>
 			</array>
-			<key>UINewsstandBindingEdge</key>
-			<string>UINewsstandBindingEdgeLeft</string>
-			<key>UINewsstandBindingType</key>
-			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
