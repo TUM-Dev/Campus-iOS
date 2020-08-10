@@ -97,11 +97,11 @@
             </objects>
             <point key="canvasLocation" x="-1721" y="715"/>
         </scene>
-        <!--Cafeteria-->
+        <!--Cafeterias-->
         <scene sceneID="vhB-J7-tOY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xfx-5j-asa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cafeteria" image="house" catalog="system" id="RRw-AB-qv3"/>
+                    <tabBarItem key="tabBarItem" title="Cafeterias" image="house" catalog="system" id="RRw-AB-qv3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="IVM-Bt-bKi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
