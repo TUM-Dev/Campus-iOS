@@ -56,7 +56,7 @@ class TUM_Campus_AppUITests: XCTestCase {
 
     func testCafeteria() {
         let app = XCUIApplication()
-        app.tabBars["Tab Bar"].buttons["Cafeteria"].tap()
+        app.tabBars["Tab Bar"].buttons["Cafeterias"].tap()
         app.alerts["Allow “Campus App” to use your location?"].scrollViews.otherElements.buttons["Allow While Using App"].tap()
         app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["Mensa Arcisstraße"]/*[[".cells.staticTexts[\"Mensa Arcisstraße\"]",".staticTexts[\"Mensa Arcisstraße\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.navigationBars["Mensa Arcisstraße"].buttons["Cafeterias"].tap()
