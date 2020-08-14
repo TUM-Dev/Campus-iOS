@@ -86,7 +86,7 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
 }
 
 
-enum TUMOCabeAPIError: APIError, LocalizedError {
+enum TUMCabeAPIError: APIError, LocalizedError {
     case unkown(String)
 
     enum CodingKeys: String, CodingKey {
