@@ -41,7 +41,7 @@ If you want to participate in the beta of this app, enter your details [here](ht
 [T&Cs of the lecture chat](https://app.tum.de/landing/chatterms/)
 
 ## Support
-You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [Github](https://github.com/TCA-Team/iOS) or via E-Mail [app@tum.de](mailto:app@tum.de)
+You can reach us on [Facebook](https://www.facebook.com/TUMCampus), [GitHub](https://github.com/TCA-Team/iOS) or via E-Mail [app@tum.de](mailto:app@tum.de)
 
 ## License
 Licensed under [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
