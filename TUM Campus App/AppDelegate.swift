@@ -38,7 +38,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let gradesShortcut = UIApplicationShortcutItem(type: "grades",
                                                        localizedTitle: "Grades",
                                                        localizedSubtitle: nil,
-                                                       icon: UIApplicationShortcutIcon(systemImageName: "studentdesk"))
+                                                       icon: UIApplicationShortcutIcon(systemImageName: "checkmark.shield"))
 
         let cafeteriaShortcut = UIApplicationShortcutItem(type: "cafeteria",
                                                           localizedTitle: "Cafeterias",
