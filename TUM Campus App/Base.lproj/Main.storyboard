@@ -2214,7 +2214,7 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsM-8J-Utg">
                                     <rect key="frame" x="16" y="8" width="351" height="48"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -2438,7 +2438,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gdr-gi-i96"/>
+        <segue reference="X6U-eB-2UO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Lectures" width="29" height="29"/>
