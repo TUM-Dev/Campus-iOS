@@ -37,7 +37,7 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { categories[section].dishes.count }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? MenuSectionHeader else { return UICollectionReusableView() }
+        guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MenuSectionHeader.reuseIdentifier, for: indexPath) as? MenuSectionHeader else { return UICollectionReusableView() }
         let category = categories[indexPath.section]
 
         sectionHeader.titleLabel.text = category.name
@@ -45,7 +45,7 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! MenuCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCollectionViewCell.reuseIdentifier, for: indexPath) as! MenuCollectionViewCell
         let dish = categories[indexPath.section].dishes[indexPath.row]
 
         cell.configure(dish: dish)
