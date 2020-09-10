@@ -8,7 +8,23 @@
 
 import CoreData
 
-@objc final class Lecture: NSManagedObject, Entity {
+@objc final class Lecture: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var duration: NSDecimalNumber?
+    @NSManaged public var eventType: String?
+    @NSManaged public var eventTypeTag: String?
+    @NSManaged public var id: Int64
+    @NSManaged public var lvNumber: Int64
+    @NSManaged public var organisation: String?
+    @NSManaged public var organisationNumber: Int64
+    @NSManaged public var organisationTag: String?
+    @NSManaged public var semester: String?
+    @NSManaged public var semesterID: String?
+    @NSManaged public var semesterType: String?
+    @NSManaged public var semesterYear: String?
+    @NSManaged public var speaker: String?
+    @NSManaged public var stp_sp_sst: String?
+    @NSManaged public var title: String?
+    @NSManaged public var grade: Grade?
     
     /*
      <row>
@@ -91,6 +107,10 @@ import CoreData
         self.title = title
         self.speaker = speaker
         self.grade = grade
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Lecture> {
+        return NSFetchRequest<Lecture>(entityName: "Lecture")
     }
 
 }

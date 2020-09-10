@@ -8,7 +8,10 @@
 
 import CoreData
 
-@objc final class TUMSexyLink: NSManagedObject, Entity {
+@objc final class TUMSexyLink: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var linkDescription: String?
+    @NSManaged public var moodleID: String?
+    @NSManaged public var target: String?
     
     enum CodingKeys: String, CodingKey {
         case linkDescription = "description"
@@ -29,4 +32,9 @@ import CoreData
         self.moodleID = moodleID
         self.target = target
     }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TUMSexyLink> {
+        return NSFetchRequest<TUMSexyLink>(entityName: "TUMSexyLink")
+    }
+    
 }

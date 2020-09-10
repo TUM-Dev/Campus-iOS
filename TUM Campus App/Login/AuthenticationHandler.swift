@@ -219,9 +219,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             CalendarEvent.fetchRequest(),
             Profile.fetchRequest(),
             Tuition.fetchRequest(),
-            TicketEvent.fetchRequest(),
-            TicketPayment.fetchRequest(),
-            TicketType.fetchRequest(),
         ]
         
         let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0) }

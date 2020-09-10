@@ -18,7 +18,16 @@ struct CalendarAPIResponse: Decodable {
     }
 }
 
-@objc final class CalendarEvent: NSManagedObject, Entity {
+@objc final class CalendarEvent: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var descriptionText: String?
+    @NSManaged public var endDate: Date?
+    @NSManaged public var id: Int64
+    @NSManaged public var location: String?
+    @NSManaged public var startDate: Date?
+    @NSManaged public var status: String?
+    @NSManaged public var title: String?
+    @NSManaged public var url: URL?
+
     
 /*
      <event>
@@ -66,6 +75,10 @@ struct CalendarAPIResponse: Decodable {
         self.startDate = startDate
         self.endDate = endDate
         self.location = location
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<CalendarEvent> {
+        return NSFetchRequest<CalendarEvent>(entityName: "CalendarEvent")
     }
     
 }

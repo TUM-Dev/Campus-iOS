@@ -34,7 +34,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Lecture" representedClassName=".Lecture" syncable="YES">
+    <entity name="Lecture" representedClassName=".Lecture" syncable="YES" codeGenerationType="category">
         <attribute name="duration" optional="YES" attributeType="Decimal" defaultValueString="0"/>
         <attribute name="eventType" optional="YES" attributeType="String"/>
         <attribute name="eventTypeTag" optional="YES" attributeType="String"/>
@@ -71,6 +71,7 @@
         <attribute name="runtime" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="String"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="movie" inverseEntity="TicketEvent"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -163,7 +164,56 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="Tuition" representedClassName=".Tuition" syncable="YES">
+    <entity name="TicketEvent" representedClassName=".TicketEvent" syncable="YES" codeGenerationType="category">
+        <attribute name="end" optional="YES" attributeType="Date"/>
+        <attribute name="eventDescription" optional="YES" attributeType="String"/>
+        <attribute name="file" optional="YES" attributeType="URI"/>
+        <attribute name="groupID" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kinoID" optional="YES" attributeType="Integer 64" defaultValueString="0"/>
+        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="locality" optional="YES" attributeType="String"/>
+        <attribute name="newsID" optional="YES" attributeType="String"/>
+        <attribute name="start" optional="YES" attributeType="Date"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="ticket" inverseEntity="Movie"/>
+        <relationship name="ticketType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="ticket" inverseEntity="TicketType"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TicketPayment" representedClassName=".TicketPayment" syncable="YES" codeGenerationType="category">
+        <attribute name="maxTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="minTickets" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stripeKey" optional="YES" attributeType="String"/>
+        <attribute name="terms" optional="YES" attributeType="URI"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketType" inverseName="payment" inverseEntity="TicketType"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="stripeKey"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TicketType" representedClassName=".TicketType" syncable="YES" codeGenerationType="category">
+        <attribute name="contingent" optional="YES" attributeType="String"/>
+        <attribute name="eventID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paymentID" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="sold" optional="YES" attributeType="String"/>
+        <attribute name="ticketDescription" optional="YES" attributeType="String"/>
+        <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketPayment" inverseName="type" inverseEntity="TicketPayment"/>
+        <relationship name="ticket" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TicketEvent" inverseName="ticketType" inverseEntity="TicketEvent"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+                <constraint value="eventID"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Tuition" representedClassName=".Tuition" syncable="YES" codeGenerationType="category">
         <attribute name="amount" optional="YES" attributeType="Decimal" defaultValueString="0"/>
         <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="semester" optional="YES" attributeType="String"/>
@@ -174,7 +224,7 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
-    <entity name="TUMSexyLink" representedClassName=".TUMSexyLink" syncable="YES">
+    <entity name="TUMSexyLink" representedClassName=".TUMSexyLink" syncable="YES" codeGenerationType="category">
         <attribute name="linkDescription" optional="YES" attributeType="String"/>
         <attribute name="moodleID" optional="YES" attributeType="String"/>
         <attribute name="target" optional="YES" attributeType="String"/>
@@ -187,15 +237,18 @@
     <elements>
         <element name="CalendarEvent" positionX="-18" positionY="153" width="128" height="163"/>
         <element name="Grade" positionX="-12.21484375" positionY="356.43359375" width="128" height="223"/>
-        <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="283"/>
-        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="238"/>
+        <element name="Lecture" positionX="-185.56640625" positionY="318.046875" width="128" height="285"/>
+        <element name="Movie" positionX="-185.19140625" positionY="618.2421875" width="128" height="253"/>
         <element name="News" positionX="-194.5625" positionY="156.75390625" width="128" height="148"/>
         <element name="NewsSource" positionX="9" positionY="288" width="128" height="103"/>
         <element name="Profile" positionX="337.4296875" positionY="134.9296875" width="128" height="148"/>
         <element name="StudyRoom" positionX="512.67578125" positionY="616.4375" width="128" height="298"/>
         <element name="StudyRoomAttribute" positionX="502.71484375" positionY="297.38671875" width="128" height="88"/>
         <element name="StudyRoomGroup" positionX="494.82421875" positionY="144.19921875" width="128" height="118"/>
-        <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="103"/>
-        <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="88"/>
+        <element name="TicketEvent" positionX="-8.93359375" positionY="606.54296875" width="128" height="240"/>
+        <element name="TicketPayment" positionX="155.875" positionY="611.3359375" width="128" height="120"/>
+        <element name="TicketType" positionX="156.7578125" positionY="553.04296875" width="128" height="180"/>
+        <element name="Tuition" positionX="119.95703125" positionY="727.05078125" width="128" height="105"/>
+        <element name="TUMSexyLink" positionX="309.55078125" positionY="744.72265625" width="128" height="90"/>
     </elements>
 </model>

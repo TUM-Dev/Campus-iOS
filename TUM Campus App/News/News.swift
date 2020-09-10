@@ -8,7 +8,15 @@
 
 import CoreData
 
-@objc final class News: NSManagedObject, Entity {
+@objc final class News: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var date: Date?
+    @NSManaged public var id: String?
+    @NSManaged public var imageURL: URL?
+    @NSManaged public var link: URL?
+    @NSManaged public var sourceID: Int64
+    @NSManaged public var title: String?
+    @NSManaged public var source: NewsSource?
+
     
     /*
      "news": "513322",
@@ -56,6 +64,10 @@ import CoreData
         self.link = link
         self.imageURL = imageURL
         self.source = source
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<News> {
+        return NSFetchRequest<News>(entityName: "News")
     }
     
 }

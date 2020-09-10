@@ -9,7 +9,20 @@
 import Foundation
 import CoreData
 
-@objc final class Movie: NSManagedObject, Entity {
+@objc final class Movie: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var actors: String?
+    @NSManaged public var cover: URL?
+    @NSManaged public var created: Date?
+    @NSManaged public var date: Date?
+    @NSManaged public var director: String?
+    @NSManaged public var genre: String?
+    @NSManaged public var id: Int64
+    @NSManaged public var link: URL?
+    @NSManaged public var movieDescription: String?
+    @NSManaged public var rating: String?
+    @NSManaged public var runtime: String?
+    @NSManaged public var title: String?
+    @NSManaged public var year: String?
     
     /*
      {
@@ -88,4 +101,9 @@ import CoreData
         self.title = String(title.split(separator: ":")[1].dropFirst())
         self.year = year
     }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Movie> {
+        return NSFetchRequest<Movie>(entityName: "Movie")
+    }
+    
 }

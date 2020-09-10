@@ -8,7 +8,24 @@
 
 import CoreData
 
-@objc final class StudyRoomGroup: NSManagedObject, Entity {
+@objc final class StudyRoomGroup: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var detail: String?
+    @NSManaged public var id: Int64
+    @NSManaged public var name: String?
+    @NSManaged public var sorting: Int64
+    @NSManaged public var rooms: NSSet?
+
+    @objc(addRoomsObject:)
+    @NSManaged public func addToRooms(_ value: StudyRoom)
+
+    @objc(removeRoomsObject:)
+    @NSManaged public func removeFromRooms(_ value: StudyRoom)
+
+    @objc(addRooms:)
+    @NSManaged public func addToRooms(_ values: NSSet)
+
+    @objc(removeRooms:)
+    @NSManaged public func removeFromRooms(_ values: NSSet)
     
     enum CodingKeys: String, CodingKey {
         case detail = "detail"
@@ -39,5 +56,10 @@ import CoreData
         self.sorting = sorting
         self.rooms = NSSet(array: rooms)
     }
+    
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StudyRoomGroup> {
+        return NSFetchRequest<StudyRoomGroup>(entityName: "StudyRoomGroup")
+    }
+
 }
 

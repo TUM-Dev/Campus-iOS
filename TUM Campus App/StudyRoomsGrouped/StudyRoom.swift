@@ -9,6 +9,35 @@
 import CoreData
 
 @objc final class StudyRoom: NSManagedObject, Entity {
+    @NSManaged public var buildingCode: String?
+    @NSManaged public var buildingName: String?
+    @NSManaged public var buildingNumber: Int64
+    @NSManaged public var code: String?
+    @NSManaged public var id: Int64
+    @NSManaged public var name: String?
+    @NSManaged public var number: String?
+    @NSManaged public var occupiedBy: String?
+    @NSManaged public var occupiedFor: Int64
+    @NSManaged public var occupiedFrom: String?
+    @NSManaged public var occupiedIn: Int64
+    @NSManaged public var occupiedUntil: String?
+    @NSManaged public var raum_nr_architekt: String?
+    @NSManaged public var res_nr: Int64
+    @NSManaged public var status: String?
+    @NSManaged public var attributes: NSSet?
+    @NSManaged public var group: StudyRoomGroup?
+
+    @objc(addAttributesObject:)
+    @NSManaged public func addToAttributes(_ value: StudyRoomAttribute)
+
+    @objc(removeAttributesObject:)
+    @NSManaged public func removeFromAttributes(_ value: StudyRoomAttribute)
+
+    @objc(addAttributes:)
+    @NSManaged public func addToAttributes(_ values: NSSet)
+
+    @objc(removeAttributes:)
+    @NSManaged public func removeFromAttributes(_ values: NSSet)
     
     enum CodingKeys: String, CodingKey {
         case occupiedFrom = "belegung_ab"
@@ -68,4 +97,9 @@ import CoreData
         self.status = status
         self.attributes = NSSet(array: attributes)
     }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StudyRoom> {
+        return NSFetchRequest<StudyRoom>(entityName: "StudyRoom")
+    }
+
 }

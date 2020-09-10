@@ -10,6 +10,22 @@ import CoreData
 
 
 @objc final class NewsSource: NSManagedObject, Entity {
+    @NSManaged public var icon: URL?
+    @NSManaged public var id: Int64
+    @NSManaged public var title: String?
+    @NSManaged public var news: NSSet?
+
+    @objc(addNewsObject:)
+    @NSManaged public func addToNews(_ value: News)
+
+    @objc(removeNewsObject:)
+    @NSManaged public func removeFromNews(_ value: News)
+
+    @objc(addNews:)
+    @NSManaged public func addToNews(_ values: NSSet)
+
+    @objc(removeNews:)
+    @NSManaged public func removeFromNews(_ values: NSSet)
     
     enum CodingKeys: String, CodingKey {
         case id = "source"
@@ -38,6 +54,10 @@ import CoreData
         self.title = title
         self.icon = icon
         self.news = NSSet(array: news)
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<NewsSource> {
+        return NSFetchRequest<NewsSource>(entityName: "NewsSource")
     }
     
 }

@@ -9,7 +9,19 @@
 import Foundation
 import CoreData
 
-@objc final class Grade: NSManagedObject, Entity {
+@objc final class Grade: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var date: Date?
+    @NSManaged public var examiner: String?
+    @NSManaged public var examType: String?
+    @NSManaged public var grade: String?
+    @NSManaged public var lvNumber: String?
+    @NSManaged public var modus: String?
+    @NSManaged public var semester: String?
+    @NSManaged public var studyDesignation: String?
+    @NSManaged public var studyID: String?
+    @NSManaged public var studyNumber: Int64
+    @NSManaged public var title: String?
+    @NSManaged public var lecture: Lecture?
     
     /*
  
@@ -79,4 +91,9 @@ import CoreData
         self.grade = grade
         self.lecture = lecture
     }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Grade> {
+        return NSFetchRequest<Grade>(entityName: "Grade")
+    }
+
 }

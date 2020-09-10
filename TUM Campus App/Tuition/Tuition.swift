@@ -10,7 +10,11 @@ import Foundation
 import CoreData
 
 
-@objc final class Tuition: NSManagedObject, Entity {
+@objc final class Tuition: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var amount: NSDecimalNumber?
+    @NSManaged public var deadline: Date?
+    @NSManaged public var semester: String?
+    @NSManaged public var semesterID: String?
     
     /*
      <row>
@@ -47,4 +51,8 @@ import CoreData
         self.amount = NSDecimalNumber(decimal: amount)
     }
     
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Tuition> {
+        return NSFetchRequest<Tuition>(entityName: "Tuition")
+    }
+
 }

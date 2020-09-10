@@ -8,8 +8,11 @@
 
 import CoreData
 
-@objc final class StudyRoomAttribute: NSManagedObject, Entity {
-    
+@objc final class StudyRoomAttribute: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var detail: String?
+    @NSManaged public var name: String?
+    @NSManaged public var studyRoom: StudyRoom?
+
     enum CodingKeys: String, CodingKey {
         case detail
         case name
@@ -25,6 +28,10 @@ import CoreData
         self.init(entity: StudyRoomAttribute.entity(), insertInto: context)
         self.detail = detail
         self.name = name
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<StudyRoomAttribute> {
+        return NSFetchRequest<StudyRoomAttribute>(entityName: "StudyRoomAttribute")
     }
     
 }

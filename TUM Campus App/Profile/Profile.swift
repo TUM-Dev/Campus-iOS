@@ -8,7 +8,14 @@
 
 import CoreData
 
-@objc final class Profile: NSManagedObject, Entity {
+@objc final class Profile: NSManagedObject, Identifiable, Entity {
+    @NSManaged public var firstname: String?
+    @NSManaged public var obfuscatedID: String?
+    @NSManaged public var obfuscatedIDEmployee: String?
+    @NSManaged public var obfuscatedIDExtern: String?
+    @NSManaged public var obfuscatedIDStudent: String?
+    @NSManaged public var surname: String?
+    @NSManaged public var tumID: String?
 
     var personGroup: String? {
         let split = obfuscatedID?.split(separator: "*")
@@ -89,6 +96,10 @@ import CoreData
         self.obfuscatedIDExtern = obfuscatedIDExtern
         self.obfuscatedIDStudent = obfuscatedIDStudent
         self.firstname = firstname
+    }
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Profile> {
+        return NSFetchRequest<Profile>(entityName: "Profile")
     }
     
 }
