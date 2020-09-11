@@ -40,7 +40,8 @@ final class MealPlanTableViewController: UITableViewController {
         let thisWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: Date().year, week: Date().weekOfYear)
         sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
             guard let value = response.value else { return }
-            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty }).sorted(by: >))
+            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false) }))
+            self?.menus.sort(by: <)
             self?.tableView.reloadData()
         }
         let calendar = Calendar.current
@@ -48,7 +49,8 @@ final class MealPlanTableViewController: UITableViewController {
         let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
         sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
             guard let value = response.value else { return }
-            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty }).sorted(by: >))
+            self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false) }))
+            self?.menus.sort(by: <)
             self?.tableView.reloadData()
         }
     }
@@ -56,6 +58,8 @@ final class MealPlanTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if menus.isEmpty {
             setBackgroundLabel(withText: "No Menu".localized)
+        } else {
+            removeBackgroundLabel()
         }
         return menus.count
     }
@@ -71,7 +75,7 @@ final class MealPlanTableViewController: UITableViewController {
         let menu = menus[indexPath.row]
         if let date = menu.date {
             let formatter = DateFormatter()
-            formatter.dateStyle = .long
+            formatter.dateFormat = "EEEE, MM.dd.yyyy"
             cell.textLabel?.text = formatter.string(from: date)
         }
 
