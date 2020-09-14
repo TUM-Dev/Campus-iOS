@@ -48,15 +48,30 @@ final class MenuCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        self.layer.cornerRadius = 8
-        self.layer.backgroundColor = UIColor.white.cgColor
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 1.0, height: 4.0)
-        self.layer.shadowRadius = 5.0
-        self.layer.shadowOpacity = 0.1
-        self.layer.masksToBounds = false
+        setupShadow()
     }
-    
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupShadow()
+    }
+
+    private func setupShadow() {
+        layer.cornerRadius = 8
+        layer.backgroundColor = UIColor { traitCollection -> UIColor in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor.secondarySystemBackground
+            default:
+                return UIColor.systemBackground
+            }
+        }.cgColor
+        layer.shadowColor = UIColor.systemGray.cgColor
+        layer.shadowOffset = CGSize(width: 1.0, height: 4.0)
+        layer.shadowRadius = 5.0
+        layer.shadowOpacity = 0.1
+        layer.masksToBounds = false
+    }
+
 }
 
