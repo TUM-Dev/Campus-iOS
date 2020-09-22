@@ -12,7 +12,7 @@ import CoreData
 final class TUMSexyTableViewController: UITableViewController {
     typealias ImporterType = Importer<TUMSexyLink,[String: TUMSexyLink],JSONDecoder>
     
-    private static let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: false)
+    private static let sortDescriptor = NSSortDescriptor(keyPath: \TUMSexyLink.linkDescription , ascending: true)
     private let importer = ImporterType(endpoint: TUMSexyAPI(), sortDescriptor: sortDescriptor)
 
     
