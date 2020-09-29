@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fFz-oa-eli">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fFz-oa-eli">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +58,7 @@
                                 <rect key="frame" x="8" y="236.5" width="359" height="174.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your TUM ID to get started" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-6G-cjY">
-                                        <rect key="frame" x="50" y="0.0" width="259" height="20.5"/>
+                                        <rect key="frame" x="51" y="0.0" width="257.5" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -64,27 +66,27 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="krB-t4-hqt">
                                         <rect key="frame" x="99.5" y="38.5" width="160" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ga" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wQH-pX-820">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="go" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wQH-pX-820">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="34"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                 <connections>
                                                     <action selector="textFieldEditingChanged:" destination="Cna-iM-fVG" eventType="editingChanged" id="gx6-r5-cYV"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="94" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="b2a-g1-cFQ">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="42" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="b2a-g1-cFQ">
                                                 <rect key="frame" x="56" y="0.0" width="48" height="34"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                 <connections>
                                                     <action selector="textFieldEditingChanged:" destination="Cna-iM-fVG" eventType="editingChanged" id="R7V-Ue-cOP"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="zuh" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XlE-mc-KqF">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tum" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="XlE-mc-KqF">
                                                 <rect key="frame" x="112" y="0.0" width="48" height="34"/>
-                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                                 <connections>
@@ -96,9 +98,9 @@
                                             <constraint firstAttribute="width" constant="160" id="CmU-5c-uqm"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-Ig-Mjw" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhM-Ig-Mjw" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
                                         <rect key="frame" x="114.5" y="90.5" width="130" height="36"/>
-                                        <color key="backgroundColor" systemColor="secondarySystemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="Ox9-AJ-enD"/>
                                         </constraints>
@@ -115,7 +117,7 @@
                                             <action selector="didSelectContinue:" destination="Cna-iM-fVG" eventType="touchUpInside" id="x6Y-Mi-gRj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmE-gS-ZAI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kmE-gS-ZAI">
                                         <rect key="frame" x="93" y="144.5" width="173" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="tintColor" name="tumBlueWhite"/>
@@ -132,7 +134,8 @@
                                 <rect key="frame" x="0.0" y="419" width="375" height="248"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="spu-6u-faN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="3Zk-xe-mX3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hhs-Js-wMF" secondAttribute="bottom" constant="8" id="2ZH-yK-F8y"/>
                             <constraint firstItem="hhs-Js-wMF" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" constant="8" id="8mI-ri-h3J"/>
@@ -145,7 +148,6 @@
                             <constraint firstItem="3Zk-xe-mX3" firstAttribute="trailing" secondItem="spu-6u-faN" secondAttribute="trailing" id="pHK-FF-lHx"/>
                             <constraint firstItem="3Zk-xe-mX3" firstAttribute="leading" secondItem="spu-6u-faN" secondAttribute="leading" id="ywb-Zw-TGX"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="spu-6u-faN"/>
                     </view>
                     <navigationItem key="navigationItem" id="jb8-iS-Yta"/>
                     <connections>
@@ -178,7 +180,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="da1-30-KeO">
                                                         <rect key="frame" x="0.0" y="0.0" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="245" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="2Di-so-gBT" customClass="CircularLabel" customModule="TUMCampusApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="42" height="42"/>
@@ -193,7 +195,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Rbx-SR-6MD">
                                                         <rect key="frame" x="0.0" y="92" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -216,7 +218,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Okd-4D-gbp">
                                                         <rect key="frame" x="0.0" y="0.0" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiV-le-TK1" customClass="CircularLabel" customModule="TUMCampusApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="42" height="42"/>
@@ -231,7 +233,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-4h-iJW">
                                                         <rect key="frame" x="0.0" y="92" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
@@ -251,7 +253,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FG-wB-9pw">
                                                         <rect key="frame" x="0.0" y="0.0" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7E-Vh-VZn" customClass="CircularLabel" customModule="TUMCampusApp" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="50" width="42" height="42"/>
@@ -266,7 +268,7 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HDv-Xa-nPS">
                                                         <rect key="frame" x="0.0" y="92" width="42" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -286,7 +288,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4pB-wx-6ne">
                                 <rect key="frame" x="87.5" y="553" width="200" height="94"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO5-kt-lJa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OO5-kt-lJa">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <state key="normal" title="I need help"/>
@@ -294,7 +296,7 @@
                                             <segue destination="kUZ-1E-g8X" kind="show" id="uRu-vC-FVt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-TU-8ev" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEr-TU-8ev" customClass="ShadowButton" customModule="TUMCampusApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="200" height="48"/>
                                         <color key="backgroundColor" red="0.20364900380000001" green="0.35383618900000002" blue="0.72193308680000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -312,7 +314,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vj0-dQ-dZF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vj0-dQ-dZF" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4pB-wx-6ne" secondAttribute="trailing" constant="16" id="6cI-gT-rwL"/>
                             <constraint firstItem="4pB-wx-6ne" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IOE-NU-A02" secondAttribute="bottom" constant="8" id="Ci6-w9-Nrd"/>
@@ -323,7 +326,6 @@
                             <constraint firstItem="4pB-wx-6ne" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vj0-dQ-dZF" secondAttribute="leading" constant="16" id="o8a-17-1PF"/>
                             <constraint firstItem="4pB-wx-6ne" firstAttribute="centerX" secondItem="UpX-AF-5s8" secondAttribute="centerX" id="uEO-gx-kSt"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="vj0-dQ-dZF"/>
                     </view>
                     <connections>
                         <outlet property="checkAuthorizationButton" destination="bEr-TU-8ev" id="aP4-4C-kOc"/>
@@ -345,14 +347,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bDF-zt-fuM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="H6M-Bf-K4r" firstAttribute="top" secondItem="bDF-zt-fuM" secondAttribute="top" id="GrW-9Y-3iI"/>
                             <constraint firstItem="bDF-zt-fuM" firstAttribute="bottom" secondItem="H6M-Bf-K4r" secondAttribute="bottom" id="YXu-fC-Rzj"/>
                             <constraint firstItem="H6M-Bf-K4r" firstAttribute="leading" secondItem="bDF-zt-fuM" secondAttribute="leading" id="bI2-CQ-OCa"/>
                             <constraint firstItem="bDF-zt-fuM" firstAttribute="trailing" secondItem="H6M-Bf-K4r" secondAttribute="trailing" id="jaS-Ix-9hu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bDF-zt-fuM"/>
                     </view>
                     <navigationItem key="navigationItem" id="okK-E6-iLf"/>
                     <connections>
@@ -364,11 +366,37 @@
             <point key="canvasLocation" x="-161" y="-1084"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="2Di-so-gBT">
+            <size key="intrinsicContentSize" width="13" height="33.5"/>
+        </designable>
+        <designable name="Q7E-Vh-VZn">
+            <size key="intrinsicContentSize" width="17" height="33.5"/>
+        </designable>
+        <designable name="bEr-TU-8ev">
+            <size key="intrinsicContentSize" width="178" height="36"/>
+        </designable>
+        <designable name="eiV-le-TK1">
+            <size key="intrinsicContentSize" width="16.5" height="33.5"/>
+        </designable>
+        <designable name="zhM-Ig-Mjw">
+            <size key="intrinsicContentSize" width="110" height="36"/>
+        </designable>
+    </designables>
     <resources>
         <image name="logo-blue" width="224" height="118"/>
         <image name="tower" width="922" height="975"/>
         <namedColor name="tumBlueWhite">
             <color red="0.0" green="0.39599999785423279" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

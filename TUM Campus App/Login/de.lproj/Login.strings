@@ -15,7 +15,7 @@
 "Q7E-Vh-VZn.text" = "3";
 
 /* Class = "UITextField"; placeholder = "zuh"; ObjectID = "XlE-mc-KqF"; */
-"XlE-mc-KqF.placeholder" = "zuh";
+"XlE-mc-KqF.placeholder" = "tum";
 
 /* Class = "UILabel"; text = "Setzte einen Hacken bei  \"aktiviert\" und stelle die benötigten Rechte ein"; ObjectID = "Xwq-26-KgQ"; */
 "Xwq-26-KgQ.text" = "Setzte einen Hacken bei  \"aktiviert\" und stelle die benötigten Rechte ein";
@@ -24,7 +24,7 @@
 "aId-nA-ZKf.text" = "Wilkommen zur TUM Campus App";
 
 /* Class = "UITextField"; placeholder = "94"; ObjectID = "b2a-g1-cFQ"; */
-"b2a-g1-cFQ.placeholder" = "94";
+"b2a-g1-cFQ.placeholder" = "42";
 
 /* Class = "UIButton"; normalTitle = "Token prüfen"; ObjectID = "bEr-TU-8ev"; */
 "bEr-TU-8ev.normalTitle" = "Token prüfen";
@@ -42,7 +42,7 @@
 "m0y-pP-dw4.text" = "Prüfe deine Email Postfach und klicke auf den Link um das Token zu aktivieren oder gehe auf TUMonline";
 
 /* Class = "UITextField"; placeholder = "ga"; ObjectID = "wQH-pX-820"; */
-"wQH-pX-820.placeholder" = "ga";
+"wQH-pX-820.placeholder" = "go";
 
 /* Class = "UIButton"; normalTitle = "Weiter 🎓"; ObjectID = "zhM-Ig-Mjw"; */
 "zhM-Ig-Mjw.normalTitle" = "Weiter 🎓";
