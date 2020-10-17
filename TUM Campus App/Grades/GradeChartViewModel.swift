@@ -50,18 +50,8 @@ struct GradeChartViewModel: Hashable {
         for grade in gradeMap.enumerated() {
             let entry = BarChartDataEntry(x: Double(grade.offset), y: Double(grade.element.value))
             dataEntries.append(entry)
-            switch grade.element.key {
-            case 1.0..<2.0:
-                colors.append(.systemGreen)
-            case 2.0..<3.0:
-                colors.append(.systemYellow)
-            case 3.0...4.0:
-                colors.append(.systemOrange)
-            case 4.3...5.0:
-                colors.append(.systemRed)
-            default:
-                colors.append(.systemGray)
-            }
+            let grade = Double(truncating: grade.element.key as NSNumber)
+            colors.append(GradeColor.color(for: grade))
         }
 
         let dataSet = BarChartDataSet(entries: dataEntries)

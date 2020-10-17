@@ -32,21 +32,8 @@ final class GradeCollectionViewCell: UICollectionViewCell {
         lvNumberLabel.text = grade.lvNumber
         examinerLabel.text = grade.examiner
         modusLabel.text = grade.modus?.components(separatedBy: " ").first
-        if let gradeValue = Double(grade.grade?.replacingOccurrences(of: ",", with: ".") ?? "") {
-            switch gradeValue {
-            case 1.0..<2.0:
-                blockView.backgroundColor = UIColor.systemGreen
-            case 2.0..<3.0:
-                blockView.backgroundColor = UIColor.systemYellow
-            case 3.0...4.0:
-                blockView.backgroundColor = UIColor.systemOrange
-            case 4.3...5.0:
-                blockView.backgroundColor = UIColor.systemRed
-            default:
-                blockView.backgroundColor = UIColor.systemGray
-            }
-        }
-        let inset = CGFloat(10)
+        blockView.backgroundColor = GradeColor.color(for: Double(grade.grade?.replacingOccurrences(of: ",", with: ".") ?? ""))
+        let inset: CGFloat = 10
         NSLayoutConstraint.activate([
             seperatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             seperatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
