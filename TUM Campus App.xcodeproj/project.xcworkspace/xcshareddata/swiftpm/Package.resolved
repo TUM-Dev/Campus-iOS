@@ -12,10 +12,10 @@
       },
       {
         "package": "CalendarKit",
-        "repositoryURL": "https://github.com/tgymnich/CalendarKit.git",
+        "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
         "state": {
           "branch": "master",
-          "revision": "9da9437268006323ae5d206f5ea3949f2acb0776",
+          "revision": "e6c8c8acefe6585da076d6b1b61976ad9f5a4b91",
           "version": null
         }
       },
@@ -32,8 +32,8 @@
         "package": "DateToolsSwift",
         "repositoryURL": "https://github.com/maniramezan/DateTools.git",
         "state": {
-          "branch": "mani_swiftpm_5_3",
-          "revision": "b7f0415ecb9a2b684fc53a2e4093fc09d368356a",
+          "branch": "mani_swiftpm",
+          "revision": "4df71163e824b75476edd853a57dd4e33e0e618b",
           "version": null
         }
       },
