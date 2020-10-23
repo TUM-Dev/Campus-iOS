@@ -22,6 +22,7 @@ final class GradeChartCollectionViewCell: UICollectionViewCell {
         xAxis.labelFont = .systemFont(ofSize: 10)
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = false
+        xAxis.labelCount = chartViewModel.gradeStrings.count
         xAxis.valueFormatter = IndexAxisValueFormatter(values: chartViewModel.gradeStrings)
 
         let leftAxis = barChartView.leftAxis
