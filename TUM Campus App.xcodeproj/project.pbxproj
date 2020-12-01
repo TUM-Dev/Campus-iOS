@@ -11,22 +11,6 @@
 		19382F202389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F1F2389D04F007BEC88 /* StudyRoomGroupedTableViewCell.swift */; };
 		19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19382F212389D4AD007BEC88 /* StudyRoomCell.swift */; };
 		19F7DB22238A112E00082444 /* TuitionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F7DB21238A112E00082444 /* TuitionCell.swift */; };
-		2203560224C27FD200F5FAB7 /* FirebaseRemoteConfig.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F124C27FD100F5FAB7 /* FirebaseRemoteConfig.xcframework */; };
-		2203560324C27FD200F5FAB7 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F224C27FD100F5FAB7 /* nanopb.xcframework */; };
-		2203560424C27FD200F5FAB7 /* FirebaseInstallations.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F324C27FD100F5FAB7 /* FirebaseInstallations.xcframework */; };
-		2203560524C27FD200F5FAB7 /* GoogleToolboxForMac.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F424C27FD100F5FAB7 /* GoogleToolboxForMac.xcframework */; };
-		2203560624C27FD200F5FAB7 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F524C27FD100F5FAB7 /* GoogleAppMeasurement.framework */; platformFilter = ios; };
-		2203560724C27FD200F5FAB7 /* FirebasePerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F624C27FD100F5FAB7 /* FirebasePerformance.framework */; platformFilter = ios; };
-		2203560824C27FD200F5FAB7 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F724C27FD200F5FAB7 /* GoogleUtilities.xcframework */; };
-		2203560924C27FD200F5FAB7 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355F824C27FD200F5FAB7 /* PromisesObjC.xcframework */; };
-		2203560B24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FA24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework */; };
-		2203560C24C27FD200F5FAB7 /* FirebaseCore.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FB24C27FD200F5FAB7 /* FirebaseCore.xcframework */; };
-		2203560D24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FC24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework */; };
-		2203560E24C27FD200F5FAB7 /* FirebaseABTesting.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FD24C27FD200F5FAB7 /* FirebaseABTesting.xcframework */; };
-		2203560F24C27FD200F5FAB7 /* Protobuf.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FE24C27FD200F5FAB7 /* Protobuf.xcframework */; };
-		2203561024C27FD200F5FAB7 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220355FF24C27FD200F5FAB7 /* FirebaseAnalytics.framework */; platformFilter = ios; };
-		2203561124C27FD200F5FAB7 /* GoogleDataTransport.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2203560024C27FD200F5FAB7 /* GoogleDataTransport.xcframework */; };
-		2203561224C27FD200F5FAB7 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2203560124C27FD200F5FAB7 /* FIRAnalyticsConnector.framework */; platformFilter = ios; };
 		220603B024944493004869F7 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 220603AF24944493004869F7 /* XMLCoder */; };
 		220EB130247DBBA700DC4A6F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 220EB12F247DBBA700DC4A6F /* Charts */; };
 		221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */; };
@@ -63,6 +47,7 @@
 		224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */; };
 		224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
 		224F37C32460EA5A00BEDA71 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C22460EA5A00BEDA71 /* MealPlan.swift */; };
+		22508B642492559900B6740D /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22508B632492559900B6740D /* CalendarKit */; };
 		22508B662492672F00B6740D /* CalendarWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22508B652492672F00B6740D /* CalendarWeekViewController.swift */; };
 		2255F68B24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255F68A24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift */; };
 		2258EDBB22221EE80079C2ED /* StudyRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBA22221EE80079C2ED /* StudyRoom.swift */; };
@@ -81,7 +66,6 @@
 		2269BB2C24A405B70011F9DF /* GradeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269BB2B24A405B70011F9DF /* GradeCollectionViewController.swift */; };
 		2269BB2E24A406B10011F9DF /* GradeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2269BB2D24A406B10011F9DF /* GradeCollectionViewCell.swift */; };
 		226C2CD124AE74C300971C54 /* LectureDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226C2CD024AE74C300971C54 /* LectureDetail.swift */; };
-		22702916255175B1007EE585 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22702915255175B1007EE585 /* CalendarKit */; };
 		22710B552479E0D30065D6E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22710B532479E0D30065D6E9 /* Localizable.strings */; };
 		22710B572479E1290065D6E9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22710B592479E1290065D6E9 /* Login.storyboard */; };
 		22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22710B5C247AB5FE0065D6E9 /* RoomFinderViewController.swift */; };
@@ -100,6 +84,7 @@
 		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
 		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
 		2288B26D2499329E00E70E6C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */; };
+		228A107E2576C42200FAB1F4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */; };
 		229C549724954BF700EFD5A2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549524954BF700EFD5A2 /* Movie.swift */; };
@@ -110,7 +95,6 @@
 		22AE458A247AF15600CE5B29 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE4589247AF15600CE5B29 /* RoomCell.swift */; };
 		22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458B247AF82300CE5B29 /* RoomViewController.swift */; };
 		22AE458E247B214200CE5B29 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AE458D247B214200CE5B29 /* MapCell.swift */; };
-		22AF6F30253B6F5200375627 /* GradeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF6F2F253B6F5200375627 /* GradeColors.swift */; };
 		22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AEF21D9458600E65C86 /* LoginViewController.swift */; };
 		22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */; };
 		22B8E7BA2389C91600CFEDEE /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B8E7B92389C91600CFEDEE /* ProfileTableViewController.swift */; };
@@ -133,7 +117,6 @@
 		22CFD18824B3874300A35FA6 /* LectureDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFD18724B3874300A35FA6 /* LectureDetailHeader.swift */; };
 		22D210ED24A173CA000F3B2F /* LecturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D210EC24A173CA000F3B2F /* LecturesCollectionViewController.swift */; };
 		22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D210EE24A173F5000F3B2F /* LectureCollectionViewCell.swift */; };
-		22D458DE24C275AE00A6058B /* FirebaseCrashlytics.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D458DD24C275AE00A6058B /* FirebaseCrashlytics.xcframework */; };
 		22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */; };
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
 		22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */; };
@@ -148,6 +131,7 @@
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */; };
+		22FD2F772576BDFB004E5A0F /* GradeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD2F762576BDFB004E5A0F /* GradeColors.swift */; };
 		22FFED5F247BDC1600BCA27C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED5E247BDC1600BCA27C /* MapViewController.swift */; };
 		22FFED61247BF47100BCA27C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED60247BF47100BCA27C /* IconButton.swift */; };
 /* End PBXBuildFile section */
@@ -175,23 +159,6 @@
 		19382F212389D4AD007BEC88 /* StudyRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomCell.swift; sourceTree = "<group>"; };
 		19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		19F7DB21238A112E00082444 /* TuitionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCell.swift; sourceTree = "<group>"; };
-		220355F124C27FD100F5FAB7 /* FirebaseRemoteConfig.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseRemoteConfig.xcframework; sourceTree = "<group>"; };
-		220355F224C27FD100F5FAB7 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
-		220355F324C27FD100F5FAB7 /* FirebaseInstallations.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseInstallations.xcframework; sourceTree = "<group>"; };
-		220355F424C27FD100F5FAB7 /* GoogleToolboxForMac.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleToolboxForMac.xcframework; sourceTree = "<group>"; };
-		220355F524C27FD100F5FAB7 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		220355F624C27FD100F5FAB7 /* FirebasePerformance.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebasePerformance.framework; sourceTree = "<group>"; };
-		220355F724C27FD200F5FAB7 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		220355F824C27FD200F5FAB7 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
-		220355F924C27FD200F5FAB7 /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
-		220355FA24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GTMSessionFetcher.xcframework; sourceTree = "<group>"; };
-		220355FB24C27FD200F5FAB7 /* FirebaseCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCore.xcframework; sourceTree = "<group>"; };
-		220355FC24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCoreDiagnostics.xcframework; sourceTree = "<group>"; };
-		220355FD24C27FD200F5FAB7 /* FirebaseABTesting.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseABTesting.xcframework; sourceTree = "<group>"; };
-		220355FE24C27FD200F5FAB7 /* Protobuf.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Protobuf.xcframework; sourceTree = "<group>"; };
-		220355FF24C27FD200F5FAB7 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		2203560024C27FD200F5FAB7 /* GoogleDataTransport.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleDataTransport.xcframework; sourceTree = "<group>"; };
-		2203560124C27FD200F5FAB7 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
 		221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialViewController.swift; sourceTree = "<group>"; };
 		22195062221C8CCC00169A2B /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		2223AB1124AE5EFB00D707F0 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -277,7 +244,6 @@
 		22AE4589247AF15600CE5B29 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
 		22AE458B247AF82300CE5B29 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		22AE458D247B214200CE5B29 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
-		22AF6F2F253B6F5200375627 /* GradeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColors.swift; sourceTree = "<group>"; };
 		22B00AEF21D9458600E65C86 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22B00AFF21DD878000E65C86 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
 		22B09090250A94FF007A6470 /* TUM_Campus_App_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TUM_Campus_App_v2.xcdatamodel; sourceTree = "<group>"; };
@@ -302,9 +268,6 @@
 		22D210EC24A173CA000F3B2F /* LecturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturesCollectionViewController.swift; sourceTree = "<group>"; };
 		22D210EE24A173F5000F3B2F /* LectureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCollectionViewCell.swift; sourceTree = "<group>"; };
 		22D3BE5124C445BF009D0DCF /* Munich.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Munich.gpx; sourceTree = "<group>"; };
-		22D458DD24C275AE00A6058B /* FirebaseCrashlytics.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FirebaseCrashlytics.xcframework; sourceTree = "<group>"; };
-		22D458DF24C275BE00A6058B /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		22D458E024C275C500A6058B /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		22D4FCD721DE6E2200DF1F4B /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
 		22D4FCD921DE713600DF1F4B /* ShadowViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowViews.swift; sourceTree = "<group>"; };
 		22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +284,7 @@
 		22F9629B2460ED03004BF215 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		22F9629D246177D9004BF215 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewController.swift; sourceTree = "<group>"; };
+		22FD2F762576BDFB004E5A0F /* GradeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeColors.swift; sourceTree = "<group>"; };
 		22FFED5E247BDC1600BCA27C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		22FFED60247BF47100BCA27C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -330,29 +294,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2203560824C27FD200F5FAB7 /* GoogleUtilities.xcframework in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
-				2203560324C27FD200F5FAB7 /* nanopb.xcframework in Frameworks */,
-				22D458DE24C275AE00A6058B /* FirebaseCrashlytics.xcframework in Frameworks */,
-				2203561024C27FD200F5FAB7 /* FirebaseAnalytics.framework in Frameworks */,
-				2203560C24C27FD200F5FAB7 /* FirebaseCore.xcframework in Frameworks */,
+				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				220603B024944493004869F7 /* XMLCoder in Frameworks */,
-				2203560E24C27FD200F5FAB7 /* FirebaseABTesting.xcframework in Frameworks */,
-				2203560424C27FD200F5FAB7 /* FirebaseInstallations.xcframework in Frameworks */,
-				2203560624C27FD200F5FAB7 /* GoogleAppMeasurement.framework in Frameworks */,
-				2203561224C27FD200F5FAB7 /* FIRAnalyticsConnector.framework in Frameworks */,
-				2203560D24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework in Frameworks */,
-				22702916255175B1007EE585 /* CalendarKit in Frameworks */,
-				2203560524C27FD200F5FAB7 /* GoogleToolboxForMac.xcframework in Frameworks */,
-				2203561124C27FD200F5FAB7 /* GoogleDataTransport.xcframework in Frameworks */,
-				2203560224C27FD200F5FAB7 /* FirebaseRemoteConfig.xcframework in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
-				2203560724C27FD200F5FAB7 /* FirebasePerformance.framework in Frameworks */,
+				228A107E2576C42200FAB1F4 /* FirebaseCrashlytics in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
-				2203560924C27FD200F5FAB7 /* PromisesObjC.xcframework in Frameworks */,
-				2203560F24C27FD200F5FAB7 /* Protobuf.xcframework in Frameworks */,
-				2203560B24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,11 +387,11 @@
 			isa = PBXGroup;
 			children = (
 				22692D9A221E1618002C5720 /* Grade.swift */,
-				22AF6F2F253B6F5200375627 /* GradeColors.swift */,
 				2283061E24A539E5000A10CD /* GradeChartViewModel.swift */,
 				2269BB2B24A405B70011F9DF /* GradeCollectionViewController.swift */,
 				2269BB2D24A406B10011F9DF /* GradeCollectionViewCell.swift */,
 				2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */,
+				22FD2F762576BDFB004E5A0F /* GradeColors.swift */,
 			);
 			path = Grades;
 			sourceTree = "<group>";
@@ -532,8 +480,6 @@
 				22D3BE5124C445BF009D0DCF /* Munich.gpx */,
 				22710B532479E0D30065D6E9 /* Localizable.strings */,
 				22BDA8DB24927CE800F12FD1 /* Extensions */,
-				22E67CA5248AE4220066682D /* Headers */,
-				22E67CA4248AE4090066682D /* Frameworks */,
 			);
 			path = "TUM Campus App";
 			sourceTree = "<group>";
@@ -718,40 +664,6 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		22E67CA4248AE4090066682D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2203560124C27FD200F5FAB7 /* FIRAnalyticsConnector.framework */,
-				220355FD24C27FD200F5FAB7 /* FirebaseABTesting.xcframework */,
-				220355FF24C27FD200F5FAB7 /* FirebaseAnalytics.framework */,
-				220355FB24C27FD200F5FAB7 /* FirebaseCore.xcframework */,
-				220355FC24C27FD200F5FAB7 /* FirebaseCoreDiagnostics.xcframework */,
-				220355F924C27FD200F5FAB7 /* FirebaseCrashlytics.xcframework */,
-				220355F324C27FD100F5FAB7 /* FirebaseInstallations.xcframework */,
-				220355F624C27FD100F5FAB7 /* FirebasePerformance.framework */,
-				220355F124C27FD100F5FAB7 /* FirebaseRemoteConfig.xcframework */,
-				220355F524C27FD100F5FAB7 /* GoogleAppMeasurement.framework */,
-				2203560024C27FD200F5FAB7 /* GoogleDataTransport.xcframework */,
-				220355F424C27FD100F5FAB7 /* GoogleToolboxForMac.xcframework */,
-				220355F724C27FD200F5FAB7 /* GoogleUtilities.xcframework */,
-				220355FA24C27FD200F5FAB7 /* GTMSessionFetcher.xcframework */,
-				220355F224C27FD100F5FAB7 /* nanopb.xcframework */,
-				220355F824C27FD200F5FAB7 /* PromisesObjC.xcframework */,
-				220355FE24C27FD200F5FAB7 /* Protobuf.xcframework */,
-				22D458DD24C275AE00A6058B /* FirebaseCrashlytics.xcframework */,
-			);
-			path = Frameworks;
-			sourceTree = "<group>";
-		};
-		22E67CA5248AE4220066682D /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				22D458E024C275C500A6058B /* Firebase.h */,
-				22D458DF24C275BE00A6058B /* module.modulemap */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
 		22E67CC2248AE69D0066682D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,9 +693,10 @@
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7592479D358001A969E /* KeychainAccess */,
 				220EB12F247DBBA700DC4A6F /* Charts */,
+				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
-				22702915255175B1007EE585 /* CalendarKit */,
+				228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -868,9 +781,10 @@
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
+				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				22702914255175B1007EE585 /* XCRemoteSwiftPackageReference "CalendarKit" */,
+				228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -1025,7 +939,7 @@
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				227395B524B4ABF20024CD21 /* MovieDetailCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,
-				22AF6F30253B6F5200375627 /* GradeColors.swift in Sources */,
+				22FD2F772576BDFB004E5A0F /* GradeColors.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
 				22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */,
 				22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */,
@@ -1249,7 +1163,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
@@ -1284,7 +1198,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 41;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
@@ -1458,6 +1372,14 @@
 				minimumVersion = 5.14.1;
 			};
 		};
+		22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.0;
+			};
+		};
 		225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1482,12 +1404,12 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		22702914255175B1007EE585 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+		228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.0;
+				minimumVersion = 7.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1508,6 +1430,11 @@
 			package = 224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
+		22508B632492559900B6740D /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
+		};
 		225AD74A2479D2D3001A969E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -1523,10 +1450,10 @@
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		22702915255175B1007EE585 /* CalendarKit */ = {
+		228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 22702914255175B1007EE585 /* XCRemoteSwiftPackageReference "CalendarKit" */;
-			productName = CalendarKit;
+			package = 228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
