@@ -233,6 +233,22 @@ extension Date {
             }
         }
     }
+
+    func isLaterThanOrEqual(to date: Date) -> Bool {
+        return self.compare(date) == .orderedDescending || self.compare(date) == .orderedSame
+    }
+
+    /// Determine if date is within the current day
+    var isToday: Bool {
+        let calendar = Calendar.autoupdatingCurrent
+        return calendar.isDateInToday(self)
+    }
+
+    /// Determine if date is within the day tomorrow
+    var isTomorrow: Bool {
+        let calendar = Calendar.autoupdatingCurrent
+        return calendar.isDateInTomorrow(self)
+    }
 }
 
 

@@ -6,17 +6,17 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "097e1f03166d49b31f824507fb85ad843b14fc13",
-          "version": "5.3.0"
+          "revision": "9e0328127dfb801cefe8ac53a13c0c90a7770448",
+          "version": "5.4.0"
         }
       },
       {
         "package": "CalendarKit",
         "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
         "state": {
-          "branch": "master",
-          "revision": "758805f324fb8ee174f38fa902981fda608fc96b",
-          "version": null
+          "branch": null,
+          "revision": "7746388c9ac27730c5d0f8bdd83b0f2d94a73cdd",
+          "version": "0.14.2"
         }
       },
       {
@@ -26,15 +26,6 @@
           "branch": null,
           "revision": "66546404a6739173b8e436ab6bc1f2897cd08594",
           "version": "3.6.0"
-        }
-      },
-      {
-        "package": "DateToolsSwift",
-        "repositoryURL": "https://github.com/maniramezan/DateTools.git",
-        "state": {
-          "branch": "mani_swiftpm_5_3",
-          "revision": "b7f0415ecb9a2b684fc53a2e4093fc09d368356a",
-          "version": null
         }
       },
       {
@@ -51,8 +42,8 @@
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "0e548b700c7c123dd3b2ac776e90d63a540f084d",
-          "version": "5.15.7"
+          "revision": "2a10bf41da75599a9f8e872dbd44fe0155a2e00c",
+          "version": "5.15.8"
         }
       },
       {
