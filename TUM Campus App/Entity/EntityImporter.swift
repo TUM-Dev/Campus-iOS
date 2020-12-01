@@ -95,7 +95,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
                     return
                 } catch let error {
                     Crashlytics.crashlytics().record(error: error)
-                    fatalError(error.localizedDescription)
+                    errorHandler?(error)
                 }
                 successHandler?()
         }
