@@ -24,6 +24,7 @@ final class CalendarEventViewModel: EventDescriptor {
     var textColor = UIColor.label
     var font = UIFont.boldSystemFont(ofSize: 12)
     var userInfo: Any?
+    var lineBreakMode: NSLineBreakMode? = .byWordWrapping
     weak var editedEvent: EventDescriptor? {
         didSet {
             updateColors()

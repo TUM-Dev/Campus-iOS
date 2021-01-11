@@ -276,7 +276,6 @@
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		22E67CA6248AE4390066682D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		22E67CDD248AEA010066682D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
 		22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
@@ -430,7 +429,6 @@
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
 				2277E90D21D93C3300D7FF3F /* Products */,
-				22E67CC2248AE69D0066682D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -662,14 +660,6 @@
 				19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */,
 			);
 			path = Calendar;
-			sourceTree = "<group>";
-		};
-		22E67CC2248AE69D0066682D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				22E67CDD248AEA010066682D /* libsqlite3.tbd */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1047,10 +1037,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1076,11 +1062,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				USER_HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/TUM",
-					Campus,
-					App/Headers,
-				);
 			};
 			name = Debug;
 		};
@@ -1123,10 +1104,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(inherited)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1145,11 +1122,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				USER_HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/TUM",
-					Campus,
-					App/Headers,
-				);
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1165,19 +1137,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				MARKETING_VERSION = 3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1200,19 +1161,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-					"$(PROJECT_DIR)/TUM\\ Campus\\ App/Frameworks",
-				);
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				MARKETING_VERSION = 3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.campusapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1231,11 +1181,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1251,11 +1196,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1271,11 +1211,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1292,11 +1227,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQ83GZ8GRK;
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1409,7 +1339,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.1.0;
+				minimumVersion = 7.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
