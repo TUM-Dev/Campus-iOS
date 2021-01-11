@@ -31,6 +31,12 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
         fetch(animated: animated)
     }
 
+//    override func loadView() {
+//        calendar.timeZone = TimeZone(identifier: "Europe/Paris")!
+//        dayView = DayView(calendar: calendar)
+//        view = dayView
+//    }
+
     private func setupUI() {
         title = "Calendar".localized
         edgesForExtendedLayout = UIRectEdge.all
