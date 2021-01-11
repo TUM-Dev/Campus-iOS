@@ -21,7 +21,20 @@ final class CalendarEventViewModel: EventDescriptor {
         }
     }
     var backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
-    var textColor = UIColor.label
+    var textColor = UIColor { traitCollection in
+        switch traitCollection.userInterfaceStyle {
+        case .dark: return UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1)
+        default: return UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1)
+        }
+
+    }
+    var secondaryTextColor = UIColor { traitCollection in
+        switch traitCollection.userInterfaceStyle {
+        case .dark: return UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1)
+        default: return UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1)
+        }
+
+    }
     var font = UIFont.boldSystemFont(ofSize: 12)
     var userInfo: Any?
     var lineBreakMode: NSLineBreakMode? = .byWordWrapping
@@ -44,14 +57,14 @@ final class CalendarEventViewModel: EventDescriptor {
         self.startDate = startDate
         self.endDate = endDate
         self.text = title
-        let attributedTitle = NSMutableAttributedString(string: title).font(.systemFont(ofSize: 12, weight: .semibold)).color(.label)
+        let attributedTitle = NSMutableAttributedString(string: title).font(.systemFont(ofSize: 12, weight: .bold)).color(textColor)
         if let location = event.location {
-            let attributedLocation = NSMutableAttributedString(string: location).font(.systemFont(ofSize: 12, weight: .light)).color(.label)
+            let attributedLocation = NSMutableAttributedString(string: location).font(.systemFont(ofSize: 12, weight: .regular)).color(textColor)
             attributedTitle.append(NSAttributedString(string: "\n"))
             attributedTitle.append(attributedLocation)
         }
         if let description = event.descriptionText {
-            let attributedLocation = NSMutableAttributedString(string: description).font(.systemFont(ofSize: 12, weight: .light)).color(.secondaryLabel)
+            let attributedLocation = NSMutableAttributedString(string: description).font(.systemFont(ofSize: 12, weight: .regular)).color(secondaryTextColor)
             attributedTitle.append(NSAttributedString(string: "\n\n"))
             attributedTitle.append(attributedLocation)
         }
