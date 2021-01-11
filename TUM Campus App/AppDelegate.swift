@@ -158,11 +158,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - State restoration
 
-    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldSaveSecureApplicationState coder: NSCoder) -> Bool {
         return true
     }
 
-    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+    func application(_ application: UIApplication, shouldRestoreSecureApplicationState coder: NSCoder) -> Bool {
         return true
     }
 
