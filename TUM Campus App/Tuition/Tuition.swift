@@ -40,15 +40,16 @@ import CoreData
         let semester = try container.decode(String.self, forKey: .semester)
         let semesterID = try container.decode(String.self, forKey: .semesterID)
         let amountString = try container.decode(String.self, forKey: .amount)
-        guard let amount = Decimal(string: amountString) else {
-            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for amount could not be converted to Int64"))
+        let amount = NSDecimalNumber(string: amountString, locale: Locale.init(identifier: "de"))
+        if amount == NSDecimalNumber.notANumber {
+            throw DecodingError.typeMismatch(NSDecimalNumber.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for amount could not be converted to Decimal."))
         }
         
         self.init(entity: Tuition.entity(), insertInto: context)
         self.deadline = deadline
         self.semester = semester
         self.semesterID = semesterID
-        self.amount = NSDecimalNumber(decimal: amount)
+        self.amount = amount
     }
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Tuition> {
