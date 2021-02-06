@@ -17,6 +17,6 @@ jobs:
       with:
         path: .cache
         key: ${{ runner.os }}-spm-${{ hashFiles('TUM\ Campus\ App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm') }}
-        restore-keys: ${{ runner.os }}-spm-
+        restore-keys: ${{ runner.os }}-spm-${{ hashFiles('TUM\ Campus\ App.xcodeproj/project.xcworkspace/xcshareddata/swiftpm') }}
     - name: Build
       run:  xcodebuild -scheme "TUM Campus App"  -clonedSourcePackagesDirPath .cache -destination "platform=iOS Simulator,name=iPhone 11 Pro"
