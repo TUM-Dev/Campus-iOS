@@ -16,7 +16,7 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: .cache
-        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-        restore-keys: ${{ runner.os }}-spm-
+        key: ${{ runner.os }}-spm-v2-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: ${{ runner.os }}-spm-v2-
     - name: Build
       run:  xcodebuild -scheme "TUM Campus App"  -clonedSourcePackagesDirPath .cache -destination "platform=iOS Simulator,name=iPhone 11 Pro"
