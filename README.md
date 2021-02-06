@@ -29,6 +29,11 @@ It mostly targets phones, but can also be used on tablets or any other device th
 |-|-|
 |![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 44 05](https://user-images.githubusercontent.com/7985149/84211826-9050a800-aabc-11ea-8e6b-8ea4662a8b77.png)|![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 48 06](https://user-images.githubusercontent.com/7985149/84211831-93e42f00-aabc-11ea-8594-6d3d6240589e.png)|
 
+| | | | |
+|-|-|-|-|
+|![Simulator Screen Shot - iPhone 12 Pro Max - 2021-01-11 at 03 07 47](https://user-images.githubusercontent.com/7985149/107104416-d9125980-6821-11eb-8c06-bc26512e65fb.png)|![Simulator Screen Shot - iPhone 12 Pro Max - 2021-01-11 at 03 08 14](https://user-images.githubusercontent.com/7985149/107104419-da438680-6821-11eb-83ad-d0cd16c3fe33.png)|![Simulator Screen Shot - iPhone 12 Pro Max - 2021-01-11 at 03 09 44](https://user-images.githubusercontent.com/7985149/107104428-e3345800-6821-11eb-9169-7e76459a096c.png)|![Simulator Screen Shot - iPhone 12 Pro Max - 2021-01-11 at 03 09 51](https://user-images.githubusercontent.com/7985149/107104433-e7f90c00-6821-11eb-8e2b-42d21b2ced66.png)|
+
+
 ## Contributing
 You're welcome to contribute to this app!
 Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
