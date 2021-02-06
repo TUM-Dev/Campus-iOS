@@ -25,9 +25,6 @@ It mostly targets phones, but can also be used on tablets or any other device th
 - [x] [TUM.sexy](https://tum.sexy) Redirects
 
 ## Screenshots
-| | |
-|-|-|
-|![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 44 05](https://user-images.githubusercontent.com/7985149/84211826-9050a800-aabc-11ea-8e6b-8ea4662a8b77.png)|![Simulator Screen Shot - iPhone 11 Pro - 2020-06-10 at 01 48 06](https://user-images.githubusercontent.com/7985149/84211831-93e42f00-aabc-11ea-8594-6d3d6240589e.png)|
 
 | | | | |
 |-|-|-|-|
