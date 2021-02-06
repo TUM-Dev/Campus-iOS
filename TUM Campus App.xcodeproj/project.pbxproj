@@ -1283,7 +1283,7 @@
 			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.11.1;
+				minimumVersion = 0.12.0;
 			};
 		};
 		220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */ = {
@@ -1339,7 +1339,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.3.0;
+				minimumVersion = 7.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
