@@ -15,13 +15,6 @@ import FirebaseRemoteConfig
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var shortcutItemToProcess: UIApplicationShortcutItem?
-    private lazy var remoteConfig: RemoteConfig = {
-        let config = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
-        config.configSettings = settings
-        return config
-    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -95,8 +88,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             shortcutItemToProcess = nil
         }
 
-        remoteConfig.fetchAndActivate() { _,_ in
-            if self.remoteConfig.configValue(forKey: "sunset_message_show").boolValue {
+        RemoteConfig.remoteConfig().fetchAndActivate() { _,_ in
+            if RemoteConfig.remoteConfig().configValue(forKey: "sunset_message_show").boolValue {
                 tabBarController?.presentSunsetViewController()
             }
         }
