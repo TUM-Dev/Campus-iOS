@@ -9,12 +9,19 @@
 import UIKit
 import CoreData
 import FirebaseCore
+import FirebaseRemoteConfig
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     var shortcutItemToProcess: UIApplicationShortcutItem?
+    private lazy var remoteConfig: RemoteConfig = {
+        let config = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        config.configSettings = settings
+        return config
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -69,10 +76,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        let tabBarController = window?.rootViewController as? CampusTabBarController
+
         if let shortcutItem = shortcutItemToProcess {
-
-            let tabBarController = window?.rootViewController as? CampusTabBarController
-
             switch shortcutItem.type {
             case "grades": tabBarController?.selectedIndex = 2
             case "cafeteria": tabBarController?.selectedIndex = 3
@@ -87,6 +93,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
             // Reset the shortcut item so it's never processed twice.
             shortcutItemToProcess = nil
+        }
+
+        remoteConfig.fetchAndActivate() { _,_ in
+            if self.remoteConfig.configValue(forKey: "sunset_message_show").boolValue {
+                tabBarController?.presentSunsetViewController()
+            }
         }
     }
 

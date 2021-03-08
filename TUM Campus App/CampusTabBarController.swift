@@ -12,7 +12,7 @@ import Foundation
 
 final class CampusTabBarController: UITabBarController {
     private let loginController: AuthenticationHandler = AuthenticationHandler()
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         login()
@@ -59,7 +59,13 @@ final class CampusTabBarController: UITabBarController {
         guard let navCon = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
         guard let loginViewController = navCon.children.first as? LoginViewController else { return }
         loginViewController.loginController = loginController
-        self.present(navCon, animated: true)
+        present(navCon, animated: true)
+    }
+
+    func presentSunsetViewController() {
+        let storyboard = UIStoryboard(name: "Message", bundle: .main)
+        guard let navCon = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+        present(navCon, animated: true)
     }
     
 }

@@ -81,10 +81,10 @@
 		2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91921D93C3400D7FF3F /* Assets.xcassets */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
+		227FF23225F640A500E59210 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227FF23425F640A500E59210 /* Message.storyboard */; };
 		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
 		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
 		2288B26D2499329E00E70E6C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */; };
-		228A107E2576C42200FAB1F4 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */; };
 		229C549724954BF700EFD5A2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549524954BF700EFD5A2 /* Movie.swift */; };
@@ -124,6 +124,10 @@
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
 		22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22E67CA6248AE4390066682D /* GoogleService-Info.plist */; };
+		22EA142E25F57F4500349B83 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA142D25F57F4500349B83 /* FirebaseAnalytics */; };
+		22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */; };
+		22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA143125F57F4500349B83 /* FirebaseCrashlytics */; };
+		22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA143B25F5855100349B83 /* MessageViewController.swift */; };
 		22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */; };
 		22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */; };
 		22EDE42924B0CCBF00DBEC03 /* PersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */; };
@@ -228,6 +232,8 @@
 		2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TUMCampusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227FF23325F640A500E59210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
+		227FF23C25F6410B00E59210 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Message.storyboard; sourceTree = "<group>"; };
 		2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCollectionViewCell.swift; sourceTree = "<group>"; };
 		2283061E24A539E5000A10CD /* GradeChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeChartViewModel.swift; sourceTree = "<group>"; };
 		2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -276,6 +282,7 @@
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		22E67CA6248AE4390066682D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22EA143B25F5855100349B83 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
 		22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
@@ -293,12 +300,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
+				22EA142E25F57F4500349B83 /* FirebaseAnalytics in Frameworks */,
 				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				220603B024944493004869F7 /* XMLCoder in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
-				228A107E2576C42200FAB1F4 /* FirebaseCrashlytics in Frameworks */,
+				22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 			);
@@ -445,6 +454,7 @@
 		2277E90E21D93C3300D7FF3F /* TUM Campus App */ = {
 			isa = PBXGroup;
 			children = (
+				22EA144025F5881900349B83 /* Message */,
 				22B00AFE21DD877300E65C86 /* API */,
 				22B00AE621D9409600E65C86 /* Login */,
 				22D4FCD621DE6E0F00DF1F4B /* UI Components */,
@@ -662,6 +672,15 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		22EA144025F5881900349B83 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				22EA143B25F5855100349B83 /* MessageViewController.swift */,
+				227FF23425F640A500E59210 /* Message.storyboard */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -686,7 +705,9 @@
 				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
-				228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */,
+				22EA142D25F57F4500349B83 /* FirebaseAnalytics */,
+				22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */,
+				22EA143125F57F4500349B83 /* FirebaseCrashlytics */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -774,7 +795,7 @@
 				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -794,6 +815,7 @@
 			files = (
 				22356AB824C9D52F00823C2A /* outline@3x.png in Resources */,
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
+				227FF23225F640A500E59210 /* Message.storyboard in Resources */,
 				22356ABD24C9D52F00823C2A /* white@2x.png in Resources */,
 				22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */,
 				22356AB724C9D52F00823C2A /* 3D@2x.png in Resources */,
@@ -868,6 +890,7 @@
 				22692D9B221E1618002C5720 /* Grade.swift in Sources */,
 				223D12EF21E00B9E0053305B /* News.swift in Sources */,
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
+				22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */,
 				22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */,
 				224BBF0A24BFAD280055DD4C /* AvatarNavigationBar.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
@@ -993,6 +1016,15 @@
 				228A616B248DCE4B00398C63 /* de */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		227FF23425F640A500E59210 /* Message.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				227FF23325F640A500E59210 /* Base */,
+				227FF23C25F6410B00E59210 /* de */,
+			);
+			name = Message.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1334,12 +1366,12 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.4.0;
+				minimumVersion = 7.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1380,9 +1412,19 @@
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		228A107D2576C42200FAB1F4 /* FirebaseCrashlytics */ = {
+		22EA142D25F57F4500349B83 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 228A107C2576C42200FAB1F4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		22EA143125F57F4500349B83 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
