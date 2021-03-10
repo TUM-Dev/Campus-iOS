@@ -123,8 +123,6 @@
 		22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
-		22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22E67CA6248AE4390066682D /* GoogleService-Info.plist */; };
-		22EA142E25F57F4500349B83 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA142D25F57F4500349B83 /* FirebaseAnalytics */; };
 		22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */; };
 		22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA143125F57F4500349B83 /* FirebaseCrashlytics */; };
 		22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA143B25F5855100349B83 /* MessageViewController.swift */; };
@@ -132,6 +130,7 @@
 		22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */; };
 		22EDE42924B0CCBF00DBEC03 /* PersonDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */; };
 		22EEF8BE249526B100DD9321 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EEF8BD249526B100DD9321 /* NewsCollectionViewController.swift */; };
+		22F8E78F25F6C3DA005FDDFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22F8E78E25F6C3DA005FDDFF /* GoogleService-Info.plist */; };
 		22F9629C2460ED03004BF215 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		22F9629E246177D9004BF215 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		22F962A0246193C3004BF215 /* MealPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */; };
@@ -281,12 +280,12 @@
 		22E4E4AF248C170100BA1977 /* TUM_Campus_App_v1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TUM_Campus_App_v1.xcdatamodel; sourceTree = "<group>"; };
 		22E5303B2217698300A29992 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		22E5303E22176DDE00A29992 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
-		22E67CA6248AE4390066682D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22EA143B25F5855100349B83 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetail.swift; sourceTree = "<group>"; };
 		22EDE42824B0CCBF00DBEC03 /* PersonDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewModel.swift; sourceTree = "<group>"; };
 		22EEF8BD249526B100DD9321 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
+		22F8E78E25F6C3DA005FDDFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22F9629B2460ED03004BF215 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		22F9629D246177D9004BF215 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanTableViewController.swift; sourceTree = "<group>"; };
@@ -303,7 +302,6 @@
 				22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
-				22EA142E25F57F4500349B83 /* FirebaseAnalytics in Frameworks */,
 				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				220603B024944493004869F7 /* XMLCoder in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
@@ -480,11 +478,11 @@
 				224BBF0924BFAD280055DD4C /* AvatarNavigationBar.swift */,
 				2277E91321D93C3300D7FF3F /* Main.storyboard */,
 				22BC2CE321DE5D7200FF7C00 /* LaunchScreen.storyboard */,
+				22F8E78E25F6C3DA005FDDFF /* GoogleService-Info.plist */,
 				2277E91621D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld */,
 				2277E91921D93C3400D7FF3F /* Assets.xcassets */,
 				2293F8CD24C460CB00B6E66A /* Assets */,
 				2277E91E21D93C3400D7FF3F /* Info.plist */,
-				22E67CA6248AE4390066682D /* GoogleService-Info.plist */,
 				22D3BE5124C445BF009D0DCF /* Munich.gpx */,
 				22710B532479E0D30065D6E9 /* Localizable.strings */,
 				22BDA8DB24927CE800F12FD1 /* Extensions */,
@@ -705,7 +703,6 @@
 				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
-				22EA142D25F57F4500349B83 /* FirebaseAnalytics */,
 				22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */,
 				22EA143125F57F4500349B83 /* FirebaseCrashlytics */,
 			);
@@ -817,7 +814,6 @@
 				22BC2CE421DE5D7200FF7C00 /* LaunchScreen.storyboard in Resources */,
 				227FF23225F640A500E59210 /* Message.storyboard in Resources */,
 				22356ABD24C9D52F00823C2A /* white@2x.png in Resources */,
-				22E67CA7248AE4390066682D /* GoogleService-Info.plist in Resources */,
 				22356AB724C9D52F00823C2A /* 3D@2x.png in Resources */,
 				22356AC324C9D52F00823C2A /* pride@3x.png in Resources */,
 				22710B572479E1290065D6E9 /* Login.storyboard in Resources */,
@@ -825,6 +821,7 @@
 				2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */,
 				22356ABF24C9D52F00823C2A /* default@3x.png in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
+				22F8E78F25F6C3DA005FDDFF /* GoogleService-Info.plist in Resources */,
 				22356AC524C9D52F00823C2A /* 3D@3x.png in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
 				22356ABE24C9D52F00823C2A /* white@3x.png in Resources */,
@@ -1167,7 +1164,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1191,7 +1188,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 45;
+				CURRENT_PROJECT_VERSION = 47;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1411,11 +1408,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
-		};
-		22EA142D25F57F4500349B83 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
 		};
 		22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;

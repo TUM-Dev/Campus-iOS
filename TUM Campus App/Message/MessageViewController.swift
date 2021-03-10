@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 import FirebaseRemoteConfig
+#if canImport(FirebaseAnalytics)
 import FirebaseAnalytics
+#endif
 
 final class MessageViewController: UIViewController {
     @IBOutlet weak private var titleLabel: UILabel!
