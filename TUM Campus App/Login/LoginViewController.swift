@@ -81,6 +81,17 @@ final class LoginViewController: UIViewController {
             advancedLogin.toggle()
         }
     }
+
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        for press in presses {
+            guard let key = press.key, key.modifierFlags == .command else { continue }
+            switch key.charactersIgnoringModifiers {
+            case "a": return advancedLogin.toggle()
+            default: break
+            }
+        }
+        super.pressesBegan(presses, with: event)
+    }
     
     // MARK: - ButtonActions
     
