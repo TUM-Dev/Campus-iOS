@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "05d8107f2971a37e6c77245b7c4c6b0a7e97bc99",
-          "version": "0.20200225.0"
+          "revision": "697fb93ee29def0198c456118b69bdfea9a02a5d",
+          "version": "0.20200225.2"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "7bcafa2660bc58715c39637494550d1ed7cd7229",
-          "version": "0.0.7"
+          "revision": "6fbad5bf8bd80a36d342bf1693e4423870124d4c",
+          "version": "0.0.9"
         }
       },
       {
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
         "state": {
           "branch": null,
-          "revision": "f4cd4db180486996d3b3216d11e7adf634695daa",
-          "version": "7.7.0"
+          "revision": "6f680dd0c8892a315f354bb861b03c5c38829e56",
+          "version": "7.9.1"
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
         "state": {
           "branch": null,
-          "revision": "38205d8e39f806f71b048f93427337c9511c9402",
-          "version": "7.5.1"
+          "revision": "4a30a474eb175ebf3d3ede045614fad99fa9b9bf",
+          "version": "7.9.0"
         }
       },
       {
@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "2e8a342494d20fcf209b61a45cddc1668b5ccc6d",
-          "version": "8.2.0"
+          "revision": "3615a4ca10961d82ed2b5459cd9a5cb5ebc03ff2",
+          "version": "8.3.1"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "2c7d33099a3c3da1139bb1e8eb94e46e0dacf075",
-          "version": "7.2.2"
+          "revision": "1c47ea135322768023ecdcc9db79bf3df821209f",
+          "version": "7.3.0"
         }
       },
       {
@@ -87,8 +87,8 @@
         "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "91b62619e6c83bc5f1b99d9d60fe46b2862d3a5a",
-          "version": "1.28.2"
+          "revision": "23034739dda2f3355d081b54c1ab4e9667314b75",
+          "version": "1.28.3"
         }
       },
       {
@@ -123,8 +123,8 @@
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
           "branch": null,
-          "revision": "fa1f25f296a766e5a789c4dacd4798dea798b2c2",
-          "version": "1.22.1"
+          "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
+          "version": "1.22.2"
         }
       },
       {
