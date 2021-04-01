@@ -81,6 +81,8 @@
 		2277E91A21D93C3400D7FF3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2277E91921D93C3400D7FF3F /* Assets.xcassets */; };
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
+		227CD8392615BC4300086218 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 227CD8382615BC4300086218 /* Settings.bundle */; };
+		227CD83F2615BD1600086218 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 227CD83E2615BD1600086218 /* FirebaseAnalytics */; };
 		227FF23225F640A500E59210 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227FF23425F640A500E59210 /* Message.storyboard */; };
 		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
 		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
@@ -231,6 +233,7 @@
 		2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TUMCampusAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUM_Campus_AppUITests.swift; sourceTree = "<group>"; };
 		2277E93421D93C3400D7FF3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		227CD8382615BC4300086218 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		227FF23325F640A500E59210 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
 		227FF23C25F6410B00E59210 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = de; path = de.lproj/Message.storyboard; sourceTree = "<group>"; };
 		2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
+				227CD83F2615BD1600086218 /* FirebaseAnalytics in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,11 +435,13 @@
 		2277E90321D93C3300D7FF3F = {
 			isa = PBXGroup;
 			children = (
+				227CD8382615BC4300086218 /* Settings.bundle */,
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
 				22A57A2824B9438F0062B791 /* TUM Campus App.xctestplan */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
 				2277E90D21D93C3300D7FF3F /* Products */,
+				227CD83D2615BD1500086218 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -506,6 +512,13 @@
 				2277E93421D93C3400D7FF3F /* Info.plist */,
 			);
 			path = "TUM Campus AppUITests";
+			sourceTree = "<group>";
+		};
+		227CD83D2615BD1500086218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2293F8CD24C460CB00B6E66A /* Assets */ = {
@@ -705,6 +718,7 @@
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
 				22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */,
 				22EA143125F57F4500349B83 /* FirebaseCrashlytics */,
+				227CD83E2615BD1600086218 /* FirebaseAnalytics */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -822,6 +836,7 @@
 				22356ABF24C9D52F00823C2A /* default@3x.png in Resources */,
 				224CB3632225A47C0002945A /* TUMCabe.cer in Resources */,
 				22F8E78F25F6C3DA005FDDFF /* GoogleService-Info.plist in Resources */,
+				227CD8392615BC4300086218 /* Settings.bundle in Resources */,
 				22356AC524C9D52F00823C2A /* 3D@3x.png in Resources */,
 				2277E91521D93C3300D7FF3F /* Main.storyboard in Resources */,
 				22356ABE24C9D52F00823C2A /* white@3x.png in Resources */,
@@ -1408,6 +1423,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		227CD83E2615BD1600086218 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
