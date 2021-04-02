@@ -69,8 +69,8 @@
         "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
         "state": {
           "branch": null,
-          "revision": "3615a4ca10961d82ed2b5459cd9a5cb5ebc03ff2",
-          "version": "8.3.1"
+          "revision": "2e8a342494d20fcf209b61a45cddc1668b5ccc6d",
+          "version": "8.2.0"
         }
       },
       {
@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/google/GoogleUtilities.git",
         "state": {
           "branch": null,
-          "revision": "1c47ea135322768023ecdcc9db79bf3df821209f",
-          "version": "7.3.0"
+          "revision": "2c7d33099a3c3da1139bb1e8eb94e46e0dacf075",
+          "version": "7.2.2"
         }
       },
       {

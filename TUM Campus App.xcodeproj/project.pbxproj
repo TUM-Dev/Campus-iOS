@@ -15,6 +15,8 @@
 		220EB130247DBBA700DC4A6F /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 220EB12F247DBBA700DC4A6F /* Charts */; };
 		221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221471062476AA6F004C04BD /* TokenActivationTutorialViewController.swift */; };
 		22195063221C8CCC00169A2B /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22195062221C8CCC00169A2B /* Lecture.swift */; };
+		22223369261693530066D5A1 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 22223368261693530066D5A1 /* FirebaseRemoteConfig */; };
+		2222336B261693530066D5A1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2222336A261693530066D5A1 /* FirebaseCrashlytics */; };
 		2223AB1224AE5EFB00D707F0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2223AB1124AE5EFB00D707F0 /* Person.swift */; };
 		222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D724632F8200B196B6 /* MenuCollectionViewController.swift */; };
 		222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */; };
@@ -82,7 +84,6 @@
 		2277E92821D93C3400D7FF3F /* TUM_Campus_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E92721D93C3400D7FF3F /* TUM_Campus_AppTests.swift */; };
 		2277E93321D93C3400D7FF3F /* TUM_Campus_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277E93221D93C3400D7FF3F /* TUM_Campus_AppUITests.swift */; };
 		227CD8392615BC4300086218 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 227CD8382615BC4300086218 /* Settings.bundle */; };
-		227CD83F2615BD1600086218 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 227CD83E2615BD1600086218 /* FirebaseAnalytics */; };
 		227FF23225F640A500E59210 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227FF23425F640A500E59210 /* Message.storyboard */; };
 		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
 		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
@@ -123,10 +124,9 @@
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
 		22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */; };
 		22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */; };
+		22E0C6DC26169DBC007A2FE3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
-		22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */; };
-		22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22EA143125F57F4500349B83 /* FirebaseCrashlytics */; };
 		22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA143B25F5855100349B83 /* MessageViewController.swift */; };
 		22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42424B0B13500DBEC03 /* PersonDetailCollectionViewController.swift */; };
 		22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDE42624B0B53B00DBEC03 /* PersonDetail.swift */; };
@@ -302,15 +302,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EA143025F57F4500349B83 /* FirebaseRemoteConfig in Frameworks */,
+				22223369261693530066D5A1 /* FirebaseRemoteConfig in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
 				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				220603B024944493004869F7 /* XMLCoder in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
-				22EA143225F57F4500349B83 /* FirebaseCrashlytics in Frameworks */,
+				2222336B261693530066D5A1 /* FirebaseCrashlytics in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
-				227CD83F2615BD1600086218 /* FirebaseAnalytics in Frameworks */,
+				22E0C6DC26169DBC007A2FE3 /* FirebaseAnalytics in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,9 +716,9 @@
 				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
-				22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */,
-				22EA143125F57F4500349B83 /* FirebaseCrashlytics */,
-				227CD83E2615BD1600086218 /* FirebaseAnalytics */,
+				22223368261693530066D5A1 /* FirebaseRemoteConfig */,
+				2222336A261693530066D5A1 /* FirebaseCrashlytics */,
+				22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -806,7 +806,7 @@
 				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 2277E90D21D93C3300D7FF3F /* Products */;
 			projectDirPath = "";
@@ -1179,11 +1179,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1203,11 +1203,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 47;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1338,6 +1338,14 @@
 				minimumVersion = 3.5.0;
 			};
 		};
+		22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.9.1;
+			};
+		};
 		224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1378,14 +1386,6 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.7.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1398,6 +1398,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		22223368261693530066D5A1 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		2222336A261693530066D5A1 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		224BBF0E24BFBAEA0055DD4C /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1424,20 +1434,10 @@
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		227CD83E2615BD1600086218 /* FirebaseAnalytics */ = {
+		22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
-		};
-		22EA142F25F57F4500349B83 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
-		22EA143125F57F4500349B83 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 22EA142C25F57F4500349B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
