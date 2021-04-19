@@ -71,7 +71,7 @@ import CoreData
         let studyNumber = try container.decode(Int64.self, forKey: .studyNumber)
         let studyDesignation = try container.decode(String.self, forKey: .studyDesignation)
         let studyID = try container.decode(String.self, forKey: .studyID)
-        let grade = try container.decode(String.self, forKey: .grade)
+        let grade = try container.decodeIfPresent(String.self, forKey: .grade)
         
         let lectureFetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
         lectureFetchRequest.predicate = NSPredicate(format: "%K CONTAINS %@", #keyPath(Lecture.title) , title)
