@@ -35,8 +35,19 @@ final class MessageViewController: UIViewController {
     private func setupUI() {
         self.titleLabel.text = config.configValue(forKey: "sunset_message_title").stringValue
         self.messageLabel.text = config.configValue(forKey: "sunset_message_text").stringValue
-        self.primaryButton.setTitle("Show in AppStore", for: .normal)
         self.secondaryButton.setTitle("Hide", for: .normal)
+
+        if let primaryTitle = self.config.configValue(forKey: "primary_button_title").stringValue {
+          self.primaryButton.setTitle(primaryTitle, for: .normal)
+        } else {
+          self.primaryButton.setTitle("Show in AppStore", for: .normal)
+        }
+
+        if let secondaryTitle = self.config.configValue(forKey: "secondary_button_title").stringValue {
+          self.secondaryButton.setTitle(secondaryTitle, for: .normal)
+        } else {
+          self.secondaryButton.setTitle("Hide", for: .normal)
+        }
 
         if self.config.configValue(forKey: "sunset_message_can_hide").boolValue {
             self.secondaryButton.isHidden = false
