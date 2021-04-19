@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseCrashlytics
 
 struct APIResponse<ResponseType: Decodable, ErrorType: APIError>: Decodable {
     var response: ResponseType
@@ -27,6 +28,27 @@ struct TUMOnlineAPIResponse<T: Decodable>: Decodable {
     enum CodingKeys: String, CodingKey {
         case rows = "row"
     }
+
+    init(from decoder: Decoder) throws {
+      let container = try decoder.container(keyedBy: CodingKeys.self)
+      self.rows = try container.decode([Throwable<T>].self, forKey: .rows).compactMap {
+        do {
+          return try $0.result.get()
+        }
+        catch {
+          Crashlytics.crashlytics().record(error: error)
+          return nil
+        }
+      }
+    }
+}
+
+struct Throwable<T: Decodable>: Decodable {
+  let result: Result<T, Error>
+
+  init(from decoder: Decoder) throws {
+    result = Result(catching: { try T(from: decoder) })
+  }
 }
 
 protocol APIError: Error, Decodable { }
