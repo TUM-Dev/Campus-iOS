@@ -88,6 +88,7 @@
 		2283061D24A5356E000A10CD /* BarChartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061C24A5356E000A10CD /* BarChartCollectionViewCell.swift */; };
 		2283061F24A539E5000A10CD /* GradeChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2283061E24A539E5000A10CD /* GradeChartViewModel.swift */; };
 		2288B26D2499329E00E70E6C /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288B26C2499329D00E70E6C /* MovieCollectionViewCell.swift */; };
+		228C3652262D9E5600218B87 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 228C3651262D9E5600218B87 /* FirebaseAnalytics */; };
 		2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2294545C22198B25008E41B7 /* AuthenticationHandler.swift */; };
 		229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549024954AAC00EFD5A2 /* NewsCollectionViewCell.swift */; };
 		229C549724954BF700EFD5A2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C549524954BF700EFD5A2 /* Movie.swift */; };
@@ -124,7 +125,6 @@
 		22D4FCDA21DE713600DF1F4B /* ShadowViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4FCD921DE713600DF1F4B /* ShadowViews.swift */; };
 		22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B524AE8214001EFAB4 /* PersonSearchViewController.swift */; };
 		22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DE82B724AE823D001EFAB4 /* LectureSearchViewController.swift */; };
-		22E0C6DC26169DBC007A2FE3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */; };
 		22E5303C2217698300A29992 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303B2217698300A29992 /* Credentials.swift */; };
 		22E5303F22176DDE00A29992 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5303E22176DDE00A29992 /* CalendarEvent.swift */; };
 		22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA143B25F5855100349B83 /* MessageViewController.swift */; };
@@ -310,7 +310,7 @@
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				2222336B261693530066D5A1 /* FirebaseCrashlytics in Frameworks */,
 				225AD74B2479D2D3001A969E /* Alamofire in Frameworks */,
-				22E0C6DC26169DBC007A2FE3 /* FirebaseAnalytics in Frameworks */,
+				228C3652262D9E5600218B87 /* FirebaseAnalytics in Frameworks */,
 				225AD7542479D32C001A969E /* SWXMLHash in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -718,7 +718,7 @@
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
 				22223368261693530066D5A1 /* FirebaseRemoteConfig */,
 				2222336A261693530066D5A1 /* FirebaseCrashlytics */,
-				22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */,
+				228C3651262D9E5600218B87 /* FirebaseAnalytics */,
 			);
 			productName = "TUM Campus App";
 			productReference = 2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */;
@@ -1179,11 +1179,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 3.11;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1203,11 +1203,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 3.11;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1434,7 +1434,7 @@
 			package = 225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		22E0C6DB26169DBC007A2FE3 /* FirebaseAnalytics */ = {
+		228C3651262D9E5600218B87 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
