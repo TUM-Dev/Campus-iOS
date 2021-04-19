@@ -110,7 +110,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
         case (.general, 0):
             performSegue(withIdentifier: "showTUMSexy", sender: nil)
         case (.contact, 0):
-            guard let url = URL(string: "https://testflight.apple.com/join/AlXCNNOS") else { return }
+            guard let url = URL(string: "https://testflight.apple.com/join/4Ddi6f2f") else { return }
             UIApplication.shared.open(url)
         case (.contact, 1):
             guard let url = URL(string: "https://github.com/TUM-Dev/Campus-iOS") else { return }
