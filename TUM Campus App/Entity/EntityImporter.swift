@@ -49,7 +49,7 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
     }()
     
     lazy var context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
+        let context = coreDataStack.viewContext
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return context
     }()

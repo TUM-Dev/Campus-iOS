@@ -36,7 +36,7 @@ final class NewsImporter {
         return fetchedResultsController
     }()
     let context: NSManagedObjectContext = {
-        let context = coreDataStack.newBackgroundContext()
+        let context = coreDataStack.viewContext
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         return context
     }()
