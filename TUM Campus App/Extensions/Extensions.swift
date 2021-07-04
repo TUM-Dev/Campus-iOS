@@ -121,7 +121,7 @@ extension Session {
 }
 
 
-protocol SupportsBackgroundLabel: class {
+protocol SupportsBackgroundLabel: AnyObject {
     var backgroundView: UIView? { get set }
 }
 

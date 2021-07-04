@@ -14,7 +14,7 @@ import XMLCoder
 fileprivate let sessionManager = Session.defaultSession
 fileprivate let cacheKey = "avatar"
 
-protocol ProfileImageSettable: class {
+protocol ProfileImageSettable: AnyObject {
     var profileImage: UIImage? { get set }
 }
 
