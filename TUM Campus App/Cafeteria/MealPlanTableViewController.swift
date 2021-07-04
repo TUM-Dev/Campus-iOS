@@ -75,7 +75,7 @@ final class MealPlanTableViewController: UITableViewController {
         let menu = menus[indexPath.row]
         if let date = menu.date {
             let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE, MM.dd.yyyy"
+            formatter.dateFormat = "EEEE, dd.MM.yyyy"
             cell.textLabel?.text = formatter.string(from: date)
         }
 
