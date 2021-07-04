@@ -45,6 +45,8 @@
 "Room Finder" = "Room Finder";
 "Unable to find room" = "Unable to find room '%@'";
 "No Menu" = "No Menu";
+"List View" = "List View";
+"Jump to Today" = "Jump to Today";
 
 "animation showing the token activation" = "animation showing the token activation";
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
