@@ -187,8 +187,10 @@ extension CLLocationCoordinate2D  {
 
 extension Date {
     var calendar: Calendar { Calendar(identifier: Calendar.current.identifier) }
-    var weekOfYear: Int { calendar.component(.weekOfYear, from: self) }
     var weekOfMonth: Int { calendar.component(.weekOfMonth, from: self) }
+    
+    var isoCalendar: Calendar { Calendar(identifier: .iso8601) }
+    var weekOfYear: Int { isoCalendar.component(.weekOfYear, from: self) }
 
     var year: Int {
         get {
