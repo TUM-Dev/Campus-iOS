@@ -221,7 +221,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             Tuition.fetchRequest(),
         ]
         
-        let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0) }
+        let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0 as! NSFetchRequest<NSFetchRequestResult>) }
         deleteRequests.forEach { _ = try? coreDataStack.persistentStoreCoordinator.execute($0, with: coreDataStack.viewContext) }
     }
     

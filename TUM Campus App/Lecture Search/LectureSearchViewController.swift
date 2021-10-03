@@ -17,11 +17,12 @@ final class LectureSearchViewController: UITableViewController, UISearchResultsU
     private enum Section: CaseIterable {
         case main
     }
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Lecture Search".localized
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search for Lectures and Tutorials".localized
@@ -31,6 +32,18 @@ final class LectureSearchViewController: UITableViewController, UISearchResultsU
         definesPresentationContext = true
         tableView.tableFooterView = UIView()
         setupDataSource()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController.searchBar.resignFirstResponder()
+        perform(#selector(callSearchBar), with: nil, afterDelay: 0.1)
+    }
+    
+    @objc func callSearchBar() {
+        searchController.isActive = true
+        searchController.searchBar.isHidden = false
+        searchController.searchBar.becomeFirstResponder()
     }
 
     // MARK: - DataSource

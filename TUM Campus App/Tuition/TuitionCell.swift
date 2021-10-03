@@ -20,7 +20,7 @@ final class TuitionCell: UITableViewCell {
         return formatter
     }()
 
-    private static let currencyFormatter: NumberFormatter = {
+    static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.currencySymbol = "€"
         formatter.numberStyle = .currency
@@ -30,7 +30,12 @@ final class TuitionCell: UITableViewCell {
     func configure(tuition: Tuition) {
         semesterLabel.text = tuition.semester
         if let amount = tuition.amount, let deadline = tuition.deadline {
-            amountLabel.text = "\("Amount".localized) : \(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a".localized)"
+            amountLabel.text = "\("open Amount".localized) : \(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a".localized)"
+            if amount.isEqual(to: 0) {
+                amountLabel.textColor = UIColor(red: 13/255, green: 172/255, blue: 23/255, alpha: 1)
+            } else {
+                amountLabel.textColor = .red
+            }
             deadlineLabel.text = "\("Deadline".localized) : \(TuitionCell.deadlineDateFormatter.string(from: deadline))"
         } else {
             amountLabel.text = "n/a".localized

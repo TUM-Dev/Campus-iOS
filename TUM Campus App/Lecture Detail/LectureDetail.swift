@@ -92,7 +92,7 @@ struct LectureDetail: Decodable {
         case firstScheduledDate = "ersttermin"
         case examinationMode = "pruefmodus"
         case studienbehelfe
-        case note = "anmerkun"
+        case note = "anmerkung"
         case curriculumURL = "stellung_im_stp_url"
         case scheduledDatesURL = "termine_url"
         case examDateURL = "pruef_termine_url"

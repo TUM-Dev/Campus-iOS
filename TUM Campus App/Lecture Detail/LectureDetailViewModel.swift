@@ -66,7 +66,7 @@ struct LectureDetailViewModel: Hashable {
 
         var general = [
             // TODO: format duration
-            Cell(key: "Duration".localized, value: lectureDetail.duration.description),
+            Cell(key: "Duration".localized, value: lectureDetail.duration.description + " SWS"),
             Cell(key: "Semester".localized, value: lectureDetail.semester),
             Cell(key: "Chair".localized, value: lectureDetail.organisation),
             Cell(key: "Speaker".localized, value: lectureDetail.speaker),
