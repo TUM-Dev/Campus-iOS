@@ -621,12 +621,12 @@
 				224F37C22460EA5A00BEDA71 /* MealPlan.swift */,
 				22F9629D246177D9004BF215 /* Menu.swift */,
 				22F9629B2460ED03004BF215 /* Dish.swift */,
+				41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */,
 				224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */,
 				22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */,
 				222470D724632F8200B196B6 /* MenuCollectionViewController.swift */,
 				222470DB2463507700B196B6 /* MenuSectionHeader.swift */,
 				222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */,
-				41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */,
 			);
 			path = Cafeteria;
 			sourceTree = "<group>";
