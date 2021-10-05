@@ -87,11 +87,14 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
     // MARK: - Actions
 
     @IBAction func showToday(_ sender: Any) {
-        dayView.state?.move(to: Date())
-        
         let date = Date()
         let currentTime = Calendar.current.component(.hour, from: date)
-        dayView.scrollTo(hour24: Float(currentTime))
+        
+        dayView.state?.move(to: Date())
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.dayView.scrollTo(hour24: Float(currentTime))
+        }
     }
     
     override func dayViewDidSelectEventView(_ eventView: EventView) {
