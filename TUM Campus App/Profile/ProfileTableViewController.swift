@@ -208,10 +208,10 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     private let importerTuition = ImporterTypeTuition(endpoint: endpointTuition, sortDescriptor: sortDescriptorTuition, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
         
     func checkTuitionFunc() {
-        try? importerTuition.fetchedResultsController.performFetch()
         DispatchQueue.main.async {
+            try? self.importerTuition.fetchedResultsController.performFetch()
             let c = self.importerTuition.fetchedResultsController.fetchedObjects?.count
-            if c != nil || c != 0{
+            if c != nil && c != 0{
                 let indexPath = IndexPath(row: 0, section: 0)
                 let tuition = self.importerTuition.fetchedResultsController.object(at: indexPath)
                 if let amount = tuition.amount {

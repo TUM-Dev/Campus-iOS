@@ -114,7 +114,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="O4T-QO-UlI" kind="relationship" relationship="rootViewController" id="V8V-z8-xMn"/>
+                        <segue destination="KaM-pW-RPy" kind="relationship" relationship="rootViewController" id="51Y-Uk-e5q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dff-Ag-uJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2379,68 +2379,62 @@
             <point key="canvasLocation" x="876" y="1450.5247376311845"/>
         </scene>
         <!--Cafeteria Map View Controller-->
-        <scene sceneID="8TJ-bF-99Q">
+        <scene sceneID="MDu-jt-i8s">
             <objects>
-                <viewController storyboardIdentifier="CafeteriaMapViewController" id="O4T-QO-UlI" customClass="CafeteriaMapViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AnR-r2-wKS">
+                <viewController storyboardIdentifier="CafeteriaMapViewController" id="KaM-pW-RPy" customClass="CafeteriaMapViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CsM-K0-Tvr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f4R-e6-y1R">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="343"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-68-5ky">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XhU-68-5ky" secondAttribute="height" multiplier="75:56" constant="-139.28571428571422" id="ZpS-ZK-jkj"/>
+                                </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="bTd-cG-DfD">
-                                <rect key="frame" x="335" y="305" width="34" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system" title=""/>
-                                <connections>
-                                    <action selector="centerMapOnUser:" destination="O4T-QO-UlI" eventType="touchUpInside" id="7cO-7c-sgI"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q3U-S6-ajc">
-                                <rect key="frame" x="0.0" y="351" width="375" height="267"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-Fl-bIa">
+                                <rect key="frame" x="0.0" y="364" width="375" height="303"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7cA-tK-ADB">
-                                <rect key="frame" x="0.0" y="353" width="375" height="265"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QxI-wt-gDn">
+                                <rect key="frame" x="0.0" y="364" width="375" height="303"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="diO-M6-749">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x1E-bd-BmS">
                                     <size key="itemSize" width="375" height="95"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CafeteriaCollectionViewCell" id="CGv-ZV-dP6" customClass="CafeteriaCollectionViewCell" customModule="TUMCampusApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CafeteriaCollectionViewCell" id="O6K-pi-x2T" customClass="CafeteriaCollectionViewCell" customModule="TUMCampusApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mMB-ol-lfO">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jbq-fN-4xo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="603-jV-w6z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAs-8A-nZG">
                                                     <rect key="frame" x="8" y="20" width="292" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlo-1J-1WF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fm-hy-7jF">
                                                     <rect key="frame" x="8" y="44" width="292" height="19"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EU5-GX-C20">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4d8-us-ZMY">
                                                     <rect key="frame" x="219" y="67" width="148" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXB-eY-IfU" customClass="OpenMenuBtnClass" customModule="TUMCampusApp" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6Q-iE-for" customClass="OpenMenuBtnClass" customModule="TUMCampusApp" customModuleProvider="target">
                                                     <rect key="frame" x="321" y="16" width="42" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button"/>
@@ -2450,46 +2444,57 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="375" height="95"/>
                                         <connections>
-                                            <outlet property="addressLabel" destination="Dlo-1J-1WF" id="mtk-FB-I4B"/>
-                                            <outlet property="distanceLabel" destination="EU5-GX-C20" id="G9g-wJ-lCx"/>
-                                            <outlet property="nameLabel" destination="603-jV-w6z" id="woH-0a-WSE"/>
-                                            <outlet property="openMenuBtn" destination="sXB-eY-IfU" id="ACw-sB-Qly"/>
+                                            <outlet property="addressLabel" destination="5Fm-hy-7jF" id="HwB-Zt-h3G"/>
+                                            <outlet property="distanceLabel" destination="4d8-us-ZMY" id="Peg-3P-lmu"/>
+                                            <outlet property="nameLabel" destination="LAs-8A-nZG" id="2IU-NB-1t7"/>
+                                            <outlet property="openMenuBtn" destination="v6Q-iE-for" id="2Nc-tj-yBp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="O4T-QO-UlI" id="S9N-Ul-HnW"/>
-                                    <outlet property="delegate" destination="O4T-QO-UlI" id="PTh-A3-Urq"/>
+                                    <outlet property="dataSource" destination="KaM-pW-RPy" id="0BN-Nc-SKI"/>
+                                    <outlet property="delegate" destination="KaM-pW-RPy" id="Qy8-6q-0hp"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hPI-qg-c8s">
+                                <rect key="frame" x="310" y="317" width="49" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="" image="location" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                </state>
+                                <connections>
+                                    <action selector="centerMapOnUser:" destination="KaM-pW-RPy" eventType="touchUpInside" id="5lZ-5J-2ey"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="n2H-fq-g45"/>
+                        <viewLayoutGuide key="safeArea" id="heC-fs-cpz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7cA-tK-ADB" firstAttribute="leading" secondItem="n2H-fq-g45" secondAttribute="leading" id="37d-UF-t76"/>
-                            <constraint firstItem="7cA-tK-ADB" firstAttribute="top" secondItem="f4R-e6-y1R" secondAttribute="bottom" constant="-10" id="6IA-9d-Cyb"/>
-                            <constraint firstItem="f4R-e6-y1R" firstAttribute="trailing" secondItem="n2H-fq-g45" secondAttribute="trailing" id="9sI-hB-CL8"/>
-                            <constraint firstItem="Q3U-S6-ajc" firstAttribute="trailing" secondItem="n2H-fq-g45" secondAttribute="trailing" id="BZP-8v-I7n"/>
-                            <constraint firstItem="f4R-e6-y1R" firstAttribute="top" secondItem="AnR-r2-wKS" secondAttribute="top" id="Bhd-aK-yom"/>
-                            <constraint firstItem="7cA-tK-ADB" firstAttribute="trailing" secondItem="n2H-fq-g45" secondAttribute="trailing" id="It6-i8-2yv"/>
-                            <constraint firstItem="Q3U-S6-ajc" firstAttribute="bottom" secondItem="n2H-fq-g45" secondAttribute="bottom" constant="50" id="RfP-EW-o2b"/>
-                            <constraint firstItem="Q3U-S6-ajc" firstAttribute="leading" secondItem="n2H-fq-g45" secondAttribute="leading" id="bNE-wQ-dKY"/>
-                            <constraint firstItem="f4R-e6-y1R" firstAttribute="leading" secondItem="n2H-fq-g45" secondAttribute="leading" id="gDN-PA-QV0"/>
-                            <constraint firstItem="Q3U-S6-ajc" firstAttribute="top" secondItem="f4R-e6-y1R" secondAttribute="bottom" constant="-10" id="tbf-mI-T2O"/>
-                            <constraint firstItem="7cA-tK-ADB" firstAttribute="bottom" secondItem="n2H-fq-g45" secondAttribute="bottom" id="xmf-Kb-m8R"/>
+                            <constraint firstItem="QxI-wt-gDn" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="5y0-C9-Pyi"/>
+                            <constraint firstItem="Zg8-Fl-bIa" firstAttribute="top" secondItem="XhU-68-5ky" secondAttribute="bottom" constant="-20" id="6XQ-BE-bKy"/>
+                            <constraint firstAttribute="bottom" secondItem="Zg8-Fl-bIa" secondAttribute="bottom" id="AkM-Gf-FvD"/>
+                            <constraint firstItem="QxI-wt-gDn" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="BAP-w2-IhW"/>
+                            <constraint firstItem="XhU-68-5ky" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="CgG-15-Br9"/>
+                            <constraint firstItem="QxI-wt-gDn" firstAttribute="top" secondItem="XhU-68-5ky" secondAttribute="bottom" constant="-20" id="DJf-sA-fw8"/>
+                            <constraint firstItem="XhU-68-5ky" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="HJ3-Tr-yyq"/>
+                            <constraint firstItem="Zg8-Fl-bIa" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="NGw-U8-lCz"/>
+                            <constraint firstItem="XhU-68-5ky" firstAttribute="top" secondItem="CsM-K0-Tvr" secondAttribute="top" id="OX5-Po-dwN"/>
+                            <constraint firstItem="Zg8-Fl-bIa" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="WiD-oq-6AW"/>
+                            <constraint firstAttribute="bottom" secondItem="QxI-wt-gDn" secondAttribute="bottom" id="qpq-TU-Wyj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ACr-4b-mJo"/>
+                    <navigationItem key="navigationItem" id="3wT-Re-jvQ"/>
                     <connections>
-                        <outlet property="centerMapOnUserBtn" destination="bTd-cG-DfD" id="8rb-6s-S9B"/>
-                        <outlet property="mapView" destination="f4R-e6-y1R" id="QfD-rP-AoP"/>
-                        <outlet property="mensaCollectionView" destination="7cA-tK-ADB" id="Ftq-fv-ear"/>
-                        <outlet property="shadowView" destination="Q3U-S6-ajc" id="4gf-un-fm5"/>
+                        <outlet property="centerMapOnUserBtn" destination="hPI-qg-c8s" id="nBP-9N-Oph"/>
+                        <outlet property="mapView" destination="XhU-68-5ky" id="cKy-eW-Flk"/>
+                        <outlet property="mensaCollectionView" destination="QxI-wt-gDn" id="zgI-la-6yK"/>
+                        <outlet property="shadowView" destination="Zg8-Fl-bIa" id="dHi-K2-p56"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="piu-qI-H8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AdS-0X-q9U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-682"/>
+            <point key="canvasLocation" x="876" y="-682.3088455772114"/>
         </scene>
     </scenes>
     <designables>
@@ -2515,7 +2520,7 @@
         <image name="chevron.down.circle.fill" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="location.fill" catalog="system" width="128" height="121"/>
+        <image name="location" catalog="system" width="128" height="118"/>
         <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <image name="menucard.fill" catalog="system" width="106" height="128"/>
         <image name="number.circle" catalog="system" width="128" height="121"/>

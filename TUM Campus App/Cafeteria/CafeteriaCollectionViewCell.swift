@@ -26,7 +26,6 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.systemGray5.cgColor
         self.layer.borderWidth = 2
         
-        self.backgroundColor = .white
         self.layer.cornerRadius = 15
         
         nameLabel.text = cafeteria.name
@@ -38,25 +37,25 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
         } else {
             distanceLabel.text = ""
         }
-                
-        //MARK: - Constraints
         
+        //MARK: - Constraints
+                
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 25).isActive = true
-        nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 23).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
         
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
-        addressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
-        addressLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 15).isActive = true
+        addressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 6).isActive = true
+        addressLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
         
         distanceLabel.translatesAutoresizingMaskIntoConstraints = false
-        distanceLabel.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: -2).isActive = true
+        distanceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -13).isActive = true
         distanceLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
         
         openMenuBtn.translatesAutoresizingMaskIntoConstraints = false
         openMenuBtn.setTitle("", for: .normal)
-        openMenuBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        openMenuBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
+        openMenuBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
+        openMenuBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -13).isActive = true
     }
 }
 
