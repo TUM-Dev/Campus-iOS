@@ -224,8 +224,32 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
                 } else if iterations > 1{
                     self.present(optionMenu, animated: true, completion: nil)
                 }
-                
                 return
+            }
+            
+            if lectureDetailCell.key == "This Meeting" {
+                if lectureDetailCell.value.contains("Online") {
+                    let alert = UIAlertController(title: nil, message: "Lecture is online", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    let when = DispatchTime.now() + 1.2
+                    DispatchQueue.main.asyncAfter(deadline: when){
+                      alert.dismiss(animated: true, completion: nil)
+                    }
+                    return
+                }
+                
+                var room = lectureDetailCell.value
+
+                if let range = room.range(of: "(") {
+                    print(room.endIndex)
+                    room.removeSubrange(room.startIndex..<range.upperBound)
+                    room.remove(at: room.index(before: room.endIndex))
+                }
+                                
+                guard let roomSearchVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RoomFinderViewController") as? RoomFinderViewController else { return }
+                roomSearchVC.searchController.searchBar.text = room
+                navigationController?.pushViewController(roomSearchVC, animated: true)
             }
             return
         }
