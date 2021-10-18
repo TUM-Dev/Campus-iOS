@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 import Alamofire
-import SwiftUI
 
 class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, UICollectionViewDelegate, UIGestureRecognizerDelegate {
     
