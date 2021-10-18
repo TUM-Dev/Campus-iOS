@@ -6,7 +6,6 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
-
 import UIKit
 import MapKit
 
