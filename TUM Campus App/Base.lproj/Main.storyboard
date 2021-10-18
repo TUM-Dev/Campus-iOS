@@ -457,7 +457,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="T0A-pD-y4X">
-                            <rect key="frame" x="0.0" y="814.5" width="375" height="54"/>
+                            <rect key="frame" x="0.0" y="815" width="375" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cx-bG-yLI">
@@ -2386,18 +2386,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-68-5ky">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="XhU-68-5ky" secondAttribute="height" multiplier="75:56" constant="-139.28571428571422" id="ZpS-ZK-jkj"/>
-                                </constraints>
-                            </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-Fl-bIa">
-                                <rect key="frame" x="0.0" y="364" width="375" height="303"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zg8-Fl-bIa">
+                                <rect key="frame" x="0.0" y="319" width="375" height="314"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceRightToLeft" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hPI-qg-c8s">
+                                        <rect key="frame" x="8" y="-27" width="49" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="" image="location" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="centerMapOnUser:" destination="KaM-pW-RPy" eventType="touchUpInside" id="5lZ-5J-2ey"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="11E-5m-MOr" appends="YES" id="OoR-TW-Flz"/>
+                                </connections>
                             </view>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QxI-wt-gDn">
-                                <rect key="frame" x="0.0" y="364" width="375" height="303"/>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QxI-wt-gDn">
+                                <rect key="frame" x="0.0" y="364" width="375" height="254"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x1E-bd-BmS">
                                     <size key="itemSize" width="375" height="95"/>
@@ -2456,50 +2467,49 @@
                                     <outlet property="delegate" destination="KaM-pW-RPy" id="Qy8-6q-0hp"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" id="hPI-qg-c8s">
-                                <rect key="frame" x="310" y="317" width="49" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="" image="location" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
-                                </state>
-                                <connections>
-                                    <action selector="centerMapOnUser:" destination="KaM-pW-RPy" eventType="touchUpInside" id="5lZ-5J-2ey"/>
-                                </connections>
-                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XhU-68-5ky">
+                                <rect key="frame" x="0.0" y="-101" width="375" height="617"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XhU-68-5ky" secondAttribute="height" multiplier="75:56" constant="-139.28571428571422" id="ZpS-ZK-jkj"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="heC-fs-cpz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="QxI-wt-gDn" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="5y0-C9-Pyi"/>
-                            <constraint firstItem="Zg8-Fl-bIa" firstAttribute="top" secondItem="XhU-68-5ky" secondAttribute="bottom" constant="-20" id="6XQ-BE-bKy"/>
-                            <constraint firstAttribute="bottom" secondItem="Zg8-Fl-bIa" secondAttribute="bottom" id="AkM-Gf-FvD"/>
                             <constraint firstItem="QxI-wt-gDn" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="BAP-w2-IhW"/>
                             <constraint firstItem="XhU-68-5ky" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="CgG-15-Br9"/>
-                            <constraint firstItem="QxI-wt-gDn" firstAttribute="top" secondItem="XhU-68-5ky" secondAttribute="bottom" constant="-20" id="DJf-sA-fw8"/>
                             <constraint firstItem="XhU-68-5ky" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="HJ3-Tr-yyq"/>
                             <constraint firstItem="Zg8-Fl-bIa" firstAttribute="trailing" secondItem="heC-fs-cpz" secondAttribute="trailing" id="NGw-U8-lCz"/>
-                            <constraint firstItem="XhU-68-5ky" firstAttribute="top" secondItem="CsM-K0-Tvr" secondAttribute="top" id="OX5-Po-dwN"/>
                             <constraint firstItem="Zg8-Fl-bIa" firstAttribute="leading" secondItem="heC-fs-cpz" secondAttribute="leading" id="WiD-oq-6AW"/>
-                            <constraint firstAttribute="bottom" secondItem="QxI-wt-gDn" secondAttribute="bottom" id="qpq-TU-Wyj"/>
+                            <constraint firstItem="QxI-wt-gDn" firstAttribute="bottom" secondItem="heC-fs-cpz" secondAttribute="bottom" id="hT8-d1-d8o"/>
+                            <constraint firstItem="Zg8-Fl-bIa" firstAttribute="bottom" secondItem="heC-fs-cpz" secondAttribute="bottom" constant="15" id="vFH-bV-aI6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3wT-Re-jvQ"/>
                     <connections>
                         <outlet property="centerMapOnUserBtn" destination="hPI-qg-c8s" id="nBP-9N-Oph"/>
                         <outlet property="mapView" destination="XhU-68-5ky" id="cKy-eW-Flk"/>
+                        <outlet property="mensaColViewBottom" destination="hT8-d1-d8o" id="8CA-Kd-V3I"/>
                         <outlet property="mensaCollectionView" destination="QxI-wt-gDn" id="zgI-la-6yK"/>
                         <outlet property="shadowView" destination="Zg8-Fl-bIa" id="dHi-K2-p56"/>
+                        <outlet property="shadowViewBottom" destination="vFH-bV-aI6" id="E1F-L4-D9H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdS-0X-q9U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="11E-5m-MOr">
+                    <connections>
+                        <action selector="panColView:" destination="KaM-pW-RPy" id="HKm-QJ-AMf"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="876" y="-682.3088455772114"/>
         </scene>
     </scenes>
     <designables>
         <designable name="YE4-j8-svX">
-            <size key="intrinsicContentSize" width="20" height="26"/>
+            <size key="intrinsicContentSize" width="35" height="34"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

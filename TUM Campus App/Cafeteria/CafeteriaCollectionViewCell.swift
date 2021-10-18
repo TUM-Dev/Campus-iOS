@@ -41,7 +41,7 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
         //MARK: - Constraints
                 
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 23).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 18).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
         
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,7 +54,7 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
         
         openMenuBtn.translatesAutoresizingMaskIntoConstraints = false
         openMenuBtn.setTitle("", for: .normal)
-        openMenuBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 13).isActive = true
+        openMenuBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 11).isActive = true
         openMenuBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -13).isActive = true
     }
 }
