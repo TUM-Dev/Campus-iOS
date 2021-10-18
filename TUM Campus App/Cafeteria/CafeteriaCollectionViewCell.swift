@@ -6,13 +6,12 @@
 //  Copyright © 2019 TUM. All rights reserved.
 //
 
-
 import UIKit
 import MapKit
 
 final class CafeteriaCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var distanceLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet weak var openMenuBtn: OpenMenuBtnClass!
 
