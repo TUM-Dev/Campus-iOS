@@ -65,7 +65,6 @@ struct LectureDetailViewModel: Hashable {
         let header = Header(title: lectureDetail.title, subtitle: lectureDetail.eventType)
 
         var general = [
-            // TODO: format duration
             Cell(key: "Duration".localized, value: lectureDetail.duration.description + " SWS"),
             Cell(key: "Semester".localized, value: lectureDetail.semester),
             Cell(key: "Chair".localized, value: lectureDetail.organisation),

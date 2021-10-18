@@ -284,7 +284,6 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
         centerMapOnUserBtn.setImage(UIImage(systemName: "location.fill", withConfiguration: config), for: UIControl.State.normal)
     }
     
-//<<<<<<< HEAD
     private func setupYStartValues() {
         let h = self.view.frame.size.height
         startYSV = (h * 1.8)/3.0
@@ -359,8 +358,6 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
         }
     }
 }
-//=======
-//>>>>>>> 66956327de7c3478176656a5cabefebaadad1a9f
  
 extension CafeteriaMapViewController: MKMapViewDelegate {
     internal func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
