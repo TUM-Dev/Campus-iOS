@@ -12,7 +12,7 @@ import MapKit
 
 final class CafeteriaCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var distanceLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
     @IBOutlet weak var openMenuBtn: OpenMenuBtnClass!
 
