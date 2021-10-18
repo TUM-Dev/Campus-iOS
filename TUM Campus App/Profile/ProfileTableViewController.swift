@@ -24,7 +24,7 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     @IBOutlet private weak var personSearchLabel: UILabel!
     @IBOutlet private weak var lectureSearchCell: UITableViewCell!
     @IBOutlet private weak var lectureSearchLabel: UILabel!
-    @IBOutlet weak var checkTuitionLabel: UILabel!
+    @IBOutlet private weak var checkTuitionLabel: UILabel!
     
     var profileImage: UIImage? {
         get { return profileImageView.image }
