@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CalendarKit
 
 struct LectureDetailViewModel: Hashable {
     let sections: [Section]
@@ -61,8 +62,21 @@ struct LectureDetailViewModel: Hashable {
             ].filter { !$0.cells.isEmpty }
     }
 
-    init(lectureDetail: LectureDetail) {
+    init(lectureDetail: LectureDetail, eventDetail: CalendarEvent?) {
         let header = Header(title: lectureDetail.title, subtitle: lectureDetail.eventType)
+        
+        var current = [Cell]()
+        
+        let dateFormatterStart = DateFormatter()
+        dateFormatterStart.dateFormat = "EE, dd.MM.yyyy, HH:mm"
+        let dateFormatterEnd = DateFormatter()
+        dateFormatterEnd.dateFormat = "-HH:mm"
+        
+        if let eventDetail = eventDetail {
+            if let start = eventDetail.startDate, let end = eventDetail.endDate, let location = eventDetail.location {
+                current.append(Cell(key: "This Meeting".localized, value: dateFormatterStart.string(from: start) + dateFormatterEnd.string(from: end) + " " + location))
+            }
+        }
 
         var general = [
             Cell(key: "Duration".localized, value: lectureDetail.duration.description + " SWS"),
@@ -74,7 +88,7 @@ struct LectureDetailViewModel: Hashable {
         if let firstScheduledDate = lectureDetail.firstScheduledDate, !firstScheduledDate.isEmpty {
             general.append(Cell(key: "First Meeting".localized, value: firstScheduledDate))
         }
-
+        
         var course: [Cell] = []
         if let courseContents = lectureDetail.courseContents, !courseContents.isEmpty {
             course.append(Cell(key: "Course Contents", value: courseContents))
@@ -103,6 +117,7 @@ struct LectureDetailViewModel: Hashable {
 
         self.sections = [
             Section(name: "Header", cells: [header]),
+            Section(name: "Current", cells: current.filter { !$0.value.isEmpty }),
             Section(name: "General", cells: general.filter { !$0.value.isEmpty }),
             Section(name: "Course", cells: course.filter { !$0.value.isEmpty }),
             Section(name: "URLs", cells: urls)

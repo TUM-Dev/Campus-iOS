@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import XMLCoder
+import CalendarKit
 
 final class LectureDetailCollectionViewController: UICollectionViewController {
     private static let sectionBackgroundDecorationElementKind = "section-background-element-kind"
@@ -19,6 +20,8 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
     private var dataSource: UICollectionViewDiffableDataSource<LectureDetailViewModel.Section, AnyHashable>?
     private var endpoint: TUMOnlineAPI?
     private var viewModel: LectureDetailViewModel?
+    
+    private var event: CalendarEvent? = nil
 
     func setLecture(withLVNr lvNr: String) {
         endpoint = TUMOnlineAPI.lectureDetails(lvNr: lvNr)
@@ -29,6 +32,10 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
         viewModel = LectureDetailViewModel(lecture: lecture)
         endpoint = TUMOnlineAPI.lectureDetails(lvNr: lecture.lvNumber.description)
         fetch(animated: true)
+    }
+    
+    func setEvent(withEvent calEvent: CalendarEvent? = nil) {
+        event = calEvent
     }
 
     override func viewDidLoad() {
@@ -47,8 +54,13 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
         guard let endpoint = endpoint else { return }
         sessionManager.request(endpoint).responseDecodable(of: TUMOnlineAPIResponse<LectureDetail>.self, decoder: XMLDecoder()) { [weak self] response in
             guard let value = response.value?.rows?.first else { return }
-            self?.viewModel = LectureDetailViewModel(lectureDetail: value)
-            self?.reload(animated: animated)
+            if let event = self?.event {
+                self?.viewModel = LectureDetailViewModel(lectureDetail: value, eventDetail: event)
+                self?.reload(animated: animated)
+            } else if self?.event == nil {
+                self?.viewModel = LectureDetailViewModel(lectureDetail: value, eventDetail: nil)
+                self?.reload(animated: animated)
+            }
         }
     }
 

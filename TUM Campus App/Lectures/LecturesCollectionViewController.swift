@@ -178,5 +178,6 @@ final class LecturesCollectionViewController: UICollectionViewController, Profil
         navigationController?.pushViewController(detailVC, animated: true)
         let lectureID = String(lecture.id)
         detailVC.setLecture(withLVNr: lectureID)
+        detailVC.setEvent(withEvent: nil)
     }
 }

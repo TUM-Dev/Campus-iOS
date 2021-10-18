@@ -100,6 +100,15 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         let attrTxt = eventView.descriptor?.attributedText
         let s = attrTxt?.string
+        
+        var event = CalendarEvent()
+        
+        let events = importer.fetchedResultsController.fetchedObjects ?? []
+        for e in events {
+            if e.startDate == eventView.descriptor?.startDate {
+                event = e
+            }
+        }
                         
         if let range = s!.range(of: "LvNr=") {
             let lvNr = String(s![range.upperBound...])
@@ -108,6 +117,7 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
             guard let detailVC = storyboard.instantiateViewController(withIdentifier: "LectureDetailCollectionViewController") as? LectureDetailCollectionViewController else { return }
             navigationController?.pushViewController(detailVC, animated: true)
             detailVC.setLecture(withLVNr: lvNr)
+            detailVC.setEvent(withEvent: event)
         }
     }
 }
