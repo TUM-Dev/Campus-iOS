@@ -213,14 +213,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         #endif
         credentials = nil
         
-        let fetchRequests = [
-            Grade.fetchRequest(),
-            Lecture.fetchRequest(),
-            CalendarEvent.fetchRequest(),
-            Profile.fetchRequest(),
-            Tuition.fetchRequest(),
-        ]
-        
       let fetchRequests: [NSFetchRequest<NSFetchRequestResult>] = [
             Grade.fetchRequest(),
             Lecture.fetchRequest(),
