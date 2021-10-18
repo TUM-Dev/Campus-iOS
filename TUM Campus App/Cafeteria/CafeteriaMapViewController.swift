@@ -60,7 +60,7 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
             
             cell.configure(cafeteria: cafeteria, currentLocation: self?.locationManager.location)
             
-            cell.openMenuBtn.addTarget(self, action: #selector(self!.openMenu(sender:)), for: .touchUpInside)
+            cell.openMenuBtn.addTarget(self, action: #selector(self?.openMenu(sender:)), for: .touchUpInside)
             cell.openMenuBtn.caf = cafeteria
             
             cell.backgroundColor = self!.view.backgroundColor
