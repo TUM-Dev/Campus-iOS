@@ -211,14 +211,6 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
         centerMapOnUserBtn.setImage(UIImage(systemName: "location.fill", withConfiguration: config), for: UIControl.State.normal)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        //
-    }
-}
  
 extension CafeteriaMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
