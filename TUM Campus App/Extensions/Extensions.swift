@@ -29,12 +29,12 @@ final class XMLSerializer: ResponseSerializer {
     let dataPreprocessor: DataPreprocessor
     let emptyResponseCodes: Set<Int>
     let emptyRequestMethods: Set<HTTPMethod>
-    let config: (SWXMLHashOptions) -> Void
+    let config: (XMLHashOptions) -> Void
 
     public init(dataPreprocessor: DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor,
                 emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
                 emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
-                config: @escaping (SWXMLHashOptions) -> Void = { config in config.detectParsingErrors = true }) {
+                config: @escaping (XMLHashOptions) -> Void = { config in config.detectParsingErrors = true }) {
         self.dataPreprocessor = dataPreprocessor
         self.emptyResponseCodes = emptyResponseCodes
         self.emptyRequestMethods = emptyRequestMethods
@@ -43,7 +43,7 @@ final class XMLSerializer: ResponseSerializer {
 
     func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> XMLIndexer {
         let result = try DataResponseSerializer().serialize(request: request, response: response, data: data, error: error)
-        let xmlParser = SWXMLHash.config(config)
+        let xmlParser = XMLHash.config(config)
         let xml = xmlParser.parse(result)
 
         switch xml {

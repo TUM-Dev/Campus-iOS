@@ -1335,7 +1335,7 @@
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.5.0;
+				minimumVersion = 4.0.1;
 			};
 		};
 		22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -1343,7 +1343,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.9.1;
+				minimumVersion = 8.9.0;
 			};
 		};
 		224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -1351,7 +1351,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.14.1;
+				minimumVersion = 7.1.1;
 			};
 		};
 		22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
@@ -1359,7 +1359,7 @@
 			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 		225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
@@ -1375,7 +1375,7 @@
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
+				minimumVersion = 6.0.0;
 			};
 		};
 		225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
