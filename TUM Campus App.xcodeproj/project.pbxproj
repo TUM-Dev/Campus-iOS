@@ -1335,7 +1335,7 @@
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.5.0;
+				minimumVersion = 4.0.1;
 			};
 		};
 		22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
