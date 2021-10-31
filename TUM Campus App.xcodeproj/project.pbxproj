@@ -1375,7 +1375,7 @@
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
+				minimumVersion = 6.0.0;
 			};
 		};
 		225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
