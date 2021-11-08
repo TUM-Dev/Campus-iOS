@@ -1,0 +1,276 @@
+
+/* Class = "UILabel"; text = "Value"; ObjectID = "0Tv-FQ-FyF"; */
+"0Tv-FQ-FyF.text" = "Value";
+
+/* Class = "UILabel"; text = "Key"; ObjectID = "0rn-L0-Xh3"; */
+"0rn-L0-Xh3.text" = "Key";
+
+/* Class = "UILabel"; text = "News"; ObjectID = "150-f7-yD0"; */
+"150-f7-yD0.text" = "News";
+
+/* Class = "UILabel"; text = "Join the Beta"; ObjectID = "29g-Mj-eAk"; */
+"29g-Mj-eAk.text" = "Join the Beta";
+
+/* Class = "UILabel"; text = "TUM ID"; ObjectID = "34H-Ri-CR8"; */
+"34H-Ri-CR8.text" = "TUM ID";
+
+/* Class = "UILabel"; text = "examiner"; ObjectID = "4E2-td-bCz"; */
+"4E2-td-bCz.text" = "examiner";
+
+/* Class = "UILabel"; text = "Version 1.0.0"; ObjectID = "6cx-bG-yLI"; */
+"6cx-bG-yLI.text" = "Version 1.0.0";
+
+/* Class = "UITabBarItem"; title = "Lectures"; ObjectID = "7hW-Zh-aNm"; */
+"7hW-Zh-aNm.title" = "Lectures";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9Cb-rd-JTo"; */
+"9Cb-rd-JTo.text" = "Label";
+
+/* Class = "UILabel"; text = "Feedback"; ObjectID = "9NI-Zb-R0c"; */
+"9NI-Zb-R0c.text" = "Feedback";
+
+/* Class = "UITableViewSection"; headerTitle = "My TUM"; ObjectID = "9wY-PO-pcE"; */
+"9wY-PO-pcE.headerTitle" = "My TUM";
+
+/* Class = "UILabel"; text = "room_code"; ObjectID = "A0U-Rx-CNQ"; */
+"A0U-Rx-CNQ.text" = "room_code";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "A5l-j6-Djd"; */
+"A5l-j6-Djd.text" = "Status";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "A9z-mM-YNj"; */
+"A9z-mM-YNj.text" = "Name";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "ADU-50-nPQ"; */
+"ADU-50-nPQ.text" = "Detail";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "B1C-BN-ebU"; */
+"B1C-BN-ebU.text" = "Label";
+
+/* Class = "UILabel"; text = "purpose"; ObjectID = "Dwg-6D-bWF"; */
+"Dwg-6D-bWF.text" = "purpose";
+
+/* Class = "UILabel"; text = "Person Search"; ObjectID = "Hkv-lo-cVB"; */
+"Hkv-lo-cVB.text" = "Person Search";
+
+/* Class = "UILabel"; text = "info"; ObjectID = "HnF-ip-IAl"; */
+"HnF-ip-IAl.text" = "info";
+
+/* Class = "UILabel"; text = "Building"; ObjectID = "IXk-4p-ZRm"; */
+"IXk-4p-ZRm.text" = "Building";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Iaw-2z-IpD"; */
+"Iaw-2z-IpD.title" = "Item";
+
+/* Class = "UIBarButtonItem"; Iaw-2z-IpD.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "List View"; ObjectID = "Iaw-2z-IpD"; */
+"Iaw-2z-IpD.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "List View";
+
+/* Class = "UITableViewSection"; headerTitle = "General"; ObjectID = "JGl-Dq-AQE"; */
+"JGl-Dq-AQE.headerTitle" = "General";
+
+/* Class = "UILabel"; text = "modus"; ObjectID = "KO6-V7-sVQ"; */
+"KO6-V7-sVQ.text" = "modus";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KOp-Ev-Sax"; */
+"KOp-Ev-Sax.text" = "Label";
+
+/* Class = "UIBarButtonItem"; LEd-ud-xri.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "LEd-ud-xri"; */
+"LEd-ud-xri.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "lv number"; ObjectID = "LFh-DL-qVJ"; */
+"LFh-DL-qVJ.text" = "lv number";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "LOd-Yu-1gj"; */
+"LOd-Yu-1gj.title" = "Item";
+
+/* Class = "UIBarButtonItem"; LOd-Yu-1gj.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "LOd-Yu-1gj"; */
+"LOd-Yu-1gj.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "LyQ-Km-jc8"; */
+"LyQ-Km-jc8.text" = "address";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "MVu-ZW-Ebj"; */
+"MVu-ZW-Ebj.text" = "name";
+
+/* Class = "UITabBarItem"; title = "Calendar"; ObjectID = "N3e-89-A85"; */
+"N3e-89-A85.title" = "Calendar";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "OQ0-vr-lBR"; */
+"OQ0-vr-lBR.text" = "address";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "P0f-pY-eBy"; */
+"P0f-pY-eBy.text" = "Label";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "PdF-LY-kRP"; */
+"PdF-LY-kRP.text" = "Amount";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PsM-8J-Utg"; */
+"PsM-8J-Utg.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Cafeterias"; ObjectID = "RRw-AB-qv3"; */
+"RRw-AB-qv3.title" = "Cafeterias";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "TB6-oP-a7L"; */
+"TB6-oP-a7L.title" = "Profile";
+
+/* Class = "UITabBarItem"; title = "Study Rooms"; ObjectID = "V2v-gg-WvC"; */
+"V2v-gg-WvC.title" = "Study Rooms";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "V5D-u9-qp8"; */
+"V5D-u9-qp8.text" = "price";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vhc-nS-E0D"; */
+"Vhc-nS-E0D.text" = "Label";
+
+/* Class = "UILabel"; text = "distance"; ObjectID = "Vrg-P0-xWM"; */
+"Vrg-P0-xWM.text" = "distance";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "VuV-Kd-Udf"; */
+"VuV-Kd-Udf.title" = "Item";
+
+/* Class = "UIBarButtonItem"; VuV-Kd-Udf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "VuV-Kd-Udf"; */
+"VuV-Kd-Udf.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Xb0-6o-VE5"; */
+"Xb0-6o-VE5.text" = "Name";
+
+/* Class = "UILabel"; text = "Raumname"; ObjectID = "Xu0-o0-BRm"; */
+"Xu0-o0-BRm.text" = "Raumname";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Yav-3h-d0q"; */
+"Yav-3h-d0q.title" = "Item";
+
+/* Class = "UIBarButtonItem"; Yav-3h-d0q.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "Yav-3h-d0q"; */
+"Yav-3h-d0q.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "bB9-1p-ihP"; */
+"bB9-1p-ihP.text" = "name";
+
+/* Class = "UILabel"; text = "Raumnummer"; ObjectID = "bBG-QR-e9b"; */
+"bBG-QR-e9b.text" = "Raumnummer";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "bcU-ZW-cBx"; */
+"bcU-ZW-cBx.text" = "Date";
+
+/* Class = "UILabel"; text = "event type"; ObjectID = "bcX-hX-QXw"; */
+"bcX-hX-QXw.text" = "event type";
+
+/* Class = "UILabel"; text = "speaker"; ObjectID = "bxK-4C-yj7"; */
+"bxK-4C-yj7.text" = "speaker";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "cSp-u4-I0f"; */
+"cSp-u4-I0f.text" = "Name";
+
+/* Class = "UIBarButtonItem"; title = "Today"; ObjectID = "cpx-zd-HOx"; */
+"cpx-zd-HOx.title" = "Today";
+
+/* Class = "UIBarButtonItem"; cpx-zd-HOx.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Jump to Today"; ObjectID = "cpx-zd-HOx"; */
+"cpx-zd-HOx.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Jump to Today";
+
+/* Class = "UILabel"; text = "lv_title"; ObjectID = "dRl-tC-mP0"; */
+"dRl-tC-mP0.text" = "lv_title";
+
+/* Class = "UILabel"; text = "Room Finder"; ObjectID = "eX3-y7-l7q"; */
+"eX3-y7-l7q.text" = "Room Finder";
+
+/* Class = "UILabel"; text = "TUM Dev on GitHub"; ObjectID = "eiH-bm-nVc"; */
+"eiH-bm-nVc.text" = "TUM Dev on GitHub";
+
+/* Class = "UILabel"; text = "grade"; ObjectID = "esN-dn-M3T"; */
+"esN-dn-M3T.text" = "grade";
+
+/* Class = "UILabel"; text = "nr free rooms"; ObjectID = "fcw-L0-8EV"; */
+"fcw-L0-8EV.text" = "nr free rooms";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "fuM-zA-e19"; */
+"fuM-zA-e19.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gmf-jw-eOh"; */
+"gmf-jw-eOh.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gue-Qq-tOU"; */
+"gue-Qq-tOU.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hUn-EM-8nT"; */
+"hUn-EM-8nT.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hVu-tn-NQy"; */
+"hVu-tn-NQy.text" = "Label";
+
+/* Class = "UILabel"; text = "TUM Dev Website"; ObjectID = "jR9-Zg-wsN"; */
+"jR9-Zg-wsN.text" = "TUM Dev Website";
+
+/* Class = "UITabBarItem"; title = "Grades"; ObjectID = "jzO-tR-0Gw"; */
+"jzO-tR-0Gw.title" = "Grades";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "k2o-Mv-I9B"; */
+"k2o-Mv-I9B.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "lNW-Sf-KWs"; */
+"lNW-Sf-KWs.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mPT-ku-Qva"; */
+"mPT-ku-Qva.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mV6-vW-TAl"; */
+"mV6-vW-TAl.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "mwo-y0-ucQ"; */
+"mwo-y0-ucQ.title" = "Item";
+
+/* Class = "UIBarButtonItem"; mwo-y0-ucQ.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "mwo-y0-ucQ"; */
+"mwo-y0-ucQ.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mzl-Pv-gZF"; */
+"mzl-Pv-gZF.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nWi-Lc-GzK"; */
+"nWi-Lc-GzK.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "olT-NG-PCa"; */
+"olT-NG-PCa.text" = "Title";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "r4d-8U-Gef"; */
+"r4d-8U-Gef.text" = "Location";
+
+/* Class = "UILabel"; text = "Sign Out"; ObjectID = "r8G-mW-9Pj"; */
+"r8G-mW-9Pj.text" = "Sign Out";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rjA-9p-c29"; */
+"rjA-9p-c29.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "s0a-oy-u3N"; */
+"s0a-oy-u3N.text" = "Title";
+
+/* Class = "UILabel"; text = "Deadline"; ObjectID = "skb-ZY-Vdm"; */
+"skb-ZY-Vdm.text" = "Deadline";
+
+/* Class = "UILabel"; text = "Lecture Search"; ObjectID = "tes-Zq-3pG"; */
+"tes-Zq-3pG.text" = "Lecture Search";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uzl-iq-MhG"; */
+"uzl-iq-MhG.text" = "Label";
+
+/* Class = "UILabel"; text = "Tuition"; ObjectID = "vCY-b0-Qk4"; */
+"vCY-b0-Qk4.text" = "Tuition";
+
+/* Class = "UILabel"; text = "TUM.sexy"; ObjectID = "vCZ-mu-j3F"; */
+"vCZ-mu-j3F.text" = "TUM.sexy";
+
+/* Class = "UILabel"; text = "Semester"; ObjectID = "vyK-KK-HNk"; */
+"vyK-KK-HNk.text" = "Semester";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wJz-ha-gEV"; */
+"wJz-ha-gEV.text" = "Label";
+
+/* Class = "UILabel"; text = "purpose"; ObjectID = "xDK-2x-Kpy"; */
+"xDK-2x-Kpy.text" = "purpose";
+
+/* Class = "UINavigationItem"; title = "Tuition Fees"; ObjectID = "yVh-AK-yJa"; */
+"yVh-AK-yJa.title" = "Tuition Fees";
+
+/* Class = "UILabel"; text = "ingredients"; ObjectID = "yek-Vt-SYY"; */
+"yek-Vt-SYY.text" = "ingredients";
+
+/* Class = "UITableViewSection"; headerTitle = "Get in contact"; ObjectID = "ysW-fW-qY4"; */
+"ysW-fW-qY4.headerTitle" = "Get in contact";

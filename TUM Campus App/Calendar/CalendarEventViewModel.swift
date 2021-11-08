@@ -7,6 +7,7 @@
 //
 
 import CalendarKit
+import KVKCalendar
 import UIKit
 
 final class CalendarEventViewModel: EventDescriptor {

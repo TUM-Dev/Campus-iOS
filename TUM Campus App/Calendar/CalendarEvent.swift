@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import KVKCalendar
 
 // XMLDecoder cannot use [Event].self so we have to wrap the events in Calendar.self. This is probably a bug in parsing the root node.
 struct CalendarAPIResponse: Decodable {
