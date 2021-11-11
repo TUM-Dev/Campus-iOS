@@ -803,7 +803,6 @@
 				225AD7522479D32C001A969E /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				225AD7582479D358001A969E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				220EB12E247DBBA700DC4A6F /* XCRemoteSwiftPackageReference "Charts" */,
-				22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */,
 				220603AE24944493004869F7 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
@@ -1353,14 +1352,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.14.1;
-			};
-		};
-		22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.0;
 			};
 		};
 		225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */ = {

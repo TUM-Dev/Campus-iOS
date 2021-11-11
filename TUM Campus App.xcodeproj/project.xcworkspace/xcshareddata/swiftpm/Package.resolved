@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "CalendarKit",
-        "repositoryURL": "https://github.com/richardtop/CalendarKit.git",
-        "state": {
-          "branch": null,
-          "revision": "b19da4fd0de43c464a9dafb22e2290d64fbe72b6",
-          "version": "0.14.8"
-        }
-      },
-      {
         "package": "Charts",
         "repositoryURL": "https://github.com/danielgindi/Charts.git",
         "state": {
