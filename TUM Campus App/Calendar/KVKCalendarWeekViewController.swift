@@ -64,6 +64,7 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.reload()
         navigationController?.navigationBar.prefersLargeTitles = true
         fetch(animated: animated)
     }
@@ -77,6 +78,7 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
             style.timeline.offsetLineLeft = 2
             style.headerScroll.titleDateAlignment = .center
             style.headerScroll.isAnimateTitleDate = true
+            style.headerScroll.isAnimateSelection = true
             style.headerScroll.heightHeaderWeek = 70
             style.event.isEnableVisualSelect = false
             style.month.isHiddenTitle = true
@@ -84,7 +86,7 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
             style.month.weekDayAlignment = .center
         } else {
             style.timeline.widthEventViewer = 350
-            style.headerScroll.fontNameDay = .systemFont(ofSize: 17)
+            style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
         }
         style.headerScroll.colorBackground = .systemBackground
         style.headerScroll.colorBackgroundCurrentDate = .tumBlue
@@ -93,8 +95,9 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
         style.timeline.offsetTimeY = 25
         style.timeline.backgroundColor = .systemBackground
         style.timeline.timeColor = .tumBlue
+        // cuts out the hours before the first event if true
+        style.timeline.startFromFirstEvent = false
         style.allDay.backgroundColor = .systemBackground
-        style.allDay.isPinned = true
         style.defaultType = CalendarType.day
         style.timeSystem = .current ?? .twelve
         style.event.iconFile = UIImage(systemName: "paperclip")
@@ -109,13 +112,14 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
         tabBarController?.tabBar.backgroundColor = .secondarySystemBackground
         
         self.view.addSubview(self.calendarView)
+        self.reload()
         
         self.fetch(animated: true)
         
         loadEvents { (events) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
                 self?.events = events
-                self?.calendarView.reloadData()
+                self?.reload()
             }
         }
     }
@@ -140,36 +144,36 @@ final class KVKCalendarWeekViewController: UIViewController, ProfileImageSettabl
         self.calendarView.reloadData()
     }
 
-    // MARK: - EventDataSource
-
-    func eventsForDate(_ date: Date) -> [Event] {
-        let events = importer.fetchedResultsController.fetchedObjects ?? []
-        return events
-            .compactMap { CalendarEventViewModel(event: $0) }
-            .compactMap(({ (item) -> Event in
-            var event = Event(ID: UUID().uuidString)
-            event.start = item.startDate // start date event
-            event.end = item.endDate // end date event
-            event.color = Event.Color(item.color)
-            event.isAllDay = item.isAllDay
-            event.isContainsFile = false
-
-            // Add text event (title, info, location, time)
-            if item.isAllDay {
-                event.text = item.text
-            } else {
-                event.text = "\(item.startDate) - \(item.endDate)\n\(item.text)"
-            }
-            return event
-        }))
-    }
+//    // MARK: - EventDataSource
+//
+//    func eventsForDate(_ date: Date) -> [Event] {
+//        let events = importer.fetchedResultsController.fetchedObjects ?? []
+//        return events
+//            .compactMap { CalendarEventViewModel(event: $0) }
+//            .compactMap(({ (item) -> Event in
+//            var event = Event(ID: UUID().uuidString)
+//            event.start = item.startDate // start date event
+//            event.end = item.endDate // end date event
+//            event.color = Event.Color(item.color)
+//            event.isAllDay = item.isAllDay
+//            event.isContainsFile = false
+//
+//            // Add text event (title, info, location, time)
+//            if item.isAllDay {
+//                event.text = item.text
+//            } else {
+//                event.text = "\(item.startDate) - \(item.endDate)\n\(item.text)"
+//            }
+//            return event
+//        }))
+//    }
     
     // MARK: - Actions
 
     @IBAction func showToday(_ sender: Any) {
         self.selectDate = Date()
         self.calendarView.scrollTo(selectDate ?? Date())
-        self.calendarView.reloadData()
+        self.reload()
     }
     
 //    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -198,11 +202,8 @@ extension KVKCalendarWeekViewController {
             event.isContainsFile = false
 
             // Add text event (title, info, location, time)
-            if item.isAllDay {
-                event.text = item.text
-            } else {
-                event.text = "\(item.startDate) - \(item.endDate)\n\(item.text)"
-            }
+            event.text = item.attributedText?.string ?? ""
+            
             return event
         }))
         completion(events)
@@ -222,10 +223,9 @@ extension KVKCalendarWeekViewController: CalendarDelegate {
     func didSelectDates(_ dates: [Date], type: CalendarType, frame: CGRect?) {
         selectDate = dates[0]
         loadEvents( completion: { [unowned self] (events) in
-           self.events = events
-           self.calendarView.reloadData()
+            self.events = events
+            self.reload()
         })
-        self.reload()
     }
 
     func didSelectEvent(_ event: Event, type: CalendarType, frame: CGRect?) {

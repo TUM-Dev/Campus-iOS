@@ -6,21 +6,18 @@
 //  Copyright © 2020 TUM. All rights reserved.
 //
 
-import CalendarKit
-import KVKCalendar
 import UIKit
 
-final class CalendarEventViewModel: EventDescriptor {
+final class CalendarEventViewModel {
     var startDate: Date
     var endDate: Date
     var isAllDay = false
     var text: String
     var attributedText: NSAttributedString?
-    var color = UIColor.systemBlue {
-        didSet {
-            updateColors()
-        }
-    }
+    var color = UIColor.systemBlue
+//        didSet {
+//            updateColors()
+//        }
     var backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
     var textColor = UIColor { traitCollection in
         switch traitCollection.userInterfaceStyle {
@@ -39,11 +36,11 @@ final class CalendarEventViewModel: EventDescriptor {
     var font = UIFont.boldSystemFont(ofSize: 12)
     var userInfo: Any?
     var lineBreakMode: NSLineBreakMode? = .byWordWrapping
-    weak var editedEvent: EventDescriptor? {
-        didSet {
-            updateColors()
-        }
-    }
+//    weak var editedEvent: EventDescriptor? {
+//        didSet {
+//            updateColors()
+//        }
+//    }
 
     init(startDate: Date, endDate: Date, text: String, attributedText: NSAttributedString? = nil, userInfo: Any? = nil) {
         self.startDate = startDate
@@ -76,26 +73,26 @@ final class CalendarEventViewModel: EventDescriptor {
         return CalendarEventViewModel(startDate: startDate, endDate: endDate, text: text, attributedText: attributedText, userInfo: userInfo)
     }
 
-    func commitEditing() {
-        guard let edited = editedEvent else {return}
-        edited.startDate = startDate
-        edited.endDate = endDate
-    }
+//    func commitEditing() {
+//        guard let edited = editedEvent else {return}
+//        edited.startDate = startDate
+//        edited.endDate = endDate
+//    }
+//
+//    private func updateColors() {
+//        (editedEvent != nil) ? applyEditingColors() : applyStandardColors()
+//    }
 
-    private func updateColors() {
-        (editedEvent != nil) ? applyEditingColors() : applyStandardColors()
-    }
-
-    private func applyStandardColors() {
-        backgroundColor = color.withAlphaComponent(0.3)
-        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        textColor = UIColor(hue: h, saturation: s, brightness: b * 0.4, alpha: a)
-    }
-
-    private func applyEditingColors() {
-        backgroundColor = color
-        textColor = .white
-    }
+//    private func applyStandardColors() {
+//        backgroundColor = color.withAlphaComponent(0.3)
+//        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+//        color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+//        textColor = UIColor(hue: h, saturation: s, brightness: b * 0.4, alpha: a)
+//    }
+//
+//    private func applyEditingColors() {
+//        backgroundColor = color
+//        textColor = .white
+//    }
 
 }

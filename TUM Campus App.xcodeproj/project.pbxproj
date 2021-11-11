@@ -49,7 +49,6 @@
 		224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */; };
 		224F37C12460C0CD00BEDA71 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
 		224F37C32460EA5A00BEDA71 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C22460EA5A00BEDA71 /* MealPlan.swift */; };
-		22508B642492559900B6740D /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 22508B632492559900B6740D /* CalendarKit */; };
 		22508B662492672F00B6740D /* CalendarWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22508B652492672F00B6740D /* CalendarWeekViewController.swift */; };
 		2255F68B24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2255F68A24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift */; };
 		2258EDBB22221EE80079C2ED /* StudyRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258EDBA22221EE80079C2ED /* StudyRoom.swift */; };
@@ -140,7 +139,6 @@
 		22FFED5F247BDC1600BCA27C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED5E247BDC1600BCA27C /* MapViewController.swift */; };
 		22FFED61247BF47100BCA27C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED60247BF47100BCA27C /* IconButton.swift */; };
 		36D2D6B62737729100A0ADF1 /* KVKCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 36D2D6B52737729100A0ADF1 /* KVKCalendar */; };
-		36D2D6BA2737846000A0ADF1 /* KVKCalendarWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2D6B92737846000A0ADF1 /* KVKCalendarWeekViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,7 +295,6 @@
 		22FD2F762576BDFB004E5A0F /* GradeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeColors.swift; sourceTree = "<group>"; };
 		22FFED5E247BDC1600BCA27C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		22FFED60247BF47100BCA27C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
-		36D2D6B92737846000A0ADF1 /* KVKCalendarWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVKCalendarWeekViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,7 +305,6 @@
 				22223369261693530066D5A1 /* FirebaseRemoteConfig in Frameworks */,
 				225AD75A2479D358001A969E /* KeychainAccess in Frameworks */,
 				224BBF0F24BFBAEA0055DD4C /* Kingfisher in Frameworks */,
-				22508B642492559900B6740D /* CalendarKit in Frameworks */,
 				220603B024944493004869F7 /* XMLCoder in Frameworks */,
 				220EB130247DBBA700DC4A6F /* Charts in Frameworks */,
 				2222336B261693530066D5A1 /* FirebaseCrashlytics in Frameworks */,
@@ -683,7 +679,6 @@
 				22683D68221C5E0200C70883 /* CalendarTableViewController.swift */,
 				22508B652492672F00B6740D /* CalendarWeekViewController.swift */,
 				19BA03EF23897FEE00B85982 /* CalendarEventCell.swift */,
-				36D2D6B92737846000A0ADF1 /* KVKCalendarWeekViewController.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -718,7 +713,6 @@
 				225AD7532479D32C001A969E /* SWXMLHash */,
 				225AD7592479D358001A969E /* KeychainAccess */,
 				220EB12F247DBBA700DC4A6F /* Charts */,
-				22508B632492559900B6740D /* CalendarKit */,
 				220603AF24944493004869F7 /* XMLCoder */,
 				224BBF0E24BFBAEA0055DD4C /* Kingfisher */,
 				22223368261693530066D5A1 /* FirebaseRemoteConfig */,
@@ -902,7 +896,6 @@
 				22508B662492672F00B6740D /* CalendarWeekViewController.swift in Sources */,
 				19382F222389D4AD007BEC88 /* StudyRoomCell.swift in Sources */,
 				2258EDC022222B590079C2ED /* TUMSexyLink.swift in Sources */,
-				36D2D6BA2737846000A0ADF1 /* KVKCalendarWeekViewController.swift in Sources */,
 				2288B26D2499329E00E70E6C /* MovieCollectionViewCell.swift in Sources */,
 				2258EDBB22221EE80079C2ED /* StudyRoom.swift in Sources */,
 				224CB36F2226C6240002945A /* DecoderProtocol.swift in Sources */,
@@ -1429,11 +1422,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 224BBF0D24BFBAEA0055DD4C /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		22508B632492559900B6740D /* CalendarKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 22508B622492559900B6740D /* XCRemoteSwiftPackageReference "CalendarKit" */;
-			productName = CalendarKit;
 		};
 		225AD74A2479D2D3001A969E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

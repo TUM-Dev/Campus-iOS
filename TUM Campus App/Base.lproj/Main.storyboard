@@ -93,7 +93,6 @@
                         <segue destination="zW3-gf-VWs" kind="relationship" relationship="viewControllers" id="VqK-Nl-5gd"/>
                         <segue destination="xfx-5j-asa" kind="relationship" relationship="viewControllers" id="ghN-mk-oBa"/>
                         <segue destination="uAz-ze-7gD" kind="relationship" relationship="viewControllers" id="LBe-iY-W33"/>
-                        <segue destination="gSF-Z7-ath" kind="relationship" relationship="viewControllers" id="LYy-O7-ieD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAt-C7-0JK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,7 +527,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="T0A-pD-y4X">
-                            <rect key="frame" x="0.0" y="815" width="375" height="54"/>
+                            <rect key="frame" x="0.0" y="814.5" width="375" height="54"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cx-bG-yLI">
@@ -2442,67 +2441,6 @@
             </objects>
             <point key="canvasLocation" x="876" y="1450.5247376311845"/>
         </scene>
-        <!--KVKCalendar-->
-        <scene sceneID="iou-i2-NR7">
-            <objects>
-                <navigationController title="KVKCalendar" id="gSF-Z7-ath" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="KVKCalendar" image="calendar.badge.exclamationmark" catalog="system" id="N2a-Rj-lOi"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Il6-El-Zwi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ZGo-yP-5hQ" kind="relationship" relationship="rootViewController" id="Wct-2n-XUC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rgM-Ja-SYd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-106" y="-1435"/>
-        </scene>
-        <!--KVKCalendar Week View Controller-->
-        <scene sceneID="FqD-ig-Cwg">
-            <objects>
-                <viewController title="KVKCalendar Week View Controller" id="ZGo-yP-5hQ" customClass="KVKCalendarWeekViewController" customModule="TUMCampusApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rZ3-Y6-GAC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="19J-CI-tUM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="HYe-YW-fdC">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="list.bullet" catalog="system" id="6XX-ye-DYu">
-                                <color key="tintColor" name="tumBlue"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="List View" localized="YES"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="vxh-8B-OXt" kind="show" id="RdI-jS-fz5"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Today" id="qlW-MD-Too">
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Jump to Today" localized="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.crop.circle" catalog="system" id="swK-Im-dMF">
-                            <color key="tintColor" name="tumBlue"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="Profile" localized="YES"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="imH-MT-aws" kind="showDetail" id="2yo-R2-9zL"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZNy-cg-bfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tabBarItem title="KVKCalendar" image="calendar.badge.exclamationmark" catalog="system" id="tzW-M0-AvS"/>
-            </objects>
-            <point key="canvasLocation" x="876" y="-1435"/>
-        </scene>
     </scenes>
     <designables>
         <designable name="YE4-j8-svX">
@@ -2510,8 +2448,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="2yo-R2-9zL"/>
-        <segue reference="RdI-jS-fz5"/>
+        <segue reference="gdr-gi-i96"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Lectures" width="29" height="29"/>
@@ -2523,7 +2460,6 @@
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="book.circle" catalog="system" width="128" height="121"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="calendar.badge.exclamationmark" catalog="system" width="128" height="108"/>
         <image name="calendar.circle" catalog="system" width="128" height="121"/>
         <image name="checkmark.shield" catalog="system" width="128" height="118"/>
         <image name="chevron.down.circle.fill" catalog="system" width="128" height="121"/>
