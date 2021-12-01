@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		366F0E8427580CFB0091651D /* Campus_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8327580CFB0091651D /* Campus_iOSApp.swift */; };
+		366F0E8427580CFB0091651D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8327580CFB0091651D /* App.swift */; };
 		366F0E8627580CFB0091651D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8527580CFB0091651D /* ContentView.swift */; };
 		366F0E8827580CFD0091651D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8727580CFD0091651D /* Assets.xcassets */; };
 		366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8A27580CFD0091651D /* Preview Assets.xcassets */; };
@@ -16,6 +16,8 @@
 		366F0E9A27580CFD0091651D /* Campus_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E9927580CFD0091651D /* Campus_iOSTests.swift */; };
 		366F0EA427580CFD0091651D /* Campus_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0EA327580CFD0091651D /* Campus_iOSUITests.swift */; };
 		366F0EA627580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */; };
+		3683C3182758117900082930 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3172758117900082930 /* Model.swift */; };
+		3683C31A2758118A00082930 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3192758118A00082930 /* MockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		366F0E8027580CFB0091651D /* Campus-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		366F0E8327580CFB0091651D /* Campus_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_iOSApp.swift; sourceTree = "<group>"; };
+		366F0E8327580CFB0091651D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		366F0E8527580CFB0091651D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		366F0E8727580CFD0091651D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		366F0E8A27580CFD0091651D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -48,6 +50,8 @@
 		366F0E9F27580CFD0091651D /* Campus-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Campus-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		366F0EA327580CFD0091651D /* Campus_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_iOSUITests.swift; sourceTree = "<group>"; };
 		366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3683C3172758117900082930 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		3683C3192758118A00082930 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +102,8 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				366F0E8327580CFB0091651D /* Campus_iOSApp.swift */,
+				3683C3162758115000082930 /* Model */,
+				366F0E8327580CFB0091651D /* App.swift */,
 				366F0E8527580CFB0091651D /* ContentView.swift */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
@@ -131,6 +136,15 @@
 				366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */,
 			);
 			path = "Campus-iOSUITests";
+			sourceTree = "<group>";
+		};
+		3683C3162758115000082930 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3683C3172758117900082930 /* Model.swift */,
+				3683C3192758118A00082930 /* MockModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,10 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				366F0E8627580CFB0091651D /* ContentView.swift in Sources */,
+				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
-				366F0E8427580CFB0091651D /* Campus_iOSApp.swift in Sources */,
+				366F0E8427580CFB0091651D /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
