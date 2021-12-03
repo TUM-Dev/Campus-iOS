@@ -179,7 +179,7 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
     
     // MARK: - UICollectionViewDelegate
     
-    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destination: Cafeteria = dataSource?.itemIdentifier(for: indexPath) else { return }
         let region = MKCoordinateRegion( center: destination.coordinate, latitudinalMeters: CLLocationDistance(exactly: 1000)!, longitudinalMeters: CLLocationDistance(exactly: 1000)!)
         mapView.setRegion(region, animated: true)
