@@ -382,7 +382,7 @@ extension CafeteriaMapViewController: MKMapViewDelegate {
 
 extension CafeteriaMapViewController: UICollectionViewDelegateFlowLayout {
 
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 6, height: 80.0)
     }
 
