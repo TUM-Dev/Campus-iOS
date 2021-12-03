@@ -360,7 +360,7 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
 }
  
 extension CafeteriaMapViewController: MKMapViewDelegate {
-    internal func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let name = view.annotation!.title
         
         for i in 0...(allCafs.count - 1) {
