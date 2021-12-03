@@ -57,7 +57,13 @@ final class CalendarEventViewModel: EventDescriptor {
         self.startDate = startDate
         self.endDate = endDate
         self.text = title
-        let attributedTitle = NSMutableAttributedString(string: title).font(.systemFont(ofSize: 12, weight: .bold)).color(textColor)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let startTime = dateFormatter.string(from: startDate)
+        let endTime = dateFormatter.string(from: endDate)
+        
+        let attributedTitle = NSMutableAttributedString(string: title + " (" + startTime + " - " + endTime + ")").font(.systemFont(ofSize: 12, weight: .bold)).color(textColor)
         if let location = event.location {
             let attributedLocation = NSMutableAttributedString(string: location).font(.systemFont(ofSize: 12, weight: .regular)).color(textColor)
             attributedTitle.append(NSAttributedString(string: "\n"))
@@ -68,6 +74,12 @@ final class CalendarEventViewModel: EventDescriptor {
             attributedTitle.append(NSAttributedString(string: "\n\n"))
             attributedTitle.append(attributedLocation)
         }
+        
+        if let url = event.url {
+            attributedTitle.append(NSAttributedString(string: "\n\n"))
+            attributedTitle.append(NSAttributedString(string: url.absoluteString))
+        }
+        
         self.attributedText = attributedTitle
     }
 

@@ -44,6 +44,12 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
         super.viewDidLoad()
         setupCollectionView()
         setupDataSource()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(addressBookDidChange),
+            name: NSNotification.Name.CNContactStoreDidChange,
+            object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -241,5 +247,20 @@ final class PersonDetailCollectionViewController: UICollectionViewController, CN
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         navigationController?.popToViewController(self, animated: true)
     }
+    
+    @objc func addressBookDidChange (notification: NSNotification) {
+        guard let person = person else { return }
+        
+        var title = ""
+        
+        if person.title != nil {
+            title = person.title!
+        }
+        
+        let alert = UIAlertController(title: title + " " + person.firstName + " " + person.name + " " + "has been added to your list of contacts", message: "", preferredStyle: .alert)
 
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
+    }
 }

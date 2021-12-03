@@ -24,7 +24,8 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     @IBOutlet private weak var personSearchLabel: UILabel!
     @IBOutlet private weak var lectureSearchCell: UITableViewCell!
     @IBOutlet private weak var lectureSearchLabel: UILabel!
-
+    @IBOutlet private weak var checkTuitionLabel: UILabel!
+    
     var profileImage: UIImage? {
         get { return profileImageView.image }
         set { profileImageView.image = newValue?.imageRoundedIntoCircle() }
@@ -88,6 +89,8 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
             signOutLabel.textColor = .red
             enableLoginOnlyFeatures(true)
         }
+        
+        checkTuitionFunc()
     }
 
     private func enableLoginOnlyFeatures(_ enable: Bool) {
@@ -195,6 +198,33 @@ final class ProfileTableViewController: UITableViewController, MFMailComposeView
     @IBAction func done(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    // MARK: TuitionCheck
 
-
+    typealias ImporterTypeTuition = Importer<Tuition,TUMOnlineAPIResponse<Tuition>,XMLDecoder>
+    
+    private static let endpointTuition = TUMOnlineAPI.tuitionStatus
+    private static let sortDescriptorTuition = NSSortDescriptor(keyPath: \Tuition.semesterID, ascending: false)
+    private let importerTuition = ImporterTypeTuition(endpoint: endpointTuition, sortDescriptor: sortDescriptorTuition, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
+        
+    func checkTuitionFunc() {
+        DispatchQueue.main.async {
+            try? self.importerTuition.fetchedResultsController.performFetch()
+            let c = self.importerTuition.fetchedResultsController.fetchedObjects?.count
+            if c != nil && c != 0{
+                let indexPath = IndexPath(row: 0, section: 0)
+                let tuition = self.importerTuition.fetchedResultsController.object(at: indexPath)
+                if let amount = tuition.amount {
+                    self.checkTuitionLabel.text = "\(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a".localized)"
+                    if amount.isEqual(to: 0) {
+                        self.checkTuitionLabel.text = "✅"
+                    } else {
+                        self.checkTuitionLabel.textColor = .red
+                    }
+                }
+            } else {
+                self.checkTuitionLabel.text = ""
+            }
+        }
+    }
 }

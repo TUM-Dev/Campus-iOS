@@ -176,7 +176,8 @@ final class LecturesCollectionViewController: UICollectionViewController, Profil
         let storyboard = UIStoryboard(name: "Main", bundle: .main)
         guard let detailVC = storyboard.instantiateViewController(withIdentifier: "LectureDetailCollectionViewController") as? LectureDetailCollectionViewController else { return }
         navigationController?.pushViewController(detailVC, animated: true)
-        detailVC.setLecture(lecture)
+        let lectureID = String(lecture.id)
+        detailVC.setLecture(withLVNr: lectureID)
+        detailVC.setEvent(withEvent: nil)
     }
-
 }

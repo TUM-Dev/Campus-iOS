@@ -13,6 +13,7 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet weak var openMenuBtn: OpenMenuBtnClass!
 
     private static let distanceFormatter: MKDistanceFormatter = {
         let formatter = MKDistanceFormatter()
@@ -21,41 +22,42 @@ final class CafeteriaCollectionViewCell: UICollectionViewCell {
     }()
     
     func configure(cafeteria: Cafeteria, currentLocation: CLLocation?) {
+        self.layer.borderColor = UIColor.systemGray5.cgColor
+        self.layer.borderWidth = 2
+        
+        self.layer.cornerRadius = 15
+        
         nameLabel.text = cafeteria.name
         addressLabel.text = cafeteria.location.address
         if let currentLocation = currentLocation {
             let distance = cafeteria.coordinate.location.distance(from: currentLocation)
             distanceLabel.text = CafeteriaCollectionViewCell.distanceFormatter.string(fromDistance: distance)
+            distanceLabel.textAlignment = .right
         } else {
             distanceLabel.text = ""
         }
+        
+        //MARK: - Constraints
+                
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 18).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
+        
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 6).isActive = true
+        addressLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 17).isActive = true
+        
+        distanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        distanceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -13).isActive = true
+        distanceLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15).isActive = true
+        
+        openMenuBtn.translatesAutoresizingMaskIntoConstraints = false
+        openMenuBtn.setTitle("", for: .normal)
+        openMenuBtn.topAnchor.constraint(equalTo: self.topAnchor, constant: 11).isActive = true
+        openMenuBtn.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -13).isActive = true
     }
+}
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupShadow()
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        setupShadow()
-    }
-
-    private func setupShadow() {
-        layer.cornerRadius = 8
-        layer.backgroundColor = UIColor { traitCollection -> UIColor in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor.secondarySystemBackground
-            default:
-                return UIColor.systemBackground
-            }
-        }.cgColor
-        layer.shadowColor = UIColor.systemGray.cgColor
-        layer.shadowOffset = CGSize(width: 1.0, height: 4.0)
-        layer.shadowRadius = 5.0
-        layer.shadowOpacity = 0.1
-        layer.masksToBounds = false
-    }
-    
+class OpenMenuBtnClass: UIButton {
+    var caf: Cafeteria?
 }

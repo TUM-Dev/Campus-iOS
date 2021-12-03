@@ -17,11 +17,12 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
     private enum Section: CaseIterable {
         case main
     }
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Person Search".localized
-        let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search for Students or Employees".localized
@@ -31,6 +32,18 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
         definesPresentationContext = true
         tableView.tableFooterView = UIView()
         setupDataSource()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController.searchBar.resignFirstResponder()
+        perform(#selector(callSearchBar), with: nil, afterDelay: 0.001)
+    }
+    
+    @objc func callSearchBar() {
+        searchController.isActive = true
+        searchController.searchBar.isHidden = false
+        searchController.searchBar.becomeFirstResponder()
     }
 
     // MARK: DataSource
@@ -87,6 +100,4 @@ final class PersonSearchViewController: UITableViewController, UISearchResultsUp
             }
         }
     }
-
-
 }
