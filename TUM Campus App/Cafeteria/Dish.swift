@@ -54,7 +54,7 @@ struct Dish: Decodable {
      */
 
     let name: String
-    let prices: [String: Price]
+    let prices: [String: Price?]
     let ingredients: [String]
     let dishType: String
 

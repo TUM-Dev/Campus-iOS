@@ -23,16 +23,15 @@ final class MenuCollectionViewCell: UICollectionViewCell {
 
     func configure(dish: Dish) {
         nameLabel.text = dish.name
-
         if let price = dish.prices["students"] {
             var basePriceString: String?
             var unitPriceString: String?
 
-            if let basePrice = price.basePrice, basePrice != 0 {
+            if let basePrice = price?.basePrice, basePrice != 0 {
                 basePriceString = MenuCollectionViewCell.priceFormatter.string(for: basePrice)
             }
 
-            if let unitPrice = price.unitPrice, let unit = price.unit, unitPrice != 0 {
+            if let unitPrice = price?.unitPrice, let unit = price?.unit, unitPrice != 0 {
                 unitPriceString = MenuCollectionViewCell.priceFormatter.string(for: unitPrice)?.appending(" / " + unit)
             }
 
@@ -72,6 +71,4 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.masksToBounds = false
     }
-
 }
-
