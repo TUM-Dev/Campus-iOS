@@ -10,8 +10,7 @@ import CalendarKit
 import UIKit
 
 final class CalendarEventViewModel: EventDescriptor {
-    var startDate: Date
-    var endDate: Date
+    var dateInterval: DateInterval
     var isAllDay = false
     var text: String
     var attributedText: NSAttributedString?
@@ -44,9 +43,8 @@ final class CalendarEventViewModel: EventDescriptor {
         }
     }
 
-    init(startDate: Date, endDate: Date, text: String, attributedText: NSAttributedString? = nil, userInfo: Any? = nil) {
-        self.startDate = startDate
-        self.endDate = endDate
+    init(dateInterval: DateInterval, text: String, attributedText: NSAttributedString? = nil, userInfo: Any? = nil) {
+        self.dateInterval = dateInterval
         self.text = text
         self.attributedText = attributedText
         self.userInfo = userInfo
@@ -54,8 +52,7 @@ final class CalendarEventViewModel: EventDescriptor {
 
     init?(event: CalendarEvent) {
         guard let startDate = event.startDate, let endDate = event.endDate, let title = event.title else { return nil }
-        self.startDate = startDate
-        self.endDate = endDate
+        self.dateInterval = DateInterval(start: startDate, end: endDate)
         self.text = title
         
         let dateFormatter = DateFormatter()
@@ -84,13 +81,12 @@ final class CalendarEventViewModel: EventDescriptor {
     }
 
     func makeEditable() -> CalendarEventViewModel {
-        return CalendarEventViewModel(startDate: startDate, endDate: endDate, text: text, attributedText: attributedText, userInfo: userInfo)
+      return CalendarEventViewModel(dateInterval: dateInterval, text: text, attributedText: attributedText, userInfo: userInfo)
     }
 
     func commitEditing() {
         guard let edited = editedEvent else {return}
-        edited.startDate = startDate
-        edited.endDate = endDate
+        edited.dateInterval = dateInterval
     }
 
     private func updateColors() {
