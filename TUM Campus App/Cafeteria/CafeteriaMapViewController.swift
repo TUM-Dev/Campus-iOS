@@ -195,7 +195,7 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
         }
     }
     
-    internal func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         colViewAutoScroll()
     }
     
