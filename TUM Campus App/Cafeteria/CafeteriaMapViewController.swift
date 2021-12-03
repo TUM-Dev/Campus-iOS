@@ -199,7 +199,7 @@ class CafeteriaMapViewController: UIViewController, CLLocationManagerDelegate, U
         colViewAutoScroll()
     }
     
-    internal func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
             colViewAutoScroll()
         }
