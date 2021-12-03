@@ -386,7 +386,7 @@ extension CafeteriaMapViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.bounds.width - 6, height: 80.0)
     }
 
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10.0
     }
 }
