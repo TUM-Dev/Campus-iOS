@@ -14,32 +14,28 @@ struct CampusApp: App {
     @StateObject var model: Model = MockModel()
     @State var selectedTab = 0
     @State var splashScreenPresented = false
+    @State private var showingAlert = false
 
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-            .fullScreenCover(isPresented: $model.isLoginSheetPresented) {
-//                if splashScreenPresented {
-//                    Spinner()
-//                        .alert(isPresented: $showingAlert) {
-//                            Alert(title: Text("There is a problem with the connection"),
-//                                  message: Text("Please restart the app"),
-//                                  dismissButton: .default(Text("Got it!")))
-//                        }
-//                } else {
-//                    LoginView(model: model)
-//                        .onAppear {
-//                            selectedTab = 2
-//                            KeychainService.removeAuthorization()
-//                        }
-//                }
-                
-                
-//                LoginView(model: model)
-//               .onAppear {
-//                   selectedTab = 2
-//                   KeychainService.removeAuthorization()
-//               }
+            .sheet(isPresented: $model.isLoginSheetPresented) {
+                if splashScreenPresented {
+                    Spinner()
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("There is a problem with the connection"),
+                                  message: Text("Please restart the app"),
+                                  dismissButton: .default(Text("Got it!")))
+                        }
+                } else {
+                    NavigationView {
+                        LoginView(model: model)
+                            .onAppear {
+                                selectedTab = 2
+                                // KeychainService.removeAuthorization()
+                            }
+                    }
+                }
             }
             .onAppear {
                 checkAuthorized(count: 0)

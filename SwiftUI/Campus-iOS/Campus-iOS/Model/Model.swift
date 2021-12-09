@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 public class Model: ObservableObject {
-    @Published var isLoginSheetPresented = false
+    @Published var isLoginSheetPresented = true
     
     var anyCancellables: [AnyCancellable] = []
     

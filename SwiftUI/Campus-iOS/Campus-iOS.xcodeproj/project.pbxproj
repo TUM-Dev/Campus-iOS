@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36203E7F2761B9D000C24658 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36203E7D2761B9D000C24658 /* Localizable.strings */; };
+		36203E832761BDD100C24658 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 36203E822761BDD100C24658 /* KeychainAccess */; };
+		36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E882761C6EC00C24658 /* Spinner.swift */; };
+		36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E892761C6EC00C24658 /* LoginView.swift */; };
+		36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E8A2761C6EC00C24658 /* Credentials.swift */; };
 		366F0E8427580CFB0091651D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8327580CFB0091651D /* App.swift */; };
 		366F0E8627580CFB0091651D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8527580CFB0091651D /* ContentView.swift */; };
 		366F0E8827580CFD0091651D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8727580CFD0091651D /* Assets.xcassets */; };
@@ -18,6 +23,9 @@
 		366F0EA627580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */; };
 		3683C3182758117900082930 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3172758117900082930 /* Model.swift */; };
 		3683C31A2758118A00082930 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3192758118A00082930 /* MockModel.swift */; };
+		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
+		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
+		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36203E7E2761B9D000C24658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Campus-iOS/Base.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		36203E802761B9F200C24658 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = "Campus-iOS/de.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		36203E882761C6EC00C24658 /* Spinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		36203E892761C6EC00C24658 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		36203E8A2761C6EC00C24658 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		366F0E8027580CFB0091651D /* Campus-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		366F0E8327580CFB0091651D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		366F0E8527580CFB0091651D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +65,9 @@
 		366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3683C3172758117900082930 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3683C3192758118A00082930 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
+		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
+		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36203E872761C6EC00C24658 /* LoginComponent */ = {
+			isa = PBXGroup;
+			children = (
+				36203E882761C6EC00C24658 /* Spinner.swift */,
+				36203E892761C6EC00C24658 /* LoginView.swift */,
+				36203E8A2761C6EC00C24658 /* Credentials.swift */,
+				3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */,
+				36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */,
+			);
+			path = LoginComponent;
+			sourceTree = "<group>";
+		};
 		366F0E7727580CFB0091651D = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +131,9 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3698CBEB2761DFA9001C5735 /* Styles */,
+				36203E872761C6EC00C24658 /* LoginComponent */,
+				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				3683C3162758115000082930 /* Model */,
 				366F0E8327580CFB0091651D /* App.swift */,
 				366F0E8527580CFB0091651D /* ContentView.swift */,
@@ -147,6 +179,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3698CBEB2761DFA9001C5735 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +203,9 @@
 			dependencies = (
 			);
 			name = "Campus-iOS";
+			packageProductDependencies = (
+				36203E822761BDD100C24658 /* KeychainAccess */,
+			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -233,8 +276,12 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 366F0E7727580CFB0091651D;
+			packageReferences = (
+				36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -252,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */,
+				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,9 +327,15 @@
 			files = (
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
+				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				366F0E8627580CFB0091651D /* ContentView.swift in Sources */,
+				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
+				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
+				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
+				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +371,18 @@
 			targetProxy = 366F0EA027580CFD0091651D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		36203E7D2761B9D000C24658 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36203E7E2761B9D000C24658 /* Base */,
+				36203E802761B9F200C24658 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		366F0EA727580CFD0091651D /* Debug */ = {
@@ -599,7 +665,7 @@
 				366F0EA827580CFD0091651D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		366F0EA927580CFD0091651D /* Build configuration list for PBXNativeTarget "Campus-iOS" */ = {
 			isa = XCConfigurationList;
@@ -608,7 +674,7 @@
 				366F0EAB27580CFD0091651D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		366F0EAC27580CFD0091651D /* Build configuration list for PBXNativeTarget "Campus-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -617,7 +683,7 @@
 				366F0EAE27580CFD0091651D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		366F0EAF27580CFD0091651D /* Build configuration list for PBXNativeTarget "Campus-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -626,9 +692,28 @@
 				366F0EB127580CFD0091651D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		36203E822761BDD100C24658 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */ = {

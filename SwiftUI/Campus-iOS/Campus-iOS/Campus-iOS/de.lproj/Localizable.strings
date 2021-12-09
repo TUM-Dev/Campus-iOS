@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  TUM Campus App
+
+  Created by Tim Gymnich on 24.5.20.
+  Copyright © 2020 TUM. All rights reserved.
+*/
+
+"No Permission" = "Keine Berechtigung";
+"Missing token" = "Token fehlt";
+"Invalid token" = "Ungültiges Token";
+"Token not confirmed" = "Token nicht bestätigt";
+"Unknown error" = "Unbekannter Error";
+"Make sure to enable the right permissions for your token." = "Stelle sicher, dass du die notwendigen Berechtigungen für dein Token aktiviert hast.";
+"Go to TUMOnline and confirm the token" = "Gehe auf TUMonline und bestätige dein Token";
+"Try creating a new token." = "Versuche ein neues Token zu erstellen.";
+"Continue" = "Weiter";
+"Login Error" = "Login Error";
+"OK" = "OK";
+"Authorization Error" = "Authorisierungs Error";
+"n/a" = "n/a";
+"Calendar" = "Kalender";
+"Events" = "Termine";
+"No Calendar Events" = "Keine Veranstaltungen";
+"Lectures" = "Vorlesungen";
+"No Lectures" = "Keine Vorlesungen";
+"Grades" = "Noten";
+"No Grades" = "Keine Noten";
+"Tuition fees" = "Studienbeiträge";
+"Amount" = "Betrag";
+"Deadline" = "Frist";
+"Cafeterias" = "Mensa";
+"Not logged in" = "Nicht angemeldet";
+"Sign In" = "Anmelden";
+"Sign Out" = "Abmelden";
+"Study Rooms" = "Lernräume";
+"No Study Rooms" = "Keine Lernräume";
+"Free" = "Frei";
+"Occupied until" = "Besetzt bis";
+"Unknown" = "Unbekannt";
+"Useful Links" = "Nützliche Links";
+"No Links" = "Keine Links";
+"Cafeteria Map" = "Mensa Landkarte";
+"Search Rooms" = "Räume suchen";
+"Room Finder" = "Room Finder";
+"Unable to find room" = "Raum '%@' konnte nicht gefunden werden";
+"No Menu" = "Kein Menü";
+"List View" = "Listenansicht";
+"Jump to Today" = "Zum heutigen Tag springen";
+
+
+// Login.storybroad
+
+"Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";
+"Enter your TUM ID to get started" = "Gib deine TUM ID ein";
+"go" = "go";
+"42" = "42";
+"tum" = "tum";
+"Continue 🎓" = "Weiter 🎓";
+"Continue without TUM ID" = "Weiter ohne TUM ID";
+"Check your email and click on the link to confirm your token or visit TUMonline" = "Prüfe deine Email Postfach und klicke auf den Link um das Token zu aktivieren oder gehe auf TUMonline";
+"Select \"Token-Management\"" = "Gehe auf \"Token Verwaltung\"";
+"Click on the newly created token and enable your desired permissions" = "Setzte einen Hacken bei  \"aktiviert\" und stelle die benötigten Rechte ein";
+"I need help" = "Ich brauche Hilfe";
+"Check Authorization" = "Token prüfen";
+"1" = "1";
+"2" = "2";
+"3" = "3";
+"Authorize Token" = "Token authorisieren";

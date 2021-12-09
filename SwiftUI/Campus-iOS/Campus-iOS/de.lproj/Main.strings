@@ -1,0 +1,209 @@
+
+/* Class = "UILabel"; text = "Join the Beta"; ObjectID = "29g-Mj-eAk"; */
+"29g-Mj-eAk.text" = "Werde Beta-Tester";
+
+/* Class = "UILabel"; text = "TUM ID"; ObjectID = "34H-Ri-CR8"; */
+"34H-Ri-CR8.text" = "TUM ID";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "42f-N5-6wt"; */
+"42f-N5-6wt.text" = "Title";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "4PF-dJ-FVP"; */
+"4PF-dJ-FVP.text" = "Details";
+
+/* Class = "UILabel"; text = "Version 1.0.0"; ObjectID = "6cx-bG-yLI"; */
+"6cx-bG-yLI.text" = "Version 1.0.0";
+
+/* Class = "UILabel"; text = "speaker"; ObjectID = "7JO-cs-wke"; */
+"7JO-cs-wke.text" = "speaker";
+
+/* Class = "UITabBarItem"; title = "Lectures"; ObjectID = "7hW-Zh-aNm"; */
+"7hW-Zh-aNm.title" = "Vorlesungen";
+
+/* Class = "UILabel"; text = "Feedback"; ObjectID = "9NI-Zb-R0c"; */
+"9NI-Zb-R0c.text" = "Feedback";
+
+/* Class = "UITableViewSection"; headerTitle = "My TUM"; ObjectID = "9wY-PO-pcE"; */
+"9wY-PO-pcE.headerTitle" = "My TUM";
+
+/* Class = "UILabel"; text = "room_code"; ObjectID = "A0U-Rx-CNQ"; */
+"A0U-Rx-CNQ.text" = "room_code";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "A5l-j6-Djd"; */
+"A5l-j6-Djd.text" = "Status";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "A9z-mM-YNj"; */
+"A9z-mM-YNj.text" = "Name";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Cx9-I1-Pk4"; */
+"Cx9-I1-Pk4.text" = "Name";
+
+/* Class = "UILabel"; text = "purpose"; ObjectID = "Dwg-6D-bWF"; */
+"Dwg-6D-bWF.text" = "purpose";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "FBF-TA-Qgz"; */
+"FBF-TA-Qgz.text" = "Price";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "FGD-UB-y2p"; */
+"FGD-UB-y2p.title" = "Item";
+
+/* Class = "UIBarButtonItem"; FGD-UB-y2p.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "FGD-UB-y2p"; */
+"FGD-UB-y2p.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "info"; ObjectID = "HnF-ip-IAl"; */
+"HnF-ip-IAl.text" = "info";
+
+/* Class = "UILabel"; text = "Building"; ObjectID = "IXk-4p-ZRm"; */
+"IXk-4p-ZRm.text" = "Building";
+
+/* Class = "UITableViewSection"; headerTitle = "Allgemein"; ObjectID = "JGl-Dq-AQE"; */
+"JGl-Dq-AQE.headerTitle" = "Allgemein";
+
+/* Class = "UIBarButtonItem"; LEd-ud-xri.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "LEd-ud-xri"; */
+"LEd-ud-xri.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "LOd-Yu-1gj"; */
+"LOd-Yu-1gj.title" = "Item";
+
+/* Class = "UIBarButtonItem"; LOd-Yu-1gj.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "LOd-Yu-1gj"; */
+"LOd-Yu-1gj.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profile";
+
+/* Class = "UILabel"; text = "grade"; ObjectID = "LaK-dN-1Wh"; */
+"LaK-dN-1Wh.text" = "grade";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "LyM-Zg-hFy"; */
+"LyM-Zg-hFy.text" = "Name";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "LyQ-Km-jc8"; */
+"LyQ-Km-jc8.text" = "address";
+
+/* Class = "UILabel"; text = "event type"; ObjectID = "M97-hH-jU4"; */
+"M97-hH-jU4.text" = "event type";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "MVu-ZW-Ebj"; */
+"MVu-ZW-Ebj.text" = "name";
+
+/* Class = "UITabBarItem"; title = "Calendar"; ObjectID = "N3e-89-A85"; */
+"N3e-89-A85.title" = "Calendar";
+
+"cpx-zd-HOx.title" = "Heute";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "OQ0-vr-lBR"; */
+"OQ0-vr-lBR.text" = "address";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "PdF-LY-kRP"; */
+"PdF-LY-kRP.text" = "Amount";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PsM-8J-Utg"; */
+"PsM-8J-Utg.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Cafeteria"; ObjectID = "RRw-AB-qv3"; */
+"RRw-AB-qv3.title" = "Mensa";
+
+/* Class = "UINavigationItem"; title = "Profil"; ObjectID = "TB6-oP-a7L"; */
+"TB6-oP-a7L.title" = "Profil";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "TLw-2Y-aZY"; */
+"TLw-2Y-aZY.text" = "Details";
+
+/* Class = "UITabBarItem"; title = "Study Rooms"; ObjectID = "V2v-gg-WvC"; */
+"V2v-gg-WvC.title" = "Lernräume";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "V5D-u9-qp8"; */
+"V5D-u9-qp8.text" = "price";
+
+/* Class = "UILabel"; text = "distance"; ObjectID = "Vrg-P0-xWM"; */
+"Vrg-P0-xWM.text" = "distance";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Xb0-6o-VE5"; */
+"Xb0-6o-VE5.text" = "Name";
+
+/* Class = "UILabel"; text = "Raumname"; ObjectID = "Xu0-o0-BRm"; */
+"Xu0-o0-BRm.text" = "Raumname";
+
+/* Class = "UILabel"; text = "lv_title"; ObjectID = "Ybi-PW-7fE"; */
+"Ybi-PW-7fE.text" = "lv_title";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "bB9-1p-ihP"; */
+"bB9-1p-ihP.text" = "name";
+
+/* Class = "UILabel"; text = "Raumnummer"; ObjectID = "bBG-QR-e9b"; */
+"bBG-QR-e9b.text" = "Raumnummer";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "bO9-UZ-4bm"; */
+"bO9-UZ-4bm.text" = "Detail";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "bcU-ZW-cBx"; */
+"bcU-ZW-cBx.text" = "Date";
+
+/* Class = "UILabel"; text = "modus"; ObjectID = "e63-eI-CHQ"; */
+"e63-eI-CHQ.text" = "modus";
+
+/* Class = "UILabel"; text = "Roomfinder"; ObjectID = "eX3-y7-l7q"; */
+"eX3-y7-l7q.text" = "Roomfinder";
+
+/* Class = "UILabel"; text = "TUM Dev on GitHub"; ObjectID = "eiH-bm-nVc"; */
+"eiH-bm-nVc.text" = "TUM Dev on GitHub";
+
+/* Class = "UILabel"; text = "nr free rooms"; ObjectID = "fcw-L0-8EV"; */
+"fcw-L0-8EV.text" = "nr free rooms";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "frw-DI-yRD"; */
+"frw-DI-yRD.text" = "Address";
+
+/* Class = "UILabel"; text = "lv number"; ObjectID = "gyC-o4-377"; */
+"gyC-o4-377.text" = "lv number";
+
+/* Class = "UILabel"; text = "TUM Dev Website"; ObjectID = "jR9-Zg-wsN"; */
+"jR9-Zg-wsN.text" = "TUM Dev Webseite";
+
+/* Class = "UITabBarItem"; title = "Grades"; ObjectID = "jzO-tR-0Gw"; */
+"jzO-tR-0Gw.title" = "Noten";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "lux-Zw-7kh"; */
+"lux-Zw-7kh.text" = "Price";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "mzl-Pv-gZF"; */
+"mzl-Pv-gZF.text" = "Title";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "qoF-k3-zkD"; */
+"qoF-k3-zkD.text" = "Name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "r4d-8U-Gef"; */
+"r4d-8U-Gef.text" = "Label";
+
+/* Class = "UILabel"; text = "Abmelden"; ObjectID = "r8G-mW-9Pj"; */
+"r8G-mW-9Pj.text" = "Abmelden";
+
+/* Class = "UILabel"; text = "Deadline"; ObjectID = "skb-ZY-Vdm"; */
+"skb-ZY-Vdm.text" = "Deadline";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ujc-wl-KpW"; */
+"ujc-wl-KpW.text" = "Title";
+
+/* Class = "UILabel"; text = "Studienbeiträge"; ObjectID = "vCY-b0-Qk4"; */
+"vCY-b0-Qk4.text" = "Studienbeiträge";
+
+/* Class = "UILabel"; text = "TUM.sexy"; ObjectID = "vCZ-mu-j3F"; */
+"vCZ-mu-j3F.text" = "TUM.sexy";
+
+/* Class = "UIBarButtonItem"; vY4-jC-G5O.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0] = "Profile"; ObjectID = "vY4-jC-G5O"; */
+"vY4-jC-G5O.ibExternalUserDefinedRuntimeAttributesLocalizableStrings[0]" = "Profil";
+
+/* Class = "UILabel"; text = "Semester"; ObjectID = "vyK-KK-HNk"; */
+"vyK-KK-HNk.text" = "Semester";
+
+/* Class = "UILabel"; text = "examiner"; ObjectID = "w8d-BY-9fy"; */
+"w8d-BY-9fy.text" = "examiner";
+
+/* Class = "UILabel"; text = "purpose"; ObjectID = "xDK-2x-Kpy"; */
+"xDK-2x-Kpy.text" = "purpose";
+
+/* Class = "UINavigationItem"; title = "Tuition Fees"; ObjectID = "yVh-AK-yJa"; */
+"yVh-AK-yJa.title" = "Studienbeiträge";
+
+/* Class = "UILabel"; text = "ingredients"; ObjectID = "yek-Vt-SYY"; */
+"yek-Vt-SYY.text" = "ingredients";
+
+/* Class = "UITableViewSection"; headerTitle = "Kontaktiere uns"; ObjectID = "ysW-fW-qY4"; */
+"ysW-fW-qY4.headerTitle" = "Kontaktiere uns";
