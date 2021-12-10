@@ -139,6 +139,21 @@
 		22FD2F772576BDFB004E5A0F /* GradeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD2F762576BDFB004E5A0F /* GradeColors.swift */; };
 		22FFED5F247BDC1600BCA27C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED5E247BDC1600BCA27C /* MapViewController.swift */; };
 		22FFED61247BF47100BCA27C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED60247BF47100BCA27C /* IconButton.swift */; };
+		233C51C927590AEC00477D89 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C51C827590AEC00477D89 /* WidgetKit.framework */; };
+		233C51CB27590AEC00477D89 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C51CA27590AEC00477D89 /* SwiftUI.framework */; };
+		233C51CE27590AEC00477D89 /* MensaMenuWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C51CD27590AEC00477D89 /* MensaMenuWidget.swift */; };
+		233C51D127590AEE00477D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233C51D027590AEE00477D89 /* Assets.xcassets */; };
+		233C51D327590AEE00477D89 /* MensaMenuWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 233C51CF27590AEC00477D89 /* MensaMenuWidget.intentdefinition */; };
+		233C51D427590AEE00477D89 /* MensaMenuWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 233C51CF27590AEC00477D89 /* MensaMenuWidget.intentdefinition */; };
+		233C51D727590AEE00477D89 /* MensaMenuWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 233C51C727590AEC00477D89 /* MensaMenuWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		233C51DF27590FD000477D89 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
+		233C51E22759104800477D89 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
+		233C51E32759104F00477D89 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C22460EA5A00BEDA71 /* MealPlan.swift */; };
+		233C51E42759105200477D89 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6442220B36600854D55 /* Cafeteria.swift */; };
+		233C51E92759124000477D89 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C51E7275911D000477D89 /* Extensions.swift */; };
+		233C51EA2759148400477D89 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
+		233C51EC275919FA00477D89 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 233C51EB275919FA00477D89 /* Alamofire */; };
+		239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F5E6B275AB908002FDD6A /* MockMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +171,28 @@
 			remoteGlobalIDString = 2277E90B21D93C3300D7FF3F;
 			remoteInfo = "TUM Campus App";
 		};
+		233C51D527590AEE00477D89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2277E90421D93C3300D7FF3F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 233C51C627590AEC00477D89;
+			remoteInfo = MensaMenuWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		233C51D927590AEE00477D89 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				233C51D727590AEE00477D89 /* MensaMenuWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		19382F1D2389CA5F007BEC88 /* StudyRoomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomTableViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +331,16 @@
 		22FD2F762576BDFB004E5A0F /* GradeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeColors.swift; sourceTree = "<group>"; };
 		22FFED5E247BDC1600BCA27C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		22FFED60247BF47100BCA27C /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		233C51C727590AEC00477D89 /* MensaMenuWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MensaMenuWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		233C51C827590AEC00477D89 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		233C51CA27590AEC00477D89 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		233C51CD27590AEC00477D89 /* MensaMenuWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaMenuWidget.swift; sourceTree = "<group>"; };
+		233C51CF27590AEC00477D89 /* MensaMenuWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = MensaMenuWidget.intentdefinition; sourceTree = "<group>"; };
+		233C51D027590AEE00477D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		233C51D227590AEE00477D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		233C51D827590AEE00477D89 /* MensaMenuWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MensaMenuWidgetExtension.entitlements; sourceTree = "<group>"; };
+		233C51E7275911D000477D89 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		239F5E6B275AB908002FDD6A /* MockMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +372,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		233C51C427590AEC00477D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233C51EC275919FA00477D89 /* Alamofire in Frameworks */,
+				233C51CB27590AEC00477D89 /* SwiftUI.framework in Frameworks */,
+				233C51C927590AEC00477D89 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,11 +491,13 @@
 		2277E90321D93C3300D7FF3F = {
 			isa = PBXGroup;
 			children = (
+				233C51D827590AEE00477D89 /* MensaMenuWidgetExtension.entitlements */,
 				227CD8382615BC4300086218 /* Settings.bundle */,
 				2277E90E21D93C3300D7FF3F /* TUM Campus App */,
 				22A57A2824B9438F0062B791 /* TUM Campus App.xctestplan */,
 				2277E92621D93C3400D7FF3F /* TUM Campus AppTests */,
 				2277E93121D93C3400D7FF3F /* TUM Campus AppUITests */,
+				233C51CC27590AEC00477D89 /* MensaMenuWidget */,
 				2277E90D21D93C3300D7FF3F /* Products */,
 				227CD83D2615BD1500086218 /* Frameworks */,
 			);
@@ -451,6 +509,7 @@
 				2277E90C21D93C3300D7FF3F /* TUMCampusApp.app */,
 				2277E92321D93C3400D7FF3F /* TUMCampusAppTests.xctest */,
 				2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */,
+				233C51C727590AEC00477D89 /* MensaMenuWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,6 +576,8 @@
 		227CD83D2615BD1500086218 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				233C51C827590AEC00477D89 /* WidgetKit.framework */,
+				233C51CA27590AEC00477D89 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -692,6 +753,19 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
+		233C51CC27590AEC00477D89 /* MensaMenuWidget */ = {
+			isa = PBXGroup;
+			children = (
+				233C51CD27590AEC00477D89 /* MensaMenuWidget.swift */,
+				233C51CF27590AEC00477D89 /* MensaMenuWidget.intentdefinition */,
+				233C51D027590AEE00477D89 /* Assets.xcassets */,
+				233C51D227590AEE00477D89 /* Info.plist */,
+				233C51E7275911D000477D89 /* Extensions.swift */,
+				239F5E6B275AB908002FDD6A /* MockMenu.swift */,
+			);
+			path = MensaMenuWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -702,10 +776,12 @@
 				2277E90821D93C3300D7FF3F /* Sources */,
 				2277E90921D93C3300D7FF3F /* Frameworks */,
 				2277E90A21D93C3300D7FF3F /* Resources */,
+				233C51D927590AEE00477D89 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				233C51D627590AEE00477D89 /* PBXTargetDependency */,
 			);
 			name = TUMCampusApp;
 			packageProductDependencies = (
@@ -760,13 +836,33 @@
 			productReference = 2277E92E21D93C3400D7FF3F /* TUMCampusAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		233C51C627590AEC00477D89 /* MensaMenuWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 233C51DC27590AEE00477D89 /* Build configuration list for PBXNativeTarget "MensaMenuWidgetExtension" */;
+			buildPhases = (
+				233C51C327590AEC00477D89 /* Sources */,
+				233C51C427590AEC00477D89 /* Frameworks */,
+				233C51C527590AEC00477D89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MensaMenuWidgetExtension;
+			packageProductDependencies = (
+				233C51EB275919FA00477D89 /* Alamofire */,
+			);
+			productName = MensaMenuWidgetExtension;
+			productReference = 233C51C727590AEC00477D89 /* MensaMenuWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2277E90421D93C3300D7FF3F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = TUM;
 				TargetAttributes = {
@@ -785,6 +881,9 @@
 					2277E92D21D93C3400D7FF3F = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 2277E90B21D93C3300D7FF3F;
+					};
+					233C51C627590AEC00477D89 = {
+						CreatedOnToolsVersion = 13.1;
 					};
 				};
 			};
@@ -815,6 +914,7 @@
 				2277E90B21D93C3300D7FF3F /* TUMCampusApp */,
 				2277E92221D93C3400D7FF3F /* TUMCampusAppTests */,
 				2277E92D21D93C3400D7FF3F /* TUMCampusAppUITests */,
+				233C51C627590AEC00477D89 /* MensaMenuWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -858,6 +958,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		233C51C527590AEC00477D89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233C51D127590AEE00477D89 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +1048,7 @@
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
 				2255F68B24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift in Sources */,
 				22692D96221DCE29002C5720 /* EntityImporter.swift in Sources */,
+				233C51D427590AEE00477D89 /* MensaMenuWidget.intentdefinition in Sources */,
 				229C549C24967AEC00EFD5A2 /* NewsImporter.swift in Sources */,
 				22EDE42724B0B53B00DBEC03 /* PersonDetail.swift in Sources */,
 				22710B5D247AB5FE0065D6E9 /* RoomFinderViewController.swift in Sources */,
@@ -987,6 +1096,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		233C51C327590AEC00477D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				233C51E32759104F00477D89 /* MealPlan.swift in Sources */,
+				239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */,
+				233C51D327590AEE00477D89 /* MensaMenuWidget.intentdefinition in Sources */,
+				233C51E92759124000477D89 /* Extensions.swift in Sources */,
+				233C51EA2759148400477D89 /* EatAPI.swift in Sources */,
+				233C51E22759104800477D89 /* Dish.swift in Sources */,
+				233C51DF27590FD000477D89 /* Menu.swift in Sources */,
+				233C51E42759105200477D89 /* Cafeteria.swift in Sources */,
+				233C51CE27590AEC00477D89 /* MensaMenuWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -999,6 +1124,11 @@
 			isa = PBXTargetDependency;
 			target = 2277E90B21D93C3300D7FF3F /* TUMCampusApp */;
 			targetProxy = 2277E92F21D93C3400D7FF3F /* PBXContainerItemProxy */;
+		};
+		233C51D627590AEE00477D89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 233C51C627590AEC00477D89 /* MensaMenuWidgetExtension */;
+			targetProxy = 233C51D527590AEE00477D89 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1173,6 +1303,7 @@
 		2277E93821D93C3400D7FF3F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
@@ -1180,7 +1311,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 51;
-				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				DEVELOPMENT_TEAM = 356PGZV9W9;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 3.13;
@@ -1197,6 +1328,7 @@
 		2277E93921D93C3400D7FF3F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TUM Campus App/TUM Campus App.entitlements";
@@ -1204,7 +1336,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 51;
-				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				DEVELOPMENT_TEAM = 356PGZV9W9;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 3.13;
@@ -1280,6 +1412,76 @@
 			};
 			name = Release;
 		};
+		233C51DA27590AEE00477D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = MensaMenuWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 356PGZV9W9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MensaMenuWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MensaMenuWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 TUM. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.MensaMenuWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		233C51DB27590AEE00477D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = MensaMenuWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 356PGZV9W9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MensaMenuWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MensaMenuWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 TUM. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.MensaMenuWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1315,6 +1517,15 @@
 			buildConfigurations = (
 				2277E93E21D93C3400D7FF3F /* Debug */,
 				2277E93F21D93C3400D7FF3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		233C51DC27590AEE00477D89 /* Build configuration list for PBXNativeTarget "MensaMenuWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				233C51DA27590AEE00477D89 /* Debug */,
+				233C51DB27590AEE00477D89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1438,6 +1649,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 22223365261693530066D5A1 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
+		};
+		233C51EB275919FA00477D89 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 225AD7492479D2D3001A969E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 
