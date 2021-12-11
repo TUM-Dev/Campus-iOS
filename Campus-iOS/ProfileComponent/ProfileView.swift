@@ -15,47 +15,65 @@ struct ProfileView: View {
         NavigationView {
             
             List {
-                HStack(spacing: 24) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .foregroundColor(.black.opacity(0.2))
-                        .frame(width: 75, height: 75)
-                    
-                    VStack(alignment: .leading) {
-                        Text("Anton Wyrowski")
-                            .font(.title2)
+                NavigationLink(destination: Text("Profile")) {
+                    HStack(spacing: 24) {
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .foregroundColor(.black.opacity(0.2))
+                            .frame(width: 75, height: 75)
                         
-                        Text("ab00xyz")
-                            .font(.subheadline)
+                        VStack(alignment: .leading) {
+                            Text("Anton Wyrowski")
+                                .font(.title2)
+                            
+                            Text("ab00xyz")
+                                .font(.subheadline)
+                        }
                     }
+                    .padding(.vertical, 6)
                 }
-                .padding(.vertical, 6)
                 
                 Section("MY TUM") {
-                    Label("Studienbeiträge", systemImage: "eurosign.circle")
-                    Label("Person Search", systemImage: "magnifyingglass")
-                    Label("Lecture Search", systemImage: "brain.head.profile")
+                    NavigationLink(destination: Text("Studienbeiträge")) {
+                        Label("Studienbeiträge", systemImage: "eurosign.circle")
+                    }
+                    NavigationLink(destination: Text("Person Search")) {
+                        Label("Person Search", systemImage: "magnifyingglass")
+                    }
+                    NavigationLink(destination: Text("Lecture Search")) {
+                        Label("Lecture Search", systemImage: "brain.head.profile")
+                    }
                 }
                 
                 Section("ALLGEMEIN") {
-                    Label("TUM.sexy", image: "Tum.sexy")
-                    Label("Roomfinder", image: "RoomFinder")
-                    Label("News", systemImage: "newspaper")
+                    NavigationLink(destination: Text("TUM.sexy")) {
+                        Label("TUM.sexy", image: "Tum.sexy")
+                    }
+                    
+                    NavigationLink(destination: Text("Roomfinder")) {
+                        Label("Roomfinder", image: "RoomFinder")
+                    }
+                    
+                    NavigationLink(destination: Text("News")) {
+                        Label("News", systemImage: "newspaper")
+                    }
                 }
                 
                 Section("KONTAKTIERE UNS") {
-                    Button("Werde Beta-Tester") {
-                        
-                    }
-                    Button("TUM Dev on GitHub") {
-                        
-                    }
-                    Button("TUM Dev Website") {
-                        
-                    }
+                    Link("Werde Beta-Tester", destination: URL(string: "https://campus.tum.de")!)
+                    
+                    Link("TUM Dev on GitHub", destination: URL(string: "https://github.com/TUM-Dev")!)
+                    
+                    Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                    
                     Button("Feedback") {
-                        
+                        let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let mailToUrl = URL(string: mailToString!)!
+                        if UIApplication.shared.canOpenURL(mailToUrl) {
+                                UIApplication.shared.open(mailToUrl, options: [:])
+                        }
                     }
+                    
                     Button("Logout", role: .destructive) {
                         
                     }
