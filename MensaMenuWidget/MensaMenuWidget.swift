@@ -98,7 +98,7 @@ struct MensaMenuWidgetEntryView : View {
                 }.padding(.leading, 25)
                     .padding(.trailing, 35)
                     .padding(.bottom, 5)
-                ForEach(entry.menu?.dishes.filter({ $0.dishType != "Beilagen"}).prefix(family == .systemLarge ? 8 : 7) ?? [], id: \.self) { dish in
+                ForEach(getDishes(sideDishes: false).prefix(family == .systemLarge ? 8 : 7), id: \.self) { dish in
                     HStack {
                         Text(foodEmojiProvider(ingredients: dish.ingredients, dishType: dish.dishType)).font(.system(size: 13))
                         Text(dish.name)
@@ -112,18 +112,26 @@ struct MensaMenuWidgetEntryView : View {
                     }
                     Spacer().frame(minHeight: 0, maxHeight: 2)
                 }.padding(.horizontal, 10)
-                Spacer().frame(minHeight: 0)
+                
+                if getDishes(sideDishes: false).isEmpty {
+                    Spacer()
+                    Text("No dishes available today".localized)
+                        .font(.caption)
+                        .bold()
+                        .foregroundColor(Color.secondary)
+                }
+                Spacer()
             }.padding(.vertical, 5)
                 .background(Color("BackgroundTop"))
             
             if family == .systemLarge {
                 VStack(spacing: 0) {
                     HStack {
-                        Text("BEILAGEN").font(.caption).bold().foregroundColor(Color.secondary).padding(.horizontal, 15)
+                        Text("SIDE DISHES".localized).font(.caption).bold().foregroundColor(Color.secondary).padding(.horizontal, 15)
                         Spacer()
                     }.padding(.vertical, 5)
                     VStack {
-                        ForEach(entry.menu?.dishes.filter({ $0.dishType == "Beilagen"}).prefix(8) ?? [], id: \.self) { dish in
+                        ForEach(getDishes(sideDishes: false).prefix(8), id: \.self) { dish in
                             HStack {
                                 Text(dish.name)
                                     .lineLimit(1)
@@ -137,11 +145,22 @@ struct MensaMenuWidgetEntryView : View {
                             Spacer().frame(minHeight: 0, maxHeight: 2)
                         }
                     }.padding(.horizontal, 15)
+                    if getDishes(sideDishes: false).isEmpty {
+                        Spacer()
+                        Text("No dishes available today".localized)
+                            .font(.caption)
+                            .bold()
+                            .foregroundColor(Color.secondary)
+                    }
                     Spacer()
                 }.background(Color("BackgroundBottom"))
             }
             
         }
+    }
+    
+    func getDishes(sideDishes: Bool) -> [Dish] {
+        entry.menu?.dishes.filter({ sideDishes ? $0.dishType == "Beilagen" : $0.dishType != "Beilagen"}) ?? []
     }
     
     func ingredientsToString(ingredients: [String]) -> String {
@@ -185,8 +204,8 @@ struct MensaMenuWidget: Widget {
         IntentConfiguration(kind: kind, intent: ViewMensaLocationIntent.self, provider: Provider()) { entry in
             MensaMenuWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Mensa")
-        .description("Mensa menu at a glance.")
+        .configurationDisplayName("Cafeteria".localized)
+        .description("Cafeteria menu at a glance".localized)
         .supportedFamilies([.systemLarge, .systemMedium])
     }
 }

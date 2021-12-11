@@ -47,3 +47,9 @@
 "No Menu" = "Kein Menü";
 "List View" = "Listenansicht";
 "Jump to Today" = "Zum heutigen Tag springen";
+
+// Mensa Widget
+"Cafeteria" = "Mensa";
+"Cafeteria menu at a glance" = "Mensa Speiseplan auf einen Blick";
+"No dishes available today" = "Kein Speiseplan verfügbar";
+"SIDE DISHES" = "BEILAGEN";

@@ -27,7 +27,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Mensa Garching</string>
+					<string>Mensa Arcisstraße</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>7uqy60</string>
 					<key>INEnumValueIndex</key>
@@ -37,7 +37,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>Mensa Arcisstraße</string>
+					<string>Mensa Garching</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>lAIht7</string>
 					<key>INEnumValueIndex</key>
@@ -57,7 +57,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>lothstr</string>
+					<string>Mensa Lothstraße</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>6ESH4d</string>
 					<key>INEnumValueIndex</key>
@@ -67,7 +67,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>martinsried</string>
+					<string>Mensa Martinsried</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>Zcnocn</string>
 					<key>INEnumValueIndex</key>
@@ -77,7 +77,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>pasing</string>
+					<string>Mensa Pasing</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>cacRgz</string>
 					<key>INEnumValueIndex</key>
@@ -87,7 +87,7 @@
 				</dict>
 				<dict>
 					<key>INEnumValueDisplayName</key>
-					<string>weihenstephan</string>
+					<string>Mensa Weihenstephan</string>
 					<key>INEnumValueDisplayNameID</key>
 					<string>yJRnaj</string>
 					<key>INEnumValueIndex</key>
@@ -141,7 +141,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataDefaultValue</key>
-						<string>mensa_garching</string>
+						<string>mensa_arcisstr</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>location</string>

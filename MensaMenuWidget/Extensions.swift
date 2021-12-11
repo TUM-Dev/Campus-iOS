@@ -84,3 +84,8 @@ extension CLLocationCoordinate2D  {
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
 }
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}

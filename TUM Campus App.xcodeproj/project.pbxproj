@@ -139,6 +139,7 @@
 		22FD2F772576BDFB004E5A0F /* GradeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FD2F762576BDFB004E5A0F /* GradeColors.swift */; };
 		22FFED5F247BDC1600BCA27C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED5E247BDC1600BCA27C /* MapViewController.swift */; };
 		22FFED61247BF47100BCA27C /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FFED60247BF47100BCA27C /* IconButton.swift */; };
+		2301B9062764D9F900B517CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22710B532479E0D30065D6E9 /* Localizable.strings */; };
 		233C51C927590AEC00477D89 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C51C827590AEC00477D89 /* WidgetKit.framework */; };
 		233C51CB27590AEC00477D89 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 233C51CA27590AEC00477D89 /* SwiftUI.framework */; };
 		233C51CE27590AEC00477D89 /* MensaMenuWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C51CD27590AEC00477D89 /* MensaMenuWidget.swift */; };
@@ -966,6 +967,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				233C51D127590AEE00477D89 /* Assets.xcassets in Resources */,
+				2301B9062764D9F900B517CA /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
