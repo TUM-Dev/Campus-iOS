@@ -10,37 +10,37 @@ import SwiftUI
 @main
 struct CampusApp: App {
     let persistenceController = PersistenceController.shared
-
+    
     @StateObject var model: Model = MockModel()
     @State var selectedTab = 0
     @State var splashScreenPresented = false
     @State private var showingAlert = false
-
+    
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-            .sheet(isPresented: $model.isLoginSheetPresented) {
-                if splashScreenPresented {
-                    Spinner()
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("There is a problem with the connection"),
-                                  message: Text("Please restart the app"),
-                                  dismissButton: .default(Text("Got it!")))
-                        }
-                } else {
-                    NavigationView {
-                        LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 2
-                                // KeychainService.removeAuthorization()
+                .sheet(isPresented: $model.isLoginSheetPresented) {
+                    if splashScreenPresented {
+                        Spinner()
+                            .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("There is a problem with the connection"),
+                                      message: Text("Please restart the app"),
+                                      dismissButton: .default(Text("Got it!")))
                             }
+                    } else {
+                        NavigationView {
+                            LoginView(model: model)
+                                .onAppear {
+                                    selectedTab = 2
+                                    // KeychainService.removeAuthorization()
+                                }
+                        }
                     }
                 }
-            }
-            .onAppear {
-                checkAuthorized(count: 0)
-                // remove loaded model
-            }
+                .onAppear {
+                    checkAuthorized(count: 0)
+                    // remove loaded model
+                }
         }
     }
     
@@ -67,6 +67,12 @@ struct CampusApp: App {
             
             NavigationView {
                 Text("Dummy Grades View")
+                    .navigationTitle("Grades")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(profileModel: ProfileModel())
+                        }
+                    }
                 // GradesView(model: model)
             }
             .tag(2)

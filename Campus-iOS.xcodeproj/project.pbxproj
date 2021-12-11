@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
+		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		1008034A2764E3850013ED0E /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803492764E3850013ED0E /* ProfileModel.swift */; };
 		36203E7F2761B9D000C24658 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36203E7D2761B9D000C24658 /* Localizable.strings */; };
 		36203E832761BDD100C24658 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 36203E822761BDD100C24658 /* KeychainAccess */; };
 		36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E882761C6EC00C24658 /* Spinner.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
+		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		100803492764E3850013ED0E /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		36203E7E2761B9D000C24658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = "Campus-iOS/Base.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -98,6 +104,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		100803442764E2A90013ED0E /* ProfileComponent */ = {
+			isa = PBXGroup;
+			children = (
+				100803452764E2C50013ED0E /* ProfileToolbar.swift */,
+				100803472764E37A0013ED0E /* ProfileView.swift */,
+				100803492764E3850013ED0E /* ProfileModel.swift */,
+			);
+			path = ProfileComponent;
+			sourceTree = "<group>";
+		};
 		36203E872761C6EC00C24658 /* LoginComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +149,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				100803442764E2A90013ED0E /* ProfileComponent */,
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
 				3698CBEB2761DFA9001C5735 /* Styles */,
@@ -329,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1008034A2764E3850013ED0E /* ProfileModel.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
@@ -339,7 +357,9 @@
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
+				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
+				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,7 +535,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -552,7 +572,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
