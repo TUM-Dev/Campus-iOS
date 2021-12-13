@@ -13,17 +13,14 @@ class MockMenu {
     
     func getMockedMenu() -> Menu? {
         let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        let formatter = DateFormatter.yyyyMMdd
         decoder.dateDecodingStrategy = .formatted(formatter)
         
         do {
             let mealPlan: MealPlan = try decoder.decode(MealPlan.self, from: Data(mockMenuJson.utf8))
-            
             return mealPlan.days.first(where: { !$0.dishes.isEmpty })
-            
         } catch {
-
+            print(error)
         }
         return nil
     }

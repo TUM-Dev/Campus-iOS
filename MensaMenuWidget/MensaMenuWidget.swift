@@ -8,17 +8,11 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
-import Foundation
-import Alamofire
 
 struct Provider: IntentTimelineProvider {
-    
     typealias Entry = SimpleEntry
     typealias Intent = ViewMensaLocationIntent
-    
-    private let sessionManager = Session.default
-    
+
     func cafeteriaLocation(for config: ViewMensaLocationIntent) -> CafeteriaLocation {
         switch config.location {
         case .mensa_arcisstr:
@@ -56,10 +50,15 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ViewMensaLocationIntent, in context: Context, completion: @escaping (Timeline<Self.Entry>) -> ()) {
         Task {
             do {
+                // Generate a timeline with one entry that refreshes at midnight
+                let currentDate = Date()
+                let startOfDay = Calendar.current.startOfDay(for: currentDate)
+                let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+                
                 let mensaApiKey = cafeteriaLocation(for: configuration).mensaApiKey()
                 let menu = try await MensaService.shared.getMensaMenu(mensaApiKey: mensaApiKey)
                 let entry = SimpleEntry(date: Date(), cafeteriaLocation: cafeteriaLocation(for: configuration), menu: menu)
-                let timeline = Timeline(entries: [entry], policy: .after(.now.advanced(by: 60 * 60 * 8))) // 8 hrs
+                let timeline = Timeline(entries: [entry], policy: .after(endOfDay)) // refreshes at midnight
                 
                 completion(timeline)
             } catch {
@@ -75,26 +74,27 @@ struct SimpleEntry: TimelineEntry {
     let menu: Menu?
 }
 
-
 struct MensaMenuWidgetEntryView : View {
     @Environment(\.widgetFamily) var family
     var entry: Provider.Entry
     
     let date = Date()
-    let dateFormatter = DateFormatter()
+    let dateFormatter = DateFormatter.EEEEddMMM
     
     var body: some View {
-        dateFormatter.dateFormat = "EEEE, dd. MMM"
-        
-        return VStack(spacing: 0) {
+        VStack(spacing: 0) {
             VStack (spacing: 0){
                 HStack(spacing: 5) {
                     Image(systemName: "location.fill")
                         .foregroundColor(.blue)
                         .font(.system(size: 12))
-                    Text(entry.cafeteriaLocation.name()).font(.caption).bold()
+                    Text(entry.cafeteriaLocation.name())
+                        .font(.caption)
+                        .bold()
                     Spacer()
-                    Text("\(dateFormatter.string(from: entry.date))").font(.caption).bold()
+                    Text("\(dateFormatter.string(from: entry.date))")
+                        .font(.caption)
+                        .bold()
                 }.padding(.leading, 25)
                     .padding(.trailing, 35)
                     .padding(.bottom, 5)
@@ -155,7 +155,6 @@ struct MensaMenuWidgetEntryView : View {
                     Spacer()
                 }.background(Color("BackgroundBottom"))
             }
-            
         }
     }
     
@@ -186,9 +185,9 @@ struct MensaMenuWidgetEntryView : View {
             return "🐑"
         } else if ingredients.contains("Fi") {
             return "🐟"
-        } else if !ingredients.contains("Ei") && !ingredients.contains("Mi") && dishType != "Fleisch" && dishType != "Fisch" { //vegan (without v tag)
+        } else if !ingredients.contains("Ei") && !ingredients.contains("Mi") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegan (without v tag)
             return "🫑"
-        } else if !ingredients.contains("14") && dishType != "Fleisch" && dishType != "Fisch" { //vegertarian (without f tag)
+        } else if !ingredients.contains("14") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegertarian (without f tag)
             return "🥕"
         } else {
             return "❓"
@@ -224,92 +223,4 @@ struct MensaMenuWidget_Previews: PreviewProvider {
             }
         }
     }
-}
-
-final class MensaService {
-    static let shared = MensaService()
-    //    let thisWeekEndpoint = EatAPI.menu(location: "mensa-garching", year: Date().year, week: Date().weekOfYear).asURLRequest()
-    
-    private init() {}
-    public func getMensaMenu(mensaApiKey: String) async throws -> Menu? {
-        let url = URL(string: "https://tum-dev.github.io/eat-api/" + "\(mensaApiKey)/\(Date().year)/\(Date().weekOfYear).json")!
-        
-        let (data, _) = try await URLSession.shared.data(from: url)
-        print(data)
-        
-        
-        let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(formatter)
-        //        let sessionManager = Session.default
-        //        let thisWeekEndpoint = EatAPI.menu(location: "mensa-garching", year: Date().year, week: Date().weekOfYear)
-        //        sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
-        //            print("response:")
-        //            print(response)
-        //            guard let value = response.value else { return }
-        //            menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false) }))
-        //            menus.sort(by: <)
-        //        }
-        
-        do {
-            let mealPlan = try decoder.decode(MealPlan.self, from: data)
-            return mealPlan.days.first(where: {
-                !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false)
-            })
-        } catch {
-            print(error)
-        }
-        return nil
-    }
-}
-
-
-public enum CafeteriaLocation: String {
-    case mensa_arcisstr
-    case mensa_garching
-    case mensa_leopoldstr
-    case mensa_lothstr
-    case mensa_martinsried
-    case mensa_pasing
-    case mensa_weihenstephan
-    
-    func mensaApiKey() -> String {
-        switch self {
-        case .mensa_arcisstr:
-            return "mensa-arcisstr"
-        case .mensa_garching:
-            return "mensa-garching"
-        case .mensa_leopoldstr:
-            return "mensa-leopoldstr"
-        case .mensa_lothstr:
-            return "mensa-lothstr"
-        case .mensa_martinsried:
-            return "mensa-martinsried"
-        case .mensa_pasing:
-            return "mensa-pasing"
-        case .mensa_weihenstephan:
-            return "mensa_weihenstephan"
-        }
-    }
-    
-    func name() -> String {
-        switch self {
-        case .mensa_arcisstr:
-            return "Mensa Arcisstraße"
-        case .mensa_garching:
-            return "Mensa Garching"
-        case .mensa_leopoldstr:
-            return "Mensa Leopoldstraße"
-        case .mensa_lothstr:
-            return "Mensa Lothstraße"
-        case .mensa_martinsried:
-            return "Mensa Martinsried"
-        case .mensa_pasing:
-            return "Mensa Pasing"
-        case .mensa_weihenstephan:
-            return "Mensa Weihenstephan"
-        }
-    }
-    
 }

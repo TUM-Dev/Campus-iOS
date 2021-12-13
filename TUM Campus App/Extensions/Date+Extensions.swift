@@ -1,14 +1,12 @@
 //
-//  Extensions.swift
-//  TUMCampusApp
+//  Date+Extensions.swift
+//  TUM Campus App
 //
-//  Created by Nikolai Madlener on 02.12.21.
+//  Created by Nikolai Madlener on 12.12.21.
 //  Copyright © 2021 TUM. All rights reserved.
 //
 
 import Foundation
-import CoreLocation
-import Alamofire
 
 extension Date {
     var calendar: Calendar { Calendar(identifier: Calendar.current.identifier) }
@@ -80,12 +78,3 @@ extension Date {
     }
 }
 
-extension CLLocationCoordinate2D  {
-    var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
-}
-
-extension String {
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-}

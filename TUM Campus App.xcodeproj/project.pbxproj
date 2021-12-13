@@ -150,10 +150,17 @@
 		233C51DF27590FD000477D89 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629D246177D9004BF215 /* Menu.swift */; };
 		233C51E22759104800477D89 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F9629B2460ED03004BF215 /* Dish.swift */; };
 		233C51E32759104F00477D89 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C22460EA5A00BEDA71 /* MealPlan.swift */; };
-		233C51E42759105200477D89 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6442220B36600854D55 /* Cafeteria.swift */; };
-		233C51E92759124000477D89 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233C51E7275911D000477D89 /* Extensions.swift */; };
 		233C51EA2759148400477D89 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F37C02460C0CD00BEDA71 /* EatAPI.swift */; };
 		233C51EC275919FA00477D89 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 233C51EB275919FA00477D89 /* Alamofire */; };
+		239D3CF02766188B00D1E4D8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CEF2766188B00D1E4D8 /* Date+Extensions.swift */; };
+		239D3CF12766188B00D1E4D8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CEF2766188B00D1E4D8 /* Date+Extensions.swift */; };
+		239D3CF327661BED00D1E4D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CF227661BED00D1E4D8 /* String+Extensions.swift */; };
+		239D3CF427661BED00D1E4D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CF227661BED00D1E4D8 /* String+Extensions.swift */; };
+		239D3CF727661D5700D1E4D8 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CF627661D5700D1E4D8 /* DateFormatter+Extensions.swift */; };
+		239D3CF827661D5700D1E4D8 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CF627661D5700D1E4D8 /* DateFormatter+Extensions.swift */; };
+		239D3CFB2766211E00D1E4D8 /* MensaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CF92766211E00D1E4D8 /* MensaService.swift */; };
+		239D3CFD2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
+		239D3CFE2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
 		239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F5E6B275AB908002FDD6A /* MockMenu.swift */; };
 /* End PBXBuildFile section */
 
@@ -340,7 +347,11 @@
 		233C51D027590AEE00477D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		233C51D227590AEE00477D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		233C51D827590AEE00477D89 /* MensaMenuWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MensaMenuWidgetExtension.entitlements; sourceTree = "<group>"; };
-		233C51E7275911D000477D89 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		239D3CEF2766188B00D1E4D8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		239D3CF227661BED00D1E4D8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		239D3CF627661D5700D1E4D8 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		239D3CF92766211E00D1E4D8 /* MensaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaService.swift; sourceTree = "<group>"; };
+		239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaLocation.swift; sourceTree = "<group>"; };
 		239F5E6B275AB908002FDD6A /* MockMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -717,6 +728,9 @@
 				22BDA8DC24927D2300F12FD1 /* Extensions.swift */,
 				222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */,
 				22BDA8DE24927D2C00F12FD1 /* NSMutableString+Extensions.swift */,
+				239D3CEF2766188B00D1E4D8 /* Date+Extensions.swift */,
+				239D3CF227661BED00D1E4D8 /* String+Extensions.swift */,
+				239D3CF627661D5700D1E4D8 /* DateFormatter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -758,13 +772,22 @@
 			isa = PBXGroup;
 			children = (
 				233C51CD27590AEC00477D89 /* MensaMenuWidget.swift */,
+				239D3CF92766211E00D1E4D8 /* MensaService.swift */,
+				239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */,
 				233C51CF27590AEC00477D89 /* MensaMenuWidget.intentdefinition */,
 				233C51D027590AEE00477D89 /* Assets.xcassets */,
 				233C51D227590AEE00477D89 /* Info.plist */,
-				233C51E7275911D000477D89 /* Extensions.swift */,
-				239F5E6B275AB908002FDD6A /* MockMenu.swift */,
+				239D3CF527661D0D00D1E4D8 /* Mock Data */,
 			);
 			path = MensaMenuWidget;
+			sourceTree = "<group>";
+		};
+		239D3CF527661D0D00D1E4D8 /* Mock Data */ = {
+			isa = PBXGroup;
+			children = (
+				239F5E6B275AB908002FDD6A /* MockMenu.swift */,
+			);
+			path = "Mock Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1014,6 +1037,7 @@
 				2258EDBD22221EF00079C2ED /* StudyRoomGroup.swift in Sources */,
 				22EA143C25F5855100349B83 /* MessageViewController.swift in Sources */,
 				22D210EF24A173F5000F3B2F /* LectureCollectionViewCell.swift in Sources */,
+				239D3CF327661BED00D1E4D8 /* String+Extensions.swift in Sources */,
 				224BBF0A24BFAD280055DD4C /* AvatarNavigationBar.swift in Sources */,
 				2277E91821D93C3300D7FF3F /* TUM_Campus_App.xcdatamodeld in Sources */,
 				22DE82B624AE8214001EFAB4 /* PersonSearchViewController.swift in Sources */,
@@ -1035,8 +1059,10 @@
 				221471072476AA6F004C04BD /* TokenActivationTutorialViewController.swift in Sources */,
 				224CB3692225ACAD0002945A /* TUMSexyTableViewController.swift in Sources */,
 				22D4FCD821DE6E2200DF1F4B /* RoundedViews.swift in Sources */,
+				239D3CFD2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */,
 				22FFED5F247BDC1600BCA27C /* MapViewController.swift in Sources */,
 				224CB35F222590660002945A /* StudyRoomGroupsTableViewController.swift in Sources */,
+				239D3CF02766188B00D1E4D8 /* Date+Extensions.swift in Sources */,
 				22F9629E246177D9004BF215 /* Menu.swift in Sources */,
 				22B00AF021D9458600E65C86 /* LoginViewController.swift in Sources */,
 				22CFD18424B3872F00A35FA6 /* LectureDetailViewModel.swift in Sources */,
@@ -1078,6 +1104,7 @@
 				22FD2F772576BDFB004E5A0F /* GradeColors.swift in Sources */,
 				22B9D63A22207BA100854D55 /* Tuition.swift in Sources */,
 				22EDE42524B0B13500DBEC03 /* PersonDetailCollectionViewController.swift in Sources */,
+				239D3CF727661D5700D1E4D8 /* DateFormatter+Extensions.swift in Sources */,
 				22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1103,13 +1130,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				233C51E32759104F00477D89 /* MealPlan.swift in Sources */,
+				239D3CF427661BED00D1E4D8 /* String+Extensions.swift in Sources */,
 				239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */,
 				233C51D327590AEE00477D89 /* MensaMenuWidget.intentdefinition in Sources */,
-				233C51E92759124000477D89 /* Extensions.swift in Sources */,
+				239D3CF12766188B00D1E4D8 /* Date+Extensions.swift in Sources */,
 				233C51EA2759148400477D89 /* EatAPI.swift in Sources */,
+				239D3CFB2766211E00D1E4D8 /* MensaService.swift in Sources */,
+				239D3CFE2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */,
 				233C51E22759104800477D89 /* Dish.swift in Sources */,
 				233C51DF27590FD000477D89 /* Menu.swift in Sources */,
-				233C51E42759105200477D89 /* Cafeteria.swift in Sources */,
+				239D3CF827661D5700D1E4D8 /* DateFormatter+Extensions.swift in Sources */,
 				233C51CE27590AEC00477D89 /* MensaMenuWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
