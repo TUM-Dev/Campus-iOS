@@ -52,3 +52,9 @@
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
 "2 numbers in the middle of TUM ID" = "2 numbers in the middle of TUM ID";
 "Last 3 letters of TUM ID" = "Last 3 letters of TUM ID";
+
+// Mensa Widget
+"Cafeteria" = "Cafeteria";
+"Cafeteria menu at a glance" = "Cafeteria menu at a glance";
+"No dishes available today" = "No dishes available today";
+"SIDE DISHES" = "SIDE DISHES";

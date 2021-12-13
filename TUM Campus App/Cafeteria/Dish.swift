@@ -21,7 +21,9 @@ struct Price: Decodable {
 
 }
 
-struct Dish: Decodable {
+struct Dish: Decodable, Hashable {
+
+    
 
     /*
      {
@@ -122,5 +124,14 @@ struct Dish: Decodable {
         case ingredients
         case dishType = "dish_type"
     }
-
+    
+    static func == (lhs: Dish, rhs: Dish) -> Bool {
+        lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher)
+    {
+        hasher.combine(name);
+    }
+    
 }
