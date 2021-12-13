@@ -31,13 +31,20 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
         navigationController?.navigationBar.prefersLargeTitles = true
         fetch(animated: animated)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let date = Date()
+        let currentTime = Calendar.current.component(.hour, from: date)
+        dayView.scrollTo(hour24: Float(currentTime))
+    }
 
     private func setupUI() {
         title = "Calendar".localized
         edgesForExtendedLayout = UIRectEdge.all
 
         dayView.backgroundColor = .systemBackground
-        dayView.autoScrollToFirstEvent = true
+        dayView.autoScrollToFirstEvent = false
 
         navigationController?.navigationBar.prefersLargeTitles = true
 
@@ -80,7 +87,29 @@ final class CalendarWeekViewController: DayViewController, ProfileImageSettable 
     // MARK: - Actions
 
     @IBAction func showToday(_ sender: Any) {
+        let date = Date()
+        let currentTime = Calendar.current.component(.hour, from: date)
+        
         dayView.state?.move(to: Date())
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.dayView.scrollTo(hour24: Float(currentTime))
+        }
     }
-
+    
+    override func dayViewDidSelectEventView(_ eventView: EventView) {
+        let string = eventView.descriptor?.attributedText?.string
+        let events = importer.fetchedResultsController.fetchedObjects
+        let event = events?.first { $0.startDate == eventView.descriptor?.dateInterval.start }
+                        
+        if let range = string?.range(of: "LvNr="), let event = event {
+            let lvNr = String(string![range.upperBound...])
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            guard let detailVC = storyboard.instantiateViewController(withIdentifier: "LectureDetailCollectionViewController") as? LectureDetailCollectionViewController else { return }
+            navigationController?.pushViewController(detailVC, animated: true)
+            detailVC.setLecture(withLVNr: lvNr)
+            detailVC.setEvent(withEvent: event)
+        }
+    }
 }

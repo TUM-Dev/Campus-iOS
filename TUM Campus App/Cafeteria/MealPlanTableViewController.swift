@@ -47,6 +47,7 @@ final class MealPlanTableViewController: UITableViewController {
         let calendar = Calendar.current
         guard let nextWeek = calendar.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
         let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
+        print(nextWeekEndpoint)
         sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [weak self] response in
             guard let value = response.value else { return }
             self?.menus.append(contentsOf: value.days.filter({ !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false) }))

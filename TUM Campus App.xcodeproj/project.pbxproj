@@ -21,9 +21,6 @@
 		222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D724632F8200B196B6 /* MenuCollectionViewController.swift */; };
 		222470DA246338F900B196B6 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */; };
 		222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222470DB2463507700B196B6 /* MenuSectionHeader.swift */; };
-		2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */; };
-		2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */; };
-		2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */; };
 		222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */; };
 		22356AB724C9D52F00823C2A /* 3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AA724C9D52E00823C2A /* 3D@2x.png */; };
 		22356AB824C9D52F00823C2A /* outline@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22356AA824C9D52E00823C2A /* outline@3x.png */; };
@@ -106,7 +103,6 @@
 		22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D63E22207CB000854D55 /* TuitionTableViewController.swift */; };
 		22B9D64322208BF300854D55 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64222208BF300854D55 /* Profile.swift */; };
 		22B9D6452220B36600854D55 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6442220B36600854D55 /* Cafeteria.swift */; };
-		22B9D6472220B4A400854D55 /* CafeteriasCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6462220B4A400854D55 /* CafeteriasCollectionViewController.swift */; };
 		22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */; };
 		22B9D64B2220B8DC00854D55 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */; };
 		22B9D64D2220BE4200854D55 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B9D64C2220BE4200854D55 /* MVGAPI.swift */; };
@@ -162,6 +158,7 @@
 		239D3CFD2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
 		239D3CFE2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
 		239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F5E6B275AB908002FDD6A /* MockMenu.swift */; };
+		41FBF9FB270CC26C009F329A /* CafeteriaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,9 +211,6 @@
 		222470D724632F8200B196B6 /* MenuCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewController.swift; sourceTree = "<group>"; };
 		222470D9246338F900B196B6 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		222470DB2463507700B196B6 /* MenuSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSectionHeader.swift; sourceTree = "<group>"; };
-		2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyHeaderCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaSectionHeader.swift; sourceTree = "<group>"; };
-		2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CafeteriaSectionHeader.xib; sourceTree = "<group>"; };
 		222B041724941453009D94AD /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		22356AA724C9D52E00823C2A /* 3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D@2x.png"; sourceTree = "<group>"; };
 		22356AA824C9D52E00823C2A /* outline@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outline@3x.png"; sourceTree = "<group>"; };
@@ -304,7 +298,6 @@
 		22B9D63E22207CB000854D55 /* TuitionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionTableViewController.swift; sourceTree = "<group>"; };
 		22B9D64222208BF300854D55 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		22B9D6442220B36600854D55 /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
-		22B9D6462220B4A400854D55 /* CafeteriasCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasCollectionViewController.swift; sourceTree = "<group>"; };
 		22B9D6482220B69F00854D55 /* TUMDevAppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPI.swift; sourceTree = "<group>"; };
 		22B9D64A2220B8DC00854D55 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		22B9D64C2220BE4200854D55 /* MVGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
@@ -353,6 +346,7 @@
 		239D3CF92766211E00D1E4D8 /* MensaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaService.swift; sourceTree = "<group>"; };
 		239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaLocation.swift; sourceTree = "<group>"; };
 		239F5E6B275AB908002FDD6A /* MockMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenu.swift; sourceTree = "<group>"; };
+		41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -700,10 +694,7 @@
 				224F37C22460EA5A00BEDA71 /* MealPlan.swift */,
 				22F9629D246177D9004BF215 /* Menu.swift */,
 				22F9629B2460ED03004BF215 /* Dish.swift */,
-				22B9D6462220B4A400854D55 /* CafeteriasCollectionViewController.swift */,
-				2224945B24649EC900605B15 /* CafeteriaSectionHeader.swift */,
-				2224945C24649EC900605B15 /* CafeteriaSectionHeader.xib */,
-				2224945924649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift */,
+				41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */,
 				224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */,
 				22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */,
 				222470D724632F8200B196B6 /* MenuCollectionViewController.swift */,
@@ -966,7 +957,6 @@
 				22356ABE24C9D52F00823C2A /* white@3x.png in Resources */,
 				22710B552479E0D30065D6E9 /* Localizable.strings in Resources */,
 				22356AC124C9D52F00823C2A /* pride@2x.png in Resources */,
-				2224945E24649EC900605B15 /* CafeteriaSectionHeader.xib in Resources */,
 				22356AB924C9D52F00823C2A /* outline@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1006,17 +996,16 @@
 				229C549124954AAC00EFD5A2 /* NewsCollectionViewCell.swift in Sources */,
 				22A3F8BD24927722000071FE /* CalendarEventViewModel.swift in Sources */,
 				22CFD18824B3874300A35FA6 /* LectureDetailHeader.swift in Sources */,
-				2224945D24649EC900605B15 /* CafeteriaSectionHeader.swift in Sources */,
 				2269BB2C24A405B70011F9DF /* GradeCollectionViewController.swift in Sources */,
 				19382F1E2389CA5F007BEC88 /* StudyRoomTableViewController.swift in Sources */,
 				22B9D63F22207CB000854D55 /* TuitionTableViewController.swift in Sources */,
+				41FBF9FB270CC26C009F329A /* CafeteriaMapViewController.swift in Sources */,
 				22ACCBBB24B0EEF100B18F37 /* PersonDetailCollectionViewCell.swift in Sources */,
 				22AE458C247AF82300CE5B29 /* RoomViewController.swift in Sources */,
 				22ACCBB924B0EEDF00B18F37 /* PersonDetailHeaderCell.swift in Sources */,
 				223D12E921DF82180053305B /* TUMCabeAPI.swift in Sources */,
 				22B00B0021DD878000E65C86 /* TUMOnlineAPI.swift in Sources */,
 				224CB3AB222C48DB0002945A /* CafeteriaCollectionViewCell.swift in Sources */,
-				2224945A24649D1F00605B15 /* StretchyHeaderCollectionViewFlowLayout.swift in Sources */,
 				222B041824941453009D94AD /* MKCoordinateRegion+Extensions.swift in Sources */,
 				226C2CD124AE74C300971C54 /* LectureDetail.swift in Sources */,
 				222470DC2463507700B196B6 /* MenuSectionHeader.swift in Sources */,
@@ -1086,7 +1075,6 @@
 				2277E91021D93C3300D7FF3F /* AppDelegate.swift in Sources */,
 				22CFD18224B3872700A35FA6 /* LectureDetailCollectionViewController.swift in Sources */,
 				22195063221C8CCC00169A2B /* Lecture.swift in Sources */,
-				22B9D6472220B4A400854D55 /* CafeteriasCollectionViewController.swift in Sources */,
 				22FFED61247BF47100BCA27C /* IconButton.swift in Sources */,
 				22E5303C2217698300A29992 /* Credentials.swift in Sources */,
 				22B9D6492220B69F00854D55 /* TUMDevAppAPI.swift in Sources */,
@@ -1342,11 +1330,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_TEAM = 356PGZV9W9;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.13;
+				MARKETING_VERSION = 3.14;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1367,11 +1355,11 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_TEAM = 356PGZV9W9;
 				INFOPLIST_FILE = "TUM Campus App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MARKETING_VERSION = 3.13;
+				MARKETING_VERSION = 3.14;
 				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1387,7 +1375,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1402,7 +1390,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus AppTests/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1417,7 +1405,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1433,7 +1421,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LQ83GZ8GRK;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				INFOPLIST_FILE = "TUM Campus AppUITests/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.TUM-Campus-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

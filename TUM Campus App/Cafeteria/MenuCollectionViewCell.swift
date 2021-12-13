@@ -23,7 +23,6 @@ final class MenuCollectionViewCell: UICollectionViewCell {
 
     func configure(dish: Dish) {
         nameLabel.text = dish.name
-
         if let price = dish.prices["students"] {
             var basePriceString: String?
             var unitPriceString: String?
@@ -72,6 +71,4 @@ final class MenuCollectionViewCell: UICollectionViewCell {
         layer.shadowOpacity = 0.1
         layer.masksToBounds = false
     }
-
 }
-

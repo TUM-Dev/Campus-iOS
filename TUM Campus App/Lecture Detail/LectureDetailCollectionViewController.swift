@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import XMLCoder
+import CalendarKit
 
 final class LectureDetailCollectionViewController: UICollectionViewController {
     private static let sectionBackgroundDecorationElementKind = "section-background-element-kind"
@@ -19,6 +20,8 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
     private var dataSource: UICollectionViewDiffableDataSource<LectureDetailViewModel.Section, AnyHashable>?
     private var endpoint: TUMOnlineAPI?
     private var viewModel: LectureDetailViewModel?
+    
+    private var event: CalendarEvent? = nil
 
     func setLecture(withLVNr lvNr: String) {
         endpoint = TUMOnlineAPI.lectureDetails(lvNr: lvNr)
@@ -29,6 +32,10 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
         viewModel = LectureDetailViewModel(lecture: lecture)
         endpoint = TUMOnlineAPI.lectureDetails(lvNr: lecture.lvNumber.description)
         fetch(animated: true)
+    }
+    
+    func setEvent(withEvent calEvent: CalendarEvent? = nil) {
+        event = calEvent
     }
 
     override func viewDidLoad() {
@@ -47,8 +54,13 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
         guard let endpoint = endpoint else { return }
         sessionManager.request(endpoint).responseDecodable(of: TUMOnlineAPIResponse<LectureDetail>.self, decoder: XMLDecoder()) { [weak self] response in
             guard let value = response.value?.rows?.first else { return }
-            self?.viewModel = LectureDetailViewModel(lectureDetail: value)
-            self?.reload(animated: animated)
+            if let event = self?.event {
+                self?.viewModel = LectureDetailViewModel(lectureDetail: value, eventDetail: event)
+                self?.reload(animated: animated)
+            } else if self?.event == nil {
+                self?.viewModel = LectureDetailViewModel(lectureDetail: value, eventDetail: nil)
+                self?.reload(animated: animated)
+            }
         }
     }
 
@@ -139,7 +151,108 @@ final class LectureDetailCollectionViewController: UICollectionViewController {
     // MARK: - UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource?.itemIdentifier(for: indexPath) as? LectureDetailViewModel.LinkCell else { return }
-        UIApplication.shared.open(item.link, options: [:], completionHandler: nil)
+        guard let linkCell = dataSource?.itemIdentifier(for: indexPath) as? LectureDetailViewModel.LinkCell else {
+            guard let lectureDetailCell = dataSource?.itemIdentifier(for: indexPath) as? LectureDetailViewModel.Cell else { return }
+            if lectureDetailCell.key == "Speaker" {
+                let optionMenu = UIAlertController(title: nil, message: "Choose Speaker", preferredStyle: .actionSheet)
+                
+                var speakerList = lectureDetailCell.value
+                var speakers = ""
+                var singleSpeaker = ""
+                var speakerForSearch = ""
+                var iterations = 0
+                
+                for char in speakerList {
+                    speakers.append(char)
+                    let index = speakers.index(speakers.startIndex, offsetBy: 0)
+                    speakerList.remove(at: index)
+                    
+                    if char == ","  || index == speakerList.endIndex {
+                        iterations += 1
+                        
+                        var i = 0
+                        
+                        for c in speakers {
+                            if c == "[" {
+                                let x = speakers.index(speakers.startIndex, offsetBy: i)
+                                speakers.removeSubrange(x..<speakers.endIndex)
+                            } else if c == "," {
+                                speakers.removeLast()
+                            }
+                            i += 1
+                        }
+                        
+                        if speakerList.trimmingCharacters(in: .whitespaces).contains(speakers.trimmingCharacters(in: .whitespaces)) {
+                            speakers.removeAll()
+                            
+                            iterations -= 1
+                        }
+                        
+                        if !speakers.isEmpty {
+                            speakerForSearch = speakers
+                            
+                            singleSpeaker = speakers
+                            speakers.removeAll()
+                            
+                            let s = singleSpeaker
+                            
+                            let action = UIAlertAction(title: singleSpeaker, style: .default) {
+                                _ in
+                                                            
+                                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                                guard let personSearchVC = storyboard.instantiateViewController(withIdentifier: "PersonSearchViewController") as? PersonSearchViewController else { return }
+                                self.navigationController?.pushViewController(personSearchVC, animated: true)
+                                personSearchVC.searchController.searchBar.text = s
+                            }
+                            
+                            optionMenu.addAction(action)
+                            
+                            singleSpeaker.removeAll()
+                        }
+                    }
+                }
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                    
+                optionMenu.addAction(cancelAction)
+                
+                if iterations <= 1{
+                    let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                    guard let personSearchVC = storyboard.instantiateViewController(withIdentifier: "PersonSearchViewController") as? PersonSearchViewController else { return }
+                    self.navigationController?.pushViewController(personSearchVC, animated: true)
+                    personSearchVC.searchController.searchBar.text = speakerForSearch
+                } else if iterations > 1{
+                    self.present(optionMenu, animated: true, completion: nil)
+                }
+                return
+            }
+            
+            if lectureDetailCell.key == "This Meeting" {
+                if lectureDetailCell.value.contains("Online") {
+                    let alert = UIAlertController(title: nil, message: "Lecture is online", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    let when = DispatchTime.now() + 1.2
+                    DispatchQueue.main.asyncAfter(deadline: when){
+                      alert.dismiss(animated: true, completion: nil)
+                    }
+                    return
+                }
+                
+                var room = lectureDetailCell.value
+
+                if let range = room.range(of: "(") {
+                    print(room.endIndex)
+                    room.removeSubrange(room.startIndex..<range.upperBound)
+                    room.remove(at: room.index(before: room.endIndex))
+                }
+                                
+                guard let roomSearchVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "RoomFinderViewController") as? RoomFinderViewController else { return }
+                roomSearchVC.searchController.searchBar.text = room
+                navigationController?.pushViewController(roomSearchVC, animated: true)
+            }
+            return
+        }
+        UIApplication.shared.open(linkCell.link, options: [:], completionHandler: nil)
     }
 }
