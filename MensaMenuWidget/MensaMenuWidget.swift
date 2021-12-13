@@ -41,7 +41,7 @@ struct Provider: IntentTimelineProvider {
     func getSnapshot(for configuration: ViewMensaLocationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         Task {
             let mensaApiKey = cafeteriaLocation(for: configuration).mensaApiKey()
-            let menu = try await MensaService.shared.getMensaMenu(mensaApiKey: mensaApiKey)
+            let menu = MensaService.shared.getMensaMenu(mensaApiKey: mensaApiKey)
             let entry = SimpleEntry(date: Date(), cafeteriaLocation: cafeteriaLocation(for: configuration), menu: menu)
             completion(entry)
         }
@@ -49,21 +49,17 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ViewMensaLocationIntent, in context: Context, completion: @escaping (Timeline<Self.Entry>) -> ()) {
         Task {
-            do {
-                // Generate a timeline with one entry that refreshes at midnight
-                let currentDate = Date()
-                let startOfDay = Calendar.current.startOfDay(for: currentDate)
-                let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
-                
-                let mensaApiKey = cafeteriaLocation(for: configuration).mensaApiKey()
-                let menu = try await MensaService.shared.getMensaMenu(mensaApiKey: mensaApiKey)
-                let entry = SimpleEntry(date: Date(), cafeteriaLocation: cafeteriaLocation(for: configuration), menu: menu)
-                let timeline = Timeline(entries: [entry], policy: .after(endOfDay)) // refreshes at midnight
-                
-                completion(timeline)
-            } catch {
-                print(error)
-            }
+            // Generate a timeline with one entry that refreshes at midnight
+            let currentDate = Date()
+            let startOfDay = Calendar.current.startOfDay(for: currentDate)
+            let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+            
+            let mensaApiKey = cafeteriaLocation(for: configuration).mensaApiKey()
+            let menu = MensaService.shared.getMensaMenu(mensaApiKey: mensaApiKey)
+            let entry = SimpleEntry(date: Date(), cafeteriaLocation: cafeteriaLocation(for: configuration), menu: menu)
+            let timeline = Timeline(entries: [entry], policy: .after(endOfDay)) // refreshes at midnight
+            
+            completion(timeline)
         }
     }
 }

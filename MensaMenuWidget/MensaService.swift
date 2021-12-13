@@ -7,30 +7,26 @@
 //
 
 import Foundation
+import Alamofire
 
 final class MensaService {
     static let shared = MensaService()
-
-    private init() {}
+    private var menu: Menu?
     
-    public func getMensaMenu(mensaApiKey: String) async throws -> Menu? {
-        let url = URL(string: "https://tum-dev.github.io/eat-api/" + "\(mensaApiKey)/\(Date().year)/\(Date().weekOfYear).json")!
-        
-        let (data, _) = try await URLSession.shared.data(from: url)
-        print(data)
-        
+    public func getMensaMenu(mensaApiKey: String) -> Menu? {
         let decoder = JSONDecoder()
-        let formatter = DateFormatter.yyyyMMdd
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        let thisWeekEndpoint = EatAPI.menu(location: mensaApiKey, year: Date().year, week: Date().weekOfYear)
+        AF.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { (response) in
+            guard let value = response.value else { return }
 
-        do {
-            let mealPlan = try decoder.decode(MealPlan.self, from: data)
-            return mealPlan.days.first(where: {
+            self.menu = value.days.first(where: {
                 !$0.dishes.isEmpty && ($0.date?.isToday ?? false || $0.date?.isLaterThanOrEqual(to: Date()) ?? false)
             })
-        } catch {
-            print(error)
         }
-        return nil
+        return menu
     }
 }
