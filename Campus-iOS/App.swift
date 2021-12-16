@@ -39,7 +39,9 @@ struct CampusApp: App {
             }
             .onAppear {
                 checkAuthorized(count: 0)
-                UITabBar.appearance().isTranslucent = false
+                //UITabBar.appearance().isTranslucent = false
+                //UITabBar.appearance().isOpaque = true
+                //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
                 // remove loaded model
             }
         }

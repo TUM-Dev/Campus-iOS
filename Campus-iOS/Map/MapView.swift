@@ -16,6 +16,9 @@ struct MapView: View {
             .edgesIgnoringSafeArea(.all)
             .navigationTitle("")
             .navigationBarHidden(true)
+            .onAppear {
+                UITabBar.appearance().isOpaque = true
+            }
         }
 }
 
