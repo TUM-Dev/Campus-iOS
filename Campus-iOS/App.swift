@@ -39,6 +39,7 @@ struct CampusApp: App {
             }
             .onAppear {
                 checkAuthorized(count: 0)
+                UITabBar.appearance().isTranslucent = false
                 // remove loaded model
             }
         }
