@@ -75,7 +75,8 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                Text("Dummy Cafeterias View")
+                MapView()
+                //Text("Dummy Cafeterias View")
                 // CafeteriasView(model: model)
             }
             .tag(3)
