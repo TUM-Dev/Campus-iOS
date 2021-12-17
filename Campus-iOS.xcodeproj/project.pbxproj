@@ -26,6 +26,7 @@
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
+		41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41040BC0276D07EA001FC12B /* Cafeteria.swift */; };
 		4192E411276B3F83006CF322 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E410276B3F83006CF322 /* MapView.swift */; };
 		4192E413276B3F8B006CF322 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E412276B3F8B006CF322 /* Panel.swift */; };
 		4192E415276B3F98006CF322 /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E414276B3F98006CF322 /* PanelContent.swift */; };
@@ -74,6 +75,7 @@
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
+		41040BC0276D07EA001FC12B /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		4192E410276B3F83006CF322 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4192E412276B3F8B006CF322 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		4192E414276B3F98006CF322 /* PanelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				4192E417276B4023006CF322 /* MapContent.swift */,
 				4192E412276B3F8B006CF322 /* Panel.swift */,
 				4192E414276B3F98006CF322 /* PanelContent.swift */,
+				41040BC0276D07EA001FC12B /* Cafeteria.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				4192E413276B3F8B006CF322 /* Panel.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
+				41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
