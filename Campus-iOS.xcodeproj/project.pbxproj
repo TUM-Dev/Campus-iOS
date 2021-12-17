@@ -545,6 +545,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -582,6 +584,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

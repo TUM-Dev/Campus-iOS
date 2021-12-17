@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct Panel: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
-    
+    @Binding var zoomOnUser: Bool
+
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
@@ -19,7 +21,7 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent()
+            PanelContent(zoomOnUser: $zoomOnUser)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()
@@ -99,6 +101,6 @@ enum DragState {
 
 struct Panel_Previews: PreviewProvider {
     static var previews: some View {
-        Panel()
+        Panel(zoomOnUser: .constant(true))
     }
 }

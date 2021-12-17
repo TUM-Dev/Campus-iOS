@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 @main
 struct CampusApp: App {
@@ -77,7 +78,7 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView()
+                MapView(zoomOnUser: true)
                 //Text("Dummy Cafeterias View")
                 // CafeteriasView(model: model)
             }

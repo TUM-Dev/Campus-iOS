@@ -6,24 +6,27 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
+    @State var zoomOnUser: Bool
+    
     var body: some View {
-            ZStack {
-                MapContent()
-                Panel()
-            }
-            .edgesIgnoringSafeArea(.all)
-            .navigationTitle("")
-            .navigationBarHidden(true)
-            .onAppear {
-                UITabBar.appearance().isOpaque = true
-            }
+        ZStack {
+            MapContent(zoomOnUser: $zoomOnUser)
+            Panel(zoomOnUser: $zoomOnUser)
         }
+        .edgesIgnoringSafeArea(.all)
+        .navigationTitle("")
+        .navigationBarHidden(true)
+        .onAppear {
+            UITabBar.appearance().isOpaque = true
+        }
+    }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(zoomOnUser: true)
     }
 }
