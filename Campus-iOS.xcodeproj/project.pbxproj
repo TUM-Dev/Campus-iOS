@@ -29,6 +29,14 @@
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
+		41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41040BC0276D07EA001FC12B /* Cafeteria.swift */; };
+		41040BC5276D1B6A001FC12B /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41040BC4276D1B6A001FC12B /* Dish.swift */; };
+		41040BC7276D1B8E001FC12B /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41040BC6276D1B8E001FC12B /* Menu.swift */; };
+		41040BC9276D1BB3001FC12B /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41040BC8276D1BB3001FC12B /* MealPlan.swift */; };
+		4192E411276B3F83006CF322 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E410276B3F83006CF322 /* MapView.swift */; };
+		4192E413276B3F8B006CF322 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E412276B3F8B006CF322 /* Panel.swift */; };
+		4192E415276B3F98006CF322 /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E414276B3F98006CF322 /* PanelContent.swift */; };
+		4192E418276B4023006CF322 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E417276B4023006CF322 /* MapContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +84,14 @@
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
+		41040BC0276D07EA001FC12B /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
+		41040BC4276D1B6A001FC12B /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		41040BC6276D1B8E001FC12B /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		41040BC8276D1BB3001FC12B /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
+		4192E410276B3F83006CF322 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4192E412276B3F8B006CF322 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		4192E414276B3F98006CF322 /* PanelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
+		4192E417276B4023006CF322 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +168,7 @@
 				100803442764E2A90013ED0E /* ProfileComponent */,
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
+				4192E40F276B3F6E006CF322 /* Map */,
 				3698CBEB2761DFA9001C5735 /* Styles */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
@@ -206,6 +223,21 @@
 				3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		4192E40F276B3F6E006CF322 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4192E410276B3F83006CF322 /* MapView.swift */,
+				4192E417276B4023006CF322 /* MapContent.swift */,
+				4192E412276B3F8B006CF322 /* Panel.swift */,
+				4192E414276B3F98006CF322 /* PanelContent.swift */,
+				41040BC0276D07EA001FC12B /* Cafeteria.swift */,
+				41040BC4276D1B6A001FC12B /* Dish.swift */,
+				41040BC8276D1BB3001FC12B /* MealPlan.swift */,
+				41040BC6276D1B8E001FC12B /* Menu.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,16 +383,24 @@
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				366F0E8627580CFB0091651D /* ContentView.swift in Sources */,
+				4192E418276B4023006CF322 /* MapContent.swift in Sources */,
+				4192E411276B3F83006CF322 /* MapView.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				41040BC5276D1B6A001FC12B /* Dish.swift in Sources */,
+				4192E413276B3F8B006CF322 /* Panel.swift in Sources */,
+				41040BC7276D1B8E001FC12B /* Menu.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
+				41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */,
+				41040BC9276D1BB3001FC12B /* MealPlan.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
+				4192E415276B3F98006CF322 /* PanelContent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +581,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -578,6 +620,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

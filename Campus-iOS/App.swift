@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 @main
 struct CampusApp: App {
@@ -37,10 +38,14 @@ struct CampusApp: App {
                         }
                     }
                 }
-                .onAppear {
-                    checkAuthorized(count: 0)
-                    // remove loaded model
-                }
+            }
+            .onAppear {
+                checkAuthorized(count: 0)
+                //UITabBar.appearance().isTranslucent = false
+                //UITabBar.appearance().isOpaque = true
+                //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
+                // remove loaded model
+            }
         }
     }
     
@@ -80,7 +85,8 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                Text("Dummy Cafeterias View")
+                MapView(zoomOnUser: true)
+                //Text("Dummy Cafeterias View")
                 // CafeteriasView(model: model)
             }
             .tag(3)
