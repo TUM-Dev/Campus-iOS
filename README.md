@@ -32,8 +32,9 @@ It mostly targets phones, but can also be used on tablets or any other device th
 
 
 ## Contributing
-You're welcome to contribute to this app! Join us on [Discord](https://discord.gg/GJmhkPED)!
-Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
+You're welcome to contribute to this app! 
+Join us on [Discord](https://discord.gg/GJmhkPED) or
+check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
 ## Beta
 If you want to participate in the beta of this app, enter your details [here](https://testflight.apple.com/join/4Ddi6f2f) to get invited via TestFlight.
