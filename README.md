@@ -32,7 +32,7 @@ It mostly targets phones, but can also be used on tablets or any other device th
 
 
 ## Contributing
-You're welcome to contribute to this app!
+You're welcome to contribute to this app! Join us on [Discord](https://discord.gg/GJmhkPED)!
 Check out our detailed information at [CONTRIBUTING.md](https://github.com/TCA-Team/iOS/blob/master/CONTRIBUTING.md)!
 
 ## Beta
