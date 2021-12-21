@@ -16,7 +16,6 @@
 		36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E892761C6EC00C24658 /* LoginView.swift */; };
 		36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E8A2761C6EC00C24658 /* Credentials.swift */; };
 		366F0E8427580CFB0091651D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8327580CFB0091651D /* App.swift */; };
-		366F0E8627580CFB0091651D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8527580CFB0091651D /* ContentView.swift */; };
 		366F0E8827580CFD0091651D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8727580CFD0091651D /* Assets.xcassets */; };
 		366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8A27580CFD0091651D /* Preview Assets.xcassets */; };
 		366F0E8D27580CFD0091651D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8C27580CFD0091651D /* Persistence.swift */; };
@@ -37,6 +36,17 @@
 		4192E413276B3F8B006CF322 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E412276B3F8B006CF322 /* Panel.swift */; };
 		4192E415276B3F98006CF322 /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E414276B3F98006CF322 /* PanelContent.swift */; };
 		4192E418276B4023006CF322 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E417276B4023006CF322 /* MapContent.swift */; };
+		97997AD22772179D0079F809 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD12772179D0079F809 /* APIConstants.swift */; };
+		97997AD5277222730079F809 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD4277222730079F809 /* Grade.swift */; };
+		97997AD82772265D0079F809 /* GradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD72772265D0079F809 /* GradesScreen.swift */; };
+		97997ADA27722A0A0079F809 /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD927722A0A0079F809 /* GradeView.swift */; };
+		97997ADE27722B470079F809 /* GradesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997ADD27722B470079F809 /* GradesService.swift */; };
+		97997AE127722D660079F809 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE027722D660079F809 /* Alamofire */; };
+		97997AE427722E3B0079F809 /* GradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AE327722E3B0079F809 /* GradesViewModel.swift */; };
+		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
+		97997AED27723C510079F809 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AEC27723C510079F809 /* LoadingView.swift */; };
+		97997AF027723E9D0079F809 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AEF27723E9D0079F809 /* EnvironmentValues.swift */; };
+		97997AF227723F010079F809 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AF127723F010079F809 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +79,6 @@
 		36203E8A2761C6EC00C24658 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		366F0E8027580CFB0091651D /* Campus-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		366F0E8327580CFB0091651D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
-		366F0E8527580CFB0091651D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		366F0E8727580CFD0091651D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		366F0E8A27580CFD0091651D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		366F0E8C27580CFD0091651D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -92,6 +101,15 @@
 		4192E412276B3F8B006CF322 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		4192E414276B3F98006CF322 /* PanelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
 		4192E417276B4023006CF322 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
+		97997AD12772179D0079F809 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		97997AD4277222730079F809 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		97997AD72772265D0079F809 /* GradesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesScreen.swift; sourceTree = "<group>"; };
+		97997AD927722A0A0079F809 /* GradeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
+		97997ADD27722B470079F809 /* GradesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesService.swift; sourceTree = "<group>"; };
+		97997AE327722E3B0079F809 /* GradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewModel.swift; sourceTree = "<group>"; };
+		97997AEC27723C510079F809 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		97997AEF27723E9D0079F809 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		97997AF127723F010079F809 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +117,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
+				97997AE127722D660079F809 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +185,8 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				97997AEA27723C340079F809 /* Base */,
+				97997ACF2772176A0079F809 /* GradesComponent */,
 				100803442764E2A90013ED0E /* ProfileComponent */,
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
@@ -174,7 +196,6 @@
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				3683C3162758115000082930 /* Model */,
 				366F0E8327580CFB0091651D /* App.swift */,
-				366F0E8527580CFB0091651D /* ContentView.swift */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
@@ -240,6 +261,93 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		97997ACF2772176A0079F809 /* GradesComponent */ = {
+			isa = PBXGroup;
+			children = (
+				97997AE227722E1A0079F809 /* ViewModel */,
+				97997ADC27722B160079F809 /* Service */,
+				97997ADB27722B0D0079F809 /* Views */,
+				97997AD62772264E0079F809 /* Screen */,
+				97997AD32772180F0079F809 /* Model */,
+			);
+			path = GradesComponent;
+			sourceTree = "<group>";
+		};
+		97997AD02772178D0079F809 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				97997AD12772179D0079F809 /* APIConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		97997AD32772180F0079F809 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97997AD4277222730079F809 /* Grade.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		97997AD62772264E0079F809 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				97997AD72772265D0079F809 /* GradesScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		97997ADB27722B0D0079F809 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97997AD927722A0A0079F809 /* GradeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97997ADC27722B160079F809 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				97997ADD27722B470079F809 /* GradesService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		97997AE227722E1A0079F809 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				97997AE327722E3B0079F809 /* GradesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		97997AEA27723C340079F809 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				97997AEE27723E8F0079F809 /* Environment */,
+				97997AEB27723C460079F809 /* Views */,
+				97997AD02772178D0079F809 /* Constants */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		97997AEB27723C460079F809 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97997AEC27723C510079F809 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97997AEE27723E8F0079F809 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				97997AEF27723E9D0079F809 /* EnvironmentValues.swift */,
+				97997AF127723F010079F809 /* User.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -258,6 +366,8 @@
 			name = "Campus-iOS";
 			packageProductDependencies = (
 				36203E822761BDD100C24658 /* KeychainAccess */,
+				97997AE027722D660079F809 /* Alamofire */,
+				97997AE6277234120079F809 /* XMLCoder */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -334,6 +444,8 @@
 			mainGroup = 366F0E7727580CFB0091651D;
 			packageReferences = (
 				36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -381,8 +493,10 @@
 				1008034A2764E3850013ED0E /* ProfileModel.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
+				97997AD82772265D0079F809 /* GradesScreen.swift in Sources */,
+				97997AF227723F010079F809 /* User.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
-				366F0E8627580CFB0091651D /* ContentView.swift in Sources */,
+				97997ADE27722B470079F809 /* GradesService.swift in Sources */,
 				4192E418276B4023006CF322 /* MapContent.swift in Sources */,
 				4192E411276B3F83006CF322 /* MapView.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
@@ -396,8 +510,14 @@
 				41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */,
 				41040BC9276D1BB3001FC12B /* MealPlan.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
+				97997AD5277222730079F809 /* Grade.swift in Sources */,
+				97997AE427722E3B0079F809 /* GradesViewModel.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
+				97997AED27723C510079F809 /* LoadingView.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
+				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
+				97997AF027723E9D0079F809 /* EnvironmentValues.swift in Sources */,
+				97997ADA27722A0A0079F809 /* GradeView.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 				4192E415276B3F98006CF322 /* PanelContent.swift in Sources */,
@@ -789,6 +909,22 @@
 				kind = branch;
 			};
 		};
+		97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -796,6 +932,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		97997AE027722D660079F809 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		97997AE6277234120079F809 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 
