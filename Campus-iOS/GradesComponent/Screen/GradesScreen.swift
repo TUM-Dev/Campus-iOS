@@ -20,7 +20,7 @@ struct GradesScreen: View {
                 LoadingView(text: "Fetching Grades")
             } else {
                 List {
-                    ForEach(vm.grades, id: \.date) { item in
+                    ForEach(vm.grades) { item in
                         GradeView(grade: item)
                     }
                 }

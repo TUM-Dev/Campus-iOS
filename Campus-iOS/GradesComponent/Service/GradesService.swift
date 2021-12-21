@@ -15,14 +15,18 @@ protocol GradesServiceProtocol {
 
 struct GradesService: GradesServiceProtocol {
     func fetch(token: String) async throws -> [Grade] {
-        let value = AF.request(APIConstants.baseURL.appending("wbservicesbasic.noten?pToken=\(token)")).serializingData()
+        let request = AF.request(APIConstants.baseURL.appending(APIConstants.personalGrades), parameters: ["pToken": token]).serializingData()
         
         let xmlDecoder = XMLDecoder()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         xmlDecoder.dateDecodingStrategy = .formatted(dateFormatter)
-        let grade = try await xmlDecoder.decode(RowSet.self, from: value.value)
+        let grade = try await xmlDecoder.decode(GradeComponents.RowSet.self, from: request.value)
         
         return grade.row
     }
+}
+
+extension APIConstants {
+    static let personalGrades = "wbservicesbasic.noten"
 }

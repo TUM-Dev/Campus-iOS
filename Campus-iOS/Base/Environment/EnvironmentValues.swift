@@ -8,5 +8,5 @@
 import Foundation
 
 class EnvironmentValues: ObservableObject {
-    @Published var user: User = User(token: "insertPersonalTokenhere")
+    @Published var user: User = User(token: "A7892CE95A8E38174AAFD3ED0E583829")
 }

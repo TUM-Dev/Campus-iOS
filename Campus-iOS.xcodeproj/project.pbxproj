@@ -36,6 +36,11 @@
 		4192E413276B3F8B006CF322 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E412276B3F8B006CF322 /* Panel.swift */; };
 		4192E415276B3F98006CF322 /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E414276B3F98006CF322 /* PanelContent.swift */; };
 		4192E418276B4023006CF322 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192E417276B4023006CF322 /* MapContent.swift */; };
+		972397412772825D004BF7AB /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397402772825D004BF7AB /* Lecture.swift */; };
+		9723974327728268004BF7AB /* LecturesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974227728268004BF7AB /* LecturesScreen.swift */; };
+		972397452772826E004BF7AB /* LecturesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397442772826E004BF7AB /* LecturesService.swift */; };
+		9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974627728273004BF7AB /* LecturesViewModel.swift */; };
+		9723974927728278004BF7AB /* LectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974827728278004BF7AB /* LectureView.swift */; };
 		97997AD22772179D0079F809 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD12772179D0079F809 /* APIConstants.swift */; };
 		97997AD5277222730079F809 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD4277222730079F809 /* Grade.swift */; };
 		97997AD82772265D0079F809 /* GradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD72772265D0079F809 /* GradesScreen.swift */; };
@@ -101,6 +106,11 @@
 		4192E412276B3F8B006CF322 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		4192E414276B3F98006CF322 /* PanelContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
 		4192E417276B4023006CF322 /* MapContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
+		972397402772825D004BF7AB /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
+		9723974227728268004BF7AB /* LecturesScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesScreen.swift; sourceTree = "<group>"; };
+		972397442772826E004BF7AB /* LecturesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesService.swift; sourceTree = "<group>"; };
+		9723974627728273004BF7AB /* LecturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewModel.swift; sourceTree = "<group>"; };
+		9723974827728278004BF7AB /* LectureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureView.swift; sourceTree = "<group>"; };
 		97997AD12772179D0079F809 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		97997AD4277222730079F809 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		97997AD72772265D0079F809 /* GradesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesScreen.swift; sourceTree = "<group>"; };
@@ -185,6 +195,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9723973A27728224004BF7AB /* LectureComponent */,
 				97997AEA27723C340079F809 /* Base */,
 				97997ACF2772176A0079F809 /* GradesComponent */,
 				100803442764E2A90013ED0E /* ProfileComponent */,
@@ -259,6 +270,58 @@
 				41040BC6276D1B8E001FC12B /* Menu.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		9723973A27728224004BF7AB /* LectureComponent */ = {
+			isa = PBXGroup;
+			children = (
+				9723973F2772824F004BF7AB /* Views */,
+				9723973E27728248004BF7AB /* ViewModel */,
+				9723973D27728243004BF7AB /* Service */,
+				9723973C2772823E004BF7AB /* Screen */,
+				9723973B27728239004BF7AB /* Model */,
+			);
+			path = LectureComponent;
+			sourceTree = "<group>";
+		};
+		9723973B27728239004BF7AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				972397402772825D004BF7AB /* Lecture.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9723973C2772823E004BF7AB /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9723974227728268004BF7AB /* LecturesScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		9723973D27728243004BF7AB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				972397442772826E004BF7AB /* LecturesService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		9723973E27728248004BF7AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9723974627728273004BF7AB /* LecturesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9723973F2772824F004BF7AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9723974827728278004BF7AB /* LectureView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		97997ACF2772176A0079F809 /* GradesComponent */ = {
@@ -493,15 +556,19 @@
 				1008034A2764E3850013ED0E /* ProfileModel.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
+				9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */,
 				97997AD82772265D0079F809 /* GradesScreen.swift in Sources */,
+				972397452772826E004BF7AB /* LecturesService.swift in Sources */,
 				97997AF227723F010079F809 /* User.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				97997ADE27722B470079F809 /* GradesService.swift in Sources */,
 				4192E418276B4023006CF322 /* MapContent.swift in Sources */,
 				4192E411276B3F83006CF322 /* MapView.swift in Sources */,
+				9723974927728278004BF7AB /* LectureView.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
 				41040BC5276D1B6A001FC12B /* Dish.swift in Sources */,
 				4192E413276B3F8B006CF322 /* Panel.swift in Sources */,
 				41040BC7276D1B8E001FC12B /* Menu.swift in Sources */,
@@ -518,6 +585,7 @@
 				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
 				97997AF027723E9D0079F809 /* EnvironmentValues.swift in Sources */,
 				97997ADA27722A0A0079F809 /* GradeView.swift in Sources */,
+				972397412772825D004BF7AB /* Lecture.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 				4192E415276B3F98006CF322 /* PanelContent.swift in Sources */,

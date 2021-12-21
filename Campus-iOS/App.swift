@@ -10,9 +10,9 @@ import MapKit
 
 @main
 struct CampusApp: App {
-    let persistenceController = PersistenceController.shared
-    
     @StateObject var environmentValues: EnvironmentValues = EnvironmentValues()
+    
+    let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var splashScreenPresented = false
     @State var isLoginSheetPresented = true
@@ -63,8 +63,13 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                Text("Dummy Lectures View")
-                // LecturesView(model: model)
+                LecturesScreen()
+                    .navigationTitle("Lectures")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(profileModel: ProfileModel())
+                        }
+                    }
             }
             .tag(1)
             .tabItem {
@@ -79,7 +84,6 @@ struct CampusApp: App {
                             ProfileToolbar(profileModel: ProfileModel())
                         }
                     }
-                // GradesView(model: model)
             }
             .tag(2)
             .tabItem {
