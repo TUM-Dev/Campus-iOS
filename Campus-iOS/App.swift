@@ -7,20 +7,20 @@
 
 import SwiftUI
 import MapKit
-
 @main
 struct CampusApp: App {
-    let persistenceController = PersistenceController.shared
+    @StateObject var environmentValues: CustomEnvironmentValues = CustomEnvironmentValues()
     
-    @StateObject var model: Model = MockModel()
+    let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var splashScreenPresented = false
+    @State var isLoginSheetPresented = false
     @State private var showingAlert = false
     
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-                .sheet(isPresented: $model.isLoginSheetPresented) {
+                .sheet(isPresented: $isLoginSheetPresented) {
                     if splashScreenPresented {
                         Spinner()
                             .alert(isPresented: $showingAlert) {
@@ -30,7 +30,7 @@ struct CampusApp: App {
                             }
                     } else {
                         NavigationView {
-                            LoginView(model: model)
+                            LoginView()
                                 .onAppear {
                                     selectedTab = 2
                                     // KeychainService.removeAuthorization()
@@ -38,14 +38,14 @@ struct CampusApp: App {
                         }
                     }
                 }
-            }
-            .onAppear {
-                checkAuthorized(count: 0)
-                //UITabBar.appearance().isTranslucent = false
-                //UITabBar.appearance().isOpaque = true
-                //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
-                // remove loaded model
-            }
+                .onAppear {
+                    checkAuthorized(count: 0)
+                    //UITabBar.appearance().isTranslucent = false
+                    //UITabBar.appearance().isOpaque = true
+                    //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
+                    // remove loaded model
+                }
+                .environmentObject(environmentValues)
         }
     }
     
@@ -62,8 +62,13 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                Text("Dummy Lectures View")
-                // LecturesView(model: model)
+                LecturesScreen()
+                    .navigationTitle("Lectures")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(profileModel: ProfileModel())
+                        }
+                    }
             }
             .tag(1)
             .tabItem {
@@ -71,14 +76,13 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                Text("Dummy Grades View")
+                GradesScreen()
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             ProfileToolbar(profileModel: ProfileModel())
                         }
                     }
-                // GradesView(model: model)
             }
             .tag(2)
             .tabItem {
