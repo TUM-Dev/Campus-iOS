@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "SwiftUICharts",
+        "repositoryURL": "https://github.com/willdale/SwiftUICharts",
+        "state": {
+          "branch": null,
+          "revision": "133c493e6f67f4c563ab836aa809bfb66f25111e",
+          "version": "2.9.6"
+        }
+      },
+      {
         "package": "XMLCoder",
         "repositoryURL": "https://github.com/MaxDesiatov/XMLCoder",
         "state": {

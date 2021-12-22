@@ -50,8 +50,22 @@
 		97997AE427722E3B0079F809 /* GradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AE327722E3B0079F809 /* GradesViewModel.swift */; };
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97997AED27723C510079F809 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AEC27723C510079F809 /* LoadingView.swift */; };
-		97997AF027723E9D0079F809 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AEF27723E9D0079F809 /* EnvironmentValues.swift */; };
+		97997AF027723E9D0079F809 /* CustomEnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AEF27723E9D0079F809 /* CustomEnvironmentValues.swift */; };
 		97997AF227723F010079F809 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AF127723F010079F809 /* User.swift */; };
+		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
+		97C9AB15277330B00097B10C /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB14277330B00097B10C /* ErrorHandler.swift */; };
+		97C9AB17277331510097B10C /* AlertErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB16277331510097B10C /* AlertErrorHandler.swift */; };
+		97C9AB19277332710097B10C /* Error+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB18277332710097B10C /* Error+Category.swift */; };
+		97C9AB1C277332830097B10C /* ErrorCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB1B277332830097B10C /* ErrorCategory.swift */; };
+		97C9AB1E277332BF0097B10C /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB1D277332BF0097B10C /* NetworkingError.swift */; };
+		97C9AB20277333040097B10C /* Environment+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB1F277333040097B10C /* Environment+Error.swift */; };
+		97C9AB22277333160097B10C /* View+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB21277333160097B10C /* View+Error.swift */; };
+		97C9AB24277333320097B10C /* ErrorEmittingViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB23277333320097B10C /* ErrorEmittingViewModifier.swift */; };
+		97C9AB27277358B20097B10C /* CampusOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB26277358B20097B10C /* CampusOnlineAPI.swift */; };
+		97C9AB29277359AE0097B10C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB28277359AE0097B10C /* Constants.swift */; };
+		97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */; };
+		97C9AB2D27736FE00097B10C /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2C27736FE00097B10C /* APIResponse.swift */; };
+		97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7B10F27729A7F00D64EDF /* GradeColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,8 +132,21 @@
 		97997ADD27722B470079F809 /* GradesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesService.swift; sourceTree = "<group>"; };
 		97997AE327722E3B0079F809 /* GradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesViewModel.swift; sourceTree = "<group>"; };
 		97997AEC27723C510079F809 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		97997AEF27723E9D0079F809 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		97997AEF27723E9D0079F809 /* CustomEnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironmentValues.swift; sourceTree = "<group>"; };
 		97997AF127723F010079F809 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		97C9AB14277330B00097B10C /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		97C9AB16277331510097B10C /* AlertErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertErrorHandler.swift; sourceTree = "<group>"; };
+		97C9AB18277332710097B10C /* Error+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Category.swift"; sourceTree = "<group>"; };
+		97C9AB1B277332830097B10C /* ErrorCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCategory.swift; sourceTree = "<group>"; };
+		97C9AB1D277332BF0097B10C /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		97C9AB1F277333040097B10C /* Environment+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Error.swift"; sourceTree = "<group>"; };
+		97C9AB21277333160097B10C /* View+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Error.swift"; sourceTree = "<group>"; };
+		97C9AB23277333320097B10C /* ErrorEmittingViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEmittingViewModifier.swift; sourceTree = "<group>"; };
+		97C9AB26277358B20097B10C /* CampusOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusOnlineAPI.swift; sourceTree = "<group>"; };
+		97C9AB28277359AE0097B10C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
+		97C9AB2C27736FE00097B10C /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		97E7B10F27729A7F00D64EDF /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
+				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
 				97997AE127722D660079F809 /* Alamofire in Frameworks */,
 			);
@@ -340,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				97997AD12772179D0079F809 /* APIConstants.swift */,
+				97C9AB28277359AE0097B10C /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -380,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				97997AE327722E3B0079F809 /* GradesViewModel.swift */,
+				97E7B10F27729A7F00D64EDF /* GradeColor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -387,6 +417,8 @@
 		97997AEA27723C340079F809 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				97C9AB252773587D0097B10C /* Networking */,
+				97C9AB13277330A00097B10C /* Errors */,
 				97997AEE27723E8F0079F809 /* Environment */,
 				97997AEB27723C460079F809 /* Views */,
 				97997AD02772178D0079F809 /* Constants */,
@@ -405,10 +437,35 @@
 		97997AEE27723E8F0079F809 /* Environment */ = {
 			isa = PBXGroup;
 			children = (
-				97997AEF27723E9D0079F809 /* EnvironmentValues.swift */,
+				97997AEF27723E9D0079F809 /* CustomEnvironmentValues.swift */,
 				97997AF127723F010079F809 /* User.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		97C9AB13277330A00097B10C /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				97C9AB14277330B00097B10C /* ErrorHandler.swift */,
+				97C9AB16277331510097B10C /* AlertErrorHandler.swift */,
+				97C9AB18277332710097B10C /* Error+Category.swift */,
+				97C9AB1B277332830097B10C /* ErrorCategory.swift */,
+				97C9AB1D277332BF0097B10C /* NetworkingError.swift */,
+				97C9AB1F277333040097B10C /* Environment+Error.swift */,
+				97C9AB21277333160097B10C /* View+Error.swift */,
+				97C9AB23277333320097B10C /* ErrorEmittingViewModifier.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		97C9AB252773587D0097B10C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				97C9AB26277358B20097B10C /* CampusOnlineAPI.swift */,
+				97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */,
+				97C9AB2C27736FE00097B10C /* APIResponse.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +488,7 @@
 				36203E822761BDD100C24658 /* KeychainAccess */,
 				97997AE027722D660079F809 /* Alamofire */,
 				97997AE6277234120079F809 /* XMLCoder */,
+				97C9AB1127732A200097B10C /* SwiftUICharts */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -509,6 +567,7 @@
 				36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+				97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -563,27 +622,40 @@
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				97997ADE27722B470079F809 /* GradesService.swift in Sources */,
 				4192E418276B4023006CF322 /* MapContent.swift in Sources */,
+				97C9AB1E277332BF0097B10C /* NetworkingError.swift in Sources */,
+				97C9AB22277333160097B10C /* View+Error.swift in Sources */,
+				97C9AB19277332710097B10C /* Error+Category.swift in Sources */,
 				4192E411276B3F83006CF322 /* MapView.swift in Sources */,
 				9723974927728278004BF7AB /* LectureView.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
+				97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
 				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
+				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
 				41040BC5276D1B6A001FC12B /* Dish.swift in Sources */,
 				4192E413276B3F8B006CF322 /* Panel.swift in Sources */,
 				41040BC7276D1B8E001FC12B /* Menu.swift in Sources */,
+				97C9AB24277333320097B10C /* ErrorEmittingViewModifier.swift in Sources */,
+				97C9AB29277359AE0097B10C /* Constants.swift in Sources */,
+				97C9AB17277331510097B10C /* AlertErrorHandler.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
+				97C9AB2D27736FE00097B10C /* APIResponse.swift in Sources */,
+				97C9AB15277330B00097B10C /* ErrorHandler.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
+				97C9AB27277358B20097B10C /* CampusOnlineAPI.swift in Sources */,
 				41040BC1276D07EA001FC12B /* Cafeteria.swift in Sources */,
 				41040BC9276D1BB3001FC12B /* MealPlan.swift in Sources */,
+				97C9AB1C277332830097B10C /* ErrorCategory.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				97997AD5277222730079F809 /* Grade.swift in Sources */,
 				97997AE427722E3B0079F809 /* GradesViewModel.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
 				97997AED27723C510079F809 /* LoadingView.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
+				97C9AB20277333040097B10C /* Environment+Error.swift in Sources */,
 				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
-				97997AF027723E9D0079F809 /* EnvironmentValues.swift in Sources */,
+				97997AF027723E9D0079F809 /* CustomEnvironmentValues.swift in Sources */,
 				97997ADA27722A0A0079F809 /* GradeView.swift in Sources */,
 				972397412772825D004BF7AB /* Lecture.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
@@ -993,6 +1065,14 @@
 				minimumVersion = 0.9.0;
 			};
 		};
+		97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/willdale/SwiftUICharts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1010,6 +1090,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */;
 			productName = XMLCoder;
+		};
+		97C9AB1127732A200097B10C /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 

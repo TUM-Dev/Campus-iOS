@@ -7,15 +7,14 @@
 
 import SwiftUI
 import MapKit
-
 @main
 struct CampusApp: App {
-    @StateObject var environmentValues: EnvironmentValues = EnvironmentValues()
+    @StateObject var environmentValues: CustomEnvironmentValues = CustomEnvironmentValues()
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var splashScreenPresented = false
-    @State var isLoginSheetPresented = true
+    @State var isLoginSheetPresented = false
     @State private var showingAlert = false
     
     var body: some Scene {

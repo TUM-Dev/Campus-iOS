@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct GradesScreen: View {
-    @EnvironmentObject private var environmentValues: EnvironmentValues
+    @EnvironmentObject private var environmentValues: CustomEnvironmentValues
     
     @StateObject private var vm = GradesViewModel(
         serivce: GradesService()
@@ -19,10 +20,22 @@ struct GradesScreen: View {
             if vm.grades.isEmpty {
                 LoadingView(text: "Fetching Grades")
             } else {
-                List {
-                    ForEach(vm.grades) { item in
-                        GradeView(grade: item)
+                VStack {
+                    BarChart(chartData: vm.barChartData)
+                        .xAxisGrid(chartData: vm.barChartData)
+                        //.yAxisGrid(chartData: vm.barChartData)
+                        .xAxisLabels(chartData: vm.barChartData)
+                        .yAxisLabels(chartData: vm.barChartData)
+                        .legends(chartData: vm.barChartData)
+                        .frame(height: UIScreen.main.bounds.size.height/5, alignment: .center)
+                        .padding(.horizontal)                        
+                    
+                    List {
+                        ForEach(vm.grades) { item in
+                            GradeView(grade: item)
+                        }
                     }
+                     
                 }
             }
         }

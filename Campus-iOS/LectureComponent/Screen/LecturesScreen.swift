@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LecturesScreen: View {
-    @EnvironmentObject private var environmentValues: EnvironmentValues
+    @EnvironmentObject private var environmentValues: CustomEnvironmentValues
     
     @StateObject private var vm = LecturesViewModel(
         serivce: LecturesService()

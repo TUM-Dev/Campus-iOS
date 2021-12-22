@@ -15,13 +15,14 @@ protocol LecturesServiceProtocol {
 
 struct LecturesService: LecturesServiceProtocol {
     func fetch(token: String) async throws -> [Lecture] {
-        let request = AF.request(APIConstants.baseURL.appending(APIConstants.personalLectures), parameters: ["pToken": token]).serializingData()
-        let grade = try await XMLDecoder().decode(LectureComponents.RowSet.self, from: request.value)
+        let response: LectureComponents.RowSet =
+        try await
+            CampusOnlineAPI
+                .makeRequest(
+                    endpoint: Constants.API.CampusOnline.personalLectures,
+                    token: token
+                )
         
-        return grade.row
+        return response.row
     }
-}
-
-extension APIConstants {
-    static let personalLectures = "wbservicesbasic.veranstaltungenEigene"
 }
