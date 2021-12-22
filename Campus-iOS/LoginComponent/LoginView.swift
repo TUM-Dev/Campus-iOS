@@ -116,14 +116,16 @@ struct LoginView: View {
         .edgesIgnoringSafeArea(.all)
     }
     
-    init() {
+    init(model: Model) {
 //        self.viewModel = LoginViewModel(model: model)
 //        KeychainService.removeAuthorization()
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
+    static let model = MockModel()
+    
     static var previews: some View {
-        LoginView()
+        LoginView(model: model)
     }
 }
