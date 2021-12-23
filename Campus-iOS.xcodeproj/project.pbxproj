@@ -41,6 +41,7 @@
 		972397452772826E004BF7AB /* LecturesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397442772826E004BF7AB /* LecturesService.swift */; };
 		9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974627728273004BF7AB /* LecturesViewModel.swift */; };
 		9723974927728278004BF7AB /* LectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974827728278004BF7AB /* LectureView.swift */; };
+		976C7D75277538D700FFDCF8 /* Modus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976C7D74277538D700FFDCF8 /* Modus.swift */; };
 		97997AD22772179D0079F809 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD12772179D0079F809 /* APIConstants.swift */; };
 		97997AD5277222730079F809 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD4277222730079F809 /* Grade.swift */; };
 		97997AD82772265D0079F809 /* GradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD72772265D0079F809 /* GradesScreen.swift */; };
@@ -65,6 +66,7 @@
 		97C9AB29277359AE0097B10C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB28277359AE0097B10C /* Constants.swift */; };
 		97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */; };
 		97C9AB2D27736FE00097B10C /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2C27736FE00097B10C /* APIResponse.swift */; };
+		97C9AB2F2773D6E40097B10C /* FailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2E2773D6E40097B10C /* FailedView.swift */; };
 		97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7B10F27729A7F00D64EDF /* GradeColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,7 @@
 		972397442772826E004BF7AB /* LecturesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesService.swift; sourceTree = "<group>"; };
 		9723974627728273004BF7AB /* LecturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewModel.swift; sourceTree = "<group>"; };
 		9723974827728278004BF7AB /* LectureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureView.swift; sourceTree = "<group>"; };
+		976C7D74277538D700FFDCF8 /* Modus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modus.swift; sourceTree = "<group>"; };
 		97997AD12772179D0079F809 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		97997AD4277222730079F809 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		97997AD72772265D0079F809 /* GradesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesScreen.swift; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 		97C9AB28277359AE0097B10C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
 		97C9AB2C27736FE00097B10C /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		97C9AB2E2773D6E40097B10C /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
 		97E7B10F27729A7F00D64EDF /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				97997AD4277222730079F809 /* Grade.swift */,
+				976C7D74277538D700FFDCF8 /* Modus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				97997AEC27723C510079F809 /* LoadingView.swift */,
+				97C9AB2E2773D6E40097B10C /* FailedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 				97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				976C7D75277538D700FFDCF8 /* Modus.swift in Sources */,
 				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
 				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
 				41040BC5276D1B6A001FC12B /* Dish.swift in Sources */,
@@ -657,6 +664,7 @@
 				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
 				97997AF027723E9D0079F809 /* CustomEnvironmentValues.swift in Sources */,
 				97997ADA27722A0A0079F809 /* GradeView.swift in Sources */,
+				97C9AB2F2773D6E40097B10C /* FailedView.swift in Sources */,
 				972397412772825D004BF7AB /* Lecture.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,

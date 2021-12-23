@@ -29,14 +29,18 @@ struct CampusOnlineAPI: NetworkingAPI {
             throw NetworkingError.deviceIsOffline
         }
         
+        // Check this first cause otherwise no error is thrown by the XMLDecoder
+        if let error = try? Self.decoder.decode(Error.self, from: data) {
+            print(error)
+            throw error
+        }
+        
         do {
             let decodedData = try Self.decoder.decode(T.self, from: data)
             print(decodedData)
             return decodedData
         } catch {
-            let decodedError = try Self.decoder.decode(Error.self, from: data)
-            print(error)
-            throw decodedError
+            throw Error.unkown(error.localizedDescription)
         }
     }
     

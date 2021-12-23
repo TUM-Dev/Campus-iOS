@@ -8,6 +8,6 @@
 import Foundation
 
 class CustomEnvironmentValues: ObservableObject {
-    //@Published var user: User = User(token: "")
-    @Published var user: User = User(token: "asdf")
+    @Published var user: User = User(token: "")
+    //@Published var user: User = User(token: "asdf")
 }

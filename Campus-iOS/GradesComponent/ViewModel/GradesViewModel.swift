@@ -15,7 +15,10 @@ protocol GradesViewModelProtocol: ObservableObject {
 
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
-    @Published private(set) var grades: [Grade] = []    
+    @Published private(set) var grades: [Grade] = []
+    @Published private(set) var state: State = .na
+    @Published var hasError: Bool = false
+    
     // Doesn't have to be @Published, as it is based on an already @Published variable
     var barChartData: BarChartData {
         let accumulatedGrades = grades.reduce(into: [String: Double]()) { partialResult, grade in
@@ -69,6 +72,33 @@ class GradesViewModel: GradesViewModelProtocol {
         )
     }
     
+    private var gradesBySemester: [String: [Grade]] {
+        guard case .success(let data) = self.state else {
+            return [:]
+        }
+        
+        return data.reduce(into: [String: [Grade]]()) { partialResult, grade in
+            if partialResult[grade.semester] == nil {
+                partialResult[grade.semester] = [grade]
+            } else {
+                partialResult[grade.semester]?.append(grade)
+            }
+        }
+    }
+    
+    var sortedGradesBySemester: [(String, [Grade])] {
+        self.gradesBySemester
+            .compactMap { semester, grades in
+                (semester, grades)
+            }
+            .sorted { elementA, elementB in
+                elementA.0 > elementB.0
+            }
+            .compactMap { grade in
+                (Self.toFullSemesterName(grade.0), grade.1)
+            }
+    }
+    
     private let service: GradesServiceProtocol
     
     init(serivce: GradesServiceProtocol) {
@@ -76,10 +106,36 @@ class GradesViewModel: GradesViewModelProtocol {
     }
     
     func getGrades(token: String) async {
+        self.state = .loading
+        self.hasError = false
+        
         do {
             self.grades = try await service.fetch(token: token)
+            self.state = .success(data: self.grades)
         } catch {
             print(error)
+            self.state = .failed(error: error)
+            self.hasError = true
         }
+    }
+    
+    private static func toFullSemesterName(_ semester: String) -> String {
+        let year = "20\(String(semester.prefix(2)))"
+        let nextYearShort = String((Int(year) ?? 2000) + 1).suffix(2)
+
+        switch semester.last {
+        case "W": return "Wintersemester \(year)/\(nextYearShort)"
+        case "S": return "Sommersemester \(year)"
+        default: return "Unknown"
+        }
+    }
+}
+
+extension GradesViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [Grade])
+        case failed(error: Error)
     }
 }
