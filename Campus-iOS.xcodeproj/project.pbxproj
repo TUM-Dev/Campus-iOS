@@ -30,6 +30,9 @@
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
 		36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A22774932B0055777F /* CalendarToolbar.swift */; };
 		36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A4277493D90055777F /* CalendarViewModel.swift */; };
+		36E964A7277498540055777F /* CalendarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A6277498540055777F /* CalendarContentView.swift */; };
+		36E964AA277498B60055777F /* KVKCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 36E964A9277498B60055777F /* KVKCalendar */; };
+		36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964AB277499860055777F /* CalendarDisplayView.swift */; };
 		36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FAE364277472EF00628799 /* LoginViewModel.swift */; };
 		36FF90602773BB5800F4C785 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF905D2773BB5800F4C785 /* MVGAPI.swift */; };
 		36FF90612773BB5800F4C785 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF905E2773BB5800F4C785 /* TUMOnlineAPI.swift */; };
@@ -128,6 +131,8 @@
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
 		36E964A22774932B0055777F /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
 		36E964A4277493D90055777F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		36E964A6277498540055777F /* CalendarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarContentView.swift; sourceTree = "<group>"; };
+		36E964AB277499860055777F /* CalendarDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDisplayView.swift; sourceTree = "<group>"; };
 		36FAE364277472EF00628799 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		36FF905D2773BB5800F4C785 /* MVGAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
 		36FF905E2773BB5800F4C785 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
@@ -180,6 +185,7 @@
 			files = (
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
+				36E964AA277498B60055777F /* KVKCalendar in Frameworks */,
 				36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */,
 				36FF90682773BCA600F4C785 /* SWXMLHash in Frameworks */,
 				36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
@@ -355,6 +361,8 @@
 			isa = PBXGroup;
 			children = (
 				36E964A22774932B0055777F /* CalendarToolbar.swift */,
+				36E964A6277498540055777F /* CalendarContentView.swift */,
+				36E964AB277499860055777F /* CalendarDisplayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -603,6 +611,7 @@
 				36FF90712773BFC300F4C785 /* FirebaseAnalytics */,
 				36FF90732773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta */,
 				36FF90752773BFC300F4C785 /* FirebaseCrashlytics */,
+				36E964A9277498B60055777F /* KVKCalendar */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -684,6 +693,7 @@
 				97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 				36FF90662773BCA600F4C785 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				36FF90702773BFC300F4C785 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -732,6 +742,7 @@
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */,
+				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
 				36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				97997AD82772265D0079F809 /* GradesScreen.swift in Sources */,
@@ -778,6 +789,7 @@
 				97997AED27723C510079F809 /* LoadingView.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				97C9AB20277333040097B10C /* Environment+Error.swift in Sources */,
+				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
 				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
 				36FF906D2773BE3000F4C785 /* XMLSerializer.swift in Sources */,
 				97997AF027723E9D0079F809 /* CustomEnvironmentValues.swift in Sources */,
@@ -1177,6 +1189,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kvyatkovskys/KVKCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.5;
+			};
+		};
 		36FF90662773BCA600F4C785 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
@@ -1224,6 +1244,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		36E964A9277498B60055777F /* KVKCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */;
+			productName = KVKCalendar;
 		};
 		36FF90672773BCA600F4C785 /* SWXMLHash */ = {
 			isa = XCSwiftPackageProductDependency;

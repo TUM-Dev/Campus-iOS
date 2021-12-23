@@ -57,7 +57,7 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                Text("Dummy Calendar View")
+                CalendarContentView()
                     .navigationTitle("Calendar")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarLeading) {
