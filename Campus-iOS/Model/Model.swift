@@ -14,9 +14,9 @@ public class Model: ObservableObject {
     
     var anyCancellables: [AnyCancellable] = []
     
-//    init() {
-//        // later set initial values
-//    }
+    init() {
+        self.isLoginSheetPresented = true
+    }
     
     func loadAllModels() {
         // later load all the models

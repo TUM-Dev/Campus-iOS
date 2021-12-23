@@ -14,9 +14,9 @@ import CoreData
 @main
 struct CampusApp: App {
     @StateObject var environmentValues: CustomEnvironmentValues = CustomEnvironmentValues()
+    @StateObject var model: Model = MockModel()
     
     let persistenceController = PersistenceController.shared
-    @StateObject var model: Model = MockModel()
     @State var selectedTab = 0
     @State var splashScreenPresented = false
     @State private var showingAlert = false

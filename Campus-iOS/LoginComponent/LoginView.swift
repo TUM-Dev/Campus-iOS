@@ -6,16 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginView: View {
     /// The `LoginViewModel` that manages the content of the login screen
-//    @ObservedObject var viewModel: LoginViewModel
-    
-    @State private var isContinuePressed = false
-    
-    @State private var firstTextField: String = ""
-    @State private var numbersTextField: String = ""
-    @State private var secondTextField: String = ""
+    @ObservedObject var viewModel: LoginViewModel
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -40,17 +35,20 @@ struct LoginView: View {
                         .font(.headline .bold())
 
                     HStack() {
-                        TextField("go", text: $firstTextField)
+                        TextField("go", text: $viewModel.firstTextField)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
+//                            .onReceive(Just(viewModel.firstTextField)) { (newValue: String) in
+//                                viewModel.firstTextField = newValue.prefix(2).lowercased()
+//                            }
 
                         Spacer().frame(width: 8)
 
-                        TextField("42", text: $numbersTextField)
+                        TextField("42", text: $viewModel.numbersTextField)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
@@ -58,16 +56,22 @@ struct LoginView: View {
                             .disableAutocorrection(true)
                             .textContentType(.username)
                             .keyboardType(.numberPad)
+//                            .onReceive(Just(viewModel.numbersTextField)) { (newValue: String) in
+//                                viewModel.numbersTextField = String(newValue.prefix(2))
+//                            }
 
                         Spacer().frame(width: 8)
 
-                        TextField("tum", text: $secondTextField)
+                        TextField("tum", text: $viewModel.secondTextField)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
+//                            .onReceive(Just(viewModel.secondTextField)) { (newValue: String) in
+//                                viewModel.secondTextField = newValue.prefix(3).lowercased()
+//                            }
                     }
                     
                     Spacer()
@@ -75,14 +79,18 @@ struct LoginView: View {
                     
                     ZStack {
                         NavigationLink(destination:
-                            TokenConfirmationView().navigationBarTitle(Text("Authorize Token")), isActive: $isContinuePressed) { EmptyView() }
+                                        TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token")), isActive: self.$viewModel.isContinuePressed) { EmptyView() }
                         
                         Button(action: {
-                            self.isContinuePressed = true
+                            self.viewModel.loginWithContinue()
                         }) {
                             Text("Continue 🎓").lineLimit(1).font(.title2)
                                 .frame(alignment: .center)
                         }
+                        .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
+                            Button("OK", role: .cancel) {}
+                        }
+                        .disabled(!viewModel.isContinueEnabled)
                         .frame(width: 135, height: 35)
                         .aspectRatio(contentMode: .fill)
                         .font(.title)
@@ -93,10 +101,14 @@ struct LoginView: View {
                     Spacer().frame(height: 20)
 
                     Button(action: {
-                        //didSelectContinueWithoutTumID()
+                        self.viewModel.loginWithContinueWithoutTumID()
+                        self.viewModel.model?.isLoginSheetPresented = false
                     }) {
                         Text("Continue without TUM ID").lineLimit(1).font(.caption)
                             .frame(alignment: .center)
+                    }
+                    .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
+                        Button("OK", role: .cancel) {}
                     }
                     .aspectRatio(contentMode: .fill)
                     .font(.subheadline)
@@ -117,7 +129,7 @@ struct LoginView: View {
     }
     
     init(model: Model) {
-//        self.viewModel = LoginViewModel(model: model)
+        self.viewModel = LoginViewModel(model: model)
 //        KeychainService.removeAuthorization()
     }
 }
