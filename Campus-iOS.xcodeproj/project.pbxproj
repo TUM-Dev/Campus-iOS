@@ -28,6 +28,8 @@
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
+		36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A22774932B0055777F /* CalendarToolbar.swift */; };
+		36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A4277493D90055777F /* CalendarViewModel.swift */; };
 		36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FAE364277472EF00628799 /* LoginViewModel.swift */; };
 		36FF90602773BB5800F4C785 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF905D2773BB5800F4C785 /* MVGAPI.swift */; };
 		36FF90612773BB5800F4C785 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FF905E2773BB5800F4C785 /* TUMOnlineAPI.swift */; };
@@ -124,6 +126,8 @@
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
+		36E964A22774932B0055777F /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
+		36E964A4277493D90055777F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		36FAE364277472EF00628799 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		36FF905D2773BB5800F4C785 /* MVGAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
 		36FF905E2773BB5800F4C785 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
@@ -215,13 +219,9 @@
 		36203E872761C6EC00C24658 /* LoginComponent */ = {
 			isa = PBXGroup;
 			children = (
-				36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */,
-				36203E882761C6EC00C24658 /* Spinner.swift */,
-				36203E892761C6EC00C24658 /* LoginView.swift */,
-				36203E8A2761C6EC00C24658 /* Credentials.swift */,
-				3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */,
-				36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */,
-				36FAE364277472EF00628799 /* LoginViewModel.swift */,
+				36E9649D277492150055777F /* Service */,
+				36E9649C277491F10055777F /* ViewModel */,
+				36E9649B277491E90055777F /* Views */,
 			);
 			path = LoginComponent;
 			sourceTree = "<group>";
@@ -249,6 +249,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				36E9649E277492AE0055777F /* CalendarComponent */,
 				36FF90632773BB8100F4C785 /* Extensions */,
 				9723973A27728224004BF7AB /* LectureComponent */,
 				97997AEA27723C340079F809 /* Base */,
@@ -310,6 +311,67 @@
 				3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		36E9649B277491E90055777F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */,
+				36203E892761C6EC00C24658 /* LoginView.swift */,
+				3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */,
+				36203E882761C6EC00C24658 /* Spinner.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		36E9649C277491F10055777F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36FAE364277472EF00628799 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36E9649D277492150055777F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */,
+				36203E8A2761C6EC00C24658 /* Credentials.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		36E9649E277492AE0055777F /* CalendarComponent */ = {
+			isa = PBXGroup;
+			children = (
+				36E964A1277492C70055777F /* Service */,
+				36E964A0277492C00055777F /* ViewModel */,
+				36E9649F277492B70055777F /* Views */,
+			);
+			path = CalendarComponent;
+			sourceTree = "<group>";
+		};
+		36E9649F277492B70055777F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36E964A22774932B0055777F /* CalendarToolbar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		36E964A0277492C00055777F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36E964A4277493D90055777F /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36E964A1277492C70055777F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		36FF90632773BB8100F4C785 /* Extensions */ = {
@@ -671,6 +733,7 @@
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */,
 				36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */,
+				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				97997AD82772265D0079F809 /* GradesScreen.swift in Sources */,
 				36FF90612773BB5800F4C785 /* TUMOnlineAPI.swift in Sources */,
 				972397452772826E004BF7AB /* LecturesService.swift in Sources */,
@@ -692,6 +755,7 @@
 				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
 				41040BC5276D1B6A001FC12B /* Dish.swift in Sources */,
 				4192E413276B3F8B006CF322 /* Panel.swift in Sources */,
+				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				41040BC7276D1B8E001FC12B /* Menu.swift in Sources */,
 				36FF90622773BB5800F4C785 /* TUMCabeAPI.swift in Sources */,
 				97C9AB24277333320097B10C /* ErrorEmittingViewModifier.swift in Sources */,

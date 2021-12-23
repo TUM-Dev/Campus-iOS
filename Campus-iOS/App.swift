@@ -58,6 +58,15 @@ struct CampusApp: App {
         TabView(selection: $selectedTab) {
             NavigationView {
                 Text("Dummy Calendar View")
+                    .navigationTitle("Calendar")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarLeading) {
+                            CalendarToolbar(viewModel: CalendarViewModel())
+                        }
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(profileModel: ProfileModel())
+                        }
+                    }
                 // CalendarView(model: model)
             }
             .tag(0)
