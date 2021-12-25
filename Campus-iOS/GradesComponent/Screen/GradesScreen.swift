@@ -18,37 +18,12 @@ struct GradesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success(let _):
+            case .success(_):
                 ScrollView {
                     VStack {
-                        BarChart(chartData: vm.barChartData)
-                            .xAxisGrid(chartData: vm.barChartData)
-                            //.yAxisGrid(chartData: vm.barChartData)
-                            .xAxisLabels(chartData: vm.barChartData)
-                            .yAxisLabels(chartData: vm.barChartData)
-                            .legends(chartData: vm.barChartData)
-                            .frame(height: UIScreen.main.bounds.size.height/4, alignment: .center)
-                            .padding([.horizontal, .top])
+                        BarChartView(barChartData: vm.barChartData)
                          
-                        ForEach(vm.sortedGradesBySemester, id: \.0) { gradesBySemester in
-                            GroupBox(
-                                label: HStack {
-                                    Image(systemName: "graduationcap")
-                                        .imageScale(.medium)   
-                                    Text(gradesBySemester.0)
-                                        .font(.system(size: 18))
-                                }.foregroundColor(.blue)
-                            ) {
-                                ForEach(gradesBySemester.1) { item in
-                                    GradeView(grade: item)
-                                    
-                                    if item.id != gradesBySemester.1.last?.id {
-                                        Divider()
-                                    }
-                                }
-                            }
-                            .padding()
-                        }
+                        GradesView(gradesBySemester: vm.sortedGradesBySemester)
                     }
                 }
             case .loading, .na:
@@ -70,7 +45,7 @@ struct GradesScreen: View {
                     }
                 }
         
-                Button("Cancle", role: .cancel) { }
+                Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {
                     Text(error.localizedDescription)

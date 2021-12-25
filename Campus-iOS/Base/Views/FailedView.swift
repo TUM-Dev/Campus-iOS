@@ -11,7 +11,37 @@ struct FailedView: View {
     let errorDescription: String
     
     var body: some View {
-        Text("Error! - \(errorDescription)")
+        ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)) {
+            Image(uiImage: #imageLiteral(resourceName: "Error-logo"))
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+            VStack (alignment: .center, spacing: 30) {
+                Text("oh no!")
+                    .font(.title)
+                
+                Text("Someting went wrong.")
+                    .multilineTextAlignment(.center)
+                    .opacity(0.7)
+                
+                Text("Error: \(errorDescription)")
+                    .multilineTextAlignment(.center)
+                    .opacity(0.7)
+                
+                Button(action: {
+                    
+                }) {
+                    Text("Try Again".uppercased())
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                        .padding(.horizontal, 30)
+                        .background(Capsule().foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.8549019608, blue: 0.6784313725, alpha: 1))))
+                }
+            }
+            .padding(.horizontal, 70)
+            .padding(.bottom, UIScreen.main.bounds.height * 0.1)
+        }
     }
 }
 

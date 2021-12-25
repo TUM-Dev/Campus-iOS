@@ -16,19 +16,36 @@ struct LecturesScreen: View {
     
     var body: some View {
         Group {
-            if vm.lectures.isEmpty {
-                LoadingView(text: "Fetching Lectures")
-            } else {
-                List {
-                    ForEach(vm.lectures) { item in
-                        LectureView(lecture: item)
-                    }
+            switch vm.state {
+            case .success(_):
+                ScrollView {
+                    LecturesView(lecturesBySemester: vm.sortedLecturesBySemester)
                 }
+            case .loading, .na:
+                LoadingView(text: "Fetching Lectures")
+            case .failed(let error):
+                FailedView(errorDescription: error.localizedDescription)
             }
         }
         .task {
             await vm.getLectures(token: environmentValues.user.token)
         }
+        .alert(
+            "Error while fetching Lectures",
+            isPresented: $vm.hasError,
+            presenting: vm.state) { detail in
+                Button("Retry") {
+                    Task {
+                        await vm.getLectures(token: environmentValues.user.token)
+                    }
+                }
+        
+                Button("Cancel", role: .cancel) { }
+            } message: { detail in
+                if case let .failed(error) = detail {
+                    Text(error.localizedDescription)
+                }
+            }
     }
 }
 
