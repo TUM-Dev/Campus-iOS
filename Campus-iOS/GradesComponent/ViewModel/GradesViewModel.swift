@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol GradesViewModelProtocol: ObservableObject {
-    func getGrades(token: String) async
+    func getGrades(token: String, forcedRefresh: Bool) async
 }
 
 @MainActor
@@ -50,13 +50,15 @@ class GradesViewModel: GradesViewModelProtocol {
         self.service = serivce
     }
     
-    func getGrades(token: String) async {
-        self.state = .loading
+    func getGrades(token: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
         self.hasError = false
         
         do {
             self.state = .success(
-                data: try await service.fetch(token: token)
+                data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             )
         } catch {
             print(error)

@@ -19,11 +19,17 @@ struct GradesScreen: View {
         Group {
             switch vm.state {
             case .success(_):
-                ScrollView {
-                    VStack {
-                        BarChartView(barChartData: vm.barChartData)
-                         
-                        GradesView(gradesBySemester: vm.sortedGradesBySemester)
+                // VStack is apperently required?
+                VStack {
+                    GradesView(
+                        gradesBySemester: vm.sortedGradesBySemester,
+                        barChartData: vm.barChartData
+                    )
+                    .refreshable {
+                        await vm.getGrades(
+                            token: environmentValues.user.token,
+                            forcedRefresh: true
+                        )
                     }
                 }
             case .loading, .na:

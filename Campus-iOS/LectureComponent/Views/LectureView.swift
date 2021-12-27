@@ -42,12 +42,6 @@ struct LectureView: View {
             }
             .padding(.leading, 4)
         }
-        .multilineTextAlignment(.leading)
-        .frame(
-              maxWidth: .infinity,
-              maxHeight: .infinity,
-              alignment: .topLeading
-        )
         .padding(.vertical ,8)
     }
 }

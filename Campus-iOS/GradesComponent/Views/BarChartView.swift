@@ -12,18 +12,14 @@ struct BarChartView: View {
     var barChartData: BarChartData
     
     var body: some View {
-        GroupBox {
-            BarChart(chartData: barChartData)
-                .xAxisGrid(chartData: barChartData)
-                //.yAxisGrid(chartData: vm.barChartData)
-                .xAxisLabels(chartData: barChartData)
-                .yAxisLabels(chartData: barChartData)
-                //.legends(chartData: barChartData)
-                .frame(height: UIScreen.main.bounds.size.height/5, alignment: .center)
-                .padding(.top, 12)
-        }
-        .padding(.horizontal)
-        //.padding(.horizontal, 8)
+        BarChart(chartData: barChartData)
+            .xAxisGrid(chartData: barChartData)
+            //.yAxisGrid(chartData: vm.barChartData)
+            .xAxisLabels(chartData: barChartData)
+            .yAxisLabels(chartData: barChartData)
+            //.legends(chartData: barChartData)
+            .frame(height: UIScreen.main.bounds.size.height/5, alignment: .center)
+            .padding(.top, 12)
     }
 }
 

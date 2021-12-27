@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LecturesViewModelProtocol: ObservableObject {
-    func getLectures(token: String) async
+    func getLectures(token: String, forcedRefresh: Bool) async
 }
 
 @MainActor
@@ -46,22 +46,20 @@ class LecturesViewModel: LecturesViewModelProtocol {
         self.service = serivce
     }
     
-    func getLectures(token: String) async {
-        self.state = .loading
+    func getLectures(token: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
         self.hasError = false
         
         do {
             self.state = .success(
-                data: try await service.fetch(token: token)
+                data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             )
         } catch {
             print(error)
             self.state = .failed(error: error)
             self.hasError = true
         }
-    }
-    
-    func getLectureDetails(token: String, lvNr: String) async {
-        
     }
 }

@@ -18,8 +18,14 @@ struct LecturesScreen: View {
         Group {
             switch vm.state {
             case .success(_):
-                ScrollView {
+                VStack {
                     LecturesView(lecturesBySemester: vm.sortedLecturesBySemester)
+                        .refreshable {
+                            await vm.getLectures(
+                                token: environmentValues.user.token,
+                                forcedRefresh: true
+                            )
+                        }
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching Lectures")

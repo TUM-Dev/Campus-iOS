@@ -11,36 +11,25 @@ struct LecturesView: View {
     var lecturesBySemester: [(String, [Lecture])]
     
     var body: some View {
-        ForEach(lecturesBySemester, id: \.0) { lecturesBySemester in
-            GroupBox(
-                label: GroupBoxLabelView(
-                    iconName: "graduationcap",
-                    text: lecturesBySemester.0
-                )
-            ) {
-                ForEach(lecturesBySemester.1) { item in
-                    NavigationLink(destination: LectureDetailsScreen(lecture: item)) {
-                        HStack {
+        List {
+            ForEach(lecturesBySemester, id: \.0) { lecturesBySemester in
+                Section(
+                    header: GroupBoxLabelView(
+                        iconName: "graduationcap",
+                        text: lecturesBySemester.0
+                    )
+                ) {
+                    ForEach(lecturesBySemester.1) { item in
+                        NavigationLink(
+                            destination:
+                                LectureDetailsScreen(lecture: item)
+                                    .navigationBarTitleDisplayMode(.inline)
+                        ) {
                             LectureView(lecture: item)
-                            
-                            Image(systemName: "chevron.right")
-                              .resizable()
-                              .aspectRatio(contentMode: .fit)
-                              .frame(width: 7)
-                              .foregroundColor(.gray)
                         }
-                        
-                    }
-                    .navigationBarTitleDisplayMode(.inline)
-                    .frame(alignment: .topLeading)
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    if item.id != lecturesBySemester.1.last?.id {
-                        Divider()
                     }
                 }
             }
-            .padding()
         }
     }
 }

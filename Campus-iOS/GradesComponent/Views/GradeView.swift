@@ -13,7 +13,7 @@ struct GradeView: View {
     var grade: Grade
     
     var body: some View {
-        HStack(alignment: .center, spacing: 8) {
+        HStack(alignment: .center, spacing: 16) {
             ZStack {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(
@@ -59,15 +59,9 @@ struct GradeView: View {
                     }.foregroundColor(.init(.darkGray))
                 }
             }
-            .padding(.leading, 8)
+            .padding(.bottom, 4)
         }
-        .frame(
-              maxWidth: .infinity,
-              maxHeight: .infinity,
-              alignment: .topLeading
-        )
         .padding(.vertical, 5)
-        .foregroundColor(.black)
     }
 }
 

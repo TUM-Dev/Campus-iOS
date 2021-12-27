@@ -28,7 +28,7 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
         
         do {
             self.state = .success(
-                data: try await service.fetch(token: token, lvNr: lvNr)
+                data: try await service.fetch(token: token, lvNr: lvNr, forcedRefresh: false)
             )
         } catch {
             print(error)

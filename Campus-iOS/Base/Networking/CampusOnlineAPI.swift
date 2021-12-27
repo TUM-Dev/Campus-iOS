@@ -21,12 +21,13 @@ struct CampusOnlineAPI: NetworkingAPI {
         return decoder
     }()
     
-    // Maximum size of cache: 100kB, Maximum cache entries: 1000
-    static let cache = LRUCache<String, Decodable>(totalCostLimit: 100_000, countLimit: 1_000)
+    // Maximum size of cache: 500kB, Maximum cache entries: 1000, Lifetime: 10min
+    static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
     
-    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String? = nil) async throws -> T {
+    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String? = nil, forcedRefresh: Bool = false) async throws -> T {
         // Check cache first
-        if let data = cache.value(forKey: endpoint.fullRequestURL),
+        if !forcedRefresh,
+           let data = cache.value(forKey: endpoint.fullRequestURL),
            let typedData = data as? T {
             return typedData
         // Otherwise make the request

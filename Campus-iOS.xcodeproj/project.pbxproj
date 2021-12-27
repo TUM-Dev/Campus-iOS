@@ -88,6 +88,7 @@
 		97C9AB2D27736FE00097B10C /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2C27736FE00097B10C /* APIResponse.swift */; };
 		97C9AB2F2773D6E40097B10C /* FailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9AB2E2773D6E40097B10C /* FailedView.swift */; };
 		97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7B10F27729A7F00D64EDF /* GradeColor.swift */; };
+		97FC9F0A277A85D500261019 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FC9F09277A85D500261019 /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		97C9AB2C27736FE00097B10C /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		97C9AB2E2773D6E40097B10C /* FailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailedView.swift; sourceTree = "<group>"; };
 		97E7B10F27729A7F00D64EDF /* GradeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeColor.swift; sourceTree = "<group>"; };
+		97FC9F09277A85D500261019 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,6 +539,7 @@
 				97C9AB26277358B20097B10C /* CampusOnlineAPI.swift */,
 				97C9AB2A27735AE70097B10C /* NetworkingAPI.swift */,
 				97C9AB2C27736FE00097B10C /* APIResponse.swift */,
+				97FC9F09277A85D500261019 /* Cache.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				97FC9F0A277A85D500261019 /* Cache.swift in Sources */,
 				976C7D75277538D700FFDCF8 /* Modus.swift in Sources */,
 				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
 				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
