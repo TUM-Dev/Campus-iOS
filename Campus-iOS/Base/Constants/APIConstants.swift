@@ -26,11 +26,13 @@ extension Constants {
             
             case personalLectures
             case personalGrades
+            case lectureDetails(lvNr: String)
             
             var relativePathURL: String {
                 switch self {
                     case .personalLectures: return "wbservicesbasic.veranstaltungenEigene"
                     case .personalGrades: return "wbservicesbasic.noten"
+                    case .lectureDetails: return "wbservicesbasic.veranstaltungenDetails"
                 }
             }
             
@@ -41,12 +43,13 @@ extension Constants {
             var parameters: [String: String] {
                 switch self {
                     case .personalLectures, .personalGrades: return [:]
+                    case .lectureDetails(let lvNr): return ["pLVNr": lvNr]
                 }
             }
             
             var needsAuth: Bool {
                 switch self {
-                    case .personalLectures, .personalGrades: return true
+                    case .personalLectures, .personalGrades, .lectureDetails(_): return true
                 }
             }
             

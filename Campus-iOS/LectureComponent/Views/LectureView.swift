@@ -37,10 +37,12 @@ struct LectureView: View {
                         .frame(width: 12, height: 12)
                     Text(lecture.speaker)
                         .font(.system(size: 12))
+                        .fixedSize(horizontal: false, vertical: true)
                 }.foregroundColor(.init(.darkGray))
             }
             .padding(.leading, 4)
         }
+        .multilineTextAlignment(.leading)
         .frame(
               maxWidth: .infinity,
               maxHeight: .infinity,

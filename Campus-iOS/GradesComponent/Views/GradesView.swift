@@ -13,7 +13,10 @@ struct GradesView: View {
     var body: some View {
         ForEach(gradesBySemester, id: \.0) { gradesBySemester in
             GroupBox(
-                label: GroupBoxLabelView(semester: gradesBySemester.0)
+                label: GroupBoxLabelView(
+                    iconName: "graduationcap",
+                    text: gradesBySemester.0
+                )
             ) {
                 ForEach(gradesBySemester.1) { item in
                     GradeView(grade: item)

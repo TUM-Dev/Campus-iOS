@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct GroupBoxLabelView: View {
-    var semester: String
+    var iconName: String
+    var text: String
     
     var body: some View {
         HStack {
-            Image(systemName: "graduationcap")
+            Image(systemName: iconName)
                 .imageScale(.medium)
-            Text(semester)
+            Text(text)
                 .font(.system(size: 18))
         }.foregroundColor(.blue)
     }
@@ -22,7 +23,7 @@ struct GroupBoxLabelView: View {
 
 struct GroupBoxLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupBoxLabelView(semester: "Wintersemester 2021/22")
+        GroupBoxLabelView(iconName: "graduationcap", text: "Wintersemester 2021/22")
     }
 }
 

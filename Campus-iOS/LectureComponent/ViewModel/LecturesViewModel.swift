@@ -60,4 +60,8 @@ class LecturesViewModel: LecturesViewModelProtocol {
             self.hasError = true
         }
     }
+    
+    func getLectureDetails(token: String, lvNr: String) async {
+        
+    }
 }
