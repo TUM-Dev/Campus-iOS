@@ -61,6 +61,7 @@
 		976C7D9B2778870800FFDCF8 /* LectureDetailsLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976C7D9A2778870700FFDCF8 /* LectureDetailsLinkView.swift */; };
 		976C7D9E27788ADE00FFDCF8 /* LectureDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976C7D9D27788ADE00FFDCF8 /* LectureDetailsBasicInfoRowView.swift */; };
 		976C7DA027788E6900FFDCF8 /* LectureDetailsDetailedInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976C7D9F27788E6900FFDCF8 /* LectureDetailsDetailedInfoRowView.swift */; };
+		976C7DA32779EA2500FFDCF8 /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = 976C7DA22779EA2500FFDCF8 /* LRUCache */; };
 		97997AD22772179D0079F809 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD12772179D0079F809 /* APIConstants.swift */; };
 		97997AD5277222730079F809 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD4277222730079F809 /* Grade.swift */; };
 		97997AD82772265D0079F809 /* GradesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97997AD72772265D0079F809 /* GradesScreen.swift */; };
@@ -197,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
+				976C7DA32779EA2500FFDCF8 /* LRUCache in Frameworks */,
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
 				97997AE127722D660079F809 /* Alamofire in Frameworks */,
@@ -560,6 +562,7 @@
 				97997AE027722D660079F809 /* Alamofire */,
 				97997AE6277234120079F809 /* XMLCoder */,
 				97C9AB1127732A200097B10C /* SwiftUICharts */,
+				976C7DA22779EA2500FFDCF8 /* LRUCache */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -639,6 +642,7 @@
 				97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */,
 				97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
+				976C7DA12779EA2500FFDCF8 /* XCRemoteSwiftPackageReference "LRUCache" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -927,7 +931,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WL9Z9UXPKF;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -946,7 +950,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -966,7 +970,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = WL9Z9UXPKF;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -985,7 +989,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1141,6 +1145,14 @@
 				kind = branch;
 			};
 		};
+		976C7DA12779EA2500FFDCF8 /* XCRemoteSwiftPackageReference "LRUCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/LRUCache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1172,6 +1184,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		976C7DA22779EA2500FFDCF8 /* LRUCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 976C7DA12779EA2500FFDCF8 /* XCRemoteSwiftPackageReference "LRUCache" */;
+			productName = LRUCache;
 		};
 		97997AE027722D660079F809 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

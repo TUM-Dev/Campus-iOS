@@ -12,6 +12,7 @@ protocol APIConstants {
     static var baseURL: String { get }
     var relativePathURL: String { get }
     var fullPathURL: String { get }
+    var fullRequestURL: String { get }
     
     var parameters: [String: String] { get }
     var needsAuth: Bool { get }
@@ -40,6 +41,12 @@ extension Constants {
                 Self.baseURL + self.relativePathURL
             }
             
+            var fullRequestURL: String {
+                self.fullPathURL + "?" + parameters.flatMap({ key, value in
+                    key + "=" + value
+                })
+            }
+            
             var parameters: [String: String] {
                 switch self {
                     case .personalLectures, .personalGrades: return [:]
@@ -55,7 +62,12 @@ extension Constants {
             
             func asRequest(token: String? = nil) -> DataRequest {
                 if self.needsAuth {
-                    return AF.request(self.fullPathURL, parameters: self.parameters.merging(["pToken": token ?? ""], uniquingKeysWith: { (current, _) in current }))
+                    return AF
+                        .request(
+                            self.fullPathURL,
+                            parameters: self.parameters.merging(["pToken": token ?? ""], uniquingKeysWith: { (current, _) in current })
+                        )
+                        .cacheResponse(using: ResponseCacher(behavior: .cache))
                 } else {
                     return AF.request(self.fullPathURL, parameters: self.parameters)
                 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GradeView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var grade: Grade
     
     var body: some View {
@@ -29,6 +31,7 @@ struct GradeView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(grade.title)
                     .fontWeight(.bold)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 
                 HStack(alignment: .center, spacing: 8) {
                     HStack{

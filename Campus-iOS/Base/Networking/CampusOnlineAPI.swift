@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import XMLCoder
+import LRUCache
 
 struct CampusOnlineAPI: NetworkingAPI {    
     static let decoder: XMLDecoder = {
@@ -20,27 +21,41 @@ struct CampusOnlineAPI: NetworkingAPI {
         return decoder
     }()
     
+    // Maximum size of cache: 100kB, Maximum cache entries: 1000
+    static let cache = LRUCache<String, Decodable>(totalCostLimit: 100_000, countLimit: 1_000)
+    
     static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String? = nil) async throws -> T {
-        var data: Data
-        do {
-            data = try await endpoint.asRequest(token: token).serializingData().value
-        } catch {
-            print(error)
-            throw NetworkingError.deviceIsOffline
-        }
-        
-        // Check this first cause otherwise no error is thrown by the XMLDecoder
-        if let error = try? Self.decoder.decode(Error.self, from: data) {
-            print(error)
-            throw error
-        }
-        
-        do {
-            let decodedData = try Self.decoder.decode(T.self, from: data)
-            print(decodedData)
-            return decodedData
-        } catch {
-            throw Error.unkown(error.localizedDescription)
+        // Check cache first
+        if let data = cache.value(forKey: endpoint.fullRequestURL),
+           let typedData = data as? T {
+            return typedData
+        // Otherwise make the request
+        } else {
+            var data: Data
+            do {
+                data = try await endpoint.asRequest(token: token).serializingData().value
+            } catch {
+                print(error)
+                throw NetworkingError.deviceIsOffline
+            }
+            
+            // Check this first cause otherwise no error is thrown by the XMLDecoder
+            if let error = try? Self.decoder.decode(Error.self, from: data) {
+                print(error)
+                throw error
+            }
+            
+            do {
+                let decodedData = try Self.decoder.decode(T.self, from: data)
+                print(decodedData)
+                
+                // Write value to cache
+                cache.setValue(decodedData, forKey: endpoint.fullRequestURL, cost: data.count)
+                
+                return decodedData
+            } catch {
+                throw Error.unkown(error.localizedDescription)
+            }
         }
     }
     
