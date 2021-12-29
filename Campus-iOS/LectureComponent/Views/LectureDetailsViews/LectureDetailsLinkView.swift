@@ -45,7 +45,6 @@ struct LectureDetailsLinkView: View {
               maxWidth: .infinity,
               alignment: .topLeading
         )
-        .padding()
     }
 }
 

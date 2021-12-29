@@ -15,15 +15,16 @@ struct GroupBoxLabelView: View {
         HStack {
             Image(systemName: iconName)
                 .imageScale(.medium)
+				.font(Font.headline.bold())
             Text(text)
-                .font(.system(size: 18))
-        }.foregroundColor(.blue)
+				.font(Font.headline.bold())
+        }.foregroundColor(Color("tumBlue"))
     }
 }
 
 struct GroupBoxLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupBoxLabelView(iconName: "graduationcap", text: "Wintersemester 2021/22")
+        GroupBoxLabelView(iconName: "graduationcap.fill", text: "Wintersemester 2021/22")
     }
 }
 

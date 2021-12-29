@@ -11,12 +11,12 @@ struct LectureDetailsTitleView: View {
     var lectureDetails: LectureDetails
     
     var body: some View {
-        VStack(alignment: .center, spacing: 5) {
+        VStack(alignment: .leading, spacing: 5) {
             Text(lectureDetails.title)
-                .font(.system(.title))
-                .multilineTextAlignment(.center)
+				.font(Font.title)
+				.multilineTextAlignment(.leading)
             Text(lectureDetails.eventType)
-                .font(.system(.subheadline))
+				.font(Font.subheadline)
         }
     }
 }

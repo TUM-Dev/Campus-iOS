@@ -36,7 +36,7 @@ struct FailedView: View {
                         .foregroundColor(.white)
                         .padding(.vertical)
                         .padding(.horizontal, 30)
-                        .background(Capsule().foregroundColor(Color(#colorLiteral(red: 0.4392156863, green: 0.8549019608, blue: 0.6784313725, alpha: 1))))
+                        .background(Capsule().foregroundColor(Color("tumBlue")))
                 }
             }
             .padding(.horizontal, 70)
