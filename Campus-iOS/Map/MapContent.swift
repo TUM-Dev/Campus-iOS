@@ -57,7 +57,7 @@ struct MapContent: UIViewRepresentable {
                             
                             let coordinate = CLLocationCoordinate2D(
                                 latitude: locValue.latitude, longitude: locValue.longitude)
-                            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                            let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
                             let region = MKCoordinateRegion(center: coordinate, span: span)
                             
                             view.setRegion(region, animated: true)
@@ -105,7 +105,7 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
             print(view.annotation?.title)
-            
+            //selectedCanteen = view.annotation?.title
         }
     }
 }

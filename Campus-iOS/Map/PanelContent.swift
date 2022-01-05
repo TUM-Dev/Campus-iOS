@@ -13,7 +13,6 @@ import Alamofire
 struct PanelContent: View {
     @Binding var zoomOnUser: Bool
     @Binding var canteens: [Cafeteria]
-    @State var d = testData
     
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -65,7 +64,8 @@ struct PanelContent: View {
                             }
                         }
                     }
-                }.listStyle(PlainListStyle())
+                }
+                .listStyle(PlainListStyle())
             }
         }
     }
@@ -86,26 +86,6 @@ struct PanelContent: View {
         }
     }
 }
-
-struct ListData: Identifiable,Hashable {
-    var id = UUID()
-    var canteen_id: String
-    var name: String
-    var adress: String
-    var latitude: Double
-    var longitude: Double
-}
-
-var testData = [
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220),
-    ListData(canteen_id:  "mensa-arcisstr", name: "Mensa Arcisstraße", adress:  "Arcisstraße 17, München", latitude: 48.147420, longitude: 11.567220)
-]
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
