@@ -65,6 +65,10 @@ struct PanelContent: View {
             }
         }
     }
+    
+    func fetch() {
+        print("A")
+    }
 }
 
 struct ListData: Identifiable,Hashable {
