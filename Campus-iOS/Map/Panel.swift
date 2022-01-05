@@ -12,6 +12,7 @@ struct Panel: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
     @Binding var zoomOnUser: Bool
+    @Binding var panelPosition: String
 
     var body: some View {
         let drag = DragGesture()
@@ -60,6 +61,12 @@ struct Panel: View {
         } else {
             self.position = closestPosition
         }
+        
+        if self.position.rawValue == PanelPosition.bottom.rawValue {
+            panelPosition = "down"
+        } else if self.position.rawValue == PanelPosition.middle.rawValue {
+            panelPosition = "up"
+        }
     }
 }
 
@@ -71,7 +78,7 @@ enum PanelPosition: CGFloat {
         switch self {
         case .top: return 0.5 * screenHeight/3
         case .middle: return 1.5 * screenHeight/3
-        case .bottom: return 3.5 * screenHeight/4
+        case .bottom: return 3.2 * screenHeight/4
         }
     }
 }
@@ -101,6 +108,6 @@ enum DragState {
 
 struct Panel_Previews: PreviewProvider {
     static var previews: some View {
-        Panel(zoomOnUser: .constant(true))
+        Panel(zoomOnUser: .constant(true), panelPosition: .constant("down"))
     }
 }

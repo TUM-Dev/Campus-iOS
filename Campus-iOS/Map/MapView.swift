@@ -10,11 +10,12 @@ import MapKit
 
 struct MapView: View {
     @State var zoomOnUser: Bool
+    @State var panelPosition: String
     
     var body: some View {
         ZStack {
-            MapContent(zoomOnUser: $zoomOnUser)
-            Panel(zoomOnUser: $zoomOnUser)
+            MapContent(zoomOnUser: $zoomOnUser, panelPosition: $panelPosition)
+            Panel(zoomOnUser: $zoomOnUser, panelPosition: $panelPosition)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("")
@@ -27,6 +28,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(zoomOnUser: true)
+        MapView(zoomOnUser: true, panelPosition: "down")
     }
 }

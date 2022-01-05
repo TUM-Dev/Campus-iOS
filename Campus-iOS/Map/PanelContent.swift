@@ -14,9 +14,7 @@ struct PanelContent: View {
     @State var d = testData
     
     private let handleThickness = CGFloat(0)
-    
-    let abc = ["a", "b", "c", "d"]
-    
+        
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: handleThickness / 2.0)

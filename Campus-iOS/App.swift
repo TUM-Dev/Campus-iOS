@@ -93,7 +93,7 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView(zoomOnUser: true)
+                MapView(zoomOnUser: true, panelPosition: "down")
                 //Text("Dummy Cafeterias View")
                 // CafeteriasView(model: model)
             }
