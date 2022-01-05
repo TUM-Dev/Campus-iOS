@@ -13,6 +13,7 @@ struct Panel: View {
     @State var position = PanelPosition.bottom
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
+    @Binding var canteens: [Cafeteria]
 
     var body: some View {
         let drag = DragGesture()
@@ -22,7 +23,7 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent(zoomOnUser: $zoomOnUser)
+            PanelContent(zoomOnUser: $zoomOnUser, canteens: $canteens)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()
@@ -108,6 +109,6 @@ enum DragState {
 
 struct Panel_Previews: PreviewProvider {
     static var previews: some View {
-        Panel(zoomOnUser: .constant(true), panelPosition: .constant("down"))
+        Panel(zoomOnUser: .constant(true), panelPosition: .constant("down"), canteens: .constant([]))
     }
 }

@@ -13,6 +13,7 @@ import Alamofire
 struct MapContent: UIViewRepresentable {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
+    @Binding var canteens: [Cafeteria]
     
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -82,7 +83,7 @@ struct MapContent: UIViewRepresentable {
                 
                 mapView.addAnnotations(response.value ?? [])
                 
-                //self.allCafs = cafeterias
+                canteens = cafeterias
 
                 /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
                 snapshot.appendSections([.main])
@@ -100,6 +101,11 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
             control.zoomOnUser = false
+        }
+        
+        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+            print(view.annotation?.title)
+            
         }
     }
 }

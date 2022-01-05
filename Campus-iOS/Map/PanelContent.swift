@@ -8,10 +8,16 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import Alamofire
 
 struct PanelContent: View {
     @Binding var zoomOnUser: Bool
+    @Binding var canteens: [Cafeteria]
     @State var d = testData
+    
+    let endpoint = EatAPI.canteens
+    let sessionManager = Session.defaultSession
+    var locationManager = CLLocationManager()
     
     private let handleThickness = CGFloat(0)
         
@@ -33,22 +39,22 @@ struct PanelContent: View {
                                    height: 1.25 * UIScreen.main.bounds.width/10)
                 }
                 List {
-                    ForEach(d, id: \.self) { item in
+                    ForEach(canteens, id: \.self) { item in
                         VStack {
                             HStack {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    Spacer().frame(height: 10)
+                                    Spacer().frame(height: 5)
                                     Text(item.name)
                                         .bold()
                                         .font(.title2)
-                                    Spacer().frame(height: 5)
+                                    Spacer().frame(height: 0)
                                     HStack {
-                                        Text(item.adress)
+                                        Text(item.location.address)
                                             .font(.subheadline)
                                             .foregroundColor(Color.gray)
                                         Spacer().frame(width: 20)
                                     }
-                                    Spacer().frame(height: 5)
+                                    Spacer().frame(height: 0)
                                 }
                                 Spacer()
                                 Button (action: {
@@ -65,7 +71,19 @@ struct PanelContent: View {
     }
     
     func fetch() {
-        print("A")
+        sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
+            var cafeterias: [Cafeteria] = response.value ?? []
+            if let currentLocation = self.locationManager.location {
+                cafeterias.sortByDistance(to: currentLocation)
+            }
+            
+            self.canteens = cafeterias
+            
+            /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(cafeterias, toSection: .main)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)*/
+        }
     }
 }
 
@@ -91,7 +109,7 @@ var testData = [
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContent(zoomOnUser: .constant(true))
-.previewInterfaceOrientation(.landscapeRight)
+        PanelContent(zoomOnUser: .constant(true), canteens: .constant([]))
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
