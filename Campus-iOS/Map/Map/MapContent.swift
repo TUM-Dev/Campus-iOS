@@ -58,6 +58,9 @@ struct MapContent: UIViewRepresentable {
 
             if let location = self.locationManager.location {
                 if zoomOnUser {
+                    for i in mapView.selectedAnnotations {
+                        mapView.deselectAnnotation(i, animated: true)
+                    }
                     selectedCanteenName = ""
                     DispatchQueue.main.async {
                         let locValue: CLLocationCoordinate2D = location.coordinate
@@ -88,6 +91,11 @@ struct MapContent: UIViewRepresentable {
                     let region = MKCoordinateRegion(center: coordinate, span: span)
                     
                     mapView.setRegion(region, animated: true)
+                    for i in mapView.annotations {
+                        if i.title == selectedCanteenName {
+                            mapView.selectAnnotation(i, animated: true)
+                        }
+                    }
                 }
             }
         }
@@ -131,11 +139,24 @@ struct MapContent: UIViewRepresentable {
         }
                 
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let coordinate = view.annotation?.coordinate {
+                let locValue: CLLocationCoordinate2D = coordinate
+                
+                let coordinate = CLLocationCoordinate2D(
+                    latitude: locValue.latitude, longitude: locValue.longitude)
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
+                
+                mapView.setRegion(region, animated: true)
+            }
+            
             if let title = view.annotation?.title {
-                for i in 0...(control.canteens.count - 1) {
-                    if title! == control.canteens[i].title {
-                        control.selectedAnnotationIndex = i
-                        control.panelPosition = "pushMid"
+                if !control.canteens.isEmpty {
+                    for i in 0...(control.canteens.count - 1) {
+                        if title! == control.canteens[i].title {
+                            control.selectedAnnotationIndex = i
+                            control.panelPosition = "pushMid"
+                        }
                     }
                 }
             }

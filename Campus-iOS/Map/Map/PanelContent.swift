@@ -18,6 +18,8 @@ struct PanelContent: View {
     @Binding var selectedAnnotationIndex: Int
     
     @State private var searchString = ""
+    @State private var canteenForMealPlan: Cafeteria?
+    @State private var goToMealPlan = false
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -60,7 +62,7 @@ struct PanelContent: View {
                     ProgressView()
                     ScrollViewReader { proxy in
                         List {
-                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.contains(searchString) }), id: \.self) { item in
+                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { item in
                                 VStack {
                                     HStack {
                                         VStack(alignment: .leading, spacing: 8) {
@@ -70,11 +72,14 @@ struct PanelContent: View {
                                                     .bold()
                                                     .font(.title3)
                                                 Spacer()
-                                                Button (action: {
-                                                }) {
-                                                    Image(systemName: "doc.plaintext")
-                                                        .font(.title3)
-                                                }
+                                                Image(systemName: "doc.plaintext")
+                                                    .font(.title3)
+                                                    .onTapGesture {
+                                                        canteenForMealPlan = item
+                                                        goToMealPlan = true
+                                                    }
+                                                NavigationLink(destination: MealPlanView(canteen: canteenForMealPlan, menus: []), isActive: $goToMealPlan) { EmptyView() } .frame(width: 0, height: 0)
+                                                    .hidden()
                                             }
                                             Spacer().frame(height: 0)
                                             HStack {
@@ -98,28 +103,24 @@ struct PanelContent: View {
                                     }
                                 }
                                 .task(id: selectedAnnotationIndex) {
-                                    print(selectedAnnotationIndex)
                                     withAnimation(Animation.linear(duration: 0.0001)) {
                                         if 0...canteens.count ~= selectedAnnotationIndex {
                                             proxy.scrollTo(canteens[selectedAnnotationIndex], anchor: .top)
+                                            selectedAnnotationIndex = -1
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    ._scrollable()
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
             }
         }
-        .onAppear {
-            fetch()
-        }
     }
     
-    func fetch() {
+    private func fetch() {
         sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
             var cafeterias: [Cafeteria] = response.value ?? []
             if let currentLocation = self.locationManager.location {
@@ -127,11 +128,6 @@ struct PanelContent: View {
             }
             
             self.canteens = cafeterias
-            
-            /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
-            snapshot.appendSections([.main])
-            snapshot.appendItems(cafeterias, toSection: .main)
-            self?.dataSource?.apply(snapshot, animatingDifferences: true)*/
         }
     }
     
@@ -181,13 +177,14 @@ struct SearchBar: View {
     }
 }
 
-struct PanelContent_Previews: PreviewProvider {
+/*struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
         PanelContent(zoomOnUser: .constant(true),
                      panelPosition: .constant(""),
                      canteens: .constant([]),
                      selectedCanteenName: .constant(""),
-                     selectedAnnotationIndex: .constant(0))
+                     selectedAnnotationIndex: .constant(0),
+                     canteenForMealPlan: <#Cafeteria#>)
             .previewInterfaceOrientation(.portrait)
     }
-}
+}*/
