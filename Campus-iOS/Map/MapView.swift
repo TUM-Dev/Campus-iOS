@@ -12,11 +12,22 @@ struct MapView: View {
     @State var zoomOnUser: Bool
     @State var panelPosition: String
     @State var canteens: [Cafeteria]
+    @State var selectedCanteenName: String
+    @State var selectedAnnotationIndex: Int
     
     var body: some View {
         ZStack {
-            MapContent(zoomOnUser: $zoomOnUser, panelPosition: $panelPosition, canteens: $canteens)
-            Panel(zoomOnUser: $zoomOnUser, panelPosition: $panelPosition, canteens: $canteens)
+            MapContent(
+                zoomOnUser: $zoomOnUser,
+                panelPosition: $panelPosition,
+                canteens: $canteens,
+                selectedCanteenName: $selectedCanteenName,
+                selectedAnnotationIndex: $selectedAnnotationIndex)
+            Panel(zoomOnUser: $zoomOnUser,
+                  panelPosition: $panelPosition,
+                  canteens: $canteens,
+                  selectedCanteenName: $selectedCanteenName,
+                  selectedAnnotationIndex: $selectedAnnotationIndex)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("")
@@ -29,6 +40,10 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(zoomOnUser: true, panelPosition: "down", canteens: [])
+        MapView(zoomOnUser: true,
+                panelPosition: "down",
+                canteens: [],
+                selectedCanteenName: "",
+                selectedAnnotationIndex: 0)
     }
 }

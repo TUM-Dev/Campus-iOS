@@ -14,7 +14,9 @@ struct MapContent: UIViewRepresentable {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
     @Binding var canteens: [Cafeteria]
-    
+    @Binding var selectedCanteenName: String
+    @Binding var selectedAnnotationIndex: Int
+        
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
@@ -27,42 +29,65 @@ struct MapContent: UIViewRepresentable {
         DispatchQueue.main.async {
             fetchCanteens()
         }
+        
+        mapView.showsUserLocation = true
+
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
         return mapView
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        view.showsUserLocation = true
-
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        focusOnUser()
+        focusOnUser(mapView: view)
+        focusOnCanteen(mapView: view)
         
         let newCenter = screenHeight/3
         
-        if panelPosition == "up" {
+        if panelPosition == "up" || panelPosition == "pushMid"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
-        } else if panelPosition == "down" {
+        } else if panelPosition == "down" || panelPosition == "pushDown"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
-        
-        func focusOnUser() {
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                self.locationManager.startUpdatingLocation()
+    }
+    
+    func focusOnUser(mapView: MKMapView) {
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.startUpdatingLocation()
 
+            if let location = self.locationManager.location {
                 if zoomOnUser {
+                    selectedCanteenName = ""
                     DispatchQueue.main.async {
-                        if let location = self.locationManager.location {
-                            let locValue: CLLocationCoordinate2D = location.coordinate
-                            
-                            let coordinate = CLLocationCoordinate2D(
-                                latitude: locValue.latitude, longitude: locValue.longitude)
-                            let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-                            let region = MKCoordinateRegion(center: coordinate, span: span)
-                            
-                            view.setRegion(region, animated: true)
+                        let locValue: CLLocationCoordinate2D = location.coordinate
+                        
+                        let coordinate = CLLocationCoordinate2D(
+                            latitude: locValue.latitude, longitude: locValue.longitude)
+                        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                        let region = MKCoordinateRegion(center: coordinate, span: span)
+                        
+                        withAnimation {
+                            mapView.setRegion(region, animated: true)
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func focusOnCanteen(mapView: MKMapView) {
+        if selectedCanteenName != "" {
+            for i in mapView.annotations {
+                if i.title == selectedCanteenName {
+                    let locValue: CLLocationCoordinate2D = i.coordinate
+                    
+                    let coordinate = CLLocationCoordinate2D(
+                        latitude: locValue.latitude, longitude: locValue.longitude)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                    
+                    mapView.setRegion(region, animated: true)
                 }
             }
         }
@@ -101,11 +126,19 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
             control.zoomOnUser = false
+            control.selectedCanteenName = ""
+            control.selectedAnnotationIndex = -1
         }
-        
-        func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-            print(view.annotation?.title)
-            //selectedCanteen = view.annotation?.title
+                
+        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+            if let title = view.annotation?.title {
+                for i in 0...(control.canteens.count - 1) {
+                    if title! == control.canteens[i].title {
+                        control.selectedAnnotationIndex = i
+                        control.panelPosition = "pushMid"
+                    }
+                }
+            }
         }
     }
 }

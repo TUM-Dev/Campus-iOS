@@ -12,14 +12,25 @@ import Alamofire
 
 struct PanelContent: View {
     @Binding var zoomOnUser: Bool
+    @Binding var panelPosition: String
     @Binding var canteens: [Cafeteria]
+    @Binding var selectedCanteenName: String
+    @Binding var selectedAnnotationIndex: Int
     
+    @State private var searchString = ""
+        
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
     
+    private static let distanceFormatter: MKDistanceFormatter = {
+        let formatter = MKDistanceFormatter()
+        formatter.unitStyle = .abbreviated
+        return formatter
+    }()
+    
     private let handleThickness = CGFloat(0)
-        
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: handleThickness / 2.0)
@@ -29,44 +40,82 @@ struct PanelContent: View {
             VStack {
                 HStack {
                     Button (action: {
-                        self.zoomOnUser = true
+                        zoomOnUser = true
+                        selectedAnnotationIndex = 0
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
                     }
-                    Spacer().frame(width: 8.75 * UIScreen.main.bounds.width/10,
-                                   height: 1.25 * UIScreen.main.bounds.width/10)
+                    .padding(.horizontal, 10)
+                    
+                    SearchBar(panelPosition: $panelPosition,
+                              searchString: $searchString,
+                              selectedCanteenName: $selectedCanteenName,
+                              selectedAnnotationIndex: $selectedAnnotationIndex)
+                    
+                    Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
+                                   height: 1.5 * UIScreen.main.bounds.width/10)
                 }
-                List {
-                    ForEach(canteens, id: \.self) { item in
-                        VStack {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Spacer().frame(height: 5)
-                                    Text(item.name)
-                                        .bold()
-                                        .font(.title2)
-                                    Spacer().frame(height: 0)
+                ZStack {
+                    ProgressView()
+                    ScrollViewReader { proxy in
+                        List {
+                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.contains(searchString) }), id: \.self) { item in
+                                VStack {
                                     HStack {
-                                        Text(item.location.address)
-                                            .font(.subheadline)
-                                            .foregroundColor(Color.gray)
-                                        Spacer().frame(width: 20)
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            Spacer().frame(height: 5)
+                                            HStack {
+                                                Text(item.name)
+                                                    .bold()
+                                                    .font(.title3)
+                                                Spacer()
+                                                Button (action: {
+                                                }) {
+                                                    Image(systemName: "doc.plaintext")
+                                                        .font(.title3)
+                                                }
+                                            }
+                                            Spacer().frame(height: 0)
+                                            HStack {
+                                                Text(item.location.address)
+                                                    .font(.subheadline)
+                                                    .foregroundColor(Color.gray)
+                                                Spacer()
+                                                Text(distance(cafeteria: item))
+                                                    .font(.subheadline)
+                                                    .foregroundColor(Color.gray)
+                                            }
+                                            Spacer().frame(height: 0)
+                                        }
                                     }
-                                    Spacer().frame(height: 0)
                                 }
-                                Spacer()
-                                Button (action: {
-                                }) {
-                                    Image(systemName: "doc.plaintext")
-                                        .font(.title)
+                                .onTapGesture {
+                                    withAnimation {
+                                        selectedCanteenName = item.name
+                                        selectedAnnotationIndex = canteens.index(of: item)!
+                                        proxy.scrollTo(item, anchor: .top)
+                                    }
+                                }
+                                .task(id: selectedAnnotationIndex) {
+                                    print(selectedAnnotationIndex)
+                                    withAnimation(Animation.linear(duration: 0.0001)) {
+                                        if 0...canteens.count ~= selectedAnnotationIndex {
+                                            proxy.scrollTo(canteens[selectedAnnotationIndex], anchor: .top)
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
+                    ._scrollable()
+                    .searchable(text: $searchString, prompt: "Look for something")
+                    .listStyle(PlainListStyle())
                 }
-                .listStyle(PlainListStyle())
             }
+        }
+        .onAppear {
+            fetch()
         }
     }
     
@@ -85,11 +134,60 @@ struct PanelContent: View {
             self?.dataSource?.apply(snapshot, animatingDifferences: true)*/
         }
     }
+    
+    func distance(cafeteria: Cafeteria) -> String {
+        if let currentLocation = self.locationManager.location {
+            let distance = cafeteria.coordinate.location.distance(from: currentLocation)
+            return PanelContent.distanceFormatter.string(fromDistance: distance)
+        }
+        return ""
+    }
+}
+
+struct SearchBar: View {
+    @Binding var panelPosition: String
+    @Binding var searchString: String
+    @Binding var selectedCanteenName: String
+    @Binding var selectedAnnotationIndex: Int
+    
+    @State private var isEditing = false
+    
+    var body: some View {
+        TextField("Search ...", text: $searchString)
+            .padding(7)
+            .background(Color(.systemGray6))
+            .cornerRadius(8)
+            .onTapGesture {
+                isEditing = true
+                panelPosition = "pushMid"
+            }
+
+        if isEditing {
+            Button(action: {
+                isEditing = false
+                searchString = ""
+                
+                selectedCanteenName = ""
+                selectedAnnotationIndex = -1
+                panelPosition = "pushDown"
+                
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }) {
+                Text("Cancel")
+            }
+            .padding(.trailing, 10)
+            .transition(.move(edge: .trailing))
+        }
+    }
 }
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContent(zoomOnUser: .constant(true), canteens: .constant([]))
-            .previewInterfaceOrientation(.landscapeRight)
+        PanelContent(zoomOnUser: .constant(true),
+                     panelPosition: .constant(""),
+                     canteens: .constant([]),
+                     selectedCanteenName: .constant(""),
+                     selectedAnnotationIndex: .constant(0))
+            .previewInterfaceOrientation(.portrait)
     }
 }
