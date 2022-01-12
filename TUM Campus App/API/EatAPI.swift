@@ -11,6 +11,8 @@ import Foundation
 
 enum EatAPI: URLRequestConvertible {
     case canteens
+    case languages
+    case labels
     case all
     case all_ref
     case menu(location: String, year: Int = Date().year, week: Int = Date().weekOfYear)
@@ -27,7 +29,9 @@ enum EatAPI: URLRequestConvertible {
 
     var path: String {
         switch self {
-        case .canteens:                         return "canteens.json"
+        case .canteens:                         return "enums/canteens.json"
+        case .languages:                        return "enums/languages.json"
+        case .labels:                           return "enums/labels.json"
         case .all:                              return "all.json"
         case .all_ref:                          return "all_ref.json"
         case let .menu(location, year, week):   return "\(location)/\(year)/\(String(format: "%02d", week)).json"

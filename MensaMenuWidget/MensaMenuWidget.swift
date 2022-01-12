@@ -96,11 +96,11 @@ struct MensaMenuWidgetEntryView : View {
                     .padding(.bottom, 5)
                 ForEach(getDishes(sideDishes: false).prefix(family == .systemLarge ? 8 : 7), id: \.self) { dish in
                     HStack {
-                        Text(foodEmojiProvider(ingredients: dish.labels, dishType: dish.dishType)).font(.system(size: 13))
+                        Text(foodEmojiProvider(labels: dish.labels, dishType: dish.dishType)).font(.system(size: 13))
                         Text(dish.name)
                             .lineLimit(1)
                             .font(.system(size: 14, weight: .semibold))
-                        Text(ingredientsToString(ingredients: dish.labels))
+                        Text(labelsToString(labels: dish.labels))
                             .font(.system(size: 10, weight: .semibold))
                             .foregroundColor(Color.secondary)
                             .lineLimit(1)
@@ -132,7 +132,7 @@ struct MensaMenuWidgetEntryView : View {
                                 Text(dish.name)
                                     .lineLimit(1)
                                     .font(.system(size: 14, weight: .semibold))
-                                Text(ingredientsToString(ingredients: dish.labels))
+                                Text(labelsToString(labels: dish.labels))
                                     .font(.system(size: 10, weight: .semibold))
                                     .foregroundColor(Color.secondary)
                                     .lineLimit(1)
@@ -158,36 +158,43 @@ struct MensaMenuWidgetEntryView : View {
         entry.menu?.dishes.filter({ sideDishes ? $0.dishType == "Beilagen" : $0.dishType != "Beilagen"}) ?? []
     }
     
-    func ingredientsToString(ingredients: [String]) -> String {
-        let string = ingredients.joined(separator:",")
+    func labelsToString(labels: [String]) -> String {
+        let labelLookup = MensaService.shared.getLabels()
+        var shortenedLabels: [String] = []
+        
+        for label in labels{
+            if let labelObject = labelLookup[label] {
+                shortenedLabels.append(labelObject.abbreviation)
+            }else{
+                shortenedLabels.append(label)
+            }
+        }
+        
+        let string = shortenedLabels.joined(separator:",")
         if string != "" {
             return "(" + string + ")"
         }
         return ""
     }
     
-    func foodEmojiProvider(ingredients: [String], dishType: String) -> String {
-        if ingredients.contains("f") {
-            return "🥕"
-        } else if ingredients.contains("v") {
-            return "🫑"
-        } else if ingredients.contains("S") {
-            return "🐷"
-        } else if ingredients.contains("R") {
-            return "🥩"
-        } else if ingredients.contains("W") {
-            return "🦌"
-        } else if ingredients.contains("L") {
-            return "🐑"
-        } else if ingredients.contains("Fi") {
-            return "🐟"
-        } else if !ingredients.contains("Ei") && !ingredients.contains("Mi") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegan (without v tag)
-            return "🫑"
-        } else if !ingredients.contains("14") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegertarian (without f tag)
-            return "🥕"
-        } else {
-            return "❓"
+    func foodEmojiProvider(labels: [String], dishType: String) -> String {
+        let emojiLabels = ["VEGAN", "VEGETARIAN", "PORK", "BEEF", "WILD_MEAT", "LAMB", "DISH"]
+        for label in emojiLabels{
+            if labels.contains(label){
+                let labelLookup = MensaService.shared.getLabels()
+                if let labelObject = labelLookup[label]{
+                    return labelObject.abbreviation
+                }
+            }
         }
+        
+        if !labels.contains("CHICKEN_EGGS") && !labels.contains("MILK") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegan (without v tag)
+            return "🫑"
+        } else if !labels.contains("GELATIN") && dishType != "Fleisch" && dishType != "Fisch" && dishType != "Grill" { //vegertarian (without f tag)
+            return "🥕"
+        }
+        
+        return "❓"
     }
 }
 

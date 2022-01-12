@@ -158,6 +158,8 @@
 		239D3CFD2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
 		239D3CFE2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */; };
 		239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F5E6B275AB908002FDD6A /* MockMenu.swift */; };
+		254DA93E278F1DB100FC9608 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA93D278F1DB100FC9608 /* Label.swift */; };
+		254DA93F278F1ECA00FC9608 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA93D278F1DB100FC9608 /* Label.swift */; };
 		41FBF9FB270CC26C009F329A /* CafeteriaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -346,6 +348,7 @@
 		239D3CF92766211E00D1E4D8 /* MensaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaService.swift; sourceTree = "<group>"; };
 		239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaLocation.swift; sourceTree = "<group>"; };
 		239F5E6B275AB908002FDD6A /* MockMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenu.swift; sourceTree = "<group>"; };
+		254DA93D278F1DB100FC9608 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -694,6 +697,7 @@
 				224F37C22460EA5A00BEDA71 /* MealPlan.swift */,
 				22F9629D246177D9004BF215 /* Menu.swift */,
 				22F9629B2460ED03004BF215 /* Dish.swift */,
+				254DA93D278F1DB100FC9608 /* Label.swift */,
 				41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */,
 				224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */,
 				22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */,
@@ -1061,6 +1065,7 @@
 				229C549724954BF700EFD5A2 /* Movie.swift in Sources */,
 				22AE458E247B214200CE5B29 /* MapCell.swift in Sources */,
 				2294545D22198B25008E41B7 /* AuthenticationHandler.swift in Sources */,
+				254DA93E278F1DB100FC9608 /* Label.swift in Sources */,
 				224F37C32460EA5A00BEDA71 /* MealPlan.swift in Sources */,
 				22BC2CE021DE35FD00FF7C00 /* CampusTabBarController.swift in Sources */,
 				2255F68B24A3EF2E00AD6E2C /* SectionBackgroundDecorationView.swift in Sources */,
@@ -1124,6 +1129,7 @@
 				239D3CF12766188B00D1E4D8 /* Date+Extensions.swift in Sources */,
 				233C51EA2759148400477D89 /* EatAPI.swift in Sources */,
 				239D3CFB2766211E00D1E4D8 /* MensaService.swift in Sources */,
+				254DA93F278F1ECA00FC9608 /* Label.swift in Sources */,
 				239D3CFE2766255B00D1E4D8 /* CafeteriaLocation.swift in Sources */,
 				233C51E22759104800477D89 /* Dish.swift in Sources */,
 				233C51DF27590FD000477D89 /* Menu.swift in Sources */,

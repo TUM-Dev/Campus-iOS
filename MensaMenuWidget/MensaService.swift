@@ -12,6 +12,7 @@ import Alamofire
 final class MensaService {
     static let shared = MensaService()
     private var menu: Menu?
+    private var labels: [String:Label] = [:]
     
     public func getMensaMenu(mensaApiKey: String) -> Menu? {
         let decoder = JSONDecoder()
@@ -28,5 +29,16 @@ final class MensaService {
             })
         }
         return menu
+    }
+    
+    public func getLabels() -> [String:Label]{
+        AF.request(EatAPI.labels).responseDecodable(of: [Label].self) { (response) in
+            let labels = response.value ?? []
+            for label in labels{
+                self.labels[label.name] = label
+            }
+        }
+        
+        return self.labels
     }
 }
