@@ -160,6 +160,7 @@
 		239F5E6C275AB909002FDD6A /* MockMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239F5E6B275AB908002FDD6A /* MockMenu.swift */; };
 		254DA93E278F1DB100FC9608 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA93D278F1DB100FC9608 /* Label.swift */; };
 		254DA93F278F1ECA00FC9608 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA93D278F1DB100FC9608 /* Label.swift */; };
+		254DA941278F33C400FC9608 /* MensaEnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254DA940278F33C400FC9608 /* MensaEnumService.swift */; };
 		41FBF9FB270CC26C009F329A /* CafeteriaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -349,6 +350,7 @@
 		239D3CFC2766255B00D1E4D8 /* CafeteriaLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaLocation.swift; sourceTree = "<group>"; };
 		239F5E6B275AB908002FDD6A /* MockMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMenu.swift; sourceTree = "<group>"; };
 		254DA93D278F1DB100FC9608 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		254DA940278F33C400FC9608 /* MensaEnumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaEnumService.swift; sourceTree = "<group>"; };
 		41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -698,6 +700,7 @@
 				22F9629D246177D9004BF215 /* Menu.swift */,
 				22F9629B2460ED03004BF215 /* Dish.swift */,
 				254DA93D278F1DB100FC9608 /* Label.swift */,
+				254DA940278F33C400FC9608 /* MensaEnumService.swift */,
 				41FBF9FA270CC26C009F329A /* CafeteriaMapViewController.swift */,
 				224CB3AA222C48DB0002945A /* CafeteriaCollectionViewCell.swift */,
 				22F9629F246193C3004BF215 /* MealPlanTableViewController.swift */,
@@ -1091,6 +1094,7 @@
 				224CB36B2226B7980002945A /* APIResponse.swift in Sources */,
 				22DE82B824AE823D001EFAB4 /* LectureSearchViewController.swift in Sources */,
 				227395B724B4AC1F0024CD21 /* MovieDetailViewModel.swift in Sources */,
+				254DA941278F33C400FC9608 /* MensaEnumService.swift in Sources */,
 				224CB3672225A7F00002945A /* StudyRoomAttribute.swift in Sources */,
 				227395B524B4ABF20024CD21 /* MovieDetailCell.swift in Sources */,
 				222470D824632F8200B196B6 /* MenuCollectionViewController.swift in Sources */,

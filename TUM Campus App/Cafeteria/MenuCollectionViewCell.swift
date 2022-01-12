@@ -42,7 +42,20 @@ final class MenuCollectionViewCell: UICollectionViewCell {
             priceLabel.text = "n/a".localized
         }
 
-        ingredientsLabel.text = dish.labels.joined(separator: ", ")
+        ingredientsLabel.text = labelsToAbbreviations(labels: dish.labels).joined(separator: ", ")
+    }
+    
+    private func labelsToAbbreviations(labels: [String]) -> [String] {
+        let labelLookup = MensaEnumService.shared.getLabels()
+        var converted: [String] = []
+        for label in labels{
+            if let labelObject = labelLookup[label]{
+                converted.append(labelObject.abbreviation)
+            }else{
+                converted.append(label)
+            }
+        }
+        return converted
     }
 
     override func awakeFromNib() {
