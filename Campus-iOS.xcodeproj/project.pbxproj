@@ -231,7 +231,7 @@
 			children = (
 				3616C4AC278F6EF2000A1BC9 /* Types */,
 				3616C4B1278F6EF2000A1BC9 /* Cafeterias */,
-				3616C4B3278F6EF2000A1BC9 /* Map */,
+				3616C4B3278F6EF2000A1BC9 /* MainView */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -255,15 +255,15 @@
 			path = Cafeterias;
 			sourceTree = "<group>";
 		};
-		3616C4B3278F6EF2000A1BC9 /* Map */ = {
+		3616C4B3278F6EF2000A1BC9 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				3616C4B4278F6EF2000A1BC9 /* MapView.swift */,
-				3616C4B5278F6EF2000A1BC9 /* Panel.swift */,
 				3616C4B6278F6EF2000A1BC9 /* MapContent.swift */,
+				3616C4B5278F6EF2000A1BC9 /* Panel.swift */,
 				3616C4B7278F6EF2000A1BC9 /* PanelContent.swift */,
 			);
-			path = Map;
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		36203E872761C6EC00C24658 /* LoginComponent */ = {

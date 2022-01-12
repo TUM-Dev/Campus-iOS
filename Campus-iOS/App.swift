@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import KVKCalendar
 
 @main
 struct CampusApp: App {
@@ -44,7 +45,7 @@ struct CampusApp: App {
                     //UITabBar.appearance().isTranslucent = false
                     //UITabBar.appearance().isOpaque = true
                     //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
-                    // remove loaded model
+                    //remove loaded model
                 }
                 .environmentObject(environmentValues)
         }
