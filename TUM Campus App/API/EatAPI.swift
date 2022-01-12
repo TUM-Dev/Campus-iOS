@@ -30,7 +30,7 @@ enum EatAPI: URLRequestConvertible {
         case .canteens:                         return "canteens.json"
         case .all:                              return "all.json"
         case .all_ref:                          return "all_ref.json"
-        case let .menu(location, year, week):   return "\(location)/\(year)/\(week).json"
+        case let .menu(location, year, week):   return "\(location)/\(year)/\(String(format: "%02d", week)).json"
         }
     }
 
