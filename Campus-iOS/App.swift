@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import KVKCalendar
 
 @main
 struct CampusApp: App {
@@ -17,6 +18,14 @@ struct CampusApp: App {
     @State var selectedTab = 0
     @State var splashScreenPresented = false
     @State private var showingAlert = false
+    
+    init() {
+        UITabBar.appearance().isOpaque = true
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
     
     var body: some Scene {
         WindowGroup {
@@ -44,7 +53,7 @@ struct CampusApp: App {
                     //UITabBar.appearance().isTranslucent = false
                     //UITabBar.appearance().isOpaque = true
                     //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
-                    // remove loaded model
+                    //remove loaded model
                 }
                 .environmentObject(environmentValues)
         }
