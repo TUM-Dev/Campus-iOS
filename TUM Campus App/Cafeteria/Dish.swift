@@ -45,11 +45,8 @@ struct Dish: Decodable, Hashable {
                 "unit": "100g"
             }
         },
-        "ingredients": [
-            "2",
-            "Gl",
-            "GlW",
-            "Kn"
+        "labels": [
+            "VEGETARIAN"
         ],
         "dish_type": "Pasta"
     },
@@ -57,71 +54,13 @@ struct Dish: Decodable, Hashable {
 
     let name: String
     let prices: [String: Price?]
-    let ingredients: [String]
+    let labels: [String]
     let dishType: String
-
-    var namedIngredients: [String] {
-        ingredients.map { (ingredientsLookup[$0] ?? $0) }
-    }
-
-    private var ingredientsLookup = [
-        "GQB" : "GQB",
-        "MSC" : "MSC",
-
-        "1" : "dyed",
-        "2" : "preservative",
-        "3" : "antioxidant",
-        "4" : "flavor enhancers",
-        "5" : "sulphured",
-        "6" : "blackened (olive)",
-        "7" : "waxed",
-        "8" : "phosphates",
-        "9" : "sweeteners",
-        "10" : "contains a source of phenylalanine",
-        "11" : "sugar and sweeteners",
-        "13" : "cocoa-containing grease",
-        "14" : "gelatin",
-        "99" : "alcohol",
-
-        "f" : "meatless dish",
-        "v" : "vegan dish",
-        "S" : "pork",
-        "R" : "beef",
-        "K" : "veal",
-        "G" : "poultry", // mediziner mensa
-        "W" : "wild meat", // mediziner mensa
-        "L" : "lamb", // mediziner mensa
-        "Kn" : "garlic",
-        "Ei" : "chicken egg",
-        "En" : "peanut",
-        "Fi" : "fish",
-        "Gl" : "gluten-containing cereals",
-        "GlW" : "wheat",
-        "GlR" : "rye",
-        "GlG" : "barley",
-        "GlH" : "oats",
-        "GlD" : "spelt",
-        "Kr" : "crustaceans",
-        "Lu" : "lupines",
-        "Mi" : "milk and lactose",
-        "Sc" : "shell fruits",
-        "ScM" : "almonds",
-        "ScH" : "hazelnuts",
-        "ScW" : "Walnuts",
-        "ScC" : "cashew nuts",
-        "ScP" : "pistachios",
-        "Se" : "sesame seeds",
-        "Sf" : "mustard",
-        "Sl" : "celery",
-        "So" : "soy",
-        "Sw" : "sulfur dioxide and sulfites",
-        "Wt" : "mollusks",
-    ]
 
     enum CodingKeys: String, CodingKey {
         case name
         case prices
-        case ingredients
+        case labels
         case dishType = "dish_type"
     }
     

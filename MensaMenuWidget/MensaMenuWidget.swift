@@ -96,11 +96,11 @@ struct MensaMenuWidgetEntryView : View {
                     .padding(.bottom, 5)
                 ForEach(getDishes(sideDishes: false).prefix(family == .systemLarge ? 8 : 7), id: \.self) { dish in
                     HStack {
-                        Text(foodEmojiProvider(ingredients: dish.ingredients, dishType: dish.dishType)).font(.system(size: 13))
+                        Text(foodEmojiProvider(ingredients: dish.labels, dishType: dish.dishType)).font(.system(size: 13))
                         Text(dish.name)
                             .lineLimit(1)
                             .font(.system(size: 14, weight: .semibold))
-                        Text(ingredientsToString(ingredients: dish.ingredients))
+                        Text(ingredientsToString(ingredients: dish.labels))
                             .font(.system(size: 10, weight: .semibold))
                             .foregroundColor(Color.secondary)
                             .lineLimit(1)
@@ -132,7 +132,7 @@ struct MensaMenuWidgetEntryView : View {
                                 Text(dish.name)
                                     .lineLimit(1)
                                     .font(.system(size: 14, weight: .semibold))
-                                Text(ingredientsToString(ingredients: dish.ingredients))
+                                Text(ingredientsToString(ingredients: dish.labels))
                                     .font(.system(size: 10, weight: .semibold))
                                     .foregroundColor(Color.secondary)
                                     .lineLimit(1)

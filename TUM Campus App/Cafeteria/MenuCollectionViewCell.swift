@@ -42,7 +42,7 @@ final class MenuCollectionViewCell: UICollectionViewCell {
             priceLabel.text = "n/a".localized
         }
 
-        ingredientsLabel.text = dish.namedIngredients.joined(separator: ", ")
+        ingredientsLabel.text = dish.labels.joined(separator: ", ")
     }
 
     override func awakeFromNib() {
