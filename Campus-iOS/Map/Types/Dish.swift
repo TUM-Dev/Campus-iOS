@@ -22,8 +22,6 @@ struct Price: Decodable {
 
 struct Dish: Decodable, Hashable {
 
-    
-
     /*
      {
         "name": "Pasta all'arrabiata",

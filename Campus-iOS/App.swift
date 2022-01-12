@@ -93,7 +93,11 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView(zoomOnUser: true)
+                MapView(zoomOnUser: true,
+                        panelPosition: "down",
+                        canteens: [],
+                        selectedCanteenName: "",
+                        selectedAnnotationIndex: 0)
                 //Text("Dummy Cafeterias View")
                 // CafeteriasView(model: model)
             }
