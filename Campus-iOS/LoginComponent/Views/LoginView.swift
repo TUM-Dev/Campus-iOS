@@ -36,7 +36,7 @@ struct LoginView: View {
 
                     HStack() {
                         TextField("go", text: $viewModel.firstTextField)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textFieldStyle(CustomRoundedTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
@@ -50,7 +50,7 @@ struct LoginView: View {
                         Spacer().frame(width: 8)
 
                         TextField("42", text: $viewModel.numbersTextField)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textFieldStyle(CustomRoundedTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
@@ -64,7 +64,7 @@ struct LoginView: View {
                         Spacer().frame(width: 8)
 
                         TextField("tum", text: $viewModel.secondTextField)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .textFieldStyle(CustomRoundedTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
