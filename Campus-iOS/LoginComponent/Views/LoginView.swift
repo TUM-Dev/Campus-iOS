@@ -8,9 +8,15 @@
 import SwiftUI
 import Combine
 
+private enum Field: Int, Equatable {
+  case firstTextField, numbersTextField, secondTextField
+}
+
+
 struct LoginView: View {
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
+    @FocusState private var focusedField: Field?
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -43,9 +49,11 @@ struct LoginView: View {
                             .disableAutocorrection(true)
                             .textContentType(.username)
                             .textInputAutocapitalization(.never)
-//                            .onReceive(Just(viewModel.firstTextField)) { (newValue: String) in
-//                                viewModel.firstTextField = newValue.prefix(2).lowercased()
-//                            }
+                            .textCase(.lowercase)
+                            .focused($focusedField, equals: .firstTextField)
+                            .onChange(of: viewModel.firstTextField) {
+                              if $0.count == 2 { focusedField = .numbersTextField }
+                            }
 
                         Spacer().frame(width: 8)
 
@@ -57,9 +65,12 @@ struct LoginView: View {
                             .disableAutocorrection(true)
                             .textContentType(.username)
                             .keyboardType(.numberPad)
-//                            .onReceive(Just(viewModel.numbersTextField)) { (newValue: String) in
-//                                viewModel.numbersTextField = String(newValue.prefix(2))
-//                            }
+                            .focused($focusedField, equals: .numbersTextField)
+                            .onChange(of: viewModel.numbersTextField) {
+                              if $0.count == 2 { focusedField = .secondTextField }
+                              if $0.count == 0 { focusedField = .firstTextField }
+                            }
+
 
                         Spacer().frame(width: 8)
 
@@ -71,9 +82,13 @@ struct LoginView: View {
                             .disableAutocorrection(true)
                             .textContentType(.username)
                             .textInputAutocapitalization(.never)
-//                            .onReceive(Just(viewModel.secondTextField)) { (newValue: String) in
-//                                viewModel.secondTextField = newValue.prefix(3).lowercased()
-//                            }
+                            .textCase(.lowercase)
+                            .focused($focusedField, equals: .secondTextField)
+                            .onChange(of: viewModel.secondTextField) {
+                              if $0.count == 3 { focusedField = nil }
+                              if $0.count == 0 { focusedField = .numbersTextField }
+                            }
+                            
                     }
                     
                     Spacer()
