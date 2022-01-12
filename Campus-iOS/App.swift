@@ -19,6 +19,14 @@ struct CampusApp: App {
     @State var splashScreenPresented = false
     @State private var showingAlert = false
     
+    init() {
+        UITabBar.appearance().isOpaque = true
+        if #available(iOS 15.0, *) {
+            let appearance = UITabBarAppearance()
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+    }
+    
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
