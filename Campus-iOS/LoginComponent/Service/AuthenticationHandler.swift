@@ -41,7 +41,8 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
 
-    private let coreDataStack = CampusApp.persistentContainer
+    // TODO: comment to be removed later
+    // private let coreDataStack = CampusApp.persistentContainer
     private let sessionManager = Session()
 
     private static let keychain = Keychain(service: "de.tum.campusapp")
@@ -223,7 +224,8 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         ]
 
         let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0) }
-        deleteRequests.forEach { _ = try? coreDataStack.persistentStoreCoordinator.execute($0, with: coreDataStack.viewContext) }
+        // TODO: comment to be removed later
+        // deleteRequests.forEach { _ = try? coreDataStack.persistentStoreCoordinator.execute($0, with: coreDataStack.viewContext) }
     }
 
     func skipLogin() {

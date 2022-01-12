@@ -42,6 +42,7 @@ struct LoginView: View {
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
+                            .textInputAutocapitalization(.never)
 //                            .onReceive(Just(viewModel.firstTextField)) { (newValue: String) in
 //                                viewModel.firstTextField = newValue.prefix(2).lowercased()
 //                            }
@@ -69,6 +70,7 @@ struct LoginView: View {
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
+                            .textInputAutocapitalization(.never)
 //                            .onReceive(Just(viewModel.secondTextField)) { (newValue: String) in
 //                                viewModel.secondTextField = newValue.prefix(3).lowercased()
 //                            }
