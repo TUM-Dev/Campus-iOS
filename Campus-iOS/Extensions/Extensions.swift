@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import CoreLocation
 import SWXMLHash
+import XMLCoder
 import SwiftUI
 
 extension Bundle {
@@ -144,4 +145,32 @@ extension CLLocationCoordinate2D  {
 
 extension UIColor {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
+}
+
+extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
+
+extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
+
+extension JSONDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["application/json"] }
+    static func instantiate() -> Self {
+        //  infers the type of self from the calling context:
+        func helper<T>() -> T {
+            let decoder = JSONDecoder()
+            return decoder as! T
+        }
+        return helper()
+    }
+}
+
+extension XMLDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["text/xml"] }
+    static func instantiate() -> Self {
+        // infers the type of self from the calling context
+        func helper<T>() -> T {
+            let decoder = XMLDecoder()
+            return decoder as! T
+        }
+        return helper()
+    }
 }

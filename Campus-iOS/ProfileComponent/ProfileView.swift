@@ -46,7 +46,7 @@ struct ProfileView: View {
                 }
                 
                 Section("ALLGEMEIN") {
-                    NavigationLink(destination: Text("TUM.sexy")) {
+                    NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
                         Label("TUM.sexy", image: "Tum.sexy")
                     }
                     

@@ -7,6 +7,7 @@
 
 enum BackendError: Error {
     case network(error: Error)
+    case AFError(message: String)
     case dataSerialization(error: Error)
     case jsonSerialization(error: Error)
     case xmlSerialization(error: Error)
