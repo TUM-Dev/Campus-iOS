@@ -212,20 +212,8 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("logout", parameters: nil)
         #endif
+        // deletes uthenticationHandler.keychain[data: "credentials"]
         credentials = nil
-
-        /// TODO:  fetchRequest() is a CoreData function
-        let fetchRequests: [NSFetchRequest<NSFetchRequestResult>] = [
-//            Grade.fetchRequest(),
-//            Lecture.fetchRequest(),
-//            CalendarEvent.fetchRequest(),
-//            Profile.fetchRequest(),
-//            Tuition.fetchRequest(),
-        ]
-
-        let deleteRequests = fetchRequests.map{ NSBatchDeleteRequest(fetchRequest: $0) }
-        // TODO: comment to be removed later
-        // deleteRequests.forEach { _ = try? coreDataStack.persistentStoreCoordinator.execute($0, with: coreDataStack.viewContext) }
     }
 
     func skipLogin() {

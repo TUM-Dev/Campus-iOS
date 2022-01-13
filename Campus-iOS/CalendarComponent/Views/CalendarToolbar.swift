@@ -16,8 +16,7 @@ struct CalendarToolbar: View {
                 Image(systemName: "list.bullet")
             }
             .sheet(isPresented: $viewModel.showEventsList) {
-                ProfileView()
-                    .environmentObject(viewModel)
+                Text("Dummy Calendar Events")
             }
             Spacer().frame(width: 15)
             Button(action: {}) {

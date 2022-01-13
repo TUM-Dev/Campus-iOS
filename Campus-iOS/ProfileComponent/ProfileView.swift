@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @EnvironmentObject var profileModel: ProfileModel
+    @ObservedObject var model: Model
     
     var body: some View {
         
@@ -73,19 +73,48 @@ struct ProfileView: View {
                                 UIApplication.shared.open(mailToUrl, options: [:])
                         }
                     }
-                    
-                    Button("Logout", role: .destructive) {
-                        
+                }
+                
+                Section() {
+                    HStack(alignment: .bottom) {
+                        Spacer()
+                        if model.isUserAuthenticated {
+                            Button(action: {
+                                model.logout()
+                            }) {
+                                Text("Logout").foregroundColor(.red)
+                            }
+                        } else {
+                            Button(action: {
+                                model.isLoginSheetPresented = true
+                            }) {
+                                Text("Sign in").foregroundColor(.green)
+                            }
+                        }
+                        Spacer()
                     }
+                }
+            }
+            .sheet(isPresented: $model.isLoginSheetPresented) {
+                NavigationView {
+                    LoginView(model: model)
                 }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: {profileModel.showProfile.toggle()}) {
+                Button(action: {model.showProfile.toggle()}) {
                     Text("Done").bold()
                 }
             }
         }
+    }
+}
+
+struct ProfileView_Previews: PreviewProvider {
+    static let model = MockModel()
+    
+    static var previews: some View {
+        ProfileView(model: model)
     }
 }

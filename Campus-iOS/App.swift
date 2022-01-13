@@ -41,19 +41,11 @@ struct CampusApp: App {
                     } else {
                         NavigationView {
                             LoginView(model: model)
-                                .onAppear {
-                                    selectedTab = 2
-                                    // KeychainService.removeAuthorization()
-                                }
+                            .onAppear {
+                                selectedTab = 2
+                            }
                         }
                     }
-                }
-                .onAppear {
-                    checkAuthorized(count: 0)
-                    //UITabBar.appearance().isTranslucent = false
-                    //UITabBar.appearance().isOpaque = true
-                    //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
-                    //remove loaded model
                 }
                 .environmentObject(environmentValues)
         }
@@ -70,7 +62,7 @@ struct CampusApp: App {
                             CalendarToolbar(viewModel: CalendarViewModel())
                         }
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(profileModel: ProfileModel())
+                            ProfileToolbar(model: model)
                         }
                     }
                 // CalendarView(model: model)
@@ -85,7 +77,7 @@ struct CampusApp: App {
                     .navigationTitle("Lectures")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(profileModel: ProfileModel())
+                            ProfileToolbar(model: model)
                         }
                     }
             }
@@ -99,7 +91,7 @@ struct CampusApp: App {
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(profileModel: ProfileModel())
+                            ProfileToolbar(model: model)
                         }
                     }
             }
@@ -113,8 +105,6 @@ struct CampusApp: App {
                         canteens: [],
                         selectedCanteenName: "",
                         selectedAnnotationIndex: 0)
-                //Text("Dummy Cafeterias View")
-                // CafeteriasView(model: model)
             }
             .tag(3)
             .tabItem {
@@ -130,9 +120,5 @@ struct CampusApp: App {
                 Label("Study Rooms", systemImage: "book")
             }
         }
-    }
-    
-    func checkAuthorized(count: Int) {
-        // check if logged in
     }
 }
