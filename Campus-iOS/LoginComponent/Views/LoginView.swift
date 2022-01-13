@@ -52,7 +52,8 @@ struct LoginView: View {
                             .textCase(.lowercase)
                             .focused($focusedField, equals: .firstTextField)
                             .onChange(of: viewModel.firstTextField) {
-                              if $0.count == 2 { focusedField = .numbersTextField }
+                                viewModel.firstTextField = String($0.prefix(2))
+                                if $0.count == 2 { focusedField = .numbersTextField }
                             }
 
                         Spacer().frame(width: 8)
@@ -67,8 +68,9 @@ struct LoginView: View {
                             .keyboardType(.numberPad)
                             .focused($focusedField, equals: .numbersTextField)
                             .onChange(of: viewModel.numbersTextField) {
-                              if $0.count == 2 { focusedField = .secondTextField }
-                              if $0.count == 0 { focusedField = .firstTextField }
+                                viewModel.numbersTextField = String($0.prefix(2))
+                                if $0.count == 2 { focusedField = .secondTextField }
+                                if $0.count == 0 { focusedField = .firstTextField }
                             }
 
 
@@ -85,8 +87,9 @@ struct LoginView: View {
                             .textCase(.lowercase)
                             .focused($focusedField, equals: .secondTextField)
                             .onChange(of: viewModel.secondTextField) {
-                              if $0.count == 3 { focusedField = nil }
-                              if $0.count == 0 { focusedField = .numbersTextField }
+                                viewModel.secondTextField = String($0.prefix(3))
+                                if $0.count == 3 { focusedField = nil }
+                                if $0.count == 0 { focusedField = .numbersTextField }
                             }
                             
                     }
