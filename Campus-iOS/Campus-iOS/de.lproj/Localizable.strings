@@ -67,3 +67,10 @@
 "2" = "2";
 "3" = "3";
 "Authorize Token" = "Token authorisieren";
+
+// Calendar
+
+"Day" = "Tag";
+"Week" = "Woche";
+"Month" = "Monat";
+"Year" = "Jahr";

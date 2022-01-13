@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import CoreLocation
 import SWXMLHash
+import SwiftUI
 
 extension Bundle {
     var version: String { infoDictionary?["CFBundleShortVersionString"] as? String ?? "1" }
@@ -139,4 +140,8 @@ extension DateFormatter {
 
 extension CLLocationCoordinate2D  {
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
+}
+
+extension UIColor {
+    static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
 }

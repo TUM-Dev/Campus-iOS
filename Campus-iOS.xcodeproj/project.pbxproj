@@ -388,7 +388,6 @@
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				3683C3162758115000082930 /* Model */,
 				366F0E8327580CFB0091651D /* App.swift */,
-				3616C4C3278F9C0A000A1BC9 /* SheetNavigator.swift */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
