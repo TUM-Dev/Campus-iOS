@@ -899,11 +899,8 @@
 				979DBFFD2798C08C00E45513 /* LecturesScreen.swift in Sources */,
 				3616C4BA278F6EF2000A1BC9 /* Cafeteria.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
-<<<<<<< HEAD
-=======
 				4146FE89279D52DC00655D1A /* Toolbar.swift in Sources */,
 				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
->>>>>>> cffcb1c (Toolbar)
 				3616C4BF278F6EF2000A1BC9 /* MapContent.swift in Sources */,
 				979DBFFF2798C08C00E45513 /* Lecture.swift in Sources */,
 				3616C4C0278F6EF2000A1BC9 /* PanelContent.swift in Sources */,
