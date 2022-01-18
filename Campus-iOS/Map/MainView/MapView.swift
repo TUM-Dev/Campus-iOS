@@ -30,7 +30,7 @@ struct MapView: View {
                   selectedAnnotationIndex: $selectedAnnotationIndex)
         }
         .edgesIgnoringSafeArea(.all)
-        .navigationTitle("")
+        .navigationTitle("Map")
         .navigationBarHidden(true)
     }
 }

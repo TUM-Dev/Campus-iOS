@@ -48,3 +48,18 @@ struct Menu: Hashable, Decodable, Comparable {
         return lhs.date == rhs.date
     }
 }
+
+struct Category: Hashable, Decodable {
+    var name: String
+    var dishes: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case dishes
+    }
+    
+    init() {
+        self.name = ""
+        self.dishes = []
+    }
+}
