@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 
-<<<<<<< HEAD
 final class MensaEnumService {
     static let shared = MensaEnumService()
     private var labels: [String : DishLabel]?
@@ -27,23 +26,3 @@ final class MensaEnumService {
      return self.labels!
     }
 }
-=======
- final class MensaEnumService {
-     static let shared = MensaEnumService()
-     private var labels: [String : DishLabel]?
-
-     public func getLabels() -> [String : DishLabel] {
-         if self.labels == nil {
-             self.labels = [:]
-             AF.request(EatAPI.labels).responseDecodable(of: [DishLabel].self) { (response) in
-                 let labels = response.value ?? []
-                 for label in labels{
-                     self.labels?[label.name] = label
-                 }
-             }
-         }
-
-         return self.labels!
-     }
- }
->>>>>>> 3bc0f9b (- Mealplan List built)

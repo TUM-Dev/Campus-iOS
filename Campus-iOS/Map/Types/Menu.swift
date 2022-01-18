@@ -38,3 +38,18 @@ struct Category: Hashable, Decodable {
         case dishes
     }
 }
+
+struct Category: Hashable, Decodable {
+    var name: String
+    var dishes: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case dishes
+    }
+    
+    init() {
+        self.name = ""
+        self.dishes = []
+    }
+}

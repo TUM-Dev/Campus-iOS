@@ -62,6 +62,7 @@
 =======
 		41BD20E2279228B8001FA1B0 /* DishLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD20E1279228B8001FA1B0 /* DishLabel.swift */; };
 		41BD20E4279228E2001FA1B0 /* MensaEnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD20E3279228E2001FA1B0 /* MensaEnumService.swift */; };
+		41DDB33B2792F70A00FBEC81 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DDB33A2792F70A00FBEC81 /* MenuView.swift */; };
 		972397412772825D004BF7AB /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397402772825D004BF7AB /* Lecture.swift */; };
 		9723974327728268004BF7AB /* LecturesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974227728268004BF7AB /* LecturesScreen.swift */; };
 		972397452772826E004BF7AB /* LecturesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397442772826E004BF7AB /* LecturesService.swift */; };
@@ -257,6 +258,7 @@
 =======
 		41BD20E1279228B8001FA1B0 /* DishLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishLabel.swift; sourceTree = "<group>"; };
 		41BD20E3279228E2001FA1B0 /* MensaEnumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaEnumService.swift; sourceTree = "<group>"; };
+		41DDB33A2792F70A00FBEC81 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		972397402772825D004BF7AB /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		9723974227728268004BF7AB /* LecturesScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesScreen.swift; sourceTree = "<group>"; };
 		972397442772826E004BF7AB /* LecturesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesService.swift; sourceTree = "<group>"; };
@@ -360,7 +362,10 @@
 			children = (
 				226CB5182798BF3E0043ABCA /* MealPlanViewModel.swift */,
 				3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */,
+<<<<<<< HEAD
 				226CB5162798BD910043ABCA /* MenuViewModel.swift */,
+=======
+>>>>>>> 899e34e (Full MealPlan & MenuViews)
 				41DDB33A2792F70A00FBEC81 /* MenuView.swift */,
 			);
 			path = Cafeterias;
@@ -913,6 +918,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				979DC00D2798C08C00E45513 /* NetworkingAPI.swift in Sources */,
 				41DDB33B2792F70A00FBEC81 /* MenuView.swift in Sources */,
 				979DC0252798C08C00E45513 /* GradesViewModel.swift in Sources */,
@@ -922,6 +928,9 @@
 				979DC0042798C08C00E45513 /* LectureDetailsBasicInfoView.swift in Sources */,
 				979DC0082798C08C00E45513 /* LectureDetailsBasicInfoRowView.swift in Sources */,
 				979DC0282798C08C00E45513 /* GradesScreen.swift in Sources */,
+=======
+				41DDB33B2792F70A00FBEC81 /* MenuView.swift in Sources */,
+>>>>>>> 899e34e (Full MealPlan & MenuViews)
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,

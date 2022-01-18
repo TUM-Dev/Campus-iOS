@@ -45,12 +45,7 @@ struct MealPlanView: View {
                     HStack {
                         Text(dateFormatter.string(from: item.date!))
                         Spacer()
-                        NavigationLink(destination: MapView(zoomOnUser: true,
-                                                            panelPosition: "down",
-                                                            canteens: [],
-                                                            selectedCanteenName: "",
-                                                            selectedAnnotationIndex: 0)
-                        ) { EmptyView() }
+                        NavigationLink(destination: MenuView(title: dateFormatter.string(from: item.date!), menu: item)) { EmptyView() }
                         .frame(width: 0, height: 0, alignment: .leading)
                         Spacer().frame(width: 10)
                     }
@@ -70,7 +65,7 @@ struct MealPlanView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(formatter)
-        //self.menus.removeAll()
+        menus.removeAll()
         let thisWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: Date().year, week: Date().weekOfYear)
         sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
             guard let value = response.value else { return }
