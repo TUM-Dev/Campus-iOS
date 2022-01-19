@@ -10,7 +10,7 @@ import Foundation
 import KeychainAccess
 
 
-enum Credentials: Codable {
+enum Credentials: Codable, Equatable {
     case noTumID
     case tumID(tumID: String, token: String)
     case tumIDAndKey(tumID: String, token: String, key: Data)
