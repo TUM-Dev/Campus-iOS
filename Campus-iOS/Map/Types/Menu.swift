@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Menu: Decodable, Comparable {
+struct Menu: Hashable, Decodable, Comparable {
     /*
      "date": "2020-03-02",
      "dishes": [...]
@@ -46,5 +46,20 @@ struct Menu: Decodable, Comparable {
 
     static func == (lhs: Menu, rhs: Menu) -> Bool {
         return lhs.date == rhs.date
+    }
+}
+
+struct Category: Hashable, Decodable {
+    var name: String
+    var dishes: [Dish]
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case dishes
+    }
+    
+    init() {
+        self.name = ""
+        self.dishes = []
     }
 }

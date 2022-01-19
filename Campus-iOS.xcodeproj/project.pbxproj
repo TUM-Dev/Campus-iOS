@@ -56,6 +56,9 @@
 		36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90712773BFC300F4C785 /* FirebaseAnalytics */; };
 		36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90732773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta */; };
 		36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90752773BFC300F4C785 /* FirebaseCrashlytics */; };
+		41BD20E2279228B8001FA1B0 /* DishLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD20E1279228B8001FA1B0 /* DishLabel.swift */; };
+		41BD20E4279228E2001FA1B0 /* MensaEnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD20E3279228E2001FA1B0 /* MensaEnumService.swift */; };
+		41DDB33B2792F70A00FBEC81 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DDB33A2792F70A00FBEC81 /* MenuView.swift */; };
 		972397412772825D004BF7AB /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397402772825D004BF7AB /* Lecture.swift */; };
 		9723974327728268004BF7AB /* LecturesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9723974227728268004BF7AB /* LecturesScreen.swift */; };
 		972397452772826E004BF7AB /* LecturesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972397442772826E004BF7AB /* LecturesService.swift */; };
@@ -155,6 +158,9 @@
 		36FF906A2773BE3000F4C785 /* BackendError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		36FF906B2773BE3000F4C785 /* XMLSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLSerializer.swift; sourceTree = "<group>"; };
 		36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		41BD20E1279228B8001FA1B0 /* DishLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishLabel.swift; sourceTree = "<group>"; };
+		41BD20E3279228E2001FA1B0 /* MensaEnumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MensaEnumService.swift; sourceTree = "<group>"; };
+		41DDB33A2792F70A00FBEC81 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		972397402772825D004BF7AB /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		9723974227728268004BF7AB /* LecturesScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesScreen.swift; sourceTree = "<group>"; };
 		972397442772826E004BF7AB /* LecturesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesService.swift; sourceTree = "<group>"; };
@@ -240,10 +246,12 @@
 		3616C4AC278F6EF2000A1BC9 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				3616C4AD278F6EF2000A1BC9 /* MealPlan.swift */,
-				3616C4AE278F6EF2000A1BC9 /* Dish.swift */,
 				3616C4AF278F6EF2000A1BC9 /* Cafeteria.swift */,
+				3616C4AD278F6EF2000A1BC9 /* MealPlan.swift */,
 				3616C4B0278F6EF2000A1BC9 /* Menu.swift */,
+				3616C4AE278F6EF2000A1BC9 /* Dish.swift */,
+				41BD20E1279228B8001FA1B0 /* DishLabel.swift */,
+				41BD20E3279228E2001FA1B0 /* MensaEnumService.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -252,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */,
+				41DDB33A2792F70A00FBEC81 /* MenuView.swift */,
 			);
 			path = Cafeterias;
 			sourceTree = "<group>";
@@ -779,6 +788,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41DDB33B2792F70A00FBEC81 /* MenuView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				9723974727728273004BF7AB /* LecturesViewModel.swift in Sources */,
@@ -794,9 +804,11 @@
 				97997ADE27722B470079F809 /* GradesService.swift in Sources */,
 				97C9AB1E277332BF0097B10C /* NetworkingError.swift in Sources */,
 				36FF90602773BB5800F4C785 /* MVGAPI.swift in Sources */,
+				41BD20E4279228E2001FA1B0 /* MensaEnumService.swift in Sources */,
 				3616C4B8278F6EF2000A1BC9 /* MealPlan.swift in Sources */,
 				97C9AB22277333160097B10C /* View+Error.swift in Sources */,
 				97C9AB19277332710097B10C /* Error+Category.swift in Sources */,
+				41BD20E2279228B8001FA1B0 /* DishLabel.swift in Sources */,
 				9723974927728278004BF7AB /* LectureView.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */,
