@@ -55,7 +55,7 @@ struct ProfileView: View {
                         Label("Roomfinder", image: "RoomFinder")
                     }
                     
-                    NavigationLink(destination: Text("News")) {
+                    NavigationLink(destination: NewsView().navigationBarTitle(Text("News"))) {
                         Label("News", systemImage: "newspaper")
                     }
                 }

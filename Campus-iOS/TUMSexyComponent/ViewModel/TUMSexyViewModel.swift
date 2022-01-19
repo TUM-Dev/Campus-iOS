@@ -5,9 +5,7 @@
 //  Created by Milen Vitanov on 13.01.22.
 //
 
-import Foundation
 import UIKit
-import Alamofire
 
 struct TUMSexyLink: Entity {
     var description: String?

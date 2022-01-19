@@ -49,6 +49,9 @@
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
+		36BBE7322798AFE10018FD3F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7312798AFE10018FD3F /* News.swift */; };
+		36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7332798B04D0018FD3F /* NewsSource.swift */; };
+		36BBE7362798D0C70018FD3F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7352798D0C70018FD3F /* NewsView.swift */; };
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
 		36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A22774932B0055777F /* CalendarToolbar.swift */; };
 		36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A4277493D90055777F /* CalendarViewModel.swift */; };
@@ -188,6 +191,9 @@
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
+		36BBE7312798AFE10018FD3F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		36BBE7332798B04D0018FD3F /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
+		36BBE7352798D0C70018FD3F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewsView.swift; path = "Campus-iOS/NewsComponent/Service/NewsView.swift"; sourceTree = SOURCE_ROOT; };
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
 		36E964A22774932B0055777F /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
 		36E964A4277493D90055777F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -390,6 +396,7 @@
 		3616C4D727904BA7000A1BC9 /* NewsComponent */ = {
 			isa = PBXGroup;
 			children = (
+				36BBE7302798AFCC0018FD3F /* Service */,
 				3616C4D927904BBC000A1BC9 /* Views */,
 				3616C4D827904BB5000A1BC9 /* ViewModel */,
 			);
@@ -407,6 +414,7 @@
 		3616C4D927904BBC000A1BC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36BBE7352798D0C70018FD3F /* NewsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +530,15 @@
 				36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */,
 			);
 			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		36BBE7302798AFCC0018FD3F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				36BBE7312798AFE10018FD3F /* News.swift */,
+				36BBE7332798B04D0018FD3F /* NewsSource.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		36E9649B277491E90055777F /* Views */ = {
@@ -986,7 +1003,10 @@
 				9723974327728268004BF7AB /* LecturesScreen.swift in Sources */,
 				3616C4BF278F6EF2000A1BC9 /* MapContent.swift in Sources */,
 				3616C4C0278F6EF2000A1BC9 /* PanelContent.swift in Sources */,
+				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
 				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
+				3616C4BE278F6EF2000A1BC9 /* Panel.swift in Sources */,
+				979DC0192798C08C00E45513 /* View+Error.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				41D55D7F27A2F17300DE7155 /* LecturesViewModel+State.swift in Sources */,
 				36FF90622773BB5800F4C785 /* TUMCabeAPI.swift in Sources */,
@@ -1013,6 +1033,7 @@
 				979DC0232798C08C00E45513 /* XMLSerializer.swift in Sources */,
 				979DC01B2798C08C00E45513 /* AlertErrorHandler.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
+				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36FF906C2773BE3000F4C785 /* BackendError.swift in Sources */,
 				97C9AB27277358B20097B10C /* CampusOnlineAPI.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
@@ -1041,6 +1062,7 @@
 				97997ADA27722A0A0079F809 /* GradeView.swift in Sources */,
 				979DC00A2798C08C00E45513 /* LecturesDetailView.swift in Sources */,
 				979DC01F2798C08C00E45513 /* Error+Category.swift in Sources */,
+				36BBE7362798D0C70018FD3F /* NewsView.swift in Sources */,
 				97997AD22772179D0079F809 /* APIConstants.swift in Sources */,
 				36FF906D2773BE3000F4C785 /* XMLSerializer.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
