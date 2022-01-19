@@ -50,11 +50,7 @@ struct Dish: Decodable, Hashable {
      */
 
     let name: String
-<<<<<<< HEAD
     var prices: [String: Price]
-=======
-    let prices: [String: Price?]
->>>>>>> 3bc0f9b (- Mealplan List built)
     let labels: [String]
     let dishType: String
 

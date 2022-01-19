@@ -47,9 +47,4 @@ struct Category: Hashable, Decodable {
         case name
         case dishes
     }
-    
-    init() {
-        self.name = ""
-        self.dishes = []
-    }
 }
