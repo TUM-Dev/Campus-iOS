@@ -48,7 +48,6 @@ struct CampusOnlineAPI: NetworkingAPI {
             
             do {
                 let decodedData = try Self.decoder.decode(T.self, from: data)
-                print(decodedData)
                 
                 // Write value to cache
                 cache.setValue(decodedData, forKey: endpoint.fullRequestURL, cost: data.count)
