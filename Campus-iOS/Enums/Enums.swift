@@ -37,9 +37,3 @@ enum TumCalendarTypes: String, CaseIterable {
         }
     }
 }
-
-enum TumSexyCodingKeys: String, CodingKey {
-    case linkDescription = "description"
-    case moodleID = "moodle_id"
-    case target = "target"
-}

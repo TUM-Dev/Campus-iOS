@@ -47,6 +47,9 @@
 "No Menu" = "No Menu";
 "List View" = "List View";
 "Jump to Today" = "Jump to Today";
+"GENERAL" = "GENERAL";
+"GET IN CONTACT" = "GET IN CONTACT";
+"Use build-in Web View" = "Web View benutzen";
 
 "animation showing the token activation" = "animation showing the token activation";
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";

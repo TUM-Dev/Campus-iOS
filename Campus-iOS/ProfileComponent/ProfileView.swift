@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @ObservedObject var model: Model
+    @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     
     var body: some View {
         
@@ -45,7 +46,7 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("ALLGEMEIN") {
+                Section("GENERAL") {
                     NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
                         Label("TUM.sexy", image: "Tum.sexy")
                     }
@@ -59,7 +60,13 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("KONTAKTIERE UNS") {
+                Section() {
+                    VStack {
+                        Toggle("Use build-in Web View", isOn: $useBuildInWebView)
+                    }
+                }
+                
+                Section("GET IN CONTACT") {
                     Link("Werde Beta-Tester", destination: URL(string: "https://campus.tum.de")!)
                     
                     Link("TUM Dev on GitHub", destination: URL(string: "https://github.com/TUM-Dev")!)
@@ -82,13 +89,13 @@ struct ProfileView: View {
                             Button(action: {
                                 model.logout()
                             }) {
-                                Text("Logout").foregroundColor(.red)
+                                Text("Sign Out").foregroundColor(.red)
                             }
                         } else {
                             Button(action: {
                                 model.isLoginSheetPresented = true
                             }) {
-                                Text("Sign in").foregroundColor(.green)
+                                Text("Sign In").foregroundColor(.green)
                             }
                         }
                         Spacer()

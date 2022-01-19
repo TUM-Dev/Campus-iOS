@@ -10,9 +10,9 @@ import UIKit
 import Alamofire
 
 struct TUMSexyLink: Entity {
-    public var description: String?
-    public var target: String?
-    public var moodleID: String?
+    var description: String?
+    var target: String?
+    var moodleID: String?
 }
 
 class TUMSexyViewModel: ObservableObject {
