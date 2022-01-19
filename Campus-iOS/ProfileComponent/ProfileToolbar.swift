@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct ProfileToolbar: View {
-    @ObservedObject var model: Model
+    @ObservedObject var profileModel: ProfileModel
     
     var body: some View {
         
-        Button(action: {model.showProfile.toggle()}) {
+        Button(action: {profileModel.showProfile.toggle()}) {
             Image(systemName: "person.crop.circle")
         }
-        .sheet(isPresented: $model.showProfile) {
-            ProfileView(model: model)
+        .sheet(isPresented: $profileModel.showProfile) {
+            ProfileView()
+                .environmentObject(profileModel)
         }
         
     }
@@ -24,6 +25,6 @@ struct ProfileToolbar: View {
 
 struct ProfileToolbarGroup_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileToolbar(model: Model())
+        ProfileToolbar(profileModel: ProfileModel())
     }
 }

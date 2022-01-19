@@ -7,26 +7,15 @@
 
 import SwiftUI
 import MapKit
-import KVKCalendar
-
 @main
 struct CampusApp: App {
     @StateObject var environmentValues: CustomEnvironmentValues = CustomEnvironmentValues()
-    @StateObject var model: Model = MockModel()
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var splashScreenPresented = false
     @State var isLoginSheetPresented = false
     @State private var showingAlert = false
-    
-    init() {
-        UITabBar.appearance().isOpaque = true
-        if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
-    }
     
     var body: some Scene {
         WindowGroup {
@@ -41,12 +30,20 @@ struct CampusApp: App {
                             }
                     } else {
                         NavigationView {
-                            LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 2
-                            }
+                            LoginView()
+                                .onAppear {
+                                    selectedTab = 2
+                                    // KeychainService.removeAuthorization()
+                                }
                         }
                     }
+                }
+                .onAppear {
+                    checkAuthorized(count: 0)
+                    //UITabBar.appearance().isTranslucent = false
+                    //UITabBar.appearance().isOpaque = true
+                    //UITabBar.appearance().barTintColor = colorScheme == .dark ? UIColor.black : UIColor.white
+                    // remove loaded model
                 }
                 .environmentObject(environmentValues)
         }
@@ -56,16 +53,7 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView()
-                    .navigationTitle("Calendar")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarLeading) {
-                            CalendarToolbar(viewModel: CalendarViewModel())
-                        }
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
+                Text("Dummy Calendar View")
                 // CalendarView(model: model)
             }
             .tag(0)
@@ -78,7 +66,7 @@ struct CampusApp: App {
                     .navigationTitle("Lectures")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
+                            ProfileToolbar(profileModel: ProfileModel())
                         }
                     }
             }
@@ -92,7 +80,7 @@ struct CampusApp: App {
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
+                            ProfileToolbar(profileModel: ProfileModel())
                         }
                     }
             }
@@ -101,11 +89,9 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView(zoomOnUser: true,
-                        panelPosition: "down",
-                        canteens: [],
-                        selectedCanteenName: "",
-                        selectedAnnotationIndex: 0)
+                MapView(zoomOnUser: true)
+                //Text("Dummy Cafeterias View")
+                // CafeteriasView(model: model)
             }
             .tag(3)
             .tabItem {
@@ -121,5 +107,9 @@ struct CampusApp: App {
                 Label("Study Rooms", systemImage: "book")
             }
         }
+    }
+    
+    func checkAuthorized(count: Int) {
+        // check if logged in
     }
 }

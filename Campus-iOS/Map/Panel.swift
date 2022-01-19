@@ -12,10 +12,6 @@ struct Panel: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
     @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
 
     var body: some View {
         let drag = DragGesture()
@@ -25,11 +21,7 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent(zoomOnUser: $zoomOnUser,
-                         panelPosition: $panelPosition,
-                         canteens: $canteens,
-                         selectedCanteenName: $selectedCanteenName,
-                         selectedAnnotationIndex: $selectedAnnotationIndex)
+            PanelContent(zoomOnUser: $zoomOnUser)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()
@@ -38,13 +30,6 @@ struct Panel: View {
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
-        .task(id: panelPosition) {
-            if panelPosition == "pushMid" {
-                self.position = .middle
-            } else if panelPosition == "pushDown" {
-                self.position = .bottom
-            }
-        }
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
@@ -75,12 +60,6 @@ struct Panel: View {
         } else {
             self.position = closestPosition
         }
-        
-        if self.position.rawValue == PanelPosition.bottom.rawValue {
-            panelPosition = "down"
-        } else if self.position.rawValue == PanelPosition.middle.rawValue {
-            panelPosition = "up"
-        }
     }
 }
 
@@ -92,7 +71,7 @@ enum PanelPosition: CGFloat {
         switch self {
         case .top: return 0.5 * screenHeight/3
         case .middle: return 1.5 * screenHeight/3
-        case .bottom: return 3.2 * screenHeight/4
+        case .bottom: return 3.5 * screenHeight/4
         }
     }
 }
@@ -122,10 +101,6 @@ enum DragState {
 
 struct Panel_Previews: PreviewProvider {
     static var previews: some View {
-        Panel(zoomOnUser: .constant(true),
-              panelPosition: .constant("down"),
-              canteens: .constant([]),
-              selectedCanteenName: .constant(""),
-              selectedAnnotationIndex: .constant(0))
+        Panel(zoomOnUser: .constant(true))
     }
 }

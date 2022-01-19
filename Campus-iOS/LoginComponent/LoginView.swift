@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
-import Combine
-
-private enum Field: Int, Equatable {
-  case firstTextField, numbersTextField, secondTextField
-}
-
 
 struct LoginView: View {
     /// The `LoginViewModel` that manages the content of the login screen
-    @ObservedObject var viewModel: LoginViewModel
-    @FocusState private var focusedField: Field?
+//    @ObservedObject var viewModel: LoginViewModel
+    
+    @State private var isContinuePressed = false
+    
+    @State private var firstTextField: String = ""
+    @State private var numbersTextField: String = ""
+    @State private var secondTextField: String = ""
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -41,57 +40,34 @@ struct LoginView: View {
                         .font(.headline .bold())
 
                     HStack() {
-                        TextField("go", text: $viewModel.firstTextField)
-                            .textFieldStyle(CustomRoundedTextFieldStyle())
+                        TextField("go", text: $firstTextField)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
-                            .textInputAutocapitalization(.never)
-                            .textCase(.lowercase)
-                            .focused($focusedField, equals: .firstTextField)
-                            .onChange(of: viewModel.firstTextField) {
-                                viewModel.firstTextField = String($0.prefix(2))
-                                if $0.count == 2 { focusedField = .numbersTextField }
-                            }
 
                         Spacer().frame(width: 8)
 
-                        TextField("42", text: $viewModel.numbersTextField)
-                            .textFieldStyle(CustomRoundedTextFieldStyle())
+                        TextField("42", text: $numbersTextField)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
                             .keyboardType(.numberPad)
-                            .focused($focusedField, equals: .numbersTextField)
-                            .onChange(of: viewModel.numbersTextField) {
-                                viewModel.numbersTextField = String($0.prefix(2))
-                                if $0.count == 2 { focusedField = .secondTextField }
-                                if $0.count == 0 { focusedField = .firstTextField }
-                            }
-
 
                         Spacer().frame(width: 8)
 
-                        TextField("tum", text: $viewModel.secondTextField)
-                            .textFieldStyle(CustomRoundedTextFieldStyle())
+                        TextField("tum", text: $secondTextField)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             .frame(width: 50)
                             .font(.body)
                             .multilineTextAlignment(.center)
                             .disableAutocorrection(true)
                             .textContentType(.username)
-                            .textInputAutocapitalization(.never)
-                            .textCase(.lowercase)
-                            .focused($focusedField, equals: .secondTextField)
-                            .onChange(of: viewModel.secondTextField) {
-                                viewModel.secondTextField = String($0.prefix(3))
-                                if $0.count == 3 { focusedField = nil }
-                                if $0.count == 0 { focusedField = .numbersTextField }
-                            }
-                            
                     }
                     
                     Spacer()
@@ -99,18 +75,14 @@ struct LoginView: View {
                     
                     ZStack {
                         NavigationLink(destination:
-                                        TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token")), isActive: self.$viewModel.isContinuePressed) { EmptyView() }
+                            TokenConfirmationView().navigationBarTitle(Text("Authorize Token")), isActive: $isContinuePressed) { EmptyView() }
                         
                         Button(action: {
-                            self.viewModel.loginWithContinue()
+                            self.isContinuePressed = true
                         }) {
                             Text("Continue 🎓").lineLimit(1).font(.title2)
                                 .frame(alignment: .center)
                         }
-                        .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
-                            Button("OK", role: .cancel) {}
-                        }
-                        .disabled(!viewModel.isContinueEnabled)
                         .frame(width: 135, height: 35)
                         .aspectRatio(contentMode: .fill)
                         .font(.title)
@@ -121,14 +93,10 @@ struct LoginView: View {
                     Spacer().frame(height: 20)
 
                     Button(action: {
-                        self.viewModel.loginWithContinueWithoutTumID()
-                        self.viewModel.model?.isLoginSheetPresented = false
+                        //didSelectContinueWithoutTumID()
                     }) {
                         Text("Continue without TUM ID").lineLimit(1).font(.caption)
                             .frame(alignment: .center)
-                    }
-                    .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
-                        Button("OK", role: .cancel) {}
                     }
                     .aspectRatio(contentMode: .fill)
                     .font(.subheadline)
@@ -148,8 +116,8 @@ struct LoginView: View {
         .edgesIgnoringSafeArea(.all)
     }
     
-    init(model: Model) {
-        self.viewModel = LoginViewModel(model: model)
+    init() {
+//        self.viewModel = LoginViewModel(model: model)
 //        KeychainService.removeAuthorization()
     }
 }
