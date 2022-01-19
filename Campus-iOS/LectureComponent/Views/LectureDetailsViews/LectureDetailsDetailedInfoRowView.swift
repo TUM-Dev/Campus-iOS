@@ -14,7 +14,7 @@ struct LectureDetailsDetailedInfoRowView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.system(size: 16, weight: .bold))
             
             Text(text)
                 .font(.system(size: 16))

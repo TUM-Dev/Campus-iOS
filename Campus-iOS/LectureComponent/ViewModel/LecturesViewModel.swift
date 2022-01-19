@@ -24,10 +24,10 @@ class LecturesViewModel: LecturesViewModelProtocol {
         }
         
         return data.reduce(into: [String: [Lecture]]()) { partialResult, lecture in
-            if partialResult[lecture.semesterID] == nil {
-                partialResult[lecture.semesterID] = [lecture]
+            if partialResult[lecture.semester] == nil {
+                partialResult[lecture.semester] = [lecture]
             } else {
-                partialResult[lecture.semesterID]?.append(lecture)
+                partialResult[lecture.semester]?.append(lecture)
             }
         }
     }
@@ -38,7 +38,7 @@ class LecturesViewModel: LecturesViewModelProtocol {
                 (semester, lectures)
             }
             .sorted { elementA, elementB in
-				elementA.0 > elementB.0
+                elementA.0 > elementB.0
             }
     }
     

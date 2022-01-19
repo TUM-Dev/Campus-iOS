@@ -15,30 +15,22 @@ struct LecturesView: View {
             ForEach(lecturesBySemester, id: \.0) { lecturesBySemester in
                 Section(
                     header: GroupBoxLabelView(
-                        iconName: "graduationcap.fill",
-						text: lecturesBySemester.1[0].semester 
+                        iconName: "graduationcap",
+                        text: lecturesBySemester.0
                     )
                 ) {
-					ForEach(lecturesBySemester.1) { item in
-						VStack {
-							NavigationLink(
-								destination:
-									LectureDetailsScreen(lecture: item)
-										.navigationBarTitleDisplayMode(.inline)
-							) {
-								LectureView(lecture: item)
-							}
-
-							if item.id != lecturesBySemester.1[lecturesBySemester.1.count - 1].id {
-								Divider()
-							}
-						}
+                    ForEach(lecturesBySemester.1) { item in
+                        NavigationLink(
+                            destination:
+                                LectureDetailsScreen(lecture: item)
+                                    .navigationBarTitleDisplayMode(.inline)
+                        ) {
+                            LectureView(lecture: item)
+                        }
                     }
-					.listRowSeparator(.hidden)
                 }
             }
         }
-		.listRowSeparator(.hidden)
     }
 }
 

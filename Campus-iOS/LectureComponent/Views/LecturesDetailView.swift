@@ -11,14 +11,11 @@ struct LecturesDetailView: View {
     var lectureDetails: LectureDetails
     
     var body: some View {
-		VStack(alignment: .leading) {
+        VStack {
             LectureDetailsTitleView(lectureDetails: lectureDetails)
-
-			Spacer()
-				.frame(height: 30)
             
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 3) {
                     LectureDetailsBasicInfoView(lectureDetails: lectureDetails)
                     
                     LectureDetailsDetailedInfoView(lectureDetails: lectureDetails)
@@ -26,12 +23,7 @@ struct LecturesDetailView: View {
                     LectureDetailsLinkView(lectureDetails: lectureDetails)
                 }
             }
-		}
-		.frame(
-			maxWidth: .infinity,
-			alignment: .topLeading
-		)
-		.padding(.horizontal)
+        }
     }
 }
 
