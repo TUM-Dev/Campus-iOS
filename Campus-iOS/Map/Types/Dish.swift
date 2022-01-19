@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Price: Decodable {
+struct Price: Hashable, Decodable {
     let basePrice: Decimal?
     let unitPrice: Decimal?
     let unit: String?
@@ -17,7 +17,6 @@ struct Price: Decodable {
         case unitPrice = "price_per_unit"
         case unit
     }
-
 }
 
 struct Dish: Decodable, Hashable {
@@ -51,7 +50,7 @@ struct Dish: Decodable, Hashable {
      */
 
     let name: String
-    let prices: [String: Price?]
+    let prices: [String: Price]
     let labels: [String]
     let dishType: String
 
@@ -70,5 +69,4 @@ struct Dish: Decodable, Hashable {
     {
         hasher.combine(name);
     }
-    
 }
