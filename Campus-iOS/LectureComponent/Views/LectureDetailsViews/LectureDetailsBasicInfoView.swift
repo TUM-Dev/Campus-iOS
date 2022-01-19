@@ -16,7 +16,7 @@ struct LectureDetailsBasicInfoView: View {
                 iconName: "info.circle.fill",
                 text: "Basic lecture information"
             )
-            .padding(.bottom, 5)
+            .padding(.bottom, 10)
         ) {
             VStack(alignment: .leading, spacing: 8) {
                 LectureDetailsBasicInfoRowView(
@@ -25,23 +25,23 @@ struct LectureDetailsBasicInfoView: View {
                 )
                 Divider()
                 LectureDetailsBasicInfoRowView(
-                    iconName: "graduationcap",
+                    iconName: "graduationcap.fill",
                     text: lectureDetails.semester
                 )
                 Divider()
                 LectureDetailsBasicInfoRowView(
-                    iconName: "book",
+                    iconName: "book.fill",
                     text: lectureDetails.organisation
                 )
                 Divider()
                 LectureDetailsBasicInfoRowView(
-                    iconName: "person",
+                    iconName: "person.fill",
                     text: lectureDetails.speaker
                 )
                 if let firstMeeting = lectureDetails.firstScheduledDate {
                     Divider()
                     LectureDetailsBasicInfoRowView(
-                        iconName: "clock",
+                        iconName: "clock.fill",
                         text: firstMeeting
                     )
                 }
@@ -51,7 +51,6 @@ struct LectureDetailsBasicInfoView: View {
               maxWidth: .infinity,
               alignment: .topLeading
         )
-        .padding()
     }
 }
 

@@ -18,20 +18,28 @@ struct LectureDetailsDetailedInfoView: View {
             )
             .padding(.bottom, 5)
         ) {
-            VStack(alignment: .leading, spacing: 8) {
+			VStack(alignment: .leading, spacing: 8) {
                 if let courseContents = lectureDetails.courseContents, !courseContents.isEmpty {
                     LectureDetailsDetailedInfoRowView(
                         title: "Course Contents",
                         text: courseContents
                     )
-                    Divider()
+					if lectureDetails.courseObjective != nil || (lectureDetails.note != nil && !lectureDetails.note!.isEmpty) {
+						Divider()
+						Spacer()
+							.frame(height: 10)
+					}
                 }
                 if let courseObjective = lectureDetails.courseObjective, !courseObjective.isEmpty {
                     LectureDetailsDetailedInfoRowView(
                         title: "Course Objective",
                         text: courseObjective
                     )
-                    Divider()
+					if (lectureDetails.note != nil && !lectureDetails.note!.isEmpty) {
+						Divider()
+						Spacer()
+							.frame(height: 10)
+					}
                 }
                 if let note = lectureDetails.note, !note.isEmpty {
                     LectureDetailsDetailedInfoRowView(
@@ -45,7 +53,6 @@ struct LectureDetailsDetailedInfoView: View {
               maxWidth: .infinity,
               alignment: .topLeading
         )
-        .padding(.horizontal)
     }
 }
 
