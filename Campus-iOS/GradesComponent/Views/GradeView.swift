@@ -8,35 +8,60 @@
 import SwiftUI
 
 struct GradeView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     var grade: Grade
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: "tv")
-                    .font(.system(size: 12, weight: .black))
-                Text(grade.title)
+        HStack(alignment: .center, spacing: 16) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 4, style: .continuous)
+                    .fill(
+                        GradesViewModel.GradeColor.color(
+                            for: Double(grade.grade.replacingOccurrences(of: ",", with: "."))
+                        )
+                    )
+                    .frame(width: 60, height: 60)
+                
+                Text(grade.grade)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.white)
             }
             
-            Text(makeAttributedString(title: "Examiner", label: grade.examiner))
-            Text(makeAttributedString(title: "Grade", label: grade.grade))
-                .lineLimit(2)
+            VStack(alignment: .leading, spacing: 8) {
+                Text(grade.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                
+                HStack(alignment: .center, spacing: 8) {
+                    HStack{
+                        Image(systemName: "pencil.circle")
+                            .frame(width: 12, height: 12)
+                            .padding(.leading, 3)
+                        Text(grade.modus.short)
+                            .font(.system(size: 12))
+                            .padding(.trailing, 5)
+                    }.foregroundColor(.init(.darkGray))
+                    
+                    HStack{
+                        Image(systemName: "person.circle")
+                            .frame(width: 12, height: 12)
+                        Text(grade.examiner)
+                            .font(.system(size: 12))
+                            .padding(.trailing, 5)
+                    }.foregroundColor(.init(.darkGray))
+                    
+                    HStack{
+                        Image(systemName: "number.circle")
+                            .frame(width: 12, height: 12)
+                        Text(grade.lvNumber)
+                            .font(.system(size: 12))
+                    }.foregroundColor(.init(.darkGray))
+                }
+            }
+            .padding(.bottom, 4)
         }
-        .padding()
-        .foregroundColor(.black)
-    }
-    
-    private func makeAttributedString(title: String, label: String) -> AttributedString {
-        var string = AttributedString("\(title): \(label)")
-        string.foregroundColor = .black
-        string.font = .system(size: 16, weight: .bold)
-        
-        if let range = string.range(of: label) {
-            string[range].foregroundColor = .black.opacity(0.8)
-            string[range].font = .system(size: 16, weight: .regular)
-        }
-        
-        return string
+        .padding(.vertical, 5)
     }
 }
 

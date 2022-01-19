@@ -27,7 +27,7 @@ enum GradeComponents {
         public var examiner: String
         public var grade: String
         public var examType: String
-        public var modus: String
+        public var modus: Modus
         public var studyID: String
         public var studyDesignation: String
         public var studyNumber: UInt64
@@ -50,8 +50,8 @@ enum GradeComponents {
 
 extension Grade {
     static let dummyData: [Grade] = [
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Beurteilt/immanenter Prüfungscharakter", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Beurteilt/immanenter Prüfungscharakter", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Beurteilt/immanenter Prüfungscharakter", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170)
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170)
     ]
 }
