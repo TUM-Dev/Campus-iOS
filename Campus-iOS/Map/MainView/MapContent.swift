@@ -10,6 +10,17 @@ import MapKit
 import CoreLocation
 import Alamofire
 
+final class Annotation: NSObject, MKAnnotation {
+    let coordinate: CLLocationCoordinate2D
+    let title: String?
+    
+    init(title: String?, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
+        super.init()
+    }
+}
+
 struct MapContent: UIViewRepresentable {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
@@ -114,7 +125,11 @@ struct MapContent: UIViewRepresentable {
                     cafeterias.sortByDistance(to: currentLocation)
                 }
                 
-                mapView.addAnnotations(response.value ?? [])
+                guard let cafeterias = response.value else { return }
+                
+                let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+                
+                mapView.addAnnotations(annotations)
                 
                 canteens = cafeterias
 
