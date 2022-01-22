@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		226CB5172798BD910043ABCA /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CB5162798BD910043ABCA /* MenuViewModel.swift */; };
+		226CB5192798BF3E0043ABCA /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CB5182798BF3E0043ABCA /* MealPlanViewModel.swift */; };
+		226CB51B2798DA050043ABCA /* PanelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CB51A2798DA050043ABCA /* PanelRow.swift */; };
+		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
+		226CB5202798E34E0043ABCA /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226CB51F2798E34E0043ABCA /* Panel.swift */; };
 		3616C4B8278F6EF2000A1BC9 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4AD278F6EF2000A1BC9 /* MealPlan.swift */; };
 		3616C4B9278F6EF2000A1BC9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4AE278F6EF2000A1BC9 /* Dish.swift */; };
 		3616C4BA278F6EF2000A1BC9 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4AF278F6EF2000A1BC9 /* Cafeteria.swift */; };
 		3616C4BB278F6EF2000A1BC9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B0278F6EF2000A1BC9 /* Menu.swift */; };
 		3616C4BC278F6EF2000A1BC9 /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */; };
 		3616C4BD278F6EF2000A1BC9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B4278F6EF2000A1BC9 /* MapView.swift */; };
-		3616C4BE278F6EF2000A1BC9 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B5278F6EF2000A1BC9 /* Panel.swift */; };
 		3616C4BF278F6EF2000A1BC9 /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B6278F6EF2000A1BC9 /* MapContent.swift */; };
 		3616C4C0278F6EF2000A1BC9 /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4B7278F6EF2000A1BC9 /* PanelContent.swift */; };
 		3616C4C4278F9C0A000A1BC9 /* SheetNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3616C4C3278F9C0A000A1BC9 /* SheetNavigator.swift */; };
@@ -132,6 +136,10 @@
 /* Begin PBXFileReference section */
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		226CB5162798BD910043ABCA /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		226CB5182798BF3E0043ABCA /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
+		226CB51A2798DA050043ABCA /* PanelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelRow.swift; sourceTree = "<group>"; };
+		226CB51F2798E34E0043ABCA /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		3616C4AD278F6EF2000A1BC9 /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
@@ -140,7 +148,6 @@
 		3616C4B0278F6EF2000A1BC9 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanView.swift; sourceTree = "<group>"; };
 		3616C4B4278F6EF2000A1BC9 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		3616C4B5278F6EF2000A1BC9 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		3616C4B6278F6EF2000A1BC9 /* MapContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
 		3616C4B7278F6EF2000A1BC9 /* PanelContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
 		3616C4C3278F9C0A000A1BC9 /* SheetNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetNavigator.swift; sourceTree = "<group>"; };
@@ -236,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				226CB51E2798DF9C0043ABCA /* Snap in Frameworks */,
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
 				979DBFAC2798C00C00E45513 /* LRUCache in Frameworks */,
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
@@ -302,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */,
+				226CB5182798BF3E0043ABCA /* MealPlanViewModel.swift */,
+				226CB5162798BD910043ABCA /* MenuViewModel.swift */,
 				41DDB33A2792F70A00FBEC81 /* MenuView.swift */,
 			);
 			path = Cafeterias;
@@ -312,8 +322,9 @@
 			children = (
 				3616C4B4278F6EF2000A1BC9 /* MapView.swift */,
 				3616C4B6278F6EF2000A1BC9 /* MapContent.swift */,
-				3616C4B5278F6EF2000A1BC9 /* Panel.swift */,
+				226CB51F2798E34E0043ABCA /* Panel.swift */,
 				3616C4B7278F6EF2000A1BC9 /* PanelContent.swift */,
+				226CB51A2798DA050043ABCA /* PanelRow.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -724,7 +735,7 @@
 				36FF90732773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta */,
 				36FF90752773BFC300F4C785 /* FirebaseCrashlytics */,
 				36E964A9277498B60055777F /* KVKCalendar */,
-				979DBFAB2798C00C00E45513 /* LRUCache */,
+				226CB51D2798DF9C0043ABCA /* Snap */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -807,7 +818,7 @@
 				36FF90662773BCA600F4C785 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				36FF90702773BFC300F4C785 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */,
-				979DBFAA2798C00B00E45513 /* XCRemoteSwiftPackageReference "LRUCache" */,
+				226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -888,16 +899,21 @@
 				3616C4BF278F6EF2000A1BC9 /* MapContent.swift in Sources */,
 				979DBFFF2798C08C00E45513 /* Lecture.swift in Sources */,
 				3616C4C0278F6EF2000A1BC9 /* PanelContent.swift in Sources */,
-				3616C4BE278F6EF2000A1BC9 /* Panel.swift in Sources */,
-				979DC0192798C08C00E45513 /* View+Error.swift in Sources */,
+				97E7B11027729A7F00D64EDF /* GradeColor.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
-				979DBFFA2798C08C00E45513 /* LecturesViewModel.swift in Sources */,
+				36FF90622773BB5800F4C785 /* TUMCabeAPI.swift in Sources */,
+				97C9AB24277333320097B10C /* ErrorEmittingViewModifier.swift in Sources */,
+				97C9AB29277359AE0097B10C /* Constants.swift in Sources */,
+				226CB5172798BD910043ABCA /* MenuViewModel.swift in Sources */,
+				226CB5202798E34E0043ABCA /* Panel.swift in Sources */,
 				3616C4BB278F6EF2000A1BC9 /* Menu.swift in Sources */,
 				979DBFF82798C08C00E45513 /* LectureDetailsViewModel+State.swift in Sources */,
 				979DC00F2798C08C00E45513 /* APIResponse.swift in Sources */,
 				979DC0022798C08C00E45513 /* LecturesView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
-				979DC00B2798C08C00E45513 /* EatAPI.swift in Sources */,
+				97C9AB2D27736FE00097B10C /* APIResponse.swift in Sources */,
+				226CB51B2798DA050043ABCA /* PanelRow.swift in Sources */,
+				97C9AB15277330B00097B10C /* ErrorHandler.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				3616C4BC278F6EF2000A1BC9 /* MealPlanView.swift in Sources */,
 				979DC0232798C08C00E45513 /* XMLSerializer.swift in Sources */,
@@ -913,7 +929,9 @@
 				979DC0262798C08C00E45513 /* GradesViewModel+ChartData.swift in Sources */,
 				979DC0092798C08C00E45513 /* LectureDetailsLinkView.swift in Sources */,
 				3616C4C7278FA2D3000A1BC9 /* Enums.swift in Sources */,
-				979DC0172798C08C00E45513 /* NetworkingError.swift in Sources */,
+				97997AD5277222730079F809 /* Grade.swift in Sources */,
+				226CB5192798BF3E0043ABCA /* MealPlanViewModel.swift in Sources */,
+				97997AE427722E3B0079F809 /* GradesViewModel.swift in Sources */,
 				3616C4C4278F9C0A000A1BC9 /* SheetNavigator.swift in Sources */,
 				979DC0102798C08C00E45513 /* TUMOnlineAPI.swift in Sources */,
 				979DC0112798C08C00E45513 /* Cache.swift in Sources */,
@@ -1321,6 +1339,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdsupremacist/Snap.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
 		36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
@@ -1388,6 +1414,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		226CB51D2798DF9C0043ABCA /* Snap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */;
+			productName = Snap;
+		};
 		36203E822761BDD100C24658 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;

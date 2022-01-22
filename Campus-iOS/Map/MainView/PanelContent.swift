@@ -25,12 +25,6 @@ struct PanelContent: View {
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
     
-    private static let distanceFormatter: MKDistanceFormatter = {
-        let formatter = MKDistanceFormatter()
-        formatter.unitStyle = .abbreviated
-        return formatter
-    }()
-    
     private let handleThickness = CGFloat(0)
     
     var body: some View {
@@ -62,44 +56,14 @@ struct PanelContent: View {
                     ProgressView()
                     ScrollViewReader { proxy in
                         List {
-                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { item in
-                                VStack {
-                                    HStack {
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Spacer().frame(height: 5)
-                                            HStack {
-                                                Text(item.name)
-                                                    .bold()
-                                                    .font(.title3)
-                                                Spacer()
-                                                Image(systemName: "doc.plaintext")
-                                                    .font(.title3)
-                                                    .onTapGesture {
-                                                        canteenForMealPlan = item
-                                                        goToMealPlan = true
-                                                    }
-                                                NavigationLink(destination: MealPlanView(canteen: canteenForMealPlan, menus: []), isActive: $goToMealPlan) { EmptyView() } .frame(width: 0, height: 0)
-                                                    .hidden()
-                                            }
-                                            Spacer().frame(height: 0)
-                                            HStack {
-                                                Text(item.location.address)
-                                                    .font(.subheadline)
-                                                    .foregroundColor(Color.gray)
-                                                Spacer()
-                                                Text(distance(cafeteria: item))
-                                                    .font(.subheadline)
-                                                    .foregroundColor(Color.gray)
-                                            }
-                                            Spacer().frame(height: 0)
-                                        }
-                                    }
+                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.name) { cafeteria in
+                                NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))) { PanelRow(cafeteria: cafeteria)
                                 }
                                 .onTapGesture {
                                     withAnimation {
-                                        selectedCanteenName = item.name
-                                        selectedAnnotationIndex = canteens.index(of: item)!
-                                        proxy.scrollTo(item, anchor: .top)
+                                        selectedCanteenName = cafeteria.name
+                                        selectedAnnotationIndex = canteens.index(of: cafeteria)!
+                                        proxy.scrollTo(cafeteria, anchor: .top)
                                     }
                                 }
                                 .task(id: selectedAnnotationIndex) {
@@ -129,14 +93,6 @@ struct PanelContent: View {
             
             self.canteens = cafeterias
         }
-    }
-    
-    func distance(cafeteria: Cafeteria) -> String {
-        if let currentLocation = self.locationManager.location {
-            let distance = cafeteria.coordinate.location.distance(from: currentLocation)
-            return PanelContent.distanceFormatter.string(fromDistance: distance)
-        }
-        return ""
     }
 }
 
