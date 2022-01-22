@@ -46,8 +46,8 @@ final class MealPlanViewModel: ObservableObject {
                             acc[type] = [dish]
                         }
                         .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
-                    
-                    return MenuViewModel(title: formatter.string(from: $0.date), categories: categories) }
+                                        
+                    return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
         }
         
         guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
@@ -70,13 +70,11 @@ final class MealPlanViewModel: ObservableObject {
                                             acc[type] = [dish]
                                         }
                                         .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
-                                    
-                                        return MenuViewModel(title: formatter.string(from: $0.date), categories: categories) }
+                
+                                        print("DATE: ", $0.date)
+
+                                        return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
                               )
-            
-            for i in menus {
-                print("Menu Title: ", i.title)
-            }
         }
     }
 }

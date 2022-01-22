@@ -10,18 +10,22 @@ import Alamofire
 
 struct MealPlanView: View {
     @ObservedObject var viewModel: MealPlanViewModel
+    
+    let formatter = DateFormatter()
         
     var body: some View {
         VStack {
             List {
                 ForEach(viewModel.menus) { menu in
-                    NavigationLink(destination: MenuView(viewModel: menu)) {
-                        Text(menu.title)
+                    let title = formatter.string(from: menu.date)
+                    NavigationLink(destination: MenuView(viewModel: menu, title: title)) {
+                        Text(formatter.string(from: menu.date))
                     }
                 }
             }
             .navigationTitle(viewModel.title)
             .onAppear {
+                formatter.dateFormat = "EEEE, dd.MM.yyyy"
                 viewModel.fetch()
             }
         }
