@@ -47,22 +47,36 @@ final class MealPlanViewModel: ObservableObject {
                         }
                         .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
                     
-                    return MenuViewModel(title: $0.date.description, categories: categories) }
-
-            print("MenuCount: ", menus.count)
+                    return MenuViewModel(title: formatter.string(from: $0.date), categories: categories) }
         }
         
-//        guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
-//
-//        let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
-//
-//        sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
-//            guard let mealPlans = response.value else { return }
-//            self.menus.append(contentsOf: mealPlans.days
-//                .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
-//                .sorted { $0.date < $1.date }
-//                .map { MenuViewModel(menu: $0) })
-//        }
+        guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
+        
+        let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
+        
+        sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
+            guard let mealPlans = response.value else { return }
+            self.menus.append(contentsOf: mealPlans.days
+                                .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
+                                .sorted { $0.date < $1.date }
+                                .map {
+                                    let categories = $0.dishes
+                                        .sorted { $0.dishType < $1.dishType }
+                                        .reduce(into: [:]) { (acc: inout [String: [Dish]], dish: Dish) -> () in
+                                            let type = dish.dishType.isEmpty ? "Sonstige" : dish.dishType
+                                            if acc[type] != nil {
+                                                acc[type]?.append(dish)
+                                            }
+                                            acc[type] = [dish]
+                                        }
+                                        .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
+                                    
+                                        return MenuViewModel(title: formatter.string(from: $0.date), categories: categories) }
+                              )
+            
+            for i in menus {
+                print("Menu Title: ", i.title)
+            }
+        }
     }
-    
 }

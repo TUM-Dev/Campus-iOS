@@ -309,8 +309,8 @@
 		3616C4B1278F6EF2000A1BC9 /* Cafeterias */ = {
 			isa = PBXGroup;
 			children = (
-				3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */,
 				226CB5182798BF3E0043ABCA /* MealPlanViewModel.swift */,
+				3616C4B2278F6EF2000A1BC9 /* MealPlanView.swift */,
 				226CB5162798BD910043ABCA /* MenuViewModel.swift */,
 				41DDB33A2792F70A00FBEC81 /* MenuView.swift */,
 			);
