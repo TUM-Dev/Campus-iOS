@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Menu: Hashable, Decodable, Comparable {
+struct Menu: Hashable, Decodable {
     /*
      "date": "2020-03-02",
      "dishes": [...]
@@ -27,6 +27,7 @@ struct Menu: Hashable, Decodable, Comparable {
         self.date = try container.decode(Date.self, forKey: .date)
         self.dishes = try container.decode([Dish].self, forKey: .dishes)
     }
+<<<<<<< HEAD
 }
 
 struct Category: Hashable, Decodable {
@@ -37,6 +38,8 @@ struct Category: Hashable, Decodable {
         case name
         case dishes
     }
+=======
+>>>>>>> 01b55bc (Draft some kind of viewmodel (#396))
 }
 
 struct Category: Hashable, Decodable {

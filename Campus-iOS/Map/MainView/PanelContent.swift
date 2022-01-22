@@ -65,7 +65,7 @@ struct PanelContent: View {
                                 .onTapGesture {
                                     withAnimation {
                                         selectedCanteenName = cafeteria.name
-                                        selectedAnnotationIndex = canteens.index(of: cafeteria)!
+                                        selectedAnnotationIndex = canteens.firstIndex(of: cafeteria)!
                                         proxy.scrollTo(cafeteria, anchor: .top)
                                         
                                         selectedCanteen = cafeteria

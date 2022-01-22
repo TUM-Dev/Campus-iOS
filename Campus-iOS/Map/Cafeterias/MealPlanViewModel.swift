@@ -46,6 +46,7 @@ final class MealPlanViewModel: ObservableObject {
                             acc[type] = [dish]
                         }
                         .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
+<<<<<<< HEAD
                                         
                     return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
         }
@@ -77,4 +78,25 @@ final class MealPlanViewModel: ObservableObject {
                               )
         }
     }
+=======
+                    
+                    return MenuViewModel(title: $0.date.description, categories: categories) }
+
+            print("MenuCount: ", menus.count)
+        }
+        
+//        guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
+//
+//        let nextWeekEndpoint = EatAPI.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
+//
+//        sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
+//            guard let mealPlans = response.value else { return }
+//            self.menus.append(contentsOf: mealPlans.days
+//                .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
+//                .sorted { $0.date < $1.date }
+//                .map { MenuViewModel(menu: $0) })
+//        }
+    }
+    
+>>>>>>> 01b55bc (Draft some kind of viewmodel (#396))
 }
