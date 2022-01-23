@@ -28,9 +28,14 @@ struct MapView: View {
                   panelPosition: $panelPosition,
                   canteens: $canteens,
                   selectedCanteenName: $selectedCanteenName,
+<<<<<<< HEAD
                   selectedAnnotationIndex: $selectedAnnotationIndex,
                   selectedCanteen: $selectedCanteen)
             Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName, cafeteria: $selectedCanteen)
+=======
+                  selectedAnnotationIndex: $selectedAnnotationIndex)
+            Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName)
+>>>>>>> 8f4054a (Toolbar)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("Map")

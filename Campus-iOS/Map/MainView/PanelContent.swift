@@ -85,6 +85,9 @@ struct PanelContent: View {
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
+                .onChange(of: selectedCanteenName) { newValue in
+                    print("SELECTED CANTEEN (Panelcontent): ", newValue)
+                }
             }
         }
     }

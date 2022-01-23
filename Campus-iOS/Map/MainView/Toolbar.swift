@@ -37,9 +37,6 @@ struct Toolbar: View {
             .background()
             .cornerRadius(10.0)
             .position(x: 8 * UIScreen.main.bounds.width/10, y: 1.2 * UIScreen.main.bounds.height/10)
-            .onAppear {
-                print(cafeteria)
-            }
         }
     }
 }
