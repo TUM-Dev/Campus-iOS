@@ -34,7 +34,7 @@ struct Panel: View {
         .frame(height: UIScreen.main.bounds.height)
         .background()
         .cornerRadius(10.0)
-        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
+        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)

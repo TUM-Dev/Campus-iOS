@@ -149,7 +149,7 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
             control.zoomOnUser = false
-            control.selectedCanteenName = ""
+            //control.selectedCanteenName = ""
             control.selectedAnnotationIndex = -1
         }
                 

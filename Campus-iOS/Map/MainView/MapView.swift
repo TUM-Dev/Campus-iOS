@@ -28,6 +28,7 @@ struct MapView: View {
                   canteens: $canteens,
                   selectedCanteenName: $selectedCanteenName,
                   selectedAnnotationIndex: $selectedAnnotationIndex)
+            Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("Map")
@@ -35,7 +36,7 @@ struct MapView: View {
     }
 }
 
-struct MapView_Previews: PreviewProvider {
+/*struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(zoomOnUser: true,
                 panelPosition: "down",
@@ -43,4 +44,4 @@ struct MapView_Previews: PreviewProvider {
                 selectedCanteenName: "",
                 selectedAnnotationIndex: 0)
     }
-}
+}*/

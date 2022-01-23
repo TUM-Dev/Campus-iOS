@@ -104,7 +104,7 @@ struct CampusApp: App {
                 MapView(zoomOnUser: true,
                         panelPosition: "down",
                         canteens: [],
-                        selectedCanteenName: "",
+                        selectedCanteenName: "A",
                         selectedAnnotationIndex: 0)
             }
             .tag(3)
