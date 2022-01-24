@@ -30,6 +30,16 @@ final class MenuCollectionViewController: UICollectionViewController, UICollecti
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let infoButton = UIButton(type: .infoLight)
+        infoButton.addTarget(self, action: #selector(openLabelsExplanation), for: .touchUpInside)
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = infoBarButtonItem
+    }
+    
+    @objc public func openLabelsExplanation() {
+        guard let destination = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MenuLabelsTableViewController") as? MenuLabelsTableViewController else { return }
+        navigationController?.pushViewController(destination, animated: true)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int { categories.count }
