@@ -59,6 +59,8 @@ struct GradesScreen: View {
             }
             await vm.getGrades(token: token)
         }
+        // As LoginView is just a sheet displayed in front of the GradeScreen
+        // Listen to changes on the token, then fetch the grades
         .onChange(of: self.token ?? "") { _ in
             Task {
                 guard let token = self.token else {
