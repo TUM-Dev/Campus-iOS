@@ -12,7 +12,7 @@ protocol ErrorHandler {
     func handle<T: View>(
         _ error: Error?,
         in view: T,
-        customEnvironmentValues: CustomEnvironmentValues,
+        customEnvironmentValues: Model,
         retryHandler: @escaping () -> Void
     ) -> AnyView
 }

@@ -11,7 +11,7 @@ import KVKCalendar
 
 @main
 struct CampusApp: App {
-    @StateObject var environmentValues: CustomEnvironmentValues = CustomEnvironmentValues()
+    @StateObject var environmentValues: Model = Model()
     @StateObject var model: Model = MockModel()
     
     let persistenceController = PersistenceController.shared
@@ -87,7 +87,8 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                GradesScreen()
+                GradesScreen(model: model)
+                //GradesScreen()
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -9,44 +9,91 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesScreen: View {
-    @EnvironmentObject private var environmentValues: CustomEnvironmentValues
+    @StateObject var model: Model
+    //@EnvironmentObject private var model: Model
     
     @StateObject private var vm = GradesViewModel(
         serivce: GradesService()
     )
     
+    private var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
+    
     var body: some View {
         Group {
-            if vm.grades.isEmpty {
-                LoadingView(text: "Fetching Grades")
-            } else {
-                VStack {
-                    BarChart(chartData: vm.barChartData)
-                        .xAxisGrid(chartData: vm.barChartData)
-                        //.yAxisGrid(chartData: vm.barChartData)
-                        .xAxisLabels(chartData: vm.barChartData)
-                        .yAxisLabels(chartData: vm.barChartData)
-                        .legends(chartData: vm.barChartData)
-                        .frame(height: UIScreen.main.bounds.size.height/5, alignment: .center)
-                        .padding(.horizontal)                        
-                    
-                    List {
-                        ForEach(vm.grades) { item in
-                            GradeView(grade: item)
+            if let token = self.token {
+                switch vm.state {
+                case .success(_):
+                    VStack {
+                        GradesView(
+                            gradesBySemester: vm.sortedGradesBySemester,
+                            barChartData: vm.barChartData
+                        )
+                        .refreshable {
+                            await vm.getGrades(
+                                token: token,
+                                forcedRefresh: true
+                            )
                         }
                     }
-                     
+                case .loading, .na:
+                    LoadingView(text: "Fetching Grades")
+                case .failed(let error):
+                    FailedView(errorDescription: error.localizedDescription)
                 }
+            } else {
+                FailedView(errorDescription: "Please log in")
             }
         }
         .task {
-            await vm.getGrades(token: environmentValues.user.token)
+            guard let token = self.token else {
+                return
+            }
+            await vm.getGrades(token: token)
         }
+        // As LoginView is just a sheet displayed in front of the GradeScreen
+        // Listen to changes on the token, then fetch the grades
+        .onChange(of: self.token ?? "") { _ in
+            Task {
+                guard let token = self.token else {
+                    return
+                }
+                await vm.getGrades(token: token)
+            }
+        }
+        .alert(
+            "Error while fetching Grades",
+            isPresented: $vm.hasError,
+            presenting: vm.state) { detail in
+                Button("Retry") {
+                    Task {
+                        guard let token = self.token else {
+                            return
+                        }
+                        await vm.getGrades(token: token)
+                    }
+                }
+        
+                Button("Cancel", role: .cancel) { }
+            } message: { detail in
+                if case let .failed(error) = detail {
+                    Text(error.localizedDescription)
+                }
+            }
     }
 }
 
 struct GradesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GradesScreen()
+        GradesScreen(model: MockModel())
+        //GradesScreen()
     }
 }
