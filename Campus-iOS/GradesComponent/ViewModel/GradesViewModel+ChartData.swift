@@ -41,11 +41,9 @@ extension GradesViewModel {
             xAxisLabels: accumulatedGrades.compactMap { key, value in
                 key
             },
-            /*
             yAxisLabels: Array(Set(accumulatedGrades.compactMap { key, value in
                 String(value)
             })).sorted(),
-             */
             barStyle: .init(
                 barWidth: 0.8,
                 cornerRadius: CornerRadius(top: 2, bottom: 0),
@@ -53,14 +51,9 @@ extension GradesViewModel {
                 colour: ColourStyle(colour: .gray)
             ),
             chartStyle: .init(
-                xAxisLabelsFrom: .chartData(rotation: .zero),
                 yAxisNumberOfLabels: 5,
                 baseline: .zero,
-                topLine: .maximum(
-                    of: accumulatedGrades.max(by: { gradeA, gradeB in
-                            gradeA.1 > gradeB.1
-                        })?.1 ?? 0
-                ),
+				topLine: .maximumValue,
                 //yAxisLabelType: .custom,
                 globalAnimation: .easeInOut(duration: 0.8)
             )
