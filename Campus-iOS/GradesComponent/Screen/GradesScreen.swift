@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesScreen: View {
-    @ObservedObject var model: Model
+    @StateObject var model: Model
     //@EnvironmentObject private var model: Model
     
     @StateObject private var vm = GradesViewModel(
