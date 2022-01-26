@@ -12,7 +12,7 @@ protocol GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade]
 }
 
-struct GradesService: GradesServiceProtocol {
+struct GradesService: GradesServiceProtocol {    
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Grade] {
         let response: GradeComponents.RowSet =
         try await

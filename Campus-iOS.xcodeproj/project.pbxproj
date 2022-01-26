@@ -85,8 +85,6 @@
 		979DC0122798C08C00E45513 /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD02798C08C00E45513 /* TUMCabeAPI.swift */; };
 		979DC0132798C08C00E45513 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD22798C08C00E45513 /* Constants.swift */; };
 		979DC0142798C08C00E45513 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD32798C08C00E45513 /* APIConstants.swift */; };
-		979DC0152798C08C00E45513 /* CustomEnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD52798C08C00E45513 /* CustomEnvironmentValues.swift */; };
-		979DC0162798C08C00E45513 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD62798C08C00E45513 /* User.swift */; };
 		979DC0172798C08C00E45513 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD82798C08C00E45513 /* NetworkingError.swift */; };
 		979DC0182798C08C00E45513 /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFD92798C08C00E45513 /* BackendError.swift */; };
 		979DC0192798C08C00E45513 /* View+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFDA2798C08C00E45513 /* View+Error.swift */; };
@@ -207,8 +205,6 @@
 		979DBFD02798C08C00E45513 /* TUMCabeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
 		979DBFD22798C08C00E45513 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		979DBFD32798C08C00E45513 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		979DBFD52798C08C00E45513 /* CustomEnvironmentValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomEnvironmentValues.swift; sourceTree = "<group>"; };
-		979DBFD62798C08C00E45513 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		979DBFD82798C08C00E45513 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		979DBFD92798C08C00E45513 /* BackendError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		979DBFDA2798C08C00E45513 /* View+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Error.swift"; sourceTree = "<group>"; };
@@ -579,7 +575,6 @@
 			children = (
 				979DBFC82798C08C00E45513 /* Networking */,
 				979DBFD12798C08C00E45513 /* Constants */,
-				979DBFD42798C08C00E45513 /* Environment */,
 				979DBFD72798C08C00E45513 /* Errors */,
 				979DBFE12798C08C00E45513 /* Views */,
 				979DBFE52798C08C00E45513 /* Helpers */,
@@ -609,15 +604,6 @@
 				979DBFD32798C08C00E45513 /* APIConstants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		979DBFD42798C08C00E45513 /* Environment */ = {
-			isa = PBXGroup;
-			children = (
-				979DBFD52798C08C00E45513 /* CustomEnvironmentValues.swift */,
-				979DBFD62798C08C00E45513 /* User.swift */,
-			);
-			path = Environment;
 			sourceTree = "<group>";
 		};
 		979DBFD72798C08C00E45513 /* Errors */ = {
@@ -883,7 +869,6 @@
 				979DC0032798C08C00E45513 /* LectureView.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				979DBFFC2798C08C00E45513 /* LectureDetailsScreen.swift in Sources */,
-				979DC0162798C08C00E45513 /* User.swift in Sources */,
 				979DC0062798C08C00E45513 /* LectureDetailsDetailedInfoRowView.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				979DC0272798C08C00E45513 /* GradesViewModel+State.swift in Sources */,
@@ -942,7 +927,6 @@
 				979DC02A2798C08C00E45513 /* Modus.swift in Sources */,
 				3616C4B9278F6EF2000A1BC9 /* Dish.swift in Sources */,
 				979DC00A2798C08C00E45513 /* LecturesDetailView.swift in Sources */,
-				979DC0152798C08C00E45513 /* CustomEnvironmentValues.swift in Sources */,
 				979DC01F2798C08C00E45513 /* Error+Category.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				979DC0122798C08C00E45513 /* TUMCabeAPI.swift in Sources */,

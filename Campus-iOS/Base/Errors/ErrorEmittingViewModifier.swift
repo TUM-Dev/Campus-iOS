@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ErrorEmittingViewModifier: ViewModifier {
-    @EnvironmentObject var customEnvironmentValues: CustomEnvironmentValues
+    @EnvironmentObject var customEnvironmentValues: Model
     @Environment(\.errorHandler) var handler
 
     var error: Error?

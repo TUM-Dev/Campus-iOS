@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct LectureDetailsScreen: View {
-    @EnvironmentObject private var environmentValues: CustomEnvironmentValues
+    @EnvironmentObject private var model: Model
     
     @StateObject var vm: LectureDetailsViewModel = LectureDetailsViewModel(
         serivce: LectureDetailsService()
     )
     
     var lecture: Lecture
+    
+    private var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
     
     var body: some View {
         Group {
@@ -28,7 +39,14 @@ struct LectureDetailsScreen: View {
             }
         }
         .task {
-            await vm.getLectureDetails(token: environmentValues.user.token, lvNr: lecture.lvNumber)
+            guard let token = self.token else {
+                return
+            }
+            
+            await vm.getLectureDetails(
+                token: token,
+                lvNr: lecture.lvNumber
+            )
         }
         .alert(
             "Error while fetching details of lecture",
@@ -36,7 +54,14 @@ struct LectureDetailsScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getLectureDetails(token: environmentValues.user.token, lvNr: lecture.lvNumber)
+                        guard let token = self.token else {
+                            return
+                        }
+                        
+                        await vm.getLectureDetails(
+                            token: token,
+                            lvNr: lecture.lvNumber
+                        )
                     }
                 }
         

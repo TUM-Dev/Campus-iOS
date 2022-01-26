@@ -12,7 +12,7 @@ struct FailedView: View {
     
     var body: some View {
         ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-            Image(uiImage: #imageLiteral(resourceName: "Error-logo"))
+            Image("Error-logo")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)

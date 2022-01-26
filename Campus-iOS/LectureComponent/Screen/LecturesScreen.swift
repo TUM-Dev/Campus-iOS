@@ -8,33 +8,52 @@
 import SwiftUI
 
 struct LecturesScreen: View {
-    @EnvironmentObject private var environmentValues: CustomEnvironmentValues
+    @EnvironmentObject private var model: Model
     
     @StateObject private var vm = LecturesViewModel(
         serivce: LecturesService()
     )
     
+    private var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
+    
     var body: some View {
         Group {
-            switch vm.state {
-            case .success(_):
-                VStack {
-                    LecturesView(lecturesBySemester: vm.sortedLecturesBySemester)
-                        .refreshable {
-                            await vm.getLectures(
-                                token: environmentValues.user.token,
-                                forcedRefresh: true
-                            )
-                        }
+            if let token = self.token {
+                switch vm.state {
+                case .success(_):
+                    VStack {
+                        LecturesView(lecturesBySemester: vm.sortedLecturesBySemester)
+                            .refreshable {
+                                await vm.getLectures(
+                                    token: token,
+                                    forcedRefresh: true
+                                )
+                            }
+                    }
+                case .loading, .na:
+                    LoadingView(text: "Fetching Lectures")
+                case .failed(let error):
+                    FailedView(errorDescription: error.localizedDescription)
                 }
-            case .loading, .na:
-                LoadingView(text: "Fetching Lectures")
-            case .failed(let error):
-                FailedView(errorDescription: error.localizedDescription)
+            } else {
+                FailedView(errorDescription: "Please log in first")
             }
         }
         .task {
-            await vm.getLectures(token: environmentValues.user.token)
+            guard let token = self.token else {
+                return
+            }
+            
+            await vm.getLectures(token: token)
         }
         .alert(
             "Error while fetching Lectures",
@@ -42,7 +61,11 @@ struct LecturesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getLectures(token: environmentValues.user.token)
+                        guard let token = self.token else {
+                            return
+                        }
+                        
+                        await vm.getLectures(token: token)
                     }
                 }
         
