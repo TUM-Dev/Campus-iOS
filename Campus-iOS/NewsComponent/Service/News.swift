@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct News: Entity {
     var id: String?
     var sourceID: Int64
