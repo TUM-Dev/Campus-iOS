@@ -11,9 +11,17 @@ struct MoviesView: View {
     
     @ObservedObject var viewModel = MoviesViewModel()
     
+    var items: [GridItem] {
+      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+    }
+    
     var body: some View {
-        ForEach(self.viewModel.movies, id: \.id) { movie in
-            Text(movie.title ?? "")
+        ScrollView(.vertical) {
+            LazyVGrid(columns: items, spacing: 6) {
+                ForEach(self.viewModel.movies, id: \.id) { movie in
+                    MovieCard(movie: movie).padding(10)
+                }
+            }.padding(15)
         }
     }
 }

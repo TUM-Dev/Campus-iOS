@@ -22,7 +22,7 @@ struct MovieCard: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.width * 0.525)
                             .clipped()
                     case .failure:
                         Image("movie")
@@ -49,14 +49,15 @@ struct MovieCard: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(self.movie.title ?? "")
                     .fontWeight(Font.Weight.heavy)
+                    .font(.subheadline)
                 Text(self.movie.date ?? Date(), style: .date)
-                    .font(Font.custom("HelveticaNeue-Bold", size: 16))
+                    .font(Font.custom("HelveticaNeue-Bold", size: 11))
                     .foregroundColor(Color.gray)
             }
             .padding(12)
             
         }
-        .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+        .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.width * 0.7)
         .background(Color(.systemGray6))
         .cornerRadius(15)
         .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
