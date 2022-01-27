@@ -15,11 +15,21 @@ struct Toolbar: View {
     var body: some View {
         if selectedCanteenName != "" {
             HStack {
-                Image(systemName: "figure.walk")
-                    .onTapGesture {
-                        print("start Navigation to ", cafeteria.name)
+                Button(action: {
+                    print(cafeteria.name)
+                    let latitude = cafeteria.location.latitude
+                    let longitude = cafeteria.location.longitude
+                    let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
+                    
+                    if UIApplication.shared.canOpenURL(url!) {
+                          UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                     }
+                }) {
+                    Image(systemName: "figure.walk").foregroundColor(Color.black)
+                }
+                
                 Divider().frame(width: 15)
+                
                 NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))) { Image(systemName: "doc.text").foregroundColor(Color.black) }
             }
             .mask(Rectangle())
