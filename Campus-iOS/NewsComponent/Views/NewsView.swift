@@ -16,30 +16,39 @@ struct NewsView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .center) {
-//                NewsCard(image: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg", title: "Dummy Title", type: "Dummy Type", price: "0.0")
-                Spacer()
-                ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
-                        Text("News are here")
-                        ForEach(viewModel.newsSources, id: \.id) { source in
-                            Text("Item \(source.title ?? "")")
-                                .foregroundColor(.white)
-                                .frame(width: 200, height: 200)
-                                .background(Color.black)
-                            ForEach(source.news, id: \.id) { piece in
-                                Text("Item \(piece.title ?? "")")
-                                    .foregroundColor(.white)
-                                    .font(.largeTitle)
-                                    .frame(width: 200, height: 200)
-                                    .background(Color.red)
+                if let url = self.viewModel.latestNews.1?.link {
+                    if self.useBuildInWebView {
+                        NewsCard(news: self.viewModel.latestNews, latest: true)
+                            .onTapGesture {
+                                self.isWebViewShowed.toggle()
                             }
+                            .sheet(isPresented: $isWebViewShowed) {
+                                SFSafariViewWrapper(url: url)
+                            }
+                    } else {
+                        Link(destination: url) {
+                            NewsCard(news: self.viewModel.latestNews, latest: true)
                         }
                     }
+                }
+                Spacer(minLength: 20)
+                ForEach(viewModel.newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in
+                    Collapsible(title: {
+                        AnyView(HStack(alignment: .center) {
+                            Image(systemName: "list.bullet").foregroundColor(.blue)
+                            Text(source.title ?? "")
+                                .fontWeight(.bold)
+                                .font(.headline)
+                        })
+                    }) {
+                        NewsCardsHorizontalScrollingView(news: source.news)
+                    }.modifier(ScrollableCardsViewModifier())
                 }
             }
         }
     }
 }
+
 
 struct NewsView_Previews: PreviewProvider {
     static var previews: some View {

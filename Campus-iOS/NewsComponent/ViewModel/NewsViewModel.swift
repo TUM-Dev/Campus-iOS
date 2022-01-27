@@ -20,6 +20,23 @@ class NewsViewModel: ObservableObject {
         fetch()
     }
     
+    var latestNews: (String?, News?) {
+        let latestNews = self.newsSources
+            .map({$0.news})
+            .reduce([], +)
+            .filter({$0.created != nil})
+            .sorted(by: {
+                guard let dateOne = $0.created, let dateTwo = $1.created else {
+                    return false
+                }
+                return dateOne > dateTwo
+            }).first
+        
+        let source = newsSources.first(where: {$0.id == latestNews?.sourceID})
+        
+        return (source?.title, latestNews)
+    }
+    
     func fetch() {
         let endpoint: URLRequestConvertible = TUMCabeAPI.newsSources
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)

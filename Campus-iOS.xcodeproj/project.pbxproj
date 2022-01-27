@@ -35,7 +35,7 @@
 		36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E8A2761C6EC00C24658 /* Credentials.swift */; };
 		3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629BA2B27A1CECA0036AC80 /* NewsView.swift */; };
 		3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629BA2D27A1CEFA0036AC80 /* NewsCard.swift */; };
-		3629BA3127A1D0AD0036AC80 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629BA3027A1D0AD0036AC80 /* CardViewModifier.swift */; };
+		3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629BA3027A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift */; };
 		3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3629BA3227A1E4A90036AC80 /* RoundedCornersShape.swift */; };
 		36392F3E27A206C70043E2E4 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36392F3D27A206C70043E2E4 /* EntityImporter.swift */; };
 		36392F4027A207120043E2E4 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36392F3F27A207120043E2E4 /* TUMSexyAPI.swift */; };
@@ -50,6 +50,8 @@
 		366F0EA627580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */; };
 		3683C3182758117900082930 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3172758117900082930 /* Model.swift */; };
 		3683C31A2758118A00082930 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3683C3192758118A00082930 /* MockModel.swift */; };
+		36982BD627A251A700515847 /* NewsCardsHorizontalScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36982BD527A251A700515847 /* NewsCardsHorizontalScrollingView.swift */; };
+		36982BD827A2739000515847 /* Collapsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36982BD727A2739000515847 /* Collapsible.swift */; };
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
@@ -177,7 +179,7 @@
 		36203E8A2761C6EC00C24658 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		3629BA2B27A1CECA0036AC80 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		3629BA2D27A1CEFA0036AC80 /* NewsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCard.swift; sourceTree = "<group>"; };
-		3629BA3027A1D0AD0036AC80 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
+		3629BA3027A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCardsViewModifier.swift; sourceTree = "<group>"; };
 		3629BA3227A1E4A90036AC80 /* RoundedCornersShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersShape.swift; sourceTree = "<group>"; };
 		36392F3D27A206C70043E2E4 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36392F3F27A207120043E2E4 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
@@ -195,6 +197,8 @@
 		366F0EA527580CFD0091651D /* Campus_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3683C3172758117900082930 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3683C3192758118A00082930 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		36982BD527A251A700515847 /* NewsCardsHorizontalScrollingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardsHorizontalScrollingView.swift; sourceTree = "<group>"; };
+		36982BD727A2739000515847 /* Collapsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collapsible.swift; sourceTree = "<group>"; };
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
@@ -424,6 +428,7 @@
 			children = (
 				3629BA2B27A1CECA0036AC80 /* NewsView.swift */,
 				3629BA2D27A1CEFA0036AC80 /* NewsCard.swift */,
+				36982BD527A251A700515847 /* NewsCardsHorizontalScrollingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,7 +436,7 @@
 		3629BA2F27A1D0890036AC80 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				3629BA3027A1D0AD0036AC80 /* CardViewModifier.swift */,
+				3629BA3027A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift */,
 				3629BA3227A1E4A90036AC80 /* RoundedCornersShape.swift */,
 			);
 			path = Modifiers;
@@ -544,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */,
+				36982BD727A2739000515847 /* Collapsible.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -1004,6 +1010,12 @@
 				36FF90612773BB5800F4C785 /* TUMOnlineAPI.swift in Sources */,
 				41D55D8C27A2F20300DE7155 /* LectureView.swift in Sources */,
 				972397452772826E004BF7AB /* LecturesService.swift in Sources */,
+				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
+				979DC0132798C08C00E45513 /* Constants.swift in Sources */,
+				979DC0032798C08C00E45513 /* LectureView.swift in Sources */,
+				36982BD627A251A700515847 /* NewsCardsHorizontalScrollingView.swift in Sources */,
+				979DBFFC2798C08C00E45513 /* LectureDetailsScreen.swift in Sources */,
+				979DC0062798C08C00E45513 /* LectureDetailsDetailedInfoRowView.swift in Sources */,
 				36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */,
 				97997ADE27722B470079F809 /* GradesService.swift in Sources */,
 				97C9AB1E277332BF0097B10C /* NetworkingError.swift in Sources */,
@@ -1014,7 +1026,7 @@
 				97C9AB22277333160097B10C /* View+Error.swift in Sources */,
 				97C9AB19277332710097B10C /* Error+Category.swift in Sources */,
 				979DC0212798C08C00E45513 /* GroupBoxLabelView.swift in Sources */,
-				3629BA3127A1D0AD0036AC80 /* CardViewModifier.swift in Sources */,
+				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				41BD20E2279228B8001FA1B0 /* DishLabel.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				97C9AB2B27735AE70097B10C /* NetworkingAPI.swift in Sources */,

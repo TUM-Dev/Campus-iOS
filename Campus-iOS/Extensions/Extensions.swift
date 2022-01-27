@@ -174,3 +174,21 @@ extension XMLDecoder: DecoderProtocol {
         return helper()
     }
 }
+
+extension View {
+    /// Applies the given transform according to condition.
+    /// - Parameters:
+    ///   - condition: The condition to evaluate.
+    ///   - transformT: The transform to apply to the source `View` if condition is true.
+    ///   - transformF: The transform to apply to the source `View` if condition is false.
+    /// - Returns: Modified `View` based on condition.
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transformT: (Self) -> Content, transformF: ((Self) -> Content)? = nil) -> some View {
+        if condition {
+            transformT(self)
+        } else if let transform = transformF {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}

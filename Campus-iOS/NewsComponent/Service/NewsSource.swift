@@ -23,6 +23,13 @@ class NewsSource: Entity, ObservableObject {
         case title = "title"
         case icon = "icon"
     }
+    
+    init(id: Int64?, title: String?, icon: URL?, news: [News]) {
+        self.id = id
+        self.title = title
+        self.icon = icon
+        self.news = news
+    }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -55,7 +62,12 @@ class NewsSource: Entity, ObservableObject {
         importer.performFetch(handler: { result in
             switch(result) {
             case .success(let storage):
-                self.news = storage
+                self.news = storage.filter( {
+                    guard let title = $0.title, let link = $0.link else {
+                        return false
+                    }
+                    return !title.isEmpty && !link.description.isEmpty
+                } )
             case .failure(let error):
                 print(error)
             }

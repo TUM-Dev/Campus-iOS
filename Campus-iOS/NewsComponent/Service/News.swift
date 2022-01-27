@@ -15,7 +15,7 @@ struct News: Entity {
     var created: Date?
     var title: String?
     var link: URL?
-    var imageURL: URL?
+    var imageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case id = "news"
@@ -25,6 +25,16 @@ struct News: Entity {
         case title = "title"
         case link = "link"
         case imageURL = "image"
+    }
+    
+    init(id: String?, sourceId: Int64, date: Date?, created: Date?, title: String?, link: URL?, imageURL: String?) {
+        self.id = id
+        self.sourceID = sourceId
+        self.date = date
+        self.created = created
+        self.title = title
+        self.link = link
+        self.imageURL = imageURL
     }
 
     init(from decoder: Decoder) throws {
@@ -40,14 +50,13 @@ struct News: Entity {
         let title = try container.decode(String.self, forKey: .title)
         let link = try container.decode(URL.self, forKey: .link)
         let imageURLString = try container.decode(String.self, forKey: .imageURL)
-        let imageURL = URL(string: imageURLString.replacingOccurrences(of: " ", with: "%20"))
-
+        
         self.id = id
         self.sourceID = sourceID
         self.date = date
         self.created = created
         self.title = title
         self.link = link
-        self.imageURL = imageURL
+        self.imageURL = imageURLString.replacingOccurrences(of: " ", with: "%20")
     }
 }
