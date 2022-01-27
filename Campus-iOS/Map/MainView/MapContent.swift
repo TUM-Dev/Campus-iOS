@@ -55,7 +55,7 @@ struct MapContent: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if panelPosition == "up" || panelPosition == "pushMid"{
+        if panelPosition == "mid" || panelPosition == "pushMid"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
         } else if panelPosition == "down" || panelPosition == "pushDown"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

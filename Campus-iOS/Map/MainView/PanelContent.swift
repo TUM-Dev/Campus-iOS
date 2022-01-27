@@ -16,6 +16,7 @@ struct PanelContent: View {
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteenName: String
     @Binding var selectedAnnotationIndex: Int
+    @Binding var selectedCanteen: Cafeteria
     
     @State private var searchString = ""
     @State private var canteenForMealPlan: Cafeteria?
@@ -38,6 +39,9 @@ struct PanelContent: View {
                     Button (action: {
                         zoomOnUser = true
                         selectedAnnotationIndex = 0
+                        if panelPosition == "up" {
+                            panelPosition = "pushMid"
+                        }
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
@@ -57,13 +61,14 @@ struct PanelContent: View {
                     ScrollViewReader { proxy in
                         List {
                             ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.name) { cafeteria in
-                                NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))) { PanelRow(cafeteria: cafeteria)
-                                }
+                                PanelRow(cafeteria: cafeteria)
                                 .onTapGesture {
                                     withAnimation {
                                         selectedCanteenName = cafeteria.name
                                         selectedAnnotationIndex = canteens.index(of: cafeteria)!
                                         proxy.scrollTo(cafeteria, anchor: .top)
+                                        
+                                        selectedCanteen = cafeteria
                                     }
                                 }
                                 .task(id: selectedAnnotationIndex) {
@@ -79,9 +84,6 @@ struct PanelContent: View {
                     }
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
-                }
-                .onChange(of: selectedCanteenName) { newValue in
-                    print("SELECTED CANTEEN (Panelcontent): ", newValue)
                 }
             }
         }
@@ -108,14 +110,28 @@ struct SearchBar: View {
     @State private var isEditing = false
     
     var body: some View {
-        TextField("Search ...", text: $searchString)
-            .padding(7)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .onTapGesture {
-                isEditing = true
-                panelPosition = "pushMid"
+        ZStack {
+            TextField("Search ...", text: $searchString)
+                .padding(7)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .onTapGesture {
+                    isEditing = true
+                    panelPosition = "pushMid"
+                }
+            HStack {
+                Spacer()
+                if self.searchString != "" {
+                    Button(action: {
+                        self.searchString = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color(UIColor.opaqueSeparator))
+                    }
+                    .padding(.trailing, 8)
+                }
             }
+        }
 
         if isEditing {
             Button(action: {
