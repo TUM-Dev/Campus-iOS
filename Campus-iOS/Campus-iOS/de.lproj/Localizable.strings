@@ -47,7 +47,9 @@
 "No Menu" = "Kein Menü";
 "List View" = "Listenansicht";
 "Jump to Today" = "Zum heutigen Tag springen";
-
+"GENERAL" = "ALLGEMEIN";
+"GET IN CONTACT" = "KONTAKTIERE UNS";
+"Use build-in Web View" = "Web View benutzen";
 
 // Login.storybroad
 
@@ -67,3 +69,10 @@
 "2" = "2";
 "3" = "3";
 "Authorize Token" = "Token authorisieren";
+
+// Calendar
+
+"Day" = "Tag";
+"Week" = "Woche";
+"Month" = "Monat";
+"Year" = "Jahr";

@@ -12,9 +12,11 @@ import KVKCalendar
 struct CalendarDisplayView: UIViewRepresentable {
 
     @Binding var events: [Event]
+    @Binding var type: TumCalendarTypes
     
-    public init(events: Binding<[Event]>) {
+    public init(events: Binding<[Event]>, type: Binding<TumCalendarTypes>) {
         self._events = events
+        self._type = type
     }
     
     private var calendar: CalendarView = {
@@ -26,17 +28,26 @@ struct CalendarDisplayView: UIViewRepresentable {
             style.timeline.offsetLineLeft = 2
             style.headerScroll.titleDateAlignment = .center
             style.headerScroll.isAnimateTitleDate = true
+            style.headerScroll.isAnimateSelection = true
             style.headerScroll.heightHeaderWeek = 70
             style.event.isEnableVisualSelect = false
-            style.month.isHiddenTitle = true
+            style.month.isHiddenEventTitle = true
+            style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 18)
             style.month.weekDayAlignment = .center
         } else {
             style.timeline.widthEventViewer = 350
-            style.headerScroll.fontNameDay = .systemFont(ofSize: 17)
+            style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
         }
+        style.headerScroll.colorBackground = .systemBackground
+        style.headerScroll.colorBackgroundCurrentDate = .tumBlue
+        style.headerScroll.colorCurrentDate = .white
         style.month.autoSelectionDateWhenScrolling = true
         style.timeline.offsetTimeY = 25
+        // cuts out the hours before the first event if true
+        style.timeline.startFromFirstEvent = false
+        style.allDay.backgroundColor = .systemBackground
         style.startWeekDay = .monday
+        style.defaultType = CalendarType.day
         style.timeSystem = .current ?? .twelve
         style.systemCalendars = ["Calendar"]
         if #available(iOS 13.0, *) {
@@ -55,7 +66,10 @@ struct CalendarDisplayView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<CalendarDisplayView>) {
-       context.coordinator.events = events
+        context.coordinator.events = events
+        
+        calendar.set(type: type.calendarType, date: Date()) /// I've never used this library, so you might need to replace `Date()` with something else
+        calendar.reloadData()
    }
     
     func makeCoordinator() -> CalendarDisplayView.Coordinator {
