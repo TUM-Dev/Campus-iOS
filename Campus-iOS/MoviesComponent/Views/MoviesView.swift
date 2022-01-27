@@ -19,7 +19,9 @@ struct MoviesView: View {
         ScrollView(.vertical) {
             LazyVGrid(columns: items, spacing: 6) {
                 ForEach(self.viewModel.movies, id: \.id) { movie in
-                    MovieCard(movie: movie).padding(10)
+                    NavigationLink(destination: MovieDetailedView(movie: movie)) {
+                        MovieCard(movie: movie).padding(10)
+                    }
                 }
             }.padding(15)
         }
