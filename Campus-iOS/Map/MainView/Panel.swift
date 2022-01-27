@@ -16,6 +16,7 @@ struct Panel: View {
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteenName: String
     @Binding var selectedAnnotationIndex: Int
+    @Binding var selectedCanteen: Cafeteria
 
     var body: some View {
         let drag = DragGesture()
@@ -29,12 +30,13 @@ struct Panel: View {
                          panelPosition: $panelPosition,
                          canteens: $canteens,
                          selectedCanteenName: $selectedCanteenName,
-                         selectedAnnotationIndex: $selectedAnnotationIndex)
+                         selectedAnnotationIndex: $selectedAnnotationIndex,
+                         selectedCanteen: $selectedCanteen)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()
         .cornerRadius(10.0)
-        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
+        .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
@@ -79,6 +81,8 @@ struct Panel: View {
         if self.position.rawValue == PanelPosition.bottom.rawValue {
             panelPosition = "down"
         } else if self.position.rawValue == PanelPosition.middle.rawValue {
+            panelPosition = "mid"
+        } else if self.position.rawValue == PanelPosition.top.rawValue {
             panelPosition = "up"
         }
     }
@@ -120,7 +124,7 @@ enum DragState {
     }
 }
 
-struct Panel_Previews: PreviewProvider {
+/*struct Panel_Previews: PreviewProvider {
     static var previews: some View {
         Panel(zoomOnUser: .constant(true),
               panelPosition: .constant("down"),
@@ -128,4 +132,4 @@ struct Panel_Previews: PreviewProvider {
               selectedCanteenName: .constant(""),
               selectedAnnotationIndex: .constant(0))
     }
-}
+}*/

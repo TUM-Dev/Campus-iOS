@@ -14,6 +14,7 @@ struct MapView: View {
     @State var canteens: [Cafeteria]
     @State var selectedCanteenName: String
     @State var selectedAnnotationIndex: Int
+    @State var selectedCanteen: Cafeteria
     
     var body: some View {
         ZStack {
@@ -27,7 +28,9 @@ struct MapView: View {
                   panelPosition: $panelPosition,
                   canteens: $canteens,
                   selectedCanteenName: $selectedCanteenName,
-                  selectedAnnotationIndex: $selectedAnnotationIndex)
+                  selectedAnnotationIndex: $selectedAnnotationIndex,
+                  selectedCanteen: $selectedCanteen)
+            Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName, cafeteria: $selectedCanteen)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("Map")
@@ -35,7 +38,7 @@ struct MapView: View {
     }
 }
 
-struct MapView_Previews: PreviewProvider {
+/*struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView(zoomOnUser: true,
                 panelPosition: "down",
@@ -43,4 +46,4 @@ struct MapView_Previews: PreviewProvider {
                 selectedCanteenName: "",
                 selectedAnnotationIndex: 0)
     }
-}
+}*/

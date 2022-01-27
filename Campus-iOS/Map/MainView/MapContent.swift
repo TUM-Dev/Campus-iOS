@@ -10,6 +10,17 @@ import MapKit
 import CoreLocation
 import Alamofire
 
+final class Annotation: NSObject, MKAnnotation {
+    let coordinate: CLLocationCoordinate2D
+    let title: String?
+    
+    init(title: String?, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self.coordinate = coordinate
+        super.init()
+    }
+}
+
 struct MapContent: UIViewRepresentable {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
@@ -44,7 +55,7 @@ struct MapContent: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if panelPosition == "up" || panelPosition == "pushMid"{
+        if panelPosition == "mid" || panelPosition == "pushMid"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
         } else if panelPosition == "down" || panelPosition == "pushDown"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -114,7 +125,11 @@ struct MapContent: UIViewRepresentable {
                     cafeterias.sortByDistance(to: currentLocation)
                 }
                 
-                mapView.addAnnotations(response.value ?? [])
+                guard let cafeterias = response.value else { return }
+                
+                let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+                
+                mapView.addAnnotations(annotations)
                 
                 canteens = cafeterias
 
@@ -134,7 +149,7 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
             control.zoomOnUser = false
-            control.selectedCanteenName = ""
+            //control.selectedCanteenName = ""
             control.selectedAnnotationIndex = -1
         }
                 
