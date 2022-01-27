@@ -27,19 +27,6 @@ struct Menu: Hashable, Decodable {
         self.date = try container.decode(Date.self, forKey: .date)
         self.dishes = try container.decode([Dish].self, forKey: .dishes)
     }
-<<<<<<< HEAD
-}
-
-struct Category: Hashable, Decodable {
-    var name: String
-    var dishes: [Dish]
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case dishes
-    }
-=======
->>>>>>> 01b55bc (Draft some kind of viewmodel (#396))
 }
 
 struct Category: Hashable, Decodable {

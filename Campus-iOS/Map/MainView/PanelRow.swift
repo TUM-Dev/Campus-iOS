@@ -22,11 +22,7 @@ struct PanelRow: View {
     var body: some View {
         VStack {
             HStack {
-<<<<<<< HEAD
                 VStack(alignment: .leading, spacing: 5) {
-=======
-                VStack(alignment: .leading, spacing: 8) {
->>>>>>> 01b55bc (Draft some kind of viewmodel (#396))
                     Spacer().frame(height: 5)
                     HStack {
                         Text(cafeteria.name)
