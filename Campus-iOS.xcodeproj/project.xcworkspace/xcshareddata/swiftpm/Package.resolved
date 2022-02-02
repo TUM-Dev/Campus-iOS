@@ -137,6 +137,15 @@
         }
       },
       {
+        "package": "Snap",
+        "repositoryURL": "https://github.com/nerdsupremacist/Snap.git",
+        "state": {
+          "branch": null,
+          "revision": "29943b7064547f391ea8352dea04903e2263d831",
+          "version": "0.2.2"
+        }
+      },
+      {
         "package": "SwiftProtobuf",
         "repositoryURL": "https://github.com/apple/swift-protobuf.git",
         "state": {

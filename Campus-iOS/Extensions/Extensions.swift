@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 import CoreLocation
 import SWXMLHash
+import XMLCoder
+import SwiftUI
 
 extension Bundle {
     var version: String { infoDictionary?["CFBundleShortVersionString"] as? String ?? "1" }
@@ -139,4 +141,54 @@ extension DateFormatter {
 
 extension CLLocationCoordinate2D  {
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
+}
+
+extension UIColor {
+    static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
+}
+
+extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
+
+extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
+
+extension JSONDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["application/json"] }
+    static func instantiate() -> Self {
+        //  infers the type of self from the calling context:
+        func helper<T>() -> T {
+            let decoder = JSONDecoder()
+            return decoder as! T
+        }
+        return helper()
+    }
+}
+
+extension XMLDecoder: DecoderProtocol {
+    static var contentType: [String] { return ["text/xml"] }
+    static func instantiate() -> Self {
+        // infers the type of self from the calling context
+        func helper<T>() -> T {
+            let decoder = XMLDecoder()
+            return decoder as! T
+        }
+        return helper()
+    }
+}
+
+extension View {
+    /// Applies the given transform according to condition.
+    /// - Parameters:
+    ///   - condition: The condition to evaluate.
+    ///   - transformT: The transform to apply to the source `View` if condition is true.
+    ///   - transformF: The transform to apply to the source `View` if condition is false.
+    /// - Returns: Modified `View` based on condition.
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transformT: (Self) -> Content, transformF: ((Self) -> Content)? = nil) -> some View {
+        if condition {
+            transformT(self)
+        } else if let transform = transformF {
+            transform(self)
+        } else {
+            self
+        }
+    }
 }

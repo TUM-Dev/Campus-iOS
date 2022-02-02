@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct Location: Decodable {
+struct Location: Decodable, Hashable {
     let latitude: CLLocationDegrees
     let longitude: CLLocationDegrees
     let address: String
@@ -16,7 +16,7 @@ struct Location: Decodable {
     var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
 }
 
-final class Cafeteria: NSObject, Decodable, MKAnnotation {
+struct Cafeteria: Decodable, Hashable {
     /*
      "location": {
         "address": "Arcisstraße 17, München",

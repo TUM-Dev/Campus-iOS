@@ -104,8 +104,9 @@ struct CampusApp: App {
                 MapView(zoomOnUser: true,
                         panelPosition: "down",
                         canteens: [],
-                        selectedCanteenName: "",
-                        selectedAnnotationIndex: 0)
+                        selectedCanteenName: " ",
+                        selectedAnnotationIndex: 0,
+                        selectedCanteen: Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " "))
             }
             .tag(3)
             .tabItem {

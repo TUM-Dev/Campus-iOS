@@ -16,6 +16,7 @@ struct PanelContent: View {
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteenName: String
     @Binding var selectedAnnotationIndex: Int
+    @Binding var selectedCanteen: Cafeteria
     
     @State private var searchString = ""
     @State private var canteenForMealPlan: Cafeteria?
@@ -24,12 +25,6 @@ struct PanelContent: View {
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
-    
-    private static let distanceFormatter: MKDistanceFormatter = {
-        let formatter = MKDistanceFormatter()
-        formatter.unitStyle = .abbreviated
-        return formatter
-    }()
     
     private let handleThickness = CGFloat(0)
     
@@ -44,6 +39,9 @@ struct PanelContent: View {
                     Button (action: {
                         zoomOnUser = true
                         selectedAnnotationIndex = 0
+                        if panelPosition == "up" {
+                            panelPosition = "pushMid"
+                        }
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
@@ -62,44 +60,15 @@ struct PanelContent: View {
                     ProgressView()
                     ScrollViewReader { proxy in
                         List {
-                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { item in
-                                VStack {
-                                    HStack {
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Spacer().frame(height: 5)
-                                            HStack {
-                                                Text(item.name)
-                                                    .bold()
-                                                    .font(.title3)
-                                                Spacer()
-                                                Image(systemName: "doc.plaintext")
-                                                    .font(.title3)
-                                                    .onTapGesture {
-                                                        canteenForMealPlan = item
-                                                        goToMealPlan = true
-                                                    }
-                                                NavigationLink(destination: MealPlanView(canteen: canteenForMealPlan, menus: []), isActive: $goToMealPlan) { EmptyView() } .frame(width: 0, height: 0)
-                                                    .hidden()
-                                            }
-                                            Spacer().frame(height: 0)
-                                            HStack {
-                                                Text(item.location.address)
-                                                    .font(.subheadline)
-                                                    .foregroundColor(Color.gray)
-                                                Spacer()
-                                                Text(distance(cafeteria: item))
-                                                    .font(.subheadline)
-                                                    .foregroundColor(Color.gray)
-                                            }
-                                            Spacer().frame(height: 0)
-                                        }
-                                    }
-                                }
+                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.name) { cafeteria in
+                                PanelRow(cafeteria: cafeteria)
                                 .onTapGesture {
                                     withAnimation {
-                                        selectedCanteenName = item.name
-                                        selectedAnnotationIndex = canteens.index(of: item)!
-                                        proxy.scrollTo(item, anchor: .top)
+                                        selectedCanteenName = cafeteria.name
+                                        selectedAnnotationIndex = canteens.firstIndex(of: cafeteria)!
+                                        proxy.scrollTo(cafeteria, anchor: .top)
+                                        
+                                        selectedCanteen = cafeteria
                                     }
                                 }
                                 .task(id: selectedAnnotationIndex) {
@@ -116,6 +85,9 @@ struct PanelContent: View {
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
+                .onChange(of: selectedCanteenName) { newValue in
+                    print("SELECTED CANTEEN (Panelcontent): ", newValue)
+                }
             }
         }
     }
@@ -130,14 +102,6 @@ struct PanelContent: View {
             self.canteens = cafeterias
         }
     }
-    
-    func distance(cafeteria: Cafeteria) -> String {
-        if let currentLocation = self.locationManager.location {
-            let distance = cafeteria.coordinate.location.distance(from: currentLocation)
-            return PanelContent.distanceFormatter.string(fromDistance: distance)
-        }
-        return ""
-    }
 }
 
 struct SearchBar: View {
@@ -149,14 +113,28 @@ struct SearchBar: View {
     @State private var isEditing = false
     
     var body: some View {
-        TextField("Search ...", text: $searchString)
-            .padding(7)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
-            .onTapGesture {
-                isEditing = true
-                panelPosition = "pushMid"
+        ZStack {
+            TextField("Search ...", text: $searchString)
+                .padding(7)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .onTapGesture {
+                    isEditing = true
+                    panelPosition = "pushMid"
+                }
+            HStack {
+                Spacer()
+                if self.searchString != "" {
+                    Button(action: {
+                        self.searchString = ""
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color(UIColor.opaqueSeparator))
+                    }
+                    .padding(.trailing, 8)
+                }
             }
+        }
 
         if isEditing {
             Button(action: {
