@@ -39,7 +39,7 @@ struct GradeView: View {
 							Image(systemName: "pencil.circle.fill")
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
-							Text(grade.modus.short)
+							Text(grade.modusShort)
 								.font(.system(size: 12))
 							Spacer()
 						}

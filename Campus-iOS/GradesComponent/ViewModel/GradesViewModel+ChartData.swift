@@ -16,7 +16,7 @@ extension GradesViewModel {
             )
         }
         
-        let accumulatedGrades = data.reduce(into: [String: Double]()) { partialResult, grade in
+        var accumulatedGrades = data.reduce(into: [String: Double]()) { partialResult, grade in
             if partialResult[grade.grade] == nil {
                 partialResult[grade.grade] = 0
             }
@@ -26,6 +26,12 @@ extension GradesViewModel {
             (key, value)
         }
         .sorted { $0.0 < $1.0 }
+        
+        // Push "info grades" to the back of the array
+        if let firstElement = accumulatedGrades.first,
+           firstElement.0 == "" {
+            accumulatedGrades.rearrange(from: 0, to: accumulatedGrades.count-1)
+        }
         
         return .init(
             dataSets: .init(
@@ -60,3 +66,4 @@ extension GradesViewModel {
         )
     }
 }
+
