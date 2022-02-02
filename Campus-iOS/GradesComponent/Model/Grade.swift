@@ -27,10 +27,20 @@ enum GradeComponents {
         public var examiner: String
         public var grade: String
         public var examType: String
-        public var modus: Modus
+        public var modus: String
         public var studyID: String
         public var studyDesignation: String
         public var studyNumber: UInt64
+        
+        var modusShort: String {
+            switch self.modus {
+            case "Schriftlich": return "Schriftlich"
+            case "Beurteilt/immanenter Prüfungscharakter": return "Beurteilt"
+            case "Schriftlich und Mündlich": return "Schriftlich/Mündlich"
+            case "Mündlich": return "Mündlich"
+            default: return "Unbekannt"
+            }
+        }
         
         enum CodingKeys: String, CodingKey {
             case date = "datum"
@@ -50,8 +60,8 @@ enum GradeComponents {
 
 extension Grade {
     static let dummyData: [Grade] = [
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
-        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: .graded, studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170)
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Schriftlich", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Schriftlich", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
+        Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Schriftlich", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170)
     ]
 }
