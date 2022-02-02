@@ -20,15 +20,30 @@ struct GradesView: View {
                 Section(
                     header:
                         GroupBoxLabelView(
-                            iconName: "graduationcap",
+                            iconName: "graduationcap.fill",
                             text: gradesBySemester.0
                         )
                 ) {
                     ForEach(gradesBySemester.1) { item in
-                        GradeView(grade: item)
-                    }
+						VStack {
+							GradeView(grade: item)
+
+							if item.id != gradesBySemester.1[gradesBySemester.1.count - 1].id {
+								Divider()
+							}
+						}
+					}
+					.listRowInsets(
+						EdgeInsets(
+							top: 4,
+							leading: 18,
+							bottom: 2,
+							trailing: 18
+						)
+					)
                 }
             }
+			.listRowSeparator(.hidden)
         }
     }
 }

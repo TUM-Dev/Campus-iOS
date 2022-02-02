@@ -23,7 +23,7 @@ struct GradeView: View {
                     )
                     .frame(width: 60, height: 60)
                 
-                Text(grade.grade)
+				Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.white)
             }
@@ -32,32 +32,40 @@ struct GradeView: View {
                 Text(grade.title)
                     .fontWeight(.bold)
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                
-                HStack(alignment: .center, spacing: 8) {
-                    HStack{
-                        Image(systemName: "pencil.circle")
-                            .frame(width: 12, height: 12)
-                            .padding(.leading, 3)
-                        Text(grade.modus.short)
-                            .font(.system(size: 12))
-                            .padding(.trailing, 5)
-                    }.foregroundColor(.init(.darkGray))
-                    
-                    HStack{
-                        Image(systemName: "person.circle")
-                            .frame(width: 12, height: 12)
-                        Text(grade.examiner)
-                            .font(.system(size: 12))
-                            .padding(.trailing, 5)
-                    }.foregroundColor(.init(.darkGray))
-                    
-                    HStack{
-                        Image(systemName: "number.circle")
-                            .frame(width: 12, height: 12)
-                        Text(grade.lvNumber)
-                            .font(.system(size: 12))
-                    }.foregroundColor(.init(.darkGray))
-                }
+
+				VStack(alignment: .leading, spacing: 8) {
+					HStack(spacing: 16) {
+						HStack {
+							Image(systemName: "pencil.circle.fill")
+								.frame(width: 12, height: 12)
+								.foregroundColor(Color("tumBlue"))
+							Text(grade.modus.short)
+								.font(.system(size: 12))
+							Spacer()
+						}
+						.frame(minWidth: 0, maxWidth: .infinity)
+
+						HStack {
+							Image(systemName: "number.circle.fill")
+								.frame(width: 12, height: 12)
+								.foregroundColor(Color("tumBlue"))
+							Text(grade.lvNumber)
+								.font(.system(size: 12))
+							Spacer()
+						}
+						.frame(minWidth: 0, maxWidth: .infinity)
+					}.foregroundColor(.init(.darkGray))
+
+					HStack {
+						Image(systemName: "person.circle.fill")
+							.frame(width: 12, height: 12)
+							.foregroundColor(Color("tumBlue"))
+						Text(grade.examiner)
+							.font(.system(size: 12))
+							.fixedSize(horizontal: false, vertical: true)
+					}.foregroundColor(.init(.darkGray))
+				}
+				.padding(.leading, 4)
             }
             .padding(.bottom, 4)
         }
