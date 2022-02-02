@@ -110,6 +110,7 @@
 		979DC02D2798C08C00E45513 /* GradeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFF62798C08C00E45513 /* GradeView.swift */; };
 		979DC02E2798C08C00E45513 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979DBFF72798C08C00E45513 /* BarChartView.swift */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
+		97DC438D27AB1DED00796772 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DC438C27AB1DED00796772 /* Array+Rearrange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		979DBFF52798C08C00E45513 /* GradesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesView.swift; sourceTree = "<group>"; };
 		979DBFF62798C08C00E45513 /* GradeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeView.swift; sourceTree = "<group>"; };
 		979DBFF72798C08C00E45513 /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		97DC438C27AB1DED00796772 /* Array+Rearrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +494,7 @@
 			isa = PBXGroup;
 			children = (
 				36FF90642773BB8100F4C785 /* Extensions.swift */,
+				97DC438C27AB1DED00796772 /* Array+Rearrange.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				979DBFFD2798C08C00E45513 /* LecturesScreen.swift in Sources */,
 				3616C4BA278F6EF2000A1BC9 /* Cafeteria.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* Spinner.swift in Sources */,
+				97DC438D27AB1DED00796772 /* Array+Rearrange.swift in Sources */,
 				3616C4BF278F6EF2000A1BC9 /* MapContent.swift in Sources */,
 				979DBFFF2798C08C00E45513 /* Lecture.swift in Sources */,
 				3616C4C0278F6EF2000A1BC9 /* PanelContent.swift in Sources */,

@@ -34,7 +34,7 @@ class GradesViewModel: GradesViewModelProtocol {
     }
     
     var sortedGradesBySemester: [(String, [Grade])] {
-        self.gradesBySemester
+        let test = self.gradesBySemester
             .compactMap { semester, grades in
                 (semester, grades)
             }
@@ -44,6 +44,8 @@ class GradesViewModel: GradesViewModelProtocol {
             .compactMap { grade in
                 (Self.toFullSemesterName(grade.0), grade.1)
             }
+        
+        return test
     }
     
     init(serivce: GradesServiceProtocol) {

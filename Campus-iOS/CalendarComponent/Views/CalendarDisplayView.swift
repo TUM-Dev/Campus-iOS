@@ -28,7 +28,7 @@ struct CalendarDisplayView: UIViewRepresentable {
             style.headerScroll.isAnimateTitleDate = true
             style.headerScroll.heightHeaderWeek = 70
             style.event.isEnableVisualSelect = false
-            style.month.isHiddenTitle = true
+            style.month.isHiddenEventTitle = true
             style.month.weekDayAlignment = .center
         } else {
             style.timeline.widthEventViewer = 350
