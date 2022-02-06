@@ -14,9 +14,10 @@ import FirebaseAnalytics
 
 public class Model: ObservableObject {
     @Published var showProfile = false
-    @Published var isLoginSheetPresented = true
+    @Published var isLoginSheetPresented = false
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
+    @Published var splashScreenPresented = false
     
     var anyCancellables: [AnyCancellable] = []
     
@@ -32,9 +33,11 @@ public class Model: ObservableObject {
                     #if !targetEnvironment(macCatalyst)
                     Analytics.logEvent("token_confirmed", parameters: nil)
                     #endif
+                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = false
                     self?.isUserAuthenticated = true
                 case .failure(_):
+                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = true
                 }
             }
@@ -43,7 +46,7 @@ public class Model: ObservableObject {
     
     func logout() {
         loginController.logout()
-        self.isLoginSheetPresented = true
+        self.isLoginSheetPresented = self.showProfile ? false : true
         self.isUserAuthenticated = false
     }
     
