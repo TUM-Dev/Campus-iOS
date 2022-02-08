@@ -16,29 +16,30 @@ struct ProfileView: View {
         NavigationView {
             
             List {
-                NavigationLink(destination: Text("Profile")) {
+                NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
                     HStack(spacing: 24) {
-                        Image(systemName: "person.crop.circle.fill")
+                        self.model.profile.profileImage
                             .resizable()
                             .foregroundColor(.black.opacity(0.2))
                             .frame(width: 75, height: 75)
                         
                         VStack(alignment: .leading) {
-                            Text("Anton Wyrowski")
+                            Text(self.model.profile.profile?.fullName ?? "Not logged in")
                                 .font(.title2)
                             
-                            Text("ab00xyz")
+                            Text(self.model.profile.profile?.tumID ?? "TUM ID")
                                 .font(.subheadline)
+                                .foregroundColor(.gray)
                         }
                     }
                     .padding(.vertical, 6)
-                }
+                }.disabled(!self.model.isUserAuthenticated)
                 
                 Section("MY TUM") {
                     NavigationLink(destination: Text("Studienbeiträge")) {
                         Label("Studienbeiträge", systemImage: "eurosign.circle")
                     }
-                    NavigationLink(destination: Text("Person Search")) {
+                    NavigationLink(destination: PersonSearchView().navigationBarTitle(Text("Person Seach")).navigationBarTitleDisplayMode(.inline)) {
                         Label("Person Search", systemImage: "magnifyingglass")
                     }
                     NavigationLink(destination: Text("Lecture Search")) {

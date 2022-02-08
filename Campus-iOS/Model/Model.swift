@@ -18,6 +18,7 @@ public class Model: ObservableObject {
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
     @Published var splashScreenPresented = false
+    @Published var profile: ProfileViewModel = ProfileViewModel()
     
     var anyCancellables: [AnyCancellable] = []
     
@@ -36,6 +37,7 @@ public class Model: ObservableObject {
                     self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = false
                     self?.isUserAuthenticated = true
+                    self?.loadProfile()
                 case .failure(_):
                     self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = true
@@ -48,9 +50,14 @@ public class Model: ObservableObject {
         loginController.logout()
         self.isLoginSheetPresented = self.showProfile ? false : true
         self.isUserAuthenticated = false
+        self.unloadProfile()
     }
     
-    func loadAllModels() {
-        // later load all the models
+    func unloadProfile() {
+        self.profile = ProfileViewModel()
+    }
+    
+    func loadProfile() {
+        self.profile = ProfileViewModel(model: self)
     }
 }

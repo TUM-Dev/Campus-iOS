@@ -82,3 +82,6 @@
 "Week" = "Week";
 "Month" = "Month";
 "Year" = "Year";
+
+// PersonSearch
+"Unable to find person" = "Unable to find person";
