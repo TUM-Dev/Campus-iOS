@@ -127,6 +127,8 @@
 		36BB6F7027B1197400F224AB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F6F27B1197400F224AB /* Profile.swift */; };
 		36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7227B1CD9200F224AB /* ProfileViewModel.swift */; };
 		36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7427B1D87200F224AB /* Tuition.swift */; };
+		36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7827B26DE300F224AB /* TuitionView.swift */; };
+		36BB6F7B27B27D0D00F224AB /* TuitionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */; };
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
 		36BBE7322798AFE10018FD3F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7312798AFE10018FD3F /* News.swift */; };
 		36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7332798B04D0018FD3F /* NewsSource.swift */; };
@@ -292,6 +294,8 @@
 		36BB6F6F27B1197400F224AB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		36BB6F7227B1CD9200F224AB /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		36BB6F7427B1D87200F224AB /* Tuition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
+		36BB6F7827B26DE300F224AB /* TuitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionView.swift; sourceTree = "<group>"; };
+		36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCard.swift; sourceTree = "<group>"; };
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		36BBE7312798AFE10018FD3F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		36BBE7332798B04D0018FD3F /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
@@ -663,6 +667,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				36BB6F7627B26DCA00F224AB /* TuitionComponent */,
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
 				36BB6F5527AFCD7B00F224AB /* PersonDetailedComponent */,
 				36108C0327A307F9007DC62D /* GradesComponent */,
@@ -911,6 +916,23 @@
 				36BB6F7227B1CD9200F224AB /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36BB6F7627B26DCA00F224AB /* TuitionComponent */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F7727B26DD300F224AB /* View */,
+			);
+			path = TuitionComponent;
+			sourceTree = "<group>";
+		};
+		36BB6F7727B26DD300F224AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F7827B26DE300F224AB /* TuitionView.swift */,
+				36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		36BBE72D27989F6E0018FD3F /* HelperViews */ = {
@@ -1217,6 +1239,7 @@
 				36BB6F5327AFCCB500F224AB /* PersonDetailedView.swift in Sources */,
 				36108BC327A3046B007DC62D /* LectureDetailsTitleView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
+				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
 				36108BEA27A304B6007DC62D /* Toolbar.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
@@ -1258,6 +1281,7 @@
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
 				36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
+				36BB6F7B27B27D0D00F224AB /* TuitionCard.swift in Sources */,
 				36AF61E227A2FD7800FEBD98 /* Constants.swift in Sources */,
 				36BB6F6C27AFD2B900F224AB /* Room.swift in Sources */,
 				36AF61EB27A2FD7800FEBD98 /* ErrorCategory.swift in Sources */,

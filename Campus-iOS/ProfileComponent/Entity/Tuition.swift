@@ -14,6 +14,13 @@ struct Tuition: Entity {
     var semester: String?
     var semesterID: String?
     
+    var isOpenAmount: Bool {
+        guard let amount = self.amount, amount.isEqual(to: 0) else {
+            return true
+        }
+        return false
+    }
+    
     /*
      <row>
      <soll>0</soll>

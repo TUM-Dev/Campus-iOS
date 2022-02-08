@@ -88,22 +88,6 @@ class ProfileViewModel: ObservableObject {
                     print(error)
                 }
             })
-            
-//            let c = self.importerTuition.fetchedResultsController.fetchedObjects?.count
-//            if c != nil && c != 0{
-//                let indexPath = IndexPath(row: 0, section: 0)
-//                let tuition = self.importerTuition.fetchedResultsController.object(at: indexPath)
-//                if let amount = tuition.amount {
-//                    self.checkTuitionLabel.text = "\(TuitionCell.currencyFormatter.string(from: amount) ?? "n/a".localized)"
-//                    if amount.isEqual(to: 0) {
-//                        self.checkTuitionLabel.text = "✅"
-//                    } else {
-//                        self.checkTuitionLabel.textColor = .red
-//                    }
-//                }
-//            } else {
-//                self.checkTuitionLabel.text = ""
-//            }
         }
           
     }

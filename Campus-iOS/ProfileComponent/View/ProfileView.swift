@@ -36,12 +36,28 @@ struct ProfileView: View {
                 }.disabled(!self.model.isUserAuthenticated)
                 
                 Section("MY TUM") {
-                    NavigationLink(destination: Text("Studienbeiträge")) {
-                        Label("Studienbeiträge", systemImage: "eurosign.circle")
+                    NavigationLink(destination: TuitionView(viewModel: self.model.profile).navigationBarTitle(Text("Tuition fees")).navigationBarTitleDisplayMode(.inline)) {
+                        if let isOpenAmount = self.model.profile.tuition?.isOpenAmount, isOpenAmount != true {
+                            Label {
+                                HStack {
+                                    Text("Tuition fees")
+                                    Spacer()
+                                    Text("✅")
+                                }
+                            } icon: {
+                                Image(systemName: "eurosign.circle")
+                            }
+                        } else {
+                            Label("Tuition fees", systemImage: "eurosign.circle")
+                        }
                     }
+                    .disabled(!self.model.isUserAuthenticated)
+                    
                     NavigationLink(destination: PersonSearchView().navigationBarTitle(Text("Person Seach")).navigationBarTitleDisplayMode(.inline)) {
                         Label("Person Search", systemImage: "magnifyingglass")
                     }
+                    .disabled(!self.model.isUserAuthenticated)
+                    
                     NavigationLink(destination: Text("Lecture Search")) {
                         Label("Lecture Search", systemImage: "brain.head.profile")
                     }
