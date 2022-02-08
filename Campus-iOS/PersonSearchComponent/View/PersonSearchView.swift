@@ -13,16 +13,12 @@ struct PersonSearchView: View {
     @State var searchText = ""
     
     var body: some View {
-        NavigationView {
-            List(self.viewModel.result, id: \.nr) { person in
-                NavigationLink(destination: PersonDetailedView(withPerson: person)) {
-                    Text("\(person.firstName) \(person.name)")
-                }
+        List(self.viewModel.result, id: \.nr) { person in
+            NavigationLink(destination: PersonDetailedView(withPerson: person)) {
+                Text("\(person.firstName) \(person.name)")
             }
-            .navigationBarTitle("")
-            .navigationBarTitleDisplayMode(.inline)
         }
-        .searchable(text: $searchText)
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: self.searchText) { searchValue in
             if(searchValue.count > 3) {
                 self.viewModel.fetch(searchString: searchValue)
