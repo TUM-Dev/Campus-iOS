@@ -26,7 +26,6 @@ struct CategoryViewModel: Identifiable {
     var id = UUID()
     var name: String
     var dishes: [Dish]
-    var isExpanded: Bool = false
     
     init(name: String, dishes: [Dish]) {
         self.name = name

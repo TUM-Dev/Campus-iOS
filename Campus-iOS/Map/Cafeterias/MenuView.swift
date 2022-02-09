@@ -15,33 +15,61 @@ struct MenuView: View {
         List {
             ForEach($viewModel.categories) { $category in
                 Section(category.name) {
-                    DisclosureGroup(isExpanded: $category.isExpanded) {
-                        ForEach(category.dishes, id: \.self) { dish in
-                            ForEach(Array(dish.prices.keys).sorted(by: >), id: \.self) { key in
-                                HStack {
-                                    Text(key)
-                                    Spacer()
-                                    Text(self.configureDropDown(dish: dish, key: key))
-                                }
-                            }
-                        }
-                    } label: {
-                        ForEach(category.dishes, id: \.self) { dish in
-                            Text(dish.name)
-                                .onTapGesture {
-                                    withAnimation {
-                                        category.isExpanded.toggle()
-                                    }
-                                }
-                        }
+                    ForEach(category.dishes, id: \.self) { dish in
+                        DishView(dish: dish)
                     }
                 }
             }
         }
         .navigationTitle(title)
     }
+}
+
+struct DishView: View {
+    @State var dish: Dish
+    @State private var isExpanded = false
     
-    func configureDropDown(dish: Dish, key: String) -> String {
+    var body: some View {
+        DisclosureGroup(isExpanded: $isExpanded) {
+            HStack{
+                VStack{
+                    ForEach(dish.labels, id: \.self){label in
+                        Text(labelToAbbreviation(label: label))
+                    }
+                }
+                .padding(.trailing, 10.0)
+                VStack(alignment: .leading){
+                    ForEach(dish.labels, id: \.self){label in
+                        Text(labelToDescription(label: label))
+                    }
+                }
+            }
+               
+            VStack{
+                ForEach(Array(dish.prices.keys).sorted(by: >), id: \.self) { key in
+                    HStack {
+                        Text(key)
+                        Spacer()
+                        Text(formatPrice(dish: dish, pricingGroup: key))
+                    }
+                }
+            }
+        } label: {
+            VStack(alignment: .leading, spacing: 10){
+                Text(dish.name)
+                HStack{
+                    Text(labelsToString(labels: dish.labels))
+                    Spacer()
+                    Text(formatPrice(dish: dish, pricingGroup: "students"))
+                        .lineLimit(1)
+                }
+                .font(.footnote)
+            }
+        }
+        
+    }
+    
+    func formatPrice(dish: Dish, pricingGroup: String) -> String {
         let priceFormatter: NumberFormatter = {
                 let formatter = NumberFormatter()
                 formatter.currencySymbol = "€"
@@ -54,7 +82,7 @@ struct MenuView: View {
         var basePriceString: String?
         var unitPriceString: String?
         
-        switch key {
+        switch pricingGroup {
         case "staff":
             price = dish.prices["staff"]!
         case "guests":
@@ -76,6 +104,31 @@ struct MenuView: View {
         let finalPrice: String = (basePriceString ?? "") + divider + (unitPriceString ?? "")
         
         return finalPrice
+    }
+    
+    func labelToAbbreviation(label: String) -> String {
+        let labelLookup = MensaEnumService.shared.getLabels()
+        
+        if let labelObject = labelLookup[label] {
+            return labelObject.abbreviation
+        }
+        return label
+    }
+    
+    func labelToDescription(label: String) -> String {
+        let labelLookup = MensaEnumService.shared.getLabels()
+        
+        if let labelObject = labelLookup[label], let text = labelObject.text["DE"] {
+            return text
+        }
+        return label
+    }
+    
+    func labelsToString(labels: [String]) -> String {
+        let shortenedLabels = labels.map{label -> String in
+            return labelToAbbreviation(label: label)
+        }
+        return shortenedLabels.joined(separator:", ")
     }
 }
 
