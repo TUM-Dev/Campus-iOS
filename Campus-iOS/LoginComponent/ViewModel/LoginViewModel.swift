@@ -73,10 +73,12 @@ class LoginViewModel: ObservableObject {
                 #endif
                 self?.showTokenAlert = false
                 self?.model?.isLoginSheetPresented = false
-                self?.model?.showProfile = false
                 self?.model?.isUserAuthenticated = true
+                self?.model?.showProfile = false
+                self?.model?.loadProfile()
             case let .failure(error):
                 self?.showTokenAlert = true
+                self?.model?.isUserAuthenticated = false
                 self?.alertMessage = error.localizedDescription
             }
         }

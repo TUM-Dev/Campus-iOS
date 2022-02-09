@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GradeView: View {
-    @Environment(\.colorScheme) var colorScheme
     
     var grade: Grade
     
@@ -31,7 +30,7 @@ struct GradeView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(grade.title)
                     .fontWeight(.bold)
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .foregroundColor(Color(.label))
 
 				VStack(alignment: .leading, spacing: 8) {
 					HStack(spacing: 16) {
@@ -76,5 +75,7 @@ struct GradeView: View {
 struct GradeView_Previews: PreviewProvider {
     static var previews: some View {
         GradeView(grade: Grade.dummyData.first!)
+        GradeView(grade: Grade.dummyData.first!)
+            .preferredColorScheme(.dark)
     }
 }

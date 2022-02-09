@@ -27,7 +27,7 @@ class TUMSexyViewModel: ObservableObject {
     
     func fetch() {
         importer.performFetch( handler: { result in
-            switch(result) {
+            switch result {
             case .success(let storage):
                 var filledLinks = [TUMSexyLink]()
                 storage.values.forEach() {

@@ -54,7 +54,7 @@ struct NewsCard: View {
                     }
             } else {
                 AsyncImage(url: URL(string: image)) { image in
-                    switch(image) {
+                    switch image {
                     case .empty:
                         ProgressView()
                     case .success(let image):

@@ -82,3 +82,14 @@
 "Week" = "Week";
 "Month" = "Month";
 "Year" = "Year";
+
+// PersonSearch
+"Unable to find person" = "Unable to find person";
+"Person Search" = "Person Search";
+
+// Tuition
+"Open Amount" = "Offener Betrag";
+
+// LectureSearch
+"Lecture Search" = "Lecture Search";
+"Unable to find lecture" = "Unable to find lecture";

@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSContactsUsageDescription</key>
+	<string>TUM Campus App can add contacts from TUM Online to your address book</string>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>tumBlue</string>
+		<key>UIImageName</key>
+		<string>logo-white</string>
+	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>TODO</string>
 </dict>

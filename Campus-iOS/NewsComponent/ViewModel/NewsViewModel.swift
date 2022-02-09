@@ -43,7 +43,7 @@ class NewsViewModel: ObservableObject {
         let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
         
         importer.performFetch(handler: { result in
-            switch(result) {
+            switch result {
             case .success(let incoming):
                 self.newsSources = incoming
             case .failure(let error):

@@ -27,7 +27,7 @@ class MoviesViewModel: ObservableObject {
         let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
         
         importer.performFetch(handler: { result in
-            switch(result) {
+            switch result {
             case .success(let incoming):
                 self.movies = incoming.sorted(by: {
                     guard let dateOne = $0.date, let dateTwo = $1.date else {

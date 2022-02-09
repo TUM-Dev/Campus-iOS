@@ -16,7 +16,7 @@ struct MovieCard: View {
             
             if let link = self.movie.cover {
                 AsyncImage(url: link) { image in
-                    switch(image) {
+                    switch image {
                     case .empty:
                         ProgressView()
                     case .success(let image):

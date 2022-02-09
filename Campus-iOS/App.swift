@@ -11,13 +11,10 @@ import KVKCalendar
 
 @main
 struct CampusApp: App {
-    @StateObject var environmentValues: Model = Model()
     @StateObject var model: Model = MockModel()
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
-    @State var splashScreenPresented = false
-    @State private var showingAlert = false
     
     init() {
         UITabBar.appearance().isOpaque = true
@@ -29,16 +26,11 @@ struct CampusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            tabViewComponent()
-                .sheet(isPresented: $model.isLoginSheetPresented) {
-                    if splashScreenPresented {
-                        Spinner()
-                            .alert(isPresented: $showingAlert) {
-                                Alert(title: Text("There is a problem with the connection"),
-                                      message: Text("Please restart the app"),
-                                      dismissButton: .default(Text("Got it!")))
-                            }
-                    } else {
+            if model.splashScreenPresented {
+                TUMSplashScreen()
+            } else {
+                tabViewComponent()
+                    .sheet(isPresented: $model.isLoginSheetPresented) {
                         NavigationView {
                             LoginView(model: model)
                             .onAppear {
@@ -46,8 +38,8 @@ struct CampusApp: App {
                             }
                         }
                     }
-                }
-                .environmentObject(environmentValues)
+                    .environmentObject(model)
+            }
         }
     }
     
