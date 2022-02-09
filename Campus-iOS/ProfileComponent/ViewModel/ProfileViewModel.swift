@@ -33,7 +33,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     init(model: Model) {
-        switch(model.loginController.credentials) {
+        switch model.loginController.credentials {
         case .none, .noTumID:
             self.profile = Self.defaultProfile
         case .tumID(_, _), .tumIDAndKey(_, _, _):
@@ -45,7 +45,7 @@ class ProfileViewModel: ObservableObject {
         let importer = Importer<Profile,TUMOnlineAPIResponse<Profile>, XMLDecoder>(endpoint: TUMOnlineAPI.identify)
         importer.performFetch( handler: { result in
             DispatchQueue.main.async {
-                switch(result) {
+                switch result {
                 case .success(let storage):
                     self.profile = storage.rows?.first
                     if let personGroup = self.profile?.personGroup, let personId = self.profile?.id, let obfuscatedID = self.profile?.obfuscatedID {
@@ -69,7 +69,7 @@ class ProfileViewModel: ObservableObject {
 
             self.sessionManager.request(TUMOnlineAPI.personDetails(identNumber: obfuscatedID)).responseDecodable(of: PersonDetails.self, decoder: XMLDecoder()) { response in
                 guard let image = response.value?.image else { return }
-                self.profileImage = image
+                self.profileImage = Image(uiImage: image)
             }
         })
     }
@@ -81,7 +81,7 @@ class ProfileViewModel: ObservableObject {
         
         DispatchQueue.main.async {
             importerTuition.performFetch(handler: { result in
-                switch(result) {
+                switch result {
                 case .success(let storage):
                     self.tuition = storage.rows?.first
                 case .failure(let error):

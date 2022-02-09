@@ -29,7 +29,7 @@ struct PersonDetails: Decodable {
     let officeHours: String?
     let officialContact: [ContactInfo]
     let privateContact: [ContactInfo]
-    let image: Image?
+    let image: UIImage?
     let organisations: [Organisation]
     let rooms: [Room]
     let phoneExtensions: [PhoneExtension]
@@ -103,7 +103,7 @@ struct PersonDetails: Decodable {
         }
         
         if let imageString = try container.decodeIfPresent(String.self, forKey: .imageData), let imageData = Data(base64Encoded: imageString, options: [.ignoreUnknownCharacters]), let uiImage = UIImage(data: imageData)  {
-            self.image = Image(uiImage: uiImage)
+            self.image = uiImage
         } else {
             self.image = nil
         }

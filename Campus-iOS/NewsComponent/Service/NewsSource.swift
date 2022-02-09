@@ -60,7 +60,7 @@ class NewsSource: Entity, ObservableObject {
         let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
         
         importer.performFetch(handler: { result in
-            switch(result) {
+            switch result {
             case .success(let storage):
                 self.news = storage.filter( {
                     guard let title = $0.title, let link = $0.link else {

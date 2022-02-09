@@ -9,10 +9,11 @@ import Foundation
 import Alamofire
 import XMLCoder
 import SwiftUI
+import Contacts
 
 struct PersonDetailsHeader: Identifiable, Hashable {
     let id = UUID()
-    let image: Image?
+    let image: UIImage?
     let imageURL: URL?
     let name: String
     
@@ -150,5 +151,70 @@ class PersonDetailedViewModel: ObservableObject {
             PersonDetailsSection(name: "Organisations", cells: organisations),
             PersonDetailsSection(name: "Rooms", cells: rooms)
             ].filter { !$0.cells.isEmpty }
+    }
+    
+    var cnContact: CNMutableContact {
+        guard let person = self.person else { return CNMutableContact() }
+
+        let contact = CNMutableContact()
+
+        contact.contactType = .person
+        if let title = person.title {
+            contact.namePrefix = title
+        }
+        contact.givenName = person.firstName
+        contact.familyName = person.name
+
+        contact.emailAddresses = [CNLabeledValue(label: CNLabelWork, value: person.email as NSString)]
+        if let organisation = person.organisations.first {
+            contact.departmentName = organisation.name
+        }
+
+        var phoneNumbers: [CNLabeledValue<CNPhoneNumber>] = person.privateContact.compactMap { info in
+            switch info {
+            case .phone(let number), .mobilePhone(let number) : return CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: number))
+            default: return nil
+            }
+        }
+
+        phoneNumbers.append(contentsOf: person.officialContact.compactMap { info in
+            switch info {
+            case .phone(let number), .mobilePhone(let number) : return CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: number))
+            default: return nil
+            }
+        })
+
+        phoneNumbers.append(contentsOf: person.phoneExtensions.map { phoneExtension in
+            return CNLabeledValue(label: CNLabelWork, value: CNPhoneNumber(stringValue: phoneExtension.phoneNumber))
+        })
+
+        contact.phoneNumbers = phoneNumbers
+
+        if let imageData = person.image?.jpegData(compressionQuality: 1) {
+            contact.imageData = imageData
+        }
+
+        var urls: [CNLabeledValue<NSString>] = person.privateContact.compactMap{ info in
+            switch info {
+            case .homepage(let urlString): return CNLabeledValue(label: CNLabelWork, value: urlString as NSString)
+            default: return nil
+            }
+        }
+
+        urls.append(contentsOf: person.officialContact.compactMap { info in
+            switch info {
+            case .homepage(let urlString): return CNLabeledValue(label: CNLabelWork, value: urlString as NSString)
+            default: return nil
+            }
+        })
+
+        contact.urlAddresses = urls
+
+        contact.organizationName = "TUM"
+        if let room = person.rooms.first {
+            contact.note = room.locationDescription
+        }
+
+        return contact
     }
 }

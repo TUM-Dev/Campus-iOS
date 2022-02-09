@@ -24,6 +24,10 @@ struct Person: Decodable, Hashable {
         guard let id = split.last, split.count == 2 else { return nil }
         return String(id)
     }
+    
+    var fullName: String {
+        "\(self.title?.appending(" ") ?? "")\(self.firstName.appending(" "))\(self.name)"
+    }
 
     /*
      <vorname>Tim</vorname>

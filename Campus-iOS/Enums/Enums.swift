@@ -25,7 +25,7 @@ enum TumCalendarTypes: String, CaseIterable {
     }
     
     var calendarType: CalendarType {
-        switch(self) {
+        switch self {
         case .day:
             return CalendarType.day
         case .week:

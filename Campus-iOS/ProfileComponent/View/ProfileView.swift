@@ -36,7 +36,7 @@ struct ProfileView: View {
                 }.disabled(!self.model.isUserAuthenticated)
                 
                 Section("MY TUM") {
-                    NavigationLink(destination: TuitionView(viewModel: self.model.profile).navigationBarTitle(Text("Tuition fees")).navigationBarTitleDisplayMode(.inline)) {
+                    NavigationLink(destination: TuitionView(viewModel: self.model.profile).navigationBarTitle(Text("Tuition fees"))) {
                         if let isOpenAmount = self.model.profile.tuition?.isOpenAmount, isOpenAmount != true {
                             Label {
                                 HStack {
@@ -53,7 +53,7 @@ struct ProfileView: View {
                     }
                     .disabled(!self.model.isUserAuthenticated)
                     
-                    NavigationLink(destination: PersonSearchView().navigationBarTitle(Text("Person Seach")).navigationBarTitleDisplayMode(.inline)) {
+                    NavigationLink(destination: PersonSearchView().navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
                         Label("Person Search", systemImage: "magnifyingglass")
                     }
                     .disabled(!self.model.isUserAuthenticated)

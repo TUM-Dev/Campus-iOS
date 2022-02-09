@@ -31,7 +31,7 @@ class PersonSearchViewModel: ObservableObject {
             if let result = self?.result, result.isEmpty {
                 self?.errorMessage = NSString(format: "Unable to find person".localized as NSString, searchString) as String
             } else {
-                // Do Nothing
+                self?.errorMessage = ""
             }
         }
     }

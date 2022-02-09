@@ -78,6 +78,7 @@ class LoginViewModel: ObservableObject {
                 self?.model?.loadProfile()
             case let .failure(error):
                 self?.showTokenAlert = true
+                self?.model?.isUserAuthenticated = false
                 self?.alertMessage = error.localizedDescription
             }
         }

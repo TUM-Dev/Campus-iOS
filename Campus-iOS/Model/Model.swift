@@ -39,6 +39,7 @@ public class Model: ObservableObject {
                     self?.isUserAuthenticated = true
                     self?.loadProfile()
                 case .failure(_):
+                    self?.isUserAuthenticated = false
                     self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = true
                 }

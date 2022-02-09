@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import ContactsUI
 
 struct PersonDetailedView: View {
     let imageSize: CGFloat = 125.0
@@ -25,7 +26,7 @@ struct PersonDetailedView: View {
             Spacer()
             if let header = viewModel.sections?.first(where: { $0.name == "Header" })?.cells.first, let cell = header as? PersonDetailsHeader {
                 if let image = cell.image {
-                    image
+                    Image(uiImage: image)
                         .resizable()
                         .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
@@ -46,20 +47,22 @@ struct PersonDetailedView: View {
                 form
             } else {
                 List {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                        .padding(2)
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                            .padding(2)
+                        Spacer()
+                    }
                 }
             }
         }
         .background(Color(.systemGroupedBackground))
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(action: {
-
-                }) {
-                    Image(systemName: "person.crop.circle.badge.plus")
-                }.disabled(true)
+                NavigationLink(destination: AddToContactsView(contact: self.viewModel.cnContact)) {
+                    Label("", systemImage: "person.crop.circle.badge.plus")
+                }.disabled(self.viewModel.sections?.count ?? 0 < 2)
             }
         }
         .onAppear {
@@ -72,15 +75,34 @@ struct PersonDetailedView: View {
             ForEach(self.viewModel.sections?.filter({ $0.name != "Header" }) ?? []) { section in
                 Section(section.name) {
                     ForEach(section.cells as? [PersonDetailsCell] ?? []) { singleCell in
-                        VStack(alignment: .leading) {
-                            Text(singleCell.key)
-                            Text(singleCell.value).foregroundColor(.blue)
-                        }
+                        Button(action: {
+                            Self.cellActionBasedOnType(cell: singleCell)
+                        }, label: { PersonDetailedCellView(cell: singleCell) })
                     }
                 }
             }
         }
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    static func cellActionBasedOnType(cell: PersonDetailsCell) {
+        switch cell.actionType {
+        case .none, .showRoom:
+            break
+        case .call:
+            let number = cell.value.replacingOccurrences(of: " ", with: "")
+            if let url = URL(string: "tel://\(number)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        case .mail:
+            if let url = URL(string: "mailto:\(cell.value)") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        case .openURL:
+            if let url = URL(string: cell.value) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }
 
