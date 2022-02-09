@@ -76,5 +76,8 @@ final class MealPlanViewModel: ObservableObject {
                                         return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
                               )
         }
+        
+        // initiate loading of labels here, to prevent showing of placeholders
+        _ = MensaEnumService.shared.getLabels()
     }
 }
