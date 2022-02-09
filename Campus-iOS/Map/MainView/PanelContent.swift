@@ -92,17 +92,6 @@ struct PanelContent: View {
             }
         }
     }
-    
-    private func fetch() {
-        sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
-            var cafeterias: [Cafeteria] = response.value ?? []
-            if let currentLocation = self.locationManager.location {
-                cafeterias.sortByDistance(to: currentLocation)
-            }
-            
-            self.canteens = cafeterias
-        }
-    }
 }
 
 struct SearchBar: View {
