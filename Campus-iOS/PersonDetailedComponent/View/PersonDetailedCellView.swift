@@ -10,12 +10,11 @@ import SwiftUI
 struct PersonDetailedCellView: View {
     
     @State var cell: PersonDetailsCell
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(cell.key)
-                .foregroundColor(colorScheme == .dark ? .white : .black)
+                .foregroundColor(Color(.label))
             Text(cell.value)
                 .foregroundColor(.blue)
         }

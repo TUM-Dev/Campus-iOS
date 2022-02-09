@@ -131,6 +131,8 @@
 		36BB6F7B27B27D0D00F224AB /* TuitionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */; };
 		36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7C27B356C200F224AB /* PersonDetailedCellView.swift */; };
 		36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7E27B386D100F224AB /* AddToContactsView.swift */; };
+		36BB6F8327B39B4300F224AB /* LectureSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8227B39B4300F224AB /* LectureSearchView.swift */; };
+		36BB6F8627B39C5300F224AB /* LectureSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */; };
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
 		36BBE7322798AFE10018FD3F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7312798AFE10018FD3F /* News.swift */; };
 		36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7332798B04D0018FD3F /* NewsSource.swift */; };
@@ -300,6 +302,8 @@
 		36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionCard.swift; sourceTree = "<group>"; };
 		36BB6F7C27B356C200F224AB /* PersonDetailedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedCellView.swift; sourceTree = "<group>"; };
 		36BB6F7E27B386D100F224AB /* AddToContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToContactsView.swift; sourceTree = "<group>"; };
+		36BB6F8227B39B4300F224AB /* LectureSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchView.swift; sourceTree = "<group>"; };
+		36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchViewModel.swift; sourceTree = "<group>"; };
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		36BBE7312798AFE10018FD3F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		36BBE7332798B04D0018FD3F /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
@@ -671,6 +675,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				36BB6F8027B39B2200F224AB /* LectureSearchComponent */,
 				36BB6F7627B26DCA00F224AB /* TuitionComponent */,
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
 				36BB6F5527AFCD7B00F224AB /* PersonDetailedComponent */,
@@ -939,6 +944,31 @@
 				36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		36BB6F8027B39B2200F224AB /* LectureSearchComponent */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F8427B39C3D00F224AB /* ViewModel */,
+				36BB6F8127B39B3400F224AB /* View */,
+			);
+			path = LectureSearchComponent;
+			sourceTree = "<group>";
+		};
+		36BB6F8127B39B3400F224AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F8227B39B4300F224AB /* LectureSearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36BB6F8427B39C3D00F224AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		36BBE72D27989F6E0018FD3F /* HelperViews */ = {
@@ -1257,6 +1287,7 @@
 				36108BBB27A3046B007DC62D /* LecturesScreen.swift in Sources */,
 				36BB6F6427AFCFFB00F224AB /* PersonDetailedViewModel.swift in Sources */,
 				36AF61E427A2FD7800FEBD98 /* NetworkingError.swift in Sources */,
+				36BB6F8327B39B4300F224AB /* LectureSearchView.swift in Sources */,
 				36108BFA27A30517007DC62D /* Movie.swift in Sources */,
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
@@ -1311,6 +1342,7 @@
 				36FF90652773BB8200F4C785 /* Extensions.swift in Sources */,
 				36108C1427A307F9007DC62D /* GradeColor.swift in Sources */,
 				36108BBD27A3046B007DC62D /* Lecture.swift in Sources */,
+				36BB6F8627B39C5300F224AB /* LectureSearchViewModel.swift in Sources */,
 				36108BC227A3046B007DC62D /* LectureDetailsBasicInfoView.swift in Sources */,
 				36108BC727A3046B007DC62D /* LectureDetailsLinkView.swift in Sources */,
 				36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */,

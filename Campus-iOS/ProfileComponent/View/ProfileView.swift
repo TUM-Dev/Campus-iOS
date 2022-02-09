@@ -20,7 +20,7 @@ struct ProfileView: View {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
                             .resizable()
-                            .foregroundColor(.black.opacity(0.2))
+                            .foregroundColor(Color(.secondaryLabel))
                             .frame(width: 75, height: 75)
                         
                         VStack(alignment: .leading) {
@@ -58,9 +58,10 @@ struct ProfileView: View {
                     }
                     .disabled(!self.model.isUserAuthenticated)
                     
-                    NavigationLink(destination: Text("Lecture Search")) {
+                    NavigationLink(destination: LectureSearchView().navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
                         Label("Lecture Search", systemImage: "brain.head.profile")
                     }
+                    .disabled(!self.model.isUserAuthenticated)
                 }
                 
                 Section("GENERAL") {

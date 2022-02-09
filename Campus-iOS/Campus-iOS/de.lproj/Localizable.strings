@@ -79,7 +79,11 @@
 
 // PersonSearch
 "Unable to find person" = "Person kann nicht gefunden werden";
-"Person Search" = "Person suchen";
+"Person Search" = "Personensuche";
 
 // Tuition
 "Open Amount" = "Offener Betrag";
+
+// LectureSearch
+"Lecture Search" = "Vorlesungssuche";
+"Unable to find lecture" = "Vorlesung kann nicht gefunden werden";

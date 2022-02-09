@@ -15,7 +15,7 @@ enum LectureComponents {
         public var row: [Row]
     }
 
-    struct Row: Decodable, Identifiable {
+    struct Row: Decodable, Identifiable, Equatable {
         public var id: UInt64
         public var lvNumber: UInt64
         public var title: String

@@ -89,3 +89,7 @@
 
 // Tuition
 "Open Amount" = "Offener Betrag";
+
+// LectureSearch
+"Lecture Search" = "Lecture Search";
+"Unable to find lecture" = "Unable to find lecture";
