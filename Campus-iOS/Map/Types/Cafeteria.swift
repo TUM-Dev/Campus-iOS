@@ -16,6 +16,11 @@ struct Location: Decodable, Hashable {
     var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
 }
 
+struct Queue: Decodable, Hashable {
+    let current: Int
+    let percent: Float
+}
+
 struct Cafeteria: Decodable, Hashable {
     /*
      "location": {
@@ -28,8 +33,11 @@ struct Cafeteria: Decodable, Hashable {
      },
  */
     let location: Location
-    let name: String
+    var name: String
     let id: String
+    
+    let queueStatusApi: String?
+    var queue: Queue?
 
     var coordinate: CLLocationCoordinate2D { location.coordinate }
     var title: String? { name }
@@ -38,6 +46,8 @@ struct Cafeteria: Decodable, Hashable {
         case location
         case name
         case id = "canteen_id"
+        case queueStatusApi = "queue_status"
+        case queue
     }
     
 }

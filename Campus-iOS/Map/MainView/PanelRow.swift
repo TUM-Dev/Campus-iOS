@@ -11,7 +11,8 @@ import MapKit
 
 struct PanelRow: View {
     
-    @State var cafeteria: Cafeteria
+    @Binding var cafeteria: Cafeteria
+    @State var explainStatus = false
     private let locationManager = CLLocationManager()
     private let distanceFormatter: MKDistanceFormatter = {
         let formatter = MKDistanceFormatter()
@@ -28,6 +29,15 @@ struct PanelRow: View {
                         Text(cafeteria.name)
                             .bold()
                             .font(.title3)
+                        Spacer()
+                        if let queue = cafeteria.queue {
+                            let explainText = explainStatus ? "Auslastung " : ""
+                            Text("\(explainText)\(Int(queue.percent))%")
+                                .font(.footnote)
+                                .onTapGesture {
+                                    explainStatus.toggle()
+                                }
+                        }
                     }
                     Spacer().frame(height: 0)
                     HStack {

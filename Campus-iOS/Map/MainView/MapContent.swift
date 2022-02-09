@@ -125,13 +125,20 @@ struct MapContent: UIViewRepresentable {
                     cafeterias.sortByDistance(to: currentLocation)
                 }
                 
-                guard let cafeterias = response.value else { return }
-                
                 let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
                 
                 mapView.addAnnotations(annotations)
                 
                 canteens = cafeterias
+                
+                for (index, cafeteria) in canteens.enumerated() {
+                    if let queue = cafeteria.queueStatusApi  {
+                        sessionManager.request(queue, method: .get).responseDecodable(of: Queue.self, decoder: JSONDecoder()){ [self] response in
+                            canteens[index].queue = response.value
+                            //canteens = cafeterias
+                        }
+                    }
+                }
 
                 /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
                 snapshot.appendSections([.main])
