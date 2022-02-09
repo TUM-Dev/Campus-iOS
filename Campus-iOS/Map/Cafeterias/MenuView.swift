@@ -44,16 +44,6 @@ struct DishView: View {
                     }
                 }
             }
-               
-            VStack{
-                ForEach(Array(dish.prices.keys).sorted(by: >), id: \.self) { key in
-                    HStack {
-                        Text(key)
-                        Spacer()
-                        Text(formatPrice(dish: dish, pricingGroup: key))
-                    }
-                }
-            }
         } label: {
             VStack(alignment: .leading, spacing: 10){
                 Text(dish.name)
