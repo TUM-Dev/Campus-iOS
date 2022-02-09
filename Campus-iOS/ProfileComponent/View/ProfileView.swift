@@ -66,11 +66,11 @@ struct ProfileView: View {
                 
                 Section("GENERAL") {
                     NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
-                        Label("TUM.sexy", image: "Tum.sexy")
+                        Label("TUM.sexy", systemImage: "heart")
                     }
                     
                     NavigationLink(destination: Text("Roomfinder")) {
-                        Label("Roomfinder", image: "RoomFinder")
+                        Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
                     NavigationLink(destination: NewsView()
