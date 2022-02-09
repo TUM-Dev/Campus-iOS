@@ -60,15 +60,15 @@ struct PanelContent: View {
                     ProgressView()
                     ScrollViewReader { proxy in
                         List {
-                            ForEach (canteens.filter({ searchString.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchString) }), id: \.name) { cafeteria in
-                                PanelRow(cafeteria: cafeteria)
+                            ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                                PanelRow(cafeteria: self.$canteens[id])
                                 .onTapGesture {
                                     withAnimation {
-                                        selectedCanteenName = cafeteria.name
-                                        selectedAnnotationIndex = canteens.firstIndex(of: cafeteria)!
-                                        proxy.scrollTo(cafeteria, anchor: .top)
+                                        selectedCanteenName = canteens[id].name
+                                        selectedAnnotationIndex = canteens.firstIndex(of: canteens[id])!
+                                        proxy.scrollTo(canteens[id], anchor: .top)
                                         
-                                        selectedCanteen = cafeteria
+                                        selectedCanteen = canteens[id]
                                     }
                                 }
                                 .task(id: selectedAnnotationIndex) {
@@ -80,6 +80,7 @@ struct PanelContent: View {
                                     }
                                 }
                             }
+
                         }
                     }
                     .searchable(text: $searchString, prompt: "Look for something")

@@ -106,7 +106,7 @@ struct CampusApp: App {
                         canteens: [],
                         selectedCanteenName: " ",
                         selectedAnnotationIndex: 0,
-                        selectedCanteen: Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " "))
+                        selectedCanteen: Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " ", queueStatusApi: nil))
             }
             .tag(3)
             .tabItem {
