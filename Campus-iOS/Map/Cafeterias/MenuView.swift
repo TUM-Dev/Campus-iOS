@@ -46,7 +46,11 @@ struct DishView: View {
             }
         } label: {
             VStack(alignment: .leading, spacing: 10){
-                Text(dish.name)
+                HStack{
+                    Text(dish.name)
+                    Spacer()
+                    Image(systemName: "info.circle")
+                }
                 HStack{
                     Text(labelsToString(labels: dish.labels))
                     Spacer()
@@ -56,6 +60,7 @@ struct DishView: View {
                 .font(.footnote)
             }
         }
+        .buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(true)
         
     }
     
