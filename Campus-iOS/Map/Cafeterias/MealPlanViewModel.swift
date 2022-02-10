@@ -16,6 +16,7 @@ final class MealPlanViewModel: ObservableObject {
 
     @Published private(set) var title: String
     @Published private(set) var menus: [MenuViewModel] = []
+    @Published var selectedMenu: MenuViewModel?
     
     init(cafeteria: Cafeteria) {
         self.cafeteria = cafeteria
@@ -32,22 +33,8 @@ final class MealPlanViewModel: ObservableObject {
         
         sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
             guard let mealPlans = response.value else { return }
-            self.menus = mealPlans.days
-                .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
-                .sorted { $0.date < $1.date }
-                .map {
-                    let categories = $0.dishes
-                        .sorted { $0.dishType < $1.dishType }
-                        .reduce(into: [:]) { (acc: inout [String: [Dish]], dish: Dish) -> () in
-                            let type = dish.dishType.isEmpty ? "Sonstige" : dish.dishType
-                            if acc[type] != nil {
-                                acc[type]?.append(dish)
-                            }
-                            acc[type] = [dish]
-                        }
-                        .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
-                                        
-                    return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
+            addMealPlans(mealPlans: mealPlans)
+            selectedMenu = self.menus[0]
         }
         
         guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
@@ -56,28 +43,35 @@ final class MealPlanViewModel: ObservableObject {
         
         sessionManager.request(nextWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
             guard let mealPlans = response.value else { return }
-            self.menus.append(contentsOf: mealPlans.days
-                                .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
-                                .sorted { $0.date < $1.date }
-                                .map {
-                                    let categories = $0.dishes
-                                        .sorted { $0.dishType < $1.dishType }
-                                        .reduce(into: [:]) { (acc: inout [String: [Dish]], dish: Dish) -> () in
-                                            let type = dish.dishType.isEmpty ? "Sonstige" : dish.dishType
-                                            if acc[type] != nil {
-                                                acc[type]?.append(dish)
-                                            }
-                                            acc[type] = [dish]
-                                        }
-                                        .map { CategoryViewModel(name: $0.key, dishes: $0.value) }
-                
-                                        print("DATE: ", $0.date)
-
-                                        return MenuViewModel(title: formatter.string(from: $0.date), date: $0.date, categories: categories) }
-                              )
+            addMealPlans(mealPlans: mealPlans)
         }
         
         // initiate loading of labels here, to prevent showing of placeholders
         _ = MensaEnumService.shared.getLabels()
+    }
+    
+    func addMealPlans(mealPlans: MealPlan){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        self.menus.append(contentsOf: mealPlans.days
+            .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
+            .sorted { $0.date < $1.date }
+            .map {
+                let categories = $0.dishes
+                    .sorted { $0.dishType < $1.dishType }
+                    .reduce(into: [:]) { (acc: inout [String: [Dish]], dish: Dish) -> () in
+                        let type = dish.dishType.isEmpty ? "Sonstige" : dish.dishType
+                        if acc[type] != nil {
+                            acc[type]?.append(dish)
+                        }
+                        acc[type] = [dish]
+                    }
+                    .map { MenuCategory(name: $0.key, dishes: $0.value) }
+                                    
+                return MenuViewModel(date: $0.date, categories: categories) }
+        )
+        
+        self.menus = self.menus.sorted { $0.date < $1.date }
     }
 }

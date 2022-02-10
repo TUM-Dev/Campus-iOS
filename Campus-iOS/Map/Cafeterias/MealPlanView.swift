@@ -10,25 +10,55 @@ import Alamofire
 
 struct MealPlanView: View {
     @ObservedObject var viewModel: MealPlanViewModel
-    
-    let formatter = DateFormatter()
         
     var body: some View {
-        VStack {
-            List {
-                ForEach(viewModel.menus) { menu in
-                    let title = formatter.string(from: menu.date)
-                    NavigationLink(destination: MenuView(viewModel: menu, title: title)) {
-                        Text(formatter.string(from: menu.date))
+        HStack{
+            if viewModel.menus.count > 0{
+                VStack{
+                    HStack{
+                        ForEach(viewModel.menus.prefix(7), id: \.id){ menu in
+                            Button(action: {
+                                viewModel.selectedMenu = menu
+                            }){
+                                VStack{
+                                    Circle()
+                                        .fill(menu === viewModel.selectedMenu ? Color("tumBlue") : Color.clear)
+                                        .aspectRatio(contentMode: .fit)
+                                        .overlay(
+                                            Text(getFormattedDate(date: menu.date, format: "d"))
+                                                .fontWeight(.semibold).fixedSize()
+                                                .foregroundColor(menu === viewModel.selectedMenu ? Color.white : Color.black)
+                                        )
+                                        .frame(maxWidth: .infinity)
+
+                                    Text(getFormattedDate(date: menu.date, format: "EEE"))
+                                        .foregroundColor(Color.black)
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 5.0)
+                
+                    if let menu = viewModel.selectedMenu {
+                        MenuView(viewModel: menu)
+                    }else{
+                        Spacer()
                     }
                 }
-            }
-            .navigationTitle(viewModel.title)
-            .onAppear {
-                formatter.dateFormat = "EEEE, dd.MM.yyyy"
-                viewModel.fetch()
+            }else {
+                Text("Kein Menü")
             }
         }
+        .navigationTitle(viewModel.title)
+        .onAppear {
+            viewModel.fetch()
+        }
+    }
+    
+    func getFormattedDate(date: Date, format: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
     }
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MenuView: View {
     @ObservedObject var viewModel: MenuViewModel
-    @State var title: String
     
     var body: some View {
         List {
@@ -21,7 +20,6 @@ struct MenuView: View {
                 }
             }
         }
-        .navigationTitle(title)
     }
 }
 
