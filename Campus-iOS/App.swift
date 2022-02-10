@@ -47,17 +47,8 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView()
+                CalendarContentView(model: model)
                     .navigationTitle("Calendar")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarLeading) {
-                            CalendarToolbar(viewModel: CalendarViewModel())
-                        }
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
-                // CalendarView(model: model)
             }
             .tag(0)
             .tabItem {

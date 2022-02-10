@@ -18,7 +18,8 @@ enum TumCalendarTypes: String, CaseIterable {
     case day = "Day"
     case week = "Week"
     case month = "Month"
-    case year = "Year"
+    // the year version will not be used as it is too small
+    // case year = "Year"
     
     var localizedString: String {
         return NSLocalizedString(self.rawValue, comment: "")
@@ -32,8 +33,8 @@ enum TumCalendarTypes: String, CaseIterable {
             return CalendarType.week
         case .month:
             return CalendarType.month
-        case .year:
-            return CalendarType.year
+//        case .year:
+//            return CalendarType.year
         }
     }
 }
