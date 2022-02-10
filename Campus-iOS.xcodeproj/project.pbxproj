@@ -466,8 +466,8 @@
 			children = (
 				36108BD227A304B5007DC62D /* MealPlanView.swift */,
 				36108BD327A304B5007DC62D /* MealPlanViewModel.swift */,
-				36108BD427A304B5007DC62D /* MenuViewModel.swift */,
 				36108BD627A304B5007DC62D /* MenuView.swift */,
+				36108BD427A304B5007DC62D /* MenuViewModel.swift */,
 			);
 			path = Cafeterias;
 			sourceTree = "<group>";

@@ -11,22 +11,20 @@ import SwiftUI
 
 final class MenuViewModel: ObservableObject, Identifiable {
     let id = UUID()
-    let title: String
     let date: Date
-    @Published var categories: [CategoryViewModel]
+    @Published var categories: [MenuCategory]
     
-    init(title: String, date: Date, categories: [CategoryViewModel]) {
-        self.title = title
+    init(date: Date, categories: [MenuCategory]) {
         self.date = date
         self.categories = categories
     }
 }
 
-struct CategoryViewModel: Identifiable {
-    var id = UUID()
-    var name: String
-    var dishes: [Dish]
-    
+struct MenuCategory: Identifiable {
+    let id = UUID()
+    let name: String
+    let dishes: [Dish]
+  
     init(name: String, dishes: [Dish]) {
         self.name = name
         self.dishes = dishes
