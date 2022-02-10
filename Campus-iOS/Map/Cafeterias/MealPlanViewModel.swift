@@ -34,7 +34,9 @@ final class MealPlanViewModel: ObservableObject {
         sessionManager.request(thisWeekEndpoint).responseDecodable(of: MealPlan.self, decoder: decoder) { [self] response in
             guard let mealPlans = response.value else { return }
             addMealPlans(mealPlans: mealPlans)
-            selectedMenu = self.menus[0]
+            if self.menus.count > 0 {
+                selectedMenu = self.menus[0]
+            }
         }
         
         guard let nextWeek =  Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else { return }
@@ -70,6 +72,7 @@ final class MealPlanViewModel: ObservableObject {
                     .map { MenuCategory(name: $0.key, dishes: $0.value) }
                                     
                 return MenuViewModel(date: $0.date, categories: categories) }
+             .filter{ menu in !self.menus.contains(where: {$0.date == menu.date}) } // don't re-add already existent days
         )
         
         self.menus = self.menus.sorted { $0.date < $1.date }
