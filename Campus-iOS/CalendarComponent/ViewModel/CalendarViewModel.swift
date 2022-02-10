@@ -14,7 +14,7 @@ class CalendarViewModel: ObservableObject {
     
     @Published var showEventsList: Bool = false
     @Published var events: [CalendarEvent] = []
-    @Published var lastSelectedEventId: String = ""
+    @Published var lastSelectedEventId: String = "SOMEINITIALVALUE"
     
     init() {
         fetch()
