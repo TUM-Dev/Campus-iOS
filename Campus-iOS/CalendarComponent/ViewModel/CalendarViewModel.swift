@@ -14,6 +14,7 @@ class CalendarViewModel: ObservableObject {
     
     @Published var showEventsList: Bool = false
     @Published var events: [CalendarEvent] = []
+    @Published var lastSelectedEventId: String = ""
     
     init() {
         fetch()
@@ -25,7 +26,7 @@ class CalendarViewModel: ObservableObject {
         importer.performFetch(handler: { result in
             switch result {
             case .success(let storage):
-                self.events = storage.events?.sorted(by: {
+                self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
                     guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
                         return false
                     }

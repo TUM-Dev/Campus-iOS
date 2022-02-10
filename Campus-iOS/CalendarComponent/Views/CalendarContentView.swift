@@ -9,7 +9,6 @@ import SwiftUI
 import KVKCalendar
 
 struct CalendarContentView: View {
-    @State var events: [Event] = []
     @State var selectedType: TumCalendarTypes = .day
     
     @ObservedObject var model: Model
@@ -30,15 +29,15 @@ struct CalendarContentView: View {
             .pickerStyle(.segmented)
             switch self.selectedType {
             case .day:
-                CalendarDisplayView(events: $events, type: .day)
+                CalendarDisplayView(viewModel: self.viewModel, type: .day)
             case .month:
-                CalendarDisplayView(events: $events, type: .month)
+                CalendarDisplayView(viewModel: self.viewModel, type: .month)
             case .week:
-                CalendarDisplayView(events: $events, type: .week)
+                CalendarDisplayView(viewModel: self.viewModel, type: .week)
             }
         }
-        .onChange(of: self.viewModel.events) { _ in
-            self.events = self.viewModel.events.map( {$0.kvkEvent} )
+        .onChange(of: viewModel.lastSelectedEventId) { newValue in
+            print("Arrived here with event id \(newValue)")
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {

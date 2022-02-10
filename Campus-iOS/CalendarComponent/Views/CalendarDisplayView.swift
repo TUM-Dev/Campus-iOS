@@ -11,13 +11,13 @@ import KVKCalendar
 
 struct CalendarDisplayView: UIViewRepresentable {
 
-    @Binding var events: [Event]
+    @ObservedObject var viewModel: CalendarViewModel
     
     var selectDate: Date?
     private var calendar: CalendarView
     
-    public init(events: Binding<[Event]>, type: CalendarType) {
-        self._events = events
+    public init(viewModel: CalendarViewModel, type: CalendarType) {
+        self.viewModel = viewModel
         var style = Style()
         if UIDevice.current.userInterfaceIdiom == .phone {
             style.timeline.widthTime = 40
@@ -69,17 +69,13 @@ struct CalendarDisplayView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {
         calendar.dataSource = context.coordinator
         calendar.delegate = context.coordinator
-        if let firstEvent = self.events.first, firstEvent.start.isToday {
-            calendar.scrollTo(firstEvent.start, animated: true)
-        } else {
-            calendar.scrollTo(Date(), animated: true)
-        }
+        calendar.scrollTo(Date(), animated: true)
         calendar.reloadData()
         return calendar
     }
     
     func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<CalendarDisplayView>) {
-        context.coordinator.events = events
+        context.coordinator.events = viewModel.events.map({ $0.kvkEvent })
         calendar.reloadData()
         calendar.reloadInputViews()
    }
@@ -133,6 +129,10 @@ struct CalendarDisplayView: UIViewRepresentable {
         
         func willSelectDate(_ date: Date, type: CalendarType) {
             view.calendar.reloadData()
+        }
+        
+        func didSelectEvent(_ event: Event, type: CalendarType, frame: CGRect?) {
+            view.viewModel.lastSelectedEventId = event.ID
         }
     }
     
