@@ -55,6 +55,7 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
     var kvkEvent: Event {
         var event = Event(ID: self.id.description)
         event.text = self.title ?? ""
+        event.textForList = self.title ?? ""
         event.start = self.startDate ?? Date()
         event.end = self.endDate ?? Date()
         
@@ -109,5 +110,16 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
         self.startDate = startDate
         self.endDate = endDate
         self.location = location
+    }
+}
+
+
+class CustomEventDesign: EventViewGeneral {
+    override init(style: Style, event: Event, frame: CGRect) {
+        super.init(style: style, event: event, frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

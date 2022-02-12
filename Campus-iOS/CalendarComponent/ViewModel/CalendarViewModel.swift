@@ -11,10 +11,8 @@ import XMLCoder
 class CalendarViewModel: ObservableObject {
     typealias ImporterType = Importer<CalendarEvent, CalendarAPIResponse, XMLDecoder>
     private static let endpoint = TUMOnlineAPI.calendar
-    
-    @Published var showEventsList: Bool = false
+
     @Published var events: [CalendarEvent] = []
-    @Published var lastSelectedEventId: String = "SOMEINITIALVALUE"
     
     init() {
         fetch()

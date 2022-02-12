@@ -89,6 +89,7 @@
 		36982BD827A2739000515847 /* Collapsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36982BD727A2739000515847 /* Collapsible.swift */; };
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
+		36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */; };
 		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
 		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
@@ -262,6 +263,7 @@
 		36982BD727A2739000515847 /* Collapsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collapsible.swift; sourceTree = "<group>"; };
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
+		36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumCalendarStyle.swift; sourceTree = "<group>"; };
 		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
@@ -979,6 +981,7 @@
 			isa = PBXGroup;
 			children = (
 				36BB6F8927B3D21200F224AB /* CalendarEvent.swift */,
+				36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1248,6 +1251,7 @@
 				36108BE227A304B5007DC62D /* Menu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
+				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
 				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,

@@ -11,59 +11,18 @@ import KVKCalendar
 
 struct CalendarDisplayView: UIViewRepresentable {
 
-    @ObservedObject var viewModel: CalendarViewModel
+    @Binding var selectedEventID: String?
+    @Binding var todayPressed: Bool
     
-    var selectDate: Date?
+    private var events: [Event]
     private var calendar: CalendarView
+    var selectDate: Date?
     
-    public init(viewModel: CalendarViewModel, type: CalendarType) {
-        self.viewModel = viewModel
-        var style = Style()
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            style.timeline.widthTime = 40
-            style.timeline.currentLineHourWidth = 45
-            style.timeline.offsetTimeX = 2
-            style.timeline.offsetLineLeft = 2
-            style.headerScroll.titleDateAlignment = .center
-            style.headerScroll.isAnimateTitleDate = true
-            style.headerScroll.isAnimateSelection = true
-            style.headerScroll.heightHeaderWeek = 70
-            style.event.isEnableVisualSelect = true
-            style.month.isHiddenEventTitle = false
-            style.month.selectionMode = .single
-            style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 18)
-            style.month.weekDayAlignment = .center
-        } else {
-            style.timeline.widthEventViewer = 350
-            style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
-        }
-        style.event.showRecurringEventInPast = true
-        style.headerScroll.colorBackground = .systemBackground
-        style.headerScroll.colorBackgroundCurrentDate = .tumBlue
-        style.headerScroll.colorCurrentDate = .white
-        style.month.autoSelectionDateWhenScrolling = true
-        style.month.scrollDirection = .vertical
-        style.month.colorTitleHeader = .tumBlue
-        style.month.colorBackgroundCurrentDate = .black
-        style.month.colorBackgroundSelectDate = .tumBlue
-        style.month.isHiddenDotInTitle = false
-        style.month.selectCalendarType = .day
-        style.month.isAnimateSelection = true
-        style.month.colorTitleCurrentDate = .tumBlue
-        style.timeline.offsetTimeY = 25
-        // cuts out the hours before the first event if true
-        style.timeline.startFromFirstEvent = false
-        style.allDay.backgroundColor = .systemBackground
-        style.startWeekDay = .monday
-        style.defaultType = type
-        style.timeSystem = .current ?? .twelve
-        style.systemCalendars = ["Calendar"]
-        if #available(iOS 13.0, *) {
-            style.event.iconFile = UIImage(systemName: "paperclip")
-        }
-        style.locale = Locale.current
-        style.timezone = TimeZone.current
-        self.calendar = CalendarView(frame: UIScreen.main.bounds, style: style)
+    init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>) {
+        self.events = events
+        self._todayPressed = todayPressed
+        self._selectedEventID = selectedEventID
+        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type))
     }
         
     func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {
@@ -75,7 +34,13 @@ struct CalendarDisplayView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<CalendarDisplayView>) {
-        context.coordinator.events = viewModel.events.map({ $0.kvkEvent })
+        context.coordinator.events = self.events
+        // changing calendar type after initial initialization of CalendarView is not supported (bug with KVKCalendar)
+        // calendar.set(type: .day, date: Date())
+        if self.todayPressed {
+            calendar.scrollTo(Date(), animated: true)
+            self.todayPressed = false
+        }
         calendar.reloadData()
         calendar.reloadInputViews()
    }
@@ -85,8 +50,10 @@ struct CalendarDisplayView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, CalendarDataSource, CalendarDelegate {
-        private let view: CalendarDisplayView
         
+        @Binding var selectedEventID: String?
+        
+        private var view: CalendarDisplayView
         var selectedDate: Date
         
         var events: [Event] = [] {
@@ -95,6 +62,8 @@ struct CalendarDisplayView: UIViewRepresentable {
                     return $0.start > $1.start
                 }).first {
                     view.calendar.scrollTo(firstEvent.start, animated: true)
+                } else if view.calendar.selectedType == .month {
+                    return view.calendar.scrollTo(Date(), animated: true)
                 }
                 view.calendar.reloadData()
             }
@@ -102,6 +71,7 @@ struct CalendarDisplayView: UIViewRepresentable {
         
         init(_ view: CalendarDisplayView) {
             self.view = view
+            self._selectedEventID = view.$selectedEventID
             self.selectedDate = view.selectDate ?? Date()
             super.init()
         }
@@ -132,7 +102,7 @@ struct CalendarDisplayView: UIViewRepresentable {
         }
         
         func didSelectEvent(_ event: Event, type: CalendarType, frame: CGRect?) {
-            view.viewModel.lastSelectedEventId = event.ID
+            selectedEventID = event.ID
         }
     }
     

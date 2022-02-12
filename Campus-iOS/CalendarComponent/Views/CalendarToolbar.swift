@@ -8,18 +8,33 @@
 import SwiftUI
 
 struct CalendarToolbar: View {
+    @ObservedObject var model: Model
     @ObservedObject var viewModel: CalendarViewModel
+    
+    @Binding var selectedEventID: String?
+    @Binding var isTodayPressed: Bool
     
     var body: some View {
         HStack() {
-            Button(action: {viewModel.showEventsList.toggle()}) {
-                Image(systemName: "list.bullet")
+            NavigationLink(destination:
+                VStack{
+                    GeometryReader { geo in
+                        CalendarDisplayView(events: viewModel.events.map({ $0.kvkEvent }), type: .list, selectedEventID: self.$selectedEventID, frame: CalendarContentView.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        .navigationBarTitle(Text("Events"))
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        ProfileToolbar(model: self.model)
+                    }
+                }
+            ) {
+                Label("", systemImage: "list.bullet")
             }
-            .sheet(isPresented: $viewModel.showEventsList) {
-                Text("Dummy Calendar Events")
-            }
+
             Spacer().frame(width: 15)
-            Button(action: {}) {
+            Button(action: { self.isTodayPressed = true }) {
                 Text("Today")
             }
         }
@@ -27,7 +42,12 @@ struct CalendarToolbar: View {
 }
 
 struct CalendarToolbar_Previews: PreviewProvider {
+    
+    @State static var selectedEventId: String? = "test123"
+    @State static var todayPressed = false
+    static var model = MockModel()
+    
     static var previews: some View {
-        CalendarToolbar(viewModel: CalendarViewModel())
+        CalendarToolbar(model: model, viewModel: CalendarViewModel(), selectedEventID: $selectedEventId, isTodayPressed: $todayPressed)
     }
 }
