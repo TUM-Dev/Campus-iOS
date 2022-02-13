@@ -93,6 +93,7 @@
 		36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */; };
 		36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */; };
 		36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */; };
+		36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */; };
 		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
 		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
@@ -270,6 +271,7 @@
 		36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSingleEventView.swift; sourceTree = "<group>"; };
 		36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsEventInfoView.swift; sourceTree = "<group>"; };
 		36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchListView.swift; sourceTree = "<group>"; };
+		36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchListView.swift; sourceTree = "<group>"; };
 		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
@@ -973,6 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				36BB6F8227B39B4300F224AB /* LectureSearchView.swift */,
+				36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1269,6 +1272,7 @@
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
+				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
