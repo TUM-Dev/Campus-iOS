@@ -201,5 +201,11 @@ extension UIColor {
             return traitCollection.userInterfaceStyle == .dark ? dark : white
         }
     }
-    
+}
+
+extension String: Identifiable {
+    public typealias ID = Int
+    public var id: Int {
+        return hash
+    }
 }

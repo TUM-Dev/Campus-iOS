@@ -58,7 +58,6 @@ struct TumCalendarStyle {
         style.month.colorBackgroundCurrentDate = .tumBlue
         style.month.colorBackgroundSelectDate = .black
         style.month.isHiddenDotInTitle = false
-        style.month.selectCalendarType = .day
         style.month.isAnimateSelection = true
         style.month.colorTitleCurrentDate = .tumBlue
         style.month.weekDayAlignment = .center

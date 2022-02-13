@@ -9,6 +9,7 @@ import SwiftUI
 import KVKCalendar
 
 struct CalendarContentView: View {
+    
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
@@ -51,17 +52,17 @@ struct CalendarContentView: View {
                 }
             }
         }
-        .sheet(item: self.$selectedEventID, onDismiss: {}) { eventId in
-            Text("Event with id \(eventId) is pressed!")
+        .sheet(item: self.$selectedEventID) { eventId in
+            CalendarSingleEventView(
+                event: self.viewModel.events
+                    .first(where: { $0.id.description == eventId })
+            )
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 CalendarToolbar(model: self.model, viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
             }
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ProfileToolbar(model: model)
-            }
-            ToolbarItem(placement: .navigation) {
+            ToolbarItem(placement: .principal) {
                 Picker("Calendar Type", selection: $selectedType) {
                     ForEach(CalendarType.allCases, id: \.self) {
                         switch $0 {
@@ -87,6 +88,9 @@ struct CalendarContentView: View {
                         .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
                 }
             }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ProfileToolbar(model: model)
+            }
         }
     }
     
@@ -102,12 +106,5 @@ struct CalendarContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         CalendarContentView(model: model)
-    }
-}
-
-extension String: Identifiable {
-    public typealias ID = Int
-    public var id: Int {
-        return hash
     }
 }

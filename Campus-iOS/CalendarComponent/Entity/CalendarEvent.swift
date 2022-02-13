@@ -90,6 +90,26 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
         return event
     }
     
+    init(
+        id: Int64,
+        status: String? = nil,
+        url: URL? = nil,
+        title: String? = nil,
+        descriptionText:String? = nil,
+        startDate: Date? = nil,
+        endDate: Date? = nil,
+        location: String? = nil) {
+            
+        self.id = id
+        self.status = status
+        self.url = url
+        self.title = title
+        self.descriptionText = descriptionText
+        self.startDate = startDate
+        self.endDate = endDate
+        self.location = location
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
