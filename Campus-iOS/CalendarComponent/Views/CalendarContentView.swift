@@ -10,16 +10,16 @@ import KVKCalendar
 
 struct CalendarContentView: View {
     
+    @EnvironmentObject private var model: Model
+    
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
     
-    @ObservedObject var model: Model
     @ObservedObject var viewModel: CalendarViewModel
     
     
-    init(model: Model) {
-        self.model = model
+    init() {
         self.viewModel = CalendarViewModel()
     }
     
@@ -102,9 +102,7 @@ struct CalendarContentView: View {
 }
 struct CalendarContentView_Previews: PreviewProvider {
     
-    static var model = MockModel()
-    
     static var previews: some View {
-        CalendarContentView(model: model)
+        CalendarContentView()
     }
 }

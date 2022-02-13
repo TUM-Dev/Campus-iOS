@@ -15,7 +15,10 @@ struct LectureSearchView: View {
     var body: some View {
         List {
             ForEach(self.viewModel.result) { lecture in
-                NavigationLink(destination: LectureDetailsScreen(lecture: lecture)) {
+                NavigationLink(
+                    destination: LectureDetailsScreen(lecture: lecture)
+                                    .navigationBarTitleDisplayMode(.inline)
+                ) {
                     HStack {
                         Text(lecture.title)
                         Spacer()

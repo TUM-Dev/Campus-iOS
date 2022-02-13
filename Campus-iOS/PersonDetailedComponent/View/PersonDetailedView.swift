@@ -60,7 +60,10 @@ struct PersonDetailedView: View {
         .background(Color(.systemGroupedBackground))
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                NavigationLink(destination: AddToContactsView(contact: self.viewModel.cnContact)) {
+                NavigationLink(
+                    destination: AddToContactsView(contact: self.viewModel.cnContact)
+                        .navigationBarTitleDisplayMode(.inline)
+                ) {
                     Label("", systemImage: "person.crop.circle.badge.plus")
                 }.disabled(self.viewModel.sections?.count ?? 0 < 2)
             }

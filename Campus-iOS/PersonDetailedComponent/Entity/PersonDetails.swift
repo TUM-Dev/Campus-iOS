@@ -98,10 +98,6 @@ struct PersonDetails: Decodable {
         self.officialContact = try container.decode([String: String].self, forKey: .officialContact).compactMap { ContactInfo(key: $0.key, value: $0.value) }
         self.privateContact = try container.decode([String: String].self, forKey: .privateContact).compactMap { ContactInfo(key: $0.key, value: $0.value) }
         
-        if let imageString = try container.decodeIfPresent(String.self, forKey: .imageData) {
-            print(imageString)
-        }
-        
         if let imageString = try container.decodeIfPresent(String.self, forKey: .imageData), let imageData = Data(base64Encoded: imageString, options: [.ignoreUnknownCharacters]), let uiImage = UIImage(data: imageData)  {
             self.image = uiImage
         } else {

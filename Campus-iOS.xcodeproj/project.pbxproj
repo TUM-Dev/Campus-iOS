@@ -91,6 +91,8 @@
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
 		36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */; };
 		36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */; };
+		36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */; };
+		36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */; };
 		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
 		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
@@ -266,6 +268,8 @@
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
 		36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumCalendarStyle.swift; sourceTree = "<group>"; };
 		36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSingleEventView.swift; sourceTree = "<group>"; };
+		36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsEventInfoView.swift; sourceTree = "<group>"; };
+		36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchListView.swift; sourceTree = "<group>"; };
 		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 				36108BB227A3046B007DC62D /* LectureDetailsDetailedInfoView.swift */,
 				36108BB327A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift */,
 				36108BB427A3046B007DC62D /* LectureDetailsLinkView.swift */,
+				36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */,
 			);
 			path = LectureDetailsViews;
 			sourceTree = "<group>";
@@ -907,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				36BB6F5F27AFCDFA00F224AB /* PersonSearchView.swift */,
+				36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1318,6 +1324,7 @@
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
+				36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
@@ -1349,6 +1356,7 @@
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
+				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,

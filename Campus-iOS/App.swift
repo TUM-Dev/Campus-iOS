@@ -47,7 +47,7 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView(model: model)
+                CalendarContentView()
                     .navigationTitle("Calendar")
             }
             .tag(0)
