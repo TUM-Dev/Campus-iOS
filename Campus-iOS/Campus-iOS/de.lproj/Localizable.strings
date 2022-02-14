@@ -51,6 +51,9 @@
 "GET IN CONTACT" = "KONTAKTIERE UNS";
 "Use build-in Web View" = "Web View benutzen";
 "Cancel" = "Abbrechen";
+"News" = "Nachrichten";
+"Movies" = "Filme";
+"Profile" = "Profil";
 
 // Login.storybroad
 
@@ -71,12 +74,13 @@
 "3" = "3";
 "Authorize Token" = "Token authorisieren";
 
-// Calendar
-
+// CalendarView
 "Day" = "Tag";
 "Week" = "Woche";
 "Month" = "Monat";
 "Year" = "Jahr";
+"Today" = "Heute";
+"This Meeting" = "Dieser Termin";
 
 // PersonSearch
 "Unable to find person" = "Person kann nicht gefunden werden";
@@ -88,3 +92,4 @@
 // LectureSearch
 "Lecture Search" = "Vorlesungssuche";
 "Unable to find lecture" = "Vorlesung kann nicht gefunden werden";
+"Choose Speaker" = "Sprecher auswählen";

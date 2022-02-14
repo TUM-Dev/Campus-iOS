@@ -23,6 +23,15 @@ struct LectureDetailsBasicInfoView: View {
         return viewModel
     }
     
+    var actionSheetButtons: [ActionSheet.Button] {
+        self.lectureDetails.speakerArray.map( { speaker in
+            ActionSheet.Button.default(Text(speaker), action: {
+                self.chosenSpeaker = speaker
+                self.navigationLinkActive = true
+            })
+        }) + [ActionSheet.Button.cancel()]
+    }
+    
     var body: some View {
         GroupBox(
             label: GroupBoxLabelView(
@@ -69,14 +78,8 @@ struct LectureDetailsBasicInfoView: View {
                 }
             }
         }
-        .confirmationDialog("Choose Speaker", isPresented: self.$showActionSheet) {
-            ForEach( self.lectureDetails.speakerArray ) { speaker in
-                Button(speaker) {
-                    self.chosenSpeaker = speaker
-                    self.navigationLinkActive = true
-                }
-            }
-            Button("Cancel", role: .cancel) { }
+        .actionSheet(isPresented: self.$showActionSheet) {
+            ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
         }
         .frame(
               maxWidth: .infinity,

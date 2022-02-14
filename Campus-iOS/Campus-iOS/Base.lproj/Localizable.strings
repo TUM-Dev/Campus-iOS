@@ -51,6 +51,9 @@
 "GET IN CONTACT" = "GET IN CONTACT";
 "Use build-in Web View" = "Web View benutzen";
 "Cancel" = "Cancel";
+"News" = "News";
+"Movies" = "Movies";
+"Profile" = "Profile";
 
 "animation showing the token activation" = "animation showing the token activation";
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
@@ -77,20 +80,22 @@
 "3" = "3";
 "Authorize Token" = "Authorize Token";
 
-// Calendar
-
+// CalendarView
 "Day" = "Day";
 "Week" = "Week";
 "Month" = "Month";
 "Year" = "Year";
+"Today" = "Today";
+"This Meeting" = "This Meeting";
 
 // PersonSearch
 "Unable to find person" = "Unable to find person";
 "Person Search" = "Person Search";
 
 // Tuition
-"Open Amount" = "Offener Betrag";
+"Open Amount" = "Open Amount";
 
 // LectureSearch
 "Lecture Search" = "Lecture Search";
 "Unable to find lecture" = "Unable to find lecture";
+"Choose Speaker" = "Choose Speaker";

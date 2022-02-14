@@ -28,7 +28,7 @@ struct LectureDetailsEventInfoView: View {
         GroupBox(
             label: GroupBoxLabelView(
                 iconName: "calendar.badge.clock",
-                text: "This Meeting"
+                text: "This Meeting".localized
             )
             .padding(.bottom, 10)
         ) {
