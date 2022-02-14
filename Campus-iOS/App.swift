@@ -8,15 +8,17 @@
 import SwiftUI
 import MapKit
 import KVKCalendar
+import Firebase
 
 @main
 struct CampusApp: App {
-    @StateObject var model: Model = MockModel()
+    @StateObject var model: Model = Model()
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     
     init() {
+        FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
