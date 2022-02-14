@@ -38,12 +38,9 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     typealias Completion = (Result<String,Error>) -> Void
 
     private let lock = NSLock()
+    private let sessionManager = Session()
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
-
-    // TODO: comment to be removed later
-    // private let coreDataStack = CampusApp.persistentContainer
-    private let sessionManager = Session()
 
     private static let keychain = Keychain(service: "de.tum.campusapp")
         .synchronizable(true)
@@ -152,8 +149,6 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             strongSelf.requestsToRetry.removeAll()
         }
     }
-
-    // TODO: Migrate data from old tum campus app
 
     func createToken(tumID: String, completion: @escaping Completion) {
         guard !isRefreshing else { return }

@@ -43,6 +43,10 @@ enum LectureDetailsComponents {
         let curriculumURL: URL?
         let scheduledDatesURL: URL?
         let examDateURL: URL?
+        
+        var speakerArray: [String] {
+            self.speaker.split(separator: ",").map({ $0.trimmingCharacters(in: .whitespaces) })
+        }
 
         /*
          <stp_sp_nr>220007563</stp_sp_nr>

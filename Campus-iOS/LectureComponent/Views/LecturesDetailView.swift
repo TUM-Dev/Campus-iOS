@@ -22,6 +22,7 @@ struct LecturesDetailView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     
                     if let event = self.calendarEvent {
+                        // TODO: Should open room search once implemented
                         LectureDetailsEventInfoView(event: event)
                     }
                     

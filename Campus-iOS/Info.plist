@@ -12,6 +12,6 @@
 		<string>logo-white</string>
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
-	<string>TODO</string>
+	<string>TUM Campus App contains a calendar showing university events</string>
 </dict>
 </plist>
