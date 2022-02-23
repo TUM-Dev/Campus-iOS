@@ -89,6 +89,13 @@
 		36982BD827A2739000515847 /* Collapsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36982BD727A2739000515847 /* Collapsible.swift */; };
 		3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */; };
 		3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */; };
+		36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */; };
+		36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */; };
+		36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */; };
+		36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */; };
+		36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */; };
+		36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */; };
+		36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */; };
 		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
 		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
@@ -133,6 +140,8 @@
 		36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F7E27B386D100F224AB /* AddToContactsView.swift */; };
 		36BB6F8327B39B4300F224AB /* LectureSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8227B39B4300F224AB /* LectureSearchView.swift */; };
 		36BB6F8627B39C5300F224AB /* LectureSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */; };
+		36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8927B3D21200F224AB /* CalendarEvent.swift */; };
+		36BB6F8D27B3F25A00F224AB /* NSMutableString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BB6F8C27B3F25A00F224AB /* NSMutableString+Extensions.swift */; };
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
 		36BBE7322798AFE10018FD3F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7312798AFE10018FD3F /* News.swift */; };
 		36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7332798B04D0018FD3F /* NewsSource.swift */; };
@@ -260,6 +269,13 @@
 		36982BD727A2739000515847 /* Collapsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collapsible.swift; sourceTree = "<group>"; };
 		3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRoundedBorderTextFieldStyle.swift; sourceTree = "<group>"; };
 		3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfirmationView.swift; sourceTree = "<group>"; };
+		36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumCalendarStyle.swift; sourceTree = "<group>"; };
+		36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSingleEventView.swift; sourceTree = "<group>"; };
+		36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsEventInfoView.swift; sourceTree = "<group>"; };
+		36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchListView.swift; sourceTree = "<group>"; };
+		36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchListView.swift; sourceTree = "<group>"; };
+		36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMyTumSection.swift; sourceTree = "<group>"; };
+		36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
@@ -304,6 +320,8 @@
 		36BB6F7E27B386D100F224AB /* AddToContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToContactsView.swift; sourceTree = "<group>"; };
 		36BB6F8227B39B4300F224AB /* LectureSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchView.swift; sourceTree = "<group>"; };
 		36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchViewModel.swift; sourceTree = "<group>"; };
+		36BB6F8927B3D21200F224AB /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarEvent.swift; path = "Campus-iOS/CalendarComponent/Entity/CalendarEvent.swift"; sourceTree = SOURCE_ROOT; };
+		36BB6F8C27B3F25A00F224AB /* NSMutableString+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableString+Extensions.swift"; sourceTree = "<group>"; };
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		36BBE7312798AFE10018FD3F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		36BBE7332798B04D0018FD3F /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
@@ -434,6 +452,7 @@
 				36108BB227A3046B007DC62D /* LectureDetailsDetailedInfoView.swift */,
 				36108BB327A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift */,
 				36108BB427A3046B007DC62D /* LectureDetailsLinkView.swift */,
+				36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */,
 			);
 			path = LectureDetailsViews;
 			sourceTree = "<group>";
@@ -701,6 +720,7 @@
 				366F0E8327580CFB0091651D /* App.swift */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
+				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
 				366F0E8927580CFD0091651D /* Preview Content */,
 			);
@@ -899,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				36BB6F5F27AFCDFA00F224AB /* PersonSearchView.swift */,
+				36AD5CF727B96AD200DAE143 /* PersonSearchListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -908,6 +929,7 @@
 			children = (
 				100803452764E2C50013ED0E /* ProfileToolbar.swift */,
 				100803472764E37A0013ED0E /* ProfileView.swift */,
+				36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -959,6 +981,7 @@
 			isa = PBXGroup;
 			children = (
 				36BB6F8227B39B4300F224AB /* LectureSearchView.swift */,
+				36AD5CF927B9711B00DAE143 /* LectureSearchListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -969,6 +992,15 @@
 				36BB6F8527B39C5300F224AB /* LectureSearchViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36BB6F8B27B3D58700F224AB /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				36BB6F8927B3D21200F224AB /* CalendarEvent.swift */,
+				36AD5CF127B7FEAD00DAE143 /* TumCalendarStyle.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		36BBE72D27989F6E0018FD3F /* HelperViews */ = {
@@ -1020,7 +1052,7 @@
 		36E9649E277492AE0055777F /* CalendarComponent */ = {
 			isa = PBXGroup;
 			children = (
-				36E964A1277492C70055777F /* Service */,
+				36BB6F8B27B3D58700F224AB /* Entity */,
 				36E964A0277492C00055777F /* ViewModel */,
 				36E9649F277492B70055777F /* Views */,
 			);
@@ -1033,6 +1065,7 @@
 				36E964A22774932B0055777F /* CalendarToolbar.swift */,
 				36E964A6277498540055777F /* CalendarContentView.swift */,
 				36E964AB277499860055777F /* CalendarDisplayView.swift */,
+				36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1045,18 +1078,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		36E964A1277492C70055777F /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		36FF90632773BB8100F4C785 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				36FF90642773BB8100F4C785 /* Extensions.swift */,
 				97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */,
+				36BB6F8C27B3F25A00F224AB /* NSMutableString+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1191,6 +1218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */,
+				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 			);
@@ -1223,6 +1251,7 @@
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
+				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
@@ -1238,9 +1267,11 @@
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
+				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
 				36108BE227A304B5007DC62D /* Menu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
+				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
 				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
@@ -1249,6 +1280,7 @@
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
+				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
@@ -1268,10 +1300,12 @@
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
+				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,
 				36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */,
 				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
+				36BB6F8D27B3F25A00F224AB /* NSMutableString+Extensions.swift in Sources */,
 				36108BED27A304B6007DC62D /* MapView.swift in Sources */,
 				36AF61E827A2FD7800FEBD98 /* AlertErrorHandler.swift in Sources */,
 				36BB6F5327AFCCB500F224AB /* PersonDetailedView.swift in Sources */,
@@ -1302,6 +1336,7 @@
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
+				36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
@@ -1333,6 +1368,7 @@
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
+				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,

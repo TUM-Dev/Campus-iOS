@@ -13,33 +13,15 @@ struct LectureSearchView: View {
     @State var searchText = ""
     
     var body: some View {
-        List {
-            ForEach(self.viewModel.result) { lecture in
-                NavigationLink(destination: LectureDetailsScreen(lecture: lecture)) {
-                    HStack {
-                        Text(lecture.title)
-                        Spacer()
-                        Text(lecture.eventType)
-                            .foregroundColor(Color(.secondaryLabel))
-                    }
+        LectureSearchListView(viewModel: self.viewModel)
+            .background(Color(.systemGroupedBackground))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .onChange(of: self.searchText) { searchValue in
+                if(searchValue.count > 3) {
+                    self.viewModel.fetch(searchString: searchValue)
                 }
             }
-            if(viewModel.errorMessage != "") {
-                VStack {
-                    Spacer()
-                    Text(self.viewModel.errorMessage).foregroundColor(.gray)
-                    Spacer()
-                }
-            }
-        }
-        .background(Color(.systemGroupedBackground))
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: self.searchText) { searchValue in
-            if(searchValue.count > 3) {
-                self.viewModel.fetch(searchString: searchValue)
-            }
-        }
-        .animation(.default, value: self.viewModel.result)
+            .animation(.default, value: self.viewModel.result)
     }
 }
 

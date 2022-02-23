@@ -7,23 +7,101 @@
 
 import SwiftUI
 import KVKCalendar
+
 struct CalendarContentView: View {
-    @State var events: [Event] = []
-    @State var selectedType: TumCalendarTypes = .day
+    
+    @EnvironmentObject private var model: Model
+    
+    @State var selectedType: CalendarType = .week
+    @State var selectedEventID: String?
+    @State var isTodayPressed: Bool = false
+    
+    @ObservedObject var viewModel: CalendarViewModel
+    
+    
+    init() {
+        self.viewModel = CalendarViewModel()
+    }
     
     var body: some View {
         VStack{
-            Picker("Calendar Type", selection: $selectedType) {
-                ForEach(TumCalendarTypes.allCases, id: \.self) {
-                    Text($0.localizedString)
+            
+            GeometryReader { geo in
+                // workaround since passing the calendar type to the view does not work
+                switch self.selectedType {
+                case .week:
+                    CalendarDisplayView(
+                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        type: .week,
+                        selectedEventID: self.$selectedEventID,
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                case .day:
+                    CalendarDisplayView(
+                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        type: .day,
+                        selectedEventID: self.$selectedEventID,
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                case .month:
+                    CalendarDisplayView(
+                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        type: .month,
+                        selectedEventID: self.$selectedEventID,
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                default:
+                    EmptyView()
                 }
             }
-            .pickerStyle(.segmented)
-            CalendarDisplayView(events: $events, type: $selectedType)
         }
+        .sheet(item: self.$selectedEventID) { eventId in
+            CalendarSingleEventView(
+                event: self.viewModel.events
+                    .first(where: { $0.id.description == eventId })
+            )
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                CalendarToolbar(model: self.model, viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
+            }
+            ToolbarItem(placement: .principal) {
+                Picker("Calendar Type", selection: $selectedType) {
+                    ForEach(CalendarType.allCases, id: \.self) {
+                        switch $0 {
+                        case .week:
+                            Text("Week")
+                        case .day:
+                            Text("Day")
+                        case .month:
+                            Text("Month")
+                        default:
+                            EmptyView()
+                        }
+                    }
+                }
+                .pickerStyle(.segmented)
+                .onAppear {
+                    UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
+                    UISegmentedControl.appearance()
+                        .selectedSegmentTintColor = .tumBlue
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
+                }
+            }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ProfileToolbar(model: model)
+            }
+        }
+    }
+    
+    static func getSafeAreaFrame(geometry: GeometryProxy) -> CGRect {
+        let origin = UIScreen.main.bounds.origin
+        
+        return CGRect(x: origin.x, y: origin.y, width: geometry.size.width, height: geometry.size.height)
     }
 }
 struct CalendarContentView_Previews: PreviewProvider {
+    
     static var previews: some View {
         CalendarContentView()
     }

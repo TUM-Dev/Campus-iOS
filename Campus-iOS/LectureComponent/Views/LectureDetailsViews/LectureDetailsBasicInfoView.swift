@@ -8,7 +8,29 @@
 import SwiftUI
 
 struct LectureDetailsBasicInfoView: View {
+    
+    @State var showActionSheet = false
+    @State private var navigationLinkActive = false
+    @State private var chosenSpeaker = ""
+    
     var lectureDetails: LectureDetails
+    
+    var viewModelPersonSearch: PersonSearchViewModel {
+        let viewModel = PersonSearchViewModel()
+        if(self.chosenSpeaker.count > 3) {
+            viewModel.fetch(searchString: self.chosenSpeaker)
+        }
+        return viewModel
+    }
+    
+    var actionSheetButtons: [ActionSheet.Button] {
+        self.lectureDetails.speakerArray.map( { speaker in
+            ActionSheet.Button.default(Text(speaker), action: {
+                self.chosenSpeaker = speaker
+                self.navigationLinkActive = true
+            })
+        }) + [ActionSheet.Button.cancel()]
+    }
     
     var body: some View {
         GroupBox(
@@ -18,6 +40,12 @@ struct LectureDetailsBasicInfoView: View {
             )
             .padding(.bottom, 10)
         ) {
+            NavigationLink(isActive: self.$navigationLinkActive, destination: {
+                PersonSearchView(viewModel: self.viewModelPersonSearch, searchText: self.chosenSpeaker)
+            }) {
+                EmptyView()
+            }
+            
             VStack(alignment: .leading, spacing: 8) {
                 LectureDetailsBasicInfoRowView(
                     iconName: "hourglass",
@@ -38,6 +66,9 @@ struct LectureDetailsBasicInfoView: View {
                     iconName: "person.fill",
                     text: lectureDetails.speaker
                 )
+                .onTapGesture {
+                    self.showActionSheet = true
+                }
                 if let firstMeeting = lectureDetails.firstScheduledDate {
                     Divider()
                     LectureDetailsBasicInfoRowView(
@@ -46,6 +77,9 @@ struct LectureDetailsBasicInfoView: View {
                     )
                 }
             }
+        }
+        .actionSheet(isPresented: self.$showActionSheet) {
+            ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
         }
         .frame(
               maxWidth: .infinity,

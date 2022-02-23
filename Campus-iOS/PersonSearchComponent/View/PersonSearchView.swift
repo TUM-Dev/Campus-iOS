@@ -9,32 +9,21 @@ import SwiftUI
 
 struct PersonSearchView: View {
     
+    @Environment(\.isSearching) private var isSearching
+    
     @ObservedObject var viewModel = PersonSearchViewModel()
     @State var searchText = ""
     
     var body: some View {
-        List {
-            ForEach(self.viewModel.result, id: \.nr) { person in
-                NavigationLink(destination: PersonDetailedView(withPerson: person)) {
-                    Text(person.fullName)
+        PersonSearchListView(viewModel: self.viewModel)
+            .background(Color(.systemGroupedBackground))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .onChange(of: self.searchText) { searchValue in
+                if(searchValue.count > 3) {
+                    self.viewModel.fetch(searchString: searchValue)
                 }
             }
-            if(viewModel.errorMessage != "") {
-                VStack {
-                    Spacer()
-                    Text(self.viewModel.errorMessage).foregroundColor(.gray)
-                    Spacer()
-                }
-            }
-        }
-        .background(Color(.systemGroupedBackground))
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-        .onChange(of: self.searchText) { searchValue in
-            if(searchValue.count > 3) {
-                self.viewModel.fetch(searchString: searchValue)
-            }
-        }
-        .animation(.default, value: self.viewModel.result)
+            .animation(.default, value: self.viewModel.result)
     }
 }
 

@@ -192,3 +192,20 @@ extension View {
         }
     }
 }
+
+extension UIColor {
+    
+    @available(iOS 13, *)
+    static func useForStyle(dark: UIColor, white: UIColor) -> UIColor {
+        return UIColor { (traitCollection: UITraitCollection) -> UIColor in
+            return traitCollection.userInterfaceStyle == .dark ? dark : white
+        }
+    }
+}
+
+extension String: Identifiable {
+    public typealias ID = Int
+    public var id: Int {
+        return hash
+    }
+}
