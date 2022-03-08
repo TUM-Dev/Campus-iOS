@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-import MapKit
 import CoreLocation
-import Alamofire
 
 struct PanelContent: View {
     @Binding var zoomOnUser: Bool
@@ -17,61 +15,46 @@ struct PanelContent: View {
     @Binding var selectedCanteen: Cafeteria?
     
     @State private var searchString = ""
-    @State private var canteenForMealPlan: Cafeteria?
-    @State private var goToMealPlan = false
         
-    let endpoint = EatAPI.canteens
-    let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
     
     private let handleThickness = CGFloat(0)
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: handleThickness / 2.0)
-                .frame(width: .infinity, height: handleThickness)
-                .foregroundColor(Color.secondary)
-                .padding(5)
-            VStack {
-                HStack {
-                    Button (action: {
-                        zoomOnUser = true
-                        if panelPosition == "up" {
-                            panelPosition = "pushMid"
-                        }
-                    }) {
-                        Image(systemName: "location")
-                            .font(.title2)
+        VStack {
+            HStack {
+                Button (action: {
+                    zoomOnUser = true
+                    if panelPosition == "up" {
+                        panelPosition = "pushMid"
                     }
-                    .padding(.horizontal, 10)
-                    
-                    SearchBar(panelPosition: $panelPosition,
-                              searchString: $searchString)
-                    
-                    Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
-                                   height: 1.5 * UIScreen.main.bounds.width/10)
+                }) {
+                    Image(systemName: "location")
+                        .font(.title2)
                 }
-                ZStack {
-                    ProgressView()
-                    ScrollViewReader { proxy in
-                        List {
-                            ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                                PanelRow(cafeteria: self.$canteens[id])
-                                .onTapGesture {
-                                    withAnimation {
-                                        proxy.scrollTo(canteens[id], anchor: .top)
-                                        
-                                        selectedCanteen = canteens[id]
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                    .searchable(text: $searchString, prompt: "Look for something")
-                    .listStyle(PlainListStyle())
-                }
+                .padding(.horizontal, 10)
+                
+                SearchBar(panelPosition: $panelPosition,
+                          searchString: $searchString)
+                
+                Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
+                               height: 1.5 * UIScreen.main.bounds.width/10)
             }
+            
+            List {
+                ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                    PanelRow(cafeteria: self.$canteens[id])
+                    .onTapGesture {
+                        selectedCanteen = canteens[id]
+                    }
+                }
+                
+                //TODO: check for better way, to make last items in list available
+                Spacer().frame(width: UIScreen.main.bounds.width,
+                               height: 0.25 * UIScreen.main.bounds.height)
+            }
+            .searchable(text: $searchString, prompt: "Look for something")
+            .listStyle(PlainListStyle())
         }
     }
 }

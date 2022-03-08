@@ -90,9 +90,9 @@ enum PanelPosition: CGFloat {
     case top, middle, bottom
     var rawValue: CGFloat {
         switch self {
-        case .top: return 0.5 * screenHeight/3
-        case .middle: return 1.5 * screenHeight/3
-        case .bottom: return 3.2 * screenHeight/4
+        case .top: return (1/6) * screenHeight
+        case .middle: return (1/2) * screenHeight
+        case .bottom: return (4/5) * screenHeight
         }
     }
 }

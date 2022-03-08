@@ -24,7 +24,7 @@ struct MapView: View {
                   selectedCanteen: $viewModel.selectedCanteen)
             Toolbar(selectedCanteen: $viewModel.selectedCanteen)
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.vertical)
         .navigationTitle("Map")
         .navigationBarHidden(true)
         .onAppear() {
