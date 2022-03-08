@@ -9,32 +9,27 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @State var zoomOnUser: Bool
-    @State var panelPosition: String
-    @State var canteens: [Cafeteria]
-    @State var selectedCanteenName: String
-    @State var selectedAnnotationIndex: Int
-    @State var selectedCanteen: Cafeteria
+    @ObservedObject var viewModel: MapViewModel
     
     var body: some View {
         ZStack {
             MapContent(
-                zoomOnUser: $zoomOnUser,
-                panelPosition: $panelPosition,
-                canteens: $canteens,
-                selectedCanteenName: $selectedCanteenName,
-                selectedAnnotationIndex: $selectedAnnotationIndex)
-            Panel(zoomOnUser: $zoomOnUser,
-                  panelPosition: $panelPosition,
-                  canteens: $canteens,
-                  selectedCanteenName: $selectedCanteenName,
-                  selectedAnnotationIndex: $selectedAnnotationIndex,
-                  selectedCanteen: $selectedCanteen)
-            Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName, cafeteria: $selectedCanteen)
+                zoomOnUser: $viewModel.zoomOnUser,
+                panelPosition: $viewModel.panelPosition,
+                canteens: $viewModel.canteens,
+                selectedCanteen: $viewModel.selectedCanteen)
+            Panel(zoomOnUser: $viewModel.zoomOnUser,
+                  panelPosition: $viewModel.panelPosition,
+                  canteens: $viewModel.canteens,
+                  selectedCanteen: $viewModel.selectedCanteen)
+            Toolbar(selectedCanteen: $viewModel.selectedCanteen)
         }
         .edgesIgnoringSafeArea(.all)
         .navigationTitle("Map")
         .navigationBarHidden(true)
+        .onAppear() {
+            viewModel.fetchCanteens()
+        }
     }
 }
 

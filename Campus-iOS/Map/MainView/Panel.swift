@@ -14,9 +14,7 @@ struct Panel: View {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
     @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
-    @Binding var selectedCanteen: Cafeteria
+    @Binding var selectedCanteen: Cafeteria?
 
     var body: some View {
         let drag = DragGesture()
@@ -29,8 +27,6 @@ struct Panel: View {
             PanelContent(zoomOnUser: $zoomOnUser,
                          panelPosition: $panelPosition,
                          canteens: $canteens,
-                         selectedCanteenName: $selectedCanteenName,
-                         selectedAnnotationIndex: $selectedAnnotationIndex,
                          selectedCanteen: $selectedCanteen)
         }
         .frame(height: UIScreen.main.bounds.height)

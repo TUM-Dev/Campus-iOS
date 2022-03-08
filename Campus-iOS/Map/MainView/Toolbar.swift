@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct Toolbar: View {
-    @Binding var zoomOnUser: Bool
-    @Binding var selectedCanteenName: String
-    @Binding var cafeteria: Cafeteria
+    @Binding var selectedCanteen: Cafeteria?
     
     var body: some View {
-        if selectedCanteenName != "" {
+        if let cafeteria = selectedCanteen {
             HStack {
                 Button(action: {
                     print(cafeteria.name)

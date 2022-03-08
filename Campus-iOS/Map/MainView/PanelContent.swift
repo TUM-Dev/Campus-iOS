@@ -14,9 +14,7 @@ struct PanelContent: View {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
     @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
-    @Binding var selectedCanteen: Cafeteria
+    @Binding var selectedCanteen: Cafeteria?
     
     @State private var searchString = ""
     @State private var canteenForMealPlan: Cafeteria?
@@ -38,7 +36,6 @@ struct PanelContent: View {
                 HStack {
                     Button (action: {
                         zoomOnUser = true
-                        selectedAnnotationIndex = 0
                         if panelPosition == "up" {
                             panelPosition = "pushMid"
                         }
@@ -49,9 +46,7 @@ struct PanelContent: View {
                     .padding(.horizontal, 10)
                     
                     SearchBar(panelPosition: $panelPosition,
-                              searchString: $searchString,
-                              selectedCanteenName: $selectedCanteenName,
-                              selectedAnnotationIndex: $selectedAnnotationIndex)
+                              searchString: $searchString)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
                                    height: 1.5 * UIScreen.main.bounds.width/10)
@@ -64,19 +59,9 @@ struct PanelContent: View {
                                 PanelRow(cafeteria: self.$canteens[id])
                                 .onTapGesture {
                                     withAnimation {
-                                        selectedCanteenName = canteens[id].name
-                                        selectedAnnotationIndex = canteens.firstIndex(of: canteens[id])!
                                         proxy.scrollTo(canteens[id], anchor: .top)
                                         
                                         selectedCanteen = canteens[id]
-                                    }
-                                }
-                                .task(id: selectedAnnotationIndex) {
-                                    withAnimation(Animation.linear(duration: 0.0001)) {
-                                        if 0...canteens.count ~= selectedAnnotationIndex {
-                                            proxy.scrollTo(canteens[selectedAnnotationIndex], anchor: .top)
-                                            selectedAnnotationIndex = -1
-                                        }
                                     }
                                 }
                             }
@@ -86,9 +71,6 @@ struct PanelContent: View {
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
-                .onChange(of: selectedCanteenName) { newValue in
-                    print("SELECTED CANTEEN (Panelcontent): ", newValue)
-                }
             }
         }
     }
@@ -97,8 +79,6 @@ struct PanelContent: View {
 struct SearchBar: View {
     @Binding var panelPosition: String
     @Binding var searchString: String
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
     
     @State private var isEditing = false
     
@@ -131,8 +111,6 @@ struct SearchBar: View {
                 isEditing = false
                 searchString = ""
                 
-                selectedCanteenName = ""
-                selectedAnnotationIndex = -1
                 panelPosition = "pushDown"
                 
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -150,8 +128,6 @@ struct SearchBar: View {
         PanelContent(zoomOnUser: .constant(true),
                      panelPosition: .constant(""),
                      canteens: .constant([]),
-                     selectedCanteenName: .constant(""),
-                     selectedAnnotationIndex: .constant(0),
                      canteenForMealPlan: <#Cafeteria#>)
             .previewInterfaceOrientation(.portrait)
     }
