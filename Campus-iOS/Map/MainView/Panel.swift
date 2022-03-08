@@ -24,10 +24,16 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent(zoomOnUser: $zoomOnUser,
+            VStack{
+                PanelContent(zoomOnUser: $zoomOnUser,
                          panelPosition: $panelPosition,
                          canteens: $canteens,
                          selectedCanteen: $selectedCanteen)
+                
+                //TODO: check for better way, to make last items in list available
+                Spacer().frame(width: UIScreen.main.bounds.width,
+                               height: 0.25 * UIScreen.main.bounds.height)
+            }
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()

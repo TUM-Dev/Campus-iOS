@@ -25,16 +25,12 @@ struct Toolbar: View {
                 }) {
                     Image(systemName: "figure.walk").foregroundColor(Color.black)
                 }
-                
-                Divider().frame(width: 15)
-                
-                NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))) { Image(systemName: "doc.text").foregroundColor(Color.black) }
             }
             .mask(Rectangle())
-            .frame(width: 100, height: 40)
+            .frame(width: 50, height: 40)
             .background()
             .cornerRadius(10.0)
-            .position(x: 8 * UIScreen.main.bounds.width/10, y: 1.2 * UIScreen.main.bounds.height/10)
+            .position(x: 9 * UIScreen.main.bounds.width/10, y: 1.2 * UIScreen.main.bounds.height/10)
         }
     }
 }

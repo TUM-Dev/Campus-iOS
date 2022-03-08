@@ -15,46 +15,86 @@ struct PanelContent: View {
     @Binding var selectedCanteen: Cafeteria?
     
     @State private var searchString = ""
+    @State private var mealPlanViewModel: MealPlanViewModel?
         
     var locationManager = CLLocationManager()
     
     private let handleThickness = CGFloat(0)
     
     var body: some View {
-        VStack {
-            HStack {
-                Button (action: {
-                    zoomOnUser = true
-                    if panelPosition == "up" {
-                        panelPosition = "pushMid"
+        VStack{
+            if let canteen = selectedCanteen {
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(canteen.name)
+                            .bold()
+                            .font(.title3)
+                        Text(canteen.location.address)
+                            .font(.subheadline)
+                            .foregroundColor(Color.gray)
                     }
-                }) {
-                    Image(systemName: "location")
-                        .font(.title2)
+                    
+                    Spacer()
+
+                    Button(action: {
+                        selectedCanteen = nil
+                    }, label: {
+                        Image(systemName: "xmark")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(.all, 5)
+                                .background(Color.black.opacity(0.6))
+                                .clipShape(Circle())
+                                .accessibility(label:Text("Close"))
+                                .accessibility(hint:Text("Tap to close the screen"))
+                                .accessibility(addTraits: .isButton)
+                                .accessibility(removeTraits: .isImage)
+                        })
                 }
-                .padding(.horizontal, 10)
+                .padding(.all, 10)
                 
-                SearchBar(panelPosition: $panelPosition,
-                          searchString: $searchString)
+                if let viewModel = mealPlanViewModel{
+                    MealPlanView(viewModel: viewModel)
+                }
                 
-                Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
-                               height: 1.5 * UIScreen.main.bounds.width/10)
+                Spacer()
             }
-            
-            List {
-                ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                    PanelRow(cafeteria: self.$canteens[id])
-                    .onTapGesture {
-                        selectedCanteen = canteens[id]
+            else {
+                HStack {
+                    Button (action: {
+                        zoomOnUser = true
+                        if panelPosition == "up" {
+                            panelPosition = "pushMid"
+                        }
+                    }) {
+                        Image(systemName: "location")
+                            .font(.title2)
+                    }
+                    .padding(.horizontal, 10)
+                    
+                    SearchBar(panelPosition: $panelPosition,
+                              searchString: $searchString)
+                    
+                    Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
+                                   height: 1.5 * UIScreen.main.bounds.width/10)
+                }
+                
+                List {
+                    ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                        PanelRow(cafeteria: self.$canteens[id])
+                        .onTapGesture {
+                            selectedCanteen = canteens[id]
+                        }
                     }
                 }
-                
-                //TODO: check for better way, to make last items in list available
-                Spacer().frame(width: UIScreen.main.bounds.width,
-                               height: 0.25 * UIScreen.main.bounds.height)
+                .searchable(text: $searchString, prompt: "Look for something")
+                .listStyle(PlainListStyle())
             }
-            .searchable(text: $searchString, prompt: "Look for something")
-            .listStyle(PlainListStyle())
+        }
+        .onChange(of: selectedCanteen) { optionalCafeteria in
+            if let cafeteria = optionalCafeteria {
+                mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
+            }
         }
     }
 }

@@ -50,9 +50,6 @@ struct MealPlanView: View {
             }
         }
         .navigationTitle(viewModel.title)
-        .onAppear {
-            viewModel.fetch()
-        }
     }
     
     func getFormattedDate(date: Date, format: String) -> String{
