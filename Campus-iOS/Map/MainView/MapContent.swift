@@ -53,9 +53,11 @@ struct MapContent: UIViewRepresentable {
         focusOnCanteen(mapView: view)
         
         if canteens.count > 0 && setAnnotations {
-            let annotations = canteens.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
-            view.addAnnotations(annotations)
-            setAnnotations = false // only add canteen annotations once
+            DispatchQueue.main.async {
+                let annotations = canteens.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+                view.addAnnotations(annotations)
+                setAnnotations = false // only add canteen annotations once
+            }
         }
         
         let newCenter = screenHeight/3

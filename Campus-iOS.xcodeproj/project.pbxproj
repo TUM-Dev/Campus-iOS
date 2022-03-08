@@ -40,7 +40,6 @@
 		36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD327A304B5007DC62D /* MealPlanViewModel.swift */; };
 		36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD427A304B5007DC62D /* MenuViewModel.swift */; };
 		36108BE927A304B5007DC62D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD627A304B5007DC62D /* MenuView.swift */; };
-		36108BEA27A304B6007DC62D /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD827A304B5007DC62D /* Toolbar.swift */; };
 		36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD927A304B5007DC62D /* PanelRow.swift */; };
 		36108BED27A304B6007DC62D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDB27A304B5007DC62D /* MapView.swift */; };
 		36108BEE27A304B6007DC62D /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDC27A304B5007DC62D /* Panel.swift */; };
@@ -218,7 +217,6 @@
 		36108BD327A304B5007DC62D /* MealPlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		36108BD427A304B5007DC62D /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		36108BD627A304B5007DC62D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		36108BD827A304B5007DC62D /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		36108BD927A304B5007DC62D /* PanelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRow.swift; sourceTree = "<group>"; };
 		36108BDB27A304B5007DC62D /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		36108BDC27A304B5007DC62D /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
@@ -499,7 +497,6 @@
 				36108BDB27A304B5007DC62D /* MapView.swift */,
 				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
 				36108BDD27A304B5007DC62D /* MapContent.swift */,
-				36108BD827A304B5007DC62D /* Toolbar.swift */,
 				36108BDC27A304B5007DC62D /* Panel.swift */,
 				36108BDE27A304B5007DC62D /* PanelContent.swift */,
 				36108BD927A304B5007DC62D /* PanelRow.swift */,
@@ -1316,7 +1313,6 @@
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
-				36108BEA27A304B6007DC62D /* Toolbar.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,

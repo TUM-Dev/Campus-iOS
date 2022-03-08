@@ -22,7 +22,6 @@ struct MapView: View {
                   panelPosition: $viewModel.panelPosition,
                   canteens: $viewModel.canteens,
                   selectedCanteen: $viewModel.selectedCanteen)
-            Toolbar(selectedCanteen: $viewModel.selectedCanteen)
         }
         .edgesIgnoringSafeArea(.vertical)
         .navigationTitle("Map")

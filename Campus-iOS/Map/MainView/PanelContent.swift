@@ -33,6 +33,15 @@ struct PanelContent: View {
                         Text(canteen.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
+                            .onTapGesture{
+                                let latitude = canteen.location.latitude
+                                let longitude = canteen.location.longitude
+                                let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
+                                
+                                if UIApplication.shared.canOpenURL(url!) {
+                                      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                }
+                            }
                     }
                     
                     Spacer()
