@@ -23,11 +23,6 @@ final class MapViewModel: ObservableObject {
     func fetchCanteens() {
         sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
             let cafeterias: [Cafeteria] = response.value ?? []
-            /* TODO: sort by distance
-            if let currentLocation = self.locationManager.location {
-                cafeterias.sortByDistance(to: currentLocation)
-            }
-             */
             
             canteens = cafeterias
 

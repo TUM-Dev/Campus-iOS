@@ -16,6 +16,7 @@ struct PanelContent: View {
     
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
+    @State private var sortedCanteens: [Cafeteria] = []
         
     var locationManager = CLLocationManager()
     
@@ -80,10 +81,10 @@ struct PanelContent: View {
                 }
                 
                 List {
-                    ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                        PanelRow(cafeteria: self.$canteens[id])
+                    ForEach (sortedCanteens.indices.filter({ searchString.isEmpty ? true : sortedCanteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                        PanelRow(cafeteria: self.$sortedCanteens[id])
                         .onTapGesture {
-                            selectedCanteen = canteens[id]
+                            selectedCanteen = sortedCanteens[id]
                         }
                     }
                 }
@@ -94,6 +95,16 @@ struct PanelContent: View {
         .onChange(of: selectedCanteen) { optionalCafeteria in
             if let cafeteria = optionalCafeteria {
                 mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
+            }
+        }
+        .onChange(of: canteens) { unsortedCanteens in
+            if let location = self.locationManager.location {
+                sortedCanteens = unsortedCanteens.sorted {
+                    $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)
+                }
+            }
+            else {
+                sortedCanteens = unsortedCanteens
             }
         }
     }
