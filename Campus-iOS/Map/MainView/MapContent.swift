@@ -28,6 +28,7 @@ struct MapContent: UIViewRepresentable {
     @Binding var selectedCanteen: Cafeteria?
     
     @State private var focusedCanteen: Cafeteria?
+    @State private var setAnnotations: Bool = true
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -51,9 +52,10 @@ struct MapContent: UIViewRepresentable {
         focusOnUser(mapView: view)
         focusOnCanteen(mapView: view)
         
-        if view.annotations.count == 0 && canteens.count > 0 {
+        if canteens.count > 0 && setAnnotations {
             let annotations = canteens.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
             view.addAnnotations(annotations)
+            setAnnotations = false // only add canteen annotations once
         }
         
         let newCenter = screenHeight/3
@@ -93,7 +95,7 @@ struct MapContent: UIViewRepresentable {
         }
     }
     
-    func focusOnCanteen(mapView: MKMapView) {        
+    func focusOnCanteen(mapView: MKMapView) {
         if selectedCanteen != nil && selectedCanteen != focusedCanteen, let canteen = selectedCanteen {
             for i in mapView.annotations {
                 if i.title == canteen.title {
