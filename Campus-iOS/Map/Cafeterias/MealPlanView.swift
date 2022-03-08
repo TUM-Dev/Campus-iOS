@@ -27,12 +27,12 @@ struct MealPlanView: View {
                                         .overlay(
                                             Text(getFormattedDate(date: menu.date, format: "d"))
                                                 .fontWeight(.semibold).fixedSize()
-                                                .foregroundColor(menu === viewModel.selectedMenu ? Color.white : Color.black)
+                                                .foregroundColor(menu === viewModel.selectedMenu ? Color.white : Color(UIColor.label))
                                         )
-                                        .frame(maxWidth: .infinity)
+                                        .frame(maxWidth: 50)
 
                                     Text(getFormattedDate(date: menu.date, format: "EEE"))
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(UIColor.label))
                                 }
                             }
                         }
