@@ -45,7 +45,7 @@ struct LectureDetailsScreen: View {
             
             await vm.getLectureDetails(
                 token: token,
-                lvNr: lecture.lvNumber
+                lvNr: lecture.id
             )
         }
         .alert(
