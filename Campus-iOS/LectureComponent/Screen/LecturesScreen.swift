@@ -8,52 +8,40 @@
 import SwiftUI
 
 struct LecturesScreen: View {
-    @EnvironmentObject private var model: Model
+    @StateObject private var vm: LecturesViewModel
     
-    @StateObject private var vm = LecturesViewModel(
-        serivce: LecturesService()
-    )
-    
-    private var token: String? {
-        switch self.model.loginController.credentials {
-        case .none, .noTumID:
-            return nil
-        case .tumID(_, let token):
-            return token
-        case .tumIDAndKey(_, let token, _):
-            return token
-        }
+    init(model: Model) {
+        self._vm = StateObject(wrappedValue:
+            LecturesViewModel(
+                model: model,
+                serivce: LecturesService()
+            )
+        )
     }
     
     var body: some View {
         Group {
-            if let token = self.token {
-                switch vm.state {
-                case .success(_):
-                    VStack {
-                        LecturesView(lecturesBySemester: vm.sortedLecturesBySemester)
-                            .refreshable {
-                                await vm.getLectures(
-                                    token: token,
-                                    forcedRefresh: true
-                                )
-                            }
-                    }
-                case .loading, .na:
-                    LoadingView(text: "Fetching Lectures")
-                case .failed(let error):
-                    FailedView(errorDescription: error.localizedDescription)
+            switch vm.state {
+            case .success(_):
+                VStack {
+                    LecturesView(model: vm.model, lecturesBySemester: vm.sortedLecturesBySemester)
+                        .refreshable {
+                            await vm.getLectures(
+                                forcedRefresh: true
+                            )
+                        }
                 }
-            } else {
-                FailedView(errorDescription: "Please log in first")
+            case .loading, .na:
+                LoadingView(text: "Fetching Lectures")
+            case .failed(let error):
+                FailedView(
+                    errorDescription: error.localizedDescription,
+                    retryClosure: self.vm.getLectures
+                )
             }
         }
         .task {
-            guard let token = self.token else {
-                return
-            }
-            
-            await vm.getLectures(token: token)
+            await vm.getLectures()
         }
         .alert(
             "Error while fetching Lectures",
@@ -61,11 +49,7 @@ struct LecturesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        guard let token = self.token else {
-                            return
-                        }
-                        
-                        await vm.getLectures(token: token)
+                        await vm.getLectures()
                     }
                 }
         
@@ -80,6 +64,6 @@ struct LecturesScreen: View {
 
 struct LecturesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LecturesScreen()
+        LecturesScreen(model: MockModel())
     }
 }

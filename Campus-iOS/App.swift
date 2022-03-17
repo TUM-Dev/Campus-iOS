@@ -58,7 +58,7 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                LecturesScreen()
+                LecturesScreen(model: model)
                     .navigationTitle("Lectures")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

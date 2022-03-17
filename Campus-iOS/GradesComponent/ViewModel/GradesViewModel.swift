@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol GradesViewModelProtocol: ObservableObject {
-    func getGrades(token: String, forcedRefresh: Bool) async
+    func getGrades(forcedRefresh: Bool) async
 }
 
 @MainActor
@@ -17,7 +17,19 @@ class GradesViewModel: GradesViewModelProtocol {
     @Published private(set) var state: State = .na
     @Published var hasError: Bool = false
     
+    private let model: Model
     private let service: GradesServiceProtocol
+    
+    var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
     
     private var gradesBySemester: [String: [Grade]] {
         guard case .success(let data) = self.state else {
@@ -46,22 +58,28 @@ class GradesViewModel: GradesViewModelProtocol {
             }
     }
     
-    init(serivce: GradesServiceProtocol) {
+    init(model: Model, serivce: GradesServiceProtocol) {
+        self.model = model
         self.service = serivce
     }
     
-    func getGrades(token: String, forcedRefresh: Bool = false) async {
+    func getGrades(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.state = .loading
         }
         self.hasError = false
         
+        guard let token = self.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+
         do {
             self.state = .success(
                 data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             )
         } catch {
-            print(error)
             self.state = .failed(error: error)
             self.hasError = true
         }

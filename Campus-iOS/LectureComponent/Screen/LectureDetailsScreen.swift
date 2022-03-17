@@ -8,23 +8,16 @@
 import SwiftUI
 
 struct LectureDetailsScreen: View {
-    @EnvironmentObject private var model: Model
+    @StateObject var vm: LectureDetailsViewModel
     
-    @StateObject var vm: LectureDetailsViewModel = LectureDetailsViewModel(
-        serivce: LectureDetailsService()
-    )
-    
-    var lecture: Lecture
-    
-    private var token: String? {
-        switch self.model.loginController.credentials {
-        case .none, .noTumID:
-            return nil
-        case .tumID(_, let token):
-            return token
-        case .tumIDAndKey(_, let token, _):
-            return token
-        }
+    init(model: Model, lecture: Lecture) {
+        self._vm = StateObject(wrappedValue:
+            LectureDetailsViewModel(
+                model: model,
+                serivce: LectureDetailsService(),
+                lecture: lecture
+            )
+        )
     }
     
     var body: some View {
@@ -35,18 +28,14 @@ struct LectureDetailsScreen: View {
             case .loading, .na:
                 LoadingView(text: "Fetching details of lecture")
             case .failed(let error):
-                FailedView(errorDescription: error.localizedDescription)
+                FailedView(
+                    errorDescription: error.localizedDescription,
+                    retryClosure: vm.getLectureDetails
+                )
             }
         }
         .task {
-            guard let token = self.token else {
-                return
-            }
-            
-            await vm.getLectureDetails(
-                token: token,
-                lvNr: lecture.id
-            )
+            await vm.getLectureDetails()
         }
         .alert(
             "Error while fetching details of lecture",
@@ -54,14 +43,7 @@ struct LectureDetailsScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        guard let token = self.token else {
-                            return
-                        }
-                        
-                        await vm.getLectureDetails(
-                            token: token,
-                            lvNr: lecture.lvNumber
-                        )
+                        await vm.getLectureDetails()
                     }
                 }
         
@@ -77,8 +59,7 @@ struct LectureDetailsScreen: View {
 struct LectureDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
         LectureDetailsScreen(
-            vm: LectureDetailsViewModel(serivce: LectureDetailsService()),
-            lecture: Lecture.dummyData.first!
+            model: MockModel(), lecture: Lecture.dummyData.first!
         )
     }
 }
