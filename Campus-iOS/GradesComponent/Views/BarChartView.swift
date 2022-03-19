@@ -14,10 +14,8 @@ struct BarChartView: View {
     var body: some View {
         BarChart(chartData: barChartData)
             .xAxisGrid(chartData: barChartData)
-            //.yAxisGrid(chartData: vm.barChartData)
             .xAxisLabels(chartData: barChartData)
             .yAxisLabels(chartData: barChartData)
-            //.legends(chartData: barChartData)
             .frame(height: UIScreen.main.bounds.size.height/5, alignment: .center)
             .padding(.top, 12)
     }

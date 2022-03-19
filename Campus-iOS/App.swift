@@ -73,7 +73,6 @@ struct CampusApp: App {
             
             NavigationView {
                 GradesScreen(model: model)
-                //GradesScreen()
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

@@ -14,39 +14,42 @@ struct GradesView: View {
     
     var body: some View {
         List {
-            ForEach(0..<gradesByDegreeAndSemester.count) { index in
+            ForEach(gradesByDegreeAndSemester.indices, id: \.self) { index in
+                VStack {
                     Text(gradesByDegreeAndSemester[index].0)
+                        .font(.system(size: 20, weight: .bold, design: .default))
                 
                     BarChartView(barChartData: barChartData[index])
+                }
                     
-                    ForEach(gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
-                        Section(
-                            header:
-                                GroupBoxLabelView(
-                                    iconName: "graduationcap.fill",
-                                    text: gradesBySemester.0
-                                )
-                        ) {
-                            ForEach(gradesBySemester.1) { item in
-                                VStack {
-                                    GradeView(grade: item)
+                ForEach(gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
+                    Section(
+                        header:
+                            GroupBoxLabelView(
+                                iconName: "graduationcap.fill",
+                                text: gradesBySemester.0
+                            )
+                    ) {
+                        ForEach(gradesBySemester.1) { item in
+                            VStack {
+                                GradeView(grade: item)
 
-                                    if item.id != gradesBySemester.1[gradesBySemester.1.count - 1].id {
-                                        Divider()
-                                    }
+                                if item.id != gradesBySemester.1[gradesBySemester.1.count - 1].id {
+                                    Divider()
                                 }
                             }
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: 4,
-                                    leading: 18,
-                                    bottom: 2,
-                                    trailing: 18
-                                )
-                            )
                         }
+                        .listRowInsets(
+                            EdgeInsets(
+                                top: 4,
+                                leading: 18,
+                                bottom: 2,
+                                trailing: 18
+                            )
+                        )
                     }
-                    .listRowSeparator(.hidden)
+                }
+                .listRowSeparator(.hidden)
             }
         }
     }

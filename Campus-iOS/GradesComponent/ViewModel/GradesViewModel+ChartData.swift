@@ -55,6 +55,16 @@ extension GradesViewModel {
             }
         
         return accumulatedGradesByDegree.map { (_, accumulatedGrades) in
+            // Divide maximum grade count by 2 to get y-axis labels
+            var yAxisNumberOfLabels = Int(accumulatedGrades.max(by: { gradeA, gradeB in
+                gradeA.1 < gradeB.1
+            })?.1 ?? 1.0) / 2
+            
+            // Chart library required at least 2 y-axis labels
+            if yAxisNumberOfLabels < 2 {
+                yAxisNumberOfLabels = 2
+            }
+            
             return .init(
                 dataSets: .init(
                     dataPoints: accumulatedGrades.compactMap { key, value in
@@ -79,7 +89,7 @@ extension GradesViewModel {
                     colour: ColourStyle(colour: .gray)
                 ),
                 chartStyle: .init(
-                    yAxisNumberOfLabels: 5,
+                    yAxisNumberOfLabels: yAxisNumberOfLabels,
                     baseline: .zero,
                     topLine: .maximumValue,
                     //yAxisLabelType: .custom,

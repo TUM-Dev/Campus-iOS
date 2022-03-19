@@ -25,6 +25,7 @@ struct GradeView: View {
 				Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.white)
+                    .glowBorder(color: .gray, lineWidth: 1)
             }
             
             VStack(alignment: .leading, spacing: 8) {
