@@ -1,12 +1,12 @@
-name: Campus-iOS
+name: tca
 options:
   bundleIdPrefix: de.tum
-  xcodeVersion: '13.3'
-  deploymentTarget: '15.0'
+  xcodeVersion: "13.3"
+  deploymentTarget: "15.0"
   groupSortPosition: top
   generateEmptyDirectories: true
   findCarthageFrameworks: true
-  minimumXcodeGenVersion: '2.26.0'
+  minimumXcodeGenVersion: "2.26.0"
 
 targets:
   Campus-iOS:
@@ -14,19 +14,20 @@ targets:
     platform: iOS
     deploymentTarget: 15.0
     sources:
-       - path: ./Campus-iOS
+      - path: ./Campus-iOS
 
     dependencies:
       - package: abseil
       - package: Alamofire
       - package: BoringSSL-GRPC
       - package: Firebase
-        product: FirebaseAnalytics
-      - package: Firebase
-        product: FirebaseAnalyticsSwift-Beta
+        product: FirebaseAnalyticsSwift
       - package: Firebase
         product: FirebaseCrashlytics
       - package: GoogleAppMeasurement
+        proudct: GoogleAppMeasurementWithoutAdIdSupportWrapper
+      - package: GoogleAppMeasurement
+        proudct: GoogleAppMeasurementWrapper
       - package: GoogleDataTransport
       - package: GoogleUtilities
       - package: gRPC
@@ -44,8 +45,8 @@ targets:
 
 packages:
   abseil:
-     url: https://github.com/firebase/abseil-cpp
-     from: 0.20200225.4
+    url: https://github.com/firebase/abseil-cpp
+    from: 0.20200225.4
   Alamofire:
     url: https://github.com/Alamofire/Alamofire
     from: 5.5.0
@@ -84,7 +85,7 @@ packages:
     from: 1.0.2
   nanopb:
     url: https://github.com/nanopb/nanopb
-    from: 2.30908.0
+    from: 0.4.5
   Snap:
     url: https://github.com/nerdsupremacist/Snap.git
     from: 0.2.2
