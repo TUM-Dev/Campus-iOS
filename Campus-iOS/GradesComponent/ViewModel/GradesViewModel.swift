@@ -31,30 +31,48 @@ class GradesViewModel: GradesViewModelProtocol {
         }
     }
     
-    private var gradesBySemester: [String: [Grade]] {
+    var gradesByDegreeAndSemester: [(String, [(String, [Grade])])] {
         guard case .success(let data) = self.state else {
-            return [:]
+            return []
         }
         
-        return data.reduce(into: [String: [Grade]]()) { partialResult, grade in
-            if partialResult[grade.semester] == nil {
-                partialResult[grade.semester] = [grade]
+        let gradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
+            let studyID = "\(String(grade.studyID)): \(grade.studyDesignation)"
+            
+            if partialResult[studyID] == nil {
+                partialResult[studyID] = [grade]
             } else {
-                partialResult[grade.semester]?.append(grade)
+                partialResult[studyID]?.append(grade)
             }
         }
-    }
-    
-    var sortedGradesBySemester: [(String, [Grade])] {
-        self.gradesBySemester
-            .compactMap { semester, grades in
-                (semester, grades)
+        
+        let gradesByDegreeAndSemester = gradesByDegree.mapValues { grades in
+            grades.reduce(into: [String: [Grade]]()) { partialResult, grade in
+                if partialResult[grade.semester] == nil {
+                    partialResult[grade.semester] = [grade]
+                } else {
+                    partialResult[grade.semester]?.append(grade)
+                }
             }
-            .sorted { elementA, elementB in
-                elementA.0 > elementB.0
+        }
+        
+        return gradesByDegreeAndSemester
+            .mapValues { gradesBySemester in
+                gradesBySemester.compactMap { semester, grades in
+                    (semester, grades)
+                }
+                .sorted { semesterA, semesterB in
+                    semesterA.0 > semesterB.0
+                }
+                .compactMap { grade in
+                    (Self.toFullSemesterName(grade.0), grade.1)
+                }
             }
-            .compactMap { grade in
-                (Self.toFullSemesterName(grade.0), grade.1)
+            .compactMap { degree, gradesBySemester in
+                (degree, gradesBySemester)
+            }
+            .sorted { degreeA, degreeB in
+                degreeA.0 < degreeB.0
             }
     }
     
