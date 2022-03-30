@@ -37,12 +37,10 @@ class GradesViewModel: GradesViewModelProtocol {
         }
         
         let gradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
-            let studyID = "\(String(grade.studyID)): \(grade.studyDesignation)"
-            
-            if partialResult[studyID] == nil {
-                partialResult[studyID] = [grade]
+            if partialResult[grade.studyID] == nil {
+                partialResult[grade.studyID] = [grade]
             } else {
-                partialResult[studyID]?.append(grade)
+                partialResult[grade.studyID]?.append(grade)
             }
         }
         
@@ -100,6 +98,43 @@ class GradesViewModel: GradesViewModelProtocol {
         } catch {
             self.state = .failed(error: error)
             self.hasError = true
+        }
+    }
+    
+    func getStudyProgram(studyID: String) -> String {
+        guard case .success(let data) = self.state else {
+            return ""
+        }
+        
+        let studyDesignation = data.first { grade in
+            grade.studyID == studyID
+        }?.studyDesignation ?? ""
+        
+        return "\(studyDesignation) \(Self.getAcademicDegree(studyID: studyID).short) (\(studyID))"
+    }
+    
+    private static func getAcademicDegree(studyID: String) -> AcademicDegree {
+        let splitDegreeNumbers = studyID.split(separator: " ")
+        
+        guard splitDegreeNumbers.count == 3 else {
+            return .unknown
+        }
+        
+        let academicDegreeNumber = splitDegreeNumbers[1]
+        
+        switch academicDegreeNumber {
+        case "04", "05", "06", "07": return .PhD
+        case "14", "19": return .BE
+        case "16", "20", "28": return .MSc
+        case "17": return .BSc
+        case "18": return .MBA
+        case "29": return .MA
+        case "30": return .BA
+        case "37", "38", "39", "42": return .ME
+        case "53": return .MBD
+        case "60": return .BECE
+        case "61": return .BEEDE
+        default: return .unknown
         }
     }
 }

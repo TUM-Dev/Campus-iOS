@@ -9,20 +9,28 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesView: View {
-    var gradesByDegreeAndSemester: [(String, [(String, [Grade])])]
-    var barChartData: [BarChartData]
+    @StateObject var vm: GradesViewModel
     
     var body: some View {
         List {
-            ForEach(gradesByDegreeAndSemester.indices, id: \.self) { index in
+            ForEach(self.vm.gradesByDegreeAndSemester.indices, id: \.self) { index in
                 VStack {
-                    Text(gradesByDegreeAndSemester[index].0)
-                        .font(.system(size: 20, weight: .bold, design: .default))
+                    Text(
+                        self.vm.getStudyProgram(studyID: self.vm.gradesByDegreeAndSemester[index].0)
+                    )
+                    .font(
+                        .system(
+                            size: 20,
+                            weight: .bold,
+                            design: .default
+                        )
+                    )
+                    .frame(alignment: .center)
                 
-                    BarChartView(barChartData: barChartData[index])
+                    BarChartView(barChartData: self.vm.barChartData[index])
                 }
                     
-                ForEach(gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
+                ForEach(self.vm.gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
                     Section(
                         header:
                             GroupBoxLabelView(
@@ -57,13 +65,11 @@ struct GradesView: View {
 
 struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
-        GradesView(
-            gradesByDegreeAndSemester: [],
-            barChartData: [
-                    .init(
-                        dataSets: .init(dataPoints: [])
-                    )
-                ]
+        GradesView(vm:
+            GradesViewModel(
+                model: MockModel(),
+                serivce: GradesService()
+            )
         )
     }
 }

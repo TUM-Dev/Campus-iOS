@@ -26,8 +26,7 @@ struct GradesScreen: View {
             case .success(_):
                 VStack {
                     GradesView(
-                        gradesByDegreeAndSemester: vm.gradesByDegreeAndSemester,
-                        barChartData: vm.barChartData
+                        vm: self.vm
                     )
                     .refreshable {
                         await vm.getGrades(forcedRefresh: true)
