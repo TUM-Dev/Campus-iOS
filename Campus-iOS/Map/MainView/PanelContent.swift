@@ -24,6 +24,11 @@ struct PanelContent: View {
     
     var body: some View {
         VStack{
+            RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
+                        .frame(width: 40, height: CGFloat(5.0))
+                        .foregroundColor(Color.secondary)
+                        .padding(5)
+            
             if let canteen = selectedCanteen {
                 HStack{
                     VStack(alignment: .leading){
