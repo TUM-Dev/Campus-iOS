@@ -22,14 +22,15 @@ struct MealPlanView: View {
                             }){
                                 VStack{
                                     Circle()
-                                        .fill(menu === viewModel.selectedMenu ? Color("tumBlue") : Color.clear)
+                                        .fill(menu === viewModel.selectedMenu ?
+                                              (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)) : Color.clear)
                                         .aspectRatio(contentMode: .fit)
                                         .overlay(
                                             Text(getFormattedDate(date: menu.date, format: "d"))
                                                 .fontWeight(.semibold).fixedSize()
-                                                .foregroundColor(menu === viewModel.selectedMenu ? Color.white : Color(UIColor.label))
+                                                .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
                                         )
-                                        .frame(maxWidth: 50)
+                                        .frame(maxWidth: 40)
 
                                     Text(getFormattedDate(date: menu.date, format: "EEE"))
                                         .foregroundColor(Color(UIColor.label))

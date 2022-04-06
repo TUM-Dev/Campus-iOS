@@ -19,7 +19,7 @@ struct MenuView: View {
                     }
                 }
             }
-        }
+        }.listStyle(GroupedListStyle()) // make sections non-collapsible
     }
 }
 
@@ -50,7 +50,6 @@ struct DishView: View {
                     Image(systemName: "info.circle")
                 }
                 HStack{
-                    Text(labelsToString(labels: dish.labels))
                     Spacer()
                     Text(formatPrice(dish: dish, pricingGroup: "students"))
                         .lineLimit(1)

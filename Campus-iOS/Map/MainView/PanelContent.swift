@@ -91,10 +91,11 @@ struct PanelContent: View {
                 
                 List {
                     ForEach (sortedCanteens.indices.filter({ searchString.isEmpty ? true : sortedCanteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                        PanelRow(cafeteria: self.$sortedCanteens[id])
-                        .onTapGesture {
+                        Button(action: {
                             selectedCanteen = sortedCanteens[id]
-                        }
+                        }, label: {
+                            PanelRow(cafeteria: self.$sortedCanteens[id])
+                        })
                     }
                 }
                 .searchable(text: $searchString, prompt: "Look for something")
