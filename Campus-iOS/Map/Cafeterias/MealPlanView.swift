@@ -13,7 +13,7 @@ struct MealPlanView: View {
         
     var body: some View {
         HStack{
-            if viewModel.menus.count > 0{
+            if viewModel.menus.count > 0 {
                 VStack{
                     HStack{
                         ForEach(viewModel.menus.prefix(7), id: \.id){ menu in
@@ -45,7 +45,7 @@ struct MealPlanView: View {
                         Spacer()
                     }
                 }
-            }else {
+            } else {
                 Text("Kein Menü")
             }
         }
