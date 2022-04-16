@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LectureSearchListView: View {
-    
+    @StateObject var model: Model
     @Environment(\.isSearching) private var isSearching
     @ObservedObject var viewModel: LectureSearchViewModel
     
@@ -16,7 +16,7 @@ struct LectureSearchListView: View {
         List {
             ForEach(self.viewModel.result) { lecture in
                 NavigationLink(
-                    destination: LectureDetailsScreen(lecture: lecture)
+                    destination: LectureDetailsScreen(model: self.model, lecture: lecture)
                                     .navigationBarTitleDisplayMode(.inline)
                 ) {
                     HStack {
@@ -45,6 +45,6 @@ struct LectureSearchListView: View {
 
 struct LectureSearchListView_Previews: PreviewProvider {
     static var previews: some View {
-        LectureSearchListView(viewModel: LectureSearchViewModel())
+        LectureSearchListView(model: MockModel(), viewModel: LectureSearchViewModel())
     }
 }

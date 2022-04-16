@@ -58,7 +58,7 @@ struct CampusApp: App {
             }
             
             NavigationView {
-                LecturesScreen()
+                LecturesScreen(model: model)
                     .navigationTitle("Lectures")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -73,7 +73,6 @@ struct CampusApp: App {
             
             NavigationView {
                 GradesScreen(model: model)
-                //GradesScreen()
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

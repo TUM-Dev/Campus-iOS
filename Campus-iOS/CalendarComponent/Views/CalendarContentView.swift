@@ -54,6 +54,7 @@ struct CalendarContentView: View {
         }
         .sheet(item: self.$selectedEventID) { eventId in
             CalendarSingleEventView(
+                model: self.model,
                 event: self.viewModel.events
                     .first(where: { $0.id.description == eventId })
             )
