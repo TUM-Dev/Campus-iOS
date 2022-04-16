@@ -160,9 +160,11 @@
 		36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90752773BFC300F4C785 /* FirebaseCrashlytics */; };
 		41D55D6E27A2EFB200DE7155 /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = 41D55D6D27A2EFB200DE7155 /* LRUCache */; };
 		97270F5A27AB2A4900BB25E4 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */; };
+		974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */; };
 		97997AE127722D660079F809 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE027722D660079F809 /* Alamofire */; };
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
+		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +336,8 @@
 		36FF90642773BB8100F4C785 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
+		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
+		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,6 +581,7 @@
 			children = (
 				36108C0C27A307F9007DC62D /* Grade.swift */,
 				36108C0D27A307F9007DC62D /* Modus.swift */,
+				97F8A79227E641570099EE83 /* AcademicDegree.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 				36108C1127A307F9007DC62D /* GradesView.swift */,
 				36108C1227A307F9007DC62D /* GradeView.swift */,
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
+				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1251,6 +1257,7 @@
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
+				974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */,
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
@@ -1270,6 +1277,7 @@
 				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
 				36108BE227A304B5007DC62D /* Menu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
+				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
 				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,

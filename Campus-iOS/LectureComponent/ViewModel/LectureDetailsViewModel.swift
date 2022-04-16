@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LectureDetailsViewModelProtocol: ObservableObject {
-    func getLectureDetails(token: String, lvNr: UInt64) async
+    func getLectureDetails(forcedRefresh: Bool) async
 }
 
 @MainActor
@@ -16,19 +16,40 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
     @Published private(set) var state: State = .na
     @Published var hasError: Bool = false
     
+    private let model: Model
     private let service: LectureDetailsServiceProtocol
+    private let lecture: Lecture
     
-    init(serivce: LectureDetailsServiceProtocol) {
-        self.service = serivce
+    var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
     }
     
-    func getLectureDetails(token: String, lvNr: UInt64) async {
+    init(model: Model, serivce: LectureDetailsServiceProtocol, lecture: Lecture) {
+        self.model = model
+        self.service = serivce
+        self.lecture = lecture
+    }
+    
+    func getLectureDetails(forcedRefresh: Bool = false) async {
         self.state = .loading
         self.hasError = false
         
+        guard let token = self.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+        
         do {
             self.state = .success(
-                data: try await service.fetch(token: token, lvNr: lvNr, forcedRefresh: false)
+                data: try await service.fetch(token: token, lvNr: self.lecture.id, forcedRefresh: forcedRefresh)
             )
         } catch {
             print(error)

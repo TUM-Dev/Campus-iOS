@@ -9,6 +9,12 @@ import SwiftUI
 
 struct FailedView: View {
     let errorDescription: String
+    let retryClosure: (Bool) async -> Void
+    
+    init(errorDescription: String, retryClosure: @escaping (Bool) async -> Void = { _ in }) {
+        self.errorDescription = errorDescription
+        self.retryClosure = retryClosure
+    }
     
     var body: some View {
         VStack {
@@ -30,7 +36,9 @@ struct FailedView: View {
                         .opacity(0.7)
                     
                     Button(action: {
-                        
+                        Task {
+                            await self.retryClosure(false)
+                        }
                     }) {
                         Text("Try Again".uppercased())
                             .fontWeight(.semibold)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LecturesView: View {
+    var model: Model
     var lecturesBySemester: [(String, [Lecture])]
     
     var body: some View {
@@ -23,7 +24,7 @@ struct LecturesView: View {
                         VStack {
                             NavigationLink(
                                 destination:
-                                    LectureDetailsScreen(lecture: item)
+                                    LectureDetailsScreen(model: self.model, lecture: item)
                                         .navigationBarTitleDisplayMode(.inline)
                             ) {
                                 LectureView(lecture: item)
@@ -53,7 +54,7 @@ struct LecturesView: View {
 struct LecturesView_Previews: PreviewProvider {
     static var previews: some View {
         LecturesView(
-            lecturesBySemester: []
+            model: MockModel(), lecturesBySemester: []
         )
     }
 }

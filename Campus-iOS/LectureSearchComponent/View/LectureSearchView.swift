@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct LectureSearchView: View {
-    
+    @StateObject var model: Model
     @ObservedObject var viewModel = LectureSearchViewModel()
     @State var searchText = ""
     
     var body: some View {
-        LectureSearchListView(viewModel: self.viewModel)
+        LectureSearchListView(model: self.model, viewModel: self.viewModel)
             .background(Color(.systemGroupedBackground))
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: self.searchText) { searchValue in
@@ -27,6 +27,6 @@ struct LectureSearchView: View {
 
 struct LectureSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        LectureSearchView()
+        LectureSearchView(model: MockModel())
     }
 }

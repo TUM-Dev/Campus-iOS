@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LecturesViewModelProtocol: ObservableObject {
-    func getLectures(token: String, forcedRefresh: Bool) async
+    func getLectures(forcedRefresh: Bool) async
 }
 
 @MainActor
@@ -16,7 +16,19 @@ class LecturesViewModel: LecturesViewModelProtocol {
     @Published private(set) var state: State = .na
     @Published var hasError: Bool = false
     
+    let model: Model
     private let service: LecturesServiceProtocol
+    
+    var token: String? {
+        switch self.model.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
     
     private var lecturesBySemester: [String: [Lecture]] {
         guard case .success(let data) = self.state else {
@@ -42,16 +54,23 @@ class LecturesViewModel: LecturesViewModelProtocol {
             }
     }
     
-    init(serivce: LecturesServiceProtocol) {
+    init(model: Model, serivce: LecturesServiceProtocol) {
+        self.model = model
         self.service = serivce
     }
     
-    func getLectures(token: String, forcedRefresh: Bool = false) async {
+    func getLectures(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.state = .loading
         }
         self.hasError = false
         
+        guard let token = self.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+
         do {
             self.state = .success(
                 data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
