@@ -1,4 +1,4 @@
-name: tca
+name: Campus-iOS
 options:
   bundleIdPrefix: de.tum
   xcodeVersion: "13.3"
@@ -14,88 +14,51 @@ targets:
     platform: iOS
     deploymentTarget: 15.0
     sources:
-      - path: ./Campus-iOS
+      - path: Campus-iOS
+    info:
+      path: Campus-iOS/Info.plist
+      properties:
+        CFBundleVersion: "1.0"
 
     dependencies:
-      - package: abseil
       - package: Alamofire
-      - package: BoringSSL-GRPC
       - package: Firebase
-        product: FirebaseAnalyticsSwift
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseAnalyticsSwift-Beta
       - package: Firebase
         product: FirebaseCrashlytics
-      - package: GoogleAppMeasurement
-        proudct: GoogleAppMeasurementWithoutAdIdSupportWrapper
-      - package: GoogleAppMeasurement
-        proudct: GoogleAppMeasurementWrapper
-      - package: GoogleDataTransport
-      - package: GoogleUtilities
-      - package: gRPC
-      - package: GTMSessionFetcher
       - package: KeychainAccess
-      - package: KVKCalender
-      - package: leveldb
+      - package: KVKCalendar
       - package: LRUCache
-      - package: nanopb
       - package: Snap
-      - package: SwiftProtobuf
       - package: SwiftUICharts
-      - package: SMXMLHash
+      - package: SWXMLHash
       - package: XMLCoder
 
 packages:
-  abseil:
-    url: https://github.com/firebase/abseil-cpp
-    from: 0.20200225.4
   Alamofire:
     url: https://github.com/Alamofire/Alamofire
     from: 5.5.0
-  BoringSSL-GRPC:
-    url: https://github.com/firebase/boringssl
-    from: 0.7.2
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
     from: 8.11.0
-  GoogleAppMeasurement:
-    url: https://github.com/google/GoogleAppMeasurement
-    from: 8.9.1
-  GoogleDataTransport:
-    url: https://github.com/google/GoogleDataTransport
-    from: 9.1.2
-  GoogleUtilities:
-    url: https://github.com/google/GoogleUtilities
-    from: 7.7.0
-  gRPC:
-    url: https://github.com/firebase/grpc
-    from: 1.28.4
-  GTMSessionFetcher:
-    url: https://github.com/google/gtm-session-fetcher
-    from: 1.7.0
   KeychainAccess:
     url: https://github.com/kishikawakatsumi/KeychainAccess
     from: 4.2.2
-  KVKCalender:
+  KVKCalendar:
     url: https://github.com/kvyatkovskys/KVKCalendar
     from: 0.5.8
-  leveldb:
-    url: https://github.com/google/leveldb
-    from: 1.22.2
   LRUCache:
     url: https://github.com/nicklockwood/LRUCache.git
     from: 1.0.2
-  nanopb:
-    url: https://github.com/nanopb/nanopb
-    from: 0.4.5
   Snap:
     url: https://github.com/nerdsupremacist/Snap.git
     from: 0.2.2
-  SwiftProtobuf:
-    url: https://github.com/apple/swift-protobuf
-    from: 1.18.0
   SwiftUICharts:
     url: https://github.com/willdale/SwiftUICharts
     from: 2.9.7
-  SMXMLHash:
+  SWXMLHash:
     url: https://github.com/drmohundro/SWXMLHash.git
     from: 6.0.0
   XMLCoder:
