@@ -18,7 +18,7 @@ targets:
     info:
       path: Campus-iOS/Info.plist
       properties:
-        CFBundleVersion: "1.0"
+        CFBundleVersion: "1.0.0"
 
     dependencies:
       - package: Alamofire
