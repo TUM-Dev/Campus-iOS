@@ -44,21 +44,21 @@ struct DishView: View {
             }
         } label: {
             VStack(alignment: .leading, spacing: 10){
+                Spacer().frame(height: 0)
+                Text(dish.name).bold()
                 HStack{
-                    Text(dish.name)
-                    Spacer()
-                    Image(systemName: "info.circle")
-                }
-                HStack{
+                    Text("Info")
+                        .foregroundColor(Color.blue.opacity(0.9))
+                        .font(.footnote)
                     Spacer()
                     Text(formatPrice(dish: dish, pricingGroup: "students"))
                         .lineLimit(1)
+                        .font(.system(size: 15))
                 }
-                .font(.footnote)
+                Spacer().frame(height: 0)
             }
         }
         .buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(true)
-        
     }
     
     func formatPrice(dish: Dish, pricingGroup: String) -> String {

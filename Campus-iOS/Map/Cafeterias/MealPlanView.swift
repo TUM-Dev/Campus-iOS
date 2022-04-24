@@ -30,7 +30,7 @@ struct MealPlanView: View {
                                                 .fontWeight(.semibold).fixedSize()
                                                 .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
                                         )
-                                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 40)
+                                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 35)
 
                                     Text(getFormattedDate(date: menu.date, format: "EEE"))
                                         .foregroundColor(Color(UIColor.label))
