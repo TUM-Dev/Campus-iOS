@@ -13,7 +13,7 @@ struct MealPlanView: View {
         
     var body: some View {
         HStack{
-            if viewModel.menus.count > 0{
+            if viewModel.menus.count > 0 {
                 VStack{
                     HStack{
                         ForEach(viewModel.menus.prefix(7), id: \.id){ menu in
@@ -61,8 +61,13 @@ struct MealPlanView: View {
     }
 }
 
-/*struct MealPlanView_Previews: PreviewProvider {
+struct MealPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        MealPlanView(canteen: .constant())
+        MealPlanView(viewModel: MealPlanViewModel(cafeteria: Cafeteria(location: Location(latitude: 0.0,
+                                                                                          longitude: 0.0,
+                                                                                          address: ""),
+                                                                       name: "",
+                                                                       id: "",
+                                                                       queueStatusApi: "")))
     }
-}*/
+}

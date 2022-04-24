@@ -32,12 +32,8 @@ struct MapView: View {
     }
 }
 
-/*struct MapView_Previews: PreviewProvider {
+struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(zoomOnUser: true,
-                panelPosition: "down",
-                canteens: [],
-                selectedCanteenName: "",
-                selectedAnnotationIndex: 0)
+        MapView(viewModel: MapViewModel())
     }
-}*/
+}

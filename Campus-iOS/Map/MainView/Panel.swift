@@ -126,12 +126,18 @@ enum DragState {
     }
 }
 
-/*struct Panel_Previews: PreviewProvider {
+struct Panel_Previews: PreviewProvider {
+    @Binding var selectedCanteen: Cafeteria?
+
     static var previews: some View {
         Panel(zoomOnUser: .constant(true),
               panelPosition: .constant("down"),
               canteens: .constant([]),
-              selectedCanteenName: .constant(""),
-              selectedAnnotationIndex: .constant(0))
+              selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
+                                                                      longitude: 0.0,
+                                                                      address: ""),
+                                                   name: "",
+                                                   id: "",
+                                                   queueStatusApi: "")))
     }
-}*/
+}
