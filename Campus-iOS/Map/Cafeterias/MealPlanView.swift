@@ -43,11 +43,12 @@ struct MealPlanView: View {
                     if let menu = viewModel.selectedMenu {
                         MenuView(viewModel: menu)
                     }else{
-                        Spacer()
+                        Spacer().frame(height: 20)
+                        Text("No Menu available today").foregroundColor(Color.black.opacity(0.5))
                     }
                 }
-            }else {
-                Text("Kein Menü")
+            } else {
+                Text("No Menus available")
             }
         }
         .navigationTitle(viewModel.title)
