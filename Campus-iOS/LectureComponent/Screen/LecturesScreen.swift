@@ -32,7 +32,7 @@ struct LecturesScreen: View {
                         }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching Lectures")
+                LoadingView(text: "Fetching Lectures".localized)
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,

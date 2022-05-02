@@ -32,26 +32,6 @@ enum LectureComponents {
         public var organisationTag: String
         public var speaker: String
         
-        /*
-         <row>
-            <stp_sp_nr>950396293</stp_sp_nr>
-            <stp_lv_nr>90049615</stp_lv_nr>
-            <stp_sp_titel>Practical course - Program optimization with LLVM (IN0012, IN2106, IN4236)</stp_sp_titel>
-            <dauer_info>6</dauer_info>
-            <stp_sp_sst>6</stp_sp_sst>
-            <stp_lv_art_name>Praktikum</stp_lv_art_name>
-            <stp_lv_art_kurz>PR</stp_lv_art_kurz>
-            <sj_name>2018/19</sj_name>
-            <semester>W</semester>
-            <semester_name>Wintersemester 2018/19</semester_name>
-            <semester_id>18W</semester_id>
-            <org_nr_betreut>15427</org_nr_betreut>
-            <org_name_betreut>Informatik 2 - Lehrstuhl für Sprachen und Beschreibungsstrukturen in der Informatik (Prof. Seidl)</org_name_betreut>
-            <org_kennung_betreut>TUINI02</org_kennung_betreut>
-            <vortragende_mitwirkende>Seidl H [L], Petter M</vortragende_mitwirkende>
-         </row>
-         */
-        
         enum CodingKeys: String, CodingKey {
             case id = "stp_sp_nr"
             case lvNumber = "stp_lv_nr"

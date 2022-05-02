@@ -92,4 +92,33 @@
 // LectureSearch
 "Lecture Search" = "Vorlesungssuche";
 "Unable to find lecture" = "Vorlesung kann nicht gefunden werden";
-"Choose Speaker" = "Sprecher auswählen";
+"Choose Speaker" = "Wähle Vortragenden";
+
+// Grades
+"Fetching Grades" = "Lade Noten";
+"Error while fetching Grades" = "Ein Fehler ist aufgetreten beim Laden der Noten";
+"Retry" = "Nochmals versuchen";
+"Cancel" = "Abbrechen";
+"Written" = "Schriftlich";
+"Graded" = "Beurteilt";
+"Written/Oral" = "Schriftlich/Mündlich";
+"Oral" = "Mündlich";
+"Unknown" = "Unbekannt";
+"Wintersemester" = "Wintersemester";
+"Summersemester" = "Sommersemester";
+
+// Lectures
+"Fetching details of lecture" = "Lade Details der Vorlesung";
+"Error while fetching details of lecture" = "Ein Fehler ist aufgetreten beim Laden der Vorlesung";
+"Fetching Lectures" = "Lade Vorlesungen";
+"Error while fetching Lectures" = "Ein Fehler ist aufgetreten beim Laden der Vorlesungen";
+"Basic lecture information" = "Allgemeine Vorlesungsinformationen";
+"Detailed lecture information" = "Detaillierte Vorlesungsinformationen";
+"Course Contents" = "Kursinhalte";
+"Course Objective" = "Kursziele";
+"Note" = "Sonstiges";
+"Lecture links" = "Vorlesungslinks";
+"Curriculum" = "Curriculum";
+"Dates" = "Daten";
+"Exam" = "Prüfung";
+"This Meeting" = "Dieses Treffen";

@@ -99,3 +99,32 @@
 "Lecture Search" = "Lecture Search";
 "Unable to find lecture" = "Unable to find lecture";
 "Choose Speaker" = "Choose Speaker";
+
+// Grades
+"Fetching Grades" = "Fetching Grades";
+"Error while fetching Grades" = "Error while fetching Grades";
+"Retry" = "Retry";
+"Cancel" = "Cancel";
+"Written" = "Written";
+"Graded" = "Graded";
+"Written/Oral" = "Written/Oral";
+"Oral" = "Oral";
+"Unknown" = "Unknown";
+"Wintersemester" = "Wintersemester";
+"Summersemester" = "Summersemester";
+
+// Lectures
+"Fetching details of lecture" = "Fetching details of lecture";
+"Error while fetching details of lecture" = "Error while fetching details of lecture";
+"Fetching Lectures" = "Fetching Lectures";
+"Error while fetching Lectures" = "Error while fetching Lectures";
+"Basic lecture information" = "Basic lecture information";
+"Detailed lecture information" = "Detailed lecture information";
+"Course Contents" = "Course Contents";
+"Course Objective" = "Course Objective";
+"Note" = "Note";
+"Lecture links" = "Lecture links";
+"Curriculum" = "Curriculum";
+"Dates" = "Dates";
+"Exam" = "Exam";
+"This Meeting" = "This Meeting";

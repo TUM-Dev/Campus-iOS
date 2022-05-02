@@ -14,14 +14,14 @@ struct LectureDetailsDetailedInfoView: View {
         GroupBox (
             label: GroupBoxLabelView(
                 iconName: "tray.fill",
-                text: "Detailed lecture information"
+                text: "Detailed lecture information".localized
             )
             .padding(.bottom, 5)
         ) {
             VStack(alignment: .leading, spacing: 8) {
                 if let courseContents = lectureDetails.courseContents, !courseContents.isEmpty {
                     LectureDetailsDetailedInfoRowView(
-                        title: "Course Contents",
+                        title: "Course Contents".localized,
                         text: courseContents
                     )
                     
@@ -31,7 +31,7 @@ struct LectureDetailsDetailedInfoView: View {
                 }
                 if let courseObjective = lectureDetails.courseObjective, !courseObjective.isEmpty {
                     LectureDetailsDetailedInfoRowView(
-                        title: "Course Objective",
+                        title: "Course Objective".localized,
                         text: courseObjective
                     )
                     
@@ -41,7 +41,7 @@ struct LectureDetailsDetailedInfoView: View {
                 }
                 if let note = lectureDetails.note, !note.isEmpty {
                     LectureDetailsDetailedInfoRowView(
-                        title: "Note",
+                        title: "Note".localized,
                         text: note
                     )
                 }
