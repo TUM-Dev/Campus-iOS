@@ -122,3 +122,11 @@
 "Dates" = "Daten";
 "Exam" = "Prüfung";
 "This Meeting" = "Dieses Treffen";
+
+// Error handeling
+"The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";
+"Unauthorized to access the resource" = "Nicht berechtiger Zugirff auf Resource";
+"Resource not found" = "Resource not found";
+"Server error" = "Server Fehler";
+"The accessed data is missing" = "Die zugegriffenen Daten sind nicht vorhanden";
+"Decoding of data failed" = "Dekodierung der Daten fehlgeschlagen";

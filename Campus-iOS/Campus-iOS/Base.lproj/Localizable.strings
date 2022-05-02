@@ -128,3 +128,11 @@
 "Dates" = "Dates";
 "Exam" = "Exam";
 "This Meeting" = "This Meeting";
+
+// Error handeling
+"The device appears to be offline, please check the internet connectivity" = "The device appears to be offline, please check the internet connectivity";
+"Unauthorized to access the resource" = "Unauthorized to access the resource";
+"Resource not found" = "Resource not found";
+"Server error" = "Server error";
+"The accessed data is missing" = "The accessed data is missing";
+"Decoding of data failed" = "Decoding of data failed";
