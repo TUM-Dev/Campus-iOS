@@ -21,7 +21,7 @@ enum LectureDetailsComponents {
         let title: String
         let duration: String
         let stp_sp_sst: String
-        let eventType: String
+        let eventTypeDefault: String
         let eventTypeTag: String
         let semester: String
         let semesterType: String
@@ -47,6 +47,21 @@ enum LectureDetailsComponents {
         var speakerArray: [String] {
             self.speaker.split(separator: ",").map({ $0.trimmingCharacters(in: .whitespaces) })
         }
+        
+        public var eventType: String {
+            switch self.eventTypeDefault {
+            case "Vorlesung":
+                return "Lecture".localized
+            case "Tutorium":
+                return "Exercise".localized
+            case "Praktikum":
+                return "Practice".localized
+            case "Vorlesung mit integrierten Übungen":
+                return "Lecture with integrated Exercises".localized
+            default:
+                return ""
+            }
+        }
 
         enum CodingKeys: String, CodingKey {
             case id = "stp_sp_nr"
@@ -54,7 +69,7 @@ enum LectureDetailsComponents {
             case title = "stp_sp_titel"
             case duration = "dauer_info"
             case stp_sp_sst = "stp_sp_sst"
-            case eventType = "stp_lv_art_name"
+            case eventTypeDefault = "stp_lv_art_name"
             case eventTypeTag = "stp_lv_art_kurz"
             case semesterYear = "sj_name"
             case semesterType = "semester"
@@ -87,7 +102,7 @@ extension LectureDetails {
         title: "Analysis für Informatik",
         duration: "4",
         stp_sp_sst: "1234",
-        eventType: "Vorlesung",
+        eventTypeDefault: "Vorlesung",
         eventTypeTag: "VO",
         semester: "2009/10",
         semesterType: "W",
