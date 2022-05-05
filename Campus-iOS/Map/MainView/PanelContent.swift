@@ -24,10 +24,11 @@ struct PanelContent: View {
     
     var body: some View {
         VStack{
+            Spacer().frame(height: 10)
+            
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                         .frame(width: 40, height: CGFloat(5.0))
-                        .foregroundColor(Color.secondary)
-                        .padding(5)
+                        .foregroundColor(Color.black.opacity(0.2))
             
             if let canteen = selectedCanteen {
                 HStack{
@@ -54,12 +55,11 @@ struct PanelContent: View {
                     Button(action: {
                         selectedCanteen = nil
                     }, label: {
-                        Image(systemName: "xmark")
-                                .font(.system(size: 16, weight: .bold))
-                                .foregroundColor(.white)
+                        Text("Done")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.blue)
                                 .padding(.all, 5)
-                                .background(Color.black.opacity(0.6))
-                                .clipShape(Circle())
+                                .background(Color.clear)
                                 .accessibility(label:Text("Close"))
                                 .accessibility(hint:Text("Tap to close the screen"))
                                 .accessibility(addTraits: .isButton)
@@ -76,6 +76,8 @@ struct PanelContent: View {
             }
             else {
                 HStack {
+                    Spacer()
+                    
                     Button (action: {
                         zoomOnUser = true
                         if panelPosition == "up" {
@@ -85,7 +87,8 @@ struct PanelContent: View {
                         Image(systemName: "location")
                             .font(.title2)
                     }
-                    .padding(.horizontal, 10)
+                    
+                    Spacer()
                     
                     SearchBar(panelPosition: $panelPosition,
                               searchString: $searchString)
