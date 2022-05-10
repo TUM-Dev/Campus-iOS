@@ -145,14 +145,13 @@ struct SearchBar: View {
     }
 }
 
-/*struct PanelContent_Previews: PreviewProvider {
+struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
         PanelContent(zoomOnUser: .constant(true),
                      panelPosition: .constant(""),
-                     canteens: .constant([]),
+                     canteens: .constant([testCafeteria]),
                      selectedCanteenName: .constant(""),
-                     selectedAnnotationIndex: .constant(0),
-                     canteenForMealPlan: <#Cafeteria#>)
+                     selectedAnnotationIndex: .constant(0), selectedCanteen: .constant(testCafeteria))
             .previewInterfaceOrientation(.portrait)
     }
-}*/
+}

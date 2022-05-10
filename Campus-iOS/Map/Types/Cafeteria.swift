@@ -61,3 +61,5 @@ extension Array where Element == Cafeteria {
         }
     }
 }
+
+let testCafeteria = Cafeteria(location: Location(latitude: 48.268132, longitude: 11.672263, address: "Boltzmannstraße 19, Garching"), name: "Mensa Garching", id: "mensa-garching", queueStatusApi: "https://mensa.liste.party/api/")
