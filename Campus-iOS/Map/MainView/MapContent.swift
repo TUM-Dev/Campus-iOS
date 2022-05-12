@@ -27,7 +27,7 @@ struct MapContent: UIViewRepresentable {
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteenName: String
     @Binding var selectedAnnotationIndex: Int
-        
+    
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
@@ -118,18 +118,60 @@ struct MapContent: UIViewRepresentable {
     
     var allCafs: [Cafeteria] = []
     
-    func fetchCanteens() {
+    func getCanteens() -> [Cafeteria]? {
+        var cafeterias: [Cafeteria]? = nil
+        
+        sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { response in
+            print(endpoint)
+            cafeterias = response.value
+        }
+        
+        return cafeterias
+    }
+    
+    func getCanteensQueueStatus(_ cafeterias: [Cafeteria]?) -> [Cafeteria]? {
+        guard var cafeteriasWithQueueStatus = cafeterias else {
+            return nil
+        }
+        
+        for (index, cafeteria) in cafeteriasWithQueueStatus.enumerated() {
+            if let queue = cafeteria.queueStatusApi  {
+                sessionManager.request(queue, method: .get).responseDecodable(of: Queue.self, decoder: JSONDecoder()){ response in
+                    cafeteriasWithQueueStatus[index].queue = response.value
+                }
+            }
+        }
+        
+        return cafeterias
+    }
+    
+    static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
+    
+    func handleCanteens(_ cafeterias: [Cafeteria]) {
+        let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+        
+        mapView.addAnnotations(annotations)
+        
+        canteens = cafeterias
+    }
+    
+    func fetchCanteens(forcedRefresh: Bool = false) {
+        
+        //Use here the CafeteriaService-Class to fetch the data with LRU-Cache
+        
+        if !forcedRefresh, let data = MapContent.cache.value(forKey: EatAPI.baseURLString + endpoint.path), let typedData = data as? [Cafeteria] {
+            handleCanteens(typedData)
+            print("Canteen data from cache")
+        } else {
+            print("Canteen data from server")
+            // fetch new data and store in cache.
             sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
                 var cafeterias: [Cafeteria] = response.value ?? []
                 if let currentLocation = self.locationManager.location {
                     cafeterias.sortByDistance(to: currentLocation)
                 }
                 
-                let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
-                
-                mapView.addAnnotations(annotations)
-                
-                canteens = cafeterias
+                handleCanteens(cafeterias)
                 
                 for (index, cafeteria) in canteens.enumerated() {
                     if let queue = cafeteria.queueStatusApi  {
@@ -140,16 +182,20 @@ struct MapContent: UIViewRepresentable {
                     }
                 }
 
+                // Write canteens to cache
+                MapContent.cache.setValue(canteens, forKey: EatAPI.baseURLString + endpoint.path, cost: canteens.count)
+                
                 /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(cafeterias, toSection: .main)
                 self?.dataSource?.apply(snapshot, animatingDifferences: true)*/
             }
         }
+    }
     
     class MapContentCoordinator: NSObject, MKMapViewDelegate {
         var control: MapContent
-            
+        
         init(_ control: MapContent) {
             self.control = control
         }
@@ -159,7 +205,7 @@ struct MapContent: UIViewRepresentable {
             //control.selectedCanteenName = ""
             control.selectedAnnotationIndex = -1
         }
-                
+        
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
             if let coordinate = view.annotation?.coordinate {
                 let locValue: CLLocationCoordinate2D = coordinate
