@@ -25,7 +25,7 @@ struct LectureView: View {
                             .frame(width: 12, height: 12)
                             .foregroundColor(Color("tumBlue"))
                         Text(lecture.eventType)
-                            .font(.system(size: 15))
+                            .font(.system(size: 12))
                         Spacer()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -35,7 +35,7 @@ struct LectureView: View {
                             .frame(width: 12, height: 12)
                             .foregroundColor(Color("tumBlue"))
                         Text(lecture.duration + " SWS")
-                            .font(.system(size: 15))
+                            .font(.system(size: 12))
                         Spacer()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -46,7 +46,7 @@ struct LectureView: View {
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.speaker)
-                        .font(.system(size: 15))
+                        .font(.system(size: 12))
                         .fixedSize(horizontal: false, vertical: true)
                 }.foregroundColor(.init(.darkGray))
             }

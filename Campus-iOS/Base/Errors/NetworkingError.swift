@@ -18,17 +18,17 @@ enum NetworkingError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .deviceIsOffline:
-            return "The device appears to be offline, please check the internet connectivity"
+            return "The device appears to be offline, please check the internet connectivity".localized
         case .unauthorized:
-            return "Unauthorized to access the resource"
+            return "Unauthorized to access the resource".localized
         case .resourceNotFound:
-            return "Resource not found"
+            return "Resource not found".localized
         case .serverError(let error):
-            return "Server error: \(error.localizedDescription)"
+            return "Server error".localized + ": \(error.localizedDescription)"
         case .missingData:
-            return "The accessed data is missing"
+            return "The accessed data is missing".localized
         case .decodingFailed(let error):
-            return "Decoding of data failed: \(error.localizedDescription)"
+            return "Decoding of data failed".localized + ": \(error.localizedDescription)"
         }
     }
 }

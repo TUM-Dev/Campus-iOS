@@ -23,6 +23,7 @@
 "Events" = "Termine";
 "No Calendar Events" = "Keine Veranstaltungen";
 "Lectures" = "Vorlesungen";
+"Lecture" = "Vorlesung";
 "No Lectures" = "Keine Vorlesungen";
 "Grades" = "Noten";
 "No Grades" = "Keine Noten";
@@ -92,4 +93,46 @@
 // LectureSearch
 "Lecture Search" = "Vorlesungssuche";
 "Unable to find lecture" = "Vorlesung kann nicht gefunden werden";
-"Choose Speaker" = "Sprecher auswählen";
+"Choose Speaker" = "Wähle Vortragenden";
+
+// Grades
+"Fetching Grades" = "Lade Noten";
+"Error while fetching Grades" = "Ein Fehler ist aufgetreten beim Laden der Noten";
+"Retry" = "Nochmals versuchen";
+"Cancel" = "Abbrechen";
+"Written" = "Schriftlich";
+"Graded" = "Beurteilt";
+"Written/Oral" = "Schriftlich/Mündlich";
+"Oral" = "Mündlich";
+"Unknown" = "Unbekannt";
+"Wintersemester" = "Wintersemester";
+"Summersemester" = "Sommersemester";
+
+// Lectures
+"Fetching details of lecture" = "Lade Details der Vorlesung";
+"Error while fetching details of lecture" = "Ein Fehler ist aufgetreten beim Laden der Vorlesung";
+"Fetching Lectures" = "Lade Vorlesungen";
+"Error while fetching Lectures" = "Ein Fehler ist aufgetreten beim Laden der Vorlesungen";
+"Basic lecture information" = "Allgemeine Vorlesungsinformationen";
+"Detailed lecture information" = "Detaillierte Vorlesungsinformationen";
+"Course Contents" = "Kursinhalte";
+"Course Objective" = "Kursziele";
+"Note" = "Sonstiges";
+"Lecture links" = "Vorlesungslinks";
+"Curriculum" = "Curriculum";
+"Dates" = "Daten";
+"Exam" = "Prüfung";
+"This Meeting" = "Dieses Treffen";
+"Lecture" = "Vorlesung";
+"Exercise" = "Übung";
+"Practical course" = "Praktikum";
+"Seminar" = "Seminar";
+"Lecture with integrated Exercises" = "Vorlesung mit integrierten Übungen";
+
+// Error handeling
+"The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";
+"Unauthorized to access the resource" = "Nicht berechtiger Zugirff auf Resource";
+"Resource not found" = "Resource not found";
+"Server error" = "Server Fehler";
+"The accessed data is missing" = "Die zugegriffenen Daten sind nicht vorhanden";
+"Decoding of data failed" = "Dekodierung der Daten fehlgeschlagen";
