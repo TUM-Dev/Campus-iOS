@@ -30,7 +30,7 @@ struct LecturesView: View {
                                 LectureView(lecture: item)
                             }
 
-                            if item.id != lecturesBySemester.1[lecturesBySemester.1.count - 1].id {
+                            if item.id != lecturesBySemester.1.last?.id {
                                 Divider()
                             }
                         }

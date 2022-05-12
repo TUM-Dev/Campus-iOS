@@ -123,6 +123,11 @@
 "Dates" = "Daten";
 "Exam" = "Prüfung";
 "This Meeting" = "Dieses Treffen";
+"Lecture" = "Vorlesung";
+"Exercise" = "Übung";
+"Practical course" = "Praktikum";
+"Seminar" = "Seminar";
+"Lecture with integrated Exercises" = "Vorlesung mit integrierten Übungen";
 
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";

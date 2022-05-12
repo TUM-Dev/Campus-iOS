@@ -25,7 +25,7 @@ struct LectureDetailsDetailedInfoView: View {
                         text: courseContents
                     )
                     
-                    if lectureDetails.courseObjective != nil || (lectureDetails.note != nil && !lectureDetails.note!.isEmpty) {
+                    if (lectureDetails.courseObjective != nil && !lectureDetails.courseObjective!.isEmpty) || (lectureDetails.note != nil && !lectureDetails.note!.isEmpty) {
                         Divider()
                     }
                 }

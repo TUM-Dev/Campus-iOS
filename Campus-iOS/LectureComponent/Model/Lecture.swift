@@ -36,10 +36,12 @@ enum LectureComponents {
             switch self.eventTypeDefault {
             case "Vorlesung":
                 return "Lecture".localized
-            case "Tutorium":
+            case "Tutorium", "Übung":
                 return "Exercise".localized
             case "Praktikum":
-                return "Practice".localized
+                return "Practical course".localized
+            case "Seminar":
+                return "Seminar".localized
             case "Vorlesung mit integrierten Übungen":
                 return "Lecture with integrated Exercises".localized
             default:
