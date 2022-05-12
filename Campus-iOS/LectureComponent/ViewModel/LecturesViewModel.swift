@@ -52,6 +52,9 @@ class LecturesViewModel: LecturesViewModelProtocol {
             .sorted { elementA, elementB in
                 elementA.0 > elementB.0
             }
+            .compactMap { tupel in
+                (Self.toFullSemesterName(tupel.0), tupel.1)
+            }
     }
     
     init(model: Model, serivce: LecturesServiceProtocol) {
@@ -79,6 +82,19 @@ class LecturesViewModel: LecturesViewModelProtocol {
             print(error)
             self.state = .failed(error: error)
             self.hasError = true
+        }
+    }
+}
+
+private extension LecturesViewModel {
+    static func toFullSemesterName(_ semester: String) -> String {
+        let year = "20\(String(semester.prefix(2)))"
+        let nextYearShort = String((Int(year) ?? 2000) + 1).suffix(2)
+
+        switch semester.last {
+        case "W": return "Wintersemester".localized + " \(year)/\(nextYearShort)"
+        case "S": return "Summersemester".localized + " \(year)"
+        default: return "Unknown".localized
         }
     }
 }

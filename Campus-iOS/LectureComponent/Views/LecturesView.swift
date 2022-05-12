@@ -17,7 +17,7 @@ struct LecturesView: View {
                 Section(
                     header: GroupBoxLabelView(
                         iconName: "graduationcap.fill",
-                        text: lecturesBySemester.1[0].semester
+                        text: lecturesBySemester.0
                     )
                 ) {
                     ForEach(lecturesBySemester.1) { item in
