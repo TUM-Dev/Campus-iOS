@@ -40,7 +40,7 @@ struct GradeView: View {
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.modusShort)
-								.font(.system(size: 12))
+								.font(.system(size: 13))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -50,7 +50,7 @@ struct GradeView: View {
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.lvNumber)
-								.font(.system(size: 12))
+								.font(.system(size: 13))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -61,7 +61,7 @@ struct GradeView: View {
 							.frame(width: 12, height: 12)
 							.foregroundColor(Color("tumBlue"))
 						Text(grade.examiner)
-							.font(.system(size: 12))
+							.font(.system(size: 13))
 							.fixedSize(horizontal: false, vertical: true)
 					}.foregroundColor(.init(.darkGray))
 				}
