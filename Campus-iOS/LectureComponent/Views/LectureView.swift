@@ -27,7 +27,7 @@ struct LectureView: View {
                             .foregroundColor(Color("tumBlue"))
                         Text(lecture.eventType)
                             .font(.system(size: 12))
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                         Spacer()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -38,7 +38,7 @@ struct LectureView: View {
                             .foregroundColor(Color("tumBlue"))
                         Text(lecture.duration + " SWS")
                             .font(.system(size: 12))
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                         Spacer()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -50,7 +50,7 @@ struct LectureView: View {
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.speaker)
                         .font(.system(size: 12))
-                        .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                        .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                         .fixedSize(horizontal: false, vertical: true)
                 }.foregroundColor(.init(.darkGray))
             }

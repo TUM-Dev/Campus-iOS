@@ -41,7 +41,7 @@ struct GradeView: View {
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.modusShort)
 								.font(.system(size: 12))
-                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -52,7 +52,7 @@ struct GradeView: View {
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.lvNumber)
 								.font(.system(size: 12))
-                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -64,7 +64,7 @@ struct GradeView: View {
 							.foregroundColor(Color("tumBlue"))
 						Text(grade.examiner)
 							.font(.system(size: 12))
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .gray)
+                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							.fixedSize(horizontal: false, vertical: true)
 					}.foregroundColor(.init(.darkGray))
 				}
