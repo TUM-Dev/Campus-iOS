@@ -17,6 +17,9 @@ struct Panel: View {
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteen: Cafeteria?
 
+    let screenHeight = UIScreen.main.bounds.height
+    let screenWidth = UIScreen.main.bounds.width
+    
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
@@ -34,11 +37,11 @@ struct Panel: View {
                              selectedCanteen: $selectedCanteen)
                 
                 //TODO: check for better way, to make last items in list available
-                Spacer().frame(width: UIScreen.main.bounds.width,
-                               height: 0.25 * UIScreen.main.bounds.height)
+                Spacer().frame(width: screenWidth,
+                               height: 0.25 * screenHeight)
             }
         }
-        .frame(height: UIScreen.main.bounds.height)
+        .frame(height: screenHeight)
         .background()
         .cornerRadius(10.0)
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
@@ -62,23 +65,35 @@ struct Panel: View {
             let positionBelow: PanelPosition
             let closestPosition: PanelPosition
             
-            if cardTopEdgeLocation <= PanelPosition.middle.rawValue {
+            if cardTopEdgeLocation <= PanelPosition.top.rawValue {
+                positionAbove = .top
+                positionBelow = .top
+                
+                closestPosition = positionAbove
+                
+            } else if cardTopEdgeLocation <= PanelPosition.middle.rawValue && cardTopEdgeLocation >= PanelPosition.top.rawValue {
                 positionAbove = .top
                 positionBelow = .middle
+                
+                if cardTopEdgeLocation < (positionBelow.rawValue - positionAbove.rawValue) {
+                    closestPosition = positionAbove
+                } else {
+                    closestPosition = positionBelow
+                }
             } else {
                 positionAbove = .middle
                 positionBelow = .bottom
+                
+                if (cardTopEdgeLocation - positionAbove.rawValue)/4 < (positionBelow.rawValue - cardTopEdgeLocation) {
+                    closestPosition = positionAbove
+                } else {
+                    closestPosition = positionBelow
+                }
             }
             
-            if (cardTopEdgeLocation - positionAbove.rawValue) < (positionBelow.rawValue - cardTopEdgeLocation) {
-                closestPosition = positionAbove
-            } else {
-                closestPosition = positionBelow
-            }
-            
-            if verticalDirection > 0 {
+            if verticalDirection > 100 {
                 self.position = positionBelow
-            } else if verticalDirection < 0 {
+            } else if verticalDirection < -100 {
                 self.position = positionAbove
             } else {
                 self.position = closestPosition
@@ -101,9 +116,9 @@ enum PanelPosition: CGFloat {
     case top, middle, bottom
     var rawValue: CGFloat {
         switch self {
-        case .top: return (1/6) * screenHeight
-        case .middle: return (1/2) * screenHeight
-        case .bottom: return (4/5) * screenHeight
+        case .top: return (1.2/10) * screenHeight
+        case .middle: return (5/10) * screenHeight
+        case .bottom: return (8.3/10) * screenHeight
         }
     }
 }
