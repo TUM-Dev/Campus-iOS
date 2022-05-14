@@ -25,8 +25,10 @@ struct MapContent: UIViewRepresentable {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
     @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
+    @Binding var selectedCanteen: Cafeteria?
+    
+    @State private var focusedCanteen: Cafeteria?
+    @State private var setAnnotations: Bool = true
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -37,9 +39,6 @@ struct MapContent: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         mapView.delegate = context.coordinator
-        DispatchQueue.main.async {
-            fetchCanteens()
-        }
         
         mapView.showsUserLocation = true
 
@@ -52,6 +51,14 @@ struct MapContent: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         focusOnUser(mapView: view)
         focusOnCanteen(mapView: view)
+        
+        if canteens.count > 0 && setAnnotations {
+            DispatchQueue.main.async {
+                let annotations = canteens.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+                view.addAnnotations(annotations)
+                setAnnotations = false // only add canteen annotations once
+            }
+        }
         
         let newCenter = screenHeight/3
         
@@ -72,7 +79,7 @@ struct MapContent: UIViewRepresentable {
                     for i in mapView.selectedAnnotations {
                         mapView.deselectAnnotation(i, animated: true)
                     }
-                    selectedCanteenName = ""
+                    
                     DispatchQueue.main.async {
                         let locValue: CLLocationCoordinate2D = location.coordinate
                         
@@ -91,9 +98,9 @@ struct MapContent: UIViewRepresentable {
     }
     
     func focusOnCanteen(mapView: MKMapView) {
-        if selectedCanteenName != "" {
+        if selectedCanteen != nil && selectedCanteen != focusedCanteen, let canteen = selectedCanteen {
             for i in mapView.annotations {
-                if i.title == selectedCanteenName {
+                if i.title == canteen.title {
                     let locValue: CLLocationCoordinate2D = i.coordinate
                     
                     let coordinate = CLLocationCoordinate2D(
@@ -101,11 +108,10 @@ struct MapContent: UIViewRepresentable {
                     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                     let region = MKCoordinateRegion(center: coordinate, span: span)
                     
-                    mapView.setRegion(region, animated: true)
-                    for i in mapView.annotations {
-                        if i.title == selectedCanteenName {
-                            mapView.selectAnnotation(i, animated: true)
-                        }
+                    DispatchQueue.main.async {
+                        mapView.setRegion(region, animated: true)
+                        mapView.selectAnnotation(i, animated: true)
+                        focusedCanteen = selectedCanteen // only focus once, when newly selected
                     }
                 }
             }
@@ -116,37 +122,6 @@ struct MapContent: UIViewRepresentable {
         MapContentCoordinator(self)
     }
     
-    var allCafs: [Cafeteria] = []
-    
-    func fetchCanteens() {
-            sessionManager.request(endpoint).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
-                var cafeterias: [Cafeteria] = response.value ?? []
-                if let currentLocation = self.locationManager.location {
-                    cafeterias.sortByDistance(to: currentLocation)
-                }
-                
-                let annotations = cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
-                
-                mapView.addAnnotations(annotations)
-                
-                canteens = cafeterias
-                
-                for (index, cafeteria) in canteens.enumerated() {
-                    if let queue = cafeteria.queueStatusApi  {
-                        sessionManager.request(queue, method: .get).responseDecodable(of: Queue.self, decoder: JSONDecoder()){ [self] response in
-                            canteens[index].queue = response.value
-                            //canteens = cafeterias
-                        }
-                    }
-                }
-
-                /*var snapshot = NSDiffableDataSourceSnapshot<Section, Cafeteria>()
-                snapshot.appendSections([.main])
-                snapshot.appendItems(cafeterias, toSection: .main)
-                self?.dataSource?.apply(snapshot, animatingDifferences: true)*/
-            }
-        }
-    
     class MapContentCoordinator: NSObject, MKMapViewDelegate {
         var control: MapContent
             
@@ -156,8 +131,6 @@ struct MapContent: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
             control.zoomOnUser = false
-            //control.selectedCanteenName = ""
-            control.selectedAnnotationIndex = -1
         }
                 
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -173,12 +146,10 @@ struct MapContent: UIViewRepresentable {
             }
             
             if let title = view.annotation?.title {
-                if !control.canteens.isEmpty {
-                    for i in 0...(control.canteens.count - 1) {
-                        if title! == control.canteens[i].title {
-                            control.selectedAnnotationIndex = i
-                            control.panelPosition = "pushMid"
-                        }
+                for canteen in control.canteens{
+                    if title! == canteen.title {
+                        control.selectedCanteen = canteen
+                        control.panelPosition = "pushMid"
                     }
                 }
             }

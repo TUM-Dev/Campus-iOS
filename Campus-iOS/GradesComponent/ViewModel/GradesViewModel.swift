@@ -74,9 +74,9 @@ class GradesViewModel: GradesViewModelProtocol {
             }
     }
     
-    init(model: Model, serivce: GradesServiceProtocol) {
+    init(model: Model, service: GradesServiceProtocol) {
         self.model = model
-        self.service = serivce
+        self.service = service
     }
     
     func getGrades(forcedRefresh: Bool = false) async {

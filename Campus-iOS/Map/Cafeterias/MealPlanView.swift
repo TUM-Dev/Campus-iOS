@@ -22,17 +22,18 @@ struct MealPlanView: View {
                             }){
                                 VStack{
                                     Circle()
-                                        .fill(menu === viewModel.selectedMenu ? Color("tumBlue") : Color.clear)
+                                        .fill(menu === viewModel.selectedMenu ?
+                                              (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)) : Color.clear)
                                         .aspectRatio(contentMode: .fit)
                                         .overlay(
                                             Text(getFormattedDate(date: menu.date, format: "d"))
                                                 .fontWeight(.semibold).fixedSize()
-                                                .foregroundColor(menu === viewModel.selectedMenu ? Color.white : Color.black)
+                                                .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
                                         )
-                                        .frame(maxWidth: .infinity)
+                                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 35)
 
                                     Text(getFormattedDate(date: menu.date, format: "EEE"))
-                                        .foregroundColor(Color.black)
+                                        .foregroundColor(Color(UIColor.label))
                                 }
                             }
                         }
@@ -42,17 +43,15 @@ struct MealPlanView: View {
                     if let menu = viewModel.selectedMenu {
                         MenuView(viewModel: menu)
                     }else{
-                        Spacer()
+                        Spacer().frame(height: 20)
+                        Text("No Menu available today").foregroundColor(Color.black.opacity(0.5))
                     }
                 }
             } else {
-                Text("Kein Menü")
+                Text("No Menus available")
             }
         }
         .navigationTitle(viewModel.title)
-        .onAppear {
-            viewModel.fetch()
-        }
     }
     
     func getFormattedDate(date: Date, format: String) -> String{
@@ -62,8 +61,13 @@ struct MealPlanView: View {
     }
 }
 
-/*struct MealPlanView_Previews: PreviewProvider {
+struct MealPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        MealPlanView(canteen: .constant())
+        MealPlanView(viewModel: MealPlanViewModel(cafeteria: Cafeteria(location: Location(latitude: 0.0,
+                                                                                          longitude: 0.0,
+                                                                                          address: ""),
+                                                                       name: "",
+                                                                       id: "",
+                                                                       queueStatusApi: "")))
     }
-}*/
+}

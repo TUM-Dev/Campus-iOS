@@ -64,9 +64,13 @@ struct PanelRow: View {
     }
 }
 
-//
-//struct PanelRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PanelRow()
-//    }
-//}
+struct PanelRow_Previews: PreviewProvider {
+    static var previews: some View {
+        PanelRow(cafeteria: .constant(Cafeteria(location: Location(latitude: 0.0,
+                                                                   longitude: 0.0,
+                                                                   address: ""),
+                                                name: "",
+                                                id: "",
+                                                queueStatusApi: "")))
+    }
+}

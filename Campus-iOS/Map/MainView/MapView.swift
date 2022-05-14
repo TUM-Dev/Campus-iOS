@@ -9,41 +9,32 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @State var zoomOnUser: Bool
-    @State var panelPosition: String
-    @State var canteens: [Cafeteria]
-    @State var selectedCanteenName: String
-    @State var selectedAnnotationIndex: Int
-    @State var selectedCanteen: Cafeteria
+    @ObservedObject var viewModel: MapViewModel
     
     var body: some View {
         ZStack {
             MapContent(
-                zoomOnUser: $zoomOnUser,
-                panelPosition: $panelPosition,
-                canteens: $canteens,
-                selectedCanteenName: $selectedCanteenName,
-                selectedAnnotationIndex: $selectedAnnotationIndex)
-            Panel(zoomOnUser: $zoomOnUser,
-                  panelPosition: $panelPosition,
-                  canteens: $canteens,
-                  selectedCanteenName: $selectedCanteenName,
-                  selectedAnnotationIndex: $selectedAnnotationIndex,
-                  selectedCanteen: $selectedCanteen)
-            Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName, cafeteria: $selectedCanteen)
+                zoomOnUser: $viewModel.zoomOnUser,
+                panelPosition: $viewModel.panelPosition,
+                canteens: $viewModel.canteens,
+                selectedCanteen: $viewModel.selectedCanteen)
+            Panel(zoomOnUser: $viewModel.zoomOnUser,
+                  panelPosition: $viewModel.panelPosition,
+                  lockPanel: $viewModel.lockPanel,
+                  canteens: $viewModel.canteens,
+                  selectedCanteen: $viewModel.selectedCanteen)
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.vertical)
         .navigationTitle("Map")
         .navigationBarHidden(true)
+        .task {
+            viewModel.fetchCanteens()
+        }
     }
 }
 
-/*struct MapView_Previews: PreviewProvider {
+struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(zoomOnUser: true,
-                panelPosition: "down",
-                canteens: [],
-                selectedCanteenName: "",
-                selectedAnnotationIndex: 0)
+        MapView(viewModel: MapViewModel())
     }
-}*/
+}

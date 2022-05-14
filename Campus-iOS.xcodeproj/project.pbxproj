@@ -10,6 +10,7 @@
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
+		256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -39,7 +40,6 @@
 		36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD327A304B5007DC62D /* MealPlanViewModel.swift */; };
 		36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD427A304B5007DC62D /* MenuViewModel.swift */; };
 		36108BE927A304B5007DC62D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD627A304B5007DC62D /* MenuView.swift */; };
-		36108BEA27A304B6007DC62D /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD827A304B5007DC62D /* Toolbar.swift */; };
 		36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD927A304B5007DC62D /* PanelRow.swift */; };
 		36108BED27A304B6007DC62D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDB27A304B5007DC62D /* MapView.swift */; };
 		36108BEE27A304B6007DC62D /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDC27A304B5007DC62D /* Panel.swift */; };
@@ -189,6 +189,7 @@
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
+		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LectureDetailsViewModel+State.swift"; sourceTree = "<group>"; };
 		36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsViewModel.swift; sourceTree = "<group>"; };
 		36108BA027A3046B007DC62D /* LecturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewModel.swift; sourceTree = "<group>"; };
@@ -218,7 +219,6 @@
 		36108BD327A304B5007DC62D /* MealPlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		36108BD427A304B5007DC62D /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		36108BD627A304B5007DC62D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		36108BD827A304B5007DC62D /* Toolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		36108BD927A304B5007DC62D /* PanelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRow.swift; sourceTree = "<group>"; };
 		36108BDB27A304B5007DC62D /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		36108BDC27A304B5007DC62D /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
@@ -498,12 +498,12 @@
 		36108BD727A304B5007DC62D /* MainView */ = {
 			isa = PBXGroup;
 			children = (
-				36108BD827A304B5007DC62D /* Toolbar.swift */,
-				36108BD927A304B5007DC62D /* PanelRow.swift */,
 				36108BDB27A304B5007DC62D /* MapView.swift */,
-				36108BDC27A304B5007DC62D /* Panel.swift */,
+				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
 				36108BDD27A304B5007DC62D /* MapContent.swift */,
+				36108BDC27A304B5007DC62D /* Panel.swift */,
 				36108BDE27A304B5007DC62D /* PanelContent.swift */,
+				36108BD927A304B5007DC62D /* PanelRow.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -1321,7 +1321,6 @@
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
-				36108BEA27A304B6007DC62D /* Toolbar.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
@@ -1355,6 +1354,7 @@
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContent.swift in Sources */,
+				256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,

@@ -31,9 +31,9 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
         }
     }
     
-    init(model: Model, serivce: LectureDetailsServiceProtocol, lecture: Lecture) {
+    init(model: Model, service: LectureDetailsServiceProtocol, lecture: Lecture) {
         self.model = model
-        self.service = serivce
+        self.service = service
         self.lecture = lecture
     }
     

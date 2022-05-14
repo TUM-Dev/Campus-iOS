@@ -14,7 +14,7 @@ struct LecturesScreen: View {
         self._vm = StateObject(wrappedValue:
             LecturesViewModel(
                 model: model,
-                serivce: LecturesService()
+                service: LecturesService()
             )
         )
     }

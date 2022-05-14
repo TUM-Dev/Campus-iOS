@@ -19,7 +19,7 @@ struct MenuView: View {
                     }
                 }
             }
-        }
+        }.listStyle(GroupedListStyle()) // make sections non-collapsible
     }
 }
 
@@ -44,22 +44,18 @@ struct DishView: View {
             }
         } label: {
             VStack(alignment: .leading, spacing: 10){
+                Spacer().frame(height: 0)
+                Text(dish.name).bold()
                 HStack{
-                    Text(dish.name)
-                    Spacer()
-                    Image(systemName: "info.circle")
-                }
-                HStack{
-                    Text(labelsToString(labels: dish.labels))
                     Spacer()
                     Text(formatPrice(dish: dish, pricingGroup: "students"))
                         .lineLimit(1)
+                        .font(.system(size: 15))
                 }
-                .font(.footnote)
+                Spacer().frame(height: 0)
             }
         }
-        .buttonStyle(PlainButtonStyle()).accentColor(.clear).disabled(true)
-        
+        .buttonStyle(PlainButtonStyle()).disabled(true)
     }
     
     func formatPrice(dish: Dish, pricingGroup: String) -> String {
@@ -125,8 +121,8 @@ struct DishView: View {
     }
 }
 
-/*struct MenuView_Previews: PreviewProvider {
+struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuView(menu: )
+        MenuView(viewModel: MenuViewModel(date: Date(), categories: []))
     }
-}*/
+}

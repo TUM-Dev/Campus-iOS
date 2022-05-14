@@ -68,7 +68,7 @@ struct GradesView_Previews: PreviewProvider {
         GradesView(vm:
             GradesViewModel(
                 model: MockModel(),
-                serivce: GradesService()
+                service: GradesService()
             )
         )
     }
