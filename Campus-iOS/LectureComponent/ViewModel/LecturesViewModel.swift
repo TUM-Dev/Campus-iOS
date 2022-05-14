@@ -57,9 +57,9 @@ class LecturesViewModel: LecturesViewModelProtocol {
             }
     }
     
-    init(model: Model, serivce: LecturesServiceProtocol) {
+    init(model: Model, service: LecturesServiceProtocol) {
         self.model = model
-        self.service = serivce
+        self.service = service
     }
     
     func getLectures(forcedRefresh: Bool = false) async {

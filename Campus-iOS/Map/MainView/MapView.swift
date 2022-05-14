@@ -20,6 +20,7 @@ struct MapView: View {
                 selectedCanteen: $viewModel.selectedCanteen)
             Panel(zoomOnUser: $viewModel.zoomOnUser,
                   panelPosition: $viewModel.panelPosition,
+                  lockPanel: $viewModel.lockPanel,
                   canteens: $viewModel.canteens,
                   selectedCanteen: $viewModel.selectedCanteen)
         }

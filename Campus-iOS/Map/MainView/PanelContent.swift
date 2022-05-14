@@ -11,6 +11,7 @@ import CoreLocation
 struct PanelContent: View {
     @Binding var zoomOnUser: Bool
     @Binding var panelPosition: String
+    @Binding var lockPanel: Bool
     @Binding var canteens: [Cafeteria]
     @Binding var selectedCanteen: Cafeteria?
     
@@ -91,6 +92,7 @@ struct PanelContent: View {
                     Spacer()
                     
                     SearchBar(panelPosition: $panelPosition,
+                              lockPanel: $lockPanel,
                               searchString: $searchString)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
@@ -130,6 +132,7 @@ struct PanelContent: View {
 
 struct SearchBar: View {
     @Binding var panelPosition: String
+    @Binding var lockPanel: Bool
     @Binding var searchString: String
     
     @State private var isEditing = false
@@ -142,6 +145,7 @@ struct SearchBar: View {
                 .cornerRadius(8)
                 .onTapGesture {
                     isEditing = true
+                    lockPanel = true
                     panelPosition = "pushMid"
                 }
             HStack {
@@ -149,6 +153,7 @@ struct SearchBar: View {
                 if self.searchString != "" {
                     Button(action: {
                         self.searchString = ""
+                        lockPanel = true
                     }) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(Color(UIColor.opaqueSeparator))
@@ -161,6 +166,7 @@ struct SearchBar: View {
         if isEditing {
             Button(action: {
                 isEditing = false
+                lockPanel = false
                 searchString = ""
                 
                 panelPosition = "pushDown"
@@ -179,6 +185,7 @@ struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
         PanelContent(zoomOnUser: .constant(true),
                      panelPosition: .constant(""),
+                     lockPanel: .constant(false),
                      canteens: .constant([]),
                      selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
                                                                              longitude: 0.0,

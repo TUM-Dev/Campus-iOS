@@ -14,6 +14,7 @@ final class MapViewModel: ObservableObject {
     @Published var selectedCanteen: Cafeteria?
     @Published var zoomOnUser: Bool = true
     @Published var panelPosition: String = "pushMid"
+    @Published var lockPanel: Bool = false
     @Published var selectedCanteenName: String = " "
     @Published var selectedAnnotationIndex: Int = 0
     
