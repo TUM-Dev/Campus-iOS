@@ -28,7 +28,7 @@ xcuserdata/
 *.dSYM
 
 ## Swift Package Manager
-Package.resolved
+*Package.resolved
 
 # CocoaPods
 #
