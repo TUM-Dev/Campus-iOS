@@ -157,7 +157,7 @@ struct SearchBar: View {
                     if !self.searchString.isEmpty {
                         Button(action: {
                             self.searchString = ""
-                            lockPanel = true
+                            lockPanel = false
                         }) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(Color(UIColor.opaqueSeparator))
