@@ -27,7 +27,7 @@ struct MapView: View {
         .edgesIgnoringSafeArea(.vertical)
         .navigationTitle("Map")
         .navigationBarHidden(true)
-        .onAppear() {
+        .task {
             viewModel.fetchCanteens()
         }
     }

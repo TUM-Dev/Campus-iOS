@@ -138,39 +138,41 @@ struct SearchBar: View {
     @State private var isEditing = false
     
     var body: some View {
-        ZStack {
-            TextField("Search ...", text: $searchString)
-                .padding(7)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .onTapGesture {
-                    isEditing = true
-                    lockPanel = true
-                    panelPosition = "pushMid"
-                }
-            HStack {
-                Spacer()
-                if self.searchString != "" {
-                    Button(action: {
-                        self.searchString = ""
-                        lockPanel = true
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(Color(UIColor.opaqueSeparator))
+        TextField("Search ...", text: $searchString, onEditingChanged: { (editingChanged) in
+            if editingChanged {
+                isEditing = true
+                lockPanel = true
+                panelPosition = "pushMid"
+            } else {
+                isEditing = false
+                lockPanel = false
+            }
+        })
+            .padding(7)
+            .background(Color(.systemGray6))
+            .cornerRadius(8)
+            .overlay {
+                HStack {
+                    Spacer()
+                    if !self.searchString.isEmpty {
+                        Button(action: {
+                            self.searchString = ""
+                            lockPanel = true
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(Color(UIColor.opaqueSeparator))
+                        }
+                        .padding(.trailing, 8)
                     }
-                    .padding(.trailing, 8)
                 }
             }
-        }
 
         if isEditing {
             Button(action: {
                 isEditing = false
                 lockPanel = false
                 searchString = ""
-                
-                panelPosition = "pushDown"
-                
+                                
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }) {
                 Text("Cancel")
