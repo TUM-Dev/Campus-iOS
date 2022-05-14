@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GradeView: View {
-    
+    @Environment(\.colorScheme) var colorScheme
     var grade: Grade
     
     var body: some View {
@@ -25,6 +25,7 @@ struct GradeView: View {
 				Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.white)
+                    .glowBorder(color: .gray, lineWidth: 1)
             }
             
             VStack(alignment: .leading, spacing: 8) {
@@ -40,6 +41,7 @@ struct GradeView: View {
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.modusShort)
 								.font(.system(size: 12))
+                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -50,6 +52,7 @@ struct GradeView: View {
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.lvNumber)
 								.font(.system(size: 12))
+                                .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
@@ -61,6 +64,7 @@ struct GradeView: View {
 							.foregroundColor(Color("tumBlue"))
 						Text(grade.examiner)
 							.font(.system(size: 12))
+                            .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							.fixedSize(horizontal: false, vertical: true)
 					}.foregroundColor(.init(.darkGray))
 				}

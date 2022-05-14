@@ -36,7 +36,7 @@ struct LectureDetailsBasicInfoView: View {
         GroupBox(
             label: GroupBoxLabelView(
                 iconName: "info.circle.fill",
-                text: "Basic lecture information"
+                text: "Basic lecture information".localized
             )
             .padding(.bottom, 10)
         ) {

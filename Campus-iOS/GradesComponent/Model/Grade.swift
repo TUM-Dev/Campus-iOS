@@ -34,11 +34,11 @@ enum GradeComponents {
         
         var modusShort: String {
             switch self.modus {
-            case "Schriftlich": return "Schriftlich"
-            case "Beurteilt/immanenter Prüfungscharakter": return "Beurteilt"
-            case "Schriftlich und Mündlich": return "Schriftlich/Mündlich"
-            case "Mündlich": return "Mündlich"
-            default: return "Unbekannt"
+            case "Schriftlich": return "Written".localized //"Schriftlich"
+            case "Beurteilt/immanenter Prüfungscharakter": return "Graded".localized //"Beurteilt"
+            case "Schriftlich und Mündlich": return "Written/Oral".localized //"Schriftlich/Mündlich"
+            case "Mündlich": return "Oral".localized //"Mündlich"
+            default: return "Unknown".localized //"Unbekannt"
             }
         }
         
