@@ -25,7 +25,8 @@ struct Panel: View {
             .updating($dragState) { drag, state, transaction in
                 if lockPanel == false {
                     state = .dragging(translation: drag.translation)
-                }            }
+                }
+            }
             .onEnded(onDragEnded)
         
         return Group {
@@ -36,9 +37,8 @@ struct Panel: View {
                              canteens: $canteens,
                              selectedCanteen: $selectedCanteen)
                 
-                //TODO: check for better way, to make last items in list available
                 Spacer().frame(width: screenWidth,
-                               height: 0.25 * screenHeight)
+                               height: screenHeight * (1 - 8.2/10))
             }
         }
         .frame(height: screenHeight)
