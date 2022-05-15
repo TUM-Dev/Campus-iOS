@@ -85,12 +85,7 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView(zoomOnUser: true,
-                        panelPosition: "down",
-                        canteens: [],
-                        selectedCanteenName: " ",
-                        selectedAnnotationIndex: 0,
-                        selectedCanteen: Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " ", queueStatusApi: nil))
+                MapScreen(vm: MapViewModel(service: CafeteriasService()))
             }
             .tag(3)
             .tabItem {
