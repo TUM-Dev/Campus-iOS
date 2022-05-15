@@ -23,9 +23,9 @@ struct MapScreen: View {
             switch vm.state {
             case .success(_):
                 VStack {
-                    //MapView(vm: self.vm)
+                    MapView(vm: self.vm)
                     //Text("MapView")
-                    TestView(vm: self.vm)
+                    //TestView(vm: self.vm)
                 }
                 .refreshable {
                     await vm.getCafeteria(forcedRefresh: true)

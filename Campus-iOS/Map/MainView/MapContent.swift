@@ -66,8 +66,8 @@ struct MapContent: UIViewRepresentable {
                     for i in mapView.selectedAnnotations {
                         mapView.deselectAnnotation(i, animated: true)
                     }
-                    vm.selectedCanteenName = ""
                     DispatchQueue.main.async {
+                        vm.selectedCanteenName = ""
                         let locValue: CLLocationCoordinate2D = location.coordinate
                         
                         let coordinate = CLLocationCoordinate2D(
