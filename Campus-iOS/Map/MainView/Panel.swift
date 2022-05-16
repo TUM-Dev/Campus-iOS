@@ -11,12 +11,7 @@ import MapKit
 struct Panel: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
-    @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
-    @Binding var selectedCanteen: Cafeteria
+    @StateObject var vm: MapViewModel
 
     var body: some View {
         let drag = DragGesture()
@@ -26,12 +21,7 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent(zoomOnUser: $zoomOnUser,
-                         panelPosition: $panelPosition,
-                         canteens: $canteens,
-                         selectedCanteenName: $selectedCanteenName,
-                         selectedAnnotationIndex: $selectedAnnotationIndex,
-                         selectedCanteen: $selectedCanteen)
+            PanelContent(vm: self.vm)
         }
         .frame(height: UIScreen.main.bounds.height)
         .background()
@@ -40,10 +30,10 @@ struct Panel: View {
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
-        .task(id: panelPosition) {
-            if panelPosition == "pushMid" {
+        .task(id: vm.panelPosition) {
+            if vm.panelPosition == "pushMid" {
                 self.position = .middle
-            } else if panelPosition == "pushDown" {
+            } else if vm.panelPosition == "pushDown" {
                 self.position = .bottom
             }
         }
@@ -79,11 +69,11 @@ struct Panel: View {
         }
         
         if self.position.rawValue == PanelPosition.bottom.rawValue {
-            panelPosition = "down"
+            vm.panelPosition = "down"
         } else if self.position.rawValue == PanelPosition.middle.rawValue {
-            panelPosition = "mid"
+            vm.panelPosition = "mid"
         } else if self.position.rawValue == PanelPosition.top.rawValue {
-            panelPosition = "up"
+            vm.panelPosition = "up"
         }
     }
 }

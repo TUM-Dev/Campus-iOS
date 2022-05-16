@@ -11,7 +11,7 @@ import MapKit
 
 struct PanelRow: View {
     
-    @Binding var cafeteria: Cafeteria
+    var cafeteria: Cafeteria
     @State var explainStatus = false
     private let locationManager = CLLocationManager()
     private let distanceFormatter: MKDistanceFormatter = {

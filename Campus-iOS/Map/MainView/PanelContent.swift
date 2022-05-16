@@ -11,12 +11,7 @@ import CoreLocation
 import Alamofire
 
 struct PanelContent: View {
-    @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
-    @Binding var selectedCanteen: Cafeteria
+    @StateObject var vm: MapViewModel
     
     @State private var searchString = ""
     @State private var canteenForMealPlan: Cafeteria?
@@ -31,16 +26,16 @@ struct PanelContent: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: handleThickness / 2.0)
-                .frame(width: .infinity, height: handleThickness)
+                .frame(height: handleThickness)
                 .foregroundColor(Color.secondary)
                 .padding(5)
             VStack {
                 HStack {
                     Button (action: {
-                        zoomOnUser = true
-                        selectedAnnotationIndex = 0
-                        if panelPosition == "up" {
-                            panelPosition = "pushMid"
+                        vm.zoomOnUser = true
+                        vm.selectedAnnotationIndex = 0
+                        if vm.panelPosition == "up" {
+                            vm.panelPosition = "pushMid"
                         }
                     }) {
                         Image(systemName: "location")
@@ -48,10 +43,10 @@ struct PanelContent: View {
                     }
                     .padding(.horizontal, 10)
                     
-                    SearchBar(panelPosition: $panelPosition,
+                    SearchBar(panelPosition: $vm.panelPosition,
                               searchString: $searchString,
-                              selectedCanteenName: $selectedCanteenName,
-                              selectedAnnotationIndex: $selectedAnnotationIndex)
+                              selectedCanteenName: $vm.selectedCanteenName,
+                              selectedAnnotationIndex: $vm.selectedAnnotationIndex)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
                                    height: 1.5 * UIScreen.main.bounds.width/10)
@@ -60,22 +55,24 @@ struct PanelContent: View {
                     ProgressView()
                     ScrollViewReader { proxy in
                         List {
-                            ForEach (canteens.indices.filter({ searchString.isEmpty ? true : canteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                                PanelRow(cafeteria: self.$canteens[id])
+                            ForEach (vm.cafeterias.indices.filter({ searchString.isEmpty ? true : vm.cafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                                PanelRow(cafeteria: self.vm.cafeterias[id])
                                 .onTapGesture {
+                                    print("TAPPED")
                                     withAnimation {
-                                        selectedCanteenName = canteens[id].name
-                                        selectedAnnotationIndex = canteens.firstIndex(of: canteens[id])!
-                                        proxy.scrollTo(canteens[id], anchor: .top)
+                                        vm.selectedCanteenName = vm.cafeterias[id].name
+                                        vm.selectedAnnotationIndex = vm.cafeterias.firstIndex(of: vm.cafeterias[id])!
+                                        proxy.scrollTo(vm.cafeterias[id], anchor: .top)
                                         
-                                        selectedCanteen = canteens[id]
+                                        vm.selectedCanteen = vm.cafeterias[id]
                                     }
+                                    print(vm.selectedCanteen)
                                 }
-                                .task(id: selectedAnnotationIndex) {
+                                .task(id: vm.selectedAnnotationIndex) {
                                     withAnimation(Animation.linear(duration: 0.0001)) {
-                                        if 0...canteens.count ~= selectedAnnotationIndex {
-                                            proxy.scrollTo(canteens[selectedAnnotationIndex], anchor: .top)
-                                            selectedAnnotationIndex = -1
+                                        if 0...vm.cafeterias.count ~= vm.selectedAnnotationIndex {
+                                            proxy.scrollTo(vm.cafeterias[vm.selectedAnnotationIndex], anchor: .top)
+                                            vm.selectedAnnotationIndex = -1
                                         }
                                     }
                                 }
@@ -86,7 +83,7 @@ struct PanelContent: View {
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
-                .onChange(of: selectedCanteenName) { newValue in
+                .onChange(of: vm.selectedCanteenName) { newValue in
                     print("SELECTED CANTEEN (Panelcontent): ", newValue)
                 }
             }

@@ -21,9 +21,8 @@ final class Annotation: NSObject, MKAnnotation {
     }
 }
 
-@MainActor
 struct MapContent: UIViewRepresentable {
-    @StateObject var vm: MapViewModel
+    @ObservedObject var vm: MapViewModel
     
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -34,6 +33,8 @@ struct MapContent: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         mapView.delegate = context.coordinator
+        handleCafeterias()
+        
         
         mapView.showsUserLocation = true
         
@@ -63,10 +64,11 @@ struct MapContent: UIViewRepresentable {
             
             if let location = self.locationManager.location {
                 if vm.zoomOnUser {
-                    for i in mapView.selectedAnnotations {
-                        mapView.deselectAnnotation(i, animated: true)
-                    }
                     DispatchQueue.main.async {
+                        for i in mapView.selectedAnnotations {
+                            mapView.deselectAnnotation(i, animated: true)
+                        }
+                        
                         vm.selectedCanteenName = ""
                         let locValue: CLLocationCoordinate2D = location.coordinate
                         
@@ -95,12 +97,10 @@ struct MapContent: UIViewRepresentable {
                     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                     let region = MKCoordinateRegion(center: coordinate, span: span)
                     
+                    
                     mapView.setRegion(region, animated: true)
-                    for i in mapView.annotations {
-                        if i.title == vm.selectedCanteenName {
-                            mapView.selectAnnotation(i, animated: true)
-                        }
-                    }
+                    mapView.selectAnnotation(i, animated: true)
+                    
                 }
             }
         }
@@ -128,21 +128,23 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         DispatchQueue.main.async { [self] in
             control.vm.zoomOnUser = false
-            //control.selectedCanteenName = ""
+            control.vm.selectedCanteenName = ""
             control.vm.selectedAnnotationIndex = -1
         }
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let coordinate = view.annotation?.coordinate {
-            let locValue: CLLocationCoordinate2D = coordinate
             
-            let coordinate = CLLocationCoordinate2D(
-                latitude: locValue.latitude, longitude: locValue.longitude)
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
+                let locValue: CLLocationCoordinate2D = coordinate
+                
+                let coordinate = CLLocationCoordinate2D(
+                    latitude: locValue.latitude, longitude: locValue.longitude)
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
+                
+                mapView.setRegion(region, animated: true)
             
-            mapView.setRegion(region, animated: true)
         }
         
         if let title = view.annotation?.title {

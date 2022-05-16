@@ -84,12 +84,7 @@ struct MapView: View {
         ZStack {
             MapContent(
                 vm: self.vm)
-            Panel(zoomOnUser: $zoomOnUser,
-                  panelPosition: $panelPosition,
-                  canteens: $canteens,
-                  selectedCanteenName: $selectedCanteenName,
-                  selectedAnnotationIndex: $selectedAnnotationIndex,
-                  selectedCanteen: $selectedCanteen)
+            Panel(vm: self.vm)
             Toolbar(zoomOnUser: $zoomOnUser, selectedCanteenName: $selectedCanteenName, cafeteria: $selectedCanteen)
         }
         .edgesIgnoringSafeArea(.all)
