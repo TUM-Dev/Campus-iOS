@@ -64,22 +64,19 @@ struct MapContent: UIViewRepresentable {
             
             if let location = self.locationManager.location {
                 if vm.zoomOnUser {
-                    DispatchQueue.main.async {
-                        for i in mapView.selectedAnnotations {
-                            mapView.deselectAnnotation(i, animated: true)
-                        }
-                        
-                        vm.selectedCanteenName = ""
-                        let locValue: CLLocationCoordinate2D = location.coordinate
-                        
-                        let coordinate = CLLocationCoordinate2D(
-                            latitude: locValue.latitude, longitude: locValue.longitude)
-                        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-                        let region = MKCoordinateRegion(center: coordinate, span: span)
-                        
-                        withAnimation {
-                            mapView.setRegion(region, animated: true)
-                        }
+                    for i in mapView.selectedAnnotations {
+                        mapView.deselectAnnotation(i, animated: true)
+                    }
+                    
+                    let locValue: CLLocationCoordinate2D = location.coordinate
+                    
+                    let coordinate = CLLocationCoordinate2D(
+                        latitude: locValue.latitude, longitude: locValue.longitude)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                    
+                    withAnimation {
+                        mapView.setRegion(region, animated: true)
                     }
                 }
             }
@@ -100,7 +97,7 @@ struct MapContent: UIViewRepresentable {
                     
                     mapView.setRegion(region, animated: true)
                     mapView.selectAnnotation(i, animated: true)
-                    
+                
                 }
             }
         }
