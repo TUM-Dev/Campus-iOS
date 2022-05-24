@@ -12,11 +12,30 @@ struct NewsCardsHorizontalScrollingView: View {
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @State var isWebViewShowed = false
     @State var news: [News]
+    @State var visibleNews: [News]
+    
+    init(news: [News]) {
+        let sortedNews = news.sorted(by: { news1, news2 in
+            if let date1 = news1.date, let date2 = news2.date {
+                return date1.compare(date2) == .orderedDescending
+            } else {
+                return false
+            }
+        })
+        
+        self.news = sortedNews
+        
+        visibleNews = Array(sortedNews.prefix(upTo: 5))
+    }
+    
+    func showMoreNews() {
+        
+    }
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 30) {
-                ForEach(news, id: \.id) { news in
+                ForEach(visibleNews, id: \.id) { news in
                     GeometryReader { geometry in
                         if let link = news.link {
                             if self.useBuildInWebView {

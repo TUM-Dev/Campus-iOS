@@ -33,12 +33,13 @@ struct Collapsible<Content: View>: View {
             )
             .buttonStyle(PlainButtonStyle())
             
-
-            self.content()
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none, alignment: .top)
-            .clipped()
-            .animation(.easeOut, value: self.collapsed)
-            .transition(.slide)
+            if(!collapsed) {
+                self.content()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none, alignment: .top)
+                .clipped()
+                .animation(.easeOut, value: self.collapsed)
+                .transition(.slide)
+            }
         }
     }
 }
