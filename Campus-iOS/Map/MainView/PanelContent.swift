@@ -135,7 +135,7 @@ struct SearchBar: View {
             if editingChanged {
                 isEditing = true
                 lockPanel = true
-                panelPosition = "pushMid"
+                panelPosition = "pushKBTop"
             } else {
                 isEditing = false
                 lockPanel = false
