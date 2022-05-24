@@ -49,7 +49,9 @@ struct Panel: View {
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
         .task(id: panelPosition) {
-            if panelPosition == "pushMid" {
+            if panelPosition == "pushTop" {
+                self.position = .top
+            } else if panelPosition == "pushMid" {
                 self.position = .middle
             } else if panelPosition == "pushDown" {
                 self.position = .bottom
