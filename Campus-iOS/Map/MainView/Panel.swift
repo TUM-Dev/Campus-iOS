@@ -49,7 +49,9 @@ struct Panel: View {
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
         .task(id: panelPosition) {
-            if panelPosition == "pushMid" {
+            if panelPosition == "pushKBTop" {
+                self.position = .kbtop
+            } else if panelPosition == "pushMid" {
                 self.position = .middle
             } else if panelPosition == "pushDown" {
                 self.position = .bottom
@@ -113,10 +115,11 @@ struct Panel: View {
 let screenHeight = UIScreen.main.bounds.height
 
 enum PanelPosition: CGFloat {
-    case top, middle, bottom
+    case top, kbtop, middle, bottom
     var rawValue: CGFloat {
         switch self {
         case .top: return (1.2/10) * screenHeight
+        case .kbtop: return (2.5/10) * screenHeight
         case .middle: return (5/10) * screenHeight
         case .bottom: return (8.3/10) * screenHeight
         }
