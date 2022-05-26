@@ -68,7 +68,7 @@ struct ProfileView: View {
                 }
                 
                 Section("GET IN CONTACT") {
-                    Link("Werde Beta-Tester", destination: URL(string: "https://campus.tum.de")!)
+                    Link("Werde Beta-Tester", destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
                     
                     Link("TUM Dev on GitHub", destination: URL(string: "https://github.com/TUM-Dev")!)
                     
