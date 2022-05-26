@@ -51,6 +51,8 @@
 "GENERAL" = "ALLGEMEIN";
 "GET IN CONTACT" = "KONTAKTIERE UNS";
 "Use build-in Web View" = "Web View benutzen";
+"Join Beta" = "Werde Beta-Tester";
+"TUM Dev on Github" = "TUM Dev auf Github";
 "Cancel" = "Abbrechen";
 "News" = "Nachrichten";
 "Movies" = "Filme";
@@ -83,9 +85,6 @@
 "Year" = "Jahr";
 "Today" = "Heute";
 "This Meeting" = "Dieser Termin";
-
-// Profile
-"Join Beta" = "Werde Beta-Tester";
 
 // PersonSearch
 "Unable to find person" = "Person kann nicht gefunden werden";
