@@ -84,6 +84,9 @@
 "Today" = "Heute";
 "This Meeting" = "Dieser Termin";
 
+// Profile
+"Join Beta" = "Werde Beta-Tester";
+
 // PersonSearch
 "Unable to find person" = "Person kann nicht gefunden werden";
 "Person Search" = "Personensuche";
