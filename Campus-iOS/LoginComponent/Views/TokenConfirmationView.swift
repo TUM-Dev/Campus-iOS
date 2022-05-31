@@ -162,7 +162,7 @@ struct TokenConfirmationView: View {
         .alert(isPresented: $showBackButtonAlert) {
               Alert(
                 title: Text("Are you sure?"),
-                message: Text("Leaving now will invalidate the current token and create a new one!"),
+                message: Text("Leaving now will invalidate the current token!"),
                 primaryButton: .default(Text("Leave")) {
                   self.presentationMode.wrappedValue.dismiss()
                 },
