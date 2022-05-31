@@ -46,9 +46,6 @@ class LoginViewModel: ObservableObject {
         loginController.createToken(tumID: tumID) { [weak self] result in
             switch result {
             case .success:
-                #if !targetEnvironment(macCatalyst)
-                Analytics.logEvent("token_confirmed", parameters: nil)
-                #endif
                 self?.showLoginAlert = false
                 self?.alertMessage = ""
                 self?.isContinuePressed = true

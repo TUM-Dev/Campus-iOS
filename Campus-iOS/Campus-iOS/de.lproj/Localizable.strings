@@ -75,6 +75,9 @@
 "2" = "2";
 "3" = "3";
 "Authorize Token" = "Token authorisieren";
+"Are you sure?" = "Sicher?";
+"Leaving now will invalidate the current token and create a new one!" = "Wenn du jetzt die Seite verlässt wird der aktuelle Token ungültig und ein neuer Token erstellt!";
+"Leave" = "Verlassen";
 
 // CalendarView
 "Day" = "Tag";

@@ -461,14 +461,14 @@
 			path = LectureDetailsViews;
 			sourceTree = "<group>";
 		};
-		36108BC927A304B5007DC62D /* Map */ = {
+		36108BC927A304B5007DC62D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
 				36108BCA27A304B5007DC62D /* Types */,
 				36108BD127A304B5007DC62D /* Cafeterias */,
 				36108BD727A304B5007DC62D /* MainView */,
 			);
-			path = Map;
+			path = MapComponent;
 			sourceTree = "<group>";
 		};
 		36108BCA27A304B5007DC62D /* Types */ = {
@@ -705,25 +705,23 @@
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
 				36BB6F5527AFCD7B00F224AB /* PersonDetailedComponent */,
 				36108C0327A307F9007DC62D /* GradesComponent */,
-				36108C0027A30762007DC62D /* Enums */,
 				36108BF127A30516007DC62D /* MoviesComponent */,
-				36108BC927A304B5007DC62D /* Map */,
+				36108BC927A304B5007DC62D /* MapComponent */,
 				36108B9C27A3046B007DC62D /* LectureComponent */,
-				36AF61B727A2FD7700FEBD98 /* Base */,
-				3629BA2F27A1D0890036AC80 /* Modifiers */,
 				36BBE72D27989F6E0018FD3F /* HelperViews */,
 				3616C4D727904BA7000A1BC9 /* NewsComponent */,
 				3616C4C82790201B000A1BC9 /* TUMSexyComponent */,
 				36E9649E277492AE0055777F /* CalendarComponent */,
-				36FF90632773BB8100F4C785 /* Extensions */,
-				100803442764E2A90013ED0E /* ProfileComponent */,
-				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
-				227FBB492762AC440062FEC3 /* Info.plist */,
-				3698CBEB2761DFA9001C5735 /* Styles */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
-				36203E7D2761B9D000C24658 /* Localizable.strings */,
+				100803442764E2A90013ED0E /* ProfileComponent */,
 				3683C3162758115000082930 /* Model */,
+				36AF61B727A2FD7700FEBD98 /* Base */,
+				36FF90632773BB8100F4C785 /* Extensions */,
+				3698CBEB2761DFA9001C5735 /* Styles */,
+				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				366F0E8327580CFB0091651D /* App.swift */,
+				227FBB492762AC440062FEC3 /* Info.plist */,
+				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
@@ -770,6 +768,7 @@
 		3698CBEB2761DFA9001C5735 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				3629BA2F27A1D0890036AC80 /* Modifiers */,
 				3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */,
 			);
 			path = Styles;
@@ -778,6 +777,7 @@
 		36AF61B727A2FD7700FEBD98 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				36108C0027A30762007DC62D /* Enums */,
 				36AF61B827A2FD7700FEBD98 /* Entity */,
 				36AF61BA27A2FD7700FEBD98 /* Networking */,
 				36AF61C427A2FD7700FEBD98 /* Constants */,

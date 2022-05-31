@@ -79,6 +79,9 @@
 "2" = "2";
 "3" = "3";
 "Authorize Token" = "Authorize Token";
+"Are you sure?" = "Are you sure?";
+"Leaving now will invalidate the current token and create a new one!" = "Leaving now will invalidate the current token and create a new one!";
+"Leave" = "Leave";
 
 // CalendarView
 "Day" = "Day";
