@@ -40,15 +40,6 @@ struct PanelContent: View {
                         Text(canteen.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
-                            .onTapGesture{
-                                let latitude = canteen.location.latitude
-                                let longitude = canteen.location.longitude
-                                let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
-                                
-                                if UIApplication.shared.canOpenURL(url!) {
-                                      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                                }
-                            }
                     }
                     
                     Spacer()
@@ -69,7 +60,7 @@ struct PanelContent: View {
                 }
                 .padding(.all, 10)
                 
-                if let viewModel = mealPlanViewModel{
+                if let viewModel = mealPlanViewModel {
                     MealPlanView(viewModel: viewModel)
                 }
                 
@@ -103,6 +94,8 @@ struct PanelContent: View {
                     ForEach (sortedCanteens.indices.filter({ searchString.isEmpty ? true : sortedCanteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
                         Button(action: {
                             selectedCanteen = sortedCanteens[id]
+                            panelPosition = "pushMid"
+                            lockPanel = false
                         }, label: {
                             PanelRow(cafeteria: self.$sortedCanteens[id])
                         })
@@ -135,14 +128,14 @@ struct SearchBar: View {
     @Binding var lockPanel: Bool
     @Binding var searchString: String
     
-    @State private var isEditing = false
+    @State var isEditing = false
     
     var body: some View {
         TextField("Search ...", text: $searchString, onEditingChanged: { (editingChanged) in
             if editingChanged {
                 isEditing = true
                 lockPanel = true
-                panelPosition = "pushMid"
+                panelPosition = "pushKBTop"
             } else {
                 isEditing = false
                 lockPanel = false
