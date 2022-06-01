@@ -25,7 +25,8 @@ struct Collapsible<Content: View>: View {
                     HStack {
                         self.title()
                         Spacer()
-                        Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+                        Image(systemName: "chevron.right")
+                            .rotationEffect(Angle.degrees(self.collapsed ? 0 : 90))
                     }
                     .padding()
                     .background(Color.white.opacity(0.01))

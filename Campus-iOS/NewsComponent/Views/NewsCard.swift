@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+struct LoadMoreCard: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    let loadingMethod: () -> ()
+    
+    var body: some View {
+            Button {
+                withAnimation {
+                    loadingMethod()
+                }
+            } label: {
+                HStack {
+                    Image(systemName: "arrow.forward")
+                }
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.6)
+            }
+            .background(Color(.systemGray6))
+            .cornerRadius(15)
+            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+            .contentShape(Rectangle())
+    }
+}
+
 struct NewsCard: View {
     var title: String
     var source: String?
@@ -141,6 +165,7 @@ struct NewsCard: View {
 
 struct ProductCard_Previews: PreviewProvider {
     static var previews: some View {
-        NewsCard(title: "SMOOTHIE BOWL", source: "FEELING FIT", created: Date(), image: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg", latest: true)
+        NewsCard(title: "SMOOTHIE BOWL", source: "FEELING FIT", created: Date(), image: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg", latest: false)
+        LoadMoreCard(loadingMethod: {print("loading mehtod")})
     }
 }

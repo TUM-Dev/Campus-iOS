@@ -13,9 +13,12 @@ struct NewsCardsHorizontalScrollingView: View {
     @State var isWebViewShowed = false
     @State var news: [News]
     @State var visibleNews: [News]
+    @State var showLoadButton = true
+    
+    var sortedNews: [News] = []
     
     init(news: [News]) {
-        let sortedNews = news.sorted(by: { news1, news2 in
+        sortedNews = news.sorted(by: { news1, news2 in
             if let date1 = news1.date, let date2 = news2.date {
                 return date1.compare(date2) == .orderedDescending
             } else {
@@ -60,6 +63,26 @@ struct NewsCardsHorizontalScrollingView: View {
                     .frame(width: 250, height: 250)
                     Spacer(minLength: 1)
                 }
+                
+                if visibleNews.count < sortedNews.count {
+                    GeometryReader { geometry in
+                        
+                        LoadMoreCard(loadingMethod: {
+                            // Amount of how many news are still hidden
+                            let diffAmount = sortedNews.count - visibleNews.count
+                            
+                            if diffAmount > 0 {
+                                // If the diff is >= 5 than append the next 5 news. Otherwise (diff < 5) just append the last e.g. 2 news. (In this example: diffAmount = 2)
+                                // The -1 is neccessary due to the counting: We start from visibleNews.count to (visibleNews.count + 5 - 1) in order to get the next 5 news
+                                visibleNews.append(contentsOf: sortedNews[visibleNews.count...(visibleNews.count + (diffAmount >= 5 ? 5 : diffAmount) - 1)])
+                            }
+                        })
+                            .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 50) / -20), axis: (x: 0, y: 100.0, z: 0))
+                                
+                    }
+                    .frame(width: 250, height: 250)
+                    Spacer(minLength: 1)
+                }
             }
             .padding([.top, .leading], 30)
         }
@@ -71,6 +94,6 @@ struct NewsCardsHorizontalScrollingView_Previews: PreviewProvider {
     static let news = News(id: "1", sourceId: 1, date: Date(), created: Date(), title: "Dummy Title", link: URL(string: "https://github.com/orgs/TUM-Dev"), imageURL: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg")
     
     static var previews: some View {
-        NewsCardsHorizontalScrollingView(news: [news, news])
+        NewsCardsHorizontalScrollingView(news: [news, news, news, news, news])
     }
 }
