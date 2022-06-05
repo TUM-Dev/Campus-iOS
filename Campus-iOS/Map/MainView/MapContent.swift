@@ -84,9 +84,9 @@ struct MapContent: UIViewRepresentable {
     }
     
     func focusOnCanteen(mapView: MKMapView) {
-        if vm.selectedCanteenName != "" {
+        if vm.selectedCafeteriaName != "" {
             for i in mapView.annotations {
-                if i.title == vm.selectedCanteenName {
+                if i.title == vm.selectedCafeteriaName {
                     let locValue: CLLocationCoordinate2D = i.coordinate
                     
                     let coordinate = CLLocationCoordinate2D(
@@ -125,7 +125,7 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         DispatchQueue.main.async { [self] in
             control.vm.zoomOnUser = false
-            control.vm.selectedCanteenName = ""
+            control.vm.selectedCafeteriaName = ""
             control.vm.selectedAnnotationIndex = -1
         }
     }

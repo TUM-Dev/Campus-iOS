@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct Toolbar: View {
-    @Binding var zoomOnUser: Bool
-    @Binding var selectedCanteenName: String
-    @Binding var cafeteria: Cafeteria
+    @StateObject var vm: MapViewModel
     
     var body: some View {
-        if selectedCanteenName != "" {
+        if vm.selectedCafeteriaName != "" {
             HStack {
                 Button(action: {
-                    print(cafeteria.name)
-                    let latitude = cafeteria.location.latitude
-                    let longitude = cafeteria.location.longitude
+                    print(vm.selectedCafeteria.name)
+                    let latitude = vm.selectedCafeteria.location.latitude
+                    let longitude = vm.selectedCafeteria.location.longitude
                     let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
                     
                     if UIApplication.shared.canOpenURL(url!) {
@@ -30,7 +28,7 @@ struct Toolbar: View {
                 
                 Divider().frame(width: 15)
                 
-                NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))) { Image(systemName: "doc.text").foregroundColor(Color.black) }
+                NavigationLink(destination: MealPlanView(viewModel: MealPlanViewModel(cafeteria: vm.selectedCafeteria))) { Image(systemName: "doc.text").foregroundColor(Color.black) }
             }
             .mask(Rectangle())
             .frame(width: 100, height: 40)

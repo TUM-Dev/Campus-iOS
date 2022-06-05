@@ -45,7 +45,7 @@ struct PanelContent: View {
                     
                     SearchBar(panelPosition: $vm.panelPosition,
                               searchString: $searchString,
-                              selectedCanteenName: $vm.selectedCanteenName,
+                              selectedCanteenName: $vm.selectedCafeteriaName,
                               selectedAnnotationIndex: $vm.selectedAnnotationIndex)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
@@ -60,13 +60,13 @@ struct PanelContent: View {
                                 .onTapGesture {
                                     print("TAPPED")
                                     withAnimation {
-                                        vm.selectedCanteenName = vm.cafeterias[id].name
+                                        vm.selectedCafeteriaName = vm.cafeterias[id].name
                                         vm.selectedAnnotationIndex = vm.cafeterias.firstIndex(of: vm.cafeterias[id])!
                                         proxy.scrollTo(vm.cafeterias[id], anchor: .top)
                                         
-                                        vm.selectedCanteen = vm.cafeterias[id]
+                                        vm.selectedCafeteria = vm.cafeterias[id]
                                     }
-                                    print(vm.selectedCanteen)
+                                    print(vm.selectedCafeteria)
                                 }
                                 .task(id: vm.selectedAnnotationIndex) {
                                     withAnimation(Animation.linear(duration: 0.0001)) {
@@ -83,7 +83,7 @@ struct PanelContent: View {
                     .searchable(text: $searchString, prompt: "Look for something")
                     .listStyle(PlainListStyle())
                 }
-                .onChange(of: vm.selectedCanteenName) { newValue in
+                .onChange(of: vm.selectedCafeteriaName) { newValue in
                     print("SELECTED CANTEEN (Panelcontent): ", newValue)
                 }
             }

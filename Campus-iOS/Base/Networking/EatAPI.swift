@@ -50,7 +50,6 @@ enum EatAPI: URLRequestConvertible {
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
     
     static func fetchCafeterias(forcedRefresh: Bool) async throws -> [Cafeteria] {
-        
 
         let fullRequestURL = baseURLString + self.canteens.path
         
@@ -59,11 +58,7 @@ enum EatAPI: URLRequestConvertible {
             return cafeterias
         } else {
             print("Canteen data from server")
-
-//            let sessionManager = Session.defaultSession
-//            let locationManager = CLLocationManager()
-
-            // fetch new data and store in cache.
+            // Fetch new data and store in cache.
             var cafeteriaData: Data
             do {
                 cafeteriaData = try await AF.request(self.canteens).serializingData().value
@@ -75,19 +70,20 @@ enum EatAPI: URLRequestConvertible {
             var cafeteriasWithoutQueue = [Cafeteria]()
             do {
                 cafeteriasWithoutQueue = try decoder.decode([Cafeteria].self, from: cafeteriaData)
-                return cafeteriasWithoutQueue
             } catch {
                 print(error)
                 throw error
             }
             
-            /*
-            let cafeterias = cafeteriasWithoutQueue
             
             
-            for var cafeteria in cafeteriasWithoutQueue {
+            // Requesting the queue data if there is an API for the cafeteria.
+            var cafeterias = cafeteriasWithoutQueue
+            
+            for i in cafeterias.indices {
                 var queueData: Data
-                if let queue = cafeteria.queueStatusApi {
+                if let queue = cafeterias[i].queueStatusApi {
+                    print("NAME " + cafeterias[i].name)
                     do {
                         queueData = try await AF.request(queue).serializingData().value
                     } catch {
@@ -96,7 +92,7 @@ enum EatAPI: URLRequestConvertible {
                     }
                     
                     do {
-                        cafeteria.queue = try decoder.decode(Queue.self, from: queueData)
+                        cafeterias[i].queue = try decoder.decode(Queue.self, from: queueData)
                     } catch {
                         throw error
                     }
@@ -106,29 +102,6 @@ enum EatAPI: URLRequestConvertible {
             // Write value to cache
             cache.setValue(cafeterias, forKey: fullRequestURL, cost: cafeterias.count)
             return cafeterias
-            */
-                
-            
-            
-//            sessionManager.request(self.canteens).responseDecodable(of: [Cafeteria].self, decoder: JSONDecoder()) { [self] response in
-//                cafeterias = response.value ?? []
-//                if let currentLocation = locationManager.location {
-//                    cafeterias.sortByDistance(to: currentLocation)
-//                }
-//
-//                for (index, cafeteria) in cafeterias.enumerated() {
-//                    if let queue = cafeteria.queueStatusApi  {
-//                        sessionManager.request(queue, method: .get).responseDecodable(of: Queue.self, decoder: JSONDecoder()){ response in
-//                            cafeterias[index].queue = response.value
-//                        }
-//                    }
-//                }
-//
-//                // Write canteens to cache
-//                cache.setValue(cafeterias, forKey: baseURLString + self.canteens.path, cost: cafeterias.count)
-//            }
-//
-//            return cafeterias
         }
     }
 }

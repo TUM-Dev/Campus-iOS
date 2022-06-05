@@ -13,7 +13,6 @@ protocol CafeteriasServiceProtocol {
 
 struct CafeteriasService: CafeteriasServiceProtocol {
     func fetch(forcedRefresh: Bool) async throws -> [Cafeteria] {
-        let x = try await EatAPI.fetchCafeterias(forcedRefresh: forcedRefresh)
-        return x
+        return try await EatAPI.fetchCafeterias(forcedRefresh: forcedRefresh)
     }
 }

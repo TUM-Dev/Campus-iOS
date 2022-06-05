@@ -19,9 +19,9 @@ class MapViewModel: MapViewModelProtocol {
     
     @Published var zoomOnUser: Bool = true
     @Published var panelPosition: String = "down"
-    @Published var selectedCanteenName: String = " "
+    @Published var selectedCafeteriaName: String = " "
     @Published var selectedAnnotationIndex: Int = 0
-    @Published var selectedCanteen: Cafeteria = Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " ", queueStatusApi: nil)
+    @Published var selectedCafeteria: Cafeteria = Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " ", queueStatusApi: nil)
     
     private let service: CafeteriasServiceProtocol
     
