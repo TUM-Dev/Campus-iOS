@@ -19,9 +19,8 @@ struct LoadMoreCard: View {
                 }
             } label: {
                 HStack {
-                    //Image(systemName: "arrow.forward")
-                    Text("+ 10")
-                        .font(.title2)
+                    Text("Show more...")
+                        .font(.body)
                         .foregroundColor(.blue)
                 }
                 .foregroundColor(colorScheme == .dark ? .white : .black)

@@ -80,7 +80,7 @@ struct NewsCardsHorizontalScrollingView: View {
                             .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 50) / -20), axis: (x: 0, y: 100.0, z: 0))
                                 
                     }
-                    .frame(width: 250, height: 250)
+                    .frame(width: 150, height: 250)
                     Spacer(minLength: 1)
                 }
             }
