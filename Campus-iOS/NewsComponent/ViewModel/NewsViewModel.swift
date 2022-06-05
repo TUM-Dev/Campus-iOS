@@ -17,6 +17,7 @@ class NewsViewModel: ObservableObject {
     
     init() {
         // TODO: Get from cache, if not found, then fetch
+        
         fetch()
     }
     

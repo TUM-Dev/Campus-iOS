@@ -25,7 +25,8 @@ struct Collapsible<Content: View>: View {
                     HStack {
                         self.title()
                         Spacer()
-                        Image(systemName: self.collapsed ? "chevron.down" : "chevron.up")
+                        Image(systemName: "chevron.right")
+                            .rotationEffect(Angle.degrees(self.collapsed ? 0 : 90))
                     }
                     .padding()
                     .background(Color.white.opacity(0.01))
@@ -33,12 +34,13 @@ struct Collapsible<Content: View>: View {
             )
             .buttonStyle(PlainButtonStyle())
             
-
-            self.content()
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none, alignment: .top)
-            .clipped()
-            .animation(.easeOut, value: self.collapsed)
-            .transition(.slide)
+            if(!collapsed) {
+                self.content()
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none, alignment: .top)
+                .clipped()
+                .animation(.easeOut, value: self.collapsed)
+                .transition(.slide)
+            }
         }
     }
 }
