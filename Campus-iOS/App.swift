@@ -85,7 +85,7 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             NavigationView {
-                MapView(viewModel: MapViewModel())
+                MapScreen(vm: MapViewModel(service: CafeteriasService()))
             }
             .tag(3)
             .tabItem {

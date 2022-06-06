@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		1F4C836228300306006971C0 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836128300306006971C0 /* MapViewModel.swift */; };
+		1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836328300D25006971C0 /* MapViewModel+State.swift */; };
+		1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836628300E79006971C0 /* CafeteriasService.swift */; };
+		1FAF9F0C284D2ABC000ABE93 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
-		256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -187,6 +190,10 @@
 /* Begin PBXFileReference section */
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1F4C836128300306006971C0 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		1F4C836328300D25006971C0 /* MapViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel+State.swift"; sourceTree = "<group>"; };
+		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
+		1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -386,6 +393,22 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
+		1F4C836528300E6F006971C0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F4C836628300E79006971C0 /* CafeteriasService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1FFEF086284E417E00ADD201 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		36108B9C27A3046B007DC62D /* LectureComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +487,7 @@
 		36108BC927A304B5007DC62D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1F4C836528300E6F006971C0 /* Service */,
 				36108BCA27A304B5007DC62D /* Types */,
 				36108BD127A304B5007DC62D /* Cafeterias */,
 				36108BD727A304B5007DC62D /* MainView */,
@@ -499,10 +523,12 @@
 			isa = PBXGroup;
 			children = (
 				36108BDB27A304B5007DC62D /* MapView.swift */,
-				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
-				36108BDD27A304B5007DC62D /* MapContent.swift */,
+				1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */,
 				36108BDC27A304B5007DC62D /* Panel.swift */,
+				36108BDD27A304B5007DC62D /* MapContent.swift */,
 				36108BDE27A304B5007DC62D /* PanelContent.swift */,
+				1F4C836128300306006971C0 /* MapViewModel.swift */,
+				1F4C836328300D25006971C0 /* MapViewModel+State.swift */,
 				36108BD927A304B5007DC62D /* PanelRow.swift */,
 			);
 			path = MainView;
@@ -684,6 +710,7 @@
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
 				366F0E8127580CFB0091651D /* Products */,
+				1FFEF086284E417E00ADD201 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1289,6 +1316,7 @@
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
+				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
@@ -1321,6 +1349,7 @@
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
+				1FAF9F0C284D2ABC000ABE93 /* MapScreen.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
@@ -1336,6 +1365,7 @@
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */,
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
+				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
@@ -1354,7 +1384,6 @@
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContent.swift in Sources */,
-				256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
@@ -1377,6 +1406,7 @@
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
+				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,

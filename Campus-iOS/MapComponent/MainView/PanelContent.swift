@@ -6,19 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 import CoreLocation
+import Alamofire
 
 struct PanelContent: View {
-    @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var lockPanel: Bool
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteen: Cafeteria?
+    @StateObject var vm: MapViewModel
     
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
-    @State private var sortedCanteens: [Cafeteria] = []
         
+    let endpoint = EatAPI.canteens
+    let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
     
     private let handleThickness = CGFloat(0)
@@ -29,15 +28,15 @@ struct PanelContent: View {
             
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                         .frame(width: 40, height: CGFloat(5.0))
-                        .foregroundColor(Color.black.opacity(0.2))
+                        .foregroundColor(Color.primary.opacity(0.2))
             
-            if let canteen = selectedCanteen {
+            if let cafeteria = vm.selectedCafeteria {
                 HStack{
                     VStack(alignment: .leading){
-                        Text(canteen.name)
+                        Text(cafeteria.name)
                             .bold()
                             .font(.title3)
-                        Text(canteen.location.address)
+                        Text(cafeteria.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                     }
@@ -45,7 +44,7 @@ struct PanelContent: View {
                     Spacer()
 
                     Button(action: {
-                        selectedCanteen = nil
+                        vm.selectedCafeteria = nil
                     }, label: {
                         Text("Done")
                                 .font(.system(size: 16, weight: .semibold))
@@ -71,9 +70,9 @@ struct PanelContent: View {
                     Spacer()
                     
                     Button (action: {
-                        zoomOnUser = true
-                        if panelPosition == "up" {
-                            panelPosition = "pushMid"
+                        vm.zoomOnUser = true
+                        if vm.panelPosition == "up" {
+                            vm.panelPosition = "pushMid"
                         }
                     }) {
                         Image(systemName: "location")
@@ -82,8 +81,8 @@ struct PanelContent: View {
                     
                     Spacer()
                     
-                    SearchBar(panelPosition: $panelPosition,
-                              lockPanel: $lockPanel,
+                    SearchBar(panelPosition: $vm.panelPosition,
+                              lockPanel: $vm.lockPanel,
                               searchString: $searchString)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
@@ -91,13 +90,13 @@ struct PanelContent: View {
                 }
                 
                 List {
-                    ForEach (sortedCanteens.indices.filter({ searchString.isEmpty ? true : sortedCanteens[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                    ForEach (vm.cafeterias.indices.filter({ searchString.isEmpty ? true : vm.cafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
                         Button(action: {
-                            selectedCanteen = sortedCanteens[id]
-                            panelPosition = "pushMid"
-                            lockPanel = false
+                            vm.selectedCafeteria = vm.cafeterias[id]
+                            vm.panelPosition = "pushMid"
+                            vm.lockPanel = false
                         }, label: {
-                            PanelRow(cafeteria: self.$sortedCanteens[id])
+                            PanelRow(cafeteria: self.$vm.cafeterias[id])
                         })
                     }
                 }
@@ -105,19 +104,19 @@ struct PanelContent: View {
                 .listStyle(PlainListStyle())
             }
         }
-        .onChange(of: selectedCanteen) { optionalCafeteria in
+        .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
             if let cafeteria = optionalCafeteria {
                 mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
             }
         }
-        .onChange(of: canteens) { unsortedCanteens in
+        .onChange(of: vm.cafeterias) { unsortedByLocationCafeterias in
             if let location = self.locationManager.location {
-                sortedCanteens = unsortedCanteens.sorted {
+                vm.cafeterias = unsortedByLocationCafeterias.sorted {
                     $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)
                 }
             }
             else {
-                sortedCanteens = unsortedCanteens
+                vm.cafeterias = unsortedByLocationCafeterias
             }
         }
     }
@@ -178,16 +177,9 @@ struct SearchBar: View {
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContent(zoomOnUser: .constant(true),
-                     panelPosition: .constant(""),
-                     lockPanel: .constant(false),
-                     canteens: .constant([]),
-                     selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
-                                                                             longitude: 0.0,
-                                                                             address: ""),
-                                                          name: "",
-                                                          id: "",
-                                                          queueStatusApi: "")))
+        let vm = MapViewModel(service: CafeteriasService(), mock: true)
+        
+        PanelContent(vm: vm)
             .previewInterfaceOrientation(.portrait)
     }
 }

@@ -22,14 +22,12 @@ final class Annotation: NSObject, MKAnnotation {
 }
 
 struct MapContent: UIViewRepresentable {
-    @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteen: Cafeteria?
-    
+  
+    @ObservedObject var vm: MapViewModel
+  
     @State private var focusedCanteen: Cafeteria?
     @State private var setAnnotations: Bool = true
-        
+    
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
     var locationManager = CLLocationManager()
@@ -39,9 +37,10 @@ struct MapContent: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         mapView.delegate = context.coordinator
+      
+        handleCafeterias()
         
         mapView.showsUserLocation = true
-
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
         
@@ -52,9 +51,9 @@ struct MapContent: UIViewRepresentable {
         focusOnUser(mapView: view)
         focusOnCanteen(mapView: view)
         
-        if canteens.count > 0 && setAnnotations {
+        if vm.cafeterias.count > 0 && setAnnotations {
             DispatchQueue.main.async {
-                let annotations = canteens.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
+                let annotations = vm.cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
                 view.addAnnotations(annotations)
                 setAnnotations = false // only add canteen annotations once
             }
@@ -62,9 +61,9 @@ struct MapContent: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if panelPosition == "mid" || panelPosition == "pushMid"{
+        if vm.panelPosition == "mid" || vm.panelPosition == "pushMid"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
-        } else if panelPosition == "down" || panelPosition == "pushDown"{
+        } else if vm.panelPosition == "down" || vm.panelPosition == "pushDown"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
@@ -73,9 +72,9 @@ struct MapContent: UIViewRepresentable {
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.startUpdatingLocation()
-
+            
             if let location = self.locationManager.location {
-                if zoomOnUser {
+                if vm.zoomOnUser {
                     for i in mapView.selectedAnnotations {
                         mapView.deselectAnnotation(i, animated: true)
                     }
@@ -98,9 +97,9 @@ struct MapContent: UIViewRepresentable {
     }
     
     func focusOnCanteen(mapView: MKMapView) {
-        if selectedCanteen != nil && selectedCanteen != focusedCanteen, let canteen = selectedCanteen {
+        if let cafeteria = vm.selectedCafeteria, cafeteria != focusedCanteen {
             for i in mapView.annotations {
-                if i.title == canteen.title {
+                if i.title == cafeteria.title {
                     let locValue: CLLocationCoordinate2D = i.coordinate
                     
                     let coordinate = CLLocationCoordinate2D(
@@ -109,9 +108,10 @@ struct MapContent: UIViewRepresentable {
                     let region = MKCoordinateRegion(center: coordinate, span: span)
                     
                     DispatchQueue.main.async {
+                        print(cafeteria)
                         mapView.setRegion(region, animated: true)
                         mapView.selectAnnotation(i, animated: true)
-                        focusedCanteen = selectedCanteen // only focus once, when newly selected
+                        focusedCanteen = vm.selectedCafeteria // only focus once, when newly selected
                     }
                 }
             }
@@ -122,19 +122,30 @@ struct MapContent: UIViewRepresentable {
         MapContentCoordinator(self)
     }
     
-    class MapContentCoordinator: NSObject, MKMapViewDelegate {
-        var control: MapContent
-            
-        init(_ control: MapContent) {
-            self.control = control
-        }
+    func handleCafeterias() {
+        let annotations = vm.cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
         
-        func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-            control.zoomOnUser = false
+        mapView.addAnnotations(annotations)
+    }
+    
+}
+
+class MapContentCoordinator: NSObject, MKMapViewDelegate {
+    var control: MapContent
+    
+    init(_ control: MapContent) {
+        self.control = control
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        DispatchQueue.main.async { [self] in
+            control.vm.zoomOnUser = false
         }
-                
-        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            if let coordinate = view.annotation?.coordinate {
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let coordinate = view.annotation?.coordinate {
+            
                 let locValue: CLLocationCoordinate2D = coordinate
                 
                 let coordinate = CLLocationCoordinate2D(
@@ -143,13 +154,18 @@ struct MapContent: UIViewRepresentable {
                 let region = MKCoordinateRegion(center: coordinate, span: span)
                 
                 mapView.setRegion(region, animated: true)
-            }
             
-            if let title = view.annotation?.title {
-                for canteen in control.canteens{
-                    if title! == canteen.title {
-                        control.selectedCanteen = canteen
-                        control.panelPosition = "pushMid"
+        }
+        
+        if let title = view.annotation?.title {
+            DispatchQueue.main.async { [self] in
+                
+                if !control.vm.cafeterias.isEmpty {
+                    for i in 0...(control.vm.cafeterias.count - 1) {
+                        if title! == control.vm.cafeterias[i].title {
+                            control.vm.selectedAnnotationIndex = i
+                            control.vm.panelPosition = "pushMid"
+                        }
                     }
                 }
             }

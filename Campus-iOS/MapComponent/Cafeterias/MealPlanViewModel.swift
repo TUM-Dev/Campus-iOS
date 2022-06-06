@@ -21,7 +21,7 @@ final class MealPlanViewModel: ObservableObject {
     init(cafeteria: Cafeteria) {
         self.cafeteria = cafeteria
         self.title = cafeteria.name
-        
+       
         fetch()
     }
     

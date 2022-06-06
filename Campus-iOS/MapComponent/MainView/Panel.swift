@@ -11,19 +11,15 @@ import MapKit
 struct Panel: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
-    @Binding var zoomOnUser: Bool
-    @Binding var panelPosition: String
-    @Binding var lockPanel: Bool
-    @Binding var canteens: [Cafeteria]
-    @Binding var selectedCanteen: Cafeteria?
-
+    @StateObject var vm: MapViewModel
+                                   
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
-                if lockPanel == false {
+                if vm.lockPanel == false {
                     state = .dragging(translation: drag.translation)
                 }
             }
@@ -31,14 +27,8 @@ struct Panel: View {
         
         return Group {
             VStack{
-                PanelContent(zoomOnUser: $zoomOnUser,
-                             panelPosition: $panelPosition,
-                             lockPanel: $lockPanel,
-                             canteens: $canteens,
-                             selectedCanteen: $selectedCanteen)
-                
-                Spacer().frame(width: screenWidth,
-                               height: screenHeight * (1 - 8.2/10))
+                PanelContent(vm: self.vm)
+                Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
             }
         }
         .frame(height: screenHeight)
@@ -48,19 +38,19 @@ struct Panel: View {
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
-        .task(id: panelPosition) {
-            if panelPosition == "pushKBTop" {
+        .task(id: vm.panelPosition) {
+            if vm.panelPosition == "pushKBTop" {
                 self.position = .kbtop
-            } else if panelPosition == "pushMid" {
+            } else if vm.panelPosition == "pushMid" {
                 self.position = .middle
-            } else if panelPosition == "pushDown" {
+            } else if vm.panelPosition == "pushDown" {
                 self.position = .bottom
             }
         }
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
-        if lockPanel == false {
+        if vm.lockPanel == false {
             let verticalDirection = drag.predictedEndLocation.y - drag.location.y
             let cardTopEdgeLocation = self.position.rawValue + drag.translation.height
             let positionAbove: PanelPosition
@@ -102,11 +92,11 @@ struct Panel: View {
             }
             
             if self.position.rawValue == PanelPosition.bottom.rawValue {
-                panelPosition = "down"
+                vm.panelPosition = "down"
             } else if self.position.rawValue == PanelPosition.middle.rawValue {
-                panelPosition = "mid"
+                vm.panelPosition = "mid"
             } else if self.position.rawValue == PanelPosition.top.rawValue {
-                panelPosition = "up"
+                vm.panelPosition = "up"
             }
         }
     }
@@ -153,15 +143,6 @@ struct Panel_Previews: PreviewProvider {
     @Binding var selectedCanteen: Cafeteria?
 
     static var previews: some View {
-        Panel(zoomOnUser: .constant(true),
-              panelPosition: .constant("down"),
-              lockPanel: .constant(false),
-              canteens: .constant([]),
-              selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
-                                                                      longitude: 0.0,
-                                                                      address: ""),
-                                                   name: "",
-                                                   id: "",
-                                                   queueStatusApi: "")))
+        Panel(vm: MapViewModel(service: CafeteriasService()))
     }
 }

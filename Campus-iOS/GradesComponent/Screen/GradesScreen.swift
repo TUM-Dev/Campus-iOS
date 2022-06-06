@@ -29,6 +29,7 @@ struct GradesScreen: View {
                         vm: self.vm
                     )
                     .refreshable {
+                        print("REFRESHED")
                         await vm.getGrades(forcedRefresh: true)
                     }
                 }

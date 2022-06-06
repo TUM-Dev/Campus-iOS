@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 import XMLCoder
-import LRUCache
 
 struct CampusOnlineAPI: NetworkingAPI {    
     static let decoder: XMLDecoder = {
