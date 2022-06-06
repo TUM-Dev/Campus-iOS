@@ -28,7 +28,7 @@ struct PanelContent: View {
             
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                         .frame(width: 40, height: CGFloat(5.0))
-                        .foregroundColor(Color.black.opacity(0.2))
+                        .foregroundColor(Color.primary.opacity(0.2))
             
             if let cafeteria = vm.selectedCafeteria {
                 HStack{
