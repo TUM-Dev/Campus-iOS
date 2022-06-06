@@ -34,7 +34,7 @@ class MapViewModel: MapViewModelProtocol {
             return cafeterias
         }
         set {
-            
+            self.cafeterias = newValue
         }
     }
     
@@ -58,4 +58,7 @@ class MapViewModel: MapViewModelProtocol {
             self.hasError = true
         }
     }
+}
+
+class MockMapViewModel: MapViewModel {
 }

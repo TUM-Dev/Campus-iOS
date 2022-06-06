@@ -15,7 +15,7 @@ struct PanelContent: View {
     
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
-    @State private var sortedCafeterias: [Cafeteria] = []
+    @State var sortedCafeterias: [Cafeteria] = mockCafeterias
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -105,6 +105,14 @@ struct PanelContent: View {
                 .listStyle(PlainListStyle())
             }
         }
+        .onAppear(perform: {
+            if vm.self is MockMapViewModel {
+                self.sortedCafeterias = mockCafeterias
+            } else {
+                self.sortedCafeterias = vm.cafeterias
+            }
+            
+        })
         .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
             if let cafeteria = optionalCafeteria {
                 mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
@@ -178,7 +186,7 @@ struct SearchBar: View {
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = MapViewModel(service: CafeteriasService())
+        let vm = MockMapViewModel(service: MockCafeteriasService())
         
         PanelContent(vm: vm)
             .previewInterfaceOrientation(.portrait)

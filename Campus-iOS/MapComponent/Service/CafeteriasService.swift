@@ -16,3 +16,9 @@ struct CafeteriasService: CafeteriasServiceProtocol {
         return try await EatAPI.fetchCafeterias(forcedRefresh: forcedRefresh)
     }
 }
+
+struct MockCafeteriasService: CafeteriasServiceProtocol {
+    func fetch(forcedRefresh: Bool) async throws -> [Cafeteria] {
+        return mockCafeterias
+    }
+}

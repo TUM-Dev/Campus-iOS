@@ -108,6 +108,7 @@ struct MapContent: UIViewRepresentable {
                     let region = MKCoordinateRegion(center: coordinate, span: span)
                     
                     DispatchQueue.main.async {
+                        print(cafeteria)
                         mapView.setRegion(region, animated: true)
                         mapView.selectAnnotation(i, animated: true)
                         focusedCanteen = vm.selectedCafeteria // only focus once, when newly selected

@@ -26,9 +26,10 @@ struct Panel: View {
             .onEnded(onDragEnded)
         
         return Group {
-            PanelContent(vm: self.vm)
-            Spacer().frame(width: screenWidth,
-                               height: screenHeight * (1 - 8.2/10))
+            VStack{
+                PanelContent(vm: self.vm)
+                Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
+            }
         }
         .frame(height: screenHeight)
         .background()
