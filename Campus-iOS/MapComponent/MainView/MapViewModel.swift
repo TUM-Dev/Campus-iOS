@@ -24,22 +24,29 @@ class MapViewModel: MapViewModelProtocol {
     @Published var selectedAnnotationIndex: Int = 0
     @Published var selectedCafeteria: Cafeteria?
     
+    private let mock: Bool
+    
     private let service: CafeteriasServiceProtocol
     
     var cafeterias: [Cafeteria] {
         get {
-            guard case .success(let cafeterias) = self.state else {
-                return []
+            if mock {
+                return mockCafeterias
+            } else {
+                guard case .success(let cafeterias) = self.state else {
+                    return []
+                }
+                return cafeterias
             }
-            return cafeterias
         }
         set {
             self.cafeterias = newValue
         }
     }
     
-    init(service: CafeteriasServiceProtocol) {
+    init(service: CafeteriasServiceProtocol, mock: Bool = false) {
         self.service = service
+        self.mock = mock
     }
     
     func getCafeteria(forcedRefresh: Bool = false) async {
@@ -58,7 +65,4 @@ class MapViewModel: MapViewModelProtocol {
             self.hasError = true
         }
     }
-}
-
-class MockMapViewModel: MapViewModel {
 }

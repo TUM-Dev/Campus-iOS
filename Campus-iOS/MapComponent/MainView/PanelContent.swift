@@ -15,7 +15,6 @@ struct PanelContent: View {
     
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
-    @State var sortedCafeterias: [Cafeteria] = mockCafeterias
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -91,13 +90,13 @@ struct PanelContent: View {
                 }
                 
                 List {
-                    ForEach (sortedCafeterias.indices.filter({ searchString.isEmpty ? true : sortedCafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                    ForEach (vm.cafeterias.indices.filter({ searchString.isEmpty ? true : vm.cafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
                         Button(action: {
-                            vm.selectedCafeteria = sortedCafeterias[id]
+                            vm.selectedCafeteria = vm.cafeterias[id]
                             vm.panelPosition = "pushMid"
                             vm.lockPanel = false
                         }, label: {
-                            PanelRow(cafeteria: self.$sortedCafeterias[id])
+                            PanelRow(cafeteria: self.$vm.cafeterias[id])
                         })
                     }
                 }
@@ -105,27 +104,19 @@ struct PanelContent: View {
                 .listStyle(PlainListStyle())
             }
         }
-        .onAppear(perform: {
-            if vm.self is MockMapViewModel {
-                self.sortedCafeterias = mockCafeterias
-            } else {
-                self.sortedCafeterias = vm.cafeterias
-            }
-            
-        })
         .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
             if let cafeteria = optionalCafeteria {
                 mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
             }
         }
-        .onChange(of: vm.cafeterias) { unsortedCafeterias in
+        .onChange(of: vm.cafeterias) { unsortedByLocationCafeterias in
             if let location = self.locationManager.location {
-                sortedCafeterias = unsortedCafeterias.sorted {
+                vm.cafeterias = unsortedByLocationCafeterias.sorted {
                     $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)
                 }
             }
             else {
-                sortedCafeterias = unsortedCafeterias
+                vm.cafeterias = unsortedByLocationCafeterias
             }
         }
     }
@@ -186,7 +177,7 @@ struct SearchBar: View {
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = MockMapViewModel(service: MockCafeteriasService())
+        let vm = MapViewModel(service: CafeteriasService(), mock: true)
         
         PanelContent(vm: vm)
             .previewInterfaceOrientation(.portrait)
