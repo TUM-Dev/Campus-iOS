@@ -104,7 +104,9 @@ struct LoginView: View {
                         Button(action: {
                             self.viewModel.loginWithContinue()
                         }) {
-                            Text("Continue 🎓").lineLimit(1).font(.title2)
+                            Text("Continue 🎓")
+                                .lineLimit(1)
+                                .font(.title3)
                                 .frame(alignment: .center)
                         }
                         .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {

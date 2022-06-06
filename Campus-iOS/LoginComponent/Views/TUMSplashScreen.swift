@@ -57,7 +57,6 @@ struct TUMSplashScreen: View {
                 .edgesIgnoringSafeArea(.all)
             VStack {
                 Image("logo-blue")
-                    .resizable()
                     .frame(width: 175, height: 100, alignment: .center)
                 Spacer().frame(height: 100)
                 VStack {

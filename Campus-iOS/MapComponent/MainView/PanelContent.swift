@@ -14,8 +14,8 @@ struct PanelContent: View {
     @StateObject var vm: MapViewModel
     
     @State private var searchString = ""
-    @State private var canteenForMealPlan: Cafeteria?
-    @State private var goToMealPlan = false
+    @State private var mealPlanViewModel: MealPlanViewModel?
+    @State private var sortedCafeterias: [Cafeteria] = []
         
     let endpoint = EatAPI.canteens
     let sessionManager = Session.defaultSession
@@ -24,16 +24,54 @@ struct PanelContent: View {
     private let handleThickness = CGFloat(0)
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: handleThickness / 2.0)
-                .frame(height: handleThickness)
-                .foregroundColor(Color.secondary)
-                .padding(5)
-            VStack {
+        VStack{
+            Spacer().frame(height: 10)
+            
+            RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
+                        .frame(width: 40, height: CGFloat(5.0))
+                        .foregroundColor(Color.black.opacity(0.2))
+            
+            if let cafeteria = vm.selectedCafeteria {
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(cafeteria.name)
+                            .bold()
+                            .font(.title3)
+                        Text(cafeteria.location.address)
+                            .font(.subheadline)
+                            .foregroundColor(Color.gray)
+                    }
+                    
+                    Spacer()
+
+                    Button(action: {
+                        vm.selectedCafeteria = nil
+                    }, label: {
+                        Text("Done")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.blue)
+                                .padding(.all, 5)
+                                .background(Color.clear)
+                                .accessibility(label:Text("Close"))
+                                .accessibility(hint:Text("Tap to close the screen"))
+                                .accessibility(addTraits: .isButton)
+                                .accessibility(removeTraits: .isImage)
+                        })
+                }
+                .padding(.all, 10)
+                
+                if let viewModel = mealPlanViewModel {
+                    MealPlanView(viewModel: viewModel)
+                }
+                
+                Spacer()
+            }
+            else {
                 HStack {
+                    Spacer()
+                    
                     Button (action: {
                         vm.zoomOnUser = true
-                        vm.selectedAnnotationIndex = 0
                         if vm.panelPosition == "up" {
                             vm.panelPosition = "pushMid"
                         }
@@ -41,51 +79,45 @@ struct PanelContent: View {
                         Image(systemName: "location")
                             .font(.title2)
                     }
-                    .padding(.horizontal, 10)
+                    
+                    Spacer()
                     
                     SearchBar(panelPosition: $vm.panelPosition,
-                              searchString: $searchString,
-                              selectedCanteenName: $vm.selectedCafeteriaName,
-                              selectedAnnotationIndex: $vm.selectedAnnotationIndex)
+                              lockPanel: $vm.lockPanel,
+                              searchString: $searchString)
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
                                    height: 1.5 * UIScreen.main.bounds.width/10)
                 }
-                ZStack {
-                    ProgressView()
-                    ScrollViewReader { proxy in
-                        List {
-                            ForEach (vm.cafeterias.indices.filter({ searchString.isEmpty ? true : vm.cafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
-                                PanelRow(cafeteria: self.vm.cafeterias[id])
-                                .onTapGesture {
-                                    print("TAPPED")
-                                    withAnimation {
-                                        vm.selectedCafeteriaName = vm.cafeterias[id].name
-                                        vm.selectedAnnotationIndex = vm.cafeterias.firstIndex(of: vm.cafeterias[id])!
-                                        proxy.scrollTo(vm.cafeterias[id], anchor: .top)
-                                        
-                                        vm.selectedCafeteria = vm.cafeterias[id]
-                                    }
-                                    print(vm.selectedCafeteria)
-                                }
-                                .task(id: vm.selectedAnnotationIndex) {
-                                    withAnimation(Animation.linear(duration: 0.0001)) {
-                                        if 0...vm.cafeterias.count ~= vm.selectedAnnotationIndex {
-                                            proxy.scrollTo(vm.cafeterias[vm.selectedAnnotationIndex], anchor: .top)
-                                            vm.selectedAnnotationIndex = -1
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
+                
+                List {
+                    ForEach (sortedCafeterias.indices.filter({ searchString.isEmpty ? true : sortedCafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
+                        Button(action: {
+                            vm.selectedCafeteria = sortedCafeterias[id]
+                            vm.panelPosition = "pushMid"
+                            vm.lockPanel = false
+                        }, label: {
+                            PanelRow(cafeteria: self.$sortedCafeterias[id])
+                        })
                     }
-                    .searchable(text: $searchString, prompt: "Look for something")
-                    .listStyle(PlainListStyle())
                 }
-                .onChange(of: vm.selectedCafeteriaName) { newValue in
-                    print("SELECTED CANTEEN (Panelcontent): ", newValue)
+                .searchable(text: $searchString, prompt: "Look for something")
+                .listStyle(PlainListStyle())
+            }
+        }
+        .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
+            if let cafeteria = optionalCafeteria {
+                mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
+            }
+        }
+        .onChange(of: vm.cafeterias) { unsortedCafeterias in
+            if let location = self.locationManager.location {
+                sortedCafeterias = unsortedCafeterias.sorted {
+                    $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)
                 }
+            }
+            else {
+                sortedCafeterias = unsortedCafeterias
             }
         }
     }
@@ -93,45 +125,47 @@ struct PanelContent: View {
 
 struct SearchBar: View {
     @Binding var panelPosition: String
+    @Binding var lockPanel: Bool
     @Binding var searchString: String
-    @Binding var selectedCanteenName: String
-    @Binding var selectedAnnotationIndex: Int
     
-    @State private var isEditing = false
+    @State var isEditing = false
     
     var body: some View {
-        ZStack {
-            TextField("Search ...", text: $searchString)
-                .padding(7)
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .onTapGesture {
-                    isEditing = true
-                    panelPosition = "pushMid"
-                }
-            HStack {
-                Spacer()
-                if self.searchString != "" {
-                    Button(action: {
-                        self.searchString = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(Color(UIColor.opaqueSeparator))
+        TextField("Search ...", text: $searchString, onEditingChanged: { (editingChanged) in
+            if editingChanged {
+                isEditing = true
+                lockPanel = true
+                panelPosition = "pushKBTop"
+            } else {
+                isEditing = false
+                lockPanel = false
+            }
+        })
+            .padding(7)
+            .background(Color(.systemGray6))
+            .cornerRadius(8)
+            .overlay {
+                HStack {
+                    Spacer()
+                    if !self.searchString.isEmpty {
+                        Button(action: {
+                            self.searchString = ""
+                            lockPanel = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(Color(UIColor.opaqueSeparator))
+                        }
+                        .padding(.trailing, 8)
                     }
-                    .padding(.trailing, 8)
                 }
             }
-        }
 
         if isEditing {
             Button(action: {
                 isEditing = false
+                lockPanel = false
                 searchString = ""
-                
-                selectedCanteenName = ""
-                selectedAnnotationIndex = -1
-                panelPosition = "pushDown"
-                
+                                
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }) {
                 Text("Cancel")
@@ -142,14 +176,18 @@ struct SearchBar: View {
     }
 }
 
-/*struct PanelContent_Previews: PreviewProvider {
+struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
         PanelContent(zoomOnUser: .constant(true),
                      panelPosition: .constant(""),
+                     lockPanel: .constant(false),
                      canteens: .constant([]),
-                     selectedCanteenName: .constant(""),
-                     selectedAnnotationIndex: .constant(0),
-                     canteenForMealPlan: <#Cafeteria#>)
+                     selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
+                                                                             longitude: 0.0,
+                                                                             address: ""),
+                                                          name: "",
+                                                          id: "",
+                                                          queueStatusApi: "")))
             .previewInterfaceOrientation(.portrait)
     }
-}*/
+}

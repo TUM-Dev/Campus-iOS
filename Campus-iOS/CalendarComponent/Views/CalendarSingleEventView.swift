@@ -28,9 +28,9 @@ struct CalendarSingleEventView: View {
         self._viewModel = StateObject(wrappedValue:
             LectureDetailsViewModel(
                 model: model,
-                serivce: LectureDetailsService(),
+                service: LectureDetailsService(),
                 // Yes, it is a really hacky solution...
-                lecture: Lecture(id: UInt64(lvNr ?? "") ?? 0, lvNumber: UInt64(lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventType: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
+                lecture: Lecture(id: UInt64(lvNr ?? "") ?? 0, lvNumber: UInt64(lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventTypeDefault: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
             )
         )
         self.event = event

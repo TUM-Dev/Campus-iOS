@@ -14,7 +14,7 @@ struct LectureDetailsScreen: View {
         self._vm = StateObject(wrappedValue:
             LectureDetailsViewModel(
                 model: model,
-                serivce: LectureDetailsService(),
+                service: LectureDetailsService(),
                 lecture: lecture
             )
         )
@@ -26,7 +26,7 @@ struct LectureDetailsScreen: View {
             case .success(let data):
                 LecturesDetailView(lectureDetails: data)
             case .loading, .na:
-                LoadingView(text: "Fetching details of lecture")
+                LoadingView(text: "Fetching details of lecture".localized)
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,

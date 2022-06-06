@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TokenConfirmationView: View {
-    
+    /// Used for the customized back button
+    @Environment(\.presentationMode) var presentationMode
+    @State var showBackButtonAlert: Bool = false
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
@@ -146,6 +148,27 @@ struct TokenConfirmationView: View {
         .background(Color(.systemBackground))
         ._scrollable()
         .edgesIgnoringSafeArea(.all)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading:
+            Button(action: {
+                self.showBackButtonAlert = true
+          }) {
+            HStack {
+                Image(systemName: "arrow.left")
+                Text("Back")
+            }
+          }
+        )
+        .alert(isPresented: $showBackButtonAlert) {
+              Alert(
+                title: Text("Are you sure?"),
+                message: Text("Leaving now will invalidate the current token!"),
+                primaryButton: .default(Text("Leave")) {
+                  self.presentationMode.wrappedValue.dismiss()
+                },
+                secondaryButton: .cancel()
+              )
+        }
     }
     
     init(viewModel: LoginViewModel) {

@@ -74,9 +74,9 @@ class GradesViewModel: GradesViewModelProtocol {
             }
     }
     
-    init(model: Model, serivce: GradesServiceProtocol) {
+    init(model: Model, service: GradesServiceProtocol) {
         self.model = model
-        self.service = serivce
+        self.service = service
     }
     
     func getGrades(forcedRefresh: Bool = false) async {
@@ -145,9 +145,9 @@ private extension GradesViewModel {
         let nextYearShort = String((Int(year) ?? 2000) + 1).suffix(2)
 
         switch semester.last {
-        case "W": return "Wintersemester \(year)/\(nextYearShort)"
-        case "S": return "Sommersemester \(year)"
-        default: return "Unknown"
+        case "W": return "Wintersemester".localized + " \(year)/\(nextYearShort)"
+        case "S": return "Summersemester".localized + " \(year)"
+        default: return "Unknown".localized
         }
     }
 }

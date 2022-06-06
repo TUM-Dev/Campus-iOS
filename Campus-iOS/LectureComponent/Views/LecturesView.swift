@@ -17,7 +17,7 @@ struct LecturesView: View {
                 Section(
                     header: GroupBoxLabelView(
                         iconName: "graduationcap.fill",
-                        text: lecturesBySemester.1[0].semester
+                        text: lecturesBySemester.0
                     )
                 ) {
                     ForEach(lecturesBySemester.1) { item in
@@ -30,7 +30,7 @@ struct LecturesView: View {
                                 LectureView(lecture: item)
                             }
 
-                            if item.id != lecturesBySemester.1[lecturesBySemester.1.count - 1].id {
+                            if item.id != lecturesBySemester.1.last?.id {
                                 Divider()
                             }
                         }

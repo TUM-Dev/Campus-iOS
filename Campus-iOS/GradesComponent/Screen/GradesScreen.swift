@@ -15,7 +15,7 @@ struct GradesScreen: View {
         self._vm = StateObject(wrappedValue:
             GradesViewModel(
                 model: model,
-                serivce: GradesService()
+                service: GradesService()
             )
         )
     }

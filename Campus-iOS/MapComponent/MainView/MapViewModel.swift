@@ -2,7 +2,7 @@
 //  MapViewModel.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 14.05.22.
+//  Created by Philipp Wenner and David Lin on 14.05.22.
 //
 
 import Foundation
@@ -16,12 +16,13 @@ class MapViewModel: MapViewModelProtocol {
     // State for fetching cafeterias
     @Published var state: State = .na
     @Published var hasError: Bool = false
-    
+  
     @Published var zoomOnUser: Bool = true
-    @Published var panelPosition: String = "down"
+    @Published var panelPosition: String = "pushMid"
+    @Published var lockPanel: Bool = false
     @Published var selectedCafeteriaName: String = " "
     @Published var selectedAnnotationIndex: Int = 0
-    @Published var selectedCafeteria: Cafeteria = Cafeteria(location: Location(latitude: 0, longitude: 0, address: " "), name: " ", id: " ", queueStatusApi: nil)
+    @Published var selectedCafeteria: Cafeteria?
     
     private let service: CafeteriasServiceProtocol
     
@@ -50,8 +51,8 @@ class MapViewModel: MapViewModelProtocol {
         
         do {
             //@MainActor handles to run this UI-updating task on the main thread
-            let x = try await service.fetch(forcedRefresh: forcedRefresh)
-            self.state = .success(data: x)
+            let data = try await service.fetch(forcedRefresh: forcedRefresh)
+            self.state = .success(data: data)
         } catch {
             self.state = .failed(error: error)
             self.hasError = true

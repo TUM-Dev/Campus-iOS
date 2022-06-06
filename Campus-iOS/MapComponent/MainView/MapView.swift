@@ -16,20 +16,15 @@ struct MapView: View {
             MapContent(
                 vm: self.vm)
             Panel(vm: self.vm)
-            Toolbar(vm: self.vm)
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea(.vertical)
         .navigationTitle("Map")
         .navigationBarHidden(true)
     }
 }
 
-/*struct MapView_Previews: PreviewProvider {
- static var previews: some View {
- MapView(zoomOnUser: true,
- panelPosition: "down",
- canteens: [],
- selectedCanteenName: "",
- selectedAnnotationIndex: 0)
- }
- }*/
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView(viewModel: MapViewModel())
+    }
+}
