@@ -19,7 +19,7 @@ struct Panel: View {
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
-                if lockPanel == false {
+                if vm.lockPanel == false {
                     state = .dragging(translation: drag.translation)
                 }
             }
@@ -37,19 +37,19 @@ struct Panel: View {
         .offset(y: self.position.rawValue + self.dragState.translation.height)
         .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
         .gesture(drag)
-        .task(id: panelPosition) {
-            if panelPosition == "pushKBTop" {
+        .task(id: vm.panelPosition) {
+            if vm.panelPosition == "pushKBTop" {
                 self.position = .kbtop
-            } else if panelPosition == "pushMid" {
+            } else if vm.panelPosition == "pushMid" {
                 self.position = .middle
-            } else if panelPosition == "pushDown" {
+            } else if vm.panelPosition == "pushDown" {
                 self.position = .bottom
             }
         }
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
-        if lockPanel == false {
+        if vm.lockPanel == false {
             let verticalDirection = drag.predictedEndLocation.y - drag.location.y
             let cardTopEdgeLocation = self.position.rawValue + drag.translation.height
             let positionAbove: PanelPosition
@@ -142,15 +142,6 @@ struct Panel_Previews: PreviewProvider {
     @Binding var selectedCanteen: Cafeteria?
 
     static var previews: some View {
-        Panel(zoomOnUser: .constant(true),
-              panelPosition: .constant("down"),
-              lockPanel: .constant(false),
-              canteens: .constant([]),
-              selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
-                                                                      longitude: 0.0,
-                                                                      address: ""),
-                                                   name: "",
-                                                   id: "",
-                                                   queueStatusApi: "")))
+        Panel(vm: MapViewModel(service: CafeteriasService()))
     }
 }

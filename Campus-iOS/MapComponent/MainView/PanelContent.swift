@@ -178,16 +178,9 @@ struct SearchBar: View {
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContent(zoomOnUser: .constant(true),
-                     panelPosition: .constant(""),
-                     lockPanel: .constant(false),
-                     canteens: .constant([]),
-                     selectedCanteen: .constant(Cafeteria(location: Location(latitude: 0.0,
-                                                                             longitude: 0.0,
-                                                                             address: ""),
-                                                          name: "",
-                                                          id: "",
-                                                          queueStatusApi: "")))
+        let vm = MapViewModel(service: CafeteriasService())
+        
+        PanelContent(vm: vm)
             .previewInterfaceOrientation(.portrait)
     }
 }

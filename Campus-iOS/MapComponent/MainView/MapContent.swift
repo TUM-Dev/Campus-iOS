@@ -51,7 +51,7 @@ struct MapContent: UIViewRepresentable {
         focusOnUser(mapView: view)
         focusOnCanteen(mapView: view)
         
-        if canteens.count > 0 && setAnnotations {
+        if vm.cafeterias.count > 0 && setAnnotations {
             DispatchQueue.main.async {
                 let annotations = vm.cafeterias.map { Annotation(title: $0.name, coordinate: $0.coordinate) }
                 view.addAnnotations(annotations)
@@ -61,9 +61,9 @@ struct MapContent: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if panelPosition == "mid" || panelPosition == "pushMid"{
+        if vm.panelPosition == "mid" || vm.panelPosition == "pushMid"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
-        } else if panelPosition == "down" || panelPosition == "pushDown"{
+        } else if vm.panelPosition == "down" || vm.panelPosition == "pushDown"{
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }

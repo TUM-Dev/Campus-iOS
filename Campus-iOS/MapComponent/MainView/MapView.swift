@@ -25,6 +25,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(viewModel: MapViewModel())
+        MapView(vm: MapViewModel(service: CafeteriasService()))
     }
 }

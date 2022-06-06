@@ -14,7 +14,6 @@
 		1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836628300E79006971C0 /* CafeteriasService.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
-		256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -402,6 +401,14 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		1FFEF086284E417E00ADD201 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		36108B9C27A3046B007DC62D /* LectureComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +710,7 @@
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
 				366F0E8127580CFB0091651D /* Products */,
+				1FFEF086284E417E00ADD201 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1376,7 +1384,6 @@
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContent.swift in Sources */,
-				256D0D4327D77A9C00F5EC38 /* MapViewModel.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
