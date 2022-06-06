@@ -477,7 +477,7 @@
 			path = LectureDetailsViews;
 			sourceTree = "<group>";
 		};
-		36108BC927A304B5007DC62D /* Map */ = {
+		36108BC927A304B5007DC62D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
 				1F4C836528300E6F006971C0 /* Service */,
@@ -485,7 +485,7 @@
 				36108BD127A304B5007DC62D /* Cafeterias */,
 				36108BD727A304B5007DC62D /* MainView */,
 			);
-			path = Map;
+			path = MapComponent;
 			sourceTree = "<group>";
 		};
 		36108BCA27A304B5007DC62D /* Types */ = {
@@ -727,7 +727,7 @@
 				36108C0327A307F9007DC62D /* GradesComponent */,
 				36108C0027A30762007DC62D /* Enums */,
 				36108BF127A30516007DC62D /* MoviesComponent */,
-				36108BC927A304B5007DC62D /* Map */,
+				36108BC927A304B5007DC62D /* MapComponent */,
 				36108B9C27A3046B007DC62D /* LectureComponent */,
 				36AF61B727A2FD7700FEBD98 /* Base */,
 				3629BA2F27A1D0890036AC80 /* Modifiers */,
