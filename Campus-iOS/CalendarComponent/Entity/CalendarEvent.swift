@@ -90,6 +90,13 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
         return event
     }
     
+    var lvNr: String? {
+        if let url = self.url?.description, let range = url.range(of: "LvNr=") {
+            return String(url[range.upperBound...])
+        }
+        return nil
+    }
+    
     init(
         id: Int64,
         status: String? = nil,

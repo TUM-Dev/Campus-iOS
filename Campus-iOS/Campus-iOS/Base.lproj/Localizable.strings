@@ -139,6 +139,11 @@
 "Seminar" = "Seminar";
 "Lecture with integrated Exercises" = "Lecture with integrated Exercises";
 
+// StudyRoom
+"Free" = "Free";
+"Occupied until" = "Occupied until";
+"Unknown" = "Unknown";
+
 
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "The device appears to be offline, please check the internet connectivity";

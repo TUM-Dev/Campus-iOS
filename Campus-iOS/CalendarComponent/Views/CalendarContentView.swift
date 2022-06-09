@@ -53,10 +53,16 @@ struct CalendarContentView: View {
             }
         }
         .sheet(item: self.$selectedEventID) { eventId in
+            let chosenEvent = self.viewModel.events
+                .first(where: { $0.id.description == eventId })
             CalendarSingleEventView(
-                model: self.model,
-                event: self.viewModel.events
-                    .first(where: { $0.id.description == eventId })
+                viewModel: LectureDetailsViewModel(
+                                model: model,
+                                service: LectureDetailsService(),
+                                // Yes, it is a really hacky solution...
+                                lecture: Lecture(id: UInt64(chosenEvent?.lvNr ?? "") ?? 0, lvNumber: UInt64(chosenEvent?.lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventTypeDefault: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
+                            ),
+                event: chosenEvent
             )
         }
         .toolbar {
