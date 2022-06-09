@@ -54,8 +54,8 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
     
     var kvkEvent: Event {
         var event = Event(ID: self.id.description)
-        event.text = self.title ?? ""
-        event.textForList = self.title ?? ""
+        let textEvent = TextEvent(timeline: self.title ?? "", month: "", list: self.title ?? "")
+        event.title = textEvent
         event.start = self.startDate ?? Date()
         event.end = self.endDate ?? Date()
         

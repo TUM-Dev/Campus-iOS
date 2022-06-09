@@ -36,7 +36,7 @@ struct Panel: View {
         .cornerRadius(10.0)
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
         .offset(y: self.position.rawValue + self.dragState.translation.height)
-        .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
+        .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0), value: self.dragState.isDragging)
         .gesture(drag)
         .task(id: vm.panelPosition) {
             if vm.panelPosition == "pushKBTop" {
@@ -143,6 +143,6 @@ struct Panel_Previews: PreviewProvider {
     @Binding var selectedCanteen: Cafeteria?
 
     static var previews: some View {
-        Panel(vm: MapViewModel(service: CafeteriasService()))
+        Panel(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
     }
 }

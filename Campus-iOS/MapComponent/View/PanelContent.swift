@@ -177,7 +177,7 @@ struct SearchBar: View {
 
 struct PanelContent_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = MapViewModel(service: CafeteriasService(), mock: true)
+        let vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
         
         PanelContent(vm: vm)
             .previewInterfaceOrientation(.portrait)

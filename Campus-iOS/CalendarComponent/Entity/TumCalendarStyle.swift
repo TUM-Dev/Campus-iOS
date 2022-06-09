@@ -89,9 +89,9 @@ struct TumCalendarStyle {
         newStyle.headerScroll.colorNameEmptyDay = UIColor.useForStyle(dark: .systemGray6,
                                                                       white: newStyle.headerScroll.colorNameEmptyDay)
         // newStyle.headerScroll.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.headerScroll.colorBackground)
-        newStyle.headerScroll.colorTitleDate = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorTitleDate)
-        newStyle.headerScroll.colorTitleCornerDate = UIColor.useForStyle(dark: .systemRed,
-                                                                         white: newStyle.headerScroll.colorTitleCornerDate)
+        newStyle.headerScroll.titleDateColor = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.titleDateColor)
+        newStyle.headerScroll.titleDateColorCorner = UIColor.useForStyle(dark: .systemRed,
+                                                                         white: newStyle.headerScroll.titleDateColorCorner)
         newStyle.headerScroll.colorDate = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorDate)
         newStyle.headerScroll.colorNameDay = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorNameDay)
         /*newStyle.headerScroll.colorCurrentDate = UIColor.useForStyle(dark: .systemGray6,

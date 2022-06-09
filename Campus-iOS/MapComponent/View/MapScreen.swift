@@ -19,7 +19,7 @@ struct MapScreen: View {
     var body: some View {
         // -> Here check the status of the fetched cafeterias
         Group {
-            switch vm.state {
+            switch vm.cafeteriasState {
             case .success(_):
                 VStack {
                     MapView(vm: self.vm)
@@ -40,7 +40,7 @@ struct MapScreen: View {
         .task {
             await vm.getCafeteria()
         }
-        .alert("Error while fetching Cafeterias", isPresented: $vm.hasError, presenting: vm.state) {
+        .alert("Error while fetching Cafeterias", isPresented: $vm.hasError, presenting: vm.cafeteriasState) {
             detail in
             Button("Retry") {
                 Task {

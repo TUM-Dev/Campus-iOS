@@ -89,7 +89,7 @@ struct CalendarDisplayView: UIViewRepresentable {
             }
             
             self.selectedDate = date
-            if let firstEvent = events.filter( {$0.start.startOfDay == date.startOfDay} ).sorted(by: {
+            if let firstEvent = events.filter( {$0.start.kvkStartOfDay == date.kvkStartOfDay} ).sorted(by: {
                 return $0.start > $1.start
             }).first {
                 view.calendar.scrollTo(firstEvent.start, animated: true)

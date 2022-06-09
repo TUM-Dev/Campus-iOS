@@ -8,10 +8,17 @@
 import Foundation
 
 extension MapViewModel {
-    enum State {
+    enum CafeteriasNetworkState {
         case na
         case loading
         case success(data: [Cafeteria])
+        case failed(error: Error)
+    }
+    
+    enum StudyRoomsNetworkState {
+        case na
+        case loading
+        case success(data: StudyRoomApiRespose)
         case failed(error: Error)
     }
 }
