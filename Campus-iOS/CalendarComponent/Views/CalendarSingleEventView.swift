@@ -47,7 +47,7 @@ struct CalendarSingleEventView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button(action: {self.presentationMode.wrappedValue.dismiss()}) {
-                    Text("Cancel").bold()
+                    Text("Done").bold()
                 }
             }
         }
