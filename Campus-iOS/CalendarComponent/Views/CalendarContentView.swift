@@ -11,6 +11,7 @@ import KVKCalendar
 struct CalendarContentView: View {
     
     @EnvironmentObject private var model: Model
+    @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
@@ -34,19 +35,19 @@ struct CalendarContentView: View {
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .week,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .day:
                     CalendarDisplayView(
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .day,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .month:
                     CalendarDisplayView(
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .month,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 default:
                     EmptyView()
                 }

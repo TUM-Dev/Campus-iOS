@@ -18,11 +18,11 @@ struct CalendarDisplayView: UIViewRepresentable {
     private var calendar: CalendarView
     var selectDate: Date?
     
-    init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>) {
+    init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>, calendarWeekDays: UInt) {
         self.events = events
         self._todayPressed = todayPressed
         self._selectedEventID = selectedEventID
-        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type))
+        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type, calendarWeekDays: calendarWeekDays))
     }
         
     func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {

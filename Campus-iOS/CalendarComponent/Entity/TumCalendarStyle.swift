@@ -12,7 +12,8 @@ import KVKCalendar
 struct TumCalendarStyle {
     @available(*, unavailable) private init() {}
     
-    static func getStyle(type: CalendarType) -> Style {
+    static func getStyle(type: CalendarType, calendarWeekDays: UInt) -> Style {
+
         var style = Style()
         if UIDevice.current.userInterfaceIdiom == .phone {
             style.timeline.widthTime = 40
@@ -49,6 +50,11 @@ struct TumCalendarStyle {
         
         // Day
         style.allDay.backgroundColor = .systemBackground
+        
+        // Week
+        if type == .week {
+            style.week.daysInOneWeek = calendarWeekDays
+        }
         
         // Month
         style.month.isHiddenEventTitle = false
