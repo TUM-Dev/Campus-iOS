@@ -17,7 +17,7 @@ struct LectureSearchView: View {
             .background(Color(.systemGroupedBackground))
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: self.searchText) { searchValue in
-                if(searchValue.count > 3) {
+                if searchValue.count > 3 {
                     self.viewModel.fetch(searchString: searchValue)
                 }
             }

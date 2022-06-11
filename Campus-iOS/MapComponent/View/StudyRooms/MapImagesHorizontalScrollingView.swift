@@ -12,19 +12,9 @@ struct MapImagesHorizontalScrollingView: View {
     @ObservedObject var viewModel: StudyRoomViewModel
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: true) {
-            HStack(spacing: 30) {
-                if(viewModel.roomImageMapping.count < 1) {
-                    VStack(alignment: .center) {
-                        HStack {
-                            Spacer()
-                            Text("Missing Map Images")
-                                .font(.title3)
-                                .bold()
-                            Spacer()
-                        }
-                    }
-                } else {
+        if viewModel.roomImageMapping.count > 0  {
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack(spacing: 30) {
                     ForEach(viewModel.roomImageMapping, id: \.id) { map in
                         GeometryReader { geometry in
                             if let link = viewModel.getImageURL(imageMappingId: map.id) {
@@ -58,7 +48,14 @@ struct MapImagesHorizontalScrollingView: View {
                     }
                 }
             }
-            .padding([.top, .leading], 30)
+            .padding([.top, .bottom], 15)
+        } else {
+            HStack {
+                Spacer()
+                Text("Missing Map Images")
+                    .bold()
+                Spacer()
+            }
         }
     }
 }

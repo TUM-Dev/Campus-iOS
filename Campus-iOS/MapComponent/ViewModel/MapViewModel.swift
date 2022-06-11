@@ -11,22 +11,28 @@ protocol MapViewModelProtocol: ObservableObject {
     func getCafeteria(forcedRefresh: Bool) async
 }
 
+enum MapMode: CaseIterable {
+    case cafeterias, studyRooms
+}
+
 @MainActor
 class MapViewModel: MapViewModelProtocol {
     // State for fetching cafeterias
     @Published var cafeteriasState: CafeteriasNetworkState = .na
     @Published var studyRoomsState: StudyRoomsNetworkState = .na
-    @Published var hasError: Bool = false
+    @Published var hasError = false
   
-    @Published var zoomOnUser: Bool = true
-    @Published var panelPosition: String = "pushMid"
-    @Published var lockPanel: Bool = false
-    @Published var selectedCafeteriaName: String = " "
-    @Published var selectedAnnotationIndex: Int = 0
+    @Published var zoomOnUser = true
+    @Published var panelPosition = "pushMid"
+    @Published var lockPanel = false
+    @Published var mode: MapMode = .cafeterias
+    @Published var setAnnotations = true
+    
+    @Published var selectedCafeteriaName = " "
+    @Published var selectedAnnotationIndex = 0
     @Published var selectedCafeteria: Cafeteria?
     
-    @Published var selectedStudyGroupName: String = " "
-    @Published var selectedStudyRoomGroup: StudyRoomGroup?
+    @Published var selectedStudyGroup: StudyRoomGroup?
     
     private let mock: Bool
     
@@ -90,17 +96,17 @@ class MapViewModel: MapViewModelProtocol {
     
     func getStudyRoomResponse(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
-            self.cafeteriasState = .loading
+            self.studyRoomsState = .loading
         }
         
         self.hasError = false
         
         do {
             //@MainActor handles to run this UI-updating task on the main thread
-            let data = try await cafeteriaService.fetch(forcedRefresh: forcedRefresh)
-            self.cafeteriasState = .success(data: data)
+            let data = try await studyRoomsService.fetch(forcedRefresh: forcedRefresh)
+            self.studyRoomsState = .success(data: data)
         } catch {
-            self.cafeteriasState = .failed(error: error)
+            self.studyRoomsState = .failed(error: error)
             self.hasError = true
         }
     }

@@ -35,14 +35,22 @@ struct RoomFinderDetailsMapView: View {
             
             Divider()
             
-            // place the map here
-            if let locationR = viewModel.location {
+            if viewModel.errorConvertingAddress {
+                HStack {
+                    Spacer()
+                    Text("Address cannot be determined!")
+                        .bold()
+                    Spacer()
+                }
+            } else if let locationR = viewModel.location {
                 let mapRegion = MKCoordinateRegion(center: locationR, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
                 
-                Map(coordinateRegion: .constant(mapRegion), annotationItems: [RoomFinderLocation(coordinate: locationR)]) { location in
+                Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: locationR)]) { location in
                     MapMarker(coordinate: location.coordinate)
                 }
                 .frame(width: 300, height: 180)
+            } else {
+                ProgressView()
             }
             
 //            LectureDetailsBasicInfoRowView(

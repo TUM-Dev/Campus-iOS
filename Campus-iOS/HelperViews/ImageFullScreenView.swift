@@ -16,7 +16,7 @@ struct ImageFullScreenView: View {
         self.image
             .resizable()
             .scaleEffect(self.scale)
-            .aspectRatio(contentMode: .fill)
+            .aspectRatio(contentMode: .fit)
             .gesture(MagnificationGesture().onChanged { val in
                 self.scale = val.magnitude
             }

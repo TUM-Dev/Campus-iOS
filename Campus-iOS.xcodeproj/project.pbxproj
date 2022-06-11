@@ -12,7 +12,7 @@
 		1F4C836228300306006971C0 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836128300306006971C0 /* MapViewModel.swift */; };
 		1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836328300D25006971C0 /* MapViewModel+State.swift */; };
 		1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836628300E79006971C0 /* CafeteriasService.swift */; };
-		1FAF9F0C284D2ABC000ABE93 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */; };
+		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
@@ -36,18 +36,18 @@
 		36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCB27A304B5007DC62D /* MealPlan.swift */; };
 		36108BE027A304B5007DC62D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCC27A304B5007DC62D /* Dish.swift */; };
 		36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCD27A304B5007DC62D /* Cafeteria.swift */; };
-		36108BE227A304B5007DC62D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCE27A304B5007DC62D /* Menu.swift */; };
+		36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCE27A304B5007DC62D /* MensaMenu.swift */; };
 		36108BE327A304B5007DC62D /* DishLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCF27A304B5007DC62D /* DishLabel.swift */; };
 		36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD027A304B5007DC62D /* MensaEnumService.swift */; };
 		36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD227A304B5007DC62D /* MealPlanView.swift */; };
 		36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD327A304B5007DC62D /* MealPlanViewModel.swift */; };
 		36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD427A304B5007DC62D /* MenuViewModel.swift */; };
 		36108BE927A304B5007DC62D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD627A304B5007DC62D /* MenuView.swift */; };
-		36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD927A304B5007DC62D /* PanelRow.swift */; };
+		36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD927A304B5007DC62D /* CafeteriaRowView.swift */; };
 		36108BED27A304B6007DC62D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDB27A304B5007DC62D /* MapView.swift */; };
-		36108BEE27A304B6007DC62D /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDC27A304B5007DC62D /* Panel.swift */; };
-		36108BEF27A304B6007DC62D /* MapContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDD27A304B5007DC62D /* MapContent.swift */; };
-		36108BF027A304B6007DC62D /* PanelContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDE27A304B5007DC62D /* PanelContent.swift */; };
+		36108BEE27A304B6007DC62D /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDC27A304B5007DC62D /* PanelView.swift */; };
+		36108BEF27A304B6007DC62D /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDD27A304B5007DC62D /* MapContentView.swift */; };
+		36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDE27A304B5007DC62D /* PanelContentView.swift */; };
 		36108BFA27A30517007DC62D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BF327A30516007DC62D /* Movie.swift */; };
 		36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BF427A30516007DC62D /* MoviesViewModel.swift */; };
 		36108BFC27A30517007DC62D /* MovieCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BF627A30516007DC62D /* MovieCard.swift */; };
@@ -97,6 +97,11 @@
 		3654F37E2851710E008AD5DC /* RoomFinderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F3752851710E008AD5DC /* RoomFinderDetailsView.swift */; };
 		3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F37F28517156008AD5DC /* ImageFullScreenView.swift */; };
 		3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38328517260008AD5DC /* StudyRoomVIewModel.swift */; };
+		3654F38628517BB4008AD5DC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38528517BB4008AD5DC /* CafeteriaView.swift */; };
+		3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */; };
+		3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */; };
+		3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */; };
+		3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */; };
 		366F0E8427580CFB0091651D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8327580CFB0091651D /* App.swift */; };
 		366F0E8827580CFD0091651D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8727580CFD0091651D /* Assets.xcassets */; };
 		366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8A27580CFD0091651D /* Preview Assets.xcassets */; };
@@ -167,6 +172,8 @@
 		36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */; };
 		36BBE7322798AFE10018FD3F /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7312798AFE10018FD3F /* News.swift */; };
 		36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BBE7332798B04D0018FD3F /* NewsSource.swift */; };
+		36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */; };
+		36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */; };
 		36D0C8A32762075900A142CD /* TokenActivationTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */; };
 		36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A22774932B0055777F /* CalendarToolbar.swift */; };
 		36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A4277493D90055777F /* CalendarViewModel.swift */; };
@@ -212,7 +219,7 @@
 		1F4C836128300306006971C0 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1F4C836328300D25006971C0 /* MapViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel+State.swift"; sourceTree = "<group>"; };
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
-		1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -238,18 +245,18 @@
 		36108BCB27A304B5007DC62D /* MealPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
 		36108BCC27A304B5007DC62D /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		36108BCD27A304B5007DC62D /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
-		36108BCE27A304B5007DC62D /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		36108BCE27A304B5007DC62D /* MensaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensaMenu.swift; sourceTree = "<group>"; };
 		36108BCF27A304B5007DC62D /* DishLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishLabel.swift; sourceTree = "<group>"; };
 		36108BD027A304B5007DC62D /* MensaEnumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensaEnumService.swift; sourceTree = "<group>"; };
 		36108BD227A304B5007DC62D /* MealPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanView.swift; sourceTree = "<group>"; };
 		36108BD327A304B5007DC62D /* MealPlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		36108BD427A304B5007DC62D /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		36108BD627A304B5007DC62D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
-		36108BD927A304B5007DC62D /* PanelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelRow.swift; sourceTree = "<group>"; };
+		36108BD927A304B5007DC62D /* CafeteriaRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaRowView.swift; sourceTree = "<group>"; };
 		36108BDB27A304B5007DC62D /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		36108BDC27A304B5007DC62D /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
-		36108BDD27A304B5007DC62D /* MapContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContent.swift; sourceTree = "<group>"; };
-		36108BDE27A304B5007DC62D /* PanelContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelContent.swift; sourceTree = "<group>"; };
+		36108BDC27A304B5007DC62D /* PanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		36108BDD27A304B5007DC62D /* MapContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
+		36108BDE27A304B5007DC62D /* PanelContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelContentView.swift; sourceTree = "<group>"; };
 		36108BF327A30516007DC62D /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		36108BF427A30516007DC62D /* MoviesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		36108BF627A30516007DC62D /* MovieCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCard.swift; sourceTree = "<group>"; };
@@ -299,6 +306,11 @@
 		3654F3752851710E008AD5DC /* RoomFinderDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderDetailsView.swift; sourceTree = "<group>"; };
 		3654F37F28517156008AD5DC /* ImageFullScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFullScreenView.swift; sourceTree = "<group>"; };
 		3654F38328517260008AD5DC /* StudyRoomVIewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomVIewModel.swift; sourceTree = "<group>"; };
+		3654F38528517BB4008AD5DC /* CafeteriaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
+		3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupView.swift; sourceTree = "<group>"; };
+		3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsView.swift; sourceTree = "<group>"; };
+		3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelSearchBarView.swift; sourceTree = "<group>"; };
+		3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyGroupRowView.swift; sourceTree = "<group>"; };
 		366F0E8027580CFB0091651D /* Campus-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Campus-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		366F0E8327580CFB0091651D /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		366F0E8727580CFD0091651D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -372,6 +384,8 @@
 		36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewWrapper.swift; sourceTree = "<group>"; };
 		36BBE7312798AFE10018FD3F /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		36BBE7332798B04D0018FD3F /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
+		36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentCafeteriasListView.swift; sourceTree = "<group>"; };
+		36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentStudyGroupsListView.swift; sourceTree = "<group>"; };
 		36D0C8A22762075900A142CD /* TokenActivationTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenActivationTutorialView.swift; sourceTree = "<group>"; };
 		36E964A22774932B0055777F /* CalendarToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarToolbar.swift; sourceTree = "<group>"; };
 		36E964A4277493D90055777F /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -547,6 +561,8 @@
 		36108BD127A304B5007DC62D /* Cafeterias */ = {
 			isa = PBXGroup;
 			children = (
+				3654F38528517BB4008AD5DC /* CafeteriaView.swift */,
+				36108BD927A304B5007DC62D /* CafeteriaRowView.swift */,
 				36108BD227A304B5007DC62D /* MealPlanView.swift */,
 				36108BD627A304B5007DC62D /* MenuView.swift */,
 			);
@@ -559,11 +575,13 @@
 				3654F382285171F6008AD5DC /* StudyRooms */,
 				36108BD127A304B5007DC62D /* Cafeterias */,
 				36108BDB27A304B5007DC62D /* MapView.swift */,
-				1FAF9F0B284D2ABC000ABE93 /* MapScreen.swift */,
-				36108BDC27A304B5007DC62D /* Panel.swift */,
-				36108BDD27A304B5007DC62D /* MapContent.swift */,
-				36108BDE27A304B5007DC62D /* PanelContent.swift */,
-				36108BD927A304B5007DC62D /* PanelRow.swift */,
+				1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */,
+				36108BDC27A304B5007DC62D /* PanelView.swift */,
+				36108BDD27A304B5007DC62D /* MapContentView.swift */,
+				36108BDE27A304B5007DC62D /* PanelContentView.swift */,
+				3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */,
+				36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */,
+				36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -743,7 +761,7 @@
 				36108BCB27A304B5007DC62D /* MealPlan.swift */,
 				36108BCC27A304B5007DC62D /* Dish.swift */,
 				36108BCD27A304B5007DC62D /* Cafeteria.swift */,
-				36108BCE27A304B5007DC62D /* Menu.swift */,
+				36108BCE27A304B5007DC62D /* MensaMenu.swift */,
 				36108BCF27A304B5007DC62D /* DishLabel.swift */,
 			);
 			path = Cafeterias;
@@ -816,6 +834,9 @@
 		3654F382285171F6008AD5DC /* StudyRooms */ = {
 			isa = PBXGroup;
 			children = (
+				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
+				3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */,
+				3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */,
 				3654F35E285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift */,
 			);
 			path = StudyRooms;
@@ -1399,7 +1420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36108BEE27A304B6007DC62D /* Panel.swift in Sources */,
+				36108BEE27A304B6007DC62D /* PanelView.swift in Sources */,
 				36BB6F6227AFCDFA00F224AB /* PersonSearchView.swift in Sources */,
 				97270F5A27AB2A4900BB25E4 /* Array+Rearrange.swift in Sources */,
 				3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */,
@@ -1408,7 +1429,7 @@
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */,
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
-				36108BEB27A304B6007DC62D /* PanelRow.swift in Sources */,
+				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
@@ -1420,6 +1441,7 @@
 				36108C1D27A307FA007DC62D /* GradeView.swift in Sources */,
 				36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */,
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
+				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
@@ -1427,15 +1449,18 @@
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
 				3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */,
 				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
-				36108BE227A304B5007DC62D /* Menu.swift in Sources */,
+				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
+				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
 				3654F358285167C3008AD5DC /* StudyRoomsService.swift in Sources */,
 				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
 				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */,
 				3654F37B2851710E008AD5DC /* RoomFinderListView.swift in Sources */,
+				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
+				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
@@ -1463,7 +1488,7 @@
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* TUMSplashScreen.swift in Sources */,
 				36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */,
-				36108BEF27A304B6007DC62D /* MapContent.swift in Sources */,
+				36108BEF27A304B6007DC62D /* MapContentView.swift in Sources */,
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
@@ -1472,6 +1497,7 @@
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,
 				36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */,
 				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
+				3654F38628517BB4008AD5DC /* CafeteriaView.swift in Sources */,
 				36BB6F8D27B3F25A00F224AB /* NSMutableString+Extensions.swift in Sources */,
 				36108BED27A304B6007DC62D /* MapView.swift in Sources */,
 				36AF61E827A2FD7800FEBD98 /* AlertErrorHandler.swift in Sources */,
@@ -1484,7 +1510,7 @@
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
-				1FAF9F0C284D2ABC000ABE93 /* MapScreen.swift in Sources */,
+				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
@@ -1518,9 +1544,10 @@
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,
 				36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */,
 				36AF61EA27A2FD7800FEBD98 /* Environment+Error.swift in Sources */,
+				3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */,
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
-				36108BF027A304B6007DC62D /* PanelContent.swift in Sources */,
+				36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
@@ -1548,6 +1575,7 @@
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
+				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,

@@ -25,7 +25,7 @@ public class Model: ObservableObject {
     init() {
         loginController = AuthenticationHandler()
         
-        if(loginController.credentials == Credentials.noTumID) {
+        if loginController.credentials == Credentials.noTumID {
             isUserAuthenticated = false
         } else {
             loginController.confirmToken() { [weak self] result in
