@@ -23,12 +23,13 @@ struct TumCalendarStyle {
             style.headerScroll.heightHeaderWeek = 70
             style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 16)
         } else {
-            style.timeline.widthEventViewer = 350
+            style.timeline.widthEventViewer = 0
             style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
         }
         
         // Event
         style.event.showRecurringEventInPast = true
+        style.event.isEnableVisualSelect = false
         style.event.states = [.none]
         if #available(iOS 13.0, *) {
             style.event.iconFile = UIImage(systemName: "paperclip")
