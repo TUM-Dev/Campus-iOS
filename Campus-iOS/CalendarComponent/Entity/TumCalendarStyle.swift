@@ -50,6 +50,9 @@ struct TumCalendarStyle {
         
         // Day
         style.allDay.backgroundColor = .systemBackground
+        if type == .day {
+            style.week.showVerticalDayDivider = false
+        }
         
         // Week
         if type == .week {
