@@ -17,12 +17,8 @@ struct CalendarContentView: View {
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
     
-    @ObservedObject var viewModel: CalendarViewModel
-    
-    
-    init() {
-        self.viewModel = CalendarViewModel()
-    }
+    @ObservedObject var viewModel = CalendarViewModel()
+
     
     var body: some View {
         VStack{

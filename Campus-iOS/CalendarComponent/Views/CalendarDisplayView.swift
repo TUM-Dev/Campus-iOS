@@ -28,8 +28,10 @@ struct CalendarDisplayView: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {
         calendar.dataSource = context.coordinator
         calendar.delegate = context.coordinator
-        calendar.scrollTo(Date(), animated: true)
-        calendar.reloadData()
+        DispatchQueue.main.async {
+            calendar.scrollTo(Date(), animated: true)
+            calendar.reloadData()
+        }
         return calendar
     }
     
