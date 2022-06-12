@@ -15,9 +15,9 @@ final class XMLSerializer: ResponseSerializer {
     let emptyRequestMethods: Set<HTTPMethod>
     let config: (XMLHashOptions) -> Void
 
-    public init(dataPreprocessor: DataPreprocessor = JSONResponseSerializer.defaultDataPreprocessor,
-                emptyResponseCodes: Set<Int> = JSONResponseSerializer.defaultEmptyResponseCodes,
-                emptyRequestMethods: Set<HTTPMethod> = JSONResponseSerializer.defaultEmptyRequestMethods,
+    public init(dataPreprocessor: DataPreprocessor = DecodableResponseSerializer<Data?>.defaultDataPreprocessor,
+                emptyResponseCodes: Set<Int> = DecodableResponseSerializer<Data?>.defaultEmptyResponseCodes,
+                emptyRequestMethods: Set<HTTPMethod> = DecodableResponseSerializer<Data?>.defaultEmptyRequestMethods,
                 config: @escaping (XMLHashOptions) -> Void = { config in config.detectParsingErrors = true }) {
         self.dataPreprocessor = dataPreprocessor
         self.emptyResponseCodes = emptyResponseCodes
