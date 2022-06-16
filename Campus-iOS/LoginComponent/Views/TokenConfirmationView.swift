@@ -17,88 +17,99 @@ struct TokenConfirmationView: View {
     @ObservedObject var viewModel: LoginViewModel
     
     var body: some View {
-        ZStack() {
-            VStack {
-                
-                
-                VStack(alignment: .circleTitleAlignmentGuide) {
-                    HStack() {
-                        Text("1")
-                            .frame(width: 42, height: 42, alignment: .center)
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(white: 1.0))
-                            .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                            .clipShape(Circle())
-                        
-                        Spacer().frame(width: 20)
-                        
-                        Text("Check your email and click on the link to confirm your token or visit TUMonline")
-                            .font(.body)
-                    }
-                    
-                    HStack() {
-                        Text("2")
-                            .frame(width: 42, height: 42, alignment: .center)
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(white: 1.0))
-                            .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                            .clipShape(Circle())
-                        
-                        Spacer().frame(width: 20)
-                        
-                        Text("Select \"Token-Management\"")
-                            .font(.body)
-                    }
-                    
-                    HStack() {
-                        Text("3")
-                            .frame(width: 42, height: 42, alignment: .center)
-                            .font(.title)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color(white: 1.0))
-                            .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                            .clipShape(Circle())
-                        
-                        Spacer().frame(width: 20)
-                        
-                        Text("Click on the newly created token and enable your desired permissions")
-                            .font(.body)
-                    }
-                    
-                }
-                
-                
-                VStack() {
-                    NavigationLink(destination: TokenActivationTutorialView()) {
-                        Text("I need help").lineLimit(1).font(.subheadline)
-                            .frame(width: 200, height: 27, alignment: .center)
-                            .foregroundColor(.blue)
-                    }
-                    
-                    Spacer().frame(height: 16)
-                    
-                    Button(action: {
-                        self.viewModel.checkAuthorizzation()
-                    }) {
-                        Text("Check Authorization").lineLimit(1).font(.body)
-                            .frame(width: 200, height: 48, alignment: .center)
-                    }
-                    .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
-                        Button("OK", role: .cancel) {}
-                    }
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                    .cornerRadius(10)
-                }
-                
+        GeometryReader { geo in
+            ZStack() {
                 VStack {
-//                    EnhancedVideoPlayer([Bundle.main.url(forResource: "token-tutorial", withExtension: "mov")!], endAction: .loop)
-                    let videoUrl = Bundle.main
-                        .url(forResource: "token-tutorial", withExtension: "mov")!
-                    PlayerView(videoUrl: videoUrl)
+                    
+                    
+                    VStack(alignment: .circleTitleAlignmentGuide) {
+                        HStack() {
+                            Text("1")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            Text("Check your email and click on the link to confirm your token or visit TUMonline")
+                                .font(.body)
+                        }
+                        
+                        HStack() {
+                            Text("2")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            Text("Select \"Token-Management\"")
+                                .font(.body)
+                        }
+                        
+                        HStack() {
+                            Text("3")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            Text("Click on the newly created token and enable your desired permissions")
+                                .font(.body)
+                        }
+                        
+                    }
+                    
+                    
+                    VStack() {
+                        NavigationLink(destination: TokenActivationTutorialView()) {
+                            Text("I need help").lineLimit(1).font(.subheadline)
+                                .frame(width: 200, height: 27, alignment: .center)
+                                .foregroundColor(.blue)
+                        }
+                        
+                        Spacer().frame(height: 16)
+                        
+                        Button(action: {
+                            self.viewModel.checkAuthorizzation()
+                        }) {
+                            Text("Check Authorization").lineLimit(1).font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                        }
+                        .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
+                            Button("OK", role: .cancel) {}
+                        }
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                        .cornerRadius(10)
+                    }
+                    
+                    VStack {
+                        
+                        
+                        let videoUrl = Bundle.main
+                            .url(forResource: "token-tutorial", withExtension: "mov")!
+                        PlayerView(videoUrl: videoUrl)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                            // Video is 2532 x 1170
+                            .frame(width: geo.size.width*0.46, height: geo.size.height*0.38, alignment: .center)
+                            
+                        
+                        
+                    }.padding()
+                    
                 }
                 
             }
@@ -127,7 +138,10 @@ struct TokenConfirmationView: View {
                 secondaryButton: .cancel()
             )
         }
+        .padding()
+        
     }
+    
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -158,7 +172,6 @@ extension HorizontalAlignment {
     )
 }
 
-
 struct EnhancedVideoPlayer<VideoOverlay: View>: View {
     @StateObject private var viewModel: ViewModel
     @ViewBuilder var videoOverlay: () -> VideoOverlay
@@ -173,7 +186,7 @@ struct EnhancedVideoPlayer<VideoOverlay: View>: View {
     var body: some View {
         VideoPlayer(player: viewModel.player, videoOverlay: videoOverlay)
             .onAppear(perform: {
-            viewModel.player.play()
+                viewModel.player.play()
             })
     }
     
@@ -238,23 +251,30 @@ struct LoopingVideoPlayer: View {
 
 struct PlayerView: UIViewRepresentable {
     let videoUrl: URL
-
+    
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
     }
-
+    
     func makeUIView(context: Context) -> UIView {
         return PlayerUIView(videoUrl: videoUrl)
     }
-
+    
 }
 
 class PlayerUIView: UIView {
+    
     private var playerLooper: AVPlayerLooper
     private let playerLayer = AVPlayerLayer()
-
+    
+    private let playerFrameWidth: CGFloat?
+    private let playerFrameHeight: CGFloat?
+    
     init(videoUrl: URL) {
         let asset = AVAsset(url: videoUrl)
         let item = AVPlayerItem(asset: asset)
+        playerFrameWidth = asset.tracks.first?.naturalSize.width
+        playerFrameHeight = asset.tracks.first?.naturalSize.height
+        
         let player = AVQueuePlayer(playerItem: item)
         self.playerLayer.player = player
         
@@ -262,17 +282,24 @@ class PlayerUIView: UIView {
         
         super.init(frame: .zero)
         layer.addSublayer(playerLayer)
+        backgroundColor = UIColor.red
         
         player.play()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        playerLayer.frame = bounds
+        //2532 x 1170
+        if let playerFrameWidth = playerFrameWidth, let playerFrameHeight = playerFrameHeight {
+            let playerFrame = CGRect(origin: CGPoint(x: 0, y: -20), size: CGSize(width: 1170*0.142, height: 2532*0.142))
+            playerLayer.frame = playerFrame
+        }
+        
+        //playerLayer.frame = bounds
     }
-
+    
 }
