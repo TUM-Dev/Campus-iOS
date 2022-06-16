@@ -11,17 +11,14 @@ import KVKCalendar
 struct CalendarContentView: View {
     
     @EnvironmentObject private var model: Model
+    @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
     
-    @ObservedObject var viewModel: CalendarViewModel
-    
-    
-    init() {
-        self.viewModel = CalendarViewModel()
-    }
+    @ObservedObject var viewModel = CalendarViewModel()
+
     
     var body: some View {
         VStack{
@@ -34,29 +31,35 @@ struct CalendarContentView: View {
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .week,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .day:
                     CalendarDisplayView(
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .day,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .month:
                     CalendarDisplayView(
                         events: self.viewModel.events.map({ $0.kvkEvent }),
                         type: .month,
                         selectedEventID: self.$selectedEventID,
-                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 default:
                     EmptyView()
                 }
             }
         }
         .sheet(item: self.$selectedEventID) { eventId in
+            let chosenEvent = self.viewModel.events
+                .first(where: { $0.id.description == eventId })
             CalendarSingleEventView(
-                model: self.model,
-                event: self.viewModel.events
-                    .first(where: { $0.id.description == eventId })
+                viewModel: LectureDetailsViewModel(
+                                model: model,
+                                service: LectureDetailsService(),
+                                // Yes, it is a really hacky solution...
+                                lecture: Lecture(id: UInt64(chosenEvent?.lvNr ?? "") ?? 0, lvNumber: UInt64(chosenEvent?.lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventTypeDefault: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
+                            ),
+                event: chosenEvent
             )
         }
         .toolbar {

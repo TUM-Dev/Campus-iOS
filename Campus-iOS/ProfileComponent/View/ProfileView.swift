@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
+    @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     var body: some View {
         
@@ -42,7 +43,11 @@ struct ProfileView: View {
                         Label("TUM.sexy", systemImage: "heart")
                     }
                     
-                    NavigationLink(destination: Text("Roomfinder")) {
+                    NavigationLink(
+                        destination: RoomFinderView(model: self.model)
+                            .navigationTitle(Text("Roomfinder"))
+                            .navigationBarTitleDisplayMode(.large)
+                    ) {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
@@ -65,6 +70,22 @@ struct ProfileView: View {
                     VStack {
                         Toggle("Use build-in Web View", isOn: $useBuildInWebView)
                     }
+                }
+                
+                Section() {
+                    HStack {
+                        
+                        Text("Calendar days in week mode")
+                        Spacer()
+                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
+                            ForEach(2..<8) { number in
+                                Text("\(number)")
+                                    .tag(number)
+                            }
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .foregroundColor(.black)
                 }
                 
                 Section("GET IN CONTACT") {

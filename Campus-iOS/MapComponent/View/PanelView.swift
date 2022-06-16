@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct Panel: View {
+struct PanelView: View {
     @GestureState private var dragState = DragState.inactive
     @State var position = PanelPosition.bottom
     @StateObject var vm: MapViewModel
@@ -27,7 +27,7 @@ struct Panel: View {
         
         return Group {
             VStack{
-                PanelContent(vm: self.vm)
+                PanelContentView(vm: self.vm)
                 Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
             }
         }
@@ -36,7 +36,7 @@ struct Panel: View {
         .cornerRadius(10.0)
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
         .offset(y: self.position.rawValue + self.dragState.translation.height)
-        .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
+        .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0), value: self.dragState.isDragging)
         .gesture(drag)
         .task(id: vm.panelPosition) {
             if vm.panelPosition == "pushKBTop" {
@@ -139,10 +139,10 @@ enum DragState {
     }
 }
 
-struct Panel_Previews: PreviewProvider {
+struct PanelView_Previews: PreviewProvider {
     @Binding var selectedCanteen: Cafeteria?
 
     static var previews: some View {
-        Panel(vm: MapViewModel(service: CafeteriasService()))
+        PanelView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
     }
 }

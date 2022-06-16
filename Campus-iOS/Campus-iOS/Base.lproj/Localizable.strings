@@ -56,6 +56,7 @@
 "News" = "News";
 "Movies" = "Movies";
 "Profile" = "Profile";
+"Places" = "Places";
 
 "animation showing the token activation" = "animation showing the token activation";
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
@@ -138,6 +139,11 @@
 "Practical course" = "Practical course";
 "Seminar" = "Seminar";
 "Lecture with integrated Exercises" = "Lecture with integrated Exercises";
+
+// StudyRoom
+"Free" = "Free";
+"Occupied until" = "Occupied until";
+"Unknown" = "Unknown";
 
 
 // Error handeling

@@ -19,7 +19,7 @@ struct CalendarToolbar: View {
             NavigationLink(destination:
                 VStack{
                     GeometryReader { geo in
-                        CalendarDisplayView(events: viewModel.events.map({ $0.kvkEvent }), type: .list, selectedEventID: self.$selectedEventID, frame: CalendarContentView.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed)
+                        CalendarDisplayView(events: viewModel.events.map({ $0.kvkEvent }), type: .list, selectedEventID: self.$selectedEventID, frame: CalendarContentView.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: 7)
                         .navigationBarTitle(Text("Events"))
                     }
                 }

@@ -19,7 +19,7 @@ struct MealPlan: Decodable {
 
     let week: Int
     let year: Int
-    let days: [Menu]
+    let days: [MensaMenu]
     
     enum CodingKeys: String, CodingKey {
         case week = "number"

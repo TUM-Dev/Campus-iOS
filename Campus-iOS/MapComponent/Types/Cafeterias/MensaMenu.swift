@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Menu: Hashable, Decodable {
+struct MensaMenu: Hashable, Decodable {
     /*
      "date": "2020-03-02",
      "dishes": [...]

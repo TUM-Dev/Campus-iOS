@@ -1,17 +1,17 @@
 //
-//  PanelRow.swift
+//  StudyGroupRow.swift
 //  Campus-iOS
 //
-//  Created by Tim Gymnich on 20.01.22.
+//  Created by Milen Vitanov on 22.05.22.
 //
 
 import SwiftUI
-import CoreLocation
 import MapKit
 
-struct PanelRow: View {
+struct StudyGroupRowView: View {
     
-    @Binding var cafeteria: Cafeteria
+    @State var studyGroup: StudyRoomGroup
+    @State var allRooms: [StudyRoom]
     @State var explainStatus = false
     private let locationManager = CLLocationManager()
     private let distanceFormatter: MKDistanceFormatter = {
@@ -20,32 +20,33 @@ struct PanelRow: View {
         return formatter
     }()
     
+    private var studyRooms: [StudyRoom] {
+        self.studyGroup.getRooms(allRooms: allRooms) ?? [StudyRoom]()
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     Spacer().frame(height: 5)
                     HStack {
-                        Text(cafeteria.name)
+                        Text(studyGroup.name ?? "")
                             .bold()
                             .font(.title3)
                         Spacer()
-                        if let queue = cafeteria.queue {
-                            let explainText = explainStatus ? "Auslastung " : ""
-                            Text("\(explainText)\(Int(queue.percent))%")
-                                .font(.footnote)
-                                .onTapGesture {
-                                    explainStatus.toggle()
-                                }
-                        }
+                        Text("\(studyRooms.count)")
+                            .font(.footnote)
+                            .onTapGesture {
+                                explainStatus.toggle()
+                            }
                     }
                     Spacer().frame(height: 0)
                     HStack {
-                        Text(cafeteria.location.address)
+                        Text(studyGroup.detail ?? "")
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                         Spacer()
-                        Text(distance(cafeteria: cafeteria))
+                        Text(distance(studyGroup: studyGroup))
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
                     }
@@ -55,18 +56,17 @@ struct PanelRow: View {
         }
     }
     
-    private func distance(cafeteria: Cafeteria) -> String {
+    private func distance(studyGroup: StudyRoomGroup) -> String {
         if let currentLocation = self.locationManager.location {
-            let distance = cafeteria.coordinate.location.distance(from: currentLocation)
+            let distance = studyGroup.coordinate?.location.distance(from: currentLocation) ?? 0.0
             return distanceFormatter.string(fromDistance: distance)
         }
         return ""
     }
 }
 
-struct PanelRow_Previews: PreviewProvider {
+struct StudyGroupRowView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelRow(cafeteria: .constant(mockCafeterias[0]))
-            .previewLayout(PreviewLayout.sizeThatFits)
+        StudyGroupRowView(studyGroup: StudyRoomGroup(), allRooms: [StudyRoom]())
     }
 }

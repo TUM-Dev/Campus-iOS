@@ -22,7 +22,7 @@ struct PersonSearchListView: View {
                     Text(person.fullName)
                 }
             }
-            if(viewModel.errorMessage != "") {
+            if viewModel.errorMessage != "" {
                 VStack {
                     Spacer()
                     Text(self.viewModel.errorMessage).foregroundColor(.gray)

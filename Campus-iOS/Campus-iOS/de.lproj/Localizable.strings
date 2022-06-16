@@ -58,6 +58,7 @@
 "Movies" = "Filme";
 "Profile" = "Profil";
 "Done" = "Fertig";
+"Places" = "Orte";
 
 // Login.storybroad
 
@@ -134,6 +135,12 @@
 "Practical course" = "Praktikum";
 "Seminar" = "Seminar";
 "Lecture with integrated Exercises" = "Vorlesung mit integrierten Übungen";
+
+// StudyRoom
+"Free" = "Frei";
+"Occupied until" = "Besetzt bis";
+"Unknown" = "Unbekannt";
+
 
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";

@@ -12,7 +12,8 @@ import KVKCalendar
 struct TumCalendarStyle {
     @available(*, unavailable) private init() {}
     
-    static func getStyle(type: CalendarType) -> Style {
+    static func getStyle(type: CalendarType, calendarWeekDays: UInt) -> Style {
+
         var style = Style()
         if UIDevice.current.userInterfaceIdiom == .phone {
             style.timeline.widthTime = 40
@@ -23,12 +24,13 @@ struct TumCalendarStyle {
             style.headerScroll.heightHeaderWeek = 70
             style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 16)
         } else {
-            style.timeline.widthEventViewer = 350
+            style.timeline.widthEventViewer = 0
             style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
         }
         
         // Event
         style.event.showRecurringEventInPast = true
+        style.event.isEnableVisualSelect = false
         style.event.states = [.none]
         if #available(iOS 13.0, *) {
             style.event.iconFile = UIImage(systemName: "paperclip")
@@ -48,6 +50,14 @@ struct TumCalendarStyle {
         
         // Day
         style.allDay.backgroundColor = .systemBackground
+        if type == .day {
+            style.week.showVerticalDayDivider = false
+        }
+        
+        // Week
+        if type == .week {
+            style.week.daysInOneWeek = calendarWeekDays
+        }
         
         // Month
         style.month.isHiddenEventTitle = false
@@ -89,9 +99,9 @@ struct TumCalendarStyle {
         newStyle.headerScroll.colorNameEmptyDay = UIColor.useForStyle(dark: .systemGray6,
                                                                       white: newStyle.headerScroll.colorNameEmptyDay)
         // newStyle.headerScroll.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.headerScroll.colorBackground)
-        newStyle.headerScroll.colorTitleDate = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorTitleDate)
-        newStyle.headerScroll.colorTitleCornerDate = UIColor.useForStyle(dark: .systemRed,
-                                                                         white: newStyle.headerScroll.colorTitleCornerDate)
+        newStyle.headerScroll.titleDateColor = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.titleDateColor)
+        newStyle.headerScroll.titleDateColorCorner = UIColor.useForStyle(dark: .systemRed,
+                                                                         white: newStyle.headerScroll.titleDateColorCorner)
         newStyle.headerScroll.colorDate = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorDate)
         newStyle.headerScroll.colorNameDay = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorNameDay)
         /*newStyle.headerScroll.colorCurrentDate = UIColor.useForStyle(dark: .systemGray6,

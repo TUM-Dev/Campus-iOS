@@ -17,7 +17,7 @@ struct LectureDetailsBasicInfoView: View {
     
     var viewModelPersonSearch: PersonSearchViewModel {
         let viewModel = PersonSearchViewModel()
-        if(self.chosenSpeaker.count > 3) {
+        if self.chosenSpeaker.count > 3 {
             viewModel.fetch(searchString: self.chosenSpeaker)
         }
         return viewModel

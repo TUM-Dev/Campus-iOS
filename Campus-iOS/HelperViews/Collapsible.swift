@@ -10,8 +10,8 @@ import SwiftUI
 struct Collapsible<Content: View>: View {
     @State var title: () -> AnyView
     @State var content: () -> Content
-    
-    @State private var collapsed: Bool = true
+    @State var applyPadding = true
+    @State var collapsed = true
     
     var body: some View {
         VStack {
@@ -32,9 +32,12 @@ struct Collapsible<Content: View>: View {
                     .background(Color.white.opacity(0.01))
                 }
             )
+            .if(applyPadding, transformT: { view in
+                view.padding()
+            })
             .buttonStyle(PlainButtonStyle())
             
-            if(!collapsed) {
+            if !collapsed {
                 self.content()
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: collapsed ? 0 : .none, alignment: .top)
                 .clipped()

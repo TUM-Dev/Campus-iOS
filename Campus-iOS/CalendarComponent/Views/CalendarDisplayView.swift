@@ -18,18 +18,20 @@ struct CalendarDisplayView: UIViewRepresentable {
     private var calendar: CalendarView
     var selectDate: Date?
     
-    init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>) {
+    init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>, calendarWeekDays: UInt) {
         self.events = events
         self._todayPressed = todayPressed
         self._selectedEventID = selectedEventID
-        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type))
+        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type, calendarWeekDays: calendarWeekDays))
     }
         
     func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {
         calendar.dataSource = context.coordinator
         calendar.delegate = context.coordinator
-        calendar.scrollTo(Date(), animated: true)
-        calendar.reloadData()
+        DispatchQueue.main.async {
+            calendar.scrollTo(Date(), animated: true)
+            calendar.reloadData()
+        }
         return calendar
     }
     
@@ -89,7 +91,7 @@ struct CalendarDisplayView: UIViewRepresentable {
             }
             
             self.selectedDate = date
-            if let firstEvent = events.filter( {$0.start.startOfDay == date.startOfDay} ).sorted(by: {
+            if let firstEvent = events.filter( {$0.start.kvkStartOfDay == date.kvkStartOfDay} ).sorted(by: {
                 return $0.start > $1.start
             }).first {
                 view.calendar.scrollTo(firstEvent.start, animated: true)

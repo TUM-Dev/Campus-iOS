@@ -16,7 +16,7 @@ struct TUMSexyView: View {
     
     var body: some View {
         List(searchResults, id: \.target) { link in
-            if(useBuildInWebView) {
+            if useBuildInWebView {
                 Text(link.description ?? "")
                     .foregroundColor(.blue)
                     .onTapGesture {

@@ -27,7 +27,7 @@ struct LectureSearchListView: View {
                     }
                 }
             }
-            if(viewModel.errorMessage != "") {
+            if viewModel.errorMessage != "" {
                 VStack {
                     Spacer()
                     Text(self.viewModel.errorMessage).foregroundColor(.gray)

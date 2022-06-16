@@ -43,7 +43,7 @@ struct PersonDetailedView: View {
                     .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                     .padding(2)
             }
-            if(self.viewModel.sections?.count ?? 0 > 1) {
+            if self.viewModel.sections?.count ?? 0 > 1 {
                 form
             } else {
                 List {

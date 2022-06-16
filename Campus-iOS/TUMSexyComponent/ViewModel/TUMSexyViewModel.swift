@@ -31,7 +31,7 @@ class TUMSexyViewModel: ObservableObject {
             case .success(let storage):
                 var filledLinks = [TUMSexyLink]()
                 storage.values.forEach() {
-                    if($0.target != nil && $0.description != nil) {
+                    if $0.target != nil && $0.description != nil {
                         filledLinks.append($0)
                     }
                 }

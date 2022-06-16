@@ -1,19 +1,20 @@
 //
-//  LectureSearchView.swift
+//  RoomFinderView.swift
 //  Campus-iOS
 //
-//  Created by Milen Vitanov on 09.02.22.
+//  Created by Milen Vitanov on 17.05.22.
 //
 
 import SwiftUI
 
-struct LectureSearchView: View {
+struct RoomFinderView: View {
+    
     @StateObject var model: Model
-    @ObservedObject var viewModel = LectureSearchViewModel()
+    @ObservedObject var viewModel = RoomFinderViewModel()
     @State var searchText = ""
     
     var body: some View {
-        LectureSearchListView(model: self.model, viewModel: self.viewModel)
+        RoomFinderListView(model: self.model, viewModel: self.viewModel)
             .background(Color(.systemGroupedBackground))
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: self.searchText) { searchValue in
@@ -25,8 +26,8 @@ struct LectureSearchView: View {
     }
 }
 
-struct LectureSearchView_Previews: PreviewProvider {
+struct RoomFinderView_Previews: PreviewProvider {
     static var previews: some View {
-        LectureSearchView(model: MockModel())
+        RoomFinderView(model: MockModel())
     }
 }

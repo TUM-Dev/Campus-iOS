@@ -54,8 +54,7 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
     
     var kvkEvent: Event {
         var event = Event(ID: self.id.description)
-        event.text = self.title ?? ""
-        event.textForList = self.title ?? ""
+    
         event.start = self.startDate ?? Date()
         event.end = self.endDate ?? Date()
         
@@ -73,13 +72,22 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
             default: return UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1)
             }
         }
+        
+        let titleWithTime = (self.title ?? "") + " (\(Self.dateFormatter.string(from: event.start)) - \(Self.dateFormatter.string(from: event.end)))"
+        var titleWithTimeAndLocation = titleWithTime
+        
         // TODO: attributedTitle in data does not work
         let attributedTitle = NSMutableAttributedString(string: title ?? "").font(.systemFont(ofSize: 12, weight: .bold)).color(event.textColor)
         if let location = self.location {
+            titleWithTimeAndLocation += "\n\n\(location)"
             let attributedLocation = NSMutableAttributedString(string: location).font(.systemFont(ofSize: 12, weight: .regular)).color(event.textColor)
             attributedTitle.append(NSAttributedString(string: "\n"))
             attributedTitle.append(attributedLocation)
         }
+        
+        let textEvent = TextEvent(timeline: titleWithTimeAndLocation, month: "", list: titleWithTime)
+        event.title = textEvent
+        
         if let description = self.descriptionText {
             let attributedLocation = NSMutableAttributedString(string: description).font(.systemFont(ofSize: 12, weight: .regular)).color(secondaryUIColor)
             attributedTitle.append(NSAttributedString(string: "\n\n"))
@@ -88,6 +96,13 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
         event.data = attributedTitle
         
         return event
+    }
+    
+    var lvNr: String? {
+        if let url = self.url?.description, let range = url.range(of: "LvNr=") {
+            return String(url[range.upperBound...])
+        }
+        return nil
     }
     
     init(
@@ -131,6 +146,13 @@ struct CalendarEvent: Identifiable, Equatable, Entity {
         self.endDate = endDate
         self.location = location
     }
+
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
 }
 
 

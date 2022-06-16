@@ -90,21 +90,11 @@ struct CampusApp: App {
             .navigationViewStyle(.stack)
 
             NavigationView {
-                MapScreen(vm: MapViewModel(service: CafeteriasService()))
+                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
             .tag(3)
             .tabItem {
-                Label("Cafeterias", systemImage: "house")
-            }
-            .navigationViewStyle(.stack)
-            
-            NavigationView {
-                Text("Dummy StudyRooms View")
-                // StudyRoomsView(model: model)
-            }
-            .tag(4)
-            .tabItem {
-                Label("Study Rooms", systemImage: "book")
+                Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
         }

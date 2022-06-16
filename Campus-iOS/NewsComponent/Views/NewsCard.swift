@@ -121,7 +121,7 @@ struct NewsCard: View {
                     .font(Font.custom("HelveticaNeue-Bold", size: 16))
                     .foregroundColor(Color.gray)
                 
-                if(self.latest) {
+                if self.latest {
                     Divider()
                         .foregroundColor(Color.gray.opacity(0.3))
                         .padding([.leading, .trailing], -12)
