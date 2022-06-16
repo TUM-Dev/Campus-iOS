@@ -14,7 +14,7 @@ struct MapImagesHorizontalScrollingView: View {
     var body: some View {
         if viewModel.roomImageMapping.count > 0  {
             ScrollView(.horizontal, showsIndicators: true) {
-                HStack(spacing: 30) {
+                HStack(spacing: 10) {
                     ForEach(viewModel.roomImageMapping, id: \.id) { map in
                         GeometryReader { geometry in
                             if let link = viewModel.getImageURL(imageMappingId: map.id) {
