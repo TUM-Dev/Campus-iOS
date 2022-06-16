@@ -13,72 +13,74 @@ struct TokenConfirmationView: View {
     /// Used for the customized back button
     @Environment(\.presentationMode) var presentationMode
     @State var showBackButtonAlert: Bool = false
+    @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
     var body: some View {
         GeometryReader { geo in
-            ZStack() {
+            ZStack(alignment: .center) {
                 VStack {
-                    
-                    
-                    VStack(alignment: .circleTitleAlignmentGuide) {
-                        HStack() {
-                            Text("1")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(width: 20)
-                            
-                            Text("Check your email and click on the link to confirm your token or visit TUMonline")
-                                .font(.body)
+                    Spacer(minLength: geo.size.height*0.15)
+                    VStack {
+                        switch currentStep {
+                        case 1:
+                            HStack() {
+                                Text("1")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Text("Check your email and click on the link to confirm your token or visit TUMonline")
+                                    .font(.body)
+                            }
+                        case 2:
+                            HStack() {
+                                Text("2")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Text("Select \"Token-Management\"")
+                                    .font(.body)
+                            }
+                        case 3:
+                            HStack() {
+                                Text("3")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Text("Click on the newly created token and enable your desired permissions")
+                                    .font(.body)
+                            }
+                        default: EmptyView()
                         }
-                        
-                        HStack() {
-                            Text("2")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(width: 20)
-                            
-                            Text("Select \"Token-Management\"")
-                                .font(.body)
-                        }
-                        
-                        HStack() {
-                            Text("3")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(width: 20)
-                            
-                            Text("Click on the newly created token and enable your desired permissions")
-                                .font(.body)
-                        }
-                        
-                    }
+                    }.padding()
                     
-                    
-                    VStack() {
-                        NavigationLink(destination: TokenActivationTutorialView()) {
-                            Text("I need help").lineLimit(1).font(.subheadline)
-                                .frame(width: 200, height: 27, alignment: .center)
-                                .foregroundColor(.blue)
-                        }
-                        
-                        Spacer().frame(height: 16)
+                    VStack {
+                        let videoUrl = Bundle.main
+                            .url(forResource: "token-tutorial", withExtension: "mov")!
+                        PlayerView(videoUrl: videoUrl)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                        // Video is 2532 x 1170
+                            .frame(width: geo.size.width*0.60, height: geo.size.height*0.5, alignment: .center)
                         
                         Button(action: {
                             self.viewModel.checkAuthorizzation()
@@ -93,27 +95,11 @@ struct TokenConfirmationView: View {
                         .foregroundColor(.white)
                         .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
                         .cornerRadius(10)
+                        .padding()
                     }
-                    
-                    VStack {
-                        
-                        
-                        let videoUrl = Bundle.main
-                            .url(forResource: "token-tutorial", withExtension: "mov")!
-                        PlayerView(videoUrl: videoUrl)
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                            // Video is 2532 x 1170
-                            .frame(width: geo.size.width*0.46, height: geo.size.height*0.44, alignment: .center)
-                            
-                        
-                        
-                    }.padding()
-                    
-                }
-                
+                    Spacer()
+                }.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
             }
-            
         }
         .background(Color(.systemBackground))
         ._scrollable()
@@ -138,10 +124,38 @@ struct TokenConfirmationView: View {
                 secondaryButton: .cancel()
             )
         }
-        .padding()
+        .edgesIgnoringSafeArea(.top)
+        .task {
+            await switchSteps()
+        }
+        
         
     }
     
+    private func switchSteps() async {
+        // Delay of 5 seconds (1 second = 1_000_000_000 nanoseconds)
+        switch currentStep {
+        case 1:
+            try? await Task.sleep(nanoseconds: 5_000_000_000)
+            withAnimation(.easeInOut) {
+                currentStep = 2
+            }
+        case 2:
+            try? await Task.sleep(nanoseconds: 4_000_000_000)
+            withAnimation(.easeInOut) {
+                currentStep = 3
+            }
+        case 3:
+            try? await Task.sleep(nanoseconds: 8_000_000_000)
+            withAnimation(.easeInOut) {
+                currentStep = 1
+            }
+        default:
+            return
+        }
+        
+        await switchSteps()
+    }
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
@@ -152,11 +166,11 @@ struct TokenConfirmationView_Previews: PreviewProvider {
     static let model = MockModel()
     
     static var previews: some View {
-        Text("Background").sheet(isPresented: .constant(true)) {
+        //Text("Background2").sheet(isPresented: .constant(true)) {
             NavigationView {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
-        }
+        //}
     }
 }
 
@@ -298,7 +312,7 @@ class PlayerUIView: UIView {
         super.layoutSubviews()
         //2532 x 1170
         if let playerFrameWidth = playerFrameWidth, let playerFrameHeight = playerFrameHeight {
-            let playerFrame = CGRect(origin: CGPoint(x: 0, y: -20), size: CGSize(width: 1170*0.142, height: 2532*0.142))
+            let playerFrame = CGRect(origin: CGPoint(x: 0, y: -30), size: CGSize(width: 1170*0.2, height: 2532*0.2))
             playerLayer.frame = playerFrame
         }
         
