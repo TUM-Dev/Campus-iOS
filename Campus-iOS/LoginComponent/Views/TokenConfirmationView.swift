@@ -104,7 +104,7 @@ struct TokenConfirmationView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10)
                             // Video is 2532 x 1170
-                            .frame(width: geo.size.width*0.46, height: geo.size.height*0.38, alignment: .center)
+                            .frame(width: geo.size.width*0.46, height: geo.size.height*0.44, alignment: .center)
                             
                         
                         
@@ -152,8 +152,11 @@ struct TokenConfirmationView_Previews: PreviewProvider {
     static let model = MockModel()
     
     static var previews: some View {
-        TokenConfirmationView(viewModel: LoginViewModel(model: model))
-        
+        Text("Background").sheet(isPresented: .constant(true)) {
+            NavigationView {
+                TokenConfirmationView(viewModel: LoginViewModel(model: model))
+            }
+        }
     }
 }
 
