@@ -39,6 +39,7 @@ struct CampusApp: App {
                                 selectedTab = 2
                             }
                         }
+                        .navigationViewStyle(.stack)
                     }
                     .environmentObject(model)
             }
@@ -56,6 +57,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
+            .navigationViewStyle(.stack)
             
             NavigationView {
                 LecturesScreen(model: model)
@@ -70,6 +72,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
+            .navigationViewStyle(.stack)
             
             NavigationView {
                 GradesScreen(model: model)
@@ -84,6 +87,8 @@ struct CampusApp: App {
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }
+            .navigationViewStyle(.stack)
+
             NavigationView {
                 MapScreen(vm: MapViewModel(service: CafeteriasService()))
             }
@@ -91,6 +96,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Cafeterias", systemImage: "house")
             }
+            .navigationViewStyle(.stack)
             
             NavigationView {
                 Text("Dummy StudyRooms View")
@@ -100,6 +106,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Study Rooms", systemImage: "book")
             }
+            .navigationViewStyle(.stack)
         }
     }
 }
