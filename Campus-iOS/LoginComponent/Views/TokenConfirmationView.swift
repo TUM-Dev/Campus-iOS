@@ -31,7 +31,7 @@ struct TokenConfirmationView: View {
                                     .font(.title)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(Color(white: 1.0))
-                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .background(Color(.tumBlue))
                                     .clipShape(Circle())
                                 
                                 Spacer().frame(width: 20)
@@ -46,7 +46,7 @@ struct TokenConfirmationView: View {
                                     .font(.title)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(Color(white: 1.0))
-                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .background(Color(.tumBlue))
                                     .clipShape(Circle())
                                 
                                 Spacer().frame(width: 20)
@@ -61,7 +61,7 @@ struct TokenConfirmationView: View {
                                     .font(.title)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(Color(white: 1.0))
-                                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                                    .background(Color(.tumBlue))
                                     .clipShape(Circle())
                                 
                                 Spacer().frame(width: 20)
@@ -74,6 +74,7 @@ struct TokenConfirmationView: View {
                     }.padding()
                     
                     VStack {
+        
                         let videoUrl = Bundle.main
                             .url(forResource: "token-tutorial", withExtension: "mov")!
                         PlayerView(videoUrl: videoUrl)
@@ -81,6 +82,12 @@ struct TokenConfirmationView: View {
                             .shadow(radius: 10)
                         // Video is 2532 x 1170
                             .frame(width: geo.size.width*0.60, height: geo.size.height*0.5, alignment: .center)
+                    }
+                    
+                    
+                    VStack {
+                        Spacer()
+                        Text("Support")
                         
                         Button(action: {
                             self.viewModel.checkAuthorizzation()
@@ -93,10 +100,12 @@ struct TokenConfirmationView: View {
                         }
                         .font(.title)
                         .foregroundColor(.white)
-                        .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
+                        .background(Color(.tumBlue))
                         .cornerRadius(10)
                         .padding()
+                        Spacer()
                     }
+                    
                     Spacer()
                 }.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
             }
@@ -111,18 +120,18 @@ struct TokenConfirmationView: View {
             HStack {
                 Image(systemName: "arrow.left")
                 Text("Back")
-            }
-        }
+            }.foregroundColor(Color(.tumBlue))
+          }
         )
         .alert(isPresented: $showBackButtonAlert) {
-            Alert(
+              Alert(
                 title: Text("Are you sure?"),
                 message: Text("Leaving now will invalidate the current token!"),
                 primaryButton: .default(Text("Leave")) {
-                    self.presentationMode.wrappedValue.dismiss()
+                  self.presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
-            )
+              )
         }
         .edgesIgnoringSafeArea(.top)
         .task {
@@ -134,27 +143,31 @@ struct TokenConfirmationView: View {
     
     private func switchSteps() async {
         // Delay of 5 seconds (1 second = 1_000_000_000 nanoseconds)
-        switch currentStep {
-        case 1:
-            try? await Task.sleep(nanoseconds: 5_000_000_000)
-            withAnimation(.easeInOut) {
-                currentStep = 2
-            }
-        case 2:
-            try? await Task.sleep(nanoseconds: 4_000_000_000)
-            withAnimation(.easeInOut) {
-                currentStep = 3
-            }
-        case 3:
-            try? await Task.sleep(nanoseconds: 8_000_000_000)
-            withAnimation(.easeInOut) {
-                currentStep = 1
-            }
-        default:
+        guard let model = self.viewModel.model else {
             return
         }
         
-        await switchSteps()
+        while (!model.isUserAuthenticated) {
+            switch currentStep {
+            case 1:
+                try? await Task.sleep(nanoseconds: 5_000_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 2
+                }
+            case 2:
+                try? await Task.sleep(nanoseconds: 4_000_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 3
+                }
+            case 3:
+                try? await Task.sleep(nanoseconds: 8_000_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 1
+                }
+            default:
+                return
+            }
+        }
     }
     
     init(viewModel: LoginViewModel) {
@@ -299,7 +312,7 @@ class PlayerUIView: UIView {
         
         super.init(frame: .zero)
         layer.addSublayer(playerLayer)
-        backgroundColor = UIColor.red
+        backgroundColor = UIColor.tumBlue
         
         player.play()
     }
@@ -311,11 +324,8 @@ class PlayerUIView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         //2532 x 1170
-        if let playerFrameWidth = playerFrameWidth, let playerFrameHeight = playerFrameHeight {
-            let playerFrame = CGRect(origin: CGPoint(x: 0, y: -30), size: CGSize(width: 1170*0.2, height: 2532*0.2))
-            playerLayer.frame = playerFrame
-        }
-        
+        let playerFrame = CGRect(origin: CGPoint(x: 0, y: -30), size: CGSize(width: 1170*0.2, height: 2532*0.2))
+        playerLayer.frame = playerFrame
         //playerLayer.frame = bounds
     }
     

@@ -12,6 +12,9 @@
 		1F4C836228300306006971C0 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836128300306006971C0 /* MapViewModel.swift */; };
 		1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836328300D25006971C0 /* MapViewModel+State.swift */; };
 		1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836628300E79006971C0 /* CafeteriasService.swift */; };
+		1F54244F285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
+		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
+		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
@@ -219,6 +222,7 @@
 		1F4C836128300306006971C0 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1F4C836328300D25006971C0 /* MapViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel+State.swift"; sourceTree = "<group>"; };
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
+		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
@@ -453,6 +457,14 @@
 				3654F357285167C3008AD5DC /* StudyRoomsService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		1F542452285CA081008363BC /* VideoAssets */ = {
+			isa = PBXGroup;
+			children = (
+				1F54244E285CA059008363BC /* token-tutorial.mov */,
+			);
+			path = VideoAssets;
 			sourceTree = "<group>";
 		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
@@ -890,6 +902,7 @@
 				227FBB492762AC440062FEC3 /* Info.plist */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
+				1F542452285CA081008363BC /* VideoAssets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
@@ -1394,6 +1407,7 @@
 			files = (
 				366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
+				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 			);
@@ -1403,6 +1417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F542450285CA059008363BC /* token-tutorial.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,6 +1425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F542451285CA059008363BC /* token-tutorial.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
