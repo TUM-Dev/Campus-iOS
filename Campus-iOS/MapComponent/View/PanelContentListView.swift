@@ -14,7 +14,7 @@ struct PanelContentListView: View {
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
-    let position = PanelPosition.bottom
+    //let position = PanelPosition.bottom
     
     var body: some View {
         
@@ -41,6 +41,11 @@ struct PanelContentListView: View {
                     FailedView(
                         errorDescription: error.localizedDescription,
                         retryClosure: vm.getCafeteria)
+                    .onAppear {
+                        withAnimation(.easeIn) {
+                            vm.panelPosition = "pushTop"
+                        }
+                    }
                 }
             }
             .task {
@@ -82,6 +87,11 @@ struct PanelContentListView: View {
                     FailedView(
                         errorDescription: error.localizedDescription,
                         retryClosure: vm.getStudyRoomResponse)
+                    .onAppear {
+                        withAnimation(.easeIn) {
+                            vm.panelPosition = "pushTop"
+                        }
+                    }
                 }
             }
             .task {
