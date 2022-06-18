@@ -15,7 +15,10 @@ struct PanelContentListView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     //let position = PanelPosition.bottom
+<<<<<<< HEAD
     @State var retryAttemp = false
+=======
+>>>>>>> b42c67c (Fixing the FailedView to show appropriate insie the PanelContentView. Commit forgotten file changes for: Fixing the loading inside the places tab. No flicker occur anymore when you switch between cafeterias and study roooms. This was due to the complete reloading of the PanelView which is now reduced to only loading the PanelContentListView, which then loads either the cafeterias (PanelContentCafeteriasListView) or the study rooms (PanelContentStudyGroupsListView). Additionally the LoadingView was adapted to show the text correctly inside the PanelContentView.)
     
     var body: some View {
         
@@ -48,10 +51,14 @@ struct PanelContentListView: View {
                 case .failed(let error):
                     FailedView(
                         errorDescription: error.localizedDescription,
+<<<<<<< HEAD
                         retryClosure:  { _ in
                             retryAttemp = true
                             await vm.getCafeteria()
                         } )
+=======
+                        retryClosure: vm.getCafeteria)
+>>>>>>> b42c67c (Fixing the FailedView to show appropriate insie the PanelContentView. Commit forgotten file changes for: Fixing the loading inside the places tab. No flicker occur anymore when you switch between cafeterias and study roooms. This was due to the complete reloading of the PanelView which is now reduced to only loading the PanelContentListView, which then loads either the cafeterias (PanelContentCafeteriasListView) or the study rooms (PanelContentStudyGroupsListView). Additionally the LoadingView was adapted to show the text correctly inside the PanelContentView.)
                     .onAppear {
                         withAnimation(.easeIn) {
                             vm.panelPosition = "pushTop"
@@ -105,10 +112,14 @@ struct PanelContentListView: View {
                 case .failed(let error):
                     FailedView(
                         errorDescription: error.localizedDescription,
+<<<<<<< HEAD
                         retryClosure: { _ in
                             retryAttemp = true
                             await vm.getStudyRoomResponse()
                         } )
+=======
+                        retryClosure: vm.getStudyRoomResponse)
+>>>>>>> b42c67c (Fixing the FailedView to show appropriate insie the PanelContentView. Commit forgotten file changes for: Fixing the loading inside the places tab. No flicker occur anymore when you switch between cafeterias and study roooms. This was due to the complete reloading of the PanelView which is now reduced to only loading the PanelContentListView, which then loads either the cafeterias (PanelContentCafeteriasListView) or the study rooms (PanelContentStudyGroupsListView). Additionally the LoadingView was adapted to show the text correctly inside the PanelContentView.)
                     .onAppear {
                         withAnimation(.easeIn) {
                             vm.panelPosition = "pushTop"
