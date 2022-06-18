@@ -36,8 +36,12 @@ struct TokenConfirmationView: View {
                                 
                                 Spacer().frame(width: 20)
                                 
-                                Text("Check your email and click on the link to confirm your token or visit TUMonline")
-                                    .font(.body)
+                                HStack(spacing: 5) {
+                                    Text("Log in on [TUMonline](https://campus.tum.de)")
+                                        .font(.body)
+                                        .tint(Color(.tumBlue))
+                                }
+                                
                             }
                         case 2:
                             HStack() {
@@ -51,7 +55,7 @@ struct TokenConfirmationView: View {
                                 
                                 Spacer().frame(width: 20)
                                 
-                                Text("Select \"Token-Management\"")
+                                Text("Select **Token-Management**")
                                     .font(.body)
                             }
                         case 3:
@@ -66,28 +70,34 @@ struct TokenConfirmationView: View {
                                 
                                 Spacer().frame(width: 20)
                                 
-                                Text("Click on the newly created token and enable your desired permissions")
+                                Text("Activate the newly created token and enable your desired permissions")
                                     .font(.body)
                             }
                         default: EmptyView()
                         }
-                    }.padding()
+                    }
+                    .frame(width: geo.size.width, height: geo.size.height*0.11, alignment: .center)
+                    
                     
                     VStack {
-        
+                        
                         let videoUrl = Bundle.main
                             .url(forResource: "token-tutorial", withExtension: "mov")!
                         PlayerView(videoUrl: videoUrl)
                             .cornerRadius(10)
                             .shadow(radius: 10)
                         // Video is 2532 x 1170
-                            .frame(width: geo.size.width*0.60, height: geo.size.height*0.5, alignment: .center)
+                            .frame(width: geo.size.width*0.65, height: geo.size.height*0.5, alignment: .center)
                     }
                     
                     
                     VStack {
                         Spacer()
-                        Text("Support")
+                        let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello I have an issue activating the token...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let mailToUrl = URL(string: mailToString!)!
+                        Link(destination: mailToUrl) {
+                            Text("Contact Support").foregroundColor(Color(.tumBlue))
+                        }
                         
                         Button(action: {
                             self.viewModel.checkAuthorizzation()
@@ -299,6 +309,7 @@ class PlayerUIView: UIView {
     private let playerFrameWidth: CGFloat?
     private let playerFrameHeight: CGFloat?
     
+    
     init(videoUrl: URL) {
         let asset = AVAsset(url: videoUrl)
         let item = AVPlayerItem(asset: asset)
@@ -324,7 +335,11 @@ class PlayerUIView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         //2532 x 1170
-        let playerFrame = CGRect(origin: CGPoint(x: 0, y: -30), size: CGSize(width: 1170*0.2, height: 2532*0.2))
+        let screenWidth = UIScreen.main.bounds.size.width
+        let screenHeight = UIScreen.main.bounds.size.height
+        
+        //-137
+        let playerFrame = CGRect(origin: CGPoint(x: 0, y: -bounds.size.height*0.335), size: CGSize(width: screenWidth*0.65, height: screenHeight*0.9))
         playerLayer.frame = playerFrame
         //playerLayer.frame = bounds
     }
