@@ -162,17 +162,17 @@ struct TokenConfirmationView: View {
         while (!model.isUserAuthenticated) {
             switch currentStep {
             case 1:
-                try? await Task.sleep(nanoseconds: 5_000_000_000)
+                try? await Task.sleep(nanoseconds: 5_160_000_000)
                 withAnimation(.easeInOut) {
                     currentStep = 2
                 }
             case 2:
-                try? await Task.sleep(nanoseconds: 4_000_000_000)
+                try? await Task.sleep(nanoseconds: 3_870_000_000)
                 withAnimation(.easeInOut) {
                     currentStep = 3
                 }
             case 3:
-                try? await Task.sleep(nanoseconds: 8_000_000_000)
+                try? await Task.sleep(nanoseconds: 7_210_000_000)
                 withAnimation(.easeInOut) {
                     currentStep = 1
                 }
