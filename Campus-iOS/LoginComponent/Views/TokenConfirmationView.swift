@@ -17,6 +17,8 @@ struct TokenConfirmationView: View {
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
+    let screenWidth = UIScreen.main.bounds.size.width
+    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .center) {
@@ -87,7 +89,7 @@ struct TokenConfirmationView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10)
                         // Video is 2532 x 1170
-                            .frame(width: geo.size.width*0.65, height: geo.size.height*0.5, alignment: .center)
+                            .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
                     }
                     
                     
@@ -189,103 +191,12 @@ struct TokenConfirmationView_Previews: PreviewProvider {
     static let model = MockModel()
     
     static var previews: some View {
-        //Text("Background2").sheet(isPresented: .constant(true)) {
+        Text("Background2").sheet(isPresented: .constant(true)) {
             NavigationView {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
-        //}
-    }
-}
-
-extension HorizontalAlignment {
-    /// A custom alignment for image titles.
-    private struct CircleTitleAlignment: AlignmentID {
-        static func defaultValue(in context: ViewDimensions) -> CGFloat {
-            // Default to bottom alignment if no guides are set.
-            context[HorizontalAlignment.leading]
-        }
-    }
-    
-    /// A guide for aligning titles.
-    static let circleTitleAlignmentGuide = HorizontalAlignment(
-        CircleTitleAlignment.self
-    )
-}
-
-struct EnhancedVideoPlayer<VideoOverlay: View>: View {
-    @StateObject private var viewModel: ViewModel
-    @ViewBuilder var videoOverlay: () -> VideoOverlay
-    
-    init(_ urls: [URL],
-         endAction: EndAction = .none,
-         @ViewBuilder videoOverlay: @escaping () -> VideoOverlay) {
-        _viewModel = StateObject(wrappedValue: ViewModel(urls: urls, endAction: endAction))
-        self.videoOverlay = videoOverlay
-    }
-    
-    var body: some View {
-        VideoPlayer(player: viewModel.player, videoOverlay: videoOverlay)
-            .onAppear(perform: {
-                viewModel.player.play()
-            })
-    }
-    
-    class ViewModel: ObservableObject {
-        let player: AVQueuePlayer
-        
-        init(urls: [URL], endAction: EndAction) {
-            let playerItems = urls.map { AVPlayerItem(url: $0) }
-            player = AVQueuePlayer(items: playerItems)
-            player.actionAtItemEnd = .none // we'll manually set which video comes next in playback
-            if endAction != .none {
-                // this notification is triggered whenever a player item finishes playing
-                NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime,
-                                                       object: nil,
-                                                       queue: nil) { [self] notification in
-                    let currentItem = notification.object as? AVPlayerItem
-                    if endAction == .loop,
-                       let currentItem = currentItem {
-                        player.seek(to: .zero) // set the current player item to beginning
-                        player.advanceToNextItem() // move to next video manually
-                        player.insert(currentItem, after: nil) // add it to the end of the queue
-                    }
-                }
-            }
-        }
-    }
-    
-    enum EndAction: Equatable {
-        case none,
-             loop
-    }
-}
-
-extension EnhancedVideoPlayer where VideoOverlay == EmptyView {
-    init(_ urls: [URL], endAction: EndAction) {
-        self.init(urls, endAction: endAction) {
-            EmptyView()
-        }
-    }
-}
-
-struct LoopingVideoPlayer: View {
-    private var playerLooper: AVPlayerLooper
-    private let controller = AVPlayerViewController()
-    
-    init(videoUrl: URL) {
-        let asset = AVAsset(url: videoUrl)
-        let item = AVPlayerItem(asset: asset)
-        
-        let player = AVQueuePlayer()
-        controller.player = player
-        controller.showsPlaybackControls = false
-        playerLooper = AVPlayerLooper(player: player, templateItem: item)
-        
-        player.play()
-    }
-    
-    var body: some View {
-        VideoPlayer(player: controller.player)
+        }.previewDevice("iPhone 12")
+            //.previewDevice("iPhone SE (3rd generation)")
     }
 }
 
@@ -308,7 +219,6 @@ class PlayerUIView: UIView {
     
     private let playerFrameWidth: CGFloat?
     private let playerFrameHeight: CGFloat?
-    
     
     init(videoUrl: URL) {
         let asset = AVAsset(url: videoUrl)
@@ -338,10 +248,8 @@ class PlayerUIView: UIView {
         let screenWidth = UIScreen.main.bounds.size.width
         let screenHeight = UIScreen.main.bounds.size.height
         
-        //-137
-        let playerFrame = CGRect(origin: CGPoint(x: 0, y: -bounds.size.height*0.335), size: CGSize(width: screenWidth*0.65, height: screenHeight*0.9))
+        let playerFrame = CGRect(origin: CGPoint(x: -screenWidth*0.08, y: -screenWidth*0.07), size: CGSize(width: screenWidth*0.1170*6, height: screenWidth*0.1993*6))
         playerLayer.frame = playerFrame
-        //playerLayer.frame = bounds
     }
     
 }
