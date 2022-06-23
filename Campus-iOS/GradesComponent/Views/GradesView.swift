@@ -66,7 +66,7 @@ struct GradesView: View {
 struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
         GradesView(vm:
-            GradesViewModel(
+            MockGradesViewModel(
                 model: MockModel(),
                 service: GradesService()
             )
