@@ -125,10 +125,20 @@ struct ProfileView: View {
                 }
                 
                 Section() {
+                    var i = 0
                     Button(action: {
-                        print("ABC")
+                        i += 1
+                        if i == 5 {
+                            print("ABC")
+                            i = 0
+                            UIApplication.shared.alternateIconName
+                        }
                     }) {
-                        Text("ABC")
+                        HStack {
+                            Spacer()
+                            Text("ABC").foregroundColor(Color.black)
+                            Spacer()
+                        }
                     }
                 }
                 .listRowBackground(Color.clear)
