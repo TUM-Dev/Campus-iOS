@@ -123,6 +123,15 @@ struct ProfileView: View {
                         Spacer()
                     }
                 }
+                
+                Section() {
+                    Button(action: {
+                        print("ABC")
+                    }) {
+                        Text("ABC")
+                    }
+                }
+                .listRowBackground(Color.clear)
             }
             .sheet(isPresented: $model.isLoginSheetPresented) {
                 NavigationView {
