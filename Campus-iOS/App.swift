@@ -97,6 +97,15 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
+            
+            NavigationView {
+                WidgetScreen()
+            }
+            .tag(4)
+            .tabItem {
+                Label("My Widgets", systemImage: "sparkles")
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }
