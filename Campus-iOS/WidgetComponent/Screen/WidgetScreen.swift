@@ -16,5 +16,7 @@ struct WidgetScreen: View {
 struct WidgetScreen_Previews: PreviewProvider {
     static var previews: some View {
         WidgetScreen()
+        WidgetScreen()
+            .preferredColorScheme(.dark)
     }
 }
