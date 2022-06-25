@@ -13,6 +13,8 @@
 		08DFB9772866506900E357DF /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9762866506900E357DF /* WidgetView.swift */; };
 		08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */; };
 		08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */; };
+		08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */; };
+		08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
@@ -227,6 +229,8 @@
 		08DFB9762866506900E357DF /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetView.swift; sourceTree = "<group>"; };
 		08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetViewModel.swift; sourceTree = "<group>"; };
+		08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetView.swift; sourceTree = "<group>"; };
+		08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetViewModel.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGradesViewModel.swift; sourceTree = "<group>"; };
@@ -622,6 +626,7 @@
 				36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */,
 				36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */,
 				08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */,
+				08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -869,6 +874,7 @@
 				1F4C836128300306006971C0 /* MapViewModel.swift */,
 				1F4C836328300D25006971C0 /* MapViewModel+State.swift */,
 				08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */,
+				08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1578,6 +1584,7 @@
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
 				3654F368285169AC008AD5DC /* TUMDevAppAPI.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
+				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
@@ -1625,6 +1632,7 @@
 				08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
+				08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,

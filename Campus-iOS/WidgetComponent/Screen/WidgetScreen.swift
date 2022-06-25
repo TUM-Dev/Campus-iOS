@@ -17,6 +17,9 @@ struct WidgetScreen: View {
                         viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
                     )
                 )
+                WidgetView(
+                    content: StudyRoomWidgetView(
+                        viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())))
             }
             .padding()
         }
