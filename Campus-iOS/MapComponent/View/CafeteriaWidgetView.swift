@@ -91,13 +91,17 @@ struct CompactDishView: View {
                 Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
             }
             
+            Spacer()
+            
+            Text("Allergenics")
+                .bold()
+            
             Text(
                 dish.labels
                     .map({ DishView.labelToAbbreviation(label: $0 )})
                     .joined(separator: " ")
             )
             .lineLimit(1)
-            .padding(.top)
         }
     }
 }
