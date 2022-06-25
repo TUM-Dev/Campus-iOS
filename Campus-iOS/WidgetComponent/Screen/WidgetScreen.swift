@@ -9,7 +9,18 @@ import SwiftUI
 
 struct WidgetScreen: View {
     var body: some View {
-        Text("This is our awesome widget!")
+        ScrollView {
+            VStack {
+                WidgetView(content: TuitionWidgetView(viewModel: ProfileViewModel()))
+                WidgetView(
+                    content: CafeteriaWidgetView(
+                        viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
+                    )
+                )
+            }
+            .padding()
+        }
+        .navigationTitle("My Widgets")
     }
 }
 
