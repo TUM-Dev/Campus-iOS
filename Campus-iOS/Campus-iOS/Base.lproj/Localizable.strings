@@ -153,3 +153,8 @@
 "Server error" = "Server error";
 "The accessed data is missing" = "The accessed data is missing";
 "Decoding of data failed" = "Decoding of data failed";
+"No Permission" = "No Permission";
+"Token not confirmed" = "Token not confirmed";
+"Token invalid" = "Token invalid";
+"Unknown error" = "Unknown error";
+"CampusOnline Error" = "CampusOnline Error";

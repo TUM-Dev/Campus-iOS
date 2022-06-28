@@ -149,3 +149,8 @@
 "Server error" = "Server Fehler";
 "The accessed data is missing" = "Die zugegriffenen Daten sind nicht vorhanden";
 "Decoding of data failed" = "Dekodierung der Daten fehlgeschlagen";
+"No Permission" = "Keine Berechtigung";
+"Token not confirmed" = "Token nicht bestätigt";
+"Token invalid" = "Token invalide";
+"Unknown error" = "Unbekannter Fehler";
+"CampusOnline Error" = "CampusOnline Fehler";

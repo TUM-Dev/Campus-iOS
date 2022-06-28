@@ -58,14 +58,18 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getGrades()
+                        await vm.getGrades(forcedRefresh: true)
                     }
                 }
         
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {
-                    Text(error.localizedDescription)
+                    if let campusOnlineError = error as? CampusOnlineAPI.Error {
+                        Text(campusOnlineError.errorDescription ?? "CampusOnline Error")
+                    } else {
+                        Text(error.localizedDescription)
+                    }
                 }
             }
     }
