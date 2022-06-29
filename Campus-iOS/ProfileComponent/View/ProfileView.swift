@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State var showActionSheet = false
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
-    
+
     var body: some View {
         
         NavigationView {
@@ -129,17 +130,28 @@ struct ProfileView: View {
                     Button(action: {
                         i += 1
                         if i == 5 {
-                            print("ABC")
                             i = 0
-                            UIApplication.shared.alternateIconName
+                            self.showActionSheet = true
                         }
                     }) {
                         HStack {
                             Spacer()
+                            Image("3D")
+                                .resizable()
+                                .frame(width: 10, height: 10)
                             Text("ABC").foregroundColor(Color.black)
                             Spacer()
                         }
                     }
+                }
+                .actionSheet(isPresented: self.$showActionSheet) {
+                    //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
+                    ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
+                        .default(Text("Red") + Text(Image("3D").resizable()), action: { print("Pressed Red") }),
+                        .default(Text("Green")) { background(Color.green) },
+                        .default(Text("Blue")) { background(Color.blue) },
+                        .cancel()
+                    ])
                 }
                 .listRowBackground(Color.clear)
             }
