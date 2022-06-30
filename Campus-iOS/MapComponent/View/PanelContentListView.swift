@@ -15,6 +15,7 @@ struct PanelContentListView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     //let position = PanelPosition.bottom
+    @State var retryAttemp = false
     
     var body: some View {
         
@@ -29,6 +30,14 @@ struct PanelContentListView: View {
                     .refreshable {
                         await vm.getCafeteria(forcedRefresh: true)
                     }
+                    .onAppear {
+                        if retryAttemp {
+                            withAnimation(.easeIn) {
+                                vm.panelPosition = "pushMid"
+                            }
+                            retryAttemp = false
+                        }
+                    }
                 case .loading, .na:
                     ZStack {
                         Color.white
@@ -40,7 +49,10 @@ struct PanelContentListView: View {
                 case .failed(let error):
                     FailedView(
                         errorDescription: error.localizedDescription,
-                        retryClosure: vm.getCafeteria)
+                        retryClosure:  { _ in
+                            retryAttemp = true
+                            await vm.getCafeteria()
+                        } )
                     .onAppear {
                         withAnimation(.easeIn) {
                             vm.panelPosition = "pushTop"
@@ -55,6 +67,7 @@ struct PanelContentListView: View {
                 detail in
                 Button("Retry") {
                     Task {
+                        retryAttemp = true
                         await vm.getCafeteria()
                     }
                 }
@@ -75,6 +88,14 @@ struct PanelContentListView: View {
                     .refreshable {
                         await vm.getStudyRoomResponse(forcedRefresh: true)
                     }
+                    .onAppear {
+                        if retryAttemp {
+                            withAnimation(.easeIn) {
+                                vm.panelPosition = "pushMid"
+                            }
+                            retryAttemp = false
+                        }
+                    }
                 case .loading, .na:
                     ZStack {
                         Color.white
@@ -86,7 +107,10 @@ struct PanelContentListView: View {
                 case .failed(let error):
                     FailedView(
                         errorDescription: error.localizedDescription,
-                        retryClosure: vm.getStudyRoomResponse)
+                        retryClosure: { _ in
+                            retryAttemp = true
+                            await vm.getStudyRoomResponse()
+                        } )
                     .onAppear {
                         withAnimation(.easeIn) {
                             vm.panelPosition = "pushTop"
@@ -101,6 +125,7 @@ struct PanelContentListView: View {
                 detail in
                 Button("Retry") {
                     Task {
+                        retryAttemp = true
                         await vm.getStudyRoomResponse()
                     }
                 }
