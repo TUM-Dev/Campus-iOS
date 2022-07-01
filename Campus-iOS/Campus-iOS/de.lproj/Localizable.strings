@@ -69,10 +69,10 @@
 "tum" = "tum";
 "Continue 🎓" = "Weiter 🎓";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
-"Check your email and click on the link to confirm your token or visit TUMonline" = "Prüfe deine Email Postfach und klicke auf den Link um das Token zu aktivieren oder gehe auf TUMonline";
-"Select \"Token-Management\"" = "Gehe auf \"Token Verwaltung\"";
-"Click on the newly created token and enable your desired permissions" = "Setzte einen Hacken bei  \"aktiviert\" und stelle die benötigten Rechte ein";
-"I need help" = "Ich brauche Hilfe";
+"Log in on [TUMonline](https://campus.tum.de)" = "Melde dich auf [TUMonline](https://campus.tum.de) an";
+"Select **Token-Management**" = "Gehe auf **Token Verwaltung**";
+"Activate the newly created token and enable your desired permissions" = "Aktiviere den Token und stelle die benötigten Rechte ein";
+"Contact Support" = "Support kontaktieren";
 "Check Authorization" = "Token prüfen";
 "1" = "1";
 "2" = "2";
