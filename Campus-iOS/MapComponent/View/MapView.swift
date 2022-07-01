@@ -13,13 +13,10 @@ struct MapView: View {
     
     var body: some View {
         ZStack {
-            MapContentView(
-                vm: self.vm)
+//            MapContentView(vm: self.vm)
             PanelView(vm: self.vm)
         }
-        .edgesIgnoringSafeArea(.vertical)
-        .navigationTitle("Map")
-        .navigationBarHidden(true)
+        
     }
 }
 
