@@ -38,7 +38,6 @@ struct TuitionWidgetView_Previews: PreviewProvider {
     
     static let content = WidgetView(
         size: .rectangle,
-        title: "Tuition Fee",
         content: TuitionWidgetView(viewModel: ProfileViewModel())
     )
     

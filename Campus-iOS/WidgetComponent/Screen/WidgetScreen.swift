@@ -14,23 +14,15 @@ struct WidgetScreen: View {
                 
                 WidgetView(
                     size: .rectangle,
-                    title: "Tuition Fee",
                     content: TuitionWidgetView(viewModel: ProfileViewModel())
                 )
                 .padding(.bottom)
                 
+                CafeteriaWidgetView(size: .rectangle)
+                    .padding(.bottom)
+                
                 WidgetView(
                     size: .rectangle,
-                    title: "Nearest Cafeteria",
-                    content: CafeteriaWidgetView(
-                        viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
-                    )
-                )
-                .padding(.bottom)
-
-                WidgetView(
-                    size: .rectangle,
-                    title: "Nearest Study Rooms",
                     content: StudyRoomWidgetView(
                         viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
                     )

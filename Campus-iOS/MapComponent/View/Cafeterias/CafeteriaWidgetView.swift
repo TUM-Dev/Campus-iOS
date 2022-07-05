@@ -10,11 +10,27 @@ import MapKit
 
 struct CafeteriaWidgetView: View {
     
-    @StateObject var viewModel: CafeteriaWidgetViewModel
+    let size: WidgetSize
+    
+    init(size: WidgetSize = .square) {
+        self.size = size
+    }
     
     var body: some View {
-        
-        VStack {
+        WidgetView(
+            size: size,
+            content: CafeteriaWidgetContent(size: size)
+        )
+    }
+}
+
+struct CafeteriaWidgetContent: View {
+    
+    @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
+    let size: WidgetSize
+    
+    var body: some View {
+        VStack(alignment: .leading) {
             switch(viewModel.status) {
             case .error:
                 Text("No nearby cafeteria.")
@@ -26,12 +42,13 @@ struct CafeteriaWidgetView: View {
                 if let cafeteria = viewModel.cafeteria {
                     Text(cafeteria.title ?? "Unknown cafeteria")
                         .bold()
+                        .padding(.bottom, 2)
+                        .lineLimit(1)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
-                Spacer()
-                
                 if viewModel.status != .noMenu, let menuVm = viewModel.menuViewModel {
-                    CompactMenuView(viewModel: menuVm)
+                    CompactMenuView(viewModel: menuVm, size: size)
                 } else {
                     Text("No menu for today.")
                 }
@@ -48,30 +65,51 @@ struct CafeteriaWidgetView: View {
 struct CompactMenuView: View {
     
     @ObservedObject var viewModel: MenuViewModel
-    @State private var dishIndex = 0
-    private var dishes: [Dish] = []
-    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    let size: WidgetSize
     
-    init(viewModel: MenuViewModel) {
+    private var dishes: [Dish] = []
+    private var displayedDishes: Int
+    
+    init(viewModel: MenuViewModel, size: WidgetSize) {
         self.viewModel = viewModel
+        self.size = size
+        
         for category in viewModel.categories {
             for dish in category.dishes {
                 dishes.append(dish)
             }
+        }
+        
+        switch (size) {
+        case .square, .rectangle:
+            displayedDishes = 1
+        case .bigSquare:
+            displayedDishes = 5
         }
     }
     
     var body: some View {
         
         if !dishes.isEmpty {
-            
-            CompactDishView(dish: dishes[dishIndex])
-                .onReceive(self.timer) { _ in
-                    withAnimation {
-                        dishIndex = (dishIndex + 1) % dishes.count
-                    }
+            VStack(alignment: .leading) {
+                ForEach(dishes.prefix(displayedDishes), id: \.self) { dish in
+                    CompactDishView(dish: dish)
+                        .padding(.bottom, 2)
                 }
-            
+                
+                Spacer()
+                
+                let remainingDishes = dishes.count - displayedDishes
+                if (remainingDishes > 1) {
+                    Text("+ \(remainingDishes) more dishes")
+                        .foregroundColor(.green)
+                        .bold()
+                } else if (remainingDishes == 1) {
+                    Text("+ 1 more dish")
+                        .foregroundColor(.green)
+                        .bold()
+                }
+            }
         } else {
             Text("No dishes.")
         }
@@ -84,32 +122,20 @@ struct CompactDishView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Text(dish.name)
-                    .lineLimit(1)
-                Spacer()
-                Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
-            }
-            
-            Spacer()
-            
-            Text("Allergenics")
+            Text(dish.name)
+                .lineLimit(1)
+            Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
+                .font(.caption)
                 .bold()
-            
-            Text(
-                dish.labels
-                    .map({ DishView.labelToAbbreviation(label: $0 )})
-                    .joined(separator: " ")
-            )
-            .lineLimit(1)
         }
+        .frame(alignment: .leading)
     }
 }
 
 struct CafeteriaWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        CafeteriaWidgetView(viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService()))
-        CafeteriaWidgetView(viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService()))
+        CafeteriaWidgetView()
+        CafeteriaWidgetView()
             .preferredColorScheme(.dark)
     }
 }
