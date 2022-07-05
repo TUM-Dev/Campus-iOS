@@ -141,9 +141,8 @@ struct ProfileView: View {
 }
 
 struct ProfileView_Previews: PreviewProvider {
-    static let model = MockModel()
     
     static var previews: some View {
-        ProfileView(model: model)
+        ProfileView(model: MockModel()).environmentObject(MockModel())
     }
 }

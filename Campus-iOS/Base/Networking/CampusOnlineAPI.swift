@@ -16,7 +16,7 @@ struct CampusOnlineAPI: NetworkingAPI {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        
+         
         return decoder
     }()
     
@@ -53,7 +53,8 @@ struct CampusOnlineAPI: NetworkingAPI {
                 
                 return decodedData
             } catch {
-                throw Error.unkown(error.localizedDescription)
+                print(error)
+                throw Error.unknown(error.localizedDescription)
             }
         }
     }
@@ -62,7 +63,7 @@ struct CampusOnlineAPI: NetworkingAPI {
         case noPermission
         case tokenNotConfirmed
         case invalidToken
-        case unkown(String)
+        case unknown(String)
         
         enum CodingKeys: String, CodingKey {
             case message = "message"
@@ -80,20 +81,20 @@ struct CampusOnlineAPI: NetworkingAPI {
             case "Token ist ungültig!":
                 self = .invalidToken
             default:
-                self = .unkown(error)
+                self = .unknown(error)
             }
         }
 
         public var errorDescription: String? {
             switch self {
             case .noPermission:
-                return "No Permission"
+                return "No Permission".localized
             case .tokenNotConfirmed:
-                return "Token not confirmed"
+                return "Token not confirmed".localized
             case .invalidToken:
-                return "Token invalid"
-            case let .unkown(message):
-                return "\("Unkonw error"): \(message)"
+                return "Token invalid".localized
+            case let .unknown(message):
+                return "Unknown error".localized + ": \(message)"
 
             }
         }

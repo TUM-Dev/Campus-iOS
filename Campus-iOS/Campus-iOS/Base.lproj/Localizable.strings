@@ -74,10 +74,10 @@
 "tum" = "tum";
 "Continue 🎓" = "Continue 🎓";
 "Continue without TUM ID" = "Continue without TUM ID";
-"Check your email and click on the link to confirm your token or visit TUMonline" = "Check your email and click on the link to confirm your token or visit TUMonline";
-"Select \"Token-Management\"" = "Select \"Token-Management\"";
-"Click on the newly created token and enable your desired permissions" = "Click on the newly created token and enable your desired permissions";
-"I need help" = "I need help";
+"Log in on [TUMonline](https://campus.tum.de)" = "Log in on [TUMonline](https://campus.tum.de)";
+"Select **Token-Management**" = "Select **Token-Management**";
+"Activate the newly created token and enable your desired permissions" = "Activate the newly created token and enable your desired permissions";
+"Contact Support" = "Contact Support";
 "Check Authorization" = "Check Authorization";
 "1" = "1";
 "2" = "2";
@@ -154,3 +154,8 @@
 "Server error" = "Server error";
 "The accessed data is missing" = "The accessed data is missing";
 "Decoding of data failed" = "Decoding of data failed";
+"No Permission" = "No Permission";
+"Token not confirmed" = "Token not confirmed";
+"Token invalid" = "Token invalid";
+"Unknown error" = "Unknown error";
+"CampusOnline Error" = "CampusOnline Error";

@@ -113,12 +113,10 @@ struct PanelContentView: View {
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
                                    height: 1.5 * UIScreen.main.bounds.width/10)
                 }
-                switch vm.mode {
-                case .cafeterias:
-                    PanelContentCafeteriasListView(viewModel: vm, searchString: $searchString)
-                case .studyRooms:
-                    PanelContentStudyGroupsListView(viewModel: vm, searchString: $searchString)
-                }
+                
+                Spacer()
+                
+                PanelContentListView(vm: self.vm, searchString: $searchString)
             }
         }
         .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
