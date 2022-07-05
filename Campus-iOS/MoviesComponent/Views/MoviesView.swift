@@ -19,7 +19,8 @@ struct MoviesView: View {
         ScrollView(.vertical) {
             LazyVGrid(columns: items, spacing: 6) {
                 ForEach(self.viewModel.movies, id: \.id) { movie in
-                    NavigationLink(destination: MovieDetailedView(movie: movie)) {
+                    // TODO: Testing MovieDetailsView (mine) vs MovieDetailedView (default)
+                    NavigationLink(destination: MovieDetailsView(movie: movie)) {
                         MovieCard(movie: movie).padding(10)
                     }
                 }
