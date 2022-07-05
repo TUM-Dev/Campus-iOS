@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms</string>
-	<key>NSContactsUsageDescription</key>
-	<string>TUM Campus App can add contacts from TUM Online to your address book</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
@@ -13,7 +9,5 @@
 		<key>UIImageName</key>
 		<string>logo-white</string>
 	</dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>TUM Campus App contains a calendar showing university events</string>
 </dict>
 </plist>

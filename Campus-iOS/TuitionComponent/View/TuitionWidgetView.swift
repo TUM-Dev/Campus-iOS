@@ -20,9 +20,16 @@ struct TuitionWidgetView: View {
 }
 
 struct TuitionWidgetView_Previews: PreviewProvider {
+    
+    static let content = WidgetView(
+        size: .rectangle,
+        title: "Tuition Fee",
+        content: TuitionWidgetView(viewModel: ProfileViewModel())
+    )
+    
     static var previews: some View {
-        WidgetView(content: TuitionWidgetView(viewModel: ProfileViewModel()))
-        WidgetView(content: TuitionWidgetView(viewModel: ProfileViewModel()))
+        content
+        content
             .preferredColorScheme(.dark)
     }
 }

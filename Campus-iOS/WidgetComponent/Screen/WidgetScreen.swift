@@ -11,15 +11,29 @@ struct WidgetScreen: View {
     var body: some View {
         ScrollView {
             VStack {
-                WidgetView(content: TuitionWidgetView(viewModel: ProfileViewModel()))
+                
                 WidgetView(
+                    size: .rectangle,
+                    title: "Tuition Fee",
+                    content: TuitionWidgetView(viewModel: ProfileViewModel())
+                )
+                
+                WidgetView(
+                    size: .rectangle,
+                    title: "Nearest Cafeteria",
                     content: CafeteriaWidgetView(
                         viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
                     )
                 )
+                
                 WidgetView(
+                    size: .rectangle,
+                    title: "Nearest Study Rooms",
                     content: StudyRoomWidgetView(
-                        viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())))
+                        viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
+                    )
+                )
+                
             }
             .padding()
         }
