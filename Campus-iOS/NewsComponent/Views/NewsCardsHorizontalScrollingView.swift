@@ -19,12 +19,15 @@ struct NewsCardsHorizontalScrollingView: View {
     
     init(news: [News]) {
         sortedNews = news.sorted(by: { news1, news2 in
-            if let date1 = news1.date, let date2 = news2.date {
+            if let date1 = news1.created, let date2 = news2.created {
                 return date1.compare(date2) == .orderedDescending
             } else {
                 return false
             }
         })
+        sortedNews.forEach { news in
+            print(news)
+        }
         
         self.news = sortedNews
         

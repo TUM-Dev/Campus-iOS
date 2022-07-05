@@ -51,7 +51,7 @@ struct ProfileView: View {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
-                    NavigationLink(destination: NewsView()
+                    NavigationLink(destination: NewsView(viewModel: NewsViewModel())
                                     .navigationBarTitle(Text("News"))
                                     .navigationBarTitleDisplayMode(.large)
                     ) {

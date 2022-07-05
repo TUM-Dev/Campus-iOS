@@ -246,7 +246,7 @@ class PlayerUIView: UIView {
         super.layoutSubviews()
         //2532 x 1170
         let screenWidth = UIScreen.main.bounds.size.width
-        let screenHeight = UIScreen.main.bounds.size.height
+        //let screenHeight = UIScreen.main.bounds.size.height
         
         let playerFrame = CGRect(origin: CGPoint(x: -screenWidth*0.08, y: -screenWidth*0.07), size: CGSize(width: screenWidth*0.1170*6, height: screenWidth*0.1993*6))
         playerLayer.frame = playerFrame
