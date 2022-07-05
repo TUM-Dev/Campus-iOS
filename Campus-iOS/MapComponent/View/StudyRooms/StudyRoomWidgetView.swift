@@ -9,10 +9,20 @@ import SwiftUI
 
 struct StudyRoomWidgetView: View {
     
-    @StateObject var viewModel: StudyRoomWidgetViewModel
+    let size: WidgetSize
     
     var body: some View {
-        VStack {
+        WidgetView(size: size, content: StudyRoomWidgetContentView(size: size))
+    }
+}
+
+struct StudyRoomWidgetContentView: View {
+    
+    let size: WidgetSize
+    @StateObject var viewModel = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
+
+    var body: some View {
+        VStack(alignment: .leading) {
             switch(viewModel.status) {
             case .error:
                 Text("No nearby study rooms.")
@@ -22,12 +32,15 @@ struct StudyRoomWidgetView: View {
             default:
                 
                 if let studyGroup = viewModel.studyGroup, let rooms = viewModel.rooms {
-                    Text(studyGroup)
-                        .bold()
+                    WidgetTitleView(title: studyGroup)
+                        .padding(.bottom, 2)
                     
                     Spacer()
-                    
-                    CompactStudyRoomView(rooms: rooms)
+                                    
+                    CompactStudyRoomView(
+                        rooms: rooms.filter({ $0.status == "frei" }),
+                        size: size
+                    )
                     
                     Spacer()
                 }
@@ -35,30 +48,52 @@ struct StudyRoomWidgetView: View {
         }
         .task {
             await viewModel.fetch()
-        }    }
+        }
+    }
 }
 
 struct CompactStudyRoomView: View {
     
-    var rooms: [StudyRoom]
-    @State private var roomIndex = 0
-    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    let rooms: [StudyRoom]
+    let size: WidgetSize
+    
+    private let displayedRooms: Int
+    
+    init(rooms: [StudyRoom], size: WidgetSize) {
+        self.rooms = rooms
+        self.size = size
+        
+        switch (size) {
+        case .square, .rectangle:
+            displayedRooms = 1
+        case .bigSquare:
+            displayedRooms = 5
+        }
+        
+    }
     
     var body: some View {
         
         if !rooms.isEmpty {
             
-            HStack {
-                Text(rooms[roomIndex].name ?? "Unknown room")
-                
-                Spacer()
-                
-                rooms[roomIndex].localizedStatus
-            }
-            .onReceive(self.timer) { _ in
-                withAnimation {
-                    roomIndex = (roomIndex + 1) % rooms.count
+            ForEach(rooms.prefix(displayedRooms), id: \.id) { room in
+                HStack {
+                    Text(room.name ?? "Unknown room")
+                        .lineLimit(1)
+                    
+                    Spacer()
+                    room.localizedStatus
+                        .lineLimit(1)
                 }
+                .padding(.bottom, 2)
+            }
+                        
+            let remainingRooms = rooms.count - displayedRooms
+            if (remainingRooms > 0) {
+                Spacer()
+                Text("+ \(remainingRooms) more available room\(remainingRooms == 1 ? "" : "s")")
+                    .foregroundColor(.green)
+                    .bold()
             }
         } else {
             Text("No available study rooms.")
@@ -68,6 +103,8 @@ struct CompactStudyRoomView: View {
 
 struct StudyRoomWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyRoomWidgetView(viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService()))
+        StudyRoomWidgetView(size: .rectangle)
+        StudyRoomWidgetView(size: .rectangle)
+            .preferredColorScheme(.dark)
     }
 }
