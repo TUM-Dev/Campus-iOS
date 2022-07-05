@@ -10,7 +10,7 @@ import SwiftUI
 struct TuitionDetailsView: View {
     
     @State var tuition: Tuition
-
+    
     var body: some View {
         
         VStack(alignment: .center, spacing: 6) {
@@ -26,10 +26,16 @@ struct TuitionDetailsView: View {
             Divider()
                 .foregroundColor(Color.gray.opacity(0.3))
                 .padding([.leading, .trailing], -12)
-
-        
-            OpenTuitionAmountView(tuition: tuition)
-                .padding([.top, .bottom], 8)
+            
+            HStack(alignment: .center, spacing: 6) {
+                Text("Open Amount")
+                    .font(Font.system(size: 13))
+                    .fontWeight(Font.Weight.heavy)
+                
+                OpenTuitionAmountView(tuition: tuition)
+                    .padding([.top, .bottom], 8)
+                Spacer()
+            }
         }
     }
 }
@@ -53,26 +59,19 @@ struct OpenTuitionAmountView: View {
     }
     
     var body: some View {
-        HStack(alignment: .center, spacing: 6) {
-            
-            Text("Open Amount")
-                .font(Font.system(size: 13))
-                .fontWeight(Font.Weight.heavy)
-            HStack {
-                Text(self.formattedAmount)
+        HStack {
+            Text(self.formattedAmount)
                 .font(Font.custom("HelveticaNeue-Medium", size: 14))
-                    .padding([.leading, .trailing], 10)
-                    .padding([.top, .bottom], 5)
+                .padding([.leading, .trailing], 10)
+                .padding([.top, .bottom], 5)
                 .foregroundColor(Color.white)
-            }
-            .if(self.tuition.isOpenAmount, transformT: {view in
-                view.background(.red)
-            }, transformF: {view in
-                view.background(.green)
-            })
-            .cornerRadius(7)
-            Spacer()
         }
+        .if(self.tuition.isOpenAmount, transformT: {view in
+            view.background(.red)
+        }, transformF: {view in
+            view.background(.green)
+        })
+            .cornerRadius(7)
     }
 }
 

@@ -40,11 +40,8 @@ struct CafeteriaWidgetContent: View {
             default:
                 
                 if let cafeteria = viewModel.cafeteria {
-                    Text(cafeteria.title ?? "Unknown cafeteria")
-                        .bold()
+                    WidgetTitleView(title: cafeteria.title ?? "Unknown cafeteria")
                         .padding(.bottom, 2)
-                        .lineLimit(1)
-                        .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 if viewModel.status != .noMenu, let menuVm = viewModel.menuViewModel {

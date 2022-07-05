@@ -9,24 +9,43 @@ import SwiftUI
 
 struct TuitionWidgetView: View {
     
-    @ObservedObject var viewModel: ProfileViewModel
+    let size: WidgetSize
     
     var body: some View {
+        WidgetView(size: size, content: TuitionWidgetContentView())
+    }
+}
+
+struct TuitionWidgetContentView: View {
+    @StateObject var viewModel = ProfileViewModel()
+
+    var body: some View {
         VStack (alignment: .leading) {
+            
+            WidgetTitleView(title: "Tuition Fee")
+                .padding(.bottom, 2)
+            
             if let tuition = self.viewModel.tuition {
-                OpenTuitionAmountView(tuition: tuition)
-                HStack {
-                    Text("Deadline")
+                VStack(alignment: .leading) {
+                    OpenTuitionAmountView(tuition: tuition)
+                    Text("Open Amount")
+                        .font(.caption)
+                        .padding(.bottom)
                     
-                    if let date = tuition.deadline {
-                        Text(date, style: .date)
-                    } else {
-                        Text("Unknown")
+                    HStack {
+                        Text("Deadline")
+                        if let date = tuition.deadline {
+                            Text(date, style: .date)
+                        } else {
+                            Text("Unknown")
+                        }
                     }
                 }
             } else {
                 ProgressView()
             }
+            
+            Spacer()
         }
         .task {
             viewModel.fetch()
@@ -35,15 +54,9 @@ struct TuitionWidgetView: View {
 }
 
 struct TuitionWidgetView_Previews: PreviewProvider {
-    
-    static let content = WidgetView(
-        size: .rectangle,
-        content: TuitionWidgetView(viewModel: ProfileViewModel())
-    )
-    
     static var previews: some View {
-        content
-        content
+        TuitionWidgetView(size: .rectangle)
+        TuitionWidgetView(size: .rectangle)
             .preferredColorScheme(.dark)
     }
 }

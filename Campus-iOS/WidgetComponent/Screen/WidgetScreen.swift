@@ -12,11 +12,8 @@ struct WidgetScreen: View {
         ScrollView {
             VStack {
                 
-                WidgetView(
-                    size: .rectangle,
-                    content: TuitionWidgetView(viewModel: ProfileViewModel())
-                )
-                .padding(.bottom)
+                TuitionWidgetView(size: .rectangle)
+                    .padding(.bottom)
                 
                 CafeteriaWidgetView(size: .rectangle)
                     .padding(.bottom)
