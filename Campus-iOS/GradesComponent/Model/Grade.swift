@@ -15,7 +15,7 @@ enum GradeComponents {
         public var row: [Row]
     }
 
-    struct Row: Decodable, Identifiable {
+    struct Row: Identifiable {
         // Create own identifier as there isn't one
         public var id: String {
             date.formatted() + "-" + lvNumber
@@ -34,11 +34,11 @@ enum GradeComponents {
         
         var modusShort: String {
             switch self.modus {
-            case "Schriftlich": return "Written".localized //"Schriftlich"
-            case "Beurteilt/immanenter Prüfungscharakter": return "Graded".localized //"Beurteilt"
-            case "Schriftlich und Mündlich": return "Written/Oral".localized //"Schriftlich/Mündlich"
-            case "Mündlich": return "Oral".localized //"Mündlich"
-            default: return "Unknown".localized //"Unbekannt"
+            case "Schriftlich": return "Written".localized
+            case "Beurteilt/immanenter Prüfungscharakter": return "Graded".localized
+            case "Schriftlich und Mündlich": return "Written/Oral".localized
+            case "Mündlich": return "Oral".localized
+            default: return "Unknown".localized
             }
         }
         
@@ -55,6 +55,30 @@ enum GradeComponents {
             case studyDesignation = "studienbezeichnung"
             case studyNumber = "st_studium_nr"
         }
+    }
+}
+
+extension Grade: Decodable {
+    // Need for a custom Decoder implementation as the XMLCoder library isn't able to handle missing Date properties and the entire decoding fails in case of a non-existing Date value
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Extra handelling of the date decoding
+        do {
+            date = try container.decode(Date.self, forKey: .date)
+        } catch {
+            date = .now
+        }
+        lvNumber = try container.decode(String.self, forKey: .lvNumber)
+        semester = try container.decode(String.self, forKey: .semester)
+        title = try container.decode(String.self, forKey: .title)
+        examiner = try container.decode(String.self, forKey: .examiner)
+        grade = try container.decode(String.self, forKey: .grade)
+        examType = try container.decode(String.self, forKey: .examType)
+        modus = try container.decode(String.self, forKey: .modus)
+        studyID = try container.decode(String.self, forKey: .studyID)
+        studyDesignation = try container.decode(String.self, forKey: .studyDesignation)
+        studyNumber = try container.decode(UInt64.self, forKey: .studyNumber)
     }
 }
 
