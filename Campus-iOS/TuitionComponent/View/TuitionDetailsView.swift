@@ -10,20 +10,6 @@ import SwiftUI
 struct TuitionDetailsView: View {
     
     @State var tuition: Tuition
-    
-    static let currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.currencySymbol = "€ "
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-    
-    var formattedAmount: String {
-        guard let amount = self.tuition.amount else {
-            return "n/a"
-        }
-        return Self.currencyFormatter.string(from: amount) ?? "n/a"
-    }
 
     var body: some View {
         
@@ -42,27 +28,50 @@ struct TuitionDetailsView: View {
                 .padding([.leading, .trailing], -12)
 
         
-            HStack(alignment: .center, spacing: 6) {
-                
-                Text("Open Amount")
-                    .font(Font.system(size: 13))
-                    .fontWeight(Font.Weight.heavy)
-                HStack {
-                    Text(self.formattedAmount)
-                    .font(Font.custom("HelveticaNeue-Medium", size: 14))
-                        .padding([.leading, .trailing], 10)
-                        .padding([.top, .bottom], 5)
-                    .foregroundColor(Color.white)
-                }
-                .if(self.tuition.isOpenAmount, transformT: {view in
-                    view.background(.red)
-                }, transformF: {view in
-                    view.background(.green)
-                })
-                .cornerRadius(7)
-                Spacer()
+            OpenTuitionAmountView(tuition: tuition)
+                .padding([.top, .bottom], 8)
+        }
+    }
+}
+
+struct OpenTuitionAmountView: View {
+    
+    var tuition: Tuition
+    
+    static let currencyFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.currencySymbol = "€ "
+        formatter.numberStyle = .currency
+        return formatter
+    }()
+    
+    var formattedAmount: String {
+        guard let amount = self.tuition.amount else {
+            return "n/a"
+        }
+        return Self.currencyFormatter.string(from: amount) ?? "n/a"
+    }
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: 6) {
+            
+            Text("Open Amount")
+                .font(Font.system(size: 13))
+                .fontWeight(Font.Weight.heavy)
+            HStack {
+                Text(self.formattedAmount)
+                .font(Font.custom("HelveticaNeue-Medium", size: 14))
+                    .padding([.leading, .trailing], 10)
+                    .padding([.top, .bottom], 5)
+                .foregroundColor(Color.white)
             }
-            .padding([.top, .bottom], 8)
+            .if(self.tuition.isOpenAmount, transformT: {view in
+                view.background(.red)
+            }, transformF: {view in
+                view.background(.green)
+            })
+            .cornerRadius(7)
+            Spacer()
         }
     }
 }

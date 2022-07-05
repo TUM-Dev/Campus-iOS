@@ -17,6 +17,7 @@ struct WidgetScreen: View {
                     title: "Tuition Fee",
                     content: TuitionWidgetView(viewModel: ProfileViewModel())
                 )
+                .padding(.bottom)
                 
                 WidgetView(
                     size: .rectangle,
@@ -25,7 +26,8 @@ struct WidgetScreen: View {
                         viewModel: CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
                     )
                 )
-                
+                .padding(.bottom)
+
                 WidgetView(
                     size: .rectangle,
                     title: "Nearest Study Rooms",
@@ -33,9 +35,9 @@ struct WidgetScreen: View {
                         viewModel: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
                     )
                 )
-                
+                .padding(.bottom)
             }
-            .padding()
+            .frame(maxWidth: .infinity)
         }
         .navigationTitle("My Widgets")
     }

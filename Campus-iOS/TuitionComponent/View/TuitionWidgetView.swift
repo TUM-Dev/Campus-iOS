@@ -12,9 +12,24 @@ struct TuitionWidgetView: View {
     @ObservedObject var viewModel: ProfileViewModel
     
     var body: some View {
-        VStack {
-            Text("Tuition Fee")
-            TuitionDetailsView(tuition: self.viewModel.tuition ?? Tuition.unknown)
+        VStack (alignment: .leading) {
+            if let tuition = self.viewModel.tuition {
+                OpenTuitionAmountView(tuition: tuition)
+                HStack {
+                    Text("Deadline")
+                    
+                    if let date = tuition.deadline {
+                        Text(date, style: .date)
+                    } else {
+                        Text("Unknown")
+                    }
+                }
+            } else {
+                ProgressView()
+            }
+        }
+        .task {
+            viewModel.fetch()
         }
     }
 }

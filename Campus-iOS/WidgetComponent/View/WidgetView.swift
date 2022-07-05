@@ -63,7 +63,7 @@ struct WidgetView_Previews: PreviewProvider {
 
 enum WidgetSize: CaseIterable {
     
-    case square, rectangle, bigRectangle
+    case square, rectangle, bigSquare
     
     var dimensions: (CGFloat, CGFloat) {
         switch self {
@@ -71,7 +71,7 @@ enum WidgetSize: CaseIterable {
             return (160, 160)
         case .rectangle:
             return (320, 160)
-        case .bigRectangle:
+        case .bigSquare:
             return (320, 320)
         }
     }
