@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WidgetView<Content: View>: View {
+struct WidgetFrameView<Content: View>: View {
     
     @Environment(\.colorScheme) private var colorScheme
     
@@ -19,9 +19,7 @@ struct WidgetView<Content: View>: View {
         let (width, height) = size.dimensions
         
         content
-            .padding()
             .frame(width: width, height: height)
-            .background(colorScheme == .light ? Color.white : Color("darkGray"))
             .cornerRadius(32)
             .if(colorScheme == .light) { view in
                 view.shadow(radius: 5)
@@ -29,22 +27,29 @@ struct WidgetView<Content: View>: View {
     }
 }
 
-struct WidgetView_Previews: PreviewProvider {
+struct WidgetFrameView_Previews: PreviewProvider {
     
-    static var widgetContent = Text("Some Content")
+    static var widgetContent: some View {
+        Rectangle()
+            .foregroundColor(Color("tumBlue"))
+            .overlay {
+                Text("Some Widget")
+                    .foregroundColor(.white)
+            }
+    }
     
     static var previews: some View {
         
         VStack {
             ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetView(size: size, content: widgetContent)
+                WidgetFrameView(size: size, content: widgetContent)
                     .padding(4)
             }
         }
         
         VStack {
             ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetView(size: size, content: widgetContent)
+                WidgetFrameView(size: size, content: widgetContent)
                     .padding(4)
                     .preferredColorScheme(.dark)
             }

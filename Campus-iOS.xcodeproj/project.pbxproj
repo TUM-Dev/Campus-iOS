@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
+		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
 		08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97228664BC400E357DF /* TuitionWidgetView.swift */; };
 		08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */; };
-		08DFB9772866506900E357DF /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9762866506900E357DF /* WidgetView.swift */; };
+		08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9762866506900E357DF /* WidgetFrameView.swift */; };
 		08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */; };
 		08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */; };
 		08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */; };
@@ -26,8 +27,7 @@
 		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
-		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
-        1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
+		1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
@@ -229,10 +229,11 @@
 
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
+		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
 		08DFB97228664BC400E357DF /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
 		08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionDetailsView.swift; sourceTree = "<group>"; };
-		08DFB9762866506900E357DF /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		08DFB9762866506900E357DF /* WidgetFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFrameView.swift; sourceTree = "<group>"; };
 		08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetView.swift; sourceTree = "<group>"; };
 		08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetViewModel.swift; sourceTree = "<group>"; };
 		08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetView.swift; sourceTree = "<group>"; };
@@ -245,7 +246,6 @@
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
-		1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGradesViewModel.swift; sourceTree = "<group>"; };
 		1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentListView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
@@ -481,8 +481,9 @@
 		08DFB96D286647CB00E357DF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				08DFB9762866506900E357DF /* WidgetView.swift */,
+				08DFB9762866506900E357DF /* WidgetFrameView.swift */,
 				08038F95287430FB0048DAE5 /* WidgetTitleView.swift */,
+				08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1504,9 +1505,10 @@
 				08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */,
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
-				08DFB9772866506900E357DF /* WidgetView.swift in Sources */,
+				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
+				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,

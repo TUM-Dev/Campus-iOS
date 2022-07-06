@@ -12,7 +12,7 @@ struct TuitionWidgetView: View {
     let size: WidgetSize
     
     var body: some View {
-        WidgetView(size: size, content: TuitionWidgetContentView())
+        WidgetFrameView(size: size, content: TuitionWidgetContentView())
     }
 }
 

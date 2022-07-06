@@ -90,7 +90,7 @@ struct StudyRoomGroupView: View {
                                     
                                     Spacer()
                                     
-                                    room.localizedStatus
+                                    room.localizedStatusText
                                 }
                             )
                         }, content: {

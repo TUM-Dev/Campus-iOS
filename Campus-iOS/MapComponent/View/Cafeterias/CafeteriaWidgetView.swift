@@ -17,7 +17,7 @@ struct CafeteriaWidgetView: View {
     }
     
     var body: some View {
-        WidgetView(
+        WidgetFrameView(
             size: size,
             content: CafeteriaWidgetContent(size: size)
         )

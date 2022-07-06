@@ -12,14 +12,17 @@ struct WidgetScreen: View {
         ScrollView {
             VStack {
                 
+                HStack {
+                    StudyRoomWidgetView(size: .square)
+                    StudyRoomWidgetView(size: .square)
+                }
+
+                StudyRoomWidgetView(size: .rectangle)
                 StudyRoomWidgetView(size: .bigSquare)
-                    .padding(.bottom)
                 
-                TuitionWidgetView(size: .rectangle)
-                    .padding(.bottom)
-                
-                CafeteriaWidgetView(size: .rectangle)
-                    .padding(.bottom)
+                // TODO: update widgets
+                // TuitionWidgetView(size: .rectangle)
+                // CafeteriaWidgetView(size: .rectangle)
             }
             .frame(maxWidth: .infinity)
         }
