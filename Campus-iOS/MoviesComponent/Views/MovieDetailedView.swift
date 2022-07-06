@@ -11,7 +11,6 @@ import UIKit
 struct MovieDetailedView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var navigationBarHidden: Bool = true
 
     var movie: Movie
     
@@ -54,7 +53,6 @@ struct MovieDetailedView: View {
                             EmptyView()
                         }
                     }
-                    
                 } else {
                     Image("movie")
                         .resizable()
@@ -64,14 +62,20 @@ struct MovieDetailedView: View {
             }.frame(height: 550)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
             .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                HStack(alignment: .top) {
-                    Image(systemName: "chevron.backward")
-                    Text("Back").foregroundColor(.blue)
-                }.foregroundColor(.blue)
+                ZStack {
+                    /*RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.white)
+                        .opacity(0.1)
+                        .frame(width: 70, height: 30)
+                        .shadow(color: Color.white, radius: 3)*/
+                    HStack(alignment: .top) {
+                        Image(systemName: "chevron.backward")
+                        Text("Back").foregroundColor(.blue)
+                    }.foregroundColor(.blue)
+                    .shadow(color: Color.black, radius: 2)
+                }
             })
-            .navigationBarTitle(movie.title!, displayMode: .inline)
 
         
 //        VStack(alignment: .center) {
@@ -101,10 +105,6 @@ struct MovieDetailedView: View {
             .padding(.horizontal)
                     
         }.edgesIgnoringSafeArea(.top)
-        .gesture(DragGesture().onChanged { _ in
-            self.navigationBarHidden = false
-        })
-        .navigationBarHidden(navigationBarHidden)
     }
     
     // TODO: remove when ready OR update accordingly
