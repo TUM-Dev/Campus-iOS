@@ -10,19 +10,19 @@ import KVKCalendar
 
 struct CalendarContentView: View {
     
-    @EnvironmentObject private var model: Model
+    @StateObject var viewModel: CalendarViewModel
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
-    
-    @ObservedObject var viewModel = CalendarViewModel()
 
+    init(model: Model) {
+        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
+    }
     
     var body: some View {
-        VStack{
-            
+        VStack {
             GeometryReader { geo in
                 // workaround since passing the calendar type to the view does not work
                 switch self.selectedType {
@@ -54,7 +54,7 @@ struct CalendarContentView: View {
                 .first(where: { $0.id.description == eventId })
             CalendarSingleEventView(
                 viewModel: LectureDetailsViewModel(
-                                model: model,
+                    model: viewModel.model,
                                 service: LectureDetailsService(),
                                 // Yes, it is a really hacky solution...
                                 lecture: Lecture(id: UInt64(chosenEvent?.lvNr ?? "") ?? 0, lvNumber: UInt64(chosenEvent?.lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventTypeDefault: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
@@ -64,7 +64,7 @@ struct CalendarContentView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                CalendarToolbar(model: self.model, viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
+                CalendarToolbar(viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
             }
             ToolbarItem(placement: .principal) {
                 Picker("Calendar Type", selection: $selectedType) {
@@ -93,7 +93,7 @@ struct CalendarContentView: View {
                 }
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ProfileToolbar(model: model)
+                ProfileToolbar(model: viewModel.model)
             }
         }
     }
@@ -104,9 +104,9 @@ struct CalendarContentView: View {
         return CGRect(x: origin.x, y: origin.y, width: geometry.size.width, height: geometry.size.height)
     }
 }
+
 struct CalendarContentView_Previews: PreviewProvider {
-    
     static var previews: some View {
-        CalendarContentView()
+        CalendarContentView(model: MockModel())
     }
 }

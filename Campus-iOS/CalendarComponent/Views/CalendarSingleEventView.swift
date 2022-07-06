@@ -23,7 +23,7 @@ struct CalendarSingleEventView: View {
                     Group {
                         switch viewModel.state {
                         case .success(let data):
-                            LecturesDetailView(lectureDetails: data, calendarEvent: chosenEvent)
+                            LecturesDetailView(viewModel: viewModel, lectureDetails: data, calendarEvent: chosenEvent)
                         case .loading, .na:
                             LoadingView(text: "Fetching details of event")
                         case .failed(let error):

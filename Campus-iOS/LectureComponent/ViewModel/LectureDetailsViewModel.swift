@@ -16,9 +16,9 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
     @Published private(set) var state: State = .na
     @Published var hasError: Bool = false
     
-    private let model: Model
-    private let service: LectureDetailsServiceProtocol
-    private let lecture: Lecture
+    let model: Model
+    private let service: LectureDetailsServiceProtocol?
+    private let lecture: Lecture?
     
     var token: String? {
         switch self.model.loginController.credentials {
@@ -37,6 +37,12 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
         self.lecture = lecture
     }
     
+    init(model: Model) {
+        self.model = model
+        self.service = nil
+        self.lecture = nil
+    }
+    
     func getLectureDetails(forcedRefresh: Bool = false) async {
         self.state = .loading
         self.hasError = false
@@ -47,14 +53,16 @@ class LectureDetailsViewModel: LectureDetailsViewModelProtocol {
             return
         }
         
-        do {
-            self.state = .success(
-                data: try await service.fetch(token: token, lvNr: self.lecture.id, forcedRefresh: forcedRefresh)
-            )
-        } catch {
-            print(error)
-            self.state = .failed(error: error)
-            self.hasError = true
+        if let service = service, let lecture = lecture {
+            do {
+                self.state = .success(
+                    data: try await service.fetch(token: token, lvNr: lecture.id, forcedRefresh: forcedRefresh)
+                )
+            } catch {
+                print(error)
+                self.state = .failed(error: error)
+                self.hasError = true
+            }
         }
     }
 }

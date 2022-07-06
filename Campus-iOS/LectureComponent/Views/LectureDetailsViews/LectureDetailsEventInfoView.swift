@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LectureDetailsEventInfoView: View {
+    @StateObject var viewModel: LectureDetailsViewModel
     var event: CalendarEvent
     
     var duration: String {
@@ -38,10 +39,13 @@ struct LectureDetailsEventInfoView: View {
                     text: self.duration
                 )
                 Divider()
-                LectureDetailsBasicInfoRowView(
-                    iconName: "rectangle.portrait.arrowtriangle.2.inward",
-                    text: self.location
-                )
+                // Open RoomfinderView
+                NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: self.location)) { // TODO: searchText should just be the room number -> filter the string
+                    LectureDetailsBasicInfoRowView(
+                        iconName: "rectangle.portrait.arrowtriangle.2.inward",
+                        text: self.location
+                    )
+                }
             }
         }
         .frame(
@@ -70,6 +74,6 @@ struct LectureDetailsEventInfoView_Previews: PreviewProvider {
     static var event = CalendarEvent(id: 1, title: "Some Title", descriptionText: "Some description", startDate: Date(), endDate: Date(), location: "Some Location")
     
     static var previews: some View {
-        LectureDetailsEventInfoView(event: event)
+        LectureDetailsEventInfoView(viewModel: LectureDetailsViewModel(model: MockModel()), event: event)
     }
 }
