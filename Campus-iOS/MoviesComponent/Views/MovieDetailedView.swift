@@ -11,7 +11,8 @@ import UIKit
 struct MovieDetailedView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @State var navigationBarHidden: Bool = true
+
     var movie: Movie
     
     var body: some View {
@@ -60,15 +61,17 @@ struct MovieDetailedView: View {
                         .scaledToFit()
                         .frame(height: 120, alignment: .top)
                 }
-            }.frame(height: 400)
+            }.frame(height: 550)
             .edgesIgnoringSafeArea(.bottom)
-                    .navigationBarBackButtonHidden(true)
-                    .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                        HStack(alignment: .top) {
-                            Image(systemName: "chevron.backward")
-                            Text("Back").foregroundColor(.blue)
-                        }.foregroundColor(.blue)
-                    })
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
+            .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                HStack(alignment: .top) {
+                    Image(systemName: "chevron.backward")
+                    Text("Back").foregroundColor(.blue)
+                }.foregroundColor(.blue)
+            })
+            .navigationBarTitle(movie.title!, displayMode: .inline)
 
         
 //        VStack(alignment: .center) {
@@ -81,27 +84,31 @@ struct MovieDetailedView: View {
 //            }.foregroundColor(.blue)
 //        })
             
-        VStack(alignment: .leading, spacing: 20) {
-            MovieDetailsBasicInfoView(movieDetails: movie)
-        }.frame(
-            maxWidth: .infinity,
-            alignment: .topLeading
-        )
-        .padding(.horizontal)
-            
-        VStack(alignment: .leading, spacing: 20) {
-            MovieDetailsDetailedInfoView(movieDetails: movie)
-        }.frame(
-            maxWidth: .infinity,
-            alignment: .topLeading
-        )
-        .padding(.horizontal)
+            VStack(alignment: .leading, spacing: 20) {
+                MovieDetailsBasicInfoView(movieDetails: movie)
+            }.frame(
+                maxWidth: .infinity,
+                alignment: .topLeading
+            )
+            .padding(.horizontal)
+                
+            VStack(alignment: .leading, spacing: 20) {
+                MovieDetailsDetailedInfoView(movieDetails: movie)
+            }.frame(
+                maxWidth: .infinity,
+                alignment: .topLeading
+            )
+            .padding(.horizontal)
                     
         }.edgesIgnoringSafeArea(.top)
+        .gesture(DragGesture().onChanged { _ in
+            self.navigationBarHidden = false
+        })
+        .navigationBarHidden(navigationBarHidden)
     }
     
-// TODO: remove when ready OR update accordingly
-func details() -> some View {
+    // TODO: remove when ready OR update accordingly
+    func details() -> some View {
         List {
             VStack(alignment: .leading, spacing: 20) {
                 MovieDetailsBasicInfoView(movieDetails: movie)
