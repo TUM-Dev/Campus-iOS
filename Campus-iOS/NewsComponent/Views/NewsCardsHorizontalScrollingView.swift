@@ -25,17 +25,10 @@ struct NewsCardsHorizontalScrollingView: View {
                 return false
             }
         })
-        sortedNews.forEach { news in
-            print(news)
-        }
         
         self.news = sortedNews
         
         visibleNews = Array(sortedNews.prefix(upTo: 5))
-    }
-    
-    func showMoreNews() {
-        
     }
     
     var body: some View {
