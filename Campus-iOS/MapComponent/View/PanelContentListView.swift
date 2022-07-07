@@ -40,7 +40,6 @@ struct PanelContentListView: View {
                     }
                 case .loading, .na:
                     ZStack {
-                        Color.white
                         VStack {
                             LoadingView(text: "Fetching Canteens", position: .middletop)
                             Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
@@ -98,7 +97,6 @@ struct PanelContentListView: View {
                     }
                 case .loading, .na:
                     ZStack {
-                        Color.white
                         VStack {
                             LoadingView(text: "Fetching Study Rooms", position: .middletop)
                             Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
