@@ -61,7 +61,7 @@ struct TuitionWidgetSquareContent: View {
     var body: some View {
         
         Rectangle()
-            .foregroundColor(openAmount ? .red : .green)
+            .foregroundColor(.widget)
             .overlay {
                 VStack(alignment: .leading) {
                     
@@ -70,6 +70,7 @@ struct TuitionWidgetSquareContent: View {
                     
                     Text(self.formatter.string(from: amount) ?? "Unknown")
                         .font(.system(size: big ? 45 : 30))
+                        .foregroundColor(openAmount ? .red : .green)
                         .bold()
                     
                     HStack {
@@ -96,10 +97,7 @@ struct TuitionWidgetSquareContent: View {
                             .font(.caption)
                             .bold()
                     }
-                    
-                    
                 }
-                .foregroundColor(.white) // White font.
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
             }
