@@ -14,14 +14,16 @@ struct WidgetScreen: View {
                 
                 HStack {
                     StudyRoomWidgetView(size: .square)
-                    StudyRoomWidgetView(size: .square)
+                    TuitionWidgetView(size: .square)
                 }
-
+                
+                TuitionWidgetView(size: .rectangle)
                 StudyRoomWidgetView(size: .rectangle)
                 StudyRoomWidgetView(size: .bigSquare)
                 
                 // TODO: update widgets
-                // TuitionWidgetView(size: .rectangle)
+
+                
                 // CafeteriaWidgetView(size: .rectangle)
             }
             .frame(maxWidth: .infinity)
