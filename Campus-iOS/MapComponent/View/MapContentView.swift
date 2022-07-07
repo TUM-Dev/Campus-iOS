@@ -203,6 +203,8 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                     for i in 0...(control.vm.cafeterias.count - 1) {
                         if title == control.vm.cafeterias[i].title {
                             control.vm.selectedAnnotationIndex = i
+                            // Making the selected annotation (i.e. cafeteria) the selected cafeteria -> shows the MealPlanView inside the PanelContentView like tapping on a cafeteria in the PanelContentCafeteriasListView
+                            control.vm.selectedCafeteria = control.vm.cafeterias[i]
                             control.vm.panelPosition = "pushMid"
                         }
                     }
@@ -211,6 +213,8 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                     for i in 0...(groups.count - 1) {
                         if title == groups[i].name {
                             control.vm.selectedAnnotationIndex = i
+                            // Making the selected annotation (i.e. study group) the selected study group -> shows the StudyRoomGroupView with inside the PanelContentView like tapping on a study group in the PanelContentStudyRoomGroupsListView
+                            control.vm.selectedStudyGroup = groups[i]
                             control.vm.panelPosition = "pushMid"
                         }
                     }
