@@ -15,5 +15,61 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>TUM Campus App contains a calendar showing university events</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>3D</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>3D</string>
+				</array>
+			</dict>
+			<key>inverted</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>white</string>
+				</array>
+			</dict>
+			<key>outline</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>outline</string>
+				</array>
+			</dict>
+			<key>pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pride</string>
+				</array>
+			</dict>
+		</dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconName</key>
+			<string></string>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

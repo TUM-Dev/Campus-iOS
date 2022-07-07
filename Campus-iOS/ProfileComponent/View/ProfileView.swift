@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @State var showActionSheet = false
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
-    
+
     var body: some View {
         
         NavigationView {
@@ -123,6 +124,35 @@ struct ProfileView: View {
                         Spacer()
                     }
                 }
+                
+                Section() {
+                    var i = 0
+                    Button(action: {
+                        i += 1
+                        if i == 5 {
+                            i = 0
+                            self.showActionSheet = true
+                        }
+                    }) {
+                        HStack {
+                            Spacer()
+                            Text("Version 4.0").foregroundColor(Color.black)
+                            Spacer()
+                        }
+                    }
+                }
+                .actionSheet(isPresented: self.$showActionSheet) {
+                    //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
+                    ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
+                        .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
+                        .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
+                        .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },
+                        .default(Text("3D 📐")) { UIApplication.shared.setAlternateIconName("3D") },
+                        .default(Text("Outline 🖍")) { UIApplication.shared.setAlternateIconName("outline") },
+                        .cancel()
+                    ])
+                }
+                .listRowBackground(Color.clear)
             }
             .sheet(isPresented: $model.isLoginSheetPresented) {
                 NavigationView {
