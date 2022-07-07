@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
 		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
+		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
 		08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97228664BC400E357DF /* TuitionWidgetView.swift */; };
 		08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */; };
@@ -230,6 +231,7 @@
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
 		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
+		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
 		08DFB97228664BC400E357DF /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
 		08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionDetailsView.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				08DFB9762866506900E357DF /* WidgetFrameView.swift */,
 				08038F95287430FB0048DAE5 /* WidgetTitleView.swift */,
 				08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */,
+				08D0703928776DD6004140B1 /* TextWidgetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1520,6 +1523,7 @@
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
 				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
+				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
