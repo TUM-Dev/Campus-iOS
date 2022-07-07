@@ -19,11 +19,32 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
-			<key>Default</key>
+			<key>3D</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
 				<array>
-					<string></string>
+					<string>3D</string>
+				</array>
+			</dict>
+			<key>inverted</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>white</string>
+				</array>
+			</dict>
+			<key>outline</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>outline</string>
+				</array>
+			</dict>
+			<key>pride</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>pride</string>
 				</array>
 			</dict>
 		</dict>
