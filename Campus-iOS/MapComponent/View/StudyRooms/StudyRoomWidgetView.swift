@@ -25,7 +25,7 @@ struct StudyRoomWidgetContent: View {
         Group {
             switch(viewModel.status) {
             case .error:
-                StudyRoomWidgetErrorContent()
+                TextWidgetView(text: "No nearby study rooms.")
             case .loading:
                 WidgetLoadingView(text: "Searching nearby study rooms")
             default:
@@ -42,7 +42,7 @@ struct StudyRoomWidgetContent: View {
                         DetailedStudyRoomWidgetContent(studyGroup: studyGroup, rooms: rooms)
                     }
                 } else {
-                    StudyRoomWidgetErrorContent()
+                    TextWidgetView(text: "No nearby study rooms.")
                 }
             }
         }
@@ -54,16 +54,6 @@ struct StudyRoomWidgetContent: View {
 }
 
 /* Content implementations */
-
-struct StudyRoomWidgetErrorContent: View {
-    var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
-            .overlay {
-                Text("No nearby study rooms.")
-            }
-    }
-}
 
 struct SimpleStudyRoomWidgetContent: View {
     
