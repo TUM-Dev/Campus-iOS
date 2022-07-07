@@ -18,6 +18,7 @@ struct LectureDetailsBasicInfoRowView: View {
                 .frame(width: 25, height: 25, alignment: .center)
             Text(text)
                 .font(.system(size: 16))
+                .multilineTextAlignment(.leading)
         }
     }
 }
@@ -26,7 +27,7 @@ struct LectureDetailsRowView_Previews: PreviewProvider {
     static var previews: some View {
         LectureDetailsBasicInfoRowView(
             iconName: "number",
-            text: "test"
+            text: "LOOOOOOOOOOOOOOOOOOONG (1234.01.001)"
         )
     }
 }

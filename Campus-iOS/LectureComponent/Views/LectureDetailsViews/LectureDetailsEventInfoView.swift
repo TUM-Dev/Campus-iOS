@@ -71,7 +71,7 @@ struct LectureDetailsEventInfoView: View {
 
 struct LectureDetailsEventInfoView_Previews: PreviewProvider {
     
-    static var event = CalendarEvent(id: 1, title: "Some Title", descriptionText: "Some description", startDate: Date(), endDate: Date(), location: "Some Location")
+    static var event = CalendarEvent(id: 1, title: "Some Title", descriptionText: "Some description", startDate: Date(), endDate: Date(), location: "Some long long long long long location (1234.01.001)")
     
     static var previews: some View {
         LectureDetailsEventInfoView(viewModel: LectureDetailsViewModel(model: MockModel()), event: event)
