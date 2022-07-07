@@ -28,7 +28,7 @@ struct PanelView: View {
         return Group {
             VStack{
                 PanelContentView(vm: self.vm)
-                Spacer().frame(width: screenWidth, height: screenHeight * (1 - 8.2/10))
+                //Spacer().frame(width: screenWidth, height: screenHeight)
             }
         }
         .frame(height: screenHeight)
@@ -39,12 +39,17 @@ struct PanelView: View {
         .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0), value: self.dragState.isDragging)
         .gesture(drag)
         .task(id: vm.panelPosition) {
-            if vm.panelPosition == "pushKBTop" {
-                self.position = .kbtop
-            } else if vm.panelPosition == "pushMid" {
-                self.position = .middle
-            } else if vm.panelPosition == "pushDown" {
-                self.position = .bottom
+            print("PANEL POS: \(vm.panelPosition)")
+            withAnimation {
+                if vm.panelPosition == "pushKBTop" {
+                    self.position = .kbtop
+                } else if vm.panelPosition == "pushMid" {
+                    self.position = .middle
+                } else if vm.panelPosition == "pushDown" {
+                    self.position = .bottom
+                } else if vm.panelPosition == "pushTop" {
+                    self.position = .top
+                }
             }
         }
     }

@@ -6,157 +6,133 @@
 //
 
 import SwiftUI
+import AVKit
+import AVFoundation
 
 struct TokenConfirmationView: View {
     /// Used for the customized back button
     @Environment(\.presentationMode) var presentationMode
     @State var showBackButtonAlert: Bool = false
+    @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
+    let screenWidth = UIScreen.main.bounds.size.width
+    
     var body: some View {
-        ZStack() {
-            GeometryReader { geo in
-                VStack(alignment: .center) {
-                    HStack() {
-                        VStack(alignment: .leading) {
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
-                            
-                            Spacer().frame(height: 5)
-                            
-                            Text("1")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(height: 0)
-                            
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
+        GeometryReader { geo in
+            ZStack(alignment: .center) {
+                VStack {
+                    Spacer(minLength: geo.size.height*0.15)
+                    VStack {
+                        switch currentStep {
+                        case 1:
+                            HStack() {
+                                Text("1")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(.tumBlue))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                HStack(spacing: 5) {
+                                    Text("Log in on [TUMonline](https://campus.tum.de)")
+                                        .font(.body)
+                                        .tint(Color(.tumBlue))
+                                }
+                                
+                            }
+                        case 2:
+                            HStack() {
+                                Text("2")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(.tumBlue))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Text("Select **Token-Management**")
+                                    .font(.body)
+                            }
+                        case 3:
+                            HStack() {
+                                Text("3")
+                                    .frame(width: 42, height: 42, alignment: .center)
+                                    .font(.title)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(white: 1.0))
+                                    .background(Color(.tumBlue))
+                                    .clipShape(Circle())
+                                
+                                Spacer().frame(width: 20)
+                                
+                                Text("Activate the newly created token and enable your desired permissions")
+                                    .font(.body)
+                            }
+                        default: EmptyView()
                         }
-                        .frame(width: 42, height: 142)
-                        
-                        Spacer().frame(width: 20)
-                        
-                        Text("Check your email and click on the link to confirm your token or visit TUMonline")
-                            .font(.body)
                     }
-                    .frame(width: 0.9 * geo.size.width, height: geo.size.height / 5, alignment: .leading)
-                    .offset(y: 30)
+                    .frame(width: geo.size.width, height: geo.size.height*0.11, alignment: .center)
                     
-                    HStack() {
-                        VStack() {
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
-                            
-                            Spacer().frame(height: 0)
-                            
-                            Text("2")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(height: 0)
-                            
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
-                        }
-                        .frame(width: 42, height: 142)
+                    
+                    VStack {
                         
-                        Spacer().frame(width: 20)
-                        
-                        Text("Select \"Token-Management\"")
-                            .font(.body)
+                        let videoUrl = Bundle.main
+                            .url(forResource: "token-tutorial", withExtension: "mov")!
+                        PlayerView(videoUrl: videoUrl)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
+                        // Video is 2532 x 1170
+                            .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
                     }
-                    .frame(width: 0.9 * geo.size.width, height: geo.size.height / 5, alignment: .leading)
-                    .offset(y: 15)
                     
-                    HStack() {
-                        VStack(alignment: .leading) {
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
-                            
-                            Spacer().frame(height: 0)
-                            
-                            Text("3")
-                                .frame(width: 42, height: 42, alignment: .center)
-                                .font(.title)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(white: 1.0))
-                                .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                                .clipShape(Circle())
-                            
-                            Spacer().frame(height: 0)
-                            
-                            ZStack(content: {})
-                                .frame(width: 42, height: 50)
-                                .background(Color(.systemBackground))
+                    
+                    VStack {
+                        Spacer()
+                        let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello I have an issue activating the token...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                        let mailToUrl = URL(string: mailToString!)!
+                        Link(destination: mailToUrl) {
+                            Text("Contact Support").foregroundColor(Color(.tumBlue))
                         }
                         
-                        Spacer().frame(width: 20)
-                        
-                        Text("Click on the newly created token and enable your desired permissions")
-                            .font(.body)
-                    }
-                    .frame(width: 0.9 * geo.size.width, height: geo.size.height / 5, alignment: .leading)
-                    
-                }
-                .frame(width: geo.size.width, height: 4 * geo.size.height / 5)
-                .offset(y: 50)
-                
-                
-                VStack() {
-                    NavigationLink(destination: TokenActivationTutorialView()) {
-                        Text("I need help").lineLimit(1).font(.subheadline)
-                            .frame(width: 200, height: 27, alignment: .center)
-                            .foregroundColor(.blue)
+                        Button(action: {
+                            self.viewModel.checkAuthorizzation()
+                        }) {
+                            Text("Check Authorization").lineLimit(1).font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                        }
+                        .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
+                            Button("OK", role: .cancel) {}
+                        }
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .background(Color(.tumBlue))
+                        .cornerRadius(10)
+                        .padding()
+                        Spacer()
                     }
                     
-                    Spacer().frame(height: 16)
-                    
-                    Button(action: {
-                        self.viewModel.checkAuthorizzation()
-                    }) {
-                        Text("Check Authorization").lineLimit(1).font(.body)
-                            .frame(width: 200, height: 48, alignment: .center)
-                    }
-                    .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
-                        Button("OK", role: .cancel) {}
-                    }
-                    .aspectRatio(contentMode: .fill)
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .background(Color(red: 0.203649, green: 0.35383618, blue: 0.72193307))
-                    .cornerRadius(10)
-                }
-                .frame(width: geo.size.width, height: geo.size.height / 5)
-                .offset(x: 0, y: 3.85 * geo.size.height / 5)
+                    Spacer()
+                }.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
             }
         }
         .background(Color(.systemBackground))
         ._scrollable()
-        .edgesIgnoringSafeArea(.all)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
-            Button(action: {
-                self.showBackButtonAlert = true
-          }) {
+                                Button(action: {
+            self.showBackButtonAlert = true
+        }) {
             HStack {
                 Image(systemName: "arrow.left")
                 Text("Back")
-            }
+            }.foregroundColor(Color(.tumBlue))
           }
         )
         .alert(isPresented: $showBackButtonAlert) {
@@ -169,6 +145,41 @@ struct TokenConfirmationView: View {
                 secondaryButton: .cancel()
               )
         }
+        .edgesIgnoringSafeArea(.top)
+        .task {
+            await switchSteps()
+        }
+        
+        
+    }
+    
+    private func switchSteps() async {
+        // Delay of 5 seconds (1 second = 1_000_000_000 nanoseconds)
+        guard let model = self.viewModel.model else {
+            return
+        }
+        
+        while (!model.isUserAuthenticated) {
+            switch currentStep {
+            case 1:
+                try? await Task.sleep(nanoseconds: 5_160_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 2
+                }
+            case 2:
+                try? await Task.sleep(nanoseconds: 3_870_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 3
+                }
+            case 3:
+                try? await Task.sleep(nanoseconds: 7_210_000_000)
+                withAnimation(.easeInOut) {
+                    currentStep = 1
+                }
+            default:
+                return
+            }
+        }
     }
     
     init(viewModel: LoginViewModel) {
@@ -180,7 +191,65 @@ struct TokenConfirmationView_Previews: PreviewProvider {
     static let model = MockModel()
     
     static var previews: some View {
-        TokenConfirmationView(viewModel: LoginViewModel(model: model))
-            .previewDevice("iPod touch (7th generation)")
+        Text("Background2").sheet(isPresented: .constant(true)) {
+            NavigationView {
+                TokenConfirmationView(viewModel: LoginViewModel(model: model))
+            }
+        }.previewDevice("iPhone 12")
+            //.previewDevice("iPhone SE (3rd generation)")
     }
+}
+
+struct PlayerView: UIViewRepresentable {
+    let videoUrl: URL
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
+    }
+    
+    func makeUIView(context: Context) -> UIView {
+        return PlayerUIView(videoUrl: videoUrl)
+    }
+    
+}
+
+class PlayerUIView: UIView {
+    
+    private var playerLooper: AVPlayerLooper
+    private let playerLayer = AVPlayerLayer()
+    
+    private let playerFrameWidth: CGFloat?
+    private let playerFrameHeight: CGFloat?
+    
+    init(videoUrl: URL) {
+        let asset = AVAsset(url: videoUrl)
+        let item = AVPlayerItem(asset: asset)
+        playerFrameWidth = asset.tracks.first?.naturalSize.width
+        playerFrameHeight = asset.tracks.first?.naturalSize.height
+        
+        let player = AVQueuePlayer(playerItem: item)
+        self.playerLayer.player = player
+        
+        self.playerLooper = AVPlayerLooper(player: player, templateItem: item)
+        
+        super.init(frame: .zero)
+        layer.addSublayer(playerLayer)
+        backgroundColor = UIColor.tumBlue
+        
+        player.play()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //2532 x 1170
+        let screenWidth = UIScreen.main.bounds.size.width
+        let screenHeight = UIScreen.main.bounds.size.height
+        
+        let playerFrame = CGRect(origin: CGPoint(x: -screenWidth*0.08, y: -screenWidth*0.07), size: CGSize(width: screenWidth*0.1170*6, height: screenWidth*0.1993*6))
+        playerLayer.frame = playerFrame
+    }
+    
 }

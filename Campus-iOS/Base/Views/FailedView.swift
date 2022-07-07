@@ -17,13 +17,15 @@ struct FailedView: View {
     }
     
     var body: some View {
-        VStack {
-            ZStack (alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-                Image("Error-logo")
+        GeometryReader { geo in
+            ZStack {
+                Image("Error-logo-transparent")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
+                    .aspectRatio(contentMode: .fit)
+                    .offset(y: -geo.size.height*0.1)
+   
                 VStack (alignment: .center, spacing: 12) {
+                    Spacer(minLength: geo.size.height * 0.48)
                     Text("oh no!")
                         .font(.title)
                     
@@ -41,18 +43,20 @@ struct FailedView: View {
                         }
                     }) {
                         Text("Try Again".uppercased())
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .padding(.vertical)
-                            .padding(.horizontal, 30)
-                            .background(Capsule().foregroundColor(Color("tumBlue")))
+                            .lineLimit(1).font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
                     }
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    .padding()
+                    
+                    Spacer()
                 }
-                .padding(.horizontal, 30)
-                .padding(.bottom, UIScreen.main.bounds.height * 0.1)
-            }
+            }.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
         }
-        .padding(.bottom, 60)
+        
     }
 }
 
