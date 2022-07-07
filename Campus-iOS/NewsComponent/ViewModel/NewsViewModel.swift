@@ -21,21 +21,23 @@ class NewsViewModel: ObservableObject {
         fetch()
     }
     
-    var latestNews: (String?, News?) {
+    var latestFiveNews: [(String?, News?)] {
         let latestNews = self.newsSources
             .map({$0.news})
             .reduce([], +)
-            .filter({$0.created != nil})
+            .filter({$0.created != nil && $0.sourceID != 2})
             .sorted(by: {
-                guard let dateOne = $0.created, let dateTwo = $1.created else {
+                guard let date1 = $0.created, let date2 = $1.created else {
                     return false
                 }
-                return dateOne > dateTwo
-            }).first
+                return date1.compare(date2) == .orderedDescending
+            })[...4]
         
-        let source = newsSources.first(where: {$0.id == latestNews?.sourceID})
+        let latestFiveNews = latestNews.map { news in
+            (newsSources.first(where: {$0.id == news.sourceID})?.title, news)
+        }
         
-        return (source?.title, latestNews)
+        return latestFiveNews
     }
     
     func fetch() {
@@ -54,4 +56,20 @@ class NewsViewModel: ObservableObject {
     }
 
     
+}
+
+class MockNewsViewModel: NewsViewModel {
+    
+    static let mockNewsA = News(id: "1", sourceId: 1, date: Date(), created: Date(), title: "Dummy Title", link: URL(string: "https://github.com/orgs/TUM-Dev"), imageURL: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg")
+    static let mockNewsB = News(id: "3", sourceId: 3, date: Date(), created: Date(), title: "Dummy Title", link: URL(string: "https://github.com/orgs/TUM-Dev"), imageURL: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg")
+
+    static let newsSourceA = NewsSource(id: 1, title: "TUM News A", icon: nil, news: [mockNewsA, mockNewsA, mockNewsA])
+    static let newsSourceB = NewsSource(id: 3, title: "TUM News B", icon: nil, news: [mockNewsB, mockNewsB, mockNewsB])
+    
+    let mockNewsSources = [newsSourceA, newsSourceB]
+    
+    
+    override func fetch() {
+        self.newsSources = mockNewsSources
+    }
 }
