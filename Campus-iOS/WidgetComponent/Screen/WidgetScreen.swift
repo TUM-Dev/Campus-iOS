@@ -27,6 +27,7 @@ struct WidgetScreen: View {
                 // CafeteriaWidgetView(size: .rectangle)
             }
             .frame(maxWidth: .infinity)
+            .padding()
         }
         .navigationTitle("My Widgets")
     }

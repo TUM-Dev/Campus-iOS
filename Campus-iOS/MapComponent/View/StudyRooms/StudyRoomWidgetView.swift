@@ -58,10 +58,9 @@ struct StudyRoomWidgetContent: View {
 struct StudyRoomWidgetErrorContent: View {
     var body: some View {
         Rectangle()
-            .foregroundColor(.red)
+            .foregroundColor(.widget)
             .overlay {
                 Text("No nearby study rooms.")
-                    .foregroundColor(.white)
             }
     }
 }
@@ -73,12 +72,12 @@ struct SimpleStudyRoomWidgetContent: View {
         
     var body: some View {
         Rectangle()
-            .foregroundColor(freeRooms > 0 ? .green : .red)
+            .foregroundColor(.widget)
             .overlay {
                 VStack(alignment: .leading) {
-                    RoomCountView(count: freeRooms, textColor: .white)
+                    RoomCountView(count: freeRooms)
                     Spacer()
-                    RoomCountCaptionView(studyGroup: studyGroup, textColor: .white)
+                    RoomCountCaptionView(studyGroup: studyGroup)
                 }
                 .padding()
             }
@@ -103,11 +102,11 @@ struct DetailedStudyRoomWidgetContent: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(rooms.count > 0 ? .green : .red)
+            .foregroundColor(.widget)
             .overlay {
                 VStack(alignment: .leading) {
-                    RoomCountView(count: rooms.count, textColor: .white)
-                    RoomCountCaptionView(studyGroup: studyGroup, textColor: .white)
+                    RoomCountView(count: rooms.count)
+                    RoomCountCaptionView(studyGroup: studyGroup)
                         .padding(.bottom, 16)
                     
                     ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
@@ -125,40 +124,39 @@ struct DetailedStudyRoomWidgetContent: View {
 /* Helpers for the content */
 
 struct RoomCountView: View {
+    
     let count: Int
-    let textColor: Color
     
     var body: some View {
+        
+        let textColor: Color = count > 0 ? .green : .red
+        
         HStack(alignment: .lastTextBaseline) {
             Text(String(count))
                 .bold()
                 .font(.system(size: 70))
-                .foregroundColor(textColor)
                 .layoutPriority(1) // Other texts get truncated first.
             
             Text(count == 1 ? "room" : "rooms")
                 .lineLimit(1)
                 .font(.system(size: 11))
-                .foregroundColor(textColor)
         }
+        .foregroundColor(textColor)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
 struct RoomCountCaptionView: View {
     let studyGroup: String
-    let textColor: Color
     
     var body: some View {
         VStack(alignment: .leading) {
             Text("available at")
                 .font(.system(size: 11))
-                .foregroundColor(.white)
             Text(studyGroup)
                 .bold()
                 .lineLimit(1)
                 .font(.system(size: 11))
-                .foregroundColor(.white)
         }
     }
 }
@@ -171,18 +169,18 @@ struct RoomDetailsView: View {
         HStack {
             Text(room.name ?? "Unknown room")
                 .bold()
-                .foregroundColor(.white)
             
             Spacer()
             
+            let isFree: Bool = room.status == "frei"
             Group {
-                if (room.status == "frei") {
+                if (isFree) {
                     Label(room.code ?? "Unknown", systemImage: "barcode.viewfinder")
                 } else {
                     Label(room.localizedStatus, systemImage: "clock")
                 }
             }
-            .foregroundColor(.white)
+            .foregroundColor(isFree ? .green : .red)
             .layoutPriority(1) // Truncate room name first
         }
     }
