@@ -53,7 +53,7 @@ struct MovieDetailsBasicInfoView: View {
                     Divider()
                     MovieDetailsBasicInfoRowView(
                         iconName: "clock.fill",
-                        text: DateFormatter().string(from: unwrappedDate)
+                        text: unwrappedDate.formatted()
                     )
                 }
             }
