@@ -136,7 +136,7 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("ABC").foregroundColor(Color.black)
+                            Text("Version 4.0").foregroundColor(Color.black)
                             Spacer()
                         }
                     }
