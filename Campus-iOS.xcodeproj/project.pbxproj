@@ -910,7 +910,7 @@
 				227FBB492762AC440062FEC3 /* Info.plist */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
-				41E2B8232864D192005B5E72 /* Assets */,
+				41E2B8232864D192005B5E72 /* Icons */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
@@ -1284,7 +1284,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		41E2B8232864D192005B5E72 /* Assets */ = {
+		41E2B8232864D192005B5E72 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
 				41E2B8242864D192005B5E72 /* 3D@2x.png */,
@@ -1298,7 +1298,7 @@
 				41E2B82C2864D192005B5E72 /* pride@3x.png */,
 				41E2B82D2864D192005B5E72 /* outline@2x.png */,
 			);
-			path = Assets;
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
