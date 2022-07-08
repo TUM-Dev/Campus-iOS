@@ -36,7 +36,7 @@ struct StudyRoomWidgetContent: View {
                     case .square, .rectangle:
                         SimpleStudyRoomWidgetContent(
                             studyGroup: studyGroup,
-                            freeRooms: rooms.filter{ $0.status == "frei" }.count
+                            freeRooms: rooms.filter{ $0.isAvailable() }.count
                         )
                     case .bigSquare:
                         DetailedStudyRoomWidgetContent(studyGroup: studyGroup, rooms: rooms)
@@ -86,7 +86,7 @@ struct DetailedStudyRoomWidgetContent: View {
         
         // Display available rooms first.
         self.rooms = rooms.sorted { r1, _ in
-            return r1.status == "frei"
+            return r1.isAvailable()
         }
     }
     
@@ -95,7 +95,7 @@ struct DetailedStudyRoomWidgetContent: View {
             .foregroundColor(.widget)
             .overlay {
                 VStack(alignment: .leading) {
-                    RoomCountView(count: rooms.count)
+                    RoomCountView(count: rooms.filter{ $0.isAvailable() }.count)
                     RoomCountCaptionView(studyGroup: studyGroup)
                         .padding(.bottom, 16)
                     
@@ -162,15 +162,14 @@ struct RoomDetailsView: View {
             
             Spacer()
             
-            let isFree: Bool = room.status == "frei"
             Group {
-                if (isFree) {
+                if (room.isAvailable()) {
                     Label(room.code ?? "Unknown", systemImage: "barcode.viewfinder")
                 } else {
                     Label(room.localizedStatus, systemImage: "clock")
                 }
             }
-            .foregroundColor(isFree ? .green : .red)
+            .foregroundColor(room.isAvailable() ? .green : .red)
             .layoutPriority(1) // Truncate room name first
         }
     }

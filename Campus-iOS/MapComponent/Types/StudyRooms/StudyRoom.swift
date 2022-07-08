@@ -144,4 +144,8 @@ struct StudyRoom: Entity {
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    func isAvailable() -> Bool {
+        return status == "frei"
+    }
 }
