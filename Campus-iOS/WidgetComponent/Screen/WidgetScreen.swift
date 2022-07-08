@@ -21,10 +21,13 @@ struct WidgetScreen: View {
                 StudyRoomWidgetView(size: .rectangle)
                 StudyRoomWidgetView(size: .bigSquare)
                 
-                // TODO: update widgets
+                HStack {
+                    CafeteriaWidgetView(size: .square)
+                    StudyRoomWidgetView(size: .square)
+                }
+                CafeteriaWidgetView(size: .rectangle)
+                CafeteriaWidgetView(size: .bigSquare)
 
-                
-                // CafeteriaWidgetView(size: .rectangle)
             }
             .frame(maxWidth: .infinity)
             .padding()

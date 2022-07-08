@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
 		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
+		08573BA5287847DC006AC06F /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA4287847DC006AC06F /* MapLocation.swift */; };
 		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
 		08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97228664BC400E357DF /* TuitionWidgetView.swift */; };
@@ -231,6 +232,7 @@
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
 		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
+		08573BA4287847DC006AC06F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
 		08DFB97228664BC400E357DF /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
@@ -463,6 +465,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08573BA3287847C7006AC06F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08573BA4287847DC006AC06F /* MapLocation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		08DFB96B2866479A00E357DF /* WidgetComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +615,7 @@
 		36108BC927A304B5007DC62D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
+				08573BA3287847C7006AC06F /* Model */,
 				1F4C836528300E6F006971C0 /* Service */,
 				36108BCA27A304B5007DC62D /* Types */,
 				3654F381285171D7008AD5DC /* ViewModel */,
@@ -1559,6 +1570,7 @@
 				3654F362285168D2008AD5DC /* StudyRoomApiResponse.swift in Sources */,
 				36108BC527A3046B007DC62D /* LectureDetailsDetailedInfoView.swift in Sources */,
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
+				08573BA5287847DC006AC06F /* MapLocation.swift in Sources */,
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,

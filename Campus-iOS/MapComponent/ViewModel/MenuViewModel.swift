@@ -18,6 +18,17 @@ final class MenuViewModel: ObservableObject, Identifiable {
         self.date = date
         self.categories = categories
     }
+    
+    func getDishes() -> [Dish]  {
+        var dishes: [Dish] = []
+        for category in categories {
+            for dish in category.dishes {
+                dishes.append(dish)
+            }
+        }
+        
+        return dishes
+    }
 }
 
 struct MenuCategory: Identifiable {

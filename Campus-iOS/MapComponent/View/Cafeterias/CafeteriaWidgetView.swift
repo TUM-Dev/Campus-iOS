@@ -10,78 +10,107 @@ import MapKit
 
 struct CafeteriaWidgetView: View {
     
-    let size: WidgetSize
-    
-    init(size: WidgetSize = .square) {
-        self.size = size
-    }
-    
-    var body: some View {
-        WidgetFrameView(
-            size: size,
-            content: CafeteriaWidgetContent(size: size)
-        )
-    }
-}
-
-struct CafeteriaWidgetContent: View {
-    
     @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
+    
     let size: WidgetSize
     
-    var body: some View {
-        VStack(alignment: .leading) {
+    var content: some View {
+        Group {
             switch(viewModel.status) {
             case .error:
-                Text("No nearby cafeteria.")
+                TextWidgetView(text: "No nearby cafeteria.")
             case .loading:
-                Text("Searching nearby cafeteria")
-                ProgressView()
+                WidgetLoadingView(text: "Searching nearby cafeteria")
             default:
-                
-                if let cafeteria = viewModel.cafeteria {
-                    WidgetTitleView(title: cafeteria.title ?? "Unknown cafeteria")
-                        .padding(.bottom, 2)
-                }
-                
-                if viewModel.status != .noMenu, let menuVm = viewModel.menuViewModel {
-                    CompactMenuView(viewModel: menuVm, size: size)
+                if let cafeteria = viewModel.cafeteria,
+                   let title = cafeteria.title,
+                   let coordinate = cafeteria.coordinate {
+                    CafeteriaWidgetContent(
+                        size: size,
+                        cafeteria: title,
+                        dishes: viewModel.menuViewModel?.getDishes() ?? [],
+                        coordinate: coordinate
+                    )
                 } else {
-                    Text("No menu for today.")
+                    TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
                 }
-                
-                Spacer()
             }
         }
         .task {
             await viewModel.fetch()
         }
     }
+    
+    var body: some View {
+        WidgetFrameView(size: size,content: content)
+    }
+}
+
+struct CafeteriaWidgetContent: View {
+    
+    let size: WidgetSize
+    let cafeteria: String
+    let dishes: [Dish]
+    let coordinate: CLLocationCoordinate2D
+    
+    var content: some View {
+        VStack(alignment: .leading) {
+            Label(cafeteria, systemImage: "fork.knife")
+                .font(.system(size: size == .square ? 16 : 20).bold())
+                .lineLimit(1)
+                .padding(.bottom, 4)
+            
+            Label("Menu", systemImage: "menucard")
+                .font(.body.bold())
+            CompactMenuView(size: size, dishes: dishes)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+    }
+    
+    var body: some View {
+        
+        let region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude - 0.03
+            ),
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        )
+        
+        Map(coordinateRegion: Binding.constant(region),
+            annotationItems: [MapLocation(coordinate: coordinate)]) { item in
+                MapMarker(coordinate: item.coordinate)
+            }
+            .blur(radius: 2)
+            .allowsHitTesting(false) // Disallow map interaction.
+            .overlay {
+                Rectangle()
+                    .foregroundColor(.widget.opacity(0.9))
+                    .overlay {
+                        content
+                    }
+            }
+    }
 }
 
 struct CompactMenuView: View {
     
-    @ObservedObject var viewModel: MenuViewModel
     let size: WidgetSize
+    let dishes: [Dish]
     
-    private var dishes: [Dish] = []
     private var displayedDishes: Int
     
-    init(viewModel: MenuViewModel, size: WidgetSize) {
-        self.viewModel = viewModel
-        self.size = size
+    init(size: WidgetSize, dishes: [Dish]) {
         
-        for category in viewModel.categories {
-            for dish in category.dishes {
-                dishes.append(dish)
-            }
-        }
+        self.size = size
+        self.dishes = dishes
         
         switch (size) {
         case .square, .rectangle:
             displayedDishes = 1
         case .bigSquare:
-            displayedDishes = 5
+            displayedDishes = 4
         }
     }
     
@@ -130,9 +159,56 @@ struct CompactDishView: View {
 }
 
 struct CafeteriaWidgetView_Previews: PreviewProvider {
+    
+    static var dish = Dish(
+        name: "Pasta all'arrabiata",
+        prices: ["students" : Price(basePrice: 0.0, unitPrice: 0.66, unit: "100g")],
+        labels: ["VEGETARIAN"],
+        dishType: "Pasta"
+    )
+    
+    struct cafeteriaWidgetContent: View {
+        
+        let size: WidgetSize
+        
+        var body: some View {
+            CafeteriaWidgetContent(
+                size: size,
+                cafeteria: "Mensa Straubing",
+                dishes: [Dish](repeating: dish, count: 12),
+                coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
+            )
+        }
+    }
+    
+    static var content: some View {
+        VStack {
+            HStack {
+                WidgetFrameView(
+                    size: .square,
+                    content: cafeteriaWidgetContent(size: .square)
+                )
+                
+                WidgetFrameView(
+                    size: .square,
+                    content: cafeteriaWidgetContent(size: .square)
+                )
+            }
+            
+            WidgetFrameView(
+                size: .rectangle,
+                content: cafeteriaWidgetContent(size: .rectangle)
+            )
+            
+            WidgetFrameView(
+                size: .bigSquare,
+                content: cafeteriaWidgetContent(size: .bigSquare)
+            )
+        }
+    }
+    
     static var previews: some View {
-        CafeteriaWidgetView()
-        CafeteriaWidgetView()
-            .preferredColorScheme(.dark)
+        content
+        content.preferredColorScheme(.dark)
     }
 }
