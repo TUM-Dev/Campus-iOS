@@ -37,6 +37,5 @@ struct WidgetScreen: View {
             .frame(maxWidth: .infinity)
             .padding()
         }
-        .navigationTitle("My Widgets")
     }
 }

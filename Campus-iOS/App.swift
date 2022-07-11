@@ -100,6 +100,12 @@ struct CampusApp: App {
             
             NavigationView {
                 WidgetScreen()
+                    .navigationTitle("My Widgets")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(model: model)
+                        }
+                    }
             }
             .tag(4)
             .tabItem {
