@@ -74,6 +74,17 @@ class GradesViewModel: GradesViewModelProtocol {
             }
     }
     
+    var grades: [Grade] {
+        return gradesByDegreeAndSemester.flatMap { (degree, gradesBySemester) in
+            return gradesBySemester.flatMap { (semester, grades) in
+                return grades
+            }
+        }
+        .sorted { gradeA, gradeB in
+            return gradeA.date > gradeB.date
+        }
+    }
+    
     init(model: Model, service: GradesServiceProtocol) {
         self.model = model
         self.service = service

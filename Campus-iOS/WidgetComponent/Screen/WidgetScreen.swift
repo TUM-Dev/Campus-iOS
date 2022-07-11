@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WidgetScreen: View {
+    
+    @EnvironmentObject var model: Model
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -23,23 +26,17 @@ struct WidgetScreen: View {
                 
                 HStack {
                     CafeteriaWidgetView(size: .square)
-                    StudyRoomWidgetView(size: .square)
+                    GradeWidgetView(model: model, size: .square)
                 }
                 CafeteriaWidgetView(size: .rectangle)
                 CafeteriaWidgetView(size: .bigSquare)
-
+                
+                GradeWidgetView(model: model, size: .rectangle)
+                GradeWidgetView(model: model, size: .bigSquare)
             }
             .frame(maxWidth: .infinity)
             .padding()
         }
         .navigationTitle("My Widgets")
-    }
-}
-
-struct WidgetScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetScreen()
-        WidgetScreen()
-            .preferredColorScheme(.dark)
     }
 }

@@ -10,6 +10,7 @@
 		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
 		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
 		08573BA5287847DC006AC06F /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA4287847DC006AC06F /* MapLocation.swift */; };
+		08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA6287B6152006AC06F /* GradeWidgetView.swift */; };
 		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
 		08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97228664BC400E357DF /* TuitionWidgetView.swift */; };
@@ -243,6 +244,7 @@
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
 		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
 		08573BA4287847DC006AC06F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
+		08573BA6287B6152006AC06F /* GradeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeWidgetView.swift; sourceTree = "<group>"; };
 		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
 		08DFB97228664BC400E357DF /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
@@ -777,6 +779,7 @@
 				36108C1227A307F9007DC62D /* GradeView.swift */,
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
 				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
+				08573BA6287B6152006AC06F /* GradeWidgetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1623,6 +1626,7 @@
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
+				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
