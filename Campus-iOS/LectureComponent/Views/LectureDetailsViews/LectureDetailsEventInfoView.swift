@@ -40,7 +40,7 @@ struct LectureDetailsEventInfoView: View {
                 )
                 Divider()
                 // Open RoomfinderView
-                NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: self.location)) { // TODO: searchText should just be the room number -> filter the string
+                NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: extract(room: self.location))) {
                     LectureDetailsBasicInfoRowView(
                         iconName: "rectangle.portrait.arrowtriangle.2.inward",
                         text: self.location
@@ -67,6 +67,20 @@ struct LectureDetailsEventInfoView: View {
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    func extract(room: String) -> String {
+        var roomNumber = room
+
+        if let openBraceRange = roomNumber.range(of: "(") {
+            roomNumber.removeSubrange(roomNumber.startIndex..<openBraceRange.upperBound)
+        }
+        
+        if let closeBraceRange = roomNumber.range(of: ")") {
+            roomNumber.removeSubrange(closeBraceRange.lowerBound..<roomNumber.endIndex)
+        }
+        
+        return roomNumber
+    }
 }
 
 struct LectureDetailsEventInfoView_Previews: PreviewProvider {
