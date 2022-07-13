@@ -52,6 +52,7 @@ struct PanelContentView: View {
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
+                            .foregroundColor(Color(UIColor.tumBlue))
                     }
                     
                     Spacer()
