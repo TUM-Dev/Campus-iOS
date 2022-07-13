@@ -31,6 +31,8 @@ struct LecturesDetailView: View {
                     LectureDetailsDetailedInfoView(lectureDetails: lectureDetails)
                     
                     LectureDetailsLinkView(lectureDetails: lectureDetails)
+                    
+                    Spacer()
                 }
             }
         }
