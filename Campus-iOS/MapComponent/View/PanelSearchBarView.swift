@@ -28,31 +28,20 @@ struct PanelSearchBarView: View {
             .padding(7)
             .background(Color(.systemGray6))
             .cornerRadius(8)
-            .overlay {
-                HStack {
-                    Spacer()
-                    if !self.searchString.isEmpty {
-                        Button(action: {
-                            self.searchString = ""
-                            lockPanel = false
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(Color(UIColor.opaqueSeparator))
-                        }
-                        .padding(.trailing, 8)
-                    }
-                }
-            }
 
         if isEditing {
             Button(action: {
                 isEditing = false
                 lockPanel = false
                 searchString = ""
-                                
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                
+                withAnimation(.easeInOut(duration: 5)) {
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
             }) {
-                Text("Cancel")
+                Image(systemName: "xmark.circle")
+                    .font(.title2)
+                    .foregroundColor(Color(UIColor.tumBlue))
             }
             .padding(.trailing, 10)
             .transition(.move(edge: .trailing))
