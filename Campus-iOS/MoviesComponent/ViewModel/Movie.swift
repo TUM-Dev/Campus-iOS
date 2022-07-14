@@ -116,7 +116,7 @@ struct Movie: Entity {
         self.year = year
     }
 }
-extension Movie {
+extension Movie: Identifiable {
     static let dummyData: Movie = .init(
         id: 123,
         actors: "Morgan Freeman",

@@ -10,7 +10,8 @@ import SwiftUI
 struct MoviesView: View {
     
     @ObservedObject var viewModel = MoviesViewModel()
-    
+    @State private var selectedMovie: Movie? = nil
+
     var items: [GridItem] {
       Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
@@ -18,10 +19,14 @@ struct MoviesView: View {
     var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: items, spacing: 6) {
-                ForEach(self.viewModel.movies, id: \.id) { movie in
-                    NavigationLink(destination: MovieDetailedView(movie: movie)) {
+                ForEach(self.viewModel.movies, id: \.id ) { movie in
                         MovieCard(movie: movie).padding(10)
-                    }
+                        .onTapGesture {
+                            selectedMovie = movie
+                        }
+                }
+                .sheet(item: $selectedMovie) { movie in
+                    MovieDetailedView(movie: movie)
                 }
             }.padding(15)
         }

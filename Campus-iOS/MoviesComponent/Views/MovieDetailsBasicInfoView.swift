@@ -22,7 +22,7 @@ struct MovieDetailsBasicInfoView: View {
             // TODO: Ideally we set always present values as not optional
             VStack(alignment: .leading, spacing: 8) {
                 MovieDetailsBasicInfoRowView(
-                    iconName: "hourglass",
+                    iconName: "film.fill",
                     text: movieDetails.title ?? ""
                 )
                 Divider()
@@ -30,24 +30,13 @@ struct MovieDetailsBasicInfoView: View {
                     iconName: "book.fill",
                     text: movieDetails.genre ?? ""
                 )
-                Divider()
-//                MovieDetailsBasicInfoRowView(
-//                    // TODO: add film clapboard logo for director
-//                    iconName: "person.fill",
-//                    text: movieDetails.director ?? ""
-//                )
 //                Divider()
+//
+//                // TODO: Any way to access location?
 //                MovieDetailsBasicInfoRowView(
-//                    iconName: "hourglass",
-//                    text: movieDetails.runtime ?? ""
+//                    iconName: "map.fill",
+//                    text: "location" //?? ""
 //                )
-//                Divider()
-                
-                // TODO: Any way to access location?
-                MovieDetailsBasicInfoRowView(
-                    iconName: "map.fill",
-                    text: "location" //?? ""
-                )
 
                 if let unwrappedDate = movieDetails.date {
                     Divider()
