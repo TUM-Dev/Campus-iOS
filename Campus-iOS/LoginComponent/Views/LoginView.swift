@@ -99,7 +99,7 @@ struct LoginView: View {
                     
                     ZStack {
                         NavigationLink(destination:
-                                        TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token")), isActive: self.$viewModel.isContinuePressed) { EmptyView() }
+                                        TokenConfirmationView(viewModel: self.viewModel), isActive: self.$viewModel.isContinuePressed) { EmptyView() }
                         
                         Button(action: {
                             self.viewModel.loginWithContinue()

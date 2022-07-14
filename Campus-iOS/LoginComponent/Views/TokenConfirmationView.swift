@@ -20,110 +20,109 @@ struct TokenConfirmationView: View {
     let screenWidth = UIScreen.main.bounds.size.width
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack(alignment: .center) {
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 10){
                 VStack {
-                    Spacer(minLength: geo.size.height*0.15)
-                    VStack {
-                        switch currentStep {
-                        case 1:
-                            HStack() {
-                                Text("1")
-                                    .frame(width: 42, height: 42, alignment: .center)
-                                    .font(.title)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(Color(white: 1.0))
-                                    .background(Color(.tumBlue))
-                                    .clipShape(Circle())
-                                
-                                Spacer().frame(width: 20)
-                                
-                                HStack(spacing: 5) {
-                                    Text("Log in on [TUMonline](https://campus.tum.de)")
-                                        .font(.body)
-                                        .tint(Color(.tumBlue))
-                                }
-                                
-                            }
-                        case 2:
-                            HStack() {
-                                Text("2")
-                                    .frame(width: 42, height: 42, alignment: .center)
-                                    .font(.title)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(Color(white: 1.0))
-                                    .background(Color(.tumBlue))
-                                    .clipShape(Circle())
-                                
-                                Spacer().frame(width: 20)
-                                
-                                Text("Select **Token-Management**")
+                    switch currentStep {
+                    case 1:
+                        HStack() {
+                            Text("1")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(.tumBlue))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            HStack(spacing: 5) {
+                                Text("Log in on [TUMonline](https://campus.tum.de)")
                                     .font(.body)
+                                    .tint(Color(.tumBlue))
                             }
-                        case 3:
-                            HStack() {
-                                Text("3")
-                                    .frame(width: 42, height: 42, alignment: .center)
-                                    .font(.title)
-                                    .multilineTextAlignment(.center)
-                                    .foregroundColor(Color(white: 1.0))
-                                    .background(Color(.tumBlue))
-                                    .clipShape(Circle())
-                                
-                                Spacer().frame(width: 20)
-                                
-                                Text("Activate the newly created token and enable your desired permissions")
-                                    .font(.body)
-                            }
-                        default: EmptyView()
+                            
                         }
+                    case 2:
+                        HStack() {
+                            Text("2")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(.tumBlue))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            Text("Select **Token-Management**")
+                                .font(.body)
+                        }
+                    case 3:
+                        HStack() {
+                            Text("3")
+                                .frame(width: 42, height: 42, alignment: .center)
+                                .font(.title)
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color(white: 1.0))
+                                .background(Color(.tumBlue))
+                                .clipShape(Circle())
+                            
+                            Spacer().frame(width: 20)
+                            
+                            Text("Activate the newly created token and enable your desired permissions")
+                                .font(.body)
+                                .minimumScaleFactor(0.2)
+
+                        }
+                    default: EmptyView()
                     }
-                    .frame(width: geo.size.width, height: geo.size.height*0.11, alignment: .center)
+                }
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.11, alignment: .center)
+                
+                
+                
                     
-                    
-                    VStack {
-                        
-                        let videoUrl = Bundle.main
-                            .url(forResource: "token-tutorial", withExtension: "mov")!
-                        PlayerView(videoUrl: videoUrl)
-                            .cornerRadius(10)
-                            .shadow(radius: 10)
-                        // Video is 2532 x 1170
-                            .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
-                    }
-                    
-                    
-                    VStack {
-                        Spacer()
-                        let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello I have an issue activating the token...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                        let mailToUrl = URL(string: mailToString!)!
-                        Link(destination: mailToUrl) {
-                            Text("Contact Support").foregroundColor(Color(.tumBlue))
-                        }
-                        
-                        Button(action: {
-                            self.viewModel.checkAuthorizzation()
-                        }) {
-                            Text("Check Authorization").lineLimit(1).font(.body)
-                                .frame(width: 200, height: 48, alignment: .center)
-                        }
-                        .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
-                            Button("OK", role: .cancel) {}
-                        }
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .background(Color(.tumBlue))
-                        .cornerRadius(10)
-                        .padding()
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                }.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
+                let videoUrl = Bundle.main
+                    .url(forResource: "token-tutorial", withExtension: "mov")!
+                PlayerView(videoUrl: videoUrl)
+                    .cornerRadius(10)
+                    .shadow(radius: 10)
+                // Video is 2532 x 1170
+                    .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
+            
+            
+                Spacer()
+                
+                Button(action: {
+                    self.viewModel.checkAuthorizzation()
+                }) {
+                    Text("Check Authorization").lineLimit(1).font(.body)
+                        .frame(width: 200, height: 48, alignment: .center)
+                }
+                .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
+                    Button("OK", role: .cancel) {}
+                }
+                .font(.title)
+                .foregroundColor(.white)
+                .background(Color(.tumBlue))
+                .cornerRadius(10)
+                
+                Spacer()
+                
+                let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello I have an issue activating the token...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                let mailToUrl = URL(string: mailToString!)!
+                Link(destination: mailToUrl) {
+                    Text("Contact Support").foregroundColor(Color(.tumBlue))
+                }
+                
+                Spacer()
+                
+                
             }
         }
+        .navigationBarTitle("Authorize Token", displayMode: .automatic)
         .background(Color(.systemBackground))
-        ._scrollable()
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
                                 Button(action: {
@@ -145,7 +144,6 @@ struct TokenConfirmationView: View {
                 secondaryButton: .cancel()
               )
         }
-        .edgesIgnoringSafeArea(.top)
         .task {
             await switchSteps()
         }
@@ -195,8 +193,17 @@ struct TokenConfirmationView_Previews: PreviewProvider {
             NavigationView {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
-        }.previewDevice("iPhone 12")
+        }//.previewDevice("iPod touch (7th generation)")
             //.previewDevice("iPhone SE (3rd generation)")
+        .previewDevice("iPhone 12")
+        
+        Text("Background2").sheet(isPresented: .constant(true)) {
+            NavigationView {
+                TokenConfirmationView(viewModel: LoginViewModel(model: model))
+            }
+        }.previewDevice("iPod touch (7th generation)")
+            //.previewDevice("iPhone SE (3rd generation)")
+        //.previewDevice("iPhone 12")
     }
 }
 
