@@ -25,13 +25,10 @@ struct PanelView: View {
             }
             .onEnded(onDragEnded)
         
-        return Group {
-            VStack{
-                PanelContentView(vm: self.vm)
-                //Spacer().frame(width: screenWidth, height: screenHeight)
-            }
+        return VStack {
+            PanelContentView(vm: self.vm)
         }
-        .frame(height: screenHeight)
+        .frame(height: screenHeight*scale, alignment: .center)
         .background()
         .cornerRadius(10.0)
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
@@ -108,15 +105,17 @@ struct PanelView: View {
 }
 
 let screenHeight = UIScreen.main.bounds.height
+let scale = 0.7
 
 enum PanelPosition: CGFloat {
+    
     case top, kbtop, middle, bottom
     var rawValue: CGFloat {
         switch self {
-        case .top: return (1.2/10) * screenHeight
-        case .kbtop: return (2.5/10) * screenHeight
-        case .middle: return (5/10) * screenHeight
-        case .bottom: return (8.3/10) * screenHeight
+        case .top: return (1.2*scale/10) * screenHeight
+        case .kbtop: return (2.5*scale/10) * screenHeight
+        case .middle: return (5*scale/10) * screenHeight
+        case .bottom: return (8.3*scale/10) * screenHeight
         }
     }
 }
@@ -148,6 +147,8 @@ struct PanelView_Previews: PreviewProvider {
     @Binding var selectedCanteen: Cafeteria?
 
     static var previews: some View {
-        PanelView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+        TabView {
+            PanelView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+        }
     }
 }
