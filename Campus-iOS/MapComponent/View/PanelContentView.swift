@@ -24,14 +24,6 @@ struct PanelContentView: View {
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                 .frame(width: 40, height: CGFloat(5.0))
                 .foregroundColor(Color.primary.opacity(0.2))
-            Button {
-                print("PANEL POS")
-                print(vm.panelPos)
-                vm.panelPos = .bottom
-            } label: {
-                Text("Reset Panel Height")
-            }
-            
             
             if vm.selectedCafeteria != nil {
                 CafeteriaView(selectedCanteen: $vm.selectedCafeteria)
@@ -55,10 +47,6 @@ struct PanelContentView: View {
                     Button (action: {
                         vm.zoomOnUser = true
                         vm.panelPos = .middle
-                        
-                        //                        if vm.panelPosition == "up" {
-                        //                            vm.panelPosition = "pushMid"
-                        //                        }
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
@@ -66,9 +54,7 @@ struct PanelContentView: View {
                     
                     Spacer()
                     
-                    PanelSearchBarView(panelPosition: $vm.panelPosition,
-                                       lockPanel: $vm.lockPanel,
-                                       searchString: $searchString)
+                    PanelSearchBarView(vm: self.vm, searchString: $searchString)
                     
                     Spacer()
                     

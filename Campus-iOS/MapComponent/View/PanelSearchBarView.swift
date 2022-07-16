@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PanelSearchBarView: View {
-    @Binding var panelPosition: String
-    @Binding var lockPanel: Bool
+    @ObservedObject var vm: MapViewModel
+    
     @Binding var searchString: String
     
     @State private var isEditing = false
@@ -18,11 +18,11 @@ struct PanelSearchBarView: View {
         TextField("Search ...", text: $searchString, onEditingChanged: { (editingChanged) in
             if editingChanged {
                 isEditing = true
-                lockPanel = true
-                panelPosition = "pushKBTop"
+                vm.lockPanel = true
+                vm.panelPos = .kbtop
             } else {
                 isEditing = false
-                lockPanel = false
+                vm.lockPanel = false
             }
         })
             .padding(7)
@@ -34,7 +34,7 @@ struct PanelSearchBarView: View {
                     if !self.searchString.isEmpty {
                         Button(action: {
                             self.searchString = ""
-                            lockPanel = false
+                            vm.lockPanel = false
                         }) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(Color(UIColor.opaqueSeparator))
@@ -47,7 +47,7 @@ struct PanelSearchBarView: View {
         if isEditing {
             Button(action: {
                 isEditing = false
-                lockPanel = false
+                vm.lockPanel = false
                 searchString = ""
                                 
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -63,10 +63,6 @@ struct PanelSearchBarView: View {
 
 struct PanelSearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelSearchBarView(
-            panelPosition: .constant(""),
-            lockPanel: .constant(true),
-            searchString: .constant("")
-        )
+        PanelSearchBarView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
     }
 }

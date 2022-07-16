@@ -19,13 +19,13 @@ struct PanelView: View {
     @State var panelHeight = UIScreen.main.bounds.height * 0.8
     
     var body: some View {
-        let drag = DragGesture()
-            .updating($dragState) { drag, state, transaction in
-                if vm.lockPanel == false {
-                    state = .dragging(translation: drag.translation)
-                }
-            }
-            .onEnded(onDragEnded)
+//        let drag = DragGesture()
+//            .updating($dragState) { drag, state, transaction in
+//                if vm.lockPanel == false {
+//                    state = .dragging(translation: drag.translation)
+//                }
+//            }
+//            .onEnded(onDragEnded)
         
         return VStack {
             PanelContentView(vm: self.vm)

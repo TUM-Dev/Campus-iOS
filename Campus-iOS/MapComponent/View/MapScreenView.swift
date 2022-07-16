@@ -56,8 +56,6 @@ struct MapScreenView: View {
                                     panelHeight = vm.panelPos.rawValue
                                     print(panelHeight)
                                 }
-                            } else {
-                                print("NO CHANGE")
                             }
                         }
                 }
@@ -80,9 +78,7 @@ struct MapScreenView: View {
     }
     
     func closestMatch(values: [PanelPos], inputValue: CGFloat) -> PanelPos {
-        let pos = (values.reduce(values[0]) { abs($0.rawValue-inputValue) < abs($1.rawValue-inputValue) ? $0 : $1 })
-        print(pos)
-        return pos
+        return (values.reduce(values[0]) { abs($0.rawValue-inputValue) < abs($1.rawValue-inputValue) ? $0 : $1 })
     }
 }
 
