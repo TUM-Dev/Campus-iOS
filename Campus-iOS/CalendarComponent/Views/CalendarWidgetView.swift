@@ -173,7 +173,7 @@ struct CalendarWidgetView_Previews: PreviewProvider {
                 size: size,
                 content: CalendarWidgetContent(
                     size: size,
-                    events: [Date() : events]
+                    events: events
                 )
             )
         }
