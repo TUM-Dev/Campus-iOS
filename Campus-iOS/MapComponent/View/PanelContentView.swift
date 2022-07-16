@@ -18,7 +18,8 @@ struct PanelContentView: View {
     private let handleThickness = CGFloat(0)
     
     var body: some View {
-        VStack{
+        VStack {
+            
             Spacer().frame(height: 10)
             
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
@@ -31,14 +32,11 @@ struct PanelContentView: View {
                     MealPlanView(viewModel: viewModel)
                 }
                 
-                Spacer()
             } else if vm.selectedStudyGroup != nil {
                 StudyRoomGroupView(
                     selectedGroup: $vm.selectedStudyGroup,
                     rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom]()
                 )
-                
-                Spacer()
             }
             else {
                 HStack {

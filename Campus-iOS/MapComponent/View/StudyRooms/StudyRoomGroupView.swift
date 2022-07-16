@@ -99,6 +99,8 @@ struct StudyRoomGroupView: View {
                     }
                 }
             }
+        } else {
+            Text("No Study Room Data available")
         }
     }
 }

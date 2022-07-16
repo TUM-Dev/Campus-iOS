@@ -122,6 +122,8 @@ enum PanelHeight {
     static let bottom = UIScreen.main.bounds.height * 0.2
 }
 
+let screenHeight = UIScreen.main.bounds.height
+
 enum PanelPos {
     case top, kbtop, middle, bottom
     var rawValue: CGFloat {
