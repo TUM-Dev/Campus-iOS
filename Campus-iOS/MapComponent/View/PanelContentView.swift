@@ -22,17 +22,17 @@ struct PanelContentView: View {
             Spacer().frame(height: 10)
             
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
-                        .frame(width: 40, height: CGFloat(5.0))
-                        .foregroundColor(Color.primary.opacity(0.2))
+                .frame(width: 40, height: CGFloat(5.0))
+                .foregroundColor(Color.primary.opacity(0.2))
             Button {
                 withAnimation {
-                    vm.panelHeight = PanelHeight.top
+                    vm.panelPos = .top
                 }
-//                vm.panelPos = .top
+                //                vm.panelPos = .top
             } label: {
                 Text("Reset Panel Height")
             }
-
+            
             
             if vm.selectedCafeteria != nil {
                 CafeteriaView(selectedCanteen: $vm.selectedCafeteria)
@@ -55,11 +55,11 @@ struct PanelContentView: View {
                     
                     Button (action: {
                         vm.zoomOnUser = true
-                        vm.panelHeight = PanelHeight.middle
+                        vm.panelPos = .middle
                         
-//                        if vm.panelPosition == "up" {
-//                            vm.panelPosition = "pushMid"
-//                        }
+                        //                        if vm.panelPosition == "up" {
+                        //                            vm.panelPosition = "pushMid"
+                        //                        }
                     }) {
                         Image(systemName: "location")
                             .font(.title2)
@@ -68,8 +68,8 @@ struct PanelContentView: View {
                     Spacer()
                     
                     PanelSearchBarView(panelPosition: $vm.panelPosition,
-                              lockPanel: $vm.lockPanel,
-                              searchString: $searchString)
+                                       lockPanel: $vm.lockPanel,
+                                       searchString: $searchString)
                     
                     Spacer()
                     
@@ -100,26 +100,26 @@ struct PanelContentView: View {
                         vm.setAnnotations = true
                     }
                     
-//                    Menu(content: {
-//                        Button(action: {
-//                            self.mode = .cafeterias
-//                            self.setAnnotations = true
-//                        }, label: {
-//                            Label("Cafeterias", systemImage: "fork.knife")
-//                        })
-//                        Button(action: {
-//                            self.mode = .studyRooms
-//                            self.setAnnotations = true
-//                        }, label: {
-//                            Label("Study Rooms", systemImage: "book.fill")
-//                        })
-//                    }) {
-//                        if mode == .cafeterias {
-//                            Image(systemName: "fork.knife")
-//                        } else {
-//                            Image(systemName: "book.fill")
-//                        }
-//                    }
+                    //                    Menu(content: {
+                    //                        Button(action: {
+                    //                            self.mode = .cafeterias
+                    //                            self.setAnnotations = true
+                    //                        }, label: {
+                    //                            Label("Cafeterias", systemImage: "fork.knife")
+                    //                        })
+                    //                        Button(action: {
+                    //                            self.mode = .studyRooms
+                    //                            self.setAnnotations = true
+                    //                        }, label: {
+                    //                            Label("Study Rooms", systemImage: "book.fill")
+                    //                        })
+                    //                    }) {
+                    //                        if mode == .cafeterias {
+                    //                            Image(systemName: "fork.knife")
+                    //                        } else {
+                    //                            Image(systemName: "book.fill")
+                    //                        }
+                    //                    }
                     
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
                                    height: 1.5 * UIScreen.main.bounds.width/10)

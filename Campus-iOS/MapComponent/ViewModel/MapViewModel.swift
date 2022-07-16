@@ -35,8 +35,7 @@ class MapViewModel: MapViewModelProtocol {
     
     @Published var selectedStudyGroup: StudyRoomGroup?
     
-    @Published var panelHeight: CGFloat = PanelHeight.top
-    //@Published var panelPos: PanelHeight = .top
+    @Published var panelPos: PanelPos = .top
     
     private let mock: Bool
     
@@ -136,4 +135,16 @@ enum PanelHeight {
 //        case .bottom: return screenHeight * 0.2
 //        }
 //    }
+}
+
+enum PanelPos {
+    case top, kbtop, middle, bottom
+    var rawValue: CGFloat {
+        switch self {
+        case .top: return screenHeight * 0.8
+        case .kbtop: return screenHeight * 0.7
+        case .middle: return screenHeight * 0.5
+        case .bottom: return screenHeight * 0.2
+        }
+    }
 }
