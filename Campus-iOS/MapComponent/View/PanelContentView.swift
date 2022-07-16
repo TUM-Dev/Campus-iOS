@@ -25,10 +25,9 @@ struct PanelContentView: View {
                 .frame(width: 40, height: CGFloat(5.0))
                 .foregroundColor(Color.primary.opacity(0.2))
             Button {
-                withAnimation {
-                    vm.panelPos = .top
-                }
-                //                vm.panelPos = .top
+                print("PANEL POS")
+                print(vm.panelPos)
+                vm.panelPos = .bottom
             } label: {
                 Text("Reset Panel Height")
             }

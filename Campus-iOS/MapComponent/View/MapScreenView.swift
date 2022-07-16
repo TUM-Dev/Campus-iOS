@@ -51,8 +51,13 @@ struct MapScreenView: View {
                                 }
                         )
                         .task(id: vm.panelPos) {
-                            withAnimation {
-                                panelHeight = vm.panelPos.rawValue
+                            if panelHeight != vm.panelPos.rawValue {
+                                withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                                    panelHeight = vm.panelPos.rawValue
+                                    print(panelHeight)
+                                }
+                            } else {
+                                print("NO CHANGE")
                             }
                         }
                 }
@@ -68,14 +73,17 @@ struct MapScreenView: View {
     
     func snapPanel(from height: CGFloat) {
         print(height)
-        let snapHeights = [PanelHeight.top, PanelHeight.kbtop, PanelHeight.middle, PanelHeight.bottom]
+        let snapHeights = [PanelPos.top, PanelPos.kbtop, PanelPos.middle, PanelPos.bottom]
         
-        panelHeight = closestMatch(values: snapHeights, inputValue: height)
+        vm.panelPos = closestMatch(values: snapHeights, inputValue: height)
+        panelHeight = vm.panelPos.rawValue
     }
     
-    func closestMatch(values: [CGFloat], inputValue: CGFloat) -> CGFloat {
-       return (values.reduce(values[0]) { abs($0-inputValue) < abs($1-inputValue) ? $0 : $1 })
-   }
+    func closestMatch(values: [PanelPos], inputValue: CGFloat) -> PanelPos {
+        let pos = (values.reduce(values[0]) { abs($0.rawValue-inputValue) < abs($1.rawValue-inputValue) ? $0 : $1 })
+        print(pos)
+        return pos
+    }
 }
 
 struct MapScreenView_Previews: PreviewProvider {
