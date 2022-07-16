@@ -35,5 +35,9 @@ class CalendarViewModel: ObservableObject {
             }
         })
     }
+    
+    var eventsByDate: [Date? : [CalendarEvent]] {
+        let dictionary = Dictionary(grouping: events, by: { $0.startDate })
+        return dictionary
+    }
 }
-
