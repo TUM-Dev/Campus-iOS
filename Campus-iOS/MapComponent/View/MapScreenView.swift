@@ -15,6 +15,7 @@ struct MapScreenView: View {
     let screenHeight = UIScreen.main.bounds.width
     
     @State var position = PanelPosition.bottom
+    @State var panelHeight = UIScreen.main.bounds.height * 0.8
     
     init(vm: MapViewModel) {
         self._vm = StateObject(wrappedValue: vm)
@@ -25,8 +26,33 @@ struct MapScreenView: View {
         // -> Here check the status of the fetched cafeterias
         ZStack {
             MapContentView(vm: self.vm)
-            PanelView(vm: self.vm)
-        }.edgesIgnoringSafeArea(.vertical)
+            VStack{
+                Spacer()
+                VStack {
+                    PanelContentView(vm: self.vm)
+                        .background(Color.white)
+                        .cornerRadius(10, corners: [.topRight, .topLeft])
+                        .shadow(radius: 10)
+                        .frame(height: panelHeight, alignment: .bottomTrailing)
+                        .gesture(
+                            DragGesture(minimumDistance: 15)
+                                .onChanged { value in
+                                    //if !vm.lockPanel {
+//                                        DispatchQueue.main.async {
+//                                            vm.panelHeight = vm.panelHeight - value.translation.height
+//                                        }
+                                        panelHeight = panelHeight - value.translation.height
+                                        print("Change \(panelHeight)")
+//                                    }
+//
+                                }
+//                                .onEnded { value in
+//                                    vm.panelHeight = panelHeight
+//                                }
+                        )
+                }
+            }
+        }.edgesIgnoringSafeArea(.top)
             .navigationTitle("Map")
             .navigationBarHidden(true)
     }
@@ -34,6 +60,8 @@ struct MapScreenView: View {
 
 struct MapScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
+        TabView {
+            MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
+        }
     }
 }

@@ -205,7 +205,8 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                             control.vm.selectedAnnotationIndex = i
                             // Making the selected annotation (i.e. cafeteria) the selected cafeteria -> shows the MealPlanView inside the PanelContentView like tapping on a cafeteria in the PanelContentCafeteriasListView
                             control.vm.selectedCafeteria = control.vm.cafeterias[i]
-                            control.vm.panelPosition = "pushMid"
+                            //control.vm.panelPosition = "pushMid"
+                            control.vm.panelHeight = PanelHeight.middle
                         }
                     }
                 }
@@ -216,6 +217,7 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                             // Making the selected annotation (i.e. study group) the selected study group -> shows the StudyRoomGroupView with inside the PanelContentView like tapping on a study group in the PanelContentStudyRoomGroupsListView
                             control.vm.selectedStudyGroup = groups[i]
                             control.vm.panelPosition = "pushMid"
+                            control.vm.panelHeight = PanelHeight.middle
                         }
                     }
                 }

@@ -24,6 +24,15 @@ struct PanelContentView: View {
             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                         .frame(width: 40, height: CGFloat(5.0))
                         .foregroundColor(Color.primary.opacity(0.2))
+            Button {
+                withAnimation {
+                    vm.panelHeight = PanelHeight.top
+                }
+//                vm.panelPos = .top
+            } label: {
+                Text("Reset Panel Height")
+            }
+
             
             if vm.selectedCafeteria != nil {
                 CafeteriaView(selectedCanteen: $vm.selectedCafeteria)
@@ -46,9 +55,11 @@ struct PanelContentView: View {
                     
                     Button (action: {
                         vm.zoomOnUser = true
-                        if vm.panelPosition == "up" {
-                            vm.panelPosition = "pushMid"
-                        }
+                        vm.panelHeight = PanelHeight.middle
+                        
+//                        if vm.panelPosition == "up" {
+//                            vm.panelPosition = "pushMid"
+//                        }
                     }) {
                         Image(systemName: "location")
                             .font(.title2)

@@ -33,7 +33,8 @@ struct PanelContentListView: View {
                     .onAppear {
                         if retryAttemp {
                             withAnimation(.easeIn) {
-                                vm.panelPosition = "pushMid"
+                                //vm.panelPosition = "pushMid"
+                                vm.panelHeight = PanelHeight.middle
                             }
                             retryAttemp = false
                         }
@@ -54,7 +55,8 @@ struct PanelContentListView: View {
                         } )
                     .onAppear {
                         withAnimation(.easeIn) {
-                            vm.panelPosition = "pushTop"
+                            //vm.panelPosition = "pushTop"
+                            vm.panelHeight = PanelHeight.top
                         }
                     }
                 }
@@ -90,7 +92,8 @@ struct PanelContentListView: View {
                     .onAppear {
                         if retryAttemp {
                             withAnimation(.easeIn) {
-                                vm.panelPosition = "pushMid"
+                                //vm.panelPosition = "pushMid"
+                                vm.panelHeight = PanelHeight.middle
                             }
                             retryAttemp = false
                         }
@@ -111,7 +114,8 @@ struct PanelContentListView: View {
                         } )
                     .onAppear {
                         withAnimation(.easeIn) {
-                            vm.panelPosition = "pushTop"
+                            //vm.panelPosition = "pushTop"
+                            vm.panelHeight = PanelHeight.top
                         }
                     }
                 }

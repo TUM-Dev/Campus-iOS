@@ -16,6 +16,8 @@ struct PanelView: View {
     let screenHeight = UIScreen.main.bounds.height
     let screenWidth = UIScreen.main.bounds.width
     
+    @State var panelHeight = UIScreen.main.bounds.height * 0.8
+    
     var body: some View {
         let drag = DragGesture()
             .updating($dragState) { drag, state, transaction in
@@ -27,28 +29,44 @@ struct PanelView: View {
         
         return VStack {
             PanelContentView(vm: self.vm)
+//                .frame(height: panelHeight, alignment: .bottomTrailing)
+//                .gesture(
+//                    DragGesture()
+//                        .onChanged { value in
+////                            DispatchQueue.main.async {
+////                                vm.panelHeight = vm.panelHeight - value.translation.height
+////                            }
+//                            panelHeight = panelHeight - value.translation.height
+//                        }
+//                )
         }
-        .frame(height: screenHeight*scale, alignment: .center)
         .background()
-        .cornerRadius(10.0)
+        .cornerRadius(10, corners: [.topRight, .topLeft])
         .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.2), radius: 10.0)
-        .offset(y: self.position.rawValue + self.dragState.translation.height)
-        .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0), value: self.dragState.isDragging)
-        .gesture(drag)
-        .task(id: vm.panelPosition) {
-            print("PANEL POS: \(vm.panelPosition)")
-            withAnimation {
-                if vm.panelPosition == "pushKBTop" {
-                    self.position = .kbtop
-                } else if vm.panelPosition == "pushMid" {
-                    self.position = .middle
-                } else if vm.panelPosition == "pushDown" {
-                    self.position = .bottom
-                } else if vm.panelPosition == "pushTop" {
-                    self.position = .top
-                }
-            }
-        }
+        //.offset(y: self.position.rawValue + self.dragState.translation.height)
+//        .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0), value: self.dragState.isDragging)
+        
+//        .task(id: vm.panelPosition) {
+//            print("PANEL POS: \(vm.panelPosition)")
+//            withAnimation {
+//                if vm.panelPosition == "pushKBTop" {
+//                    self.position = .kbtop
+//                } else if vm.panelPosition == "pushMid" {
+//                    self.position = .middle
+//                } else if vm.panelPosition == "pushDown" {
+//                    self.position = .bottom
+//                } else if vm.panelPosition == "pushTop" {
+//                    self.position = .top
+//                }
+//            }
+//        }
+//        .task(id: vm.panelHeight) {
+//            if vm.panelHeight != self.panelHeight {
+//                withAnimation {
+//                    self.panelHeight = vm.panelHeight
+//                }
+//            }
+//        }
     }
     
     private func onDragEnded(drag: DragGesture.Value) {
@@ -150,5 +168,22 @@ struct PanelView_Previews: PreviewProvider {
         TabView {
             PanelView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
         }
+    }
+}
+
+struct RoundedCorner: Shape {
+
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
