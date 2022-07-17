@@ -73,7 +73,7 @@ struct CalendarWidgetContent: View {
                     Text("Today") // Today no events.
                 }
             }
-            .font(.system(size: 15).bold())
+            .font(.body.bold())
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .leading)
 
