@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct StudyRoomWidgetView: View {
     
@@ -29,17 +30,23 @@ struct StudyRoomWidgetContent: View {
             case .loading:
                 WidgetLoadingView(text: "Searching nearby study rooms")
             default:
-                if let studyGroup = viewModel.studyGroup,
-                   let rooms = viewModel.rooms {
+                if let name = viewModel.studyGroup?.name,
+                   let rooms = viewModel.rooms,
+                   let coordinate = viewModel.studyGroup?.coordinate {
                     
                     switch (size) {
                     case .square, .rectangle:
                         SimpleStudyRoomWidgetContent(
-                            studyGroup: studyGroup,
-                            freeRooms: rooms.filter{ $0.isAvailable() }.count
+                            studyGroup: name,
+                            freeRooms: rooms.filter{ $0.isAvailable() }.count,
+                            coordinate: coordinate
                         )
                     case .bigSquare:
-                        DetailedStudyRoomWidgetContent(studyGroup: studyGroup, rooms: rooms)
+                        DetailedStudyRoomWidgetContent(
+                            studyGroup: name,
+                            rooms: rooms,
+                            coordinate: coordinate
+                        )
                     }
                 } else {
                     TextWidgetView(text: "No nearby study rooms.")
@@ -59,10 +66,10 @@ struct SimpleStudyRoomWidgetContent: View {
     
     let studyGroup: String
     let freeRooms: Int
+    let coordinate: CLLocationCoordinate2D
         
     var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
+        WidgetMapBackgroundView(coordinate: coordinate)
             .overlay {
                 VStack(alignment: .leading) {
                     RoomCountView(count: freeRooms)
@@ -78,11 +85,13 @@ struct DetailedStudyRoomWidgetContent: View {
     
     let studyGroup: String
     let rooms: [StudyRoom]
+    let coordinate: CLLocationCoordinate2D
     
     private let DISPLAYED_ROOMS = 5
     
-    init(studyGroup: String, rooms: [StudyRoom]) {
+    init(studyGroup: String, rooms: [StudyRoom], coordinate: CLLocationCoordinate2D) {
         self.studyGroup = studyGroup
+        self.coordinate = coordinate
         
         // Display available rooms first.
         self.rooms = rooms.sorted { r1, _ in
@@ -91,8 +100,7 @@ struct DetailedStudyRoomWidgetContent: View {
     }
     
     var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
+        WidgetMapBackgroundView(coordinate: coordinate)
             .overlay {
                 VStack(alignment: .leading) {
                     RoomCountView(count: rooms.filter{ $0.isAvailable() }.count)
@@ -179,16 +187,27 @@ struct RoomDetailsView: View {
 
 struct StudyRoomWidgetView_Previews: PreviewProvider {
     
+    static var simpleContent = SimpleStudyRoomWidgetContent(
+        studyGroup: "StudiTUM Weihenstephan",
+        freeRooms: 42,
+        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
+    )
+    
+    static var detailedContent = DetailedStudyRoomWidgetContent(
+        studyGroup: "StudiTUM Weihenstephan",
+        rooms: [StudyRoom](repeating: StudyRoom(), count: 12),
+        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
+    )
+    
     static var content: some View {
         VStack {
-            HStack{
-                WidgetFrameView(size: .square, content: SimpleStudyRoomWidgetContent(studyGroup: "StudiTUM Weihenstephan", freeRooms: 0))
+            HStack {
+                WidgetFrameView(size: .square, content: simpleContent)
                 
-                WidgetFrameView(size: .square, content: SimpleStudyRoomWidgetContent(studyGroup: "StudiTUM Weihenstephan", freeRooms: 1))
+                WidgetFrameView(size: .square, content: simpleContent)
             }
-
-            WidgetFrameView(size: .rectangle, content: SimpleStudyRoomWidgetContent(studyGroup: "StudiTUM Weihenstephan", freeRooms: 42))
-            WidgetFrameView(size: .bigSquare, content: DetailedStudyRoomWidgetContent(studyGroup: "StudiTUM Weihenstephan", rooms: [StudyRoom](repeating: StudyRoom(), count: 12)))
+            WidgetFrameView(size: .rectangle, content: simpleContent)
+            WidgetFrameView(size: .bigSquare, content: detailedContent)
         }
     }
     

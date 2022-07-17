@@ -12,7 +12,7 @@ import Alamofire
 @MainActor
 class StudyRoomWidgetViewModel: ObservableObject {
     
-    @Published var studyGroup: String?
+    @Published var studyGroup: StudyRoomGroup?
     @Published var rooms: [StudyRoom]?
     @Published var status: StudyRoomWidgetStatus
     
@@ -42,9 +42,8 @@ class StudyRoomWidgetViewModel: ObservableObject {
                 return
             }
             
-            
-            self.studyGroup = group.name ?? "Unknown study group"
-            self.rooms = group.getRooms(allRooms: rooms)
+            self.studyGroup = group
+            self.rooms = studyGroup?.getRooms(allRooms: rooms)
             
             self.status = .success
         } catch {

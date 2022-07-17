@@ -70,26 +70,9 @@ struct CafeteriaWidgetContent: View {
     
     var body: some View {
         
-        let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(
-                latitude: coordinate.latitude,
-                longitude: coordinate.longitude - 0.03
-            ),
-            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        )
-        
-        Map(coordinateRegion: Binding.constant(region),
-            annotationItems: [MapLocation(coordinate: coordinate)]) { item in
-                MapMarker(coordinate: item.coordinate)
-            }
-            .blur(radius: 2)
-            .allowsHitTesting(false) // Disallow map interaction.
+        WidgetMapBackgroundView(coordinate: coordinate)
             .overlay {
-                Rectangle()
-                    .foregroundColor(.widget.opacity(0.9))
-                    .overlay {
-                        content
-                    }
+                content
             }
     }
 }
