@@ -55,14 +55,19 @@ struct CafeteriaWidgetContent: View {
     
     var content: some View {
         VStack(alignment: .leading) {
-            Label(cafeteria, systemImage: "fork.knife")
-                .font(.system(size: size == .square ? 16 : 20).bold())
-                .lineLimit(1)
-                .padding(.bottom, 4)
             
-            Label("Menu", systemImage: "menucard")
-                .font(.body.bold())
+            HStack {
+                Image(systemName: "fork.knife")
+                Text(cafeteria)
+                    .bold()
+                    .lineLimit(2)
+            }
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.bottom, 2)
+            
             CompactMenuView(size: size, dishes: dishes)
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -93,7 +98,7 @@ struct CompactMenuView: View {
         case .square, .rectangle:
             displayedDishes = 1
         case .bigSquare:
-            displayedDishes = 4
+            displayedDishes = 5
         }
     }
     
@@ -143,16 +148,16 @@ struct CompactDishView: View {
 
 struct CafeteriaWidgetView_Previews: PreviewProvider {
     
-    static var dish = Dish(
-        name: "Pasta all'arrabiata",
-        prices: ["students" : Price(basePrice: 0.0, unitPrice: 0.66, unit: "100g")],
-        labels: ["VEGETARIAN"],
-        dishType: "Pasta"
-    )
-    
     struct cafeteriaWidgetContent: View {
         
         let size: WidgetSize
+        
+        private let dish = Dish(
+            name: "Pasta all'arrabiata",
+            prices: ["students" : Price(basePrice: 0.0, unitPrice: 0.66, unit: "100g")],
+            labels: ["VEGETARIAN"],
+            dishType: "Pasta"
+        )
         
         var body: some View {
             CafeteriaWidgetContent(
