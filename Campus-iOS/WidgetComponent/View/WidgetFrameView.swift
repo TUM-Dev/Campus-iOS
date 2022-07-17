@@ -31,30 +31,29 @@ struct WidgetFrameView_Previews: PreviewProvider {
     
     static var widgetContent: some View {
         Rectangle()
-            .foregroundColor(Color("tumBlue"))
+            .foregroundColor(.widget)
             .overlay {
                 Text("Some Widget")
-                    .foregroundColor(.white)
             }
     }
     
+    static var content: some View {
+        ScrollView {
+            VStack {
+                HStack {
+                    WidgetFrameView(size: .square, content: widgetContent)
+                    WidgetFrameView(size: .square, content: widgetContent)
+                }
+                WidgetFrameView(size: .rectangle, content: widgetContent)
+                WidgetFrameView(size: .bigSquare, content: widgetContent)
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+    
     static var previews: some View {
-        
-        VStack {
-            ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetFrameView(size: size, content: widgetContent)
-                    .padding(4)
-            }
-        }
-        
-        VStack {
-            ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetFrameView(size: size, content: widgetContent)
-                    .padding(4)
-                    .preferredColorScheme(.dark)
-            }
-        }
-        
+        content
+        content.preferredColorScheme(.dark)
     }
 }
 
