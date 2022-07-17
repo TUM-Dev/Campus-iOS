@@ -72,9 +72,8 @@ struct SimpleStudyRoomWidgetContent: View {
         WidgetMapBackgroundView(coordinate: coordinate)
             .overlay {
                 VStack(alignment: .leading) {
-                    RoomCountView(count: freeRooms)
+                    StudyRoomWidgetHeaderView(count: freeRooms, studyGroup: studyGroup, allowMultiline: true)
                     Spacer()
-                    RoomCountCaptionView(studyGroup: studyGroup)
                 }
                 .padding()
             }
@@ -103,8 +102,7 @@ struct DetailedStudyRoomWidgetContent: View {
         WidgetMapBackgroundView(coordinate: coordinate)
             .overlay {
                 VStack(alignment: .leading) {
-                    RoomCountView(count: rooms.filter{ $0.isAvailable() }.count)
-                    RoomCountCaptionView(studyGroup: studyGroup)
+                    StudyRoomWidgetHeaderView(count: rooms.filter{ $0.isAvailable() }.count, studyGroup: studyGroup)
                         .padding(.bottom, 16)
                     
                     ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
@@ -121,41 +119,42 @@ struct DetailedStudyRoomWidgetContent: View {
 
 /* Helpers for the content */
 
-struct RoomCountView: View {
+struct StudyRoomWidgetHeaderView: View {
     
     let count: Int
+    let studyGroup: String
+    let allowMultiline: Bool
+    
+    init(count: Int, studyGroup: String, allowMultiline: Bool = false) {
+        self.count = count
+        self.studyGroup = studyGroup
+        self.allowMultiline = allowMultiline
+    }
     
     var body: some View {
         
         let textColor: Color = count > 0 ? .green : .red
         
-        HStack(alignment: .lastTextBaseline) {
-            Text(String(count))
-                .bold()
-                .font(.system(size: 70))
-                .layoutPriority(1) // Other texts get truncated first.
+        VStack(alignment: .leading) {
             
-            Text(count == 1 ? "room" : "rooms")
+            HStack {
+                Image(systemName: "house")
+                Text(studyGroup)
+                    .bold()
+                    .lineLimit(2)
+            }
+            .foregroundColor(.primary)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.bottom, 2)
+            
+            Label(String(count), systemImage: "book")
+                .font(.system(size: 35).bold())
+            
+            Text((count == 1 ? "room" : "rooms") + " available")
                 .lineLimit(1)
-                .font(.system(size: 11))
         }
         .foregroundColor(textColor)
         .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
-struct RoomCountCaptionView: View {
-    let studyGroup: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("available at")
-                .font(.system(size: 11))
-            Text(studyGroup)
-                .bold()
-                .lineLimit(1)
-                .font(.system(size: 11))
-        }
     }
 }
 
