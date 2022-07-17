@@ -109,7 +109,7 @@ struct CampusApp: App {
             }
             .tag(4)
             .tabItem {
-                Label("My Widgets", systemImage: "sparkles")
+                Label("My Widgets", systemImage: "rectangle.3.group")
             }
             .navigationViewStyle(.stack)
         }
