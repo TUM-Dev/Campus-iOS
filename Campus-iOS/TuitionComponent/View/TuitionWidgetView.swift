@@ -26,7 +26,7 @@ struct TuitionWidgetContent: View {
                let amount = tuition.amount,
                let deadline = tuition.deadline,
                let semester = tuition.semesterID {
-                TuitionWidgetSquareContent(
+                TuitionWidgetInfoView(
                     amount: amount,
                     openAmount: tuition.isOpenAmount,
                     deadline: deadline,
@@ -43,7 +43,7 @@ struct TuitionWidgetContent: View {
     }
 }
 
-struct TuitionWidgetSquareContent: View {
+struct TuitionWidgetInfoView: View {
     
     let amount: NSDecimalNumber
     let openAmount: Bool
@@ -120,12 +120,12 @@ struct TuitionWidgetView_Previews: PreviewProvider {
     static var content: some View {
         VStack {
             HStack{
-                WidgetFrameView(size: .square, content: TuitionWidgetSquareContent(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: false))
+                WidgetFrameView(size: .square, content: TuitionWidgetInfoView(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: false))
                 
-                WidgetFrameView(size: .square, content: TuitionWidgetSquareContent(amount: 0, openAmount: false, deadline: Date(), semester: "22S", big: false))
+                WidgetFrameView(size: .square, content: TuitionWidgetInfoView(amount: 0, openAmount: false, deadline: Date(), semester: "22S", big: false))
             }
             
-            WidgetFrameView(size: .rectangle, content: TuitionWidgetSquareContent(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: true))
+            WidgetFrameView(size: .rectangle, content: TuitionWidgetInfoView(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: true))
         }
     }
     
