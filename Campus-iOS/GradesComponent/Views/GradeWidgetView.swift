@@ -56,28 +56,26 @@ struct SimpleGradeWidgetContent: View {
                     VStack(alignment: .leading) {
                         Text(grade.grade)
                             .bold()
-                            .font(.system(size: 60))
+                            .font(.system(size: 45))
                             .foregroundColor(GradesViewModel.GradeColor.color(for: grade))
                             .if(colorScheme == .light) { view in
                                 view.shadow(radius: 1.5)
                             }
                             .padding(.bottom, 4)
                         
-                        Text(grade.title)
-                            .bold()
-                            .font(.caption)
-                            .lineLimit(2)
+                        HStack {
+                            Image(systemName: "pencil")
+                            Text(grade.title)
+                                .lineLimit(2)
+                        }
+                        .font(.caption.bold())
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, 2)
                         
                         Label(grade.examiner, systemImage: "person")
                             .font(.caption)
                         
                         Spacer()
-                        
-                        HStack {
-                            Label(grade.modusShort, systemImage: "pencil")
-                            Label(grade.lvNumber, systemImage: "number")
-                        }
-                        .font(.caption2)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
