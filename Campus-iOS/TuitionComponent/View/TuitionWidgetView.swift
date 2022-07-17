@@ -65,38 +65,37 @@ struct TuitionWidgetSquareContent: View {
             .overlay {
                 VStack(alignment: .leading) {
                     
-                    Text("Tuition fees")
-                        .font(.caption)
+                    Label("Tuition fees", systemImage: "eurosign.circle")
+                        .font(.body.bold())
+                        .lineLimit(1)
+                        .padding(.bottom, 2)
                     
                     Text(self.formatter.string(from: amount) ?? "Unknown")
-                        .font(.system(size: big ? 45 : 30))
+                        .font(.system(size: 30))
                         .foregroundColor(openAmount ? .red : .green)
                         .bold()
                     
                     HStack {
                         Text("Open Amount")
-                            .font(.caption)
-                        
                         Text(semester)
-                            .font(.caption)
                     }
+                    .font(big ? .body : .caption)
                     
                     Spacer()
                     
                     HStack {
                         Image(systemName: "calendar.badge.exclamationmark")
-                            .font(.caption.weight(.bold))
                         
                         if (big) {
                             Text("Deadline")
-                                .font(.caption)
                                 .bold()
                         }
                         
                         Text(deadline, style: .relative)
-                            .font(.caption)
                             .bold()
                     }
+                    .font((big ? Font.body : Font.caption).bold())
+
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
