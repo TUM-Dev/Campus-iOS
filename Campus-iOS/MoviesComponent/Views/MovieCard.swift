@@ -12,7 +12,7 @@ struct MovieCard: View {
     @State var movie: Movie
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             
             if let link = self.movie.cover {
                 AsyncImage(url: link) { image in
@@ -50,8 +50,10 @@ struct MovieCard: View {
                 Text(self.movie.title ?? "")
                     .fontWeight(Font.Weight.heavy)
                     .font(.subheadline).foregroundColor(.black)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(2)
                 Text(self.movie.date ?? Date(), style: .date)
-                    .font(Font.custom("HelveticaNeue-Bold", size: 11))
+                    .font(Font.custom("HelveticaNeue-Bold", size: 12))
                     .foregroundColor(Color.gray)
             }
             .padding(12)
