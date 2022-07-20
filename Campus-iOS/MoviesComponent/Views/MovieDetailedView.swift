@@ -112,7 +112,7 @@ struct MovieDetailedView: View {
                     maxWidth: .infinity,
                     alignment: .topLeading
                 )
-                .padding(.horizontal)
+                .padding()
                         
             }.edgesIgnoringSafeArea(.top)
     }
