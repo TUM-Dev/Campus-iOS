@@ -66,7 +66,9 @@ struct StudyRoomGroupView: View {
                 
                 List {
                     ForEach(self.sortedRooms, id: \.id) { room in
-                        Collapsible(title: {
+                        DisclosureGroup(content: {
+                            StudyRoomDetailsView(studyRoom: room)
+                        }, label: {
                             AnyView(
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -93,9 +95,39 @@ struct StudyRoomGroupView: View {
                                     room.localizedStatus
                                 }
                             )
-                        }, content: {
-                            StudyRoomDetailsView(studyRoom: room)
-                        }, applyPadding: false)
+                        })
+                        
+// TODO: Figure out why collapsible did not work correctly here
+//                        Collapsible(title: {
+//                            AnyView(
+//                                HStack {
+//                                    VStack(alignment: .leading) {
+//                                        Text(room.name ?? "")
+//                                            .fontWeight(.bold)
+//                                        HStack {
+//                                            Image(systemName: "barcode.viewfinder")
+//                                                .frame(width: 12, height: 12)
+//                                                .foregroundColor(Color("tumBlue"))
+//                                            Text(room.code ?? "")
+//                                                .font(.system(size: 12))
+//                                            Spacer()
+//                                        }
+//                                        .frame(minWidth: 0, maxWidth: .infinity)
+//                                        .foregroundColor(.init(.darkGray))
+//                                        .padding(.leading, 5)
+//                                        .padding(.trailing, 5)
+//                                        .padding(.top, 0)
+//                                        .padding(.bottom, 0)
+//                                    }
+//
+//                                    Spacer()
+//
+//                                    room.localizedStatus
+//                                }
+//                            )
+//                        }, content: {
+//                            StudyRoomDetailsView(studyRoom: room)
+//                        }, applyPadding: false)
                     }
                 }
             }
