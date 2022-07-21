@@ -96,6 +96,7 @@ struct StudyRoomGroupView: View {
                                 }
                             )
                         })
+                        .accentColor(Color(UIColor.lightGray))
                         
 // TODO: Figure out why collapsible did not work correctly here
 //                        Collapsible(title: {
