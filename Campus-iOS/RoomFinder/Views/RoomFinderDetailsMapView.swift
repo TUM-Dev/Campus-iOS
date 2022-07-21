@@ -48,7 +48,8 @@ struct RoomFinderDetailsMapView: View {
                 Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: locationR)]) { location in
                     MapMarker(coordinate: location.coordinate)
                 }
-                .frame(width: 300, height: 180)
+                .frame(width: .infinity, height: 180)
+                .cornerRadius(10.0)
             } else {
                 ProgressView()
             }

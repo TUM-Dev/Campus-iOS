@@ -35,9 +35,7 @@ struct PanelSearchBarView: View {
                 lockPanel = false
                 searchString = ""
                 
-                withAnimation(.easeInOut(duration: 5)) {
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                }
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }) {
                 Image(systemName: "xmark.circle")
                     .font(.title2)

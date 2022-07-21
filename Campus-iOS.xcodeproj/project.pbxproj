@@ -19,6 +19,7 @@
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
         1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
+		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -2043,72 +2044,72 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nerdsupremacist/Snap.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.2;
+				kind = exactVersion;
+				version = 0.2.2;
 			};
 		};
 		36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.0;
+				kind = exactVersion;
+				version = 4.2.2;
 			};
 		};
 		36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kvyatkovskys/KVKCalendar.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.5;
+				kind = exactVersion;
+				version = 0.6.7;
 			};
 		};
 		36FF90662773BCA600F4C785 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/drmohundro/SWXMLHash.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
+				kind = exactVersion;
+				version = 6.0.0;
 			};
 		};
 		36FF90702773BFC300F4C785 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				kind = exactVersion;
+				version = 8.15.0;
 			};
 		};
 		41D55D6C27A2EFB200DE7155 /* XCRemoteSwiftPackageReference "LRUCache" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/LRUCache.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.0.3;
 			};
 		};
 		97997ADF27722D660079F809 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.6.1;
 			};
 		};
 		97997AE5277234120079F809 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				kind = exactVersion;
+				version = 0.13.1;
 			};
 		};
 		97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/willdale/SwiftUICharts";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				kind = exactVersion;
+				version = 2.10.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

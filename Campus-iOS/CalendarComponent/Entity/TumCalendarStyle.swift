@@ -46,6 +46,7 @@ struct TumCalendarStyle {
         
         // Timeline
         style.timeline.offsetTimeY = 25
+        style.timeline.showLineHourMode = .today
         // cuts out the hours before the first event if true
         style.timeline.startFromFirstEvent = false
         

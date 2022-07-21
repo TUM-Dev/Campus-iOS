@@ -30,7 +30,7 @@ struct StudyRoomGroupView: View {
     
     var body: some View {
         if let group = selectedGroup {
-            VStack {
+            VStack(spacing: 1) {
                 HStack{
                     VStack(alignment: .leading){
                         Text(group.name ?? "")
@@ -64,39 +64,79 @@ struct StudyRoomGroupView: View {
                 .padding(.top, 5)
                 .padding(.bottom, 10)
                 
-                List {
-                    ForEach(self.sortedRooms, id: \.id) { room in
-                        Collapsible(title: {
-                            AnyView(
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(room.name ?? "")
-                                            .fontWeight(.bold)
-                                        HStack {
-                                            Image(systemName: "barcode.viewfinder")
-                                                .frame(width: 12, height: 12)
-                                                .foregroundColor(Color("tumBlue"))
-                                            Text(room.code ?? "")
-                                                .font(.system(size: 12))
-                                            Spacer()
+                ZStack {
+                    Color(UIColor.secondarySystemBackground)
+                    
+                    List {
+                        ForEach(self.sortedRooms, id: \.id) { room in
+                            DisclosureGroup(content: {
+                                StudyRoomDetailsView(studyRoom: room)
+                            }, label: {
+                                AnyView(
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(room.name ?? "")
+                                                .fontWeight(.bold)
+                                            HStack {
+                                                Image(systemName: "barcode.viewfinder")
+                                                    .frame(width: 12, height: 12)
+                                                    .foregroundColor(Color("tumBlue"))
+                                                Text(room.code ?? "")
+                                                    .font(.system(size: 12))
+                                                Spacer()
+                                            }
+                                            .frame(minWidth: 0, maxWidth: .infinity)
+                                            .foregroundColor(.init(.darkGray))
+                                            .padding(.leading, 5)
+                                            .padding(.trailing, 5)
+                                            .padding(.top, 0)
+                                            .padding(.bottom, 0)
                                         }
-                                        .frame(minWidth: 0, maxWidth: .infinity)
-                                        .foregroundColor(.init(.darkGray))
-                                        .padding(.leading, 5)
-                                        .padding(.trailing, 5)
-                                        .padding(.top, 0)
-                                        .padding(.bottom, 0)
+                                        
+                                        Spacer()
+                                        
+                                        room.localizedStatus
                                     }
-                                    
-                                    Spacer()
-                                    
-                                    room.localizedStatus
-                                }
-                            )
-                        }, content: {
-                            StudyRoomDetailsView(studyRoom: room)
-                        }, applyPadding: false)
+                                )
+                            })
+                            .accentColor(Color(UIColor.lightGray))
+                            
+                            // TODO: Figure out why collapsible did not work correctly here
+                            //                        Collapsible(title: {
+                            //                            AnyView(
+                            //                                HStack {
+                            //                                    VStack(alignment: .leading) {
+                            //                                        Text(room.name ?? "")
+                            //                                            .fontWeight(.bold)
+                            //                                        HStack {
+                            //                                            Image(systemName: "barcode.viewfinder")
+                            //                                                .frame(width: 12, height: 12)
+                            //                                                .foregroundColor(Color("tumBlue"))
+                            //                                            Text(room.code ?? "")
+                            //                                                .font(.system(size: 12))
+                            //                                            Spacer()
+                            //                                        }
+                            //                                        .frame(minWidth: 0, maxWidth: .infinity)
+                            //                                        .foregroundColor(.init(.darkGray))
+                            //                                        .padding(.leading, 5)
+                            //                                        .padding(.trailing, 5)
+                            //                                        .padding(.top, 0)
+                            //                                        .padding(.bottom, 0)
+                            //                                    }
+                            //
+                            //                                    Spacer()
+                            //
+                            //                                    room.localizedStatus
+                            //                                }
+                            //                            )
+                            //                        }, content: {
+                            //                            StudyRoomDetailsView(studyRoom: room)
+                            //                        }, applyPadding: false)
+                        }
                     }
+                    .listStyle(.plain)
+                    .cornerRadius(10.0)
+                    .padding()
                 }
             }
         }
