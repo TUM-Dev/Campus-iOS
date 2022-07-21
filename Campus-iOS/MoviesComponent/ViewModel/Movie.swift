@@ -116,3 +116,20 @@ struct Movie: Entity {
         self.year = year
     }
 }
+extension Movie: Identifiable {
+    static let dummyData: Movie = .init(
+        id: 123,
+        actors: "Morgan Freeman",
+        cover: URL(string:"https://www.google.com"),
+        created: Date.now,
+        date: Date.now,
+        director: "Frank Darapant",
+        genre: "Crime",
+        link: URL(string:"www.google.com"),
+        movieDescription: "Yes",
+        rating: "11/10",
+        runtime: "194",
+        title: "Shawshank Redemption",
+        year: "2020"
+    )
+}

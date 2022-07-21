@@ -11,79 +11,120 @@ import UIKit
 struct MovieDetailedView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
+    @Environment(\.colorScheme) var colorScheme
+
     var movie: Movie
     
     var body: some View {
-        ZStack {
-            VStack {
-                Color.gray.opacity(0.4).ignoresSafeArea()
-                Color.white.ignoresSafeArea()
-            }
-            
-            VStack(alignment: .center) {
-                if let link = self.movie.cover {
-                    AsyncImage(url: link) { image in
-                        switch image {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 225, alignment: .top)
-                        case .failure:
+            ScrollView {
+                ZStack {
+                    GeometryReader { geometry in
+                        if let link = self.movie.cover {
+                            AsyncImage(url: link) { image in
+                                switch image {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: geometry.size.width, height: geometry.size.height)
+                                    
+
+                                case .success(let image):
+                                    if geometry.frame(in: .global).minY <= 0 {
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: geometry.size.width, height: geometry.size.height)
+                                            .offset(y: geometry.frame(in: .global).minY/9)
+                                            .clipped()
+                                    } else {
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
+                                            .clipped()
+                                            .offset(y: -geometry.frame(in: .global).minY)
+                                    }
+                                case .failure:
+                                    Image("movie")
+                                        .resizable()
+                                        .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
+                                        .clipped()
+                                @unknown default:
+                                    // Since the AsyncImagePhase enum isn't frozen,
+                                    // we need to add this currently unused fallback
+                                    // to handle any new cases that might be added
+                                    // in the future:
+                                    EmptyView()
+                                }
+                            }
+                        } else {
                             Image("movie")
                                 .resizable()
-                                .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-                                .clipped()
-                        @unknown default:
-                            // Since the AsyncImagePhase enum isn't frozen,
-                            // we need to add this currently unused fallback
-                            // to handle any new cases that might be added
-                            // in the future:
-                            EmptyView()
+                                .scaledToFit()
+                                .frame(height: 120, alignment: .top)
                         }
+                    }.frame(height: 550)
+                    .edgesIgnoringSafeArea(.bottom)
+                    .navigationBarBackButtonHidden(true)
+                
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: { self.presentationMode.wrappedValue.dismiss() }) { ZStack {
+                                Circle()
+                                        .frame(width: 30,height:30)
+                                        .foregroundColor(colorScheme == .dark ? .init(UIColor.darkGray) : .init(UIColor.white))
+                                        .shadow(color: Color.black.opacity(0.2), radius: 2)
+
+                                Image(systemName: "xmark")
+                                                .font(.system(size: 15, weight: .bold, design: .rounded))
+                                                .foregroundColor(Color.blue)
+                            }
+                            .padding(8)
+                            .contentShape(Circle())
+                            }
+                        }
+                        .padding(.top, 5)
+                        Spacer()
                     }
-                    
-                } else {
-                    Image("movie")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 120, alignment: .top)
                 }
-                details().cornerRadius(20)
-            }.edgesIgnoringSafeArea(.bottom)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                HStack(alignment: .top) {
-                    Image(systemName: "chevron.backward")
-                    Text("Back").foregroundColor(.blue)
-                }.foregroundColor(.blue)
-            })
-        }
+            
+    //        VStack(alignment: .center) {
+    //        }.edgesIgnoringSafeArea(.bottom)
+    //        .navigationBarBackButtonHidden(true)
+    //        .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+    //            HStack(alignment: .top) {
+    //                Image(systemName: "chevron.backward")
+    //                Text("Back").foregroundColor(.blue)
+    //            }.foregroundColor(.blue)
+    //        })
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    MovieDetailsBasicInfoView(movieDetails: movie)
+                }.frame(
+                    maxWidth: .infinity,
+                    alignment: .topLeading
+                )
+                .padding(.horizontal)
+                    
+                VStack(alignment: .leading, spacing: 20) {
+                    MovieDetailsDetailedInfoView(movieDetails: movie)
+                }.frame(
+                    maxWidth: .infinity,
+                    alignment: .topLeading
+                )
+                .padding()
+                        
+            }.edgesIgnoringSafeArea(.top)
     }
     
+    // TODO: remove when ready OR update accordingly
     func details() -> some View {
         List {
-            MovieDetailCellView(property: ("Title", [self.movie.title ?? ""]))
-            
-            Group {
-                MovieDetailCellView(property: ("Genre", [self.movie.genre ?? ""]))
-                MovieDetailCellView(property: ("Rating", [self.movie.rating ?? ""]))
-                MovieDetailCellView(property: ("Date", [(self.movie.date?.formatted()) ?? ""]))
-                MovieDetailCellView(property: ("Duration", [self.movie.runtime ?? ""]))
+            VStack(alignment: .leading, spacing: 20) {
+                MovieDetailsBasicInfoView(movieDetails: movie)
             }
-
-            Group {
-                MovieDetailCellView(property: ("Description", [self.movie.movieDescription ?? ""]))
-            }
-            
-            Group {
-                MovieDetailCellView(property: ("Director", [self.movie.director ?? ""]))
-                MovieDetailCellView(property: ("Actors", [self.movie.actors ?? ""]))
-                MovieDetailCellView(property: ("Created", [self.movie.created?.formatted() ?? ""]))
-                MovieDetailCellView(property: ("Year", [self.movie.year ?? ""]))
+            VStack(alignment: .leading, spacing: 20) {
+                MovieDetailsDetailedInfoView(movieDetails: movie)
             }
             
             HStack {
