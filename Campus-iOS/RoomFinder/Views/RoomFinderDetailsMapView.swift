@@ -48,7 +48,13 @@ struct RoomFinderDetailsMapView: View {
                 Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: locationR)]) { location in
                     MapMarker(coordinate: location.coordinate)
                 }
-                .frame(width: 300, height: 180)
+                .if(UIDevice.current.userInterfaceIdiom != .pad, transformT: { view in
+                    view.frame(width: UIScreen.main.bounds.size.width * 0.85, height: 180)
+                })
+                .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                    view.frame(width: 300, height: 180)
+                })
+                .cornerRadius(10.0)
             } else {
                 ProgressView()
             }
