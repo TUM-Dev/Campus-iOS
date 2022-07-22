@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieCard: View {
     
     @State var movie: Movie
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -49,7 +50,7 @@ struct MovieCard: View {
             VStack(alignment: .leading, spacing: 6) {
                 Text(self.movie.title ?? "")
                     .fontWeight(Font.Weight.heavy)
-                    .font(.subheadline).foregroundColor(.black)
+                    .font(.subheadline).foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(2)
                 Text(self.movie.date ?? Date(), style: .date)
