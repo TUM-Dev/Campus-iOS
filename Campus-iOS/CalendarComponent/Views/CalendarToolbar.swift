@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CalendarToolbar: View {
-    @ObservedObject var model: Model
     @ObservedObject var viewModel: CalendarViewModel
     
     @Binding var selectedEventID: String?
@@ -26,7 +25,7 @@ struct CalendarToolbar: View {
                 .edgesIgnoringSafeArea(.all)
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
-                        ProfileToolbar(model: self.model)
+                        ProfileToolbar(model: self.viewModel.model)
                     }
                 }
             ) {
@@ -48,6 +47,6 @@ struct CalendarToolbar_Previews: PreviewProvider {
     static var model = MockModel()
     
     static var previews: some View {
-        CalendarToolbar(model: model, viewModel: CalendarViewModel(), selectedEventID: $selectedEventId, isTodayPressed: $todayPressed)
+        CalendarToolbar(viewModel: CalendarViewModel(model: model), selectedEventID: $selectedEventId, isTodayPressed: $todayPressed)
     }
 }
