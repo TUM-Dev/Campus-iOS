@@ -23,6 +23,7 @@ struct TumCalendarStyle {
             style.headerScroll.titleDateAlignment = .center
             style.headerScroll.heightHeaderWeek = 70
             style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 16)
+            style.headerScroll.fontNameDay = .systemFont(ofSize: 14)
         } else {
             style.timeline.widthEventViewer = 0
             style.headerScroll.fontNameDay = .systemFont(ofSize: 20)
@@ -45,6 +46,7 @@ struct TumCalendarStyle {
         
         // Timeline
         style.timeline.offsetTimeY = 25
+        style.timeline.showLineHourMode = .today
         // cuts out the hours before the first event if true
         style.timeline.startFromFirstEvent = false
         

@@ -15,9 +15,6 @@ struct LecturesDetailView: View {
         VStack(alignment: .leading) {
             LectureDetailsTitleView(lectureDetails: lectureDetails)
             
-            Spacer()
-                .frame(height: 30)
-            
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     
@@ -31,6 +28,8 @@ struct LecturesDetailView: View {
                     LectureDetailsDetailedInfoView(lectureDetails: lectureDetails)
                     
                     LectureDetailsLinkView(lectureDetails: lectureDetails)
+                    
+                    Spacer()
                 }
             }
         }

@@ -26,10 +26,12 @@ struct Collapsible<Content: View>: View {
                         self.title()
                         Spacer()
                         Image(systemName: "chevron.right")
+                            .font(.subheadline)
+                            .foregroundColor(Color(UIColor.lightGray))
                             .rotationEffect(Angle.degrees(self.collapsed ? 0 : 90))
                     }
-                    .padding()
-                    .background(Color.white.opacity(0.01))
+                    .padding(5)
+                    .background(Color.clear)
                 }
             )
             .if(applyPadding, transformT: { view in
