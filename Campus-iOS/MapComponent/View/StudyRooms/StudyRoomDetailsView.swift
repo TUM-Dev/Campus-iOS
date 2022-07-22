@@ -32,6 +32,7 @@ struct StudyRoomDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Spacer()
             if viewModel.roomImageMapping.count > 0 {
                 HStack {
                     Image(systemName: "map.fill").foregroundColor(.blue)
@@ -61,7 +62,8 @@ struct StudyRoomDetailsView: View {
                     }
                 }
             }
-        }.padding([.leading, .trailing], 15)
+            Spacer()
+        }.padding([.trailing], 15)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol MapViewModelProtocol: ObservableObject {
     func getCafeteria(forcedRefresh: Bool) async
@@ -23,7 +24,6 @@ class MapViewModel: MapViewModelProtocol {
     @Published var hasError = false
   
     @Published var zoomOnUser = true
-    @Published var panelPosition = "pushMid"
     @Published var lockPanel = false
     @Published var mode: MapMode = .cafeterias
     @Published var setAnnotations = true
@@ -33,6 +33,8 @@ class MapViewModel: MapViewModelProtocol {
     @Published var selectedCafeteria: Cafeteria?
     
     @Published var selectedStudyGroup: StudyRoomGroup?
+    
+    @Published var panelPos: PanelPos = .middle
     
     private let mock: Bool
     
@@ -108,6 +110,27 @@ class MapViewModel: MapViewModelProtocol {
         } catch {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
+        }
+    }
+}
+
+enum PanelHeight {
+    static let top = UIScreen.main.bounds.height * 0.8
+    static let kbtop = UIScreen.main.bounds.height * 0.7
+    static let middle = UIScreen.main.bounds.height * 0.5
+    static let bottom = UIScreen.main.bounds.height * 0.2
+}
+
+let screenHeight = UIScreen.main.bounds.height
+
+enum PanelPos {
+    case top, kbtop, middle, bottom
+    var rawValue: CGFloat {
+        switch self {
+        case .top: return screenHeight * 0.8
+        case .kbtop: return screenHeight * 0.7
+        case .middle: return screenHeight * 0.5
+        case .bottom: return screenHeight * 0.2
         }
     }
 }

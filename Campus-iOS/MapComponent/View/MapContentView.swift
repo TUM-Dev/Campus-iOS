@@ -80,9 +80,9 @@ struct MapContentView: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if vm.panelPosition == "mid" || vm.panelPosition == "pushMid"{
+        if vm.panelPos == .middle {
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
-        } else if vm.panelPosition == "down" || vm.panelPosition == "pushDown"{
+        } else if vm.panelPos == .bottom {
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
@@ -203,7 +203,10 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                     for i in 0...(control.vm.cafeterias.count - 1) {
                         if title == control.vm.cafeterias[i].title {
                             control.vm.selectedAnnotationIndex = i
-                            control.vm.panelPosition = "pushMid"
+                            // Making the selected annotation (i.e. cafeteria) the selected cafeteria -> shows the MealPlanView inside the PanelContentView like tapping on a cafeteria in the PanelContentCafeteriasListView
+                            control.vm.selectedCafeteria = control.vm.cafeterias[i]
+                            //control.vm.panelPosition = "pushMid"
+                            control.vm.panelPos = .middle
                         }
                     }
                 }
@@ -211,7 +214,9 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                     for i in 0...(groups.count - 1) {
                         if title == groups[i].name {
                             control.vm.selectedAnnotationIndex = i
-                            control.vm.panelPosition = "pushMid"
+                            // Making the selected annotation (i.e. study group) the selected study group -> shows the StudyRoomGroupView with inside the PanelContentView like tapping on a study group in the PanelContentStudyRoomGroupsListView
+                            control.vm.selectedStudyGroup = groups[i]
+                            control.vm.panelPos = .middle
                         }
                     }
                 }
