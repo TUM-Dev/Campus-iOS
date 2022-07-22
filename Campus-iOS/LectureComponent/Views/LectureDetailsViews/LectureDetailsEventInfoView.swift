@@ -40,12 +40,24 @@ struct LectureDetailsEventInfoView: View {
                 )
                 Divider()
                 // Open RoomfinderView
-                NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: extract(room: self.location))) {
+                VStack (alignment: .leading) {
                     LectureDetailsBasicInfoRowView(
                         iconName: "rectangle.portrait.arrowtriangle.2.inward",
                         text: self.location
                     )
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: extract(room: self.location))) {
+                            HStack {
+                                Text("Open in RoomFinder")
+                                Image(systemName: "arrow.right.circle")
+                            }.foregroundColor(Color(UIColor.tumBlue))
+                                .font(.footnote)
+                        }
+                    }
                 }
+                
+                
             }
         }
         .frame(
