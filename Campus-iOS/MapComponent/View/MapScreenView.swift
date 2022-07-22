@@ -31,7 +31,7 @@ struct MapScreenView: View {
                 ZStack {
                     VStack {
                         PanelContentView(vm: self.vm)
-                            .background(Color.white)
+                            .background(Color(UIColor.systemBackground))
                             .cornerRadius(10, corners: [.topRight, .topLeft])
                             .shadow(radius: 10)
                             .frame(height: panelHeight, alignment: .bottomTrailing)
@@ -51,7 +51,7 @@ struct MapScreenView: View {
                         let dragAreaHeight = PanelHeight.top*0.04
                         ZStack {
                             Rectangle()
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(UIColor.systemBackground))
                             RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
                                 .frame(width: 40, height: CGFloat(5.0))
                                 .foregroundColor(Color.primary.opacity(0.2))
@@ -102,5 +102,6 @@ struct MapScreenView_Previews: PreviewProvider {
         TabView {
             MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
         }
+        .preferredColorScheme(.dark)
     }
 }
