@@ -14,8 +14,7 @@ struct MapScreenView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.width
     
-    //@State var position = PanelPosition.bottom
-    @State var panelHeight = UIScreen.main.bounds.height * 0.8
+    @State var panelHeight: CGFloat = 0.0 // Start position of panel is defined in `MapViewModel` with the `panelPos` porperty.
     
     init(vm: MapViewModel) {
         self._vm = StateObject(wrappedValue: vm)

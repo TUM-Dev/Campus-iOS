@@ -80,9 +80,9 @@ struct MapContentView: UIViewRepresentable {
         
         let newCenter = screenHeight/3
         
-        if vm.panelPosition == "mid" || vm.panelPosition == "pushMid"{
+        if vm.panelPos == .middle {
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)
-        } else if vm.panelPosition == "down" || vm.panelPosition == "pushDown"{
+        } else if vm.panelPos == .bottom {
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
@@ -216,7 +216,6 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                             control.vm.selectedAnnotationIndex = i
                             // Making the selected annotation (i.e. study group) the selected study group -> shows the StudyRoomGroupView with inside the PanelContentView like tapping on a study group in the PanelContentStudyRoomGroupsListView
                             control.vm.selectedStudyGroup = groups[i]
-                            control.vm.panelPosition = "pushMid"
                             control.vm.panelPos = .middle
                         }
                     }

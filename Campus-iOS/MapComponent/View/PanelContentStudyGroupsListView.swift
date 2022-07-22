@@ -38,7 +38,7 @@ struct PanelContentStudyGroupsListView: View {
             ForEach (sortedGroups.indices.filter({ searchString.isEmpty ? true : sortedGroups[$0].name?.localizedCaseInsensitiveContains(searchString) ?? false }), id: \.self) { id in
                 Button(action: {
                     viewModel.selectedStudyGroup = sortedGroups[id]
-                    viewModel.panelPosition = "pushMid"
+                    viewModel.panelPos = .middle
                     viewModel.lockPanel = false
                 }, label: {
                     StudyGroupRowView(

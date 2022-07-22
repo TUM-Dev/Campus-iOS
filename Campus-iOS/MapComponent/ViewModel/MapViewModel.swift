@@ -24,7 +24,6 @@ class MapViewModel: MapViewModelProtocol {
     @Published var hasError = false
   
     @Published var zoomOnUser = true
-    @Published var panelPosition = "pushMid"
     @Published var lockPanel = false
     @Published var mode: MapMode = .cafeterias
     @Published var setAnnotations = true
@@ -35,7 +34,7 @@ class MapViewModel: MapViewModelProtocol {
     
     @Published var selectedStudyGroup: StudyRoomGroup?
     
-    @Published var panelPos: PanelPos = .top
+    @Published var panelPos: PanelPos = .middle
     
     private let mock: Bool
     
