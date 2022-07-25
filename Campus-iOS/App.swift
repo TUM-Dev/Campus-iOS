@@ -99,7 +99,7 @@ struct CampusApp: App {
             .navigationViewStyle(.stack)
             
             NavigationView {
-                WidgetScreen()
+                WidgetScreen(model: model)
                     .navigationTitle("My Widgets")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

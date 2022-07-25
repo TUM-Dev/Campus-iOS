@@ -9,45 +9,20 @@ import SwiftUI
 
 struct WidgetScreen: View {
     
-    @EnvironmentObject var model: Model
+    private let recommender: WidgetRecommender
+    
+    init(model: Model) {
+        self.recommender = WidgetRecommender(strategy: TimeStrategy(), model: model)
+    }
     
     var body: some View {
         ScrollView {
+            
+            // TODO: use a flexible grid.
             VStack {
-                
-                Group {
-                    HStack {
-                        StudyRoomWidgetView(size: .square)
-                        TuitionWidgetView(size: .square)
-                    }
-                    
-                    TuitionWidgetView(size: .rectangle)
-                    StudyRoomWidgetView(size: .rectangle)
-                    StudyRoomWidgetView(size: .bigSquare)
+                ForEach(recommender.getRecommendation(), id: \.widget) { recommendation in
+                    recommender.getWidget(for: recommendation.widget, size: recommendation.size())
                 }
-                
-                Group {
-                    HStack {
-                        CafeteriaWidgetView(size: .square)
-                        GradeWidgetView(model: model, size: .square)
-                    }
-                    CafeteriaWidgetView(size: .rectangle)
-                    CafeteriaWidgetView(size: .bigSquare)
-                    
-                    GradeWidgetView(model: model, size: .rectangle)
-                    GradeWidgetView(model: model, size: .bigSquare)
-                }
-                
-                Group {
-                    HStack {
-                        CalendarWidgetView(size: .square)
-                        CalendarWidgetView(size: .square)
-                    }
-                    
-                    CalendarWidgetView(size: .rectangle)
-                    CalendarWidgetView(size: .bigSquare)
-                }
-
             }
             .frame(maxWidth: .infinity)
             .padding()

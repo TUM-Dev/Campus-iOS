@@ -113,6 +113,15 @@ enum TuitionWidgetSize {
         case .rectangle: return WidgetSize.rectangle
         }
     }
+    
+    static func from(widgetSize: WidgetSize) -> TuitionWidgetSize {
+        switch widgetSize {
+        case .square:
+            return TuitionWidgetSize.square
+        case .rectangle, .bigSquare:
+            return TuitionWidgetSize.rectangle
+        }
+    }
 }
 
 struct TuitionWidgetView_Previews: PreviewProvider {
