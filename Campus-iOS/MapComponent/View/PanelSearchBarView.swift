@@ -19,7 +19,7 @@ struct PanelSearchBarView: View {
             if editingChanged {
                 isEditing = true
                 vm.lockPanel = true
-                vm.panelPos = .kbtop
+                vm.panelPos = .middle
             } else {
                 isEditing = false
                 vm.lockPanel = false

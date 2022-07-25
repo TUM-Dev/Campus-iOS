@@ -60,6 +60,7 @@ struct MapScreenView: View {
                             .gesture(
                                 DragGesture()
                                     .onChanged { value in
+                                        guard !vm.lockPanel else { return }
                                         if let newPanelHeight = check(panelHeight - value.translation.height) {
                                             panelHeight = newPanelHeight
                                         }
