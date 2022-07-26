@@ -150,6 +150,7 @@ struct LoginView: View {
                 }
             }
             .navigationBarHidden(true)
+            .ignoresSafeArea(.keyboard)
     }
     
     init(model: Model) {
