@@ -35,6 +35,7 @@ struct CampusApp: App {
                     .sheet(isPresented: $model.isLoginSheetPresented) {
                         NavigationView {
                             LoginView(model: model)
+                            //.navigationBarHidden(true)
                             .onAppear {
                                 selectedTab = 2
                             }
