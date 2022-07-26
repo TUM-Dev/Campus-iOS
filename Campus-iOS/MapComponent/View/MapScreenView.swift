@@ -42,36 +42,31 @@ struct MapScreenView: View {
                                     }
                                 }
                             }
-//                            .onTapGesture { } /// VERY IMPORTANT: This was added in order to prevent the panel of jumping when scrolling inside the ScrollView; This is probably a bug in SwiftUI since the ScrollView should NOT trigger the gesture-Function (see the print()-Functions)!
                     }
                     
                     VStack {
 //                        Spacer()
                         let dragAreaHeight = PanelHeight.top*0.04
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(Color(UIColor.systemBackground))
-                            RoundedRectangle(cornerRadius: CGFloat(5.0) / 2.0)
-                                .frame(width: 40, height: CGFloat(5.0))
-                                .foregroundColor(Color.primary.opacity(0.2))
-                        }
-                            .cornerRadius(10, corners: [.topLeft, .topRight])
-                            .frame(height: dragAreaHeight, alignment: .top)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        guard !vm.lockPanel else { return }
-                                        if let newPanelHeight = check(panelHeight - value.translation.height) {
-                                            panelHeight = newPanelHeight
-                                        }
+                        
+                        Rectangle().foregroundColor(.clear)
+                        .contentShape(Rectangle())
+                        .cornerRadius(10, corners: [.topLeft, .topRight])
+                        .frame(height: dragAreaHeight, alignment: .top)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    guard !vm.lockPanel else { return }
+                                    if let newPanelHeight = check(panelHeight - value.translation.height) {
+                                        panelHeight = newPanelHeight
                                     }
-                                    .onEnded { _ in
-                                        withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
-                                            snapPanel(from: panelHeight)
-                                        }
+                                }
+                                .onEnded { _ in
+                                    withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                                        snapPanel(from: panelHeight)
                                     }
-                            )
-                        Spacer().frame(height: panelHeight-dragAreaHeight)
+                                }
+                        )
+                        Spacer().frame(height: min(max(panelHeight-dragAreaHeight,0), PanelPos.top.rawValue))
                     }
                 }
             }
@@ -102,6 +97,6 @@ struct MapScreenView_Previews: PreviewProvider {
         TabView {
             MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
         }
-        .preferredColorScheme(.dark)
+        
     }
 }
