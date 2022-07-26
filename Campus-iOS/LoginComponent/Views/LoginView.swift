@@ -149,6 +149,7 @@ struct LoginView: View {
                     
                 }
             }
+            .navigationBarHidden(true)
     }
     
     init(model: Model) {
