@@ -8,12 +8,9 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State var showActionSheet = false
+    
     @ObservedObject var model: Model
-    @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
-    @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
-    @Environment(\.colorScheme) var colorScheme
-
+    
     var body: some View {
         
         NavigationView {
@@ -38,57 +35,46 @@ struct ProfileView: View {
                     .padding(.vertical, 6)
                 }.disabled(!self.model.isUserAuthenticated)
                 
-                ProfileMyTumSection()
+                ProfileMyTumSection(model: model)
                 
                 Section("GENERAL") {
-                    NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
+                    NavigationLink {
+                        SettingsView()
+                            .navigationBarTitle("Settings")
+                    } label: {
+                        Label("Settings", systemImage: "gear")
+                    }
+                    
+                    NavigationLink {
+                        TUMSexyView()
+                            .navigationBarTitle("Useful Links")
+                    } label: {
                         Label("TUM.sexy", systemImage: "heart")
                     }
                     
-                    NavigationLink(
-                        destination: RoomFinderView(model: self.model)
-                            .navigationTitle(Text("Roomfinder"))
+                    NavigationLink {
+                        RoomFinderView(model: self.model)
+                            .navigationTitle("Roomfinder")
                             .navigationBarTitleDisplayMode(.large)
-                    ) {
+                    } label: {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
-                    NavigationLink(destination: NewsView(viewModel: NewsViewModel())
-                                    .navigationBarTitle(Text("News"))
-                                    .navigationBarTitleDisplayMode(.large)
-                    ) {
+                    NavigationLink {
+                        NewsView(viewModel: NewsViewModel())
+                            .navigationBarTitle("News")
+                            .navigationBarTitleDisplayMode(.large)
+                    } label: {
                         Label("News", systemImage: "newspaper")
                     }
                     
-                    NavigationLink(destination: MoviesView()
-                                    .navigationBarTitle(Text("Movies"))
-                                    .navigationBarTitleDisplayMode(.large)
-                    ) {
+                    NavigationLink {
+                        MoviesView()
+                            .navigationBarTitle("Movies")
+                            .navigationBarTitleDisplayMode(.large)
+                    } label: {
                         Label("Movies", systemImage: "film")
                     }
-                }
-                
-                Section() {
-                    VStack {
-                        Toggle("Use build-in Web View", isOn: $useBuildInWebView)
-                    }
-                }
-                
-                Section() {
-                    HStack {
-                        
-                        Text("Calendar days in week mode")
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
-                        Spacer()
-                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
-                            ForEach(2..<8) { number in
-                                Text("\(number)")
-                                    .tag(number)
-                            }
-                        }
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .foregroundColor(.black)
                 }
                 
                 Section("GET IN CONTACT") {
@@ -102,7 +88,7 @@ struct ProfileView: View {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let mailToUrl = URL(string: mailToString!)!
                         if UIApplication.shared.canOpenURL(mailToUrl) {
-                                UIApplication.shared.open(mailToUrl, options: [:])
+                            UIApplication.shared.open(mailToUrl, options: [:])
                         }
                     }
                 }
@@ -126,35 +112,6 @@ struct ProfileView: View {
                         Spacer()
                     }
                 }
-                
-                Section() {
-                    var i = 0
-                    Button(action: {
-                        i += 1
-                        if i == 5 {
-                            i = 0
-                            self.showActionSheet = true
-                        }
-                    }) {
-                        HStack {
-                            Spacer()
-                            Text("Version 4.0").foregroundColor(Color.black)
-                            Spacer()
-                        }
-                    }
-                }
-                .actionSheet(isPresented: self.$showActionSheet) {
-                    //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
-                    ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
-                        .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
-                        .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
-                        .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },
-                        .default(Text("3D 📐")) { UIApplication.shared.setAlternateIconName("3D") },
-                        .default(Text("Outline 🖍")) { UIApplication.shared.setAlternateIconName("outline") },
-                        .cancel()
-                    ])
-                }
-                .listRowBackground(Color.clear)
             }
             .sheet(isPresented: $model.isLoginSheetPresented) {
                 NavigationView {
@@ -175,6 +132,92 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ProfileView(model: MockModel()).environmentObject(MockModel())
+        ProfileView(model: Model())
+        NavigationView {
+            SettingsView()
+                .navigationTitle("Settings")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+        .previewDevice("iPhone 12")
+        ChangeAppIconView()
     }
 }
+
+struct SettingsView: View {
+    
+    @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
+    @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
+    @State var showActionSheet = false
+    
+    var body: some View {
+        List {
+            Section() {
+                VStack {
+                    Toggle("Use build-in Web View", isOn: $useBuildInWebView)
+                }
+            }
+            
+            Section() {
+                HStack {
+                    
+                    Text("Calendar days in week mode")
+                    
+                    Spacer()
+                    Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
+                        ForEach(2..<8) { number in
+                            Text("\(number)")
+                                .tag(number)
+                        }
+                    }
+                }
+                .pickerStyle(MenuPickerStyle())
+                .foregroundColor(.black)
+            }
+            
+            Section("Change App Logo") {
+                ChangeAppIconView()
+            }
+            
+            
+            Section() {
+                HStack {
+                    Spacer()
+                    Text("Version 4.0").foregroundColor(Color.black)
+                    Spacer()
+                }
+            }
+            .listRowBackground(Color.clear)
+            
+        }
+    }
+}
+
+struct ChangeAppIconView: View {
+    
+    let size = UIScreen.main.bounds.width * 0.2
+    let appIcons = ["default", "white", "3D", "pride", "outline", "dark"]
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
+    var body: some View {
+        LazyVGrid(columns: columns) {
+            ForEach(appIcons) { appIcon in
+                Button {
+                    UIApplication.shared.setAlternateIconName(appIcon == "default" ? nil: appIcon)
+                } label: {
+                    Image(appIcon)
+                        .resizable()
+                        .cornerRadius(10)
+                        .shadow(radius: 10)
+                        .frame(width: size, height: size, alignment: .center)
+                        .padding()
+                }
+            }
+        }
+    }
+}
+

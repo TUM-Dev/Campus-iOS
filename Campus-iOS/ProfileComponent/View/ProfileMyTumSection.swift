@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileMyTumSection: View {
     
-    @EnvironmentObject private var model: Model
+    @ObservedObject var model: Model
     
     var formattedAmount: String {
         guard let amount = self.model.profile.tuition?.amount else {
@@ -53,6 +53,6 @@ struct ProfileMyTumSection: View {
 
 struct ProfileMyTumSection_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileMyTumSection()
+        ProfileMyTumSection(model: Model())
     }
 }
