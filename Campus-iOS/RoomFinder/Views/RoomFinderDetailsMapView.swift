@@ -28,7 +28,7 @@ struct RoomFinderDetailsMapView: View {
         GroupBox(
             label: GroupBoxLabelView(
                 iconName: "map.fill",
-                text: "Map".localized
+                text: "Building".localized
             )
             .padding(.bottom, 10)
         ) {
