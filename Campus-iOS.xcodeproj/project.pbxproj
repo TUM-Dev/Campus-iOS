@@ -17,14 +17,15 @@
 		1F54244F285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
+		1F841F4E289137D0008D5A94 /* dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F841F4C289137D0008D5A94 /* dark@2x.png */; };
+		1F841F4F289137D0008D5A94 /* dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F841F4D289137D0008D5A94 /* dark@3x.png */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
-		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; };
+		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
 		2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */; };
-		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -241,6 +242,8 @@
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
 		1F4C926E2882FD84003DC7D7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
+		1F841F4C289137D0008D5A94 /* dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dark@2x.png"; path = "Campus-iOS/Assets.xcassets/dark.imageset/dark@2x.png"; sourceTree = SOURCE_ROOT; };
+		1F841F4D289137D0008D5A94 /* dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dark@3x.png"; path = "Campus-iOS/Assets.xcassets/dark.imageset/dark@3x.png"; sourceTree = SOURCE_ROOT; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentListView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -1316,6 +1319,8 @@
 		41E2B8232864D192005B5E72 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				1F841F4C289137D0008D5A94 /* dark@2x.png */,
+				1F841F4D289137D0008D5A94 /* dark@3x.png */,
 				41E2B8242864D192005B5E72 /* 3D@2x.png */,
 				41E2B8252864D192005B5E72 /* 3D@3x.png */,
 				41E2B8262864D192005B5E72 /* default@2x.png */,
@@ -1469,7 +1474,9 @@
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
+				1F841F4E289137D0008D5A94 /* dark@2x.png in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
+				1F841F4F289137D0008D5A94 /* dark@3x.png in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 				41E2B8302864D193005B5E72 /* default@2x.png in Resources */,
 				41E2B8352864D193005B5E72 /* white@3x.png in Resources */,
@@ -1856,11 +1863,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "TUM Campus App contains a calendar showing university events";
+				INFOPLIST_KEY_NSContactsUsageDescription = "TUM Campus App can add contacts from TUM Online to your address book";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1895,11 +1903,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "TUM Campus App contains a calendar showing university events";
+				INFOPLIST_KEY_NSContactsUsageDescription = "TUM Campus App can add contacts from TUM Online to your address book";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

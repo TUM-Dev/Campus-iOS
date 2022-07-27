@@ -203,7 +203,7 @@ struct SettingsView: View {
 struct ChangeAppIconView: View {
     
     let size = UIScreen.main.bounds.width * 0.2
-    let appIcons = ["default", "tower", "3D", "pride", "outline", "dark"]
+    let appIcons = ["default", "white", "3D", "pride", "outline", "dark"]
     
     let columns = [
         GridItem(.flexible()),
