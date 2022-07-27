@@ -13,12 +13,25 @@ struct CafeteriaView: View {
     
     var body: some View {
         if let canteen = self.selectedCanteen {
-            
             VStack {
-                HStack {
-                    Text(canteen.name)
-                        .bold()
-                        .font(.title3)
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(canteen.name)
+                            .bold()
+                            .font(.title3)
+                        Text(canteen.location.address)
+                            .font(.subheadline)
+                            .foregroundColor(Color.gray)
+                            .onTapGesture{
+                                let latitude = canteen.location.latitude
+                                let longitude = canteen.location.longitude
+                                let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
+                                
+                                if UIApplication.shared.canOpenURL(url!) {
+                                      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                }
+                            }
+                    }
                     
                     Spacer()
 
@@ -34,14 +47,10 @@ struct CafeteriaView: View {
                                 .accessibility(hint:Text("Tap to close the screen"))
                                 .accessibility(addTraits: .isButton)
                                 .accessibility(removeTraits: .isImage)
-                    })
+                        })
                 }
-                                
+                
                 HStack {
-                    Text(canteen.location.address)
-                        .font(.subheadline)
-                        .foregroundColor(Color.gray)
-                    
                     Spacer()
                     
                     Button(action: {
@@ -53,8 +62,8 @@ struct CafeteriaView: View {
                                 UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                         }
                     }, label: {
-                        Text("Show Directions")
-                            .foregroundColor(Color(UIColor.tumBlue))
+                        Text("Show Directions \(Image(systemName: "arrow.right.circle"))")
+                            .foregroundColor(.blue)
                             .font(.footnote)
                     })
                 }
