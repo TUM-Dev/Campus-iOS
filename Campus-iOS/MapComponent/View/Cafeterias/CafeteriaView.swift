@@ -13,40 +13,49 @@ struct CafeteriaView: View {
     
     var body: some View {
         if let canteen = self.selectedCanteen {
-            HStack{
-                VStack(alignment: .leading){
+            
+            VStack {
+                HStack {
                     Text(canteen.name)
                         .bold()
                         .font(.title3)
+                    
+                    Spacer()
+
+                    Button(action: {
+                        selectedCanteen = nil
+                    }, label: {
+                        Text("Done")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.blue)
+                                .padding(.all, 5)
+                                .background(Color.clear)
+                                .accessibility(label:Text("Close"))
+                                .accessibility(hint:Text("Tap to close the screen"))
+                                .accessibility(addTraits: .isButton)
+                                .accessibility(removeTraits: .isImage)
+                    })
+                }
+                
+                HStack {
                     Text(canteen.location.address)
                         .font(.subheadline)
                         .foregroundColor(Color.gray)
-                        .onTapGesture{
-                            let latitude = canteen.location.latitude
-                            let longitude = canteen.location.longitude
-                            let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
-                            
-                            if UIApplication.shared.canOpenURL(url!) {
-                                  UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                            }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        let latitude = canteen.location.latitude
+                        let longitude = canteen.location.longitude
+                        let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
+                           
+                        if UIApplication.shared.canOpenURL(url!) {
+                                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
                         }
-                }
-                
-                Spacer()
-
-                Button(action: {
-                    selectedCanteen = nil
-                }, label: {
-                    Text("Done")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.blue)
-                            .padding(.all, 5)
-                            .background(Color.clear)
-                            .accessibility(label:Text("Close"))
-                            .accessibility(hint:Text("Tap to close the screen"))
-                            .accessibility(addTraits: .isButton)
-                            .accessibility(removeTraits: .isImage)
+                    }, label: {
+                        Text("Show Directions")
                     })
+                }
             }
             .padding(.all, 10)
         }
