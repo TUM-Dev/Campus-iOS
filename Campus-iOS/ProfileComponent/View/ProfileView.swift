@@ -138,7 +138,6 @@ struct ProfileView_Previews: PreviewProvider {
                 .navigationTitle("Settings")
                 .navigationBarTitleDisplayMode(.inline)
         }
-        .previewDevice("iPhone 12")
         ChangeAppIconView()
     }
 }
@@ -148,6 +147,14 @@ struct SettingsView: View {
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     @State var showActionSheet = false
+    
+    let appIcons = ["default", "white", "3D", "pride", "outline", "dark"]
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         List {
@@ -174,10 +181,11 @@ struct SettingsView: View {
                 .foregroundColor(.black)
             }
             
-            Section("Change App Logo") {
-                ChangeAppIconView()
-            }
             
+            
+            Section("Change App Icon") {
+                ChangeAppIconView().edgesIgnoringSafeArea(.leading)
+            }
             
             Section() {
                 HStack {
@@ -195,7 +203,7 @@ struct SettingsView: View {
 struct ChangeAppIconView: View {
     
     let size = UIScreen.main.bounds.width * 0.2
-    let appIcons = ["default", "white", "3D", "pride", "outline", "dark"]
+    let appIcons = ["default", "tower", "3D", "pride", "outline", "dark"]
     
     let columns = [
         GridItem(.flexible()),
@@ -207,17 +215,17 @@ struct ChangeAppIconView: View {
         LazyVGrid(columns: columns) {
             ForEach(appIcons) { appIcon in
                 Button {
-                    UIApplication.shared.setAlternateIconName(appIcon == "default" ? nil: appIcon)
+                    print(appIcon)
+                    UIApplication.shared.setAlternateIconName(appIcon == "default" ? nil : appIcon)
                 } label: {
                     Image(appIcon)
                         .resizable()
                         .cornerRadius(10)
                         .shadow(radius: 10)
                         .frame(width: size, height: size, alignment: .center)
-                        .padding()
-                }
+                        .padding([.bottom, .top])
+                }.buttonStyle(.borderless)
             }
         }
     }
 }
-
