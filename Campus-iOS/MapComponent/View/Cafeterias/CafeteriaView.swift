@@ -36,7 +36,7 @@ struct CafeteriaView: View {
                                 .accessibility(removeTraits: .isImage)
                     })
                 }
-                
+                                
                 HStack {
                     Text(canteen.location.address)
                         .font(.subheadline)
@@ -54,6 +54,8 @@ struct CafeteriaView: View {
                         }
                     }, label: {
                         Text("Show Directions")
+                            .foregroundColor(Color(UIColor.tumBlue))
+                            .font(.footnote)
                     })
                 }
             }
