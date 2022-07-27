@@ -30,34 +30,54 @@ struct StudyRoomGroupView: View {
     
     var body: some View {
         if let group = selectedGroup {
-            VStack(spacing: 1) {
-                HStack{
-                    VStack(alignment: .leading){
-                        Text(group.name ?? "")
-                            .bold()
-                            .font(.title3)
-                        if let detail = group.detail {
-                            Text(detail)
-                                .font(.subheadline)
-                                .foregroundColor(Color.gray)
+            VStack {
+                VStack(spacing: 1) {
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text(group.name ?? "")
+                                .bold()
+                                .font(.title3)
+                            if let detail = group.detail {
+                                Text(detail)
+                                    .font(.subheadline)
+                                    .foregroundColor(Color.gray)
+                            }
                         }
+                        
+                        Spacer()
+
+                        Button(action: {
+                            selectedGroup = nil
+                        }, label: {
+                            Text("Done")
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .foregroundColor(.blue)
+                                    .padding(.all, 5)
+                                    .background(Color.clear)
+                                    .accessibility(label:Text("Close"))
+                                    .accessibility(hint:Text("Tap to close the screen"))
+                                    .accessibility(addTraits: .isButton)
+                                    .accessibility(removeTraits: .isImage)
+                            })
                     }
                     
-                    Spacer()
-
-                    Button(action: {
-                        selectedGroup = nil
-                    }, label: {
-                        Text("Done")
-                                .font(.system(size: 16, weight: .semibold))
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            let latitude = group.coordinate?.latitude
+                            let longitude = group.coordinate?.longitude
+                            let url = URL(string: "maps://?saddr=&daddr=\(latitude!),\(longitude!)")
+                               
+                            if UIApplication.shared.canOpenURL(url!) {
+                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                            }
+                        }, label: {
+                            Text("Show Directions \(Image(systemName: "arrow.right.circle"))")
                                 .foregroundColor(.blue)
-                                .padding(.all, 5)
-                                .background(Color.clear)
-                                .accessibility(label:Text("Close"))
-                                .accessibility(hint:Text("Tap to close the screen"))
-                                .accessibility(addTraits: .isButton)
-                                .accessibility(removeTraits: .isImage)
+                                .font(.footnote)
                         })
+                    }
                 }
                 .padding(.trailing, 20)
                 .padding(.leading, 20)
