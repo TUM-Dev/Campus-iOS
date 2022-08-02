@@ -8,18 +8,25 @@
 import Foundation
 import SwiftUI
 
-class WidgetRecommender {
+@MainActor
+class WidgetRecommender: ObservableObject {
+    
+    @Published var status: WidgetRecommenderStatus
+    @Published var recommendations: [WidgetRecommendation]
         
     private let strategy: WidgetRecommenderStrategy
     private let model: Model
-    
+
     init(strategy: WidgetRecommenderStrategy, model: Model) {
         self.strategy = strategy
         self.model = model
+        self.status = .loading
+        self.recommendations = []
     }
     
-    func getRecommendation() -> [WidgetRecommendation] {
-        return strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+    func fetchRecommendations() async {
+        self.recommendations = await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+        self.status = .success
     }
     
     @ViewBuilder
@@ -37,4 +44,8 @@ class WidgetRecommender {
             GradeWidgetView(model: model, size: size)
         }
     }
+}
+
+enum WidgetRecommenderStatus {
+    case loading, success
 }

@@ -9,23 +9,34 @@ import SwiftUI
 
 struct WidgetScreen: View {
     
-    private let recommender: WidgetRecommender
+    @StateObject private var recommender: WidgetRecommender
     
     init(model: Model) {
-        self.recommender = WidgetRecommender(strategy: TimeStrategy(), model: model)
+        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: LocationStrategy(), model: model))
     }
     
     var body: some View {
-        ScrollView {
-            
-            // TODO: use a flexible grid.
-            VStack {
-                ForEach(recommender.getRecommendation(), id: \.widget) { recommendation in
-                    recommender.getWidget(for: recommendation.widget, size: recommendation.size())
+        
+        Group {
+            switch recommender.status {
+            case .loading:
+                ProgressView()
+            case .success:
+                ScrollView {
+                    
+                    // TODO: use a flexible grid.
+                    VStack {
+                        ForEach(recommender.recommendations, id: \.widget) { recommendation in
+                            recommender.getWidget(for: recommendation.widget, size: recommendation.size())
+                        }
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
                 }
             }
-            .frame(maxWidth: .infinity)
-            .padding()
+        }
+        .task {
+            await recommender.fetchRecommendations()
         }
     }
 }
