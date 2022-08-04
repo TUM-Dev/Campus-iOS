@@ -153,9 +153,9 @@ struct NewsCard: View {
             
         }
         .if(self.latest, transformT: {view in
-            view.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+            view.frame(width: 390 * 0.8, height: 390 * 0.8)
         }, transformF: {view in
-            view.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.6)
+            view.frame(width: 390 * 0.8, height: 390 * 0.6)
         })
         
         .background(Color(.systemGray6))
