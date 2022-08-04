@@ -105,8 +105,7 @@ struct PanelContentView: View {
                     //                        }
                     //                    }
                     
-                    Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10,
-                                   height: 1.5 * UIScreen.main.bounds.width/10)
+                    Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10, height: 50)
                 }
                 
                 Spacer()
