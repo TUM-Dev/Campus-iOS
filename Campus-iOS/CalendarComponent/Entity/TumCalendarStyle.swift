@@ -21,7 +21,8 @@ struct TumCalendarStyle {
             style.timeline.offsetTimeX = 2
             style.timeline.offsetLineLeft = 2
             style.headerScroll.titleDateAlignment = .center
-            style.headerScroll.heightHeaderWeek = 70
+            style.headerScroll.heightHeaderWeek = 60
+            style.headerScroll.heightSubviewHeader = 40
             style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 16)
             style.headerScroll.fontNameDay = .systemFont(ofSize: 14)
         } else {
