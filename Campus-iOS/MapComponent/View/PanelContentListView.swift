@@ -15,6 +15,7 @@ struct PanelContentListView: View {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     //let position = PanelPosition.bottom
+
     @State var retryAttemp = false
     
     var body: some View {
@@ -33,7 +34,8 @@ struct PanelContentListView: View {
                     .onAppear {
                         if retryAttemp {
                             withAnimation(.easeIn) {
-                                vm.panelPosition = "pushMid"
+                                //vm.panelPosition = "pushMid"
+                                vm.panelPos = .middle
                             }
                             retryAttemp = false
                         }
@@ -54,7 +56,8 @@ struct PanelContentListView: View {
                         } )
                     .onAppear {
                         withAnimation(.easeIn) {
-                            vm.panelPosition = "pushTop"
+                            //vm.panelPosition = "pushTop"
+                            vm.panelPos = .top
                         }
                     }
                 }
@@ -90,7 +93,8 @@ struct PanelContentListView: View {
                     .onAppear {
                         if retryAttemp {
                             withAnimation(.easeIn) {
-                                vm.panelPosition = "pushMid"
+                                //vm.panelPosition = "pushMid"
+                                vm.panelPos = .middle
                             }
                             retryAttemp = false
                         }
@@ -108,10 +112,11 @@ struct PanelContentListView: View {
                         retryClosure: { _ in
                             retryAttemp = true
                             await vm.getStudyRoomResponse()
-                        } )
+                        })
                     .onAppear {
                         withAnimation(.easeIn) {
-                            vm.panelPosition = "pushTop"
+                            //vm.panelPosition = "pushTop"
+                            vm.panelPos = .top
                         }
                     }
                 }

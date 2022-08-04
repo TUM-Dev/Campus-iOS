@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
 #endif
@@ -18,6 +19,7 @@ class LoginViewModel: ObservableObject {
     @Published var showLoginAlert = false
     @Published var showTokenAlert = false
     @Published var alertMessage = ""
+    private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
     weak var model: Model?
     var loginController = AuthenticationHandler()
@@ -73,6 +75,8 @@ class LoginViewModel: ObservableObject {
                 self?.model?.isUserAuthenticated = true
                 self?.model?.showProfile = false
                 self?.model?.loadProfile()
+                
+                Self.hapticFeedbackGenerator.notificationOccurred(.success)
             case let .failure(error):
                 self?.showTokenAlert = true
                 self?.model?.isUserAuthenticated = false

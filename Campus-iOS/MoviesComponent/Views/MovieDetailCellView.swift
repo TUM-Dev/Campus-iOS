@@ -13,12 +13,15 @@ struct MovieDetailCellView: View {
     var body: some View {
         HStack {
             Text(property.key)
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundColor(Color("tumBlue"))
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Spacer().frame(width: 20)
             VStack(alignment: .leading) {
                 ForEach(property.value, id: \.self) { propVal in
                     Text(propVal)
+                            .font(.system(size: 16))
                             .multilineTextAlignment(.leading)
                 }
             }.frame(maxWidth: .infinity, alignment: .leading)
@@ -33,3 +36,4 @@ struct MovieDetailCellView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
     }
 }
+

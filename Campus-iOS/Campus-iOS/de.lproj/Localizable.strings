@@ -142,6 +142,12 @@
 "Occupied until" = "Besetzt bis";
 "Unknown" = "Unbekannt";
 
+//Roomfinder
+"Roomfinder" = "Raum Finder";
+"Building" = "Gebäude";
+"Room" = "Raum";
+"Detail" = "Detail";
+"Floor" = "Obergeschoß";
 
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";

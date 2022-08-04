@@ -12,6 +12,7 @@ struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         
@@ -77,6 +78,7 @@ struct ProfileView: View {
                     HStack {
                         
                         Text("Calendar days in week mode")
+                            .foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
                         Spacer()
                         Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
                             ForEach(2..<8) { number in

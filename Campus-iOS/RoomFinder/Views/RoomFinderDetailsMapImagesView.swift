@@ -15,7 +15,7 @@ struct RoomFinderDetailsMapImagesView: View {
         GroupBox(
             label: GroupBoxLabelView(
                 iconName: "photo.fill.on.rectangle.fill",
-                text: "Map Images".localized
+                text: "Room".localized
             )
             .padding(.bottom, 10)
         ) {

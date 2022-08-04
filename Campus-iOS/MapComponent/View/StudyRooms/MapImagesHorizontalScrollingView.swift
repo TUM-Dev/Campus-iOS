@@ -28,6 +28,7 @@ struct MapImagesHorizontalScrollingView: View {
                                                 .resizable()
                                                 .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                                                 .clipped()
+                                                .cornerRadius(10.0)
                                         }
                                     case .failure:
                                         Image(systemName: "photo")

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PanelSearchBarView: View {
-    @Binding var panelPosition: String
-    @Binding var lockPanel: Bool
+    @ObservedObject var vm: MapViewModel
+    
     @Binding var searchString: String
     
     @State private var isEditing = false
@@ -18,41 +18,28 @@ struct PanelSearchBarView: View {
         TextField("Search ...", text: $searchString, onEditingChanged: { (editingChanged) in
             if editingChanged {
                 isEditing = true
-                lockPanel = true
-                panelPosition = "pushKBTop"
+                vm.lockPanel = true
+                vm.panelPos = .middle
             } else {
                 isEditing = false
-                lockPanel = false
+                vm.lockPanel = false
             }
         })
             .padding(7)
             .background(Color(.systemGray6))
             .cornerRadius(8)
-            .overlay {
-                HStack {
-                    Spacer()
-                    if !self.searchString.isEmpty {
-                        Button(action: {
-                            self.searchString = ""
-                            lockPanel = false
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(Color(UIColor.opaqueSeparator))
-                        }
-                        .padding(.trailing, 8)
-                    }
-                }
-            }
 
         if isEditing {
             Button(action: {
                 isEditing = false
-                lockPanel = false
+                vm.lockPanel = false
                 searchString = ""
-                                
+                
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }) {
-                Text("Cancel")
+                Image(systemName: "xmark.circle")
+                    .font(.title2)
+                    .foregroundColor(Color(UIColor.tumBlue))
             }
             .padding(.trailing, 10)
             .transition(.move(edge: .trailing))
@@ -63,10 +50,6 @@ struct PanelSearchBarView: View {
 
 struct PanelSearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelSearchBarView(
-            panelPosition: .constant(""),
-            lockPanel: .constant(true),
-            searchString: .constant("")
-        )
+        PanelSearchBarView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
     }
 }

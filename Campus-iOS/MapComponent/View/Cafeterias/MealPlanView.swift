@@ -12,46 +12,50 @@ struct MealPlanView: View {
     @ObservedObject var viewModel: MealPlanViewModel
         
     var body: some View {
-        HStack{
-            if viewModel.menus.count > 0 {
-                VStack{
-                    HStack{
-                        ForEach(viewModel.menus.prefix(7), id: \.id){ menu in
-                            Button(action: {
-                                viewModel.selectedMenu = menu
-                            }){
-                                VStack{
-                                    Circle()
-                                        .fill(menu === viewModel.selectedMenu ?
-                                              (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)) : Color.clear)
-                                        .aspectRatio(contentMode: .fit)
-                                        .overlay(
-                                            Text(getFormattedDate(date: menu.date, format: "d"))
-                                                .fontWeight(.semibold).fixedSize()
-                                                .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
-                                        )
-                                        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 35)
+        VStack {
+            HStack{
+                if viewModel.menus.count > 0 {
+                    VStack{
+                        HStack{
+                            ForEach(viewModel.menus.prefix(7), id: \.id){ menu in
+                                Button(action: {
+                                    viewModel.selectedMenu = menu
+                                }){
+                                    VStack{
+                                        Circle()
+                                            .fill(menu === viewModel.selectedMenu ?
+                                                  (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)) : Color.clear)
+                                            .aspectRatio(contentMode: .fit)
+                                            .overlay(
+                                                Text(getFormattedDate(date: menu.date, format: "d"))
+                                                    .fontWeight(.semibold).fixedSize()
+                                                    .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
+                                            )
+                                            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 35)
 
-                                    Text(getFormattedDate(date: menu.date, format: "EEE"))
-                                        .foregroundColor(Color(UIColor.label))
+                                        Text(getFormattedDate(date: menu.date, format: "EEE"))
+                                            .foregroundColor(Color(UIColor.label))
+                                    }
                                 }
                             }
                         }
+                        .padding(.horizontal, 5.0)
+                    
+                        if let menu = viewModel.selectedMenu {
+                            MenuView(viewModel: menu)
+                        }else{
+                            Spacer().frame(height: 20)
+                            Text("No Menu available today").foregroundColor(Color.black.opacity(0.5))
+                        }
                     }
-                    .padding(.horizontal, 5.0)
-                
-                    if let menu = viewModel.selectedMenu {
-                        MenuView(viewModel: menu)
-                    }else{
-                        Spacer().frame(height: 20)
-                        Text("No Menu available today").foregroundColor(Color.black.opacity(0.5))
-                    }
+                } else {
+                    Text("No Menus available")
                 }
-            } else {
-                Text("No Menus available")
             }
+            .navigationTitle(viewModel.title)
+            Spacer(minLength: 0.0)
         }
-        .navigationTitle(viewModel.title)
+        
     }
     
     func getFormattedDate(date: Date, format: String) -> String{

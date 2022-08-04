@@ -9,8 +9,13 @@ import SwiftUI
 
 struct CalendarWidgetView: View {
     
-    @StateObject var viewModel = CalendarViewModel() // Fetches in init.
+    @StateObject var viewModel: CalendarViewModel
     let size: WidgetSize
+    
+    init(model: Model, size: WidgetSize) {
+        self.size = size
+        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
+    }
     
     var body: some View {
         

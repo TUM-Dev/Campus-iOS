@@ -24,7 +24,7 @@ struct LectureDetailsScreen: View {
         Group {
             switch vm.state {
             case .success(let data):
-                LecturesDetailView(lectureDetails: data)
+                LecturesDetailView(viewModel: vm, lectureDetails: data)
             case .loading, .na:
                 LoadingView(text: "Fetching details of lecture".localized)
             case .failed(let error):

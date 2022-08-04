@@ -14,7 +14,10 @@ class CalendarViewModel: ObservableObject {
 
     @Published var events: [CalendarEvent] = []
     
-    init() {
+    let model: Model
+    
+    init(model: Model) {
+        self.model = model
         fetch()
     }
     

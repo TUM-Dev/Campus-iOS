@@ -146,6 +146,12 @@
 "Occupied until" = "Occupied until";
 "Unknown" = "Unknown";
 
+//Roomfinder
+"Roomfinder" = "Roomfinder";
+"Building" = "Building";
+"Room" = "Room";
+"Detail" = "Detail";
+"Obergeschoß" = "Obergeschoß";
 
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "The device appears to be offline, please check the internet connectivity";
