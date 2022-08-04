@@ -81,7 +81,7 @@ struct MapScreenView: View {
     
     func snapPanel(from height: CGFloat) {
         print(height)
-        let snapHeights = [PanelPos.top, PanelPos.kbtop, PanelPos.middle, PanelPos.bottom]
+        let snapHeights = [PanelPos.top, PanelPos.middle, PanelPos.bottom]
         
         vm.panelPos = closestMatch(values: snapHeights, inputValue: height)
         panelHeight = vm.panelPos.rawValue

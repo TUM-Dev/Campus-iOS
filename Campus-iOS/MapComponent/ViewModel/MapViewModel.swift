@@ -117,7 +117,7 @@ class MapViewModel: MapViewModelProtocol {
 enum PanelHeight {
     static let top = UIScreen.main.bounds.height * 0.8
     static let kbtop = UIScreen.main.bounds.height * 0.7
-    static let middle = UIScreen.main.bounds.height * 0.5
+    static let middle = UIScreen.main.bounds.height * 0.35
     static let bottom = UIScreen.main.bounds.height * 0.2
 }
 
@@ -129,7 +129,7 @@ enum PanelPos {
         switch self {
         case .top: return screenHeight * 0.8
         case .kbtop: return screenHeight * 0.7
-        case .middle: return screenHeight * 0.5
+        case .middle: return screenHeight * 0.35
         case .bottom: return screenHeight * 0.2
         }
     }
