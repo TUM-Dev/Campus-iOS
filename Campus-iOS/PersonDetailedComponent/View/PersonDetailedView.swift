@@ -28,8 +28,9 @@ struct PersonDetailedView: View {
                 if let image = cell.image {
                     Image(uiImage: image)
                         .resizable()
-                        .frame(width: imageSize, height: imageSize)
                         .clipShape(Circle())
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: imageSize, height: imageSize)
                 } else {
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()

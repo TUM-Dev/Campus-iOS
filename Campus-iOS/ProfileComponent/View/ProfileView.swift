@@ -23,8 +23,10 @@ struct ProfileView: View {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
                             .resizable()
-                            .foregroundColor(Color(.secondaryLabel))
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 75, height: 75)
+                            .foregroundColor(Color(.secondaryLabel))
                         
                         VStack(alignment: .leading) {
                             Text(self.model.profile.profile?.fullName ?? "Not logged in")
