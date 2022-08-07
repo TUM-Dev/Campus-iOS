@@ -24,12 +24,13 @@ struct LoadMoreCard: View {
                         .foregroundColor(.blue)
                 }
                 .foregroundColor(colorScheme == .dark ? .white : .black)
-                .frame(width: UIScreen.main.bounds.width * 0.4, height: UIScreen.main.bounds.width * 0.6)
+                .frame(width: 390 * 0.4, height: 390 * 0.6)
             }
             .background(Color(.systemGray6))
             .cornerRadius(15)
             .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
             .contentShape(Rectangle())
+            .padding(.leading)
     }
 }
 
@@ -153,9 +154,9 @@ struct NewsCard: View {
             
         }
         .if(self.latest, transformT: {view in
-            view.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)
+            view.frame(width: 390 * 0.8, height: 390 * 0.8)
         }, transformF: {view in
-            view.frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.6)
+            view.frame(width: 390 * 0.8, height: 390 * 0.6)
         })
         
         .background(Color(.systemGray6))

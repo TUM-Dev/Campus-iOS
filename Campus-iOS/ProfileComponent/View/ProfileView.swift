@@ -23,8 +23,10 @@ struct ProfileView: View {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
                             .resizable()
-                            .foregroundColor(Color(.secondaryLabel))
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 75, height: 75)
+                            .foregroundColor(Color(.secondaryLabel))
                         
                         VStack(alignment: .leading) {
                             Text(self.model.profile.profile?.fullName ?? "Not logged in")
@@ -138,14 +140,14 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("Version 4.0").foregroundColor(Color.black)
+                            Text("Version 4.0").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                             Spacer()
                         }
                     }
                 }
                 .actionSheet(isPresented: self.$showActionSheet) {
                     //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
-                    ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
+                    ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
                         .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
                         .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
                         .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },

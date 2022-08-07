@@ -920,11 +920,11 @@
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
 				36BB6F5527AFCD7B00F224AB /* PersonDetailedComponent */,
 				36108C0327A307F9007DC62D /* GradesComponent */,
+				3616C4D727904BA7000A1BC9 /* NewsComponent */,
 				36108BF127A30516007DC62D /* MoviesComponent */,
 				36108BC927A304B5007DC62D /* MapComponent */,
 				36108B9C27A3046B007DC62D /* LectureComponent */,
 				36BBE72D27989F6E0018FD3F /* HelperViews */,
-				3616C4D727904BA7000A1BC9 /* NewsComponent */,
 				3616C4C82790201B000A1BC9 /* TUMSexyComponent */,
 				36E9649E277492AE0055777F /* CalendarComponent */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
@@ -1855,14 +1855,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "TUM Campus App contains a calendar showing university events";
+				INFOPLIST_KEY_NSContactsUsageDescription = "TUM Campus App can add contacts from TUM Online to your address book";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1894,14 +1895,15 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Campus App";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "TUM Campus App contains a calendar showing university events";
+				INFOPLIST_KEY_NSContactsUsageDescription = "TUM Campus App can add contacts from TUM Online to your address book";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "TUM Campus App needs your Location to work properly";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App needs your location to work properly";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

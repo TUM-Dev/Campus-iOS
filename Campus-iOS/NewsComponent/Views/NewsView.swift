@@ -12,6 +12,7 @@ struct NewsView: View {
     @ObservedObject var viewModel: NewsViewModel
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @State var isWebViewShowed = false
+    @State var selectedLink: URL? = nil
     
     var body: some View {
         ScrollView(.vertical) {
@@ -26,10 +27,7 @@ struct NewsView: View {
                                             .padding()
                                             .rotation3DEffect(Angle(degrees: Double(geometry.frame(in: .global).minX - 50) / -20), axis: (x: 0, y: 100.0, z: 0))
                                             .onTapGesture {
-                                                self.isWebViewShowed.toggle()
-                                            }
-                                            .sheet(isPresented: $isWebViewShowed) {
-                                                SFSafariViewWrapper(url: url)
+                                                self.selectedLink = oneLatestNews.1?.link
                                             }
                                     } else {
                                         Link(destination: url) {
@@ -43,6 +41,10 @@ struct NewsView: View {
                             .frame(width: 250, height: 350)
                             // adjust height
                             Spacer(minLength: 1)
+                        }.sheet(item: $selectedLink) { selectedLink in 
+                            if let link = selectedLink {
+                                SFSafariViewWrapper(url: link)
+                            }
                         }
                         Spacer()
                     }.padding()

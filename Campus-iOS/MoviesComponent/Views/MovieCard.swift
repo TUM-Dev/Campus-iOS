@@ -23,7 +23,7 @@ struct MovieCard: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.width * 0.525)
+                            .frame(width: 390 * 0.425, height: 390 * 0.525)
                             .clipped()
                     case .failure:
                         Image("movie")
@@ -60,7 +60,7 @@ struct MovieCard: View {
             .padding(12)
             
         }
-        .frame(width: UIScreen.main.bounds.width * 0.425, height: UIScreen.main.bounds.width * 0.7)
+        .frame(width: 390 * 0.425, height: 390 * 0.7)
         .background(Color(.systemGray5))
         .cornerRadius(15)
         .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
