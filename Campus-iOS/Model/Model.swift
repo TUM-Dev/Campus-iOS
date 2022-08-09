@@ -17,7 +17,6 @@ public class Model: ObservableObject {
     @Published var isLoginSheetPresented = false
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
-    @Published var splashScreenPresented = false
     @Published var profile: ProfileViewModel = ProfileViewModel()
     
     var anyCancellables: [AnyCancellable] = []
@@ -34,13 +33,11 @@ public class Model: ObservableObject {
                     #if !targetEnvironment(macCatalyst)
                     Analytics.logEvent("token_confirmed", parameters: nil)
                     #endif
-                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = false
                     self?.isUserAuthenticated = true
                     self?.loadProfile()
                 case .failure(_):
                     self?.isUserAuthenticated = false
-                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = true
                 }
             }

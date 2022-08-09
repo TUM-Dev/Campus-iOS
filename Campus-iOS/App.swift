@@ -28,21 +28,17 @@ struct CampusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if model.splashScreenPresented {
-                TUMSplashScreen()
-            } else {
-                tabViewComponent()
-                    .sheet(isPresented: $model.isLoginSheetPresented) {
-                        NavigationView {
-                            LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 2
-                            }
+            tabViewComponent()
+                .sheet(isPresented: $model.isLoginSheetPresented) {
+                    NavigationView {
+                        LoginView(model: model)
+                        .onAppear {
+                            selectedTab = 2
                         }
-                        .navigationViewStyle(.stack)
                     }
-                    .environmentObject(model)
-            }
+                    .navigationViewStyle(.stack)
+                }
+                .environmentObject(model)
         }
     }
     

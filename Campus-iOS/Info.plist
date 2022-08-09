@@ -58,12 +58,5 @@
 			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
-	<key>UILaunchScreen</key>
-	<dict>
-		<key>UIColorName</key>
-		<string>tumBlue</string>
-		<key>UIImageName</key>
-		<string>logo-white</string>
-	</dict>
 </dict>
 </plist>
