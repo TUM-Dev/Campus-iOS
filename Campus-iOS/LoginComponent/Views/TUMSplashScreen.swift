@@ -49,7 +49,7 @@ public struct RingProgressViewStyle: ProgressViewStyle {
   }
 }
 
-struct TUMSplashScreen: View {
+/*struct TUMSplashScreen: View {
 
     var body: some View {
         ZStack {
@@ -78,4 +78,4 @@ struct TUMSplashScreen_Previews: PreviewProvider {
         }
         .preferredColorScheme(.dark)
     }
-}
+}*/
