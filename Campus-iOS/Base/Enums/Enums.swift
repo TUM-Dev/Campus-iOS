@@ -64,3 +64,12 @@ enum Role: String {
         }
     }
 }
+
+/* Views for which we gather usage data for the widget recommendations. */
+enum CampusAppView: String, CaseIterable {
+    case cafeteria = "cafeteria",
+         calendar = "calendar",
+         grades = "grades",
+         studyRoom = "studyRoom",
+         tuition = "tuition"
+}
