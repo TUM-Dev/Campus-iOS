@@ -22,6 +22,9 @@ struct TuitionView: View {
         .refreshable {
             self.viewModel.checkTuitionFunc()
         }
+        .task {
+            AnalyticsController.visitedView(view: .tuition)
+        }
     }
 }
 

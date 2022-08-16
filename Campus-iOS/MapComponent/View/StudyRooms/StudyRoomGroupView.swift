@@ -159,6 +159,9 @@ struct StudyRoomGroupView: View {
                     .padding()
                 }
             }
+            .task {
+                AnalyticsController.visitedView(view: .studyRoom)
+            }
         } else {
             Text("No Study Room Data available")
         }

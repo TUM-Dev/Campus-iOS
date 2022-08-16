@@ -69,6 +69,9 @@ struct CafeteriaView: View {
                 }
             }
             .padding(.all, 10)
+            .task {
+                AnalyticsController.visitedView(view: .cafeteria)
+            }
         }
     }
 }

@@ -60,6 +60,9 @@ struct GradesView: View {
                 .listRowSeparator(.hidden)
             }
         }
+        .task {
+            AnalyticsController.visitedView(view: .grades)
+        }
     }
 }
 
