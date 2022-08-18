@@ -35,6 +35,8 @@
 				</array>
 			</dict>
 		</dict>
+		<key>UINewsstandApp</key>
+		<true/>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
