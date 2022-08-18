@@ -142,7 +142,6 @@ struct LoginView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geo.size.width)
-                        .border(.red)
                         
                     
                     Spacer()
