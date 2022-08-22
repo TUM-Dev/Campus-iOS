@@ -9,6 +9,9 @@ import SwiftUI
 import MapKit
 import KVKCalendar
 import Firebase
+import Seeker
+import SwiftPrometheus_Integration
+import LoggingELK_Integration
 
 @main
 struct CampusApp: App {
@@ -24,6 +27,8 @@ struct CampusApp: App {
             let appearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
+        Seeker.setupLoggingELKLogger(hostname: "localhost")
+        Seeker.setupSwiftPrometheusMetrics(hostname: "localhost")
     }
     
     var body: some Scene {

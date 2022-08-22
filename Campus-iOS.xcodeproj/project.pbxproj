@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A6367028B416CE00D8AA8F /* LoggingELK Integration in Frameworks */ = {isa = PBXBuildFile; productRef = 09A6366F28B416CE00D8AA8F /* LoggingELK Integration */; };
+		09A6367228B416CE00D8AA8F /* SwiftPrometheus Integration in Frameworks */ = {isa = PBXBuildFile; productRef = 09A6367128B416CE00D8AA8F /* SwiftPrometheus Integration */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
@@ -445,8 +447,10 @@
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
 				36E964AA277498B60055777F /* KVKCalendar in Frameworks */,
+				09A6367028B416CE00D8AA8F /* LoggingELK Integration in Frameworks */,
 				36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */,
 				36FF90682773BCA600F4C785 /* SWXMLHash in Frameworks */,
+				09A6367228B416CE00D8AA8F /* SwiftPrometheus Integration in Frameworks */,
 				36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
@@ -1360,6 +1364,8 @@
 				36E964A9277498B60055777F /* KVKCalendar */,
 				226CB51D2798DF9C0043ABCA /* Snap */,
 				41D55D6D27A2EFB200DE7155 /* LRUCache */,
+				09A6366F28B416CE00D8AA8F /* LoggingELK Integration */,
+				09A6367128B416CE00D8AA8F /* SwiftPrometheus Integration */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -1444,6 +1450,7 @@
 				36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */,
 				226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */,
 				41D55D6C27A2EFB200DE7155 /* XCRemoteSwiftPackageReference "LRUCache" */,
+				09A6366E28B416CE00D8AA8F /* XCRemoteSwiftPackageReference "seeker" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -1777,7 +1784,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1833,7 +1840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2063,6 +2070,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		09A6366E28B416CE00D8AA8F /* XCRemoteSwiftPackageReference "seeker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/snkirov/seeker";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nerdsupremacist/Snap.git";
@@ -2138,6 +2153,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		09A6366F28B416CE00D8AA8F /* LoggingELK Integration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09A6366E28B416CE00D8AA8F /* XCRemoteSwiftPackageReference "seeker" */;
+			productName = "LoggingELK Integration";
+		};
+		09A6367128B416CE00D8AA8F /* SwiftPrometheus Integration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09A6366E28B416CE00D8AA8F /* XCRemoteSwiftPackageReference "seeker" */;
+			productName = "SwiftPrometheus Integration";
+		};
 		226CB51D2798DF9C0043ABCA /* Snap */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */;

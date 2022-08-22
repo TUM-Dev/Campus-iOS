@@ -7,9 +7,11 @@
 
 import SwiftUI
 import SwiftUICharts
+import SwiftPrometheus_Integration
 
 struct GradesScreen: View {
     @StateObject private var vm: GradesViewModel
+    @PromMetricsInstance var metrics
     
     init(model: Model) {
         self._vm = StateObject(wrappedValue:
@@ -18,6 +20,8 @@ struct GradesScreen: View {
                 service: GradesService()
             )
         )
+        let counter = metrics.createCounter(forType: Int.self, named: "opened_grades_screen")
+        counter.inc()
     }
     
     var body: some View {
@@ -57,6 +61,8 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
+                        let counter = metrics.createCounter(forType: Int.self, named: "retries_after_failed_fetching")
+                        counter.inc()
                         await vm.getGrades(forcedRefresh: true)
                     }
                 }

@@ -10,6 +10,7 @@ import SwiftUI
 #if !targetEnvironment(macCatalyst)
 import FirebaseAnalytics
 #endif
+import Seeker
 
 class LoginViewModel: ObservableObject {
     @Published var firstTextField = ""
@@ -21,6 +22,8 @@ class LoginViewModel: ObservableObject {
     @Published var alertMessage = ""
     private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
+    private let logger = Seeker.logger
+    private let metrics = Seeker.promMetrics
     weak var model: Model?
     var loginController = AuthenticationHandler()
     
@@ -75,9 +78,11 @@ class LoginViewModel: ObservableObject {
                 self?.model?.isUserAuthenticated = true
                 self?.model?.showProfile = false
                 self?.model?.loadProfile()
-                
+                self?.logger.info("User successfully logged in.")
                 Self.hapticFeedbackGenerator.notificationOccurred(.success)
             case let .failure(error):
+                let counter = self?.metrics.createCounter(forType: Int.self, named: "failed_login_attempts")
+                counter?.inc()
                 self?.showTokenAlert = true
                 self?.model?.isUserAuthenticated = false
                 self?.alertMessage = error.localizedDescription
