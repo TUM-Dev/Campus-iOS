@@ -26,21 +26,35 @@ struct StudyRoom: Entity {
     var status: String?
     var attributes: [StudyRoomAttribute]?
     
-    var localizedStatus: Text {
+    var localizedStatus: String {
         switch self.status {
         case "frei":
-            return Text("Free")
-                .foregroundColor(.green)
+            return "Free"
         case "belegt":
             if let occupiedUntilString = self.occupiedUntil, let occupiedUntilDate = StudyRoom.dateFomatter.date(from: occupiedUntilString) {
-                return Text("\("Occupied until".localized) \(StudyRoom.secondDateFormatter.string(from: occupiedUntilDate))")
-                    .foregroundColor(.red)
+                return "\("Occupied until".localized) \(StudyRoom.secondDateFormatter.string(from: occupiedUntilDate))"
             }
         default:
-            return Text("Unknown")
-                .foregroundColor(.gray)
+            return "Unknown"
         }
-        return Text("")
+        
+        return ""
+    }
+    
+    var localizedStatusText: Text {
+        
+        let color: Color
+        
+        switch self.status {
+        case "frei":
+            color = .green
+        case "belegt":
+            color = .red
+        default:
+            color = .gray
+        }
+        
+        return Text(localizedStatus).foregroundColor(color)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -117,17 +131,21 @@ struct StudyRoom: Entity {
         self.attributes = attributes
     }
     
-    private static let dateFomatter: DateFormatter = {
+    static let dateFomatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
 
-    private static let secondDateFormatter: DateFormatter = {
+    static let secondDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
+    
+    func isAvailable() -> Bool {
+        return status == "frei"
+    }
 }

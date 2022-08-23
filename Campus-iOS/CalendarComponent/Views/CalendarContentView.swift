@@ -96,6 +96,9 @@ struct CalendarContentView: View {
                 ProfileToolbar(model: viewModel.model)
             }
         }
+        .task {
+            AnalyticsController.visitedView(view: .calendar)
+        }
     }
     
     static func getSafeAreaFrame(geometry: GeometryProxy) -> CGRect {

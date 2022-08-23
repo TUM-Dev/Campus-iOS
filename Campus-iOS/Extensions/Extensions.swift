@@ -147,6 +147,13 @@ extension UIColor {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
 }
 
+extension Color {
+    
+    static var tumBlue = Color("tumBlue")
+    
+    static var widget = Color("widgetColor")
+}
+
 extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 
 extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }

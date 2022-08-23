@@ -8,6 +8,7 @@
 import CoreData
 
 struct PersistenceController {
+    
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -51,5 +52,17 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+    }
+    
+    func save() {
+        let context = container.viewContext
+
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                fatalError("Could not save the view context.")
+            }
+        }
     }
 }

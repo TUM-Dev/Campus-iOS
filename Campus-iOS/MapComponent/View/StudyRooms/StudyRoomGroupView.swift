@@ -115,7 +115,7 @@ struct StudyRoomGroupView: View {
                                         
                                         Spacer()
                                         
-                                        room.localizedStatus
+                                        room.localizedStatusText
                                     }
                                 )
                             })
@@ -158,6 +158,9 @@ struct StudyRoomGroupView: View {
                     .cornerRadius(10.0)
                     .padding()
                 }
+            }
+            .task {
+                AnalyticsController.visitedView(view: .studyRoom)
             }
         } else {
             Text("No Study Room Data available")
