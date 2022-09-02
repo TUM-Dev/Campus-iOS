@@ -110,7 +110,7 @@ struct TokenConfirmationView: View {
                 
                 Spacer()
                 
-                let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token pf Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                 let mailToUrl = URL(string: mailToString!)!
                 Link(destination: mailToUrl) {
                     Text("Contact Support").foregroundColor(Color(.tumBlue))
