@@ -9,9 +9,23 @@ import SwiftUI
 import MapKit
 import KVKCalendar
 import Firebase
+import AzureMapsControl
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    if let azureToken = Bundle.main.infoDictionary?["Azure_Token"] as? String {
+        // Azure Portal > Heatmap > Authentication > Primary key
+        AzureMaps.configure(subscriptionKey: azureToken)
+        AzureMaps.view = "Auto"
+    }
+    return true
+  }
+}
 
 @main
 struct CampusApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  
     @StateObject var model: Model = Model()
     
     let persistenceController = PersistenceController.shared
@@ -93,6 +107,16 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
+          
+          NavigationView {
+            AzureMapWrapper()
+              .ignoresSafeArea()
+          }
+          .tag(4)
+          .tabItem {
+              Label("Heatmap", systemImage: "map")
+          }
+          .navigationViewStyle(.stack)
         }
     }
 }

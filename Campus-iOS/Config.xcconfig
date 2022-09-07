@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  HeatmapUIKit
+//
+//  Created by Kamber Vogli on 15.03.22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+token = 9g_Nd80y0xdLKe5Mv9ZsChjVEiTs0sTw8nHfFYE25_g

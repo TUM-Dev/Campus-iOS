@@ -213,6 +213,15 @@
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
 		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
+		AA89999728C8504E009F74B6 /* AzureMapWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89999628C8504D009F74B6 /* AzureMapWrapper.swift */; };
+		AA89999B28C8505A009F74B6 /* AzureMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89999828C85059009F74B6 /* AzureMapsViewController.swift */; };
+		AA89999C28C8505A009F74B6 /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89999928C85059009F74B6 /* DataRepository.swift */; };
+		AA89999D28C8505A009F74B6 /* AccessPointPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89999A28C85059009F74B6 /* AccessPointPopup.swift */; };
+		AA8999A128C8519C009F74B6 /* AccessPoint.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA89999F28C8519C009F74B6 /* AccessPoint.grpc.swift */; };
+		AA8999A228C8519C009F74B6 /* AccessPoint.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8999A028C8519C009F74B6 /* AccessPoint.pb.swift */; };
+		AA8999A428C852D8009F74B6 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AA8999A328C852D8009F74B6 /* Config.xcconfig */; };
+		AA8999A728C85383009F74B6 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = AA8999A628C85383009F74B6 /* GRPC */; };
+		AA8999AA28C8540E009F74B6 /* AzureMapsControl in Frameworks */ = {isa = PBXBuildFile; productRef = AA8999A928C8540E009F74B6 /* AzureMapsControl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,6 +442,13 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		AA89999628C8504D009F74B6 /* AzureMapWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureMapWrapper.swift; sourceTree = "<group>"; };
+		AA89999828C85059009F74B6 /* AzureMapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureMapsViewController.swift; sourceTree = "<group>"; };
+		AA89999928C85059009F74B6 /* DataRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		AA89999A28C85059009F74B6 /* AccessPointPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessPointPopup.swift; sourceTree = "<group>"; };
+		AA89999F28C8519C009F74B6 /* AccessPoint.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessPoint.grpc.swift; sourceTree = "<group>"; };
+		AA8999A028C8519C009F74B6 /* AccessPoint.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessPoint.pb.swift; sourceTree = "<group>"; };
+		AA8999A328C852D8009F74B6 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,10 +460,12 @@
 				41D55D6E27A2EFB200DE7155 /* LRUCache in Frameworks */,
 				97997AE7277234120079F809 /* XMLCoder in Frameworks */,
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
+				AA8999AA28C8540E009F74B6 /* AzureMapsControl in Frameworks */,
 				36E964AA277498B60055777F /* KVKCalendar in Frameworks */,
 				36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */,
 				36FF90682773BCA600F4C785 /* SWXMLHash in Frameworks */,
 				36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				AA8999A728C85383009F74B6 /* GRPC in Frameworks */,
 				36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
 				97997AE127722D660079F809 /* Alamofire in Frameworks */,
@@ -916,6 +934,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				AA89999528C847D7009F74B6 /* HeatmapComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
 				36BB6F8027B39B2200F224AB /* LectureSearchComponent */,
 				36BB6F7627B26DCA00F224AB /* TuitionComponent */,
@@ -938,6 +957,7 @@
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				366F0E8327580CFB0091651D /* App.swift */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
+				AA8999A328C852D8009F74B6 /* Config.xcconfig */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				41E2B8232864D192005B5E72 /* Icons */,
@@ -1332,6 +1352,27 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		AA89999528C847D7009F74B6 /* HeatmapComponent */ = {
+			isa = PBXGroup;
+			children = (
+				AA89999E28C8519C009F74B6 /* api */,
+				AA89999628C8504D009F74B6 /* AzureMapWrapper.swift */,
+				AA89999A28C85059009F74B6 /* AccessPointPopup.swift */,
+				AA89999828C85059009F74B6 /* AzureMapsViewController.swift */,
+				AA89999928C85059009F74B6 /* DataRepository.swift */,
+			);
+			path = HeatmapComponent;
+			sourceTree = "<group>";
+		};
+		AA89999E28C8519C009F74B6 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				AA89999F28C8519C009F74B6 /* AccessPoint.grpc.swift */,
+				AA8999A028C8519C009F74B6 /* AccessPoint.pb.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1360,6 +1401,8 @@
 				36E964A9277498B60055777F /* KVKCalendar */,
 				226CB51D2798DF9C0043ABCA /* Snap */,
 				41D55D6D27A2EFB200DE7155 /* LRUCache */,
+				AA8999A628C85383009F74B6 /* GRPC */,
+				AA8999A928C8540E009F74B6 /* AzureMapsControl */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -1444,6 +1487,8 @@
 				36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */,
 				226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */,
 				41D55D6C27A2EFB200DE7155 /* XCRemoteSwiftPackageReference "LRUCache" */,
+				AA8999A528C85383009F74B6 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				AA8999A828C8540E009F74B6 /* XCRemoteSwiftPackageReference "azure-maps-ios-sdk-distribution" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -1466,6 +1511,7 @@
 				41E2B8312864D193005B5E72 /* default@3x.png in Resources */,
 				41E2B8372864D193005B5E72 /* outline@2x.png in Resources */,
 				366F0E8B27580CFD0091651D /* Preview Assets.xcassets in Resources */,
+				AA8999A428C852D8009F74B6 /* Config.xcconfig in Resources */,
 				41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */,
 				41E2B8322864D193005B5E72 /* outline@3x.png in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
@@ -1515,6 +1561,7 @@
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
+				AA89999C28C8505A009F74B6 /* DataRepository.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
@@ -1566,6 +1613,7 @@
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
+				AA89999B28C8505A009F74B6 /* AzureMapsViewController.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
@@ -1636,6 +1684,7 @@
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
+				AA89999D28C8505A009F74B6 /* AccessPointPopup.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
@@ -1663,6 +1712,7 @@
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
+				AA89999728C8504E009F74B6 /* AzureMapWrapper.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
@@ -1670,6 +1720,7 @@
 				36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 				36FF90652773BB8200F4C785 /* Extensions.swift in Sources */,
+				AA8999A128C8519C009F74B6 /* AccessPoint.grpc.swift in Sources */,
 				36108C1427A307F9007DC62D /* GradeColor.swift in Sources */,
 				36108BBD27A3046B007DC62D /* Lecture.swift in Sources */,
 				36BB6F8627B39C5300F224AB /* LectureSearchViewModel.swift in Sources */,
@@ -1677,6 +1728,7 @@
 				36108BC727A3046B007DC62D /* LectureDetailsLinkView.swift in Sources */,
 				36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */,
 				36108C0227A30762007DC62D /* Enums.swift in Sources */,
+				AA8999A228C8519C009F74B6 /* AccessPoint.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1727,6 +1779,7 @@
 /* Begin XCBuildConfiguration section */
 		366F0EA727580CFD0091651D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8999A328C852D8009F74B6 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -2135,6 +2188,22 @@
 				version = 2.10.1;
 			};
 		};
+		AA8999A528C85383009F74B6 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AA8999A828C8540E009F74B6 /* XCRemoteSwiftPackageReference "azure-maps-ios-sdk-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Azure/azure-maps-ios-sdk-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = "1.0.0-pre.1";
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2192,6 +2261,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
 			productName = SwiftUICharts;
+		};
+		AA8999A628C85383009F74B6 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA8999A528C85383009F74B6 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		AA8999A928C8540E009F74B6 /* AzureMapsControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA8999A828C8540E009F74B6 /* XCRemoteSwiftPackageReference "azure-maps-ios-sdk-distribution" */;
+			productName = AzureMapsControl;
 		};
 /* End XCSwiftPackageProductDependency section */
 
