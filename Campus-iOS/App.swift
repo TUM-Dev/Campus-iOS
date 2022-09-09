@@ -68,7 +68,9 @@ struct CampusApp: App {
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
-            .navigationViewStyle(.stack)
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
             
             NavigationView {
                 GradesScreen(model: model)
@@ -83,7 +85,9 @@ struct CampusApp: App {
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }
-            .navigationViewStyle(.stack)
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
 
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
