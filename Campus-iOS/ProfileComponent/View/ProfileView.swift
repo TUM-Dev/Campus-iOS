@@ -79,10 +79,12 @@ struct ProfileView: View {
                 Section() {
                     HStack {
                         
-                        Text("Calendar days in week mode")
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
-                        Spacer()
-                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
+                        if #unavailable(iOS 16.0) {
+                            Text("Calendar days in week mode")
+                                .foregroundColor(Color(.label))
+                            Spacer()
+                        }
+                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode").foregroundColor(Color(.label))) {
                             ForEach(2..<8) { number in
                                 Text("\(number)")
                                     .tag(number)

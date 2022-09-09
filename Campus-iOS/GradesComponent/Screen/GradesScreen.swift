@@ -9,16 +9,8 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesScreen: View {
-    @StateObject private var vm: GradesViewModel
-    
-    init(model: Model) {
-        self._vm = StateObject(wrappedValue:
-            GradesViewModel(
-                model: model,
-                service: GradesService()
-            )
-        )
-    }
+    @StateObject var vm: GradesViewModel
+    @Binding var refresh: Bool
     
     var body: some View {
         Group {
@@ -44,9 +36,8 @@ struct GradesScreen: View {
         .task {
             await vm.getGrades()
         }
-        // As LoginView is just a sheet displayed in front of the GradeScreen
-        // Listen to changes on the token, then fetch the grades
-        .onChange(of: self.vm.token ?? "") { _ in
+        // Refresh whenever user authentication status changes
+        .onChange(of: self.refresh) { _ in
             Task {
                 await vm.getGrades()
             }
@@ -76,6 +67,9 @@ struct GradesScreen: View {
 
 struct GradesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GradesScreen(model: MockModel())
+        GradesScreen(vm: GradesViewModel(
+            model: MockModel(),
+            service: GradesService()
+        ), refresh: .constant(false))
     }
 }

@@ -11,15 +11,12 @@ import KVKCalendar
 struct CalendarContentView: View {
     
     @StateObject var viewModel: CalendarViewModel
+    @Binding var refresh: Bool
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
-
-    init(model: Model) {
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
-    }
     
     var body: some View {
         VStack {
@@ -48,6 +45,10 @@ struct CalendarContentView: View {
                     EmptyView()
                 }
             }
+        }
+        // Refresh whenever user authentication status changes
+        .onChange(of: self.refresh) { _ in
+            self.viewModel.fetch()
         }
         .sheet(item: self.$selectedEventID) { eventId in
             let chosenEvent = self.viewModel.events
@@ -107,6 +108,11 @@ struct CalendarContentView: View {
 
 struct CalendarContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarContentView(model: MockModel())
+        CalendarContentView(
+            viewModel: CalendarViewModel(
+                model: MockModel()
+            ),
+            refresh: .constant(false)
+        )
     }
 }
