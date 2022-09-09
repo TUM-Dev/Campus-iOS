@@ -8,16 +8,8 @@
 import SwiftUI
 
 struct LecturesScreen: View {
-    @StateObject private var vm: LecturesViewModel
-    
-    init(model: Model) {
-        self._vm = StateObject(wrappedValue:
-            LecturesViewModel(
-                model: model,
-                service: LecturesService()
-            )
-        )
-    }
+    @StateObject var vm: LecturesViewModel
+    @Binding var refresh: Bool
     
     var body: some View {
         Group {
@@ -43,6 +35,12 @@ struct LecturesScreen: View {
         .task {
             await vm.getLectures()
         }
+        // Refresh whenever user authentication status changes
+        .onChange(of: self.refresh) { _ in
+            Task {
+                await vm.getLectures()
+            }
+        }
         .alert(
             "Error while fetching Lectures",
             isPresented: $vm.hasError,
@@ -64,6 +62,11 @@ struct LecturesScreen: View {
 
 struct LecturesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LecturesScreen(model: MockModel())
+        LecturesScreen(
+            vm: LecturesViewModel(
+                model: MockModel(),
+                service: LecturesService()
+            ),
+            refresh: .constant(false))
     }
 }
