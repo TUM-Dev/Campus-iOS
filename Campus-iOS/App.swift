@@ -73,7 +73,10 @@ struct CampusApp: App {
             })
             
             NavigationView {
-                GradesScreen(model: model)
+                GradesScreen(vm: GradesViewModel(
+                    model: model,
+                    service: GradesService()
+                ), isSheetPresented: $model.isLoginSheetPresented)
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
