@@ -98,21 +98,6 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
-            
-            NavigationView {
-                WidgetScreen(model: model)
-                    .navigationTitle("My Widgets")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
-            }
-            .tag(4)
-            .tabItem {
-                Label("My Widgets", systemImage: "rectangle.3.group")
-            }
-            .navigationViewStyle(.stack)
         }
     }
 }
