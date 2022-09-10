@@ -10,6 +10,7 @@ import SwiftUICharts
 
 struct GradesView: View {
     @StateObject var vm: GradesViewModel
+    @State private var data = AppUsageData()
     
     var body: some View {
         List {
@@ -26,10 +27,10 @@ struct GradesView: View {
                         )
                     )
                     .frame(alignment: .center)
-                
+                    
                     BarChartView(barChartData: self.vm.barChartData[index])
                 }
-                    
+                
                 ForEach(self.vm.gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
                     Section(
                         header:
@@ -61,7 +62,10 @@ struct GradesView: View {
             }
         }
         .task {
-            AnalyticsController.visitedView(view: .grades)
+            data.visitView(view: .grades)
+        }
+        .onDisappear {
+            data.exitView(closingApp: false)
         }
     }
 }

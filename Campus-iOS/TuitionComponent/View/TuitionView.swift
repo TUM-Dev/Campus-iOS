@@ -10,6 +10,7 @@ import SwiftUI
 struct TuitionView: View {
     
     @ObservedObject var viewModel: ProfileViewModel
+    @State private var data = AppUsageData()
     
     var body: some View {
         List {
@@ -23,7 +24,10 @@ struct TuitionView: View {
             self.viewModel.checkTuitionFunc()
         }
         .task {
-            AnalyticsController.visitedView(view: .tuition)
+            data.visitView(view: .tuition)
+        }
+        .onDisappear {
+            data.exitView(closingApp: false)
         }
     }
 }

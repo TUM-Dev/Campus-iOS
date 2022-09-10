@@ -14,6 +14,13 @@ struct PanelContentView: View {
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
     @State private var sortedGroups: [StudyRoomGroup] = []
+    @State private var cafeteriasData = AppUsageData()
+    @State private var studyRoomsData = AppUsageData()
+    
+    // TODO: For an unknown reason, .onDisappear on the PanelContentView is called when this view
+    // shows for the first time. Setting this variable to true in .task and then checking it
+    // in .onDisappear mitigates the issue.
+    @State private var panelContentDidAppear = false
     
     private let handleThickness = CGFloat(0)
     
@@ -81,6 +88,13 @@ struct PanelContentView: View {
                     }
                     .frame(width: 100)
                     .onChange(of: vm.mode) { newMode in
+                        if newMode == .cafeterias {
+                            studyRoomsData.exitView(closingApp: false)
+                            cafeteriasData.visitView(view: .cafeterias)
+                        } else if newMode == .studyRooms {
+                            cafeteriasData.exitView(closingApp: false)
+                            studyRoomsData.visitView(view: .studyRooms)
+                        }
                         vm.setAnnotations = true
                     }
                     
@@ -112,12 +126,39 @@ struct PanelContentView: View {
                 Spacer()
                 
                 PanelContentListView(vm: self.vm, searchString: $searchString)
+                    .task {
+                        
+                        panelContentDidAppear = true
+
+                        if currentView() == .cafeterias {
+                            cafeteriasData.visitView(view: .cafeterias)
+                        } else if currentView() == .studyRooms {
+                            studyRoomsData.visitView(view: .studyRooms)
+                        }
+                    }
+                    .onDisappear {
+                        
+                        if !panelContentDidAppear { return }
+                        
+                        if currentView() == .cafeterias {
+                            cafeteriasData.exitView(closingApp: false)
+                        } else if currentView() == .studyRooms {
+                            studyRoomsData.exitView(closingApp: false)
+                        }
+                    }
             }
         }
         .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
             if let cafeteria = optionalCafeteria {
                 mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
             }
+        }
+    }
+    
+    private func currentView() -> CampusAppView {
+        switch self.vm.mode {
+        case MapMode.studyRooms: return .studyRooms
+        case MapMode.cafeterias: return .cafeterias
         }
     }
 }

@@ -16,6 +16,7 @@ struct CalendarContentView: View {
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
+    @State private var data = AppUsageData()
 
     init(model: Model) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
@@ -97,7 +98,10 @@ struct CalendarContentView: View {
             }
         }
         .task {
-            AnalyticsController.visitedView(view: .calendar)
+            data.visitView(view: .calendar)
+        }
+        .onDisappear {
+            data.exitView(closingApp: false)
         }
     }
     
