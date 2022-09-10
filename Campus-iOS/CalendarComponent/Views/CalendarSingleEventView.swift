@@ -55,6 +55,13 @@ struct CalendarSingleEventView: View {
         .task {
             data.visitView(view: .calendarEvent)
         }
+        .onChange(of: model.showProfile) { showProfile in
+            if showProfile {
+                data.exitView(closingApp: false)
+            } else {
+                data.visitView(view: .calendarEvent)
+            }
+        }
         .onDisappear {
             data.exitView(closingApp: false)
         }
