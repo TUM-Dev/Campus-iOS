@@ -17,11 +17,9 @@ struct CalendarContentView: View {
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
     @State private var data = AppUsageData()
-    private let model: Model
 
     init(model: Model) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
-        self.model = model
     }
     
     var body: some View {
@@ -102,15 +100,8 @@ struct CalendarContentView: View {
         .task {
             data.visitView(view: .calendar)
         }
-        .onChange(of: model.showProfile) { showProfile in
-            if showProfile {
-                data.exitView(closingApp: false)
-            } else {
-                data.visitView(view: .calendar)
-            }
-        }
         .onDisappear {
-            data.exitView(closingApp: false)
+            data.didExitView()
         }
     }
     

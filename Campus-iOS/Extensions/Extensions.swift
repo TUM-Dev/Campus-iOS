@@ -221,3 +221,8 @@ extension String: Identifiable {
 extension URL: Identifiable {
     public var id: UUID { UUID() }
 }
+
+extension Notification.Name {
+    static let tcaSheetBecameActiveNotification = Notification.Name("tcaSheetBecameActiveNotification")
+    static let tcaSheetBecameInactiveNotification = Notification.Name("tcaSheetBecameInactiveNotification")
+}

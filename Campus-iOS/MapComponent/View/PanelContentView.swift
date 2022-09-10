@@ -89,10 +89,10 @@ struct PanelContentView: View {
                     .frame(width: 100)
                     .onChange(of: vm.mode) { newMode in
                         if newMode == .cafeterias {
-                            studyRoomsData.exitView(closingApp: false)
+                            studyRoomsData.didExitView()
                             cafeteriasData.visitView(view: .cafeterias)
                         } else if newMode == .studyRooms {
-                            cafeteriasData.exitView(closingApp: false)
+                            cafeteriasData.didExitView()
                             studyRoomsData.visitView(view: .studyRooms)
                         }
                         vm.setAnnotations = true
@@ -140,9 +140,9 @@ struct PanelContentView: View {
                         if !panelContentDidAppear { return }
                         
                         if currentView() == .cafeterias {
-                            cafeteriasData.exitView(closingApp: false)
+                            cafeteriasData.didExitView()
                         } else if currentView() == .studyRooms {
-                            studyRoomsData.exitView(closingApp: false)
+                            studyRoomsData.didExitView()
                         }
                     }
             }

@@ -10,9 +10,9 @@ import MapKit
 import Combine
 
 /// A wrapper for the usage data we collect for specific views inside the app.
-/// Persists the data when explicitly calling `exitView`, or when the app enters the background.
+/// Persists the data when explicitly calling `exitView`, or when the app enters the background, or when a sheet blocks the respective view.
 /// Instantiate as a `@State` object inside the view, and call `visitView` in `.onAppear` or `.task`.
-/// Call `exitView` in `.onDisappear`.
+/// Call `didExitView` in `.onDisappear`.
 class AppUsageData {
     
     /* CoreData's double values (for latitude, longitude) are not optional.
@@ -32,51 +32,75 @@ class AppUsageData {
     // To set the start timestamp (etc.) when the app wakes up.
     private var wakeUpListener: AnyCancellable?
     
+    private var sheetActiveListener: AnyCancellable?
+    
+    private var sheetInactiveListener: AnyCancellable?
+    
     func visitView(view: CampusAppView) {
         
         self.startTime = Date()
         self.view = view
         
-        guard let location = CLLocationManager().location else {
+        if let location = CLLocationManager().location {
+            self.latitude = location.coordinate.latitude
+            self.longitude = location.coordinate.longitude
+        } else {
             self.latitude = nil
             self.longitude = nil
-            return
         }
         
-        self.latitude = location.coordinate.latitude
-        self.longitude = location.coordinate.longitude
-                
         self.didEnterBackgroundListener = NotificationCenter.default
             .publisher(for: UIApplication.willResignActiveNotification)
-            .sink { _ in
-                
-                // Restart on app wake up (but only if we entered the background).
-                self.wakeUpListener = NotificationCenter.default
-                    .publisher(for: UIApplication.didBecomeActiveNotification)
-                    .sink { _ in
-                        self.visitView(view: view)
-                    }
-                
-                self.exitView(closingApp: true)
-            }
+            .sink { _ in self.didEnterBackground(currentView: view) }
+        
+        self.sheetActiveListener = NotificationCenter.default
+            .publisher(for: Notification.Name.tcaSheetBecameActiveNotification)
+            .sink { _ in self.didOpenSheet(currentView: view) }
     }
     
-    func exitView(closingApp: Bool) {
+    /// Call this function when exiting a view, e.g. `onDisappear`.
+    public func didExitView() {
+        didEnterBackgroundListener?.cancel()
+        wakeUpListener?.cancel()
+        sheetActiveListener?.cancel()
+        sheetInactiveListener?.cancel()
         
+        commit()
+    }
+    
+    private func didEnterBackground(currentView: CampusAppView) {
+        didEnterBackgroundListener?.cancel()
+        sheetActiveListener?.cancel()
+        sheetInactiveListener?.cancel()
         
-        if !closingApp {
-            self.wakeUpListener?.cancel()
-        }
+        wakeUpListener = NotificationCenter.default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .sink { _ in
+                self.visitView(view: currentView)
+            }
+        
+        commit()
+    }
+    
+    private func didOpenSheet(currentView: CampusAppView) {
         
         didEnterBackgroundListener?.cancel()
+        wakeUpListener?.cancel()
+        sheetActiveListener?.cancel()
         
+        sheetInactiveListener = NotificationCenter.default
+            .publisher(for: Notification.Name.tcaSheetBecameInactiveNotification)
+            .sink { _ in
+                self.visitView(view: currentView)
+            }
+        
+        commit()
+    }
+    
+    private func commit() {
         self.endTime = Date()
-        
         AnalyticsController.store(entry: self)
-        
-        Task {
-            try? await AnalyticsController.upload(entry: self)
-        }
+        Task { try? await AnalyticsController.upload(entry: self) }
     }
     
     public func getView() -> CampusAppView? {

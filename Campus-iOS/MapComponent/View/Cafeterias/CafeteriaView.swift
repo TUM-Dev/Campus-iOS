@@ -74,7 +74,7 @@ struct CafeteriaView: View {
                 data.visitView(view: .cafeteria)
             }
             .onDisappear {
-                data.exitView(closingApp: false)
+                data.didExitView()
             }
         }
     }

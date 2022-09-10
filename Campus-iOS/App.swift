@@ -40,11 +40,15 @@ struct CampusApp: App {
                     }
                     .navigationViewStyle(.stack)
                 }
-                .sheet(isPresented: !$didShowAnalyticsOptIn) {
-                    AnalyticsOptInView()
-                }
-                .environmentObject(model)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .sheet(isPresented: !$didShowAnalyticsOptIn,
+                       onDismiss: { NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil) }) {
+                        AnalyticsOptInView()
+                            .task {
+                                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
+                            }
+                    }
+                    .environmentObject(model)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
     

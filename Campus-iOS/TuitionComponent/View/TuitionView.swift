@@ -27,7 +27,7 @@ struct TuitionView: View {
             data.visitView(view: .tuition)
         }
         .onDisappear {
-            data.exitView(closingApp: false)
+            data.didExitView()
         }
     }
 }

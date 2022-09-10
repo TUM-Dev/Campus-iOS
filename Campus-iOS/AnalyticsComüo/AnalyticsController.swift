@@ -11,7 +11,7 @@ import SwiftUI
 
 struct AnalyticsController {
     
-    @AppStorage("analyticsOptIn") private static var didOptIn = false;
+    @AppStorage("analyticsOptIn") private static var didOptIn = false
     static private let analyticsApi = "https://tumdev.zagar.dev"
     
     static func store(entry: AppUsageData) {
