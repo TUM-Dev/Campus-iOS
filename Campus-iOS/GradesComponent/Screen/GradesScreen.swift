@@ -10,7 +10,9 @@ import SwiftUICharts
 
 struct GradesScreen: View {
     @StateObject private var vm: GradesViewModel
-    
+    private let model: Model
+    @State private var data = AppUsageData()
+
     init(model: Model) {
         self._vm = StateObject(wrappedValue:
             GradesViewModel(
@@ -18,6 +20,7 @@ struct GradesScreen: View {
                 service: GradesService()
             )
         )
+        self.model = model
     }
     
     var body: some View {
@@ -42,7 +45,18 @@ struct GradesScreen: View {
             }
         }
         .task {
+            data.visitView(view: .grades)
             await vm.getGrades()
+        }
+        .onDisappear {
+            data.exitView(closingApp: false)
+        }
+        .onChange(of: model.showProfile) { showProfile in
+            if showProfile {
+                data.exitView(closingApp: false)
+            } else {
+                data.visitView(view: .grades)
+            }
         }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
