@@ -30,28 +30,23 @@ struct CampusApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if model.splashScreenPresented {
-                TUMSplashScreen()
-            } else {
-                tabViewComponent()
-                    .sheet(isPresented: $model.isLoginSheetPresented) {
-                        NavigationView {
-                            LoginView(model: model)
+            tabViewComponent()
+                .sheet(isPresented: $model.isLoginSheetPresented) {
+                    NavigationView {
+                        LoginView(model: model)
                             .onAppear {
                                 selectedTab = 2
                             }
-                        }
-                        .navigationViewStyle(.stack)
                     }
-                    .sheet(isPresented: !$didShowAnalyticsOptIn) {
-                        AnalyticsOptInView()
-                    }
-                    .environmentObject(model)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            }
+                    .navigationViewStyle(.stack)
+                }
+                .sheet(isPresented: !$didShowAnalyticsOptIn) {
+                    AnalyticsOptInView()
+                }
+                .environmentObject(model)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
-    
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
@@ -94,7 +89,7 @@ struct CampusApp: App {
                 Label("Grades", systemImage: "checkmark.shield")
             }
             .navigationViewStyle(.stack)
-
+            
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }

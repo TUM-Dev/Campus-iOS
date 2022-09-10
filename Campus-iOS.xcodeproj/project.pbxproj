@@ -226,6 +226,7 @@
 		36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90712773BFC300F4C785 /* FirebaseAnalytics */; };
 		36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90732773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta */; };
 		36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36FF90752773BFC300F4C785 /* FirebaseCrashlytics */; };
+		4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4189268728A2EDCE004669AA /* Launch Screen.storyboard */; };
 		41D55D6E27A2EFB200DE7155 /* LRUCache in Frameworks */ = {isa = PBXBuildFile; productRef = 41D55D6D27A2EFB200DE7155 /* LRUCache */; };
 		41E2B82E2864D193005B5E72 /* 3D@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E2B8242864D192005B5E72 /* 3D@2x.png */; };
 		41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 41E2B8252864D192005B5E72 /* 3D@3x.png */; };
@@ -480,6 +481,7 @@
 		36FAE364277472EF00628799 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		36FF90642773BB8100F4C785 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		4189268728A2EDCE004669AA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		41E2B8242864D192005B5E72 /* 3D@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D@2x.png"; sourceTree = "<group>"; };
 		41E2B8252864D192005B5E72 /* 3D@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3D@3x.png"; sourceTree = "<group>"; };
 		41E2B8262864D192005B5E72 /* default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@2x.png"; sourceTree = "<group>"; };
@@ -1065,11 +1067,11 @@
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
 				36BB6F5527AFCD7B00F224AB /* PersonDetailedComponent */,
 				36108C0327A307F9007DC62D /* GradesComponent */,
+				3616C4D727904BA7000A1BC9 /* NewsComponent */,
 				36108BF127A30516007DC62D /* MoviesComponent */,
 				36108BC927A304B5007DC62D /* MapComponent */,
 				36108B9C27A3046B007DC62D /* LectureComponent */,
 				36BBE72D27989F6E0018FD3F /* HelperViews */,
-				3616C4D727904BA7000A1BC9 /* NewsComponent */,
 				3616C4C82790201B000A1BC9 /* TUMSexyComponent */,
 				36E9649E277492AE0055777F /* CalendarComponent */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
@@ -1400,6 +1402,7 @@
 				36203E892761C6EC00C24658 /* LoginView.swift */,
 				3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */,
 				36203E882761C6EC00C24658 /* TUMSplashScreen.swift */,
+				4189268728A2EDCE004669AA /* Launch Screen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1619,6 +1622,7 @@
 				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
+				4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 				41E2B8302864D193005B5E72 /* default@2x.png in Resources */,
@@ -2046,9 +2050,10 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2087,9 +2092,10 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "TUM Campus App uses user location to show proximity of important places like cafeterias or study rooms";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

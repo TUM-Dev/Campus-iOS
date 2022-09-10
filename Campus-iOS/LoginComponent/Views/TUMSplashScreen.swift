@@ -48,34 +48,3 @@ public struct RingProgressViewStyle: ProgressViewStyle {
       }
   }
 }
-
-struct TUMSplashScreen: View {
-
-    var body: some View {
-        ZStack {
-            Color(.systemBackground)
-                .edgesIgnoringSafeArea(.all)
-            VStack {
-                Image("logo-blue")
-                    .frame(width: 175, height: 100, alignment: .center)
-                Spacer().frame(height: 100)
-                VStack {
-                    ProgressView()
-                        .progressViewStyle(RingProgressViewStyle())
-                }
-                .padding()
-
-            }
-        }
-    }
-
-}
-
-struct TUMSplashScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            TUMSplashScreen()
-        }
-        .preferredColorScheme(.dark)
-    }
-}

@@ -153,6 +153,12 @@
 "Detail" = "Detail";
 "Obergeschoß" = "Obergeschoß";
 
+//Map
+"Search ..." = "Search ...";
+
+//Movies
+"No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";
+
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "The device appears to be offline, please check the internet connectivity";
 "Unauthorized to access the resource" = "Unauthorized to access the resource";

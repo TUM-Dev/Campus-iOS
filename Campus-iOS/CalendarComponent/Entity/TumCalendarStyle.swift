@@ -21,7 +21,7 @@ struct TumCalendarStyle {
             style.timeline.offsetTimeX = 2
             style.timeline.offsetLineLeft = 2
             style.headerScroll.titleDateAlignment = .center
-            style.headerScroll.heightHeaderWeek = 70
+            style.headerScroll.heightHeaderWeek = 60
             style.headerScroll.titleDateFont = .boldSystemFont(ofSize: 16)
             style.headerScroll.fontNameDay = .systemFont(ofSize: 14)
         } else {
@@ -38,11 +38,13 @@ struct TumCalendarStyle {
         }
         
         // Header
+        style.headerScroll.heightSubviewHeader = 40
         style.headerScroll.colorBackground = .systemBackground
         style.headerScroll.colorBackgroundCurrentDate = .tumBlue
         style.headerScroll.colorCurrentDate = .white
         style.headerScroll.isAnimateTitleDate = true
         style.headerScroll.isAnimateSelection = true
+        style.headerScroll.bottomLineColor = .lightGray.withAlphaComponent(0.5)
         
         // Timeline
         style.timeline.offsetTimeY = 25

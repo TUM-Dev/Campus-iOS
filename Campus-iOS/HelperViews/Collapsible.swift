@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Collapsible<Content: View>: View {
+    @Environment(\.colorScheme) var colorScheme
+
     @State var title: () -> AnyView
     @State var content: () -> Content
     @State var applyPadding = true
@@ -23,7 +25,7 @@ struct Collapsible<Content: View>: View {
                 },
                 label: {
                     HStack {
-                        self.title()
+                        self.title().foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.subheadline)
@@ -37,7 +39,6 @@ struct Collapsible<Content: View>: View {
             .if(applyPadding, transformT: { view in
                 view.padding()
             })
-            .buttonStyle(PlainButtonStyle())
             
             if !collapsed {
                 self.content()
