@@ -12,7 +12,6 @@ import SwiftUI
 struct AnalyticsController {
     
     @AppStorage("analyticsOptIn") private static var didOptIn = false
-    static private let analyticsApi = "https://tumdev.zagar.dev"
     
     static func store(entry: AppUsageData) {
         if let _ = try? AppUsageDataEntity(data: entry, context: PersistenceController.shared.container.viewContext) {
@@ -26,7 +25,12 @@ struct AnalyticsController {
             return
         }
         
-        guard var components = URLComponents(string: analyticsApi) else {
+        guard let postToken = Bundle.main.object(forInfoDictionaryKey: "ANALYTICS_POST_TOKEN") as? String, !postToken.isEmpty,
+                let analyticsApi = Bundle.main.object(forInfoDictionaryKey: "ANALYTICS_API") as? String else {
+            return
+        }
+                
+        guard var components = URLComponents(string: "https://" + analyticsApi) else {
             return
         }
         
@@ -70,13 +74,8 @@ struct AnalyticsController {
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        guard let postToken = Bundle.main.object(forInfoDictionaryKey: "ANALYTICS_POST_TOKEN") as? String, !postToken.isEmpty else {
-            return
-        }
-        
         request.setValue(postToken, forHTTPHeaderField: "Authorization")
-                
+
         let (_, _) = try await URLSession.shared.data(for: request)
     }
 }
