@@ -165,3 +165,24 @@
 "Token invalid" = "Token invalid";
 "Unknown error" = "Unknown error";
 "CampusOnline Error" = "CampusOnline Error";
+
+// Analytics Opt-In
+"🚀 Support my Bachelor's Thesis" = "🚀 Support my Bachelor's Thesis";
+"If you let us temporarily store some anonymized usage data, we can make your TUM Campus App experience even better." = "If you let us temporarily store some anonymized usage data, we can make your TUM Campus App experience even better.";
+"Read more" = "Read more";
+"Please allow location access while using the app for this to work." = "Please allow location access while using the app for this to work.";
+"Yes, I'm in!" = "Yes, I'm in!";
+"No, thanks" = "No, thanks";
+"For some selected views, we would like to collect" = "For some selected views, we would like to collect";
+"The View" = "The View";
+"The view you are looking at. We cannot see any of the content. For example, we can store that you are viewing the Grades screen, but we can never see your grades." = "The view you are looking at. We cannot see any of the content. For example, we can store that you are viewing the Grades screen, but we can never see your grades.";
+"The Location" = "The Location";
+"Your device location when you are looking at the respective view." = "Your device location when you are looking at the respective view.";
+"The Time" = "The Time";
+"The date and time when you look at the view." = "The date and time when you look at the view.";
+"An Anonymous Identifier" = "An Anonymous Identifier";
+"An anonymized identifier. We compute a one-way hash value of your device identifier - your actual device identifier will never leave your device." = "An anonymized identifier. We compute a one-way hash value of your device identifier - your actual device identifier will never leave your device.";
+"Why?" = "Why?";
+"In the context of my Bachelor's thesis, I aim to implement intelligent widget views that display to you the content you most likely want to see at any given time and location. Ideally, you will see the content you are interested in at one glance - without having to press any buttons." = "In the context of my Bachelor's thesis, I aim to implement intelligent widget views that display to you the content you most likely want to see at any given time and location. Ideally, you will see the content you are interested in at one glance - without having to press any buttons.";
+"Sounds good?" = "Sounds good?";
+"Share anonymized analytics data" = "Share anonymized analytics data";

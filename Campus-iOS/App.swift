@@ -17,6 +17,8 @@ struct CampusApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     
+    @AppStorage("didShowAnalyticsOptIn") private var didShowAnalyticsOptIn = false
+    
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -41,7 +43,11 @@ struct CampusApp: App {
                         }
                         .navigationViewStyle(.stack)
                     }
+                    .sheet(isPresented: !$didShowAnalyticsOptIn) {
+                        AnalyticsOptInView()
+                    }
                     .environmentObject(model)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
             }
         }
     }

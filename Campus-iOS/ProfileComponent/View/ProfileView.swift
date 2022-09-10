@@ -12,6 +12,7 @@ struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
+    @AppStorage("analyticsOptIn") var analyticsOptIn: Bool = false
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -65,6 +66,14 @@ struct ProfileView: View {
                                     .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("Movies", systemImage: "film")
+                    }
+                }
+                
+                Section("ANALYTICS") {
+                    Toggle("Share anonymized analytics data", isOn: $analyticsOptIn)
+                    
+                    NavigationLink(destination: AnalyticsOptInView(showMore: true)) {
+                        Label("Read more", systemImage: "info.circle")
                     }
                 }
                 
