@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
+		0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */; };
+		0805DB7928C933AE00712FF2 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805DB7828C933AE00712FF2 /* Operators.swift */; };
+		0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72128CA9DF5003C5CFD /* AppUsageData.swift */; };
+		0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72328CAABB3003C5CFD /* AnalyticsError.swift */; };
+		0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */; };
+		0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72B28CC2278003C5CFD /* HashFunction.swift */; };
+		0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */; };
+		082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */; };
 		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
 		08573BA5287847DC006AC06F /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA4287847DC006AC06F /* MapLocation.swift */; };
 		08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA6287B6152006AC06F /* GradeWidgetView.swift */; };
@@ -256,6 +264,14 @@
 
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
+		0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOptInView.swift; sourceTree = "<group>"; };
+		0805DB7828C933AE00712FF2 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		0805E72128CA9DF5003C5CFD /* AppUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageData.swift; sourceTree = "<group>"; };
+		0805E72328CAABB3003C5CFD /* AnalyticsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsError.swift; sourceTree = "<group>"; };
+		0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageDataEntity.swift; sourceTree = "<group>"; };
+		0805E72B28CC2278003C5CFD /* HashFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunction.swift; sourceTree = "<group>"; };
+		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.xcconfig; path = "Campus-iOS/AnalyticsComüo/Secrets.xcconfig"; sourceTree = "<group>"; };
+		082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsStrategy.swift; sourceTree = "<group>"; };
 		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
 		08573BA4287847DC006AC06F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		08573BA6287B6152006AC06F /* GradeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeWidgetView.swift; sourceTree = "<group>"; };
@@ -527,6 +543,10 @@
 			isa = PBXGroup;
 			children = (
 				085DE9C528AB7C530045095F /* AnalyticsController.swift */,
+				0805E72128CA9DF5003C5CFD /* AppUsageData.swift */,
+				0805E72328CAABB3003C5CFD /* AnalyticsError.swift */,
+				0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */,
+				0805E72B28CC2278003C5CFD /* HashFunction.swift */,
 			);
 			name = AnalyticsComponent;
 			path = "AnalyticsComüo";
@@ -558,6 +578,7 @@
 				08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */,
 				08D0703928776DD6004140B1 /* TextWidgetView.swift */,
 				08FAFD16288474FC006A0E27 /* WidgetMapBackgroundView.swift */,
+				0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -580,6 +601,7 @@
 				08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */,
 				08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */,
 				08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */,
+				082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -1014,6 +1036,7 @@
 		366F0E7727580CFB0091651D = {
 			isa = PBXGroup;
 			children = (
+				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 				366F0E8227580CFB0091651D /* Campus-iOS */,
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
@@ -1434,6 +1457,7 @@
 				36FF90642773BB8100F4C785 /* Extensions.swift */,
 				97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */,
 				36BB6F8C27B3F25A00F224AB /* NSMutableString+Extensions.swift */,
+				0805DB7828C933AE00712FF2 /* Operators.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1592,6 +1616,7 @@
 				41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */,
 				41E2B8322864D193005B5E72 /* outline@3x.png in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
+				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
@@ -1666,6 +1691,7 @@
 				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
 				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
+				0805DB7928C933AE00712FF2 /* Operators.swift in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
 				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
@@ -1682,6 +1708,7 @@
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
+				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
@@ -1699,6 +1726,7 @@
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
+				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
@@ -1724,10 +1752,12 @@
 				36108BC327A3046B007DC62D /* LectureDetailsTitleView.swift in Sources */,
 				3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
+				0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */,
 				3654F361285168D2008AD5DC /* StudyRoomGroup.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
+				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
@@ -1744,6 +1774,7 @@
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
 				08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
+				0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */,
 				36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */,
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
 				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
@@ -1796,6 +1827,7 @@
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
+				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */,
 				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,
@@ -1872,6 +1904,7 @@
 /* Begin XCBuildConfiguration section */
 		366F0EA727580CFD0091651D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1934,6 +1967,7 @@
 		};
 		366F0EA827580CFD0091651D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1990,6 +2024,7 @@
 		};
 		366F0EAA27580CFD0091651D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2031,6 +2066,7 @@
 		};
 		366F0EAB27580CFD0091651D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -7,22 +7,76 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 struct AnalyticsController {
     
-    static func visitedView(view: CampusAppView) {
-        let time = Date()
+    @AppStorage("analyticsOptIn") private static var didOptIn = false;
+    static private let analyticsApi = "https://tumdev.zagar.dev"
+    
+    static func store(entry: AppUsageData) {
+        if let _ = try? AppUsageDataEntity(data: entry, context: PersistenceController.shared.container.viewContext) {
+            PersistenceController.shared.save()
+        }
+    }
+    
+    static func upload(entry: AppUsageData) async throws {
         
-        guard let location = CLLocationManager().location else {
+        if !didOptIn {
             return
         }
         
-        let data = AppUsageData(context: PersistenceController.shared.container.viewContext)
-        data.latitude = location.coordinate.latitude
-        data.longitude = location.coordinate.longitude
-        data.time = time
-        data.view = view.rawValue
+        guard var components = URLComponents(string: analyticsApi) else {
+            return
+        }
         
-        PersistenceController.shared.save()
+        /* Query items */
+        
+        guard let deviceIdentifier = await UIDevice.current.identifierForVendor?.uuidString else {
+            return
+        }
+                
+        guard let startDate = entry.getStartTime(), let endDate = entry.getEndTime(), let view = entry.getView() else {
+            return
+        }
+        
+        let latitude = entry.getLatitude() ?? AppUsageData.invalidLocation
+        let longitude = entry.getLongitude() ?? AppUsageData.invalidLocation
+        
+        let hashedId = HashFunction.sha256(deviceIdentifier)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YY-MM-dd HH-mm-ss"
+        let startTime = formatter.string(from: startDate)
+        let endTime = formatter.string(from: endDate)
+        
+        components.queryItems = [
+            URLQueryItem(name: "user_id", value: hashedId),
+            URLQueryItem(name: "latitude", value: String(latitude)),
+            URLQueryItem(name: "longitude", value: String(longitude)),
+            URLQueryItem(name: "start_time", value: startTime),
+            URLQueryItem(name: "end_time", value: endTime),
+            URLQueryItem(name: "view", value: view.rawValue)
+        ]
+        
+        guard let url = components.url else {
+            return
+        }
+        
+#if targetEnvironment(simulator)
+        print("🟢 Query items:")
+        print(components.queryItems ?? [])
+        return
+#endif
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        guard let postToken = Bundle.main.object(forInfoDictionaryKey: "ANALYTICS_POST_TOKEN") as? String, !postToken.isEmpty else {
+            return
+        }
+        
+        request.setValue(postToken, forHTTPHeaderField: "Authorization")
+                
+        let (_, _) = try await URLSession.shared.data(for: request)
     }
 }
