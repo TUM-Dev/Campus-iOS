@@ -55,8 +55,11 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView(model: model)
-                    .navigationTitle("Calendar")
+                CalendarContentView(
+                    model: model,
+                    refresh: $model.isUserAuthenticated
+                )
+                .navigationTitle("Calendar")
             }
             .tag(0)
             .tabItem {
@@ -65,7 +68,10 @@ struct CampusApp: App {
             .navigationViewStyle(.stack)
             
             NavigationView {
-                LecturesScreen(model: model)
+                LecturesScreen(vm: LecturesViewModel(
+                    model: model,
+                    service: LecturesService()
+                ), refresh: $model.isUserAuthenticated)
                     .navigationTitle("Lectures")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -77,10 +83,12 @@ struct CampusApp: App {
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
-            .navigationViewStyle(.stack)
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
             
             NavigationView {
-                GradesScreen(model: model)
+                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -92,8 +100,10 @@ struct CampusApp: App {
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }
-            .navigationViewStyle(.stack)
-            
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
+
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
