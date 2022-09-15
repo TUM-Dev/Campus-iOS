@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08038F95287430FB0048DAE5 /* WidgetTitleView.swift */; };
+		0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */; };
+		0805DB7928C933AE00712FF2 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805DB7828C933AE00712FF2 /* Operators.swift */; };
+		0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72128CA9DF5003C5CFD /* AppUsageData.swift */; };
+		0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72328CAABB3003C5CFD /* AnalyticsError.swift */; };
+		0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */; };
+		0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72B28CC2278003C5CFD /* HashFunction.swift */; };
+		0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */; };
+		082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */; };
+		08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */; };
+		08573BA5287847DC006AC06F /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA4287847DC006AC06F /* MapLocation.swift */; };
+		08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08573BA6287B6152006AC06F /* GradeWidgetView.swift */; };
+		085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DE9C528AB7C530045095F /* AnalyticsController.swift */; };
+		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
+		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
+		08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97228664BC400E357DF /* TuitionWidgetView.swift */; };
+		08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */; };
+		08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9762866506900E357DF /* WidgetFrameView.swift */; };
+		08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */; };
+		08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */; };
+		08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */; };
+		08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */; };
+		08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD14287DC484006A0E27 /* CalendarWidgetView.swift */; };
+		08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD16288474FC006A0E27 /* WidgetMapBackgroundView.swift */; };
+		08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD19288DED6F006A0E27 /* WidgetRecommender.swift */; };
+		08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */; };
+		08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD1D288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift */; };
+		08FAFD20288DEE3B006A0E27 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD1F288DEE3B006A0E27 /* Widget.swift */; };
+		08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */; };
+		08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */; };
+		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
@@ -233,6 +264,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
+		0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOptInView.swift; sourceTree = "<group>"; };
+		0805DB7828C933AE00712FF2 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		0805E72128CA9DF5003C5CFD /* AppUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageData.swift; sourceTree = "<group>"; };
+		0805E72328CAABB3003C5CFD /* AnalyticsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsError.swift; sourceTree = "<group>"; };
+		0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageDataEntity.swift; sourceTree = "<group>"; };
+		0805E72B28CC2278003C5CFD /* HashFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunction.swift; sourceTree = "<group>"; };
+		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.xcconfig; path = "Campus-iOS/AnalyticsComüo/Secrets.xcconfig"; sourceTree = "<group>"; };
+		082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsStrategy.swift; sourceTree = "<group>"; };
+		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
+		08573BA4287847DC006AC06F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
+		08573BA6287B6152006AC06F /* GradeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeWidgetView.swift; sourceTree = "<group>"; };
+		085DE9C528AB7C530045095F /* AnalyticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsController.swift; sourceTree = "<group>"; };
+		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
+		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
+		08DFB97228664BC400E357DF /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
+		08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionDetailsView.swift; sourceTree = "<group>"; };
+		08DFB9762866506900E357DF /* WidgetFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFrameView.swift; sourceTree = "<group>"; };
+		08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetView.swift; sourceTree = "<group>"; };
+		08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetViewModel.swift; sourceTree = "<group>"; };
+		08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetView.swift; sourceTree = "<group>"; };
+		08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetViewModel.swift; sourceTree = "<group>"; };
+		08FAFD14287DC484006A0E27 /* CalendarWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetView.swift; sourceTree = "<group>"; };
+		08FAFD16288474FC006A0E27 /* WidgetMapBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetMapBackgroundView.swift; sourceTree = "<group>"; };
+		08FAFD19288DED6F006A0E27 /* WidgetRecommender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRecommender.swift; sourceTree = "<group>"; };
+		08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStrategy.swift; sourceTree = "<group>"; };
+		08FAFD1D288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRecommenderStrategy.swift; sourceTree = "<group>"; };
+		08FAFD1F288DEE3B006A0E27 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRecommendation.swift; sourceTree = "<group>"; };
+		08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStrategy.swift; sourceTree = "<group>"; };
+		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGradesViewModel.swift; sourceTree = "<group>"; };
@@ -471,6 +533,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08573BA3287847C7006AC06F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08573BA4287847DC006AC06F /* MapLocation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		085DE9C428AB7C3D0045095F /* AnalyticsComponent */ = {
+			isa = PBXGroup;
+			children = (
+				085DE9C528AB7C530045095F /* AnalyticsController.swift */,
+				0805E72128CA9DF5003C5CFD /* AppUsageData.swift */,
+				0805E72328CAABB3003C5CFD /* AnalyticsError.swift */,
+				0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */,
+				0805E72B28CC2278003C5CFD /* HashFunction.swift */,
+			);
+			name = AnalyticsComponent;
+			path = "AnalyticsComüo";
+			sourceTree = "<group>";
+		};
+		08DFB96B2866479A00E357DF /* WidgetComponent */ = {
+			isa = PBXGroup;
+			children = (
+				08FAFD18288DED33006A0E27 /* Recommender */,
+				08DFB96C286647C200E357DF /* Screen */,
+				08DFB96D286647CB00E357DF /* View */,
+			);
+			path = WidgetComponent;
+			sourceTree = "<group>";
+		};
+		08DFB96C286647C200E357DF /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				08DFB96E286647E900E357DF /* WidgetScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		08DFB96D286647CB00E357DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08DFB9762866506900E357DF /* WidgetFrameView.swift */,
+				08038F95287430FB0048DAE5 /* WidgetTitleView.swift */,
+				08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */,
+				08D0703928776DD6004140B1 /* TextWidgetView.swift */,
+				08FAFD16288474FC006A0E27 /* WidgetMapBackgroundView.swift */,
+				0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08FAFD18288DED33006A0E27 /* Recommender */ = {
+			isa = PBXGroup;
+			children = (
+				08FAFD25288DF5A4006A0E27 /* Strategy */,
+				08FAFD19288DED6F006A0E27 /* WidgetRecommender.swift */,
+				08FAFD1F288DEE3B006A0E27 /* Widget.swift */,
+				08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */,
+			);
+			path = Recommender;
+			sourceTree = "<group>";
+		};
+		08FAFD25288DF5A4006A0E27 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				08FAFD1D288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift */,
+				08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */,
+				08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */,
+				08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */,
+				082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */,
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
 		100803442764E2A90013ED0E /* ProfileComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +722,7 @@
 		36108BC927A304B5007DC62D /* MapComponent */ = {
 			isa = PBXGroup;
 			children = (
+				08573BA3287847C7006AC06F /* Model */,
 				1F4C836528300E6F006971C0 /* Service */,
 				36108BCA27A304B5007DC62D /* Types */,
 				3654F381285171D7008AD5DC /* ViewModel */,
@@ -605,6 +743,7 @@
 		36108BD127A304B5007DC62D /* Cafeterias */ = {
 			isa = PBXGroup;
 			children = (
+				08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */,
 				3654F38528517BB4008AD5DC /* CafeteriaView.swift */,
 				36108BD927A304B5007DC62D /* CafeteriaRowView.swift */,
 				36108BD227A304B5007DC62D /* MealPlanView.swift */,
@@ -728,6 +867,7 @@
 				36108C1227A307F9007DC62D /* GradeView.swift */,
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
 				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
+				08573BA6287B6152006AC06F /* GradeWidgetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -877,6 +1017,8 @@
 				36108BD427A304B5007DC62D /* MenuViewModel.swift */,
 				1F4C836128300306006971C0 /* MapViewModel.swift */,
 				1F4C836328300D25006971C0 /* MapViewModel+State.swift */,
+				08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */,
+				08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -884,6 +1026,7 @@
 		3654F382285171F6008AD5DC /* StudyRooms */ = {
 			isa = PBXGroup;
 			children = (
+				08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */,
 				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
 				3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */,
 				3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */,
@@ -895,6 +1038,7 @@
 		366F0E7727580CFB0091651D = {
 			isa = PBXGroup;
 			children = (
+				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 				366F0E8227580CFB0091651D /* Campus-iOS */,
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
@@ -916,6 +1060,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
 				36BB6F8027B39B2200F224AB /* LectureSearchComponent */,
 				36BB6F7627B26DCA00F224AB /* TuitionComponent */,
@@ -931,6 +1076,7 @@
 				36E9649E277492AE0055777F /* CalendarComponent */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
 				100803442764E2A90013ED0E /* ProfileComponent */,
+				08DFB96B2866479A00E357DF /* WidgetComponent */,
 				3683C3162758115000082930 /* Model */,
 				36AF61B727A2FD7700FEBD98 /* Base */,
 				36FF90632773BB8100F4C785 /* Extensions */,
@@ -1190,6 +1336,8 @@
 			children = (
 				36BB6F7827B26DE300F224AB /* TuitionView.swift */,
 				36BB6F7A27B27D0D00F224AB /* TuitionCard.swift */,
+				08DFB97228664BC400E357DF /* TuitionWidgetView.swift */,
+				08DFB97428664CFC00E357DF /* TuitionDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1293,6 +1441,7 @@
 				36E964A6277498540055777F /* CalendarContentView.swift */,
 				36E964AB277499860055777F /* CalendarDisplayView.swift */,
 				36AD5CF327B8C83500DAE143 /* CalendarSingleEventView.swift */,
+				08FAFD14287DC484006A0E27 /* CalendarWidgetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1311,6 +1460,7 @@
 				36FF90642773BB8100F4C785 /* Extensions.swift */,
 				97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */,
 				36BB6F8C27B3F25A00F224AB /* NSMutableString+Extensions.swift */,
+				0805DB7828C933AE00712FF2 /* Operators.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1469,6 +1619,7 @@
 				41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */,
 				41E2B8322864D193005B5E72 /* outline@3x.png in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
+				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */,
@@ -1510,11 +1661,17 @@
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
+				08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */,
+				08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */,
 				974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */,
+				08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */,
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
+				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
+				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
+				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
@@ -1527,6 +1684,8 @@
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
 				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
+				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
+				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
@@ -1536,6 +1695,7 @@
 				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
 				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
+				0805DB7928C933AE00712FF2 /* Operators.swift in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
 				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
@@ -1552,6 +1712,7 @@
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
+				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
@@ -1563,10 +1724,14 @@
 				3654F362285168D2008AD5DC /* StudyRoomApiResponse.swift in Sources */,
 				36108BC527A3046B007DC62D /* LectureDetailsDetailedInfoView.swift in Sources */,
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
+				08573BA5287847DC006AC06F /* MapLocation.swift in Sources */,
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
+				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
+				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
+				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
@@ -1579,6 +1744,7 @@
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,
+				08FAFD20288DEE3B006A0E27 /* Widget.swift in Sources */,
 				36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */,
 				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
 				3654F38628517BB4008AD5DC /* CafeteriaView.swift in Sources */,
@@ -1590,10 +1756,12 @@
 				36108BC327A3046B007DC62D /* LectureDetailsTitleView.swift in Sources */,
 				3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
+				0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */,
 				3654F361285168D2008AD5DC /* StudyRoomGroup.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
+				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
@@ -1607,21 +1775,27 @@
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
+				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
+				08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
+				0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */,
 				36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */,
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
 				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
 				3654F368285169AC008AD5DC /* TUMDevAppAPI.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
+				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
+				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
 				36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
+				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
@@ -1634,6 +1808,7 @@
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
+				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
@@ -1641,6 +1816,7 @@
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
 				36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */,
+				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
 				1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
@@ -1655,12 +1831,16 @@
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
+				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */,
+				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
+				08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
+				08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
@@ -1676,6 +1856,7 @@
 				36108BC227A3046B007DC62D /* LectureDetailsBasicInfoView.swift in Sources */,
 				36108BC727A3046B007DC62D /* LectureDetailsLinkView.swift in Sources */,
 				36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */,
+				08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */,
 				36108C0227A30762007DC62D /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1727,6 +1908,7 @@
 /* Begin XCBuildConfiguration section */
 		366F0EA727580CFD0091651D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1789,6 +1971,7 @@
 		};
 		366F0EA827580CFD0091651D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1845,15 +2028,17 @@
 		};
 		366F0EAA27580CFD0091651D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Campus-iOS/Campus-iOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 5DSZ9JN62Y;
+				DEVELOPMENT_TEAM = 92JDXCA2AA;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1874,7 +2059,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1886,6 +2071,7 @@
 		};
 		366F0EAB27580CFD0091651D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1894,7 +2080,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				DEVELOPMENT_TEAM = 7PLLZ436SG;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

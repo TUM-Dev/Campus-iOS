@@ -17,6 +17,8 @@ struct CampusApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     
+    @AppStorage("didShowAnalyticsOptIn") private var didShowAnalyticsOptIn = false
+    
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -32,22 +34,29 @@ struct CampusApp: App {
                 .sheet(isPresented: $model.isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
-                        .onAppear {
-                            selectedTab = 2
-                        }
+                            .onAppear {
+                                selectedTab = 2
+                            }
                     }
                     .navigationViewStyle(.stack)
                 }
-                .environmentObject(model)
+                .sheet(isPresented: !$didShowAnalyticsOptIn,
+                       onDismiss: { NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil) }) {
+                        AnalyticsOptInView()
+                            .task {
+                                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
+                            }
+                    }
+                    .environmentObject(model)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
-    
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
                 CalendarContentView(
-                    viewModel: CalendarViewModel(model: model),
+                    model: model,
                     refresh: $model.isUserAuthenticated
                 )
                 .navigationTitle("Calendar")
@@ -79,10 +88,7 @@ struct CampusApp: App {
             })
             
             NavigationView {
-                GradesScreen(vm: GradesViewModel(
-                    model: model,
-                    service: GradesService()
-                ), refresh: $model.isUserAuthenticated)
+                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {

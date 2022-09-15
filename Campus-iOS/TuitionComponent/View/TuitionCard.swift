@@ -11,20 +11,6 @@ struct TuitionCard: View {
     
     @State var tuition: Tuition
     
-    static let currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.currencySymbol = "€ "
-        formatter.numberStyle = .currency
-        return formatter
-    }()
-    
-    var formattedAmount: String {
-        guard let amount = self.tuition.amount else {
-            return "n/a"
-        }
-        return Self.currencyFormatter.string(from: amount) ?? "n/a"
-    }
-    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             
@@ -39,44 +25,8 @@ struct TuitionCard: View {
             }
             
             // Stack bottom half of card
-            VStack(alignment: .center, spacing: 6) {
-                Text(self.tuition.semester ?? "")
-                    .fontWeight(Font.Weight.heavy)
-                HStack {
-                    Text("Deadline")
-                    Text(self.tuition.deadline ?? Date(), style: .date)
-                }
-                .font(Font.custom("HelveticaNeue-Bold", size: 16))
-                .foregroundColor(Color.gray)
-                
-                Divider()
-                    .foregroundColor(Color.gray.opacity(0.3))
-                    .padding([.leading, .trailing], -12)
-
-            
-                HStack(alignment: .center, spacing: 6) {
-                    
-                    Text("Open Amount")
-                        .font(Font.system(size: 13))
-                        .fontWeight(Font.Weight.heavy)
-                    HStack {
-                        Text(self.formattedAmount)
-                        .font(Font.custom("HelveticaNeue-Medium", size: 14))
-                            .padding([.leading, .trailing], 10)
-                            .padding([.top, .bottom], 5)
-                        .foregroundColor(Color.white)
-                    }
-                    .if(self.tuition.isOpenAmount, transformT: {view in
-                        view.background(.red)
-                    }, transformF: {view in
-                        view.background(.green)
-                    })
-                    .cornerRadius(7)
-                    Spacer()
-                }
-                .padding([.top, .bottom], 8)
-            }
-            .padding(12)
+            TuitionDetailsView(tuition: self.tuition)
+                .padding(12)
             
         }
         .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.width * 0.8)

@@ -17,6 +17,12 @@ struct CalendarContentView: View {
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
+    @State private var data = AppUsageData()
+
+    init(model: Model, refresh: Binding<Bool>) {
+        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
+        self._refresh = refresh
+    }
     
     var body: some View {
         VStack {
@@ -97,6 +103,12 @@ struct CalendarContentView: View {
                 ProfileToolbar(model: viewModel.model)
             }
         }
+        .task {
+            data.visitView(view: .calendar)
+        }
+        .onDisappear {
+            data.didExitView()
+        }
     }
     
     static func getSafeAreaFrame(geometry: GeometryProxy) -> CGRect {
@@ -109,9 +121,7 @@ struct CalendarContentView: View {
 struct CalendarContentView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarContentView(
-            viewModel: CalendarViewModel(
-                model: MockModel()
-            ),
+            model: MockModel(),
             refresh: .constant(false)
         )
     }

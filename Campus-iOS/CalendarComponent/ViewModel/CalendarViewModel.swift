@@ -42,5 +42,9 @@ class CalendarViewModel: ObservableObject {
             self.events = []
         }
     }
+    
+    var eventsByDate: [Date? : [CalendarEvent]] {
+        let dictionary = Dictionary(grouping: events, by: { $0.startDate })
+        return dictionary
+    }
 }
-
