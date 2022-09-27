@@ -69,4 +69,4 @@ iOSInjectionProject/
 *.DS_Store
 
 # Analytics API Secrets
-# Campus-iOS/AnalyticsComponent/Secrets.xcconfig
+Campus-iOS/AnalyticsComponent/Secrets.xcconfig
