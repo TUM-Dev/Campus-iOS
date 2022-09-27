@@ -12,7 +12,6 @@ struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
-    @AppStorage("analyticsOptIn") var analyticsOptIn: Bool = false
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -71,14 +70,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("ANALYTICS") {
-                    Toggle("Share anonymized analytics data", isOn: $analyticsOptIn)
-                    
-                    NavigationLink(destination: AnalyticsOptInView(showMore: true)) {
-                        Label("Read more", systemImage: "info.circle")
-                    }
-                }
-                
                 Section() {
                     VStack {
                         Toggle("Use build-in Web View", isOn: $useBuildInWebView)
@@ -117,6 +108,12 @@ struct ProfileView: View {
                         if UIApplication.shared.canOpenURL(mailToUrl) {
                                 UIApplication.shared.open(mailToUrl, options: [:])
                         }
+                    }
+                }
+                
+                Section("ANALYTICS") {
+                    NavigationLink(destination: AnalyticsOptInView(showMore: true)) {
+                        Label("Learn more", systemImage: "info.circle")
                     }
                 }
                 

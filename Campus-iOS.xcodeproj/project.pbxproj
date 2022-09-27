@@ -271,7 +271,7 @@
 		0805E72328CAABB3003C5CFD /* AnalyticsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsError.swift; sourceTree = "<group>"; };
 		0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageDataEntity.swift; sourceTree = "<group>"; };
 		0805E72B28CC2278003C5CFD /* HashFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunction.swift; sourceTree = "<group>"; };
-		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.xcconfig; path = "Campus-iOS/AnalyticsComüo/Secrets.xcconfig"; sourceTree = "<group>"; };
+		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsStrategy.swift; sourceTree = "<group>"; };
 		08441F2A2874E2D00033F5B1 /* WidgetLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLoadingView.swift; sourceTree = "<group>"; };
 		08573BA4287847DC006AC06F /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
@@ -549,9 +549,9 @@
 				0805E72328CAABB3003C5CFD /* AnalyticsError.swift */,
 				0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */,
 				0805E72B28CC2278003C5CFD /* HashFunction.swift */,
+				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 			);
-			name = AnalyticsComponent;
-			path = "AnalyticsComüo";
+			path = AnalyticsComponent;
 			sourceTree = "<group>";
 		};
 		08DFB96B2866479A00E357DF /* WidgetComponent */ = {
@@ -1038,7 +1038,6 @@
 		366F0E7727580CFB0091651D = {
 			isa = PBXGroup;
 			children = (
-				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 				366F0E8227580CFB0091651D /* Campus-iOS */,
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
@@ -2054,6 +2053,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2096,6 +2096,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
