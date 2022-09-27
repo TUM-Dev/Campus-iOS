@@ -13,27 +13,8 @@ import FirebaseAnalytics
 #endif
 
 public class Model: ObservableObject {
-    
-    @Published var showProfile = false {
-        didSet {
-            if showProfile {
-                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
-            } else {
-                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil)
-            }
-        }
-    }
-    
-    @Published var isLoginSheetPresented = false {
-        didSet {
-            if isLoginSheetPresented {
-                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
-            } else {
-                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil)
-            }
-        }
-    }
-    
+    @Published var showProfile = false
+    @Published var isLoginSheetPresented = false
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
     @Published var profile: ProfileViewModel = ProfileViewModel()

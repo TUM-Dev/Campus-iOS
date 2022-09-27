@@ -32,13 +32,13 @@ struct DishView: View {
             HStack{
                 VStack{
                     ForEach(dish.labels, id: \.self){label in
-                        Text(DishView.labelToAbbreviation(label: label))
+                        Text(labelToAbbreviation(label: label))
                     }
                 }
                 .padding(.trailing, 10.0)
                 VStack(alignment: .leading){
                     ForEach(dish.labels, id: \.self){label in
-                        Text(DishView.labelToDescription(label: label))
+                        Text(labelToDescription(label: label))
                     }
                 }
             }
@@ -48,7 +48,7 @@ struct DishView: View {
                 Text(dish.name).bold()
                 HStack{
                     Spacer()
-                    Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
+                    Text(formatPrice(dish: dish, pricingGroup: "students"))
                         .lineLimit(1)
                         .font(.system(size: 15))
                 }
@@ -58,7 +58,7 @@ struct DishView: View {
         .buttonStyle(PlainButtonStyle()).disabled(true)
     }
     
-    static func formatPrice(dish: Dish, pricingGroup: String) -> String {
+    func formatPrice(dish: Dish, pricingGroup: String) -> String {
         let priceFormatter: NumberFormatter = {
                 let formatter = NumberFormatter()
                 formatter.currencySymbol = "€"
@@ -95,7 +95,7 @@ struct DishView: View {
         return finalPrice
     }
     
-    static func labelToAbbreviation(label: String) -> String {
+    func labelToAbbreviation(label: String) -> String {
         let labelLookup = MensaEnumService.shared.getLabels()
         
         if let labelObject = labelLookup[label] {
@@ -104,7 +104,7 @@ struct DishView: View {
         return label
     }
     
-    static func labelToDescription(label: String) -> String {
+    func labelToDescription(label: String) -> String {
         let labelLookup = MensaEnumService.shared.getLabels()
         
         if let labelObject = labelLookup[label], let text = labelObject.text["DE"] {
@@ -113,7 +113,7 @@ struct DishView: View {
         return label
     }
     
-    static func labelsToString(labels: [String]) -> String {
+    func labelsToString(labels: [String]) -> String {
         let shortenedLabels = labels.map{label -> String in
             return labelToAbbreviation(label: label)
         }

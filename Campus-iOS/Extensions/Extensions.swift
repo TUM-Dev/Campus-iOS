@@ -147,13 +147,6 @@ extension UIColor {
     static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
 }
 
-extension Color {
-    
-    static var tumBlue = Color("tumBlue")
-    
-    static var widget = Color("widgetColor")
-}
-
 extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 
 extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
@@ -220,9 +213,4 @@ extension String: Identifiable {
 // For the NewsView: In order to show the right link when using the WebView when tapping on a NewsCard
 extension URL: Identifiable {
     public var id: UUID { UUID() }
-}
-
-extension Notification.Name {
-    static let tcaSheetBecameActiveNotification = Notification.Name("tcaSheetBecameActiveNotification")
-    static let tcaSheetBecameInactiveNotification = Notification.Name("tcaSheetBecameInactiveNotification")
 }

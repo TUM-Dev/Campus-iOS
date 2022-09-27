@@ -11,17 +11,14 @@ import KVKCalendar
 struct CalendarContentView: View {
     
     @StateObject var viewModel: CalendarViewModel
-    @Binding var refresh: Bool
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
-    @State private var data = AppUsageData()
 
-    init(model: Model, refresh: Binding<Bool>) {
+    init(model: Model) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
-        self._refresh = refresh
     }
     
     var body: some View {
@@ -51,10 +48,6 @@ struct CalendarContentView: View {
                     EmptyView()
                 }
             }
-        }
-        // Refresh whenever user authentication status changes
-        .onChange(of: self.refresh) { _ in
-            self.viewModel.fetch()
         }
         .sheet(item: self.$selectedEventID) { eventId in
             let chosenEvent = self.viewModel.events
@@ -103,12 +96,6 @@ struct CalendarContentView: View {
                 ProfileToolbar(model: viewModel.model)
             }
         }
-        .task {
-            data.visitView(view: .calendar)
-        }
-        .onDisappear {
-            data.didExitView()
-        }
     }
     
     static func getSafeAreaFrame(geometry: GeometryProxy) -> CGRect {
@@ -120,9 +107,6 @@ struct CalendarContentView: View {
 
 struct CalendarContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarContentView(
-            model: MockModel(),
-            refresh: .constant(false)
-        )
+        CalendarContentView(model: MockModel())
     }
 }

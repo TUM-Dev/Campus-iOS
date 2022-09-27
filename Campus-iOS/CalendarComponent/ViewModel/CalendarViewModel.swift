@@ -22,29 +22,21 @@ class CalendarViewModel: ObservableObject {
     }
     
     func fetch() {
-        if(self.model.isUserAuthenticated) {
-            let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-            
-            importer.performFetch(handler: { result in
-                switch result {
-                case .success(let storage):
-                    self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
-                        guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
-                            return false
-                        }
-                        return dateOne > dateTwo
-                    }) ?? []
-                case .failure(let error):
-                    print(error)
-                }
-            })
-        } else {
-            self.events = []
-        }
-    }
-    
-    var eventsByDate: [Date? : [CalendarEvent]] {
-        let dictionary = Dictionary(grouping: events, by: { $0.startDate })
-        return dictionary
+        let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+        
+        importer.performFetch(handler: { result in
+            switch result {
+            case .success(let storage):
+                self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
+                    guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
+                        return false
+                    }
+                    return dateOne > dateTwo
+                }) ?? []
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 }
+

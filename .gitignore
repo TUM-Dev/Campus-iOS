@@ -67,6 +67,3 @@ Preview.html  # Preview file by deliver
 iOSInjectionProject/
 
 *.DS_Store
-
-# Analytics API Secrets
-Campus-iOS/AnalyticsComponent/Secrets.xcconfig
