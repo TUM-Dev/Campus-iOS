@@ -15,7 +15,7 @@ struct ProfileMyTumSection: View {
         guard let amount = self.model.profile.tuition?.amount else {
             return "n/a"
         }
-        return TuitionCard.currencyFormatter.string(from: amount) ?? "n/a"
+        return OpenTuitionAmountView.currencyFormatter.string(from: amount) ?? "n/a"
     }
     
     var body: some View {

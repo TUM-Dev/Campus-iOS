@@ -26,5 +26,9 @@ extension GradesViewModel {
             default: return .init(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1))
             }
         }
+        
+        static func color(for grade: Grade) -> Color {
+            return color(for: Double(grade.grade.replacingOccurrences(of: ",", with: ".")))
+        }
     }
 }

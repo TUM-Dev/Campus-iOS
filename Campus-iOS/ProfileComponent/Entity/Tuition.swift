@@ -62,3 +62,7 @@ struct Tuition: Entity {
         self.amount = amount
     }
 }
+
+extension Tuition {
+    static let unknown = Tuition(deadline: Date(), semester: "Unknown", semesterID: "0", amount: 0)
+}
