@@ -97,28 +97,7 @@ struct PanelContentView: View {
                         }
                         vm.setAnnotations = true
                     }
-                    
-                    //                    Menu(content: {
-                    //                        Button(action: {
-                    //                            self.mode = .cafeterias
-                    //                            self.setAnnotations = true
-                    //                        }, label: {
-                    //                            Label("Cafeterias", systemImage: "fork.knife")
-                    //                        })
-                    //                        Button(action: {
-                    //                            self.mode = .studyRooms
-                    //                            self.setAnnotations = true
-                    //                        }, label: {
-                    //                            Label("Study Rooms", systemImage: "book.fill")
-                    //                        })
-                    //                    }) {
-                    //                        if mode == .cafeterias {
-                    //                            Image(systemName: "fork.knife")
-                    //                        } else {
-                    //                            Image(systemName: "book.fill")
-                    //                        }
-                    //                    }
-                    
+            
                     Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10, height: 50)
                 }
                 

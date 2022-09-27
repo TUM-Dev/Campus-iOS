@@ -118,7 +118,7 @@ enum PanelHeight {
     static let top = UIScreen.main.bounds.height * 0.8
     static let kbtop = UIScreen.main.bounds.height * 0.7
     static let middle = UIScreen.main.bounds.height * 0.35
-    static let bottom = UIScreen.main.bounds.height * 0.2
+    static let bottom = UIScreen.main.bounds.height * 0.1
 }
 
 let screenHeight = UIScreen.main.bounds.height
@@ -130,7 +130,7 @@ enum PanelPos {
         case .top: return screenHeight * 0.8
         case .kbtop: return screenHeight * 0.7
         case .middle: return screenHeight * 0.35
-        case .bottom: return screenHeight * 0.2
+        case .bottom: return screenHeight * 0.1
         }
     }
 }
