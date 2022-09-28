@@ -144,17 +144,18 @@ struct PanelContentView: View {
             }
             
             VStack {
-                let dragAreaHeight = PanelHeight.top*0.04
+                let dragAreaHeight = PanelHeight.top * 0.04
                 
                 Rectangle().foregroundColor(.clear)
+                    .border(.red)
                 .contentShape(Rectangle())
                 .cornerRadius(10, corners: [.topLeft, .topRight])
-                .frame(height: dragAreaHeight, alignment: .top)
+                .frame(height: dragAreaHeight + 50, alignment: .top)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
                             guard !vm.lockPanel else { return }
-                            if let newPanelHeight = check(panelHeight - value.translation.height) {
+                            if let newPanelHeight = check((panelHeight) - value.translation.height) {
                                 panelHeight = newPanelHeight
                             }
                         }
@@ -164,7 +165,7 @@ struct PanelContentView: View {
                             }
                         }
                 )
-                Spacer().frame(height: min(max(panelHeight-dragAreaHeight,0), PanelPos.top.rawValue))
+                Spacer().frame(height: min(max((panelHeight - 50) - dragAreaHeight, 0), PanelPos.top.rawValue))
             }
         }
     }
