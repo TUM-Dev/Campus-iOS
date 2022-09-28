@@ -14,7 +14,7 @@ struct WidgetScreen: View {
     @State private var showOptInSheet: Bool = false
     
     init(model: Model) {
-        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
+        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: AnalyticsStrategy(), model: model))
     }
     
     var body: some View {
@@ -51,7 +51,7 @@ struct WidgetScreen: View {
             AnalyticsOptInView(showMore: true)
         }
         .task {
-            await recommender.fetchRecommendations()
+            try? await recommender.fetchRecommendations()
         }
     }
 }

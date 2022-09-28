@@ -9,10 +9,8 @@ import Foundation
 
 struct TimeStrategy: WidgetRecommenderStrategy {
     
-    func getRecommendation() async -> [WidgetRecommendation] {
-        
+    func getRecommendation() async throws -> [WidgetRecommendation] {
         let widgets = Widget.allCases.map {  WidgetRecommendation(widget: $0, priority: priority(of: $0)) }
-        
         return widgets.filter { $0.priority > 0 }
     }
     

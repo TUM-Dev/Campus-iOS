@@ -14,9 +14,7 @@ struct LocationStrategy: WidgetRecommenderStrategy {
     private let CLOSE_DISTANCE: CLLocationDistance = 1000
     private let VERY_CLOSE_DISTANCE: CLLocationDistance = 250
     
-    func getRecommendation() async -> [WidgetRecommendation] {
-        
-        
+    func getRecommendation() async throws -> [WidgetRecommendation] {
         var recommendations: [WidgetRecommendation] = []
         for widget in Widget.allCases {
             let recommendation = WidgetRecommendation(widget: widget, priority: await priority(of: widget))

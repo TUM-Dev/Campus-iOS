@@ -18,7 +18,7 @@ class AppUsageData {
     /* CoreData's double values (for latitude, longitude) are not optional.
      * However, we still want to store the other data when we cannot get the location.
      * Thus we symbolize invalid locations with an impossible latitude / longitude value in the CoreData entity. */
-    static let invalidLocation: Double = 200
+    static let invalidLocation: CLLocation = CLLocation(latitude: 200, longitude: 200)
     
     private var view: CampusAppView?
     private var latitude: Double?

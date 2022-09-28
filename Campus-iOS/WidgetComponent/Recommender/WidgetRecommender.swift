@@ -24,8 +24,9 @@ class WidgetRecommender: ObservableObject {
         self.recommendations = []
     }
     
-    func fetchRecommendations() async {
-        self.recommendations = await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+    func fetchRecommendations() async throws {
+        let recommendations = try await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+        self.recommendations = recommendations
         self.status = .success
     }
     

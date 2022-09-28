@@ -7,68 +7,157 @@
 
 import Foundation
 import CoreData
+import MapKit
+import TabularData
+import CoreML
 
-struct AnalyticsStrategy: WidgetRecommenderStrategy {
+#if !targetEnvironment(simulator)
+import CreateML
+#endif
+
+class AnalyticsStrategy: WidgetRecommenderStrategy {
+    
+     
+    /*
+     * These values alter the domain of the covariates of the model.
+     * The covariates are discretized into named groups.
+     * Example: we might have multiple entries where the user visited the library.
+     * The exact latitude and longitude values differ slightly, but we still consider
+     * all of them to be one location (the library).
+     */
+    
+    // The radius of a location group in meters.
+    private let locationGroupRadius: CLLocationDistance = 100
+    
+    // The timespan for a time group in minutes.
+    private let timeNearbyThreshold = 30
+    
+    // The timespan for a date group in days.
+    private let dateNearbyThreshold = 15
+    
+    /* * */
         
-    func getRecommendation() async -> [WidgetRecommendation] {
-        let scores = multinominalLogisticRegression(data: getData())
-        return []
+    // The maximal amount of iterations to train the machine learning model.
+    private let modelMaxIterations = 10
+    
+    // The model that is responsible for the predictions.
+    private var model: MLModel? = nil
+    
+    // Encapsulates the data discretization for the model.
+    private var dataHandler: MLModelDataHandler? = nil
+    
+    // The model covariates (and the dependent variable).
+    private enum Covariate: String {
+        case location = "location", time = "time", date = "date", view = "view"
     }
     
-    private func getData() -> [AppUsageDataEntity] {
-        let request = AppUsageDataEntity.fetchRequest()
-        let results = try? PersistenceController.shared.container.viewContext.fetch(request)
+#if !targetEnvironment(simulator)
+    func getRecommendation() async throws -> [WidgetRecommendation] {
         
-        return results ?? []
+        let rawData = try AnalyticsController.getEntries()
+        
+        if dataHandler == nil {
+            dataHandler = MLModelDataHandler(
+                data: rawData,
+                locationGroupRadius: self.locationGroupRadius,
+                timeNearbyThreshold: self.timeNearbyThreshold,
+                dateNearbyThreshold: self.dateNearbyThreshold
+            )
+        }
+        
+        guard let dataTable = try? dataTable() else {
+            throw RecommenderError.modelCreationFailed
+        }
+                        
+        if model == nil {
+            model = try createClassifier(from: dataTable).model
+        }
+    
+        return try recommendationsFromModel(parameters: modelParameters())
     }
     
-    private func multinominalLogisticRegression(data: [AppUsageDataEntity]) -> [Float] {
-        return softMax(regressionModel(for: data))
-    }
-    
-    // Applies weights to the input vector.
-    private func regressionModel(for data: [AppUsageDataEntity]) -> [Float] {
-        return Widget.allCases.map{ score($0, data: data) }
-    }
-    
-    // https://en.wikipedia.org/wiki/Softmax_function
-    private func softMax(_ x: [Float]) -> [Float] {
+    private func recommendationsFromModel(parameters: Dictionary<String, String>) throws -> [WidgetRecommendation] {
         
-        var result: [Float] = []
+        guard let model else {
+            throw RecommenderError.missingModel
+        }
         
-        for x_i in x {
-            let result_i = exp(x_i) / x.reduce(0, { $0 + exp($1) })
-            result.append(result_i)
+        guard let prediction = try? model.prediction(from: MLDictionaryFeatureProvider(dictionary: parameters)),
+              let resultDict = prediction.featureValue(for: "\(Covariate.view.rawValue)Probability") else {
+            throw RecommenderError.impossiblePrediction
+        }
+                
+        var result: [WidgetRecommendation] = []
+        try resultDict.dictionaryValue.forEach { view, probability in
+            guard let view = CampusAppView(rawValue: view as? String ?? "") else {
+                throw RecommenderError.badRecommendation
+            }
+            
+            view.associatedWidgets().forEach { result.append(WidgetRecommendation(widget: $0, priority: Int(probability.doubleValue * 100)))}
         }
         
         return result
     }
     
-    // The following aspects contribute to the score of the widget:
-    //   (1) The number of times the user has opened a view associated to the widget.
-    //   (2) The user's current distance to any of the stored locations for these views.
-    //   (3) The current date compared to any of the stored dates for these views.
-    private func score(_ widget: Widget, data: [AppUsageDataEntity]) -> Float {
-                
-        let associatedViews: [String] = widget.associatedViews().map{ $0.rawValue }
+    private func createClassifier(from data: MLDataTable) throws -> MLLogisticRegressionClassifier {
         
-        // Stored data that are relevant to the given widget, e.g. the cafeteria view is related to the cafeteria widget.
-        let associatedData = data.filter { entry in
-            if let view = entry.view {
-                return associatedViews.contains(view)
-            }
-            
-            return false
+        let params = MLLogisticRegressionClassifier.ModelParameters(maxIterations: modelMaxIterations)
+        
+        guard let model = try? MLLogisticRegressionClassifier(trainingData: data, targetColumn: "view", parameters: params) else {
+            throw RecommenderError.modelCreationFailed
         }
         
-        /* (1) */
-        let score = Float(associatedData.count) / Float(max(data.count, 1))
-        
-        /* TODO: (2) */
-        
-        /* TODO: (3) */
-        
-        return score
+        return model
     }
     
+    private func dataTable() throws -> MLDataTable {
+        
+        guard let data = try? dataHandler?.getData() else {
+            throw RecommenderError.missingData
+        }
+        
+        let dataDictionary: Dictionary = [
+            Covariate.location.rawValue: data.map{ $0.location },
+            Covariate.time.rawValue: data.map{ $0.time },
+            Covariate.date.rawValue: data.map{ $0.date },
+            Covariate.view.rawValue: data.map{ $0.view }
+        ]
+        
+        return try MLDataTable(dictionary: dataDictionary)
+    }
+    
+    private func evaluateModel(data: MLDataTable) throws {
+        
+        let (trainingData, testData) = data.randomSplit(by: 0.8)
+        guard let classifier = try? createClassifier(from: trainingData) else {
+            throw RecommenderError.modelCreationFailed
+        }
+        
+        let metrics = classifier.evaluation(on: testData)
+        let accuracy = (1 - metrics.classificationError) * 100
+        print("🟣 Accuracy: \(accuracy) %")
+    }
+
+    private func modelParameters() throws -> Dictionary<String, String> {
+        
+        guard let dataHandler else {
+            throw RecommenderError.missingData
+        }
+        
+        let location = CLLocationManager().location ?? AppUsageData.invalidLocation
+        let date = Date()
+        
+        return [
+            Covariate.location.rawValue: dataHandler.discreteValue(for: location),
+            Covariate.time.rawValue: dataHandler.discreteValue(for: date.time),
+            Covariate.date.rawValue: dataHandler.discreteValue(for: date)
+        ]
+    }
+        
+#else
+    func getRecommendation() async throws -> [WidgetRecommendation] {
+        return []
+    }
+#endif
+
 }

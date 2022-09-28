@@ -19,6 +19,15 @@ struct AnalyticsController {
         }
     }
     
+    static func getEntries() throws -> [AppUsageDataEntity] {
+        let request = AppUsageDataEntity.fetchRequest()
+        guard let data = try? PersistenceController.shared.container.viewContext.fetch(request) else {
+            throw AnalyticsError.fetchFailed
+        }
+        
+        return data
+    }
+    
     static func upload(entry: AppUsageData) async throws {
         
         if !didOptIn {
@@ -44,8 +53,8 @@ struct AnalyticsController {
             return
         }
         
-        let latitude = entry.getLatitude() ?? AppUsageData.invalidLocation
-        let longitude = entry.getLongitude() ?? AppUsageData.invalidLocation
+        let latitude = entry.getLatitude() ?? AppUsageData.invalidLocation.coordinate.latitude
+        let longitude = entry.getLongitude() ?? AppUsageData.invalidLocation.coordinate.longitude
         
         let hashedId = HashFunction.sha256(deviceIdentifier)
         let formatter = DateFormatter()
