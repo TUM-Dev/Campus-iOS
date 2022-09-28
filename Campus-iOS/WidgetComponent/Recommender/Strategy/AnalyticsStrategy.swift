@@ -54,7 +54,8 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
 #if !targetEnvironment(simulator)
     func getRecommendation() async throws -> [WidgetRecommendation] {
         
-        let rawData = try AnalyticsController.getEntries()
+        var rawData = try AnalyticsController.getEntries()
+        rawData = relevantData(from: rawData)
         
         if dataHandler == nil {
             dataHandler = MLModelDataHandler(
@@ -73,7 +74,7 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
             model = try createClassifier(from: dataTable).model
         }
     
-        return try recommendationsFromModel(parameters: modelParameters())
+        return try recommendationsFromModel(parameters: modelParameters()).filter{ $0.priority > 0 }
     }
     
     private func recommendationsFromModel(parameters: Dictionary<String, String>) throws -> [WidgetRecommendation] {
@@ -96,6 +97,7 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
             view.associatedWidgets().forEach { result.append(WidgetRecommendation(widget: $0, priority: Int(probability.doubleValue * 100)))}
         }
         
+        print(result)
         return result
     }
     
@@ -153,11 +155,29 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
             Covariate.date.rawValue: dataHandler.discreteValue(for: date)
         ]
     }
+    
+    // Some data entries should not affect our model, for example if the time spent on the
+    // associated view is too short. Otherwise the initial app view would be represented in the
+    // training data disproportionately often.
+    private func relevantData(from data: [AppUsageDataEntity]) -> [AppUsageDataEntity] {
+        return data.compactMap { entry in
+            
+            guard let startDate = entry.startTime, let endDate = entry.endTime else {
+                return nil
+            }
+            
+            // Time spent on the view should be more than 2 seconds.
+            if abs(startDate.timeIntervalSince1970 - endDate.timeIntervalSince1970) <= 2 {
+                return nil
+            }
+            
+            return entry
+        }
+    }
         
 #else
     func getRecommendation() async throws -> [WidgetRecommendation] {
         return []
     }
 #endif
-
 }
