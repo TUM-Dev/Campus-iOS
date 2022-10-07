@@ -1052,6 +1052,7 @@
 		366F0E7727580CFB0091651D = {
 			isa = PBXGroup;
 			children = (
+				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 				366F0E8227580CFB0091651D /* Campus-iOS */,
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
