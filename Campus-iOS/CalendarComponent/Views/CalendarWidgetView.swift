@@ -9,16 +9,20 @@ import SwiftUI
 
 struct CalendarWidgetView: View {
     
-    @StateObject var viewModel: CalendarViewModel
-    let size: WidgetSize
+    @StateObject private var viewModel: CalendarViewModel
+    @State private var size: WidgetSize
+    @State private var showDetails: Bool = false
+    private let initialSize: WidgetSize
+    private let model: Model
     
     init(model: Model, size: WidgetSize) {
-        self.size = size
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
+        self._size = State(initialValue: size)
+        self.initialSize = size
+        self.model = model
     }
     
     var body: some View {
-        
         // Show the events on the earliest date which is not in the past.
         let events = viewModel.eventsByDate
             .filter { Date() <= $0.key ?? Date() }
@@ -28,6 +32,13 @@ struct CalendarWidgetView: View {
             size: size,
             content: CalendarWidgetContent(size: size, events: events)
         )
+        .onTapGesture {
+            showDetails.toggle()
+        }
+        .sheet(isPresented: $showDetails) {
+            CalendarContentView(model: model, refresh: .constant(false))
+        }
+        .expandable(size: $size, initialSize: initialSize)
     }
 }
 
