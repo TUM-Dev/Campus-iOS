@@ -9,16 +9,23 @@ import SwiftUI
 
 struct TuitionWidgetView: View {
     
-    let size: TuitionWidgetSize
+    @State private var size: WidgetSize
+    private let initialSize: WidgetSize
+    
+    init(size: TuitionWidgetSize) {
+        self._size = State(initialValue: size.value)
+        self.initialSize = size.value
+    }
     
     var body: some View {
-        WidgetFrameView(size: size.value, content: TuitionWidgetContent(size: size))
+        WidgetFrameView(size: size, content: TuitionWidgetContent(size: size))
+            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle)
     }
 }
 
 struct TuitionWidgetContent: View {
     @StateObject var viewModel = ProfileViewModel()
-    let size: TuitionWidgetSize
+    let size: WidgetSize
     
     var body: some View {
         Group {
