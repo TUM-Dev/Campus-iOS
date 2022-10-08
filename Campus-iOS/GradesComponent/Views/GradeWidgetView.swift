@@ -10,11 +10,14 @@ import SwiftUI
 struct GradeWidgetView: View {
     
     @StateObject var viewModel: GradesViewModel
-    var size: WidgetSize
+    @State private var size: WidgetSize
+    @State private var showDetails = false
+    private let initialSize: WidgetSize
     
     init(model: Model, size: WidgetSize) {
         self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
         self.size = size
+        self.initialSize = size
     }
     
     var content: some View {
@@ -40,6 +43,13 @@ struct GradeWidgetView: View {
     
     var body: some View {
         WidgetFrameView(size: size, content: content)
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                GradesView(vm: viewModel)
+            }
+            .expandable(size: $size, initialSize: initialSize)
     }
 }
 
