@@ -78,24 +78,24 @@ enum CampusAppView: String, CaseIterable {
     
     // Widgets associated to the widget in some way.
     // We can use this to make assumptions for widget recommendations, based on the views that the user visited.
-    func associatedWidgets() -> [Widget] {
+    func associatedWidget() -> Widget {
         switch self {
         case .cafeteria:
-            return [.cafeteria]
+            return .cafeteria
         case .cafeterias:
-            return [.cafeteria]
+            return .cafeteria
         case .calendar:
-            return [.calendar]
+            return .calendar
         case .calendarEvent:
-            return [.calendar]
+            return .calendar
         case .grades:
-            return [.grades]
+            return .grades
         case .studyRoom:
-            return [.studyRoom]
+            return .studyRoom
         case .studyRooms:
-            return [.studyRoom]
+            return .studyRoom
         case .tuition:
-            return [.tuition]
+            return .tuition
         }
     }
 }

@@ -93,8 +93,7 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
             guard let view = CampusAppView(rawValue: view as? String ?? "") else {
                 throw RecommenderError.badRecommendation
             }
-            
-            view.associatedWidgets().forEach { result.append(WidgetRecommendation(widget: $0, priority: Int(probability.doubleValue * 100)))}
+            result.append(WidgetRecommendation(widget: view.associatedWidget(), priority: Int(probability.doubleValue * 100)))
         }
         
         print(result)
