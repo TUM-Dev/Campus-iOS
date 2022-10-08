@@ -12,7 +12,6 @@ struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
-    @AppStorage("analyticsOptIn") var analyticsOptIn: Bool = false
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
