@@ -30,6 +30,9 @@ struct AnalyticsController {
     
     static func upload(entry: AppUsageData) async throws {
         
+        print("Info: app usage data upload is disabled.")
+        return
+        
         if !didOptIn {
             return
         }

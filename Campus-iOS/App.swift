@@ -16,9 +16,7 @@ struct CampusApp: App {
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
-    
-    @AppStorage("didShowAnalyticsOptIn") private var didShowAnalyticsOptIn = false
-    
+        
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -40,13 +38,6 @@ struct CampusApp: App {
                     }
                     .navigationViewStyle(.stack)
                 }
-                .sheet(isPresented: !$didShowAnalyticsOptIn,
-                       onDismiss: { NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil) }) {
-                        AnalyticsOptInView()
-                            .task {
-                                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
-                            }
-                    }
                     .environmentObject(model)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
@@ -112,6 +103,20 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
+            
+            NavigationView {
+                WidgetScreen(model: model)
+                    .navigationTitle("My Widgets")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(model: model)
+                        }
+                    }
+            }
+            .tag(4)
+            .tabItem {
+                Label("My Widgets", systemImage: "rectangle.3.group.fill")
+            }
         }
     }
 }
