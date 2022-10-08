@@ -47,8 +47,7 @@ struct PanelContentView: View {
                         selectedGroup: $vm.selectedStudyGroup,
                         rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom]()
                     )
-                }
-                else {
+                } else {
                     HStack {
                         Spacer()
                         
@@ -150,7 +149,7 @@ struct PanelContentView: View {
                     .border(.red)
                 .contentShape(Rectangle())
                 .cornerRadius(10, corners: [.topLeft, .topRight])
-                .frame(height: dragAreaHeight + 50, alignment: .top)
+                .frame(height: dragAreaHeight, alignment: .top)
                 .gesture(
                     DragGesture()
                         .onChanged { value in
@@ -165,7 +164,7 @@ struct PanelContentView: View {
                             }
                         }
                 )
-                Spacer().frame(height: min(max((panelHeight - 50) - dragAreaHeight, 0), PanelPos.top.rawValue))
+                Spacer().frame(height: min(max((panelHeight) - dragAreaHeight, 0), PanelPos.top.rawValue))
             }
         }
     }
