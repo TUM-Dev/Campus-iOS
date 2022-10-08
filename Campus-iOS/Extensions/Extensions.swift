@@ -198,6 +198,32 @@ extension View {
             self
         }
     }
+    
+    @ViewBuilder func `expandable`(size: Binding<WidgetSize>, initialSize: WidgetSize, biggestSize: WidgetSize = .bigSquare) -> some View {
+        self
+            .onTapGesture{}
+            .onLongPressGesture {
+                let vibrator = UIImpactFeedbackGenerator(style: .heavy)
+                vibrator.impactOccurred()
+                
+                withAnimation(.widget) {
+                    if size.wrappedValue == initialSize {
+                        size.wrappedValue = biggestSize
+                    } else {
+                        size.wrappedValue = initialSize
+                    }
+                }
+            }
+    }
+}
+
+extension Animation {
+    static let widget: Animation = .interpolatingSpring(
+        mass: 0.5,
+        stiffness: 100,
+        damping: 10,
+        initialVelocity: 10
+    )
 }
 
 extension UIColor {
