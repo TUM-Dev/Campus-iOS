@@ -67,7 +67,6 @@ struct AnalyticsOptInView: View {
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height, alignment: .leading)
             }
         }
-        .interactiveDismissDisabled()
     }
     
     private func dismiss(didAccept: Bool = false) {
