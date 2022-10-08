@@ -10,17 +10,37 @@ import MapKit
 
 struct StudyRoomWidgetView: View {
     
-    let size: WidgetSize
+    @StateObject var viewModel = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
+    @State private var size: WidgetSize
+    @State private var showDetails = false
+    private let initialSize: WidgetSize
+    
+    init(size: WidgetSize) {
+        self._size = State(initialValue: size)
+        self.initialSize = size
+    }
     
     var body: some View {
-        WidgetFrameView(size: size, content: StudyRoomWidgetContent(size: size))
+        WidgetFrameView(size: size, content: StudyRoomWidgetContent(size: size, viewModel: viewModel))
+            .task {
+                await viewModel.fetch()
+            }
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                NavigationView { // To enable navigation to the map images.
+                    StudyRoomGroupView(selectedGroup: $viewModel.studyGroup, rooms: viewModel.rooms ?? [], canDismiss: false)
+                }
+            }
+            .expandable(size: $size, initialSize: initialSize)
     }
 }
 
 struct StudyRoomWidgetContent: View {
     
-    let size: WidgetSize
-    @StateObject var viewModel = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
+    var size: WidgetSize
+    @ObservedObject var viewModel: StudyRoomWidgetViewModel
     
     var body: some View {
         Group {
@@ -39,13 +59,15 @@ struct StudyRoomWidgetContent: View {
                         SimpleStudyRoomWidgetContent(
                             studyGroup: name,
                             freeRooms: rooms.filter{ $0.isAvailable() }.count,
-                            coordinate: coordinate
+                            coordinate: coordinate,
+                            size: size
                         )
                     case .bigSquare:
                         DetailedStudyRoomWidgetContent(
                             studyGroup: name,
                             rooms: rooms,
-                            coordinate: coordinate
+                            coordinate: coordinate,
+                            size: size
                         )
                     }
                 } else {
@@ -53,10 +75,6 @@ struct StudyRoomWidgetContent: View {
                 }
             }
         }
-        .task {
-            await viewModel.fetch()
-        }
-        
     }
 }
 
@@ -67,9 +85,10 @@ struct SimpleStudyRoomWidgetContent: View {
     let studyGroup: String
     let freeRooms: Int
     let coordinate: CLLocationCoordinate2D
+    let size: WidgetSize
         
     var body: some View {
-        WidgetMapBackgroundView(coordinate: coordinate)
+        WidgetMapBackgroundView(coordinate: coordinate, size: size)
             .overlay {
                 VStack(alignment: .leading) {
                     StudyRoomWidgetHeaderView(count: freeRooms, studyGroup: studyGroup, allowMultiline: true)
@@ -85,10 +104,11 @@ struct DetailedStudyRoomWidgetContent: View {
     let studyGroup: String
     let rooms: [StudyRoom]
     let coordinate: CLLocationCoordinate2D
+    let size: WidgetSize
     
     private let DISPLAYED_ROOMS = 5
     
-    init(studyGroup: String, rooms: [StudyRoom], coordinate: CLLocationCoordinate2D) {
+    init(studyGroup: String, rooms: [StudyRoom], coordinate: CLLocationCoordinate2D, size: WidgetSize) {
         self.studyGroup = studyGroup
         self.coordinate = coordinate
         
@@ -96,10 +116,11 @@ struct DetailedStudyRoomWidgetContent: View {
         self.rooms = rooms.sorted { r1, _ in
             return r1.isAvailable()
         }
+        self.size = size
     }
     
     var body: some View {
-        WidgetMapBackgroundView(coordinate: coordinate)
+        WidgetMapBackgroundView(coordinate: coordinate, size: size)
             .overlay {
                 VStack(alignment: .leading) {
                     StudyRoomWidgetHeaderView(count: rooms.filter{ $0.isAvailable() }.count, studyGroup: studyGroup)
@@ -189,13 +210,15 @@ struct StudyRoomWidgetView_Previews: PreviewProvider {
     static var simpleContent = SimpleStudyRoomWidgetContent(
         studyGroup: "StudiTUM Weihenstephan",
         freeRooms: 42,
-        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
+        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42),
+        size: .square
     )
     
     static var detailedContent = DetailedStudyRoomWidgetContent(
         studyGroup: "StudiTUM Weihenstephan",
         rooms: [StudyRoom](repeating: StudyRoom(), count: 12),
-        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
+        coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42),
+        size: .bigSquare
     )
     
     static var content: some View {

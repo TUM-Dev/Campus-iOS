@@ -11,6 +11,14 @@ struct StudyRoomGroupView: View {
     @Binding var selectedGroup: StudyRoomGroup?
     @State var rooms: [StudyRoom]
     @State private var data = AppUsageData()
+    private let canDismiss: Bool
+    
+    init(selectedGroup: Binding<StudyRoomGroup?>, rooms: [StudyRoom], canDismiss: Bool = false) {
+        self._selectedGroup = selectedGroup
+        self._rooms = State(initialValue: rooms)
+        self._data = State(initialValue: AppUsageData())
+        self.canDismiss = canDismiss
+    }
     
     var sortedRooms: [StudyRoom] {
         self.rooms.sorted(by: { (lhs, rhs) -> Bool in
@@ -48,19 +56,21 @@ struct StudyRoomGroupView: View {
                             
                             Spacer()
                             
-                            Button(action: {
-                                selectedGroup = nil
-                            }, label: {
-                                Text("Done")
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .foregroundColor(.blue)
-                                    .padding(.all, 5)
-                                    .background(Color.clear)
-                                    .accessibility(label:Text("Close"))
-                                    .accessibility(hint:Text("Tap to close the screen"))
-                                    .accessibility(addTraits: .isButton)
-                                    .accessibility(removeTraits: .isImage)
-                            })
+                            if (canDismiss) {
+                                Button(action: {
+                                    selectedGroup = nil
+                                }, label: {
+                                    Text("Done")
+                                        .font(.system(size: 16, weight: .semibold))
+                                        .foregroundColor(.blue)
+                                        .padding(.all, 5)
+                                        .background(Color.clear)
+                                        .accessibility(label:Text("Close"))
+                                        .accessibility(hint:Text("Tap to close the screen"))
+                                        .accessibility(addTraits: .isButton)
+                                        .accessibility(removeTraits: .isImage)
+                                })
+                            }
                         }
                         
                         HStack {
