@@ -12,7 +12,14 @@ struct CafeteriaWidgetView: View {
     
     @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
     
-    let size: WidgetSize
+    @State private var size: WidgetSize
+    private let initialSize: WidgetSize
+    @State private var showDetails = false
+    
+    init(size: WidgetSize) {
+        self._size = State(initialValue: size)
+        self.initialSize = size
+    }
     
     var content: some View {
         Group {
@@ -42,7 +49,18 @@ struct CafeteriaWidgetView: View {
     }
     
     var body: some View {
-        WidgetFrameView(size: size,content: content)
+        WidgetFrameView(size: size, content: content)
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                if let vm = viewModel.menuViewModel {
+                    MenuView(viewModel: vm)
+                } else {
+                    Text("No dishes.")
+                }
+            }
+            .expandable(size: $size, initialSize: initialSize)
     }
 }
 
@@ -75,7 +93,7 @@ struct CafeteriaWidgetContent: View {
     
     var body: some View {
         
-        WidgetMapBackgroundView(coordinate: coordinate)
+        WidgetMapBackgroundView(coordinate: coordinate, size: size)
             .overlay {
                 content
             }

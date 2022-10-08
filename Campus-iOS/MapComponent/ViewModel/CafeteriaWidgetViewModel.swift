@@ -54,7 +54,7 @@ class CafeteriaWidgetViewModel: ObservableObject {
                     return
                 }
                 
-                guard let todaysPlan = mealPlan.days.first(where: { $0.date.day == Date().day }) else {
+                guard let todaysPlan = mealPlan.days.first else {
                     self.status = .noMenu
                     return
                 }
