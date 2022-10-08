@@ -9,6 +9,7 @@ import SwiftUI
 import Alamofire
 
 struct MealPlanView: View {
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var viewModel: MealPlanViewModel
         
     var body: some View {
@@ -45,7 +46,7 @@ struct MealPlanView: View {
                             MenuView(viewModel: menu)
                         }else{
                             Spacer().frame(height: 20)
-                            Text("No Menu available today").foregroundColor(Color.black.opacity(0.5))
+                            Text("No Menu available today").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                         }
                     }
                 } else {

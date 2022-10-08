@@ -13,11 +13,29 @@ import FirebaseAnalytics
 #endif
 
 public class Model: ObservableObject {
-    @Published var showProfile = false
-    @Published var isLoginSheetPresented = false
+    
+    @Published var showProfile = false {
+        didSet {
+            if showProfile {
+                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil)
+            }
+        }
+    }
+    
+    @Published var isLoginSheetPresented = false {
+        didSet {
+            if isLoginSheetPresented {
+                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
+            } else {
+                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil)
+            }
+        }
+    }
+    
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
-    @Published var splashScreenPresented = false
     @Published var profile: ProfileViewModel = ProfileViewModel()
     
     var anyCancellables: [AnyCancellable] = []
@@ -34,13 +52,11 @@ public class Model: ObservableObject {
                     #if !targetEnvironment(macCatalyst)
                     Analytics.logEvent("token_confirmed", parameters: nil)
                     #endif
-                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = false
                     self?.isUserAuthenticated = true
                     self?.loadProfile()
                 case .failure(_):
                     self?.isUserAuthenticated = false
-                    self?.splashScreenPresented = false
                     self?.isLoginSheetPresented = true
                 }
             }

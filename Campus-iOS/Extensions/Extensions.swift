@@ -216,3 +216,13 @@ extension String: Identifiable {
         return hash
     }
 }
+
+// For the NewsView: In order to show the right link when using the WebView when tapping on a NewsCard
+extension URL: Identifiable {
+    public var id: UUID { UUID() }
+}
+
+extension Notification.Name {
+    static let tcaSheetBecameActiveNotification = Notification.Name("tcaSheetBecameActiveNotification")
+    static let tcaSheetBecameInactiveNotification = Notification.Name("tcaSheetBecameInactiveNotification")
+}

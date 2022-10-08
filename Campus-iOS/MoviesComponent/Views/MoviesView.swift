@@ -17,18 +17,24 @@ struct MoviesView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVGrid(columns: items, spacing: 6) {
-                ForEach(self.viewModel.movies, id: \.id ) { movie in
-                        MovieCard(movie: movie).padding(10)
-                        .onTapGesture {
-                            selectedMovie = movie
-                        }
+        ZStack {
+            Text("No more movies this semester 😢\nGet excited for the next season!")
+                .foregroundColor(Color(UIColor.lightGray))
+            ScrollView(.vertical) {
+                LazyVGrid(columns: items, spacing: 6) {
+                    ForEach(self.viewModel.movies, id: \.id ) { movie in
+                            MovieCard(movie: movie).padding(10)
+                            .onTapGesture {
+                                selectedMovie = movie
+                            }
+                    }
+                    .sheet(item: $selectedMovie) { movie in
+                        MovieDetailedView(movie: movie)
+                    }
                 }
-                .sheet(item: $selectedMovie) { movie in
-                    MovieDetailedView(movie: movie)
-                }
-            }.padding(15)
+                .padding(15)
+                .background(Color.systemsBackground)
+            }
         }
     }
 }

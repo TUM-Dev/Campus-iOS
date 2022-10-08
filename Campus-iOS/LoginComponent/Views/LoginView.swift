@@ -137,14 +137,13 @@ struct LoginView: View {
                     .frame(width: geo.size.width, height: geo.size.height / 4 )
                     
                     Spacer()
-                    HStack {
-                        Spacer()
-                        Image("tower")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width * 0.7, height: geo.size.height / 4)
-                        Spacer()
-                    }
+                        
+                    Image("tower")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width)
+                        
+                    
                     Spacer()
                     
                 }
@@ -165,9 +164,17 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Text("Background").sheet(isPresented: .constant(true)) {
             NavigationView {
-                LoginView(model: model).previewDevice("iPod touch (7th generation)").navigationBarHidden(true)
+                LoginView(model: model).navigationBarHidden(true)
             }
         }
+//        .previewDevice("iPad Pro (12.9 inch) (5th generation)")
+//        .previewInterfaceOrientation(.landscapeRight)
+//        .previewDevice("iPod touch (7th generation)")
+        .previewDevice("iPhone 12")
+        .previewInterfaceOrientation(.portrait)
+        
+        LoginView(model: model)
+            .previewInterfaceOrientation(.landscapeLeft)
         
     }
 }

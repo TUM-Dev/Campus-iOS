@@ -149,6 +149,12 @@
 "Detail" = "Detail";
 "Floor" = "Obergeschoß";
 
+//Map
+"Search ..." = "Suchen ...";
+
+//Movies
+"No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";
+
 // Error handeling
 "The device appears to be offline, please check the internet connectivity" = "Dieses Gerät scheint nicht mit dem Internet verbunden zu sein, Verbindung bitte überprüfen";
 "Unauthorized to access the resource" = "Nicht berechtiger Zugirff auf Resource";
@@ -161,3 +167,23 @@
 "Token invalid" = "Token invalide";
 "Unknown error" = "Unbekannter Fehler";
 "CampusOnline Error" = "CampusOnline Fehler";
+
+// Analytics Opt-In
+"🚀 Support my Bachelor's Thesis" = "🚀 Unterstütze meine Bachelorarbeit";
+"Learn more" = "Mehr erfahren";
+"If you let us temporarily store some anonymized usage data, we can make your TUM Campus App experience even better." = "Wenn du uns einige anonymisierte Nutzungsdaten temporär speichern lässt, können wir dein Erlebnis in der TUM Campus App noch weiter verbessern.";
+"Read more" = "Weiterlesen";
+"Please allow location access while using the app for this to work." = "Bitte erlaube Standortzugriff, während die App verwendet wird, damit dies funktioniert.";
+"For some selected views, we would like to collect" = "Für einige ausgewählte Bereiche in der App möchten wir folgende Daten erfassen:";
+"The View" = "Die Ansicht";
+"The view you are looking at. We cannot see any of the content. For example, we can store that you are viewing the Grades screen, but we can never see your grades." = "Welche App-Seite du dir ansiehst. Wir können keine Inhalte sehen. Zum Beispiel können wir speichern, dass du gerade die Notenansicht siehst, aber wir können keine deiner Noten sehen.";
+"The Location" = "Deinen Standort";
+"Your device location when you are looking at the respective view." = "Den Standort deines Gerätes, während Du die jeweilige Ansicht offen hast.";
+"The Time" = "Die Uhrzeit";
+"The date and time when you look at the view." = "Das Datum und die Uhrzeit, wann du die jeweilige Ansicht offen hast.";
+"An Anonymous Identifier" = "Eine Anonyme Kennung";
+"An anonymized identifier. We compute a one-way hash value of your device identifier - your actual device identifier will never leave your device." = "Eine anonymisierte Kennung. Wir berechnen einen nicht-umkehrbaren Hashwert Deiner Gerätekennung – Deine reale Gerätekennung verlässt dein Gerät nicht.";
+"Why?" = "Wieso?";
+"In the context of my Bachelor's thesis, I aim to implement intelligent widget views that display to you the content you most likely want to see at any given time and location. Ideally, you will see the content you are interested in at one glance - without having to press any buttons." = "Im Rahmen meiner Bachelorarbeit möchte ich intelligente Widgets implementieren, die Dir, passend zu deinem Standort und der Uhrzeit, diejenigen Inhalte anzeigen, die Du am wahrscheinlichsten sehen möchtest. Im Idealfall siehst du die Inhalte, die Dich interessieren, auf einen Blick – ganz ohne Knopfdruck.";
+"Sounds good?" = "Klingt gut?";
+"Share anonymized analytics data" = "Anonymisierte Nutzungsdaten teilen";

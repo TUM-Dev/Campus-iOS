@@ -10,6 +10,7 @@ import SwiftUI
 struct CafeteriaView: View {
     
     @Binding var selectedCanteen: Cafeteria?
+    @State private var data = AppUsageData()
     
     var body: some View {
         if let canteen = self.selectedCanteen {
@@ -70,7 +71,10 @@ struct CafeteriaView: View {
             }
             .padding(.all, 10)
             .task {
-                AnalyticsController.visitedView(view: .cafeteria)
+                data.visitView(view: .cafeteria)
+            }
+            .onDisappear {
+                data.didExitView()
             }
         }
     }

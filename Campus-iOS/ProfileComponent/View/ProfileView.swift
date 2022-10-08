@@ -12,6 +12,7 @@ struct ProfileView: View {
     @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
+    @AppStorage("analyticsOptIn") var analyticsOptIn: Bool = false
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
@@ -23,8 +24,10 @@ struct ProfileView: View {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
                             .resizable()
-                            .foregroundColor(Color(.secondaryLabel))
+                            .clipShape(Circle())
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 75, height: 75)
+                            .foregroundColor(Color(.secondaryLabel))
                         
                         VStack(alignment: .leading) {
                             Text(self.model.profile.profile?.fullName ?? "Not logged in")
@@ -77,10 +80,12 @@ struct ProfileView: View {
                 Section() {
                     HStack {
                         
-                        Text("Calendar days in week mode")
-                            .foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
-                        Spacer()
-                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode")) {
+                        if #unavailable(iOS 16.0) {
+                            Text("Calendar days in week mode")
+                                .foregroundColor(Color(.label))
+                            Spacer()
+                        }
+                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode").foregroundColor(Color(.label))) {
                             ForEach(2..<8) { number in
                                 Text("\(number)")
                                     .tag(number)
@@ -138,14 +143,14 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("Version 4.0").foregroundColor(Color.black)
+                            Text("Version 4.0").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                             Spacer()
                         }
                     }
                 }
                 .actionSheet(isPresented: self.$showActionSheet) {
                     //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
-                    ActionSheet(title: Text("Change background"), message: Text("Select a new color"), buttons: [
+                    ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
                         .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
                         .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
                         .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },

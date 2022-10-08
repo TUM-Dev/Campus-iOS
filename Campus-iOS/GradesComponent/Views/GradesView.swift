@@ -26,10 +26,10 @@ struct GradesView: View {
                         )
                     )
                     .frame(alignment: .center)
-                
+                    
                     BarChartView(barChartData: self.vm.barChartData[index])
                 }
-                    
+                
                 ForEach(self.vm.gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
                     Section(
                         header:
@@ -59,9 +59,6 @@ struct GradesView: View {
                 }
                 .listRowSeparator(.hidden)
             }
-        }
-        .task {
-            AnalyticsController.visitedView(view: .grades)
         }
     }
 }
