@@ -20,9 +20,9 @@ struct WidgetFrameView<Content: View>: View {
         
         content
             .frame(width: width, height: height)
-            .cornerRadius(32)
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .if(colorScheme == .light) { view in
-                view.shadow(radius: 5)
+                view.shadow(color: .gray.opacity(0.4), radius: 6)
             }
     }
 }
