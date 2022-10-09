@@ -15,6 +15,7 @@ struct CafeteriaWidgetView: View {
     @State private var size: WidgetSize
     private let initialSize: WidgetSize
     @State private var showDetails = false
+    @State private var scale: CGFloat = 1
     
     init(size: WidgetSize) {
         self._size = State(initialValue: size)
@@ -60,7 +61,7 @@ struct CafeteriaWidgetView: View {
                     Text("No dishes.")
                 }
             }
-            .expandable(size: $size, initialSize: initialSize)
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 

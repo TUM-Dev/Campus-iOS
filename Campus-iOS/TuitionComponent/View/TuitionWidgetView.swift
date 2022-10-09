@@ -11,6 +11,7 @@ struct TuitionWidgetView: View {
     
     @State private var size: WidgetSize
     private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
     
     init(size: TuitionWidgetSize) {
         self._size = State(initialValue: size.value)
@@ -19,7 +20,7 @@ struct TuitionWidgetView: View {
     
     var body: some View {
         WidgetFrameView(size: size, content: TuitionWidgetContent(size: size))
-            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle)
+            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
     }
 }
 

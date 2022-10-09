@@ -13,6 +13,7 @@ struct GradeWidgetView: View {
     @State private var size: WidgetSize
     @State private var showDetails = false
     private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
     
     init(model: Model, size: WidgetSize) {
         self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
@@ -49,7 +50,7 @@ struct GradeWidgetView: View {
             .sheet(isPresented: $showDetails) {
                 GradesView(vm: viewModel)
             }
-            .expandable(size: $size, initialSize: initialSize)
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 

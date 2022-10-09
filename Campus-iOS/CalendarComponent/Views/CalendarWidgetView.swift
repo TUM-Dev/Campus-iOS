@@ -13,6 +13,7 @@ struct CalendarWidgetView: View {
     @State private var size: WidgetSize
     @State private var showDetails: Bool = false
     private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
     private let model: Model
     
     init(model: Model, size: WidgetSize) {
@@ -38,7 +39,7 @@ struct CalendarWidgetView: View {
         .sheet(isPresented: $showDetails) {
             CalendarContentView(model: model, refresh: .constant(false))
         }
-        .expandable(size: $size, initialSize: initialSize)
+        .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 

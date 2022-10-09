@@ -14,6 +14,7 @@ struct StudyRoomWidgetView: View {
     @State private var size: WidgetSize
     @State private var showDetails = false
     private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
     
     init(size: WidgetSize) {
         self._size = State(initialValue: size)
@@ -33,7 +34,7 @@ struct StudyRoomWidgetView: View {
                     StudyRoomGroupView(selectedGroup: $viewModel.studyGroup, rooms: viewModel.rooms ?? [], canDismiss: false)
                 }
             }
-            .expandable(size: $size, initialSize: initialSize)
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 
