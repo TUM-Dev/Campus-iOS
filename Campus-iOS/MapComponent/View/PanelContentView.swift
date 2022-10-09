@@ -25,6 +25,7 @@ struct PanelContentView: View {
     @State var panelHeight: CGFloat = 0.0
     
     private let handleThickness = CGFloat(0)
+    let dragAreaHeight = PanelHeight.top * 0.04
     
     var body: some View {
         ZStack {
@@ -59,10 +60,38 @@ struct PanelContentView: View {
                                 .font(.title2)
                                 .foregroundColor(Color(UIColor.tumBlue))
                         }
+                        .simultaneousGesture (
+                            DragGesture()
+                                .onChanged { value in
+                                    guard !vm.lockPanel else { return }
+                                    if let newPanelHeight = check((panelHeight) - value.translation.height) {
+                                        panelHeight = newPanelHeight
+                                    }
+                                }
+                                .onEnded { _ in
+                                    withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                                        snapPanel(from: panelHeight)
+                                    }
+                                }
+                        )
                         
                         Spacer()
                         
                         PanelSearchBarView(vm: self.vm, searchString: $searchString)
+                            .gesture (
+                                DragGesture()
+                                    .onChanged { value in
+                                        guard !vm.lockPanel else { return }
+                                        if let newPanelHeight = check((panelHeight) - value.translation.height) {
+                                            panelHeight = newPanelHeight
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                                            snapPanel(from: panelHeight)
+                                        }
+                                    }
+                            )
                         
                         Spacer()
                         
@@ -87,6 +116,20 @@ struct PanelContentView: View {
                                 UISegmentedControl.appearance()
                                     .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
                             }
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        guard !vm.lockPanel else { return }
+                                        if let newPanelHeight = check((panelHeight) - value.translation.height) {
+                                            panelHeight = newPanelHeight
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                                            snapPanel(from: panelHeight)
+                                        }
+                                    }
+                            )
                         }
                         .frame(width: 100)
                         .onChange(of: vm.mode) { newMode in
@@ -143,14 +186,12 @@ struct PanelContentView: View {
             }
             
             VStack {
-                let dragAreaHeight = PanelHeight.top * 0.04
-                
                 Rectangle().foregroundColor(.clear)
                     .border(.red)
                 .contentShape(Rectangle())
                 .cornerRadius(10, corners: [.topLeft, .topRight])
                 .frame(height: dragAreaHeight, alignment: .top)
-                .gesture(
+                .gesture (
                     DragGesture()
                         .onChanged { value in
                             guard !vm.lockPanel else { return }
