@@ -60,38 +60,12 @@ struct PanelContentView: View {
                                 .font(.title2)
                                 .foregroundColor(Color(UIColor.tumBlue))
                         }
-                        .simultaneousGesture (
-                            DragGesture()
-                                .onChanged { value in
-                                    guard !vm.lockPanel else { return }
-                                    if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                                        panelHeight = newPanelHeight
-                                    }
-                                }
-                                .onEnded { _ in
-                                    withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
-                                        snapPanel(from: panelHeight)
-                                    }
-                                }
-                        )
+                        .simultaneousGesture(panelDragGesture)
                         
                         Spacer()
                         
                         PanelSearchBarView(vm: self.vm, searchString: $searchString)
-                            .simultaneousGesture (
-                                DragGesture()
-                                    .onChanged { value in
-                                        guard !vm.lockPanel else { return }
-                                        if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                                            panelHeight = newPanelHeight
-                                        }
-                                    }
-                                    .onEnded { _ in
-                                        withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
-                                            snapPanel(from: panelHeight)
-                                        }
-                                    }
-                            )
+                            .simultaneousGesture(panelDragGesture)
                         
                         Spacer()
                         
@@ -116,20 +90,7 @@ struct PanelContentView: View {
                                 UISegmentedControl.appearance()
                                     .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
                             }
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        guard !vm.lockPanel else { return }
-                                        if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                                            panelHeight = newPanelHeight
-                                        }
-                                    }
-                                    .onEnded { _ in
-                                        withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
-                                            snapPanel(from: panelHeight)
-                                        }
-                                    }
-                            )
+                            .gesture(panelDragGesture)
                         }
                         .frame(width: 100)
                         .onChange(of: vm.mode) { newMode in
@@ -190,20 +151,7 @@ struct PanelContentView: View {
                 .contentShape(Rectangle())
                 .cornerRadius(10, corners: [.topLeft, .topRight])
                 .frame(height: dragAreaHeight, alignment: .top)
-                .gesture (
-                    DragGesture()
-                        .onChanged { value in
-                            guard !vm.lockPanel else { return }
-                            if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                                panelHeight = newPanelHeight
-                            }
-                        }
-                        .onEnded { _ in
-                            withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
-                                snapPanel(from: panelHeight)
-                            }
-                        }
-                )
+                .gesture(panelDragGesture)
                 Spacer().frame(height: min(max((panelHeight) - dragAreaHeight, 0), PanelPos.top.rawValue))
             }
         }
@@ -214,6 +162,21 @@ struct PanelContentView: View {
         case MapMode.studyRooms: return .studyRooms
         case MapMode.cafeterias: return .cafeterias
         }
+    }
+    
+    var panelDragGesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                guard !vm.lockPanel else { return }
+                if let newPanelHeight = check((panelHeight) - value.translation.height) {
+                    panelHeight = newPanelHeight
+                }
+            }
+            .onEnded { _ in
+                withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
+                    snapPanel(from: panelHeight)
+                }
+            }
     }
     
     func check(_ height: CGFloat) -> CGFloat? {
