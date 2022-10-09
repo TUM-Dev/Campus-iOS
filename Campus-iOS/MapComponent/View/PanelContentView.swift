@@ -187,7 +187,6 @@ struct PanelContentView: View {
             
             VStack {
                 Rectangle().foregroundColor(.clear)
-                    .border(.red)
                 .contentShape(Rectangle())
                 .cornerRadius(10, corners: [.topLeft, .topRight])
                 .frame(height: dragAreaHeight, alignment: .top)
