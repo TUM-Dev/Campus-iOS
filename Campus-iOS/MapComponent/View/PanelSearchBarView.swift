@@ -19,20 +19,21 @@ struct PanelSearchBarView: View {
             if editingChanged {
                 isEditing = true
                 vm.lockPanel = true
-                vm.panelPos = .middle
+                vm.panelPos = .top
             } else {
                 isEditing = false
                 vm.lockPanel = false
             }
         })
-            .padding(7)
-            .background(Color(.systemGray6))
-            .cornerRadius(8)
+        .padding(7)
+        .background(Color(.systemGray6))
+        .cornerRadius(8)
 
         if isEditing {
             Button(action: {
                 isEditing = false
                 vm.lockPanel = false
+                vm.panelPos = .middle
                 searchString = ""
                 
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

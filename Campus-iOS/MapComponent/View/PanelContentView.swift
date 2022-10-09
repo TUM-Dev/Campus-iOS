@@ -78,7 +78,7 @@ struct PanelContentView: View {
                         Spacer()
                         
                         PanelSearchBarView(vm: self.vm, searchString: $searchString)
-                            .gesture (
+                            .simultaneousGesture (
                                 DragGesture()
                                     .onChanged { value in
                                         guard !vm.lockPanel else { return }

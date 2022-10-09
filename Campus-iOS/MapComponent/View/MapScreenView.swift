@@ -37,9 +37,11 @@ struct MapScreenView: View {
                     }
                 }
             }
-        }.edgesIgnoringSafeArea(.top)
-            .navigationTitle("Map")
-            .navigationBarHidden(true)
+        }
+        .edgesIgnoringSafeArea(.top)
+        .ignoresSafeArea(.keyboard)
+        .navigationTitle("Map")
+        .navigationBarHidden(true)
     }
 }
 
