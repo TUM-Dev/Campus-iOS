@@ -45,8 +45,10 @@ struct PanelContentView: View {
                     
                 } else if vm.selectedStudyGroup != nil {
                     StudyRoomGroupView(
+                        vm: vm,
                         selectedGroup: $vm.selectedStudyGroup,
-                        rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom]()
+                        rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom](),
+                        panelHeight: $panelHeight
                     )
                 } else {
                     HStack {

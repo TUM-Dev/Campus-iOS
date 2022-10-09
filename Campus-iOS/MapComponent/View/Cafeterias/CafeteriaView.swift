@@ -122,10 +122,9 @@ struct CafeteriaView: View {
 
 struct CanteenView_Previews: PreviewProvider {
     @State static var ph: CGFloat = 0.0
+    static var vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
     
     static var previews: some View {
-        let vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
-        
         CafeteriaView(vm: vm, selectedCanteen: .constant(nil), panelHeight: $ph)
             .previewInterfaceOrientation(.portrait)
     }
