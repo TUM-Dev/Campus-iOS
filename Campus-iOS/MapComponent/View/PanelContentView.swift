@@ -38,7 +38,7 @@ struct PanelContentView: View {
                     .foregroundColor(Color.primary.opacity(0.2))
                 
                 if vm.selectedCafeteria != nil {
-                    CafeteriaView(selectedCanteen: $vm.selectedCafeteria)
+                    CafeteriaView(vm: vm, selectedCanteen: $vm.selectedCafeteria, panelHeight: $panelHeight)
                     if let viewModel = mealPlanViewModel {
                         MealPlanView(viewModel: viewModel)
                     }
