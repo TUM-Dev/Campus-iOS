@@ -19,9 +19,16 @@ class CafeteriaWidgetViewModel: ObservableObject {
     private let cafeteriaService: CafeteriasServiceProtocol
     private let sessionManager = Session.defaultSession
     
+    private let locationManager = CLLocationManager()
+    
     init(cafeteriaService: CafeteriasServiceProtocol) {
         self.status = .loading
         self.cafeteriaService = cafeteriaService
+        
+        let authorization = locationManager.authorizationStatus
+        if authorization != .authorizedWhenInUse || authorization != .authorizedAlways {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     func fetch() async {

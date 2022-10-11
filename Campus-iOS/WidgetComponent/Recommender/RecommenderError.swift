@@ -8,5 +8,5 @@
 import Foundation
 
 enum RecommenderError: Error {
-    case missingData, missingModel, modelCreationFailed, impossiblePrediction, badRecommendation
+    case missingData, missingModel, modelCreationFailed, impossiblePrediction, badRecommendation, missingPermissions
 }
