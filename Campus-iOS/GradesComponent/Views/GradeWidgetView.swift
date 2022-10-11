@@ -14,11 +14,13 @@ struct GradeWidgetView: View {
     @State private var showDetails = false
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize) {
+    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
         self.size = size
         self.initialSize = size
+        self._refresh = refresh
     }
     
     var content: some View {
@@ -36,6 +38,9 @@ struct GradeWidgetView: View {
             case .failed:
                 TextWidgetView(text: "There was an error fetching the grades.")
             }
+        }
+        .onChange(of: refresh) { _ in
+            Task { await viewModel.getGrades() }
         }
         .task {
             await viewModel.getGrades()

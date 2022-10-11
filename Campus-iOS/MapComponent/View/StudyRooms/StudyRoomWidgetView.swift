@@ -15,14 +15,19 @@ struct StudyRoomWidgetView: View {
     @State private var showDetails = false
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
     
-    init(size: WidgetSize) {
+    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._size = State(initialValue: size)
         self.initialSize = size
+        self._refresh = refresh
     }
     
     var body: some View {
         WidgetFrameView(size: size, content: StudyRoomWidgetContent(size: size, viewModel: viewModel))
+            .onChange(of: refresh) { _ in
+                Task { await viewModel.fetch() }
+            }
             .task {
                 await viewModel.fetch()
             }

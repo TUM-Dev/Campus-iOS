@@ -16,10 +16,12 @@ struct CafeteriaWidgetView: View {
     private let initialSize: WidgetSize
     @State private var showDetails = false
     @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
     
-    init(size: WidgetSize) {
+    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._size = State(initialValue: size)
         self.initialSize = size
+        self._refresh = refresh
     }
     
     var content: some View {
@@ -43,6 +45,9 @@ struct CafeteriaWidgetView: View {
                     TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
                 }
             }
+        }
+        .onChange(of: refresh) { _ in
+            Task {  await viewModel.fetch() }
         }
         .task {
             await viewModel.fetch()

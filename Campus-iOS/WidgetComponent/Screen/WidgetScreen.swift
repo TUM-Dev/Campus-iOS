@@ -10,6 +10,7 @@ import SwiftUI
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
+    @State private var refresh = false
     
     init(model: Model) {
         self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
@@ -24,8 +25,12 @@ struct WidgetScreen: View {
             case .success:
                 GeometryReader { geometry in
                     ScrollView {
-                        self.generateContent(in: geometry, views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size()) })
+                        self.generateContent(in: geometry, views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) })
                             .frame(maxWidth: .infinity)
+                    }
+                    .refreshable {
+                        try? await recommender.fetchRecommendations()
+                        refresh.toggle()
                     }
                 }
             }

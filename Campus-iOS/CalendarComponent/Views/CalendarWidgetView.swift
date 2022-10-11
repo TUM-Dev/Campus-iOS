@@ -15,12 +15,14 @@ struct CalendarWidgetView: View {
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
     private let model: Model
+    @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize) {
+    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
         self._size = State(initialValue: size)
         self.initialSize = size
         self.model = model
+        self._refresh = refresh
     }
     
     var body: some View {
@@ -33,6 +35,9 @@ struct CalendarWidgetView: View {
             size: size,
             content: CalendarWidgetContent(size: size, events: events)
         )
+        .onChange(of: refresh) { _ in
+            viewModel.fetch()
+        }
         .onTapGesture {
             showDetails.toggle()
         }
