@@ -75,7 +75,7 @@ enum WidgetSize: CaseIterable {
         case .square:
             return (width - WidgetSize.padding, width - WidgetSize.padding)
         case .rectangle:
-            return (2 * width, width)
+            return (2 * width, width - WidgetSize.padding)
         case .bigSquare:
             return (2 * width, 2 * width)
         }
