@@ -34,8 +34,10 @@ struct CafeteriaView: View {
                     Spacer()
                     
                     Button(action: {
+                        if vm.panelPos == .bottom {
+                            vm.panelPos = .middle
+                        }
                         selectedCanteen = nil
-                        vm.panelPos = .middle
                     }, label: {
                         Text("Done")
                             .font(.system(size: 16, weight: .semibold))
@@ -47,7 +49,7 @@ struct CafeteriaView: View {
                             .accessibility(addTraits: .isButton)
                             .accessibility(removeTraits: .isImage)
                     })
-                    .gesture(panelDragGesture)
+                    .simultaneousGesture(panelDragGesture)
                 }
                 
                 HStack {
@@ -66,7 +68,7 @@ struct CafeteriaView: View {
                             .foregroundColor(.blue)
                             .font(.footnote)
                     })
-                    .gesture(panelDragGesture)
+                    .simultaneousGesture(panelDragGesture)
                 }
             }
             .padding(.all, 10)

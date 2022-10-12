@@ -56,8 +56,10 @@ struct StudyRoomGroupView: View {
                             Spacer()
                             
                             Button(action: {
+                                if vm.panelPos == .bottom {
+                                    vm.panelPos = .middle
+                                }
                                 selectedGroup = nil
-                                vm.panelPos = .middle
                             }, label: {
                                 Text("Done")
                                     .font(.system(size: 16, weight: .semibold))
@@ -69,7 +71,7 @@ struct StudyRoomGroupView: View {
                                     .accessibility(addTraits: .isButton)
                                     .accessibility(removeTraits: .isImage)
                             })
-                            .gesture(panelDragGesture)
+                            .simultaneousGesture(panelDragGesture)
                         }
                         .gesture(panelDragGesture)
                         
