@@ -8,30 +8,36 @@
 import Alamofire
 import FirebaseCrashlytics
 
+@MainActor
 class NewsViewModel: ObservableObject {
 
     @Published var newsSources = [NewsSource]()
+    @Published var news = [News]()
+    @Published var sourcesAndNews = [(Int64?, [News])]()
+    //@Published var news = [News]()
     
-    typealias ImporterType = Importer<NewsSource, [NewsSource], JSONDecoder>
     private let sessionManager: Session = Session.defaultSession
     
     init() {
         // TODO: Get from cache, if not found, then fetch
         
         fetch()
+//        fetchNews(sourceId: 1)
     }
     
     var latestFiveNews: [(String?, News?)] {
-        let latestNews = self.newsSources
-            .map({$0.news})
-            .reduce([], +)
-            .filter({$0.created != nil && $0.sourceID != 2})
-            .sorted(by: {
-                guard let date1 = $0.created, let date2 = $1.created else {
-                    return false
-                }
-                return date1.compare(date2) == .orderedDescending
-            })[...4]
+        print(">> latestFiveNews loaded")
+        let latestNews = [News(id: "TEST_id1234", sourceId: 123, date: Date(), created: Date(), title: "Title", link: nil, imageURL: nil)]
+//        Array(self.newsSources
+//            .map({$0.news})
+//            .reduce([], +)
+//            .filter({$0.created != nil && $0.sourceID != 2})
+//            .sorted(by: {
+//                guard let date1 = $0.created, let date2 = $1.created else {
+//                    return false
+//                }
+//                return date1.compare(date2) == .orderedDescending
+//            }).prefix(5))
         
         let latestFiveNews = latestNews.map { news in
             (newsSources.first(where: {$0.id == news.sourceID})?.title, news)
@@ -41,6 +47,8 @@ class NewsViewModel: ObservableObject {
     }
     
     func fetch() {
+        typealias ImporterType = Importer<NewsSource, [NewsSource], JSONDecoder>
+        
         let endpoint: URLRequestConvertible = TUMCabeAPI.newsSources
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
         let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
@@ -48,7 +56,39 @@ class NewsViewModel: ObservableObject {
         importer.performFetch(handler: { result in
             switch result {
             case .success(let incoming):
+                incoming.forEach { newsSource in
+                    self.fetchNews(sourceId: newsSource.id)
+                }
+                
                 self.newsSources = incoming
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
+    
+    func fetchNews(sourceId: Int64?) {
+        typealias ImporterTypeNews = Importer<News, [News], JSONDecoder>
+
+        guard let id = sourceId else {
+            print("NewsSource contains no id")
+            return
+        }
+
+        let endpointNews: URLRequestConvertible = TUMCabeAPI.news(source: id.description)
+        let dateDecodingStrategyNews: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
+        let importerNews = ImporterTypeNews(endpoint: endpointNews, dateDecodingStrategy: dateDecodingStrategyNews)
+
+        importerNews.performFetch(handler: { result in
+            switch result {
+            case .success(let storage):
+                let news = storage.filter( {
+                    guard let title = $0.title, let link = $0.link else {
+                        return false
+                    }
+                    return !title.isEmpty && !link.description.isEmpty
+                } )
+                self.sourcesAndNews.append((sourceId, news))
             case .failure(let error):
                 print(error)
             }
