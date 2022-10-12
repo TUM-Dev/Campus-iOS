@@ -114,23 +114,21 @@ class MapViewModel: MapViewModelProtocol {
     }
 }
 
-enum PanelHeight {
-    static let top = UIScreen.main.bounds.height * 0.8
-    static let kbtop = UIScreen.main.bounds.height * 0.7
-    static let middle = UIScreen.main.bounds.height * 0.35
-    static let bottom = UIScreen.main.bounds.height * 0.1
-}
-
 let screenHeight = UIScreen.main.bounds.height
 
+enum PanelHeight {
+    static let top = screenHeight * 0.82
+    static let middle = screenHeight * 0.35
+    static let bottom = screenHeight * 0.08
+}
+
 enum PanelPos {
-    case top, kbtop, middle, bottom
+    case top, middle, bottom
     var rawValue: CGFloat {
         switch self {
-        case .top: return screenHeight * 0.8
-        case .kbtop: return screenHeight * 0.7
+        case .top: return screenHeight * 0.82
         case .middle: return screenHeight * 0.35
-        case .bottom: return screenHeight * 0.1
+        case .bottom: return screenHeight * 0.08
         }
     }
 }

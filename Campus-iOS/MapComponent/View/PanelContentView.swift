@@ -38,7 +38,9 @@ struct PanelContentView: View {
                     .foregroundColor(Color.primary.opacity(0.2))
                 
                 if vm.selectedCafeteria != nil {
-                    CafeteriaView(vm: vm, selectedCanteen: $vm.selectedCafeteria, panelHeight: $panelHeight)
+                    CafeteriaView(vm: vm,
+                                  selectedCanteen: $vm.selectedCafeteria,
+                                  panelHeight: $panelHeight)
                     if let viewModel = mealPlanViewModel {
                         MealPlanView(viewModel: viewModel)
                     }
@@ -56,18 +58,20 @@ struct PanelContentView: View {
                         
                         Button (action: {
                             vm.zoomOnUser = true
-                            vm.panelPos = .middle
+                            if vm.panelPos == .top {
+                                vm.panelPos = .middle
+                            }
                         }) {
                             Image(systemName: "location")
                                 .font(.title2)
                                 .foregroundColor(Color(UIColor.tumBlue))
                         }
-                        .simultaneousGesture(panelDragGesture)
+                        .gesture(panelDragGesture)
                         
                         Spacer()
                         
                         PanelSearchBarView(vm: self.vm, searchString: $searchString)
-                            .simultaneousGesture(panelDragGesture)
+                            .gesture(panelDragGesture)
                         
                         Spacer()
                         
@@ -170,9 +174,7 @@ struct PanelContentView: View {
         DragGesture()
             .onChanged { value in
                 guard !vm.lockPanel else { return }
-                if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                    panelHeight = newPanelHeight
-                }
+                panelHeight = panelHeight - value.translation.height
             }
             .onEnded { _ in
                 withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
@@ -181,12 +183,7 @@ struct PanelContentView: View {
             }
     }
     
-    func check(_ height: CGFloat) -> CGFloat? {
-        return height <= PanelHeight.top && height >= PanelHeight.bottom ? height : nil
-    }
-    
     func snapPanel(from height: CGFloat) {
-        print(height)
         let snapHeights = [PanelPos.top, PanelPos.middle, PanelPos.bottom]
         
         vm.panelPos = closestMatch(values: snapHeights, inputValue: height)

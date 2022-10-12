@@ -33,7 +33,7 @@ struct MapScreenView: View {
                             .background(Color(UIColor.systemBackground))
                             .cornerRadius(10, corners: [.topRight, .topLeft])
                             .shadow(radius: 10)
-                            .frame(height: panelHeight, alignment: .bottomTrailing)
+                            .frame(height: panelHeight, alignment: .bottom)
                     }
                 }
             }

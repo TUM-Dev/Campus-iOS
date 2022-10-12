@@ -57,6 +57,7 @@ struct StudyRoomGroupView: View {
                             
                             Button(action: {
                                 selectedGroup = nil
+                                vm.panelPos = .middle
                             }, label: {
                                 Text("Done")
                                     .font(.system(size: 16, weight: .semibold))
@@ -68,7 +69,7 @@ struct StudyRoomGroupView: View {
                                     .accessibility(addTraits: .isButton)
                                     .accessibility(removeTraits: .isImage)
                             })
-                            .simultaneousGesture(panelDragGesture)
+                            .gesture(panelDragGesture)
                         }
                         .gesture(panelDragGesture)
                         
@@ -157,19 +158,13 @@ struct StudyRoomGroupView: View {
         DragGesture()
             .onChanged { value in
                 guard !vm.lockPanel else { return }
-                if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                    panelHeight = newPanelHeight
-                }
+                panelHeight = panelHeight - value.translation.height
             }
             .onEnded { _ in
                 withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
                     snapPanel(from: panelHeight)
                 }
             }
-    }
-    
-    func check(_ height: CGFloat) -> CGFloat? {
-        return height <= PanelHeight.top && height >= PanelHeight.bottom ? height : nil
     }
     
     func snapPanel(from height: CGFloat) {

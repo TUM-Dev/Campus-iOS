@@ -28,22 +28,14 @@ struct CafeteriaView: View {
                         Text(canteen.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
-                            .onTapGesture{
-                                let latitude = canteen.location.latitude
-                                let longitude = canteen.location.longitude
-                                let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)")
-                                
-                                if UIApplication.shared.canOpenURL(url!) {
-                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                                }
-                            }
-                            .simultaneousGesture(panelDragGesture)
+                            .gesture(panelDragGesture)
                     }
                     
                     Spacer()
                     
                     Button(action: {
                         selectedCanteen = nil
+                        vm.panelPos = .middle
                     }, label: {
                         Text("Done")
                             .font(.system(size: 16, weight: .semibold))
@@ -55,7 +47,7 @@ struct CafeteriaView: View {
                             .accessibility(addTraits: .isButton)
                             .accessibility(removeTraits: .isImage)
                     })
-                    .simultaneousGesture(panelDragGesture)
+                    .gesture(panelDragGesture)
                 }
                 
                 HStack {
@@ -74,7 +66,7 @@ struct CafeteriaView: View {
                             .foregroundColor(.blue)
                             .font(.footnote)
                     })
-                    .simultaneousGesture(panelDragGesture)
+                    .gesture(panelDragGesture)
                 }
             }
             .padding(.all, 10)
@@ -93,19 +85,13 @@ struct CafeteriaView: View {
         DragGesture()
             .onChanged { value in
                 guard !vm.lockPanel else { return }
-                if let newPanelHeight = check((panelHeight) - value.translation.height) {
-                    panelHeight = newPanelHeight
-                }
+                panelHeight = panelHeight - value.translation.height
             }
             .onEnded { _ in
                 withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
                     snapPanel(from: panelHeight)
                 }
             }
-    }
-    
-    func check(_ height: CGFloat) -> CGFloat? {
-        return height <= PanelHeight.top && height >= PanelHeight.bottom ? height : nil
     }
     
     func snapPanel(from height: CGFloat) {
