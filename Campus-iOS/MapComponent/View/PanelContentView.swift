@@ -108,6 +108,9 @@ struct PanelContentView: View {
                                 studyRoomsData.visitView(view: .studyRooms)
                             }
                             vm.setAnnotations = true
+                            for c in vm.cafeterias {
+                                print(c.coordinate)
+                            }
                         }
                 
                         Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10, height: 50)

@@ -90,6 +90,7 @@ class MapViewModel: MapViewModelProtocol {
             //@MainActor handles to run this UI-updating task on the main thread
             let data = try await cafeteriaService.fetch(forcedRefresh: forcedRefresh)
             self.cafeteriasState = .success(data: data)
+            setAnnotations = true
         } catch {
             self.cafeteriasState = .failed(error: error)
             self.hasError = true
@@ -107,6 +108,7 @@ class MapViewModel: MapViewModelProtocol {
             //@MainActor handles to run this UI-updating task on the main thread
             let data = try await studyRoomsService.fetch(forcedRefresh: forcedRefresh)
             self.studyRoomsState = .success(data: data)
+            setAnnotations = true
         } catch {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
