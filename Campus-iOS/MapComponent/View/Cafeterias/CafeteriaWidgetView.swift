@@ -60,10 +60,13 @@ struct CafeteriaWidgetView: View {
                 showDetails.toggle()
             }
             .sheet(isPresented: $showDetails) {
-                if let vm = viewModel.menuViewModel {
-                    MenuView(viewModel: vm)
-                } else {
-                    Text("No dishes.")
+                VStack {
+                    if let cafeteria = viewModel.cafeteria {
+                        CafeteriaView(selectedCanteen: .constant(cafeteria), canDismiss: false)
+                        MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))
+                    } else {
+                        ProgressView()
+                    }
                 }
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)

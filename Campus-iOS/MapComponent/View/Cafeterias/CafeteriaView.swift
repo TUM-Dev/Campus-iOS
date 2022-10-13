@@ -11,6 +11,12 @@ struct CafeteriaView: View {
     
     @Binding var selectedCanteen: Cafeteria?
     @State private var data = AppUsageData()
+    private let canDismiss: Bool
+    
+    init(selectedCanteen: Binding<Cafeteria?>, canDismiss: Bool = true) {
+        self._selectedCanteen = selectedCanteen
+        self.canDismiss = canDismiss
+    }
     
     var body: some View {
         if let canteen = self.selectedCanteen {
@@ -36,19 +42,21 @@ struct CafeteriaView: View {
                     
                     Spacer()
 
-                    Button(action: {
-                        selectedCanteen = nil
-                    }, label: {
-                        Text("Done")
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.blue)
-                                .padding(.all, 5)
-                                .background(Color.clear)
-                                .accessibility(label:Text("Close"))
-                                .accessibility(hint:Text("Tap to close the screen"))
-                                .accessibility(addTraits: .isButton)
-                                .accessibility(removeTraits: .isImage)
-                        })
+                    if canDismiss{
+                        Button(action: {
+                            selectedCanteen = nil
+                        }, label: {
+                            Text("Done")
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .foregroundColor(.blue)
+                                    .padding(.all, 5)
+                                    .background(Color.clear)
+                                    .accessibility(label:Text("Close"))
+                                    .accessibility(hint:Text("Tap to close the screen"))
+                                    .accessibility(addTraits: .isButton)
+                                    .accessibility(removeTraits: .isImage)
+                            })
+                    }
                 }
                 
                 HStack {
