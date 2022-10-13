@@ -27,7 +27,7 @@ final class MenuViewModel: ObservableObject, Identifiable {
             }
         }
         
-        return dishes
+        return dishes.sorted(by: { $0.name < $1.name })
     }
 }
 
