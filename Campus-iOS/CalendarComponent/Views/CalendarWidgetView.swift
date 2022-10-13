@@ -33,7 +33,16 @@ struct CalendarWidgetView: View {
         
         WidgetFrameView(
             size: size,
-            content: CalendarWidgetContent(size: size, events: events)
+            content: CalendarWidgetContent(
+                size: size,
+                events: events.compactMap { event in
+                    guard let end = event.endDate,
+                          end > Date() else {
+                        return nil
+                    }
+                    return event
+                }
+            )
         )
         .onChange(of: refresh) { _ in
             viewModel.fetch()
@@ -99,7 +108,6 @@ struct CalendarWidgetContent: View {
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            Spacer()
             if !events.isEmpty {
                 ForEach(events.prefix(displayedItems), id: \.id) { event in
                     // Allow multiline if the content will likely not fit inside one line.
