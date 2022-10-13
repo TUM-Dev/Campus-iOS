@@ -12,6 +12,7 @@ struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
     @State private var refresh = false
+    private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
         self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
@@ -38,6 +39,9 @@ struct WidgetScreen: View {
         }
         .task {
             try? await recommender.fetchRecommendations()
+        }
+        .onReceive(timer) { _ in
+            refresh.toggle()            
         }
     }
     

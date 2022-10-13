@@ -26,6 +26,7 @@ struct StudyRoomWidgetView: View {
     var body: some View {
         WidgetFrameView(size: size, content: StudyRoomWidgetContent(size: size, viewModel: viewModel))
             .onChange(of: refresh) { _ in
+                if showDetails { return }
                 Task { await viewModel.fetch() }
             }
             .task {

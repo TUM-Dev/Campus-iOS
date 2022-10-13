@@ -47,7 +47,8 @@ struct CafeteriaWidgetView: View {
             }
         }
         .onChange(of: refresh) { _ in
-            Task {  await viewModel.fetch() }
+            if showDetails { return }
+            Task { await viewModel.fetch() }
         }
         .task {
             await viewModel.fetch()
@@ -61,13 +62,13 @@ struct CafeteriaWidgetView: View {
             }
             .sheet(isPresented: $showDetails) {
                 VStack {
-                    if let cafeteria = viewModel.cafeteria {
+                    if let cafeteria = viewModel.cafeteria, let mealVm = viewModel.mealPlanViewModel {
                         CafeteriaView(
                             vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedCanteen: .constant(cafeteria),
                             canDismiss: false
                         )
-                        MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))
+                        MealPlanView(viewModel: mealVm)
                     } else {
                         ProgressView()
                     }

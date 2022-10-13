@@ -45,6 +45,7 @@ struct CalendarWidgetView: View {
             )
         )
         .onChange(of: refresh) { _ in
+            if showDetails { return }
             viewModel.fetch()
         }
         .onTapGesture {
