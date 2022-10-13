@@ -13,7 +13,7 @@ struct StudyRoomGroupView: View {
     @State private var data = AppUsageData()
     private let canDismiss: Bool
     
-    init(selectedGroup: Binding<StudyRoomGroup?>, rooms: [StudyRoom], canDismiss: Bool = false) {
+    init(selectedGroup: Binding<StudyRoomGroup?>, rooms: [StudyRoom], canDismiss: Bool = true) {
         self._selectedGroup = selectedGroup
         self._rooms = State(initialValue: rooms)
         self._data = State(initialValue: AppUsageData())
