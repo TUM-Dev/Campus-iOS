@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct WidgetScreen: View {
     
@@ -23,15 +24,15 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                GeometryReader { geometry in
-                    ScrollView {
-                        self.generateContent(in: geometry, views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) })
-                            .frame(maxWidth: .infinity)
-                    }
-                    .refreshable {
-                        try? await recommender.fetchRecommendations()
-                        refresh.toggle()
-                    }
+                ScrollView {
+                    self.generateContent(
+                        views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
+                    )
+                        .frame(maxWidth: .infinity)
+                }
+                .refreshable {
+                    try? await recommender.fetchRecommendations()
+                    refresh.toggle()
                 }
             }
         }
@@ -41,11 +42,12 @@ struct WidgetScreen: View {
     }
     
     // Source: https://stackoverflow.com/a/58876712
-    private func generateContent<T: View>(in g: GeometryProxy, views: [T]) -> some View {
+    private func generateContent<T: View>(views: [T]) -> some View {
         
         var width = CGFloat.zero
         var height = CGFloat.zero
         var previousHeight = CGFloat.zero
+        let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
         return ZStack(alignment: .topLeading) {
             ForEach(0..<views.count, id: \.self) { i in
@@ -53,7 +55,7 @@ struct WidgetScreen: View {
                     .padding([.horizontal, .vertical], WidgetSize.padding)
                     .alignmentGuide(.leading) { d in
                         
-                        if (abs(width - d.width) > g.size.width) {
+                        if (abs(width - d.width) > maxWidth) {
                             width = 0
                             height -= previousHeight
                         }
