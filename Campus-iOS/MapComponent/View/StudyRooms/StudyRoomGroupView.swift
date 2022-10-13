@@ -53,14 +53,14 @@ struct StudyRoomGroupView: View {
                                 Text(group.name ?? "")
                                     .bold()
                                     .font(.title3)
-                                    .gesture(panelDragGesture)
                                 if let detail = group.detail {
                                     Text(detail)
                                         .font(.subheadline)
                                         .foregroundColor(Color.gray)
-                                        .gesture(panelDragGesture)
                                 }
                             }
+                            .onTapGesture { }
+                            .gesture(panelDragGesture)
                             
                             Spacer()
                             
@@ -78,9 +78,10 @@ struct StudyRoomGroupView: View {
                                         .accessibility(addTraits: .isButton)
                                         .accessibility(removeTraits: .isImage)
                                 })
-                            	.simultaneousGesture(panelDragGesture)
+                                .simultaneousGesture(panelDragGesture)
                             }
                         }
+                        .onTapGesture { }
                         .gesture(panelDragGesture)
                         
                         HStack {
@@ -101,6 +102,7 @@ struct StudyRoomGroupView: View {
                             })
                             .simultaneousGesture(panelDragGesture)
                         }
+                        .onTapGesture { }
                         .gesture(panelDragGesture)
                     }
                     .padding(.trailing, 20)

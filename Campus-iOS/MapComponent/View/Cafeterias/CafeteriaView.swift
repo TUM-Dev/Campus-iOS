@@ -31,12 +31,12 @@ struct CafeteriaView: View {
                         Text(canteen.name)
                             .bold()
                             .font(.title3)
-                            .gesture(panelDragGesture)
                         Text(canteen.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
-                            .gesture(panelDragGesture)
                     }
+                    .onTapGesture { }
+                    .gesture(panelDragGesture)
                     
                     Spacer()
 
@@ -85,6 +85,7 @@ struct CafeteriaView: View {
                 data.didExitView()
             }
             .contentShape(Rectangle())
+            .onTapGesture { }
             .gesture(panelDragGesture)
         }
     }
