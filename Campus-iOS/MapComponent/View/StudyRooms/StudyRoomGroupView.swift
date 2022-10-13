@@ -14,17 +14,18 @@ struct StudyRoomGroupView: View {
     @State var rooms: [StudyRoom]
     @State private var data = AppUsageData()
     private let canDismiss: Bool
-    
-    init(selectedGroup: Binding<StudyRoomGroup?>, rooms: [StudyRoom], canDismiss: Bool = true) {
-        self._selectedGroup = selectedGroup
-        self._rooms = State(initialValue: rooms)
-        self._data = State(initialValue: AppUsageData())
-        self.canDismiss = canDismiss
-    }
-    
     @Binding var panelHeight: CGFloat
     let dragAreaHeight = PanelHeight.top * 0.04
     
+    init(vm: MapViewModel, selectedGroup: Binding<StudyRoomGroup?>, rooms: [StudyRoom], panelHeight: Binding<CGFloat> = .constant(0), canDismiss: Bool = true) {
+        self._vm = StateObject(wrappedValue: vm)
+        self._selectedGroup = selectedGroup
+        self._rooms = State(initialValue: rooms)
+        self._data = State(initialValue: AppUsageData())
+        self._panelHeight = panelHeight
+        self.canDismiss = canDismiss
+    }
+
     var sortedRooms: [StudyRoom] {
         self.rooms.sorted(by: { (lhs, rhs) -> Bool in
             if lhs.status==rhs.status{

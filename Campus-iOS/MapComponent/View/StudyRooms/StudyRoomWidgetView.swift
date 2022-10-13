@@ -36,7 +36,12 @@ struct StudyRoomWidgetView: View {
             }
             .sheet(isPresented: $showDetails) {
                 NavigationView { // To enable navigation to the map images.
-                    StudyRoomGroupView(selectedGroup: $viewModel.studyGroup, rooms: viewModel.rooms ?? [], canDismiss: false)
+                    StudyRoomGroupView(
+                        vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                        selectedGroup: $viewModel.studyGroup,
+                        rooms: viewModel.rooms ?? [],
+                        canDismiss: false
+                    )
                 }
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)

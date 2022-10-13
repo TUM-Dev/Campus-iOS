@@ -13,14 +13,15 @@ struct CafeteriaView: View {
     @Binding var selectedCanteen: Cafeteria?
     @State private var data = AppUsageData()
     private let canDismiss: Bool
-    
-    init(selectedCanteen: Binding<Cafeteria?>, canDismiss: Bool = true) {
-        self._selectedCanteen = selectedCanteen
-        self.canDismiss = canDismiss
-    }
-    
     @Binding var panelHeight: CGFloat
     let dragAreaHeight = PanelHeight.top * 0.04
+    
+    init(vm: MapViewModel, selectedCanteen: Binding<Cafeteria?>, panelHeight: Binding<CGFloat> = .constant(0), canDismiss: Bool = true) {
+        self._vm = StateObject(wrappedValue: vm)
+        self._selectedCanteen = selectedCanteen
+        self._panelHeight = panelHeight
+        self.canDismiss = canDismiss
+    }
     
     var body: some View {
         if let canteen = self.selectedCanteen {
