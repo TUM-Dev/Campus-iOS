@@ -277,7 +277,7 @@
 		0805E72328CAABB3003C5CFD /* AnalyticsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsError.swift; sourceTree = "<group>"; };
 		0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageDataEntity.swift; sourceTree = "<group>"; };
 		0805E72B28CC2278003C5CFD /* HashFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunction.swift; sourceTree = "<group>"; };
-		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.xcconfig; path = "Campus-iOS/AnalyticsComponent/Secrets.xcconfig"; sourceTree = "<group>"; };
 		0815249328E445030098A2C3 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
 		0815249528E45C390098A2C3 /* MLModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModelDataHandler.swift; sourceTree = "<group>"; };
 		0815249728E492070098A2C3 /* RecommenderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderError.swift; sourceTree = "<group>"; };
@@ -561,7 +561,6 @@
 				0805E72328CAABB3003C5CFD /* AnalyticsError.swift */,
 				0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */,
 				0805E72B28CC2278003C5CFD /* HashFunction.swift */,
-				0805E72D28CC2462003C5CFD /* Secrets.xcconfig */,
 			);
 			path = AnalyticsComponent;
 			sourceTree = "<group>";
