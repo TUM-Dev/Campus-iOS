@@ -90,6 +90,7 @@ class MapViewModel: MapViewModelProtocol {
             //@MainActor handles to run this UI-updating task on the main thread
             let data = try await cafeteriaService.fetch(forcedRefresh: forcedRefresh)
             self.cafeteriasState = .success(data: data)
+            setAnnotations = true
         } catch {
             self.cafeteriasState = .failed(error: error)
             self.hasError = true
@@ -107,6 +108,7 @@ class MapViewModel: MapViewModelProtocol {
             //@MainActor handles to run this UI-updating task on the main thread
             let data = try await studyRoomsService.fetch(forcedRefresh: forcedRefresh)
             self.studyRoomsState = .success(data: data)
+            setAnnotations = true
         } catch {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
@@ -114,23 +116,21 @@ class MapViewModel: MapViewModelProtocol {
     }
 }
 
-enum PanelHeight {
-    static let top = UIScreen.main.bounds.height * 0.8
-    static let kbtop = UIScreen.main.bounds.height * 0.7
-    static let middle = UIScreen.main.bounds.height * 0.35
-    static let bottom = UIScreen.main.bounds.height * 0.2
-}
-
 let screenHeight = UIScreen.main.bounds.height
 
+enum PanelHeight {
+    static let top = screenHeight * 0.82
+    static let middle = screenHeight * 0.35
+    static let bottom = screenHeight * 0.08
+}
+
 enum PanelPos {
-    case top, kbtop, middle, bottom
+    case top, middle, bottom
     var rawValue: CGFloat {
         switch self {
-        case .top: return screenHeight * 0.8
-        case .kbtop: return screenHeight * 0.7
+        case .top: return screenHeight * 0.82
         case .middle: return screenHeight * 0.35
-        case .bottom: return screenHeight * 0.2
+        case .bottom: return screenHeight * 0.08
         }
     }
 }
