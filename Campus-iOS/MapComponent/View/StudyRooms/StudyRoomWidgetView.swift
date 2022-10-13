@@ -132,6 +132,8 @@ struct DetailedStudyRoomWidgetContent: View {
                     StudyRoomWidgetHeaderView(count: rooms.filter{ $0.isAvailable() }.count, studyGroup: studyGroup)
                         .padding(.bottom, 16)
                     
+                    Spacer()
+                    
                     ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
                         RoomDetailsView(room: room)
                             .padding(.bottom, 2)

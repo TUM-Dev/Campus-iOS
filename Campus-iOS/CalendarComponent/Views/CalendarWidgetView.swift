@@ -99,6 +99,7 @@ struct CalendarWidgetContent: View {
             .lineLimit(1)
             .frame(maxWidth: .infinity, alignment: .leading)
 
+            Spacer()
             if !events.isEmpty {
                 ForEach(events.prefix(displayedItems), id: \.id) { event in
                     // Allow multiline if the content will likely not fit inside one line.
