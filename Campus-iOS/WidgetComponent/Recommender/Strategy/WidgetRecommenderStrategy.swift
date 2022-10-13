@@ -8,5 +8,5 @@
 import Foundation
 
 protocol WidgetRecommenderStrategy {
-    func getRecommendation() async -> [WidgetRecommendation]
+    func getRecommendation() async throws -> [WidgetRecommendation]
 }

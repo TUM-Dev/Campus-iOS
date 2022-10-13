@@ -9,16 +9,23 @@ import SwiftUI
 
 struct CalendarWidgetView: View {
     
-    @StateObject var viewModel: CalendarViewModel
-    let size: WidgetSize
+    @StateObject private var viewModel: CalendarViewModel
+    @State private var size: WidgetSize
+    @State private var showDetails: Bool = false
+    private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
+    private let model: Model
+    @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize) {
-        self.size = size
+    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
+        self._size = State(initialValue: size)
+        self.initialSize = size
+        self.model = model
+        self._refresh = refresh
     }
     
     var body: some View {
-        
         // Show the events on the earliest date which is not in the past.
         let events = viewModel.eventsByDate
             .filter { Date() <= $0.key ?? Date() }
@@ -26,8 +33,27 @@ struct CalendarWidgetView: View {
         
         WidgetFrameView(
             size: size,
-            content: CalendarWidgetContent(size: size, events: events)
+            content: CalendarWidgetContent(
+                size: size,
+                events: events.compactMap { event in
+                    guard let end = event.endDate,
+                          end > Date() else {
+                        return nil
+                    }
+                    return event
+                }
+            )
         )
+        .onChange(of: refresh) { _ in
+            viewModel.fetch()
+        }
+        .onTapGesture {
+            showDetails.toggle()
+        }
+        .sheet(isPresented: $showDetails) {
+            CalendarContentView(model: model, refresh: .constant(false))
+        }
+        .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 

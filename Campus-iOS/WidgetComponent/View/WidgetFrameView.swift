@@ -20,9 +20,9 @@ struct WidgetFrameView<Content: View>: View {
         
         content
             .frame(width: width, height: height)
-            .cornerRadius(32)
+            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             .if(colorScheme == .light) { view in
-                view.shadow(radius: 5)
+                view.shadow(color: .gray.opacity(0.4), radius: 6)
             }
     }
 }
@@ -61,14 +61,23 @@ enum WidgetSize: CaseIterable {
     
     case square, rectangle, bigSquare
     
+    static var padding: CGFloat = 4
+    
     var dimensions: (CGFloat, CGFloat) {
+        
+        var width = UIScreen.main.bounds.size.width * 0.9 * 0.5
+        
+        if width > 200 {
+            width = 200
+        }
+        
         switch self {
         case .square:
-            return (160, 160)
+            return (width - WidgetSize.padding, width - WidgetSize.padding)
         case .rectangle:
-            return (320, 160)
+            return (2 * width, width - WidgetSize.padding)
         case .bigSquare:
-            return (320, 320)
+            return (2 * width, 2 * width)
         }
     }
 }

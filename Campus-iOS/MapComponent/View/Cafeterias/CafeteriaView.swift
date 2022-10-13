@@ -12,9 +12,16 @@ struct CafeteriaView: View {
     
     @Binding var selectedCanteen: Cafeteria?
     @State private var data = AppUsageData()
-    
+    private let canDismiss: Bool
     @Binding var panelHeight: CGFloat
     let dragAreaHeight = PanelHeight.top * 0.04
+    
+    init(vm: MapViewModel, selectedCanteen: Binding<Cafeteria?>, panelHeight: Binding<CGFloat> = .constant(0), canDismiss: Bool = true) {
+        self._vm = StateObject(wrappedValue: vm)
+        self._selectedCanteen = selectedCanteen
+        self._panelHeight = panelHeight
+        self.canDismiss = canDismiss
+    }
     
     var body: some View {
         if let canteen = self.selectedCanteen {
@@ -32,24 +39,23 @@ struct CafeteriaView: View {
                     }
                     
                     Spacer()
-                    
-                    Button(action: {
-                        if vm.panelPos == .bottom {
-                            vm.panelPos = .middle
-                        }
-                        selectedCanteen = nil
-                    }, label: {
-                        Text("Done")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.blue)
-                            .padding(.all, 5)
-                            .background(Color.clear)
-                            .accessibility(label:Text("Close"))
-                            .accessibility(hint:Text("Tap to close the screen"))
-                            .accessibility(addTraits: .isButton)
-                            .accessibility(removeTraits: .isImage)
-                    })
-                    .simultaneousGesture(panelDragGesture)
+
+                    if canDismiss{
+                        Button(action: {
+                            selectedCanteen = nil
+                        }, label: {
+                            Text("Done")
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .foregroundColor(.blue)
+                                    .padding(.all, 5)
+                                    .background(Color.clear)
+                                    .accessibility(label:Text("Close"))
+                                    .accessibility(hint:Text("Tap to close the screen"))
+                                    .accessibility(addTraits: .isButton)
+                                    .accessibility(removeTraits: .isImage)
+                            })
+                    		.simultaneousGesture(panelDragGesture)
+                    }
                 }
                 
                 HStack {

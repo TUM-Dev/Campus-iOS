@@ -198,6 +198,53 @@ extension View {
             self
         }
     }
+    
+    @ViewBuilder func `expandable`(size: Binding<WidgetSize>, initialSize: WidgetSize, biggestSize: WidgetSize = .bigSquare, scale: Binding<CGFloat> = .constant(1)) -> some View {
+        self
+            .onTapGesture{} // Must come before the long press gesture, else scrolling breaks.
+            .onLongPressGesture(maximumDistance: .infinity) {
+                let vibrator = UIImpactFeedbackGenerator(style: .heavy)
+                
+                if initialSize == biggestSize {
+                    vibrator.impactOccurred(intensity: 0.5)
+                    return
+                }
+                
+                vibrator.impactOccurred()
+                
+                withAnimation(.widget) {
+                    
+                    scale.wrappedValue = 1
+                    
+                    if size.wrappedValue == initialSize {
+                        size.wrappedValue = biggestSize
+                    } else {
+                        size.wrappedValue = initialSize
+                    }
+                }
+                
+            } onPressingChanged: { value in
+                if !value {
+                    withAnimation(.widget) {
+                        scale.wrappedValue = 1
+                    }
+                    return
+                }
+                withAnimation(.easeOut(duration: 0.65)) { // Should be longer than long press gesture duration.
+                    scale.wrappedValue = 0.975
+                }
+            }
+            .scaleEffect(x: scale.wrappedValue, y: scale.wrappedValue)
+    }
+}
+
+extension Animation {
+    static let widget: Animation = .interpolatingSpring(
+        mass: 0.5,
+        stiffness: 100,
+        damping: 10,
+        initialVelocity: 10
+    )
 }
 
 extension UIColor {

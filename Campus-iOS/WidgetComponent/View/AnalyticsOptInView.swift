@@ -55,19 +55,10 @@ struct AnalyticsOptInView: View {
                             .bold()
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
+                            .padding(.bottom)
                         
-                        Button {
-                            dismiss(didAccept: true)
-                        } label: {
-                            Text("Yes, I'm in!")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .padding([.top, .bottom])
-                        
-                        Button {
-                            dismiss()
-                        } label: {
-                            Text("No, thanks")
+                        Toggle(isOn: $analyticsOptIn) {
+                            Text("Enable Analytics")
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -76,7 +67,6 @@ struct AnalyticsOptInView: View {
                 .frame(maxWidth: .infinity, minHeight: geometry.size.height, alignment: .leading)
             }
         }
-        .interactiveDismissDisabled()
     }
     
     private func dismiss(didAccept: Bool = false) {

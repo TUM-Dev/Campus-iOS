@@ -24,24 +24,25 @@ class WidgetRecommender: ObservableObject {
         self.recommendations = []
     }
     
-    func fetchRecommendations() async {
-        self.recommendations = await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+    func fetchRecommendations() async throws {
+        let recommendations = try await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
+        self.recommendations = recommendations
         self.status = .success
     }
     
     @ViewBuilder
-    func getWidget(for widget: Widget, size: WidgetSize) -> some View {
+    func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
         switch widget {
         case .cafeteria:
-            CafeteriaWidgetView(size: size)
+            CafeteriaWidgetView(size: size, refresh: refresh)
         case .studyRoom:
-            StudyRoomWidgetView(size: size)
+            StudyRoomWidgetView(size: size, refresh: refresh)
         case .calendar:
-            CalendarWidgetView(model: model, size: size)
+            CalendarWidgetView(model: model, size: size, refresh: refresh)
         case .tuition:
-            TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size))
+            TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
         case .grades:
-            GradeWidgetView(model: model, size: size)
+            GradeWidgetView(model: model, size: size, refresh: refresh)
         }
     }
 }
