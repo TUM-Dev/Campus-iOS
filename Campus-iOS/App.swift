@@ -113,6 +113,7 @@ struct CampusApp: App {
                         }
                     }
             }
+            .navigationViewStyle(.stack)
             .tag(4)
             .tabItem {
                 Label("My Widgets", systemImage: "rectangle.3.group.fill")
