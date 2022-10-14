@@ -78,7 +78,6 @@ struct StudyRoomGroupView: View {
                                         .accessibility(addTraits: .isButton)
                                         .accessibility(removeTraits: .isImage)
                                 })
-                                .simultaneousGesture(panelDragGesture)
                             }
                         }
                         .onTapGesture { }
@@ -100,7 +99,6 @@ struct StudyRoomGroupView: View {
                                     .foregroundColor(.blue)
                                     .font(.footnote)
                             })
-                            .simultaneousGesture(panelDragGesture)
                         }
                         .onTapGesture { }
                         .gesture(panelDragGesture)

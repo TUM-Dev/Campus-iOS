@@ -66,7 +66,6 @@ struct PanelContentView: View {
                                 .font(.title2)
                                 .foregroundColor(Color(UIColor.tumBlue))
                         }
-                        .simultaneousGesture(panelDragGesture)
                         
                         Spacer()
                         

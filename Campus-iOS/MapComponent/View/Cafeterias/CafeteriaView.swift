@@ -54,7 +54,6 @@ struct CafeteriaView: View {
                                     .accessibility(addTraits: .isButton)
                                     .accessibility(removeTraits: .isImage)
                             })
-                    		.simultaneousGesture(panelDragGesture)
                     }
                 }
                 
@@ -74,7 +73,6 @@ struct CafeteriaView: View {
                             .foregroundColor(.blue)
                             .font(.footnote)
                     })
-                    .simultaneousGesture(panelDragGesture)
                 }
             }
             .padding(.all, 10)
