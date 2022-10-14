@@ -19,60 +19,70 @@ struct TokenPermissionsView: View {
     @StateObject var viewModel: TokenPermissionsViewModel
     
     var body: some View {
-        VStack {
+        VStack() {
+            Text("Permissions granted for:").padding().font(.system(size: 25)).foregroundColor(.tumBlue)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("Calendar").padding()
+                    Text("Lectures").padding()
+                    Text("Grades").padding()
+                    Text("Tuition Fees").padding()
+                    Text("Identification").padding()
+                }
+                Spacer()
+                VStack {
+                    //Calendar
+                    if let currentState = viewModel.states[.calendar] {
+                        check(state: currentState).padding()
+                    } else {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    }
+                    //Lectures
+                    if let currentState = viewModel.states[.lectures] {
+                        check(state: currentState).padding()
+                    } else {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    }
+                    //Grades
+                    if let currentState = viewModel.states[.grades] {
+                        check(state: currentState).padding()
+                    } else {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    }
+                    //Tuition Fees
+                    if let currentState = viewModel.states[.tuitionFees] {
+                        check(state: currentState).padding()
+                    } else {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    }
+                    //Identification
+                    if let currentState = viewModel.states[.identification] {
+                        check(state: currentState).padding()
+                    } else {
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    }
+                }
+            }
+            .font(.system(size: 20))
+            .padding()
+            
             Button {
                 Task {
                     await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
                 }
             } label: {
                 Text("Check Permissions")
-            }
+                    .lineLimit(1)
+                    .font(.body)
+                    .frame(width: 200, height: 48, alignment: .center)
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    .buttonStyle(.plain)
+            }.padding()
             
-            HStack {
-                Text("Calendar")
-                if let currentState = viewModel.states[.calendar] {
-                    check(state: currentState)
-                } else {
-                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                }
-            }
-            
-            HStack {
-                Text("Lectures")
-                if let currentState = viewModel.states[.lectures] {
-                    check(state: currentState)
-                } else {
-                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                }
-            }
-            
-            HStack {
-                Text("Grades")
-                if let currentState = viewModel.states[.grades] {
-                    check(state: currentState)
-                } else {
-                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                }
-            }
-            
-            HStack {
-                Text("Tuition Fees")
-                if let currentState = viewModel.states[.tuitionFees] {
-                    check(state: currentState)
-                } else {
-                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                }
-            }
-            
-            HStack {
-                Text("Identification")
-                if let currentState = viewModel.states[.identification] {
-                    check(state: currentState)
-                } else {
-                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                }
-            }
-            
+            Text("You can change your permissions in TUMOnline")
+                .foregroundColor(.tumBlue)
         }
     }
     

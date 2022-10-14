@@ -13,6 +13,7 @@ struct TokenConfirmationView: View {
     /// Used for the customized back button
     @Environment(\.presentationMode) var presentationMode
     @State var showTokenAlert: Bool = false
+    @State var tokenActivated: Bool = false
     @State var showBackButtonAlert: Bool = false
     @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
@@ -100,13 +101,26 @@ struct TokenConfirmationView: View {
                         switch result {
                         case .success:
                             showTokenAlert = false
+                            withAnimation {
+                                tokenActivated = true
+                            }
                         case .failure(_):
                             showTokenAlert = true
+                            tokenActivated = false
                         }
                     }
                 }) {
-                    Text("Check Authorization").lineLimit(1).font(.body)
-                        .frame(width: 200, height: 48, alignment: .center)
+                    if tokenActivated {
+                        HStack {
+                            Image(systemName: "checkmark.circle.fill")
+                            Text("Token activated").lineLimit(1).font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                        }.padding()
+                    } else {
+                        Text("Check Token").lineLimit(1).font(.body)
+                            .frame(width: 200, height: 48, alignment: .center)
+                    }
+                    
                 }
                 .alert("Authorization Error", isPresented: $showTokenAlert) {
                     Button("OK", role: .cancel) {}
@@ -116,6 +130,22 @@ struct TokenConfirmationView: View {
                 .background(Color(.tumBlue))
                 .cornerRadius(10)
                 .buttonStyle(.plain)
+                
+                Spacer()
+                
+                if let model = self.viewModel.model {
+                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model))) {
+                        Text("Next")
+                            .lineLimit(1)
+                            .font(.body)
+                            .frame(width: 200, height: 48, alignment: .center)
+                            .foregroundColor(.white)
+                            .background(Color(.tumBlue))
+                            .cornerRadius(10)
+                            .buttonStyle(.plain)
+                    }
+                }
+                
                 
                 Spacer()
                 

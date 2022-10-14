@@ -65,7 +65,7 @@ class LoginViewModel: ObservableObject {
                 #if !targetEnvironment(macCatalyst)
                 Analytics.logEvent("token_confirmed", parameters: nil)
                 #endif
-                self?.model?.isLoginSheetPresented = false
+                //self?.model?.isLoginSheetPresented = false
                 self?.model?.isUserAuthenticated = true
                 self?.model?.showProfile = false
                 self?.model?.loadProfile()
