@@ -12,6 +12,7 @@ import AVFoundation
 struct TokenConfirmationView: View {
     /// Used for the customized back button
     @Environment(\.presentationMode) var presentationMode
+    @State var showTokenAlert: Bool = false
     @State var showBackButtonAlert: Bool = false
     @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
@@ -95,18 +96,26 @@ struct TokenConfirmationView: View {
                 Spacer()
                 
                 Button(action: {
-                    self.viewModel.checkAuthorizzation()
+                    self.viewModel.checkAuthorizzation() { result in
+                        switch result {
+                        case .success:
+                            showTokenAlert = false
+                        case .failure(_):
+                            showTokenAlert = true
+                        }
+                    }
                 }) {
                     Text("Check Authorization").lineLimit(1).font(.body)
                         .frame(width: 200, height: 48, alignment: .center)
                 }
-                .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
+                .alert("Authorization Error", isPresented: $showTokenAlert) {
                     Button("OK", role: .cancel) {}
                 }
                 .font(.title)
                 .foregroundColor(.white)
                 .background(Color(.tumBlue))
                 .cornerRadius(10)
+                .buttonStyle(.plain)
                 
                 Spacer()
                 

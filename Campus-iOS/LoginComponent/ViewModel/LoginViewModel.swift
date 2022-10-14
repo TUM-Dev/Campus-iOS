@@ -63,25 +63,28 @@ class LoginViewModel: ObservableObject {
         loginController.skipLogin()
     }
     
-    func checkAuthorizzation() {
+    func checkAuthorizzation(callback: @escaping (Result<Bool,Error>) -> Void) {
         loginController.confirmToken() { [weak self] result in
             switch result {
             case .success:
                 #if !targetEnvironment(macCatalyst)
                 Analytics.logEvent("token_confirmed", parameters: nil)
                 #endif
-                self?.showTokenAlert = false
                 self?.model?.isLoginSheetPresented = false
                 self?.model?.isUserAuthenticated = true
                 self?.model?.showProfile = false
                 self?.model?.loadProfile()
                 
                 Self.hapticFeedbackGenerator.notificationOccurred(.success)
+                
+                callback(.success(true))
             case let .failure(error):
-                self?.showTokenAlert = true
                 self?.model?.isUserAuthenticated = false
                 self?.alertMessage = error.localizedDescription
+                callback(.failure(error))
             }
         }
+        
+        
     }
 }

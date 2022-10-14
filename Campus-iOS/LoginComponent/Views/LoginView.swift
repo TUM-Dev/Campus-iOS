@@ -96,28 +96,27 @@ struct LoginView: View {
                         Spacer()
                             .frame(height: 18)
                         
-                        ZStack {
-                            NavigationLink(destination:
-                                            TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token")), isActive: self.$viewModel.isContinuePressed) { EmptyView() }
-                            
-                            Button(action: {
-                                self.viewModel.loginWithContinue()
-                            }) {
-                                Text("Continue 🎓")
-                                    .lineLimit(1)
-                                    .font(.title3)
-                                    .frame(alignment: .center)
-                            }
-                            .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
-                                Button("OK", role: .cancel) {}
-                            }
-                            .disabled(!viewModel.isContinueEnabled)
-                            .frame(width: 135, height: 35)
-                            .aspectRatio(contentMode: .fill)
-                            .font(.title)
-                            .background(Color(.secondarySystemFill))
-                            .cornerRadius(10)
+                        
+                        NavigationLink(destination:
+                                        TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token"))) {
+                            Text("Continue 🎓")
+                                .lineLimit(1)
+                                .font(.title3)
+                                .frame(alignment: .center)
                         }
+                        .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
+                            Button("OK", role: .cancel) {}
+                        }
+                        .disabled(!viewModel.isContinueEnabled)
+                        .frame(width: 135, height: 35)
+                        .aspectRatio(contentMode: .fill)
+                        .font(.title)
+                        .background(Color(.secondarySystemFill))
+                        .cornerRadius(10)
+                        .simultaneousGesture(TapGesture().onEnded(){
+                            self.viewModel.loginWithContinue()
+                        })
+                        
 
                         Spacer().frame(height: 20)
 
