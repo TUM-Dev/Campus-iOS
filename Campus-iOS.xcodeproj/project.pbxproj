@@ -557,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				085DE9C528AB7C530045095F /* AnalyticsController.swift */,
+				0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */,
 				0805E72128CA9DF5003C5CFD /* AppUsageData.swift */,
 				0805E72328CAABB3003C5CFD /* AnalyticsError.swift */,
 				0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */,
@@ -616,7 +617,6 @@
 				08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */,
 				08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */,
 				082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */,
-				0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
