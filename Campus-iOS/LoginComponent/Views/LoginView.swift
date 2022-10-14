@@ -18,6 +18,8 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
     @FocusState private var focusedField: Field?
     
+    @State var showLoginAlert: Bool = false
+    
     var body: some View {
             GeometryReader { geo in
                 VStack {
@@ -104,7 +106,7 @@ struct LoginView: View {
                                 .font(.title3)
                                 .frame(alignment: .center)
                         }
-                        .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
+                        .alert("Login Error", isPresented: self.$showLoginAlert) {
                             Button("OK", role: .cancel) {}
                         }
                         .disabled(!viewModel.isContinueEnabled)
@@ -114,7 +116,15 @@ struct LoginView: View {
                         .background(Color(.secondarySystemFill))
                         .cornerRadius(10)
                         .simultaneousGesture(TapGesture().onEnded(){
-                            self.viewModel.loginWithContinue()
+                            self.viewModel.loginWithContinue() { result in
+                                switch result {
+                                case .success:
+                                    showLoginAlert = false
+                                case .failure(_):
+                                    showLoginAlert = true
+                                }
+                                
+                            }
                         })
                         
 
@@ -127,7 +137,7 @@ struct LoginView: View {
                             Text("Continue without TUM ID").lineLimit(1).font(.caption)
                                 .frame(alignment: .center)
                         }
-                        .alert("Login Error", isPresented: self.$viewModel.showLoginAlert) {
+                        .alert("Login Error", isPresented: self.$showLoginAlert) {
                             Button("OK", role: .cancel) {}
                         }
                         .aspectRatio(contentMode: .fill)

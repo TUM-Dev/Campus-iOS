@@ -15,9 +15,6 @@ class LoginViewModel: ObservableObject {
     @Published var firstTextField = ""
     @Published var numbersTextField = ""
     @Published var secondTextField = ""
-    @Published var isContinuePressed = false
-    @Published var showLoginAlert = false
-    @Published var showTokenAlert = false
     @Published var alertMessage = ""
     private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
@@ -40,21 +37,19 @@ class LoginViewModel: ObservableObject {
         self.model = model
     }
     
-    func loginWithContinue() {
+    func loginWithContinue(callback: @escaping (Result<Bool,Error>) -> Void) {
         guard let tumID = tumID else {
-            self.showLoginAlert = true
+            callback(.failure(LoginError.serverError(message: "No TUM ID")))
             return
         }
         loginController.createToken(tumID: tumID) { [weak self] result in
             switch result {
             case .success:
-                self?.showLoginAlert = false
                 self?.alertMessage = ""
-                self?.isContinuePressed = true
+                callback(.success(true))
             case let .failure(error):
-                self?.showLoginAlert = true
                 self?.alertMessage = error.localizedDescription
-                self?.isContinuePressed = false
+                callback(.failure(error))
             }
         }
     }
