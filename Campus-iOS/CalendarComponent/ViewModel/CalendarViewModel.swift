@@ -22,26 +22,37 @@ class CalendarViewModel: ObservableObject {
         fetch()
     }
     
-    func fetch() {
+    
+    func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         if(self.model.isUserAuthenticated) {
             let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-            
-            importer.performFetch(handler: { result in
-                switch result {
-                case .success(let storage):
-                    let finalStorage = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
-                        guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
-                            return false
+            DispatchQueue.main.async {
+                importer.performFetch(handler: { result in
+                    switch result {
+                    case .success(let storage):
+                        self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
+                            guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
+                                return false
+                            }
+                            return dateOne > dateTwo
+                        }) ?? []
+                        
+                        if let _ = storage.events {
+//                            self.state = .success(data: events)
+                            callback(.success(true))
+                        } else {
+                            callback(.failure(CampusOnlineAPI.Error.noPermission))
                         }
-                        return dateOne > dateTwo
-                    }) ?? []
-                    self.events = finalStorage
-                    self.state = .success(data: finalStorage)
-                case .failure(let error):
-                    self.state = .failed(error: error)
-                    print(error)
-                }
-            })
+                        
+                        print(self.state)
+                        
+                    case .failure(let error):
+                        self.state = .failed(error: error)
+                        print(error)
+                    }
+                })
+            }
+            
         } else {
             self.events = []
         }
@@ -57,7 +68,7 @@ extension CalendarViewModel {
     enum State {
         case na
         case loading
-        case success(data: [CalendarEvent])
+        case success(data: [CalendarEvent]?)
         case failed(error: Error)
     }
 }

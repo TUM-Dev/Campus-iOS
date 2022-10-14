@@ -53,22 +53,28 @@ class TokenPermissionsViewModel: ObservableObject {
                     print(error)
                 }
             case .calendar:
-                Task {
-                    let calenderVM = CalendarViewModel(model: self.model)
-                    calenderVM.fetch()
-                    
-                    switch calenderVM.state {
-                        
-                    case .na:
-                        self.states[.calendar] = .na
-                    case .loading:
-                        self.states[.calendar] = .loading
-                    case .success(data: let data):
+                let calenderVM = CalendarViewModel(model: self.model)
+                
+                calenderVM.fetch { result in
+                    print(result)
+                    if case let .success(data) = result {
+                        print("Success")
                         self.states[.calendar] = .success(data: data)
-                    case .failed(error: let error):
-                        self.states[.calendar] = .failed(error: error)
+                    } else {
+                        print("no success")
+                        self.states[.calendar] = .failed(error: CampusOnlineAPI.Error.noPermission)
                     }
+//                    switch result {
+//
+//                    case Result.success(data: let data):
+//                        self.states[.calendar] = TokenPermissionsViewModel.State.success(data: data)
+//                    case Result.failed(error: let error):
+//                        self.states[.calendar] = TokenPermissionsViewModel.State.failed(error: error)
+//                    }
                 }
+                    
+                
+                
             case .lectures:
                 do {
                     self.states[.lectures] = .success(
@@ -78,38 +84,37 @@ class TokenPermissionsViewModel: ObservableObject {
                     print(error)
                 }
             case .tuitionFees:
-                Task {
-                    let profileVM = ProfileViewModel(model: self.model)
-                    profileVM.fetch()
+                
+                let profileVM = ProfileViewModel(model: self.model)
+                profileVM.fetch()
+                
+                switch profileVM.tuitionState {
                     
-                    switch profileVM.tuitionState {
-                        
-                    case .na:
-                        self.states[.tuitionFees] = .na
-                    case .loading:
-                        self.states[.tuitionFees] = .loading
-                    case .success(data: let data):
-                        self.states[.tuitionFees] = .success(data: data)
-                    case .failed(error: let error):
-                        self.states[.tuitionFees] = .failed(error: error)
-                    }
+                case .na:
+                    self.states[.tuitionFees] = .na
+                case .loading:
+                    self.states[.tuitionFees] = .loading
+                case .success(data: let data):
+                    self.states[.tuitionFees] = .success(data: data)
+                case .failed(error: let error):
+                    self.states[.tuitionFees] = .failed(error: error)
                 }
+                
             case .identification:
-                Task {
-                    let profileVM = ProfileViewModel(model: self.model)
-                    profileVM.fetch()
+                
+                let profileVM = ProfileViewModel(model: self.model)
+                profileVM.fetch()
+                
+                switch profileVM.profileState {
                     
-                    switch profileVM.profileState {
-                        
-                    case .na:
-                        self.states[.identification] = .na
-                    case .loading:
-                        self.states[.identification] = .loading
-                    case .success(data: let data):
-                        self.states[.identification] = .success(data: data)
-                    case .failed(error: let error):
-                        self.states[.identification] = .failed(error: error)
-                    }
+                case .na:
+                    self.states[.identification] = .na
+                case .loading:
+                    self.states[.identification] = .loading
+                case .success(data: let data):
+                    self.states[.identification] = .success(data: data)
+                case .failed(error: let error):
+                    self.states[.identification] = .failed(error: error)
                 }
             }
         }
