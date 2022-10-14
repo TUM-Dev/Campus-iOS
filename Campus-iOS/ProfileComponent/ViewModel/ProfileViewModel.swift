@@ -18,6 +18,9 @@ class ProfileViewModel: ObservableObject {
     
     private let sessionManager = Session.defaultSession
     
+    var profileState : ProfileState = .na
+    var tuitionState : TuitionState = .na
+    
     static let defaultProfile = Profile(
         firstname: nil,
         surname: "Not logged in".localized,
@@ -52,7 +55,10 @@ class ProfileViewModel: ObservableObject {
                         self.downloadProfileImage(personGroup: personGroup, personId: personId, obfuscatedID: obfuscatedID)
                     }
                     self.checkTuitionFunc()
+                    
+                    self.profileState = .success(data: self.profile)
                 case .failure(let error):
+                    self.profileState = .failed(error: error)
                     print(error)
                 }
             }
@@ -84,11 +90,29 @@ class ProfileViewModel: ObservableObject {
                 switch result {
                 case .success(let storage):
                     self.tuition = storage.rows?.first
+                    self.tuitionState = .success(data: self.tuition)
                 case .failure(let error):
+                    self.tuitionState = .failed(error: error)
                     print(error)
                 }
             })
         }
           
+    }
+}
+
+extension ProfileViewModel {
+    enum ProfileState {
+        case na
+        case loading
+        case success(data: Profile?)
+        case failed(error: Error)
+    }
+    
+    enum TuitionState {
+        case na
+        case loading
+        case success(data: Tuition?)
+        case failed(error: Error)
     }
 }

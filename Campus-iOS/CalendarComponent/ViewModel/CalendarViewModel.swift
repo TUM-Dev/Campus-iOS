@@ -15,6 +15,7 @@ class CalendarViewModel: ObservableObject {
     @Published var events: [CalendarEvent] = []
     
     let model: Model
+    var state: State = .na
     
     init(model: Model) {
         self.model = model
@@ -28,13 +29,16 @@ class CalendarViewModel: ObservableObject {
             importer.performFetch(handler: { result in
                 switch result {
                 case .success(let storage):
-                    self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
+                    let finalStorage = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
                         guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
                             return false
                         }
                         return dateOne > dateTwo
                     }) ?? []
+                    self.events = finalStorage
+                    self.state = .success(data: finalStorage)
                 case .failure(let error):
+                    self.state = .failed(error: error)
                     print(error)
                 }
             })
@@ -46,5 +50,14 @@ class CalendarViewModel: ObservableObject {
     var eventsByDate: [Date? : [CalendarEvent]] {
         let dictionary = Dictionary(grouping: events, by: { $0.startDate })
         return dictionary
+    }
+}
+
+extension CalendarViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [CalendarEvent])
+        case failed(error: Error)
     }
 }

@@ -24,32 +24,62 @@ struct TokenPermissionsView: View {
         VStack {
             Button {
                 Task {
-                    await viewModel.checkPermissionFor(type: .grades)
+                    await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
                 }
             } label: {
                 Text("Check Permissions")
             }
+            
             HStack {
                 Text("Grades")
-                switch viewModel.state {
-                case .success:
-                    Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-                case .failed(let error):
-                    switch error {
-                    case CampusOnlineAPI.Error.noPermission:
-                        Image(systemName: "x.circle.fill").foregroundColor(.red)
-                    case NetworkingError.deviceIsOffline:
-                        Image(systemName: "wifi.slash").foregroundColor(.red)
-                    default:
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.red)
+                if let gradeState = viewModel.states[.grades] {
+                    switch gradeState {
+                    case .success:
+                        Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                    case .failed(let error):
+                        switch error {
+                        case CampusOnlineAPI.Error.noPermission:
+                            Image(systemName: "x.circle.fill").foregroundColor(.red)
+                        case NetworkingError.deviceIsOffline:
+                            Image(systemName: "wifi.slash").foregroundColor(.red)
+                        default:
+                            Image(systemName: "questionmark.circle.fill").foregroundColor(.red)
+                        }
+                    case .na:
+                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
+                    case .loading:
+                        LoadingView(text: "")
                     }
-                case .na:
+                } else {
                     Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
-                case .loading:
-                    LoadingView(text: "")
                 }
-                
             }
+//            switch viewModel.states.keys. {
+//            case TokenPermissionsViewModel.PermissionType.grades:
+//                Text("Grades")
+//            }
+            
+//            HStack {
+//                Text("Grades")
+//                switch state {
+//                case .success:
+//                    Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+//                case .failed(let error):
+//                    switch error {
+//                    case CampusOnlineAPI.Error.noPermission:
+//                        Image(systemName: "x.circle.fill").foregroundColor(.red)
+//                    case NetworkingError.deviceIsOffline:
+//                        Image(systemName: "wifi.slash").foregroundColor(.red)
+//                    default:
+//                        Image(systemName: "questionmark.circle.fill").foregroundColor(.red)
+//                    }
+//                case .na:
+//                    Image(systemName: "questionmark.circle.fill").foregroundColor(.gray)
+//                case .loading:
+//                    LoadingView(text: "")
+//                }
+//            }
+            
         }
     }
 }
