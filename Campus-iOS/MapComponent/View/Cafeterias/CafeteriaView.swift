@@ -31,12 +31,12 @@ struct CafeteriaView: View {
                         Text(canteen.name)
                             .bold()
                             .font(.title3)
-                            .gesture(panelDragGesture)
                         Text(canteen.location.address)
                             .font(.subheadline)
                             .foregroundColor(Color.gray)
-                            .gesture(panelDragGesture)
                     }
+                    .onTapGesture { }
+                    .gesture(panelDragGesture)
                     
                     Spacer()
 
@@ -54,7 +54,6 @@ struct CafeteriaView: View {
                                     .accessibility(addTraits: .isButton)
                                     .accessibility(removeTraits: .isImage)
                             })
-                    		.simultaneousGesture(panelDragGesture)
                     }
                 }
                 
@@ -74,7 +73,6 @@ struct CafeteriaView: View {
                             .foregroundColor(.blue)
                             .font(.footnote)
                     })
-                    .simultaneousGesture(panelDragGesture)
                 }
             }
             .padding(.all, 10)
@@ -85,6 +83,7 @@ struct CafeteriaView: View {
                 data.didExitView()
             }
             .contentShape(Rectangle())
+            .onTapGesture { }
             .gesture(panelDragGesture)
         }
     }

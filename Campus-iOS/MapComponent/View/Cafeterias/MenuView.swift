@@ -12,7 +12,7 @@ struct MenuView: View {
     
     var body: some View {
         List {
-            ForEach($viewModel.categories) { $category in
+            ForEach($viewModel.categories.sorted { $0.wrappedValue.name < $1.wrappedValue.name }) { $category in
                 Section(category.name) {
                     ForEach(category.dishes, id: \.self) { dish in
                         DishView(dish: dish)

@@ -14,6 +14,7 @@ class CafeteriaWidgetViewModel: ObservableObject {
     
     @Published var cafeteria: Cafeteria?
     @Published var menuViewModel: MenuViewModel?
+    @Published var mealPlanViewModel: MealPlanViewModel?
     @Published var status: CafeteriaWidgetStatus
     
     private let cafeteriaService: CafeteriasServiceProtocol
@@ -68,6 +69,7 @@ class CafeteriaWidgetViewModel: ObservableObject {
                 
                 let categories = MealPlanViewModel.categories(from: todaysPlan.dishes)
                 self.menuViewModel = MenuViewModel(date: todaysPlan.date, categories: categories)
+                self.mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
                 self.status = .success
             }
         } catch {

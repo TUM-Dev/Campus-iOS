@@ -54,6 +54,12 @@ struct WidgetMapBackgroundView: View {
     
     func generateSnapshot(width: CGFloat, height: CGFloat) {
         
+        // The map snapshot fails and crashes the app if the dimensions are zero.
+        // This happens when closing the app.
+        guard width > 0, height > 0 else {
+            return
+        }
+        
         self.image = nil
         
         let mapOptions = MKMapSnapshotter.Options()
