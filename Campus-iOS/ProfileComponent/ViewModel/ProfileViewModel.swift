@@ -44,7 +44,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func fetch() {
+    func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         let importer = Importer<Profile,TUMOnlineAPIResponse<Profile>, XMLDecoder>(endpoint: TUMOnlineAPI.identify)
         importer.performFetch( handler: { result in
             DispatchQueue.main.async {
@@ -54,11 +54,16 @@ class ProfileViewModel: ObservableObject {
                     if let personGroup = self.profile?.personGroup, let personId = self.profile?.id, let obfuscatedID = self.profile?.obfuscatedID {
                         self.downloadProfileImage(personGroup: personGroup, personId: personId, obfuscatedID: obfuscatedID)
                     }
+                    
                     self.checkTuitionFunc()
                     
-                    self.profileState = .success(data: self.profile)
+                    if let _ = self.profile {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                    }
                 case .failure(let error):
-                    self.profileState = .failed(error: error)
+                    callback(.failure(error))
                     print(error)
                 }
             }
@@ -80,7 +85,7 @@ class ProfileViewModel: ObservableObject {
         })
     }
     
-    func checkTuitionFunc() {
+    func checkTuitionFunc(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         
         let importerTuition = Importer<Tuition,TUMOnlineAPIResponse<Tuition>,
                         XMLDecoder>(endpoint: TUMOnlineAPI.tuitionStatus, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
@@ -90,9 +95,13 @@ class ProfileViewModel: ObservableObject {
                 switch result {
                 case .success(let storage):
                     self.tuition = storage.rows?.first
-                    self.tuitionState = .success(data: self.tuition)
+                    if let _ = self.tuition {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                    }
                 case .failure(let error):
-                    self.tuitionState = .failed(error: error)
+                    callback(.failure(error))
                     print(error)
                 }
             })

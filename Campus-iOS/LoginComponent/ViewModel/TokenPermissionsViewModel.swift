@@ -64,16 +64,7 @@ class TokenPermissionsViewModel: ObservableObject {
                         print("no success")
                         self.states[.calendar] = .failed(error: CampusOnlineAPI.Error.noPermission)
                     }
-//                    switch result {
-//
-//                    case Result.success(data: let data):
-//                        self.states[.calendar] = TokenPermissionsViewModel.State.success(data: data)
-//                    case Result.failed(error: let error):
-//                        self.states[.calendar] = TokenPermissionsViewModel.State.failed(error: error)
-//                    }
                 }
-                    
-                
                 
             case .lectures:
                 do {
@@ -87,34 +78,29 @@ class TokenPermissionsViewModel: ObservableObject {
                 
                 let profileVM = ProfileViewModel(model: self.model)
                 profileVM.fetch()
-                
-                switch profileVM.tuitionState {
-                    
-                case .na:
-                    self.states[.tuitionFees] = .na
-                case .loading:
-                    self.states[.tuitionFees] = .loading
-                case .success(data: let data):
-                    self.states[.tuitionFees] = .success(data: data)
-                case .failed(error: let error):
-                    self.states[.tuitionFees] = .failed(error: error)
+                profileVM.checkTuitionFunc() {  result in
+                    print(result)
+                    if case let .success(data) = result {
+                        print("Success")
+                        self.states[.tuitionFees] = .success(data: data)
+                    } else {
+                        print("no success")
+                        self.states[.tuitionFees] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                    }
                 }
                 
             case .identification:
                 
                 let profileVM = ProfileViewModel(model: self.model)
-                profileVM.fetch()
-                
-                switch profileVM.profileState {
-                    
-                case .na:
-                    self.states[.identification] = .na
-                case .loading:
-                    self.states[.identification] = .loading
-                case .success(data: let data):
-                    self.states[.identification] = .success(data: data)
-                case .failed(error: let error):
-                    self.states[.identification] = .failed(error: error)
+                profileVM.fetch() {  result in
+                    print(result)
+                    if case let .success(data) = result {
+                        print("Success")
+                        self.states[.identification] = .success(data: data)
+                    } else {
+                        print("no success")
+                        self.states[.identification] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                    }
                 }
             }
         }
