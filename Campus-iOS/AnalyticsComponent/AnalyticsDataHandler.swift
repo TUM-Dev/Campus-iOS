@@ -24,6 +24,8 @@ class AnalyticsDataHandler {
     
     private let dateNearbyThreshold: Int
     
+    private let modelIterations: Int
+    
     // Centroid : Identifier
     private var discretizedLocations: Dictionary<CLLocation, String> = [:]
     
@@ -36,10 +38,11 @@ class AnalyticsDataHandler {
     // Discrete value for any variable that is not close enough to any entry in the domain of the  respective discretized variable.
     private let otherValue = "other"
     
-    init(data: [AppUsageDataEntity], locationGroupRadius: CLLocationDistance, timeNearbyThreshold: Int, dateNearbyThreshold: Int) {
+    init(data: [AppUsageDataEntity], locationGroupRadius: CLLocationDistance, timeNearbyThreshold: Int, dateNearbyThreshold: Int, modelIterations: Int = 20) {
         self.locationGroupRadius = locationGroupRadius
         self.timeNearbyThreshold = timeNearbyThreshold
         self.dateNearbyThreshold = dateNearbyThreshold
+        self.modelIterations = modelIterations
         self.discretizedData = self.discretize(data)
     }
     
@@ -131,20 +134,21 @@ class AnalyticsDataHandler {
     }
 
     public func evaluateClassifier(trainingData: MLDataTable, testData: MLDataTable) throws -> Double {
-        let classifier = try getClassifier(trainingData: trainingData)
+        let classifier = try getClassifier(from: trainingData)
         let metrics = classifier.evaluation(on: testData)
         let accuracy = 1 - metrics.classificationError
         
         return accuracy
     }
     
-    public func getModel(maxIterations: Int = 20, trainingData: MLDataTable? = nil) throws -> MLModel {
-        return try getClassifier().model
+    public func getModel(from trainingData: MLDataTable? = nil, maxIterations: Int? = nil) throws -> MLModel {
+        let iterations = maxIterations ?? self.modelIterations
+        return try getClassifier(from: trainingData, maxIterations: iterations).model
     }
     
-    private func getClassifier(modelMaxIterations: Int = 20, trainingData: MLDataTable? = nil) throws -> MLLogisticRegressionClassifier {
-        
-        let params = MLLogisticRegressionClassifier.ModelParameters(maxIterations: modelMaxIterations)
+    private func getClassifier(from trainingData: MLDataTable? = nil, maxIterations: Int? = nil) throws -> MLLogisticRegressionClassifier {
+        let iterations = maxIterations ?? self.modelIterations
+        let params = MLLogisticRegressionClassifier.ModelParameters(maxIterations: iterations)
         let data = try trainingData ?? dataTable()
                 
         guard let classifier = try? MLLogisticRegressionClassifier(trainingData: data, targetColumn: Covariate.view.rawValue, parameters: params) else {
