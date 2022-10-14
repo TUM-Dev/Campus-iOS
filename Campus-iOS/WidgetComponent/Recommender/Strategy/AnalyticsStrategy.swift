@@ -44,12 +44,8 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
     private var model: MLModel? = nil
     
     // Encapsulates the data discretization for the model.
-    private var dataHandler: MLModelDataHandler? = nil
-    
-    // The model covariates (and the dependent variable).
-    private enum Covariate: String {
-        case location = "location", time = "time", date = "date", view = "view"
-    }
+    private var dataHandler: AnalyticsDataHandler? = nil
+
     
 #if !targetEnvironment(simulator)
     func getRecommendation() async throws -> [WidgetRecommendation] {
@@ -58,88 +54,49 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
         rawData = relevantData(from: rawData)
         
         if dataHandler == nil {
-            dataHandler = MLModelDataHandler(
+            dataHandler = AnalyticsDataHandler(
                 data: rawData,
                 locationGroupRadius: self.locationGroupRadius,
                 timeNearbyThreshold: self.timeNearbyThreshold,
                 dateNearbyThreshold: self.dateNearbyThreshold
             )
         }
-        
-        guard let dataTable = try? dataTable() else {
-            throw RecommenderError.modelCreationFailed
-        }
                         
         if model == nil {
-            model = try createClassifier(from: dataTable).model
+            model = try dataHandler?.getModel()
         }
     
-        return try recommendationsFromModel(parameters: modelParameters()).filter{ $0.priority > 0 }
+        return try recommendationsFromModel().filter{ $0.priority > 0 }
     }
     
-    private func recommendationsFromModel(parameters: Dictionary<String, String>) throws -> [WidgetRecommendation] {
+    private func recommendationsFromModel() throws -> [WidgetRecommendation] {
         
         guard let model else {
             throw RecommenderError.missingModel
         }
         
-        guard let prediction = try? model.prediction(from: MLDictionaryFeatureProvider(dictionary: parameters)),
-              let resultDict = prediction.featureValue(for: "\(Covariate.view.rawValue)Probability") else {
+        guard let predictions = try? dataHandler?.getPredictions(model: model, parameters: modelParameters()) else {
             throw RecommenderError.impossiblePrediction
         }
                 
         var result: [WidgetRecommendation] = []
-        try resultDict.dictionaryValue.forEach { view, probability in
-            guard let view = CampusAppView(rawValue: view as? String ?? "") else {
-                throw RecommenderError.badRecommendation
+        
+        Widget.allCases.forEach { widget in
+            let views = widget.associatedViews()
+            
+            var probability: Double = 0
+            views.forEach { view in
+                probability += predictions[view] ?? 0
             }
-            result.append(WidgetRecommendation(widget: view.associatedWidget(), priority: Int(probability.doubleValue * 100)))
+            
+            result.append(WidgetRecommendation(widget: widget, priority: Int(probability * 100)))
         }
         
         print(result)
         return result
     }
-    
-    private func createClassifier(from data: MLDataTable) throws -> MLLogisticRegressionClassifier {
-        
-        let params = MLLogisticRegressionClassifier.ModelParameters(maxIterations: modelMaxIterations)
-        
-        guard let model = try? MLLogisticRegressionClassifier(trainingData: data, targetColumn: "view", parameters: params) else {
-            throw RecommenderError.modelCreationFailed
-        }
-        
-        return model
-    }
-    
-    private func dataTable() throws -> MLDataTable {
-        
-        guard let data = try? dataHandler?.getData() else {
-            throw RecommenderError.missingData
-        }
-        
-        let dataDictionary: Dictionary = [
-            Covariate.location.rawValue: data.map{ $0.location },
-            Covariate.time.rawValue: data.map{ $0.time },
-            Covariate.date.rawValue: data.map{ $0.date },
-            Covariate.view.rawValue: data.map{ $0.view }
-        ]
-        
-        return try MLDataTable(dictionary: dataDictionary)
-    }
-    
-    private func evaluateModel(data: MLDataTable) throws {
-        
-        let (trainingData, testData) = data.randomSplit(by: 0.8)
-        guard let classifier = try? createClassifier(from: trainingData) else {
-            throw RecommenderError.modelCreationFailed
-        }
-        
-        let metrics = classifier.evaluation(on: testData)
-        let accuracy = (1 - metrics.classificationError) * 100
-        print("🟣 Accuracy: \(accuracy) %")
-    }
 
-    private func modelParameters() throws -> Dictionary<String, String> {
+    private func modelParameters() throws -> Dictionary<Covariate, String> {
         
         guard let dataHandler else {
             throw RecommenderError.missingData
@@ -149,9 +106,9 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
         let date = Date()
         
         return [
-            Covariate.location.rawValue: dataHandler.discreteValue(for: location),
-            Covariate.time.rawValue: dataHandler.discreteValue(for: date.time),
-            Covariate.date.rawValue: dataHandler.discreteValue(for: date)
+            Covariate.location: dataHandler.discreteValue(for: location),
+            Covariate.time: dataHandler.discreteValue(for: date.time),
+            Covariate.date: dataHandler.discreteValue(for: date)
         ]
     }
     

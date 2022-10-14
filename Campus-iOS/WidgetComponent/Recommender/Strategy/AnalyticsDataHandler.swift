@@ -7,9 +7,15 @@
 
 import Foundation
 import MapKit
+import CoreML
+import TabularData
 
-class MLModelDataHandler {
-        
+#if !targetEnvironment(simulator)
+import CreateML
+#endif
+
+class AnalyticsDataHandler {
+    
     private var discretizedData: [DiscretizedAppUsageDataEntity]?
     
     private let locationGroupRadius: CLLocationDistance
@@ -84,6 +90,70 @@ class MLModelDataHandler {
         
         return discretizedDates[min] ?? otherValue
     }
+    
+    public func getPredictions(model: MLModel, parameters: [Covariate:String], dependentVariable: Covariate = .view) throws -> [CampusAppView:Double] {
+        
+        let inputParameters = Dictionary(uniqueKeysWithValues: parameters.map{ ($0.rawValue, $1) })
+        
+        guard let prediction = try? model.prediction(from: MLDictionaryFeatureProvider(dictionary: inputParameters)),
+              let resultDict = prediction.featureValue(for: "\(dependentVariable.rawValue)Probability") else {
+            throw RecommenderError.impossiblePrediction
+        }
+        
+        var result: [CampusAppView:Double] = [:]
+        
+        try resultDict.dictionaryValue.forEach { view, probability in
+            guard let view = CampusAppView(rawValue: view as? String ?? "") else {
+                throw RecommenderError.badRecommendation
+            }
+            result[view] = probability.doubleValue
+        }
+        
+        return result
+    }
+    
+#if !targetEnvironment(simulator)
+    
+    public func dataTable(from data: [DiscretizedAppUsageDataEntity]? = nil) throws -> MLDataTable {
+        
+        guard let data = try? data ?? getData() else {
+            throw RecommenderError.missingData
+        }
+        
+        let dataDictionary: Dictionary = [
+            Covariate.location.rawValue: data.map{ $0.location },
+            Covariate.time.rawValue: data.map{ $0.time },
+            Covariate.date.rawValue: data.map{ $0.date },
+            Covariate.view.rawValue: data.map{ $0.view }
+        ]
+        
+        return try MLDataTable(dictionary: dataDictionary)
+    }
+
+    public func evaluateClassifier(trainingData: MLDataTable, testData: MLDataTable) throws -> Double {
+        let classifier = try getClassifier(trainingData: trainingData)
+        let metrics = classifier.evaluation(on: testData)
+        let accuracy = 1 - metrics.classificationError
+        
+        return accuracy
+    }
+    
+    public func getModel(maxIterations: Int = 20, trainingData: MLDataTable? = nil) throws -> MLModel {
+        return try getClassifier().model
+    }
+    
+    private func getClassifier(modelMaxIterations: Int = 20, trainingData: MLDataTable? = nil) throws -> MLLogisticRegressionClassifier {
+        
+        let params = MLLogisticRegressionClassifier.ModelParameters(maxIterations: modelMaxIterations)
+        let data = try trainingData ?? dataTable()
+                
+        guard let classifier = try? MLLogisticRegressionClassifier(trainingData: data, targetColumn: Covariate.view.rawValue, parameters: params) else {
+            throw RecommenderError.modelCreationFailed
+        }
+        
+        return classifier
+    }
+#endif
     
     private func discretize(_ data: [AppUsageDataEntity]) -> [DiscretizedAppUsageDataEntity] {
         let locationGroups = groupedLocations(from: data)
@@ -160,7 +230,7 @@ class MLModelDataHandler {
     
     private func groupedTimes(from data: [AppUsageDataEntity]) -> [[Date.Time]] {
         let times = data.compactMap { $0.startTime?.time }
-        var result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold })
+        let result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold })
         
         // Remove duplicate groups.
         return Array(Set(result))
@@ -168,7 +238,7 @@ class MLModelDataHandler {
     
     private func groupedDates(from data: [AppUsageDataEntity]) -> [[Date]] {
         let dates = data.compactMap { $0.startTime }
-        var result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold })
+        let result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold })
         
         // Remove duplicate groups.
         return Array(Set(result))
@@ -180,4 +250,9 @@ struct DiscretizedAppUsageDataEntity {
     let time: String
     let date: String
     let view: String
+}
+
+// The model covariates (and the dependent variable).
+enum Covariate: String {
+    case location = "location", time = "time", date = "date", view = "view"
 }

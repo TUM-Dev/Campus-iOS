@@ -16,7 +16,7 @@
 		0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72B28CC2278003C5CFD /* HashFunction.swift */; };
 		0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */; };
 		0815249428E445030098A2C3 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249328E445030098A2C3 /* Date+Time.swift */; };
-		0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249528E45C390098A2C3 /* MLModelDataHandler.swift */; };
+		0815249628E45C390098A2C3 /* AnalyticsDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */; };
 		0815249828E492070098A2C3 /* RecommenderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249728E492070098A2C3 /* RecommenderError.swift */; };
 		0815249C28E4A38D0098A2C3 /* CLLocation+isInvalid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249B28E4A38D0098A2C3 /* CLLocation+isInvalid.swift */; };
 		0815249E28E4A6310098A2C3 /* Date+daysBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249D28E4A6310098A2C3 /* Date+daysBetween.swift */; };
@@ -279,7 +279,7 @@
 		0805E72B28CC2278003C5CFD /* HashFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashFunction.swift; sourceTree = "<group>"; };
 		0805E72D28CC2462003C5CFD /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Secrets.xcconfig; path = "Campus-iOS/AnalyticsComponent/Secrets.xcconfig"; sourceTree = "<group>"; };
 		0815249328E445030098A2C3 /* Date+Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Time.swift"; sourceTree = "<group>"; };
-		0815249528E45C390098A2C3 /* MLModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModelDataHandler.swift; sourceTree = "<group>"; };
+		0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsDataHandler.swift; sourceTree = "<group>"; };
 		0815249728E492070098A2C3 /* RecommenderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderError.swift; sourceTree = "<group>"; };
 		0815249B28E4A38D0098A2C3 /* CLLocation+isInvalid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+isInvalid.swift"; sourceTree = "<group>"; };
 		0815249D28E4A6310098A2C3 /* Date+daysBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+daysBetween.swift"; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 				08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */,
 				08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */,
 				082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */,
-				0815249528E45C390098A2C3 /* MLModelDataHandler.swift */,
+				0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -1837,7 +1837,7 @@
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
 				36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */,
 				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
-				0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */,
+				0815249628E45C390098A2C3 /* AnalyticsDataHandler.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
 				1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
