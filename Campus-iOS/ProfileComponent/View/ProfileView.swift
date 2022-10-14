@@ -19,6 +19,10 @@ struct ProfileView: View {
         NavigationView {
             
             List {
+                NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model))) {
+                    Text("Token Permission View")
+                }
+                
                 NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
