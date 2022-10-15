@@ -18,6 +18,7 @@ struct TokenConfirmationView: View {
     @State var tokenState: TokenState = .notChecked
     @State var buttonBackgroundColor: Color = .tumBlue
     @State var showBackButtonAlert: Bool = false
+    @State var showTUMOnline = false
     @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
