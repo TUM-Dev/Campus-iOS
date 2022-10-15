@@ -27,17 +27,16 @@ class NewsViewModel: ObservableObject {
     
     var latestFiveNews: [(String?, News?)] {
         print(">> latestFiveNews loaded")
-        let latestNews = [News(id: "TEST_id1234", sourceId: 123, date: Date(), created: Date(), title: "Title", link: nil, imageURL: nil)]
-//        Array(self.newsSources
-//            .map({$0.news})
-//            .reduce([], +)
-//            .filter({$0.created != nil && $0.sourceID != 2})
-//            .sorted(by: {
-//                guard let date1 = $0.created, let date2 = $1.created else {
-//                    return false
-//                }
-//                return date1.compare(date2) == .orderedDescending
-//            }).prefix(5))
+        let latestNews = Array(self.newsSources
+            .map({$0.news})
+            .reduce([], +)
+            .filter({$0.created != nil && $0.sourceID != 2})
+            .sorted(by: {
+                guard let date1 = $0.created, let date2 = $1.created else {
+                    return false
+                }
+                return date1.compare(date2) == .orderedDescending
+            }).prefix(5))
         
         let latestFiveNews = latestNews.map { news in
             (newsSources.first(where: {$0.id == news.sourceID})?.title, news)
