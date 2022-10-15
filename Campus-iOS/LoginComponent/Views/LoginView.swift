@@ -18,7 +18,10 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
     @FocusState private var focusedField: Field?
     
+    @State var logInState: LoginState = .notChecked
     @State var showLoginAlert: Bool = false
+    @State var buttonBackgroundColor: Color = .tumBlue
+    @State var showLoginButton: Bool = true
     
     var body: some View {
             GeometryReader { geo in
@@ -98,38 +101,102 @@ struct LoginView: View {
                         Spacer()
                             .frame(height: 18)
                         
-                        
-                        NavigationLink(destination:
-                                        TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Authorize Token"))) {
-                            Text("Continue 🎓")
-                                .lineLimit(1)
-                                .font(.title3)
-                                .frame(alignment: .center)
-                        }
-                        .alert("Login Error", isPresented: self.$showLoginAlert) {
-                            Button("OK", role: .cancel) {}
-                        }
-                        .disabled(!viewModel.isContinueEnabled)
-                        .frame(width: 135, height: 35)
-                        .aspectRatio(contentMode: .fill)
-                        .font(.title)
-                        .background(Color(.secondarySystemFill))
-                        .cornerRadius(10)
-                        .simultaneousGesture(TapGesture().onEnded(){
-                            self.viewModel.loginWithContinue() { result in
-                                switch result {
-                                case .success:
-                                    showLoginAlert = false
-                                case .failure(_):
-                                    showLoginAlert = true
+                        if showLoginButton {
+                            Button {
+                                self.viewModel.loginWithContinue() { result in
+                                    switch result {
+                                    case .success:
+                                        //                                    showLoginAlert = false
+                                        withAnimation() {
+                                            buttonBackgroundColor = .green
+                                            logInState = .loggedIn
+                                        }
+                                        print("Loggin Successfull")
+                                    case .failure(_):
+                                        withAnimation() {
+                                            buttonBackgroundColor = .red
+                                            logInState = .logInError
+                                        }
+                                        //                                    showLoginAlert = true
+                                        print("Loggin Error")
+                                    }
+                                    
+                                }
+                            } label: {
+                                switch logInState {
+                                case .notChecked:
+                                    HStack {
+                                        Text("Log in 🎓")
+                                            .lineLimit(1)
+                                            .font(.title3)
+                                            .frame(alignment: .center)
+                                    }
+                                case .logInError:
+                                    HStack {
+                                        Image(systemName: "x.circle.fill")
+                                        Text("Login Error")
+                                        
+                                    }
+                                    .lineLimit(1)
+                                    .font(.title3)
+                                    .frame(alignment: .center)
+                                    .onAppear() {
+                                        Task {
+                                            try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                            withAnimation() {
+                                                logInState = .notChecked
+                                                buttonBackgroundColor = .tumBlue
+                                            }
+                                        }
+                                    }
+                                case .loggedIn:
+                                    HStack {
+                                        Image(systemName: "checkmark.circle.fill")
+                                        Text("Login Successfull")
+                                    }
+                                    .lineLimit(1)
+                                    .font(.title3)
+                                    .frame(alignment: .center)
+                                    .onAppear() {
+                                        Task {
+                                            try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                            withAnimation() {
+                                                showLoginButton = false
+                                            }
+                                        }
+                                    }
                                 }
                                 
                             }
-                        })
+                            .disabled(!viewModel.isContinueEnabled || logInState == .loggedIn)
+                            .lineLimit(1)
+                            .font(.body)
+                            .frame(width: 200, height: 48, alignment: .center)
+                            .foregroundColor(.white)
+                            .background(buttonBackgroundColor)
+                            .cornerRadius(10)
+                            .buttonStyle(.plain)
+                        }
+                        
+                        
+                        if logInState == .loggedIn {
+                            Spacer()
+                            NavigationLink(destination:
+                                            TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Activate Token"))) {
+                                Text("Next")
+                                    .font(.body)
+                                    .frame(width: 200, height: 48, alignment: .center)
+                                    .foregroundColor(.white)
+                                    .background(Color(.tumBlue))
+                                    .cornerRadius(10)
+                                    .buttonStyle(.plain)
+                            }
+                        }
                         
 
                         Spacer().frame(height: 20)
 
+                        
                         Button(action: {
                             self.viewModel.loginWithContinueWithoutTumID()
                             self.viewModel.model?.isLoginSheetPresented = false

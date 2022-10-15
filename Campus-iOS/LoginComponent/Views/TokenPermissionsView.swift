@@ -17,10 +17,14 @@ enum FetchState {
 struct TokenPermissionsView: View {
     
     @StateObject var viewModel: TokenPermissionsViewModel
+    @State var doneButton = false
     
     var body: some View {
         VStack() {
-            Text("Permissions granted for:").padding().font(.system(size: 25)).foregroundColor(.tumBlue)
+//            Text("Permissions granted for:").padding().font(.system(size: 25)).foregroundColor(.tumBlue)
+
+            Text("You can change your permissions on TUMOnline")
+                .foregroundColor(.tumBlue)
             HStack {
                 VStack(alignment: .leading) {
                     Text("Calendar").padding()
@@ -69,6 +73,10 @@ struct TokenPermissionsView: View {
             Button {
                 Task {
                     await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
+                    
+                    withAnimation() {
+                        doneButton = true
+                    }
                 }
             } label: {
                 Text("Check Permissions")
@@ -81,8 +89,23 @@ struct TokenPermissionsView: View {
                     .buttonStyle(.plain)
             }.padding()
             
-            Text("You can change your permissions in TUMOnline")
-                .foregroundColor(.tumBlue)
+            
+            
+            if doneButton {
+                Button {
+                    self.viewModel.model.isLoginSheetPresented = false
+                } label: {
+                    Text("Done")
+                        .lineLimit(1)
+                        .font(.body)
+                        .frame(width: 200, height: 48, alignment: .center)
+                        .foregroundColor(.white)
+                        .background(Color(.tumBlue))
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
+                }.padding()
+                
+            }
         }
     }
     
