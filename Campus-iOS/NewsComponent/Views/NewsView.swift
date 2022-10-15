@@ -66,31 +66,6 @@ struct NewsView: View {
                 }
             }
         }
-//        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { (_) in
-//            print("UIApplication: active")
-//            viewModel.fetch()
-//          }
-        
-//        List(viewModel.newsSources.filter({$0.id != 2}), id: \.id) { newsSource in
-//            Section(newsSource.title ?? "NIL") {
-//                ForEach(newsSource.news, id: \.id) { news in
-//                    Text(news.title ?? "NIL")
-//                }
-//            }
-//        }
-//
-//
-//        List(viewModel.news, id: \.id) { news in
-//            Text(news.title ?? "NIL")
-//        }
-
-//        List(viewModel.sourcesAndNews, id: \.0) { sourceAndNews in
-//            Section(String(sourceAndNews.0 ?? 0)) {
-//                ForEach(sourceAndNews.1, id: \.id) { news in
-//                    Text(news.title ?? "NIL")
-//                }
-//            }
-//        }
     }
     
     init(viewModel: NewsViewModel) {
