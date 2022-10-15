@@ -18,6 +18,7 @@ struct TokenPermissionsView: View {
     
     @StateObject var viewModel: TokenPermissionsViewModel
     @State var doneButton = false
+    @State var showTUMOnline = false
     
     var body: some View {
         VStack() {
@@ -70,32 +71,28 @@ struct TokenPermissionsView: View {
             .font(.system(size: 20))
             .padding()
             
-            Button {
-                Task {
-                    await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
-                    
-                    withAnimation() {
-                        doneButton = true
-                    }
-                }
-            } label: {
-                Text("Check Permissions")
-                    .lineLimit(1)
-                    .font(.body)
-                    .frame(width: 200, height: 48, alignment: .center)
-                    .foregroundColor(.white)
-                    .background(Color(.tumBlue))
-                    .cornerRadius(10)
-                    .buttonStyle(.plain)
-            }.padding()
-            
-            
-            
-            if doneButton {
+            VStack (){
                 Button {
-                    self.viewModel.model.isLoginSheetPresented = false
+                    self.showTUMOnline = true
                 } label: {
-                    Text("Done")
+                    Text("Open TUMOnline").lineLimit(1).font(.body)
+                        .frame(width: 200, height: 48, alignment: .center)
+                }
+                .font(.title)
+                .foregroundColor(.white)
+                .background(Color(.tumBlue))
+                .cornerRadius(10)
+                
+                Button {
+                    Task {
+                        await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
+                        
+                        withAnimation() {
+                            doneButton = true
+                        }
+                    }
+                } label: {
+                    Text("Check Permissions")
                         .lineLimit(1)
                         .font(.body)
                         .frame(width: 200, height: 48, alignment: .center)
@@ -105,8 +102,25 @@ struct TokenPermissionsView: View {
                         .buttonStyle(.plain)
                 }.padding()
                 
+                if doneButton {
+                    Button {
+                        self.viewModel.model.isLoginSheetPresented = false
+                    } label: {
+                        Text("Done")
+                            .lineLimit(1)
+                            .font(.body)
+                            .frame(width: 200, height: 48, alignment: .center)
+                            .foregroundColor(.white)
+                            .background(.green)
+                            .cornerRadius(10)
+                            .buttonStyle(.plain)
+                    }.padding()
+                }
             }
         }
+        .sheet(isPresented: $showTUMOnline) {
+             SFSafariViewWrapper(url: URL(string: "https://www.campus.tum.de")!).edgesIgnoringSafeArea(.bottom)
+         }
     }
     
     @ViewBuilder

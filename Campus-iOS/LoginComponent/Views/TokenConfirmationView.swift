@@ -18,6 +18,7 @@ struct TokenConfirmationView: View {
     @State var tokenState: TokenState = .notChecked
     @State var buttonBackgroundColor: Color = .tumBlue
     @State var showBackButtonAlert: Bool = false
+    @State var showCheckTokenButton: Bool = true
     @State var showTUMOnline = false
     @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
@@ -28,6 +29,13 @@ struct TokenConfirmationView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 10){
+//                Button {
+//                    withAnimation() {
+//                        tokenState = .active
+//                    }
+//                } label: {
+//                    Text("change to active")
+//                }
                 VStack {
                     switch currentStep {
                     case 1:
@@ -43,9 +51,14 @@ struct TokenConfirmationView: View {
                             Spacer().frame(width: 20)
                             
                             HStack(spacing: 5) {
-                                Text("Log in on [TUMonline](https://campus.tum.de)")
-                                    .font(.body)
-                                    .tint(Color(.tumBlue))
+                                HStack(spacing: 0) {
+                                    Text("Log in on ")
+                                    Text("TUMonline").foregroundColor(.tumBlue)
+                                        .onTapGesture {
+                                            showTUMOnline = true
+                                        }
+                                }
+                                .font(.body)
                             }
                             
                         }
@@ -97,109 +110,115 @@ struct TokenConfirmationView: View {
                 // Video is 2532 x 1170
                     .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
             
-            
-                Spacer()
-                
-                Button(action: {
-                    self.viewModel.checkAuthorizzation() { result in
-                        switch result {
-                        case .success:
-                            //showTokenAlert = false
-                            withAnimation {
-//                                tokenActivated = true
-                                tokenState = .active
-                                buttonBackgroundColor = .green
-                                showTokenHelp = false
-                            }
-                        case .failure(_):
-                            withAnimation {
-                                tokenState = .inactive
-                                buttonBackgroundColor = .red
-                                showTokenHelp = true
-                            }
-//                            showTokenAlert = true
-//                            tokenActivated = false
-                        }
-                    }
-                }) {
-                    switch tokenState {
-                    case .notChecked:
-                        Text("Check Token").lineLimit(1).font(.body)
-                    case .inactive:
-                        VStack {
-                            HStack {
-                                Image(systemName: "x.circle.fill")
-                                Text("Token inactive").lineLimit(1).font(.body)
-                            }
-                        }
-                        .padding()
-                        .onAppear() {
-                            Task {
-                                try? await Task.sleep(nanoseconds: 3_000_000_000)
-                                withAnimation(.easeInOut) {
-                                    tokenState = .notChecked
-                                    buttonBackgroundColor = .tumBlue
-                                }
-                            }
-                        }
-                    case .active:
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                            Text("Token active").lineLimit(1).font(.body)
-                        }
-                        .padding()
-                        .onAppear() {
-                            Task {
-                                try? await Task.sleep(nanoseconds: 3_000_000_000)
-                                withAnimation() {
-                                    tokenPermissionButton = true
-                                }
-                            }
-                        }
-                    }
-                }
-                .alert("Token not activated! Please activate the Token on TUMOnline.", isPresented: $showTokenAlert) {
-                    Button("OK", role: .cancel) {}
-                }
-                .frame(width: 200, height: 48, alignment: .center)
-                .font(.title)
-                .foregroundColor(.white)
-                .background(buttonBackgroundColor)
-                .cornerRadius(10)
-                .buttonStyle(.plain)
-                
-                if showTokenHelp {
+                VStack {
                     Spacer()
-                    Text("Please activate the latest token on TUMOnline.").foregroundColor(.tumBlue)
-                }
-                
-                Spacer()
-                
-                if tokenPermissionButton, let model = self.viewModel.model  {
-                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Activate Permissions")) {
-                        Text("Next")
-                            .lineLimit(1)
-                            .font(.body)
+                    
+                    Button {
+                        self.showTUMOnline = true
+                    } label: {
+                        Text("Open TUMOnline").lineLimit(1).font(.body)
                             .frame(width: 200, height: 48, alignment: .center)
-                            .foregroundColor(.white)
-                            .background(Color(.tumBlue))
-                            .cornerRadius(10)
-                            .buttonStyle(.plain)
                     }
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    
+                    Spacer()
+                    
+                    if !tokenPermissionButton {
+                        Button(action: {
+                            self.viewModel.checkAuthorizzation() { result in
+                                switch result {
+                                case .success:
+                                    withAnimation {
+                                        tokenState = .active
+                                        buttonBackgroundColor = .green
+                                        showTokenHelp = false
+                                    }
+                                case .failure(_):
+                                    withAnimation {
+                                        tokenState = .inactive
+                                        buttonBackgroundColor = .red
+                                        showTokenHelp = true
+                                    }
+                                }
+                            }
+                        }) {
+                            switch tokenState {
+                            case .notChecked:
+                                Text("Check Token").lineLimit(1).font(.body)
+                            case .inactive:
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "x.circle.fill")
+                                        Text("Token inactive").lineLimit(1).font(.body)
+                                    }
+                                }
+                                .padding()
+                                .onAppear() {
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                        withAnimation(.easeInOut) {
+                                            tokenState = .notChecked
+                                            buttonBackgroundColor = .tumBlue
+                                        }
+                                    }
+                                }
+                            case .active:
+                                HStack {
+                                    Image(systemName: "checkmark.circle.fill")
+                                    Text("Token active").lineLimit(1).font(.body)
+                                }
+                                .padding()
+                                .onAppear() {
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                        withAnimation() {
+                                            tokenPermissionButton = true
+//                                            showCheckTokenButton = false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .frame(width: 200, height: 48, alignment: .center)
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .background(buttonBackgroundColor)
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
+                    }
+                    
+                    if tokenPermissionButton, let model = self.viewModel.model  {
+                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Activate Permissions")) {
+                            Text("Next")
+                                .lineLimit(1)
+                                .font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                                .foregroundColor(.white)
+                                .background(.green)
+                                .cornerRadius(10)
+                                .buttonStyle(.plain)
+                        }
+                    }
+                    
+                    if showTokenHelp {
+                        Spacer()
+                        Text("Please activate the latest token on TUMOnline.").foregroundColor(.tumBlue)
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                    
+                    let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                    let mailToUrl = URL(string: mailToString!)!
+                    Link(destination: mailToUrl) {
+                        Text("Contact Support").foregroundColor(Color(.tumBlue))
+                    }
+                    
+                    Spacer()
                 }
-                
-                
-                Spacer()
-                
-                let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                let mailToUrl = URL(string: mailToString!)!
-                Link(destination: mailToUrl) {
-                    Text("Contact Support").foregroundColor(Color(.tumBlue))
-                }
-                
-                Spacer()
-                
-                
             }
         }
         .navigationBarTitle("Authorize Token", displayMode: .automatic)
@@ -228,6 +247,9 @@ struct TokenConfirmationView: View {
         .task {
             await switchSteps()
         }
+        .sheet(isPresented: $showTUMOnline) {
+             SFSafariViewWrapper(url: URL(string: "https://www.campus.tum.de")!).edgesIgnoringSafeArea(.bottom)
+         }
         
         
     }

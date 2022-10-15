@@ -103,24 +103,23 @@ struct LoginView: View {
                         
                         if showLoginButton {
                             Button {
-                                self.viewModel.loginWithContinue() { result in
-                                    switch result {
-                                    case .success:
-                                        //                                    showLoginAlert = false
-                                        withAnimation() {
-                                            buttonBackgroundColor = .green
-                                            logInState = .loggedIn
+                                if logInState != .loggedIn {
+                                    self.viewModel.loginWithContinue() { result in
+                                        switch result {
+                                        case .success:
+                                            withAnimation() {
+                                                buttonBackgroundColor = .green
+                                                logInState = .loggedIn
+                                            }
+                                            print("Loggin Successfull")
+                                        case .failure(_):
+                                            withAnimation() {
+                                                buttonBackgroundColor = .red
+                                                logInState = .logInError
+                                            }
+                                            print("Loggin Error")
                                         }
-                                        print("Loggin Successfull")
-                                    case .failure(_):
-                                        withAnimation() {
-                                            buttonBackgroundColor = .red
-                                            logInState = .logInError
-                                        }
-                                        //                                    showLoginAlert = true
-                                        print("Loggin Error")
                                     }
-                                    
                                 }
                             } label: {
                                 switch logInState {
@@ -135,7 +134,6 @@ struct LoginView: View {
                                     HStack {
                                         Image(systemName: "x.circle.fill")
                                         Text("Login Error")
-                                        
                                     }
                                     .lineLimit(1)
                                     .font(.title3)
@@ -168,7 +166,7 @@ struct LoginView: View {
                                 }
                                 
                             }
-                            .disabled(!viewModel.isContinueEnabled || logInState == .loggedIn)
+                            .disabled(!viewModel.isContinueEnabled)
                             .lineLimit(1)
                             .font(.body)
                             .frame(width: 200, height: 48, alignment: .center)
@@ -179,7 +177,7 @@ struct LoginView: View {
                         }
                         
                         
-                        if logInState == .loggedIn {
+                        if !showLoginButton {
                             Spacer()
                             NavigationLink(destination:
                                             TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Activate Token"))) {
@@ -187,7 +185,7 @@ struct LoginView: View {
                                     .font(.body)
                                     .frame(width: 200, height: 48, alignment: .center)
                                     .foregroundColor(.white)
-                                    .background(Color(.tumBlue))
+                                    .background(.green)
                                     .cornerRadius(10)
                                     .buttonStyle(.plain)
                             }
