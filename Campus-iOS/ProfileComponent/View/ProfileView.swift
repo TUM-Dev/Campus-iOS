@@ -19,10 +19,6 @@ struct ProfileView: View {
         NavigationView {
             
             List {
-                NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model))) {
-                    Text("Token Permission View")
-                }
-                
                 NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
@@ -72,6 +68,15 @@ struct ProfileView: View {
                     ) {
                         Label("Movies", systemImage: "film")
                     }
+                    
+                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
+                        if self.model.isUserAuthenticated {
+                            Label("Token Permissions", systemImage: "key")
+                        } else {
+                            Label("Token Permissions (You're logged out)", systemImage: "key")
+                        }
+                        
+                    }.disabled(!self.model.isUserAuthenticated)
                 }
                 
                 Section() {

@@ -116,7 +116,11 @@ struct TokenConfirmationView: View {
                     Button {
                         self.showTUMOnline = true
                     } label: {
-                        Text("Open TUMOnline").lineLimit(1).font(.body)
+                        HStack {
+                            Image(systemName: "globe")
+                            Text("Open TUMOnline")
+                        }
+                        .lineLimit(1).font(.body)
                             .frame(width: 200, height: 48, alignment: .center)
                     }
                     .font(.title)
@@ -191,7 +195,7 @@ struct TokenConfirmationView: View {
                     }
                     
                     if tokenPermissionButton, let model = self.viewModel.model  {
-                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Activate Permissions")) {
+                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions")) {
                             Text("Next")
                                 .lineLimit(1)
                                 .font(.body)
@@ -205,7 +209,7 @@ struct TokenConfirmationView: View {
                     
                     if showTokenHelp {
                         Spacer()
-                        Text("Please activate the latest token on TUMOnline.").foregroundColor(.tumBlue)
+                        Text("Please activate the latest token on TUMOnline").foregroundColor(.red)
                         Spacer()
                     }
                     

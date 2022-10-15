@@ -17,13 +17,14 @@ enum FetchState {
 struct TokenPermissionsView: View {
     
     @StateObject var viewModel: TokenPermissionsViewModel
+    @Environment(\.dismiss) var dismiss
     @State var doneButton = false
     @State var showTUMOnline = false
     
+    var dismissWhenDone: Bool = false
+    
     var body: some View {
         VStack() {
-//            Text("Permissions granted for:").padding().font(.system(size: 25)).foregroundColor(.tumBlue)
-
             Text("You can change your permissions on TUMOnline")
                 .foregroundColor(.tumBlue)
             HStack {
@@ -75,7 +76,11 @@ struct TokenPermissionsView: View {
                 Button {
                     self.showTUMOnline = true
                 } label: {
-                    Text("Open TUMOnline").lineLimit(1).font(.body)
+                    HStack {
+                        Image(systemName: "globe")
+                        Text("Open TUMOnline")
+                    }
+                    .lineLimit(1).font(.body)
                         .frame(width: 200, height: 48, alignment: .center)
                 }
                 .font(.title)
@@ -100,11 +105,17 @@ struct TokenPermissionsView: View {
                         .background(Color(.tumBlue))
                         .cornerRadius(10)
                         .buttonStyle(.plain)
-                }.padding()
+                }
                 
                 if doneButton {
                     Button {
-                        self.viewModel.model.isLoginSheetPresented = false
+                        if dismissWhenDone {
+                            // Dismiss when view is opened from Profile/Settings.
+                            dismiss()
+                        } else {
+                            // Used when shown via the login process sheet.
+                            self.viewModel.model.isLoginSheetPresented = false
+                        }
                     } label: {
                         Text("Done")
                             .lineLimit(1)
@@ -114,7 +125,7 @@ struct TokenPermissionsView: View {
                             .background(.green)
                             .cornerRadius(10)
                             .buttonStyle(.plain)
-                    }.padding()
+                    }
                 }
             }
         }
@@ -147,6 +158,11 @@ struct TokenPermissionsView: View {
         case .loading:
             LoadingView(text: "")
         }
+    }
+    
+    init(viewModel: TokenPermissionsViewModel, dismissWhenDone: Bool = false) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        self.dismissWhenDone = dismissWhenDone
     }
 }
 

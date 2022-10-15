@@ -178,9 +178,8 @@ struct LoginView: View {
                         
                         
                         if !showLoginButton {
-                            Spacer()
                             NavigationLink(destination:
-                                            TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Activate Token"))) {
+                                            TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Check Token"))) {
                                 Text("Next")
                                     .font(.body)
                                     .frame(width: 200, height: 48, alignment: .center)
