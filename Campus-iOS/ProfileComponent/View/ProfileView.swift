@@ -29,8 +29,13 @@ struct ProfileView: View {
                             .foregroundColor(Color(.secondaryLabel))
                         
                         VStack(alignment: .leading) {
-                            Text(self.model.profile.profile?.fullName ?? "Not logged in")
-                                .font(.title2)
+                            if self.model.isUserAuthenticated {
+                                Text(self.model.profile.profile?.fullName ?? "TUM Student")
+                                    .font(.title2)
+                            } else {
+                                Text("Not logged in")
+                                    .font(.title2)
+                            }
                             
                             Text(self.model.profile.profile?.tumID ?? "TUM ID")
                                 .font(.subheadline)

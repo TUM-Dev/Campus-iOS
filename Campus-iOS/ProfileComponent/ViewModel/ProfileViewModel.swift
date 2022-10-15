@@ -23,7 +23,7 @@ class ProfileViewModel: ObservableObject {
     
     static let defaultProfile = Profile(
         firstname: nil,
-        surname: "Not logged in".localized,
+        surname: "TUM Student".localized,
         tumId: "TUM ID",
         obfuscatedID: nil,
         obfuscatedIDEmployee: nil,

@@ -57,7 +57,13 @@ public class Model: ObservableObject {
                     self?.loadProfile()
                 case .failure(_):
                     self?.isUserAuthenticated = false
-                    self?.isLoginSheetPresented = true
+                    if let model = self {
+                        if !model.showProfile {
+                            model.isLoginSheetPresented = true
+                        }
+                    } else {
+                        self?.isLoginSheetPresented = true
+                    }
                 }
             }
         }
