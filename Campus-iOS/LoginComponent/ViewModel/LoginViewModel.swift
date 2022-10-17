@@ -58,7 +58,7 @@ class LoginViewModel: ObservableObject {
         loginController.skipLogin()
     }
     
-    func checkAuthorizzation(callback: @escaping (Result<Bool,Error>) -> Void) {
+    func checkAuthorization(callback: @escaping (Result<Bool,Error>) -> Void) {
         loginController.confirmToken() { [weak self] result in
             switch result {
             case .success:
@@ -79,13 +79,5 @@ class LoginViewModel: ObservableObject {
                 callback(.failure(error))
             }
         }
-        
-        
     }
-}
-
-enum LoginState {
-    case notChecked
-    case logInError
-    case loggedIn
 }

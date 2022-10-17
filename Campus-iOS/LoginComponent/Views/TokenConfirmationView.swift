@@ -15,7 +15,7 @@ struct TokenConfirmationView: View {
     @State var showTokenAlert: Bool = false
     @State var showTokenHelp: Bool = false
     @State var tokenPermissionButton: Bool = false
-    @State var tokenState: TokenState = .notChecked
+    @State var tokenState: LoginViewModel.TokenState = .notChecked
     @State var buttonBackgroundColor: Color = .tumBlue
     @State var showBackButtonAlert: Bool = false
     @State var showCheckTokenButton: Bool = true
@@ -28,14 +28,7 @@ struct TokenConfirmationView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 10){
-//                Button {
-//                    withAnimation() {
-//                        tokenState = .active
-//                    }
-//                } label: {
-//                    Text("change to active")
-//                }
+            VStack(spacing: 10) {
                 VStack {
                     switch currentStep {
                     case 1:
@@ -132,7 +125,7 @@ struct TokenConfirmationView: View {
                     
                     if !tokenPermissionButton {
                         Button(action: {
-                            self.viewModel.checkAuthorizzation() { result in
+                            self.viewModel.checkAuthorization() { result in
                                 switch result {
                                 case .success:
                                     withAnimation {
@@ -215,7 +208,7 @@ struct TokenConfirmationView: View {
                     
                     Spacer()
                     
-                    let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                    let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). My token state is currently: \(tokenState). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                     let mailToUrl = URL(string: mailToString!)!
                     Link(destination: mailToUrl) {
                         Text("Contact Support").foregroundColor(Color(.tumBlue))
@@ -252,7 +245,7 @@ struct TokenConfirmationView: View {
             await switchSteps()
         }
         .sheet(isPresented: $showTUMOnline) {
-             SFSafariViewWrapper(url: URL(string: "https://www.campus.tum.de")!).edgesIgnoringSafeArea(.bottom)
+            SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
          }
         
         
@@ -382,10 +375,4 @@ extension Bundle {
             return "⚠️"
         }
     }
-}
-
-enum TokenState {
-    case notChecked
-    case inactive
-    case active
 }

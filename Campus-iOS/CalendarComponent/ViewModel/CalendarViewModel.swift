@@ -38,17 +38,12 @@ class CalendarViewModel: ObservableObject {
                         }) ?? []
                         
                         if let _ = storage.events {
-//                            self.state = .success(data: events)
                             callback(.success(true))
                         } else {
                             callback(.failure(CampusOnlineAPI.Error.noPermission))
                         }
-                        
-                        print(self.state)
-                        
                     case .failure(let error):
                         self.state = .failed(error: error)
-                        print(error)
                     }
                 })
             }

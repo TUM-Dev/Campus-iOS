@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum FetchState {
-    case na
-    case loading
-    case success(data: [Any])
-    case failed(error: Error)
-}
-
 struct TokenPermissionsView: View {
     
     @StateObject var viewModel: TokenPermissionsViewModel
@@ -37,31 +30,30 @@ struct TokenPermissionsView: View {
                 }
                 Spacer()
                 VStack {
-                    //Calendar
                     if let currentState = viewModel.states[.calendar] {
                         check(state: currentState).padding()
                     } else {
                         Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
                     }
-                    //Lectures
+                    
                     if let currentState = viewModel.states[.lectures] {
                         check(state: currentState).padding()
                     } else {
                         Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
                     }
-                    //Grades
+                    
                     if let currentState = viewModel.states[.grades] {
                         check(state: currentState).padding()
                     } else {
                         Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
                     }
-                    //Tuition Fees
+                    
                     if let currentState = viewModel.states[.tuitionFees] {
                         check(state: currentState).padding()
                     } else {
                         Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
                     }
-                    //Identification
+                    
                     if let currentState = viewModel.states[.identification] {
                         check(state: currentState).padding()
                     } else {
@@ -131,7 +123,7 @@ struct TokenPermissionsView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showTUMOnline) {
-             SFSafariViewWrapper(url: URL(string: "https://www.campus.tum.de")!).edgesIgnoringSafeArea(.bottom)
+            SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
         }
     }
     

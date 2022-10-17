@@ -18,7 +18,7 @@ struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
     @FocusState private var focusedField: Field?
     
-    @State var logInState: LoginState = .notChecked
+    @State var logInState: LoginViewModel.LoginState = .notChecked
     @State var showLoginAlert: Bool = false
     @State var buttonBackgroundColor: Color = .tumBlue
     @State var showLoginButton: Bool = true
@@ -157,7 +157,7 @@ struct LoginView: View {
                                     .frame(alignment: .center)
                                     .onAppear() {
                                         Task {
-                                            try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                            try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation() {
                                                 showLoginButton = false
                                             }
