@@ -106,7 +106,9 @@ struct TokenPermissionsView: View {
                             dismiss()
                         } else {
                             // Used when shown via the login process sheet.
-                            self.viewModel.model.isLoginSheetPresented = false
+                            DispatchQueue.main.async {
+                                self.viewModel.model.isLoginSheetPresented = false
+                            }
                         }
                     } label: {
                         Text("Done")

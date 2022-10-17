@@ -52,17 +52,23 @@ public class Model: ObservableObject {
                     #if !targetEnvironment(macCatalyst)
                     Analytics.logEvent("token_confirmed", parameters: nil)
                     #endif
-                    self?.isLoginSheetPresented = false
+                    DispatchQueue.main.async {
+                        self?.isLoginSheetPresented = false
+                    }
                     self?.isUserAuthenticated = true
                     self?.loadProfile()
                 case .failure(_):
                     self?.isUserAuthenticated = false
                     if let model = self {
                         if !model.showProfile {
-                            model.isLoginSheetPresented = true
+                            DispatchQueue.main.async {
+                                model.isLoginSheetPresented = true
+                            }
                         }
                     } else {
-                        self?.isLoginSheetPresented = true
+                        DispatchQueue.main.async {
+                            self?.isLoginSheetPresented = true
+                        }
                     }
                 }
             }
@@ -70,14 +76,18 @@ public class Model: ObservableObject {
     }
     
     func logout() {
-        loginController.logout()
-        self.isLoginSheetPresented = self.showProfile ? false : true
-        self.isUserAuthenticated = false
-        self.unloadProfile()
+        DispatchQueue.main.async {
+            self.loginController.logout()
+            self.isLoginSheetPresented = self.showProfile ? false : true
+            self.isUserAuthenticated = false
+            self.unloadProfile()
+        }
     }
     
     func unloadProfile() {
-        self.profile = ProfileViewModel()
+        DispatchQueue.main.async {
+            self.profile = ProfileViewModel()
+        }
     }
     
     func loadProfile() {

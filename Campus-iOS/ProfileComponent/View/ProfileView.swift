@@ -142,7 +142,9 @@ struct ProfileView: View {
                             }
                         } else {
                             Button(action: {
-                                model.isLoginSheetPresented = true
+                                DispatchQueue.main.async {
+                                    model.isLoginSheetPresented = true
+                                }
                             }) {
                                 Text("Sign In").foregroundColor(.green)
                             }
