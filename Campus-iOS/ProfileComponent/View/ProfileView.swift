@@ -78,7 +78,7 @@ struct ProfileView: View {
                         if self.model.isUserAuthenticated {
                             Label("Token Permissions", systemImage: "key")
                         } else {
-                            Label("Token Permissions (You're logged out)", systemImage: "key")
+                            Label("Token Permissions (You are logged out)", systemImage: "key")
                         }
                         
                     }.disabled(!self.model.isUserAuthenticated)

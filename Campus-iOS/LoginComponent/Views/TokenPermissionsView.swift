@@ -32,8 +32,8 @@ struct TokenPermissionsView: View {
                     Text("Calendar").padding()
                     Text("Lectures").padding()
                     Text("Grades").padding()
-                    Text("Tuition Fees").padding()
-                    Text("Identification").padding()
+                    Text("Tuition fees").padding()
+                    Text("Identification (TUM ID and name)").padding()
                 }
                 Spacer()
                 VStack {
@@ -129,9 +129,10 @@ struct TokenPermissionsView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showTUMOnline) {
              SFSafariViewWrapper(url: URL(string: "https://www.campus.tum.de")!).edgesIgnoringSafeArea(.bottom)
-         }
+        }
     }
     
     @ViewBuilder

@@ -111,7 +111,7 @@ struct LoginView: View {
                                                 buttonBackgroundColor = .green
                                                 logInState = .loggedIn
                                             }
-                                            print("Loggin Successfull")
+                                            print("Log in Successfull")
                                         case .failure(_):
                                             withAnimation() {
                                                 buttonBackgroundColor = .red
@@ -140,7 +140,7 @@ struct LoginView: View {
                                     .frame(alignment: .center)
                                     .onAppear() {
                                         Task {
-                                            try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                            try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation() {
                                                 logInState = .notChecked
                                                 buttonBackgroundColor = .tumBlue
@@ -150,7 +150,7 @@ struct LoginView: View {
                                 case .loggedIn:
                                     HStack {
                                         Image(systemName: "checkmark.circle.fill")
-                                        Text("Login Successfull")
+                                        Text("Log in Successfull")
                                     }
                                     .lineLimit(1)
                                     .font(.title3)

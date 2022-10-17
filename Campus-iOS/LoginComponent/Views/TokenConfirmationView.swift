@@ -162,7 +162,7 @@ struct TokenConfirmationView: View {
                                 .padding()
                                 .onAppear() {
                                     Task {
-                                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                        try? await Task.sleep(nanoseconds: 1_500_000_000)
                                         withAnimation(.easeInOut) {
                                             tokenState = .notChecked
                                             buttonBackgroundColor = .tumBlue
@@ -225,7 +225,7 @@ struct TokenConfirmationView: View {
                 }
             }
         }
-        .navigationBarTitle("Authorize Token", displayMode: .automatic)
+        .navigationBarTitle("Check Token", displayMode: .automatic)
         .background(Color(.systemBackground))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
