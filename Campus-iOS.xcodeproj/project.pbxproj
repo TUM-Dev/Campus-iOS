@@ -40,6 +40,10 @@
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
+		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
+		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
+		1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E328FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift */; };
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
 		1F4C836228300306006971C0 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836128300306006971C0 /* MapViewModel.swift */; };
 		1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836328300D25006971C0 /* MapViewModel+State.swift */; };
@@ -49,6 +53,8 @@
 		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
+		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
+		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
 		1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
@@ -297,6 +303,10 @@
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
+		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
+		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
+		1F2068E328FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+PermissionType.swift"; sourceTree = "<group>"; };
 		1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGradesViewModel.swift; sourceTree = "<group>"; };
 		1F4C836128300306006971C0 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1F4C836328300D25006971C0 /* MapViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel+State.swift"; sourceTree = "<group>"; };
@@ -304,6 +314,8 @@
 		1F4C926E2882FD84003DC7D7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
+		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
+		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
 		1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentListView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
@@ -1400,6 +1412,7 @@
 			children = (
 				36203E892761C6EC00C24658 /* LoginView.swift */,
 				3698CBEE2761E6CC001C5735 /* TokenConfirmationView.swift */,
+				1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */,
 				36203E882761C6EC00C24658 /* TUMSplashScreen.swift */,
 				4189268728A2EDCE004669AA /* Launch Screen.storyboard */,
 			);
@@ -1410,6 +1423,11 @@
 			isa = PBXGroup;
 			children = (
 				36FAE364277472EF00628799 /* LoginViewModel.swift */,
+				1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */,
+				1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */,
+				1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */,
+				1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */,
+				1F2068E328FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1713,6 +1731,7 @@
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
+				1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
@@ -1764,6 +1783,7 @@
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
+				1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
 				36108BE027A304B5007DC62D /* Dish.swift in Sources */,
 				36108BBB27A3046B007DC62D /* LecturesScreen.swift in Sources */,
@@ -1786,9 +1806,11 @@
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
+				1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
 				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
+				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
@@ -1828,6 +1850,7 @@
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
+				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
 				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
@@ -1843,6 +1866,7 @@
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
+				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,

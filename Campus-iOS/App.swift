@@ -16,6 +16,7 @@ struct CampusApp: App {
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
+    @State var isLoginSheetPresented = false
     
     @AppStorage("didShowAnalyticsOptIn") private var didShowAnalyticsOptIn = false
     
@@ -31,7 +32,7 @@ struct CampusApp: App {
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-                .sheet(isPresented: $model.isLoginSheetPresented) {
+                .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
                             .onAppear {
@@ -40,6 +41,9 @@ struct CampusApp: App {
                     }
                     .navigationViewStyle(.stack)
                 }
+                .onReceive(model.$isLoginSheetPresented, perform: { isLoginSheetPresented in
+                    self.isLoginSheetPresented = isLoginSheetPresented
+                })
                 .sheet(isPresented: !$didShowAnalyticsOptIn,
                        onDismiss: { NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil) }) {
                         AnalyticsOptInView()

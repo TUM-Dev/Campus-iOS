@@ -29,8 +29,13 @@ struct ProfileView: View {
                             .foregroundColor(Color(.secondaryLabel))
                         
                         VStack(alignment: .leading) {
-                            Text(self.model.profile.profile?.fullName ?? "Not logged in")
-                                .font(.title2)
+                            if self.model.isUserAuthenticated {
+                                Text(self.model.profile.profile?.fullName ?? "TUM Student")
+                                    .font(.title2)
+                            } else {
+                                Text("Not logged in")
+                                    .font(.title2)
+                            }
                             
                             Text(self.model.profile.profile?.tumID ?? "TUM ID")
                                 .font(.subheadline)
@@ -68,6 +73,15 @@ struct ProfileView: View {
                     ) {
                         Label("Movies", systemImage: "film")
                     }
+                    
+                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
+                        if self.model.isUserAuthenticated {
+                            Label("Token Permissions", systemImage: "key")
+                        } else {
+                            Label("Token Permissions (You are logged out)", systemImage: "key")
+                        }
+                        
+                    }.disabled(!self.model.isUserAuthenticated)
                 }
                 
                 Section() {
