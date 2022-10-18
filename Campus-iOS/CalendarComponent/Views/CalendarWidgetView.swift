@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CalendarWidgetView: View {
     
-<<<<<<< HEAD
     @StateObject private var viewModel: CalendarViewModel
     @State private var size: WidgetSize
     @State private var showDetails: Bool = false
@@ -27,18 +26,6 @@ struct CalendarWidgetView: View {
     }
     
     var body: some View {
-=======
-    @StateObject var viewModel: CalendarViewModel
-    let size: WidgetSize
-    
-    init(model: Model, size: WidgetSize) {
-        self.size = size
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
-    }
-    
-    var body: some View {
-        
->>>>>>> swiftui
         // Show the events on the earliest date which is not in the past.
         let events = viewModel.eventsByDate
             .filter { Date() <= $0.key ?? Date() }
