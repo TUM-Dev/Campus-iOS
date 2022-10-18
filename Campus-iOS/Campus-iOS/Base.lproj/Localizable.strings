@@ -23,6 +23,7 @@
 "Events" = "Events";
 "No Calendar Events" = "No Calendar Events";
 "Lectures" = "Lectures";
+"Lecture" = "Lecture";
 "No Lectures" = "No Lectures";
 "Grades" = "Grades";
 "No Grades" = "No Grades";
@@ -56,6 +57,7 @@
 "News" = "News";
 "Movies" = "Movies";
 "Profile" = "Profile";
+"Done" = "Done";
 "Places" = "Places";
 "My Widgets" = "My Widgets";
 
@@ -65,27 +67,46 @@
 "Last 3 letters of TUM ID" = "Last 3 letters of TUM ID";
 
 
-// Login.storybroad
-
+// LoginView
 "Welcome to TUM Campus App" = "Welcome to TUM Campus App";
 "Enter your TUM ID to get started" = "Enter your TUM ID to get started";
 "go" = "go";
 "42" = "42";
 "tum" = "tum";
-"Continue 🎓" = "Continue 🎓";
+"Log in 🎓" = "Log in 🎓";
+"Log in Successfull" = "Log in Successfull";
+"Next" = "Next";
 "Continue without TUM ID" = "Continue without TUM ID";
-"Log in on [TUMonline](https://campus.tum.de)" = "Log in on [TUMonline](https://campus.tum.de)";
+
+// TokenConfirmationView
+"Back" = "Back";
+"Log in on " = "Log in on ";
+"TUMOnline" = "TUMOnline";
 "Select **Token-Management**" = "Select **Token-Management**";
 "Activate the newly created token and enable your desired permissions" = "Activate the newly created token and enable your desired permissions";
 "Contact Support" = "Contact Support";
-"Check Authorization" = "Check Authorization";
 "1" = "1";
 "2" = "2";
 "3" = "3";
-"Authorize Token" = "Authorize Token";
 "Are you sure?" = "Are you sure?";
 "Leaving now will invalidate the current token!" = "Leaving now will invalidate the current token!";
 "Leave" = "Leave";
+
+"Open TUMOnline" = "Open TUMOnline";
+"Check Token" = "Check Token";
+"Token inactive" = "Token inactive";
+"Please activate the latest token on TUMOnline" = "Please activate the latest token on TUMOnline";
+"Token active" = "Token active";
+
+// TokenPermissionsView
+"You can change your permissions on TUMOnline" = "You can change your permissions on TUMOnline";
+"Identification (TUM ID and name)" = "Identification (TUM ID and name)";
+"Check Permissions" = "Check Permissions";
+
+// ProfileView
+"Token Permissions" = "Token Permissions";
+"Token Permissions (You are logged out)" = "Token Permissions (You are logged out)";
+"Calendar days in week mode" = "Calendar days in week mode";
 
 // CalendarView
 "Day" = "Day";
@@ -146,17 +167,17 @@
 "Occupied until" = "Occupied until";
 "Unknown" = "Unknown";
 
-//Roomfinder
+// Roomfinder
 "Roomfinder" = "Roomfinder";
 "Building" = "Building";
 "Room" = "Room";
 "Detail" = "Detail";
 "Obergeschoß" = "Obergeschoß";
 
-//Map
+// Map
 "Search ..." = "Search ...";
 
-//Movies
+// Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";
 
 // Error handeling

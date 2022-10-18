@@ -21,8 +21,11 @@ struct PanelContentView: View {
     // shows for the first time. Setting this variable to true in .task and then checking it
     // in .onDisappear mitigates the issue.
     @State private var panelContentDidAppear = false
+<<<<<<< HEAD
     
     @State var panelHeight: CGFloat = 0.0
+=======
+>>>>>>> swiftui
     
     private let handleThickness = CGFloat(0)
     let dragAreaHeight = PanelHeight.top * 0.04
@@ -111,8 +114,22 @@ struct PanelContentView: View {
                                 print(c.coordinate)
                             }
                         }
+<<<<<<< HEAD
                 
                         Spacer().frame(width: 0.25 * UIScreen.main.bounds.width/10, height: 50)
+=======
+                    }
+                    .frame(width: 100)
+                    .onChange(of: vm.mode) { newMode in
+                        if newMode == .cafeterias {
+                            studyRoomsData.didExitView()
+                            cafeteriasData.visitView(view: .cafeterias)
+                        } else if newMode == .studyRooms {
+                            cafeteriasData.didExitView()
+                            studyRoomsData.visitView(view: .studyRooms)
+                        }
+                        vm.setAnnotations = true
+>>>>>>> swiftui
                     }
                     
                     Spacer()
@@ -139,6 +156,7 @@ struct PanelContentView: View {
                             }
                         }
                 }
+<<<<<<< HEAD
             }
             .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
                 if let cafeteria = optionalCafeteria {
@@ -161,6 +179,32 @@ struct PanelContentView: View {
                 .frame(height: dragAreaHeight, alignment: .top)
                 .gesture(panelDragGesture)
                 Spacer().frame(height: min(max((panelHeight) - dragAreaHeight, 0), PanelPos.top.rawValue))
+=======
+                
+                Spacer()
+                
+                PanelContentListView(vm: self.vm, searchString: $searchString)
+                    .task {
+                        
+                        panelContentDidAppear = true
+
+                        if currentView() == .cafeterias {
+                            cafeteriasData.visitView(view: .cafeterias)
+                        } else if currentView() == .studyRooms {
+                            studyRoomsData.visitView(view: .studyRooms)
+                        }
+                    }
+                    .onDisappear {
+                        
+                        if !panelContentDidAppear { return }
+                        
+                        if currentView() == .cafeterias {
+                            cafeteriasData.didExitView()
+                        } else if currentView() == .studyRooms {
+                            studyRoomsData.didExitView()
+                        }
+                    }
+>>>>>>> swiftui
             }
         }
     }
@@ -172,6 +216,7 @@ struct PanelContentView: View {
         }
     }
     
+<<<<<<< HEAD
     var panelDragGesture: some Gesture {
         DragGesture()
             .onChanged { value in
@@ -194,6 +239,13 @@ struct PanelContentView: View {
     
     func closestMatch(values: [PanelPos], inputValue: CGFloat) -> PanelPos {
         return (values.reduce(values[0]) { abs($0.rawValue-inputValue) < abs($1.rawValue-inputValue) ? $0 : $1 })
+=======
+    private func currentView() -> CampusAppView {
+        switch self.vm.mode {
+        case MapMode.studyRooms: return .studyRooms
+        case MapMode.cafeterias: return .cafeterias
+        }
+>>>>>>> swiftui
     }
 }
 

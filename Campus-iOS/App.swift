@@ -16,7 +16,8 @@ struct CampusApp: App {
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
-        
+    @State var isLoginSheetPresented = false
+
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -29,7 +30,7 @@ struct CampusApp: App {
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-                .sheet(isPresented: $model.isLoginSheetPresented) {
+                .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
                             .onAppear {
@@ -38,8 +39,11 @@ struct CampusApp: App {
                     }
                     .navigationViewStyle(.stack)
                 }
-                    .environmentObject(model)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onReceive(model.$isLoginSheetPresented, perform: { isLoginSheetPresented in
+                    self.isLoginSheetPresented = isLoginSheetPresented
+                })
+                .environmentObject(model)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
     

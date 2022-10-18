@@ -61,27 +61,46 @@
 "Places" = "Orte";
 "My Widgets" = "Meine Widgets";
 
-// Login.storybroad
-
+// LoginView
 "Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";
 "Enter your TUM ID to get started" = "Gib deine TUM ID ein";
 "go" = "go";
 "42" = "42";
 "tum" = "tum";
-"Continue 🎓" = "Weiter 🎓";
+"Log in 🎓" = "Einloggen 🎓";
+"Log in Successfull" = "Eingeloggt";
+"Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
-"Log in on [TUMonline](https://campus.tum.de)" = "Melde dich auf [TUMonline](https://campus.tum.de) an";
+
+// TokenConfirmationView
+"Back" = "Zurück";
+"Log in on " = "Melde dich auf ";
+"TUMOnline" = "TUMOnline an";
 "Select **Token-Management**" = "Gehe auf **Token Verwaltung**";
 "Activate the newly created token and enable your desired permissions" = "Aktiviere den Token und stelle die benötigten Rechte ein";
 "Contact Support" = "Support kontaktieren";
-"Check Authorization" = "Token prüfen";
 "1" = "1";
 "2" = "2";
 "3" = "3";
-"Authorize Token" = "Token authorisieren";
 "Are you sure?" = "Sicher?";
 "Leaving now will invalidate the current token!" = "Wenn du jetzt die Seite verlässt wird der aktuelle Token ungültig!";
 "Leave" = "Verlassen";
+
+"Open TUMOnline" = "Öffne TUMOnline";
+"Check Token" = "Token überprüfen";
+"Token inactive" = "Token inaktiv";
+"Please activate the latest token on TUMOnline" = "Bitte aktiviere den neusten Token auf TUMOnline";
+"Token active" = "Token aktiv";
+
+// TokenPermissionsView
+"You can change your permissions on TUMOnline" = "Du kannst deine Rechte auf TUMOnline anpassen";
+"Identification (TUM ID and name)" = "Identifikation (TUM ID und Name)";
+"Check Permissions" = "Rechte überprüfen";
+
+// ProfileView
+"Token Permissions" = "Token Rechte";
+"Token Permissions (You are logged out)" = "Token Rechte (Du bist ausgeloggt)";
+"Calendar days in week mode" = "Anzahl Kalendertage je Woche";
 
 // CalendarView
 "Day" = "Tag";
@@ -142,17 +161,17 @@
 "Occupied until" = "Besetzt bis";
 "Unknown" = "Unbekannt";
 
-//Roomfinder
+// Roomfinder
 "Roomfinder" = "Raum Finder";
 "Building" = "Gebäude";
 "Room" = "Raum";
 "Detail" = "Detail";
 "Floor" = "Obergeschoß";
 
-//Map
+// Map
 "Search ..." = "Suchen ...";
 
-//Movies
+// Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";
 
 // Error handeling
@@ -170,10 +189,17 @@
 
 // Analytics Opt-In
 "🚀 Support my Bachelor's Thesis" = "🚀 Unterstütze meine Bachelorarbeit";
+<<<<<<< HEAD
 "Learn more" = "Mehr erfahren";
 "If you let us temporarily store some anonymized usage data, we can make your TUM Campus App experience even better." = "Wenn du uns einige anonymisierte Nutzungsdaten temporär speichern lässt, können wir dein Erlebnis in der TUM Campus App noch weiter verbessern.";
 "Read more" = "Weiterlesen";
 "Please allow location access while using the app for this to work." = "Bitte erlaube Standortzugriff, während die App verwendet wird, damit dies funktioniert.";
+=======
+"If you let us temporarily store some anonymized usage data, we can make your TUM Campus App experience even better." = "Wenn Du uns einige anonymisierte Nutzungsdaten temporär speichern lässt, können wir Dein Erlebnis in der TUM Campus App noch besser machen.";
+"Read more" = "Weiterlesen";
+"Please allow location access while using the app for this to work." = "Bitte erlaube Standortzugriff, während die App verwendet wird, damit dies funktioniert.";
+"Learn more" = "Mehr erfahren";
+>>>>>>> swiftui
 "For some selected views, we would like to collect" = "Für einige ausgewählte Bereiche in der App möchten wir folgende Daten erfassen:";
 "The View" = "Die Ansicht";
 "The view you are looking at. We cannot see any of the content. For example, we can store that you are viewing the Grades screen, but we can never see your grades." = "Welche App-Seite du dir ansiehst. Wir können keine Inhalte sehen. Zum Beispiel können wir speichern, dass du gerade die Notenansicht siehst, aber wir können keine deiner Noten sehen.";

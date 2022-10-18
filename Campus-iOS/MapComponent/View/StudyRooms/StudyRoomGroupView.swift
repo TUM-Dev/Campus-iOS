@@ -174,6 +174,9 @@ struct StudyRoomGroupView: View {
                 withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {
                     snapPanel(from: panelHeight)
                 }
+                
+            } else {
+                Text("No Study Room Data available")
             }
     }
     
