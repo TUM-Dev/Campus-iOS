@@ -44,7 +44,6 @@ struct GradesScreen: View {
             }
         }
         .task {
-            data.visitView(view: .grades)
             await vm.getGrades()
         }
         // Refresh whenever user authentication status changes
