@@ -54,7 +54,8 @@ class CalendarViewModel: ObservableObject {
     }
     
     var eventsByDate: [Date? : [CalendarEvent]] {
-        let dictionary = Dictionary(grouping: events, by: { $0.startDate })
+        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+        let dictionary = Dictionary(grouping: sortedEvents, by: { $0.startDate?.removeTimeStamp })
         return dictionary
     }
 }
@@ -66,4 +67,13 @@ extension CalendarViewModel {
         case success(data: [CalendarEvent]?)
         case failed(error: Error)
     }
+}
+
+extension Date {
+    public var removeTimeStamp : Date? {
+       guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+        return nil
+       }
+       return date
+   }
 }
