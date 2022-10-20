@@ -56,7 +56,7 @@ struct CampusApp: App {
                 )
                 .navigationTitle("Calendar")
             }
-            .tag(0)
+            .tag(4)
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
@@ -83,6 +83,21 @@ struct CampusApp: App {
             })
             
             NavigationView {
+                WidgetScreen(model: model)
+                    //.navigationTitle("My Widgets")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(model: model)
+                        }
+                    }
+            }
+            .navigationViewStyle(.stack)
+            .tag(0)
+            .tabItem {
+                Label("My Widgets", systemImage: "rectangle.3.group")
+            }
+            
+            NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
@@ -98,7 +113,7 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-
+                
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
@@ -107,21 +122,6 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
-            
-            NavigationView {
-                WidgetScreen(model: model)
-                    .navigationTitle("My Widgets")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
-            }
-            .navigationViewStyle(.stack)
-            .tag(4)
-            .tabItem {
-                Label("My Widgets", systemImage: "rectangle.3.group.fill")
-            }
         }
     }
 }
