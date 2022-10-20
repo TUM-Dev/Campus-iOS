@@ -32,7 +32,7 @@ struct MealPlanView: View {
                                                     .fontWeight(.semibold).fixedSize()
                                                     .foregroundColor(menu === viewModel.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
                                             )
-                                            .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 35)
+                                            .frame(maxWidth: UIScreen.main.bounds.width, minHeight: 35, maxHeight: 35)
 
                                         Text(getFormattedDate(date: menu.date, format: "EEE"))
                                             .foregroundColor(Color(UIColor.label))
@@ -44,7 +44,7 @@ struct MealPlanView: View {
                     
                         if let menu = viewModel.selectedMenu {
                             MenuView(viewModel: menu)
-                        }else{
+                        } else {
                             Spacer().frame(height: 20)
                             Text("No Menu available today").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                         }
@@ -56,7 +56,6 @@ struct MealPlanView: View {
             .navigationTitle(viewModel.title)
             Spacer(minLength: 0.0)
         }
-        
     }
     
     func getFormattedDate(date: Date, format: String) -> String{
@@ -68,9 +67,7 @@ struct MealPlanView: View {
 
 struct MealPlanView_Previews: PreviewProvider {
     static var previews: some View {
-        MealPlanView(viewModel: MealPlanViewModel(cafeteria: Cafeteria(location: Location(latitude: 0.0,
-                                                                                          longitude: 0.0,
-                                                                                          address: ""),
+        MealPlanView(viewModel: MealPlanViewModel(cafeteria: Cafeteria(location: Location(latitude: 0.0, longitude: 0.0, address: ""),
                                                                        name: "",
                                                                        id: "",
                                                                        queueStatusApi: "")))

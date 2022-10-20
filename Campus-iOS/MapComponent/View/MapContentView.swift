@@ -78,7 +78,7 @@ struct MapContentView: UIViewRepresentable {
             }
         }
         
-        let newCenter = screenHeight/3
+        let newCenter = screenHeight/3.1
         
         if vm.panelPos == .middle {
             view.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: newCenter, right: 0)

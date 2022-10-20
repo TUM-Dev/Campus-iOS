@@ -9,16 +9,27 @@ import SwiftUI
 
 struct TuitionWidgetView: View {
     
-    let size: TuitionWidgetSize
+    @State private var size: WidgetSize
+    private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
+    
+    init(size: TuitionWidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self._size = State(initialValue: size.value)
+        self.initialSize = size.value
+        self._refresh = refresh
+    }
     
     var body: some View {
-        WidgetFrameView(size: size.value, content: TuitionWidgetContent(size: size))
+        WidgetFrameView(size: size, content: TuitionWidgetContent(size: size, refresh: $refresh))
+            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
     }
 }
 
 struct TuitionWidgetContent: View {
     @StateObject var viewModel = ProfileViewModel()
-    let size: TuitionWidgetSize
+    let size: WidgetSize
+    @Binding var refresh: Bool
     
     var body: some View {
         Group {
@@ -36,6 +47,9 @@ struct TuitionWidgetContent: View {
             } else {
                 WidgetLoadingView(text: "Loading tuition fee")
             }
+        }
+        .onChange(of: refresh) { _ in
+            viewModel.fetch()
         }
         .task {
             viewModel.fetch()

@@ -17,9 +17,7 @@ struct CampusApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var isLoginSheetPresented = false
-    
-    @AppStorage("didShowAnalyticsOptIn") private var didShowAnalyticsOptIn = false
-    
+
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -44,15 +42,8 @@ struct CampusApp: App {
                 .onReceive(model.$isLoginSheetPresented, perform: { isLoginSheetPresented in
                     self.isLoginSheetPresented = isLoginSheetPresented
                 })
-                .sheet(isPresented: !$didShowAnalyticsOptIn,
-                       onDismiss: { NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameInactiveNotification, object: nil) }) {
-                        AnalyticsOptInView()
-                            .task {
-                                NotificationCenter.default.post(name: Notification.Name.tcaSheetBecameActiveNotification, object: nil)
-                            }
-                    }
-                    .environmentObject(model)
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(model)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
     
@@ -65,7 +56,7 @@ struct CampusApp: App {
                 )
                 .navigationTitle("Calendar")
             }
-            .tag(0)
+            .tag(4)
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
@@ -92,6 +83,21 @@ struct CampusApp: App {
             })
             
             NavigationView {
+                WidgetScreen(model: model)
+                    //.navigationTitle("My Widgets")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .navigationBarTrailing) {
+                            ProfileToolbar(model: model)
+                        }
+                    }
+            }
+            .navigationViewStyle(.stack)
+            .tag(0)
+            .tabItem {
+                Label("My Widgets", systemImage: "rectangle.3.group")
+            }
+            
+            NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
@@ -107,7 +113,7 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-
+                
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }

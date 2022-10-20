@@ -19,19 +19,7 @@ struct AnalyticsController {
         }
     }
     
-    static func getEntries() throws -> [AppUsageDataEntity] {
-        let request = AppUsageDataEntity.fetchRequest()
-        guard let data = try? PersistenceController.shared.container.viewContext.fetch(request) else {
-            throw AnalyticsError.fetchFailed
-        }
-        
-        return data
-    }
-    
     static func upload(entry: AppUsageData) async throws {
-        
-        print("Info: app usage data upload is disabled.")
-        return
         
         if !didOptIn {
             return
@@ -56,8 +44,8 @@ struct AnalyticsController {
             return
         }
         
-        let latitude = entry.getLatitude() ?? AppUsageData.invalidLocation.coordinate.latitude
-        let longitude = entry.getLongitude() ?? AppUsageData.invalidLocation.coordinate.longitude
+        let latitude = entry.getLatitude() ?? AppUsageData.invalidLocation
+        let longitude = entry.getLongitude() ?? AppUsageData.invalidLocation
         
         let hashedId = HashFunction.sha256(deviceIdentifier)
         let formatter = DateFormatter()

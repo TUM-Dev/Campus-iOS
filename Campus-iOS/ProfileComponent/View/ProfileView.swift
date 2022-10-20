@@ -125,12 +125,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                Section("ANALYTICS") {
-                    NavigationLink(destination: AnalyticsOptInView(showMore: true)) {
-                        Label("Learn more", systemImage: "info.circle")
-                    }
-                }
-                
                 Section() {
                     HStack(alignment: .bottom) {
                         Spacer()

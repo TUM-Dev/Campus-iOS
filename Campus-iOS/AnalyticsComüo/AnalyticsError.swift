@@ -8,5 +8,5 @@
 import Foundation
 
 enum AnalyticsError: Error {
-    case missingValues, fetchFailed
+    case missingValues
 }

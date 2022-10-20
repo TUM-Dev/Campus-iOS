@@ -14,24 +14,33 @@ struct LocationStrategy: WidgetRecommenderStrategy {
     private let CLOSE_DISTANCE: CLLocationDistance = 1000
     private let VERY_CLOSE_DISTANCE: CLLocationDistance = 250
     
-    func getRecommendation() async -> [WidgetRecommendation] {
+    private let locationManager = CLLocationManager()
+    
+    func getRecommendation() async throws -> [WidgetRecommendation] {
         
+        let authorization = locationManager.authorizationStatus
+        if authorization != .authorizedWhenInUse || authorization != .authorizedAlways {
+            locationManager.requestWhenInUseAuthorization()
+        }
         
         var recommendations: [WidgetRecommendation] = []
         for widget in Widget.allCases {
-            let recommendation = WidgetRecommendation(widget: widget, priority: await priority(of: widget))
+            guard let priority = try? await priority(of: widget) else {
+                continue
+            }
+            let recommendation = WidgetRecommendation(widget: widget, priority: priority)
             recommendations.append(recommendation)
         }
         
         return recommendations.filter { $0.priority > 0 }
     }
     
-    private func priority(of widget: Widget) async -> Int {
+    private func priority(of widget: Widget) async throws -> Int {
         
         var priority: Int = 0
         
-        guard let location = CLLocationManager().location else {
-            return 0
+        guard let location = locationManager.location else {
+            throw RecommenderError.missingPermissions
         }
         
         switch widget {

@@ -19,9 +19,16 @@ class StudyRoomWidgetViewModel: ObservableObject {
     private let studyRoomService: StudyRoomsServiceProtocol
     private let sessionManager = Session.defaultSession
     
+    private let locationManager = CLLocationManager()
+    
     init(studyRoomService: StudyRoomsServiceProtocol) {
         self.status = .loading
         self.studyRoomService = studyRoomService
+        
+        let authorization = locationManager.authorizationStatus
+        if authorization != .authorizedWhenInUse || authorization != .authorizedAlways {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     func fetch() async {

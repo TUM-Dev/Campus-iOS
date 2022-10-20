@@ -11,7 +11,6 @@ import SwiftUICharts
 struct GradesScreen: View {
     @StateObject var vm: GradesViewModel
     @Binding var refresh: Bool
-    @State private var data = AppUsageData()
 
     init(model: Model, refresh: Binding<Bool>) {
         self._vm = StateObject(wrappedValue:
@@ -45,13 +44,8 @@ struct GradesScreen: View {
             }
         }
         .task {
-            data.visitView(view: .grades)
             await vm.getGrades()
         }
-        .onDisappear {
-            data.didExitView()
-        }
-
         // Refresh whenever user authentication status changes
         .onChange(of: self.refresh) { _ in
             Task {

@@ -10,6 +10,7 @@ import SwiftUICharts
 
 struct GradesView: View {
     @StateObject var vm: GradesViewModel
+    @State private var data = AppUsageData()
     
     var body: some View {
         List {
@@ -59,6 +60,12 @@ struct GradesView: View {
                 }
                 .listRowSeparator(.hidden)
             }
+        }
+        .task {
+            data.visitView(view: .grades)
+        }
+        .onDisappear {
+            data.didExitView()
         }
     }
 }

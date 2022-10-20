@@ -14,14 +14,22 @@ class CafeteriaWidgetViewModel: ObservableObject {
     
     @Published var cafeteria: Cafeteria?
     @Published var menuViewModel: MenuViewModel?
+    @Published var mealPlanViewModel: MealPlanViewModel?
     @Published var status: CafeteriaWidgetStatus
     
     private let cafeteriaService: CafeteriasServiceProtocol
     private let sessionManager = Session.defaultSession
     
+    private let locationManager = CLLocationManager()
+    
     init(cafeteriaService: CafeteriasServiceProtocol) {
         self.status = .loading
         self.cafeteriaService = cafeteriaService
+        
+        let authorization = locationManager.authorizationStatus
+        if authorization != .authorizedWhenInUse || authorization != .authorizedAlways {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     func fetch() async {
@@ -54,13 +62,14 @@ class CafeteriaWidgetViewModel: ObservableObject {
                     return
                 }
                 
-                guard let todaysPlan = mealPlan.days.first(where: { $0.date.day == Date().day }) else {
+                guard let todaysPlan = mealPlan.days.first(where: { $0.date.isToday }) else {
                     self.status = .noMenu
                     return
                 }
                 
                 let categories = MealPlanViewModel.categories(from: todaysPlan.dishes)
                 self.menuViewModel = MenuViewModel(date: todaysPlan.date, categories: categories)
+                self.mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
                 self.status = .success
             }
         } catch {

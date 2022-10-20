@@ -10,11 +10,17 @@ import SwiftUI
 struct GradeWidgetView: View {
     
     @StateObject var viewModel: GradesViewModel
-    var size: WidgetSize
+    @State private var size: WidgetSize
+    @State private var showDetails = false
+    private let initialSize: WidgetSize
+    @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize) {
+    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
         self.size = size
+        self.initialSize = size
+        self._refresh = refresh
     }
     
     var content: some View {
@@ -33,6 +39,10 @@ struct GradeWidgetView: View {
                 TextWidgetView(text: "There was an error fetching the grades.")
             }
         }
+        .onChange(of: refresh) { _ in
+            if showDetails { return }
+            Task { await viewModel.getGrades() }
+        }
         .task {
             await viewModel.getGrades()
         }
@@ -40,6 +50,13 @@ struct GradeWidgetView: View {
     
     var body: some View {
         WidgetFrameView(size: size, content: content)
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                GradesView(vm: viewModel)
+            }
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 
@@ -48,20 +65,35 @@ struct SimpleGradeWidgetContent: View {
     @Environment(\.colorScheme) var colorScheme
     let grade: Grade?
     
+    var gradeView: some View {
+        Rectangle()
+            .foregroundColor(.clear)
+            .frame(maxHeight: .infinity)
+            .overlay {
+                if let grade, let gradeString = grade.grade {
+                    GeometryReader { g in
+                        Text(gradeString.isEmpty ? "tbd" : gradeString)
+                            .bold()
+                            .font(.system(size: g.size.height * 0.75))
+                            .foregroundColor(GradesViewModel.GradeColor.color(for: grade))
+                            .if(colorScheme == .light) { view in
+                                view.shadow(radius: 1.5)
+                            }
+                    }
+                }
+            }
+    }
+    
     var body: some View {
         Rectangle()
             .foregroundColor(.widget)
             .overlay {
                 if let grade = grade {
                     VStack(alignment: .leading) {
-                        Text(grade.grade)
-                            .bold()
-                            .font(.system(size: 45))
-                            .foregroundColor(GradesViewModel.GradeColor.color(for: grade))
-                            .if(colorScheme == .light) { view in
-                                view.shadow(radius: 1.5)
-                            }
-                            .padding(.bottom, 4)
+                        
+                        gradeView
+                        
+                        Spacer()
                         
                         HStack {
                             Image(systemName: "pencil")
@@ -164,7 +196,7 @@ struct GradeSquareView: View {
             .frame(width: 40, height: 40)
             .cornerRadius(4)
             .overlay {
-                Text(grade.grade)
+                Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                     .bold()
                     .foregroundColor(.white)
                     .glowBorder(color: .gray, lineWidth: 1)

@@ -12,7 +12,17 @@ struct CafeteriaWidgetView: View {
     
     @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
     
-    let size: WidgetSize
+    @State private var size: WidgetSize
+    private let initialSize: WidgetSize
+    @State private var showDetails = false
+    @State private var scale: CGFloat = 1
+    @Binding var refresh: Bool
+    
+    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self._size = State(initialValue: size)
+        self.initialSize = size
+        self._refresh = refresh
+    }
     
     var content: some View {
         Group {
@@ -36,13 +46,35 @@ struct CafeteriaWidgetView: View {
                 }
             }
         }
+        .onChange(of: refresh) { _ in
+            if showDetails { return }
+            Task { await viewModel.fetch() }
+        }
         .task {
             await viewModel.fetch()
         }
     }
     
     var body: some View {
-        WidgetFrameView(size: size,content: content)
+        WidgetFrameView(size: size, content: content)
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                VStack {
+                    if let cafeteria = viewModel.cafeteria, let mealVm = viewModel.mealPlanViewModel {
+                        CafeteriaView(
+                            vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                            selectedCanteen: .constant(cafeteria),
+                            canDismiss: false
+                        )
+                        MealPlanView(viewModel: mealVm)
+                    } else {
+                        ProgressView()
+                    }
+                }
+            }
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 
@@ -75,7 +107,7 @@ struct CafeteriaWidgetContent: View {
     
     var body: some View {
         
-        WidgetMapBackgroundView(coordinate: coordinate)
+        WidgetMapBackgroundView(coordinate: coordinate, size: size)
             .overlay {
                 content
             }

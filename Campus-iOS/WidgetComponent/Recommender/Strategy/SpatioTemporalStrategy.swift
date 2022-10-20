@@ -9,12 +9,12 @@ import Foundation
 
 struct SpatioTemporalStrategy: WidgetRecommenderStrategy {
     
-    func getRecommendation() async -> [WidgetRecommendation] {
+    func getRecommendation() async throws -> [WidgetRecommendation] {
         let timeStrategy = TimeStrategy()
         let locationStrategy = LocationStrategy()
         
-        let timeRecommendations = await timeStrategy.getRecommendation()
-        let locationRecommendations = await locationStrategy.getRecommendation()
+        let timeRecommendations = try await timeStrategy.getRecommendation()
+        let locationRecommendations = try await locationStrategy.getRecommendation()
         
         let recommendations = Widget.allCases.map {
             WidgetRecommendation(

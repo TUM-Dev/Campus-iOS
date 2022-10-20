@@ -22,7 +22,7 @@ extension AppUsageDataEntity {
         self.view = view
         self.startTime = startTime
         self.endTime = endTime
-        self.latitude = data.getLatitude() ?? AppUsageData.invalidLocation.coordinate.latitude
-        self.longitude = data.getLongitude() ?? AppUsageData.invalidLocation.coordinate.longitude
+        self.latitude = data.getLatitude() ?? AppUsageData.invalidLocation
+        self.longitude = data.getLongitude() ?? AppUsageData.invalidLocation
     }
 }
