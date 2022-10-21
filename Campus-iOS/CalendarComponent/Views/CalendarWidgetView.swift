@@ -26,22 +26,11 @@ struct CalendarWidgetView: View {
     }
     
     var body: some View {
-        // Show the events on the earliest date which is not in the past.
-        let events = viewModel.eventsByDate
-            .filter { Date() <= $0.key ?? Date() }
-            .min { $0.key ?? Date() < $1.key ?? Date() }?.value ?? []
-        
         WidgetFrameView(
             size: size,
             content: CalendarWidgetContent(
                 size: size,
-                events: events.compactMap { event in
-                    guard let end = event.endDate,
-                          end > Date() else {
-                        return nil
-                    }
-                    return event
-                }
+                events: viewModel.upcomingEvents
             )
         )
         .onChange(of: refresh) { _ in

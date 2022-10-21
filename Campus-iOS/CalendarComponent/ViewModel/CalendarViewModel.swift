@@ -11,7 +11,7 @@ import XMLCoder
 class CalendarViewModel: ObservableObject {
     typealias ImporterType = Importer<CalendarEvent, CalendarAPIResponse, XMLDecoder>
     private static let endpoint = TUMOnlineAPI.calendar
-
+    
     @Published var events: [CalendarEvent] = []
     
     let model: Model
@@ -43,8 +43,25 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    var eventsByDate: [Date? : [CalendarEvent]] {
-        let dictionary = Dictionary(grouping: events, by: { $0.startDate })
-        return dictionary
+    var upcomingEvents: [CalendarEvent] {
+        
+        let now = Date()
+
+        let futureEvents: [CalendarEvent] = self.events
+            .compactMap { event in
+                guard let _ = event.startDate, let endDate = event.endDate, now <= endDate else { return nil }
+                return event
+            }
+                
+        let groupedEvents: Dictionary<Date, [CalendarEvent]> = Dictionary(grouping: futureEvents) { event -> Date in
+            let components = Calendar.current.dateComponents([.day, .month, .year], from: event.startDate!)
+            let date = Calendar.current.date(from: components)!
+            
+            return date
+        }
+
+        let upcomingEvents = groupedEvents.min { $0.key < $1.key }?.value ?? []
+        
+        return upcomingEvents.sorted{ $0.startDate! < $1.startDate! }
     }
 }
