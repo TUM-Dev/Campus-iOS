@@ -14,6 +14,10 @@ protocol GradesViewModelProtocol: ObservableObject {
 
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
+    
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: []) var gradesCD: FetchedResults<GradeCD>
+    
     @Published var state: State = .na
     @Published var hasError: Bool = false
     

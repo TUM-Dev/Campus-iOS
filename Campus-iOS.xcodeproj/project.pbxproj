@@ -46,6 +46,10 @@
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		1F0DF5812906C86600EF3E58 /* GradeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF57F2906C86600EF3E58 /* GradeSet.swift */; };
+		1F0DF5822906C86600EF3E58 /* GradeCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5802906C86600EF3E58 /* GradeCD.swift */; };
+		1F0DF5862906CC4100EF3E58 /* GradesCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */; };
+		1F0DF5882906CE6900EF3E58 /* GradesCDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5872906CE6900EF3E58 /* GradesCDViewModel.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
 		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
@@ -315,6 +319,10 @@
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1F0DF57F2906C86600EF3E58 /* GradeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSet.swift; sourceTree = "<group>"; };
+		1F0DF5802906C86600EF3E58 /* GradeCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCD.swift; sourceTree = "<group>"; };
+		1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCDView.swift; sourceTree = "<group>"; };
+		1F0DF5872906CE6900EF3E58 /* GradesCDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCDViewModel.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
 		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
@@ -855,6 +863,7 @@
 				36108C0727A307F9007DC62D /* GradesViewModel+ChartData.swift */,
 				36108C0827A307F9007DC62D /* GradesViewModel+State.swift */,
 				1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */,
+				1F0DF5872906CE6900EF3E58 /* GradesCDViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -873,6 +882,8 @@
 				36108C0C27A307F9007DC62D /* Grade.swift */,
 				36108C0D27A307F9007DC62D /* Modus.swift */,
 				97F8A79227E641570099EE83 /* AcademicDegree.swift */,
+				1F0DF5802906C86600EF3E58 /* GradeCD.swift */,
+				1F0DF57F2906C86600EF3E58 /* GradeSet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -893,6 +904,7 @@
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
 				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
 				08573BA6287B6152006AC06F /* GradeWidgetView.swift */,
+				1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1691,6 +1703,7 @@
 			files = (
 				36BB6F6227AFCDFA00F224AB /* PersonSearchView.swift in Sources */,
 				97270F5A27AB2A4900BB25E4 /* Array+Rearrange.swift in Sources */,
+				1F0DF5882906CE6900EF3E58 /* GradesCDViewModel.swift in Sources */,
 				3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */,
 				2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */,
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
@@ -1707,6 +1720,7 @@
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
 				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
 				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
+				1F0DF5822906C86600EF3E58 /* GradeCD.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
@@ -1802,6 +1816,7 @@
 				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
+				1F0DF5862906CC4100EF3E58 /* GradesCDView.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
@@ -1851,6 +1866,7 @@
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
 				08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */,
+				1F0DF5812906C86600EF3E58 /* GradeSet.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,

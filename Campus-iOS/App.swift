@@ -122,6 +122,15 @@ struct CampusApp: App {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
             .navigationViewStyle(.stack)
+            
+            NavigationView {
+                GradesCDView(model: model)
+            }
+            .tag(5)
+            .tabItem {
+                Label("GradesCD", systemImage: "bolt.shield.fill")
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }
