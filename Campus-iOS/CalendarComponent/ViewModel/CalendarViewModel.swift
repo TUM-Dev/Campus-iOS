@@ -55,7 +55,8 @@ class CalendarViewModel: ObservableObject {
     
     var eventsByDate: [Date? : [CalendarEvent]] {
         let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
-        let dictionary = Dictionary(grouping: sortedEvents, by: { $0.startDate?.removeTimeStamp })
+        let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+        let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
         return dictionary
     }
 }
