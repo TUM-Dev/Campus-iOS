@@ -94,7 +94,7 @@ struct CampusApp: App {
             .navigationViewStyle(.stack)
             .tag(0)
             .tabItem {
-                Label("My Widgets", systemImage: "rectangle.3.group")
+                Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
             }
             
             NavigationView {
@@ -108,7 +108,7 @@ struct CampusApp: App {
             }
             .tag(2)
             .tabItem {
-                Label("Grades", systemImage: "checkmark.shield")
+                Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
             }
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
