@@ -10,7 +10,7 @@ import SwiftUICharts
 
 extension GradesViewModel {
     var barChartData: [BarChartData] {
-        guard case .success(let data) = self.state else {
+        guard case .success = self.state else {
             return [
                 .init(
                     dataSets: .init(dataPoints: [])
@@ -18,21 +18,29 @@ extension GradesViewModel {
             ]
         }
         
-        let accumulatedGradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
-                let studyID = String(grade.studyID)
+        let accumulatedGradesByDegree = grades.reduce(into: [String: [Grade]]()) { partialResult, grade in
+                guard let studyID = grade.studyID else {
+                    return
+                }
                 
-                if partialResult[studyID] == nil {
-                    partialResult[studyID] = [grade]
+                let studyIDString = String(studyID)
+                
+                if partialResult[studyIDString] == nil {
+                    partialResult[studyIDString] = [grade]
                 } else {
-                    partialResult[studyID]?.append(grade)
+                    partialResult[studyIDString]?.append(grade)
                 }
             }
             .mapValues { grades -> [(String, Double)] in
                 var accumulatedGrades = grades.reduce(into: [String: Double]()) { partialResult, grade in
-                    if partialResult[grade.grade] == nil {
-                        partialResult[grade.grade] = 0
+                    guard let gradeString = grade.grade else {
+                        return
                     }
-                    partialResult[grade.grade]! += 1
+                    
+                    if partialResult[gradeString] == nil {
+                        partialResult[gradeString] = 0
+                    }
+                    partialResult[gradeString]! += 1
                 }
                 .compactMap { key, value in
                     (key, value)

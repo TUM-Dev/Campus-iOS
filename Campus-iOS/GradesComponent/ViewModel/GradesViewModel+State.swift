@@ -11,7 +11,8 @@ extension GradesViewModel {
     enum State {
         case na
         case loading
-        case success(data: [Grade])
+        //Add managedObejctContext to the decoder, i.e. rewrite the fetch-function
+        case success
         case failed(error: Error)
     }
 }

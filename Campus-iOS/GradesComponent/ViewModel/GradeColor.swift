@@ -27,8 +27,12 @@ extension GradesViewModel {
             }
         }
         
-        static func color(for grade: Grade) -> Color {
-            return color(for: Double(grade.grade.replacingOccurrences(of: ",", with: ".")))
+        static func color(for grade: Grade) -> Color? {
+            guard let gradeString = grade.grade else {
+                return nil
+            }
+            
+            return color(for: Double(gradeString.replacingOccurrences(of: ",", with: ".")))
         }
     }
 }
