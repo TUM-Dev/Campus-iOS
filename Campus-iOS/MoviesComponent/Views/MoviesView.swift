@@ -21,9 +21,9 @@ struct MoviesView: View {
             Text("No more movies this semester 😢\nGet excited for the next season!")
                 .foregroundColor(Color(UIColor.lightGray))
             ScrollView(.vertical) {
-                LazyVGrid(columns: items, spacing: 6) {
+                LazyVGrid(columns: items, spacing: 10) {
                     ForEach(self.viewModel.movies, id: \.id ) { movie in
-                            MovieCard(movie: movie).padding(10)
+                            MovieCard(movie: movie).padding(7)
                             .onTapGesture {
                                 selectedMovie = movie
                             }
@@ -32,7 +32,7 @@ struct MoviesView: View {
                         MovieDetailedView(movie: movie)
                     }
                 }
-                .padding(15)
+                .padding(10)
                 .background(Color.systemsBackground)
             }
         }
