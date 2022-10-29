@@ -10,7 +10,7 @@ import CoreData
 
 // As XMLDecoding is complete BS
 //typealias Grade = GradeComponents.Row
-
+@objc(Grade)
 class Grade: NSManagedObject, Decodable {
     
     var modusShort: String {

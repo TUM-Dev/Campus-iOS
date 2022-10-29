@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import SwiftUI
+//import SwiftUI
+import XMLCoder
+import CoreData
 
 protocol GradesViewModelProtocol: ObservableObject {
     func getGrades(forcedRefresh: Bool) async
@@ -15,8 +17,12 @@ protocol GradesViewModelProtocol: ObservableObject {
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
     
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var grades: FetchedResults<Grade>
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: []) var gradesCD: FetchedResults<Grade>
+    
+    var grades: [Grade] = []
+    
+    let moc: NSManagedObjectContext
     
     @Published var state: State = .na
     @Published var hasError: Bool = false
@@ -99,17 +105,56 @@ class GradesViewModel: GradesViewModelProtocol {
         }
     }
     
-    init(model: Model, service: GradesServiceProtocol) {
+    init(model: Model, service: GradesServiceProtocol, context: NSManagedObjectContext) {
         self.model = model
         self.service = service
+        self.moc = context
     }
     
+    static let decoder: XMLDecoder = {
+        let decoder = XMLDecoder()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
+        return decoder
+    }()
+    
+    func fetchGrades() async throws {
+        var data: Data
+        do {
+            data = try await Constants.API.CampusOnline.personalGrades.asRequest(token: token).serializingData().value
+        } catch {
+            print(error)
+            throw NetworkingError.deviceIsOffline
+        }
+
+        do {
+            Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = moc
+            let newGradeSet = try Self.decoder.decode(RowSet<Grade>.self, from: data)
+
+            let newGrades = newGradeSet.row
+
+            for grade in newGrades {
+                print(grade.title)
+            }
+
+            try moc.save()
+            print("Saved")
+
+            print("Count: \(newGrades.count)")
+        } catch {
+            print(error)
+        }
+    }
+
     func getGrades(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.state = .loading
         }
         self.hasError = false
-        
+
         guard let token = self.token else {
             self.state = .failed(error: NetworkingError.unauthorized)
             self.hasError = true
@@ -118,7 +163,7 @@ class GradesViewModel: GradesViewModelProtocol {
 
         do {
             try await service.fetchCoreData(into: moc, token: token, forcedRefresh: false)
-            self.state = .success
+//            self.state = .success
         } catch {
             self.state = .failed(error: error)
             self.hasError = true

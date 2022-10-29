@@ -10,7 +10,9 @@ import Alamofire
 import XMLCoder
 import CoreData
 
-struct CampusOnlineAPI: NetworkingAPI {    
+struct CampusOnlineAPI: NetworkingAPI {
+    let persistenceController = PersistenceController.shared
+    
     static let decoder: XMLDecoder = {
         let decoder = XMLDecoder()
         
@@ -60,23 +62,22 @@ struct CampusOnlineAPI: NetworkingAPI {
         }
     }
     
-    static func loadCoreData<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil, forcedReload: Bool = false) async throws {
-        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+    func loadCoreData<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil, forcedReload: Bool = false) async throws {
         
         // TODO: implement forcedRefresh: If false: Check if data of type T was recently downloaded updated, if so nothing to fetch/update; If true: delete all entries of the specified Entity (e.g. Grade) and fetch the grade and store them in CoreData.
         
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
-        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+        
         
         // Delete all entities
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try context.execute(deleteRequest)
-        } catch {
-            throw CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)")
-        }
+//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Grade")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//        
+//        do {
+//            try persistenceController.container.persistentStoreCoordinator.execute(deleteRequest, with: context)
+//        } catch {
+//            throw CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)")
+//        }
         
         // Fetch data from server
         var data: Data
@@ -93,19 +94,27 @@ struct CampusOnlineAPI: NetworkingAPI {
         
         // Decode fetched data to the specified type
         do {
-            let _ = try Self.decoder.decode(type.self, from: data)
+            Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+            let newGradeSet = try Self.decoder.decode(GradeSet.self, from: data)
+            let newGrades = newGradeSet.row
+            
+            for grade in newGrades {
+                print(grade.title)
+            }
+            try context.save()
+            
         } catch {
             throw TUMOnlineAPIError.unkown(error.localizedDescription)
         }
         
-        do {
-            try context.save()
-            print("Context saved for type \(type) and T \(T.self)")
-            let defaults = UserDefaults.standard
-            defaults.set(Date(), forKey: "\(String(describing: T.self))CoreDataStoringDate")
-        } catch {
-            throw CoreDataError.savingError("Context saving failed")
-        }
+//        do {
+//            try context.save()
+//            print("Context saved for type \(type) and T \(T.self)")
+//            let defaults = UserDefaults.standard
+//            defaults.set(Date(), forKey: "\(String(describing: T.self))CoreDataStoringDate")
+//        } catch {
+//            throw CoreDataError.savingError("Context saving failed")
+//        }
     }
     
     enum CoreDataError: Error {

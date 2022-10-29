@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUICharts
+import CoreData
 
 class MockGradesViewModel: GradesViewModel {
     
@@ -16,8 +17,8 @@ class MockGradesViewModel: GradesViewModel {
         ("1630 17 030", [("Wintersemester 2020/21", Grade.dummyData20W)])
     ]
     
-    override init(model: Model, service: GradesServiceProtocol) {
-        super.init(model: model, service: service)
+    override init(model: Model, service: GradesServiceProtocol, context: NSManagedObjectContext) {
+        super.init(model: model, service: service, context: PersistenceController.shared.container.viewContext)
         
         self.state = .success
     }
