@@ -61,27 +61,46 @@
 "Places" = "Orte";
 "My Widgets" = "Meine Widgets";
 
-// Login.storybroad
-
+// LoginView
 "Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";
 "Enter your TUM ID to get started" = "Gib deine TUM ID ein";
 "go" = "go";
 "42" = "42";
 "tum" = "tum";
-"Continue 🎓" = "Weiter 🎓";
+"Log in 🎓" = "Einloggen 🎓";
+"Log in Successfull" = "Eingeloggt";
+"Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
-"Log in on [TUMonline](https://campus.tum.de)" = "Melde dich auf [TUMonline](https://campus.tum.de) an";
+
+// TokenConfirmationView
+"Back" = "Zurück";
+"Log in on " = "Melde dich auf ";
+"TUMOnline" = "TUMOnline an";
 "Select **Token-Management**" = "Gehe auf **Token Verwaltung**";
 "Activate the newly created token and enable your desired permissions" = "Aktiviere den Token und stelle die benötigten Rechte ein";
 "Contact Support" = "Support kontaktieren";
-"Check Authorization" = "Token prüfen";
 "1" = "1";
 "2" = "2";
 "3" = "3";
-"Authorize Token" = "Token authorisieren";
 "Are you sure?" = "Sicher?";
 "Leaving now will invalidate the current token!" = "Wenn du jetzt die Seite verlässt wird der aktuelle Token ungültig!";
 "Leave" = "Verlassen";
+
+"Open TUMOnline" = "Öffne TUMOnline";
+"Check Token" = "Token überprüfen";
+"Token inactive" = "Token inaktiv";
+"Please activate the latest token on TUMOnline" = "Bitte aktiviere den neusten Token auf TUMOnline";
+"Token active" = "Token aktiv";
+
+// TokenPermissionsView
+"You can change your permissions on TUMOnline" = "Du kannst deine Rechte auf TUMOnline anpassen";
+"Identification (TUM ID and name)" = "Identifikation (TUM ID und Name)";
+"Check Permissions" = "Rechte überprüfen";
+
+// ProfileView
+"Token Permissions" = "Token Rechte";
+"Token Permissions (You are logged out)" = "Token Rechte (Du bist ausgeloggt)";
+"Calendar days in week mode" = "Anzahl Kalendertage je Woche";
 
 // CalendarView
 "Day" = "Tag";
@@ -142,17 +161,17 @@
 "Occupied until" = "Besetzt bis";
 "Unknown" = "Unbekannt";
 
-//Roomfinder
+// Roomfinder
 "Roomfinder" = "Raum Finder";
 "Building" = "Gebäude";
 "Room" = "Raum";
 "Detail" = "Detail";
 "Floor" = "Obergeschoß";
 
-//Map
+// Map
 "Search ..." = "Suchen ...";
 
-//Movies
+// Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";
 
 // Error handeling

@@ -15,7 +15,7 @@ struct WidgetScreen: View {
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
-        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: AnalyticsStrategy(), model: model))
+        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
     }
     
     var body: some View {

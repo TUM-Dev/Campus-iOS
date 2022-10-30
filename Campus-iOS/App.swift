@@ -29,7 +29,7 @@ struct CampusApp: App {
     var body: some Scene {
         WindowGroup {
             tabViewComponent()
-                .sheet(isPresented: $model.isLoginSheetPresented) {
+                .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
                             .onAppear {
@@ -52,7 +52,7 @@ struct CampusApp: App {
                 )
                 .navigationTitle("Calendar")
             }
-            .tag(0)
+            .tag(4)
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }

@@ -18,9 +18,12 @@ class ProfileViewModel: ObservableObject {
     
     private let sessionManager = Session.defaultSession
     
+    var profileState : ProfileState = .na
+    var tuitionState : TuitionState = .na
+    
     static let defaultProfile = Profile(
         firstname: nil,
-        surname: "Not logged in".localized,
+        surname: "TUM Student".localized,
         tumId: "TUM ID",
         obfuscatedID: nil,
         obfuscatedIDEmployee: nil,
@@ -41,7 +44,7 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func fetch() {
+    func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         let importer = Importer<Profile,TUMOnlineAPIResponse<Profile>, XMLDecoder>(endpoint: TUMOnlineAPI.identify)
         importer.performFetch( handler: { result in
             DispatchQueue.main.async {
@@ -51,8 +54,16 @@ class ProfileViewModel: ObservableObject {
                     if let personGroup = self.profile?.personGroup, let personId = self.profile?.id, let obfuscatedID = self.profile?.obfuscatedID {
                         self.downloadProfileImage(personGroup: personGroup, personId: personId, obfuscatedID: obfuscatedID)
                     }
+                    
                     self.checkTuitionFunc()
+                    
+                    if let _ = self.profile {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                    }
                 case .failure(let error):
+                    callback(.failure(error))
                     print(error)
                 }
             }
@@ -74,7 +85,7 @@ class ProfileViewModel: ObservableObject {
         })
     }
     
-    func checkTuitionFunc() {
+    func checkTuitionFunc(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         
         let importerTuition = Importer<Tuition,TUMOnlineAPIResponse<Tuition>,
                         XMLDecoder>(endpoint: TUMOnlineAPI.tuitionStatus, dateDecodingStrategy: .formatted(DateFormatter.yyyyMMdd))
@@ -84,11 +95,33 @@ class ProfileViewModel: ObservableObject {
                 switch result {
                 case .success(let storage):
                     self.tuition = storage.rows?.first
+                    if let _ = self.tuition {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                    }
                 case .failure(let error):
+                    callback(.failure(error))
                     print(error)
                 }
             })
         }
           
+    }
+}
+
+extension ProfileViewModel {
+    enum ProfileState {
+        case na
+        case loading
+        case success(data: Profile?)
+        case failed(error: Error)
+    }
+    
+    enum TuitionState {
+        case na
+        case loading
+        case success(data: Tuition?)
+        case failed(error: Error)
     }
 }

@@ -12,7 +12,14 @@ import AVFoundation
 struct TokenConfirmationView: View {
     /// Used for the customized back button
     @Environment(\.presentationMode) var presentationMode
+    @State var showTokenAlert: Bool = false
+    @State var showTokenHelp: Bool = false
+    @State var tokenPermissionButton: Bool = false
+    @State var tokenState: LoginViewModel.TokenState = .notChecked
+    @State var buttonBackgroundColor: Color = .tumBlue
     @State var showBackButtonAlert: Bool = false
+    @State var showCheckTokenButton: Bool = true
+    @State var showTUMOnline = false
     @State var currentStep: Int = 1
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
@@ -21,7 +28,7 @@ struct TokenConfirmationView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 10){
+            VStack(spacing: 10) {
                 VStack {
                     switch currentStep {
                     case 1:
@@ -37,9 +44,14 @@ struct TokenConfirmationView: View {
                             Spacer().frame(width: 20)
                             
                             HStack(spacing: 5) {
-                                Text("Log in on [TUMonline](https://campus.tum.de)")
-                                    .font(.body)
-                                    .tint(Color(.tumBlue))
+                                HStack(spacing: 0) {
+                                    Text("Log in on ")
+                                    Text("TUMonline").foregroundColor(.tumBlue)
+                                        .onTapGesture {
+                                            showTUMOnline = true
+                                        }
+                                }
+                                .font(.body)
                             }
                             
                         }
@@ -91,37 +103,122 @@ struct TokenConfirmationView: View {
                 // Video is 2532 x 1170
                     .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
             
-            
-                Spacer()
-                
-                Button(action: {
-                    self.viewModel.checkAuthorizzation()
-                }) {
-                    Text("Check Authorization").lineLimit(1).font(.body)
+                VStack {
+                    Spacer()
+                    
+                    Button {
+                        self.showTUMOnline = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe")
+                            Text("Open TUMOnline")
+                        }
+                        .lineLimit(1).font(.body)
+                            .frame(width: 200, height: 48, alignment: .center)
+                    }
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    
+                    Spacer()
+                    
+                    if !tokenPermissionButton {
+                        Button(action: {
+                            self.viewModel.checkAuthorization() { result in
+                                switch result {
+                                case .success:
+                                    withAnimation {
+                                        tokenState = .active
+                                        buttonBackgroundColor = .green
+                                        showTokenHelp = false
+                                    }
+                                case .failure(_):
+                                    withAnimation {
+                                        tokenState = .inactive
+                                        buttonBackgroundColor = .red
+                                        showTokenHelp = true
+                                    }
+                                }
+                            }
+                        }) {
+                            switch tokenState {
+                            case .notChecked:
+                                Text("Check Token").lineLimit(1).font(.body)
+                            case .inactive:
+                                VStack {
+                                    HStack {
+                                        Image(systemName: "x.circle.fill")
+                                        Text("Token inactive").lineLimit(1).font(.body)
+                                    }
+                                }
+                                .padding()
+                                .onAppear() {
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 1_500_000_000)
+                                        withAnimation(.easeInOut) {
+                                            tokenState = .notChecked
+                                            buttonBackgroundColor = .tumBlue
+                                        }
+                                    }
+                                }
+                            case .active:
+                                HStack {
+                                    Image(systemName: "checkmark.circle.fill")
+                                    Text("Token active").lineLimit(1).font(.body)
+                                }
+                                .padding()
+                                .onAppear() {
+                                    Task {
+                                        try? await Task.sleep(nanoseconds: 3_000_000_000)
+                                        withAnimation() {
+                                            tokenPermissionButton = true
+//                                            showCheckTokenButton = false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         .frame(width: 200, height: 48, alignment: .center)
+                        .font(.title)
+                        .foregroundColor(.white)
+                        .background(buttonBackgroundColor)
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
+                    }
+                    
+                    if tokenPermissionButton, let model = self.viewModel.model  {
+                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions")) {
+                            Text("Next")
+                                .lineLimit(1)
+                                .font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                                .foregroundColor(.white)
+                                .background(.green)
+                                .cornerRadius(10)
+                                .buttonStyle(.plain)
+                        }
+                    }
+                    
+                    if showTokenHelp {
+                        Spacer()
+                        Text("Please activate the latest token on TUMOnline").foregroundColor(.red)
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                    
+                    let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). My token state is currently: \(tokenState). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                    let mailToUrl = URL(string: mailToString!)!
+                    Link(destination: mailToUrl) {
+                        Text("Contact Support").foregroundColor(Color(.tumBlue))
+                    }
+                    
+                    Spacer()
                 }
-                .alert("Authorization Error", isPresented: self.$viewModel.showTokenAlert) {
-                    Button("OK", role: .cancel) {}
-                }
-                .font(.title)
-                .foregroundColor(.white)
-                .background(Color(.tumBlue))
-                .cornerRadius(10)
-                
-                Spacer()
-                
-                let mailToString = "mailto:app@tum.de?subject=[IOS - Token]&body=Hello, I have an issue activating the token of Campus Online in the TCA version \(Bundle.main.appVersionShort) on \(ProcessInfo().operatingSystemVersion.fullVersion). Please describe the problem in more detail.".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                let mailToUrl = URL(string: mailToString!)!
-                Link(destination: mailToUrl) {
-                    Text("Contact Support").foregroundColor(Color(.tumBlue))
-                }
-                
-                Spacer()
-                
-                
             }
         }
-        .navigationBarTitle("Authorize Token", displayMode: .automatic)
+        .navigationBarTitle("Check Token", displayMode: .automatic)
         .background(Color(.systemBackground))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading:
@@ -147,6 +244,9 @@ struct TokenConfirmationView: View {
         .task {
             await switchSteps()
         }
+        .sheet(isPresented: $showTUMOnline) {
+            SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
+         }
         
         
     }

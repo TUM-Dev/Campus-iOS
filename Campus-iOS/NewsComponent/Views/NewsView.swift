@@ -9,8 +9,9 @@ import SwiftUI
 
 struct NewsView: View {
     
-    @ObservedObject var viewModel: NewsViewModel
+    @StateObject var viewModel: NewsViewModel
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
+    @Environment(\.scenePhase) var scenePhase
     @State var isWebViewShowed = false
     @State var selectedLink: URL? = nil
     
@@ -41,7 +42,7 @@ struct NewsView: View {
                             .frame(width: 250, height: 350)
                             // adjust height
                             Spacer(minLength: 1)
-                        }.sheet(item: $selectedLink) { selectedLink in 
+                        }.sheet(item: $selectedLink) { selectedLink in
                             if let link = selectedLink {
                                 SFSafariViewWrapper(url: link)
                             }
@@ -49,7 +50,7 @@ struct NewsView: View {
                         Spacer()
                     }.padding()
                 }
-                
+
                 Spacer()
                 ForEach(viewModel.newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in
                     Collapsible(title: {
@@ -65,6 +66,11 @@ struct NewsView: View {
                 }
             }
         }
+    }
+    
+    init(viewModel: NewsViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
+        viewModel.fetch()
     }
 }
 
