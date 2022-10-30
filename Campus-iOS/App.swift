@@ -16,7 +16,8 @@ struct CampusApp: App {
     
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
-        
+    @State var isLoginSheetPresented = false
+
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
