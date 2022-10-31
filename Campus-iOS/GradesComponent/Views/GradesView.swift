@@ -75,7 +75,7 @@ struct GradesView_Previews: PreviewProvider {
         GradesView(vm:
             MockGradesViewModel(
                 model: MockModel(),
-                service: GradesService(), context: PersistenceController.shared.container.viewContext
+                service: GradesService()
             )
         )
     }

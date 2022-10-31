@@ -29,6 +29,6 @@ struct GradesService: GradesServiceProtocol {
     }
     
     func fetchCoreData(into context: NSManagedObjectContext, token: String, forcedRefresh: Bool = false) async throws {
-        try await CampusOnlineAPI().loadCoreData(for: RowSet<Grade>.self, into: context, from: Constants.API.CampusOnline.personalGrades, with: token)
+        try await CampusOnlineAPI.loadCoreData(for: RowSet<Grade>.self, into: context, from: Constants.API.CampusOnline.personalGrades, with: token)
     }
 }

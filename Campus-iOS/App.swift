@@ -92,13 +92,13 @@ struct CampusApp: App {
                     }
             }
             .navigationViewStyle(.stack)
-            .tag(2)
+            .tag(0)
             .tabItem {
                 Label("My Widgets", systemImage: "rectangle.3.group")
             }
             
             NavigationView {
-                GradesScreen(model: model, refresh: $model.isUserAuthenticated, context: PersistenceController.shared.container.viewContext)
+                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -106,7 +106,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(0)
+            .tag(2)
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }
