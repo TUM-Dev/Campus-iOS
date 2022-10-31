@@ -123,14 +123,14 @@ struct CampusApp: App {
             }
             .navigationViewStyle(.stack)
             
-//            NavigationView {
-//                GradesCDView(model: model)
-//            }
-//            .tag(5)
-//            .tabItem {
-//                Label("GradesCD", systemImage: "bolt.shield.fill")
-//            }
-//            .navigationViewStyle(.stack)
+            NavigationView {
+                GradesCDView(model: model)
+            }
+            .tag(5)
+            .tabItem {
+                Label("GradesCD", systemImage: "bolt.shield.fill")
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }

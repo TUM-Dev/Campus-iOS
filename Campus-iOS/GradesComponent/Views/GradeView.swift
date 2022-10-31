@@ -17,18 +17,19 @@ struct GradeView: View {
                 RoundedRectangle(cornerRadius: 4, style: .continuous)
                     .fill(
                         GradesViewModel.GradeColor.color(
-                            for: grade) ?? .gray
+                            for: Double(grade.grade.replacingOccurrences(of: ",", with: "."))
+                        )
                     )
                     .frame(width: 60, height: 60)
                 
-                Text(grade.getGradeString())
+				Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                     .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.white)
                     .glowBorder(color: .gray, lineWidth: 1)
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(grade.title ?? "n.a.")
+                Text(grade.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color(.label))
 
@@ -38,7 +39,7 @@ struct GradeView: View {
 							Image(systemName: "pencil.circle.fill")
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
-                            Text(grade.modusShort)
+							Text(grade.modusShort)
 								.font(.system(size: 12))
                                 .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
@@ -49,7 +50,7 @@ struct GradeView: View {
 							Image(systemName: "number.circle.fill")
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
-							Text(grade.lvNumber ?? "n.a.")
+							Text(grade.lvNumber)
 								.font(.system(size: 12))
                                 .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
@@ -61,7 +62,7 @@ struct GradeView: View {
 						Image(systemName: "person.circle.fill")
 							.frame(width: 12, height: 12)
 							.foregroundColor(Color("tumBlue"))
-						Text(grade.examiner ?? "n.a.")
+						Text(grade.examiner)
 							.font(.system(size: 12))
                             .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							.fixedSize(horizontal: false, vertical: true)

@@ -135,7 +135,7 @@ struct TokenPermissionsView: View {
         case .failed(let error):
             
             switch error {
-            case TUMOnlineAPIError.noPermission:
+            case CampusOnlineAPI.Error.noPermission:
                 Image(systemName: "x.circle.fill").foregroundColor(.red)
             case NetworkingError.deviceIsOffline:
                 Image(systemName: "wifi.slash").foregroundColor(.red)

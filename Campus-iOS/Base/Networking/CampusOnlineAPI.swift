@@ -8,7 +8,6 @@
 import Foundation
 import Alamofire
 import XMLCoder
-import CoreData
 
 struct CampusOnlineAPI: NetworkingAPI {    
     static let decoder: XMLDecoder = {
@@ -17,7 +16,7 @@ struct CampusOnlineAPI: NetworkingAPI {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        
+         
         return decoder
     }()
     
@@ -41,7 +40,7 @@ struct CampusOnlineAPI: NetworkingAPI {
             }
             
             // Check this first cause otherwise no error is thrown by the XMLDecoder
-            if let error = try? Self.decoder.decode(TUMOnlineAPIError.self, from: data) {
+            if let error = try? Self.decoder.decode(Error.self, from: data) {
                 print(error)
                 throw error
             }
@@ -55,116 +54,62 @@ struct CampusOnlineAPI: NetworkingAPI {
                 return decodedData
             } catch {
                 print(error)
-                throw TUMOnlineAPIError.unkown(error.localizedDescription)
+                throw Error.unknown(error.localizedDescription)
             }
         }
     }
     
-    static func loadCoreData<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil, forcedReload: Bool = false) async throws {
-        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+    enum Error: APIError {
+        case noPermission
+        case tokenNotConfirmed
+        case invalidToken
+        case unknown(String)
         
-        // TODO: implement forcedRefresh: If false: Check if data of type T was recently downloaded updated, if so nothing to fetch/update; If true: delete all entries of the specified Entity (e.g. Grade) and fetch the grade and store them in CoreData.
-        
-        // Store the context in the user info of the decoder to be available when intializing Grade()-insances
-        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
-        
-        // Delete all entities
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try context.execute(deleteRequest)
-        } catch {
-            throw CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)")
+        enum CodingKeys: String, CodingKey {
+            case message = "message"
         }
         
-        // Fetch data from server
-        var data: Data
-        do {
-            data = try await endpoint.asRequest(token: token).serializingData().value
-        } catch {
-            throw NetworkingError.deviceIsOffline
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let error = try container.decode(String.self, forKey: .message)
+            
+            switch error {
+            case let str where str.contains("Keine Rechte für Funktion"):
+                self = .noPermission
+            case "Token ist nicht bestätigt!":
+                self = .tokenNotConfirmed
+            case "Token ist ungültig!":
+                self = .invalidToken
+            default:
+                self = .unknown(error)
+            }
         }
-        
-        // Check this first cause otherwise no error is thrown by the XMLDecoder
-        if let error = try? Self.decoder.decode(TUMOnlineAPIError.self, from: data) {
-            throw error
+
+        public var errorDescription: String? {
+            switch self {
+            case .noPermission:
+                return "No Permission".localized
+            case .tokenNotConfirmed:
+                return "Token not confirmed".localized
+            case .invalidToken:
+                return "Token invalid".localized
+            case let .unknown(message):
+                return "Unknown error".localized + ": \(message)"
+
+            }
         }
-        
-        // Decode fetched data to the specified type
-        do {
-            let _ = try Self.decoder.decode(type.self, from: data)
-        } catch {
-            throw TUMOnlineAPIError.unkown(error.localizedDescription)
-        }
-        
-        do {
-            try context.save()
-            print("Context saved for type \(type) and T \(T.self)")
-            let defaults = UserDefaults.standard
-            defaults.set(Date(), forKey: "\(String(describing: T.self))CoreDataStoringDate")
-        } catch {
-            throw CoreDataError.savingError("Context saving failed")
+
+        public var recoverySuggestion: String? {
+            switch self {
+            case .noPermission:
+                return "Make sure to enable the right permissions for your token."
+            case .tokenNotConfirmed:
+                return "Go to TUMonline and confirm your token."
+            case .invalidToken:
+                return "Try creating a new token."
+            default:
+                return nil
+            }
         }
     }
-    
-    enum CoreDataError: Error {
-        case savingError(String)
-        case loadingError(String)
-        case deletingError(String)
-    }
-    
-//    enum Error: APIError {
-//        case noPermission
-//        case tokenNotConfirmed
-//        case invalidToken
-//        case unknown(String)
-//
-//        enum CodingKeys: String, CodingKey {
-//            case message = "message"
-//        }
-//
-//        init(from decoder: Decoder) throws {
-//            let container = try decoder.container(keyedBy: CodingKeys.self)
-//            let error = try container.decode(String.self, forKey: .message)
-//
-//            switch error {
-//            case let str where str.contains("Keine Rechte für Funktion"):
-//                self = .noPermission
-//            case "Token ist nicht bestätigt!":
-//                self = .tokenNotConfirmed
-//            case "Token ist ungültig!":
-//                self = .invalidToken
-//            default:
-//                self = .unknown(error)
-//            }
-//        }
-//
-//        public var errorDescription: String? {
-//            switch self {
-//            case .noPermission:
-//                return "No Permission".localized
-//            case .tokenNotConfirmed:
-//                return "Token not confirmed".localized
-//            case .invalidToken:
-//                return "Token invalid".localized
-//            case let .unknown(message):
-//                return "Unknown error".localized + ": \(message)"
-//
-//            }
-//        }
-//
-//        public var recoverySuggestion: String? {
-//            switch self {
-//            case .noPermission:
-//                return "Make sure to enable the right permissions for your token."
-//            case .tokenNotConfirmed:
-//                return "Go to TUMonline and confirm your token."
-//            case .invalidToken:
-//                return "Try creating a new token."
-//            default:
-//                return nil
-//            }
-//        }
-//    }
 }

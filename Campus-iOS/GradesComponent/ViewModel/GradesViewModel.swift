@@ -15,8 +15,8 @@ protocol GradesViewModelProtocol: ObservableObject {
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
     
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var grades: FetchedResults<Grade>
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: []) var gradesCD: FetchedResults<GradeCD>
     
     @Published var state: State = .na
     @Published var hasError: Bool = false
@@ -36,32 +36,24 @@ class GradesViewModel: GradesViewModelProtocol {
     }
     
     var gradesByDegreeAndSemester: [(String, [(String, [Grade])])] {
-        guard case .success = self.state else {
+        guard case .success(let data) = self.state else {
             return []
         }
         
-        let gradesByDegree = grades.reduce(into: [String: [Grade]]()) { partialResult, grade in
-            guard let studyID = grade.studyID else {
-                return
-            }
-            
-            if partialResult[studyID] == nil {
-                partialResult[studyID] = [grade]
+        let gradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
+            if partialResult[grade.studyID] == nil {
+                partialResult[grade.studyID] = [grade]
             } else {
-                partialResult[studyID]?.append(grade)
+                partialResult[grade.studyID]?.append(grade)
             }
         }
         
         let gradesByDegreeAndSemester = gradesByDegree.mapValues { grades in
             grades.reduce(into: [String: [Grade]]()) { partialResult, grade in
-                guard let semester = grade.semester else {
-                    return
-                }
-                
-                if partialResult[semester] == nil {
-                    partialResult[semester] = [grade]
+                if partialResult[grade.semester] == nil {
+                    partialResult[grade.semester] = [grade]
                 } else {
-                    partialResult[semester]?.append(grade)
+                    partialResult[grade.semester]?.append(grade)
                 }
             }
         }
@@ -86,16 +78,14 @@ class GradesViewModel: GradesViewModelProtocol {
             }
     }
     
-    var preparedGrades: [Grade] {
+    var grades: [Grade] {
         return gradesByDegreeAndSemester.flatMap { (degree, gradesBySemester) in
             return gradesBySemester.flatMap { (semester, grades) in
                 return grades
             }
         }
         .sorted { gradeA, gradeB in
-            let dateA = gradeA.date ?? Date.distantPast
-            let dateB = gradeB.date ?? Date.distantPast
-            return dateA > dateB
+            return gradeA.date > gradeB.date
         }
     }
     
@@ -117,8 +107,9 @@ class GradesViewModel: GradesViewModelProtocol {
         }
 
         do {
-            try await service.fetchCoreData(into: moc, token: token, forcedRefresh: false)
-            self.state = .success
+            self.state = .success(
+                data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
+            )
         } catch {
             self.state = .failed(error: error)
             self.hasError = true
@@ -126,11 +117,11 @@ class GradesViewModel: GradesViewModelProtocol {
     }
     
     func getStudyProgram(studyID: String) -> String {
-        guard case .success = self.state else {
+        guard case .success(let data) = self.state else {
             return ""
         }
         
-        let studyDesignation = grades.first { grade in
+        let studyDesignation = data.first { grade in
             grade.studyID == studyID
         }?.studyDesignation ?? ""
         

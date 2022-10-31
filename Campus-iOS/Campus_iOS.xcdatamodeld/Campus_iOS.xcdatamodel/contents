@@ -7,7 +7,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="view" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Grade" representedClassName=".Grade" syncable="YES" codeGenerationType="category">
+    <entity name="GradeCD" representedClassName=".GradeCD" syncable="YES" codeGenerationType="category">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="examiner" optional="YES" attributeType="String"/>
         <attribute name="examType" optional="YES" attributeType="String"/>

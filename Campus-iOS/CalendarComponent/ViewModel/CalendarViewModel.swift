@@ -40,7 +40,7 @@ class CalendarViewModel: ObservableObject {
                         if let _ = storage.events {
                             callback(.success(true))
                         } else {
-                            callback(.failure(TUMOnlineAPIError.noPermission))
+                            callback(.failure(CampusOnlineAPI.Error.noPermission))
                         }
                     case .failure(let error):
                         self.state = .failed(error: error)

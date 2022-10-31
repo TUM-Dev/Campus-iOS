@@ -25,7 +25,7 @@ struct GradesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success:
+            case .success(_):
                 VStack {
                     GradesView(
                         vm: self.vm
@@ -72,7 +72,7 @@ struct GradesScreen: View {
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {
-                    if let campusOnlineError = error as? TUMOnlineAPIError {
+                    if let campusOnlineError = error as? CampusOnlineAPI.Error {
                         Text(campusOnlineError.errorDescription ?? "CampusOnline Error")
                     } else {
                         Text(error.localizedDescription)
