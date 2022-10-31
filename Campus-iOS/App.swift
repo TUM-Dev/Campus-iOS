@@ -82,19 +82,21 @@ struct CampusApp: App {
                 view.navigationViewStyle(.stack)
             })
             
-            NavigationView {
-                WidgetScreen(model: model)
-                    //.navigationTitle("My Widgets")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                NavigationView {
+                    WidgetScreen(model: model)
+                        //.navigationTitle("My Widgets")
+                        .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                                ProfileToolbar(model: model)
+                            }
                         }
-                    }
-            }
-            .navigationViewStyle(.stack)
-            .tag(0)
-            .tabItem {
-                Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                }
+                .navigationViewStyle(.stack)
+                .tag(0)
+                .tabItem {
+                    Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                }
             }
             
             NavigationView {
