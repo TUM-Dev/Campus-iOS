@@ -156,7 +156,7 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("Version 4.0").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
+                            Text("Version 4.1").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                             Spacer()
                         }
                     }
