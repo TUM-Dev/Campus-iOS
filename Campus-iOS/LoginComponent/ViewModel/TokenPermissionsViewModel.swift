@@ -63,7 +63,7 @@ class TokenPermissionsViewModel: ObservableObject {
                         self.states[.calendar] = .success(data: data)
                     } else {
                         print("No success")
-                        self.states[.calendar] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                        self.states[.calendar] = .failed(error: TUMOnlineAPIError.noPermission)
                     }
                 }
                 
@@ -86,7 +86,7 @@ class TokenPermissionsViewModel: ObservableObject {
                         self.states[.tuitionFees] = .success(data: data)
                     } else {
                         print("no success")
-                        self.states[.tuitionFees] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                        self.states[.tuitionFees] = .failed(error: TUMOnlineAPIError.noPermission)
                     }
                 }
                 
@@ -100,7 +100,7 @@ class TokenPermissionsViewModel: ObservableObject {
                         self.states[.identification] = .success(data: data)
                     } else {
                         print("no success")
-                        self.states[.identification] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                        self.states[.identification] = .failed(error: TUMOnlineAPIError.noPermission)
                     }
                 }
             }

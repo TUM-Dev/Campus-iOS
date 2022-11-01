@@ -30,8 +30,8 @@ struct GradeWidgetView: View {
                 switch size {
                 case .square:
                     SimpleGradeWidgetContent(grade: viewModel.grades.first)
-                case .rectangle, .bigSquare:
-                    DetailedGradeWidgetContent(grades: viewModel.grades, size: size)
+                case .rectangle, .bigSquare: // TODO: Change grades again to viewModel.grades and fix it.
+                    DetailedGradeWidgetContent(grades: [], size: size)
                 }
             case .loading, .na:
                 WidgetLoadingView(text: "Fetching Grades")
@@ -70,9 +70,9 @@ struct SimpleGradeWidgetContent: View {
             .foregroundColor(.clear)
             .frame(maxHeight: .infinity)
             .overlay {
-                if let grade, let gradeString = grade.grade {
+                if let grade {
                     GeometryReader { g in
-                        Text(gradeString.isEmpty ? "tbd" : gradeString)
+                        Text(grade.getGradeString())
                             .bold()
                             .font(.system(size: g.size.height * 0.75))
                             .foregroundColor(GradesViewModel.GradeColor.color(for: grade))
@@ -97,14 +97,14 @@ struct SimpleGradeWidgetContent: View {
                         
                         HStack {
                             Image(systemName: "pencil")
-                            Text(grade.title)
+                            Text(grade.title ?? "n.a.")
                                 .lineLimit(2)
                         }
                         .font(.caption.bold())
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.bottom, 2)
                         
-                        Label(grade.examiner, systemImage: "person")
+                        Label(grade.examiner ?? "n.a.", systemImage: "person")
                             .font(.caption)
                         
                         Spacer()
@@ -160,17 +160,17 @@ struct DetailedGradeWidgetContent: View {
                                 GradeSquareView(grade: grade)
                                 
                                 VStack(alignment: .leading) {
-                                    Text(grade.title)
+                                    Text(grade.title ?? "n.a.")
                                         .font(.caption)
                                         .bold()
                                         .lineLimit(1)
 
-                                    Label(grade.examiner, systemImage: "person")
+                                    Label(grade.examiner ?? "n.a.", systemImage: "person")
                                         .font(.caption)
                                     
                                     HStack {
                                         Label(grade.modusShort, systemImage: "pencil")
-                                        Label(grade.lvNumber, systemImage: "number")
+                                        Label(grade.lvNumber ?? "n.a.", systemImage: "number")
                                     }
                                     .font(.caption2)
                                 }
@@ -196,7 +196,7 @@ struct GradeSquareView: View {
             .frame(width: 40, height: 40)
             .cornerRadius(4)
             .overlay {
-                Text(grade.grade.isEmpty ? "tbd" : grade.grade)
+                Text(grade.getGradeString())
                     .bold()
                     .foregroundColor(.white)
                     .glowBorder(color: .gray, lineWidth: 1)

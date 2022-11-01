@@ -60,7 +60,7 @@ class ProfileViewModel: ObservableObject {
                     if let _ = self.profile {
                         callback(.success(true))
                     } else {
-                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                        callback(.failure(TUMOnlineAPIError.noPermission))
                     }
                 case .failure(let error):
                     callback(.failure(error))
@@ -98,7 +98,7 @@ class ProfileViewModel: ObservableObject {
                     if let _ = self.tuition {
                         callback(.success(true))
                     } else {
-                        callback(.failure(CampusOnlineAPI.Error.noPermission))
+                        callback(.failure(TUMOnlineAPIError.noPermission))
                     }
                 case .failure(let error):
                     callback(.failure(error))

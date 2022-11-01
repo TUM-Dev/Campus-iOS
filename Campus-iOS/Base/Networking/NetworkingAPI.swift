@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 protocol NetworkingAPI {
     // Renaming to `DecoderType` as we otherwise have a conflict between the `Decoder` associatedtype of `Decodable` and the `Decoder` associatedtype of `NetworkingAPI`
