@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CoreData
 
 struct WidgetScreen: View {
     
@@ -14,8 +15,8 @@ struct WidgetScreen: View {
     @State private var refresh = false
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
-    init(model: Model) {
-        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
+    init(context: NSManagedObjectContext, model: Model) {
+        self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model, context: context))
     }
     
     var body: some View {

@@ -9,6 +9,9 @@ import SwiftUI
 
 struct FailedView: View {
     let errorDescription: String
+//    let retryClosure: () async -> ()
+    
+//    init(errorDescription: String, retryClosure: @escaping @MainActor () async -> () = { }) {
     let retryClosure: (Bool) async -> Void
     
     init(errorDescription: String, retryClosure: @escaping (Bool) async -> Void = { _ in }) {
@@ -39,6 +42,8 @@ struct FailedView: View {
                     
                     Button(action: {
                         Task {
+                            // TODO: Delete user defaults to force an refresh of the data from the server to CoreData
+//                            await self.retryClosure()
                             await self.retryClosure(false)
                         }
                     }) {

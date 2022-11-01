@@ -12,6 +12,7 @@ import CoreData
 protocol GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade]
     func fetchCoreData(into context: NSManagedObjectContext, token: String, forcedRefresh: Bool) async throws
+    func fetchIsNeeded<T: Decodable & NSManagedObject>(for type: T.Type) -> Bool
 }
 
 struct GradesService: GradesServiceProtocol {    
@@ -30,5 +31,9 @@ struct GradesService: GradesServiceProtocol {
     
     func fetchCoreData(into context: NSManagedObjectContext, token: String, forcedRefresh: Bool = false) async throws {
         try await CampusOnlineAPI.loadCoreData(for: RowSet<Grade>.self, into: context, from: Constants.API.CampusOnline.personalGrades, with: token)
+    }
+    
+    func fetchIsNeeded<T: Decodable & NSManagedObject>(for type: T.Type) -> Bool {
+        return CampusOnlineAPI.fetchIsNeeded(for: type)
     }
 }

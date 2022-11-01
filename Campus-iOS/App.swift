@@ -83,7 +83,7 @@ struct CampusApp: App {
             })
             
             NavigationView {
-                WidgetScreen(model: model)
+                WidgetScreen(context: persistenceController.container.viewContext, model: model)
                     //.navigationTitle("My Widgets")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -92,13 +92,13 @@ struct CampusApp: App {
                     }
             }
             .navigationViewStyle(.stack)
-            .tag(0)
+            .tag(2)
             .tabItem {
                 Label("My Widgets", systemImage: "rectangle.3.group")
             }
             
             NavigationView {
-                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
+                GradesScreen(context: persistenceController.container.viewContext, model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
                     .toolbar {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -106,7 +106,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(2)
+            .tag(0)
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }

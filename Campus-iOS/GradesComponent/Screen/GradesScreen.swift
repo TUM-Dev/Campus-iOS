@@ -7,14 +7,16 @@
 
 import SwiftUI
 import SwiftUICharts
+import CoreData
 
 struct GradesScreen: View {
     @StateObject var vm: GradesViewModel
     @Binding var refresh: Bool
 
-    init(model: Model, refresh: Binding<Bool>) {
+    init(context: NSManagedObjectContext, model: Model, refresh: Binding<Bool>) {
         self._vm = StateObject(wrappedValue:
             GradesViewModel(
+                context: context,
                 model: model,
                 service: GradesService()
             )
@@ -30,16 +32,17 @@ struct GradesScreen: View {
                     GradesView(
                         vm: self.vm
                     )
-                    .refreshable {
-                        await vm.getGrades(forcedRefresh: true)
-                    }
+//                        .refreshable {
+//                            await vm.getGrades()
+//                        }
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching Grades")
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
-                    retryClosure: vm.getGrades
+//                    retryClosure: vm.getGrades
+                    retryClosure: {_ in }
                 )
             }
         }
@@ -47,11 +50,11 @@ struct GradesScreen: View {
             await vm.getGrades()
         }
         // Refresh whenever user authentication status changes
-        .onChange(of: self.refresh) { _ in
-            Task {
-                await vm.getGrades()
-            }
-        }
+//            .onChange(of: self.refresh) { _ in
+//                Task {
+//                    await vm.getGrades()
+//                }
+//            }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
         .onChange(of: self.vm.token ?? "") { _ in
@@ -65,10 +68,10 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getGrades(forcedRefresh: true)
+                        await vm.getGrades()
                     }
                 }
-        
+                
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {
@@ -84,6 +87,6 @@ struct GradesScreen: View {
 
 struct GradesScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GradesScreen(model: MockModel(), refresh: .constant(false))
+        GradesScreen(context: PersistenceController.shared.container.viewContext, model: MockModel(), refresh: .constant(false))
     }
 }

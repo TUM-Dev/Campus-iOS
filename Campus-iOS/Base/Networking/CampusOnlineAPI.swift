@@ -10,7 +10,8 @@ import Alamofire
 import XMLCoder
 import CoreData
 
-struct CampusOnlineAPI: NetworkingAPI {    
+struct CampusOnlineAPI: NetworkingAPI {
+    
     static let decoder: XMLDecoder = {
         let decoder = XMLDecoder()
         
@@ -61,6 +62,7 @@ struct CampusOnlineAPI: NetworkingAPI {
     }
     
     static func loadCoreData<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil, forcedReload: Bool = false) async throws {
+        
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
         // TODO: implement forcedRefresh: If false: Check if data of type T was recently downloaded updated, if so nothing to fetch/update; If true: delete all entries of the specified Entity (e.g. Grade) and fetch the grade and store them in CoreData.
@@ -68,14 +70,18 @@ struct CampusOnlineAPI: NetworkingAPI {
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
-        // Delete all entities
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
         do {
-            try context.execute(deleteRequest)
+            // Delete all entities
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            deleteRequest.resultType = .resultTypeObjectIDs
+            let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
+            let changes: [AnyHashable: Any] = [
+                NSDeletedObjectsKey: result?.result as? [NSManagedObjectID] as Any
+            ]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
         } catch {
-            throw CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)")
+            print(CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)"))
         }
         
         // Fetch data from server
@@ -100,7 +106,7 @@ struct CampusOnlineAPI: NetworkingAPI {
         
         do {
             try context.save()
-            print("Context saved for type \(type) and T \(T.self)")
+            print("Context saved for type \(type)")
             let defaults = UserDefaults.standard
             defaults.set(Date(), forKey: "\(String(describing: T.self))CoreDataStoringDate")
         } catch {
@@ -108,10 +114,19 @@ struct CampusOnlineAPI: NetworkingAPI {
         }
     }
     
-    enum CoreDataError: Error {
-        case savingError(String)
-        case loadingError(String)
-        case deletingError(String)
+    static func fetchIsNeeded<T: Decodable & NSManagedObject>(for type: T.Type) -> Bool {
+        let defaults = UserDefaults.standard
+        guard let lastFetchDate = defaults.object(forKey: "\(String(describing: type))CoreDataStoringDate") as? Date, let fetchThresholdDate =  Calendar.current.date(
+            byAdding: .hour,
+            value: -3,
+            to: Date()) else {
+            return true
+        }
+        print(lastFetchDate <= fetchThresholdDate)
+        print(lastFetchDate)
+        print(fetchThresholdDate)
+        
+        return lastFetchDate <= fetchThresholdDate
     }
     
 //    enum Error: APIError {

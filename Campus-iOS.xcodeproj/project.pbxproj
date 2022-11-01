@@ -14,7 +14,6 @@
 		0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72328CAABB3003C5CFD /* AnalyticsError.swift */; };
 		0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */; };
 		0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72B28CC2278003C5CFD /* HashFunction.swift */; };
-		0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */; };
 		0815249428E445030098A2C3 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249328E445030098A2C3 /* Date+Time.swift */; };
 		0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249528E45C390098A2C3 /* MLModelDataHandler.swift */; };
 		0815249828E492070098A2C3 /* RecommenderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249728E492070098A2C3 /* RecommenderError.swift */; };
@@ -50,6 +49,10 @@
 		1F0DF5822906C86600EF3E58 /* GradeCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5802906C86600EF3E58 /* GradeCD.swift */; };
 		1F0DF5862906CC4100EF3E58 /* GradesCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */; };
 		1F0DF5882906CE6900EF3E58 /* GradesCDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5872906CE6900EF3E58 /* GradesCDViewModel.swift */; };
+		1F0E1AE22911274000F64D51 /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1AE12911274000F64D51 /* CoreDataModel.swift */; };
+		1F0E1AE4291128FA00F64D51 /* RowSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1AE3291128FA00F64D51 /* RowSet.swift */; };
+		1F0E1AE6291162FF00F64D51 /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1AE5291162FF00F64D51 /* CoreDataError.swift */; };
+		1F0E1AE8291163A200F64D51 /* FetchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1AE7291163A200F64D51 /* FetchState.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
 		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
@@ -323,6 +326,10 @@
 		1F0DF5802906C86600EF3E58 /* GradeCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCD.swift; sourceTree = "<group>"; };
 		1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCDView.swift; sourceTree = "<group>"; };
 		1F0DF5872906CE6900EF3E58 /* GradesCDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCDViewModel.swift; sourceTree = "<group>"; };
+		1F0E1AE12911274000F64D51 /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
+		1F0E1AE3291128FA00F64D51 /* RowSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowSet.swift; sourceTree = "<group>"; };
+		1F0E1AE5291162FF00F64D51 /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		1F0E1AE7291163A200F64D51 /* FetchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchState.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
 		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
@@ -649,6 +656,16 @@
 				36BB6F6D27B1195600F224AB /* View */,
 			);
 			path = ProfileComponent;
+			sourceTree = "<group>";
+		};
+		1F0E1AE02911273200F64D51 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1F0E1AE12911274000F64D51 /* CoreDataModel.swift */,
+				1F0E1AE3291128FA00F64D51 /* RowSet.swift */,
+				1F0E1AE5291162FF00F64D51 /* CoreDataError.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1F4C836528300E6F006971C0 /* Service */ = {
@@ -1179,6 +1196,7 @@
 		36AF61B727A2FD7700FEBD98 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E1AE02911273200F64D51 /* CoreData */,
 				36108C0027A30762007DC62D /* Enums */,
 				36AF61B827A2FD7700FEBD98 /* Entity */,
 				36AF61BA27A2FD7700FEBD98 /* Networking */,
@@ -1211,6 +1229,7 @@
 				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
 				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
+				1F0E1AE7291163A200F64D51 /* FetchState.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1606,7 +1625,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					366F0E7F27580CFB0091651D = {
 						CreatedOnToolsVersion = 13.1;
@@ -1666,7 +1685,6 @@
 				41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */,
 				41E2B8322864D193005B5E72 /* outline@3x.png in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
-				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */,
@@ -1709,6 +1727,7 @@
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
+				1F0E1AE6291162FF00F64D51 /* CoreDataError.swift in Sources */,
 				08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */,
 				08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */,
 				974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */,
@@ -1780,11 +1799,13 @@
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
+				1F0E1AE4291128FA00F64D51 /* RowSet.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
+				1F0E1AE8291163A200F64D51 /* FetchState.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* TUMSplashScreen.swift in Sources */,
@@ -1909,6 +1930,7 @@
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
+				1F0E1AE22911274000F64D51 /* CoreDataModel.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,
 				36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,

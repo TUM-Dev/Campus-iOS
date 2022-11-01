@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 @MainActor
 class WidgetRecommender: ObservableObject {
@@ -16,10 +17,12 @@ class WidgetRecommender: ObservableObject {
         
     private let strategy: WidgetRecommenderStrategy
     private let model: Model
+    private let context: NSManagedObjectContext
 
-    init(strategy: WidgetRecommenderStrategy, model: Model) {
+    init(strategy: WidgetRecommenderStrategy, model: Model, context: NSManagedObjectContext) {
         self.strategy = strategy
         self.model = model
+        self.context = context
         self.status = .loading
         self.recommendations = []
     }
@@ -42,7 +45,7 @@ class WidgetRecommender: ObservableObject {
         case .tuition:
             TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
         case .grades:
-            GradeWidgetView(model: model, size: size, refresh: refresh)
+            GradeWidgetView(context: context, model: model, size: size, refresh: refresh)
         }
     }
 }

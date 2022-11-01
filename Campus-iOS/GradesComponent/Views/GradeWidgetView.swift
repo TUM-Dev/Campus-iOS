@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct GradeWidgetView: View {
     
@@ -16,8 +17,8 @@ struct GradeWidgetView: View {
     @State private var scale: CGFloat = 1
     @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
-        self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+    init(context: NSManagedObjectContext, model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self._viewModel = StateObject(wrappedValue: GradesViewModel(context: context, model: model, service: GradesService()))
         self.size = size
         self.initialSize = size
         self._refresh = refresh

@@ -13,6 +13,12 @@ import CoreData
 
 class Grade: NSManagedObject, Decodable {
     
+    static var all: NSFetchRequest<Grade> {
+        let request = Grade.fetchRequest()
+        request.sortDescriptors = []
+        return request
+    }
+    
     var modusShort: String {
         switch self.modus {
         case "Schriftlich": return "Written".localized
@@ -21,6 +27,14 @@ class Grade: NSManagedObject, Decodable {
         case "Mündlich": return "Oral".localized
         default: return "Unknown".localized
         }
+    }
+    
+    public var id: String {
+        guard let date = date, let lvNumber = lvNumber else {
+            return UUID().uuidString
+        }
+        
+        return date.formatted() + "-" + lvNumber
     }
 
     enum CodingKeys: String, CodingKey {

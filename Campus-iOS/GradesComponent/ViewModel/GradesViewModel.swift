@@ -6,23 +6,28 @@
 //
 
 import Foundation
-import SwiftUI
+import CoreData
 
 protocol GradesViewModelProtocol: ObservableObject {
-    func getGrades(forcedRefresh: Bool) async
+    func getGrades() async
 }
 
 @MainActor
-class GradesViewModel: GradesViewModelProtocol {
+class GradesViewModel: NSObject, GradesViewModelProtocol {
     
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var grades: FetchedResults<Grade>
+//    @Environment(\.managedObjectContext) var moc
+//    @FetchRequest(sortDescriptors: []) var grades: FetchedResults<Grade>
     
     @Published var state: State = .na
     @Published var hasError: Bool = false
+    @Published var grades = [Grade]()
     
+    private let context: NSManagedObjectContext
+    private let fetchedResultController: NSFetchedResultsController<Grade>
     private let model: Model
     private let service: GradesServiceProtocol
+    
+    // Make self to delegate of NSFetchedResultsController
     
     var token: String? {
         switch self.model.loginController.credentials {
@@ -69,7 +74,11 @@ class GradesViewModel: GradesViewModelProtocol {
         return gradesByDegreeAndSemester
             .mapValues { gradesBySemester in
                 gradesBySemester.compactMap { semester, grades in
-                    (semester, grades)
+                    (semester, grades.sorted { gradeA, gradeB in
+                        let dateA = gradeA.date ?? Date.distantPast
+                        let dateB = gradeB.date ?? Date.distantPast
+                        return dateA > dateB
+                    })
                 }
                 .sorted { semesterA, semesterB in
                     semesterA.0 > semesterB.0
@@ -77,6 +86,7 @@ class GradesViewModel: GradesViewModelProtocol {
                 .compactMap { grade in
                     (Self.toFullSemesterName(grade.0), grade.1)
                 }
+                
             }
             .compactMap { degree, gradesBySemester in
                 (degree, gradesBySemester)
@@ -99,29 +109,50 @@ class GradesViewModel: GradesViewModelProtocol {
         }
     }
     
-    init(model: Model, service: GradesServiceProtocol) {
+    init(context: NSManagedObjectContext, model: Model, service: GradesServiceProtocol) {
+        self.context = context
+        self.fetchedResultController = NSFetchedResultsController(fetchRequest: Grade.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.model = model
         self.service = service
-    }
-    
-    func getGrades(forcedRefresh: Bool = false) async {
-        if !forcedRefresh {
-            self.state = .loading
-        }
-        self.hasError = false
+        super.init()
+        fetchedResultController.delegate = self
         
-        guard let token = self.token else {
-            self.state = .failed(error: NetworkingError.unauthorized)
-            self.hasError = true
-            return
-        }
-
         do {
-            try await service.fetchCoreData(into: moc, token: token, forcedRefresh: false)
+            try fetchedResultController.performFetch()
+            guard let grades = fetchedResultController.fetchedObjects else {
+                return
+            }
+            
+            self.grades = grades
             self.state = .success
         } catch {
             self.state = .failed(error: error)
             self.hasError = true
+        }
+    }
+    
+    func getGrades() async {
+        print("get grades")
+        if service.fetchIsNeeded(for: Grade.self) {
+            print("fetch grades")
+            self.state = .loading
+            self.hasError = false
+            
+            guard let token = self.token else {
+                self.state = .failed(error: NetworkingError.unauthorized)
+                self.hasError = true
+                return
+            }
+
+            do {
+                try await service.fetchCoreData(into: context, token: token, forcedRefresh: false)
+                self.state = .success
+                print("SUCCESS")
+                print(self.grades.count)
+            } catch {
+                self.state = .failed(error: error)
+                self.hasError = true
+            }
         }
     }
     
@@ -160,6 +191,17 @@ class GradesViewModel: GradesViewModelProtocol {
         case "61": return .BEEDE
         default: return .unknown
         }
+    }
+}
+
+extension GradesViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        print(controller.fetchedObjects)
+        guard let grades = controller.fetchedObjects as? [Grade] else {
+            return
+        }
+        
+        self.grades = grades
     }
 }
 

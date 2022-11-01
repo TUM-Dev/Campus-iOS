@@ -39,9 +39,12 @@ struct GradesView: View {
                                 text: gradesBySemester.0
                             )
                     ) {
-                        ForEach(gradesBySemester.1) { item in
+                        ForEach(gradesBySemester.1, id: \.id) { item in
                             VStack {
                                 GradeView(grade: item)
+                                    .onAppear() {
+                                        print("ITEM: \(item.id)")
+                                    }
 
                                 if item.id != gradesBySemester.1[gradesBySemester.1.count - 1].id {
                                     Divider()
@@ -74,6 +77,7 @@ struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
         GradesView(vm:
             MockGradesViewModel(
+                context: PersistenceController.shared.container.viewContext,
                 model: MockModel(),
                 service: GradesService()
             )
