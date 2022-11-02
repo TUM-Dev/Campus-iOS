@@ -19,7 +19,7 @@ struct LectureView: View {
 
             HStack(spacing: 16) {
                 HStack {
-                    Image(systemName: "pencil.circle.fill")
+                    Image(systemName: "pencil.circle")
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.eventType)
@@ -30,7 +30,7 @@ struct LectureView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
                 
                 HStack {
-                    Image(systemName: "clock.fill")
+                    Image(systemName: "clock")
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.duration + " SWS")
@@ -42,7 +42,7 @@ struct LectureView: View {
             }.foregroundColor(.init(.darkGray))
             
             HStack {
-                Image(systemName: "person.circle.fill")
+                Image(systemName: "person.circle")
                     .frame(width: 12, height: 12)
                     .foregroundColor(Color("tumBlue"))
                 Text(lecture.speaker)

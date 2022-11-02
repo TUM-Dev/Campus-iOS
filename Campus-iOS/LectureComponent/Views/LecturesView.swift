@@ -31,7 +31,7 @@ struct LecturesView: View {
             ForEach(lecturesBySemesterSearchResult, id: \.0) { lecturesBySemester in
                 Section(
                     header: GroupBoxLabelView(
-                        iconName: "graduationcap.fill",
+                        iconName: "graduationcap",
                         text: lecturesBySemester.0
                     )
                 ) {
