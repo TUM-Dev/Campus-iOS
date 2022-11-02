@@ -22,6 +22,7 @@ struct CalendarContentView: View {
     init(model: Model, refresh: Binding<Bool>) {
         self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
         self._refresh = refresh
+        UIToolbar.appearance().backgroundColor = UIColor.systemBackground
     }
     
     var body: some View {
@@ -73,7 +74,10 @@ struct CalendarContentView: View {
             ToolbarItemGroup(placement: .navigationBarLeading) {
                 CalendarToolbar(viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
             }
-            ToolbarItem(placement: .principal) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ProfileToolbar(model: viewModel.model)
+            }
+            ToolbarItem(placement: .bottomBar) {
                 Picker("Calendar Type", selection: $selectedType) {
                     ForEach(CalendarType.allCases, id: \.self) {
                         switch $0 {
@@ -88,6 +92,7 @@ struct CalendarContentView: View {
                         }
                     }
                 }
+                .opacity(1.0)
                 .pickerStyle(.segmented)
                 .onAppear {
                     UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
@@ -98,9 +103,6 @@ struct CalendarContentView: View {
                     UISegmentedControl.appearance()
                         .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
                 }
-            }
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ProfileToolbar(model: viewModel.model)
             }
         }
         .task {
