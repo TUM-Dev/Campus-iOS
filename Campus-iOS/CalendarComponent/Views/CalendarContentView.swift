@@ -72,7 +72,9 @@ struct CalendarContentView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                CalendarToolbar(viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
+                Button(action: { self.isTodayPressed = true }) {
+                    Text("Today")
+                }
             }
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 ProfileToolbar(model: viewModel.model)
