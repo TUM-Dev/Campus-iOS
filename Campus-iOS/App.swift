@@ -95,7 +95,7 @@ struct CampusApp: App {
                 .navigationViewStyle(.stack)
                 .tag(0)
                 .tabItem {
-                    Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                    Label("Home", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
                 }
             }
             
