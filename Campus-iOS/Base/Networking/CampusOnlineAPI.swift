@@ -71,11 +71,13 @@ struct CampusOnlineAPI: NetworkingAPI {
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
         do {
+            // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
             // Delete all entities
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             deleteRequest.resultType = .resultTypeObjectIDs
             let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
+            // Necessary to reflect the change of deletion inside the context.
             let changes: [AnyHashable: Any] = [
                 NSDeletedObjectsKey: result?.result as? [NSManagedObjectID] as Any
             ]

@@ -23,6 +23,7 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
     @Published var grades = [Grade]()
     
     private let context: NSManagedObjectContext
+    // https://www.youtube.com/watch?v=gGM_Qn3CUfQ&t=1192s
     private let fetchedResultController: NSFetchedResultsController<Grade>
     private let model: Model
     private let service: GradesServiceProtocol

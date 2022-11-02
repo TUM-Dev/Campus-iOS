@@ -55,7 +55,7 @@ class Grade: NSManagedObject, Decodable {
       case missingManagedObjectContext
     }
 
-    
+    // https://www.donnywals.com/using-codable-with-core-data-and-nsmanagedobject/
     required convenience public init(from decoder: Decoder) throws {
         guard let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext,
                 let entity = NSEntityDescription.entity(forEntityName: "Grade", in: managedObjectContext) else {
