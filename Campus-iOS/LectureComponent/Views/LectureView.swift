@@ -15,7 +15,6 @@ struct LectureView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(lecture.title)
                 .bold()
-                .font(.title3)
 
             HStack(spacing: 16) {
                 HStack {
@@ -23,7 +22,7 @@ struct LectureView: View {
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.eventType)
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     Spacer()
                 }
@@ -34,7 +33,7 @@ struct LectureView: View {
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.duration + " SWS")
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     Spacer()
                 }
@@ -46,7 +45,7 @@ struct LectureView: View {
                     .frame(width: 12, height: 12)
                     .foregroundColor(Color("tumBlue"))
                 Text(lecture.speaker)
-                    .font(.subheadline)
+                    .font(.footnote)
                     .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     .fixedSize(horizontal: false, vertical: true)
             }.foregroundColor(.init(.darkGray))
