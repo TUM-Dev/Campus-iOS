@@ -96,15 +96,21 @@ struct PersonDetailedView: View {
         case .call:
             let number = cell.value.replacingOccurrences(of: " ", with: "")
             if let url = URL(string: "tel://\(number)") {
-                // TODO: re-add UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #if !WIDGET_TARGET
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #endif
             }
         case .mail:
             if let url = URL(string: "mailto:\(cell.value)") {
-                // TODO: re-add UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #if !WIDGET_TARGET
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #endif
             }
         case .openURL:
             if let url = URL(string: cell.value) {
-                // TODO: re-add UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #if !WIDGET_TARGET
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                #endif
             }
         }
     }

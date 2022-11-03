@@ -119,11 +119,12 @@ struct ProfileView: View {
                     Button("Feedback") {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let mailToUrl = URL(string: mailToString!)!
-                        // TODO: re-add
-                        /*
+                        
+                        #if !WIDGET_TARGET
                         if UIApplication.shared.canOpenURL(mailToUrl) {
                                 UIApplication.shared.open(mailToUrl, options: [:])
-                        }*/
+                        }
+                        #endif
                     }
                 }
                 
@@ -166,22 +167,32 @@ struct ProfileView: View {
                 .actionSheet(isPresented: self.$showActionSheet) {
                     //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
                     
-                    // TODO: un-comment actions
                     ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
-                        .default(Text("Default 🎓")) { //UIApplication.shared.setAlternateIconName(nil)
+                        .default(Text("Default 🎓")) {
+                            #if !WIDGET_TARGET
+                            UIApplication.shared.setAlternateIconName(nil)
+                            #endif
+                        },
+                        .default(Text("Inverted 🔄")) {
+                            #if !WIDGET_TARGET
+                            UIApplication.shared.setAlternateIconName("inverted")
+                            #endif
+                        },
+                        .default(Text("Pride 🏳️‍🌈")) {
+                            #if !WIDGET_TARGET
+                            UIApplication.shared.setAlternateIconName("pride")
+                            #endif
                             
                         },
-                        .default(Text("Inverted 🔄")) { //UIApplication.shared.setAlternateIconName("inverted")
-                            
+                        .default(Text("3D 📐")) {
+                            #if !WIDGET_TARGET
+                            UIApplication.shared.setAlternateIconName("3D")
+                            #endif
                         },
-                        .default(Text("Pride 🏳️‍🌈")) { //UIApplication.shared.setAlternateIconName("pride")
-                            
-                        },
-                        .default(Text("3D 📐")) { //UIApplication.shared.setAlternateIconName("3D")
-                            
-                        },
-                        .default(Text("Outline 🖍")) { //UIApplication.shared.setAlternateIconName("outline")
-                            
+                        .default(Text("Outline 🖍")) {
+                            #if !WIDGET_TARGET
+                            UIApplication.shared.setAlternateIconName("outline")
+                            #endif
                         },
                         .cancel()
                     ])

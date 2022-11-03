@@ -91,10 +91,11 @@ struct StudyRoomGroupView: View {
                                 let longitude = group.coordinate?.longitude
                                 let url = URL(string: "maps://?saddr=&daddr=\(latitude!),\(longitude!)")
                                 
-                                // TODO: do not compile this for the widget target
-                                /*if UIApplication.shared.canOpenURL(url!) {
+                                #if !WIDGET_TARGET
+                                if UIApplication.shared.canOpenURL(url!) {
                                     UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                                }*/
+                                }
+                                #endif
                             }, label: {
                                 Text("Show Directions \(Image(systemName: "arrow.right.circle"))")
                                     .foregroundColor(.blue)
