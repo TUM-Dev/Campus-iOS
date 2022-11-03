@@ -39,12 +39,6 @@ extension DataRequest {
     }
 }
 
-extension String {
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-}
-
 extension Date {
     var calendar: Calendar { Calendar(identifier: Calendar.current.identifier) }
     var weekOfMonth: Int { calendar.component(.weekOfMonth, from: self) }
@@ -143,17 +137,6 @@ extension CLLocationCoordinate2D  {
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
 }
 
-extension UIColor {
-    static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
-}
-
-extension Color {
-    
-    static var tumBlue = Color("tumBlue")
-    
-    static var widget = Color("widgetColor")
-}
-
 extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 
 extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
@@ -235,6 +218,12 @@ extension View {
                 }
             }
             .scaleEffect(x: scale.wrappedValue, y: scale.wrappedValue)
+    }
+    
+    @ViewBuilder func `widgetBackground`() -> some View {
+        self.background {
+            Rectangle().fill(Color.widget)
+        }
     }
 }
 

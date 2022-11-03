@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct WidgetFrameView<Content: View>: View {
     
@@ -78,6 +79,18 @@ enum WidgetSize: CaseIterable {
             return (2 * width, width - WidgetSize.padding)
         case .bigSquare:
             return (2 * width, 2 * width)
+        }
+    }
+    
+    static func from(widgetFamily: WidgetFamily) -> WidgetSize {
+        switch widgetFamily {
+        case .systemSmall:
+            return .square
+        case .systemMedium:
+            return .rectangle
+        case .systemLarge:
+            return .bigSquare
+        default: return .square // TODO: throw
         }
     }
 }

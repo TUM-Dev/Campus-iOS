@@ -119,9 +119,11 @@ struct ProfileView: View {
                     Button("Feedback") {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let mailToUrl = URL(string: mailToString!)!
+                        // TODO: re-add
+                        /*
                         if UIApplication.shared.canOpenURL(mailToUrl) {
                                 UIApplication.shared.open(mailToUrl, options: [:])
-                        }
+                        }*/
                     }
                 }
                 
@@ -163,12 +165,24 @@ struct ProfileView: View {
                 }
                 .actionSheet(isPresented: self.$showActionSheet) {
                     //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
+                    
+                    // TODO: un-comment actions
                     ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
-                        .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
-                        .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
-                        .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },
-                        .default(Text("3D 📐")) { UIApplication.shared.setAlternateIconName("3D") },
-                        .default(Text("Outline 🖍")) { UIApplication.shared.setAlternateIconName("outline") },
+                        .default(Text("Default 🎓")) { //UIApplication.shared.setAlternateIconName(nil)
+                            
+                        },
+                        .default(Text("Inverted 🔄")) { //UIApplication.shared.setAlternateIconName("inverted")
+                            
+                        },
+                        .default(Text("Pride 🏳️‍🌈")) { //UIApplication.shared.setAlternateIconName("pride")
+                            
+                        },
+                        .default(Text("3D 📐")) { //UIApplication.shared.setAlternateIconName("3D")
+                            
+                        },
+                        .default(Text("Outline 🖍")) { //UIApplication.shared.setAlternateIconName("outline")
+                            
+                        },
                         .cancel()
                     ])
                 }

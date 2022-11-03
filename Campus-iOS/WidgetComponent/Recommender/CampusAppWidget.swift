@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Widget: CaseIterable {
+enum CampusAppWidget: CaseIterable {
     case cafeteria, studyRoom, calendar, tuition, grades
     
     // Views associated to the widget in some way.

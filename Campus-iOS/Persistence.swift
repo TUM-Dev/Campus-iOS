@@ -32,7 +32,18 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        
         container = NSPersistentContainer(name: "Campus_iOS")
+        
+        guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.de.tum.tca-robyn-dev") else {
+            print("Could not get container URL (see PersistenceController).")
+            return
+        }
+        let storeURL = containerURL.appendingPathComponent("DataModel.sqlite")
+        let description = NSPersistentStoreDescription(url: storeURL)
+        container.persistentStoreDescriptions = [description]
+        
+        
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

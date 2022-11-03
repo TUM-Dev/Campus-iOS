@@ -2,16 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.de.tum.tca-robyn-dev</string>
 	</array>
-	<key>com.apple.security.personal-information.location</key>
+	<key>com.apple.security.network.client</key>
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)group.de.tum.tca-robyn-dev</string>
-		<string>$(AppIdentifierPrefix)de.tum.tca-robyn-dev</string>
+		<string>$(AppIdentifierPrefix)de.tum.tca-robyn-dev.widget</string>
 	</array>
 </dict>
 </plist>
