@@ -247,8 +247,6 @@
 		08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */; };
 		08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */; };
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
-		08FFA6F0291177F200BDCBF8 /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFA6EF291177F200BDCBF8 /* WidgetError.swift */; };
-		08FFA6F1291177FC00BDCBF8 /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFA6EF291177F200BDCBF8 /* WidgetError.swift */; };
 		08FFA6F62911809B00BDCBF8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFA6F52911809B00BDCBF8 /* Color.swift */; };
 		08FFA6F7291180B100BDCBF8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FFA6F52911809B00BDCBF8 /* Color.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
@@ -559,7 +557,6 @@
 		08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRecommendation.swift; sourceTree = "<group>"; };
 		08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStrategy.swift; sourceTree = "<group>"; };
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
-		08FFA6EF291177F200BDCBF8 /* WidgetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetError.swift; sourceTree = "<group>"; };
 		08FFA6F52911809B00BDCBF8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -920,7 +917,6 @@
 				08FAFD1F288DEE3B006A0E27 /* CampusAppWidget.swift */,
 				08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */,
 				0815249728E492070098A2C3 /* RecommenderError.swift */,
-				08FFA6EF291177F200BDCBF8 /* WidgetError.swift */,
 			);
 			path = Recommender;
 			sourceTree = "<group>";
@@ -2048,7 +2044,6 @@
 			files = (
 				08224775290EF4410038D357 /* EatAPI.swift in Sources */,
 				0840FB33291182E600E2639C /* CafeteriaWidget.swift in Sources */,
-				08FFA6F1291177FC00BDCBF8 /* WidgetError.swift in Sources */,
 				08977F492911FD18004149C6 /* TuitionView.swift in Sources */,
 				08977F4F2911FD40004149C6 /* LectureDetailsDetailedInfoView.swift in Sources */,
 				08977F802911FEFF004149C6 /* RoomFinderDetailsMapView.swift in Sources */,
@@ -2405,7 +2400,6 @@
 				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
 				08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
-				08FFA6F0291177F200BDCBF8 /* WidgetError.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
