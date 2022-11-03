@@ -7,7 +7,6 @@
 
 import Foundation
 import MapKit
-import Alamofire
 
 @MainActor
 class StudyRoomWidgetViewModel: ObservableObject {
@@ -17,7 +16,6 @@ class StudyRoomWidgetViewModel: ObservableObject {
     @Published var status: StudyRoomWidgetStatus
     
     private let studyRoomService: StudyRoomsServiceProtocol
-    private let sessionManager = Session.defaultSession
     
     private let locationManager = CLLocationManager()
     

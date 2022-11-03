@@ -23,8 +23,35 @@ struct StudyRoomWidgetView: View {
         self._refresh = refresh
     }
     
+    var content: some View {
+        Group {
+            switch(viewModel.status) {
+            case .error:
+                TextWidgetView(text: "No nearby study rooms.")
+            case .loading:
+                WidgetLoadingView(text: "Searching nearby study rooms")
+            default:
+                if let name = viewModel.studyGroup?.name,
+                   let rooms = viewModel.rooms,
+                   let coordinate = viewModel.studyGroup?.coordinate {
+                    StudyRoomWidgetContent(
+                        size: size,
+                        name: name,
+                        rooms: rooms,
+                        coordinate: coordinate
+                    )
+                    .background {
+                        WidgetMapBackgroundView(coordinate: coordinate, size: size)
+                    }
+                } else {
+                    TextWidgetView(text: "No nearby study rooms.")
+                }
+            }
+        }
+    }
+    
     var body: some View {
-        WidgetFrameView(size: size, content: StudyRoomWidgetContent(size: size, viewModel: viewModel))
+        WidgetFrameView(size: size, content: content)
             .onChange(of: refresh) { _ in
                 if showDetails { return }
                 Task { await viewModel.fetch() }
@@ -51,41 +78,27 @@ struct StudyRoomWidgetView: View {
 
 struct StudyRoomWidgetContent: View {
     
-    var size: WidgetSize
-    @ObservedObject var viewModel: StudyRoomWidgetViewModel
+    let size: WidgetSize
+    let name: String
+    let rooms: [StudyRoom]
+    let coordinate: CLLocationCoordinate2D
     
     var body: some View {
-        Group {
-            switch(viewModel.status) {
-            case .error:
-                TextWidgetView(text: "No nearby study rooms.")
-            case .loading:
-                WidgetLoadingView(text: "Searching nearby study rooms")
-            default:
-                if let name = viewModel.studyGroup?.name,
-                   let rooms = viewModel.rooms,
-                   let coordinate = viewModel.studyGroup?.coordinate {
-                    
-                    switch (size) {
-                    case .square, .rectangle:
-                        SimpleStudyRoomWidgetContent(
-                            studyGroup: name,
-                            freeRooms: rooms.filter{ $0.isAvailable() }.count,
-                            coordinate: coordinate,
-                            size: size
-                        )
-                    case .bigSquare:
-                        DetailedStudyRoomWidgetContent(
-                            studyGroup: name,
-                            rooms: rooms,
-                            coordinate: coordinate,
-                            size: size
-                        )
-                    }
-                } else {
-                    TextWidgetView(text: "No nearby study rooms.")
-                }
-            }
+        switch (size) {
+        case .square, .rectangle:
+            SimpleStudyRoomWidgetContent(
+                studyGroup: name,
+                freeRooms: rooms.filter{ $0.isAvailable() }.count,
+                coordinate: coordinate,
+                size: size
+            )
+        case .bigSquare:
+            DetailedStudyRoomWidgetContent(
+                studyGroup: name,
+                rooms: rooms,
+                coordinate: coordinate,
+                size: size
+            )
         }
     }
 }
@@ -100,14 +113,11 @@ struct SimpleStudyRoomWidgetContent: View {
     let size: WidgetSize
         
     var body: some View {
-        WidgetMapBackgroundView(coordinate: coordinate, size: size)
-            .overlay {
-                VStack(alignment: .leading) {
-                    StudyRoomWidgetHeaderView(count: freeRooms, studyGroup: studyGroup, allowMultiline: true)
-                    Spacer()
-                }
-                .padding()
-            }
+        VStack(alignment: .leading) {
+            StudyRoomWidgetHeaderView(count: freeRooms, studyGroup: studyGroup, allowMultiline: true)
+            Spacer()
+        }
+        .padding()
     }
 }
 
@@ -132,23 +142,20 @@ struct DetailedStudyRoomWidgetContent: View {
     }
     
     var body: some View {
-        WidgetMapBackgroundView(coordinate: coordinate, size: size)
-            .overlay {
-                VStack(alignment: .leading) {
-                    StudyRoomWidgetHeaderView(count: rooms.filter{ $0.isAvailable() }.count, studyGroup: studyGroup)
-                        .padding(.bottom, 16)
-                    
-                    Spacer()
-                    
-                    ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
-                        RoomDetailsView(room: room)
-                            .padding(.bottom, 2)
-                    }
-                    
-                    Spacer()
-                }
-                .padding()
+        VStack(alignment: .leading) {
+            StudyRoomWidgetHeaderView(count: rooms.filter{ $0.isAvailable() }.count, studyGroup: studyGroup)
+                .padding(.bottom, 16)
+            
+            Spacer()
+            
+            ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
+                RoomDetailsView(room: room)
+                    .padding(.bottom, 2)
             }
+            
+            Spacer()
+        }
+        .padding()
     }
 }
 
