@@ -15,6 +15,7 @@ struct TokenPermissionsView: View {
     @State var showTUMOnline = false
     @State var notAllPermissionsGranted = false
     @State var permissionsWarning = ""
+    @State var showHelp = false
     
     var dismissWhenDone: Bool = false
     
@@ -51,39 +52,46 @@ struct TokenPermissionsView: View {
             .font(.system(size: 20))
             .padding()
             
-            VStack (){
-                Button {
-                    self.showTUMOnline = true
-                } label: {
-                    HStack {
-                        Image(systemName: "globe")
-                        Text("Open TUMOnline")
-                    }
-                    .lineLimit(1).font(.body)
-                        .frame(width: 200, height: 48, alignment: .center)
-                }
-                .font(.title)
-                .foregroundColor(.white)
-                .background(Color(.tumBlue))
-                .cornerRadius(10)
-                
-                Button {
-                    Task {
-                        await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
-                        
-                        withAnimation() {
-                            doneButton = true
+            VStack {
+                HStack (){
+                    Button {
+                        self.showTUMOnline = true
+                        self.doneButton = false
+                    } label: {
+                        HStack {
+                            Image(systemName: "globe")
+                            Text("Open TUMOnline")
                         }
-                    }
-                } label: {
-                    Text("Check Permissions")
                         .lineLimit(1)
-                        .font(.body)
-                        .frame(width: 200, height: 48, alignment: .center)
-                        .foregroundColor(.white)
-                        .background(Color(.tumBlue))
-                        .cornerRadius(10)
-                        .buttonStyle(.plain)
+                        .font(.system(size: 13))
+                        .frame(width: 150, height: 48, alignment: .center)
+                    }
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    .padding()
+                    
+                    Spacer()
+                    
+                    Button {
+                        Task {
+                            await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
+                            
+                            withAnimation() {
+                                doneButton = true
+                            }
+                        }
+                    } label: {
+                        Text("Check Permissions")
+                            .lineLimit(1)
+                            .font(.system(size: 13))
+                            .frame(width: 150, height: 48, alignment: .center)
+                            .foregroundColor(.white)
+                            .background(Color(.tumBlue))
+                            .cornerRadius(10)
+                            .buttonStyle(.plain)
+                    }
+                    .padding()
                 }
                 
                 if doneButton {
