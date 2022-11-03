@@ -12,6 +12,7 @@ import SwiftUI
 struct CampusAppWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
+        SmartWidget()
         CalendarWidget()
         GradeWidget()
         StudyRoomWidget()

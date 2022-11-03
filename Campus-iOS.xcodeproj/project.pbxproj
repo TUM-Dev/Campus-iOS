@@ -142,6 +142,12 @@
 		089389E4290EF76D00F43314 /* AnalyticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 085DE9C528AB7C530045095F /* AnalyticsController.swift */; };
 		089389E5290EF77F00F43314 /* AppUsageDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */; };
 		089389E6290EFF6E00F43314 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366F0E8C27580CFD0091651D /* Persistence.swift */; };
+		0894EF232913EDFB00F8FDE2 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
+		0894EF242913EE0400F8FDE2 /* LocationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */; };
+		0894EF252913EE0B00F8FDE2 /* TimeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */; };
+		0894EF262913EE1900F8FDE2 /* WidgetRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */; };
+		0894EF272913EE2000F8FDE2 /* WidgetRecommenderStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD1D288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift */; };
+		0894EF282913EE2700F8FDE2 /* RecommenderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249728E492070098A2C3 /* RecommenderError.swift */; };
 		08977F342911F9F4004149C6 /* Array+Rearrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */; };
 		08977F352911FC3B004149C6 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD14287DC484006A0E27 /* CalendarWidgetView.swift */; };
 		08977F362911FC62004149C6 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A4277493D90055777F /* CalendarViewModel.swift */; };
@@ -229,6 +235,7 @@
 		08977F8B29120036004149C6 /* CalendarWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F8A29120036004149C6 /* CalendarWidgetViewModel.swift */; };
 		08977F8C291201F6004149C6 /* CalendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F882911FFE3004149C6 /* CalendarWidget.swift */; };
 		08977F8D29120209004149C6 /* CalendarWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F8A29120036004149C6 /* CalendarWidgetViewModel.swift */; };
+		08977F902913E574004149C6 /* SmartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F8E2913E543004149C6 /* SmartWidget.swift */; };
 		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
 		08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9535928E34596007ED2F1 /* Array+Groups.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
@@ -538,6 +545,7 @@
 		086DCD43290F0380000B688F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		08977F882911FFE3004149C6 /* CalendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidget.swift; sourceTree = "<group>"; };
 		08977F8A29120036004149C6 /* CalendarWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewModel.swift; sourceTree = "<group>"; };
+		08977F8E2913E543004149C6 /* SmartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWidget.swift; sourceTree = "<group>"; };
 		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
 		08D9535928E34596007ED2F1 /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
@@ -847,6 +855,7 @@
 				0841443C290EE0D20023E2C6 /* widget.intentdefinition */,
 				0841443D290EE0D30023E2C6 /* Assets.xcassets */,
 				0841443F290EE0D30023E2C6 /* Info.plist */,
+				08977F8E2913E543004149C6 /* SmartWidget.swift */,
 				0840FB312911829200E2639C /* CafeteriaWidget.swift */,
 				0840FB342911832400E2639C /* StudyRoomWidget.swift */,
 				0840FB422911D1BE00E2639C /* TuitionWidget.swift */,
@@ -2107,6 +2116,7 @@
 				0822478F290EF6140038D357 /* DecoderProtocol.swift in Sources */,
 				0840FB4C2911D5C700E2639C /* NetworkingAPI.swift in Sources */,
 				08977F7A2911FED9004149C6 /* NewsCard.swift in Sources */,
+				0894EF242913EE0400F8FDE2 /* LocationStrategy.swift in Sources */,
 				0822476C290EECE50038D357 /* String+localized.swift in Sources */,
 				08977F392911FC8F004149C6 /* CalendarDisplayView.swift in Sources */,
 				0822477A290EF4870038D357 /* MealPlanViewModel.swift in Sources */,
@@ -2115,6 +2125,7 @@
 				0840FB502911D60700E2639C /* Organization.swift in Sources */,
 				08224767290EEC6A0038D357 /* CampusAppWidget.swift in Sources */,
 				08977F482911FD13004149C6 /* TuitionDetailsView.swift in Sources */,
+				0894EF262913EE1900F8FDE2 /* WidgetRecommendation.swift in Sources */,
 				086D694C290F029000F6F9CD /* AnalyticsError.swift in Sources */,
 				0840FB452911D55300E2639C /* TuitionWidgetView.swift in Sources */,
 				0822478B290EF53C0038D357 /* StudyRoomApiResponse.swift in Sources */,
@@ -2137,9 +2148,11 @@
 				0840FB3B2911888D00E2639C /* StudyRoomDetailsView.swift in Sources */,
 				08977F4D2911FD32004149C6 /* LectureDetailsEventInfoView.swift in Sources */,
 				08224782290EF4E80038D357 /* CafeteriaView.swift in Sources */,
+				08977F902913E574004149C6 /* SmartWidget.swift in Sources */,
 				08977F4A2911FD1E004149C6 /* PersonSearchView.swift in Sources */,
 				08977F782911FECB004149C6 /* RoomFinderDetailsView.swift in Sources */,
 				0822478E290EF55A0038D357 /* EntityImporter.swift in Sources */,
+				0894EF232913EDFB00F8FDE2 /* SpatioTemporalStrategy.swift in Sources */,
 				0840FB492911D58B00E2639C /* CampusOnlineAPI.swift in Sources */,
 				08977F4E2911FD3A004149C6 /* LectureDetailsBasicInfoView.swift in Sources */,
 				089389DD290EF70300F43314 /* Credentials.swift in Sources */,
@@ -2149,6 +2162,7 @@
 				08977F812911FF0E004149C6 /* RoomFinderMapViewModel.swift in Sources */,
 				08977F592911FD80004149C6 /* LoginView.swift in Sources */,
 				08977F822911FF1C004149C6 /* NewsSource.swift in Sources */,
+				0894EF252913EE0B00F8FDE2 /* TimeStrategy.swift in Sources */,
 				08977F472911FD0F004149C6 /* FailedView.swift in Sources */,
 				08977F522911FD51004149C6 /* TUMSexyView.swift in Sources */,
 				08977F3B2911FCA1004149C6 /* LectureDetailsViewModel.swift in Sources */,
@@ -2181,6 +2195,7 @@
 				08977F6A2911FE27004149C6 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				08977F852911FFA1004149C6 /* LoginViewModel+LoginState.swift in Sources */,
 				08977F5F2911FDBB004149C6 /* LoginViewModel.swift in Sources */,
+				0894EF282913EE2700F8FDE2 /* RecommenderError.swift in Sources */,
 				08224787290EF5080038D357 /* MenuView.swift in Sources */,
 				089389DF290EF72200F43314 /* TUMCabeAPI.swift in Sources */,
 				0840FB3F291188B300E2639C /* ImageFullScreenView.swift in Sources */,
@@ -2198,6 +2213,7 @@
 				08224788290EF5120038D357 /* ErrorCategory.swift in Sources */,
 				08224780290EF4D10038D357 /* MensaEnumService.swift in Sources */,
 				08977F4C2911FD2B004149C6 /* LectureDetailsTitleView.swift in Sources */,
+				0894EF272913EE2000F8FDE2 /* WidgetRecommenderStrategy.swift in Sources */,
 				0840FB632911F71700E2639C /* GradesView.swift in Sources */,
 				08977F842911FF3A004149C6 /* RoundedCornersShape.swift in Sources */,
 				0840FB392911885D00E2639C /* StudyRoomWidgetView.swift in Sources */,

@@ -34,7 +34,7 @@ struct TuitionWidgetProvider: IntentTimelineProvider {
         }
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<TuitionWidgetEntry>) -> ()) {
         Task {
             let entry = await entry()
             let timeline = Timeline(entries: [entry], policy: .after(.now.advanced(by: 15 * 60)))
