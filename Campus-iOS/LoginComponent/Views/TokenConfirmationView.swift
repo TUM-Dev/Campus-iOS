@@ -109,168 +109,91 @@ struct TokenConfirmationView: View {
                 VStack {
                     Spacer()
                     
-                    
-                    /* ***This needs to implemented to change Button design
-                     HStack (){
-                         Button {
-                             self.showTUMOnline = true
-                         } label: {
-                             HStack {
-                                 Image(systemName: "globe")
-                                 Text("Open TUMOnline")
-                             }
-                             .lineLimit(1)
-                             .font(.system(size: 13))
-                             .frame(width: 150, height: 48, alignment: .center)
-                         }
-                         .foregroundColor(.white)
-                         .background(Color(.tumBlue))
-                         .cornerRadius(10)
-                         .padding()
-                         
-                         Spacer()
-
-                         if !tokenPermissionButton {
-                             Button(action: {
-                                 self.viewModel.checkAuthorization() { result in
-                                     switch result {
-                                     case .success:
-                                         withAnimation {
-                                             tokenState = .active
-                                             buttonBackgroundColor = .green
-                                             showTokenHelp = false
-                                         }
-                                     case .failure(_):
-                                         withAnimation {
-                                             tokenState = .inactive
-                                             buttonBackgroundColor = .red
-                                             showTokenHelp = true
-                                         }
-                                     }
-                                 }
-                             }) {
-                                 switch tokenState {
-                                 case .notChecked:
-                                     Text("Check Token").lineLimit(1).font(.body)
-                                 case .inactive:
-                                     VStack {
-                                         HStack {
-                                             Image(systemName: "x.circle.fill")
-                                             Text("Token inactive").lineLimit(1).font(.body)
-                                         }
-                                     }
-                                     .padding()
-                                     .onAppear() {
-                                         Task {
-                                             try? await Task.sleep(nanoseconds: 1_500_000_000)
-                                             withAnimation(.easeInOut) {
-                                                 tokenState = .notChecked
-                                                 buttonBackgroundColor = .tumBlue
-                                             }
-                                         }
-                                     }
-                                 case .active:
-                                     if let model = self.viewModel.model {
-                                         NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
-                                             Text("Next")
-                                                 .lineLimit(1)
-                                                 .font(.body)
-                                                 .frame(width: 200, height: 48, alignment: .center)
-                                                 .foregroundColor(.white)
-                                                 .background(.green)
-                                                 .cornerRadius(10)
-                                                 .buttonStyle(.plain)
-                                         }
-                                     }
-                                 }
-                             }
-                             .frame(width: 150, height: 48, alignment: .center)
-                             .font(.system(size: 13))
-                             .foregroundColor(.white)
-                             .background(buttonBackgroundColor)
-                             .cornerRadius(10)
-                             .buttonStyle(.plain)
-                             .padding()
-                         }
-                     */
-                    
-                    Button {
-                        self.showTUMOnline = true
-                    } label: {
-                        HStack {
-                            Image(systemName: "globe")
-                            Text("Open TUMOnline")
-                        }
-                        .lineLimit(1).font(.body)
-                            .frame(width: 200, height: 48, alignment: .center)
-                    }
-                    .font(.title)
-                    .foregroundColor(.white)
-                    .background(Color(.tumBlue))
-                    .cornerRadius(10)
-                    
-                    Spacer()
-                    
-                    if !tokenPermissionButton {
-                        Button(action: {
-                            self.viewModel.checkAuthorization() { result in
-                                switch result {
-                                case .success:
-                                    withAnimation {
-                                        tokenState = .active
-                                        buttonBackgroundColor = .green
-                                        showTokenHelp = false
-                                    }
-                                case .failure(_):
-                                    withAnimation {
-                                        tokenState = .inactive
-                                        buttonBackgroundColor = .red
-                                        showTokenHelp = true
-                                    }
-                                }
+                    HStack {
+                        Button {
+                            self.showTUMOnline = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "globe")
+                                Text("Open TUMOnline")
                             }
-                        }) {
-                            switch tokenState {
-                            case .notChecked:
-                                Text("Check Token").lineLimit(1).font(.body)
-                            case .inactive:
-                                VStack {
-                                    HStack {
-                                        Image(systemName: "x.circle.fill")
-                                        Text("Token inactive").lineLimit(1).font(.body)
-                                    }
-                                }
-                                .padding()
-                                .onAppear() {
-                                    Task {
-                                        try? await Task.sleep(nanoseconds: 1_500_000_000)
-                                        withAnimation(.easeInOut) {
-                                            tokenState = .notChecked
-                                            buttonBackgroundColor = .tumBlue
+                            .lineLimit(1)
+                            .font(.system(size: 14))
+                            .frame(width: 150, height: 48, alignment: .center)
+                        }
+                        .foregroundColor(.white)
+                        .background(Color(.tumBlue))
+                        .cornerRadius(10)
+                        .padding()
+                        
+                        Spacer()
+                        
+                        if !tokenPermissionButton {
+                            Button(action: {
+                                self.viewModel.checkAuthorization() { result in
+                                    switch result {
+                                    case .success:
+                                        withAnimation {
+                                            tokenState = .active
+                                            buttonBackgroundColor = .green
+                                            showTokenHelp = false
+                                        }
+                                    case .failure(_):
+                                        withAnimation {
+                                            tokenState = .inactive
+                                            buttonBackgroundColor = .red
+                                            showTokenHelp = true
                                         }
                                     }
                                 }
-                            case .active:
-                                if let model = self.viewModel.model {
-                                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
-                                        Text("Next")
-                                            .lineLimit(1)
-                                            .font(.body)
-                                            .frame(width: 200, height: 48, alignment: .center)
-                                            .foregroundColor(.white)
-                                            .background(.green)
-                                            .cornerRadius(10)
-                                            .buttonStyle(.plain)
+                            }) {
+                                switch tokenState {
+                                case .notChecked:
+                                    Text("Check Token")
+                                        .lineLimit(1)
+                                        .font(.system(size: 14))
+                                case .inactive:
+                                    VStack {
+                                        HStack {
+                                            Image(systemName: "x.circle.fill")
+                                            Text("Token inactive")
+                                                .lineLimit(1)
+                                                .font(.system(size: 14))
+                                        }
+                                    }
+                                    .padding()
+                                    .onAppear() {
+                                        Task {
+                                            try? await Task.sleep(nanoseconds: 1_500_000_000)
+                                            withAnimation(.easeInOut) {
+                                                tokenState = .notChecked
+                                                buttonBackgroundColor = .tumBlue
+                                            }
+                                        }
+                                    }
+                                case .active:
+                                    if let model = self.viewModel.model {
+                                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+                                            Text("Next")
+                                                .lineLimit(1)
+                                                .font(.body)
+                                                .frame(width: 200, height: 48, alignment: .center)
+                                                .foregroundColor(.white)
+                                                .background(.green)
+                                                .cornerRadius(10)
+                                                .buttonStyle(.plain)
+                                        }
                                     }
                                 }
                             }
+                            .frame(width: 150, height: 48, alignment: .center)
+                            .font(.system(size: 14))
+                            .foregroundColor(.white)
+                            .background(buttonBackgroundColor)
+                            .cornerRadius(10)
+                            .buttonStyle(.plain)
+                            .padding()
                         }
-                        .frame(width: 200, height: 48, alignment: .center)
-                        .font(.title)
-                        .foregroundColor(.white)
-                        .background(buttonBackgroundColor)
-                        .cornerRadius(10)
-                        .buttonStyle(.plain)
                     }
                     
                     if showTokenHelp {

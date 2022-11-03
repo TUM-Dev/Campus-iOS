@@ -63,7 +63,7 @@ struct TokenPermissionsView: View {
                             Text("Open TUMOnline")
                         }
                         .lineLimit(1)
-                        .font(.system(size: 13))
+                        .font(.system(size: 14))
                         .frame(width: 150, height: 48, alignment: .center)
                     }
                     .foregroundColor(.white)
@@ -84,7 +84,7 @@ struct TokenPermissionsView: View {
                     } label: {
                         Text("Check Permissions")
                             .lineLimit(1)
-                            .font(.system(size: 13))
+                            .font(.system(size: 14))
                             .frame(width: 150, height: 48, alignment: .center)
                             .foregroundColor(.white)
                             .background(Color(.tumBlue))
