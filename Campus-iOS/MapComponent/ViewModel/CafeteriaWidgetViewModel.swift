@@ -75,6 +75,11 @@ class CafeteriaWidgetViewModel: ObservableObject {
         } catch {
             self.status = .error
         }
+        
+        // TODO: find a cleaner way to "await" the Alamofire request.
+        while (self.status == .loading) {
+            try? await Task.sleep(nanoseconds: 1_000_000 * 100)
+        }
     }
 }
 

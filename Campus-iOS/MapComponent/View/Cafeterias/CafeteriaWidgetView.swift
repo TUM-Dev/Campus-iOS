@@ -41,6 +41,9 @@ struct CafeteriaWidgetView: View {
                         dishes: viewModel.menuViewModel?.getDishes() ?? [],
                         coordinate: coordinate
                     )
+                    .background {
+                        WidgetMapBackgroundView(coordinate: coordinate, size: size)
+                    }
                 } else {
                     TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
                 }
@@ -85,7 +88,7 @@ struct CafeteriaWidgetContent: View {
     let dishes: [Dish]
     let coordinate: CLLocationCoordinate2D
     
-    var content: some View {
+    var body: some View {
         VStack(alignment: .leading) {
             
             HStack {
@@ -103,14 +106,6 @@ struct CafeteriaWidgetContent: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-    }
-    
-    var body: some View {
-        
-        WidgetMapBackgroundView(coordinate: coordinate, size: size)
-            .overlay {
-                content
-            }
     }
 }
 
@@ -184,18 +179,11 @@ struct CafeteriaWidgetView_Previews: PreviewProvider {
         
         let size: WidgetSize
         
-        private let dish = Dish(
-            name: "Pasta all'arrabiata",
-            prices: ["students" : Price(basePrice: 0.0, unitPrice: 0.66, unit: "100g")],
-            labels: ["VEGETARIAN"],
-            dishType: "Pasta"
-        )
-        
         var body: some View {
             CafeteriaWidgetContent(
                 size: size,
                 cafeteria: "Mensa Straubing",
-                dishes: [Dish](repeating: dish, count: 12),
+                dishes: Dish.mockDishes,
                 coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
             )
         }

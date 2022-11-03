@@ -69,4 +69,13 @@ struct Dish: Decodable, Hashable {
     {
         hasher.combine(name);
     }
+    
+    static let mockDish = Dish(
+        name: "Pasta all'arrabiata",
+        prices: ["students" : Price(basePrice: 0.0, unitPrice: 0.66, unit: "100g")],
+        labels: ["VEGETARIAN"],
+        dishType: "Pasta"
+    )
+    
+    static let mockDishes = [Dish](repeating: mockDish, count: 12)
 }
