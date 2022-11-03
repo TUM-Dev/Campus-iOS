@@ -13,13 +13,21 @@ struct TokenPermissionsView: View {
     @Environment(\.dismiss) var dismiss
     @State var doneButton = false
     @State var showTUMOnline = false
+    @State var notAllPermissionsGranted = false
+    @State var permissionsWarning = ""
     
     var dismissWhenDone: Bool = false
     
+    let permissionTypes: [TokenPermissionsViewModel.PermissionType]  = [.calendar, .lectures, .grades, .tuitionFees, .identification]
+    
     var body: some View {
         VStack() {
-            Text("You can change your permissions on TUMOnline")
-                .foregroundColor(.tumBlue)
+            HStack {
+                Spacer()
+                Text("You can change your permissions on TUMOnline")
+                    .foregroundColor(.tumBlue)
+                Spacer()
+            }
             HStack {
                 VStack(alignment: .leading) {
                     Text("Calendar").padding()
@@ -30,34 +38,12 @@ struct TokenPermissionsView: View {
                 }
                 Spacer()
                 VStack {
-                    if let currentState = viewModel.states[.calendar] {
-                        check(state: currentState).padding()
-                    } else {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
-                    }
-                    
-                    if let currentState = viewModel.states[.lectures] {
-                        check(state: currentState).padding()
-                    } else {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
-                    }
-                    
-                    if let currentState = viewModel.states[.grades] {
-                        check(state: currentState).padding()
-                    } else {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
-                    }
-                    
-                    if let currentState = viewModel.states[.tuitionFees] {
-                        check(state: currentState).padding()
-                    } else {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
-                    }
-                    
-                    if let currentState = viewModel.states[.identification] {
-                        check(state: currentState).padding()
-                    } else {
-                        Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                    ForEach(permissionTypes, id: \.self) { permissionType in
+                        if let currentState = viewModel.states[permissionType] {
+                            check(state: currentState).padding()
+                        } else {
+                            Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
+                        }
                     }
                 }
             }
@@ -100,13 +86,28 @@ struct TokenPermissionsView: View {
                 }
                 
                 if doneButton {
+                    // Insert the warning string and switch bool
+                    
                     Button {
-                        if dismissWhenDone {
-                            // Dismiss when view is opened from Profile/Settings.
-                            dismiss()
+                        if allPermissionsAreGranted() {
+                            if dismissWhenDone {
+                                // Dismiss when view is opened from Profile/Settings.
+                                dismiss()
+                            } else {
+                                // Used when shown via the login process sheet.
+                                self.viewModel.model.isLoginSheetPresented = false
+                            }
                         } else {
-                            // Used when shown via the login process sheet.
-                            self.viewModel.model.isLoginSheetPresented = false
+                            // Not all permissions were granted
+                            
+                            permissionsWarning = "You have not granted the following permissions: \n\n"
+                            for permission in notGrantedPermissions() {
+                                self.permissionsWarning.append("\(permission.rawValue)\n ")
+                            }
+                            permissionsWarning.append("\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline.")
+                            
+                            notAllPermissionsGranted = true
+                            
                         }
                     } label: {
                         Text("Done")
@@ -114,7 +115,7 @@ struct TokenPermissionsView: View {
                             .font(.body)
                             .frame(width: 200, height: 48, alignment: .center)
                             .foregroundColor(.white)
-                            .background(.green)
+                            .background(allPermissionsAreGranted() ? .green : .tumBlue)
                             .cornerRadius(10)
                             .buttonStyle(.plain)
                     }
@@ -125,6 +126,36 @@ struct TokenPermissionsView: View {
         .sheet(isPresented: $showTUMOnline) {
             SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
         }
+        .alert(isPresented: $notAllPermissionsGranted) {
+            Alert(title: Text("Permissions Warning"), message: Text(permissionsWarning), primaryButton: Alert.Button.cancel(), secondaryButton: Alert.Button.destructive(Text("Continue anyways"), action: {
+                if dismissWhenDone {
+                    // Dismiss when view is opened from Profile/Settings.
+                    dismiss()
+                } else {
+                    // Used when shown via the login process sheet.
+                    self.viewModel.model.isLoginSheetPresented = false
+                }
+            }))
+        }
+    }
+    
+    func notGrantedPermissions() -> [TokenPermissionsViewModel.PermissionType] {
+        return permissionTypes.filter { permissionType in
+            if case .success = viewModel.states[permissionType] {
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+    
+    func allPermissionsAreGranted() -> Bool {
+        for permissionType in permissionTypes {
+            if case .success = viewModel.states[permissionType] {} else {
+                return false
+            }
+        }
+        return true
     }
     
     @ViewBuilder
