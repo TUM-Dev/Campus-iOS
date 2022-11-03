@@ -12,7 +12,7 @@ class CalendarViewModel: ObservableObject {
     typealias ImporterType = Importer<CalendarEvent, CalendarAPIResponse, XMLDecoder>
     private static let endpoint = TUMOnlineAPI.calendar
     
-    @Published var events: [CalendarEvent] = []
+    @Published var events: [CalendarEvent]?
     
     let model: Model
     var state: State = .na
@@ -24,61 +24,33 @@ class CalendarViewModel: ObservableObject {
     
     
     func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
-        if(self.model.isUserAuthenticated) {
-            let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-            DispatchQueue.main.async {
-                importer.performFetch(handler: { result in
-                    switch result {
-                    case .success(let storage):
-                        self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
-                            guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
-                                return false
-                            }
-                            return dateOne > dateTwo
-                        }) ?? []
-                        
-                        if let _ = storage.events {
-                            callback(.success(true))
-                        } else {
-                            callback(.failure(CampusOnlineAPI.Error.noPermission))
+        
+        guard self.model.isUserAuthenticated else {
+            return
+        }
+        
+        let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
+        DispatchQueue.main.async {
+            importer.performFetch(handler: { result in
+                switch result {
+                case .success(let storage):
+                    self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
+                        guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
+                            return false
                         }
-                    case .failure(let error):
-                        self.state = .failed(error: error)
+                        return dateOne > dateTwo
+                    }) ?? []
+                    
+                    if let _ = storage.events {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(CampusOnlineAPI.Error.noPermission))
                     }
-                })
-            }
-            
-        } else {
-            self.events = []
+                case .failure(let error):
+                    self.state = .failed(error: error)
+                }
+            })
         }
-    }
-    
-    var eventsByDate: [Date? : [CalendarEvent]] {
-        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
-        let dictionary = Dictionary(grouping: sortedEvents, by: { $0.startDate?.removeTimeStamp })
-        return dictionary
-    }
-
-	var upcomingEvents: [CalendarEvent] {
-        
-        let now = Date()
-
-        let futureEvents: [CalendarEvent] = self.events
-            .compactMap { event in
-                guard let _ = event.startDate, let endDate = event.endDate, now <= endDate else { return nil }
-                return event
-            }
-                
-        let groupedEvents: Dictionary<Date, [CalendarEvent]> = Dictionary(grouping: futureEvents) { event -> Date in
-            let components = Calendar.current.dateComponents([.day, .month, .year], from: event.startDate!)
-            let date = Calendar.current.date(from: components)!
-            
-            return date
-        }
-
-        let upcomingEvents = groupedEvents.min { $0.key < $1.key }?.value ?? []
-        
-        return upcomingEvents.sorted{ $0.startDate! < $1.startDate! }
     }
 }
 

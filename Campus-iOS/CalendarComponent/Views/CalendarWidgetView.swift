@@ -9,45 +9,47 @@ import SwiftUI
 
 struct CalendarWidgetView: View {
     
-    @StateObject private var viewModel: CalendarViewModel
+    @StateObject private var viewModel: CalendarWidgetViewModel
     @State private var size: WidgetSize
     @State private var showDetails: Bool = false
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
-    private let model: Model
     @Binding var refresh: Bool
     
-    init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
+    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self._viewModel = StateObject(wrappedValue: CalendarWidgetViewModel())
         self._size = State(initialValue: size)
         self.initialSize = size
-        self.model = model
         self._refresh = refresh
     }
     
+    var content: some View {
+        CalendarWidgetContent(size: size, events: viewModel.upcomingEvents)
+            .widgetBackground()
+    }
+    
     var body: some View {
-        WidgetFrameView(
-            size: size,
-            content: CalendarWidgetContent(
-                size: size,
-                events: viewModel.upcomingEvents
-            )
-        )
-        .onChange(of: refresh) { _ in
-            if showDetails { return }
-            viewModel.fetch()
-        }
-        .onTapGesture {
-            showDetails.toggle()
-        }
-        .sheet(isPresented: $showDetails) {
-            CalendarContentView(model: model, refresh: .constant(false))
-        }
-        .expandable(size: $size, initialSize: initialSize, scale: $scale)
+        WidgetFrameView(size: size, content: content)
+            .onChange(of: refresh) { _ in
+                if showDetails { return }
+                Task { await viewModel.fetch() }
+            }
+            .task {
+                await viewModel.fetch()
+            }
+            .onTapGesture {
+                showDetails.toggle()
+            }
+            .sheet(isPresented: $showDetails) {
+                CalendarContentView(model: Model(), refresh: .constant(false))
+            }
+            .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
 }
 
 struct CalendarWidgetContent: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     
     let size: WidgetSize
     let events: [CalendarEvent]
@@ -61,7 +63,7 @@ struct CalendarWidgetContent: View {
         
         switch size {
         case .square: displayedItems = 1
-        case .rectangle: displayedItems = 2
+        case .rectangle: displayedItems = 1
         case .bigSquare: displayedItems = 5
         }
     }
@@ -72,8 +74,7 @@ struct CalendarWidgetContent: View {
         return formatter
     }
     
-    var content: some View {
-        
+    var body: some View {
         VStack(alignment: .leading) {
             
             // Title
@@ -100,8 +101,8 @@ struct CalendarWidgetContent: View {
 
             if !events.isEmpty {
                 ForEach(events.prefix(displayedItems), id: \.id) { event in
-                    // Allow multiline if the content will likely not fit inside one line.
-                    CalendarEventView(event: event, allowMultiline: size == .square)
+                    CalendarEventView(event: event, color: color())
+                        .padding(.top, 8)
                 }
             } else {
                 Text("No events.")
@@ -109,24 +110,36 @@ struct CalendarWidgetContent: View {
             }
             
             Spacer()
+            
+            let diff = events.count - displayedItems
+            Group {
+                if diff == 1 {
+                    Text("+ 1 more event")
+                } else if diff > 1 {
+                    Text("+ \(diff) more events")
+                }
+            }
+            .foregroundColor(color())
+            .bold()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
     }
     
-    var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
-            .overlay {
-                content
-            }
+    // TUM-blue has bad contrast on the dark appearance.
+    private func color() -> Color {
+        if colorScheme == .dark {
+            return .blue
+        }
+        
+        return .tumBlue
     }
 }
 
 struct CalendarEventView: View {
     
     let event: CalendarEvent
-    let allowMultiline: Bool
+    let color: Color
     
     @State private var height: CGFloat = 0
     
@@ -141,38 +154,31 @@ struct CalendarEventView: View {
            let endDate = event.endDate,
            let title = event.title,
            let location = event.location {
-            HStack(alignment: .top) {
+            
+            HStack(alignment: .center) {
                 Capsule()
-                    .frame(width: 2, height: height)
-                    .foregroundColor(.tumBlue)
+                    .frame(width: 2)
+                    .foregroundColor(color)
                 
                 VStack(alignment: .leading) {
+                    
+                    let timeText = "\(timeFormatter.string(from: startDate)) - \(timeFormatter.string(from: endDate))"
+                    
+                    Label(timeText, systemImage: "clock")
+                        .font(.caption2)
+                        .foregroundColor(color)
+                    
                     Text(title)
                         .font(.caption)
                         .bold()
-                        .lineLimit(allowMultiline ? 2 : 1)
+                        .lineLimit(1)
                     
-                    Group {
-                        let timeText = timeFormatter.string(from: startDate) +
-                            " - " + timeFormatter.string(from: endDate)
-                        
-                        Label(timeText, systemImage: "clock")
-                            .lineLimit(1)
-                        
-                        Label(location, systemImage: "mappin")
-                            .lineLimit(allowMultiline ? 3 : 1)
-                    }
-                    .font(.caption2)
+                    Label(location, systemImage: "mappin")
+                        .lineLimit(1)
+                        .font(.caption2)
                 }
-                
-                // Via https://stackoverflow.com/a/60346544
-                .alignmentGuide(.top, computeValue: { d in
-                    DispatchQueue.main.async {
-                        self.height = max(d.height, self.height)
-                    }
-                    return d[.top]
-                })
             }
+            .frame(height: 40)
         } else {
             Text("Error")
         }
@@ -196,6 +202,7 @@ struct CalendarWidgetView_Previews: PreviewProvider {
                     size: size,
                     events: events
                 )
+                .widgetBackground()
             )
         }
     }

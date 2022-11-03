@@ -27,23 +27,24 @@ struct CalendarContentView: View {
     var body: some View {
         VStack {
             GeometryReader { geo in
+                let events = viewModel.events ?? []
                 // workaround since passing the calendar type to the view does not work
                 switch self.selectedType {
                 case .week:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: events.map({ $0.kvkEvent }),
                         type: .week,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .day:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: events.map({ $0.kvkEvent }),
                         type: .day,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .month:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: events.map({ $0.kvkEvent }),
                         type: .month,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
@@ -57,7 +58,8 @@ struct CalendarContentView: View {
             self.viewModel.fetch()
         }
         .sheet(item: self.$selectedEventID) { eventId in
-            let chosenEvent = self.viewModel.events
+            let events = viewModel.events ?? []
+            let chosenEvent = events
                 .first(where: { $0.id.description == eventId })
             CalendarSingleEventView(
                 viewModel: LectureDetailsViewModel(
