@@ -21,12 +21,13 @@ struct TokenPermissionsView: View {
     let permissionTypes: [TokenPermissionsViewModel.PermissionType]  = [.calendar, .lectures, .grades, .tuitionFees, .identification]
     
     var body: some View {
-        VStack() {
+        VStack(alignment: .center) {
             HStack {
-                Spacer()
+                Spacer(minLength: 10)
                 Text("You can change your permissions on TUMOnline")
                     .foregroundColor(.tumBlue)
-                Spacer()
+                    .multilineTextAlignment(.center)
+                Spacer(minLength: 10)
             }
             HStack {
                 VStack(alignment: .leading) {
@@ -107,7 +108,6 @@ struct TokenPermissionsView: View {
                             permissionsWarning.append("\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline.")
                             
                             notAllPermissionsGranted = true
-                            
                         }
                     } label: {
                         Text("Done")
