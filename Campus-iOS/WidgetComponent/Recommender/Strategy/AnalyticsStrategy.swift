@@ -50,8 +50,7 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
 #if !targetEnvironment(simulator)
     func getRecommendation() async throws -> [WidgetRecommendation] {
         
-        var rawData = try AnalyticsController.getEntries()
-        rawData = relevantData(from: rawData)
+        let rawData = try relevantData(from: AnalyticsController.getEntries())
         
         if dataHandler == nil {
             dataHandler = AnalyticsDataHandler(
@@ -81,15 +80,15 @@ class AnalyticsStrategy: WidgetRecommenderStrategy {
                 
         var result: [WidgetRecommendation] = []
         
-        Widget.allCases.forEach { widget in
+        CampusAppWidget.allCases.forEach { widget in
             let views = widget.associatedViews()
             
-            var probability: Double = 0
+            var score: Double = 0
             views.forEach { view in
-                probability += predictions[view] ?? 0
+                score += predictions[view] ?? 0
             }
             
-            result.append(WidgetRecommendation(widget: widget, priority: Int(probability * 100)))
+            result.append(WidgetRecommendation(widget: widget, priority: Int(score * 100)))
         }
         
         print(result)

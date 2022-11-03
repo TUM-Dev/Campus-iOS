@@ -10,11 +10,11 @@ import Foundation
 struct TimeStrategy: WidgetRecommenderStrategy {
     
     func getRecommendation() async throws -> [WidgetRecommendation] {
-        let widgets = Widget.allCases.map {  WidgetRecommendation(widget: $0, priority: priority(of: $0)) }
+        let widgets = CampusAppWidget.allCases.map {  WidgetRecommendation(widget: $0, priority: priority(of: $0)) }
         return widgets.filter { $0.priority > 0 }
     }
     
-    private func priority(of widget: Widget) -> Int {
+    private func priority(of widget: CampusAppWidget) -> Int {
         var priority: Int = 1
         
         let currentDate = Date()

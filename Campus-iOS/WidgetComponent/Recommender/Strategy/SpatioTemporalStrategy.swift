@@ -16,7 +16,7 @@ struct SpatioTemporalStrategy: WidgetRecommenderStrategy {
         let timeRecommendations = try await timeStrategy.getRecommendation()
         let locationRecommendations = try await locationStrategy.getRecommendation()
         
-        let recommendations = Widget.allCases.map {
+        let recommendations = CampusAppWidget.allCases.map {
             WidgetRecommendation(
                 widget: $0,
                 priority: priority(for: $0, in: timeRecommendations) + priority(for: $0, in: locationRecommendations)
@@ -26,7 +26,7 @@ struct SpatioTemporalStrategy: WidgetRecommenderStrategy {
         return recommendations.filter { $0.priority > 0 }
     }
     
-    private func priority(for widget: Widget, in array: [WidgetRecommendation]) -> Int {
+    private func priority(for widget: CampusAppWidget, in array: [WidgetRecommendation]) -> Int {
         return array.first(where: { $0.widget == widget } )?.priority ?? 0
     }
 }

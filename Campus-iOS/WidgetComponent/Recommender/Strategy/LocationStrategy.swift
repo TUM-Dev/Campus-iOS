@@ -24,7 +24,7 @@ struct LocationStrategy: WidgetRecommenderStrategy {
         }
         
         var recommendations: [WidgetRecommendation] = []
-        for widget in Widget.allCases {
+        for widget in CampusAppWidget.allCases {
             guard let priority = try? await priority(of: widget) else {
                 continue
             }
@@ -35,7 +35,7 @@ struct LocationStrategy: WidgetRecommenderStrategy {
         return recommendations.filter { $0.priority > 0 }
     }
     
-    private func priority(of widget: Widget) async throws -> Int {
+    private func priority(of widget: CampusAppWidget) async throws -> Int {
         
         var priority: Int = 0
         

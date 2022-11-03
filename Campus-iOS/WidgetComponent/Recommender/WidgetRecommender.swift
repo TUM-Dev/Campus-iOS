@@ -31,14 +31,14 @@ class WidgetRecommender: ObservableObject {
     }
     
     @ViewBuilder
-    func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
+    func getWidget(for widget: CampusAppWidget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
         switch widget {
         case .cafeteria:
             CafeteriaWidgetView(size: size, refresh: refresh)
         case .studyRoom:
             StudyRoomWidgetView(size: size, refresh: refresh)
         case .calendar:
-            CalendarWidgetView(model: model, size: size, refresh: refresh)
+            CalendarWidgetView(size: size, refresh: refresh)
         case .tuition:
             TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
         case .grades:
