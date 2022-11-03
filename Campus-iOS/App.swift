@@ -79,6 +79,22 @@ struct CampusApp: App {
                 view.navigationViewStyle(.stack)
             })
             
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                NavigationView {
+                    WidgetScreen(model: model)
+                        .toolbar {
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                                ProfileToolbar(model: model)
+                            }
+                        }
+                }
+                .navigationViewStyle(.stack)
+                .tag(0)
+                .tabItem {
+                    Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                }
+            }
+            
             NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .navigationTitle("Grades")
@@ -90,7 +106,7 @@ struct CampusApp: App {
             }
             .tag(2)
             .tabItem {
-                Label("Grades", systemImage: "checkmark.shield")
+                Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
             }
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
