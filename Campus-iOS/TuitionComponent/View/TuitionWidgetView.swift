@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TuitionWidgetView: View {
     
+    @StateObject var viewModel = TuitionWidgetViewModel()
     @State private var size: WidgetSize
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
@@ -20,50 +21,43 @@ struct TuitionWidgetView: View {
         self._refresh = refresh
     }
     
-    var body: some View {
-        WidgetFrameView(size: size, content: TuitionWidgetContent(size: size, refresh: $refresh))
-            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
-    }
-}
-
-struct TuitionWidgetContent: View {
-    @StateObject var viewModel = ProfileViewModel()
-    let size: WidgetSize
-    @Binding var refresh: Bool
-    
-    var body: some View {
+    var content: some View {
         Group {
             if let tuition = self.viewModel.tuition,
                let amount = tuition.amount,
                let deadline = tuition.deadline,
                let semester = tuition.semesterID {
-                TuitionWidgetInfoView(
+                TuitionWidgetContent(
+                    size: size,
                     amount: amount,
-                    openAmount: tuition.isOpenAmount,
                     deadline: deadline,
-                    semester: semester,
-                    big: size != .square
+                    semesterID: semester
                 )
+                .widgetBackground()
             } else {
                 WidgetLoadingView(text: "Loading tuition fee")
             }
         }
-        .onChange(of: refresh) { _ in
-            viewModel.fetch()
-        }
-        .task {
-            viewModel.fetch()
-        }
+    }
+    
+    var body: some View {
+        WidgetFrameView(size: size, content: content)
+            .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
+            .onChange(of: refresh) { _ in
+                Task { await viewModel.fetch() }
+            }
+            .task {
+                await viewModel.fetch()
+            }
     }
 }
 
-struct TuitionWidgetInfoView: View {
+struct TuitionWidgetContent: View {
     
+    let size: WidgetSize
     let amount: NSDecimalNumber
-    let openAmount: Bool
     let deadline: Date
-    let semester: String
-    let big: Bool
+    let semesterID: String
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -73,47 +67,42 @@ struct TuitionWidgetInfoView: View {
     }()
     
     var body: some View {
-        
-        Rectangle()
-            .foregroundColor(.widget)
-            .overlay {
-                VStack(alignment: .leading) {
-                    
-                    Label("Tuition fees", systemImage: "eurosign.circle")
-                        .font(.body.bold())
-                        .lineLimit(1)
-                        .padding(.bottom, 2)
-                    
-                    Text(self.formatter.string(from: amount) ?? "Unknown")
-                        .font(.system(size: 30))
-                        .foregroundColor(openAmount ? .red : .green)
-                        .bold()
-                    
-                    HStack {
-                        Text("Open Amount")
-                        Text(semester)
-                    }
-                    .font(big ? .body : .caption)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Image(systemName: "calendar.badge.exclamationmark")
-                        
-                        if (big) {
-                            Text("Deadline")
-                                .bold()
-                        }
-                        
-                        Text(deadline, style: .relative)
-                            .bold()
-                    }
-                    .font((big ? Font.body : Font.caption).bold())
-
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+        VStack(alignment: .leading) {
+            
+            Label("Tuition fees", systemImage: "eurosign.circle")
+                .font(.body.bold())
+                .lineLimit(1)
+                .padding(.bottom, 2)
+            
+            Text(self.formatter.string(from: amount) ?? "Unknown")
+                .font(.system(size: 30))
+                .foregroundColor(amount.floatValue > 0 ? .red : .green)
+                .bold()
+            
+            HStack {
+                Text("Open Amount")
+                Text(semesterID)
             }
+            .font(size == .square ? .caption : .body)
+            
+            Spacer()
+            
+            HStack {
+                Image(systemName: "calendar.badge.exclamationmark")
+                
+                if (size != .square) {
+                    Text("Deadline")
+                        .bold()
+                }
+                
+                Text(deadline, style: .relative)
+                    .bold()
+            }
+            .font((size == .square ? Font.caption : Font.body).bold())
+
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
     }
 }
 
@@ -143,12 +132,12 @@ struct TuitionWidgetView_Previews: PreviewProvider {
     static var content: some View {
         VStack {
             HStack{
-                WidgetFrameView(size: .square, content: TuitionWidgetInfoView(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: false))
+                WidgetFrameView(size: .square, content: TuitionWidgetContent(size: .square, amount: 138.00, deadline: Date(), semesterID: "22W").widgetBackground())
                 
-                WidgetFrameView(size: .square, content: TuitionWidgetInfoView(amount: 0, openAmount: false, deadline: Date(), semester: "22S", big: false))
+                WidgetFrameView(size: .square, content: TuitionWidgetContent(size: .square, amount: 0, deadline: Date(), semesterID: "22S").widgetBackground())
             }
             
-            WidgetFrameView(size: .rectangle, content: TuitionWidgetInfoView(amount: 138.00, openAmount: true, deadline: Date(), semester: "22W", big: true))
+            WidgetFrameView(size: .rectangle, content: TuitionWidgetContent(size: .rectangle, amount: 138.00, deadline: Date(), semesterID: "22W").widgetBackground())
         }
     }
     
