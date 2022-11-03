@@ -26,6 +26,8 @@ class AnalyticsDataHandler {
     
     private let modelIterations: Int
     
+    private let minGroupSize: Int
+    
     // Centroid : Identifier
     private var discretizedLocations: Dictionary<CLLocation, String> = [:]
     
@@ -38,11 +40,12 @@ class AnalyticsDataHandler {
     // Discrete value for any variable that is not close enough to any entry in the domain of the  respective discretized variable.
     private let otherValue = "other"
     
-    init(data: [AppUsageDataEntity], locationGroupRadius: CLLocationDistance, timeNearbyThreshold: Int, dateNearbyThreshold: Int, modelIterations: Int = 20) {
+    init(data: [AppUsageDataEntity], locationGroupRadius: CLLocationDistance, timeNearbyThreshold: Int, dateNearbyThreshold: Int, modelIterations: Int = 20, minGroupSize: Int = 5) {
         self.locationGroupRadius = locationGroupRadius
         self.timeNearbyThreshold = timeNearbyThreshold
         self.dateNearbyThreshold = dateNearbyThreshold
         self.modelIterations = modelIterations
+        self.minGroupSize = minGroupSize
         self.discretizedData = self.discretize(data)
     }
     
@@ -57,15 +60,15 @@ class AnalyticsDataHandler {
     public func discreteValue(for location: CLLocation) -> String {
         
         let keys = discretizedLocations.keys
-        guard let min = keys.min(by: { location.distance(from: $0) < location.distance(from: $1)}) else {
-            return otherValue
-        }
         
-        if location.distance(from: min) > locationGroupRadius || location.isInvalid()  {
-            return otherValue
-        }
+        guard
+            let min = keys.min(by: { location.distance(from: $0) < location.distance(from: $1)}),
+            let value = discretizedLocations[min],
+            location.distance(from: min) <= locationGroupRadius,
+            !location.isInvalid()
+        else { return otherValue }
         
-        return discretizedLocations[min] ?? otherValue
+        return value
     }
     
     public func discreteValue(for time: Date.Time) -> String {
@@ -132,9 +135,9 @@ class AnalyticsDataHandler {
         
         return try MLDataTable(dictionary: dataDictionary)
     }
-
-    public func evaluateClassifier(trainingData: MLDataTable, testData: MLDataTable) throws -> Double {
-        let classifier = try getClassifier(from: trainingData)
+    
+    public func evaluateClassifier(trainingData: MLDataTable, testData: MLDataTable, maxIterations: Int) throws -> Double {
+        let classifier = try getClassifier(from: trainingData, maxIterations: maxIterations)
         let metrics = classifier.evaluation(on: testData)
         let accuracy = 1 - metrics.classificationError
         
@@ -182,14 +185,14 @@ class AnalyticsDataHandler {
         
         let discretizedData: [DiscretizedAppUsageDataEntity] = data.compactMap { entry in
             
-            guard let view = entry.view else {
+            guard let view = entry.view, let startTime = entry.startTime, let endTime = entry.endTime else {
                 return nil
             }
             
             return DiscretizedAppUsageDataEntity(
                 location: discreteValue(for: CLLocation(latitude: entry.latitude, longitude: entry.longitude)),
-                time: discreteValue(for: entry.startTime?.time ?? Date().time),
-                date: discreteValue(for: entry.startTime ?? Date()),
+                time: discreteValue(for: startTime.time),
+                date: discreteValue(for: endTime),
                 view: view
             )
         }
@@ -226,7 +229,7 @@ class AnalyticsDataHandler {
             return location.isInvalid() ? nil : location
         }
         
-        let groupedLocations = locations.groups(where: { $0.distance(from: $1) <= locationGroupRadius })
+        let groupedLocations = locations.groups(where: { $0.distance(from: $1) <= locationGroupRadius }, minGroupSize: minGroupSize)
         
         // Remove duplicate groups.
         return Array(Set(groupedLocations))
@@ -234,7 +237,7 @@ class AnalyticsDataHandler {
     
     private func groupedTimes(from data: [AppUsageDataEntity]) -> [[Date.Time]] {
         let times = data.compactMap { $0.startTime?.time }
-        let result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold })
+        let result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold }, minGroupSize: minGroupSize)
         
         // Remove duplicate groups.
         return Array(Set(result))
@@ -242,7 +245,7 @@ class AnalyticsDataHandler {
     
     private func groupedDates(from data: [AppUsageDataEntity]) -> [[Date]] {
         let dates = data.compactMap { $0.startTime }
-        let result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold })
+        let result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold }, minGroupSize: minGroupSize)
         
         // Remove duplicate groups.
         return Array(Set(result))

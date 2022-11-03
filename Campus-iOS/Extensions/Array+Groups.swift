@@ -8,7 +8,7 @@
 import Foundation
 
 extension Array {
-    func groups(where predicate: (Element, Element) -> Bool) -> [[Element]] {
+    func groups(where predicate: (Element, Element) -> Bool, minGroupSize: Int = 1) -> [[Element]] {
         
         var result: [[Element]] = []
         
@@ -26,7 +26,9 @@ extension Array {
                 group.append(self[j])
             }
             
-            result.append(group)
+            if group.count >= minGroupSize {
+                result.append(group)
+            }
         }
         
         return result
