@@ -11,7 +11,14 @@ import Foundation
 class CalendarWidgetViewModel: ObservableObject {
     
     @Published var events: [CalendarEvent]?
-    private let calendarVm = CalendarViewModel(model: Model())
+    private let model: Model
+    private let calendarVm: CalendarViewModel
+    
+    init() {
+        self.events = nil
+        self.model = Model()
+        self.calendarVm = CalendarViewModel(model: model)
+    }
     
     var eventsByDate: [Date? : [CalendarEvent]] {
         guard let events else {
@@ -63,5 +70,9 @@ class CalendarWidgetViewModel: ObservableObject {
         }
         
         self.events = calendarVm.events
+    }
+    
+    func getModel() -> Model {
+        return self.model
     }
 }

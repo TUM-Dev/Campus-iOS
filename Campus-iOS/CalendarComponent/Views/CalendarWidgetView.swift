@@ -41,7 +41,7 @@ struct CalendarWidgetView: View {
                 showDetails.toggle()
             }
             .sheet(isPresented: $showDetails) {
-                CalendarContentView(model: Model(), refresh: .constant(false))
+                CalendarContentView(model: viewModel.getModel(), refresh: .constant(false))
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
