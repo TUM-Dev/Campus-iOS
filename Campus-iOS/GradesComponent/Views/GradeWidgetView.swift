@@ -27,24 +27,13 @@ struct GradeWidgetView: View {
         Group {
             switch viewModel.state {
             case .success:
-                switch size {
-                case .square:
-                    SimpleGradeWidgetContent(grade: viewModel.grades.first)
-                case .rectangle, .bigSquare:
-                    DetailedGradeWidgetContent(grades: viewModel.grades, size: size)
-                }
+                GradeWidgetContent(size: size, grades: viewModel.grades)
+                    .widgetBackground()
             case .loading, .na:
                 WidgetLoadingView(text: "Fetching Grades")
             case .failed:
                 TextWidgetView(text: "There was an error fetching the grades.")
             }
-        }
-        .onChange(of: refresh) { _ in
-            if showDetails { return }
-            Task { await viewModel.getGrades() }
-        }
-        .task {
-            await viewModel.getGrades()
         }
     }
     
@@ -57,6 +46,28 @@ struct GradeWidgetView: View {
                 GradesView(vm: viewModel)
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)
+            .onChange(of: refresh) { _ in
+                if showDetails { return }
+                Task { await viewModel.getGrades() }
+            }
+            .task {
+                await viewModel.getGrades()
+            }
+    }
+}
+
+struct GradeWidgetContent: View {
+    
+    let size: WidgetSize
+    let grades: [Grade]
+    
+    var body: some View {
+        switch size {
+        case .square:
+            SimpleGradeWidgetContent(grade: grades.first)
+        default:
+            DetailedGradeWidgetContent(grades: grades, size: size)
+        }
     }
 }
 
@@ -85,36 +96,35 @@ struct SimpleGradeWidgetContent: View {
     }
     
     var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
-            .overlay {
-                if let grade = grade {
-                    VStack(alignment: .leading) {
-                        
-                        gradeView
-                        
-                        Spacer()
-                        
-                        HStack {
-                            Image(systemName: "pencil")
-                            Text(grade.title)
-                                .lineLimit(2)
-                        }
-                        .font(.caption.bold())
-                        .fixedSize(horizontal: false, vertical: true)
-                        .padding(.bottom, 2)
-                        
-                        Label(grade.examiner, systemImage: "person")
-                            .font(.caption)
-                        
-                        Spacer()
+        Group {
+            if let grade = grade {
+                VStack(alignment: .leading) {
+                    
+                    gradeView
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Image(systemName: "pencil")
+                        Text(grade.title)
+                            .lineLimit(2)
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                } else {
-                    Text("No grades")
+                    .font(.caption.bold())
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.bottom, 2)
+                    
+                    Label(grade.examiner, systemImage: "person")
+                        .font(.caption)
+                    
+                    Spacer()
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+            } else {
+                Text("No grades")
             }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
@@ -140,49 +150,45 @@ struct DetailedGradeWidgetContent: View {
     }
     
     var body: some View {
-        Rectangle()
-            .foregroundColor(.widget)
-            .overlay {
-                VStack(alignment: .leading) {
-                    
-                    Label("My Grades", systemImage: "checkmark.shield")
-                        .font(.body.bold())
-                        .padding(.bottom, 2)
-                    
-                    Spacer()
-                    
-                    if (grades.isEmpty) {
-                        Text("No grades.")
-                    } else {
-                        ForEach(grades.prefix(displayedItems), id: \.id) { grade in
+        VStack(alignment: .leading) {
+            
+            Label("My Grades", systemImage: "checkmark.shield")
+                .font(.body.bold())
+                .padding(.bottom, 2)
+            
+            Spacer()
+            
+            if (grades.isEmpty) {
+                Text("No grades.")
+            } else {
+                ForEach(grades.prefix(displayedItems), id: \.id) { grade in
+                    HStack {
+
+                        GradeSquareView(grade: grade)
+                        
+                        VStack(alignment: .leading) {
+                            Text(grade.title)
+                                .font(.caption)
+                                .bold()
+                                .lineLimit(1)
+
+                            Label(grade.examiner, systemImage: "person")
+                                .font(.caption)
+                            
                             HStack {
-
-                                GradeSquareView(grade: grade)
-                                
-                                VStack(alignment: .leading) {
-                                    Text(grade.title)
-                                        .font(.caption)
-                                        .bold()
-                                        .lineLimit(1)
-
-                                    Label(grade.examiner, systemImage: "person")
-                                        .font(.caption)
-                                    
-                                    HStack {
-                                        Label(grade.modusShort, systemImage: "pencil")
-                                        Label(grade.lvNumber, systemImage: "number")
-                                    }
-                                    .font(.caption2)
-                                }
+                                Label(grade.modusShort, systemImage: "pencil")
+                                Label(grade.lvNumber, systemImage: "number")
                             }
+                            .font(.caption2)
                         }
                     }
-                     
-                    Spacer()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
             }
+             
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
     }
 }
 
@@ -210,12 +216,12 @@ struct GradeWidgetView_Previews: PreviewProvider {
         ScrollView {
             VStack {
                 HStack {
-                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.dummyDataAll.first))
-                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: nil))
+                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.dummyDataAll.first).widgetBackground())
+                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: nil).widgetBackground())
                 }
-                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .rectangle))
-                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .bigSquare))
-                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: [], size: .rectangle))
+                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .rectangle).widgetBackground())
+                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .bigSquare).widgetBackground())
+                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: [], size: .rectangle).widgetBackground())
             }
             .padding()
         }
