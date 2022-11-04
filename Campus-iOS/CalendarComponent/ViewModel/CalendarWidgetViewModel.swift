@@ -20,6 +20,13 @@ class CalendarWidgetViewModel: ObservableObject {
         self.calendarVm = CalendarViewModel(model: model)
     }
     
+    #if TEST
+    convenience init(events: [CalendarEvent]) {
+        self.init()
+        self.events = events
+    }
+    #endif
+    
     var eventsByDate: [Date? : [CalendarEvent]] {
         guard let events else {
             return [:]
@@ -29,14 +36,12 @@ class CalendarWidgetViewModel: ObservableObject {
         return dictionary
     }
 
-    var upcomingEvents: [CalendarEvent] {
+    func upcomingEvents(now: Date = Date()) -> [CalendarEvent] {
         
         guard let events else {
             return []
         }
         
-        let now = Date()
-
         let futureEvents: [CalendarEvent] = events
             .compactMap { event in
                 guard let _ = event.startDate, let endDate = event.endDate, now <= endDate else { return nil }

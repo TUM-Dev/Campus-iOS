@@ -24,7 +24,7 @@ struct CalendarWidgetView: View {
     }
     
     var content: some View {
-        CalendarWidgetContent(size: size, events: viewModel.upcomingEvents)
+        CalendarWidgetContent(size: size, events: viewModel.upcomingEvents())
             .widgetBackground()
     }
     

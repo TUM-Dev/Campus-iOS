@@ -15,7 +15,7 @@ struct CalendarWidgetProvider: IntentTimelineProvider {
         let vm = await CalendarWidgetViewModel()
         await vm.fetch()
         
-        let entry = await CalendarWidgetEntry(events: vm.upcomingEvents)
+        let entry = await CalendarWidgetEntry(events: vm.upcomingEvents())
         
         return entry
     }
