@@ -84,9 +84,17 @@ struct CampusOnlineAPI: NetworkingAPI {
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
+        // Fetch data from server
+        var data: Data
         do {
-            // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
-            // Delete all entities
+            data = try await endpoint.asRequest(token: token).serializingData().value
+        } catch {
+            throw NetworkingError.deviceIsOffline
+        }
+        
+        // Delete all entries
+        // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
+        do {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             deleteRequest.resultType = .resultTypeObjectIDs
@@ -98,14 +106,6 @@ struct CampusOnlineAPI: NetworkingAPI {
             NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
         } catch {
             print(CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)"))
-        }
-        
-        // Fetch data from server
-        var data: Data
-        do {
-            data = try await endpoint.asRequest(token: token).serializingData().value
-        } catch {
-            throw NetworkingError.deviceIsOffline
         }
         
         // Check this first cause otherwise no error is thrown by the XMLDecoder

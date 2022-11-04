@@ -13,10 +13,12 @@ struct FailedView: View {
     
 //    init(errorDescription: String, retryClosure: @escaping @MainActor () async -> () = { }) {
     let retryClosure: (Bool) async -> Void
+    let retryClosureCoreData: (@MainActor () async -> Void)?
     
-    init(errorDescription: String, retryClosure: @escaping (Bool) async -> Void = { _ in }) {
+    init(errorDescription: String, retryClosure: @escaping (Bool) async -> Void = { _ in }, retryClosureCoreData: (@MainActor () async -> Void)? = nil) {
         self.errorDescription = errorDescription
         self.retryClosure = retryClosure
+        self.retryClosureCoreData = retryClosureCoreData
     }
     
     var body: some View {
@@ -42,9 +44,13 @@ struct FailedView: View {
                     
                     Button(action: {
                         Task {
-                            // TODO: Delete user defaults to force an refresh of the data from the server to CoreData
-//                            await self.retryClosure()
-                            await self.retryClosure(false)
+                            if let closure = retryClosureCoreData {
+                                Task {
+                                    closure
+                                }
+                            } else {
+                                await self.retryClosure(false)
+                            }
                         }
                     }) {
                         Text("Try Again".uppercased())

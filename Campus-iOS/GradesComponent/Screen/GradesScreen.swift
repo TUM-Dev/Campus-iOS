@@ -42,7 +42,7 @@ struct GradesScreen: View {
                 FailedView(
                     errorDescription: error.localizedDescription,
 //                    retryClosure: vm.getGrades
-                    retryClosure: {_ in }
+                    retryClosureCoreData: vm.getGrades
                 )
             }
         }
