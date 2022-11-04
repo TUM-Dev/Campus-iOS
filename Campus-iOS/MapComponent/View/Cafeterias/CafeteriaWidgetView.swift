@@ -186,6 +186,7 @@ struct CafeteriaWidgetView_Previews: PreviewProvider {
                 dishes: Dish.mockDishes,
                 coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42)
             )
+            .widgetBackground()
         }
     }
     
