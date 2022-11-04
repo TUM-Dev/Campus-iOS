@@ -92,7 +92,7 @@ struct CampusApp: App {
                     }
             }
             .navigationViewStyle(.stack)
-            .tag(2)
+            .tag(0)
             .tabItem {
                 Label("My Widgets", systemImage: "rectangle.3.group")
             }
@@ -106,7 +106,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(0)
+            .tag(1)
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }

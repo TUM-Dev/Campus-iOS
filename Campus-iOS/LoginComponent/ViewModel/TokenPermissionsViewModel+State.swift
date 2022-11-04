@@ -11,7 +11,7 @@ extension TokenPermissionsViewModel {
     enum State {
         case na
         case loading
-        case success(data: Any?)
+        case success
         case failed(error: Error)
     }
 }

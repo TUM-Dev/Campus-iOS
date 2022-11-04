@@ -199,6 +199,7 @@ extension GradesViewModel: NSFetchedResultsControllerDelegate {
         }
         
         self.grades = grades
+        self.state = .success
     }
 }
 

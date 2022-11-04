@@ -49,8 +49,8 @@ class TokenPermissionsViewModel: ObservableObject {
             switch type {
             case .grades:
                 do {
-                    self.states[.grades] = .success(
-                        data: try await GradesService().fetch(token: token, forcedRefresh: true))
+                    try await GradesService().fetch(into: PersistenceController.shared.container.viewContext, with: token)
+                    self.states[.grades] = .success
                 } catch {
                     self.states[.grades] = .failed(error: error)
                 }
@@ -58,9 +58,9 @@ class TokenPermissionsViewModel: ObservableObject {
                 let calenderVM = CalendarViewModel(model: self.model)
                 
                 calenderVM.fetch { result in
-                    if case let .success(data) = result {
+                    if case .success = result {
                         print("Success")
-                        self.states[.calendar] = .success(data: data)
+                        self.states[.calendar] = .success
                     } else {
                         print("No success")
                         self.states[.calendar] = .failed(error: TUMOnlineAPIError.noPermission)
@@ -69,8 +69,8 @@ class TokenPermissionsViewModel: ObservableObject {
                 
             case .lectures:
                 do {
-                    self.states[.lectures] = .success(
-                        data: try await LecturesService().fetch(token: token, forcedRefresh: true))
+                    let _ = try await LecturesService().fetch(token: token, forcedRefresh: true)
+                    self.states[.lectures] = .success
                 } catch {
                     self.states[.lectures] = .failed(error: error)
                     print(error)
@@ -81,9 +81,9 @@ class TokenPermissionsViewModel: ObservableObject {
                 profileVM.fetch()
                 profileVM.checkTuitionFunc() {  result in
                     print(result)
-                    if case let .success(data) = result {
+                    if case .success = result {
                         print("Success")
-                        self.states[.tuitionFees] = .success(data: data)
+                        self.states[.tuitionFees] = .success
                     } else {
                         print("no success")
                         self.states[.tuitionFees] = .failed(error: TUMOnlineAPIError.noPermission)
@@ -95,9 +95,9 @@ class TokenPermissionsViewModel: ObservableObject {
                 let profileVM = ProfileViewModel(model: self.model)
                 profileVM.fetch() {  result in
                     print(result)
-                    if case let .success(data) = result {
+                    if case .success = result {
                         print("Success")
-                        self.states[.identification] = .success(data: data)
+                        self.states[.identification] = .success
                     } else {
                         print("no success")
                         self.states[.identification] = .failed(error: TUMOnlineAPIError.noPermission)
