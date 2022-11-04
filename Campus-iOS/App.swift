@@ -106,7 +106,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(1)
+            .tag(2)
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield")
             }

@@ -45,9 +45,7 @@ struct FailedView: View {
                     Button(action: {
                         Task {
                             if let closure = retryClosureCoreData {
-                                Task {
-                                    closure
-                                }
+                                await closure()
                             } else {
                                 await self.retryClosure(false)
                             }

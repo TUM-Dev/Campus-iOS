@@ -71,7 +71,6 @@ struct GradesScreen: View {
                         await vm.getGrades()
                     }
                 }
-                
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {

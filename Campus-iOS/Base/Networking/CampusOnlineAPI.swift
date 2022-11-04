@@ -94,19 +94,19 @@ struct CampusOnlineAPI: NetworkingAPI {
         
         // Delete all entries
         // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
-        do {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
-            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-            deleteRequest.resultType = .resultTypeObjectIDs
-            let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
-            // Necessary to reflect the change of deletion inside the context.
-            let changes: [AnyHashable: Any] = [
-                NSDeletedObjectsKey: result?.result as? [NSManagedObjectID] as Any
-            ]
-            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
-        } catch {
-            print(CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)"))
-        }
+//        do {
+//            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
+//            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//            deleteRequest.resultType = .resultTypeObjectIDs
+//            let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
+//            // Necessary to reflect the change of deletion inside the context.
+//            let changes: [AnyHashable: Any] = [
+//                NSDeletedObjectsKey: result?.result as? [NSManagedObjectID] as Any
+//            ]
+//            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+//        } catch {
+//            print(CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)"))
+//        }
         
         // Check this first cause otherwise no error is thrown by the XMLDecoder
         if let error = try? Self.decoder.decode(TUMOnlineAPIError.self, from: data) {
