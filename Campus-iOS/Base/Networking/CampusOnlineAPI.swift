@@ -61,11 +61,25 @@ struct CampusOnlineAPI: NetworkingAPI {
         }
     }
     
-    static func loadCoreData<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil, forcedReload: Bool = false) async throws {
+    /// Fetches the data of for `type` into the given `context` (i.e. CoreData).
+    ///
+    /// Perfoming a fetch of the `type` `RowSet<Grade>`. This will fetch all grades and deltes the old entries of the Entity `Grades` in the context (i.e. CoreData). Afterwards it will decode the fetched data into `RowSet<Grades>` and save them into the context.
+    /// ```
+    /// try await CampusOnlineAPI.fetch(for: RowSet<Grade>.self, into: context, from: Constants.API.CampusOnline.personalGrades, with: token)
+    /// ```
+    ///
+    /// > Hint: CoreData saves new objects after they are initilized and `try context.save()` was executed.
+    /// > Since at decoding each grade will be initialized as new `Grade` instance and at initialization of `Grade` the context was given CoreData knows about the new `Grade` instances and stores them after executing `save()` from the given `context`.
+    ///
+    /// - Parameters:
+    ///     - type: The type in which the XML respond of the fetch will be decoded. Since XML parsing has an additional `row` variable it is necessary to use the generic `RowSet<T: NSManagedObject & Decodable>` struct which is defined in `RowSet.swift`.
+    ///     - context: The `NSManagedObjectContext` used to save the new `Grade` instaces created by the Decoder.
+    ///     - endpoint: The URL endpoint from which we will fetch the data.
+    ///     - token: The users' TUMOnline token to autheticate for the fetch.
+    ///
+    static func fetch<T: NSManagedObject & Decodable>(for type: RowSet<T>.Type, into context: NSManagedObjectContext, from endpoint: APIConstants, with token: String? = nil) async throws {
         
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
-        
-        // TODO: implement forcedRefresh: If false: Check if data of type T was recently downloaded updated, if so nothing to fetch/update; If true: delete all entries of the specified Entity (e.g. Grade) and fetch the grade and store them in CoreData.
         
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
@@ -106,6 +120,7 @@ struct CampusOnlineAPI: NetworkingAPI {
             throw TUMOnlineAPIError.unkown(error.localizedDescription)
         }
         
+        // Saving the data into CoreData
         do {
             try context.save()
             print("Context saved for type \(type)")
@@ -116,14 +131,26 @@ struct CampusOnlineAPI: NetworkingAPI {
         }
     }
     
-    static func fetchIsNeeded<T: Decodable & NSManagedObject>(for type: T.Type) -> Bool {
+    /// A Boolean value indicating whether a new fetch of the data from the server is neccessery.
+    ///
+    /// Since the fetches should not occur too often a check if a fetch is needed. A fetch is needed if the given threshold (in seconds) is exceeded since the last fetch.
+    /// ```
+    /// CampusOnlineAPI.fetchIsNeeded(for: Grade.self, threshold: 30 * 60)
+    /// ```
+    /// Here after `30` minutes a new fetched will be declared as necessary.
+    ///
+    /// - Parameters:
+    ///     - type: The type of date which should be checked if fetching is necessary (e.g. `Grades`)
+    ///     - threshold: The time invertal in seconds after the last fetch another fetch should be declared as necessary.
+    ///
+    /// - Returns: A Boolen value if a fetch is needed for a specific `type` after exceeding a specific `threshold`.
+    static func fetchIsNeeded<T: Decodable & NSManagedObject>(for type: T.Type, threshold: TimeInterval) -> Bool {
         let defaults = UserDefaults.standard
-        guard let lastFetchDate = defaults.object(forKey: "\(String(describing: type))CoreDataStoringDate") as? Date, let fetchThresholdDate =  Calendar.current.date(
-            byAdding: .hour,
-            value: -3,
-            to: Date()) else {
+        guard let lastFetchDate = defaults.object(forKey: "\(String(describing: type))CoreDataStoringDate") as? Date else {
             return true
         }
+        
+        let fetchThresholdDate = Date().addingTimeInterval(-threshold)
         print(lastFetchDate <= fetchThresholdDate)
         print(lastFetchDate)
         print(fetchThresholdDate)

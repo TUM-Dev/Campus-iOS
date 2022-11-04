@@ -26,7 +26,7 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
     // https://www.youtube.com/watch?v=gGM_Qn3CUfQ&t=1192s
     private let fetchedResultController: NSFetchedResultsController<Grade>
     private let model: Model
-    private let service: GradesServiceProtocol
+    private let service: NetworkingServiceProtocol
     
     // Make self to delegate of NSFetchedResultsController
     
@@ -110,7 +110,7 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
         }
     }
     
-    init(context: NSManagedObjectContext, model: Model, service: GradesServiceProtocol) {
+    init(context: NSManagedObjectContext, model: Model, service: NetworkingServiceProtocol) {
         self.context = context
         self.fetchedResultController = NSFetchedResultsController(fetchRequest: Grade.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.model = model
@@ -133,9 +133,7 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
     }
     
     func getGrades() async {
-        print("get grades")
         if service.fetchIsNeeded(for: Grade.self) {
-            print("fetch grades")
             self.state = .loading
             self.hasError = false
             
@@ -146,10 +144,8 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
             }
 
             do {
-                try await service.fetchCoreData(into: context, token: token, forcedRefresh: false)
+                try await service.fetch(into: context, with: token)
                 self.state = .success
-                print("SUCCESS")
-                print(self.grades.count)
             } catch {
                 self.state = .failed(error: error)
                 self.hasError = true

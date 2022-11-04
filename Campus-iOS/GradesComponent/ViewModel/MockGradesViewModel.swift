@@ -17,7 +17,7 @@ class MockGradesViewModel: GradesViewModel {
         ("1630 17 030", [("Wintersemester 2020/21", Grade.dummyData20W)])
     ]
     
-    override init(context: NSManagedObjectContext, model: Model, service: GradesServiceProtocol) {
+    override init(context: NSManagedObjectContext, model: Model, service: NetworkingServiceProtocol) {
         super.init(context: context, model: model, service: service)
         
         self.state = .success
