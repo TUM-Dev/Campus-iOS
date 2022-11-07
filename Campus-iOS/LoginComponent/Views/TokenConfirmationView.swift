@@ -155,7 +155,6 @@ struct TokenConfirmationView: View {
                                 case .inactive:
                                     VStack {
                                         HStack {
-                                            Image(systemName: "x.circle.fill")
                                             Text("Token inactive")
                                                 .lineLimit(1)
                                                 .font(.system(size: 14, weight: .bold))
