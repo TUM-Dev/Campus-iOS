@@ -237,6 +237,12 @@
 		08977F8D29120209004149C6 /* CalendarWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F8A29120036004149C6 /* CalendarWidgetViewModel.swift */; };
 		08977F902913E574004149C6 /* SmartWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08977F8E2913E543004149C6 /* SmartWidget.swift */; };
 		0898C81A2915B55B00EDD671 /* CalendarWidget_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898C8192915B55B00EDD671 /* CalendarWidget_Tests.swift */; };
+		089E1EC32918859700719F1C /* AnalyticsDataHandler_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E1EC22918859700719F1C /* AnalyticsDataHandler_Tests.swift */; };
+		08BEB0E629189CAE00F3DB1F /* MockLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEB0E529189CAE00F3DB1F /* MockLocationManager.swift */; };
+		08BEB0E829189EB100F3DB1F /* LocationStrategy_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEB0E729189EB100F3DB1F /* LocationStrategy_Test.swift */; };
+		08BEB0EA2918A35700F3DB1F /* MockTimeStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEB0E92918A35700F3DB1F /* MockTimeStrategy.swift */; };
+		08BEB0ED2918A3EA00F3DB1F /* SpatioTemporalStrategy_Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEB0EC2918A3EA00F3DB1F /* SpatioTemporalStrategy_Test.swift */; };
+		08BEB0EF2918A43300F3DB1F /* MockLocationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BEB0EE2918A43300F3DB1F /* MockLocationStrategy.swift */; };
 		08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0703928776DD6004140B1 /* TextWidgetView.swift */; };
 		08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9535928E34596007ED2F1 /* Array+Groups.swift */; };
 		08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB96E286647E900E357DF /* WidgetScreen.swift */; };
@@ -549,6 +555,12 @@
 		08977F8A29120036004149C6 /* CalendarWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewModel.swift; sourceTree = "<group>"; };
 		08977F8E2913E543004149C6 /* SmartWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartWidget.swift; sourceTree = "<group>"; };
 		0898C8192915B55B00EDD671 /* CalendarWidget_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidget_Tests.swift; sourceTree = "<group>"; };
+		089E1EC22918859700719F1C /* AnalyticsDataHandler_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsDataHandler_Tests.swift; sourceTree = "<group>"; };
+		08BEB0E529189CAE00F3DB1F /* MockLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationManager.swift; sourceTree = "<group>"; };
+		08BEB0E729189EB100F3DB1F /* LocationStrategy_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStrategy_Test.swift; sourceTree = "<group>"; };
+		08BEB0E92918A35700F3DB1F /* MockTimeStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeStrategy.swift; sourceTree = "<group>"; };
+		08BEB0EC2918A3EA00F3DB1F /* SpatioTemporalStrategy_Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy_Test.swift; sourceTree = "<group>"; };
+		08BEB0EE2918A43300F3DB1F /* MockLocationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationStrategy.swift; sourceTree = "<group>"; };
 		08D0703928776DD6004140B1 /* TextWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextWidgetView.swift; sourceTree = "<group>"; };
 		08D9535928E34596007ED2F1 /* Array+Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Groups.swift"; sourceTree = "<group>"; };
 		08DFB96E286647E900E357DF /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
@@ -887,6 +899,16 @@
 				0805E72B28CC2278003C5CFD /* HashFunction.swift */,
 			);
 			path = AnalyticsComponent;
+			sourceTree = "<group>";
+		};
+		08BEB0EB2918A36900F3DB1F /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				08BEB0E529189CAE00F3DB1F /* MockLocationManager.swift */,
+				08BEB0E92918A35700F3DB1F /* MockTimeStrategy.swift */,
+				08BEB0EE2918A43300F3DB1F /* MockLocationStrategy.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		08DFB96B2866479A00E357DF /* WidgetComponent */ = {
@@ -1448,8 +1470,12 @@
 		366F0E9827580CFD0091651D /* Campus-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				08BEB0EB2918A36900F3DB1F /* Mock */,
 				366F0E9927580CFD0091651D /* Campus_iOSTests.swift */,
 				0898C8192915B55B00EDD671 /* CalendarWidget_Tests.swift */,
+				089E1EC22918859700719F1C /* AnalyticsDataHandler_Tests.swift */,
+				08BEB0E729189EB100F3DB1F /* LocationStrategy_Test.swift */,
+				08BEB0EC2918A3EA00F3DB1F /* SpatioTemporalStrategy_Test.swift */,
 			);
 			path = "Campus-iOSTests";
 			sourceTree = "<group>";
@@ -2481,8 +2507,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08BEB0ED2918A3EA00F3DB1F /* SpatioTemporalStrategy_Test.swift in Sources */,
 				366F0E9A27580CFD0091651D /* Campus_iOSTests.swift in Sources */,
 				0898C81A2915B55B00EDD671 /* CalendarWidget_Tests.swift in Sources */,
+				08BEB0EF2918A43300F3DB1F /* MockLocationStrategy.swift in Sources */,
+				08BEB0E629189CAE00F3DB1F /* MockLocationManager.swift in Sources */,
+				089E1EC32918859700719F1C /* AnalyticsDataHandler_Tests.swift in Sources */,
+				08BEB0E829189EB100F3DB1F /* LocationStrategy_Test.swift in Sources */,
+				08BEB0EA2918A35700F3DB1F /* MockTimeStrategy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2706,9 +2738,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = 92JDXCA2AA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2997,9 +3030,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = 92JDXCA2AA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3023,9 +3057,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = 92JDXCA2AA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
