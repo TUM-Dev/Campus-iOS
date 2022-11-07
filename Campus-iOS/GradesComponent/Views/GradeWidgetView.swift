@@ -30,9 +30,11 @@ struct GradeWidgetView: View {
             case .success:
                 switch size {
                 case .square:
-                    SimpleGradeWidgetContent(grade: viewModel.grades.first)
-                case .rectangle, .bigSquare: // TODO: Change grades again to viewModel.grades and fix it.
-                    DetailedGradeWidgetContent(grades: [], size: size)
+                    SimpleGradeWidgetContent(grade: viewModel.grades.max(by: {
+                        ($0.date ?? Date.distantPast) < ($1.date ?? Date.distantPast)
+                    }))
+                case .rectangle, .bigSquare:
+                    DetailedGradeWidgetContent(grades: viewModel.grades, size: size)
                 }
             case .loading, .na:
                 WidgetLoadingView(text: "Fetching Grades")
