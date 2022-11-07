@@ -58,7 +58,7 @@
 		0822478E290EF55A0038D357 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		0822478F290EF6140038D357 /* DecoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61D627A2FD7800FEBD98 /* DecoderProtocol.swift */; };
 		08224790290EF6350038D357 /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C927A2FD7700FEBD98 /* BackendError.swift */; };
-		082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */; };
+		082F756628AD2F0E00FE0D52 /* PersonalizedStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082F756528AD2F0E00FE0D52 /* PersonalizedStrategy.swift */; };
 		0840FB30291181A000E2639C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 366F0E8727580CFD0091651D /* Assets.xcassets */; };
 		0840FB33291182E600E2639C /* CafeteriaWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0840FB312911829200E2639C /* CafeteriaWidget.swift */; };
 		0840FB362911872800E2639C /* StudyRoomWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */; };
@@ -517,7 +517,6 @@
 
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
-		0804BAA829140B02008E4553 /* UnifiedStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedStrategy.swift; sourceTree = "<group>"; };
 		0805DB7628C7F3E600712FF2 /* AnalyticsOptInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsOptInView.swift; sourceTree = "<group>"; };
 		0805DB7828C933AE00712FF2 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		0805E72128CA9DF5003C5CFD /* AppUsageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsageData.swift; sourceTree = "<group>"; };
@@ -532,7 +531,7 @@
 		0815249D28E4A6310098A2C3 /* Date+daysBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+daysBetween.swift"; sourceTree = "<group>"; };
 		0822476A290EECD20038D357 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		0822476D290EED4D0038D357 /* CampusAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusAppView.swift; sourceTree = "<group>"; };
-		082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsStrategy.swift; sourceTree = "<group>"; };
+		082F756528AD2F0E00FE0D52 /* PersonalizedStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedStrategy.swift; sourceTree = "<group>"; };
 		0840FB312911829200E2639C /* CafeteriaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidget.swift; sourceTree = "<group>"; };
 		0840FB342911832400E2639C /* StudyRoomWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidget.swift; sourceTree = "<group>"; };
 		0840FB422911D1BE00E2639C /* TuitionWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidget.swift; sourceTree = "<group>"; };
@@ -962,7 +961,7 @@
 				08FAFD1B288DEDBF006A0E27 /* TimeStrategy.swift */,
 				08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */,
 				08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */,
-				082F756528AD2F0E00FE0D52 /* AnalyticsStrategy.swift */,
+				082F756528AD2F0E00FE0D52 /* PersonalizedStrategy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -2472,7 +2471,7 @@
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
-				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
+				082F756628AD2F0E00FE0D52 /* PersonalizedStrategy.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */,
 				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,

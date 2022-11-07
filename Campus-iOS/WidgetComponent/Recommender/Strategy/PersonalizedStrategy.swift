@@ -15,7 +15,7 @@ import CoreML
 import CreateML
 #endif
 
-class AnalyticsStrategy: WidgetRecommenderStrategy {
+class PersonalizedStrategy: WidgetRecommenderStrategy {
     
      
     /*
