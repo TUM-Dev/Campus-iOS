@@ -118,7 +118,7 @@ struct TokenConfirmationView: View {
                                 Text("Open TUMOnline")
                             }
                             .lineLimit(1)
-                            .font(.system(size: 14))
+                            .font(.system(size: 14, weight: .bold))
                             .frame(width: 150, height: 48, alignment: .center)
                         }
                         .foregroundColor(.white)
@@ -151,14 +151,14 @@ struct TokenConfirmationView: View {
                                 case .notChecked:
                                     Text("Check Token")
                                         .lineLimit(1)
-                                        .font(.system(size: 14))
+                                        .font(.system(size: 14, weight: .bold))
                                 case .inactive:
                                     VStack {
                                         HStack {
                                             Image(systemName: "x.circle.fill")
                                             Text("Token inactive")
                                                 .lineLimit(1)
-                                                .font(.system(size: 14))
+                                                .font(.system(size: 14, weight: .bold))
                                         }
                                     }
                                     .padding()
@@ -187,7 +187,7 @@ struct TokenConfirmationView: View {
                                 }
                             }
                             .frame(width: 150, height: 48, alignment: .center)
-                            .font(.system(size: 14))
+                            .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white)
                             .background(buttonBackgroundColor)
                             .cornerRadius(10)

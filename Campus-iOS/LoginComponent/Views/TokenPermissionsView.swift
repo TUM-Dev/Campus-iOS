@@ -30,22 +30,46 @@ struct TokenPermissionsView: View {
                     .multilineTextAlignment(.center)
                 Spacer(minLength: 10)
             }
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Calendar").padding()
-                    Text("Lectures").padding()
-                    Text("Grades").padding()
-                    Text("Tuition fees").padding()
-                    Text("Identification (TUM ID and name)").padding()
-                }
-                Spacer()
-                VStack {
-                    ForEach(permissionTypes, id: \.self) { permissionType in
+            
+            VStack {
+                ForEach(permissionTypes, id: \.self) { permissionType in
+                    HStack {
+                        Text(permissionType.rawValue)
+                        Spacer()
                         if let currentState = viewModel.states[permissionType] {
                             check(state: currentState).padding()
                         } else {
                             Image(systemName: "questionmark.circle.fill").foregroundColor(.gray).padding()
                         }
+                    }
+                }
+                
+                HStack {
+                    if showHelp {
+                        VStack {
+                            Image(uiImage: UIImage(named: "set-permissions.png")!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200)
+                                .cornerRadius(5)
+                                .overlay (
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.red, style: StrokeStyle(lineWidth: 1))
+                                )
+                        }
+                    }
+                    Spacer()
+                    Button {
+                        showHelp = !showHelp
+                    } label: {
+                        Text("Need Help?")
+                            .foregroundColor(.red)
+                            .font(.footnote)
+                            .padding(4)
+                            .overlay (
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.red, style: StrokeStyle(lineWidth: 1))
+                            )
                     }
                 }
             }
@@ -63,7 +87,7 @@ struct TokenPermissionsView: View {
                             Text("Open TUMOnline")
                         }
                         .lineLimit(1)
-                        .font(.system(size: 14))
+                        .font(.system(size: 14, weight: .bold))
                         .frame(width: 150, height: 48, alignment: .center)
                     }
                     .foregroundColor(.white)
@@ -84,7 +108,7 @@ struct TokenPermissionsView: View {
                     } label: {
                         Text("Check Permissions")
                             .lineLimit(1)
-                            .font(.system(size: 14))
+                            .font(.system(size: 14, weight: .bold))
                             .frame(width: 150, height: 48, alignment: .center)
                             .foregroundColor(.white)
                             .background(Color(.tumBlue))
@@ -120,7 +144,7 @@ struct TokenPermissionsView: View {
                     } label: {
                         Text("Done")
                             .lineLimit(1)
-                            .font(.body)
+                            .font(.system(size: 17, weight: .bold))
                             .frame(width: 200, height: 48, alignment: .center)
                             .foregroundColor(.white)
                             .background(allPermissionsAreGranted() ? .green : .tumBlue)
