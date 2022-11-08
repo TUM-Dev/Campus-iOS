@@ -71,7 +71,10 @@ struct CalendarContentView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button(action: { self.isTodayPressed = true }) {
+                Button(action: {
+                    self.isTodayPressed = true
+                    selectedType = .day
+                }) {
                     Text("Today")
                 }
             }
