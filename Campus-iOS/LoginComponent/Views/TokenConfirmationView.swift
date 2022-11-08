@@ -110,6 +110,7 @@ struct TokenConfirmationView: View {
                     Spacer()
                     
                     HStack {
+                        Spacer()
                         Button {
                             self.showTUMOnline = true
                         } label: {
@@ -193,6 +194,7 @@ struct TokenConfirmationView: View {
                             .buttonStyle(.plain)
                             .padding()
                         }
+                        Spacer()
                     }
                     
                     if showTokenHelp {
