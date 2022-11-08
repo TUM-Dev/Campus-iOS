@@ -46,7 +46,7 @@
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
-		1EF530AD2919B9D2008F2C9B /* ThemeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF530AC2919B9D2008F2C9B /* ThemeExtensions.swift */; };
+		1EF530AF291A55F3008F2C9B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF530AE291A55F3008F2C9B /* Theme.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
 		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
@@ -316,7 +316,7 @@
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		1EF530AC2919B9D2008F2C9B /* ThemeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThemeExtensions.swift; path = ../../../../../ThemeExtensions.swift; sourceTree = "<group>"; };
+		1EF530AE291A55F3008F2C9B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = ../../../../../Theme.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
 		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
@@ -648,7 +648,7 @@
 		1EF530A729192D51008F2C9B /* Design */ = {
 			isa = PBXGroup;
 			children = (
-				1EF530AC2919B9D2008F2C9B /* ThemeExtensions.swift */,
+				1EF530AE291A55F3008F2C9B /* Theme.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -1841,7 +1841,6 @@
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
 				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
-				1EF530AD2919B9D2008F2C9B /* ThemeExtensions.swift in Sources */,
 				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
@@ -1883,6 +1882,7 @@
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */,
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
+				1EF530AF291A55F3008F2C9B /* Theme.swift in Sources */,
 				0815249C28E4A38D0098A2C3 /* CLLocation+isInvalid.swift in Sources */,
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
