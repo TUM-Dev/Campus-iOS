@@ -15,7 +15,7 @@ struct TokenPermissionsView: View {
     @State var showTUMOnline = false
     @State var notAllPermissionsGranted = false
     @State var permissionsWarning = ""
-    @State var showHelp = false
+    @State var showHelp = true
     
     var dismissWhenDone: Bool = false
     
@@ -26,8 +26,10 @@ struct TokenPermissionsView: View {
             HStack {
                 Spacer(minLength: 10)
                 Text("You can change your permissions on TUMOnline")
-                    .foregroundColor(.tumBlue)
+                    .foregroundColor(.red)
+                    .lineLimit(2)
                     .multilineTextAlignment(.center)
+                    .font(.title2)
                 Spacer(minLength: 10)
             }
             
@@ -50,26 +52,9 @@ struct TokenPermissionsView: View {
                             Image(uiImage: UIImage(named: "set-permissions.png")!)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 200)
+                                .frame(width: 250)
                                 .cornerRadius(5)
-                                .overlay (
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.red, style: StrokeStyle(lineWidth: 1))
-                                )
                         }
-                    }
-                    Spacer()
-                    Button {
-                        showHelp = !showHelp
-                    } label: {
-                        Text("Need Help?")
-                            .foregroundColor(.red)
-                            .font(.footnote)
-                            .padding(4)
-                            .overlay (
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.red, style: StrokeStyle(lineWidth: 1))
-                            )
                     }
                 }
             }
@@ -168,6 +153,13 @@ struct TokenPermissionsView: View {
                     self.viewModel.model.isLoginSheetPresented = false
                 }
             }))
+        }
+        .task {
+            await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
+            
+            withAnimation() {
+                doneButton = true
+            }
         }
     }
     

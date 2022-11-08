@@ -85,7 +85,7 @@ struct CampusApp: App {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     WidgetScreen(model: model)
-                        //.navigationTitle("My Widgets")
+                    
                         .toolbar {
                             ToolbarItemGroup(placement: .navigationBarTrailing) {
                                 ProfileToolbar(model: model)
