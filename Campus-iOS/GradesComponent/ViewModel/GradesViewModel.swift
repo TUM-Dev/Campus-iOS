@@ -15,9 +15,6 @@ protocol GradesViewModelProtocol: ObservableObject {
 @MainActor
 class GradesViewModel: NSObject, GradesViewModelProtocol {
     
-//    @Environment(\.managedObjectContext) var moc
-//    @FetchRequest(sortDescriptors: []) var grades: FetchedResults<Grade>
-    
     @Published var state: State = .na
     @Published var hasError: Bool = false
     @Published var grades = [Grade]()
@@ -193,7 +190,6 @@ class GradesViewModel: NSObject, GradesViewModelProtocol {
 
 extension GradesViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        print(controller.fetchedObjects)
         guard let grades = controller.fetchedObjects as? [Grade] else {
             return
         }

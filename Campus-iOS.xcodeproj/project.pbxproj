@@ -67,6 +67,11 @@
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F819F7829151DED00395532 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F7729151DED00395532 /* NewsService.swift */; };
 		1F819F7A291521A400395532 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F79291521A400395532 /* NetworkingServiceProtocol.swift */; };
+		1F819F7D2919231300395532 /* NewsItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F7C2919231300395532 /* NewsItemSource.swift */; };
+		1F819F7F2919232B00395532 /* NewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F7E2919232B00395532 /* NewsItem.swift */; };
+		1F819F81291926A500395532 /* NewsViewModelCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F80291926A500395532 /* NewsViewModelCD.swift */; };
+		1F819F832919608C00395532 /* TUMCabeAPINew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F822919608C00395532 /* TUMCabeAPINew.swift */; };
+		1F819F8529196CA400395532 /* NewsItemSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F8429196CA400395532 /* NewsItemSourceView.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
@@ -344,6 +349,11 @@
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1F819F7729151DED00395532 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1F819F79291521A400395532 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
+		1F819F7C2919231300395532 /* NewsItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemSource.swift; sourceTree = "<group>"; };
+		1F819F7E2919232B00395532 /* NewsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItem.swift; sourceTree = "<group>"; };
+		1F819F80291926A500395532 /* NewsViewModelCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelCD.swift; sourceTree = "<group>"; };
+		1F819F822919608C00395532 /* TUMCabeAPINew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPINew.swift; sourceTree = "<group>"; };
+		1F819F8429196CA400395532 /* NewsItemSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemSourceView.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
@@ -690,6 +700,17 @@
 			path = VideoAssets;
 			sourceTree = "<group>";
 		};
+		1F819F7B2919001000395532 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36BBE7312798AFE10018FD3F /* News.swift */,
+				36BBE7332798B04D0018FD3F /* NewsSource.swift */,
+				1F819F7E2919232B00395532 /* NewsItem.swift */,
+				1F819F7C2919231300395532 /* NewsItemSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,6 +979,7 @@
 		3616C4D727904BA7000A1BC9 /* NewsComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1F819F7B2919001000395532 /* Model */,
 				3629BA2A27A1CEAD0036AC80 /* Views */,
 				36BBE7302798AFCC0018FD3F /* Service */,
 				3616C4D827904BB5000A1BC9 /* ViewModel */,
@@ -969,6 +991,7 @@
 			isa = PBXGroup;
 			children = (
 				3616C4DA27904BD3000A1BC9 /* NewsViewModel.swift */,
+				1F819F80291926A500395532 /* NewsViewModelCD.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -989,6 +1012,7 @@
 				3629BA2B27A1CECA0036AC80 /* NewsView.swift */,
 				3629BA2D27A1CEFA0036AC80 /* NewsCard.swift */,
 				36982BD527A251A700515847 /* NewsCardsHorizontalScrollingView.swift */,
+				1F819F8429196CA400395532 /* NewsItemSourceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1235,6 +1259,7 @@
 				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
 				1F0E1AE7291163A200F64D51 /* FetchState.swift */,
 				1F819F79291521A400395532 /* NetworkingServiceProtocol.swift */,
+				1F819F822919608C00395532 /* TUMCabeAPINew.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1451,8 +1476,6 @@
 		36BBE7302798AFCC0018FD3F /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				36BBE7312798AFE10018FD3F /* News.swift */,
-				36BBE7332798B04D0018FD3F /* NewsSource.swift */,
 				1F819F7729151DED00395532 /* NewsService.swift */,
 			);
 			path = Service;
@@ -1741,6 +1764,7 @@
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
+				1F819F81291926A500395532 /* NewsViewModelCD.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
 				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
@@ -1750,6 +1774,7 @@
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				1F819F7A291521A400395532 /* NetworkingServiceProtocol.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
+				1F819F7F2919232B00395532 /* NewsItem.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
 				1F4C926F2882FD85003DC7D7 /* RoundedCorners.swift in Sources */,
 				36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */,
@@ -1799,6 +1824,7 @@
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
 				36982BD627A251A700515847 /* NewsCardsHorizontalScrollingView.swift in Sources */,
 				36AF61E727A2FD7800FEBD98 /* ErrorEmittingViewModifier.swift in Sources */,
+				1F819F8529196CA400395532 /* NewsItemSourceView.swift in Sources */,
 				3654F362285168D2008AD5DC /* StudyRoomApiResponse.swift in Sources */,
 				36108BC527A3046B007DC62D /* LectureDetailsDetailedInfoView.swift in Sources */,
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
@@ -1921,6 +1947,7 @@
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
+				1F819F7D2919231300395532 /* NewsItemSource.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
 				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
@@ -1941,6 +1968,7 @@
 				1F0E1AE22911274000F64D51 /* CoreDataModel.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,
 				36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */,
+				1F819F832919608C00395532 /* TUMCabeAPINew.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 				36FF90652773BB8200F4C785 /* Extensions.swift in Sources */,
 				36108C1427A307F9007DC62D /* GradeColor.swift in Sources */,

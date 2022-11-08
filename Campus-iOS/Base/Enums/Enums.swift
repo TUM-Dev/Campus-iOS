@@ -99,3 +99,7 @@ enum CampusAppView: String, CaseIterable {
         }
     }
 }
+
+enum DecoderConfigurationError: Error {
+  case missingManagedObjectContext
+}
