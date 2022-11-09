@@ -70,7 +70,7 @@ struct LectureDetailsBasicInfoView: View {
                     Spacer()
                     Button(
                         action: { self.showActionSheet = true },
-                        label: { Image(systemName: "tray.and.arrow.up").foregroundColor(.blue) }
+                        label: { Image(systemName: "magnifyingglass").foregroundColor(.blue) }
                     )
                 }
                 if let firstMeeting = lectureDetails.firstScheduledDate {
