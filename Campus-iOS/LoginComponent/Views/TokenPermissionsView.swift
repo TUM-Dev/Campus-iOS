@@ -26,7 +26,7 @@ struct TokenPermissionsView: View {
             HStack {
                 Spacer(minLength: 10)
                 Text("You can change your permissions on TUMOnline")
-                    .foregroundColor(.red)
+                    .foregroundColor(.blue)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
                     .font(.title2)
