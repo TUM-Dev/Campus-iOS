@@ -22,7 +22,7 @@ class NewsItem: NSManagedObject & Decodable {
     
     required convenience init(from decoder: Decoder) throws {
         guard let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext,
-                let entity = NSEntityDescription.entity(forEntityName: "Grade", in: managedObjectContext) else {
+                let entity = NSEntityDescription.entity(forEntityName: "NewsItem", in: managedObjectContext) else {
               throw DecoderConfigurationError.missingManagedObjectContext
         }
         
@@ -31,7 +31,11 @@ class NewsItem: NSManagedObject & Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         self.id = try container.decode(String.self, forKey: .id)
-        self.sourceID = try container.decode(Int64.self, forKey: .sourceID)
+        let sourceString = try container.decode(String.self, forKey: .sourceID)
+        guard let decodedSourceID = Int64(sourceString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for source could not be converted to Int64"))
+        }
+        self.sourceID = decodedSourceID
         self.date = try container.decode(Date.self, forKey: .date)
         self.created = try container.decode(Date.self, forKey: .created)
         self.title = try container.decode(String.self, forKey: .title)

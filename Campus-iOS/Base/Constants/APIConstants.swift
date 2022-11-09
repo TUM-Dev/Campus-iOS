@@ -88,7 +88,7 @@ extension Constants {
             
             case movie
             case cafeteria
-            case news(source: String)
+            case news(_ source: String)
             case newsSources
             case newsAlert
             case roomSearch(query: String)

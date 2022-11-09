@@ -39,6 +39,23 @@ class NewsViewModelCD: NSObject, ObservableObject {
         }
     }
     
+    func getNewsItems(for source: NewsItemSource) async {
+        do {
+            try await TUMCabeAPINew.fetch(for: [NewsItem].self, into: context, from: Constants.API.TUMCabe.news(String(source.id))) { newsItems in
+                newsItems.forEach { newsItem in
+                    newsItem.newsItemSource = source
+                }
+                do {
+                    try context.save()
+                } catch {
+                    print(error)
+                }
+            }
+        } catch {
+            print(String(describing: error))
+        }
+    }
+    
     func getNewsItemSources() async {
 //        if service.fetchIsNeeded(for: NewsItemSource.self) {
 //            self.state = .loading

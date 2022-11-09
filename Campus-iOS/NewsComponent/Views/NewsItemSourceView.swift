@@ -29,7 +29,20 @@ struct NewsItemSourceView: View {
                 }
             }
             List(vm.newsItemSources) { source in
-                Text(source.title ?? "NO TITLE")
+                NavigationLink(source.title ?? "NO NEWSITEMSOURCE TITLE") {
+                    VStack {
+                        Button("Load NewsItems") {
+                            Task {
+                                await vm.getNewsItems(for: source)
+                                print("loaded")
+                            }
+                        }
+                        List((source.newsItems?.allObjects as? [NewsItem]) ?? [], id: \.title) { newsItem in
+                            Text(newsItem.title ?? "NO NEWSITEM TITLE")
+                        }
+                    }
+                }
+                
             }
         }
     }

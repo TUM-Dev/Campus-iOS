@@ -16,8 +16,8 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         return decoder
     }()
     
-    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type , into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws where T : NSManagedObject, T : Decodable {
-        print("fetching news")
+    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type , into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol, with handler: ([T]) -> Void = {_ in }) async throws {
+        
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
@@ -25,12 +25,11 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         var data: Data
         do {
             data = try await endpoint.asRequest().serializingData().value
-            print(endpoint.asRequest())
-            print(String(data: data, encoding: .utf8))
         } catch {
             throw NetworkingError.deviceIsOffline
         }
         
+        // TODO: Refactoring for deleting NewsItems within a NewsItemSource. Maybe a different approach is needed like comparison or manually deletion.
         // Delete all entries
         // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
         do {
@@ -54,9 +53,9 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         
         // Decode fetched data to the specified type
         do {
-            print(endpoint)
-            let x = try Self.decoder.decode(type.self, from: data)
-            print(x)
+            let decodedData = try Self.decoder.decode(type.self, from: data)
+            
+            handler(decodedData)
         } catch {
             throw TUMOnlineAPIError.unkown(String(describing: error))
         }
