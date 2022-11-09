@@ -51,7 +51,10 @@ struct CalendarWidgetView: View {
             showDetails.toggle()
         }
         .sheet(isPresented: $showDetails) {
-            CalendarContentView(model: model, refresh: .constant(false))
+            VStack {
+                Spacer().frame(height: 10)
+                CalendarContentView(model: model, refresh: .constant(false))
+            }
         }
         .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
