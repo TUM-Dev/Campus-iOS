@@ -31,7 +31,7 @@ struct CafeteriaRowView: View {
                             .font(.title3)
                         Spacer()
                         if let queue = cafeteria.queue {
-                            let explainText = explainStatus ? "Auslastung " : ""
+                            let explainText = explainStatus ? "Traffic " : ""
                             Text("\(explainText)\(Int(queue.percent))%")
                                 .font(.footnote)
                                 .onTapGesture {

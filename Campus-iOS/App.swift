@@ -85,7 +85,7 @@ struct CampusApp: App {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     WidgetScreen(model: model)
-                        //.navigationTitle("My Widgets")
+                    
                         .toolbar {
                             ToolbarItemGroup(placement: .navigationBarTrailing) {
                                 ProfileToolbar(model: model)
@@ -95,7 +95,7 @@ struct CampusApp: App {
                 .navigationViewStyle(.stack)
                 .tag(0)
                 .tabItem {
-                    Label("My Widgets", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                    Label("Home", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
                 }
             }
             
