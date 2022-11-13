@@ -16,7 +16,7 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         return decoder
     }()
     
-    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type , into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol, with handler: ([T]) -> Void = {_ in }) async throws {
+    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type , into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws {
         
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
@@ -53,9 +53,8 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         
         // Decode fetched data to the specified type
         do {
-            let decodedData = try Self.decoder.decode(type.self, from: data)
+            let _ = try Self.decoder.decode(type.self, from: data)
             
-            handler(decodedData)
         } catch {
             throw TUMOnlineAPIError.unkown(String(describing: error))
         }
@@ -67,7 +66,7 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
             let defaults = UserDefaults.standard
             defaults.set(Date(), forKey: "\(String(describing: T.self))CoreDataStoringDate")
         } catch {
-            throw CoreDataError.savingError("Context saving failed")
+            throw CoreDataError.savingError("Context saving failed: \(String(describing: error))")
         }
     }
     
@@ -75,5 +74,42 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         return true
     }
     
-    
+    static func fetchNewsItems(into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws -> [NewsItem] {
+        
+        // Store the context in the user info of the decoder to be available when intializing Grade()-insances
+        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+        
+        // Fetch data from server
+        var data: Data
+        do {
+            data = try await endpoint.asRequest().serializingData().value
+        } catch {
+            throw NetworkingError.deviceIsOffline
+        }
+        
+        // Check this first cause otherwise no error is thrown by the XMLDecoder
+        if let error = try? Self.decoder.decode(TUMOnlineAPIError.self, from: data) {
+            throw error
+        }
+        
+        // Decode fetched data to the specified type
+        var decodedData: [NewsItem]
+        do {
+            decodedData = try Self.decoder.decode([NewsItem].self, from: data)
+        } catch {
+            throw TUMOnlineAPIError.unkown(String(describing: error))
+        }
+        
+//        // Saving the data into CoreData
+//        do {
+//            try context.save()
+//            print("Context saved for type \([NewsItem].self)")
+//            let defaults = UserDefaults.standard
+//            defaults.set(Date(), forKey: "\(String(describing: NewsItem.self))CoreDataStoringDate")
+//        } catch {
+//            throw CoreDataError.savingError("Context saving failed: \(String(describing: error))")
+//        }
+        
+        return decodedData
+    }
 }

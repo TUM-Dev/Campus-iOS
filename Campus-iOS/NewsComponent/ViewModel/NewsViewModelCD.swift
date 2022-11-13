@@ -40,20 +40,67 @@ class NewsViewModelCD: NSObject, ObservableObject {
     }
     
     func getNewsItems(for source: NewsItemSource) async {
+        print(source.title)
+        
+//            let deletRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "NewsItem")
+//            deletRequest.predicate = NSPredicate(format: "newsItemSource == %@", source)
+//            let storedNewsItemsOptional = source.newsItems?.allObjects as? [NewsItem]
+////            source.removeFromNewsItems(...)
+        ///
+        
         do {
-            try await TUMCabeAPINew.fetch(for: [NewsItem].self, into: context, from: Constants.API.TUMCabe.news(String(source.id))) { newsItems in
-                newsItems.forEach { newsItem in
-                    newsItem.newsItemSource = source
-                }
-                do {
-                    try context.save()
-                } catch {
-                    print(error)
+            if let storedNewsItems = source.newsItems?.allObjects as? [NewsItem] {
+                for newsItem in storedNewsItems {
+                    print(newsItem)
+                    source.removeFromNewsItems(newsItem)
+                    context.delete(newsItem)
                 }
             }
+            
+            let newNewsItems = try await TUMCabeAPINew.fetchNewsItems(into: context, from: Constants.API.TUMCabe.news(String(source.id)))
+            
+            
+            for newsItem in newNewsItems {
+                print(newsItem)
+                source.addToNewsItems(newsItem)
+            }
+            
         } catch {
             print(String(describing: error))
         }
+        
+        do {
+            try context.save()
+        } catch {
+            print(String(describing: error))
+        }
+            
+//            for newsItem in newNewsItems {
+//                source.
+//            }
+//            { fetchedNewsItems in
+//                fetchedNewsItems.forEach { newsItem in
+//                    
+//                    if let storedNewsItems = storedNewsItemsOptional,
+//                        storedNewsItems.contains(where: {$0 == newsItem}) {
+//                       
+//                        context.delete(newsItem)
+//                    } else {
+//                        newsItem.newsItemSource = source
+//                    }
+//                    
+//                    //Delete if already in source.newsItems otherwise they will be added or manually deletion is needed.
+//                    
+//                    
+////
+//                }
+////                do {
+////                    try context.save()
+////                } catch {
+////                    print(error)
+////                }
+//            }
+        
     }
     
     func getNewsItemSources() async {

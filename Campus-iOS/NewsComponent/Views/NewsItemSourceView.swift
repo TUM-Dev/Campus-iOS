@@ -12,6 +12,8 @@ import CoreData
 struct NewsItemSourceView: View {
     @StateObject var vm: NewsViewModelCD
     
+    let x = ["hello", "hey", "Hallo"]
+    
     init(context: NSManagedObjectContext, model: Model) {
         self._vm = StateObject(wrappedValue:
                 NewsViewModelCD(

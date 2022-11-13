@@ -27,5 +27,5 @@ protocol CampusOnlineAPIProtocol: NetworkingAPI {
 }
 
 protocol TUMCabeAPIProtocol: NetworkingAPI {
-    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type, into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol, with handler: ([T]) -> Void) async throws
+    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type, into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws
 }
