@@ -72,6 +72,7 @@
 		1F819F81291926A500395532 /* NewsViewModelCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F80291926A500395532 /* NewsViewModelCD.swift */; };
 		1F819F832919608C00395532 /* TUMCabeAPINew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F822919608C00395532 /* TUMCabeAPINew.swift */; };
 		1F819F8529196CA400395532 /* NewsItemSourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F8429196CA400395532 /* NewsItemSourceView.swift */; };
+		1F819F872921632D00395532 /* DataImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F862921632D00395532 /* DataImporter.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
@@ -354,6 +355,7 @@
 		1F819F80291926A500395532 /* NewsViewModelCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModelCD.swift; sourceTree = "<group>"; };
 		1F819F822919608C00395532 /* TUMCabeAPINew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPINew.swift; sourceTree = "<group>"; };
 		1F819F8429196CA400395532 /* NewsItemSourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemSourceView.swift; sourceTree = "<group>"; };
+		1F819F862921632D00395532 /* DataImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataImporter.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
@@ -1171,6 +1173,7 @@
 				41E2B8232864D192005B5E72 /* Icons */,
 				1F542452285CA081008363BC /* VideoAssets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
+				1F819F862921632D00395532 /* DataImporter.swift */,
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
 				366F0E8927580CFD0091651D /* Preview Content */,
@@ -1901,6 +1904,7 @@
 				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
 				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
+				1F819F872921632D00395532 /* DataImporter.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
 				36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */,

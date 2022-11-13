@@ -22,6 +22,7 @@ class NewsViewModelCD: NSObject, ObservableObject {
         self.context = context
         self.fetchedResultController = NSFetchedResultsController(fetchRequest: NewsItemSource.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.model = model
+        
         super.init()
         fetchedResultController.delegate = self
         
@@ -46,34 +47,34 @@ class NewsViewModelCD: NSObject, ObservableObject {
 //            deletRequest.predicate = NSPredicate(format: "newsItemSource == %@", source)
 //            let storedNewsItemsOptional = source.newsItems?.allObjects as? [NewsItem]
 ////            source.removeFromNewsItems(...)
-        ///
+        ///        
         
         do {
-            if let storedNewsItems = source.newsItems?.allObjects as? [NewsItem] {
-                for newsItem in storedNewsItems {
-                    print(newsItem)
-                    source.removeFromNewsItems(newsItem)
-                    context.delete(newsItem)
-                }
-            }
+//            if let storedNewsItems = source.newsItems?.allObjects as? [NewsItem] {
+//                for newsItem in storedNewsItems {
+//                    print(newsItem)
+//                    source.removeFromNewsItems(newsItem)
+//                    context.delete(newsItem)
+//                }
+//            }
             
-            let newNewsItems = try await TUMCabeAPINew.fetchNewsItems(into: context, from: Constants.API.TUMCabe.news(String(source.id)))
+            let newNewsItems = try await TUMCabeAPINew.fetchNewsItems(into: context, from: Constants.API.TUMCabe.news(String(source.id)), with:  source)
             
             
-            for newsItem in newNewsItems {
-                print(newsItem)
-                source.addToNewsItems(newsItem)
-            }
+//            for newsItem in newNewsItems {
+//                print(newsItem)
+//                source.addToNewsItems(newsItem)
+//            }
             
         } catch {
             print(String(describing: error))
         }
         
-        do {
-            try context.save()
-        } catch {
-            print(String(describing: error))
-        }
+//        do {
+//            try context.save()
+//        } catch {
+//            print(String(describing: error))
+//        }
             
 //            for newsItem in newNewsItems {
 //                source.

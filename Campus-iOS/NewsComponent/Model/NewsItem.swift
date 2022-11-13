@@ -22,6 +22,7 @@ class NewsItem: NSManagedObject & Decodable {
     
     required convenience init(from decoder: Decoder) throws {
         guard let managedObjectContext = decoder.userInfo[CodingUserInfoKey.managedObjectContext] as? NSManagedObjectContext,
+              let source = decoder.userInfo[CodingUserInfoKey.newsItemSource] as? NewsItemSource,
                 let entity = NSEntityDescription.entity(forEntityName: "NewsItem", in: managedObjectContext) else {
               throw DecoderConfigurationError.missingManagedObjectContext
         }
@@ -41,6 +42,8 @@ class NewsItem: NSManagedObject & Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.link = try container.decode(URL.self, forKey: .link)
         self.imageURL = try container.decode(URL.self, forKey: .imageURL)
+        
+        self.newsItemSource = source
     }
     
 }
