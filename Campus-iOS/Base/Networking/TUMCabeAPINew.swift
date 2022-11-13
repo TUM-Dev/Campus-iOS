@@ -117,9 +117,9 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         var decodedData: [NewsItem]
         do {
             decodedData = try Self.decoder.decode([NewsItem].self, from: data)
-//            for newsItem in decodedData {
-//                newsItem.newsItemSource = source
-//            }
+            for newsItem in decodedData {
+                newsItem.newsItemSource = source
+            }
         } catch {
             throw TUMOnlineAPIError.unkown(String(describing: error))
         }
