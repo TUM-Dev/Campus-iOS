@@ -37,6 +37,6 @@
         <attribute name="icon" optional="YES" attributeType="URI"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="newsItemSource" inverseEntity="NewsItem"/>
+        <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="NewsItem" inverseName="newsItemSource" inverseEntity="NewsItem"/>
     </entity>
 </model>

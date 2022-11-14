@@ -16,7 +16,7 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         return decoder
     }()
     
-    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type , into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws {
+    static func fetch<T: NSManagedObject & Decodable>(for type: [T].Type, into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol) async throws {
         
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
@@ -74,20 +74,18 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         return true
     }
     
-    static func fetchNewsItems(into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol, with source: NewsItemSource) async throws -> [NewsItem] {
+    static func fetchRelationship<T: NSManagedObject & Decodable>(for type: [T].Type, into context: NSManagedObjectContext, from endpoint: TUMCabeProtocol, keyPathToParentVariable: String, parent: NSManagedObject & Decodable, with handler: ([T]) -> Void = {_ in} ) async throws {
         
         context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         
         // Store the context in the user info of the decoder to be available when intializing Grade()-insances
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
         
-        Self.decoder.userInfo[CodingUserInfoKey.newsItemSource] = source
-        
         // Delete all entries
         // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
         do {
             let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: NewsItem.self))
-            fetchRequest.predicate = NSPredicate(format: "newsItemSource = %@", source)
+            fetchRequest.predicate = NSPredicate(format: "%K = %@", keyPathToParentVariable, parent)
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             deleteRequest.resultType = .resultTypeObjectIDs
             let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
@@ -114,12 +112,14 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         }
         
         // Decode fetched data to the specified type
-        var decodedData: [NewsItem]
+        var decodedData: [T]
         do {
-            decodedData = try Self.decoder.decode([NewsItem].self, from: data)
-            for newsItem in decodedData {
-                newsItem.newsItemSource = source
-            }
+            decodedData = try Self.decoder.decode([T].self, from: data)
+            handler(decodedData)
+            
+//            for newsItem in decodedData {
+//                newsItem.newsItemSource = source
+//            }
         } catch {
             throw TUMOnlineAPIError.unkown(String(describing: error))
         }
@@ -133,7 +133,5 @@ struct TUMCabeAPINew: TUMCabeAPIProtocol {
         } catch {
             throw CoreDataError.savingError("Context saving failed: \(String(describing: error))")
         }
-        
-        return decodedData
     }
 }

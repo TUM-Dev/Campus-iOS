@@ -12,7 +12,7 @@ import CoreData
 class NewsViewModelCD: NSObject, ObservableObject {
     
     @Published var newsItemSources = [NewsItemSource]()
-    
+    @Published var latestFiveNews: [NewsItem]
     private let context: NSManagedObjectContext
     // https://www.youtube.com/watch?v=gGM_Qn3CUfQ&t=1192s
     private let fetchedResultController: NSFetchedResultsController<NewsItemSource>
@@ -22,6 +22,20 @@ class NewsViewModelCD: NSObject, ObservableObject {
         self.context = context
         self.fetchedResultController = NSFetchedResultsController(fetchRequest: NewsItemSource.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.model = model
+        
+        //---------------------------------------------------
+        let latestFiveNewsFetch = NewsItem.fetchRequest()
+        let sortByDate = NSSortDescriptor(key: #keyPath(NewsItem.created), ascending: false)
+        latestFiveNewsFetch.sortDescriptors = [sortByDate]
+        var fetchedNews = [NewsItem]()
+        do {
+            fetchedNews = try PersistenceController.shared.container.viewContext.fetch(latestFiveNewsFetch)
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+        
+        self.latestFiveNews = Array(fetchedNews[...4])
+        //---------------------------------------------------
         
         super.init()
         fetchedResultController.delegate = self
@@ -41,67 +55,17 @@ class NewsViewModelCD: NSObject, ObservableObject {
     }
     
     func getNewsItems(for source: NewsItemSource) async {
-        print(source.title)
-        
-//            let deletRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "NewsItem")
-//            deletRequest.predicate = NSPredicate(format: "newsItemSource == %@", source)
-//            let storedNewsItemsOptional = source.newsItems?.allObjects as? [NewsItem]
-////            source.removeFromNewsItems(...)
-        ///        
-        
         do {
-//            if let storedNewsItems = source.newsItems?.allObjects as? [NewsItem] {
-//                for newsItem in storedNewsItems {
-//                    print(newsItem)
-//                    source.removeFromNewsItems(newsItem)
-//                    context.delete(newsItem)
-//                }
-//            }
-            
-            let newNewsItems = try await TUMCabeAPINew.fetchNewsItems(into: context, from: Constants.API.TUMCabe.news(String(source.id)), with:  source)
-            
-            
-//            for newsItem in newNewsItems {
-//                print(newsItem)
-//                source.addToNewsItems(newsItem)
-//            }
-            
+            try await TUMCabeAPINew.fetchRelationship(for: [NewsItem].self, into: context, from: Constants.API.TUMCabe.news(String(source.id)), keyPathToParentVariable: #keyPath(NewsItem.newsItemSource), parent: source) { decodedData in
+                
+                for newsItem in decodedData {
+                    newsItem.newsItemSource = source
+                    
+                }
+            }
         } catch {
             print(String(describing: error))
         }
-        
-//        do {
-//            try context.save()
-//        } catch {
-//            print(String(describing: error))
-//        }
-            
-//            for newsItem in newNewsItems {
-//                source.
-//            }
-//            { fetchedNewsItems in
-//                fetchedNewsItems.forEach { newsItem in
-//                    
-//                    if let storedNewsItems = storedNewsItemsOptional,
-//                        storedNewsItems.contains(where: {$0 == newsItem}) {
-//                       
-//                        context.delete(newsItem)
-//                    } else {
-//                        newsItem.newsItemSource = source
-//                    }
-//                    
-//                    //Delete if already in source.newsItems otherwise they will be added or manually deletion is needed.
-//                    
-//                    
-////
-//                }
-////                do {
-////                    try context.save()
-////                } catch {
-////                    print(error)
-////                }
-//            }
-        
     }
     
     func getNewsItemSources() async {
@@ -119,6 +83,19 @@ class NewsViewModelCD: NSObject, ObservableObject {
                 print(error)
             }
 //        }
+    }
+    
+    func fetchLatest5News() -> [NewsItem] {
+        let latestFiveNewsFetch = NewsItem.fetchRequest()
+        let sortByDate = NSSortDescriptor(key: #keyPath(NewsItem.created), ascending: false)
+        latestFiveNewsFetch.sortDescriptors = [sortByDate]
+        var fetchedNews = [NewsItem]()
+        do {
+            fetchedNews = try PersistenceController.shared.container.viewContext.fetch(latestFiveNewsFetch)
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+        return fetchedNews
     }
 }
 

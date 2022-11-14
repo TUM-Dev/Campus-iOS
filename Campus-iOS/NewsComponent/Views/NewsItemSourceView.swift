@@ -12,8 +12,6 @@ import CoreData
 struct NewsItemSourceView: View {
     @StateObject var vm: NewsViewModelCD
     
-    let x = ["hello", "hey", "Hallo"]
-    
     init(context: NSManagedObjectContext, model: Model) {
         self._vm = StateObject(wrappedValue:
                 NewsViewModelCD(
@@ -23,8 +21,17 @@ struct NewsItemSourceView: View {
         )
     }
     
+    @State var shownNews = 4
+    
     var body: some View {
         VStack {
+            List(vm.latestFiveNews) { newsItem in
+                VStack {
+                    Text(newsItem.title ?? "no newsitem title")
+                    Text(newsItem.date ?? Date(), style: .date)
+                }
+                
+            }
             Button("Load Sources") {
                 Task {
                     await vm.getNewsItemSources()
@@ -39,7 +46,8 @@ struct NewsItemSourceView: View {
                                 print("loaded")
                             }
                         }
-                        List((source.newsItems?.allObjects as? [NewsItem]) ?? [], id: \.title) { newsItem in
+                        
+                        List(((source.newsItems?.allObjects as? [NewsItem]) ?? []), id: \.title) { newsItem in
                             Text(newsItem.title ?? "NO NEWSITEM TITLE")
                         }
                     }
