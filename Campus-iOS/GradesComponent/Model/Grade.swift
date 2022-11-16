@@ -50,6 +50,10 @@ class Grade: NSManagedObject, Decodable {
         case studyDesignation = "studienbezeichnung"
         case studyNumber = "st_studium_nr"
     }
+    
+    enum DecoderConfigurationError: Error {
+      case missingManagedObjectContext
+    }
 
     // https://www.donnywals.com/using-codable-with-core-data-and-nsmanagedobject/
     required convenience public init(from decoder: Decoder) throws {
@@ -58,6 +62,7 @@ class Grade: NSManagedObject, Decodable {
               throw DecoderConfigurationError.missingManagedObjectContext
         }
         
+        print("INIT")
         self.init(entity: entity, insertInto: managedObjectContext)
         
         let container = try decoder.container(keyedBy: CodingKeys.self)

@@ -23,20 +23,4 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="NewsItem" representedClassName=".NewsItem" syncable="YES" codeGenerationType="category">
-        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
-        <attribute name="imageURL" optional="YES" attributeType="URI"/>
-        <attribute name="link" optional="YES" attributeType="URI"/>
-        <attribute name="sourceID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="newsItemSource" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsItemSource" inverseName="newsItems" inverseEntity="NewsItemSource"/>
-    </entity>
-    <entity name="NewsItemSource" representedClassName=".NewsItemSource" syncable="YES" codeGenerationType="category">
-        <attribute name="icon" optional="YES" attributeType="URI"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="newsItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NewsItem" inverseName="newsItemSource" inverseEntity="NewsItem"/>
-    </entity>
 </model>
