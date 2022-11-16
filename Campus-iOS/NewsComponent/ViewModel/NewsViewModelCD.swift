@@ -12,7 +12,7 @@ import CoreData
 class NewsViewModelCD: NSObject, ObservableObject {
     
     @Published var newsItemSources = [NewsItemSource]()
-    @Published var latestFiveNews: [NewsItem]
+    
     private let context: NSManagedObjectContext
     // https://www.youtube.com/watch?v=gGM_Qn3CUfQ&t=1192s
     private let fetchedResultController: NSFetchedResultsController<NewsItemSource>
@@ -22,21 +22,6 @@ class NewsViewModelCD: NSObject, ObservableObject {
         self.context = context
         self.fetchedResultController = NSFetchedResultsController(fetchRequest: NewsItemSource.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         self.model = model
-        
-        //---------------------------------------------------
-        let latestFiveNewsFetch = NewsItem.fetchRequest()
-        let sortByDate = NSSortDescriptor(key: #keyPath(NewsItem.created), ascending: false)
-        latestFiveNewsFetch.sortDescriptors = [sortByDate]
-        var fetchedNews = [NewsItem]()
-        do {
-            fetchedNews = try PersistenceController.shared.container.viewContext.fetch(latestFiveNewsFetch)
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        
-        self.latestFiveNews = Array(fetchedNews[...4])
-        //---------------------------------------------------
-        
         super.init()
         fetchedResultController.delegate = self
         
@@ -51,20 +36,6 @@ class NewsViewModelCD: NSObject, ObservableObject {
         } catch {
             // TODO: Error handling
             print(error)
-        }
-    }
-    
-    func getNewsItems(for source: NewsItemSource) async {
-        do {
-            try await TUMCabeAPINew.fetchRelationship(for: [NewsItem].self, into: context, from: Constants.API.TUMCabe.news(String(source.id)), keyPathToParentVariable: #keyPath(NewsItem.newsItemSource), parent: source) { decodedData in
-                
-                for newsItem in decodedData {
-                    newsItem.newsItemSource = source
-                    
-                }
-            }
-        } catch {
-            print(String(describing: error))
         }
     }
     
@@ -83,19 +54,6 @@ class NewsViewModelCD: NSObject, ObservableObject {
                 print(error)
             }
 //        }
-    }
-    
-    func fetchLatest5News() -> [NewsItem] {
-        let latestFiveNewsFetch = NewsItem.fetchRequest()
-        let sortByDate = NSSortDescriptor(key: #keyPath(NewsItem.created), ascending: false)
-        latestFiveNewsFetch.sortDescriptors = [sortByDate]
-        var fetchedNews = [NewsItem]()
-        do {
-            fetchedNews = try PersistenceController.shared.container.viewContext.fetch(latestFiveNewsFetch)
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return fetchedNews
     }
 }
 

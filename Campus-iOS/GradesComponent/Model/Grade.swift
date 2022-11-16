@@ -91,13 +91,8 @@ class Grade: NSManagedObject, Decodable {
     }
 }
 
-// TODO: Move this to an extenstion!!!
 extension CodingUserInfoKey {
     static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")!
-}
-
-extension CodingUserInfoKey {
-    static let newsItemSource = CodingUserInfoKey(rawValue: "newsItemSource")!
 }
 
 //enum GradeComponents {

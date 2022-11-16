@@ -21,38 +21,15 @@ struct NewsItemSourceView: View {
         )
     }
     
-    @State var shownNews = 4
-    
     var body: some View {
         VStack {
-            List(vm.latestFiveNews) { newsItem in
-                VStack {
-                    Text(newsItem.title ?? "no newsitem title")
-                    Text(newsItem.date ?? Date(), style: .date)
-                }
-                
-            }
             Button("Load Sources") {
                 Task {
                     await vm.getNewsItemSources()
                 }
             }
             List(vm.newsItemSources) { source in
-                NavigationLink(source.title ?? "NO NEWSITEMSOURCE TITLE") {
-                    VStack {
-                        Button("Load NewsItems") {
-                            Task {
-                                await vm.getNewsItems(for: source)
-                                print("loaded")
-                            }
-                        }
-                        
-                        List(((source.newsItems?.allObjects as? [NewsItem]) ?? []), id: \.title) { newsItem in
-                            Text(newsItem.title ?? "NO NEWSITEM TITLE")
-                        }
-                    }
-                }
-                
+                Text(source.title ?? "NO TITLE")
             }
         }
     }

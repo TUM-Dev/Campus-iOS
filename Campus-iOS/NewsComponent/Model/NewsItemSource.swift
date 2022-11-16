@@ -10,8 +10,6 @@ import CoreData
 
 class NewsItemSource: NSManagedObject, Decodable {
     
-    var shownNewsItems = 5
-    
     static var all: NSFetchRequest<NewsItemSource> {
         let request = NewsItemSource.fetchRequest()
         request.sortDescriptors = []
