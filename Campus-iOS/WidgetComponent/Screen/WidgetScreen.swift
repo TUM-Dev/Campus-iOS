@@ -11,7 +11,9 @@ import MapKit
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
+    @StateObject var model: Model = Model()
     @State private var refresh = false
+    @State private var widgetTitle = String()
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
@@ -39,10 +41,12 @@ struct WidgetScreen: View {
         }
         .task {
             try? await recommender.fetchRecommendations()
+            widgetTitle = "Hi, " + (model.profile.profile?.firstname ?? "")
         }
         .onReceive(timer) { _ in
             refresh.toggle()            
         }
+        .navigationTitle(widgetTitle)
     }
     
     // Source: https://stackoverflow.com/a/58876712

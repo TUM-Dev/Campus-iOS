@@ -32,12 +32,9 @@ struct GradesView: View {
                 }
                 
                 ForEach(self.vm.gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
-                    Section(
-                        header:
-                            GroupBoxLabelView(
-                                iconName: "graduationcap.fill",
-                                text: gradesBySemester.0
-                            )
+                    Section(header: Text(gradesBySemester.0)
+                        .font(.headline.bold())
+                        .foregroundColor(Color("tumBlue"))
                     ) {
                         ForEach(gradesBySemester.1) { item in
                             VStack {

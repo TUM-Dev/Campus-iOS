@@ -96,6 +96,9 @@
 "You can change your permissions on TUMOnline" = "Du kannst deine Rechte auf TUMOnline anpassen";
 "Identification (TUM ID and name)" = "Identifikation (TUM ID und Name)";
 "Check Permissions" = "Rechte überprüfen";
+"You have not granted the following permissions: \n\n" = "Du hast nicht alle Rechte freigegeben: \n\n";
+"\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline." = "\nDadurch können nicht alle Features der App genutzt werden. Du kannst die Rechte jederzeit auf TUMOnline anpassen.";
+"Continue anyways" = "Trotzdem weiter";
 
 // ProfileView
 "Token Permissions" = "Token Rechte";
@@ -170,6 +173,7 @@
 
 // Map
 "Search ..." = "Suchen ...";
+"Traffic" = "Auslastung";
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";

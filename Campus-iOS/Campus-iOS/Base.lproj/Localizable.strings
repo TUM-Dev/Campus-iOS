@@ -102,6 +102,9 @@
 "You can change your permissions on TUMOnline" = "You can change your permissions on TUMOnline";
 "Identification (TUM ID and name)" = "Identification (TUM ID and name)";
 "Check Permissions" = "Check Permissions";
+"You have not granted the following permissions: \n\n" = "You have not granted the following permissions: \n\n";
+"\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline." = "\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline.";
+"Continue anyways" = "Continue anyways";
 
 // ProfileView
 "Token Permissions" = "Token Permissions";
@@ -176,6 +179,7 @@
 
 // Map
 "Search ..." = "Search ...";
+"Traffic" = "Traffic";
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";

@@ -8,11 +8,11 @@
 import Foundation
 
 extension TokenPermissionsViewModel {
-    enum PermissionType {
-        case grades
-        case calendar
-        case lectures
-        case tuitionFees
-        case identification
+    enum PermissionType: String {
+        case grades = "Grades"
+        case calendar = "Calendar"
+        case lectures = "Lectures"
+        case tuitionFees = "Tuition Fees"
+        case identification = "Identification (TUM ID and name)"
     }
 }
