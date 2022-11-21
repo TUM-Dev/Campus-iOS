@@ -168,59 +168,67 @@ class MapViewModel: NSObject, MapViewModelProtocol {
     }
     
     func getRoomsAndGrous() async {
-        var studyRoomApiResponse = StudyRoomApiRespose()
+        
         do {
-            studyRoomApiResponse = try await studyRoomsService.fetch(forcedRefresh: true)
+            try await studyRoomsService.fetch(context: self.context)
         } catch {
             print(error)
         }
         
-        let _: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
-            
-            let newRoom = StudyRoomCoreData(context: context)
-
-            newRoom.occupiedFrom = studyRoom.occupiedFrom
-            newRoom.occupiedUntil = studyRoom.occupiedUntil
-            newRoom.occupiedBy = studyRoom.occupiedBy
-            newRoom.occupiedFor = studyRoom.occupiedFor
-            newRoom.occupiedIn = studyRoom.occupiedIn
-            newRoom.buildingCode = studyRoom.buildingCode
-            newRoom.buildingName = studyRoom.buildingName
-            newRoom.buildingNumber = studyRoom.buildingNumber
-            newRoom.code = studyRoom.code
-            newRoom.name = studyRoom.name
-            newRoom.id = studyRoom.id
-            newRoom.raum_nr_architekt = studyRoom.raum_nr_architekt
-            newRoom.number = studyRoom.number
-            newRoom.res_nr = studyRoom.res_nr
-            newRoom.status = studyRoom.status
-            newRoom.attributes = studyRoom.attributes
-            
-            return newRoom
-            
-        })
-        
-        let _: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
-            
-            let newGroup = StudyRoomGroupCoreData(context: context)
-
-            newGroup.detail = studyRoomGroup.detail
-            newGroup.name = studyRoomGroup.name
-            newGroup.id = studyRoomGroup.id
-            newGroup.sorting = studyRoomGroup.sorting
-            newGroup.rooms = studyRoomGroup.rooms
-            
-            return newGroup
-            
-        })
-        
-        // Saving the data into CoreData
-        do {
-            try context.save()
-        } catch {
-            print(String(describing: error))
-        }
-        
+//        
+//        var studyRoomApiResponse = StudyRoomApiRespose()
+//        do {
+//            studyRoomApiResponse = try await studyRoomsService.fetch(forcedRefresh: true)
+//        } catch {
+//            print(error)
+//        }
+//
+//        let _: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
+//
+//            let newRoom = StudyRoomCoreData(context: context)
+//
+//            newRoom.occupiedFrom = studyRoom.occupiedFrom
+//            newRoom.occupiedUntil = studyRoom.occupiedUntil
+//            newRoom.occupiedBy = studyRoom.occupiedBy
+//            newRoom.occupiedFor = studyRoom.occupiedFor
+//            newRoom.occupiedIn = studyRoom.occupiedIn
+//            newRoom.buildingCode = studyRoom.buildingCode
+//            newRoom.buildingName = studyRoom.buildingName
+//            newRoom.buildingNumber = studyRoom.buildingNumber
+//            newRoom.code = studyRoom.code
+//            newRoom.name = studyRoom.name
+//            newRoom.id = studyRoom.id
+//            newRoom.raum_nr_architekt = studyRoom.raum_nr_architekt
+//            newRoom.number = studyRoom.number
+//            newRoom.res_nr = studyRoom.res_nr
+//            newRoom.status = studyRoom.status
+//            newRoom.attributes = studyRoom.attributes
+//
+//            return newRoom
+//
+//        })
+//
+//        let _: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
+//
+//            let newGroup = StudyRoomGroupCoreData(context: context)
+//
+//            newGroup.detail = studyRoomGroup.detail
+//            newGroup.name = studyRoomGroup.name
+//            newGroup.id = studyRoomGroup.id
+//            newGroup.sorting = studyRoomGroup.sorting
+//            newGroup.rooms = studyRoomGroup.rooms
+//
+//            return newGroup
+//
+//        })
+//
+//        // Saving the data into CoreData
+//        do {
+//            try context.save()
+//        } catch {
+//            print(String(describing: error))
+//        }
+//
     }
 }
 

@@ -8,12 +8,15 @@
 import Foundation
 import Alamofire
 import CoreLocation
+import CoreData
 
 enum TUMDevAppAPI: URLRequestConvertible {
     case room(roomNr: Int)
     case rooms
     
     static let baseURL = "https://www.devapp.it.tum.de"
+    
+    static let decoder = JSONDecoder()
     
     var path: String {
         switch self {
@@ -76,6 +79,39 @@ enum TUMDevAppAPI: URLRequestConvertible {
             cache.setValue(studyRoomsResponse, forKey: fullRequestURL)
             
             return studyRoomsResponse
+        }
+    }
+    
+    static func fetchStudyRoomsCoreData(context: NSManagedObjectContext) async throws {
+
+        Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
+        
+        let fullRequestURL = baseURL + self.rooms.path
+        
+        
+        // Fetch new data and store in cache.
+        var studyRoomsData: Data
+        do {
+            studyRoomsData = try await AF.request(self.rooms).serializingData().value
+        } catch {
+            print(error)
+            throw NetworkingError.deviceIsOffline
+        }
+        
+        do {
+            let _: StudyRoomApiResponseCoreData = try decoder.decode(StudyRoomApiResponseCoreData.self, from: studyRoomsData)
+        } catch {
+            print(error)
+            throw error
+        }
+        
+        do {
+            try context.save()
+            print("Context saved for study rooms and groups")
+            let defaults = UserDefaults.standard
+            defaults.set(Date(), forKey: "\(String(describing: StudyRoomApiResponseCoreData.self))CoreDataStoringDate")
+        } catch {
+            throw CoreDataError.savingError("Context saving failed")
         }
     }
 }
