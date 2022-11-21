@@ -23,7 +23,7 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <entity name="StudyRoomCoreData" representedClassName="StudyRoomCoreData" syncable="YES" codeGenerationType="category">
+    <entity name="StudyRoomCoreData" representedClassName=".StudyRoomCoreData" syncable="YES" codeGenerationType="category">
         <attribute name="attributes" optional="YES" attributeType="Transformable"/>
         <attribute name="buildingCode" optional="YES" attributeType="String"/>
         <attribute name="buildingName" optional="YES" attributeType="String"/>
@@ -41,7 +41,7 @@
         <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="status" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="StudyRoomGroupCoreData" representedClassName="StudyRoomGroupCoreData" syncable="YES" codeGenerationType="category">
+    <entity name="StudyRoomGroupCoreData" representedClassName=".StudyRoomGroupCoreData" syncable="YES" codeGenerationType="category">
         <attribute name="detail" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>

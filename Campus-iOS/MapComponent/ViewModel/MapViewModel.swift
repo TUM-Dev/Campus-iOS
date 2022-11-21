@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol MapViewModelProtocol: ObservableObject {
     func getCafeteria(forcedRefresh: Bool) async
@@ -17,7 +18,11 @@ enum MapMode: CaseIterable {
 }
 
 @MainActor
-class MapViewModel: MapViewModelProtocol {
+class MapViewModel: NSObject, MapViewModelProtocol {
+    
+    @Published var studyRooms = [StudyRoomCoreData]()
+    @Published var studyRoomGroups = [StudyRoomGroupCoreData]()
+    
     // State for fetching cafeterias
     @Published var cafeteriasState: CafeteriasNetworkState = .na
     @Published var studyRoomsState: StudyRoomsNetworkState = .na
@@ -40,6 +45,11 @@ class MapViewModel: MapViewModelProtocol {
     
     private let cafeteriaService: CafeteriasServiceProtocol
     private let studyRoomsService: StudyRoomsServiceProtocol
+    
+    private let context: NSManagedObjectContext
+    
+    private let studyRoomFetchedResultController: NSFetchedResultsController<StudyRoomCoreData>
+    private let studyRoomGroupFetchedResultController: NSFetchedResultsController<StudyRoomGroupCoreData>
     
     var cafeterias: [Cafeteria] {
         get {
@@ -73,10 +83,52 @@ class MapViewModel: MapViewModelProtocol {
         }
     }
     
-    init(cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
+    init(context: NSManagedObjectContext? = nil, cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
         self.cafeteriaService = cafeteriaService
         self.studyRoomsService = studyRoomsService
         self.mock = mock
+        if let context = context {
+            self.context = context
+            self.studyRoomFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            self.studyRoomGroupFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomGroupCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        } else {
+            self.context = NSManagedObjectContext()
+            self.studyRoomFetchedResultController = NSFetchedResultsController()
+            self.studyRoomGroupFetchedResultController = NSFetchedResultsController()
+        }
+        
+        super.init()
+        studyRoomFetchedResultController.delegate = self
+        
+        do {
+            try studyRoomFetchedResultController.performFetch()
+            guard let studyRooms = studyRoomFetchedResultController.fetchedObjects else {
+                return
+            }
+            
+            self.studyRooms = studyRooms
+//            self.state = .success
+        } catch {
+//            self.state = .failed(error: error)
+//            self.hasError = true
+            print(error)
+        }
+        
+        studyRoomGroupFetchedResultController.delegate = self
+        
+        do {
+            try studyRoomGroupFetchedResultController.performFetch()
+            guard let studyRoomGroups = studyRoomGroupFetchedResultController.fetchedObjects else {
+                return
+            }
+            
+            self.studyRoomGroups = studyRoomGroups
+//            self.state = .success
+        } catch {
+//            self.state = .failed(error: error)
+//            self.hasError = true
+            print(error)
+        }
     }
     
     func getCafeteria(forcedRefresh: Bool = false) async {
@@ -112,6 +164,82 @@ class MapViewModel: MapViewModelProtocol {
         } catch {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
+        }
+    }
+    
+    func getRoomsAndGrous() async {
+        var studyRoomApiResponse = StudyRoomApiRespose()
+        do {
+            studyRoomApiResponse = try await studyRoomsService.fetch(forcedRefresh: true)
+        } catch {
+            print(error)
+        }
+        
+        let rooms: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
+            
+            let entity = NSEntityDescription.entity(forEntityName: "StudyRoomCoreData", in: context) ?? NSEntityDescription()
+            
+            let newRoom = StudyRoomCoreData(context: context)
+
+            newRoom.occupiedFrom = studyRoom.occupiedFrom
+            newRoom.occupiedUntil = studyRoom.occupiedUntil
+            newRoom.occupiedBy = studyRoom.occupiedBy
+            newRoom.occupiedFor = studyRoom.occupiedFor
+            newRoom.occupiedIn = studyRoom.occupiedIn
+            newRoom.buildingCode = studyRoom.buildingCode
+            newRoom.buildingName = studyRoom.buildingName
+            newRoom.buildingNumber = studyRoom.buildingNumber
+            newRoom.code = studyRoom.code
+            newRoom.name = studyRoom.name
+            newRoom.id = studyRoom.id
+            newRoom.raum_nr_architekt = studyRoom.raum_nr_architekt
+            newRoom.number = studyRoom.number
+            newRoom.res_nr = studyRoom.res_nr
+            newRoom.status = studyRoom.status
+//            newRoom.attributes = studyRoom.attributes as? NSObject
+            
+            return newRoom
+            
+        })
+        
+        let groups: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
+            
+            let entity = NSEntityDescription.entity(forEntityName: "StudyRoomGroupCoreData", in: context) ?? NSEntityDescription()
+            
+            let newGroup = StudyRoomGroupCoreData(context: context)
+
+            newGroup.detail = studyRoomGroup.detail
+            newGroup.name = studyRoomGroup.name
+            newGroup.id = studyRoomGroup.id
+            newGroup.sorting = studyRoomGroup.sorting
+//            newGroup.rooms = studyRoomGroup.rooms as? NSObject
+            
+            return newGroup
+            
+        })
+        
+        // Saving the data into CoreData
+        do {
+            try context.save()
+        } catch {
+            print(String(describing: error))
+        }
+        
+    }
+}
+
+extension MapViewModel: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        print(controller.fetchedObjects)
+ 
+        if let studyRooms = controller.fetchedObjects as? [StudyRoomCoreData] {
+            self.studyRooms = studyRooms
+//            self.state = .success
+        }
+        
+        if let studyRoomGroups = controller.fetchedObjects as? [StudyRoomGroupCoreData] {
+            self.studyRoomGroups = studyRoomGroups
+//            self.state = .success
         }
     }
 }
