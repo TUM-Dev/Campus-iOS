@@ -26,7 +26,7 @@ struct MapContentView: UIViewRepresentable {
     @ObservedObject var vm: MapViewModel
   
     @State private var focusedCanteen: Cafeteria?
-    @State private var focusedGroup: StudyRoomGroup?
+    @State private var focusedGroup: StudyRoomGroupCoreData?
 
     var locationManager = CLLocationManager()
     public let mapView = MKMapView()
@@ -210,12 +210,12 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                         }
                     }
                 }
-                if let groups = control.vm.studyRoomsResponse.groups, groups.count > 0 {
-                    for i in 0...(groups.count - 1) {
-                        if title == groups[i].name {
+                if control.vm.studyRoomGroups.count > 0 {
+                    for i in 0...(control.vm.studyRoomGroups.count - 1) {
+                        if title == control.vm.studyRoomGroups[i].name {
                             control.vm.selectedAnnotationIndex = i
                             // Making the selected annotation (i.e. study group) the selected study group -> shows the StudyRoomGroupView with inside the PanelContentView like tapping on a study group in the PanelContentStudyRoomGroupsListView
-                            control.vm.selectedStudyGroup = groups[i]
+                            control.vm.selectedStudyGroup = control.vm.studyRoomGroups[i]
                             control.vm.panelPos = .middle
                         }
                     }

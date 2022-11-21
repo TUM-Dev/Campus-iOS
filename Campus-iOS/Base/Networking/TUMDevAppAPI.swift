@@ -82,12 +82,29 @@ enum TUMDevAppAPI: URLRequestConvertible {
         }
     }
     
+    static func delete<T: NSManagedObject & Decodable>(for type: T.Type, with context: NSManagedObjectContext) {
+        
+        do {
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: String(describing: T.self))
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            deleteRequest.resultType = .resultTypeObjectIDs
+            let result = try context.execute(deleteRequest) as? NSBatchDeleteResult
+            // Necessary to reflect the change of deletion inside the context.
+            let changes: [AnyHashable: Any] = [
+                NSDeletedObjectsKey: result?.result as? [NSManagedObjectID] as Any
+            ]
+            NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [context])
+        } catch {
+            print(CoreDataError.deletingError("All entries of the Entity \(String(describing: T.self)) could not be deleted due to: \(error)"))
+        }
+    }
+    
     static func fetchStudyRoomsCoreData(context: NSManagedObjectContext) async throws {
-
+        delete(for: StudyRoomGroupCoreData.self, with: context)
+        delete(for: StudyRoomCoreData.self, with: context)
+        
+        
         Self.decoder.userInfo[CodingUserInfoKey.managedObjectContext] = context
-        
-        let fullRequestURL = baseURL + self.rooms.path
-        
         
         // Fetch new data and store in cache.
         var studyRoomsData: Data
@@ -97,6 +114,11 @@ enum TUMDevAppAPI: URLRequestConvertible {
             print(error)
             throw NetworkingError.deviceIsOffline
         }
+        
+        // Delete all entries
+        // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
+        
+        
         
         do {
             let _: StudyRoomApiResponseCoreData = try decoder.decode(StudyRoomApiResponseCoreData.self, from: studyRoomsData)

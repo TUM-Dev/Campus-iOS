@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 class StudyRoomCoreData: NSManagedObject, Decodable {
     
@@ -82,6 +83,55 @@ class StudyRoomCoreData: NSManagedObject, Decodable {
         self.res_nr = res_nr
         self.status = status
         self.attributes = attributes
+    }
+    
+    var localizedStatus: String {
+        switch self.status {
+        case "frei":
+            return "Free"
+        case "belegt":
+            if let occupiedUntilString = self.occupiedUntil, let occupiedUntilDate = StudyRoom.dateFomatter.date(from: occupiedUntilString) {
+                return "\("Occupied until".localized) \(StudyRoom.secondDateFormatter.string(from: occupiedUntilDate))"
+            }
+        default:
+            return "Unknown"
+        }
+        
+        return ""
+    }
+    
+    var localizedStatusText: Text {
+        
+        let color: Color
+        
+        switch self.status {
+        case "frei":
+            color = .green
+        case "belegt":
+            color = .red
+        default:
+            color = .gray
+        }
+        
+        return Text(localizedStatus).foregroundColor(color)
+    }
+    
+    static let dateFomatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()
+
+    static let secondDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
+    func isAvailable() -> Bool {
+        return status == "frei"
     }
     
 }

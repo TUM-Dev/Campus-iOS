@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import MapKit
 
 class StudyRoomGroupCoreData: NSManagedObject, Decodable {
     
@@ -51,4 +52,26 @@ class StudyRoomGroupCoreData: NSManagedObject, Decodable {
         self.rooms = room_nrs
     }
     
+    var coordinate: CLLocationCoordinate2D? {
+        switch(self.id) {
+        case 44:
+            return CLLocationCoordinate2D(latitude: 48.24926355557732, longitude: 11.633834370828435)
+        case 46:
+            return CLLocationCoordinate2D(latitude: 48.2629811953867, longitude: 11.6668123)
+        case 47:
+            return CLLocationCoordinate2D(latitude: 48.26250533403169, longitude: 11.668024666454896)
+        case 60:
+            return CLLocationCoordinate2D(latitude: 48.14778663798231, longitude: 11.56695764027295)
+        case 97:
+            return CLLocationCoordinate2D(latitude: 48.26696368721545, longitude: 11.670222023419445)
+        case 130:
+            return CLLocationCoordinate2D(latitude: 48.39535098293569, longitude: 11.724272313959853)
+        default:
+            return nil;
+        }
+    }
+    
+    func getRooms(allRooms rooms: [StudyRoomCoreData]) -> [StudyRoomCoreData] {
+        rooms.filter({ self.rooms?.contains($0.id) ?? false })
+    }
 }

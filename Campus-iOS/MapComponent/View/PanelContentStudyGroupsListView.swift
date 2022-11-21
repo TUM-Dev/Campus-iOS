@@ -13,15 +13,15 @@ struct PanelContentStudyGroupsListView: View {
     @ObservedObject var viewModel: MapViewModel
     @Binding var searchString: String
     
-    @State var sortedGroups: [StudyRoomGroup]
+    @State var sortedGroups: [StudyRoomGroupCoreData]
     
     var locationManager = CLLocationManager()
     
     init(viewModel vm: MapViewModel, searchString text: Binding<String>) {
         self.viewModel = vm
         self._searchString = text
-        if let location = self.locationManager.location, let groups = vm.studyRoomsResponse.groups {
-            self.sortedGroups = groups.sorted {
+        if let location = self.locationManager.location {
+            self.sortedGroups = vm.studyRoomGroups.sorted {
                 if let lhs = $0.coordinate, let rhs = $1.coordinate {
                     return lhs.location.distance(from: location) < rhs.location.distance(from: location)
                 } else {
@@ -29,7 +29,7 @@ struct PanelContentStudyGroupsListView: View {
                 }
             }
         } else {
-            self.sortedGroups = vm.studyRoomsResponse.groups ?? [StudyRoomGroup]()
+            self.sortedGroups = vm.studyRoomGroups
         }
     }
     
@@ -43,7 +43,7 @@ struct PanelContentStudyGroupsListView: View {
                 }, label: {
                     StudyGroupRowView(
                         studyGroup: sortedGroups[id],
-                        allRooms: viewModel.studyRoomsResponse.rooms ?? [StudyRoom]()
+                        allRooms: viewModel.studyRooms
                     )
                 })
             }

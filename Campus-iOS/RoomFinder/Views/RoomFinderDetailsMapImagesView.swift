@@ -22,7 +22,7 @@ struct RoomFinderDetailsMapImagesView: View {
             
             Divider()
 
-            MapImagesHorizontalScrollingView(viewModel: StudyRoomViewModel(studyRoom: StudyRoom(room: room)))
+            FoundRoomMapImagesHorizontalScrollingView(viewModel: FoundRoomViewModel(foundRoom: room))
         }
         .frame(
             maxWidth: .infinity,

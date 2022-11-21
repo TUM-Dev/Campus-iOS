@@ -7,17 +7,19 @@
 
 import SwiftUI
 import MapKit
+import CoreData
 
 struct StudyRoomWidgetView: View {
     
-    @StateObject var viewModel = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
+    @StateObject var viewModel: StudyRoomWidgetViewModel
     @State private var size: WidgetSize
     @State private var showDetails = false
     private let initialSize: WidgetSize
     @State private var scale: CGFloat = 1
     @Binding var refresh: Bool
     
-    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+    init(context: NSManagedObjectContext, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self._viewModel = StateObject(wrappedValue: StudyRoomWidgetViewModel(context: context, studyRoomService: StudyRoomsService()))
         self._size = State(initialValue: size)
         self.initialSize = size
         self._refresh = refresh
@@ -114,13 +116,13 @@ struct SimpleStudyRoomWidgetContent: View {
 struct DetailedStudyRoomWidgetContent: View {
     
     let studyGroup: String
-    let rooms: [StudyRoom]
+    let rooms: [StudyRoomCoreData]
     let coordinate: CLLocationCoordinate2D
     let size: WidgetSize
     
     private let DISPLAYED_ROOMS = 5
     
-    init(studyGroup: String, rooms: [StudyRoom], coordinate: CLLocationCoordinate2D, size: WidgetSize) {
+    init(studyGroup: String, rooms: [StudyRoomCoreData], coordinate: CLLocationCoordinate2D, size: WidgetSize) {
         self.studyGroup = studyGroup
         self.coordinate = coordinate
         
@@ -195,7 +197,7 @@ struct StudyRoomWidgetHeaderView: View {
 
 struct RoomDetailsView: View {
     
-    let room: StudyRoom
+    let room: StudyRoomCoreData
     
     var body: some View {
         HStack {
@@ -230,7 +232,7 @@ struct StudyRoomWidgetView_Previews: PreviewProvider {
     
     static var detailedContent = DetailedStudyRoomWidgetContent(
         studyGroup: "StudiTUM Weihenstephan",
-        rooms: [StudyRoom](repeating: StudyRoom(), count: 12),
+        rooms: [StudyRoomCoreData](repeating: StudyRoomCoreData(), count: 12),
         coordinate: CLLocationCoordinate2D(latitude: 42, longitude: 42),
         size: .bigSquare
     )

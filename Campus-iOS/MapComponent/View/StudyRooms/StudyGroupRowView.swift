@@ -10,8 +10,8 @@ import MapKit
 
 struct StudyGroupRowView: View {
     
-    @State var studyGroup: StudyRoomGroup
-    @State var allRooms: [StudyRoom]
+    @State var studyGroup: StudyRoomGroupCoreData
+    @State var allRooms: [StudyRoomCoreData]
     @State var explainStatus = false
     private let locationManager = CLLocationManager()
     private let distanceFormatter: MKDistanceFormatter = {
@@ -20,8 +20,8 @@ struct StudyGroupRowView: View {
         return formatter
     }()
     
-    private var studyRooms: [StudyRoom] {
-        self.studyGroup.getRooms(allRooms: allRooms) ?? [StudyRoom]()
+    private var studyRooms: [StudyRoomCoreData] {
+        self.studyGroup.getRooms(allRooms: allRooms)
     }
     
     var body: some View {
@@ -56,7 +56,7 @@ struct StudyGroupRowView: View {
         }
     }
     
-    private func distance(studyGroup: StudyRoomGroup) -> String {
+    private func distance(studyGroup: StudyRoomGroupCoreData) -> String {
         if let currentLocation = self.locationManager.location {
             let distance = studyGroup.coordinate?.location.distance(from: currentLocation) ?? 0.0
             return distanceFormatter.string(fromDistance: distance)
@@ -67,6 +67,6 @@ struct StudyGroupRowView: View {
 
 struct StudyGroupRowView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyGroupRowView(studyGroup: StudyRoomGroup(), allRooms: [StudyRoom]())
+        StudyGroupRowView(studyGroup: StudyRoomGroupCoreData(), allRooms: [StudyRoomCoreData]())
     }
 }

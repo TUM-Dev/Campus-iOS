@@ -13,7 +13,7 @@ struct StudyRoomDetailsView: View {
     
     @State var showPopup = false
     
-    init(studyRoom room: StudyRoom) {
+    init(studyRoom room: StudyRoomCoreData) {
         self.viewModel = StudyRoomViewModel(studyRoom: room)
     }
     
@@ -40,7 +40,7 @@ struct StudyRoomDetailsView: View {
                         .fontWeight(.bold)
                         .font(.headline)
                 }
-                MapImagesHorizontalScrollingView(viewModel: viewModel)
+                StudyRoomMapImagesHorizontalScrollingView(viewModel: viewModel)
                 Spacer(minLength: 10)
             }
             
@@ -69,6 +69,6 @@ struct StudyRoomDetailsView: View {
 
 struct StudyRoomDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyRoomDetailsView(studyRoom: StudyRoom())
+        StudyRoomDetailsView(studyRoom: StudyRoomCoreData())
     }
 }

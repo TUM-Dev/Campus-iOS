@@ -160,7 +160,7 @@
 		3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F3742851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift */; };
 		3654F37E2851710E008AD5DC /* RoomFinderDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F3752851710E008AD5DC /* RoomFinderDetailsView.swift */; };
 		3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F37F28517156008AD5DC /* ImageFullScreenView.swift */; };
-		3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38328517260008AD5DC /* StudyRoomVIewModel.swift */; };
+		3654F38428517260008AD5DC /* StudyRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38328517260008AD5DC /* StudyRoomViewModel.swift */; };
 		3654F38628517BB4008AD5DC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38528517BB4008AD5DC /* CafeteriaView.swift */; };
 		3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */; };
 		3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */; };
@@ -442,7 +442,7 @@
 		3654F3742851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderDetailsMapImagesView.swift; sourceTree = "<group>"; };
 		3654F3752851710E008AD5DC /* RoomFinderDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderDetailsView.swift; sourceTree = "<group>"; };
 		3654F37F28517156008AD5DC /* ImageFullScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFullScreenView.swift; sourceTree = "<group>"; };
-		3654F38328517260008AD5DC /* StudyRoomVIewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomVIewModel.swift; sourceTree = "<group>"; };
+		3654F38328517260008AD5DC /* StudyRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomViewModel.swift; sourceTree = "<group>"; };
 		3654F38528517BB4008AD5DC /* CafeteriaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupView.swift; sourceTree = "<group>"; };
 		3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsView.swift; sourceTree = "<group>"; };
@@ -1087,7 +1087,7 @@
 		3654F381285171D7008AD5DC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				3654F38328517260008AD5DC /* StudyRoomVIewModel.swift */,
+				3654F38328517260008AD5DC /* StudyRoomViewModel.swift */,
 				36108BD327A304B5007DC62D /* MealPlanViewModel.swift */,
 				36108BD427A304B5007DC62D /* MenuViewModel.swift */,
 				1F4C836128300306006971C0 /* MapViewModel.swift */,
@@ -1745,7 +1745,7 @@
 				36BB6F6227AFCDFA00F224AB /* PersonSearchView.swift in Sources */,
 				97270F5A27AB2A4900BB25E4 /* Array+Rearrange.swift in Sources */,
 				1F0DF5882906CE6900EF3E58 /* GradesCDViewModel.swift in Sources */,
-				3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */,
+				3654F38428517260008AD5DC /* StudyRoomViewModel.swift in Sources */,
 				2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */,
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,

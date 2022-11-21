@@ -49,7 +49,7 @@ struct PanelContentView: View {
                     StudyRoomGroupView(
                         vm: vm,
                         selectedGroup: $vm.selectedStudyGroup,
-                        rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom](),
+                        rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRooms) ?? [StudyRoomCoreData](),
                         panelHeight: $panelHeight
                     )
                 } else {

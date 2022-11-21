@@ -18,7 +18,11 @@ struct TESTStudyRoomsView: View {
         VStack {
             Button("Load rooms and groups") {
                 Task {
-                    await vm.getRoomsAndGrous()
+                    do {
+                        try await vm.getRoomsAndGroups()
+                    } catch {
+                        print(error)
+                    }
                 }
             }
             Text("StudyRoomGroups")

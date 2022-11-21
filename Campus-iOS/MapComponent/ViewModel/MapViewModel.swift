@@ -37,7 +37,7 @@ class MapViewModel: NSObject, MapViewModelProtocol {
     @Published var selectedAnnotationIndex = 0
     @Published var selectedCafeteria: Cafeteria?
     
-    @Published var selectedStudyGroup: StudyRoomGroup?
+    @Published var selectedStudyGroup: StudyRoomGroupCoreData?
     
     @Published var panelPos: PanelPos = .middle
     
@@ -167,12 +167,13 @@ class MapViewModel: NSObject, MapViewModelProtocol {
         }
     }
     
-    func getRoomsAndGrous() async {
+    func getRoomsAndGroups() async throws {
         
         do {
             try await studyRoomsService.fetch(context: self.context)
         } catch {
             print(error)
+            throw(error)
         }
         
 //        

@@ -28,7 +28,8 @@ struct RoomFinderDetailsView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     RoomFinderDetailsBaseView(room: room)
                     RoomFinderDetailsMapView(room: room)
-                    RoomFinderDetailsMapImagesView(room: room)
+                    let extractedExpr = RoomFinderDetailsMapImagesView(room: room)
+                    extractedExpr
                 }
             }
         }

@@ -8,12 +8,13 @@
 import Foundation
 import MapKit
 import Alamofire
+import CoreData
 
 @MainActor
 class StudyRoomWidgetViewModel: ObservableObject {
     
-    @Published var studyGroup: StudyRoomGroup?
-    @Published var rooms: [StudyRoom]?
+    @Published var studyGroup: StudyRoomGroupCoreData?
+    @Published var rooms: [StudyRoomCoreData]?
     @Published var status: StudyRoomWidgetStatus
     
     private let studyRoomService: StudyRoomsServiceProtocol
@@ -21,7 +22,9 @@ class StudyRoomWidgetViewModel: ObservableObject {
     
     private let locationManager = CLLocationManager()
     
-    init(studyRoomService: StudyRoomsServiceProtocol) {
+    let vm: MapViewModel
+    
+    init(context: NSManagedObjectContext, studyRoomService: StudyRoomsServiceProtocol) {
         self.status = .loading
         self.studyRoomService = studyRoomService
         
@@ -29,11 +32,13 @@ class StudyRoomWidgetViewModel: ObservableObject {
         if authorization != .authorizedWhenInUse || authorization != .authorizedAlways {
             locationManager.requestWhenInUseAuthorization()
         }
+        
+        self.vm = MapViewModel(context: context, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService())
     }
     
     func fetch() async {
         do {
-            let response = try await studyRoomService.fetch(forcedRefresh: false)
+            try await vm.getRoomsAndGroups()
             
             // Get the closest study group.
             
@@ -42,18 +47,19 @@ class StudyRoomWidgetViewModel: ObservableObject {
                 return
             }
             
-            guard let group = response.groups?.min(
+            guard let group = vm.studyRoomGroups.min(
                 by: { ($0.coordinate?.location.distance(from: location)) ?? 0.0 < $1.coordinate?.location.distance(from: location) ?? 0.0}
-            ), let rooms = response.rooms else {
+            ) else {
                 self.status = .error
                 return
             }
             
             self.studyGroup = group
-            self.rooms = studyGroup?.getRooms(allRooms: rooms)
+            self.rooms = studyGroup?.getRooms(allRooms: vm.studyRooms)
             
             self.status = .success
         } catch {
+            print(error)
             self.status = .error
         }
     }
