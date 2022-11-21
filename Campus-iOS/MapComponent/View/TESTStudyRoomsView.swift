@@ -23,12 +23,25 @@ struct TESTStudyRoomsView: View {
             }
             Text("StudyRoomGroups")
             List(vm.studyRoomGroups) { studyRoomGroup in
-                Text(studyRoomGroup.name ?? "Group name missing")
+                VStack {
+                    Text(studyRoomGroup.name ?? "Group name missing")
+                    Text(String(studyRoomGroup.rooms?.count ?? 0))
+                }
             }
             
             Text("StudyRooms")
             List(vm.studyRooms) { studyRoom in
-                Text(studyRoom.name ?? "Room name missing")
+                VStack {
+                    Text(studyRoom.name ?? "Room name missing")
+                    if let attributes = studyRoom.attributes {
+                        if attributes.count > 0 {
+                            Text(attributes[0].name ?? "Attribute name missing")
+                        }
+                        
+                    }
+                    
+                }
+                
             }
             
         }

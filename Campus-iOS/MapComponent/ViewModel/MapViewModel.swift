@@ -175,9 +175,7 @@ class MapViewModel: NSObject, MapViewModelProtocol {
             print(error)
         }
         
-        let rooms: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
-            
-            let entity = NSEntityDescription.entity(forEntityName: "StudyRoomCoreData", in: context) ?? NSEntityDescription()
+        let _: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
             
             let newRoom = StudyRoomCoreData(context: context)
 
@@ -196,15 +194,13 @@ class MapViewModel: NSObject, MapViewModelProtocol {
             newRoom.number = studyRoom.number
             newRoom.res_nr = studyRoom.res_nr
             newRoom.status = studyRoom.status
-//            newRoom.attributes = studyRoom.attributes as? NSObject
+            newRoom.attributes = studyRoom.attributes
             
             return newRoom
             
         })
         
-        let groups: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
-            
-            let entity = NSEntityDescription.entity(forEntityName: "StudyRoomGroupCoreData", in: context) ?? NSEntityDescription()
+        let _: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
             
             let newGroup = StudyRoomGroupCoreData(context: context)
 
@@ -212,7 +208,7 @@ class MapViewModel: NSObject, MapViewModelProtocol {
             newGroup.name = studyRoomGroup.name
             newGroup.id = studyRoomGroup.id
             newGroup.sorting = studyRoomGroup.sorting
-//            newGroup.rooms = studyRoomGroup.rooms as? NSObject
+            newGroup.rooms = studyRoomGroup.rooms
             
             return newGroup
             
