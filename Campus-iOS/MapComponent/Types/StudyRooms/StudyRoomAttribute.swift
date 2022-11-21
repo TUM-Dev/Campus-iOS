@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyRoomAttribute: Entity {
+class StudyRoomAttribute: NSObject, Entity {
     var detail: String?
     var name: String?
 
@@ -16,7 +16,7 @@ struct StudyRoomAttribute: Entity {
         case name
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let detail = try container.decode(String.self, forKey: .detail)

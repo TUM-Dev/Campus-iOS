@@ -23,4 +23,29 @@
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="StudyRoomCoreData" representedClassName="StudyRoomCoreData" syncable="YES" codeGenerationType="category">
+        <attribute name="attributes" optional="YES" attributeType="Transformable"/>
+        <attribute name="buildingCode" optional="YES" attributeType="String"/>
+        <attribute name="buildingName" optional="YES" attributeType="String"/>
+        <attribute name="buildingNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="code" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="String"/>
+        <attribute name="occupiedBy" optional="YES" attributeType="String"/>
+        <attribute name="occupiedFor" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="occupiedFrom" optional="YES" attributeType="String"/>
+        <attribute name="occupiedIn" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="occupiedUntil" optional="YES" attributeType="String"/>
+        <attribute name="raum_nr_architekt" optional="YES" attributeType="String"/>
+        <attribute name="res_nr" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="StudyRoomGroupCoreData" representedClassName="StudyRoomGroupCoreData" syncable="YES" codeGenerationType="category">
+        <attribute name="detail" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rooms" optional="YES" attributeType="Transformable"/>
+        <attribute name="sorting" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
 </model>

@@ -65,6 +65,8 @@
 		1F54244F285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
+		1F766D912926C15E005B3E25 /* StudyRoomCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F766D902926C15E005B3E25 /* StudyRoomCoreData.swift */; };
+		1F766D93292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F766D92292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift */; };
 		1F819F7829151DED00395532 /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F7729151DED00395532 /* NewsService.swift */; };
 		1F819F7A291521A400395532 /* NetworkingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F819F79291521A400395532 /* NetworkingServiceProtocol.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
@@ -342,6 +344,8 @@
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
 		1F4C926E2882FD84003DC7D7 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
+		1F766D902926C15E005B3E25 /* StudyRoomCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomCoreData.swift; sourceTree = "<group>"; };
+		1F766D92292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupCoreData.swift; sourceTree = "<group>"; };
 		1F819F7729151DED00395532 /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1F819F79291521A400395532 /* NetworkingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceProtocol.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
@@ -690,6 +694,15 @@
 			path = VideoAssets;
 			sourceTree = "<group>";
 		};
+		1F766D96292B7EDA005B3E25 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1F766D902926C15E005B3E25 /* StudyRoomCoreData.swift */,
+				1F766D92292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1023,6 +1036,7 @@
 				3654F35C285168D2008AD5DC /* StudyRoomApiResponse.swift */,
 				3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */,
 				3654F35B285168D2008AD5DC /* StudyRoomGroup.swift */,
+				1F766D96292B7EDA005B3E25 /* CoreData */,
 			);
 			path = StudyRooms;
 			sourceTree = "<group>";
@@ -1762,6 +1776,7 @@
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
 				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
+				1F766D912926C15E005B3E25 /* StudyRoomCoreData.swift in Sources */,
 				36E964A32774932B0055777F /* CalendarToolbar.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
@@ -1869,6 +1884,7 @@
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
+				1F766D93292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift in Sources */,
 				1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
