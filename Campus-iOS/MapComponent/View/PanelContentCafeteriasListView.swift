@@ -50,6 +50,6 @@ struct PanelContentCafeteriasListView: View {
 
 struct PanelContentCafeteriasListView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContentCafeteriasListView(viewModel: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()), searchString: .constant(""))
+        PanelContentCafeteriasListView(viewModel: MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()), searchString: .constant(""))
     }
 }

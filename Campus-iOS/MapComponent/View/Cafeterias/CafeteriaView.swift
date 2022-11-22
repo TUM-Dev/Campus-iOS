@@ -115,7 +115,7 @@ struct CafeteriaView: View {
 
 struct CanteenView_Previews: PreviewProvider {
     @State static var ph: CGFloat = 0.0
-    static var vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
+    static var vm = MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
     
     static var previews: some View {
         CafeteriaView(vm: vm, selectedCanteen: .constant(nil), panelHeight: $ph)

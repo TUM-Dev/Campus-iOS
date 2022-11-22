@@ -83,20 +83,14 @@ class MapViewModel: NSObject, MapViewModelProtocol {
 //        }
 //    }
     
-    init(context: NSManagedObjectContext? = nil, cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
+    init(context: NSManagedObjectContext, cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
         self.cafeteriaService = cafeteriaService
         self.studyRoomsService = studyRoomsService
         self.mock = mock
-        if let context = context {
-            self.context = context
-            self.studyRoomFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-            self.studyRoomGroupFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomGroupCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        } else {
-            self.context = NSManagedObjectContext()
-            self.studyRoomFetchedResultController = NSFetchedResultsController()
-            self.studyRoomGroupFetchedResultController = NSFetchedResultsController()
-        }
-        
+        self.context = context
+        self.studyRoomFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        self.studyRoomGroupFetchedResultController = NSFetchedResultsController(fetchRequest: StudyRoomGroupCoreData.all, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    
         super.init()
         studyRoomFetchedResultController.delegate = self
         
@@ -167,6 +161,14 @@ class MapViewModel: NSObject, MapViewModelProtocol {
     
     func getRoomsAndGroups() async {
         if studyRoomsService.fetchIsNeeded(for: StudyRoomApiResponseCoreData.self) {
+            
+            for room in studyRooms {
+                context.delete(room)
+            }
+            
+            for group in studyRoomGroups {
+                context.delete(group)
+            }
             
             self.studyRoomsState = .loading
             self.hasError = false

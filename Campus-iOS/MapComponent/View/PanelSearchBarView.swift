@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PanelSearchBarView: View {
     @ObservedObject var vm: MapViewModel
@@ -51,6 +52,6 @@ struct PanelSearchBarView: View {
 
 struct PanelSearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelSearchBarView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
+        PanelSearchBarView(vm: MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
     }
 }

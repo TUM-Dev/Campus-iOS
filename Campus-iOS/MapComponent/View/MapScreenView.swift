@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 @MainActor
 struct MapScreenView: View {
@@ -48,7 +49,7 @@ struct MapScreenView: View {
 struct MapScreenView_Previews: PreviewProvider {
     static var previews: some View {
         TabView {
-            MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
+            MapScreenView(vm: MapViewModel(context: NSManagedObjectContext(), cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true))
         }
         
     }

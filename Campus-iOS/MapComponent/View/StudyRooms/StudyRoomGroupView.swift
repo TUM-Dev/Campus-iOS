@@ -160,7 +160,7 @@ struct StudyRoomGroupView: View {
             data.visitView(view: .studyRoom)
         }
         .onDisappear {
-            data.didExitView()
+            data.didExitView(noSavingToCoreData: true)
         }
     }
     

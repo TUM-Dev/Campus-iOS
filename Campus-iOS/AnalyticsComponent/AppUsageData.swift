@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 import Combine
+import CoreData
 
 /// A wrapper for the usage data we collect for specific views inside the app.
 /// Persists the data when explicitly calling `exitView`, or when the app enters the background, or when a sheet blocks the respective view.
@@ -59,13 +60,17 @@ class AppUsageData {
     }
     
     /// Call this function when exiting a view, e.g. `onDisappear`.
-    public func didExitView() {
+    public func didExitView(noSavingToCoreData: Bool = false) {
         didEnterBackgroundListener?.cancel()
         wakeUpListener?.cancel()
         sheetActiveListener?.cancel()
         sheetInactiveListener?.cancel()
         
-        commit()
+        if noSavingToCoreData {
+            commit(noSavingToCoreData)
+        } else {
+            commit()
+        }
     }
     
     private func didEnterBackground(currentView: CampusAppView) {
@@ -97,9 +102,16 @@ class AppUsageData {
         commit()
     }
     
-    private func commit() {
+    private func commit(_ noSavingToCoreData: Bool = false) {
         self.endTime = Date()
-        AnalyticsController.store(entry: self)
+        
+        if noSavingToCoreData {
+            // Only create the a new record of the AppUsageDataEntity but without storing since this can lead in some cases to a recursive-saving-loop-error. Since some Views do save to CoreData when appear.
+            let _ = try? AppUsageDataEntity(data: self, context: PersistenceController.shared.container.viewContext)
+        } else {
+            AnalyticsController.store(entry: self)
+        }
+        
         Task { try? await AnalyticsController.upload(entry: self) }
     }
     

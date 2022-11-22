@@ -8,6 +8,7 @@
 import Foundation
 import MapKit
 
+@MainActor
 struct LocationStrategy: WidgetRecommenderStrategy {
     
     // Distance in meters.
@@ -15,6 +16,8 @@ struct LocationStrategy: WidgetRecommenderStrategy {
     private let VERY_CLOSE_DISTANCE: CLLocationDistance = 250
     
     private let locationManager = CLLocationManager()
+    
+    let vm: MapViewModel = MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: false)
     
     func getRecommendation() async throws -> [WidgetRecommendation] {
         
@@ -89,21 +92,30 @@ struct LocationStrategy: WidgetRecommenderStrategy {
     private func getStudyRoomLocations() async -> [CLLocation] {
         
         var locations: [CLLocation] = []
-        let service = StudyRoomsService()
+        for group in await vm.studyRoomGroups {
+            if let coordinate = group.coordinate {
+                locations.append(coordinate.location)
+            }
+        }
         
-        do {
-            let response = try await service.fetch(forcedRefresh: false)
-            
-            guard let groups = response.groups else {
-                return []
-            }
-            
-            for group in groups {
-                if let coordinate = group.coordinate {
-                    locations.append(coordinate.location)
-                }
-            }
-        } catch {}
+        
+        
+        
+//        let service = StudyRoomsService()
+        
+//        do {
+//            let response = try await service.fetch(forcedRefresh: false)
+//
+//            guard let groups = response.groups else {
+//                return []
+//            }
+//
+//            for group in groups {
+//                if let coordinate = group.coordinate {
+//                    locations.append(coordinate.location)
+//                }
+//            }
+//        } catch {}
         
         return locations
     }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import CoreData
 
 struct CafeteriaWidgetView: View {
     
@@ -18,10 +19,13 @@ struct CafeteriaWidgetView: View {
     @State private var scale: CGFloat = 1
     @Binding var refresh: Bool
     
-    init(size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+    private let context: NSManagedObjectContext
+    
+    init(context: NSManagedObjectContext, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._size = State(initialValue: size)
         self.initialSize = size
         self._refresh = refresh
+        self.context = context
     }
     
     var content: some View {
@@ -64,7 +68,7 @@ struct CafeteriaWidgetView: View {
                 VStack {
                     if let cafeteria = viewModel.cafeteria, let mealVm = viewModel.mealPlanViewModel {
                         CafeteriaView(
-                            vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                            vm: MapViewModel(context: context, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedCanteen: .constant(cafeteria),
                             canDismiss: false
                         )

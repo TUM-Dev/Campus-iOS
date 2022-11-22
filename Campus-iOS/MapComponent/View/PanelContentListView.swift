@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PanelContentListView: View {
     
-    @ObservedObject var vm: MapViewModel
+    @StateObject var vm: MapViewModel
     @Binding var searchString: String
     
     let screenWidth = UIScreen.main.bounds.width
@@ -114,6 +114,7 @@ struct PanelContentListView: View {
                 }
             }
             .task {
+                print(">> Fetching ROOMS and GROUPS")
                 await vm.getRoomsAndGroups()
             }
             .alert("Error while fetching Study Rooms", isPresented: $vm.hasError, presenting: vm.studyRoomsState) {
@@ -137,6 +138,6 @@ struct PanelContentListView: View {
 
 struct PanelContentListView_Previews: PreviewProvider {
     static var previews: some View {
-        PanelContentListView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
+        PanelContentListView(vm: MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true), searchString: .constant(""))
     }
 }

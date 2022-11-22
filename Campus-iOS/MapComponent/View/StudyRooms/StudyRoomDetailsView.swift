@@ -9,12 +9,12 @@ import SwiftUI
 
 struct StudyRoomDetailsView: View {
     
-    @ObservedObject var viewModel: StudyRoomViewModel
+    @StateObject var viewModel: StudyRoomViewModel
     
     @State var showPopup = false
     
     init(studyRoom room: StudyRoomCoreData) {
-        self.viewModel = StudyRoomViewModel(studyRoom: room)
+        self._viewModel = StateObject(wrappedValue: StudyRoomViewModel(studyRoom: room))
     }
     
     func printCell(key: String, value: String?) -> some View {

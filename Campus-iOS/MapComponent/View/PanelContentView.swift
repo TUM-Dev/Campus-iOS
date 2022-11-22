@@ -135,7 +135,7 @@ struct PanelContentView: View {
                             if currentView() == .cafeterias {
                                 cafeteriasData.didExitView()
                             } else if currentView() == .studyRooms {
-                                studyRoomsData.didExitView()
+                                studyRoomsData.didExitView(noSavingToCoreData: true)
                             }
                         }
                 }
@@ -199,7 +199,7 @@ struct PanelContentView: View {
 
 struct PanelContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
+        let vm = MapViewModel(context: PersistenceController.shared.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
         
         PanelContentView(vm: vm)
             .previewInterfaceOrientation(.portrait)

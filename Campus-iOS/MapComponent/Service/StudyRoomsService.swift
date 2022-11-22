@@ -17,11 +17,17 @@ protocol StudyRoomsServiceProtocol {
 }
 
 struct StudyRoomsService: StudyRoomsServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose {
-        return try await TUMDevAppAPI.fetchStudyRooms(forcedRefresh: forcedRefresh)
-    }
+//    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose {
+//        return try await TUMDevAppAPI.fetchStudyRooms(forcedRefresh: forcedRefresh)
+//    }
     
     func fetch(context: NSManagedObjectContext) async throws {
+        // Delete all entries
+                // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
+//        TUMDevAppAPI.delete(for: StudyRoomGroupCoreData.self, with: context)
+//        TUMDevAppAPI.delete(for: StudyRoomCoreData.self, with: context)
+        
+        
         try await TUMDevAppAPI.fetchStudyRoomsCoreData(context: context)
     }
     

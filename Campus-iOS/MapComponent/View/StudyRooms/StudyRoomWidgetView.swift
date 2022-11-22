@@ -18,11 +18,14 @@ struct StudyRoomWidgetView: View {
     @State private var scale: CGFloat = 1
     @Binding var refresh: Bool
     
+    private let context: NSManagedObjectContext
+    
     init(context: NSManagedObjectContext, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
         self._viewModel = StateObject(wrappedValue: StudyRoomWidgetViewModel(context: context, studyRoomService: StudyRoomsService()))
         self._size = State(initialValue: size)
         self.initialSize = size
         self._refresh = refresh
+        self.context = context
     }
     
     var body: some View {
@@ -40,7 +43,7 @@ struct StudyRoomWidgetView: View {
             .sheet(isPresented: $showDetails) {
                 NavigationView { // To enable navigation to the map images.
                     StudyRoomGroupView(
-                        vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                        vm: MapViewModel(context: context, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                         selectedGroup: $viewModel.studyGroup,
                         rooms: viewModel.rooms ?? [],
                         canDismiss: false
@@ -54,7 +57,7 @@ struct StudyRoomWidgetView: View {
 struct StudyRoomWidgetContent: View {
     
     var size: WidgetSize
-    @ObservedObject var viewModel: StudyRoomWidgetViewModel
+    @StateObject var viewModel: StudyRoomWidgetViewModel
     
     var body: some View {
         Group {
