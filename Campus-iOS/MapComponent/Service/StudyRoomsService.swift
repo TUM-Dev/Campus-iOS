@@ -24,8 +24,10 @@ struct StudyRoomsService: StudyRoomsServiceProtocol {
     func fetch(context: NSManagedObjectContext) async throws {
         // Delete all entries
                 // https://www.avanderlee.com/swift/nsbatchdeleterequest-core-data/
-//        TUMDevAppAPI.delete(for: StudyRoomGroupCoreData.self, with: context)
-//        TUMDevAppAPI.delete(for: StudyRoomCoreData.self, with: context)
+        DispatchQueue.main.async {
+            TUMDevAppAPI.delete(for: StudyRoomCoreData.self, with: context)
+            TUMDevAppAPI.delete(for: StudyRoomGroupCoreData.self, with: context)
+        }
         
         
         try await TUMDevAppAPI.fetchStudyRoomsCoreData(context: context)

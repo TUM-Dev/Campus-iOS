@@ -130,7 +130,7 @@ enum TUMDevAppAPI: URLRequestConvertible {
                     do {
                         try context.save()
                     } catch {
-                        fatalError("Failure to save context: \(error)")
+                        fatalError("Failure to save context: \(String(describing: error))")
                     }
                 }
                 

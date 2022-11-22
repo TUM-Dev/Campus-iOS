@@ -162,13 +162,19 @@ class MapViewModel: NSObject, MapViewModelProtocol {
     func getRoomsAndGroups() async {
         if studyRoomsService.fetchIsNeeded(for: StudyRoomApiResponseCoreData.self) {
             
-            for room in studyRooms {
-                context.delete(room)
-            }
+//            for room in studyRooms {
+//                context.delete(room)
+//            }
             
-            for group in studyRoomGroups {
-                context.delete(group)
-            }
+//            for group in studyRoomGroups {
+//                context.delete(group)
+//            }
+//            
+//            do {
+//                try context.save()
+//            } catch {
+//                print(error)
+//            }
             
             self.studyRoomsState = .loading
             self.hasError = false
