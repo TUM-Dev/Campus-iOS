@@ -61,7 +61,7 @@ struct PersistenceController {
             do {
                 try context.save()
             } catch {
-                fatalError("Could not save the view context.")
+                fatalError("Could not save the view context: \(String(describing: error))")
             }
         }
     }

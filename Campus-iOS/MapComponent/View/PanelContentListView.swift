@@ -78,12 +78,12 @@ struct PanelContentListView: View {
         case .studyRooms:
             Group {
                 switch vm.studyRoomsState {
-                case .success(_):
+                case .success:
                     VStack {
                         PanelContentStudyGroupsListView(viewModel: vm, searchString: $searchString)
                     }
                     .refreshable {
-                        await vm.getStudyRoomResponse(forcedRefresh: true)
+                        await vm.getRoomsAndGroups()
                     }
                     .onAppear {
                         if retryAttemp {
@@ -101,8 +101,10 @@ struct PanelContentListView: View {
                     FailedView(
                         errorDescription: error.localizedDescription,
                         retryClosure: { _ in
-                            retryAttemp = true
-                            await vm.getStudyRoomResponse()
+                            Task {
+                                retryAttemp = true
+                                await vm.getRoomsAndGroups()
+                            }
                         })
                     .onAppear {
                         withAnimation(.easeIn) {
@@ -112,14 +114,14 @@ struct PanelContentListView: View {
                 }
             }
             .task {
-                await vm.getStudyRoomResponse()
+                await vm.getRoomsAndGroups()
             }
             .alert("Error while fetching Study Rooms", isPresented: $vm.hasError, presenting: vm.studyRoomsState) {
                 detail in
                 Button("Retry") {
                     Task {
                         retryAttemp = true
-                        await vm.getStudyRoomResponse()
+                        await vm.getRoomsAndGroups()
                     }
                 }
                 

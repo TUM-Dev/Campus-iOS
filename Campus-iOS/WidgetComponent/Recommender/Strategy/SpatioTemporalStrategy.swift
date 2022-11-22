@@ -11,7 +11,7 @@ struct SpatioTemporalStrategy: WidgetRecommenderStrategy {
     
     func getRecommendation() async throws -> [WidgetRecommendation] {
         let timeStrategy = TimeStrategy()
-        let locationStrategy = LocationStrategy()
+        let locationStrategy = await LocationStrategy()
         
         let timeRecommendations = try await timeStrategy.getRecommendation()
         let locationRecommendations = try await locationStrategy.getRecommendation()

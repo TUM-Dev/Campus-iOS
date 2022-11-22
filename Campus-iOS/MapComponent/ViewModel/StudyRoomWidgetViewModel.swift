@@ -38,7 +38,7 @@ class StudyRoomWidgetViewModel: ObservableObject {
     
     func fetch() async {
         do {
-            try await vm.getRoomsAndGroups()
+            await vm.getRoomsAndGroups()
             
             // Get the closest study group.
             

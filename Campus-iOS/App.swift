@@ -115,7 +115,7 @@ struct CampusApp: App {
             })
                 
             NavigationView {
-                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                MapScreenView(vm: MapViewModel(context: persistenceController.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
             .tag(3)
             .tabItem {

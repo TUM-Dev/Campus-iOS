@@ -34,7 +34,7 @@ extension MapViewModel {
     enum StudyRoomsNetworkState {
         case na
         case loading
-        case success(data: StudyRoomApiRespose)
+        case success
         case failed(error: Error)
     }
 }

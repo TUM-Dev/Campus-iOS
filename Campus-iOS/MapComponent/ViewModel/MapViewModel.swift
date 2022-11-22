@@ -67,21 +67,21 @@ class MapViewModel: NSObject, MapViewModelProtocol {
         }
     }
     
-    var studyRoomsResponse: StudyRoomApiRespose {
-        get {
-            if mock {
-                return StudyRoomApiRespose()
-            } else {
-                guard case .success(let studyRoomsResponse) = self.studyRoomsState else {
-                    return StudyRoomApiRespose()
-                }
-                return studyRoomsResponse
-            }
-        }
-        set {
-            self.studyRoomsResponse = newValue
-        }
-    }
+//    var studyRoomsResponse: StudyRoomApiRespose {
+//        get {
+//            if mock {
+//                return StudyRoomApiRespose()
+//            } else {
+//                guard case .success(let studyRoomsResponse) = self.studyRoomsState else {
+//                    return StudyRoomApiRespose()
+//                }
+//                return studyRoomsResponse
+//            }
+//        }
+//        set {
+//            self.studyRoomsResponse = newValue
+//        }
+//    }
     
     init(context: NSManagedObjectContext? = nil, cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
         self.cafeteriaService = cafeteriaService
@@ -107,10 +107,9 @@ class MapViewModel: NSObject, MapViewModelProtocol {
             }
             
             self.studyRooms = studyRooms
-//            self.state = .success
+            self.studyRoomsState = .success
         } catch {
-//            self.state = .failed(error: error)
-//            self.hasError = true
+            self.studyRoomsState = .failed(error: error)
             print(error)
         }
         
@@ -123,10 +122,9 @@ class MapViewModel: NSObject, MapViewModelProtocol {
             }
             
             self.studyRoomGroups = studyRoomGroups
-//            self.state = .success
+            self.studyRoomsState = .success
         } catch {
-//            self.state = .failed(error: error)
-//            self.hasError = true
+            self.studyRoomsState = .failed(error: error)
             print(error)
         }
     }
@@ -149,87 +147,39 @@ class MapViewModel: NSObject, MapViewModelProtocol {
         }
     }
     
-    func getStudyRoomResponse(forcedRefresh: Bool = false) async {
-        if !forcedRefresh {
-            self.studyRoomsState = .loading
-        }
-        
-        self.hasError = false
-        
-        do {
-            //@MainActor handles to run this UI-updating task on the main thread
-            let data = try await studyRoomsService.fetch(forcedRefresh: forcedRefresh)
-            self.studyRoomsState = .success(data: data)
-            setAnnotations = true
-        } catch {
-            self.studyRoomsState = .failed(error: error)
-            self.hasError = true
-        }
-    }
+//    func getStudyRoomResponse(forcedRefresh: Bool = false) async {
+//        if !forcedRefresh {
+//            self.studyRoomsState = .loading
+//        }
+//
+//        self.hasError = false
+//
+//        do {
+//            //@MainActor handles to run this UI-updating task on the main thread
+//            let data = try await studyRoomsService.fetch(forcedRefresh: forcedRefresh)
+//            self.studyRoomsState = .success(data: data)
+//            setAnnotations = true
+//        } catch {
+//            self.studyRoomsState = .failed(error: error)
+//            self.hasError = true
+//        }
+//    }
     
-    func getRoomsAndGroups() async throws {
-        
-        do {
-            try await studyRoomsService.fetch(context: self.context)
-        } catch {
-            print(error)
-            throw(error)
+    func getRoomsAndGroups() async {
+        if studyRoomsService.fetchIsNeeded(for: StudyRoomApiResponseCoreData.self) {
+            
+            self.studyRoomsState = .loading
+            self.hasError = false
+            
+            do {
+                try await studyRoomsService.fetch(context: self.context)
+                self.studyRoomsState = .success
+                self.setAnnotations = true
+            } catch {
+                self.studyRoomsState = .failed(error: error)
+                self.hasError = true
+            }
         }
-        
-//        
-//        var studyRoomApiResponse = StudyRoomApiRespose()
-//        do {
-//            studyRoomApiResponse = try await studyRoomsService.fetch(forcedRefresh: true)
-//        } catch {
-//            print(error)
-//        }
-//
-//        let _: [StudyRoomCoreData]? = studyRoomApiResponse.rooms?.compactMap({ studyRoom in
-//
-//            let newRoom = StudyRoomCoreData(context: context)
-//
-//            newRoom.occupiedFrom = studyRoom.occupiedFrom
-//            newRoom.occupiedUntil = studyRoom.occupiedUntil
-//            newRoom.occupiedBy = studyRoom.occupiedBy
-//            newRoom.occupiedFor = studyRoom.occupiedFor
-//            newRoom.occupiedIn = studyRoom.occupiedIn
-//            newRoom.buildingCode = studyRoom.buildingCode
-//            newRoom.buildingName = studyRoom.buildingName
-//            newRoom.buildingNumber = studyRoom.buildingNumber
-//            newRoom.code = studyRoom.code
-//            newRoom.name = studyRoom.name
-//            newRoom.id = studyRoom.id
-//            newRoom.raum_nr_architekt = studyRoom.raum_nr_architekt
-//            newRoom.number = studyRoom.number
-//            newRoom.res_nr = studyRoom.res_nr
-//            newRoom.status = studyRoom.status
-//            newRoom.attributes = studyRoom.attributes
-//
-//            return newRoom
-//
-//        })
-//
-//        let _: [StudyRoomGroupCoreData]? = studyRoomApiResponse.groups?.compactMap({ studyRoomGroup in
-//
-//            let newGroup = StudyRoomGroupCoreData(context: context)
-//
-//            newGroup.detail = studyRoomGroup.detail
-//            newGroup.name = studyRoomGroup.name
-//            newGroup.id = studyRoomGroup.id
-//            newGroup.sorting = studyRoomGroup.sorting
-//            newGroup.rooms = studyRoomGroup.rooms
-//
-//            return newGroup
-//
-//        })
-//
-//        // Saving the data into CoreData
-//        do {
-//            try context.save()
-//        } catch {
-//            print(String(describing: error))
-//        }
-//
     }
 }
 

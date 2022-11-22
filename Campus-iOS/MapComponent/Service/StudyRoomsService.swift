@@ -9,9 +9,11 @@ import Foundation
 import CoreData
 
 protocol StudyRoomsServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose
+//    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose
     
     func fetch(context: NSManagedObjectContext) async throws
+    
+    func fetchIsNeeded<T: Decodable>(for type: T.Type) -> Bool
 }
 
 struct StudyRoomsService: StudyRoomsServiceProtocol {
@@ -21,5 +23,9 @@ struct StudyRoomsService: StudyRoomsServiceProtocol {
     
     func fetch(context: NSManagedObjectContext) async throws {
         try await TUMDevAppAPI.fetchStudyRoomsCoreData(context: context)
+    }
+    
+    func fetchIsNeeded<T: Decodable>(for type: T.Type) -> Bool {
+        return TUMDevAppAPI.fetchIsNeeded(for: type, threshold: 10)
     }
 }

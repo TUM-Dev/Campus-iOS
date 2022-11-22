@@ -66,9 +66,9 @@ struct MapContentView: UIViewRepresentable {
             }
         case .studyRooms:
             focusOnStudyGroup(mapView: view)
-            if let groups = vm.studyRoomsResponse.groups, groups.count > 0, vm.setAnnotations {
+            if vm.studyRoomGroups.count > 0, vm.setAnnotations {
                 DispatchQueue.main.async {
-                    let annotations = groups.map {
+                    let annotations = vm.studyRoomGroups.map {
                         Annotation(title: $0.name, coordinate: $0.coordinate ?? CLLocationCoordinate2D(latitude: 48.149691364160894, longitude: 11.567925766109836))
                     }
                     removeAnnotationsButUser(view)
