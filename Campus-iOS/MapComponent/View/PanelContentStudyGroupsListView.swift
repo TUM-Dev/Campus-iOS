@@ -31,15 +31,15 @@ struct PanelContentStudyGroupsListView: View {
                     }
                 } else {
                     return false
-            }
-            }).indices.filter({ searchString.isEmpty ? true : viewModel.studyRoomGroups[$0].name?.localizedCaseInsensitiveContains(searchString) ?? false }), id: \.self) { id in
+                }
+            }).filter({ searchString.isEmpty ? true : $0.name?.localizedCaseInsensitiveContains(searchString) ?? false }), id: \.id) { studyRoomGroup in
                 Button(action: {
-                    viewModel.selectedStudyGroup = viewModel.studyRoomGroups[id]
+                    viewModel.selectedStudyGroup = studyRoomGroup
                     viewModel.panelPos = .middle
                     viewModel.lockPanel = false
                 }, label: {
                     StudyGroupRowView(
-                        studyGroup: viewModel.studyRoomGroups[id],
+                        studyGroup: studyRoomGroup,
                         allRooms: viewModel.studyRooms
                     )
                 })
