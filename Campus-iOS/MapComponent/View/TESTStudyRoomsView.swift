@@ -18,11 +18,7 @@ struct TESTStudyRoomsView: View {
         VStack {
             Button("Load rooms and groups") {
                 Task {
-                    do {
-                        try await vm.getRoomsAndGroups()
-                    } catch {
-                        print(error)
-                    }
+                    await vm.getRoomsAndGroups()
                 }
             }
             Text("StudyRoomGroups")
@@ -39,7 +35,7 @@ struct TESTStudyRoomsView: View {
                     Text(studyRoom.name ?? "Room name missing")
                     if let attributes = studyRoom.attributes {
                         if attributes.count > 0 {
-                            Text(attributes[0].name ?? "Attribute name missing")
+                            Text(String(attributes[0].name ?? "Attribute name missing"))
                         }
                         
                     }

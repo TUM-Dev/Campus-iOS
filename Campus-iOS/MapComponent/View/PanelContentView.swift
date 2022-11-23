@@ -13,7 +13,6 @@ struct PanelContentView: View {
     
     @State private var searchString = ""
     @State private var mealPlanViewModel: MealPlanViewModel?
-    @State private var sortedGroups: [StudyRoomGroup] = []
     @State private var cafeteriasData = AppUsageData()
     @State private var studyRoomsData = AppUsageData()
     

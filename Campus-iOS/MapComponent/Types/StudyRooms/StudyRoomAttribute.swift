@@ -43,3 +43,46 @@ class StudyRoomAttribute: NSObject, Entity, NSSecureCoding {
         self.name = name
     }
 }
+
+@objc(StudyRoomAttributeValueTransformer)
+final class StudyRoomAttributeValueTransformer: NSSecureUnarchiveFromDataTransformer {
+
+    static let name = NSValueTransformerName(rawValue: String(describing: StudyRoomAttribute.self))
+
+    // Make sure `CustomClass` is in the allowed class list,
+    // AND any other classes that are encoded in `CustomClass`
+    override static var allowedTopLevelClasses: [AnyClass] {
+        // for example... yours may look different
+        return [StudyRoomAttribute.self]
+    }
+    
+    override public func transformedValue(_ value: Any?) -> Any? {
+            guard let studyRoomAttribute = value as? StudyRoomAttribute else { return nil }
+            
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: studyRoomAttribute, requiringSecureCoding: true)
+                return data
+            } catch {
+                assertionFailure("Failed to transform `StudyRoomAttribute` to `Data`")
+                return nil
+            }
+        }
+        
+        override public func reverseTransformedValue(_ value: Any?) -> Any? {
+            guard let data = value as? NSData else { return nil }
+            
+            do {
+                let studyRoomAttribute = try NSKeyedUnarchiver.unarchivedObject(ofClass: StudyRoomAttribute.self, from: data as Data)
+                return studyRoomAttribute
+            } catch {
+                assertionFailure("Failed to transform `Data` to `StudyRoomAttribute`")
+                return nil
+            }
+        }
+
+    /// Registers the transformer.
+    public static func register() {
+        let transformer = StudyRoomAttributeValueTransformer()
+        ValueTransformer.setValueTransformer(transformer, forName: name)
+    }
+}

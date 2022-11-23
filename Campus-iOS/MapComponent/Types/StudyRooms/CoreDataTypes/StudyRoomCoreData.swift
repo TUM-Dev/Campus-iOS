@@ -90,8 +90,8 @@ class StudyRoomCoreData: NSManagedObject, Decodable {
         case "frei":
             return "Free"
         case "belegt":
-            if let occupiedUntilString = self.occupiedUntil, let occupiedUntilDate = StudyRoom.dateFomatter.date(from: occupiedUntilString) {
-                return "\("Occupied until".localized) \(StudyRoom.secondDateFormatter.string(from: occupiedUntilDate))"
+            if let occupiedUntilString = self.occupiedUntil, let occupiedUntilDate = StudyRoomCoreData.dateFomatter.date(from: occupiedUntilString) {
+                return "\("Occupied until".localized) \(StudyRoomCoreData.secondDateFormatter.string(from: occupiedUntilDate))"
             }
         default:
             return "Unknown"

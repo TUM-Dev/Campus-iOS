@@ -45,6 +45,7 @@
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
+		1F01227D292E217B00BAC654 /* StudyRoomApiResponseCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F01227C292E217B00BAC654 /* StudyRoomApiResponseCoreData.swift */; };
 		1F0DF5812906C86600EF3E58 /* GradeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF57F2906C86600EF3E58 /* GradeSet.swift */; };
 		1F0DF5822906C86600EF3E58 /* GradeCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5802906C86600EF3E58 /* GradeCD.swift */; };
 		1F0DF5862906CC4100EF3E58 /* GradesCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */; };
@@ -327,6 +328,7 @@
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1F01227C292E217B00BAC654 /* StudyRoomApiResponseCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomApiResponseCoreData.swift; sourceTree = "<group>"; };
 		1F0DF57F2906C86600EF3E58 /* GradeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeSet.swift; sourceTree = "<group>"; };
 		1F0DF5802906C86600EF3E58 /* GradeCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeCD.swift; sourceTree = "<group>"; };
 		1F0DF5852906CC4100EF3E58 /* GradesCDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesCDView.swift; sourceTree = "<group>"; };
@@ -668,6 +670,16 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
+		1F01227E292E218900BAC654 /* OldTypes */ = {
+			isa = PBXGroup;
+			children = (
+				3654F35D285168D2008AD5DC /* StudyRoom.swift */,
+				3654F35C285168D2008AD5DC /* StudyRoomApiResponse.swift */,
+				3654F35B285168D2008AD5DC /* StudyRoomGroup.swift */,
+			);
+			path = OldTypes;
+			sourceTree = "<group>";
+		};
 		1F0E1AE02911273200F64D51 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,13 +708,14 @@
 			path = VideoAssets;
 			sourceTree = "<group>";
 		};
-		1F766D96292B7EDA005B3E25 /* CoreData */ = {
+		1F766D96292B7EDA005B3E25 /* CoreDataTypes */ = {
 			isa = PBXGroup;
 			children = (
 				1F766D902926C15E005B3E25 /* StudyRoomCoreData.swift */,
 				1F766D92292B7EB7005B3E25 /* StudyRoomGroupCoreData.swift */,
+				1F01227C292E217B00BAC654 /* StudyRoomApiResponseCoreData.swift */,
 			);
-			path = CoreData;
+			path = CoreDataTypes;
 			sourceTree = "<group>";
 		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
@@ -1035,11 +1048,9 @@
 			isa = PBXGroup;
 			children = (
 				3654F35F285168D2008AD5DC /* RoomImageMapping.swift */,
-				3654F35D285168D2008AD5DC /* StudyRoom.swift */,
-				3654F35C285168D2008AD5DC /* StudyRoomApiResponse.swift */,
 				3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */,
-				3654F35B285168D2008AD5DC /* StudyRoomGroup.swift */,
-				1F766D96292B7EDA005B3E25 /* CoreData */,
+				1F766D96292B7EDA005B3E25 /* CoreDataTypes */,
+				1F01227E292E218900BAC654 /* OldTypes */,
 			);
 			path = StudyRooms;
 			sourceTree = "<group>";
@@ -1803,6 +1814,7 @@
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
+				1F01227D292E217B00BAC654 /* StudyRoomApiResponseCoreData.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,

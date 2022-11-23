@@ -92,30 +92,11 @@ struct LocationStrategy: WidgetRecommenderStrategy {
     private func getStudyRoomLocations() async -> [CLLocation] {
         
         var locations: [CLLocation] = []
-        for group in await vm.studyRoomGroups {
+        for group in vm.studyRoomGroups {
             if let coordinate = group.coordinate {
                 locations.append(coordinate.location)
             }
         }
-        
-        
-        
-        
-//        let service = StudyRoomsService()
-        
-//        do {
-//            let response = try await service.fetch(forcedRefresh: false)
-//
-//            guard let groups = response.groups else {
-//                return []
-//            }
-//
-//            for group in groups {
-//                if let coordinate = group.coordinate {
-//                    locations.append(coordinate.location)
-//                }
-//            }
-//        } catch {}
         
         return locations
     }

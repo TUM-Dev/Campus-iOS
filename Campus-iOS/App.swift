@@ -123,14 +123,14 @@ struct CampusApp: App {
             }
             .navigationViewStyle(.stack)
             
-            NavigationView {
-                TESTStudyRoomsView(vm: MapViewModel(context: persistenceController.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: false))
-            }
-            .tag(5)
-            .tabItem {
-                Label("StudyRooms", systemImage: "bolt.shield.fill")
-            }
-            .navigationViewStyle(.stack)
+//            NavigationView {
+//                TESTStudyRoomsView(vm: MapViewModel(context: persistenceController.container.viewContext, cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: false))
+//            }
+//            .tag(5)
+//            .tabItem {
+//                Label("StudyRooms", systemImage: "bolt.shield.fill")
+//            }
+//            .navigationViewStyle(.stack)
         }
     }
 }
