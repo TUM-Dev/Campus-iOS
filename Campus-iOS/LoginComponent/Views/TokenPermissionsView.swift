@@ -25,7 +25,7 @@ struct TokenPermissionsView: View {
         VStack(alignment: .center) {
             HStack {
                 Spacer(minLength: 10)
-                Text("You can change your permissions on TUMOnline")
+                Text("You can change your permissions in TUMOnline")
                     .foregroundColor(.blue)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
@@ -33,7 +33,7 @@ struct TokenPermissionsView: View {
                 Spacer(minLength: 10)
             }
             
-            VStack {
+            VStack(spacing: 0) {
                 ForEach(permissionTypes, id: \.self) { permissionType in
                     HStack {
                         Text(permissionType.rawValue)
@@ -45,20 +45,7 @@ struct TokenPermissionsView: View {
                         }
                     }
                 }
-                
-                HStack {
-                    if showHelp {
-                        VStack {
-                            Image(uiImage: UIImage(named: "set-permissions.png")!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 250)
-                                .cornerRadius(5)
-                        }
-                    }
-                }
             }
-            .font(.system(size: 20))
             .padding()
             
             VStack {
@@ -69,10 +56,10 @@ struct TokenPermissionsView: View {
                     } label: {
                         HStack {
                             Image(systemName: "globe")
-                            Text("Open TUMOnline")
+                            Text("TUMOnline")
                         }
                         .lineLimit(1)
-                        .font(.system(size: 14, weight: .bold))
+                        .font(.system(size: 15, weight: .bold))
                         .frame(width: 150, height: 48, alignment: .center)
                     }
                     .foregroundColor(.white)
@@ -91,14 +78,16 @@ struct TokenPermissionsView: View {
                             }
                         }
                     } label: {
-                        Text("Check Permissions")
-                            .lineLimit(1)
-                            .font(.system(size: 14, weight: .bold))
-                            .frame(width: 150, height: 48, alignment: .center)
-                            .foregroundColor(.white)
-                            .background(Color(.tumBlue))
-                            .cornerRadius(10)
-                            .buttonStyle(.plain)
+                        HStack {
+                            Text("Permissions").font(.system(size: 15, weight: .bold))
+                            Image(systemName: "questionmark.circle").font(.system(size: 15, weight: .bold))
+                        }
+                        .lineLimit(1)
+                        .frame(width: 150, height: 48, alignment: .center)
+                        .foregroundColor(.white)
+                        .background(Color(.tumBlue))
+                        .cornerRadius(10)
+                        .buttonStyle(.plain)
                     }
                     .padding()
                 }

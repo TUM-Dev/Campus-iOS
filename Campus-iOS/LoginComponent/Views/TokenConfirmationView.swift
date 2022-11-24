@@ -116,10 +116,10 @@ struct TokenConfirmationView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "globe")
-                                Text("Open TUMOnline")
+                                Text("TUMOnline")
                             }
                             .lineLimit(1)
-                            .font(.system(size: 14, weight: .bold))
+                            .font(.system(size: 15, weight: .bold))
                             .frame(width: 150, height: 48, alignment: .center)
                         }
                         .foregroundColor(.white)
@@ -150,9 +150,13 @@ struct TokenConfirmationView: View {
                             }) {
                                 switch tokenState {
                                 case .notChecked:
-                                    Text("Check Token")
-                                        .lineLimit(1)
-                                        .font(.system(size: 14, weight: .bold))
+                                    HStack {
+                                        Text("Check Token")
+                                            .lineLimit(1)
+                                            .font(.system(size: 15, weight: .bold))
+                                        Image(systemName: "arrow.right")
+                                    }
+                                    
                                 case .inactive:
                                     VStack {
                                         HStack {
