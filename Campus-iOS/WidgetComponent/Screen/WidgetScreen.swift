@@ -33,6 +33,11 @@ struct WidgetScreen: View {
                     )
                         .frame(maxWidth: .infinity)
                 }
+                .refreshable {
+                    try? await recommender.fetchRecommendations()
+                    refresh.toggle()
+                }
+                .navigationTitle(widgetTitle)
             }
         }
         .task {
@@ -43,13 +48,6 @@ struct WidgetScreen: View {
         .onReceive(timer) { _ in
             refresh.toggle()            
         }
-        .refreshable {
-            try? await recommender.fetchRecommendations()
-            if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
-            else { widgetTitle = "Welcome"}
-            refresh.toggle()
-        }
-        .navigationTitle(widgetTitle)
     }
     
     // Source: https://stackoverflow.com/a/58876712
