@@ -37,7 +37,6 @@ struct WidgetScreen: View {
                     try? await recommender.fetchRecommendations()
                     refresh.toggle()
                 }
-                .navigationTitle(widgetTitle)
             }
         }
         .task {
@@ -57,6 +56,9 @@ struct WidgetScreen: View {
         var height = CGFloat.zero
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
+        
+        if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
+        else { widgetTitle = "Welcome"}
         
         return ZStack(alignment: .topLeading) {
             ForEach(0..<views.count, id: \.self) { i in
@@ -93,5 +95,6 @@ struct WidgetScreen: View {
                     }
             }
         }
+        .navigationTitle(widgetTitle)
     }
 }
