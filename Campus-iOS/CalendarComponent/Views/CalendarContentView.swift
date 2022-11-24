@@ -71,7 +71,12 @@ struct CalendarContentView: View {
         }
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarLeading) {
-                CalendarToolbar(viewModel: self.viewModel, selectedEventID: self.$selectedEventID, isTodayPressed: self.$isTodayPressed)
+                Button(action: {
+                    self.isTodayPressed = true
+                    selectedType = .day
+                }) {
+                    Text("Today")
+                }
             }
             ToolbarItem(placement: .principal) {
                 Picker("Calendar Type", selection: $selectedType) {
@@ -88,6 +93,7 @@ struct CalendarContentView: View {
                         }
                     }
                 }
+                .opacity(1.0)
                 .pickerStyle(.segmented)
                 .onAppear {
                     UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)

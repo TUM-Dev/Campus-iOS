@@ -50,6 +50,7 @@ struct StudyRoomGroupView: View {
                     VStack(spacing: 1) {
                         HStack{
                             VStack(alignment: .leading){
+                                Spacer().frame(height: 10).gesture(panelDragGesture)
                                 Text(group.name ?? "")
                                     .bold()
                                     .font(.title3)

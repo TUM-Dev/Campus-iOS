@@ -13,6 +13,8 @@ struct ProfileView: View {
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     @Environment(\.colorScheme) var colorScheme
+    @State var isWebViewShowed = false
+    @State var selectedLink: URL? = nil
 
     var body: some View {
         
@@ -110,11 +112,25 @@ struct ProfileView: View {
                 }
                 
                 Section("GET IN CONTACT") {
-                    Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
-                    
-                    Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
-                    
-                    Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                    if self.useBuildInWebView {
+                        Button("Join Beta") {
+                            self.selectedLink = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")
+                        }
+                        
+                        Button("TUM Dev on Github") {
+                            self.selectedLink = URL(string: "https://github.com/TUM-Dev")
+                        }
+                        
+                        Button("TUM Dev Website") {
+                            self.selectedLink = URL(string: "https://tum.app")
+                        }
+                    } else {
+                        Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
+                        
+                        Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
+                        
+                        Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                    }
                     
                     Button("Feedback") {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -156,7 +172,7 @@ struct ProfileView: View {
                     }) {
                         HStack {
                             Spacer()
-                            Text("Version 4.0").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
+                            Text("Version 4.1").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                             Spacer()
                         }
                     }
@@ -184,6 +200,11 @@ struct ProfileView: View {
             .toolbar {
                 Button(action: {model.showProfile.toggle()}) {
                     Text("Done").bold()
+                }
+            }
+            .sheet(item: $selectedLink) { selectedLink in
+                if let link = selectedLink {
+                    SFSafariViewWrapper(url: link)
                 }
             }
         }

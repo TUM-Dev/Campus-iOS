@@ -28,7 +28,6 @@ struct CalendarWidgetView: View {
     var body: some View {
         // Show the events on the earliest date which is not in the past.
         let events = viewModel.eventsByDate
-            .filter { Date() <= $0.key ?? Date() }
             .min { $0.key ?? Date() < $1.key ?? Date() }?.value ?? []
         
         WidgetFrameView(
@@ -52,7 +51,10 @@ struct CalendarWidgetView: View {
             showDetails.toggle()
         }
         .sheet(isPresented: $showDetails) {
-            CalendarContentView(model: model, refresh: .constant(false))
+            VStack {
+                Spacer().frame(height: 10)
+                CalendarContentView(model: model, refresh: .constant(false))
+            }
         }
         .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }

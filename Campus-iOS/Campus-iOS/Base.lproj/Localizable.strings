@@ -81,7 +81,6 @@
 // TokenConfirmationView
 "Back" = "Back";
 "Log in on " = "Log in on ";
-"TUMOnline" = "TUMOnline";
 "Select **Token-Management**" = "Select **Token-Management**";
 "Activate the newly created token and enable your desired permissions" = "Activate the newly created token and enable your desired permissions";
 "Contact Support" = "Contact Support";
@@ -92,16 +91,16 @@
 "Leaving now will invalidate the current token!" = "Leaving now will invalidate the current token!";
 "Leave" = "Leave";
 
-"Open TUMOnline" = "Open TUMOnline";
-"Check Token" = "Check Token";
 "Token inactive" = "Token inactive";
-"Please activate the latest token on TUMOnline" = "Please activate the latest token on TUMOnline";
 "Token active" = "Token active";
 
 // TokenPermissionsView
-"You can change your permissions on TUMOnline" = "You can change your permissions on TUMOnline";
+"You can change your permissions in TUMOnline" = "You can change your permissions in TUMOnline";
 "Identification (TUM ID and name)" = "Identification (TUM ID and name)";
-"Check Permissions" = "Check Permissions";
+"Permissions" = "Permissions";
+"You have not granted the following permissions: \n\n" = "You have not granted the following permissions: \n\n";
+"\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline." = "\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline.";
+"Continue anyways" = "Continue anyways";
 
 // ProfileView
 "Token Permissions" = "Token Permissions";
@@ -176,6 +175,7 @@
 
 // Map
 "Search ..." = "Search ...";
+"Traffic" = "Traffic";
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";

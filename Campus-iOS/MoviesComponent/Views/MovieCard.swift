@@ -19,11 +19,12 @@ struct MovieCard: View {
                 AsyncImage(url: link) { image in
                     switch image {
                     case .empty:
-                        ProgressView()
+                        ProgressView().padding(UIScreen.main.bounds.width/2)
                     case .success(let image):
                         image
                             .resizable()
-                            .frame(width: 390 * 0.425, height: 390 * 0.525)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 390 * 0.425, height: 390 * 0.6)
                             .clipped()
                     case .failure:
                         Image("movie")
@@ -47,20 +48,22 @@ struct MovieCard: View {
             }
             
             // Stack bottom half of card
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(self.movie.title ?? "")
                     .fontWeight(Font.Weight.heavy)
                     .font(.subheadline).foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
                     .fixedSize(horizontal: false, vertical: true)
-                    .lineLimit(2)
+                    .lineLimit(1)
                 Text(self.movie.date ?? Date(), style: .date)
                     .font(Font.custom("HelveticaNeue-Bold", size: 12))
                     .foregroundColor(Color.gray)
+                Spacer()
             }
-            .padding(12)
+            .padding(EdgeInsets(top: 15, leading: 10, bottom: 10, trailing: 5))
+            .frame(height: 55)
             
         }
-        .frame(width: 390 * 0.425, height: 390 * 0.7)
+        .frame(width: 390 * 0.425, height: 390 * 0.73)
         .background(Color(.systemGray5))
         .cornerRadius(15)
         .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)

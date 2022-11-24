@@ -29,11 +29,9 @@ struct LecturesView: View {
     var body: some View {
         List {
             ForEach(lecturesBySemesterSearchResult, id: \.0) { lecturesBySemester in
-                Section(
-                    header: GroupBoxLabelView(
-                        iconName: "graduationcap.fill",
-                        text: lecturesBySemester.0
-                    )
+                Section(header: Text(lecturesBySemester.0)
+                    .font(.headline.bold())
+                    .foregroundColor(Color("tumBlue"))
                 ) {
                     ForEach(lecturesBySemester.1) { item in
                         VStack {

@@ -62,12 +62,16 @@ struct LectureDetailsBasicInfoView: View {
                     text: lectureDetails.organisation
                 )
                 Divider()
-                LectureDetailsBasicInfoRowView(
-                    iconName: "person.fill",
-                    text: lectureDetails.speaker
-                )
-                .onTapGesture {
-                    self.showActionSheet = true
+                HStack {
+                    LectureDetailsBasicInfoRowView(
+                        iconName: "person.fill",
+                        text: lectureDetails.speaker
+                    )
+                    Spacer()
+                    Button(
+                        action: { self.showActionSheet = true },
+                        label: { Image(systemName: "magnifyingglass").foregroundColor(.blue) }
+                    )
                 }
                 if let firstMeeting = lectureDetails.firstScheduledDate {
                     Divider()

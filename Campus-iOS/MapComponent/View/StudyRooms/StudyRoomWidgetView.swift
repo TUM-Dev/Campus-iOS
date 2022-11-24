@@ -173,7 +173,7 @@ struct StudyRoomWidgetHeaderView: View {
         VStack(alignment: .leading) {
             
             HStack {
-                Image(systemName: "house")
+                Image(systemName: "book")
                 Text(studyGroup)
                     .bold()
                     .lineLimit(2)

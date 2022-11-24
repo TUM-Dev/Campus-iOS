@@ -36,22 +36,22 @@ struct GradeView: View {
 				VStack(alignment: .leading, spacing: 8) {
 					HStack(spacing: 16) {
 						HStack {
-							Image(systemName: "pencil.circle.fill")
+							Image(systemName: "pencil.circle")
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.modusShort)
-								.font(.system(size: 12))
+								.font(.footnote)
                                 .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
 						.frame(minWidth: 0, maxWidth: .infinity)
 
 						HStack {
-							Image(systemName: "number.circle.fill")
+							Image(systemName: "number.circle")
 								.frame(width: 12, height: 12)
 								.foregroundColor(Color("tumBlue"))
 							Text(grade.lvNumber)
-								.font(.system(size: 12))
+								.font(.footnote)
                                 .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							Spacer()
 						}
@@ -59,11 +59,11 @@ struct GradeView: View {
 					}.foregroundColor(.init(.darkGray))
 
 					HStack {
-						Image(systemName: "person.circle.fill")
+						Image(systemName: "person.circle")
 							.frame(width: 12, height: 12)
 							.foregroundColor(Color("tumBlue"))
 						Text(grade.examiner)
-							.font(.system(size: 12))
+							.font(.footnote)
                             .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
 							.fixedSize(horizontal: false, vertical: true)
 					}.foregroundColor(.init(.darkGray))

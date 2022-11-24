@@ -15,26 +15,25 @@ struct LectureView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text(lecture.title)
                 .bold()
-                .font(.title3)
 
             HStack(spacing: 16) {
                 HStack {
-                    Image(systemName: "pencil.circle.fill")
+                    Image(systemName: "pencil.circle")
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.eventType)
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     Spacer()
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 
                 HStack {
-                    Image(systemName: "clock.fill")
+                    Image(systemName: "clock")
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color("tumBlue"))
                     Text(lecture.duration + " SWS")
-                        .font(.subheadline)
+                        .font(.footnote)
                         .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     Spacer()
                 }
@@ -42,11 +41,11 @@ struct LectureView: View {
             }.foregroundColor(.init(.darkGray))
             
             HStack {
-                Image(systemName: "person.circle.fill")
+                Image(systemName: "person.circle")
                     .frame(width: 12, height: 12)
                     .foregroundColor(Color("tumBlue"))
                 Text(lecture.speaker)
-                    .font(.subheadline)
+                    .font(.footnote)
                     .foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     .fixedSize(horizontal: false, vertical: true)
             }.foregroundColor(.init(.darkGray))
