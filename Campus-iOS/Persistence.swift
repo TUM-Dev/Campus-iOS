@@ -35,7 +35,7 @@ struct PersistenceController {
         
         container = NSPersistentContainer(name: "Campus_iOS")
         
-        guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.de.tum.tca-robyn-dev") else {
+        guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.de.tum.tca") else {
             print("Could not get container URL (see PersistenceController).")
             return
         }

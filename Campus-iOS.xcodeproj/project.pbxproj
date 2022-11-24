@@ -14,7 +14,6 @@
 		0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72328CAABB3003C5CFD /* AnalyticsError.swift */; };
 		0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72728CC0954003C5CFD /* AppUsageDataEntity.swift */; };
 		0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0805E72B28CC2278003C5CFD /* HashFunction.swift */; };
-		0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */; };
 		0815249428E445030098A2C3 /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249328E445030098A2C3 /* Date+Time.swift */; };
 		0815249628E45C390098A2C3 /* AnalyticsDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249528E45C390098A2C3 /* AnalyticsDataHandler.swift */; };
 		0815249828E492070098A2C3 /* RecommenderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815249728E492070098A2C3 /* RecommenderError.swift */; };
@@ -158,7 +157,7 @@
 		08977F3B2911FCA1004149C6 /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		08977F3C2911FCA6004149C6 /* LectureDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BAA27A3046B007DC62D /* LectureDetailsService.swift */; };
 		08977F3D2911FCB2004149C6 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA727A3046B007DC62D /* Lecture.swift */; };
-		08977F3E2911FCB8004149C6 /* CalendarToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E964A22774932B0055777F /* CalendarToolbar.swift */; };
+		08977F3E2911FCB8004149C6 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		08977F3F2911FCBD004149C6 /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		08977F402911FCC8004149C6 /* LectureDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA627A3046B007DC62D /* LectureDetails.swift */; };
 		08977F412911FCD5004149C6 /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
@@ -1969,7 +1968,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					08414432290EE0D20023E2C6 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -2042,7 +2041,6 @@
 				41E2B82F2864D193005B5E72 /* 3D@3x.png in Resources */,
 				41E2B8322864D193005B5E72 /* outline@3x.png in Resources */,
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
-				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */,
@@ -2138,7 +2136,7 @@
 				08224790290EF6350038D357 /* BackendError.swift in Sources */,
 				08977F7C2911FEE9004149C6 /* NewsCardsHorizontalScrollingView.swift in Sources */,
 				0840FB4D2911D5CB00E2639C /* APIConstants.swift in Sources */,
-				08977F3E2911FCB8004149C6 /* CalendarToolbar.swift in Sources */,
+				08977F3E2911FCB8004149C6 /* (null) in Sources */,
 				0822478F290EF6140038D357 /* DecoderProtocol.swift in Sources */,
 				0840FB4C2911D5C700E2639C /* NetworkingAPI.swift in Sources */,
 				08977F7A2911FED9004149C6 /* NewsCard.swift in Sources */,
@@ -2563,20 +2561,22 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				CURRENT_PROJECT_VERSION = 53;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/WidgetComponent/HomeScreenWidget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_CFBundleDisplayName = "Campus App Widgets";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_NSLocationUsageDescription = 1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The widget displays location-sensitive data, such as the menu of the nearest cafeteria.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev.widget";
+				MARKETING_VERSION = 4.1;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -2595,20 +2595,22 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				CURRENT_PROJECT_VERSION = 53;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/WidgetComponent/HomeScreenWidget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_CFBundleDisplayName = "Campus App Widgets";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_NSLocationUsageDescription = 1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The widget displays location-sensitive data, such as the menu of the nearest cafeteria.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev.widget";
+				MARKETING_VERSION = 4.1;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -2695,7 +2697,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2711,13 +2713,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2736,9 +2738,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2761,7 +2763,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2786,20 +2788,22 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				CURRENT_PROJECT_VERSION = 53;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Campus-iOS/WidgetComponent/HomeScreenWidget/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_CFBundleDisplayName = "Campus App Widgets";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_NSLocationUsageDescription = 1;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The widget displays location-sensitive data, such as the menu of the nearest cafeteria.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev.widget";
+				MARKETING_VERSION = 4.1;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -2943,7 +2947,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2959,13 +2963,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -2988,7 +2992,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3004,13 +3008,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.tum.tca-robyn-dev";
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -3028,9 +3032,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3055,9 +3059,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3080,7 +3084,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3103,7 +3107,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 92JDXCA2AA;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

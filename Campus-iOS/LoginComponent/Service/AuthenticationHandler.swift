@@ -42,7 +42,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     private var isRefreshing = false
     private var requestsToRetry: [(RetryResult) -> Void] = []
 
-    private static let keychain = Keychain(service: "group.de.tum.tca-robyn-dev") // TODO: adapt this
+    private static let keychain = Keychain(service: "group.de.tum.tca")
         .synchronizable(true)
         .accessibility(.afterFirstUnlock)
 

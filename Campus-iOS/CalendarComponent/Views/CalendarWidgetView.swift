@@ -120,7 +120,7 @@ struct CalendarWidgetContent: View {
                 }
             }
             .foregroundColor(color())
-            .bold()
+            .font(.system(size: 8, weight: .heavy, design: .default))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
