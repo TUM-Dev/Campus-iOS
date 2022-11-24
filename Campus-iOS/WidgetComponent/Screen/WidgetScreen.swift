@@ -33,18 +33,21 @@ struct WidgetScreen: View {
                     )
                         .frame(maxWidth: .infinity)
                 }
-                .refreshable {
-                    try? await recommender.fetchRecommendations()
-                    refresh.toggle()
-                }
             }
         }
         .task {
             try? await recommender.fetchRecommendations()
-            widgetTitle = "Hi, " + (model.profile.profile?.firstname ?? "")
+            if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
+            else { widgetTitle = "Welcome"}
         }
         .onReceive(timer) { _ in
             refresh.toggle()            
+        }
+        .refreshable {
+            try? await recommender.fetchRecommendations()
+            if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
+            else { widgetTitle = "Welcome"}
+            refresh.toggle()
         }
         .navigationTitle(widgetTitle)
     }
