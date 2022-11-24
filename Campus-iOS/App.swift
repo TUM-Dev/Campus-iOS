@@ -34,7 +34,7 @@ struct CampusApp: App {
                     NavigationView {
                         LoginView(model: model)
                             .onAppear {
-                                selectedTab = 2
+                                selectedTab = 0
                             }
                     }
                     .navigationViewStyle(.stack)
