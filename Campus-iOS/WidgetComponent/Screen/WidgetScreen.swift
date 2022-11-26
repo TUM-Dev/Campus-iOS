@@ -10,10 +10,13 @@ import MapKit
 
 struct WidgetScreen: View {
     
+    @Environment(\.isSearching) var isSearching
+    
     @StateObject private var recommender: WidgetRecommender
     @StateObject var model: Model = Model()
     @State private var refresh = false
     @State private var widgetTitle = String()
+    @State private var searchString = ""
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
@@ -27,12 +30,15 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                ScrollView {
-                    self.generateContent(
-                        views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
-                    )
+                SearchView(query: $searchString) {
+                    ScrollView {
+                        self.generateContent(
+                            views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
+                        )
                         .frame(maxWidth: .infinity)
+                    }
                 }
+                .searchable(text: $searchString)
                 .refreshable {
                     try? await recommender.fetchRecommendations()
                     refresh.toggle()
@@ -45,7 +51,7 @@ struct WidgetScreen: View {
             else { widgetTitle = "Welcome"}
         }
         .onReceive(timer) { _ in
-            refresh.toggle()            
+            refresh.toggle()
         }
     }
     
@@ -96,5 +102,38 @@ struct WidgetScreen: View {
             }
         }
         .navigationTitle(widgetTitle)
+    }
+}
+
+struct SearchView<Content: View> : View {
+    
+    @Binding var query: String
+    @Environment(\.isSearching) var isSearching
+    @ViewBuilder let content: () -> Content
+    
+    var body: some View {
+        if isSearching {
+            SearchResultView(query: $query)
+        } else {
+            content()
+        }
+        
+    }
+}
+
+struct SearchResultView: View {
+    
+    @Binding var query: String
+    
+    var body: some View {
+        HStack {
+            Text("Your results should be shown here for \(query)")
+        }
+    }
+}
+
+struct WidgetScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetScreen(model: Model())
     }
 }
