@@ -255,6 +255,16 @@
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
 		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
+		9958318029361F6F00F25E11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958317F29361F6F00F25E11 /* AppDelegate.swift */; };
+		99583183293621A200F25E11 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99583182293621A200F25E11 /* PushNotifications.swift */; };
+		9958318529362F9A00F25E11 /* CampusBackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958318429362F9A00F25E11 /* CampusBackend.pb.swift */; };
+		9958318829362FCE00F25E11 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318729362FCE00F25E11 /* SwiftProtobuf */; };
+		9958318A29362FCE00F25E11 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318929362FCE00F25E11 /* SwiftProtobufPluginLibrary */; };
+		9958318C2936319900F25E11 /* CampusBackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958318B2936319900F25E11 /* CampusBackend.grpc.swift */; };
+		9958318F2936336900F25E11 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318E2936336900F25E11 /* CGRPCZlib */; };
+		995831912936336900F25E11 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 995831902936336900F25E11 /* GRPC */; };
+		995831932936336900F25E11 /* protoc-gen-grpc-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 995831922936336900F25E11 /* protoc-gen-grpc-swift */; };
+		995831952936469100F25E11 /* CampusBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995831942936469000F25E11 /* CampusBackend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -517,6 +527,11 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		9958317F29361F6F00F25E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		99583182293621A200F25E11 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
+		9958318429362F9A00F25E11 /* CampusBackend.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.pb.swift; sourceTree = "<group>"; };
+		9958318B2936319900F25E11 /* CampusBackend.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.grpc.swift; sourceTree = "<group>"; };
+		995831942936469000F25E11 /* CampusBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,11 +545,16 @@
 				97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */,
 				36E964AA277498B60055777F /* KVKCalendar in Frameworks */,
 				36FF90722773BFC300F4C785 /* FirebaseAnalytics in Frameworks */,
+				995831932936336900F25E11 /* protoc-gen-grpc-swift in Frameworks */,
 				36FF90682773BCA600F4C785 /* SWXMLHash in Frameworks */,
 				36FF90742773BFC300F4C785 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
+				9958318A29362FCE00F25E11 /* SwiftProtobufPluginLibrary in Frameworks */,
+				9958318F2936336900F25E11 /* CGRPCZlib in Frameworks */,
 				36FF90762773BFC300F4C785 /* FirebaseCrashlytics in Frameworks */,
+				995831912936336900F25E11 /* GRPC in Frameworks */,
 				36203E832761BDD100C24658 /* KeychainAccess in Frameworks */,
 				97997AE127722D660079F809 /* Alamofire in Frameworks */,
+				9958318829362FCE00F25E11 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1083,6 +1103,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				995831812936215D00F25E11 /* PushNotifications */,
 				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
 				36BB6F8027B39B2200F224AB /* LectureSearchComponent */,
@@ -1115,6 +1136,7 @@
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
 				366F0E8927580CFD0091651D /* Preview Content */,
+				9958317F29361F6F00F25E11 /* AppDelegate.swift */,
 			);
 			path = "Campus-iOS";
 			sourceTree = "<group>";
@@ -1197,6 +1219,9 @@
 				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
 				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
+				9958318429362F9A00F25E11 /* CampusBackend.pb.swift */,
+				9958318B2936319900F25E11 /* CampusBackend.grpc.swift */,
+				995831942936469000F25E11 /* CampusBackend.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1514,6 +1539,14 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		995831812936215D00F25E11 /* PushNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				99583182293621A200F25E11 /* PushNotifications.swift */,
+			);
+			path = PushNotifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1542,6 +1575,11 @@
 				36E964A9277498B60055777F /* KVKCalendar */,
 				226CB51D2798DF9C0043ABCA /* Snap */,
 				41D55D6D27A2EFB200DE7155 /* LRUCache */,
+				9958318729362FCE00F25E11 /* SwiftProtobuf */,
+				9958318929362FCE00F25E11 /* SwiftProtobufPluginLibrary */,
+				9958318E2936336900F25E11 /* CGRPCZlib */,
+				995831902936336900F25E11 /* GRPC */,
+				995831922936336900F25E11 /* protoc-gen-grpc-swift */,
 			);
 			productName = "Campus-iOS";
 			productReference = 366F0E8027580CFB0091651D /* Campus-iOS.app */;
@@ -1626,6 +1664,8 @@
 				36E964A8277498B60055777F /* XCRemoteSwiftPackageReference "KVKCalendar" */,
 				226CB51C2798DF9C0043ABCA /* XCRemoteSwiftPackageReference "Snap" */,
 				41D55D6C27A2EFB200DE7155 /* XCRemoteSwiftPackageReference "LRUCache" */,
+				9958318629362FCE00F25E11 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */,
 			);
 			productRefGroup = 366F0E8127580CFB0091651D /* Products */;
 			projectDirPath = "";
@@ -1734,12 +1774,14 @@
 				3654F358285167C3008AD5DC /* StudyRoomsService.swift in Sources */,
 				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
+				9958318029361F6F00F25E11 /* AppDelegate.swift in Sources */,
 				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */,
 				3654F37B2851710E008AD5DC /* RoomFinderListView.swift in Sources */,
 				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
+				9958318C2936319900F25E11 /* CampusBackend.grpc.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
@@ -1762,6 +1804,7 @@
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
+				99583183293621A200F25E11 /* PushNotifications.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
@@ -1791,6 +1834,7 @@
 				3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */,
+				9958318529362F9A00F25E11 /* CampusBackend.pb.swift in Sources */,
 				3654F361285168D2008AD5DC /* StudyRoomGroup.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
@@ -1849,6 +1893,7 @@
 				08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
+				995831952936469100F25E11 /* CampusBackend.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
@@ -2124,7 +2169,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2366,6 +2411,22 @@
 				version = 2.10.1;
 			};
 		};
+		9958318629362FCE00F25E11 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2423,6 +2484,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 97C9AB1027732A200097B10C /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
 			productName = SwiftUICharts;
+		};
+		9958318729362FCE00F25E11 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9958318629362FCE00F25E11 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		9958318929362FCE00F25E11 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9958318629362FCE00F25E11 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		9958318E2936336900F25E11 /* CGRPCZlib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = CGRPCZlib;
+		};
+		995831902936336900F25E11 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		995831922936336900F25E11 /* protoc-gen-grpc-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = "protoc-gen-grpc-swift";
 		};
 /* End XCSwiftPackageProductDependency section */
 
