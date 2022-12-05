@@ -63,7 +63,7 @@ struct MovieCard: View {
             .frame(height: 55)
             
         }
-        .frame(width: 390 * 0.425, height: 390 * 0.75)
+        .frame(width: 390 * 0.425, height: 390 * 0.73)
         .background(Color(.systemGray5))
         .cornerRadius(15)
         .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)

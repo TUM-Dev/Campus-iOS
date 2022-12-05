@@ -39,7 +39,6 @@ struct MapContentView: UIViewRepresentable {
         handleCafeterias()
         
         mapView.showsUserLocation = true
-        self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
         
         return mapView
