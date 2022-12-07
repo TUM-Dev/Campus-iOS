@@ -60,41 +60,43 @@ struct WidgetScreen: View {
         if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
         else { widgetTitle = "Welcome"}
         
-        return ZStack(alignment: .topLeading) {
-            ForEach(0..<views.count, id: \.self) { i in
-                views[i]
-                    .padding([.horizontal, .vertical], WidgetSize.padding)
-                    .alignmentGuide(.leading) { d in
-                        
-                        if (abs(width - d.width) > maxWidth) {
-                            width = 0
-                            height -= previousHeight
+        return VStack{
+            Text(widgetTitle).font(.largeTitle).bold().frame(width: 350, height: 50, alignment: .leading)
+            ZStack(alignment: .topLeading) {
+                ForEach(0..<views.count, id: \.self) { i in
+                    views[i]
+                        .padding([.horizontal, .vertical], WidgetSize.padding)
+                        .alignmentGuide(.leading) { d in
+                            
+                            if (abs(width - d.width) > maxWidth) {
+                                width = 0
+                                height -= previousHeight
+                            }
+                            
+                            let result = width
+                            
+                            if i == views.count - 1 {
+                                width = 0
+                            } else {
+                                width -= d.width
+                            }
+                            
+                            previousHeight = d.height
+                            
+                            return result
                         }
-                        
-                        let result = width
-                        
-                        if i == views.count - 1 {
-                            width = 0
-                        } else {
-                            width -= d.width
+                        .alignmentGuide(.top) { d in
+                            
+                            let result = height
+                            
+                            if i == views.count - 1 {
+                                height = 0
+                            }
+                            
+                            return result
                         }
-                        
-                        previousHeight = d.height
-                        
-                        return result
-                    }
-                    .alignmentGuide(.top) { d in
-                        
-                        let result = height
-                        
-                        if i == views.count - 1 {
-                            height = 0
-                        }
-                        
-                        return result
-                    }
+                }
             }
-        }
-        .navigationTitle(widgetTitle)
+        }.padding(.top, 50)
     }
 }

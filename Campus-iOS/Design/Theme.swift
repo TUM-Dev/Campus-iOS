@@ -16,5 +16,5 @@ extension Color {
    
 extension Font {
     static let body = Font.custom("Roboto", size: 12)
-    static let title = Font.custom("Roboto", size: 12)
+    static let test = Font.custom("Roboto", size: 12)
 }

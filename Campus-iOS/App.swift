@@ -13,7 +13,6 @@ import Firebase
 @main
 struct CampusApp: App {
     @StateObject var model: Model = Model()
-    
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var isLoginSheetPresented = false
@@ -67,12 +66,7 @@ struct CampusApp: App {
                     model: model,
                     service: LecturesService()
                 ), refresh: $model.isUserAuthenticated)
-                    .navigationTitle("Lectures")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
+                    .overlay(NavigationBarView(model: model, title: "Lectures"))
             }
             .tag(1)
             .tabItem {
@@ -85,12 +79,7 @@ struct CampusApp: App {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     WidgetScreen(model: model)
-                    
-                        .toolbar {
-                            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                                ProfileToolbar(model: model)
-                            }
-                        }
+                        .overlay(NavigationBarView(model: model))
                 }
                 .navigationViewStyle(.stack)
                 .tag(0)
@@ -101,12 +90,7 @@ struct CampusApp: App {
             
             NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
-                    .navigationTitle("Grades")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
+                    .overlay(NavigationBarView(model: model, title: "Grades"))
             }
             .tag(2)
             .tabItem {

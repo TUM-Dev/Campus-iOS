@@ -38,7 +38,6 @@ struct LecturesView: View {
                             NavigationLink(
                                 destination:
                                     LectureDetailsScreen(model: self.model, lecture: item)
-                                        .navigationBarTitleDisplayMode(.inline)
                             ) {
                                 LectureView(lecture: item)
                             }
@@ -61,7 +60,6 @@ struct LecturesView: View {
             }
         }
         .listRowSeparator(.hidden)
-        .searchable(text: $searchQuery)
     }
 }
 

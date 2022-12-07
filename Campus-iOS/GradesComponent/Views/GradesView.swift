@@ -70,10 +70,10 @@ struct GradesView: View {
 struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
         GradesView(vm:
-            MockGradesViewModel(
-                model: MockModel(),
-                service: GradesService()
-            )
+                    MockGradesViewModel(
+                        model: MockModel(),
+                        service: GradesService()
+                    )
         )
     }
 }
