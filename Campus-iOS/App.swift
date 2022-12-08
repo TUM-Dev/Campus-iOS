@@ -53,7 +53,7 @@ struct CampusApp: App {
                     model: model,
                     refresh: $model.isUserAuthenticated
                 )
-                .navigationTitle("Calendar")
+                .overlay(NavigationBarView(model: model, title: "Calendar"))
             }
             .tag(4)
             .tabItem {

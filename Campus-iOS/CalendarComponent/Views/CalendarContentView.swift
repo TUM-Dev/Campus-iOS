@@ -26,6 +26,42 @@ struct CalendarContentView: View {
     
     var body: some View {
         VStack {
+            HStack{
+                Button(action: {
+                    self.isTodayPressed = true
+                    selectedType = .day
+                }) {
+                    Text("Today")
+                }
+                .padding(.leading, 10)
+                Spacer()
+                Picker("Calendar Type", selection: $selectedType) {
+                    ForEach(CalendarType.allCases, id: \.self) {
+                        switch $0 {
+                        case .week:
+                            Text("Week")
+                        case .day:
+                            Text("Day")
+                        case .month:
+                            Text("Month")
+                        default:
+                            EmptyView()
+                        }
+                    }
+                }
+                .padding(.horizontal, 10)
+                .opacity(1.0)
+                .pickerStyle(.segmented)
+                .onAppear {
+                    UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
+                    UISegmentedControl.appearance()
+                        .selectedSegmentTintColor = .tumBlue
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
+                }
+            }.padding(.bottom, 10)
             GeometryReader { geo in
                 // workaround since passing the calendar type to the view does not work
                 switch self.selectedType {
@@ -51,7 +87,9 @@ struct CalendarContentView: View {
                     EmptyView()
                 }
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
+        .padding(.top, 60)
         // Refresh whenever user authentication status changes
         .onChange(of: self.refresh) { _ in
             self.viewModel.fetch()
@@ -68,46 +106,6 @@ struct CalendarContentView: View {
                             ),
                 event: chosenEvent
             )
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
-                Button(action: {
-                    self.isTodayPressed = true
-                    selectedType = .day
-                }) {
-                    Text("Today")
-                }
-            }
-            ToolbarItem(placement: .principal) {
-                Picker("Calendar Type", selection: $selectedType) {
-                    ForEach(CalendarType.allCases, id: \.self) {
-                        switch $0 {
-                        case .week:
-                            Text("Week")
-                        case .day:
-                            Text("Day")
-                        case .month:
-                            Text("Month")
-                        default:
-                            EmptyView()
-                        }
-                    }
-                }
-                .opacity(1.0)
-                .pickerStyle(.segmented)
-                .onAppear {
-                    UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
-                    UISegmentedControl.appearance()
-                        .selectedSegmentTintColor = .tumBlue
-                    UISegmentedControl.appearance()
-                        .setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-                    UISegmentedControl.appearance()
-                        .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
-                }
-            }
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                ProfileToolbar(model: viewModel.model)
-            }
         }
         .task {
             data.visitView(view: .calendar)
