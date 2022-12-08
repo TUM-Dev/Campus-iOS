@@ -41,7 +41,7 @@ struct WidgetMapBackgroundView: View {
                         .blur(radius: 2)
                 }
 
-                Rectangle().foregroundColor(.widget.opacity(image == nil ? 1 : 0.9))
+                Rectangle().foregroundColor(.secondaryBackground.opacity(image == nil ? 1 : 0.9))
             }
             .task {
                 generateSnapshot(width: geometry.size.width, height: geometry.size.height)

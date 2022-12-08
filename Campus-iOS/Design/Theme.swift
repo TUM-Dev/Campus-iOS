@@ -31,5 +31,8 @@ extension Font {
     static let test = Font.custom("Roboto", size: 12)
 }
 
-
+struct Radius {
+    static let regular = CGFloat(10) 
+    
+}
 

@@ -18,7 +18,7 @@ struct WidgetFrameView<Content: View>: View {
         
         content
             .frame(width: width, height: height)
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
     }
 }
 
@@ -26,7 +26,7 @@ struct WidgetFrameView_Previews: PreviewProvider {
     
     static var widgetContent: some View {
         Rectangle()
-            .foregroundColor(.widget)
+            .foregroundColor(.secondaryBackground)
             .overlay {
                 Text("Some Widget")
             }

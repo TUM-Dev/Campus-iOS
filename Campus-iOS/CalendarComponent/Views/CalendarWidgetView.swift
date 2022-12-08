@@ -129,7 +129,7 @@ struct CalendarWidgetContent: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(.widget)
+            .foregroundColor(.secondaryBackground)
             .overlay {
                 content
             }
