@@ -47,6 +47,7 @@ struct WidgetScreen: View {
         .onReceive(timer) { _ in
             refresh.toggle()            
         }
+        .background(Color.primaryBackground)
     }
     
     // Source: https://stackoverflow.com/a/58876712

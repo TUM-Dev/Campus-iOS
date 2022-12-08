@@ -14,23 +14,24 @@ struct NavigationBarView: View {
     var body: some View {
         
         ZStack {
-            Color.black
+            Color.primaryBackground
             VStack {
                 Spacer()
                 HStack {
-                    Image(systemName: "magnifyingglass").foregroundColor(.white).font(.system(size: 20))
+                    Image(systemName: "magnifyingglass").foregroundColor(Color.primaryText).font(.system(size: 20))
                     Spacer()
                     if title == nil {
-                        Image("logo-white")
+                        Image("logo-responsive")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 35)
+                            .foregroundColor(Color.primaryText)
                     } else {
-                        Text(title!).font(.system(size: 17)).fontWeight(.semibold)
+                        Text(title!).font(.system(size: 17)).fontWeight(.semibold).foregroundColor(Color.primaryText)
                     }
                     Spacer()
                     Button(action: {model.showProfile.toggle()}) {
-                        Image(systemName: "person.crop.circle").foregroundColor(.white)
+                        Image(systemName: "person.crop.circle").foregroundColor(Color.primaryText)
                             .font(.system(size: 20))
                     }
                     .sheet(isPresented: $model.showProfile) {

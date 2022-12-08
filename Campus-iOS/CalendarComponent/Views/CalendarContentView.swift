@@ -32,8 +32,10 @@ struct CalendarContentView: View {
                     selectedType = .day
                 }) {
                     Text("Today")
+                        .font(.headline.bold())
+                        .foregroundColor(Color("tumBlue"))
                 }
-                .padding(.leading, 10)
+                .padding(.leading, 20)
                 Spacer()
                 Picker("Calendar Type", selection: $selectedType) {
                     ForEach(CalendarType.allCases, id: \.self) {
@@ -49,7 +51,7 @@ struct CalendarContentView: View {
                         }
                     }
                 }
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 20)
                 .opacity(1.0)
                 .pickerStyle(.segmented)
                 .onAppear {
