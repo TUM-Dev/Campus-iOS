@@ -32,7 +32,7 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                SearchView(query: $searchString) {
+                SearchView(model: self.model, query: $searchString) {
                     ScrollView {
                         self.generateContent(
                             views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
@@ -109,13 +109,14 @@ struct WidgetScreen: View {
 
 struct SearchView<Content: View> : View {
     
+    @ObservedObject var model: Model
     @Binding var query: String
     @Environment(\.isSearching) var isSearching
     @ViewBuilder let content: () -> Content
     
     var body: some View {
         if isSearching {
-            SearchResultView(query: $query)
+            SearchResultView(vm: SearchResultViewModel(model: self.model), query: $query)
         } else {
             content()
         }
@@ -124,7 +125,7 @@ struct SearchView<Content: View> : View {
 }
 
 struct SearchResultView: View {
-    @StateObject var vm = SearchResultViewModel()
+    @StateObject var vm: SearchResultViewModel
     @Binding var query: String
     
     var body: some View {
@@ -137,6 +138,7 @@ struct SearchResultView: View {
                 }
             }
             generateResultViews(for: vm.searchResults)
+            GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
             Spacer()
         }.onChange(of: query) { newQuery in
             vm.search(for: newQuery)
@@ -201,6 +203,11 @@ struct SearchResultView: View {
 class SearchResultViewModel: ObservableObject {
     @Published var searchResults = [SearchResult]()
     @Published var searchDataTypeResult = [String:Double]()
+    @ObservedObject var model: Model
+    
+    init(model: Model) {
+        self.model = model
+    }
     
     private lazy var dataTypeClassifier: NLModel? = {
         let model = try? NLModel(mlModel: DataTypeClassifierV2(configuration: MLModelConfiguration()).model)
@@ -216,13 +223,15 @@ class SearchResultViewModel: ObservableObject {
             print("\(label) was at \(accuracy)")
         }
         searchDataTypeResult = modelOutput
+//        searchResults = modelOutput.map {
+//            return SearchResult(type: <#T##SearchResultType#>, values: <#T##[Decodable]#>)
+//        }
         
         if query.contains("Grade") {
             searchResults.append(SearchResult(type: .Grade, values: Grade.dummyData))
             searchResults.append(SearchResult(type: .Lecture, values: Lecture.dummyData))
         }
     }
-    
     
 }
 
@@ -237,6 +246,149 @@ enum SearchResultType: String {
     case News
     case Cafeteria
     case StudyRoom
+}
+
+struct GradesSearchResultView: View {
+    
+    @StateObject var vm: GradesSearchResultViewModel
+    @Binding var query: String
+    
+    var body: some View {
+        ScrollView {
+            ForEach(vm.results, id: \.0) { result in
+                //            Text("Grade ID: \(result.0)")
+                VStack {
+                    Text(vm.vm.grades.first { $0.id == result.0 }?.title ?? "no title").foregroundColor(.blue)
+                    Text(vm.vm.grades.first { $0.id == result.0 }?.examiner ?? "no examiner").foregroundColor(.indigo)
+                    Text(vm.vm.grades.first { $0.id == result.0 }?.grade ?? "no grade").foregroundColor(.red)
+                }
+            }
+        }
+        .onChange(of: query) { newQuery in
+            print(query)
+            Task {
+                await vm.gradesSearch(for: newQuery)
+            }
+        }
+        .task {
+            await vm.fetch()
+        }
+    }
+}
+
+class GradesSearchResultViewModel: ObservableObject {
+    @ObservedObject var vm: GradesViewModel
+    @Published var results = [(String, Int)]()
+    
+    init(model: Model) {
+        self.vm = GradesViewModel(model: model, service: GradesService())
+    }
+    
+    func gradesSearch(for query: String) async {
+        await fetch()
+        let tokens = tokenize(query)
+        
+        let grades = vm.grades
+        
+//        var tokenWithResults = [String: [String: Int]]()
+        var levenstheinValues = [String: Int]()
+        for token in tokens {
+            
+            
+            for grade in grades {
+                print(grade.title)
+                let gradeTokens = tokenize(grade.title) + tokenize(grade.examiner) + [grade.grade] + tokenize(grade.lvNumber)
+                print(gradeTokens)
+                guard let value = bestLevensthein(for: token, comparisonTokens: gradeTokens) else {
+                    return
+                }
+                print(value)
+                
+                if let currentValue = levenstheinValues[grade.id], currentValue > value {
+                    levenstheinValues[grade.id] = value
+                } else if levenstheinValues[grade.id] == nil {
+                    levenstheinValues[grade.id] = value
+                }
+                
+            }
+            
+//            tokenWithResults[token] = levenstheinValues
+        }
+        
+        results = levenstheinValues.sorted { $0.value < $1.value }
+        
+//        for (token, result) in tokenWithResults {
+//            tokenWithResults[token]  = result.sorted(by: { $0.1 < $1.1 }).reduce(into: [:]) { $0[$1.0] = $1.1 }
+//        }
+        
+        
+    }
+    
+    func bestLevensthein(for token: String, comparisonTokens: [String]) -> Int? {
+        comparisonTokens.map { comparisonToken in
+            let result = Int(Double(token.levenshtein(compareTo: comparisonToken))/Double(comparisonToken.count)*100)
+            
+            print("For token \(token) and compToken \(comparisonToken): \(result)")
+            
+            return result
+        }.min()
+    }
+    
+    func fetch() async {
+        await vm.getGrades()
+    }
+    
+    func tokenize(_ input: String) -> [String] {
+        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")).split(separator: " ").map({String($0)})
+
+        return updatedInput
+    }
+    
+}
+
+extension String {
+    func keep(validChars: Set<Character>) -> String {
+        return String(self.filter {validChars.contains($0)})
+    }
+    
+    ///Source: https://gist.github.com/bgreenlee/52d93a1d8fa1b8c1f38b
+    func levenshtein(compareTo: String) -> Int {
+        // create character arrays
+        let a = Array(self)
+        let b = Array(compareTo)
+
+        // initialize matrix of size |a|+1 * |b|+1 to zero
+        var dist = [[Int]]()
+        for _ in 0...a.count {
+            dist.append([Int](repeating: 0, count: b.count + 1))
+        }
+
+        // 'a' prefixes can be transformed into empty string by deleting every char
+        for i in 1...a.count {
+            dist[i][0] = i
+        }
+
+        // 'b' prefixes can be created from empty string by inserting every char
+        for j in 1...b.count {
+            dist[0][j] = j
+        }
+
+        for i in 1...a.count {
+            for j in 1...b.count {
+                if a[i-1] == b[j-1] {
+                    dist[i][j] = dist[i-1][j-1]  // noop
+                } else {
+                    dist[i][j] = Swift.min(
+                        dist[i-1][j] + 1,  // deletion
+                        dist[i][j-1] + 1,  // insertion
+                        dist[i-1][j-1] + 1  // substitution
+                    )
+                }
+            }
+        }
+
+        return dist[a.count][b.count]
+    }
 }
 
 struct WidgetScreen_Previews: PreviewProvider {
