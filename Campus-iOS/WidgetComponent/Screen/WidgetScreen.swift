@@ -139,6 +139,10 @@ struct SearchResultView: View {
             }
             generateResultViews(for: vm.searchResults)
             GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
+                .cornerRadius(25)
+                .padding()
+                .shadow(color: .gray.opacity(0.8), radius: 10)
+            
             Spacer()
         }.onChange(of: query) { newQuery in
             vm.search(for: newQuery)
@@ -254,13 +258,19 @@ struct GradesSearchResultView: View {
     @Binding var query: String
     
     var body: some View {
-        ScrollView {
-            ForEach(vm.results, id: \.0) { result in
-                //            Text("Grade ID: \(result.0)")
-                VStack {
-                    Text(vm.vm.grades.first { $0.id == result.0 }?.title ?? "no title").foregroundColor(.blue)
-                    Text(vm.vm.grades.first { $0.id == result.0 }?.examiner ?? "no examiner").foregroundColor(.indigo)
-                    Text(vm.vm.grades.first { $0.id == result.0 }?.grade ?? "no grade").foregroundColor(.red)
+        ZStack {
+            Color.white
+            ScrollView {
+                Text("Hello to the grades.")
+                Text("Hello to the grades.")
+                Text("Hello to the grades.")
+                Text("Hello to the grades.")
+                ForEach(vm.results, id: \.0) { result in
+                    VStack {
+                        Text(result.grade.title).foregroundColor(.indigo)
+                        Text(result.grade.examiner).foregroundColor(.teal)
+                        Text(result.grade.grade).foregroundColor(.purple)
+                    }
                 }
             }
         }
@@ -270,15 +280,12 @@ struct GradesSearchResultView: View {
                 await vm.gradesSearch(for: newQuery)
             }
         }
-        .task {
-            await vm.fetch()
-        }
     }
 }
 
 class GradesSearchResultViewModel: ObservableObject {
     @ObservedObject var vm: GradesViewModel
-    @Published var results = [(String, Int)]()
+    @Published var results = [(grade: Grade, distance: Int)]()
     
     init(model: Model) {
         self.vm = GradesViewModel(model: model, service: GradesService())
@@ -286,47 +293,75 @@ class GradesSearchResultViewModel: ObservableObject {
     
     func gradesSearch(for query: String) async {
         await fetch()
+        
         let tokens = tokenize(query)
         
-        let grades = vm.grades
+        var levenshteinValues = [Grade: Int]()
         
-//        var tokenWithResults = [String: [String: Int]]()
-        var levenstheinValues = [String: Int]()
         for token in tokens {
-            
-            
-            for grade in grades {
+            for grade in vm.grades {
                 print(grade.title)
-                let gradeTokens = tokenize(grade.title) + tokenize(grade.examiner) + [grade.grade] + tokenize(grade.lvNumber)
+                
+                // Combine all tokens of the current grade to one array of tokens.
+                // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
+                let gradeTokens = tokenize(grade.title)
+                                + tokenize(grade.examiner)
+                                + [grade.grade]
+                                + tokenize(grade.lvNumber)
+                                + tokenize(grade.modus)
+                                + tokenize(grade.semester)
+                                + tokenize(grade.studyDesignation)
                 print(gradeTokens)
-                guard let value = bestLevensthein(for: token, comparisonTokens: gradeTokens) else {
+                
+                // Retrieve the best relative levensthein value for the current token, i.e. if the token would be "kempr" the best relative levenshtein values is 16.
+                guard let newDistance = bestRelativeLevensthein(for: token, comparisonTokens: gradeTokens) else {
                     return
                 }
-                print(value)
+                print(newDistance)
                 
-                if let currentValue = levenstheinValues[grade.id], currentValue > value {
-                    levenstheinValues[grade.id] = value
-                } else if levenstheinValues[grade.id] == nil {
-                    levenstheinValues[grade.id] = value
+                // If the id of the current grade already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
+                if let currentDistance = levenshteinValues[grade], currentDistance > newDistance {
+                    levenshteinValues[grade] = newDistance
+                } else if levenshteinValues[grade] == nil { // Add the `newDistance` if there was no distance for the current grade id.
+                    levenshteinValues[grade] = newDistance
                 }
                 
             }
-            
-//            tokenWithResults[token] = levenstheinValues
         }
         
-        results = levenstheinValues.sorted { $0.value < $1.value }
         
-//        for (token, result) in tokenWithResults {
-//            tokenWithResults[token]  = result.sorted(by: { $0.1 < $1.1 }).reduce(into: [:]) { $0[$1.0] = $1.1 }
-//        }
-        
-        
+        results = levenshteinValues
+            .sorted { $0.value < $1.value } // Sort the grade ids by the increasing order since the lowest distance is the best.
+            .map { levenshteinTuple in
+                // Map the key and values to a tuple to have the tuple labels.
+                return (grade: levenshteinTuple.0, distance: levenshteinTuple.1)
+            }
     }
     
-    func bestLevensthein(for token: String, comparisonTokens: [String]) -> Int? {
-        comparisonTokens.map { comparisonToken in
-            let result = Int(Double(token.levenshtein(compareTo: comparisonToken))/Double(comparisonToken.count)*100)
+    /// Returns the best relative levenshtein value for a given `token` and an array of `comparisonTokens`. The lower the more common is the `token` to one of the `comparisonTokens`.
+    ///
+    /// ```
+    /// bestRelativeLevensthein(for: "hello", comparisonTokens: ["world", "hi", "helo"]) // 25
+    /// ```
+    /// The formula to calculate the relative levenshtein distance for `token` and one `comparisonToken` is the levenshtein distance between the two strings divided by the length of the `comparisonToken` and multiplied by `100`.
+    ///
+    /// > Warning: Emtpy `comparisonTokens` will not be concidered when evaluating the best (i.e. lowest) relative levensthein distance. If all `comparisonTokens` and/or `token` are empty strings `nil` returns.
+    ///
+    /// - Parameters:
+    ///     - token: The string to be compared to the `comparisonTokens`.
+    ///     - comparisonTokens: The array of strings which are compared to the `token`.
+    /// - Returns: An optional integer indicating the best (lowest) relative levenshtein distance from `token` to the `comparisonTokens`.
+    func bestRelativeLevensthein(for token: String, comparisonTokens: [String]) -> Int? {
+        guard !token.isEmpty else {
+            return nil
+        }
+        
+        return comparisonTokens.compactMap { comparisonToken in
+            guard comparisonToken.count > 0 else {
+                return nil
+            }
+            
+            let result = Int(Double(token.levenshtein(to: comparisonToken))/Double(comparisonToken.count)*100)
             
             print("For token \(token) and compToken \(comparisonToken): \(result)")
             
@@ -351,13 +386,35 @@ extension String {
         return String(self.filter {validChars.contains($0)})
     }
     
-    ///Source: https://gist.github.com/bgreenlee/52d93a1d8fa1b8c1f38b
-    func levenshtein(compareTo: String) -> Int {
-        // create character arrays
+    /// Retrieve the levenshtein distance betweent `self` and the string `comparisonToken`
+    ///
+    /// ```
+    /// "helo".levenshtein(to: "hello") // 1
+    /// ```
+    /// The levenshtein distance calculates the distance of to string, i.e. tokens.
+    /// This evalutes if two words are similiar even if misspelling occurs in one of the words.
+    /// This implementation is not considered as one of the most efficient, but one of the most clearest.
+    /// See the [source](https://gist.github.com/bgreenlee/52d93a1d8fa1b8c1f38b).
+    ///
+    /// - Parameters:
+    ///     - comparisonToken: The string which is compared to `self`
+    /// - Returns: The levenshtein distance as integer
+    func levenshtein(to comparisonToken: String) -> Int {
+        /// Either `self `or the `comparisonToken` is empty.
+        if self.isEmpty && comparisonToken.isEmpty {
+            return 0
+        } else if self.isEmpty {
+            return comparisonToken.count
+        } else if comparisonToken.isEmpty {
+            return self.count
+        }
+        
+        /// Starting with the levenshtein distance algorithm
+        // Create character arrays
         let a = Array(self)
-        let b = Array(compareTo)
+        let b = Array(comparisonToken)
 
-        // initialize matrix of size |a|+1 * |b|+1 to zero
+        // Initialize matrix of size |a|+1 * |b|+1 to zero
         var dist = [[Int]]()
         for _ in 0...a.count {
             dist.append([Int](repeating: 0, count: b.count + 1))
@@ -376,18 +433,24 @@ extension String {
         for i in 1...a.count {
             for j in 1...b.count {
                 if a[i-1] == b[j-1] {
-                    dist[i][j] = dist[i-1][j-1]  // noop
+                    dist[i][j] = dist[i-1][j-1]  // Noop
                 } else {
                     dist[i][j] = Swift.min(
-                        dist[i-1][j] + 1,  // deletion
-                        dist[i][j-1] + 1,  // insertion
-                        dist[i-1][j-1] + 1  // substitution
+                        dist[i-1][j] + 1,  // Deletion
+                        dist[i][j-1] + 1,  // Insertion
+                        dist[i-1][j-1] + 1  // Substitution
                     )
                 }
             }
         }
 
         return dist[a.count][b.count]
+    }
+}
+
+struct SearchResultView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchResultView(vm: SearchResultViewModel(model: Model()), query: .constant("hello world"))
     }
 }
 

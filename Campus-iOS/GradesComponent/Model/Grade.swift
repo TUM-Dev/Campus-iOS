@@ -15,7 +15,7 @@ enum GradeComponents {
         public var row: [Row]
     }
 
-    struct Row: Identifiable {
+    struct Row: Identifiable, Hashable {
         // Create own identifier as there isn't one
         public var id: String {
             date.formatted() + "-" + lvNumber
