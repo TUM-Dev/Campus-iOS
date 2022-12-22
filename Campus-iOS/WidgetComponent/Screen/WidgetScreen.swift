@@ -138,11 +138,16 @@ struct SearchResultView: View {
                 }
             }
             generateResultViews(for: vm.searchResults)
-            GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
-                .cornerRadius(25)
-                .padding()
-                .shadow(color: .gray.opacity(0.8), radius: 10)
-            
+            VStack {
+                GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
+                    .cornerRadius(25)
+                    .padding()
+                    .shadow(color: .gray.opacity(0.8), radius: 10)
+                CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(), query: $query)
+                    .cornerRadius(25)
+                    .padding()
+                    .shadow(color: .gray.opacity(0.8), radius: 10)
+            }
             Spacer()
         }.onChange(of: query) { newQuery in
             vm.search(for: newQuery)
@@ -218,9 +223,16 @@ class SearchResultViewModel: ObservableObject {
             return model
         }()
     
-    func search(for query: String) {
+    func prepare(_ query: String) -> String {
+        let updatedQuery = query.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890?"))
         
-        guard let modelOutput = dataTypeClassifier?.predictedLabelHypotheses(for: query, maximumCount: 5) else {
+        return updatedQuery
+    }
+    
+    func search(for query: String) {
+        let cleanedQuery = prepare(query)
+        
+        guard let modelOutput = dataTypeClassifier?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
             return
         }
         for (label, accuracy) in modelOutput {
@@ -231,10 +243,10 @@ class SearchResultViewModel: ObservableObject {
 //            return SearchResult(type: <#T##SearchResultType#>, values: <#T##[Decodable]#>)
 //        }
         
-        if query.contains("Grade") {
-            searchResults.append(SearchResult(type: .Grade, values: Grade.dummyData))
-            searchResults.append(SearchResult(type: .Lecture, values: Lecture.dummyData))
-        }
+//        if query.contains("Grade") {
+//            searchResults.append(SearchResult(type: .Grade, values: Grade.dummyData))
+//            searchResults.append(SearchResult(type: .Lecture, values: Lecture.dummyData))
+//        }
     }
     
 }
@@ -252,6 +264,61 @@ enum SearchResultType: String {
     case StudyRoom
 }
 
+struct CafeteriasSearchResultView: View{
+    @StateObject var vm: CafeteriasSearchResultViewModel
+    @Binding var query: String
+
+    var body: some View {
+        ZStack {
+            Color.white
+            ScrollView {
+                ForEach(vm.results, id: \.0) { result in
+                    VStack {
+                        Text(result.cafeteria.name).foregroundColor(.indigo)
+                        Text(result.cafeteria.location.address).foregroundColor(.teal)
+                        Text(String(result.cafeteria.queue?.percent ?? 0.0)).foregroundColor(.purple)
+                    }
+                }
+            }
+        }
+        .onChange(of: query) { newQuery in
+            print(query)
+            Task {
+                await vm.cafeteriasSearch(for: newQuery)
+            }
+        }
+    }
+}
+
+class CafeteriasSearchResultViewModel: ObservableObject {
+    
+    @Published var results = [(cafeteria: Cafeteria, distance: Int)]()
+    private let cafeteriaService: CafeteriasServiceProtocol = CafeteriasService()
+    
+    
+    func cafeteriasSearch(for query: String) async {
+        
+        let cafeterias = await fetch()
+        
+        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: cafeterias) {
+            
+            self.results = optionalResults
+        }
+    }
+    
+    func fetch() async -> [Cafeteria] {
+        var cafeterias = [Cafeteria]()
+        do {
+            cafeterias = try await cafeteriaService.fetch(forcedRefresh: false)
+            return cafeterias
+        } catch {
+            print("No cafeterias were fetched")
+        }
+        
+        return cafeterias
+    }
+}
+
 struct GradesSearchResultView: View {
     
     @StateObject var vm: GradesSearchResultViewModel
@@ -261,10 +328,6 @@ struct GradesSearchResultView: View {
         ZStack {
             Color.white
             ScrollView {
-                Text("Hello to the grades.")
-                Text("Hello to the grades.")
-                Text("Hello to the grades.")
-                Text("Hello to the grades.")
                 ForEach(vm.results, id: \.0) { result in
                     VStack {
                         Text(result.grade.title).foregroundColor(.indigo)
@@ -283,6 +346,31 @@ struct GradesSearchResultView: View {
     }
 }
 
+struct ComparisonToken: Hashable {
+    var value: String
+    var type: ComparisonTokenType = .tokenized
+    
+    enum ComparisonTokenType {
+        case tokenized
+        case raw
+    }
+    
+}
+
+protocol Searchable: Hashable {
+    var comparisonTokens: [ComparisonToken] { get }
+    
+    func tokenize(_ query: String) -> [String]
+}
+
+extension Searchable {
+    func tokenize(_ input: String) -> [String] {
+        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
+        
+        return updatedInput
+    }
+}
+
 class GradesSearchResultViewModel: ObservableObject {
     @ObservedObject var vm: GradesViewModel
     @Published var results = [(grade: Grade, distance: Int)]()
@@ -294,49 +382,102 @@ class GradesSearchResultViewModel: ObservableObject {
     func gradesSearch(for query: String) async {
         await fetch()
         
+        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: vm.grades) {
+            
+            self.results = optionalResults
+        }
+        
+//        let tokens = tokenize(query)
+//
+//        var levenshteinValues = [Grade: Int]()
+//
+//        for token in tokens {
+//            for grade in vm.grades {
+//                print(grade.title)
+//
+//                // Combine all tokens of the current grade to one array of tokens.
+//                // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
+//                let gradeTokens = tokenize(grade.title)
+//                                + tokenize(grade.examiner)
+//                                + [grade.grade]
+//                                + tokenize(grade.lvNumber)
+//                                + tokenize(grade.modus)
+//                                + tokenize(grade.semester)
+//                                + tokenize(grade.studyDesignation)
+//                print(gradeTokens)
+//
+//                // Retrieve the best relative levensthein value for the current token, i.e. if the token would be "kempr" the best relative levenshtein values is 16.
+//                guard let newDistance = bestRelativeLevensthein(for: token, comparisonTokens: gradeTokens) else {
+//                    return
+//                }
+//                print(newDistance)
+//
+//                // If the id of the current grade already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
+//                if let currentDistance = levenshteinValues[grade], currentDistance > newDistance {
+//                    levenshteinValues[grade] = newDistance
+//                } else if levenshteinValues[grade] == nil { // Add the `newDistance` if there was no distance for the current grade id.
+//                    levenshteinValues[grade] = newDistance
+//                }
+//
+//            }
+//        }
+//
+//
+//        results = levenshteinValues
+//            .sorted { $0.value < $1.value } // Sort the grade ids by the increasing order since the lowest distance is the best.
+//            .map { levenshteinTuple in
+//                // Map the key and values to a tuple to have the tuple labels.
+//                return (grade: levenshteinTuple.0, distance: levenshteinTuple.1)
+//            }
+    }
+    
+    func fetch() async {
+        await vm.getGrades()
+    }
+    
+}
+
+struct GlobalSearch {
+    static func tokenSearch<T: Searchable>(for query: String, in searchables: [T]) -> [(T, Int)]? {
+        
         let tokens = tokenize(query)
         
-        var levenshteinValues = [Grade: Int]()
+        var levenshteinValues = [T: Int]()
         
         for token in tokens {
-            for grade in vm.grades {
-                print(grade.title)
+            for searchable in searchables {
                 
                 // Combine all tokens of the current grade to one array of tokens.
                 // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
-                let gradeTokens = tokenize(grade.title)
-                                + tokenize(grade.examiner)
-                                + [grade.grade]
-                                + tokenize(grade.lvNumber)
-                                + tokenize(grade.modus)
-                                + tokenize(grade.semester)
-                                + tokenize(grade.studyDesignation)
-                print(gradeTokens)
+                
                 
                 // Retrieve the best relative levensthein value for the current token, i.e. if the token would be "kempr" the best relative levenshtein values is 16.
-                guard let newDistance = bestRelativeLevensthein(for: token, comparisonTokens: gradeTokens) else {
-                    return
+                guard let newDistance = bestRelativeLevensthein(for: token, with: searchable) else {
+                    return nil
                 }
                 print(newDistance)
                 
                 // If the id of the current grade already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
-                if let currentDistance = levenshteinValues[grade], currentDistance > newDistance {
-                    levenshteinValues[grade] = newDistance
-                } else if levenshteinValues[grade] == nil { // Add the `newDistance` if there was no distance for the current grade id.
-                    levenshteinValues[grade] = newDistance
+                if let currentDistance = levenshteinValues[searchable], currentDistance > newDistance {
+                    levenshteinValues[searchable] = newDistance
+                } else if levenshteinValues[searchable] == nil { // Add the `newDistance` if there was no distance for the current grade id.
+                    levenshteinValues[searchable] = newDistance
                 }
                 
             }
         }
         
         
-        results = levenshteinValues
+        let results = levenshteinValues
             .sorted { $0.value < $1.value } // Sort the grade ids by the increasing order since the lowest distance is the best.
             .map { levenshteinTuple in
                 // Map the key and values to a tuple to have the tuple labels.
-                return (grade: levenshteinTuple.0, distance: levenshteinTuple.1)
+                return (levenshteinTuple.0, levenshteinTuple.1)
             }
+        
+        return results
     }
+    
     
     /// Returns the best relative levenshtein value for a given `token` and an array of `comparisonTokens`. The lower the more common is the `token` to one of the `comparisonTokens`.
     ///
@@ -351,34 +492,32 @@ class GradesSearchResultViewModel: ObservableObject {
     ///     - token: The string to be compared to the `comparisonTokens`.
     ///     - comparisonTokens: The array of strings which are compared to the `token`.
     /// - Returns: An optional integer indicating the best (lowest) relative levenshtein distance from `token` to the `comparisonTokens`.
-    func bestRelativeLevensthein(for token: String, comparisonTokens: [String]) -> Int? {
+    static func bestRelativeLevensthein<T: Searchable>(for token: String, with searchable: T) -> Int? {
         guard !token.isEmpty else {
             return nil
         }
         
-        return comparisonTokens.compactMap { comparisonToken in
-            guard comparisonToken.count > 0 else {
+            
+        let dataTokens: [String] = searchable.comparisonTokens.flatMap { $0.type == .tokenized ? tokenize($0.value) : [$0.value]}
+        
+        return dataTokens.compactMap { dataToken in
+            guard dataToken.count > 0 else {
                 return nil
             }
             
-            let result = Int(Double(token.levenshtein(to: comparisonToken))/Double(comparisonToken.count)*100)
+            let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
             
-            print("For token \(token) and compToken \(comparisonToken): \(result)")
+            print("For token \(token) and compToken \(dataToken): \(result)")
             
             return result
         }.min()
     }
     
-    func fetch() async {
-        await vm.getGrades()
-    }
-    
-    func tokenize(_ input: String) -> [String] {
-        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")).split(separator: " ").map({String($0)})
+    static func tokenize(_ input: String) -> [String] {
+        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
 
         return updatedInput
     }
-    
 }
 
 extension String {

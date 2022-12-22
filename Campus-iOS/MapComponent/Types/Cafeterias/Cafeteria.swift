@@ -21,7 +21,7 @@ struct Queue: Decodable, Hashable {
     let percent: Float
 }
 
-struct Cafeteria: Decodable, Hashable {
+struct Cafeteria: Decodable, Searchable {
     /*
      "location": {
         "address": "Arcisstraße 17, München",
@@ -50,6 +50,14 @@ struct Cafeteria: Decodable, Hashable {
         case queue
     }
     
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: name),
+            ComparisonToken(value: location.address),
+            ComparisonToken(value: String(location.latitude), type: .raw),
+            ComparisonToken(value: String(location.longitude), type: .raw)
+        ]
+    }
 }
 
 extension Array where Element == Cafeteria {

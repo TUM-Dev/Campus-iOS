@@ -32,6 +32,20 @@ enum GradeComponents {
         public var studyDesignation: String
         public var studyNumber: UInt64
         
+        var comparisonTokens: [ComparisonToken] {
+            get {
+                return [
+                    ComparisonToken(value: title),
+                    ComparisonToken(value: examiner),
+                    ComparisonToken(value: grade, type: .raw),
+                    ComparisonToken(value: lvNumber),
+                    ComparisonToken(value: modus),
+                    ComparisonToken(value: semester),
+                    ComparisonToken(value: studyDesignation)
+                ]
+            }
+        }
+        
         var modusShort: String {
             switch self.modus {
             case "Schriftlich": return "Written".localized
@@ -58,7 +72,8 @@ enum GradeComponents {
     }
 }
 
-extension Grade: Decodable {
+extension Grade: Decodable, Searchable {
+    
     // Need for a custom Decoder implementation as the XMLCoder library isn't able to handle missing Date properties and the entire decoding fails in case of a non-existing Date value
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
