@@ -137,21 +137,100 @@ struct SearchResultView: View {
                     Text("\(key) with accuracy of \(Int(accuracy*100)) %.")
                 }
             }
-            generateResultViews(for: vm.searchResults)
-            VStack {
-                GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
-                    .cornerRadius(25)
-                    .padding()
-                    .shadow(color: .gray.opacity(0.8), radius: 10)
-                CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(), query: $query)
-                    .cornerRadius(25)
-                    .padding()
-                    .shadow(color: .gray.opacity(0.8), radius: 10)
+//            VStack {
+//                GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
+//                    .cornerRadius(25)
+//                    .padding()
+//                    .shadow(color: .gray.opacity(0.8), radius: 10)
+//                CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(), query: $query)
+//                    .cornerRadius(25)
+//                    .padding()
+//                    .shadow(color: .gray.opacity(0.8), radius: 10)
+//            }
+            ScrollView {
+                ForEach(vm.searchResults, id: \.id) { result in
+                    switch result.type {
+                    case .Grade:
+//                        if let grade = result.values.first?.0 as? Grade {
+//                            Text(grade.title)
+//                        }
+                        if let gradeResults = result.values as? [(Grade, Int)] {
+                            ForEach(0..<gradeResults.count, id: \.self) { index in
+                                VStack {
+                                    Text(gradeResults[index].0.title)
+                                    //                            Text(gradeResults[index].0.title)
+                                    Text(gradeResults[index].0.examiner)
+                                    Text(gradeResults[index].0.grade)
+                                }
+                            }
+                        }
+                    case .Lecture:
+                        EmptyView()
+                    case .Cafeteria:
+                        EmptyView()
+//                        if let cafeteriaResults = result.values as? [(Cafeteria, Int)] {
+//                            ForEach(0..<cafeteriaResults.count, id: \.self) { index in
+//                                VStack {
+//                                    Text(cafeteriaResults[index].0.title)
+//                                    Text(cafeteriaResults[index].0.location.address)
+//                                    Text(cafeteriaResults[index].0.queue)
+//                                }
+//                            }
+//                        }
+                    case .News:
+                        EmptyView()
+                    case .StudyRoom:
+                        EmptyView()
+                    }
+                }
             }
             Spacer()
         }.onChange(of: query) { newQuery in
-            vm.search(for: newQuery)
+            Task {
+                await vm.search(for: newQuery)
+            }
         }
+    }
+    
+    enum ResultType {
+        case grade
+        case cafeteria
+    }
+    
+    @ViewBuilder
+    func resultsView(for query: Binding<String>) -> some View {
+        let resultViews = getBestMatches()
+        
+//        EmptyView()
+        ForEach(0..<resultViews.count, id: \.self) { index in
+            resultViews[index]
+                .cornerRadius(25)
+                .padding()
+                .shadow(color: .gray.opacity(0.8), radius: 10)
+        }
+    }
+    
+    func getBestMatches() -> [AnyView] {
+        let gradeSearchResultView = GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
+        let cafeteriaSearchResultView = CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(), query: $query)
+        
+        var results = [(Int, ResultType)]()
+        if let bestGradeMatch = gradeSearchResultView.vm.results.first?.distance {
+            results.append((bestGradeMatch, .grade))
+        } else if let bestCafeteriaMatch = cafeteriaSearchResultView.vm.results.first?.distance {
+            results.append((bestCafeteriaMatch, .cafeteria))
+        }
+        
+        let sortedMatches : [AnyView] = results.sorted(by: {$0.0 < $1.0}).map {$0.1}.map { result in
+            switch result {
+            case .grade:
+                return AnyView(gradeSearchResultView)
+            case .cafeteria:
+                return AnyView(cafeteriaSearchResultView)
+            }
+        }
+        
+        return  sortedMatches
     }
     
     @ViewBuilder
@@ -209,6 +288,17 @@ struct SearchResultView: View {
     }
 }
 
+struct SearchViewResult {
+    let view: any View
+    let distance: Int?
+    
+    init(view: some View, distance: Int?) {
+        self.view = view
+        self.distance = distance
+    }
+}
+
+
 class SearchResultViewModel: ObservableObject {
     @Published var searchResults = [SearchResult]()
     @Published var searchDataTypeResult = [String:Double]()
@@ -229,7 +319,7 @@ class SearchResultViewModel: ObservableObject {
         return updatedQuery
     }
     
-    func search(for query: String) {
+    func search(for query: String) async {
         let cleanedQuery = prepare(query)
         
         guard let modelOutput = dataTypeClassifier?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
@@ -239,9 +329,51 @@ class SearchResultViewModel: ObservableObject {
             print("\(label) was at \(accuracy)")
         }
         searchDataTypeResult = modelOutput
-//        searchResults = modelOutput.map {
-//            return SearchResult(type: <#T##SearchResultType#>, values: <#T##[Decodable]#>)
-//        }
+        
+        let gradeSearchVM = GradesSearchResultViewModel(model: self.model)
+        await gradeSearchVM.gradesSearch(for: query)
+        
+        
+        
+        let cafeteriaSearchVM = CafeteriasSearchResultViewModel()
+        await cafeteriaSearchVM.cafeteriasSearch(for: query)
+        
+        var resultOrder: [(SearchResultType, Int?)] = [(.Grade, gradeSearchVM.results.first?.distance),
+                                                       (.Cafeteria, cafeteriaSearchVM.results.first?.distance)]
+        resultOrder.sort { resultLhs, resultRhs in
+            if let bestLhs = resultLhs.1 {
+                if let bestRhs = resultRhs.1 {
+                    return bestLhs < bestRhs
+                } else {
+                    return true
+                }
+            } else if resultRhs.1 != nil {
+                return false
+            } else {
+                return true
+            }
+        }
+        
+        var sortedResults = [SearchResult]()
+        for result in resultOrder {
+            switch result.0 {
+            case .Grade:
+                sortedResults.append(SearchResult(type: .Cafeteria, values: cafeteriaSearchVM.results))
+            case .Cafeteria:
+                sortedResults.append(SearchResult(type: .Grade, values: gradeSearchVM.results))
+            case .Lecture: break
+                
+            case .News: break
+                
+            case .StudyRoom: break
+                
+            }
+        }
+        
+        searchResults = sortedResults
+        
+        
+        
         
 //        if query.contains("Grade") {
 //            searchResults.append(SearchResult(type: .Grade, values: Grade.dummyData))
@@ -252,8 +384,9 @@ class SearchResultViewModel: ObservableObject {
 }
 
 struct SearchResult {
+    let id = UUID()
     let type: SearchResultType
-    var values: [Decodable]
+    var values: [(any Searchable, Int)]
 }
 
 enum SearchResultType: String {
@@ -264,7 +397,7 @@ enum SearchResultType: String {
     case StudyRoom
 }
 
-struct CafeteriasSearchResultView: View{
+struct CafeteriasSearchResultView: View {
     @StateObject var vm: CafeteriasSearchResultViewModel
     @Binding var query: String
 
@@ -290,6 +423,7 @@ struct CafeteriasSearchResultView: View{
     }
 }
 
+@MainActor
 class CafeteriasSearchResultViewModel: ObservableObject {
     
     @Published var results = [(cafeteria: Cafeteria, distance: Int)]()
@@ -346,6 +480,8 @@ struct GradesSearchResultView: View {
     }
 }
 
+infix operator =/
+
 struct ComparisonToken: Hashable {
     var value: String
     var type: ComparisonTokenType = .tokenized
@@ -355,19 +491,73 @@ struct ComparisonToken: Hashable {
         case raw
     }
     
+    static func =/ (lhs: Self, rhs: Self) -> Bool {
+        guard lhs.value.count == rhs.value.count else {
+            return false
+        }
+        
+        for i in 0..<lhs.value.count {
+            if Array(lhs.value)[i] != Array(rhs.value)[i] {
+                return false
+            }
+        }
+        
+        return true
+    }
+    
+    func testing() -> Bool {
+        let a = ComparisonToken(value: "hello")
+        let b = ComparisonToken(value: "olleh")
+        
+        return a =/ b
+    }
 }
+
 
 protocol Searchable: Hashable {
     var comparisonTokens: [ComparisonToken] { get }
     
-    func tokenize(_ query: String) -> [String]
+    func tokenize() -> [String]
 }
 
 extension Searchable {
-    func tokenize(_ input: String) -> [String] {
-        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
+    
+    /// Produce an array of tokens from the `comprarisonTokens` stored in `self`.
+    ///
+    /// ```
+    /// struct Grades: Searchable {
+    ///     let id = UUID()
+    ///     let title: String
+    ///     let examiner: String
+    ///     let grade: String
+    ///     let semester: String
+    ///
+    ///     var comparisonTokens: [ComparisonToken] = {
+    ///         ComparisonToken(value: title),
+    ///         ComparisonToken(value: examiner),
+    ///         ComparisonToken(value: grade, type: .raw),
+    ///         ComparisonToken(value: semester)
+    ///     }
+    /// }
+    ///
+    /// let grade = Grade(title: "Grundlagen: Betriebssysteme", examiner: "Ott", grade: "2,7", semester: "21W")
+    ///
+    /// let comparisonTokens = grade.tokenize() // ["grundlagen", "betriebssysteme", "ott", "2,7", semester: "21w"]
+    /// ```
+    /// This method collects the `comparisonTokens` to one array if strings. Each `comparisonToken` is added to the array either `.raw`, i.e. the umodified `comparisonToken.value` or it is added `.tokenized`, i.e. the only lowercase letters, a single whitespace, and numbers from 0 to 9 are left. E.g. `comparisonToken.value = "Hello World! "`will be tokenized to `["hello", "world"]` and added to the returned array.
+    ///
+    /// > Important Note: This is just the standard implementation for the tokenization. If the respective type need a custom method, this can be overridden.
+    ///
+    /// - Returns: An array of Strings representing tokens.
+    func tokenize() -> [String] {
         
-        return updatedInput
+        return self.comparisonTokens.flatMap { comparisonToken in
+            if comparisonToken.type == .tokenized {
+                return comparisonToken.value.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
+            }
+            
+            return [comparisonToken.value]
+        }
     }
 }
 
@@ -433,11 +623,48 @@ class GradesSearchResultViewModel: ObservableObject {
     
     func fetch() async {
         await vm.getGrades()
+        
     }
-    
 }
 
-struct GlobalSearch {
+enum GlobalSearch {
+    /// Returns an optional array of tuples in ascending order by the best search matches of a given array of a type you specify and a search `query`.
+    ///
+    /// ```
+    /// struct Grades: Searchable {
+    ///     let id = UUID()
+    ///     let title: String
+    ///     let examiner: String
+    ///     let grade: String
+    ///     let semester: String
+    ///
+    ///     var comparisonTokens: [ComparisonToken] = {
+    ///         ComparisonToken(value: title),
+    ///         ComparisonToken(value: examiner),
+    ///         ComparisonToken(value: grade, type: .raw),
+    ///         ComparisonToken(value: semester)
+    ///     }
+    /// }
+    ///
+    /// let grades = [
+    ///     Grade(title: "Grundlagen: Betriebssysteme", examiner: "Ott", grade: "2,7", semester: "21W"),
+    ///     Grade(title: "Einführung in die Informatik", examiner: "Seidl", grade: "2,0", semester: "22W"),
+    /// ]
+    ///
+    /// let query = "grade ott"
+    ///
+    /// let results = tokenSearch(for: query, in: grades) // [
+    ///     (Grade(title: "Grundlagen: Betriebssysteme", examiner: "Ott", grade: "2,7", semester: "21W"), 0),
+    ///     (Grade(title: "Einführung in die Informatik", examiner: "Seidl", grade: "2,0", semester: "22W"), 80)
+    /// ]
+    /// ```
+    ///
+    /// > Warning: It can return nil if either the `query` is an empty String and/or if the `value`are an empty string of each `comparisonToken` of each `searchable`.
+    ///
+    /// - Parameters:
+    ///     - query: A String representing the query to be searched for.
+    ///     - searchables: An array of a type conforming to the `Searchable` protocol, which will be searched through by the `query`.
+    /// - Returns: An array of tuples containing a object of the specified type conforming to `Searchable` and an Integer, representing the best relative levenshtein distance. The array is of ascending order by which object of the `searchables` matches `query` the most.
     static func tokenSearch<T: Searchable>(for query: String, in searchables: [T]) -> [(T, Int)]? {
         
         let tokens = tokenize(query)
@@ -447,17 +674,13 @@ struct GlobalSearch {
         for token in tokens {
             for searchable in searchables {
                 
-                // Combine all tokens of the current grade to one array of tokens.
-                // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
-                
-                
                 // Retrieve the best relative levensthein value for the current token, i.e. if the token would be "kempr" the best relative levenshtein values is 16.
                 guard let newDistance = bestRelativeLevensthein(for: token, with: searchable) else {
                     return nil
                 }
                 print(newDistance)
                 
-                // If the id of the current grade already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
+                // If the id of the current `searchable` already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
                 if let currentDistance = levenshteinValues[searchable], currentDistance > newDistance {
                     levenshteinValues[searchable] = newDistance
                 } else if levenshteinValues[searchable] == nil { // Add the `newDistance` if there was no distance for the current grade id.
@@ -469,38 +692,55 @@ struct GlobalSearch {
         
         
         let results = levenshteinValues
-            .sorted { $0.value < $1.value } // Sort the grade ids by the increasing order since the lowest distance is the best.
+            .sorted { $0.value < $1.value } // Sort the `searchable` ids by the increasing order since the lowest distance is the best.
             .map { levenshteinTuple in
-                // Map the key and values to a tuple to have the tuple labels.
+                // Map the key and values to a tuple to have the tuple labels inside the respective ViewModel.
                 return (levenshteinTuple.0, levenshteinTuple.1)
             }
         
         return results
     }
     
-    
-    /// Returns the best relative levenshtein value for a given `token` and an array of `comparisonTokens`. The lower the more common is the `token` to one of the `comparisonTokens`.
+    /// Returns the best relative levenshtein value for a given `String` and a `Searchable`. The lower the result, the more common is the `token` to one property of the `searchable`.
     ///
     /// ```
-    /// bestRelativeLevensthein(for: "hello", comparisonTokens: ["world", "hi", "helo"]) // 25
-    /// ```
-    /// The formula to calculate the relative levenshtein distance for `token` and one `comparisonToken` is the levenshtein distance between the two strings divided by the length of the `comparisonToken` and multiplied by `100`.
+    /// struct Grades: Searchable {
+    ///     let id = UUID()
+    ///     let title: String
+    ///     let examiner: String
+    ///     let grade: String
+    ///     let semester: String
     ///
-    /// > Warning: Emtpy `comparisonTokens` will not be concidered when evaluating the best (i.e. lowest) relative levensthein distance. If all `comparisonTokens` and/or `token` are empty strings `nil` returns.
+    ///     var comparisonTokens: [ComparisonToken] = {
+    ///         ComparisonToken(value: title),
+    ///         ComparisonToken(value: examiner),
+    ///         ComparisonToken(value: grade, type: .raw),
+    ///         ComparisonToken(value: semester)
+    ///     }
+    /// }
+    ///
+    /// let grade = Grade(title: "Grundlagen: Betriebssysteme", examiner: "Ott", grade: "2,7", semester: "21W")
+    ///
+    /// let relLevensheit = bestRelativeLevensthein(for: "betribsystme", searchable: grade) // 20
+    /// ```
+    /// It returns the relative levenshtein distance for `token` and one `comparisonToken`of the `searchable` and is calculated by the levenshtein distance between the the two strings divided by the length of the `comparisonToken` and multiplied by `100`. This requires `searchable` to conform to the `Searchable` protocol.
+    ///
+    /// > Warning: Empty `comparisonToken` will not be concidered when evaluating the best (i.e. lowest) relative levensthein distance. If all `comparisonTokens` and/or `token` are empty strings `nil` returns.
     ///
     /// - Parameters:
     ///     - token: The string to be compared to the `comparisonTokens`.
-    ///     - comparisonTokens: The array of strings which are compared to the `token`.
-    /// - Returns: An optional integer indicating the best (lowest) relative levenshtein distance from `token` to the `comparisonTokens`.
+    ///     - searchable: The instance of an type conforming to the `Searchable` protocol, which needs to have a property `comparisonToken`. They represent the tokens of the `Searchable` which are compared to the `token`.
+    /// - Returns: An optional integer indicating the best (lowest) relative levenshtein distance from `token` to the `searchable`.
     static func bestRelativeLevensthein<T: Searchable>(for token: String, with searchable: T) -> Int? {
         guard !token.isEmpty else {
             return nil
         }
         
-            
-        let dataTokens: [String] = searchable.comparisonTokens.flatMap { $0.type == .tokenized ? tokenize($0.value) : [$0.value]}
+        // Combine all tokens of the current searchable to one array of strings with `tokenize()`.
+        // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
+        // Afterwards the relative levenshtein distance is calculated between the `token` and each `comparisonToken` from the `searchable`.
         
-        return dataTokens.compactMap { dataToken in
+        return searchable.tokenize().compactMap { dataToken in
             guard dataToken.count > 0 else {
                 return nil
             }
@@ -512,11 +752,20 @@ struct GlobalSearch {
             return result
         }.min()
     }
-    
-    static func tokenize(_ input: String) -> [String] {
-        let updatedInput = input.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
 
-        return updatedInput
+    /// Produce an array of tokens from a `query`.
+    ///
+    /// ```
+    /// let tokens = tokenize("grade Grundlagen:  Betriebssysteme ") // ["grade", "grundlagen", "betriebssysteme"]
+    /// ```
+    ///
+    /// - Parameters:
+    ///     - query: The string to be converted to tokens..
+    /// - Returns: An array representing tokens derived from the `query`.
+    static func tokenize(_ query: String) -> [String] {
+        let updatedQuery = query.trimmingCharacters(in: .whitespaces).lowercased().folding(options: [.diacriticInsensitive], locale: .current).keep(validChars: Set("abcdefghijklmnopqrstuvwxyz 1234567890")).split(separator: " ").map({String($0)})
+
+        return updatedQuery
     }
 }
 
