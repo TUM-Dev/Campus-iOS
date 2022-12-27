@@ -124,6 +124,34 @@ struct SearchView<Content: View> : View {
     }
 }
 
+struct GradeSearchView: View {
+    @Binding var results: [(grade: Grade, distance: Int)]
+    
+    var body: some View {
+        ForEach(results, id: \.grade.id) { gradeResult in
+            VStack {
+                Text(gradeResult.grade.title)
+                Text(gradeResult.grade.grade)
+                Text(gradeResult.grade.examiner)
+            }
+        }
+    }
+}
+
+struct CafeteriaSearchView: View {
+    @Binding var results: [(cafeteria: Cafeteria, distance: Int)]
+    
+    var body: some View {
+        ForEach(results, id: \.cafeteria.id) { cafeteriaResult in
+            VStack {
+                Text(cafeteriaResult.cafeteria.title ?? "no cafeteria title")
+                Text(cafeteriaResult.cafeteria.location.address)
+                Text(cafeteriaResult.cafeteria.name)
+            }
+        }
+    }
+}
+
 struct SearchResultView: View {
     @StateObject var vm: SearchResultViewModel
     @Binding var query: String
@@ -137,6 +165,23 @@ struct SearchResultView: View {
                     Text("\(key) with accuracy of \(Int(accuracy*100)) %.")
                 }
             }
+            ScrollView {
+                ForEach(vm.orderedTypes, id: \.rawValue) { type in
+                    switch type {
+                    case .Grade:
+                        GradeSearchView(results: $vm.gradeResults)
+                    case .Cafeteria:
+                        CafeteriaSearchView(results: $vm.cafeteriaResults)
+                    case .News:
+                        EmptyView()
+                    case .StudyRoom:
+                        EmptyView()
+                    case .Lecture:
+                        EmptyView()
+                    }
+                }
+            }
+           
 //            VStack {
 //                GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model), query: $query)
 //                    .cornerRadius(25)
@@ -147,43 +192,43 @@ struct SearchResultView: View {
 //                    .padding()
 //                    .shadow(color: .gray.opacity(0.8), radius: 10)
 //            }
-            ScrollView {
-                ForEach(vm.searchResults, id: \.id) { result in
-                    switch result.type {
-                    case .Grade:
-//                        if let grade = result.values.first?.0 as? Grade {
-//                            Text(grade.title)
-//                        }
-                        if let gradeResults = result.values as? [(Grade, Int)] {
-                            ForEach(0..<gradeResults.count, id: \.self) { index in
-                                VStack {
-                                    Text(gradeResults[index].0.title)
-                                    //                            Text(gradeResults[index].0.title)
-                                    Text(gradeResults[index].0.examiner)
-                                    Text(gradeResults[index].0.grade)
-                                }
-                            }
-                        }
-                    case .Lecture:
-                        EmptyView()
-                    case .Cafeteria:
-                        EmptyView()
-//                        if let cafeteriaResults = result.values as? [(Cafeteria, Int)] {
-//                            ForEach(0..<cafeteriaResults.count, id: \.self) { index in
+//            ScrollView {
+//                ForEach(vm.searchResults, id: \.id) { result in
+//                    switch result.type {
+//                    case .Grade:
+////                        if let grade = result.values.first?.0 as? Grade {
+////                            Text(grade.title)
+////                        }
+//                        if let gradeResults = result.values as? [(Grade, Int)] {
+//                            ForEach(0..<gradeResults.count, id: \.self) { index in
 //                                VStack {
-//                                    Text(cafeteriaResults[index].0.title)
-//                                    Text(cafeteriaResults[index].0.location.address)
-//                                    Text(cafeteriaResults[index].0.queue)
+//                                    Text(gradeResults[index].0.title)
+//                                    //                            Text(gradeResults[index].0.title)
+//                                    Text(gradeResults[index].0.examiner)
+//                                    Text(gradeResults[index].0.grade)
 //                                }
 //                            }
 //                        }
-                    case .News:
-                        EmptyView()
-                    case .StudyRoom:
-                        EmptyView()
-                    }
-                }
-            }
+//                    case .Lecture:
+//                        EmptyView()
+//                    case .Cafeteria:
+//                        EmptyView()
+////                        if let cafeteriaResults = result.values as? [(Cafeteria, Int)] {
+////                            ForEach(0..<cafeteriaResults.count, id: \.self) { index in
+////                                VStack {
+////                                    Text(cafeteriaResults[index].0.title)
+////                                    Text(cafeteriaResults[index].0.location.address)
+////                                    Text(cafeteriaResults[index].0.queue)
+////                                }
+////                            }
+////                        }
+//                    case .News:
+//                        EmptyView()
+//                    case .StudyRoom:
+//                        EmptyView()
+//                    }
+//                }
+//            }
             Spacer()
         }.onChange(of: query) { newQuery in
             Task {
@@ -302,6 +347,9 @@ struct SearchViewResult {
 class SearchResultViewModel: ObservableObject {
     @Published var searchResults = [SearchResult]()
     @Published var searchDataTypeResult = [String:Double]()
+    @Published var gradeResults = [(grade: Grade, distance: Int)]()
+    @Published var cafeteriaResults = [(cafeteria: Cafeteria, distance: Int)]()
+    @Published var orderedTypes = [SearchResultType]()
     @ObservedObject var model: Model
     
     init(model: Model) {
@@ -330,57 +378,97 @@ class SearchResultViewModel: ObservableObject {
         }
         searchDataTypeResult = modelOutput
         
-        let gradeSearchVM = GradesSearchResultViewModel(model: self.model)
-        await gradeSearchVM.gradesSearch(for: query)
-        
-        
-        
-        let cafeteriaSearchVM = CafeteriasSearchResultViewModel()
-        await cafeteriaSearchVM.cafeteriasSearch(for: query)
-        
-        var resultOrder: [(SearchResultType, Int?)] = [(.Grade, gradeSearchVM.results.first?.distance),
-                                                       (.Cafeteria, cafeteriaSearchVM.results.first?.distance)]
-        resultOrder.sort { resultLhs, resultRhs in
-            if let bestLhs = resultLhs.1 {
-                if let bestRhs = resultRhs.1 {
-                    return bestLhs < bestRhs
-                } else {
-                    return true
-                }
-            } else if resultRhs.1 != nil {
-                return false
-            } else {
-                return true
-            }
-        }
-        
-        var sortedResults = [SearchResult]()
-        for result in resultOrder {
-            switch result.0 {
-            case .Grade:
-                sortedResults.append(SearchResult(type: .Cafeteria, values: cafeteriaSearchVM.results))
-            case .Cafeteria:
-                sortedResults.append(SearchResult(type: .Grade, values: gradeSearchVM.results))
-            case .Lecture: break
-                
-            case .News: break
-                
-            case .StudyRoom: break
-                
-            }
-        }
-        
-        searchResults = sortedResults
-        
-        
-        
-        
-//        if query.contains("Grade") {
-//            searchResults.append(SearchResult(type: .Grade, values: Grade.dummyData))
-//            searchResults.append(SearchResult(type: .Lecture, values: Lecture.dummyData))
+//        let gradeSearchVM = GradesSearchResultViewModel(model: self.model)
+//        await gradeSearchVM.gradesSearch(for: query)
+//
+//        let cafeteriaSearchVM = CafeteriasSearchResultViewModel()
+//        await cafeteriaSearchVM.cafeteriasSearch(for: query)
+//
+//        var resultOrder: [(SearchResultType, Int?)] = [(.Grade, gradeSearchVM.results.first?.distance),
+//                                                       (.Cafeteria, cafeteriaSearchVM.results.first?.distance)]
+//        resultOrder.sort { resultLhs, resultRhs in
+//            if let bestLhs = resultLhs.1 {
+//                if let bestRhs = resultRhs.1 {
+//                    return bestLhs < bestRhs
+//                } else {
+//                    return true
+//                }
+//            } else if resultRhs.1 != nil {
+//                return false
+//            } else {
+//                return true
+//            }
 //        }
+//
+//        var sortedResults = [SearchResult]()
+//        for result in resultOrder {
+//            switch result.0 {
+//            case .Grade:
+//                sortedResults.append(SearchResult(type: .Cafeteria, values: cafeteriaSearchVM.results))
+//            case .Cafeteria:
+//                sortedResults.append(SearchResult(type: .Grade, values: gradeSearchVM.results))
+//            case .Lecture: break
+//
+//            case .News: break
+//
+//            case .StudyRoom: break
+//
+//            }
+//        }
+//
+//        searchResults = sortedResults
+        
+        //--------------------------------------------------------------------------------
+        
+        var confidence = [SearchResultType: Int]()
+        
+        if let optionalGradeResults = await GradeSearch.find(for: query, with: self.model) {
+            self.gradeResults = optionalGradeResults
+            if let first = gradeResults.first {
+                confidence[.Grade] = first.1
+            }
+        }
+        
+        if let optionalCafeteriaResults = await CafeteriaSearch.find(for: query) {
+            self.cafeteriaResults = optionalCafeteriaResults
+            if let first = cafeteriaResults.first {
+                confidence[.Cafeteria] = first.1
+            }
+        }
+        
+        orderedTypes = confidence.sorted(by: {$0.value < $1.value}).map{$0.key}
+
     }
     
+}
+
+enum GradeSearch {
+    static func find(for query: String, with model: Model) async -> [(grade: Grade, distance: Int)]? {
+        let gradeVM = await GradesViewModel(model: model, service: GradesService())
+        await gradeVM.getGrades()
+        
+        return await GlobalSearch.tokenSearch(for: query, in: gradeVM.grades)
+    }
+}
+
+enum CafeteriaSearch {
+    static func find(for query: String) async -> [(cafeteria: Cafeteria, distance: Int)]? {
+        let cafeterias = await fetch()
+        
+        return GlobalSearch.tokenSearch(for: query, in: cafeterias)
+    }
+    
+    static func fetch() async -> [Cafeteria] {
+        var cafeterias = [Cafeteria]()
+        do {
+            cafeterias = try await CafeteriasService().fetch(forcedRefresh: false)
+            return cafeterias
+        } catch {
+            print("No cafeterias were fetched")
+        }
+        
+        return cafeterias
+    }
 }
 
 struct SearchResult {
