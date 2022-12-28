@@ -16,7 +16,7 @@ struct GradesSearchResultView: View {
         ZStack {
             Color.white
             ScrollView {
-                ForEach(vm.results, id: \.0) { result in
+                ForEach(vm.results, id: \.grade) { result in
                     VStack {
                         Text(result.grade.title).foregroundColor(.indigo)
                         Text(result.grade.examiner).foregroundColor(.teal)
@@ -26,7 +26,6 @@ struct GradesSearchResultView: View {
             }
         }
         .onChange(of: query) { newQuery in
-            print(query)
             Task {
                 await vm.gradesSearch(for: newQuery)
             }

@@ -18,7 +18,14 @@ struct CalendarAPIResponse: Decodable {
     }
 }
 
-struct CalendarEvent: Identifiable, Equatable, Entity {
+struct CalendarEvent: Identifiable, Equatable, Entity, Searchable {
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: title ?? ""),
+            ComparisonToken(value: location ?? ""),
+        ]
+    }
+    
     var descriptionText: String?
     var endDate: Date?
     var id: Int64

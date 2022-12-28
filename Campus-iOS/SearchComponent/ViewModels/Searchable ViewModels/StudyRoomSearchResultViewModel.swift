@@ -20,8 +20,9 @@ struct StudyRoomSearchResult: Searchable {
     }
 }
 
+@MainActor
 class StudyRoomSearchResultViewModel: ObservableObject {
-    @Published var results = [(studyRoomResult: StudyRoomSearchResult, distance: Int)]()
+    @Published var results = [(studyRoomResult: StudyRoomSearchResult, distance: Distances)]()
     private let studyRoomService: StudyRoomsServiceProtocol = StudyRoomsService()
     
     func studyRoomSearch(for query: String) async {
@@ -31,8 +32,18 @@ class StudyRoomSearchResultViewModel: ObservableObject {
             return
         }
         
+        let groupRooms: [StudyRoomSearchResult] = groups.map { currentGroup in
+            let currentRooms = rooms.filter {
+                return currentGroup.rooms?.contains($0.id) ?? false
+            }
+            
+            return StudyRoomSearchResult(group: currentGroup, rooms: currentRooms)
+        }
         
-        
+        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: groupRooms) {
+            
+            self.results = optionalResults
+        }
     }
     
     func fetch() async -> StudyRoomApiRespose {

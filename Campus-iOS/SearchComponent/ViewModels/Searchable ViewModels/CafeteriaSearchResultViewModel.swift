@@ -32,6 +32,7 @@ class CafeteriasSearchResultViewModel: ObservableObject {
     }
     
     func fetch() async -> [Cafeteria] {
+        //TODO: Error handling instead of returning an empty array
         var cafeterias = [Cafeteria]()
         do {
             cafeterias = try await cafeteriaService.fetch(forcedRefresh: false)

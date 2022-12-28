@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CafeteriasSearchResultView: View {
-    @StateObject var vm: CafeteriasSearchResultViewModel
+    @StateObject var vm = CafeteriasSearchResultViewModel()
     @Binding var query: String
     
     var body: some View {

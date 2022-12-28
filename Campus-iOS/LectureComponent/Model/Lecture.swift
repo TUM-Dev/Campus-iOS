@@ -15,7 +15,17 @@ enum LectureComponents {
         public var row: [Row]
     }
 
-    struct Row: Decodable, Identifiable, Equatable {
+    struct Row: Decodable, Identifiable, Equatable, Searchable {
+        var comparisonTokens: [ComparisonToken] {
+            return [
+                ComparisonToken(value: title),
+                ComparisonToken(value: semesterID, type: .raw),
+                ComparisonToken(value: organisation),
+                ComparisonToken(value: speaker),
+                ComparisonToken(value: semester)
+            ]
+        }
+        
         public var id: UInt64
         public var lvNumber: UInt64
         public var title: String
