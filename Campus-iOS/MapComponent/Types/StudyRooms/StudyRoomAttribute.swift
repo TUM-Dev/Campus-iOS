@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct StudyRoomAttribute: Entity {
+struct StudyRoomAttribute: Entity, Searchable {
+    
     var detail: String?
     var name: String?
 
@@ -24,5 +25,12 @@ struct StudyRoomAttribute: Entity {
 
         self.detail = detail
         self.name = name
+    }
+    
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: detail ?? ""),
+            ComparisonToken(value: name ?? "")
+        ]
     }
 }

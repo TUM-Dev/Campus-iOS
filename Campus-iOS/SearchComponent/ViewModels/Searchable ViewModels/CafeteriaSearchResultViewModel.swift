@@ -10,7 +10,7 @@ import Foundation
 @MainActor
 class CafeteriasSearchResultViewModel: ObservableObject {
     
-    @Published var results = [(cafeteria: Cafeteria, distance: Int)]()
+    @Published var results = [(cafeteria: Cafeteria, distances: Distances)]()
     private let cafeteriaService: CafeteriasServiceProtocol = CafeteriasService()
     
     
@@ -19,8 +19,15 @@ class CafeteriasSearchResultViewModel: ObservableObject {
         let cafeterias = await fetch()
         
         if let optionalResults = GlobalSearch.tokenSearch(for: query, in: cafeterias) {
-            
             self.results = optionalResults
+            
+            #if DEBUG
+            print(">>> \(query)")
+            optionalResults.forEach { result in
+                print(result.0)
+                print(result.1)
+            }
+            #endif
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+typealias Distances = [Int]
 
 enum GlobalSearch {
     /// Returns an optional array of tuples in ascending order by the best search matches of a given array of a type you specify and a search `query`.
@@ -45,34 +46,28 @@ enum GlobalSearch {
     ///     - query: A String representing the query to be searched for.
     ///     - searchables: An array of a type conforming to the `Searchable` protocol, which will be searched through by the `query`.
     /// - Returns: An array of tuples containing a object of the specified type conforming to `Searchable` and an Integer, representing the best relative levenshtein distance. The array is of ascending order by which object of the `searchables` matches `query` the most.
-    static func tokenSearch<T: Searchable>(for query: String, in searchables: [T]) -> [(T, Int)]? {
+    static func tokenSearch<T: Searchable>(for query: String, in searchables: [T]) -> [(T, Distances)]? {
         
         let tokens = tokenize(query)
         
-        var levenshteinValues = [T: Int]()
+        var levenshteinValues = [T: Distances]()
         
         for token in tokens {
             for searchable in searchables {
                 
                 // Retrieve the best relative levensthein value for the current token, i.e. if the token would be "kempr" the best relative levenshtein values is 16.
                 guard let newDistance = bestRelativeLevensthein(for: token, with: searchable) else {
-                    return nil
+                    break
                 }
                 print(newDistance)
                 
                 // If the id of the current `searchable` already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
-                if let currentDistance = levenshteinValues[searchable], currentDistance > newDistance {
-                    levenshteinValues[searchable] = newDistance
-                } else if levenshteinValues[searchable] == nil { // Add the `newDistance` if there was no distance for the current grade id.
-                    levenshteinValues[searchable] = newDistance
-                }
-                
+                levenshteinValues[searchable, default: []].append(newDistance)
             }
         }
         
-        
         let results = levenshteinValues
-            .sorted { $0.value < $1.value } // Sort the `searchable` ids by the increasing order since the lowest distance is the best.
+            .sorted { $0.value.sorted(by: <) >> $1.value.sorted(by: <) } // Sort the `searchable` ids by the increasing order since the lowest distance is the best.
             .map { levenshteinTuple in
                 // Map the key and values to a tuple to have the tuple labels inside the respective ViewModel.
                 return (levenshteinTuple.0, levenshteinTuple.1)
@@ -127,11 +122,35 @@ enum GlobalSearch {
             
             let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
             
-            print("For token \(token) and compToken \(dataToken): \(result)")
+            //print("For token \(token) and compToken \(dataToken): \(result)")
             
             return result
         }.min()
     }
+    
+    static func relativeLevensthein<T: Searchable>(for token: String, with searchable: T) -> [Int]? {
+        guard !token.isEmpty else {
+            return nil
+        }
+        
+        // Combine all tokens of the current searchable to one array of strings with `tokenize()`.
+        // E.g.: ["grundlagen", "datenbanken", "kemper", "1,0", "in0008", "schriftlich", "21w", "informatik"]
+        // Afterwards the relative levenshtein distance is calculated between the `token` and each `comparisonToken` from the `searchable`.
+        
+        return searchable.tokenize().compactMap { dataToken in
+            guard dataToken.count > 0 else {
+                return nil
+            }
+            
+            let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
+            
+            //print("For token \(token) and compToken \(dataToken): \(result)")
+            
+            return result
+        }
+    }
+    
+    
     
     /// Produce an array of tokens from a `query`.
     ///
@@ -147,4 +166,23 @@ enum GlobalSearch {
         
         return updatedQuery
     }
+}
+
+infix operator >>
+
+func >>(_ lhs: [Int], _ rhs: [Int]) -> Bool {
+    let index = min(lhs.count, rhs.count)
+    for i in 0..<index {
+        if lhs[i] < rhs[i] { // lhs is better if a e.g. the first value of lhs is > than the first value of rhs
+            return true
+        } else if lhs[i] > rhs[i] { // rhs is better if a e.g. all values until the 5th value are the same. The 5th value of lhs is < than the 5th value of rhs
+            return false
+        }
+    }
+    
+    // If lhs == [] != rhs false is returned
+    // If rhs == [] != lhs true is returned
+    // If rhs == [] == lhs true is returned
+    // If all values are the same, then return true if lhs has equal or more values than rhs else return false
+    return lhs.count >= rhs.count
 }

@@ -8,7 +8,24 @@
 import Foundation
 import SwiftUI
 
-struct StudyRoom: Entity {
+struct StudyRoom: Entity, Searchable {
+    static func == (lhs: StudyRoom, rhs: StudyRoom) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    var comparisonTokens: [ComparisonToken] {
+        get {
+            return [
+                ComparisonToken(value: name ?? ""),
+                ComparisonToken(value: buildingCode ?? "", type: .raw),
+                ComparisonToken(value: buildingName ?? ""),
+                ComparisonToken(value: String(buildingNumber), type: .raw),
+                ComparisonToken(value: status ?? ""),
+                ComparisonToken(value: occupiedBy ?? "")
+            ] + (attributes?.flatMap { $0.comparisonTokens } ?? [])
+        }
+    }
+    
     var buildingCode: String?
     var buildingName: String?
     var buildingNumber: Int64
