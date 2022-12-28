@@ -98,6 +98,6 @@ struct WidgetScreen: View {
                         }
                 }
             }
-        }.padding(.top, 50)
+        }.padding(.top, 60)
     }
 }

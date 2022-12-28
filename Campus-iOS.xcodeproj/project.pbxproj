@@ -645,12 +645,12 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
-		1E9C1059293EA008002C4C47 /* Header */ = {
+		1E9C1059293EA008002C4C47 /* HeaderComponent */ = {
 			isa = PBXGroup;
 			children = (
 				1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */,
 			);
-			path = Header;
+			path = HeaderComponent;
 			sourceTree = "<group>";
 		};
 		1EF530A729192D51008F2C9B /* Design */ = {
@@ -1127,7 +1127,7 @@
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				1EF530A729192D51008F2C9B /* Design */,
 				366F0E8327580CFB0091651D /* App.swift */,
-				1E9C1059293EA008002C4C47 /* Header */,
+				1E9C1059293EA008002C4C47 /* HeaderComponent */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
@@ -2105,7 +2105,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2148,7 +2148,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 53;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 7PLLZ436SG;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

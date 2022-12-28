@@ -30,7 +30,7 @@ struct GradesScreen: View {
                     GradesView(
                         vm: self.vm
                     )
-                    .padding(.top, 20)
+                    .padding(.top, 30)
                     .refreshable {
                         await vm.getGrades(forcedRefresh: true)
                     }
