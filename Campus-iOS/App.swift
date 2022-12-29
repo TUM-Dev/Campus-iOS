@@ -43,6 +43,7 @@ struct CampusApp: App {
                 })
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .background(Color.primaryBackground)
         }
     }
     
@@ -79,7 +80,7 @@ struct CampusApp: App {
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
-                    WidgetScreen(model: model)
+                    HomeView(model: model)
                         .overlay(NavigationBarView(model: model))
                 }
                 .navigationViewStyle(.stack)

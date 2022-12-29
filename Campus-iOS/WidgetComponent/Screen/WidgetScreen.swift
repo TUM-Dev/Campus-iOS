@@ -27,7 +27,7 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                ScrollView {
+                Group {
                     self.generateContent(
                         views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
                     )
@@ -47,7 +47,6 @@ struct WidgetScreen: View {
         .onReceive(timer) { _ in
             refresh.toggle()            
         }
-        .background(Color.primaryBackground)
     }
     
     // Source: https://stackoverflow.com/a/58876712
@@ -98,6 +97,6 @@ struct WidgetScreen: View {
                         }
                 }
             }
-        }.padding(.top, 60)
+        }
     }
 }
