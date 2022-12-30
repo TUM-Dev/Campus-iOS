@@ -13,6 +13,7 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView{
+            ContactView()
             WidgetScreen(model: model)
         }
         .background(Color.primaryBackground)

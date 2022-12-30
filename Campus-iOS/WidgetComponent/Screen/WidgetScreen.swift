@@ -61,7 +61,6 @@ struct WidgetScreen: View {
         else { widgetTitle = "Welcome"}
         
         return VStack{
-            Text(widgetTitle).font(.largeTitle).bold().frame(width: 350, height: 50, alignment: .leading)
             ZStack(alignment: .topLeading) {
                 ForEach(0..<views.count, id: \.self) { i in
                     views[i]
