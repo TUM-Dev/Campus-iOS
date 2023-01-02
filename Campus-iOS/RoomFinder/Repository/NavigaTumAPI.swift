@@ -17,10 +17,9 @@ struct NavigaTumAPI: NetworkingAPI {
     // Maximum size of cache: 500kB, Maximum cache entries: 1000, Lifetime: 60min
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 60 * 60)
     
-    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String? = nil, forcedRefresh: Bool = false) async throws -> T {
+    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String? = nil, forcedRefresh: Bool? = nil) async throws -> T {
         // Check cache first
-        if !forcedRefresh,
-           let data = cache.value(forKey: endpoint.fullRequestURL),
+        if let data = cache.value(forKey: endpoint.fullRequestURL),
            let typedData = data as? T {
             return typedData
         // Otherwise make the request

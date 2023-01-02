@@ -9,28 +9,26 @@ import Foundation
 import Alamofire
 
 protocol RoomFinderServiceProtocol {
-    func search(query: String, forcedRefresh: Bool) async throws -> [NavigaTumSearchResponse]
-    func details(id: String, forcedRefresh: Bool) async throws -> [NavigationDetails]
+    func search(query: String) async throws -> [NavigaTumSearchResponse]
+    func details(id: String) async throws -> [NavigaTumNavigationDetails]
 }
 
 struct RoomFinderService: RoomFinderServiceProtocol {
-    func search(query: String, forcedRefresh: Bool = false) async throws -> [NavigaTumSearchResponse] {
+    func search(query: String) async throws -> [NavigaTumSearchResponse] {
         try await
-            CampusOnlineAPI
+            NavigaTumAPI
                 .makeRequest(
-                    endpoint: Constants.API.NavigaTum.search(query: query),
-                    forcedRefresh: forcedRefresh
+                    endpoint: Constants.API.NavigaTum.search(query: query)
                 )
     }
     
-    func details(id: String, forcedRefresh: Bool) async throws -> [NavigationDetails] {
+    func details(id: String) async throws -> [NavigaTumNavigationDetails] {
         let language = (Locale.current.languageCode == "de") ? "de" : "en"
         
         return try await
-            CampusOnlineAPI
+            NavigaTumAPI
                 .makeRequest(
-                    endpoint: Constants.API.NavigaTum.details(id: id, language: language),
-                    forcedRefresh: forcedRefresh
+                    endpoint: Constants.API.NavigaTum.details(id: id, language: language)
                 )
     }
 }

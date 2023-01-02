@@ -253,14 +253,14 @@
 		974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */; };
 		9785A29729620AA4002F3D5E /* NavigaTumSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29629620AA4002F3D5E /* NavigaTumSearchResponse.swift */; };
 		9785A29929620B40002F3D5E /* NavigaTumSearchResponseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29829620B40002F3D5E /* NavigaTumSearchResponseSection.swift */; };
-		9785A29C29620BF7002F3D5E /* NavigationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29B29620BF7002F3D5E /* NavigationEntity.swift */; };
-		9785A29F29620DBD002F3D5E /* NavigationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29E29620DBD002F3D5E /* NavigationDetails.swift */; };
-		9785A2A129620EA8002F3D5E /* NavigationAdditionalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A029620EA8002F3D5E /* NavigationAdditionalProperties.swift */; };
-		9785A2A329620EB8002F3D5E /* NavigationCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A229620EB8002F3D5E /* NavigationCoordinates.swift */; };
-		9785A2A529620ECB002F3D5E /* NavigationMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A429620ECB002F3D5E /* NavigationMaps.swift */; };
-		9785A2A729620F16002F3D5E /* NavigationProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A629620F16002F3D5E /* NavigationProperty.swift */; };
-		9785A2A929621029002F3D5E /* RoomFinderMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A829621029002F3D5E /* RoomFinderMaps.swift */; };
-		9785A2AB29621089002F3D5E /* RoomFinderMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2AA29621089002F3D5E /* RoomFinderMap.swift */; };
+		9785A29C29620BF7002F3D5E /* NavigaTumNavigationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29B29620BF7002F3D5E /* NavigaTumNavigationEntity.swift */; };
+		9785A29F29620DBD002F3D5E /* NavigaTumNavigationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A29E29620DBD002F3D5E /* NavigaTumNavigationDetails.swift */; };
+		9785A2A129620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A029620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift */; };
+		9785A2A329620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A229620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift */; };
+		9785A2A529620ECB002F3D5E /* NavigaTumNavigationMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A429620ECB002F3D5E /* NavigaTumNavigationMaps.swift */; };
+		9785A2A729620F16002F3D5E /* NavigaTumNavigationProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A629620F16002F3D5E /* NavigaTumNavigationProperty.swift */; };
+		9785A2A929621029002F3D5E /* NavigaTumRoomFinderMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2A829621029002F3D5E /* NavigaTumRoomFinderMaps.swift */; };
+		9785A2AB29621089002F3D5E /* NavigaTumRoomFinderMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2AA29621089002F3D5E /* NavigaTumRoomFinderMap.swift */; };
 		9785A2AE29621278002F3D5E /* NavigaTumAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2AD29621278002F3D5E /* NavigaTumAPI.swift */; };
 		9785A2B2296213BB002F3D5E /* NavigaTumAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2B1296213BB002F3D5E /* NavigaTumAPIConstants.swift */; };
 		9785A2B52962189A002F3D5E /* RoomFinderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9785A2B42962189A002F3D5E /* RoomFinderService.swift */; };
@@ -531,14 +531,14 @@
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		9785A29629620AA4002F3D5E /* NavigaTumSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumSearchResponse.swift; sourceTree = "<group>"; };
 		9785A29829620B40002F3D5E /* NavigaTumSearchResponseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumSearchResponseSection.swift; sourceTree = "<group>"; };
-		9785A29B29620BF7002F3D5E /* NavigationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationEntity.swift; sourceTree = "<group>"; };
-		9785A29E29620DBD002F3D5E /* NavigationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDetails.swift; sourceTree = "<group>"; };
-		9785A2A029620EA8002F3D5E /* NavigationAdditionalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAdditionalProperties.swift; sourceTree = "<group>"; };
-		9785A2A229620EB8002F3D5E /* NavigationCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinates.swift; sourceTree = "<group>"; };
-		9785A2A429620ECB002F3D5E /* NavigationMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMaps.swift; sourceTree = "<group>"; };
-		9785A2A629620F16002F3D5E /* NavigationProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationProperty.swift; sourceTree = "<group>"; };
-		9785A2A829621029002F3D5E /* RoomFinderMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderMaps.swift; sourceTree = "<group>"; };
-		9785A2AA29621089002F3D5E /* RoomFinderMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderMap.swift; sourceTree = "<group>"; };
+		9785A29B29620BF7002F3D5E /* NavigaTumNavigationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationEntity.swift; sourceTree = "<group>"; };
+		9785A29E29620DBD002F3D5E /* NavigaTumNavigationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationDetails.swift; sourceTree = "<group>"; };
+		9785A2A029620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationAdditionalProperties.swift; sourceTree = "<group>"; };
+		9785A2A229620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationCoordinates.swift; sourceTree = "<group>"; };
+		9785A2A429620ECB002F3D5E /* NavigaTumNavigationMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationMaps.swift; sourceTree = "<group>"; };
+		9785A2A629620F16002F3D5E /* NavigaTumNavigationProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationProperty.swift; sourceTree = "<group>"; };
+		9785A2A829621029002F3D5E /* NavigaTumRoomFinderMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumRoomFinderMaps.swift; sourceTree = "<group>"; };
+		9785A2AA29621089002F3D5E /* NavigaTumRoomFinderMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumRoomFinderMap.swift; sourceTree = "<group>"; };
 		9785A2AD29621278002F3D5E /* NavigaTumAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumAPI.swift; sourceTree = "<group>"; };
 		9785A2B1296213BB002F3D5E /* NavigaTumAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumAPIConstants.swift; sourceTree = "<group>"; };
 		9785A2B42962189A002F3D5E /* RoomFinderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderService.swift; sourceTree = "<group>"; };
@@ -1546,6 +1546,10 @@
 		9785A29529620A84002F3D5E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9785A29B29620BF7002F3D5E /* NavigaTumNavigationEntity.swift */,
+				9785A29E29620DBD002F3D5E /* NavigaTumNavigationDetails.swift */,
+				9785A2A629620F16002F3D5E /* NavigaTumNavigationProperty.swift */,
+				9785A2AA29621089002F3D5E /* NavigaTumRoomFinderMap.swift */,
 				9785A29D29620DA9002F3D5E /* Details */,
 				9785A29A29620B46002F3D5E /* Search */,
 			);
@@ -1557,7 +1561,6 @@
 			children = (
 				9785A29629620AA4002F3D5E /* NavigaTumSearchResponse.swift */,
 				9785A29829620B40002F3D5E /* NavigaTumSearchResponseSection.swift */,
-				9785A29B29620BF7002F3D5E /* NavigationEntity.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1565,13 +1568,10 @@
 		9785A29D29620DA9002F3D5E /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				9785A29E29620DBD002F3D5E /* NavigationDetails.swift */,
-				9785A2A029620EA8002F3D5E /* NavigationAdditionalProperties.swift */,
-				9785A2A629620F16002F3D5E /* NavigationProperty.swift */,
-				9785A2A229620EB8002F3D5E /* NavigationCoordinates.swift */,
-				9785A2A429620ECB002F3D5E /* NavigationMaps.swift */,
-				9785A2A829621029002F3D5E /* RoomFinderMaps.swift */,
-				9785A2AA29621089002F3D5E /* RoomFinderMap.swift */,
+				9785A2A029620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift */,
+				9785A2A229620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift */,
+				9785A2A429620ECB002F3D5E /* NavigaTumNavigationMaps.swift */,
+				9785A2A829621029002F3D5E /* NavigaTumRoomFinderMaps.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -1786,7 +1786,7 @@
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
-				9785A2A929621029002F3D5E /* RoomFinderMaps.swift in Sources */,
+				9785A2A929621029002F3D5E /* NavigaTumRoomFinderMaps.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
 				1F4C926F2882FD85003DC7D7 /* RoundedCorners.swift in Sources */,
 				36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */,
@@ -1821,7 +1821,7 @@
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
-				9785A2A329620EB8002F3D5E /* NavigationCoordinates.swift in Sources */,
+				9785A2A329620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
@@ -1849,7 +1849,7 @@
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
-				9785A2A129620EA8002F3D5E /* NavigationAdditionalProperties.swift in Sources */,
+				9785A2A129620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
@@ -1880,7 +1880,7 @@
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
-				9785A29C29620BF7002F3D5E /* NavigationEntity.swift in Sources */,
+				9785A29C29620BF7002F3D5E /* NavigaTumNavigationEntity.swift in Sources */,
 				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
@@ -1896,7 +1896,7 @@
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
-				9785A29F29620DBD002F3D5E /* NavigationDetails.swift in Sources */,
+				9785A29F29620DBD002F3D5E /* NavigaTumNavigationDetails.swift in Sources */,
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
 				08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
@@ -1941,7 +1941,7 @@
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
-				9785A2A729620F16002F3D5E /* NavigationProperty.swift in Sources */,
+				9785A2A729620F16002F3D5E /* NavigaTumNavigationProperty.swift in Sources */,
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
 				36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */,
 				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
@@ -1964,7 +1964,7 @@
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
 				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
-				9785A2A529620ECB002F3D5E /* NavigationMaps.swift in Sources */,
+				9785A2A529620ECB002F3D5E /* NavigaTumNavigationMaps.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
 				2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */,
 				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,
@@ -1977,7 +1977,7 @@
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
-				9785A2AB29621089002F3D5E /* RoomFinderMap.swift in Sources */,
+				9785A2AB29621089002F3D5E /* NavigaTumRoomFinderMap.swift in Sources */,
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,

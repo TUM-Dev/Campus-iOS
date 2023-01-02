@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NavigationCoordinates: Codable {
+struct NavigaTumNavigationCoordinates: Codable {
     let latitude: Double
     let longitude: Double
     

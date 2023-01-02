@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct NavigationDetails: Codable {
+struct NavigaTumNavigationDetails: Codable {
     let id: String
     let name: String
     let parentNames: [String]
     let type: String
     let typeCommonName: String
-    let additionalProperties: NavigationAdditionalProperties
-    let coordinates: NavigationCoordinates
-    let maps: NavigationMaps
+    let additionalProperties: NavigaTumNavigationAdditionalProperties
+    let coordinates: NavigaTumNavigationCoordinates
+    let maps: NavigaTumNavigationMaps
     
     enum CodingKeys: String, CodingKey {
         case id, name, parentNames, type, maps

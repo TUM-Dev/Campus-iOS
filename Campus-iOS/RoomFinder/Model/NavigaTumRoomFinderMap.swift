@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct RoomFinderMap: Codable {
+struct NavigaTumRoomFinderMap: Codable {
     let id: String
     let name: String
-    let imageUrl: String
+    let imageUrl: String    // let baseMapUrl = "https://nav.tum.sexy/cdn/maps/roomfinder/"
     let height: Int
     let width: Int
     let x: Int

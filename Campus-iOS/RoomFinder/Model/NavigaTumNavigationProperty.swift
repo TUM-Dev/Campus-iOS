@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NavigationProperty: Codable {
+struct NavigaTumNavigationProperty: Codable {
     let name: String
     let text: String
 }

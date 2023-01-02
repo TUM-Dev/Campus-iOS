@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct NavigationAdditionalProperties: Codable {
-    let properties: [NavigationProperty]
+struct NavigaTumNavigationAdditionalProperties: Codable {
+    let properties: [NavigaTumNavigationProperty]
     
     enum CodingKeys: String, CodingKey {
         case properties = "computed"

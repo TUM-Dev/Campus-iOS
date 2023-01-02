@@ -9,7 +9,7 @@ import Foundation
 
 struct NavigaTumSearchResponseSection: Codable {
     let type: String
-    let entries: [NavigationEntity]
+    let entries: [NavigaTumNavigationEntity]
     
     enum CodingKeys: String, CodingKey {
         case type = "facet"

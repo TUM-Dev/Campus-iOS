@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NavigationMaps: Codable {
+struct NavigaTumNavigationMaps: Codable {
     let `default`: String
-    let roomfinder: RoomFinderMaps
+    let roomfinder: NavigaTumRoomFinderMaps
 }

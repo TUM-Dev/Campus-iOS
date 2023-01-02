@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct RoomFinderMaps: Codable {
-    let available: [RoomFinderMap]
+struct NavigaTumRoomFinderMaps: Codable {
+    let available: [NavigaTumRoomFinderMap]
     let defaultMapId: String
     
     enum CodingKeys: String, CodingKey {
