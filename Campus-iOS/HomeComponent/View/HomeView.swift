@@ -28,13 +28,14 @@ struct HomeView: View {
     var body: some View {
         ScrollView{
             ContactView(profileViewModel: profileViewModel, gradesViewModel: gradesViewModel)
+            .padding(.top, 15)
             WidgetScreen(model: model)
         }
         .task {
             profileViewModel.fetch()
             await gradesViewModel.getGrades()
         }
-        .padding(.top, 65)
+        .padding(.top, 50)
         .background(Color.primaryBackground)
     }
 }

@@ -11,6 +11,7 @@ struct ContactView: View {
     @StateObject var profileViewModel: ProfileViewModel
     @StateObject var gradesViewModel: GradesViewModel
     @ObservedObject var personDetailedViewModel: PersonDetailedViewModel
+    @State private var isShowingDetailView = false
     
     init (profileViewModel: ProfileViewModel, gradesViewModel: GradesViewModel) {
         self._profileViewModel = StateObject(wrappedValue: profileViewModel
@@ -19,6 +20,13 @@ struct ContactView: View {
                                             )
         self.personDetailedViewModel = PersonDetailedViewModel(withProfile: profileViewModel.profile ?? ProfileViewModel.defaultProfile)
         self.personDetailedViewModel.fetch()
+    }
+    
+    var formattedAmount: String {
+        guard let amount = profileViewModel.tuition?.amount else {
+            return "n/a"
+        }
+        return OpenTuitionAmountView.currencyFormatter.string(from: amount) ?? "n/a"
     }
     
     var body: some View {
@@ -68,6 +76,31 @@ struct ContactView: View {
             } else {
                 ProgressView()
             }
+            
+            NavigationLink(destination: TuitionView(viewModel: profileViewModel).navigationBarTitle(Text("Tuition fees"))) {
+                Label {
+                    HStack {
+                        Text("Tuition fees").foregroundColor(Color.primaryText)
+                        if let isOpenAmount = profileViewModel.tuition?.isOpenAmount, isOpenAmount != true {
+                            Spacer()
+                            Text("✅")
+                        } else {
+                            Spacer()
+                            Text(self.formattedAmount).foregroundColor(.red)
+                        }
+                        Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
+                    }
+                } icon: {
+                    Image(systemName: "eurosign.circle").foregroundColor(Color.primaryText)
+                }
+                .padding(.vertical, 15)
+                .padding(.horizontal)
+            }
+            .frame(width: UIScreen.main.bounds.size.width * 0.9)
+            .background(Color.secondaryBackground)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+            .padding(.bottom, 10)
+            
             HStack {
                 Button {
                     
@@ -75,7 +108,7 @@ struct ContactView: View {
                     Label("Moodle", systemImage: "book.closed")
                         .foregroundColor(Color.primaryText)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 15)
                         .background(Color.secondaryBackground)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
@@ -85,7 +118,7 @@ struct ContactView: View {
                 } label: {
                     Label("TUMOnline", systemImage: "globe")
                         .foregroundColor(Color.primaryText)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, 15)
                         .frame(maxWidth: .infinity)
                         .background(Color.secondaryBackground)
                 }
@@ -93,6 +126,7 @@ struct ContactView: View {
             }
             .frame(width: UIScreen.main.bounds.size.width * 0.9)
             .padding(.bottom)
+            
         }
     }
 }
