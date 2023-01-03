@@ -9,12 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var model: Model = Model()
+    @StateObject var model: Model
+    @StateObject var profileViewModel = ProfileViewModel()
     
     var body: some View {
         ScrollView{
-            ContactView()
+            ContactView(profileViewModel: profileViewModel)
             WidgetScreen(model: model)
+        }
+        .task {
+            profileViewModel.fetch()
         }
         .background(Color.primaryBackground)
         .padding(.top, 50)
@@ -23,6 +27,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(model: MockModel())
     }
 }

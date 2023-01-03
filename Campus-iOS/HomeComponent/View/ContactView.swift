@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ContactView: View {
-    @StateObject var viewModel = ProfileViewModel()
+    @StateObject var profileViewModel: ProfileViewModel
+    @ObservedObject var personDetailedViewModel: PersonDetailedViewModel
+    
+    init (profileViewModel: ProfileViewModel) {
+        self._profileViewModel = StateObject(wrappedValue: profileViewModel
+                                            )
+        self.personDetailedViewModel = PersonDetailedViewModel(withProfile: profileViewModel.profile ?? ProfileViewModel.defaultProfile)
+        self.personDetailedViewModel.fetch()
+    }
     
     var body: some View {
         Group {
-            if let profile = self.viewModel.profile,
-               let profileImage = self.viewModel.profileImage {
+            if let profile = self.profileViewModel.profile,
+               let profileImage = self.profileViewModel.profileImage {
                 if profile.firstname != nil {
                     Text("Hi, " + profile.firstname!).font(.largeTitle).bold().frame(width: 350, height: 50, alignment: .leading)
                 } else {
@@ -24,7 +32,7 @@ struct ContactView: View {
                         .resizable()
                         .clipShape(Circle())
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 75, height: 75)
+                        .frame(width: 70, height: 70)
                         .foregroundColor(Color(.secondaryLabel))
                     
                     VStack(alignment: .leading) {
@@ -33,9 +41,13 @@ struct ContactView: View {
                         Text(profile.tumID!)
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                        Text(personDetailedViewModel.person?.email ?? "")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                     }
+                    Spacer()
                 }
-                .padding(.vertical, 6)
+                .padding()
                 .frame(width: UIScreen.main.bounds.size.width * 0.9)
                 .background(Color.secondaryBackground)
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
@@ -43,14 +55,6 @@ struct ContactView: View {
             } else {
                 ProgressView()
             }
-        }.task {
-            viewModel.fetch()
         }
-    }
-}
-
-struct ContactView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContactView()
     }
 }
