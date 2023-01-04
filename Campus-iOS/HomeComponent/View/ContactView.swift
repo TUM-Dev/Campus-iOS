@@ -12,6 +12,8 @@ struct ContactView: View {
     @StateObject var gradesViewModel: GradesViewModel
     @ObservedObject var personDetailedViewModel: PersonDetailedViewModel
     @State private var isShowingDetailView = false
+    let moodleUrl = URL(string: "https://www.moodle.tum.de/my/")!
+    let campusUrl = URL(string: "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/login")!
     
     init (profileViewModel: ProfileViewModel, gradesViewModel: GradesViewModel) {
         self._profileViewModel = StateObject(wrappedValue: profileViewModel
@@ -102,9 +104,9 @@ struct ContactView: View {
             .padding(.bottom, 10)
             
             HStack {
-                Button {
-                    
-                } label: {
+                Button (action: {
+                    UIApplication.shared.open(self.moodleUrl)
+                }) {
                     Label("Moodle", systemImage: "book.closed")
                         .foregroundColor(Color.primaryText)
                         .frame(maxWidth: .infinity)
@@ -113,9 +115,9 @@ struct ContactView: View {
                 }
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
                 Spacer()
-                Button {
-                    
-                } label: {
+                Button (action: {
+                    UIApplication.shared.open(self.campusUrl)
+                }) {
                     Label("TUMOnline", systemImage: "globe")
                         .foregroundColor(Color.primaryText)
                         .padding(.vertical, 15)
