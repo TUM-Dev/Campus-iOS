@@ -15,6 +15,7 @@ class ProfileViewModel: ObservableObject {
     @Published var profile: Profile?
     @Published var tuition: Tuition?
     @Published var profileImage = Image(systemName: "person.crop.circle.fill")
+    @Published var profileImageUI: UIImage?
     
     private let sessionManager = Session.defaultSession
     
@@ -75,12 +76,14 @@ class ProfileViewModel: ObservableObject {
         self.sessionManager.request(imageRequest).responseData(completionHandler: { response in
             if let imageData = response.value, let image = UIImage(data: imageData) {
                 self.profileImage = Image(uiImage: image)
+                self.profileImageUI = image
                 return
             }
 
             self.sessionManager.request(TUMOnlineAPI.personDetails(identNumber: obfuscatedID)).responseDecodable(of: PersonDetails.self, decoder: XMLDecoder()) { response in
                 guard let image = response.value?.image else { return }
                 self.profileImage = Image(uiImage: image)
+                self.profileImageUI = image
             }
         })
     }

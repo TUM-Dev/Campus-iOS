@@ -14,6 +14,7 @@ struct ContactView: View {
     @State private var isShowingDetailView = false
     let moodleUrl = URL(string: "https://www.moodle.tum.de/my/")!
     let campusUrl = URL(string: "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/login")!
+    @State private var showSheet = false
     
     init (profileViewModel: ProfileViewModel, gradesViewModel: GradesViewModel) {
         self._profileViewModel = StateObject(wrappedValue: profileViewModel
@@ -33,8 +34,7 @@ struct ContactView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            if let profile = self.profileViewModel.profile,
-               let profileImage = self.profileViewModel.profileImage {
+            if let profile = self.profileViewModel.profile {
                 HStack {
                     Text("Studentinformation")
                         .font(.headline.bold())
@@ -45,13 +45,28 @@ struct ContactView: View {
                 .padding(.leading, 40)
                 .padding(.bottom, 5)
                 HStack {
-                    profileImage
-                        .resizable()
-                        .clipShape(Circle())
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 70, height: 70)
-                        .foregroundColor(Color(.secondaryLabel))
+                    if self.profileViewModel.profileImageUI == nil {
+                        self.profileViewModel.profileImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70)
+                            .foregroundColor(.gray)
+                            .clipShape(Circle())
+                            .onTapGesture {
+                                showSheet = true
+                            }
+                    } else {
+                        Image(uiImage: self.profileViewModel.profileImageUI!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 70, height: 70)
+                                .clipShape(Circle())
+                                .onTapGesture {
+                                    showSheet = true
+                                }
+                    }
                     
+                        
                     VStack(alignment: .leading) {
                         Text(profile.fullName)
                             .font(.title2)
@@ -129,6 +144,8 @@ struct ContactView: View {
             .frame(width: UIScreen.main.bounds.size.width * 0.9)
             .padding(.bottom)
             
-        }
+        }.sheet(isPresented: $showSheet) {
+                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileViewModel.profileImageUI)
+    }
     }
 }
