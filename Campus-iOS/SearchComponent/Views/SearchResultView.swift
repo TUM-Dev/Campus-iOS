@@ -42,7 +42,11 @@ struct SearchResultView: View {
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)
                     case .Calendar:
-                        Text("Calendar")
+                        EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model))
+                            .cornerRadius(25)
+                            .padding()
+                            .shadow(color: .gray.opacity(0.8), radius: 10)
+                            
                     }
                 }
             }

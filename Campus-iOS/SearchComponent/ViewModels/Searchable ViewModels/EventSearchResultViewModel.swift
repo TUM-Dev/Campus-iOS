@@ -20,6 +20,7 @@ struct EventSearchResult: Searchable {
 class EventSearchResultViewModel: ObservableObject {
     @Published var results = [(event: EventSearchResult, distance: Distances)]()
     private let lecturesService = LecturesService()
+    private let calendarService = CalendarService()
     private let model: Model
     
     var token: String? {
@@ -42,8 +43,26 @@ class EventSearchResultViewModel: ObservableObject {
             return
         }
         
+        var eventResults = [EventSearchResult]()
+        if let calendar = await fetchCalendarEvents() {
+            eventResults = lectures.map { lecture in
+                let lectureEvents = calendar.filter { currentCalendarEvent in
+                    if let nr = currentCalendarEvent.lvNr {
+                        return nr == String(lecture.id)
+                    }
+                    return false
+                }
+                
+                return EventSearchResult(lecture: lecture, events: lectureEvents)
+            }
+        } else {
+            // If e.g. we do not have the permisson to read calendar, but lectures
+            eventResults = lectures.map { EventSearchResult(lecture: $0, events: []) }
+        }
         
-        
+        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: eventResults) {
+            self.results = optionalResults
+        }
     }
     
     func fetchLectures() async -> [Lecture]? {
@@ -56,6 +75,19 @@ class EventSearchResultViewModel: ObservableObject {
             return try await lecturesService.fetch(token: token)
         } catch {
             print("No lectures were fetched")
+            return nil
+        }
+    }
+        
+    func fetchCalendarEvents() async -> [CalendarEvent]? {
+        guard let token = self.token else {
+            return nil
+        }
+        
+        do {
+            return try await calendarService.fetch(token: token, forcedRefresh: false)
+        } catch {
+            print("No calendar events were fetched: \(error)")
             return nil
         }
     }

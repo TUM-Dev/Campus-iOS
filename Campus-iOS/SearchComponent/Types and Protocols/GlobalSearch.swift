@@ -120,11 +120,14 @@ enum GlobalSearch {
                 return nil
             }
             
-            let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
+//            let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
+            let lev = token.levenshtein(to: dataToken)
             
+            //Normalized Levenshtein Distance (see: https://ieeexplore.ieee.org/document/4160958)
+            let result = Double(2 * lev) / Double(1 * (token.count + dataToken.count) + lev)
             //print("For token \(token) and compToken \(dataToken): \(result)")
             
-            return result
+            return Int(result * 100)
         }.min()
     }
     
