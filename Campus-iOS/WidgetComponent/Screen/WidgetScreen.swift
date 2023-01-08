@@ -13,7 +13,6 @@ struct WidgetScreen: View {
     @StateObject private var recommender: WidgetRecommender
     @StateObject var model: Model = Model()
     @State private var refresh = false
-    @State private var widgetTitle = String()
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
@@ -41,8 +40,6 @@ struct WidgetScreen: View {
         }
         .task {
             try? await recommender.fetchRecommendations()
-            if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
-            else { widgetTitle = "Welcome"}
         }
         .onReceive(timer) { _ in
             refresh.toggle()            
@@ -56,9 +53,6 @@ struct WidgetScreen: View {
         var height = CGFloat.zero
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
-        
-        if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
-        else { widgetTitle = "Welcome"}
         
         return VStack(spacing: 0) {
             HStack {

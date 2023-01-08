@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TuitionViewNEW: View {
     
+    @StateObject var model: Model
     @StateObject var profileViewModel: ProfileViewModel
     
     var formattedAmount: String {
@@ -41,5 +42,6 @@ struct TuitionViewNEW: View {
         .frame(width: Size.cardWidth)
         .background(Color.secondaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+        .disabled(!self.model.isUserAuthenticated)
     }
 }

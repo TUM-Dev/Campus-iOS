@@ -27,9 +27,9 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView{
-            ContactView(profileViewModel: profileViewModel, gradesViewModel: gradesViewModel)
+            ContactView(model: self.model, profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel)
             .padding(.top, 15)
-            WidgetScreen(model: model)
+            WidgetScreen(model: self.model)
         }
         .task {
             profileViewModel.fetch()

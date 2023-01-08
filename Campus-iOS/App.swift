@@ -16,7 +16,7 @@ struct CampusApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var isLoginSheetPresented = false
-
+    
     init() {
         FirebaseApp.configure()
         UITabBar.appearance().isOpaque = true
@@ -49,34 +49,6 @@ struct CampusApp: App {
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
-            NavigationView {
-                CalendarContentView(
-                    model: model,
-                    refresh: $model.isUserAuthenticated
-                )
-                .background(Color.primaryBackground)
-                .overlay(NavigationBarView(model: model, title: "Calendar"))
-            }
-            .tag(4)
-            .tabItem {
-                Label("Calendar", systemImage: "calendar")
-            }
-            .navigationViewStyle(.stack)
-            
-            NavigationView {
-                LecturesScreen(vm: LecturesViewModel(
-                    model: model,
-                    service: LecturesService()
-                ), refresh: $model.isUserAuthenticated)
-                    .overlay(NavigationBarView(model: model, title: "Lectures"))
-            }
-            .tag(1)
-            .tabItem {
-                Label("Lectures", systemImage: "studentdesk")
-            }
-            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
-                view.navigationViewStyle(.stack)
-            })
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
@@ -86,7 +58,11 @@ struct CampusApp: App {
                 .navigationViewStyle(.stack)
                 .tag(0)
                 .tabItem {
-                    Label("Home", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
+                    if selectedTab == 0 {
+                        Label("Home", systemImage: "house")
+                    } else {
+                        Label("Home", systemImage: "house").environment(\.symbolVariants, .none)
+                    }
                 }
             }
             
@@ -94,18 +70,54 @@ struct CampusApp: App {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .overlay(NavigationBarView(model: model, title: "Grades"))
             }
-            .tag(2)
+            .tag(1)
             .tabItem {
-                Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
+                if selectedTab == 1 {
+                    Label("Grades", systemImage: "checkmark.shield")
+                } else {
+                    Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
+                }
+                
             }
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
                 
             NavigationView {
-                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                LecturesScreen(vm: LecturesViewModel(
+                    model: model,
+                    service: LecturesService()
+                ), refresh: $model.isUserAuthenticated)
+                .overlay(NavigationBarView(model: model, title: "Lectures"))
+            }
+            .tag(2)
+            .tabItem {
+                Label("Lectures", systemImage: "studentdesk")
+            }
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
+                
+            NavigationView {
+                CalendarContentView(
+                    model: model,
+                    refresh: $model.isUserAuthenticated
+                )
+                .background(Color.primaryBackground)
+                .overlay(NavigationBarView(model: model, title: "Calendar"))
             }
             .tag(3)
+            .tabItem {
+                Label("Calendar", systemImage: "calendar")
+            }
+            .navigationViewStyle(.stack)
+            
+            
+            
+            NavigationView {
+                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+            }
+            .tag(4)
             .tabItem {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
