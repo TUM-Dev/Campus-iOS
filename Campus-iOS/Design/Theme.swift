@@ -14,7 +14,7 @@ extension Color {
     static let secondaryBackground = Color("secondaryBackground")
     static let primaryText = Color("primaryText")
     static let contrastText = Color("contrastText")
-    static var tumBlue = Color("tumBlue")
+    static var highlightText = Color("tumBlue")
     static var widget = Color("widgetColor")
 }
 
@@ -33,6 +33,11 @@ extension Font {
 
 struct Radius {
     static let regular = CGFloat(10) 
+    
+}
+
+struct Size {
+    static let cardWidth = UIScreen.main.bounds.size.width * 0.9
     
 }
 

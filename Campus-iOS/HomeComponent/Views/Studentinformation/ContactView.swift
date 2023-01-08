@@ -22,10 +22,10 @@ struct ContactView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Text("Studentinformation")
+                Text("student information")
                     .font(.headline.bold())
                     .textCase(.uppercase)
-                    .foregroundColor(Color("tumBlue"))
+                    .foregroundColor(Color.highlightText)
                 Spacer()
             }
             .padding(.leading, 40)

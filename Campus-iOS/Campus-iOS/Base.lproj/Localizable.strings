@@ -94,6 +94,7 @@
 "Token inactive" = "Token inactive";
 "Token active" = "Token active";
 
+
 // TokenPermissionsView
 "You can change your permissions in TUMOnline" = "You can change your permissions in TUMOnline";
 "Identification (TUM ID and name)" = "Identification (TUM ID and name)";
@@ -106,6 +107,10 @@
 "Token Permissions" = "Token Permissions";
 "Token Permissions (You are logged out)" = "Token Permissions (You are logged out)";
 "Calendar days in week mode" = "Calendar days in week mode";
+
+//HomeView
+"student information" = "student information";
+"study rooms, food & calendar" = "study rooms, food & calendar";
 
 // CalendarView
 "Day" = "Day";

@@ -60,7 +60,16 @@ struct WidgetScreen: View {
         if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
         else { widgetTitle = "Welcome"}
         
-        return VStack{
+        return VStack(spacing: 0) {
+            HStack {
+                Text("study rooms, food & calendar")
+                    .font(.headline.bold())
+                    .textCase(.uppercase)
+                    .foregroundColor(Color.highlightText)
+                Spacer()
+            }
+            .padding(.leading, 40)
+            .padding(.bottom, 5)
             ZStack(alignment: .topLeading) {
                 ForEach(0..<views.count, id: \.self) { i in
                     views[i]

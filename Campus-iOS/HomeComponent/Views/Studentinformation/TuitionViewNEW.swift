@@ -38,7 +38,7 @@ struct TuitionViewNEW: View {
             .padding(.vertical, 15)
             .padding(.horizontal)
         }
-        .frame(width: UIScreen.main.bounds.size.width * 0.9)
+        .frame(width: Size.cardWidth)
         .background(Color.secondaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
     }

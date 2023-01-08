@@ -60,7 +60,7 @@ struct ContactCardView: View {
             Spacer()
         }
         .padding()
-        .frame(width: UIScreen.main.bounds.size.width * 0.9)
+        .frame(width: Size.cardWidth)
         .background(Color.secondaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
         .sheet(isPresented: $showImageSheet) {

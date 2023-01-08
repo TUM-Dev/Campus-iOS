@@ -28,7 +28,7 @@ struct LinkView: View {
             Button (action: {
                 UIApplication.shared.open(self.campusUrl)
             }) {
-                Label("TUMOnline", systemImage: "globe")
+                Label("TUMonline", systemImage: "globe")
                     .foregroundColor(Color.primaryText)
                     .padding(.vertical, 15)
                     .frame(maxWidth: .infinity)
@@ -36,7 +36,7 @@ struct LinkView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
         }
-        .frame(width: UIScreen.main.bounds.size.width * 0.9)
+        .frame(width: Size.cardWidth)
     }
 }
 

@@ -157,7 +157,7 @@ struct CalendarEventView: View {
             HStack(alignment: .top) {
                 Capsule()
                     .frame(width: 2, height: height)
-                    .foregroundColor(.tumBlue)
+                    .foregroundColor(.highlightText)
                 
                 VStack(alignment: .leading) {
                     Text(title)
