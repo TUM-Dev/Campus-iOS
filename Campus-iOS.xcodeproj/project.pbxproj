@@ -49,6 +49,9 @@
 		1E096B162940DC7300ED1EC0 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */; };
 		1E8038B9295F82EA0098C614 /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038B8295F82EA0098C614 /* ContactView.swift */; };
 		1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BA2965B23D0098C614 /* ImagePicker.swift */; };
+		1E8038BE2969FAE70098C614 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BD2969FAE70098C614 /* ContactCardView.swift */; };
+		1E8038C02969FB550098C614 /* TuitionViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BF2969FB550098C614 /* TuitionViewNEW.swift */; };
+		1E8038C22969FBE20098C614 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038C12969FBE20098C614 /* LinkView.swift */; };
 		1E9C1056291A914D002C4C47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C1055291A914D002C4C47 /* Theme.swift */; };
 		1EFBBEBB295DA51E001A0364 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBBEBA295DA51E001A0364 /* HomeView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
@@ -322,6 +325,9 @@
 		1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		1E8038B8295F82EA0098C614 /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		1E8038BA2965B23D0098C614 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1E8038BD2969FAE70098C614 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
+		1E8038BF2969FB550098C614 /* TuitionViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionViewNEW.swift; sourceTree = "<group>"; };
+		1E8038C12969FBE20098C614 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		1E9C1055291A914D002C4C47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1EFBBEBA295DA51E001A0364 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
@@ -651,6 +657,17 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
+		1E8038BC2969F96C0098C614 /* Studentinformation */ = {
+			isa = PBXGroup;
+			children = (
+				1E8038B8295F82EA0098C614 /* ContactView.swift */,
+				1E8038C12969FBE20098C614 /* LinkView.swift */,
+				1E8038BD2969FAE70098C614 /* ContactCardView.swift */,
+				1E8038BF2969FB550098C614 /* TuitionViewNEW.swift */,
+			);
+			path = Studentinformation;
+			sourceTree = "<group>";
+		};
 		1E9C1059293EA008002C4C47 /* HeaderComponent */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,19 +687,19 @@
 		1EFBBEB6295CE4EF001A0364 /* HomeComponent */ = {
 			isa = PBXGroup;
 			children = (
-				1EFBBEB7295CEC88001A0364 /* View */,
+				1EFBBEB7295CEC88001A0364 /* Views */,
 				1E8038BA2965B23D0098C614 /* ImagePicker.swift */,
 			);
 			path = HomeComponent;
 			sourceTree = "<group>";
 		};
-		1EFBBEB7295CEC88001A0364 /* View */ = {
+		1EFBBEB7295CEC88001A0364 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E8038BC2969F96C0098C614 /* Studentinformation */,
 				1EFBBEBA295DA51E001A0364 /* HomeView.swift */,
-				1E8038B8295F82EA0098C614 /* ContactView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1F4C836528300E6F006971C0 /* Service */ = {
@@ -1749,6 +1766,7 @@
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
+				1E8038BE2969FAE70098C614 /* ContactCardView.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
 				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
 				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
@@ -1814,6 +1832,7 @@
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
+				1E8038C02969FB550098C614 /* TuitionViewNEW.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
@@ -1898,6 +1917,7 @@
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
 				08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */,
+				1E8038C22969FBE20098C614 /* LinkView.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
