@@ -47,7 +47,7 @@ enum GlobalSearch {
     ///     - searchables: An array of a type conforming to the `Searchable` protocol, which will be searched through by the `query`.
     /// - Returns: An array of tuples containing a object of the specified type conforming to `Searchable` and an Integer, representing the best relative levenshtein distance. The array is of ascending order by which object of the `searchables` matches `query` the most.
     static func tokenSearch<T: Searchable>(for query: String, in searchables: [T]) -> [(T, Distances)]? {
-        
+    
         let tokens = tokenize(query)
         
         var levenshteinValues = [T: Distances]()
@@ -61,7 +61,7 @@ enum GlobalSearch {
                 }
                 print(newDistance)
                 
-                // If the id of the current `searchable` already is in the dictonary, check if it currently saved best (i.e. lowest) distance for this grade is greater than the `newDistance`.
+                // Add new distance to the dictionary where the seachrable is the key.
                 levenshteinValues[searchable, default: []].append(newDistance)
             }
         }
