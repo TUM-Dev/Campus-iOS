@@ -1,5 +1,5 @@
 //
-//  NavigatumView.swift
+//  NavigaTumView.swift
 //  Campus-iOS
 //
 //  Created by Atharva Mathapati on 06.01.23.
@@ -36,7 +36,7 @@ struct NavigaTumView: View {
     }
 }
 
-struct NavigatumView_Previews: PreviewProvider {
+struct NavigaTumView_Previews: PreviewProvider {
     static var previews: some View {
         NavigaTumView(model: MockModel())
     }

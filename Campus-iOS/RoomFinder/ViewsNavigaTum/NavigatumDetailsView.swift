@@ -1,5 +1,5 @@
 //
-//  NavigatumDetailsView.swift
+//  NavigaTumDetailsView.swift
 //  Campus-iOS
 //
 //  Created by Atharva Mathapati on 07.01.23.
@@ -24,11 +24,9 @@ struct NavigaTumDetailsView: View {
                             .font(.subheadline)
                     }
                     
-                    Spacer()
-                        .frame(height: 30)
+                    Spacer().frame(height: 30)
                     NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
                     NavigaTumMapView(chosenRoom: chosenRoom)
-                    
                 }
                 .frame(
                     maxWidth: .infinity,
@@ -44,7 +42,7 @@ struct NavigaTumDetailsView: View {
     }
 }
 
-struct NavigatumDetailsView_Previews: PreviewProvider {
+struct NavigaTumDetailsView_Previews: PreviewProvider {
     static let props = [NavigaTumNavigationProperty(name: "Roomcode", text: "5606.EG.036"), NavigaTumNavigationProperty(name: "Architect's name", text: "00.06.036"), NavigaTumNavigationProperty(name: "Address", text: "Boltzmannstr. 3, EG, 85748 Garching b. München")]
     static let additionalProperties = NavigaTumNavigationAdditionalProperties(properties: props)
     static let coords = NavigaTumNavigationCoordinates(latitude: 48.26217845031176, longitude: 11.668693278105701)
