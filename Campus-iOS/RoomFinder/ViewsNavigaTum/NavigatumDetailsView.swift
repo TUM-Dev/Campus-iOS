@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct NavigatumDetailsView: View {
+struct NavigaTumDetailsView: View {
     @StateObject var viewModel: NavigaTumDetailsViewModel
 
     var body: some View {
@@ -26,7 +26,7 @@ struct NavigatumDetailsView: View {
                     
                     Spacer()
                         .frame(height: 30)
-                    
+                    NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
                     NavigaTumMapView(chosenRoom: chosenRoom)
                     
                 }
@@ -57,6 +57,6 @@ struct NavigatumDetailsView_Previews: PreviewProvider {
     static var chosenRoom = NavigaTumNavigationDetails(id: "5606.EG.036", name: "5606.EG.036 (MPI Fachschaftsbüro im MI)", parentNames: ["Standorte", "Garching Forschungszentrum","Fakultät Mathematik & Informatik (FMI oder MI)", "Finger 06 (BT06)"], type: "room", typeCommonName: "Office", additionalProperties: additionalProperties, coordinates: coords, maps: maps)
     static var viewmodel = NavigaTumDetailsViewModel(id: "5606.EG.036")
     static var previews: some View {
-        NavigatumDetailsView(viewModel: viewmodel)
+        NavigaTumDetailsView(viewModel: viewmodel)
     }
 }

@@ -10,7 +10,6 @@ import Alamofire
 
 protocol RoomFinderServiceProtocol {
     func search(query: String) async throws -> NavigaTumSearchResponse
-    // Change to single detail object and not list?
     func details(id: String) async throws -> NavigaTumNavigationDetails
 }
 
@@ -22,7 +21,6 @@ struct RoomFinderService: RoomFinderServiceProtocol {
                     endpoint: Constants.API.NavigaTum.search(query: query)
                 )
     }
-    // Change to single detail object and not list?
     func details(id: String) async throws -> NavigaTumNavigationDetails {
         let language = (Locale.current.languageCode == "de") ? "de" : "en"
         

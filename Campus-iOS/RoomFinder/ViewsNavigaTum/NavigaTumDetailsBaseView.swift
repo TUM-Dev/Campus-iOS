@@ -1,44 +1,45 @@
 //
-//  NavigaTumMapView.swift
+//  NavigaTumDetailsBaseView.swift
 //  Campus-iOS
 //
 //  Created by Atharva Mathapati on 10.01.23.
 //
 
 import SwiftUI
-import MapKit
 
-struct NavigaTumMapView: View {
-    
+struct NavigaTumDetailsBaseView: View {
     @State var chosenRoom: NavigaTumNavigationDetails
 
     var body: some View {
         GroupBox(
-            label:  HStack {
-                GroupBoxLabelView(
-                    iconName: "map.fill",
-                    text: "Building".localized
-                )
-                .padding(.bottom, 10)
-                Spacer()
-                Button("Open in Maps") {
-                    // TODO: Update Info.plist to allow maps?
-                    let url = URL(string: "maps://?saddr&daddr=\(chosenRoom.coordinates.latitude), \(chosenRoom.coordinates.longitude)")
-                    if UIApplication.shared.canOpenURL(url!) {
-                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                    }
-                }
-                .font(.footnote)
-            }
+            label: GroupBoxLabelView(
+                iconName: "info.circle.fill",
+                text: "Room Details".localized
+            )
+            .padding(.bottom, 10)
         ) {
-            let coords = CLLocationCoordinate2D(latitude: chosenRoom.coordinates.latitude, longitude: chosenRoom.coordinates.longitude)
-            let mapRegion = MKCoordinateRegion(center: coords , span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
-            Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: coords)]) { location in
-                MapMarker(coordinate: location.coordinate)
+            VStack(alignment: .leading, spacing: 8) {
+                LectureDetailsBasicInfoRowView(
+                    iconName: "qrcode.viewfinder",
+                    text: chosenRoom.additionalProperties.properties.first {
+                        $0.name == "Roomcode"
+                    }?.text ?? "No room code found!"
+                )
+           
+                Divider()
+                LectureDetailsBasicInfoRowView(
+                    iconName: "building.columns",
+                    text: chosenRoom.additionalProperties.properties.first {$0.name == "Architect's name"
+                    }?.text ?? "No architect's name found!"
+                )
+                Divider()
+                LectureDetailsBasicInfoRowView(
+                    iconName: "location.fill",
+                    text: chosenRoom.additionalProperties.properties.first {
+                        $0.name == "Address"
+                    }?.text ?? "No Address found!"
+                )
             }
-                .frame(width: .infinity, height: 180)
-                .cornerRadius(10.0)
-
         }
         .frame(
               maxWidth: .infinity,
@@ -47,7 +48,7 @@ struct NavigaTumMapView: View {
     }
 }
 
-struct NavigaTumMapView_Previews: PreviewProvider {
+struct NavigaTumDetailsBaseView_Previews: PreviewProvider {
     static let props = [NavigaTumNavigationProperty(name: "Roomcode", text: "5606.EG.036"), NavigaTumNavigationProperty(name: "Architect's name", text: "00.06.036"), NavigaTumNavigationProperty(name: "Address", text: "Boltzmannstr. 3, EG, 85748 Garching b. München")]
     static let additionalProperties = NavigaTumNavigationAdditionalProperties(properties: props)
     static let coords = NavigaTumNavigationCoordinates(latitude: 48.26217845031176, longitude: 11.668693278105701)
@@ -59,6 +60,6 @@ struct NavigaTumMapView_Previews: PreviewProvider {
     static let maps = NavigaTumNavigationMaps(default: "rf95", roomfinder: NavigaTumRoomFinderMaps(available: available , defaultMapId: "rf95"))
     static var chosenRoom = NavigaTumNavigationDetails(id: "5606.EG.036", name: "5606.EG.036 (MPI Fachschaftsbüro im MI)", parentNames: ["Standorte", "Garching Forschungszentrum","Fakultät Mathematik & Informatik (FMI oder MI)", "Finger 06 (BT06)"], type: "room", typeCommonName: "Office", additionalProperties: additionalProperties, coordinates: coords, maps: maps)
     static var previews: some View {
-        NavigaTumMapView(chosenRoom: chosenRoom)
+        NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
     }
 }

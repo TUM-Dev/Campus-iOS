@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct NavigatumView: View {
+struct NavigaTumView: View {
     @ObservedObject var model: Model
     @StateObject var viewModel = NavigaTumViewModel()
     @State private var searchText = ""
     
     var body: some View {
-        NavigatumListView(model: self.model, viewModel: self.viewModel)
+        NavigaTumListView(model: self.model, viewModel: self.viewModel)
             .background(Color(.systemGroupedBackground))
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: self.searchText) { searchValue in
@@ -38,6 +38,6 @@ struct NavigatumView: View {
 
 struct NavigatumView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigatumView(model: MockModel())
+        NavigaTumView(model: MockModel())
     }
 }
