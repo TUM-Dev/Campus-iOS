@@ -18,9 +18,10 @@ struct NavigaTumNavigationDetails: Codable {
     let maps: NavigaTumNavigationMaps
     
     enum CodingKeys: String, CodingKey {
-        case id, name, parentNames, type, maps
+        case id, name, type, maps
         case typeCommonName = "type_common_name"
         case additionalProperties = "props"
         case coordinates = "coords"
+        case parentNames = "parent_names"
     }
 }

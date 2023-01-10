@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NavigaTumNavigationEntity: Codable {
+struct NavigaTumNavigationEntity: Codable, Identifiable, Equatable {
     let id: String
     let type: String
     let name: String
