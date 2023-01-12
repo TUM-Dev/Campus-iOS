@@ -42,7 +42,7 @@ struct NavigationBarView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 5)
-                    Divider()
+                    Divider().overlay(Color.primaryBackground)
                 }
             }
             .frame(height: 50)

@@ -152,8 +152,7 @@ struct CalendarEventView: View {
     var body: some View {
         if let startDate = event.startDate,
            let endDate = event.endDate,
-           let title = event.title,
-           let location = event.location {
+           let title = event.title {
             HStack(alignment: .top) {
                 Capsule()
                     .frame(width: 2, height: height)
@@ -172,8 +171,13 @@ struct CalendarEventView: View {
                         Label(timeText, systemImage: "clock")
                             .lineLimit(1)
                         
-                        Label(location, systemImage: "mappin")
-                            .lineLimit(allowMultiline ? 3 : 1)
+                        if let location = event.location {
+                            Label(location, systemImage: "mappin")
+                                .lineLimit(allowMultiline ? 3 : 1)
+                        } else {
+                            Label("Paradise", systemImage: "mappin")
+                                .lineLimit(allowMultiline ? 3 : 1)
+                        }
                     }
                     .font(.caption2)
                 }

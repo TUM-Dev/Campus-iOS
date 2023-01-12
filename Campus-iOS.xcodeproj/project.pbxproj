@@ -657,6 +657,14 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
+		1E45DC5D296F456600D6050D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1E8038BC2969F96C0098C614 /* Studentinformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,7 +679,7 @@
 		1E9C1059293EA008002C4C47 /* HeaderComponent */ = {
 			isa = PBXGroup;
 			children = (
-				1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */,
+				1E45DC5D296F456600D6050D /* View */,
 			);
 			path = HeaderComponent;
 			sourceTree = "<group>";

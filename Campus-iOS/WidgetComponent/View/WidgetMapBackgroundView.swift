@@ -36,12 +36,13 @@ struct WidgetMapBackgroundView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if let image {
+                /*if let image {
                     Image(uiImage: image)
                         .blur(radius: 2)
-                }
+                }*/
 
-                Rectangle().foregroundColor(.secondaryBackground.opacity(image == nil ? 1 : 0.9))
+                //Rectangle().foregroundColor(.secondaryBackground.opacity(image == nil ? 1 : 0.9))
+                Rectangle().foregroundColor(Color.secondaryBackground)
             }
             .task {
                 generateSnapshot(width: geometry.size.width, height: geometry.size.height)
