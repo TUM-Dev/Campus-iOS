@@ -18,8 +18,13 @@ class SearchResultViewModel: ObservableObject {
         self.model = model
     }
     
-    private lazy var dataTypeClassifier: NLModel? = {
-        let model = try? NLModel(mlModel: DataTypeClassifierV2(configuration: MLModelConfiguration()).model)
+    private lazy var dataTypeClassifierEnglish: NLModel? = {
+        let model = try? NLModel(mlModel: DataTypeClassifierV4English(configuration: MLModelConfiguration()).model)
+        return model
+    }()
+    
+    private lazy var dataTypeClassifierGerman: NLModel? = {
+        let model = try? NLModel(mlModel: DataTypeClassifierV4German(configuration: MLModelConfiguration()).model)
         return model
     }()
     
@@ -32,15 +37,41 @@ class SearchResultViewModel: ObservableObject {
     func search(for query: String) async {
         let cleanedQuery = prepare(query)
         
-        guard let modelOutput = dataTypeClassifier?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
+        var language : String?
+        if #available(iOS 16, *) {
+            language = Locale.current.language.languageCode?.identifier
+        } else {
+            // Fallback on earlier versions
+            language = Locale.current.languageCode
+        }
+        
+        var modelOutput = [String:Double]()
+        if let language = language, language == "de" {
+            guard let modelOutputDE = dataTypeClassifierGerman?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
+                return
+            }
+            
+            modelOutput = modelOutputDE
+        } else {
+            guard let modelOutputEN = dataTypeClassifierEnglish?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
+                return
+            }
+            
+            modelOutput = modelOutputEN
+        }
+        
+        if modelOutput.count == 0 {
             return
         }
+        
         for (label, accuracy) in modelOutput {
             print("\(label) was at \(accuracy)")
         }
         searchDataTypeResult = modelOutput
         
-        orderedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}
+        let preparedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}
+        
+        orderedTypes = Array(preparedTypes[0...2])
     }
     
 }

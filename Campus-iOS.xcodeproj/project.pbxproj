@@ -53,6 +53,7 @@
 		1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E328FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift */; };
 		1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */; };
 		1F36EC8229377CD300349FC1 /* DataTypeClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F36EC8129377CD300349FC1 /* DataTypeClassifierV1.mlmodel */; };
+		1F488336296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F488335296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel */; };
 		1F4C836228300306006971C0 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836128300306006971C0 /* MapViewModel.swift */; };
 		1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836328300D25006971C0 /* MapViewModel+State.swift */; };
 		1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4C836628300E79006971C0 /* CafeteriasService.swift */; };
@@ -77,10 +78,16 @@
 		1F54244F285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542450285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
+		1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BD38E296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel */; };
+		1F6BD391296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BD390296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel */; };
+		1F74DB2D2971D0D200B9143C /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB2C2971D0D200B9143C /* NewsService.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
 		1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
+		1FD025D22971A31300E66981 /* NewsSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D12971A31300E66981 /* NewsSearchResultViewModel.swift */; };
+		1FD025D42971AB7D00E66981 /* NewsSourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D32971AB7D00E66981 /* NewsSourceService.swift */; };
+		1FD025D72971BD2000E66981 /* NewsSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
@@ -340,6 +347,7 @@
 		1F2068E328FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+PermissionType.swift"; sourceTree = "<group>"; };
 		1F33B2EC282B084100C898E4 /* MockGradesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGradesViewModel.swift; sourceTree = "<group>"; };
 		1F36EC8129377CD300349FC1 /* DataTypeClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV1.mlmodel; sourceTree = "<group>"; };
+		1F488335296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV3.mlmodel; sourceTree = "<group>"; };
 		1F4C836128300306006971C0 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		1F4C836328300D25006971C0 /* MapViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapViewModel+State.swift"; sourceTree = "<group>"; };
 		1F4C836628300E79006971C0 /* CafeteriasService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriasService.swift; sourceTree = "<group>"; };
@@ -362,10 +370,16 @@
 		1F50419A295CC25E00A62CA1 /* EventSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSearchResultView.swift; sourceTree = "<group>"; };
 		1F50419C295D861D00A62CA1 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
+		1F6BD38E296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV4English.mlmodel; sourceTree = "<group>"; };
+		1F6BD390296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV4German.mlmodel; sourceTree = "<group>"; };
+		1F74DB2C2971D0D200B9143C /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
 		1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelContentListView.swift; sourceTree = "<group>"; };
+		1FD025D12971A31300E66981 /* NewsSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchResultViewModel.swift; sourceTree = "<group>"; };
+		1FD025D32971AB7D00E66981 /* NewsSourceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceService.swift; sourceTree = "<group>"; };
+		1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchResultView.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -682,8 +696,9 @@
 		1F0E8EB9293E22D4006E8BB9 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				1F36EC8129377CD300349FC1 /* DataTypeClassifierV1.mlmodel */,
-				1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */,
+				1F6BD389296F4F8E00CDD625 /* Old models */,
+				1F6BD390296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel */,
+				1F6BD38E296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -734,6 +749,7 @@
 				1F50417F295B84A300A62CA1 /* GradeSearchResultView.swift */,
 				1F504192295B897600A62CA1 /* StudyRoomSearchResultView.swift */,
 				1F50419A295CC25E00A62CA1 /* EventSearchResultView.swift */,
+				1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */,
 			);
 			path = "Searchable Views";
 			sourceTree = "<group>";
@@ -756,6 +772,7 @@
 				1F504189295B852F00A62CA1 /* GradeSearchResultViewModel.swift */,
 				1F504194295B898000A62CA1 /* StudyRoomSearchResultViewModel.swift */,
 				1F504198295CC24E00A62CA1 /* EventSearchResultViewModel.swift */,
+				1FD025D12971A31300E66981 /* NewsSearchResultViewModel.swift */,
 			);
 			path = "Searchable ViewModels";
 			sourceTree = "<group>";
@@ -783,6 +800,25 @@
 				1F54244E285CA059008363BC /* token-tutorial.mov */,
 			);
 			path = VideoAssets;
+			sourceTree = "<group>";
+		};
+		1F6BD389296F4F8E00CDD625 /* Old models */ = {
+			isa = PBXGroup;
+			children = (
+				1F36EC8129377CD300349FC1 /* DataTypeClassifierV1.mlmodel */,
+				1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */,
+				1F488335296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel */,
+			);
+			path = "Old models";
+			sourceTree = "<group>";
+		};
+		1FD025D52971AB8C00E66981 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1FD025D32971AB7D00E66981 /* NewsSourceService.swift */,
+				1F74DB2C2971D0D200B9143C /* NewsService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
@@ -1049,8 +1085,9 @@
 		3616C4D727904BA7000A1BC9 /* NewsComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1FD025D52971AB8C00E66981 /* Service */,
 				3629BA2A27A1CEAD0036AC80 /* Views */,
-				36BBE7302798AFCC0018FD3F /* Service */,
+				36BBE7302798AFCC0018FD3F /* Model */,
 				3616C4D827904BB5000A1BC9 /* ViewModel */,
 			);
 			path = NewsComponent;
@@ -1538,13 +1575,13 @@
 			path = HelperViews;
 			sourceTree = "<group>";
 		};
-		36BBE7302798AFCC0018FD3F /* Service */ = {
+		36BBE7302798AFCC0018FD3F /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				36BBE7312798AFE10018FD3F /* News.swift */,
 				36BBE7332798B04D0018FD3F /* NewsSource.swift */,
 			);
-			path = Service;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		36E9649B277491E90055777F /* Views */ = {
@@ -1830,6 +1867,7 @@
 				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
+				1F6BD391296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel in Sources */,
 				366F0E8D27580CFD0091651D /* Persistence.swift in Sources */,
 				36108BE327A304B5007DC62D /* DishLabel.swift in Sources */,
 				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
@@ -1853,6 +1891,7 @@
 				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
+				1FD025D22971A31300E66981 /* NewsSearchResultViewModel.swift in Sources */,
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
 				3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */,
 				2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */,
@@ -1863,6 +1902,7 @@
 				1F504185295B84DC00A62CA1 /* ComparisonToken.swift in Sources */,
 				1F0E8EBB293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
+				1FD025D72971BD2000E66981 /* NewsSearchResultView.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
 				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
 				3654F358285167C3008AD5DC /* StudyRoomsService.swift in Sources */,
@@ -1880,12 +1920,14 @@
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
+				1FD025D42971AB7D00E66981 /* NewsSourceService.swift in Sources */,
 				0815249E28E4A6310098A2C3 /* Date+daysBetween.swift in Sources */,
 				1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchListView.swift in Sources */,
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
 				1F504199295CC24E00A62CA1 /* EventSearchResultViewModel.swift in Sources */,
+				1F74DB2D2971D0D200B9143C /* NewsService.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
 				36982BD627A251A700515847 /* NewsCardsHorizontalScrollingView.swift in Sources */,
@@ -1949,6 +1991,7 @@
 				36BB6F8327B39B4300F224AB /* LectureSearchView.swift in Sources */,
 				36108BFA27A30517007DC62D /* Movie.swift in Sources */,
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
+				1F488336296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
@@ -2014,6 +2057,7 @@
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
 				0815249C28E4A38D0098A2C3 /* CLLocation+isInvalid.swift in Sources */,
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
+				1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,

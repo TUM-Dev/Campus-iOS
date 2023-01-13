@@ -22,11 +22,11 @@ class GradesSearchResultViewModel: ObservableObject {
             self.results = optionalResults
             
             #if DEBUG
-            print(">>> \(query)")
-            optionalResults.forEach { result in
-                print(result.0)
-                print(result.1)
-            }
+//            print(">>> \(query)")
+//            optionalResults.forEach { result in
+//                print(result.0)
+//                print(result.1)
+//            }
             #endif
         }
     }

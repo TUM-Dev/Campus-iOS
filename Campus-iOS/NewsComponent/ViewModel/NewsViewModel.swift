@@ -26,7 +26,7 @@ class NewsViewModel: ObservableObject {
     }
     
     var latestFiveNews: [(String?, News?)] {
-        print(">> latestFiveNews loaded")
+        
         let latestNews = Array(self.newsSources
             .map({$0.news})
             .reduce([], +)
@@ -49,6 +49,7 @@ class NewsViewModel: ObservableObject {
         typealias ImporterType = Importer<NewsSource, [NewsSource], JSONDecoder>
         
         let endpoint: URLRequestConvertible = TUMCabeAPI.newsSources
+        
         let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
         let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
         

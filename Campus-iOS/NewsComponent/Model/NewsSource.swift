@@ -1,0 +1,89 @@
+//
+//  NewsSource.swift
+//  Campus-iOS
+//
+//  Created by Milen Vitanov on 19.01.22.
+//
+
+import Alamofire
+import Combine
+import FirebaseCrashlytics
+
+struct NewsSource: Entity, Searchable {
+    static func == (lhs: NewsSource, rhs: NewsSource) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    var comparisonTokens: [ComparisonToken] {
+        return [ComparisonToken(value: title ?? "")] + news.flatMap({$0.comparisonTokens})
+    }
+    
+    typealias ImporterType = Importer<News, [News], JSONDecoder>
+    
+    var id: Int64?
+    var title: String?
+    var icon: URL?
+    var news: [News]
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "source"
+        case title = "title"
+        case icon = "icon"
+    }
+    
+    init(id: Int64?, title: String?, icon: URL?, news: [News]) {
+        self.id = id
+        self.title = title
+        self.icon = icon
+        self.news = news
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let idString = try container.decode(String.self, forKey: .id)
+        guard let id = Int64(idString) else {
+            throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for id could not be converted to Int64"))
+        }
+        let title = try container.decode(String.self, forKey: .title)
+        let iconString = try container.decode(String.self, forKey: .icon)
+        let icon = URL(string: iconString.replacingOccurrences(of: " ", with: "%20"))
+        
+        self.id = id
+        self.title = title
+        self.icon = icon
+        self.news = []
+        //        fetchNews()
+    }
+    
+//    func fetchNews() {
+//        guard let id = self.id else {
+//            print("NewsSource contain no id")
+//            return
+//        }
+//        
+//        let endpoint: URLRequestConvertible = TUMCabeAPI.news(source: id.description)
+//        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
+//        let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
+//        print("fetchNews()")
+//        
+//        ///For some News we get this error. This results from the fact, that the API has for some News this date 0000-00-00 00:00:00 stored.
+//        //        dataCorrupted(Swift.DecodingError.Context(codingPath: [_JSONKey(stringValue: "Index 83", intValue: 83), CodingKeys(stringValue: "date", intValue: nil)], debugDescription: "Date string does not match format expected by formatter.", underlyingError: nil))
+//        /// E.g. the following news is one of them
+//        //        {\"news\":\"683182\",\"src\":\"4\",\"date\":\"0000-00-00 00:00:00\",\"created\":\"2020-11-22 21:36:01\",\"title\":\"Kontaktdatenerfassung mir QRONITON\",\"link\":\"https:\\/\\/portal.mytum.de\\/newsboards\\/news_students\\/NewsArticle_20201116_083850\",\"image\":\"\"}]")
+//        
+//        importer.performFetch(handler: { result in
+//            switch result {
+//            case .success(let storage):
+//                self.news = storage.filter( {
+//                    guard let title = $0.title, let link = $0.link else {
+//                        return false
+//                    }
+//                    return !title.isEmpty && !link.description.isEmpty
+//                } )
+//            case .failure(let error):
+//                print(error)
+//            }
+//        })
+//    }
+}

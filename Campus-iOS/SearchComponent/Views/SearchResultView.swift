@@ -35,7 +35,10 @@ struct SearchResultView: View {
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)
                     case .News:
-                        Text("News")
+                        NewsSearchResultView(query: $query)
+                            .cornerRadius(25)
+                            .padding()
+                            .shadow(color: .gray.opacity(0.8), radius: 10)
                     case .StudyRoom:
                         StudyRoomSearchResultView(query: $query)
                             .cornerRadius(25)

@@ -59,7 +59,7 @@ enum GlobalSearch {
                 guard let newDistance = bestRelativeLevensthein(for: token, with: searchable) else {
                     break
                 }
-                print(newDistance)
+//                print(newDistance)
                 
                 // Add new distance to the dictionary where the seachrable is the key.
                 levenshteinValues[searchable, default: []].append(newDistance)

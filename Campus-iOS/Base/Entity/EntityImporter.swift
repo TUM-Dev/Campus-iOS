@@ -34,10 +34,12 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
     }
 
     func performFetch(handler: RequestHandler? = nil) {
+        
         sessionManager.request(endpoint)
             .validate(statusCode: 200..<300)
             .validate(contentType: DecoderType.contentType)
             .responseData { response in
+                
                 if let responseError = response.error {
                     handler?(.failure(BackendError.AFError(message: responseError.localizedDescription)))
                     return

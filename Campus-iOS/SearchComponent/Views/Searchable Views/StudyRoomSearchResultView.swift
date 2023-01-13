@@ -12,16 +12,19 @@ struct StudyRoomSearchResultView: View {
     @Binding var query: String
     
     var body: some View {
-        ScrollView {
-            ForEach(vm.results, id: \.studyRoomResult) { result in
-                VStack {
-                    Text(result.studyRoomResult.group.name ?? "no group name").foregroundColor(.indigo)
-                    ScrollView {
-                        ForEach(result.studyRoomResult.rooms) { room in
-                            Text(room.name ?? "no room name").foregroundColor(.teal)
-                            Text(room.localizedStatus).foregroundColor(.purple)
-                        }
-                    }.border(.red)
+        ZStack {
+            Color.white
+            ScrollView {
+                ForEach(vm.results, id: \.studyRoomResult) { result in
+                    VStack {
+                        Text(result.studyRoomResult.group.name ?? "no group name").foregroundColor(.indigo)
+                        ScrollView {
+                            ForEach(result.studyRoomResult.rooms) { room in
+                                Text(room.name ?? "no room name").foregroundColor(.teal)
+                                Text(room.localizedStatus).foregroundColor(.purple)
+                            }
+                        }.border(.red)
+                    }
                 }
             }
         }.onChange(of: query) { newQuery in

@@ -74,4 +74,57 @@ enum TUMCabeAPI: URLRequestConvertible {
         let urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
         return urlRequest
     }
+    
+    var fullPathURL: String {
+        Self.baseURLString + "/" + self.path
+    }
+    
+    static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
+    
+    static let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+       
+        decoder.dateDecodingStrategy = .formatted(.yyyyMMddhhmmss)
+         
+        return decoder
+    }()
+    
+    static func makeRequest<T: Decodable>(endpoint: TUMCabeAPI, forcedRefresh: Bool = false) async throws -> T {
+        // Check cache first
+        if !forcedRefresh,
+           let data = Self.cache.value(forKey: endpoint.fullPathURL),
+           let typedData = data as? T {
+            return typedData
+        // Otherwise make the request
+        } else {
+            var data: Data
+            do {
+                data = try await asRequest().serializingData().value
+            } catch {
+                print(error)
+                throw NetworkingError.deviceIsOffline
+            }
+            
+            if let error = try? Self.decoder.decode(TUMCabeAPIError.self, from: data) {
+                print(error)
+                throw error
+            }
+            
+            do {
+                let decodedData = try Self.decoder.decode(T.self, from: data)
+                
+                // Write value to cache
+                Self.cache.setValue(decodedData, forKey: endpoint.fullPathURL, cost: data.count)
+                
+                return decodedData
+            } catch {
+                print(error)
+                throw TUMCabeAPIError.unkown(error.localizedDescription)
+            }
+        }
+        
+        func asRequest() -> DataRequest {
+            return AF.request(endpoint.fullPathURL, method: .get, headers: baseHeaders)
+        }
+    }
 }

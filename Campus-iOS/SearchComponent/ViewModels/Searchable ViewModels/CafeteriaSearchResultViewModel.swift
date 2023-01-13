@@ -21,13 +21,13 @@ class CafeteriasSearchResultViewModel: ObservableObject {
         if let optionalResults = GlobalSearch.tokenSearch(for: query, in: cafeterias) {
             self.results = optionalResults
             
-            #if DEBUG
-            print(">>> \(query)")
-            optionalResults.forEach { result in
-                print(result.0)
-                print(result.1)
-            }
-            #endif
+//            #if DEBUG
+//            print(">>> \(query)")
+//            optionalResults.forEach { result in
+//                print(result.0)
+//                print(result.1)
+//            }
+//            #endif
         }
     }
     
