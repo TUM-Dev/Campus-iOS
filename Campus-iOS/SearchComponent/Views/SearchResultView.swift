@@ -35,7 +35,7 @@ struct SearchResultView: View {
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)
                     case .News:
-                        NewsSearchResultView(query: $query)
+                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news), query: $query)
                             .cornerRadius(25)
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)
@@ -46,6 +46,11 @@ struct SearchResultView: View {
                             .shadow(color: .gray.opacity(0.8), radius: 10)
                     case .Calendar:
                         EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model))
+                            .cornerRadius(25)
+                            .padding()
+                            .shadow(color: .gray.opacity(0.8), radius: 10)
+                    case .Movie:
+                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie), query: $query)
                             .cornerRadius(25)
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)

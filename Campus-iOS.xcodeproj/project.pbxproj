@@ -87,6 +87,7 @@
 		1F74DB352972B22F00B9143C /* LectureSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB342972B22F00B9143C /* LectureSearchResultView.swift */; };
 		1F74DB372972B87800B9143C /* PersonSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB362972B87800B9143C /* PersonSearchResultViewModel.swift */; };
 		1F74DB392972B92D00B9143C /* PersonSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB382972B92D00B9143C /* PersonSearchResultView.swift */; };
+		1F74DB3B2973038800B9143C /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB3A2973038800B9143C /* MovieService.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
@@ -385,6 +386,7 @@
 		1F74DB342972B22F00B9143C /* LectureSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchResultView.swift; sourceTree = "<group>"; };
 		1F74DB362972B87800B9143C /* PersonSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchResultViewModel.swift; sourceTree = "<group>"; };
 		1F74DB382972B92D00B9143C /* PersonSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchResultView.swift; sourceTree = "<group>"; };
+		1F74DB3A2973038800B9143C /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
@@ -830,6 +832,14 @@
 			path = "Old models";
 			sourceTree = "<group>";
 		};
+		1F74DB3C2973039200B9143C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F74DB3A2973038800B9143C /* MovieService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		1FD025D52971AB8C00E66981 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,6 +987,7 @@
 			children = (
 				36108BF227A30516007DC62D /* ViewModel */,
 				36108BF527A30516007DC62D /* Views */,
+				1F74DB3C2973039200B9143C /* Service */,
 			);
 			path = MoviesComponent;
 			sourceTree = "<group>";
@@ -1972,6 +1983,7 @@
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
 				1F50418E295B857B00A62CA1 /* String+Levenshtein.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
+				1F74DB3B2973038800B9143C /* MovieService.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,

@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct Movie: Entity {
+struct Movie: Entity, Searchable {
+    var comparisonTokens: [ComparisonToken] {
+        return [ComparisonToken(value: title ?? ""),
+                ComparisonToken(value: genre ?? "")]
+        
+    }
+    
     
     var id: Int64
     var actors: String?

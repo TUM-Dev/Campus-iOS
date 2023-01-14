@@ -81,4 +81,5 @@ enum SearchResultType: String {
     case News = "news"
     case Cafeteria = "cafeteria"
     case StudyRoom = "studyroom"
+    case Movie = "movie"
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct NewsSearchResultView: View {
-    @StateObject var vm = NewsSearchResultViewModel()
+    @StateObject var vm: NewsSearchResultViewModel
     @Binding var query: String
     
     var body: some View {
@@ -25,9 +25,20 @@ struct NewsSearchResultView: View {
 //                        }
 //                    }
 //                }
-                ForEach(vm.results, id: \.newsResult) { result in
-                    Text(result.newsResult.title ?? "")
+                switch vm.vmType {
+                case .news:
+                    ForEach(vm.newsResults, id: \.news) { result in
+                        Text(result.news.title ?? "")
+                    }
+                case .movie:
+                    ForEach(vm.movieResults, id: \.movie) { result in
+                        HStack {
+                            Text(result.movie.title ?? "")
+                            Text(result.movie.genre ?? "")
+                        }
+                    }
                 }
+                
             }
         }
         .onChange(of: query) { newQuery in

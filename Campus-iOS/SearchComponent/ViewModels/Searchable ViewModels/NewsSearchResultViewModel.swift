@@ -9,11 +9,23 @@ import Foundation
 
 @MainActor
 class NewsSearchResultViewModel: ObservableObject {
+    enum VmType {
+        case news
+        case movie
+    }
+    
+    let vmType : VmType
     ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
 //    @Published var results = [(sourcesResult: NewsSource, distance: Distances)]()
-    @Published var results = [(newsResult: News, distance: Distances)]()
+    @Published var newsResults = [(news: News, distance: Distances)]()
+    @Published var movieResults = [(movie: Movie, distance: Distances)]()
     private let newsSourceService = NewsSourceService()
     private let newsService = NewsService()
+    private let movieService = MovieService()
+    
+    init(vmType: VmType) {
+        self.vmType = vmType
+    }
     
     func newsSearch(for query: String) async {
         ///** The followin code is for all newsSources. Currently we only use TUMOnline due to lagginess **
@@ -36,27 +48,45 @@ class NewsSearchResultViewModel: ObservableObject {
 //            self.results = optionalResults
 //        }
         
-        guard let news = await fetchNews(source: "1") else {
-            return
-        }
-        
-        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: news) {
-            self.results = optionalResults
+        switch self.vmType {
+        case .news:
+            guard let news = await fetchNews(source: "1") else {
+                return
+            }
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: news) {
+                self.newsResults = optionalResults
+            }
+        case .movie:
+            guard let movies = await fetchMovies() else {
+                return
+            }
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: movies) {
+                self.movieResults = optionalResults
+            }
         }
     }
     
-    func fetchNewsSources() async -> [NewsSource]? {
+//    func fetchNewsSources() async -> [NewsSource]? {
+//        do {
+//            return try await newsSourceService.fetch(forcedRefresh: false)
+//        } catch {
+//            print("No news sources were fetched: \(error)")
+//            return nil
+//        }
+//    }
+    
+    func fetchNews(source: String) async -> [News]? {
         do {
-            return try await newsSourceService.fetch(forcedRefresh: false)
+            return try await newsService.fetch(forcedRefresh: false, source: source)
         } catch {
             print("No news sources were fetched: \(error)")
             return nil
         }
     }
     
-    func fetchNews(source: String) async -> [News]? {
+    func fetchMovies() async -> [Movie]? {
         do {
-            return try await newsService.fetch(forcedRefresh: false, source: source)
+            return try await movieService.fetch(forcedRefresh: false)
         } catch {
             print("No news sources were fetched: \(error)")
             return nil
