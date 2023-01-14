@@ -54,6 +54,7 @@ struct SearchResultView: View {
                 }
                 RoomFinderSearchResultView(query: $query)
                 LectureSearchResultView(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
+                PersonSearchResultView(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
             }
             Spacer()
         }.onChange(of: query) { newQuery in
