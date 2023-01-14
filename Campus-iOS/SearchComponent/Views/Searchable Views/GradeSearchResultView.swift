@@ -30,5 +30,10 @@ struct GradesSearchResultView: View {
                 await vm.gradesSearch(for: newQuery)
             }
         }
+        .onAppear() {
+            Task {
+                await vm.gradesSearch(for: query)
+            }
+        }
     }
 }

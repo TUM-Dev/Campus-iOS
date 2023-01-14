@@ -15,8 +15,8 @@ struct SearchResultView: View {
         VStack {
             Text("Your results for: \(query)")
             Spacer()
-            ForEach(Array(vm.searchDataTypeResult.keys)) { key in
-                if let accuracy = vm.searchDataTypeResult[key] {
+            ForEach(vm.searchDataTypeResult, id:\.0) { (key,value) in
+                if let accuracy = value {
                     Text("\(key) with accuracy of \(Int(accuracy*100)) %.")
                 }
             }
@@ -52,12 +52,12 @@ struct SearchResultView: View {
                             
                     }
                 }
+                RoomFinderSearchResultView(query: $query)
+                LectureSearchResultView(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
             }
             Spacer()
         }.onChange(of: query) { newQuery in
-            Task {
-                await vm.search(for: newQuery)
-            }
+            vm.search(for: newQuery)
         }
     }
 }

@@ -45,6 +45,10 @@ struct EventSearchResultView: View {
             Task {
                 await vm.eventsSearch(for: query)
             }
+        }.onAppear() {
+            Task {
+                await vm.eventsSearch(for: query)
+            }
         }
     }
     

@@ -10,7 +10,7 @@ import CoreML
 import NaturalLanguage
 
 class SearchResultViewModel: ObservableObject {
-    @Published var searchDataTypeResult = [String:Double]()
+    @Published var searchDataTypeResult = [(String, Double)]()
     @Published var orderedTypes = [SearchResultType]()
     @ObservedObject var model: Model
     
@@ -34,7 +34,7 @@ class SearchResultViewModel: ObservableObject {
         return updatedQuery
     }
     
-    func search(for query: String) async {
+    func search(for query: String) {
         let cleanedQuery = prepare(query)
         
         var language : String?
@@ -47,13 +47,13 @@ class SearchResultViewModel: ObservableObject {
         
         var modelOutput = [String:Double]()
         if let language = language, language == "de" {
-            guard let modelOutputDE = dataTypeClassifierGerman?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
+            guard let modelOutputDE = dataTypeClassifierGerman?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 3) else {
                 return
             }
             
             modelOutput = modelOutputDE
         } else {
-            guard let modelOutputEN = dataTypeClassifierEnglish?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 5) else {
+            guard let modelOutputEN = dataTypeClassifierEnglish?.predictedLabelHypotheses(for: cleanedQuery, maximumCount: 3) else {
                 return
             }
             
@@ -67,11 +67,10 @@ class SearchResultViewModel: ObservableObject {
         for (label, accuracy) in modelOutput {
             print("\(label) was at \(accuracy)")
         }
-        searchDataTypeResult = modelOutput
+        searchDataTypeResult = modelOutput.sorted(by: {$0.value > $1.value})
         
-        let preparedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}
+        orderedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}
         
-        orderedTypes = Array(preparedTypes[0...2])
     }
     
 }

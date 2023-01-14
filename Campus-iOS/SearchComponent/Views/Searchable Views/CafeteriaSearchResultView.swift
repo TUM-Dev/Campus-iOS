@@ -29,6 +29,11 @@ struct CafeteriasSearchResultView: View {
             Task {
                 await vm.cafeteriasSearch(for: newQuery)
             }
+        }.onAppear() {
+            Task {
+                await vm.cafeteriasSearch(for: query)
+            }
         }
+        
     }
 }

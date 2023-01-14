@@ -29,7 +29,12 @@ struct StudyRoomSearchResultView: View {
             }
         }.onChange(of: query) { newQuery in
             Task {
+                
                 await vm.studyRoomSearch(for: newQuery)
+            }
+        }.onAppear() {
+            Task {
+                await vm.studyRoomSearch(for: query)
             }
         }
     }

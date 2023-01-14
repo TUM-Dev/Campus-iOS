@@ -32,6 +32,8 @@ class StudyRoomSearchResultViewModel: ObservableObject {
             return
         }
         
+        
+        
         let groupRooms: [StudyRoomSearchResult] = groups.map { currentGroup in
             let currentRooms = rooms.filter {
                 return currentGroup.rooms?.contains($0.id) ?? false
@@ -39,10 +41,12 @@ class StudyRoomSearchResultViewModel: ObservableObject {
             
             return StudyRoomSearchResult(group: currentGroup, rooms: currentRooms)
         }
+//        rint(">> GROUPS: \(groupRooms)")
         
         if let optionalResults = GlobalSearch.tokenSearch(for: query, in: groupRooms) {
             
             self.results = optionalResults
+            print(">> StudyRoomResults: \(results)")
         }
     }
     
