@@ -14,14 +14,7 @@ protocol GradesServiceProtocol {
 
 struct GradesService: GradesServiceProtocol {    
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Grade] {
-        let response: GradeComponents.RowSet =
-        try await
-            CampusOnlineAPI
-                .makeRequest(
-                    endpoint: Constants.API.CampusOnline.personalGrades,
-                    token: token,
-                    forcedRefresh: forcedRefresh
-                )
+        let response: GradeComponents.RowSet = try await MainAPI.makeRequest(endpoint: CampusOnline.personalGrades, token: token, forcedRefresh: forcedRefresh)
         
         return response.row
     }
