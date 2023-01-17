@@ -24,15 +24,7 @@ struct ContactView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                Text("student information")
-                    .font(.headline.bold())
-                    .textCase(.uppercase)
-                    .foregroundColor(Color.highlightText)
-                Spacer()
-            }
-            .padding(.leading, 40)
-            .padding(.bottom, 5)
+            Text("student information").titleStyle()
             
             ContactCardView(profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel, personDetailedViewModel: self.personDetailedViewModel)
                 .padding(.bottom, 10)

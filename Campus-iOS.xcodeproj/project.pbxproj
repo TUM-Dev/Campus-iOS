@@ -52,6 +52,7 @@
 		1E8038C22969FBE20098C614 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038C12969FBE20098C614 /* LinkView.swift */; };
 		1E9C1056291A914D002C4C47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C1055291A914D002C4C47 /* Theme.swift */; };
 		1EB2CB042976971500B54C2E /* MoviesViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */; };
+		1EB2CB092976D5D600B54C2E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */; };
 		1EFBBEBB295DA51E001A0364 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBBEBA295DA51E001A0364 /* HomeView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
@@ -327,6 +328,7 @@
 		1E8038C12969FBE20098C614 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		1E9C1055291A914D002C4C47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesViewNEW.swift; path = "Campus-iOS/MoviesComponent/Views/MoviesViewNEW.swift"; sourceTree = SOURCE_ROOT; };
+		1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		1EFBBEBA295DA51E001A0364 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				1E9C1055291A914D002C4C47 /* Theme.swift */,
+				1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */,
 			);
 			path = Design;
 			sourceTree = "<group>";
@@ -1775,6 +1778,7 @@
 				085DE9C628AB7C530045095F /* AnalyticsController.swift in Sources */,
 				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
+				1EB2CB092976D5D600B54C2E /* ViewModifiers.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,

@@ -55,15 +55,8 @@ struct WidgetScreen: View {
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
         return VStack(spacing: 0) {
-            HStack {
-                Text("study rooms, food & calendar")
-                    .font(.headline.bold())
-                    .textCase(.uppercase)
-                    .foregroundColor(Color.highlightText)
-                Spacer()
-            }
-            .padding(.leading, 40)
-            .padding(.bottom, 5)
+            Text("study rooms, food & calendar").titleStyle()
+            
             ZStack(alignment: .topLeading) {
                 ForEach(0..<views.count, id: \.self) { i in
                     views[i]

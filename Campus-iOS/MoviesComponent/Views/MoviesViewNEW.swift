@@ -26,15 +26,7 @@ struct MoviesViewNEW: View {
             ProgressView()
         case .success:
             VStack(spacing: 0) {
-                HStack {
-                    Text("TU Film")
-                        .font(.headline.bold())
-                        .textCase(.uppercase)
-                        .foregroundColor(Color.highlightText)
-                    Spacer()
-                }
-                .padding(.leading, 40)
-                .padding(.bottom, 5)
+                Text("TU Film").titleStyle()
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
