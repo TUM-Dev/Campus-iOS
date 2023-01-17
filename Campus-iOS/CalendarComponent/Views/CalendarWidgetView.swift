@@ -70,7 +70,6 @@ struct CalendarWidgetContent: View {
     init(size: WidgetSize, events: [CalendarEvent]) {
         self.size = size
         self.events = events
-
         
         switch size {
         case .square: displayedItems = 1

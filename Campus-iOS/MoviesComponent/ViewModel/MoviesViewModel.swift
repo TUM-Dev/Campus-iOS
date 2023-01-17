@@ -12,6 +12,7 @@ import FirebaseCrashlytics
 class MoviesViewModel: ObservableObject {
     
     @Published var movies = [Movie]()
+    @Published var isFetched = false
     
     typealias ImporterType = Importer<Movie, [Movie], JSONDecoder>
     private let sessionManager: Session = Session.defaultSession
@@ -45,6 +46,9 @@ class MoviesViewModel: ObservableObject {
                     }
                     return dateOne < dateTwo
                 })
+                
+                self.isFetched = true
+            
             case .failure(let error):
                 print(error)
             }

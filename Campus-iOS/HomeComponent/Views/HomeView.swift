@@ -29,7 +29,11 @@ struct HomeView: View {
         ScrollView{
             ContactView(model: self.model, profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel)
             .padding(.top, 15)
+            .padding(.bottom)
             WidgetScreen(model: self.model)
+            .padding(.bottom)
+            MoviesViewNEW()
+            .padding(.bottom)
         }
         .task {
             profileViewModel.fetch()

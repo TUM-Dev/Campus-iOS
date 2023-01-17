@@ -43,6 +43,5 @@ struct ContactView: View {
             LinkView()
             
         }
-        .padding(.bottom)
     }
 }

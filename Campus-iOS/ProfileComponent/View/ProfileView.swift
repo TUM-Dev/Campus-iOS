@@ -19,7 +19,6 @@ struct ProfileView: View {
     var body: some View {
         
         NavigationView {
-            
             List {
                 NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
                     HStack(spacing: 24) {

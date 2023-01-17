@@ -8,7 +8,7 @@
 import Foundation
 
 enum Widget: CaseIterable {
-    case cafeteria, studyRoom, calendar, tuition, grades
+    case cafeteria, studyRoom, calendar
     
     // Views associated to the widget in some way.
     // We can use this to make assumptions for widget recommendations, based on the views that the user visited.
@@ -20,10 +20,6 @@ enum Widget: CaseIterable {
             return [.studyRooms, .studyRoom]
         case .calendar:
             return [.calendar, .calendarEvent]
-        case .tuition:
-            return [.tuition]
-        case .grades:
-            return [.grades]
         }
     }
 }
