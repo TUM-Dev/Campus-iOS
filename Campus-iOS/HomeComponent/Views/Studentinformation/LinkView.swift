@@ -9,13 +9,12 @@ import SwiftUI
 
 struct LinkView: View {
     
-    private let moodleUrl = URL(string: "https://www.moodle.tum.de/my/")!
-    private let campusUrl = URL(string: "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/login")!
+    @State var selectedLink: URL? = nil
     
     var body: some View {
         HStack {
             Button (action: {
-                UIApplication.shared.open(self.moodleUrl)
+                self.selectedLink = URL(string: "https://www.moodle.tum.de/my/")
             }) {
                 Label("Moodle", systemImage: "book.closed")
                     .foregroundColor(Color.primaryText)
@@ -26,7 +25,7 @@ struct LinkView: View {
             .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
             Spacer()
             Button (action: {
-                UIApplication.shared.open(self.campusUrl)
+                self.selectedLink = URL(string: "https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/#/login")
             }) {
                 Label("TUMonline", systemImage: "globe")
                     .foregroundColor(Color.primaryText)
@@ -37,6 +36,11 @@ struct LinkView: View {
             .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
         }
         .frame(width: Size.cardWidth)
+        .sheet(item: $selectedLink) { selectedLink in
+            if let link = selectedLink {
+                SFSafariViewWrapper(url: link)
+            }
+        }
     }
 }
 
