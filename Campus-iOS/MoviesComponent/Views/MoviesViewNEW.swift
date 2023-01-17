@@ -13,11 +13,18 @@ struct MoviesViewNEW: View {
     @State private var selectedMovie: Movie? = nil
     
     var items: [GridItem] {
-      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+        Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
     
     var body: some View {
-        if viewModel.isFetched {
+        switch self.viewModel.state {
+        case .failed:
+            EmptyView()
+        case .noMovies:
+            EmptyView()
+        case .loading:
+            ProgressView()
+        case .success:
             VStack(spacing: 0) {
                 HStack {
                     Text("TU Film")
@@ -32,7 +39,7 @@ struct MoviesViewNEW: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(self.viewModel.movies, id: \.id ) { movie in
-                                MovieCard(movie: movie).padding(7)
+                            MovieCard(movie: movie).padding(7)
                                 .onTapGesture {
                                     selectedMovie = movie
                                 }
@@ -45,8 +52,6 @@ struct MoviesViewNEW: View {
                     .padding(.trailing)
                 }
             }
-        } else {
-            ProgressView()
         }
     }
 }
