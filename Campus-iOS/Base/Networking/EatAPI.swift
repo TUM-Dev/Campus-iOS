@@ -54,10 +54,9 @@ enum EatAPI: URLRequestConvertible {
         let fullRequestURL = baseURLString + self.canteens.path
         
         if !forcedRefresh, let rawCafeterias = cache.value(forKey: baseURLString + self.canteens.path), let cafeterias = rawCafeterias as? [Cafeteria] {
-            print("Canteen data from cache")
+            
             return cafeterias
         } else {
-            print("Canteen data from server")
             // Fetch new data and store in cache.
             var cafeteriaData: Data
             do {
