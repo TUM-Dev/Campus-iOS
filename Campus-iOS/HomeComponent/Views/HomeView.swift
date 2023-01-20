@@ -12,30 +12,27 @@ struct HomeView: View {
     @StateObject var model: Model
     @StateObject var profileViewModel = ProfileViewModel()
     @StateObject var gradesViewModel: GradesViewModel
+    @StateObject var calendarViewModel: CalendarViewModel
     
     init(model: Model) {
-        self._model = StateObject(wrappedValue:
-                                    model
-                                )
-        self._gradesViewModel = StateObject(wrappedValue:
-            GradesViewModel(
-                model: model,
-                service: GradesService()
-            )
-        )
+        self._model = StateObject(wrappedValue: model)
+        self._gradesViewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+        self._calendarViewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
     }
     
     var body: some View {
         ScrollView{
             ContactView(model: self.model, profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel)
-            .padding(.top, 15)
-            .padding(.bottom)
+                .padding(.top, 15)
+                .padding(.bottom)
+            CalendarWidgetScreen(vm: self.calendarViewModel)
             WidgetScreen(model: self.model)
-            .padding(.bottom)
+                .padding(.bottom)
             MoviesViewNEW()
-            .padding(.bottom)
+                .padding(.bottom)
         }
         .task {
+            calendarViewModel.fetch()
             profileViewModel.fetch()
             await gradesViewModel.getGrades()
         }

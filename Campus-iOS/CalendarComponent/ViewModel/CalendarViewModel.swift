@@ -25,6 +25,7 @@ class CalendarViewModel: ObservableObject {
     
     func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         if(self.model.isUserAuthenticated) {
+            self.state = .loading
             let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
             DispatchQueue.main.async {
                 importer.performFetch(handler: { result in
@@ -37,10 +38,13 @@ class CalendarViewModel: ObservableObject {
                             return dateOne > dateTwo
                         }) ?? []
                         
+                        self.state = .success(data: self.events)
+                        
                         if let _ = storage.events {
                             callback(.success(true))
                         } else {
                             callback(.failure(CampusOnlineAPI.Error.noPermission))
+                            self.state = .failed(error: CampusOnlineAPI.Error.noPermission)
                         }
                     case .failure(let error):
                         self.state = .failed(error: error)
@@ -58,6 +62,40 @@ class CalendarViewModel: ObservableObject {
         let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
         let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
         return dictionary
+    }
+    
+    var eventsByDateNEW: [Date? : [CalendarEvent]] {
+        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+        let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+        let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate })
+        return dictionary
+    }
+    
+    func getWidgetEventViews(events: [Dictionary<Date?, [CalendarEvent]>.Element]) -> ([CalendarWidgetEventView], [CalendarWidgetEventView]) {
+        
+        var leftColumn = [CalendarWidgetEventView]()
+        var rightColumn = [CalendarWidgetEventView]()
+        var rightColumnCounter = 0
+        
+        for entry in events {
+            rightColumn.append(CalendarWidgetEventView(event: entry.value[0], title: entry.key!))
+            for event in entry.value {
+                if leftColumn.count == 0 && entry.key!.isToday {
+                    leftColumn.append(CalendarWidgetEventView(event: event))
+                }
+                else if rightColumnCounter < 2 {
+                    rightColumn.append(CalendarWidgetEventView(event: event))
+                    rightColumnCounter += 1
+                }
+                else {
+                    break
+                }
+            }
+            if rightColumnCounter >= 2 {
+                break
+            }
+        }
+        return (leftColumn, rightColumn)
     }
 }
 
