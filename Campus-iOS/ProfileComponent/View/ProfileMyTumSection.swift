@@ -43,7 +43,7 @@ struct ProfileMyTumSection: View {
             }
             .disabled(!self.model.isUserAuthenticated)
             
-            NavigationLink(destination: LectureSearchView(model: model).navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
+            NavigationLink(destination: LectureSearchScreen(model: model).navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
                 Label("Lecture Search", systemImage: "brain.head.profile")
             }
             .disabled(!self.model.isUserAuthenticated)

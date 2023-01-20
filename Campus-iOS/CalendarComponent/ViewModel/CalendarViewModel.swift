@@ -35,9 +35,6 @@ class CalendarViewModel: ObservableObject {
 
         do {
             let events = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
-            events.forEach { event in
-                print(event)
-            }
             
             self.state = .success(
                 data: events.filter( { $0.status != "CANCEL" } ).sorted {$0.startDate ?? .distantPast > $1.startDate ?? .distantPast})
@@ -52,7 +49,7 @@ class CalendarViewModel: ObservableObject {
             let sortedEvents = data.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
             let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
             let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
-            print(dictionary)
+            
             return dictionary
         
         } else {

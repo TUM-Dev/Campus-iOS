@@ -8,13 +8,9 @@
 import Foundation
 import Alamofire
 
-//protocol GradesServiceProtocol {
-//    func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade]
-//}
-
 struct GradesService: ServiceTokenProtocol {
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Grade] {
-        let response: GradeComponents.RowSet = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.personalGrades, token: token, forcedRefresh: forcedRefresh)
+        let response: TUMOnlineAPI2.Response<Grade> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.personalGrades, token: token, forcedRefresh: forcedRefresh)
         
         return response.row
     }

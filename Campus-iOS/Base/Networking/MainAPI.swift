@@ -135,6 +135,11 @@ enum MainAPI {
                 throw NetworkingError.deviceIsOffline
             }
             
+            if let error = try? endpoint.decode(S.error, from: data) {
+                print(error)
+                throw error
+            }
+            
             do {
                 // Decode data from the respective endpoint.
                 let decodedData = try endpoint.decode(T.self, from: data)
@@ -144,14 +149,8 @@ enum MainAPI {
                 return decodedData
                 
             } catch {
-                // Try to decode the error occured by decoding, if the error can't be decoded then we throw the "raw" error from the decoder.
-                if let decodingError = try? endpoint.decode(S.error, from: data) {
-                    print(decodingError)
-                    throw decodingError
-                } else {
-                    print(error)
-                    throw error
-                }
+                print(error)
+                throw S.error.init(message: error.localizedDescription)
             }
         }
     }
@@ -249,6 +248,15 @@ enum TUMOnlineAPI2: API {
         xmlDecoder.dateDecodingStrategy = .formatted(self.dateDecodingStrategy)
         
         return try xmlDecoder.decode(type, from: data)
+    }
+    
+    struct Response<T: Decodable>: Decodable {
+        public var row: [T]
+    }
+    
+    struct CalendarResponse: Decodable {
+        // This is needed because for .calendar the response is not "rowset" and "row", instead it is "events" and "event"
+        public var event: [CalendarEvent]
     }
 }
 

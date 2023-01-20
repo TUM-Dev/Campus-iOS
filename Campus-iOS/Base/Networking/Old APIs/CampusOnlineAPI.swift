@@ -84,6 +84,10 @@ struct CampusOnlineAPI: NetworkingAPI {
                 self = .unknown(error)
             }
         }
+        
+        init(message: String) {
+            self = .unknown(message)
+        }
 
         public var errorDescription: String? {
             switch self {

@@ -7,13 +7,15 @@
 
 import Foundation
 
-protocol APIError: Error, Decodable { }
+protocol APIError: Error, Decodable {
+    init(message: String)
+}
 
 enum TUMOnlineAPIError: APIError, LocalizedError {
     case noPermission
     case tokenNotConfirmed
     case invalidToken
-    case unkown(String)
+    case unknown(String)
     
     enum CodingKeys: String, CodingKey {
         case message = "message"
@@ -31,10 +33,14 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
         case "Token ist ungültig!":
             self = .invalidToken
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
     }
 
+    init(message: String) {
+        self = .unknown(message)
+    }
+    
     public var errorDescription: String? {
         switch self {
         case .noPermission:
@@ -43,7 +49,7 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
             return "Token not confirmed".localized
         case .invalidToken:
             return "Token invalid".localized
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
 
         }
@@ -65,7 +71,7 @@ enum TUMOnlineAPIError: APIError, LocalizedError {
 
 
 enum TUMCabeAPIError: APIError, LocalizedError {
-    case unkown(String)
+    case unknown(String)
 
     enum CodingKeys: String, CodingKey {
         case message
@@ -77,20 +83,24 @@ enum TUMCabeAPIError: APIError, LocalizedError {
 
         switch error {
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
     }
 
+    init(message: String) {
+        self = .unknown(message)
+    }
+    
     public var errorDescription: String? {
         switch self {
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
         }
     }
 }
 
 enum EatAPIError: APIError, LocalizedError {
-    case unkown(String)
+    case unknown(String)
     
     enum CodingKeys: String, CodingKey {
         case message
@@ -102,20 +112,24 @@ enum EatAPIError: APIError, LocalizedError {
 
         switch error {
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
+    }
+    
+    init(message: String) {
+        self = .unknown(message)
     }
 
     public var errorDescription: String? {
         switch self {
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
         }
     }
 }
 
 enum TUMDevAppAPIError: APIError, LocalizedError {
-    case unkown(String)
+    case unknown(String)
 
     enum CodingKeys: String, CodingKey {
         case message
@@ -127,20 +141,24 @@ enum TUMDevAppAPIError: APIError, LocalizedError {
 
         switch error {
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
     }
 
+    init(message: String) {
+        self = .unknown(message)
+    }
+    
     public var errorDescription: String? {
         switch self {
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
         }
     }
 }
 
 enum TUMSexyAPIError: APIError, LocalizedError {
-    case unkown(String)
+    case unknown(String)
 
     enum CodingKeys: String, CodingKey {
         case message
@@ -152,20 +170,24 @@ enum TUMSexyAPIError: APIError, LocalizedError {
 
         switch error {
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
     }
 
+    init(message: String) {
+        self = .unknown(message)
+    }
+    
     public var errorDescription: String? {
         switch self {
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
         }
     }
 }
 
 enum MVGAPIError: APIError, LocalizedError {
-    case unkown(String)
+    case unknown(String)
 
     enum CodingKeys: String, CodingKey {
         case message
@@ -177,13 +199,17 @@ enum MVGAPIError: APIError, LocalizedError {
 
         switch error {
         default:
-            self = .unkown(error)
+            self = .unknown(error)
         }
+    }
+    
+    init(message: String) {
+        self = .unknown(message)
     }
 
     public var errorDescription: String? {
         switch self {
-        case let .unkown(message):
+        case let .unknown(message):
             return "\("Unkonw error".localized): \(message)"
         }
     }
