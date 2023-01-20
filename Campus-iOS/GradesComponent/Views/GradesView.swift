@@ -62,6 +62,9 @@ struct GradesView: View {
             }
             .background(Color.primaryBackground)
             .scrollContentBackground(.hidden)
+            .task {
+                data.visitView(view: .grades)
+            }
             .onDisappear {
                 data.didExitView()
             }

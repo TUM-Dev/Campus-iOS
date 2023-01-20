@@ -72,6 +72,33 @@ struct TimeStrategy: WidgetRecommenderStrategy {
                 || (month == 2 && day <= 15) {
                 priority += 1
             }
+            
+        case .tuition:
+            
+            // 1 month before the deadline.
+            if (month == 1 || month == 7) && day >= 15 {
+                priority += 1
+            }
+            
+            if (month == 2 || month == 8) && day < 15 {
+                priority += 1
+                
+                if day >= 12 {
+                    priority += 1
+                }
+            }
+            
+        case .grades:
+            
+            // Grades are most interesting after the exams, i.e. at the end of the semester.
+            if (month == 2 && day > 15) || month == 3 || (month == 7 && day >= 15) || month == 8 {
+                priority += 1
+            }
+            
+            // Bonus points in August and March.
+            if month == 3 || month == 8 {
+                priority += 1
+            }
         }
         
         return priority

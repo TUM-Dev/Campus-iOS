@@ -23,6 +23,9 @@ struct TuitionView: View {
         .refreshable {
             self.viewModel.checkTuitionFunc()
         }
+        .task {
+            data.visitView(view: .tuition)
+        }
         .onDisappear {
             data.didExitView()
         }

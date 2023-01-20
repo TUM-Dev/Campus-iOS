@@ -13,10 +13,10 @@ class WidgetRecommender: ObservableObject {
     
     @Published var status: WidgetRecommenderStatus
     @Published var recommendations: [WidgetRecommendation]
-        
+    
     private let strategy: WidgetRecommenderStrategy
     private let model: Model
-
+    
     init(strategy: WidgetRecommenderStrategy, model: Model) {
         self.strategy = strategy
         self.model = model
@@ -39,6 +39,10 @@ class WidgetRecommender: ObservableObject {
             StudyRoomWidgetView(size: size, refresh: refresh)
         case .calendar:
             CalendarWidgetView(model: model, size: size, refresh: refresh)
+        case .tuition:
+            TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
+        case .grades:
+            GradeWidgetView(model: model, size: size, refresh: refresh)
         }
     }
 }

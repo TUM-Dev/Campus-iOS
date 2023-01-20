@@ -25,9 +25,10 @@ struct HomeView: View {
             ContactView(model: self.model, profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel)
                 .padding(.top, 15)
                 .padding(.bottom)
-            CalendarWidgetScreen(vm: self.calendarViewModel)
-            WidgetScreen(model: self.model)
+            WidgetScreenNEW(model: self.model)
                 .padding(.bottom)
+            /*WidgetScreen(model: self.model)
+                .padding(.bottom)*/
             MoviesViewNEW()
                 .padding(.bottom)
         }
