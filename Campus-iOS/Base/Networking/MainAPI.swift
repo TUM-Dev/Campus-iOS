@@ -92,6 +92,13 @@ extension API {
     }
 }
 
+enum APIState<T: Decodable> {
+    case na
+    case loading
+    case success(data: [T])
+    case failed(error: Error)
+}
+
 enum MainAPI {
     // Maximum size of cache: 500kB, Maximum cache entries: 1000, Lifetime: 10min
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
@@ -122,6 +129,7 @@ enum MainAPI {
             var data: Data
             do {
                 data = try await endpoint.asRequest(token: token).serializingData().value
+//                print("\(String(data: data, encoding: .utf8))")
             } catch {
                 print(error)
                 throw NetworkingError.deviceIsOffline
@@ -227,9 +235,18 @@ enum TUMOnlineAPI2: API {
         }
     }
     
+    var dateDecodingStrategy: DateFormatter {
+        switch self {
+        case .calendar :
+                return DateFormatter.yyyyMMddhhmmss
+        default :
+            return DateFormatter.yyyyMMdd
+        }
+    }
+    
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         let xmlDecoder = XMLDecoder()
-        xmlDecoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
+        xmlDecoder.dateDecodingStrategy = .formatted(self.dateDecodingStrategy)
         
         return try xmlDecoder.decode(type, from: data)
     }
@@ -436,8 +453,6 @@ enum MVGAPI2: API {
     var needsAuth: Bool { false }
     
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
-        <#code#>
+        return try JSONDecoder().decode(type, from: data)
     }
-    
-    
 }

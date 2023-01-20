@@ -40,6 +40,17 @@ public class Model: ObservableObject {
     
     var anyCancellables: [AnyCancellable] = []
     
+    var token: String? {
+        switch self.loginController.credentials {
+        case .none, .noTumID:
+            return nil
+        case .tumID(_, let token):
+            return token
+        case .tumIDAndKey(_, let token, _):
+            return token
+        }
+    }
+    
     init() {
         loginController = AuthenticationHandler()
         

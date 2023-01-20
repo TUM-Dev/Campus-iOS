@@ -17,9 +17,9 @@ struct LectureDetailsService: LectureDetailsServiceProtocol {
     func fetch(token: String, lvNr: UInt64, forcedRefresh: Bool = false) async throws -> LectureDetails {
         let response: LectureDetailsComponents.RowSet =
             try await
-                CampusOnlineAPI
+                MainAPI
                     .makeRequest(
-                        endpoint: Constants.API.CampusOnline.lectureDetails(lvNr: String(lvNr)),
+                        endpoint: TUMOnlineAPI2.lectureDetails(lvNr: String(lvNr)),
                         token: token,
                         forcedRefresh: forcedRefresh
                     )

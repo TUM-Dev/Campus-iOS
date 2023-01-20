@@ -1,22 +1,21 @@
 //
-//  GradesScreen.swift
+//  CalendarScreen.swift
 //  Campus-iOS
 //
-//  Created by Philipp Zagar on 21.12.21.
+//  Created by David Lin on 20.01.23.
 //
 
 import SwiftUI
-import SwiftUICharts
 
-struct GradesScreen: View {
-    @StateObject var vm: GradesViewModel
+struct CalendarScreen: View {
+    @StateObject var vm: CalendarViewModel
     @Binding var refresh: Bool
-
+    
     init(model: Model, refresh: Binding<Bool>) {
         self._vm = StateObject(wrappedValue:
-            GradesViewModel(
+            CalendarViewModel(
                 model: model,
-                service: GradesService()
+                service: CalendarService()
             )
         )
         self._refresh = refresh
@@ -25,38 +24,38 @@ struct GradesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success(_):
+            case .success(let events):
                 VStack {
-                    GradesView(
-                        vm: self.vm
+                    CalendarContentView(
+                        model: self.vm.model, events: events
                     )
                     .refreshable {
-                        await vm.getGrades(forcedRefresh: true)
+                        await vm.getCalendar(forcedRefresh: true)
                     }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching Grades")
+                LoadingView(text: "Fetching Calendar")
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
-                    retryClosure: vm.getGrades
+                    retryClosure: vm.getCalendar
                 )
             }
         }
         .task {
-            await vm.getGrades()
+            await vm.getCalendar()
         }
         // Refresh whenever user authentication status changes
         .onChange(of: self.refresh) { _ in
             Task {
-                await vm.getGrades()
+                await vm.getCalendar()
             }
         }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
         .onChange(of: self.vm.model.token ?? "") { _ in
             Task {
-                await vm.getGrades()
+                await vm.getCalendar()
             }
         }
         .alert(
@@ -65,7 +64,7 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getGrades(forcedRefresh: true)
+                        await vm.getCalendar(forcedRefresh: true)
                     }
                 }
         
@@ -79,11 +78,5 @@ struct GradesScreen: View {
                     }
                 }
             }
-    }
-}
-
-struct GradesScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GradesScreen(model: MockModel(), refresh: .constant(false))
     }
 }

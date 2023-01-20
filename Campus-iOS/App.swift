@@ -50,7 +50,7 @@ struct CampusApp: App {
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView(
+                CalendarScreen(
                     model: model,
                     refresh: $model.isUserAuthenticated
                 )

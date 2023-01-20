@@ -18,7 +18,7 @@ struct CalendarWidgetView: View {
     @Binding var refresh: Bool
     
     init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))  // Fetches in init.
+        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model, service: CalendarService()))  // Fetches in init.
         self._size = State(initialValue: size)
         self.initialSize = size
         self.model = model
@@ -45,7 +45,12 @@ struct CalendarWidgetView: View {
         )
         .onChange(of: refresh) { _ in
             if showDetails { return }
-            viewModel.fetch()
+            Task {
+                await viewModel.getCalendar()
+            }
+        }
+        .task {
+            await viewModel.getCalendar()
         }
         .onTapGesture {
             showDetails.toggle()
@@ -53,7 +58,7 @@ struct CalendarWidgetView: View {
         .sheet(isPresented: $showDetails) {
             VStack {
                 Spacer().frame(height: 10)
-                CalendarContentView(model: model, refresh: .constant(false))
+                CalendarScreen(model: self.model, refresh: .constant(false))
             }
         }
         .expandable(size: $size, initialSize: initialSize, scale: $scale)
