@@ -10,7 +10,6 @@ import SwiftUI
 struct PersonSearchScreen: View {
     @StateObject var vm: PersonSearchViewModel
     @State var searchText = ""
-    var findPerson = ""
     
     init(model: Model) {
         self._vm = StateObject(wrappedValue: PersonSearchViewModel(model: model, service: PersonSearchService()))
@@ -26,7 +25,7 @@ struct PersonSearchScreen: View {
             switch vm.state {
             case .success(let persons):
                 VStack {
-                    PersonSearchView(persons: persons)
+                    PersonSearchView(model: vm.model, persons: persons)
                         .background(Color(.systemGroupedBackground))
                 }
             case .loading:

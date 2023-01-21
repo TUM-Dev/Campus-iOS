@@ -13,7 +13,7 @@ import XMLCoder
 
 @MainActor
 class LectureSearchViewModel: ObservableObject {
-    @Published var state: APIState<Lecture> = .na
+    @Published var state: APIState<[Lecture]> = .na
     @Published var hasError: Bool = false
     
     let model: Model

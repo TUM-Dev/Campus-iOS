@@ -39,7 +39,7 @@ import XMLCoder
 
 @MainActor
 class PersonSearchViewModel: ObservableObject {
-    @Published var state: APIState<Person> = .na
+    @Published var state: APIState<[Person]> = .na
     @Published var hasError: Bool = false
     
     let model: Model

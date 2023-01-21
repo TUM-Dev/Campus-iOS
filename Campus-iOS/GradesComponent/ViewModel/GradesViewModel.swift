@@ -14,7 +14,7 @@ protocol GradesViewModelProtocol: ObservableObject {
 
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
-    @Published var state: APIState<Grade> = .na
+    @Published var state: APIState<[Grade]> = .na
     @Published var hasError: Bool = false
     
     let model: Model

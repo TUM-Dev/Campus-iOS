@@ -10,7 +10,7 @@ import XMLCoder
 
 @MainActor
 class CalendarViewModel: ObservableObject {
-    @Published var state: APIState<CalendarEvent> = .na
+    @Published var state: APIState<[CalendarEvent]> = .na
     @Published var hasError: Bool = false
     
     let model: Model

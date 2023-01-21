@@ -21,7 +21,7 @@ struct ProfileView: View {
         NavigationView {
             
             List {
-                NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
+                NavigationLink(destination: PersonDetailedScreen(model: self.model, profile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
                     HStack(spacing: 24) {
                         self.model.profile.profileImage
                             .resizable()

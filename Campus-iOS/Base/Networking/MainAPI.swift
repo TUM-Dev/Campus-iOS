@@ -95,7 +95,7 @@ extension API {
 enum APIState<T: Decodable> {
     case na
     case loading
-    case success(data: [T])
+    case success(data: T)
     case failed(error: Error)
 }
 
