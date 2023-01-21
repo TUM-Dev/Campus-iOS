@@ -38,7 +38,7 @@ struct ProfileMyTumSection: View {
             }
             .disabled(!self.model.isUserAuthenticated)
             
-            NavigationLink(destination: PersonSearchView().navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
+            NavigationLink(destination: PersonSearchScreen(model: self.model).navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
                 Label("Person Search", systemImage: "magnifyingglass")
             }
             .disabled(!self.model.isUserAuthenticated)

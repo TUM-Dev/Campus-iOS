@@ -23,7 +23,7 @@ struct LecturesDetailView: View {
                         LectureDetailsEventInfoView(viewModel: viewModel, event: event)
                     }
                     
-                    LectureDetailsBasicInfoView(lectureDetails: lectureDetails)
+                    LectureDetailsBasicInfoView(model: viewModel.model, lectureDetails: lectureDetails)
                     
                     LectureDetailsDetailedInfoView(lectureDetails: lectureDetails)
                     

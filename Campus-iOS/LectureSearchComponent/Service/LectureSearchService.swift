@@ -8,8 +8,6 @@
 import Foundation
 
 struct LectureSearchService {
-    typealias T = Lecture
-    
     func fetch(for query: String, token: String, forcedRefresh: Bool) async throws -> [Lecture] {
         let response : TUMOnlineAPI2.Response<Lecture> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.lectureSearch(search: query), token: token, forcedRefresh: forcedRefresh)
         

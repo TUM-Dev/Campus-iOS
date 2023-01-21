@@ -1,58 +1,65 @@
 //
-//  LectureSearchView.swift
+//  PersonSearchView.swift
 //  Campus-iOS
 //
-//  Created by Milen Vitanov on 09.02.22.
+//  Created by Milen Vitanov on 06.02.22.
 //
 
 import SwiftUI
 
-struct LectureSearchScreen: View {
-    @StateObject var vm: LectureSearchViewModel
+struct PersonSearchScreen: View {
+    @StateObject var vm: PersonSearchViewModel
     @State var searchText = ""
+    var findPerson = ""
     
     init(model: Model) {
-        self._vm = StateObject(wrappedValue: LectureSearchViewModel(model: model, service: LectureSearchService()))
+        self._vm = StateObject(wrappedValue: PersonSearchViewModel(model: model, service: PersonSearchService()))
+    }
+    
+    init(model: Model, findPerson: String) {
+        self._vm = StateObject(wrappedValue: PersonSearchViewModel(model: model, service: PersonSearchService()))
+        self._searchText = State(wrappedValue: findPerson)
     }
     
     var body: some View {
         Group {
             switch vm.state {
-            case .success(let lectures):
+            case .success(let persons):
                 VStack {
-                    LectureSearchView(model: vm.model, lectures: lectures)
+                    PersonSearchView(persons: persons)
                         .background(Color(.systemGroupedBackground))
                 }
             case .loading:
-                if searchText.count > 3 {
-                    LoadingView(text: "Fetching Lectures")
-                } else {
-                    Text("The search query must be at least 4 characters.")
-                }
+                LoadingView(text: "Fetching Persons")
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
-                    retryClosure: {_ in await vm.getLectures(for: self.searchText, forcedRefresh: true)}
+                    retryClosure: {_ in await vm.getPersons(for: self.searchText, forcedRefresh: true)}
                 )
             case .na:
-                if searchText.count > 0 && searchText.count <= 3 {
-                    Text("The search query must be at least 4 characters.")
-                }
+                EmptyView()
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .onChange(of: self.searchText) { query in
             Task {
-                await vm.getLectures(for: query, forcedRefresh: true)
+                await vm.getPersons(for: query, forcedRefresh: true)
+            }
+        }
+        .onAppear {
+            if !searchText.isEmpty {
+                Task {
+                    await vm.getPersons(for: searchText, forcedRefresh: true)
+                }
             }
         }
         .alert(
-            "Error while fetching Lectures",
+            "Error while fetching Persons",
             isPresented: $vm.hasError,
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getLectures(for: self.searchText, forcedRefresh: true)
+                        await vm.getPersons(for: self.searchText, forcedRefresh: true)
                     }
                 }
                 
@@ -68,9 +75,3 @@ struct LectureSearchScreen: View {
             }
     }
 }
-
-//struct LectureSearchView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LectureSearchView(model: MockModel())
-//    }
-//}

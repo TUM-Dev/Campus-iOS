@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct LectureSearchView: View {
-    @Environment(\.isSearching) private var isSearching
-    
     let model: Model
     let lectures: [Lecture]
     

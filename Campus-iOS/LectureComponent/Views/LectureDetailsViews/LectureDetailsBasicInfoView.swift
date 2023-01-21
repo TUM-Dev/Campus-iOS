@@ -14,13 +14,13 @@ struct LectureDetailsBasicInfoView: View {
     @State private var chosenSpeaker = ""
     
     var lectureDetails: LectureDetails
+    @StateObject var personVM: PersonSearchViewModel
+    let model: Model
     
-    var viewModelPersonSearch: PersonSearchViewModel {
-        let viewModel = PersonSearchViewModel()
-        if self.chosenSpeaker.count > 3 {
-            viewModel.fetch(searchString: self.chosenSpeaker)
-        }
-        return viewModel
+    init(model: Model, lectureDetails: LectureDetails) {
+        self.model = model
+        self._personVM = StateObject(wrappedValue: PersonSearchViewModel(model: model, service: PersonSearchService()))
+        self.lectureDetails = lectureDetails
     }
     
     var actionSheetButtons: [ActionSheet.Button] {
@@ -41,9 +41,9 @@ struct LectureDetailsBasicInfoView: View {
             .padding(.bottom, 10)
         ) {
             NavigationLink(isActive: self.$navigationLinkActive, destination: {
-                PersonSearchView(viewModel: self.viewModelPersonSearch, searchText: self.chosenSpeaker)
+                PersonSearchScreen(model: model, findPerson: chosenSpeaker)
             }) {
-                EmptyView()
+                EmptyView().onAppear{print("empty view")}
             }
             
             VStack(alignment: .leading, spacing: 8) {
@@ -94,6 +94,6 @@ struct LectureDetailsBasicInfoView: View {
 
 struct LectureDetailsBasicInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        LectureDetailsBasicInfoView(lectureDetails: LectureDetails.dummyData)
+        LectureDetailsBasicInfoView(model: Model(), lectureDetails: LectureDetails.dummyData)
     }
 }
