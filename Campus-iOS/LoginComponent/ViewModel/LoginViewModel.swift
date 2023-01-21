@@ -11,6 +11,7 @@ import SwiftUI
 import FirebaseAnalytics
 #endif
 
+@MainActor
 class LoginViewModel: ObservableObject {
     @Published var firstTextField = ""
     @Published var numbersTextField = ""
@@ -19,7 +20,8 @@ class LoginViewModel: ObservableObject {
     private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
     weak var model: Model?
-    var loginController = AuthenticationHandler()
+//    var loginController = AuthenticationHandler()
+    var loginController2 = AuthenticationHandler2()
     
     var isContinueEnabled: Bool {
         let firstTextFieldValid = self.firstTextField.allSatisfy({$0.isLetter}) && self.firstTextField.count == 2
@@ -37,45 +39,44 @@ class LoginViewModel: ObservableObject {
         self.model = model
     }
     
-    func loginWithContinue(callback: @escaping (Result<Bool,Error>) -> Void) {
+    func loginWithContinue2(callback: @escaping (Result<Bool,Error>) -> Void) async {
         guard let tumID = tumID else {
             callback(.failure(LoginError.serverError(message: "No TUM ID")))
             return
         }
-        loginController.createToken(tumID: tumID) { [weak self] result in
+        
+        await loginController2.createToken(tumID: tumID, completion: { result in
             switch result {
             case .success:
-                self?.alertMessage = ""
+                self.alertMessage = ""
                 callback(.success(true))
             case let .failure(error):
-                self?.alertMessage = error.localizedDescription
+                self.alertMessage = error.localizedDescription
                 callback(.failure(error))
             }
-        }
+        })
     }
     
     func loginWithContinueWithoutTumID() {
-        loginController.skipLogin()
+        loginController2.skipLogin()
     }
     
-    func checkAuthorization(callback: @escaping (Result<Bool,Error>) -> Void) {
-        loginController.confirmToken() { [weak self] result in
+    func checkAuthorization(callback: @escaping (Result<Bool,Error>) -> Void) async {
+        await loginController2.confirmToken { result in
             switch result {
             case .success:
                 #if !targetEnvironment(macCatalyst)
                 Analytics.logEvent("token_confirmed", parameters: nil)
                 #endif
                 //wself?.model?.isLoginSheetPresented = false
-                self?.model?.isUserAuthenticated = true
-                self?.model?.showProfile = false
-                self?.model?.loadProfile()
-                
-                Self.hapticFeedbackGenerator.notificationOccurred(.success)
+                self.model?.isUserAuthenticated = true
+                self.model?.showProfile = false
+                self.model?.loadProfile()
                 
                 callback(.success(true))
             case let .failure(error):
-                self?.model?.isUserAuthenticated = false
-                self?.alertMessage = error.localizedDescription
+                self.model?.isUserAuthenticated = false
+                self.alertMessage = error.localizedDescription
                 callback(.failure(error))
             }
         }

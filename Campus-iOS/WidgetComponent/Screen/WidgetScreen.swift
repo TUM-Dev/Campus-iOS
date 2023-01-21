@@ -11,13 +11,14 @@ import MapKit
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
-    @StateObject var model: Model = Model()
+    var model: Model
     @State private var refresh = false
     @State private var widgetTitle = String()
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
         self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
+        self.model = model
     }
     
     var body: some View {

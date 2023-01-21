@@ -106,20 +106,22 @@ struct LoginView: View {
                         if showLoginButton {
                             Button {
                                 if logInState != .loggedIn {
-                                    self.viewModel.loginWithContinue() { result in
-                                        switch result {
-                                        case .success:
-                                            withAnimation() {
-                                                buttonBackgroundColor = .blue
-                                                logInState = .loggedIn
+                                    Task {
+                                        await self.viewModel.loginWithContinue2 { result in
+                                            switch result {
+                                            case .success:
+                                                withAnimation() {
+                                                    buttonBackgroundColor = .blue
+                                                    logInState = .loggedIn
+                                                }
+                                                print("Log in Successfull")
+                                            case .failure(_):
+                                                withAnimation() {
+                                                    buttonBackgroundColor = .red
+                                                    logInState = .logInError
+                                                }
+                                                print("Loggin Error")
                                             }
-                                            print("Log in Successfull")
-                                        case .failure(_):
-                                            withAnimation() {
-                                                buttonBackgroundColor = .red
-                                                logInState = .logInError
-                                            }
-                                            print("Loggin Error")
                                         }
                                     }
                                 }

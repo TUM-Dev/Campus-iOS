@@ -10,6 +10,7 @@ import Alamofire
 import XMLCoder
 import SwiftUI
 
+@MainActor
 class ProfileViewModel: ObservableObject {
     
     @Published var profile: Profile?

@@ -54,6 +54,8 @@
 		1F04F17F297BDF1E0085F273 /* PersonSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F17E297BDF1E0085F273 /* PersonSearchService.swift */; };
 		1F04F183297C3EF70085F273 /* PersonDetailedScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F182297C3EF70085F273 /* PersonDetailedScreen.swift */; };
 		1F04F185297C3F990085F273 /* PersonDetailedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F184297C3F990085F273 /* PersonDetailedService.swift */; };
+		1F04F18A297C85120085F273 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F189297C85120085F273 /* Token.swift */; };
+		1F04F18C297C85190085F273 /* Confirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F18B297C85190085F273 /* Confirmation.swift */; };
 		1F183A172979D19000B5D22D /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F183A162979D19000B5D22D /* APIErrors.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
@@ -330,6 +332,8 @@
 		1F04F17E297BDF1E0085F273 /* PersonSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchService.swift; sourceTree = "<group>"; };
 		1F04F182297C3EF70085F273 /* PersonDetailedScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedScreen.swift; sourceTree = "<group>"; };
 		1F04F184297C3F990085F273 /* PersonDetailedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedService.swift; sourceTree = "<group>"; };
+		1F04F189297C85120085F273 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		1F04F18B297C85190085F273 /* Confirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirmation.swift; sourceTree = "<group>"; };
 		1F183A162979D19000B5D22D /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
@@ -736,6 +740,16 @@
 			path = Screen;
 			sourceTree = "<group>";
 		};
+		1F04F188297C85030085F273 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36203E8A2761C6EC00C24658 /* Credentials.swift */,
+				1F04F189297C85120085F273 /* Token.swift */,
+				1F04F18B297C85190085F273 /* Confirmation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1F4C836528300E6F006971C0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -1036,6 +1050,7 @@
 		36203E872761C6EC00C24658 /* LoginComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1F04F188297C85030085F273 /* Model */,
 				36E9649D277492150055777F /* Service */,
 				36E9649C277491F10055777F /* ViewModel */,
 				36E9649B277491E90055777F /* Views */,
@@ -1542,7 +1557,6 @@
 			isa = PBXGroup;
 			children = (
 				36FF906E2773BE8100F4C785 /* AuthenticationHandler.swift */,
-				36203E8A2761C6EC00C24658 /* Credentials.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1853,6 +1867,7 @@
 				36AF61E727A2FD7800FEBD98 /* ErrorEmittingViewModifier.swift in Sources */,
 				3654F362285168D2008AD5DC /* StudyRoomApiResponse.swift in Sources */,
 				36108BC527A3046B007DC62D /* LectureDetailsDetailedInfoView.swift in Sources */,
+				1F04F18A297C85120085F273 /* Token.swift in Sources */,
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
 				08573BA5287847DC006AC06F /* MapLocation.swift in Sources */,
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
@@ -1968,6 +1983,7 @@
 				0815249828E492070098A2C3 /* RecommenderError.swift in Sources */,
 				36AF61EB27A2FD7800FEBD98 /* ErrorCategory.swift in Sources */,
 				1F04F185297C3F990085F273 /* PersonDetailedService.swift in Sources */,
+				1F04F18C297C85190085F273 /* Confirmation.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */,
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,

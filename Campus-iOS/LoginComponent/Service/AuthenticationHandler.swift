@@ -33,7 +33,86 @@ enum LoginError: LocalizedError {
     }
 }
 
-/// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
+class AuthenticationHandler2 {
+    private static let keychain = Keychain(service: "de.tum.campusapp")
+        .synchronizable(true)
+        .accessibility(.afterFirstUnlock)
+
+    private(set) var credentials: Credentials? {
+        get {
+            // Used for unit tests
+            if let tumID = ProcessInfo.processInfo.environment["TUM_ID"], let token = ProcessInfo.processInfo.environment["TOKEN"] {
+                return Credentials.tumID(tumID: tumID, token: token)
+            } else if ProcessInfo.processInfo.arguments.contains("-skip-login") {
+                return Credentials.noTumID
+            }
+
+            guard let data = Self.keychain[data: "credentials"] else { return nil }
+            return try? PropertyListDecoder().decode(Credentials.self, from: data)
+        }
+        set {
+            if let newValue = newValue {
+                let data = try! PropertyListEncoder().encode(newValue)
+                Self.keychain[data: "credentials"] = data
+            } else {
+                Self.keychain[data: "credentials"] = nil
+            }
+        }
+    }
+    
+    func createToken(tumID: String, completion: @escaping (Result<String,Error>) -> Void) async {
+        do {
+            let tokenName = "TCA - \(await UIDevice.current.name)"
+            
+            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.tokenRequest(tumID: tumID, tokenName: tokenName))
+            print(token.value)
+            self.credentials = Credentials.tumID(tumID: tumID, token: token.value)
+            completion(.success(token.value))
+        } catch {
+            print(error)
+            completion(.failure(LoginError.serverError(message: error.localizedDescription)))
+        }
+        
+    }
+    
+    func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) async {
+        if let credentials = credentials {
+            switch credentials {
+            case .noTumID: callback(.failure(LoginError.missingToken))
+            case .tumID(tumID: _, token: let token),
+                    .tumIDAndKey(tumID: _, token: let token, key: _):
+                do {
+                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.tokenConfirmation, token: token)
+                    if confirmation.value {
+                        callback(.success(true))
+                    } else {
+                        callback(.failure(TUMOnlineAPIError.tokenNotConfirmed))
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                    callback(.failure(LoginError.serverError(message: error.localizedDescription)))
+                }
+            }
+        }
+    }
+
+    func logout() {
+        #if !targetEnvironment(macCatalyst)
+        Analytics.logEvent("logout", parameters: nil)
+        #endif
+        // deletes uthenticationHandler.keychain[data: "credentials"]
+        credentials = nil
+    }
+
+    func skipLogin() {
+        #if !targetEnvironment(macCatalyst)
+        Analytics.logEvent("skip_login", parameters: nil)
+        #endif
+        credentials = .noTumID
+    }
+}
+
+// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
 final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     typealias Completion = (Result<String,Error>) -> Void
 
@@ -69,7 +148,7 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
     }
 
     // MARK: - RequestAdapter
-
+    /* Not needed after API refactoring*/
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
         guard let urlString = urlRequest.url?.absoluteString else { return completion(.success(urlRequest)) }

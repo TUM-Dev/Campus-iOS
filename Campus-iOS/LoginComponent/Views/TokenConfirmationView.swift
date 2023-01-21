@@ -131,19 +131,21 @@ struct TokenConfirmationView: View {
                         
                         if !tokenPermissionButton {
                             Button(action: {
-                                self.viewModel.checkAuthorization() { result in
-                                    switch result {
-                                    case .success:
-                                        withAnimation {
-                                            tokenState = .active
-                                            buttonBackgroundColor = .green
-                                            showTokenHelp = false
-                                        }
-                                    case .failure(_):
-                                        withAnimation {
-                                            tokenState = .inactive
-                                            buttonBackgroundColor = .red
-                                            showTokenHelp = true
+                                Task {
+                                    await self.viewModel.checkAuthorization() { result in
+                                        switch result {
+                                        case .success:
+                                            withAnimation {
+                                                tokenState = .active
+                                                buttonBackgroundColor = .green
+                                                showTokenHelp = false
+                                            }
+                                        case .failure(_):
+                                            withAnimation {
+                                                tokenState = .inactive
+                                                buttonBackgroundColor = .red
+                                                showTokenHelp = true
+                                            }
                                         }
                                     }
                                 }

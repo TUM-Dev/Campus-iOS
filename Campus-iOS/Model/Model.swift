@@ -12,6 +12,7 @@ import SwiftUI
 import FirebaseAnalytics
 #endif
 
+@MainActor
 public class Model: ObservableObject {
     
     @Published var showProfile = false {
@@ -34,7 +35,7 @@ public class Model: ObservableObject {
         }
     }
     
-    @Published var loginController: AuthenticationHandler
+    @Published var loginController = AuthenticationHandler2()
     @Published var isUserAuthenticated = false
     @Published var profile: ProfileViewModel = ProfileViewModel()
     
@@ -51,47 +52,24 @@ public class Model: ObservableObject {
         }
     }
     
-    init() {
-        loginController = AuthenticationHandler()
-        
-        if loginController.credentials == Credentials.noTumID {
-            isUserAuthenticated = false
-        } else {
-            loginController.confirmToken() { [weak self] result in
-                switch result {
-                case .success:
-                    #if !targetEnvironment(macCatalyst)
-                    Analytics.logEvent("token_confirmed", parameters: nil)
-                    #endif
-                    self?.isLoginSheetPresented = false
-                    self?.isUserAuthenticated = true
-                    self?.loadProfile()
-                case .failure(_):
-                    self?.isUserAuthenticated = false
-                    if let model = self {
-                        if !model.showProfile {
-                            model.isLoginSheetPresented = true
-                        }
-                    } else {
-                        self?.isLoginSheetPresented = true
-                    }
-                }
-            }
+    func logout() {
+        DispatchQueue.main.async {
+            self.loginController.logout()
+            self.isLoginSheetPresented = self.showProfile ? false : true
+            self.isUserAuthenticated = false
+            self.unloadProfile()
         }
     }
     
-    func logout() {
-        loginController.logout()
-        self.isLoginSheetPresented = self.showProfile ? false : true
-        self.isUserAuthenticated = false
-        self.unloadProfile()
-    }
-    
     func unloadProfile() {
-        self.profile = ProfileViewModel()
+        DispatchQueue.main.async {
+            self.profile = ProfileViewModel()
+        }
     }
     
     func loadProfile() {
-        self.profile = ProfileViewModel(model: self)
+        DispatchQueue.main.async {
+            self.profile = ProfileViewModel(model: self)
+        }
     }
 }
