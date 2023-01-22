@@ -44,18 +44,28 @@ struct News: Entity {
         guard let sourceID = Int64(sourceString) else {
             throw DecodingError.typeMismatch(Int64.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Value for source could not be converted to Int64"))
         }
-        let date = try container.decode(Date.self, forKey: .date)
         let created = try container.decode(Date.self, forKey: .created)
         let title = try container.decode(String.self, forKey: .title)
-        let link = try container.decode(URL.self, forKey: .link)
         let imageURLString = try container.decode(String.self, forKey: .imageURL)
+        
+        do {
+            self.date = try container.decode(Date.self, forKey: .date)
+        } catch {
+            self.date = Date.distantPast
+            print("News decoding error for property date: \(error)")
+        }
+        
+        do {
+            self.link = try container.decode(URL.self, forKey: .link)
+        } catch {
+            self.link = nil
+            print("News decoding error for property link: \(error)")
+        }
         
         self.id = id
         self.sourceID = sourceID
-        self.date = date
         self.created = created
         self.title = title
-        self.link = link
         self.imageURL = imageURLString.replacingOccurrences(of: " ", with: "%20")
     }
 }

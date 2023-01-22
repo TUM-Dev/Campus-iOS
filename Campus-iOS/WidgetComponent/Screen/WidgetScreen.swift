@@ -20,7 +20,7 @@ struct WidgetScreen: View {
     init(model: Model) {
         self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
         self.model = model
-        self.profileViewModel = ProfileViewModel2(model: model, service: ProfileService())
+        self.profileViewModel = ProfileViewModel(model: model, service: ProfileService())
     }
     
     var body: some View {

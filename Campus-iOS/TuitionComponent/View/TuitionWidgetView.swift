@@ -24,7 +24,7 @@ struct TuitionWidgetView: View {
     }
     
     var body: some View {
-        WidgetFrameView(size: size, content: TuitionWidgetContent(viewModel: ProfileViewModel2(model: model, service: ProfileService()), size: size, refresh: $refresh))
+        WidgetFrameView(size: size, content: TuitionWidgetContent(viewModel: ProfileViewModel(model: model, service: ProfileService()), size: size, refresh: $refresh))
             .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
     }
 }

@@ -19,7 +19,7 @@ struct ProfileView: View {
     @State var selectedLink: URL? = nil
     
     init(model: Model) {
-        self._vm = StateObject(wrappedValue: ProfileViewModel2(model: model, service: ProfileService()))
+        self._vm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
     }
     
     var body: some View {
@@ -61,7 +61,7 @@ struct ProfileView: View {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
-                    NavigationLink(destination: NewsView(viewModel: NewsViewModel())
+                    NavigationLink(destination: NewsScreen()
                         .navigationBarTitle(Text("News"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {

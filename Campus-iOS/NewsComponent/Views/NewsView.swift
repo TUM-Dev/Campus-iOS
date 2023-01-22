@@ -7,20 +7,70 @@
 
 import SwiftUI
 
+struct NewsScreen: View {
+    @StateObject var vm = NewsViewModel2()
+    
+    var body: some View {
+        Group {
+            switch vm.state {
+            case .success(let newsSources):
+                VStack {
+                    NewsView(latestFiveNews: vm.latestFiveNews, newsSources: newsSources)           .refreshable {
+                        await vm.getNewsSources(forcedRefresh: true)
+                    }
+                }
+            case .loading, .na:
+                LoadingView(text: "Fetching News")
+            case .failed(let error):
+                FailedView(
+                    errorDescription: error.localizedDescription,
+                    retryClosure: vm.getNewsSources
+                )
+            }
+        }.onAppear {
+            Task {
+                await vm.getNewsSources()
+            }
+        }.alert(
+            "Error while fetching News",
+            isPresented: $vm.hasError,
+            presenting: vm.state) { detail in
+                Button("Retry") {
+                    Task {
+                        await vm.getNewsSources(forcedRefresh: true)
+                    }
+                }
+        
+                Button("Cancel", role: .cancel) { }
+            } message: { detail in
+                if case let .failed(error) = detail {
+                    if let apiError = error as? TUMCabeAPIError {
+                        Text(apiError.errorDescription ?? "TUMCabeAPI Error")
+                    } else {
+                        Text(error.localizedDescription)
+                    }
+                }
+            }
+    }
+}
+
 struct NewsView: View {
     
-    @StateObject var viewModel: NewsViewModel
+//    @StateObject var viewModel: NewsViewModel
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @Environment(\.scenePhase) var scenePhase
     @State var isWebViewShowed = false
     @State var selectedLink: URL? = nil
+    
+    let latestFiveNews: [(String?, News?)]
+    let newsSources: [NewsSource]
     
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .center) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
-                        ForEach(viewModel.latestFiveNews, id: \.1?.id) { oneLatestNews in
+                        ForEach(latestFiveNews, id: \.1?.id) { oneLatestNews in
                             GeometryReader { geometry in
                                 if let url = oneLatestNews.1?.link {
                                     if self.useBuildInWebView {
@@ -52,7 +102,8 @@ struct NewsView: View {
                 }
 
                 Spacer()
-                ForEach(viewModel.newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in
+                
+                ForEach(newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in
                     Collapsible(title: {
                         AnyView(HStack(alignment: .center) {
                             Image(systemName: "list.bullet").foregroundColor(.blue)
@@ -66,18 +117,5 @@ struct NewsView: View {
                 }
             }
         }
-    }
-    
-    init(viewModel: NewsViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-        viewModel.fetch()
-    }
-}
-
-
-struct NewsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let vm = MockNewsViewModel()
-        NewsView(viewModel: vm)
     }
 }

@@ -9,14 +9,14 @@ import Alamofire
 import Combine
 import FirebaseCrashlytics
 
-class NewsSource: Entity, ObservableObject {
+class NewsSource: Entity, ObservableObject, Identifiable {
     
     typealias ImporterType = Importer<News, [News], JSONDecoder>
 
     public var id: Int64?
     public var title: String?
     public var icon: URL?
-    @Published var news: [News]
+    public var news: [News]
 
     enum CodingKeys: String, CodingKey {
         case id = "source"
@@ -46,7 +46,7 @@ class NewsSource: Entity, ObservableObject {
         self.title = title
         self.icon = icon
         self.news = []
-        fetchNews()
+//        fetchNews()
     }
 
     func fetchNews() {
