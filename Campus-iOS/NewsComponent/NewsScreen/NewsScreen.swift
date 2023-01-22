@@ -40,7 +40,7 @@ struct NewsScreen: View {
                         await vm.getNewsSources(forcedRefresh: true)
                     }
                 }
-        
+                
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {

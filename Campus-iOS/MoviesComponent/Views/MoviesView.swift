@@ -7,9 +7,56 @@
 
 import SwiftUI
 
-struct MoviesView: View {
+struct MoviesScreen: View {
+    @StateObject var vm = MoviesViewModel()
     
-    @ObservedObject var viewModel = MoviesViewModel()
+    var body: some View {
+        Group {
+            switch vm.state {
+            case .success(let movies):
+                VStack {
+                    MoviesView(movies: movies)
+                    .refreshable {
+                        await vm.getMovies(forcedRefresh: true)
+                    }
+                }
+            case .loading, .na:
+                LoadingView(text: "Fetching News")
+            case .failed(let error):
+                FailedView(
+                    errorDescription: error.localizedDescription,
+                    retryClosure: vm.getMovies
+                )
+            }
+        }.onAppear {
+            Task {
+                await vm.getMovies()
+            }
+        }.alert(
+            "Error while fetching News",
+            isPresented: $vm.hasError,
+            presenting: vm.state) { detail in
+                Button("Retry") {
+                    Task {
+                        await vm.getMovies(forcedRefresh: true)
+                    }
+                }
+                
+                Button("Cancel", role: .cancel) { }
+            } message: { detail in
+                if case let .failed(error) = detail {
+                    if let apiError = error as? TUMCabeAPIError {
+                        Text(apiError.errorDescription ?? "TUMCabeAPI Error")
+                    } else {
+                        Text(error.localizedDescription)
+                    }
+                }
+            }
+    }
+}
+
+struct MoviesView: View {
+    let movies: [Movie]
     @State private var selectedMovie: Movie? = nil
 
     var items: [GridItem] {
@@ -22,7 +69,7 @@ struct MoviesView: View {
                 .foregroundColor(Color(UIColor.lightGray))
             ScrollView(.vertical) {
                 LazyVGrid(columns: items, spacing: 10) {
-                    ForEach(self.viewModel.movies, id: \.id ) { movie in
+                    ForEach(self.movies, id: \.id ) { movie in
                             MovieCard(movie: movie).padding(7)
                             .onTapGesture {
                                 selectedMovie = movie
@@ -39,8 +86,8 @@ struct MoviesView: View {
     }
 }
 
-struct MoviesView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoviesView()
-    }
-}
+//struct MoviesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MoviesView()
+//    }
+//}

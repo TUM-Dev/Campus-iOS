@@ -68,7 +68,7 @@ struct ProfileView: View {
                         Label("News", systemImage: "newspaper")
                     }
                     
-                    NavigationLink(destination: MoviesView()
+                    NavigationLink(destination: MoviesScreen()
                         .navigationBarTitle(Text("Movies"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {

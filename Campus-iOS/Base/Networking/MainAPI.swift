@@ -132,7 +132,7 @@ enum MainAPI {
             do {
                 data = try await endpoint.asRequest(token: token).serializingData().value
                 if T.self is TUMOnlineAPI2.Response<Profile>.Type {
-                    print("\(String(data: data, encoding: .utf8))")
+//                    print("\(String(data: data, encoding: .utf8))")
                 }
             } catch {
                 print(error)

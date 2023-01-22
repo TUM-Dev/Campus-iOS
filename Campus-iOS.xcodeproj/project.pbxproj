@@ -71,6 +71,8 @@
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F69CE35297DB732005032CE /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE34297DB732005032CE /* NewsService.swift */; };
 		1F69CE37297DCA22005032CE /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE36297DCA22005032CE /* NewsScreen.swift */; };
+		1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3B297DCC12005032CE /* MoviesScreen.swift */; };
+		1F69CE3E297DCC19005032CE /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3D297DCC19005032CE /* MovieService.swift */; };
 		1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA538ED297560CD004C70A8 /* MainAPI.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
@@ -350,6 +352,8 @@
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1F69CE34297DB732005032CE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1F69CE36297DCA22005032CE /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
+		1F69CE3B297DCC12005032CE /* MoviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesScreen.swift; sourceTree = "<group>"; };
+		1F69CE3D297DCC19005032CE /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		1FA538ED297560CD004C70A8 /* MainAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
@@ -791,6 +795,22 @@
 			path = NewsScreen;
 			sourceTree = "<group>";
 		};
+		1F69CE39297DCBFE005032CE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F69CE3D297DCC19005032CE /* MovieService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1F69CE3A297DCC04005032CE /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				1F69CE3B297DCC12005032CE /* MoviesScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,6 +955,8 @@
 		36108BF127A30516007DC62D /* MoviesComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1F69CE3A297DCC04005032CE /* Screen */,
+				1F69CE39297DCBFE005032CE /* Service */,
 				36108BF227A30516007DC62D /* ViewModel */,
 				36108BF527A30516007DC62D /* Views */,
 			);
@@ -1849,6 +1871,7 @@
 				08441F2B2874E2D00033F5B1 /* WidgetLoadingView.swift in Sources */,
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
+				1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
 				1F4C926F2882FD85003DC7D7 /* RoundedCorners.swift in Sources */,
@@ -1992,6 +2015,7 @@
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,
+				1F69CE3E297DCC19005032CE /* MovieService.swift in Sources */,
 				36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */,
 				36AF61EA27A2FD7800FEBD98 /* Environment+Error.swift in Sources */,
 				3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */,
