@@ -37,7 +37,7 @@ public class Model: ObservableObject {
     
     @Published var loginController = AuthenticationHandler2()
     @Published var isUserAuthenticated = false
-    @Published var profile: ProfileViewModel = ProfileViewModel()
+//    @Published var profile: ProfileViewModel = ProfileViewModel()
     
     var anyCancellables: [AnyCancellable] = []
     
@@ -57,19 +57,19 @@ public class Model: ObservableObject {
             self.loginController.logout()
             self.isLoginSheetPresented = self.showProfile ? false : true
             self.isUserAuthenticated = false
-            self.unloadProfile()
+//            self.unloadProfile()
         }
     }
     
-    func unloadProfile() {
-        DispatchQueue.main.async {
-            self.profile = ProfileViewModel()
-        }
-    }
-    
-    func loadProfile() {
-        DispatchQueue.main.async {
-            self.profile = ProfileViewModel(model: self)
-        }
-    }
+//    func unloadProfile() {
+//        DispatchQueue.main.async {
+//            self.profile = ProfileViewModel()
+//        }
+//    }
+//
+//    func loadProfile() {
+//        DispatchQueue.main.async {
+//            self.profile = ProfileViewModel(model: self)
+//        }
+//    }
 }

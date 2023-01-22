@@ -69,32 +69,30 @@ class TokenPermissionsViewModel: ObservableObject {
                     self.states[.lectures] = .failed(error: error)
                 }
             case .tuitionFees:
-                
-                let profileVM = ProfileViewModel(model: self.model)
-                profileVM.fetch()
-                profileVM.checkTuitionFunc() {  result in
-                    print(result)
-                    if case let .success(data) = result {
-                        print("Success")
-                        self.states[.tuitionFees] = .success(data: data)
-                    } else {
-                        print("no success")
-                        self.states[.tuitionFees] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                do {
+                    guard let tuitionFees: Tuition = try await ProfileService().fetch(token: token, forcedRefresh: true) else {
+                        self.states[.identification] = .failed(error: TUMOnlineAPIError(message: "Tuition couldn't be loaded."))
+                        break
                     }
+                    
+                    self.states[.tuitionFees] = .success(
+                        data: tuitionFees)
+                } catch {
+                    self.states[.identification] = .failed(error: error)
                 }
                 
             case .identification:
                 
-                let profileVM = ProfileViewModel(model: self.model)
-                profileVM.fetch() {  result in
-                    print(result)
-                    if case let .success(data) = result {
-                        print("Success")
-                        self.states[.identification] = .success(data: data)
-                    } else {
-                        print("no success")
-                        self.states[.identification] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                do {
+                    guard let profile: Profile = try await ProfileService().fetch(token: token, forcedRefresh: true) else {
+                        self.states[.identification] = .failed(error: TUMOnlineAPIError(message: "Tuition couldn't be loaded."))
+                        break
                     }
+                    
+                    self.states[.identification] = .success(
+                        data: profile)
+                } catch {
+                    self.states[.identification] = .failed(error: error)
                 }
             }
         }

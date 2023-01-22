@@ -103,6 +103,8 @@ enum MainAPI {
     // Maximum size of cache: 500kB, Maximum cache entries: 1000, Lifetime: 10min
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
     
+    static let imageCache = Cache<String, Data>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
+    
     /// Returns a generic value of type `T` fetched from the API or the cache.
     ///
     /// ```
@@ -129,7 +131,9 @@ enum MainAPI {
             var data: Data
             do {
                 data = try await endpoint.asRequest(token: token).serializingData().value
-//                print("\(String(data: data, encoding: .utf8))")
+                if T.self is TUMOnlineAPI2.Response<Profile>.Type {
+                    print("\(String(data: data, encoding: .utf8))")
+                }
             } catch {
                 print(error)
                 throw NetworkingError.deviceIsOffline

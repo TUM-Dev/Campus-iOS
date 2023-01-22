@@ -177,7 +177,7 @@ struct LoginView: View {
                         
                         Button(action: {
                             self.viewModel.loginWithContinueWithoutTumID()
-                            self.viewModel.model?.isLoginSheetPresented = false
+                            self.viewModel.model.isLoginSheetPresented = false
                         }) {
                             Text("Continue without TUM ID").lineLimit(1).font(.caption)
                                 .frame(alignment: .center)

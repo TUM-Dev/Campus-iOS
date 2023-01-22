@@ -61,7 +61,7 @@ struct CampusApp: App {
                                         model.isUserAuthenticated = true
                                     }
                                     
-                                    model.loadProfile()
+//                                    model.loadProfile()
                                 case .failure(_):
                                     model.isUserAuthenticated = false
                                     if !model.showProfile {

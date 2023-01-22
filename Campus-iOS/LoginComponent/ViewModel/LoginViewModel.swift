@@ -19,7 +19,7 @@ class LoginViewModel: ObservableObject {
     @Published var alertMessage = ""
     private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
-    weak var model: Model?
+    var model: Model
 //    var loginController = AuthenticationHandler()
     var loginController2 = AuthenticationHandler2()
     
@@ -35,7 +35,7 @@ class LoginViewModel: ObservableObject {
         return "\(firstTextField)\(numbersTextField)\(secondTextField)"
     }
     
-    init(model: Model?) {
+    init(model: Model) {
         self.model = model
     }
     
@@ -48,7 +48,9 @@ class LoginViewModel: ObservableObject {
         await loginController2.createToken(tumID: tumID, completion: { result in
             switch result {
             case .success:
-                self.alertMessage = ""
+                DispatchQueue.main.async {
+                    self.alertMessage = ""
+                }
                 callback(.success(true))
             case let .failure(error):
                 self.alertMessage = error.localizedDescription
@@ -69,13 +71,15 @@ class LoginViewModel: ObservableObject {
                 Analytics.logEvent("token_confirmed", parameters: nil)
                 #endif
                 //wself?.model?.isLoginSheetPresented = false
-                self.model?.isUserAuthenticated = true
-                self.model?.showProfile = false
-                self.model?.loadProfile()
+                DispatchQueue.main.async {
+                    self.model.isUserAuthenticated = true
+                    self.model.showProfile = false
+                }
+//                self.model?.loadProfile()
                 
                 callback(.success(true))
             case let .failure(error):
-                self.model?.isUserAuthenticated = false
+                self.model.isUserAuthenticated = false
                 self.alertMessage = error.localizedDescription
                 callback(.failure(error))
             }
