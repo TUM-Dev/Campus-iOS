@@ -231,7 +231,15 @@ struct ProfileCell: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 75, height: 75)
                     .foregroundColor(Color(.secondaryLabel))
+            } else {
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .clipShape(Circle())
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 75, height: 75)
+                    .foregroundColor(Color(.secondaryLabel))
             }
+
             VStack(alignment: .leading) {
                 if self.model.isUserAuthenticated {
                     Text(profile.fullName)

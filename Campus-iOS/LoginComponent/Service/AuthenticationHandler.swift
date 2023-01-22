@@ -163,15 +163,15 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         }
 
         switch urlString {
-        case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.contains($0) }:
-            guard let pToken = pToken else { return completion(.failure(LoginError.missingToken)) }
-            do {
-                let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
-                return completion(.success(encodedRequest))
-            } catch let error {
-                Crashlytics.crashlytics().record(error: error)
-                return completion(.failure(error))
-            }
+//        case urlString where TUMOnlineAPI.requiresAuth.contains { urlString.contains($0) }:
+//            guard let pToken = pToken else { return completion(.failure(LoginError.missingToken)) }
+//            do {
+//                let encodedRequest = try URLEncoding.default.encode(urlRequest, with: ["pToken": pToken])
+//                return completion(.success(encodedRequest))
+//            } catch let error {
+//                Crashlytics.crashlytics().record(error: error)
+//                return completion(.failure(error))
+//            }
         case urlString where TUMCabeAPI.requiresAuth.contains { urlString.contains($0)}:
             return completion(.success(urlRequest))
         case urlString where urlString.hasPrefix(MVGAPI.baseURL):
@@ -205,82 +205,82 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
             tumID = id
         }
 
-        createToken(tumID: tumID) { [weak self] result in
-            guard let strongSelf = self else { return }
-            strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
-
-            switch result {
-            case .success(let token):
-                // Auth succeeded retry failed request.
-                switch strongSelf.credentials {
-                case .none: strongSelf.credentials = .tumID(tumID: tumID, token: token)
-                case .noTumID?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
-                case .tumID(let tumID, _)?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
-                case .tumIDAndKey(let tumID, _, let key)?: strongSelf.credentials = .tumIDAndKey(tumID: tumID, token: token, key: key)
-                }
-
-            default:
-                // Auth failed don't retry.
-                break
-            }
-
-            strongSelf.requestsToRetry.forEach { $0(.retry) }
-            strongSelf.requestsToRetry.removeAll()
-        }
+//        createToken(tumID: tumID) { [weak self] result in
+//            guard let strongSelf = self else { return }
+//            strongSelf.lock.lock() ; defer { strongSelf.lock.unlock() }
+//
+//            switch result {
+//            case .success(let token):
+//                // Auth succeeded retry failed request.
+//                switch strongSelf.credentials {
+//                case .none: strongSelf.credentials = .tumID(tumID: tumID, token: token)
+//                case .noTumID?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
+//                case .tumID(let tumID, _)?: strongSelf.credentials = .tumID(tumID: tumID, token: token)
+//                case .tumIDAndKey(let tumID, _, let key)?: strongSelf.credentials = .tumIDAndKey(tumID: tumID, token: token, key: key)
+//                }
+//
+//            default:
+//                // Auth failed don't retry.
+//                break
+//            }
+//
+//            strongSelf.requestsToRetry.forEach { $0(.retry) }
+//            strongSelf.requestsToRetry.removeAll()
+//        }
     }
 
-    func createToken(tumID: String, completion: @escaping Completion) {
-        guard !isRefreshing else { return }
-        isRefreshing = true
-        let tokenName = "TCA - \(UIDevice.current.name)"
+//    func createToken(tumID: String, completion: @escaping Completion) {
+//        guard !isRefreshing else { return }
+//        isRefreshing = true
+//        let tokenName = "TCA - \(UIDevice.current.name)"
+//
+//        sessionManager.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
+//            .validate(statusCode: 200..<300)
+//            .validate(contentType: ["text/xml"])
+//            .responseXML { [weak self] xml in
+//            guard let strongSelf = self else { return }
+//            guard let newToken = xml.value?["token"].element?.text else {
+//                strongSelf.isRefreshing = false
+//                if let error = xml.error {
+//                    return completion(.failure(error))
+//                } else if let errorMessage = xml.value?["error"]["message"].element?.text {
+//                    return completion(.failure(LoginError.serverError(message: errorMessage)))
+//                }
+//                return completion(.failure(LoginError.unknown))
+//            }
+//            strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
+//            strongSelf.isRefreshing = false
+//            #if !targetEnvironment(macCatalyst)
+//            Analytics.logEvent("token_created", parameters: nil)
+//            #endif
+//            completion(.success(newToken))
+//        }
+//    }
 
-        sessionManager.request(TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["text/xml"])
-            .responseXML { [weak self] xml in
-            guard let strongSelf = self else { return }
-            guard let newToken = xml.value?["token"].element?.text else {
-                strongSelf.isRefreshing = false
-                if let error = xml.error {
-                    return completion(.failure(error))
-                } else if let errorMessage = xml.value?["error"]["message"].element?.text {
-                    return completion(.failure(LoginError.serverError(message: errorMessage)))
-                }
-                return completion(.failure(LoginError.unknown))
-            }
-            strongSelf.credentials = Credentials.tumID(tumID: tumID, token: newToken)
-            strongSelf.isRefreshing = false
-            #if !targetEnvironment(macCatalyst)
-            Analytics.logEvent("token_created", parameters: nil)
-            #endif
-            completion(.success(newToken))
-        }
-    }
-
-    func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) {
-        let sessionManager: Session = Session.defaultSession
-
-        switch credentials {
-        case .none: callback(.failure(LoginError.missingToken))
-        case .noTumID?: callback(.failure(LoginError.missingToken))
-        case .tumID?,
-             .tumIDAndKey?:
-            sessionManager.request(TUMOnlineAPI.tokenConfirmation)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["text/xml"])
-                .responseXML { xml in
-                    if let error = xml.error {
-                        callback(.failure(error))
-                    } else if xml.value?["confirmed"].element?.text == "true" {
-                        callback(.success(true))
-                    } else if xml.value?["confirmed"].element?.text == "false" {
-                        callback(.failure(TUMOnlineAPIError.tokenNotConfirmed))
-                    } else {
-                        callback(.failure(LoginError.unknown))
-                    }
-            }
-        }
-    }
+//    func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) {
+//        let sessionManager: Session = Session.defaultSession
+//
+//        switch credentials {
+//        case .none: callback(.failure(LoginError.missingToken))
+//        case .noTumID?: callback(.failure(LoginError.missingToken))
+//        case .tumID?,
+//             .tumIDAndKey?:
+//            sessionManager.request(TUMOnlineAPI.tokenConfirmation)
+//                .validate(statusCode: 200..<300)
+//                .validate(contentType: ["text/xml"])
+//                .responseXML { xml in
+//                    if let error = xml.error {
+//                        callback(.failure(error))
+//                    } else if xml.value?["confirmed"].element?.text == "true" {
+//                        callback(.success(true))
+//                    } else if xml.value?["confirmed"].element?.text == "false" {
+//                        callback(.failure(TUMOnlineAPIError.tokenNotConfirmed))
+//                    } else {
+//                        callback(.failure(LoginError.unknown))
+//                    }
+//            }
+//        }
+//    }
 
     func logout() {
         #if !targetEnvironment(macCatalyst)

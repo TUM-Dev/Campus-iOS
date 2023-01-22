@@ -27,7 +27,7 @@ struct PersonDetailedView: View {
                     .frame(width: imageSize, height: imageSize)
             }
             Spacer().frame(height: 10)
-            Text("\(personDetails.name)").font(.system(size: 18))
+            Text("\(personDetails.firstName) \(personDetails.name)").font(.system(size: 18))
             List {
                 if !personDetails.email.isEmpty || !(personDetails.officeHours?.isEmpty ?? false) {
                     Section(header: Text("General")) {
