@@ -172,8 +172,8 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
 //                Crashlytics.crashlytics().record(error: error)
 //                return completion(.failure(error))
 //            }
-        case urlString where TUMCabeAPI.requiresAuth.contains { urlString.contains($0)}:
-            return completion(.success(urlRequest))
+//        case urlString where TUMCabeAPI.requiresAuth.contains { urlString.contains($0)}:
+//            return completion(.success(urlRequest))
         case urlString where urlString.hasPrefix(MVGAPI.baseURL):
             urlRequest.addValue(MVGAPI.apiKey, forHTTPHeaderField: "X-MVG-Authorization-Key")
             return completion(.success(urlRequest))

@@ -21,7 +21,7 @@ struct StudyRoomDetailsScreen: View {
                     }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching News")
+                LoadingView(text: "Fetching RoomImages")
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
@@ -33,7 +33,7 @@ struct StudyRoomDetailsScreen: View {
                 await vm.getRoomImageMapping(for: self.room)
             }
         }.alert(
-            "Error while fetching News",
+            "Error while fetching Room Images",
             isPresented: $vm.hasError,
             presenting: vm.state) { detail in
                 Button("Retry") {
