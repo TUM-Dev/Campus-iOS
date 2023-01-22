@@ -46,31 +46,5 @@ class NewsSource: Entity, ObservableObject, Identifiable {
         self.title = title
         self.icon = icon
         self.news = []
-//        fetchNews()
-    }
-
-    func fetchNews() {
-        guard let id = self.id else {
-            print("NewsSource contain no id")
-            return
-        }
-        
-        let endpoint: URLRequestConvertible = TUMCabeAPI.news(source: id.description)
-        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
-        let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
-        
-        importer.performFetch(handler: { result in
-            switch result {
-            case .success(let storage):
-                self.news = storage.filter( {
-                    guard let title = $0.title, let link = $0.link else {
-                        return false
-                    }
-                    return !title.isEmpty && !link.description.isEmpty
-                } )
-            case .failure(let error):
-                print(error)
-            }
-        })
     }
 }

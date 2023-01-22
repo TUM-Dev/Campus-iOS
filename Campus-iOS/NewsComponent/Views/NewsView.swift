@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsScreen: View {
-    @StateObject var vm = NewsViewModel2()
+    @StateObject var vm = NewsViewModel()
     
     var body: some View {
         Group {
@@ -56,7 +56,6 @@ struct NewsScreen: View {
 
 struct NewsView: View {
     
-//    @StateObject var viewModel: NewsViewModel
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @Environment(\.scenePhase) var scenePhase
     @State var isWebViewShowed = false
