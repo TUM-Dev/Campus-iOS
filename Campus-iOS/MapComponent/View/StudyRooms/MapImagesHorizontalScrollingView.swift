@@ -9,15 +9,16 @@ import SwiftUI
 
 struct MapImagesHorizontalScrollingView: View {
     
-    @ObservedObject var viewModel: StudyRoomViewModel
+    let room: StudyRoom
+    let roomImageMapping: [RoomImageMapping]
     
     var body: some View {
-        if viewModel.roomImageMapping.count > 0  {
+        if self.roomImageMapping.count > 0  {
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(spacing: 10) {
-                    ForEach(viewModel.roomImageMapping, id: \.id) { map in
+                    ForEach(self.roomImageMapping, id: \.id) { map in
                         GeometryReader { geometry in
-                            if let link = viewModel.getImageURL(imageMappingId: map.id) {
+                            if let link = getImageURL(for: self.room, imageMappingId: map.id) {
                                 AsyncImage(url: link) { image in
                                     switch image {
                                     case .empty:
@@ -59,10 +60,18 @@ struct MapImagesHorizontalScrollingView: View {
             }
         }
     }
-}
-
-struct MapImagesHorizontalScrollingView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapImagesHorizontalScrollingView(viewModel: StudyRoomViewModel(studyRoom: StudyRoom()))
+    
+    func getImageURL(for room: StudyRoom, imageMappingId: Int) -> URL? {
+        if let raumNr = room.raum_nr_architekt {
+            return try? TUMCabeAPI2.mapImage(room: raumNr, id: imageMappingId).asURLRequest().urlRequest?.url
+        } else {
+            return nil
+        }
     }
 }
+
+//struct MapImagesHorizontalScrollingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MapImagesHorizontalScrollingView(viewModel: StudyRoomViewModel(studyRoom: StudyRoom()))
+//    }
+//}

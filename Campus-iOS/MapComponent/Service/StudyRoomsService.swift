@@ -15,4 +15,10 @@ struct StudyRoomsService: StudyRoomsServiceProtocol {
     func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose {
         return try await TUMDevAppAPI.fetchStudyRooms(forcedRefresh: forcedRefresh)
     }
+    
+    func fetchMap(room: String, forcedRefresh: Bool) async throws -> [RoomImageMapping] {
+        let response: [RoomImageMapping] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI2.roomMaps(room: room))
+        
+        return response
+    }
 }

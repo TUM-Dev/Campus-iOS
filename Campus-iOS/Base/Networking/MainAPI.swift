@@ -332,6 +332,12 @@ enum TUMCabeAPI2: API {
         
         return try jsonDecoder.decode(type, from: data)
     }
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = try Self.baseURL.asURL()
+        let urlRequest = try URLRequest(url: url.appendingPathComponent(paths), method: .get, headers: Self.baseHeaders)
+        return urlRequest
+    }
 }
 
 enum EatAPI2: API {
