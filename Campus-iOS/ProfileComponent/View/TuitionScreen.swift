@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TuitionScreen: View {
     
-    @StateObject var vm: ProfileViewModel2
+    @StateObject var vm: ProfileViewModel
     
     var body: some View {
         Group {

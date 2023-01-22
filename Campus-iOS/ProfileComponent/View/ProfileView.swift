@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct ProfileView2: View {
-    @StateObject var vm: ProfileViewModel2
+struct ProfileView: View {
+    @StateObject var vm: ProfileViewModel
     
     @State var showActionSheet = false
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
@@ -31,7 +31,7 @@ struct ProfileView2: View {
                         ProfileCell(model: self.vm.model, profile: profile)
                     }.disabled(!self.vm.model.isUserAuthenticated)
                 } else {
-                    ProfileCell(model: self.vm.model, profile: ProfileViewModel2.defaultProfile)
+                    ProfileCell(model: self.vm.model, profile: ProfileViewModel.defaultProfile)
                 }
                 
                 Section("MY TUM") {

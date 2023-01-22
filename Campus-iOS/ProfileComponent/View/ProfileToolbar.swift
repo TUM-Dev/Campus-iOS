@@ -17,7 +17,7 @@ struct ProfileToolbar: View {
             Image(systemName: "person.crop.circle")
         }
         .sheet(isPresented: $showProfile) {
-            ProfileView2(model: model)
+            ProfileView(model: model)
         }
         
     }

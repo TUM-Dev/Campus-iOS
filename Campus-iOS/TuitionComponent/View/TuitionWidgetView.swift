@@ -30,7 +30,7 @@ struct TuitionWidgetView: View {
 }
 
 struct TuitionWidgetContent: View {
-    @StateObject var viewModel: ProfileViewModel2
+    @StateObject var viewModel: ProfileViewModel
     let size: WidgetSize
     @Binding var refresh: Bool
     

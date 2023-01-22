@@ -186,7 +186,7 @@
 		36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */; };
 		36AD5CF827B96AD200DAE143 /* PersonSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF727B96AD200DAE143 /* PersonSearchView.swift */; };
 		36AD5CFA27B9711B00DAE143 /* LectureSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */; };
-		36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */; };
+		36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */; };
 		36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */; };
 		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
@@ -468,7 +468,7 @@
 		36AD5CF527B8D97500DAE143 /* LectureDetailsEventInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailsEventInfoView.swift; sourceTree = "<group>"; };
 		36AD5CF727B96AD200DAE143 /* PersonSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchView.swift; sourceTree = "<group>"; };
 		36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchView.swift; sourceTree = "<group>"; };
-		36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMyTumSection.swift; sourceTree = "<group>"; };
+		36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionScreen.swift; sourceTree = "<group>"; };
 		36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
@@ -1443,7 +1443,7 @@
 			children = (
 				100803452764E2C50013ED0E /* ProfileToolbar.swift */,
 				100803472764E37A0013ED0E /* ProfileView.swift */,
-				36AD5CFB27B974F100DAE143 /* ProfileMyTumSection.swift */,
+				36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1846,7 +1846,7 @@
 				3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */,
 				1FFF9AC6297D31830098E874 /* ProfileService.swift in Sources */,
 				2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */,
-				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
+				36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */,
 				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				0805DB7928C933AE00712FF2 /* Operators.swift in Sources */,

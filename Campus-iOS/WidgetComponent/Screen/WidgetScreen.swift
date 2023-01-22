@@ -12,7 +12,7 @@ struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
     var model: Model
-    var profileViewModel: ProfileViewModel2
+    var profileViewModel: ProfileViewModel
     @State private var refresh = false
     @State private var widgetTitle = ""
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()

@@ -11,7 +11,7 @@ import XMLCoder
 import SwiftUI
 
 @MainActor
-class ProfileViewModel2: ObservableObject {
+class ProfileViewModel: ObservableObject {
     @Published var profileState: APIState<Profile> = .na
     @Published var profileHasError: Bool = false
     @Published var tuitionState: APIState<Tuition> = .na
