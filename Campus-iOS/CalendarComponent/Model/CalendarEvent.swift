@@ -18,7 +18,7 @@ struct CalendarAPIResponse: Decodable {
     }
 }
 
-struct CalendarEvent: Identifiable, Equatable, Entity {
+struct CalendarEvent: Decodable, Identifiable, Equatable {
     var descriptionText: String?
     var endDate: Date?
     var id: Int64

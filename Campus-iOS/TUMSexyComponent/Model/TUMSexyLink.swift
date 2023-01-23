@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TUMSexyLink: Entity, Identifiable {
+struct TUMSexyLink: Decodable, Identifiable {
     var id = UUID()
     var description: String?
     var target: String?

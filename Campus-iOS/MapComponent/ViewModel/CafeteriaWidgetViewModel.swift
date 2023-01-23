@@ -17,7 +17,6 @@ class CafeteriaWidgetViewModel: ObservableObject {
     @Published var status: CafeteriaWidgetStatus
     
     private let cafeteriaService: CafeteriasService
-    private let sessionManager = Session.defaultSession
     
     private let locationManager = CLLocationManager()
     

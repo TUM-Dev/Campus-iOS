@@ -14,11 +14,8 @@ class RoomFinderViewModel: ObservableObject {
     @Published var result: [FoundRoom] = []
     @Published var errorMessage: String = ""
     
-    private let sessionManager = Session.defaultSession
-    
     func fetch(searchString: String) async {
         guard !searchString.isEmpty else {
-            sessionManager.cancelAllRequests()
             self.errorMessage = ""
             return
         }

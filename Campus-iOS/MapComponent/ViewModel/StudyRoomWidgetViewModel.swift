@@ -17,7 +17,6 @@ class StudyRoomWidgetViewModel: ObservableObject {
     @Published var status: StudyRoomWidgetStatus
     
     private let studyRoomService: StudyRoomsService
-    private let sessionManager = Session.defaultSession
     
     private let locationManager = CLLocationManager()
     

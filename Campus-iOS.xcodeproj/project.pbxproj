@@ -198,7 +198,6 @@
 		36AD5CFA27B9711B00DAE143 /* LectureSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */; };
 		36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */; };
 		36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */; };
-		36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */; };
 		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
 		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
 		36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BD27A2FD7700FEBD98 /* MVGAPI.swift */; };
@@ -490,7 +489,6 @@
 		36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchView.swift; sourceTree = "<group>"; };
 		36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionScreen.swift; sourceTree = "<group>"; };
 		36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityImporter.swift; sourceTree = "<group>"; };
 		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
 		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
 		36AF61BD27A2FD7700FEBD98 /* MVGAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
@@ -687,6 +685,7 @@
 		1F04F16F297AA1E00085F273 /* Old APIs */ = {
 			isa = PBXGroup;
 			children = (
+				36AF61C027A2FD7700FEBD98 /* APIResponse.swift */,
 				3654F367285169AC008AD5DC /* TUMDevAppAPI.swift */,
 				36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */,
 				36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */,
@@ -1373,7 +1372,6 @@
 			isa = PBXGroup;
 			children = (
 				36108C0027A30762007DC62D /* Enums */,
-				36AF61B827A2FD7700FEBD98 /* Entity */,
 				36AF61BA27A2FD7700FEBD98 /* Networking */,
 				36AF61C427A2FD7700FEBD98 /* Constants */,
 				36AF61C727A2FD7700FEBD98 /* Errors */,
@@ -1383,23 +1381,14 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		36AF61B827A2FD7700FEBD98 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				36AF61B927A2FD7700FEBD98 /* EntityImporter.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
 		36AF61BA27A2FD7700FEBD98 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				1FA538ED297560CD004C70A8 /* MainAPI.swift */,
 				1F183A162979D19000B5D22D /* APIErrors.swift */,
-				36AF61C027A2FD7700FEBD98 /* APIResponse.swift */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
-				1F04F16F297AA1E00085F273 /* Old APIs */,
 				1F04F170297AA5F30085F273 /* ServiceProtocols.swift */,
+				1F04F16F297AA1E00085F273 /* Old APIs */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -2063,7 +2052,6 @@
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,
 				1F69CE3E297DCC19005032CE /* MovieService.swift in Sources */,
-				36AF61D827A2FD7800FEBD98 /* EntityImporter.swift in Sources */,
 				36AF61EA27A2FD7800FEBD98 /* Environment+Error.swift in Sources */,
 				3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */,
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,

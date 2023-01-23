@@ -9,9 +9,7 @@ import Alamofire
 import Combine
 import FirebaseCrashlytics
 
-class NewsSource: Entity, ObservableObject, Identifiable {
-    
-    typealias ImporterType = Importer<News, [News], JSONDecoder>
+struct NewsSource: Decodable, Identifiable {
 
     public var id: Int64?
     public var title: String?
@@ -31,7 +29,7 @@ class NewsSource: Entity, ObservableObject, Identifiable {
         self.news = news
     }
 
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         let idString = try container.decode(String.self, forKey: .id)

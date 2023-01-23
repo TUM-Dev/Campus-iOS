@@ -18,16 +18,6 @@ extension Bundle {
     var userAgent: String { "TCA iOS \(version)/\(build)" }
 }
 
-extension Session {
-    static let defaultSession: Session = {
-        let adapterAndRetrier = Interceptor(adapter: AuthenticationHandler(), retrier: AuthenticationHandler())
-        let cacher = ResponseCacher(behavior: .cache)
-//        let trustManager = ServerTrustManager(evaluators: TUMCabeAPI.serverTrustPolicies)
-        let manager = Session(interceptor: adapterAndRetrier, redirectHandler: ForceHTTPSRedirectHandler(), cachedResponseHandler: cacher)
-        return manager
-    }()
-}
-
 extension DataRequest {
     @discardableResult
     public func responseXML(queue: DispatchQueue = .main,

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Entity {
+struct Movie: Decodable {
     
     var id: Int64
     var actors: String?

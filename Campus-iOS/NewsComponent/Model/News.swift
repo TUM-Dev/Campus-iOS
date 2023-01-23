@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct News: Entity {
+struct News: Decodable {
     var id: String?
     var sourceID: Int64
     var date: Date?

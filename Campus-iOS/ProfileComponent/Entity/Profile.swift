@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Profile: Decodable, Entity {
+struct Profile: Decodable {
     let firstname: String?
     let obfuscatedID: String?
     let obfuscatedIDEmployee: String?
