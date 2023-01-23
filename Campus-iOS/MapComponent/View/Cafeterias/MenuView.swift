@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MenuView: View {
-    @ObservedObject var viewModel: MenuViewModel
+    let menu: Menu
     
     var body: some View {
         List {
-            ForEach($viewModel.categories.sorted { $0.wrappedValue.name < $1.wrappedValue.name }) { $category in
+            ForEach(menu.categories.sorted { $0.name < $1.name }) { category in
                 Section(category.name) {
                     ForEach(category.dishes, id: \.self) { dish in
                         DishView(dish: dish)
@@ -121,8 +121,8 @@ struct DishView: View {
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuView(viewModel: MenuViewModel(date: Date(), categories: []))
-    }
-}
+//struct MenuView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuView(viewModel: MenuViewModel(date: Date(), categories: []))
+//    }
+//}

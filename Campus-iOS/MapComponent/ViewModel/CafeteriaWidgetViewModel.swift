@@ -13,8 +13,7 @@ import Alamofire
 class CafeteriaWidgetViewModel: ObservableObject {
     
     @Published var cafeteria: Cafeteria?
-    @Published var menuViewModel: MenuViewModel?
-    @Published var mealPlanViewModel: MealPlanViewModel?
+    @Published var menu: Menu?
     @Published var status: CafeteriaWidgetStatus
     
     private let cafeteriaService: CafeteriasService
@@ -54,24 +53,10 @@ class CafeteriaWidgetViewModel: ObservableObject {
             
             // Get today's menu plan of the closest cafeteria, if it exists.
             
-            let endpoint = EatAPI.menu(location: cafeteria.id, year: Date().year, week: Date().weekOfYear)
-            sessionManager.request(endpoint).responseDecodable(of: MealPlan.self, decoder: MealPlanViewModel.decoder()) { [self] response in
-                
-                guard let mealPlan = response.value else {
-                    self.status = .noMenu
-                    return
-                }
-                
-                guard let todaysPlan = mealPlan.days.first(where: { $0.date.isToday }) else {
-                    self.status = .noMenu
-                    return
-                }
-                
-                let categories = MealPlanViewModel.categories(from: todaysPlan.dishes)
-                self.menuViewModel = MenuViewModel(date: todaysPlan.date, categories: categories)
-                self.mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
-                self.status = .success
-            }
+            let menus = try await MealPlanService().fetch(cafeteria: cafeteria, forcedRefresh: false)
+            self.menu = menus.first
+            self.status = .success
+    
         } catch {
             self.status = .error
         }

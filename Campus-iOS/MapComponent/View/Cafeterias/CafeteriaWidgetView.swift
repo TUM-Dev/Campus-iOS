@@ -38,7 +38,7 @@ struct CafeteriaWidgetView: View {
                     CafeteriaWidgetContent(
                         size: size,
                         cafeteria: title,
-                        dishes: viewModel.menuViewModel?.getDishes() ?? [],
+                        dishes: viewModel.menu?.getDishes() ?? [],
                         coordinate: coordinate
                     )
                 } else {
@@ -62,13 +62,13 @@ struct CafeteriaWidgetView: View {
             }
             .sheet(isPresented: $showDetails) {
                 VStack {
-                    if let cafeteria = viewModel.cafeteria, let mealVm = viewModel.mealPlanViewModel {
+                    if let cafeteria = viewModel.cafeteria {
                         CafeteriaView(
                             vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedCanteen: .constant(cafeteria),
                             canDismiss: false
                         )
-                        MealPlanView(viewModel: mealVm)
+                        MealPlanScreen(cafeteria: cafeteria)
                     } else {
                         ProgressView()
                     }
