@@ -412,6 +412,8 @@ enum TUMDevAppAPI2: API {
 }
 
 enum TUMSexyAPI2: API {
+    case standard
+    
     static var baseURL: String = "https://json.tum.sexy/"
     
     static var baseHeaders: Alamofire.HTTPHeaders = []

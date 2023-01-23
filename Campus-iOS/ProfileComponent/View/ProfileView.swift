@@ -49,7 +49,7 @@ struct ProfileView: View {
                 }
                 
                 Section("GENERAL") {
-                    NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
+                    NavigationLink(destination: TUMSexyScreen().navigationBarTitle(Text("Useful Links"))) {
                         Label("TUM.sexy", systemImage: "heart")
                     }
                     

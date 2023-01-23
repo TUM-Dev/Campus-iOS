@@ -77,6 +77,9 @@
 		1F69CE42297EC94E005032CE /* DishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE41297EC94E005032CE /* DishService.swift */; };
 		1F69CE44297EC97E005032CE /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE43297EC97E005032CE /* DishViewModel.swift */; };
 		1F69CE46297EC99D005032CE /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE45297EC99D005032CE /* DishView.swift */; };
+		1F69CE48297EDEA3005032CE /* TUMSexyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE47297EDEA3005032CE /* TUMSexyScreen.swift */; };
+		1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */; };
+		1F69CE4E297EDF12005032CE /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */; };
 		1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA538ED297560CD004C70A8 /* MainAPI.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
@@ -361,6 +364,9 @@
 		1F69CE41297EC94E005032CE /* DishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishService.swift; sourceTree = "<group>"; };
 		1F69CE43297EC97E005032CE /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
 		1F69CE45297EC99D005032CE /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
+		1F69CE47297EDEA3005032CE /* TUMSexyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyScreen.swift; sourceTree = "<group>"; };
+		1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyService.swift; sourceTree = "<group>"; };
+		1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyLink.swift; sourceTree = "<group>"; };
 		1FA538ED297560CD004C70A8 /* MainAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
@@ -817,6 +823,30 @@
 			path = Screen;
 			sourceTree = "<group>";
 		};
+		1F69CE49297EDEB5005032CE /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				1F69CE47297EDEA3005032CE /* TUMSexyScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		1F69CE4C297EDECA005032CE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		1F69CE4F297EDF32005032CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -1069,6 +1099,9 @@
 			children = (
 				3616C4CB27902086000A1BC9 /* ViewModel */,
 				3616C4CA27902075000A1BC9 /* Views */,
+				1F69CE49297EDEB5005032CE /* Screen */,
+				1F69CE4C297EDECA005032CE /* Service */,
+				1F69CE4F297EDF32005032CE /* Model */,
 			);
 			path = TUMSexyComponent;
 			sourceTree = "<group>";
@@ -1881,6 +1914,7 @@
 				36108BB927A3046B007DC62D /* LecturesViewModel+State.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
 				1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */,
+				1F69CE48297EDEA3005032CE /* TUMSexyScreen.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
 				1F4C926F2882FD85003DC7D7 /* RoundedCorners.swift in Sources */,
@@ -1888,6 +1922,7 @@
 				36108BE927A304B5007DC62D /* MenuView.swift in Sources */,
 				36108C1D27A307FA007DC62D /* GradeView.swift in Sources */,
 				36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */,
+				1F69CE4E297EDF12005032CE /* TUMSexyLink.swift in Sources */,
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
 				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
@@ -2023,6 +2058,7 @@
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
+				1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,

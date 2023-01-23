@@ -9,21 +9,21 @@
 import Alamofire
 import Foundation
 
-struct TUMSexyAPI: URLRequestConvertible {
-    static let baseURLString = "https://json.tum.sexy"
-    
-    var method: HTTPMethod {
-        switch self {
-        default: return .get
-        }
-    }
-    
-    static var requiresAuth: [String] = []
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = try TUMSexyAPI.baseURLString.asURL()
-        let urlRequest = try URLRequest(url: url, method: method)
-        return urlRequest
-    }
-    
-}
+//struct TUMSexyAPI: URLRequestConvertible {
+//    static let baseURLString = "https://json.tum.sexy"
+//    
+//    var method: HTTPMethod {
+//        switch self {
+//        default: return .get
+//        }
+//    }
+//    
+//    static var requiresAuth: [String] = []
+//    
+//    func asURLRequest() throws -> URLRequest {
+//        let url = try TUMSexyAPI.baseURLString.asURL()
+//        let urlRequest = try URLRequest(url: url, method: method)
+//        return urlRequest
+//    }
+//    
+//}
