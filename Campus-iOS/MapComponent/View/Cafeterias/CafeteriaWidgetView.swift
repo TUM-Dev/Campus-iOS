@@ -164,13 +164,16 @@ struct CompactMenuView: View {
 
 struct CompactDishView: View {
     
-    var dish: Dish
+    @StateObject var vm: DishViewModel
+    init(dish: Dish) {
+        self._vm = StateObject(wrappedValue: DishViewModel(dish: dish))
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(dish.name)
+            Text(vm.dish.name)
                 .lineLimit(1)
-            Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
+            Text(vm.formatPrice(dish: vm.dish, pricingGroup: "students"))
                 .font(.caption)
                 .bold()
         }

@@ -74,6 +74,9 @@
 		1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3B297DCC12005032CE /* MoviesScreen.swift */; };
 		1F69CE3E297DCC19005032CE /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3D297DCC19005032CE /* MovieService.swift */; };
 		1F69CE40297DDCD3005032CE /* StudyRoomDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */; };
+		1F69CE42297EC94E005032CE /* DishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE41297EC94E005032CE /* DishService.swift */; };
+		1F69CE44297EC97E005032CE /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE43297EC97E005032CE /* DishViewModel.swift */; };
+		1F69CE46297EC99D005032CE /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE45297EC99D005032CE /* DishView.swift */; };
 		1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA538ED297560CD004C70A8 /* MainAPI.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
@@ -109,7 +112,6 @@
 		36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCD27A304B5007DC62D /* Cafeteria.swift */; };
 		36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCE27A304B5007DC62D /* MensaMenu.swift */; };
 		36108BE327A304B5007DC62D /* DishLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BCF27A304B5007DC62D /* DishLabel.swift */; };
-		36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD027A304B5007DC62D /* MensaEnumService.swift */; };
 		36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD227A304B5007DC62D /* MealPlanView.swift */; };
 		36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD327A304B5007DC62D /* MealPlanViewModel.swift */; };
 		36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD427A304B5007DC62D /* MenuViewModel.swift */; };
@@ -356,6 +358,9 @@
 		1F69CE3B297DCC12005032CE /* MoviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesScreen.swift; sourceTree = "<group>"; };
 		1F69CE3D297DCC19005032CE /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsScreen.swift; sourceTree = "<group>"; };
+		1F69CE41297EC94E005032CE /* DishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishService.swift; sourceTree = "<group>"; };
+		1F69CE43297EC97E005032CE /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
+		1F69CE45297EC99D005032CE /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		1FA538ED297560CD004C70A8 /* MainAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
@@ -393,7 +398,6 @@
 		36108BCD27A304B5007DC62D /* Cafeteria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		36108BCE27A304B5007DC62D /* MensaMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensaMenu.swift; sourceTree = "<group>"; };
 		36108BCF27A304B5007DC62D /* DishLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishLabel.swift; sourceTree = "<group>"; };
-		36108BD027A304B5007DC62D /* MensaEnumService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MensaEnumService.swift; sourceTree = "<group>"; };
 		36108BD227A304B5007DC62D /* MealPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanView.swift; sourceTree = "<group>"; };
 		36108BD327A304B5007DC62D /* MealPlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		36108BD427A304B5007DC62D /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -766,9 +770,9 @@
 		1F4C836528300E6F006971C0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				36108BD027A304B5007DC62D /* MensaEnumService.swift */,
 				1F4C836628300E79006971C0 /* CafeteriasService.swift */,
 				3654F357285167C3008AD5DC /* StudyRoomsService.swift */,
+				1F69CE41297EC94E005032CE /* DishService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -933,6 +937,7 @@
 				36108BD927A304B5007DC62D /* CafeteriaRowView.swift */,
 				36108BD227A304B5007DC62D /* MealPlanView.swift */,
 				36108BD627A304B5007DC62D /* MenuView.swift */,
+				1F69CE45297EC99D005032CE /* DishView.swift */,
 			);
 			path = Cafeterias;
 			sourceTree = "<group>";
@@ -1209,6 +1214,7 @@
 				1F4C836328300D25006971C0 /* MapViewModel+State.swift */,
 				08DFB97C2867800C00E357DF /* CafeteriaWidgetViewModel.swift */,
 				08DFB9802867ACB600E357DF /* StudyRoomWidgetViewModel.swift */,
+				1F69CE43297EC97E005032CE /* DishViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1944,6 +1950,7 @@
 				36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */,
 				36108BEF27A304B6007DC62D /* MapContentView.swift in Sources */,
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
+				1F69CE44297EC97E005032CE /* DishViewModel.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
@@ -1970,7 +1977,6 @@
 				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
-				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,
 				1F69CE35297DB732005032CE /* NewsService.swift in Sources */,
 				1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
@@ -2016,6 +2022,7 @@
 				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
+				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,
@@ -2048,6 +2055,7 @@
 				36AF61EB27A2FD7800FEBD98 /* ErrorCategory.swift in Sources */,
 				1F04F185297C3F990085F273 /* PersonDetailedService.swift in Sources */,
 				1F04F18C297C85190085F273 /* Confirmation.swift in Sources */,
+				1F69CE42297EC94E005032CE /* DishService.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */,
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
