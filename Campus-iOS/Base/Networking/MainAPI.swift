@@ -103,8 +103,6 @@ enum MainAPI {
     // Maximum size of cache: 500kB, Maximum cache entries: 1000, Lifetime: 10min
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
     
-    static let imageCache = Cache<String, Data>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
-    
     /// Returns a generic value of type `T` fetched from the API or the cache.
     ///
     /// ```
@@ -262,6 +260,8 @@ enum TUMOnlineAPI2: API {
         // This is needed because for .calendar the response is not "rowset" and "row", instead it is "events" and "event"
         public var event: [CalendarEvent]
     }
+    
+    static let imageCache = Cache<String, Data>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
 }
 
 enum TUMCabeAPI2: API {
@@ -370,8 +370,10 @@ enum EatAPI2: API {
     var needsAuth: Bool { false }
     
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .formatted(DateFormatter.yyyyMMdd)
         
-        return try JSONDecoder().decode(type, from: data)
+        return try jsonDecoder.decode(type, from: data)
     }
 }
 

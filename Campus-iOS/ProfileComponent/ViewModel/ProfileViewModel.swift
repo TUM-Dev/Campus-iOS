@@ -54,7 +54,7 @@ class ProfileViewModel: ObservableObject {
                 return
             }
             
-            if let personGroup = profile.personGroup, let id = profile.id, let obfuscatedID = profile.obfuscatedID, let image = await downloadProfileImage(personGroup: personGroup, personId: id, obfuscatedID: obfuscatedID) {
+            if let personGroup = profile.personGroup, let id = profile.id, let obfuscatedID = profile.obfuscatedID, let image = await downloadProfileImage(personGroup: personGroup, personId: id, obfuscatedID: obfuscatedID, forcedRefresh: forcedRefresh) {
                 profile.image = image
             }
             print(profile)
@@ -90,33 +90,41 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func downloadProfileImage(personGroup: String, personId: String, obfuscatedID: String) async -> Image? {
+    func downloadProfileImage(personGroup: String, personId: String, obfuscatedID: String, forcedRefresh: Bool = false) async -> Image? {
         // Neu machen mit Alamofire (not async)
         guard let token = self.model.token else {
             return nil
         }
         
-        var image: Image?
-        TUMOnlineAPI2.profileImage(personGroup: personGroup, id: personId).asRequest(token: token).responseData { response in
-            if let imageData = response.value, let uiImage = UIImage(data: imageData) {
-                image = Image(uiImage: uiImage)
-                return
+        let endpoint = TUMOnlineAPI2.profileImage(personGroup: personGroup, id: personId)
+        
+        if !forcedRefresh, let imageData = TUMOnlineAPI2.imageCache.value(forKey: endpoint.basePathsParametersURL), let uiImage = UIImage(data: imageData) {
+            return Image(uiImage: uiImage)
+        } else {
+            var image: Image?
+            
+            TUMOnlineAPI2.profileImage(personGroup: personGroup, id: personId).asRequest(token: token).responseData { response in
+                if let imageData = response.value, let uiImage = UIImage(data: imageData) {
+                    TUMOnlineAPI2.imageCache.setValue(imageData, forKey: endpoint.basePathsParametersURL, cost: imageData.count)
+                    image = Image(uiImage: uiImage)
+                    return
+                }
             }
-        }
-        
-        if image != nil {
-            return image
-        }
-        
-        do {
-            let personDetails = try await PersonDetailedService().fetch(for: obfuscatedID, token: token, forcedRefresh: true)
-            guard let uiImage = personDetails.image else {
+            
+            if image != nil {
+                return image
+            }
+            
+            do {
+                let personDetails = try await PersonDetailedService().fetch(for: obfuscatedID, token: token, forcedRefresh: forcedRefresh)
+                guard let uiImage = personDetails.image else {
+                    return nil
+                }
+                return Image(uiImage: uiImage)
+            } catch {
+                print(error)
                 return nil
             }
-            return Image(uiImage: uiImage)
-        } catch {
-            print(error)
-            return nil
         }
          
         //        let imageRequest = TUMOnlineAPI.profileImage(personGroup: personGroup, id: personId)

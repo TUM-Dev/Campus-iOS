@@ -17,12 +17,12 @@ class CafeteriaWidgetViewModel: ObservableObject {
     @Published var mealPlanViewModel: MealPlanViewModel?
     @Published var status: CafeteriaWidgetStatus
     
-    private let cafeteriaService: CafeteriasServiceProtocol
+    private let cafeteriaService: CafeteriasService
     private let sessionManager = Session.defaultSession
     
     private let locationManager = CLLocationManager()
     
-    init(cafeteriaService: CafeteriasServiceProtocol) {
+    init(cafeteriaService: CafeteriasService) {
         self.status = .loading
         self.cafeteriaService = cafeteriaService
         

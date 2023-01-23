@@ -13,7 +13,6 @@ struct ProfileService {
     func fetch(token: String, forcedRefresh: Bool) async throws -> Profile? {
         let response : TUMOnlineAPI2.Response<Profile> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.identify, token: token, forcedRefresh: forcedRefresh)
         
-        print(response.row)
         return response.row.first
     }
     
