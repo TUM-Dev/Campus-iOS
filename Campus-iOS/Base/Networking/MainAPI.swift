@@ -427,8 +427,6 @@ enum TUMSexyAPI2: API {
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         return try JSONDecoder().decode(type, from: data)
     }
-    
-    
 }
 
 enum MVGAPI2: API {
