@@ -255,16 +255,20 @@
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
 		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
+		99438F012950770400766197 /* CampusService.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99438EFF2950770400766197 /* CampusService.pb.swift */; };
+		99438F022950770400766197 /* CampusService.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99438F002950770400766197 /* CampusService.grpc.swift */; };
 		9958318029361F6F00F25E11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958317F29361F6F00F25E11 /* AppDelegate.swift */; };
 		99583183293621A200F25E11 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99583182293621A200F25E11 /* PushNotifications.swift */; };
-		9958318529362F9A00F25E11 /* CampusBackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958318429362F9A00F25E11 /* CampusBackend.pb.swift */; };
 		9958318829362FCE00F25E11 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318729362FCE00F25E11 /* SwiftProtobuf */; };
 		9958318A29362FCE00F25E11 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318929362FCE00F25E11 /* SwiftProtobufPluginLibrary */; };
-		9958318C2936319900F25E11 /* CampusBackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958318B2936319900F25E11 /* CampusBackend.grpc.swift */; };
 		9958318F2936336900F25E11 /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = 9958318E2936336900F25E11 /* CGRPCZlib */; };
 		995831912936336900F25E11 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 995831902936336900F25E11 /* GRPC */; };
 		995831932936336900F25E11 /* protoc-gen-grpc-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 995831922936336900F25E11 /* protoc-gen-grpc-swift */; };
 		995831952936469100F25E11 /* CampusBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995831942936469000F25E11 /* CampusBackend.swift */; };
+		9973857C29490EFE00B1AE34 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973857B29490EFE00B1AE34 /* NotificationService.swift */; };
+		9973858029490EFE00B1AE34 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9973857929490EFE00B1AE34 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		997385862949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
+		997385872949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,7 +286,28 @@
 			remoteGlobalIDString = 366F0E7F27580CFB0091651D;
 			remoteInfo = "Campus-iOS";
 		};
+		9973857E29490EFE00B1AE34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 366F0E7827580CFB0091651D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9973857829490EFE00B1AE34;
+			remoteInfo = NotificationService;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		997385742949004E00B1AE34 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9973858029490EFE00B1AE34 /* NotificationService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		08038F95287430FB0048DAE5 /* WidgetTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTitleView.swift; sourceTree = "<group>"; };
@@ -527,11 +552,16 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		99438EFF2950770400766197 /* CampusService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.pb.swift; sourceTree = "<group>"; };
+		99438F002950770400766197 /* CampusService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.grpc.swift; sourceTree = "<group>"; };
 		9958317F29361F6F00F25E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99583182293621A200F25E11 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
-		9958318429362F9A00F25E11 /* CampusBackend.pb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.pb.swift; sourceTree = "<group>"; };
-		9958318B2936319900F25E11 /* CampusBackend.grpc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.grpc.swift; sourceTree = "<group>"; };
 		995831942936469000F25E11 /* CampusBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.swift; sourceTree = "<group>"; };
+		9973857929490EFE00B1AE34 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9973857B29490EFE00B1AE34 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		9973857D29490EFE00B1AE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9973858129490EFE00B1AE34 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
+		997385852949324F00B1AE34 /* CryptoExportImportManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoExportImportManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -566,6 +596,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		366F0E9C27580CFD0091651D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9973857629490EFE00B1AE34 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1085,6 +1122,7 @@
 				366F0E8227580CFB0091651D /* Campus-iOS */,
 				366F0E9827580CFD0091651D /* Campus-iOSTests */,
 				366F0EA227580CFD0091651D /* Campus-iOSUITests */,
+				9973857A29490EFE00B1AE34 /* NotificationService */,
 				366F0E8127580CFB0091651D /* Products */,
 				1FFEF086284E417E00ADD201 /* Recovered References */,
 			);
@@ -1096,6 +1134,7 @@
 				366F0E8027580CFB0091651D /* Campus-iOS.app */,
 				366F0E9527580CFD0091651D /* Campus-iOSTests.xctest */,
 				366F0E9F27580CFD0091651D /* Campus-iOSUITests.xctest */,
+				9973857929490EFE00B1AE34 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1219,8 +1258,8 @@
 				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
 				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
-				9958318429362F9A00F25E11 /* CampusBackend.pb.swift */,
-				9958318B2936319900F25E11 /* CampusBackend.grpc.swift */,
+				99438F002950770400766197 /* CampusService.grpc.swift */,
+				99438EFF2950770400766197 /* CampusService.pb.swift */,
 				995831942936469000F25E11 /* CampusBackend.swift */,
 			);
 			path = Networking;
@@ -1543,8 +1582,19 @@
 			isa = PBXGroup;
 			children = (
 				99583182293621A200F25E11 /* PushNotifications.swift */,
+				997385852949324F00B1AE34 /* CryptoExportImportManager.swift */,
 			);
 			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		9973857A29490EFE00B1AE34 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				9973858129490EFE00B1AE34 /* NotificationService.entitlements */,
+				9973857B29490EFE00B1AE34 /* NotificationService.swift */,
+				9973857D29490EFE00B1AE34 /* Info.plist */,
+			);
+			path = NotificationService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1557,10 +1607,12 @@
 				366F0E7C27580CFB0091651D /* Sources */,
 				366F0E7D27580CFB0091651D /* Frameworks */,
 				366F0E7E27580CFB0091651D /* Resources */,
+				997385742949004E00B1AE34 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9973857F29490EFE00B1AE34 /* PBXTargetDependency */,
 			);
 			name = "Campus-iOS";
 			packageProductDependencies = (
@@ -1621,6 +1673,23 @@
 			productReference = 366F0E9F27580CFD0091651D /* Campus-iOSUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		9973857829490EFE00B1AE34 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9973858229490EFE00B1AE34 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				9973857529490EFE00B1AE34 /* Sources */,
+				9973857629490EFE00B1AE34 /* Frameworks */,
+				9973857729490EFE00B1AE34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 9973857929490EFE00B1AE34 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1628,7 +1697,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					366F0E7F27580CFB0091651D = {
@@ -1641,6 +1710,9 @@
 					366F0E9E27580CFD0091651D = {
 						CreatedOnToolsVersion = 13.1;
 						TestTargetID = 366F0E7F27580CFB0091651D;
+					};
+					9973857829490EFE00B1AE34 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -1674,6 +1746,7 @@
 				366F0E7F27580CFB0091651D /* Campus-iOS */,
 				366F0E9427580CFD0091651D /* Campus-iOSTests */,
 				366F0E9E27580CFD0091651D /* Campus-iOSUITests */,
+				9973857829490EFE00B1AE34 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -1716,6 +1789,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F542451285CA059008363BC /* token-tutorial.mov in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9973857729490EFE00B1AE34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1781,7 +1861,6 @@
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
-				9958318C2936319900F25E11 /* CampusBackend.grpc.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
@@ -1806,6 +1885,7 @@
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				99583183293621A200F25E11 /* PushNotifications.swift in Sources */,
 				36203E8D2761C6EC00C24658 /* Credentials.swift in Sources */,
+				99438F022950770400766197 /* CampusService.grpc.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
@@ -1834,7 +1914,6 @@
 				3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */,
-				9958318529362F9A00F25E11 /* CampusBackend.pb.swift in Sources */,
 				3654F361285168D2008AD5DC /* StudyRoomGroup.swift in Sources */,
 				36BB6F7927B26DE300F224AB /* TuitionView.swift in Sources */,
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
@@ -1861,11 +1940,13 @@
 				36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */,
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
 				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
+				997385862949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */,
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
 				3654F368285169AC008AD5DC /* TUMDevAppAPI.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				3629BA3327A1E4A90036AC80 /* RoundedCornersShape.swift in Sources */,
+				99438F012950770400766197 /* CampusService.pb.swift in Sources */,
 				1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
@@ -1966,6 +2047,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9973857529490EFE00B1AE34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9973857C29490EFE00B1AE34 /* NotificationService.swift in Sources */,
+				997385872949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1978,6 +2068,11 @@
 			isa = PBXTargetDependency;
 			target = 366F0E7F27580CFB0091651D /* Campus-iOS */;
 			targetProxy = 366F0EA027580CFD0091651D /* PBXContainerItemProxy */;
+		};
+		9973857F29490EFE00B1AE34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9973857829490EFE00B1AE34 /* NotificationService */;
+			targetProxy = 9973857E29490EFE00B1AE34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2118,6 +2213,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -2162,6 +2258,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0805E72D28CC2462003C5CFD /* Secrets.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -2297,6 +2394,64 @@
 			};
 			name = Release;
 		};
+		9973858329490EFE00B1AE34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9973858429490EFE00B1AE34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2J3C6P6X3N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.tum.tca.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2332,6 +2487,15 @@
 			buildConfigurations = (
 				366F0EB027580CFD0091651D /* Debug */,
 				366F0EB127580CFD0091651D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9973858229490EFE00B1AE34 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9973858329490EFE00B1AE34 /* Debug */,
+				9973858429490EFE00B1AE34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

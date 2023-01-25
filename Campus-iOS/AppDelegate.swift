@@ -40,5 +40,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
           print("Permission granted: \(granted)")
         }
     }
+    
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+        Task {
+            do {
+                try await PushNotifications.shared.handleBackgroundNotification(data: userInfo)
+                completionHandler(.noData)
+            } catch {
+                completionHandler(.failed)
+            }
+        }
+    }
 
 }
