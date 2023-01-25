@@ -27,7 +27,7 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate `Api_CampusClient`, then call methods of this protocol to make API calls.
-public protocol Api_CampusClientProtocol: GRPCClient {
+internal protocol Api_CampusClientProtocol: GRPCClient {
   var serviceName: String { get }
   var interceptors: Api_CampusClientInterceptorFactoryProtocol? { get }
 
@@ -176,21 +176,6 @@ public protocol Api_CampusClientProtocol: GRPCClient {
     callOptions: CallOptions?
   ) -> UnaryCall<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply>
 
-  func registerDevice(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
-  func verifyKey(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
-  func deviceUploadGcmToken(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
   func getUploadStatus(
     _ request: Api_GetUploadStatusRequest,
     callOptions: CallOptions?
@@ -211,24 +196,29 @@ public protocol Api_CampusClientProtocol: GRPCClient {
     callOptions: CallOptions?
   ) -> UnaryCall<Api_GetMembersRequest, Api_GetMembersReply>
 
-  func registerIOSDevice(
-    _ request: Api_RegisterIOSDeviceRequest,
+  func getCanteenHeadCount(
+    _ request: Api_GetCanteenHeadCountRequest,
     callOptions: CallOptions?
-  ) -> UnaryCall<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply>
+  ) -> UnaryCall<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply>
 
-  func removeIOSDevice(
-    _ request: Api_RemoveIOSDeviceRequest,
+  func iOSDeviceRequestResponse(
+    _ request: Api_IOSDeviceRequestResponseRequest,
     callOptions: CallOptions?
-  ) -> UnaryCall<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply>
+  ) -> UnaryCall<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply>
 
-  func addIOSDeviceUsage(
-    _ request: Api_AddIOSDeviceUsageRequest,
+  func registerDevice(
+    _ request: Api_RegisterDeviceRequest,
     callOptions: CallOptions?
-  ) -> UnaryCall<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply>
+  ) -> UnaryCall<Api_RegisterDeviceRequest, Api_RegisterDeviceReply>
+
+  func removeDevice(
+    _ request: Api_RemoveDeviceRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Api_RemoveDeviceRequest, Api_RemoveDeviceReply>
 }
 
 extension Api_CampusClientProtocol {
-  public var serviceName: String {
+  internal var serviceName: String {
     return "api.Campus"
   }
 
@@ -238,7 +228,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetTopNews.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getTopNews(
+  internal func getTopNews(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTopNewsReply> {
@@ -256,7 +246,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetNewsSources.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getNewsSources(
+  internal func getNewsSources(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_NewsSourceArray> {
@@ -274,7 +264,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to SearchRooms.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func searchRooms(
+  internal func searchRooms(
     _ request: Api_SearchRoomsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_SearchRoomsRequest, Api_SearchRoomsReply> {
@@ -292,7 +282,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetLocations.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getLocations(
+  internal func getLocations(
     _ request: Api_GetLocationsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetLocationsRequest, Api_GetLocationsReply> {
@@ -310,7 +300,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetRoomMaps.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getRoomMaps(
+  internal func getRoomMaps(
     _ request: Api_GetRoomMapsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetRoomMapsRequest, Api_GetRoomMapsReply> {
@@ -328,7 +318,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetRoomCoordinates.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getRoomCoordinates(
+  internal func getRoomCoordinates(
     _ request: Api_GetRoomCoordinatesRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetRoomCoordinatesRequest, Api_GetRoomCoordinatesReply> {
@@ -346,7 +336,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetRoomSchedule.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getRoomSchedule(
+  internal func getRoomSchedule(
     _ request: Api_GetRoomScheduleRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetRoomScheduleRequest, Api_GetRoomScheduleReply> {
@@ -364,7 +354,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetCafeteriaRatings.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getCafeteriaRatings(
+  internal func getCafeteriaRatings(
     _ request: Api_CafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_CafeteriaRatingRequest, Api_CafeteriaRatingReply> {
@@ -382,7 +372,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetDishRatings.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getDishRatings(
+  internal func getDishRatings(
     _ request: Api_DishRatingRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_DishRatingRequest, Api_DishRatingReply> {
@@ -400,7 +390,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to NewCafeteriaRating.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func newCafeteriaRating(
+  internal func newCafeteriaRating(
     _ request: Api_NewCafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_NewCafeteriaRatingRequest, SwiftProtobuf.Google_Protobuf_Empty> {
@@ -418,7 +408,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to NewDishRating.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func newDishRating(
+  internal func newDishRating(
     _ request: Api_NewDishRatingRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_NewDishRatingRequest, SwiftProtobuf.Google_Protobuf_Empty> {
@@ -436,7 +426,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetAvailableDishTags.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getAvailableDishTags(
+  internal func getAvailableDishTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -454,7 +444,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetNameTags.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getNameTags(
+  internal func getNameTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -472,7 +462,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetAvailableCafeteriaTags.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getAvailableCafeteriaTags(
+  internal func getAvailableCafeteriaTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -490,7 +480,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetCafeterias.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getCafeterias(
+  internal func getCafeterias(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetCafeteriaReply> {
@@ -508,7 +498,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetDishes.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getDishes(
+  internal func getDishes(
     _ request: Api_GetDishesRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetDishesRequest, Api_GetDishesReply> {
@@ -526,7 +516,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetResponsiblePerson.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getResponsiblePerson(
+  internal func getResponsiblePerson(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetResponsiblePersonReply> {
@@ -544,7 +534,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetBuilding2Gps.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getBuilding2Gps(
+  internal func getBuilding2Gps(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetBuilding2GpsReply> {
@@ -562,7 +552,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetAreaFacilitiesByBuildingNr.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getAreaFacilitiesByBuildingNr(
+  internal func getAreaFacilitiesByBuildingNr(
     _ request: Api_GetAreaFacilitiesByBuildingNrRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetAreaFacilitiesByBuildingNrRequest, Api_GetAreaFacilitiesByBuildingNrReply> {
@@ -580,7 +570,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetListOfToilets.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getListOfToilets(
+  internal func getListOfToilets(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetListOfToiletsReply> {
@@ -598,7 +588,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetListOfElevators.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getListOfElevators(
+  internal func getListOfElevators(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetListOfElevatorsReply> {
@@ -616,7 +606,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetMoreInformation.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getMoreInformation(
+  internal func getMoreInformation(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetMoreInformationReply> {
@@ -634,7 +624,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetOpeningTimes.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getOpeningTimes(
+  internal func getOpeningTimes(
     _ request: Api_GetOpeningTimesRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetOpeningTimesRequest, Api_GetOpeningTimesReply> {
@@ -652,7 +642,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetUpdateNote.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getUpdateNote(
+  internal func getUpdateNote(
     _ request: Api_GetUpdateNoteRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetUpdateNoteRequest, Api_GetUpdateNoteReply> {
@@ -670,7 +660,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetStudyRoomList.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getStudyRoomList(
+  internal func getStudyRoomList(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetStudyRoomListReply> {
@@ -688,7 +678,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetEventList.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getEventList(
+  internal func getEventList(
     _ request: Api_GetEventListRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetEventListRequest, Api_GetEventListReply> {
@@ -706,7 +696,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetKino.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getKino(
+  internal func getKino(
     _ request: Api_GetKinoRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetKinoRequest, Api_GetKinoReply> {
@@ -724,7 +714,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to SendFeedback.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func sendFeedback(
+  internal func sendFeedback(
     _ request: Api_SendFeedbackRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_SendFeedbackRequest, Api_SendFeedbackImageReply> {
@@ -742,7 +732,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to SendFeedbackImage.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func sendFeedbackImage(
+  internal func sendFeedbackImage(
     _ request: Api_SendFeedbackImageRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply> {
@@ -754,67 +744,13 @@ extension Api_CampusClientProtocol {
     )
   }
 
-  /// Unary call to RegisterDevice
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to RegisterDevice.
-  ///   - callOptions: Call options.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func registerDevice(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerDevice.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
-    )
-  }
-
-  /// Unary call to VerifyKey
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to VerifyKey.
-  ///   - callOptions: Call options.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func verifyKey(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.verifyKey.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeVerifyKeyInterceptors() ?? []
-    )
-  }
-
-  /// Unary call to DeviceUploadGcmToken
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to DeviceUploadGcmToken.
-  ///   - callOptions: Call options.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func deviceUploadGcmToken(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.deviceUploadGcmToken.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeDeviceUploadGcmTokenInterceptors() ?? []
-    )
-  }
-
   /// Unary call to GetUploadStatus
   ///
   /// - Parameters:
   ///   - request: Request to send to GetUploadStatus.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getUploadStatus(
+  internal func getUploadStatus(
     _ request: Api_GetUploadStatusRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetUploadStatusRequest, Api_GetUploadStatusReply> {
@@ -832,7 +768,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetNotification.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getNotification(
+  internal func getNotification(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_NotificationsRequest, Api_GetNotificationsReply> {
@@ -850,7 +786,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetNotificationConfirm.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getNotificationConfirm(
+  internal func getNotificationConfirm(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_NotificationsRequest, Api_GetNotificationsConfirmReply> {
@@ -868,7 +804,7 @@ extension Api_CampusClientProtocol {
   ///   - request: Request to send to GetMembers.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getMembers(
+  internal func getMembers(
     _ request: Api_GetMembersRequest,
     callOptions: CallOptions? = nil
   ) -> UnaryCall<Api_GetMembersRequest, Api_GetMembersReply> {
@@ -880,57 +816,75 @@ extension Api_CampusClientProtocol {
     )
   }
 
-  /// register your ios device for push notifications
+  /// Unary call to GetCanteenHeadCount
   ///
   /// - Parameters:
-  ///   - request: Request to send to RegisterIOSDevice.
+  ///   - request: Request to send to GetCanteenHeadCount.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func registerIOSDevice(
-    _ request: Api_RegisterIOSDeviceRequest,
+  internal func getCanteenHeadCount(
+    _ request: Api_GetCanteenHeadCountRequest,
     callOptions: CallOptions? = nil
-  ) -> UnaryCall<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply> {
+  ) -> UnaryCall<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply> {
     return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.getCanteenHeadCount.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeGetCanteenHeadCountInterceptors() ?? []
     )
   }
 
-  /// remove your ios device from the db and unregister it from push notifications
+  /// Endpoint for the iOS app to respond to background notifications requests
   ///
   /// - Parameters:
-  ///   - request: Request to send to RemoveIOSDevice.
+  ///   - request: Request to send to IOSDeviceRequestResponse.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func removeIOSDevice(
-    _ request: Api_RemoveIOSDeviceRequest,
+  internal func iOSDeviceRequestResponse(
+    _ request: Api_IOSDeviceRequestResponseRequest,
     callOptions: CallOptions? = nil
-  ) -> UnaryCall<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply> {
+  ) -> UnaryCall<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply> {
     return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.removeIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.iOSDeviceRequestResponse.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRemoveIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeIOSDeviceRequestResponseInterceptors() ?? []
     )
   }
 
-  /// add ios device usage log to calculate notification priority
+  /// Register an Android, iOS or Windows device for push notifications
   ///
   /// - Parameters:
-  ///   - request: Request to send to AddIOSDeviceUsage.
+  ///   - request: Request to send to RegisterDevice.
   ///   - callOptions: Call options.
   /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func addIOSDeviceUsage(
-    _ request: Api_AddIOSDeviceUsageRequest,
+  internal func registerDevice(
+    _ request: Api_RegisterDeviceRequest,
     callOptions: CallOptions? = nil
-  ) -> UnaryCall<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply> {
+  ) -> UnaryCall<Api_RegisterDeviceRequest, Api_RegisterDeviceReply> {
     return self.makeUnaryCall(
-      path: Api_CampusClientMetadata.Methods.addIOSDeviceUsage.path,
+      path: Api_CampusClientMetadata.Methods.registerDevice.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeAddIOSDeviceUsageInterceptors() ?? []
+      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
+    )
+  }
+
+  /// Unregister it from push notifications
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to RemoveDevice.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  internal func removeDevice(
+    _ request: Api_RemoveDeviceRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Api_RemoveDeviceRequest, Api_RemoveDeviceReply> {
+    return self.makeUnaryCall(
+      path: Api_CampusClientMetadata.Methods.removeDevice.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeRemoveDeviceInterceptors() ?? []
     )
   }
 }
@@ -941,16 +895,16 @@ extension Api_CampusClient: @unchecked Sendable {}
 #endif // compiler(>=5.6)
 
 @available(*, deprecated, renamed: "Api_CampusNIOClient")
-public final class Api_CampusClient: Api_CampusClientProtocol {
+internal final class Api_CampusClient: Api_CampusClientProtocol {
   private let lock = Lock()
   private var _defaultCallOptions: CallOptions
   private var _interceptors: Api_CampusClientInterceptorFactoryProtocol?
-  public let channel: GRPCChannel
-  public var defaultCallOptions: CallOptions {
+  internal let channel: GRPCChannel
+  internal var defaultCallOptions: CallOptions {
     get { self.lock.withLock { return self._defaultCallOptions } }
     set { self.lock.withLockVoid { self._defaultCallOptions = newValue } }
   }
-  public var interceptors: Api_CampusClientInterceptorFactoryProtocol? {
+  internal var interceptors: Api_CampusClientInterceptorFactoryProtocol? {
     get { self.lock.withLock { return self._interceptors } }
     set { self.lock.withLockVoid { self._interceptors = newValue } }
   }
@@ -961,7 +915,7 @@ public final class Api_CampusClient: Api_CampusClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  public init(
+  internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: Api_CampusClientInterceptorFactoryProtocol? = nil
@@ -972,10 +926,10 @@ public final class Api_CampusClient: Api_CampusClientProtocol {
   }
 }
 
-public struct Api_CampusNIOClient: Api_CampusClientProtocol {
-  public var channel: GRPCChannel
-  public var defaultCallOptions: CallOptions
-  public var interceptors: Api_CampusClientInterceptorFactoryProtocol?
+internal struct Api_CampusNIOClient: Api_CampusClientProtocol {
+  internal var channel: GRPCChannel
+  internal var defaultCallOptions: CallOptions
+  internal var interceptors: Api_CampusClientInterceptorFactoryProtocol?
 
   /// Creates a client for the api.Campus service.
   ///
@@ -983,7 +937,7 @@ public struct Api_CampusNIOClient: Api_CampusClientProtocol {
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
   ///   - interceptors: A factory providing interceptors for each RPC.
-  public init(
+  internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: Api_CampusClientInterceptorFactoryProtocol? = nil
@@ -996,7 +950,7 @@ public struct Api_CampusNIOClient: Api_CampusClientProtocol {
 
 #if compiler(>=5.6)
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-public protocol Api_CampusAsyncClientProtocol: GRPCClient {
+internal protocol Api_CampusAsyncClientProtocol: GRPCClient {
   static var serviceDescriptor: GRPCServiceDescriptor { get }
   var interceptors: Api_CampusClientInterceptorFactoryProtocol? { get }
 
@@ -1145,21 +1099,6 @@ public protocol Api_CampusAsyncClientProtocol: GRPCClient {
     callOptions: CallOptions?
   ) -> GRPCAsyncUnaryCall<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply>
 
-  func makeRegisterDeviceCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
-  func makeVerifyKeyCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
-  func makeDeviceUploadGcmTokenCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>
-
   func makeGetUploadStatusCall(
     _ request: Api_GetUploadStatusRequest,
     callOptions: CallOptions?
@@ -1180,33 +1119,38 @@ public protocol Api_CampusAsyncClientProtocol: GRPCClient {
     callOptions: CallOptions?
   ) -> GRPCAsyncUnaryCall<Api_GetMembersRequest, Api_GetMembersReply>
 
-  func makeRegisterIosdeviceCall(
-    _ request: Api_RegisterIOSDeviceRequest,
+  func makeGetCanteenHeadCountCall(
+    _ request: Api_GetCanteenHeadCountRequest,
     callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply>
+  ) -> GRPCAsyncUnaryCall<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply>
 
-  func makeRemoveIosdeviceCall(
-    _ request: Api_RemoveIOSDeviceRequest,
+  func makeIosdeviceRequestResponseCall(
+    _ request: Api_IOSDeviceRequestResponseRequest,
     callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply>
+  ) -> GRPCAsyncUnaryCall<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply>
 
-  func makeAddIosdeviceUsageCall(
-    _ request: Api_AddIOSDeviceUsageRequest,
+  func makeRegisterDeviceCall(
+    _ request: Api_RegisterDeviceRequest,
     callOptions: CallOptions?
-  ) -> GRPCAsyncUnaryCall<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply>
+  ) -> GRPCAsyncUnaryCall<Api_RegisterDeviceRequest, Api_RegisterDeviceReply>
+
+  func makeRemoveDeviceCall(
+    _ request: Api_RemoveDeviceRequest,
+    callOptions: CallOptions?
+  ) -> GRPCAsyncUnaryCall<Api_RemoveDeviceRequest, Api_RemoveDeviceReply>
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension Api_CampusAsyncClientProtocol {
-  public static var serviceDescriptor: GRPCServiceDescriptor {
+  internal static var serviceDescriptor: GRPCServiceDescriptor {
     return Api_CampusClientMetadata.serviceDescriptor
   }
 
-  public var interceptors: Api_CampusClientInterceptorFactoryProtocol? {
+  internal var interceptors: Api_CampusClientInterceptorFactoryProtocol? {
     return nil
   }
 
-  public func makeGetTopNewsCall(
+  internal func makeGetTopNewsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTopNewsReply> {
@@ -1218,7 +1162,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetNewsSourcesCall(
+  internal func makeGetNewsSourcesCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_NewsSourceArray> {
@@ -1230,7 +1174,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeSearchRoomsCall(
+  internal func makeSearchRoomsCall(
     _ request: Api_SearchRoomsRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_SearchRoomsRequest, Api_SearchRoomsReply> {
@@ -1242,7 +1186,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetLocationsCall(
+  internal func makeGetLocationsCall(
     _ request: Api_GetLocationsRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetLocationsRequest, Api_GetLocationsReply> {
@@ -1254,7 +1198,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetRoomMapsCall(
+  internal func makeGetRoomMapsCall(
     _ request: Api_GetRoomMapsRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetRoomMapsRequest, Api_GetRoomMapsReply> {
@@ -1266,7 +1210,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetRoomCoordinatesCall(
+  internal func makeGetRoomCoordinatesCall(
     _ request: Api_GetRoomCoordinatesRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetRoomCoordinatesRequest, Api_GetRoomCoordinatesReply> {
@@ -1278,7 +1222,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetRoomScheduleCall(
+  internal func makeGetRoomScheduleCall(
     _ request: Api_GetRoomScheduleRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetRoomScheduleRequest, Api_GetRoomScheduleReply> {
@@ -1290,7 +1234,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetCafeteriaRatingsCall(
+  internal func makeGetCafeteriaRatingsCall(
     _ request: Api_CafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_CafeteriaRatingRequest, Api_CafeteriaRatingReply> {
@@ -1302,7 +1246,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetDishRatingsCall(
+  internal func makeGetDishRatingsCall(
     _ request: Api_DishRatingRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_DishRatingRequest, Api_DishRatingReply> {
@@ -1314,7 +1258,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeNewCafeteriaRatingCall(
+  internal func makeNewCafeteriaRatingCall(
     _ request: Api_NewCafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_NewCafeteriaRatingRequest, SwiftProtobuf.Google_Protobuf_Empty> {
@@ -1326,7 +1270,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeNewDishRatingCall(
+  internal func makeNewDishRatingCall(
     _ request: Api_NewDishRatingRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_NewDishRatingRequest, SwiftProtobuf.Google_Protobuf_Empty> {
@@ -1338,7 +1282,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetAvailableDishTagsCall(
+  internal func makeGetAvailableDishTagsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -1350,7 +1294,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetNameTagsCall(
+  internal func makeGetNameTagsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -1362,7 +1306,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetAvailableCafeteriaTagsCall(
+  internal func makeGetAvailableCafeteriaTagsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTagsReply> {
@@ -1374,7 +1318,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetCafeteriasCall(
+  internal func makeGetCafeteriasCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetCafeteriaReply> {
@@ -1386,7 +1330,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetDishesCall(
+  internal func makeGetDishesCall(
     _ request: Api_GetDishesRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetDishesRequest, Api_GetDishesReply> {
@@ -1398,7 +1342,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetResponsiblePersonCall(
+  internal func makeGetResponsiblePersonCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetResponsiblePersonReply> {
@@ -1410,7 +1354,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetBuilding2GpsCall(
+  internal func makeGetBuilding2GpsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetBuilding2GpsReply> {
@@ -1422,7 +1366,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetAreaFacilitiesByBuildingNrCall(
+  internal func makeGetAreaFacilitiesByBuildingNrCall(
     _ request: Api_GetAreaFacilitiesByBuildingNrRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetAreaFacilitiesByBuildingNrRequest, Api_GetAreaFacilitiesByBuildingNrReply> {
@@ -1434,7 +1378,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetListOfToiletsCall(
+  internal func makeGetListOfToiletsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetListOfToiletsReply> {
@@ -1446,7 +1390,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetListOfElevatorsCall(
+  internal func makeGetListOfElevatorsCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetListOfElevatorsReply> {
@@ -1458,7 +1402,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetMoreInformationCall(
+  internal func makeGetMoreInformationCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetMoreInformationReply> {
@@ -1470,7 +1414,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetOpeningTimesCall(
+  internal func makeGetOpeningTimesCall(
     _ request: Api_GetOpeningTimesRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetOpeningTimesRequest, Api_GetOpeningTimesReply> {
@@ -1482,7 +1426,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetUpdateNoteCall(
+  internal func makeGetUpdateNoteCall(
     _ request: Api_GetUpdateNoteRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetUpdateNoteRequest, Api_GetUpdateNoteReply> {
@@ -1494,7 +1438,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetStudyRoomListCall(
+  internal func makeGetStudyRoomListCall(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_GetStudyRoomListReply> {
@@ -1506,7 +1450,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetEventListCall(
+  internal func makeGetEventListCall(
     _ request: Api_GetEventListRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetEventListRequest, Api_GetEventListReply> {
@@ -1518,7 +1462,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetKinoCall(
+  internal func makeGetKinoCall(
     _ request: Api_GetKinoRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetKinoRequest, Api_GetKinoReply> {
@@ -1530,7 +1474,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeSendFeedbackCall(
+  internal func makeSendFeedbackCall(
     _ request: Api_SendFeedbackRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_SendFeedbackRequest, Api_SendFeedbackImageReply> {
@@ -1542,7 +1486,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeSendFeedbackImageCall(
+  internal func makeSendFeedbackImageCall(
     _ request: Api_SendFeedbackImageRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply> {
@@ -1554,43 +1498,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeRegisterDeviceCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerDevice.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
-    )
-  }
-
-  public func makeVerifyKeyCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.verifyKey.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeVerifyKeyInterceptors() ?? []
-    )
-  }
-
-  public func makeDeviceUploadGcmTokenCall(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus> {
-    return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.deviceUploadGcmToken.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeDeviceUploadGcmTokenInterceptors() ?? []
-    )
-  }
-
-  public func makeGetUploadStatusCall(
+  internal func makeGetUploadStatusCall(
     _ request: Api_GetUploadStatusRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetUploadStatusRequest, Api_GetUploadStatusReply> {
@@ -1602,7 +1510,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetNotificationCall(
+  internal func makeGetNotificationCall(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_NotificationsRequest, Api_GetNotificationsReply> {
@@ -1614,7 +1522,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetNotificationConfirmCall(
+  internal func makeGetNotificationConfirmCall(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_NotificationsRequest, Api_GetNotificationsConfirmReply> {
@@ -1626,7 +1534,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeGetMembersCall(
+  internal func makeGetMembersCall(
     _ request: Api_GetMembersRequest,
     callOptions: CallOptions? = nil
   ) -> GRPCAsyncUnaryCall<Api_GetMembersRequest, Api_GetMembersReply> {
@@ -1638,46 +1546,58 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func makeRegisterIosdeviceCall(
-    _ request: Api_RegisterIOSDeviceRequest,
+  internal func makeGetCanteenHeadCountCall(
+    _ request: Api_GetCanteenHeadCountRequest,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply> {
+  ) -> GRPCAsyncUnaryCall<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply> {
     return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.getCanteenHeadCount.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeGetCanteenHeadCountInterceptors() ?? []
     )
   }
 
-  public func makeRemoveIosdeviceCall(
-    _ request: Api_RemoveIOSDeviceRequest,
+  internal func makeIosdeviceRequestResponseCall(
+    _ request: Api_IOSDeviceRequestResponseRequest,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply> {
+  ) -> GRPCAsyncUnaryCall<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply> {
     return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.removeIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.iOSDeviceRequestResponse.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRemoveIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeIOSDeviceRequestResponseInterceptors() ?? []
     )
   }
 
-  public func makeAddIosdeviceUsageCall(
-    _ request: Api_AddIOSDeviceUsageRequest,
+  internal func makeRegisterDeviceCall(
+    _ request: Api_RegisterDeviceRequest,
     callOptions: CallOptions? = nil
-  ) -> GRPCAsyncUnaryCall<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply> {
+  ) -> GRPCAsyncUnaryCall<Api_RegisterDeviceRequest, Api_RegisterDeviceReply> {
     return self.makeAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.addIOSDeviceUsage.path,
+      path: Api_CampusClientMetadata.Methods.registerDevice.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeAddIOSDeviceUsageInterceptors() ?? []
+      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
+    )
+  }
+
+  internal func makeRemoveDeviceCall(
+    _ request: Api_RemoveDeviceRequest,
+    callOptions: CallOptions? = nil
+  ) -> GRPCAsyncUnaryCall<Api_RemoveDeviceRequest, Api_RemoveDeviceReply> {
+    return self.makeAsyncUnaryCall(
+      path: Api_CampusClientMetadata.Methods.removeDevice.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeRemoveDeviceInterceptors() ?? []
     )
   }
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension Api_CampusAsyncClientProtocol {
-  public func getTopNews(
+  internal func getTopNews(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetTopNewsReply {
@@ -1689,7 +1609,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getNewsSources(
+  internal func getNewsSources(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_NewsSourceArray {
@@ -1701,7 +1621,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func searchRooms(
+  internal func searchRooms(
     _ request: Api_SearchRoomsRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_SearchRoomsReply {
@@ -1713,7 +1633,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getLocations(
+  internal func getLocations(
     _ request: Api_GetLocationsRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetLocationsReply {
@@ -1725,7 +1645,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getRoomMaps(
+  internal func getRoomMaps(
     _ request: Api_GetRoomMapsRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetRoomMapsReply {
@@ -1737,7 +1657,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getRoomCoordinates(
+  internal func getRoomCoordinates(
     _ request: Api_GetRoomCoordinatesRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetRoomCoordinatesReply {
@@ -1749,7 +1669,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getRoomSchedule(
+  internal func getRoomSchedule(
     _ request: Api_GetRoomScheduleRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetRoomScheduleReply {
@@ -1761,7 +1681,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getCafeteriaRatings(
+  internal func getCafeteriaRatings(
     _ request: Api_CafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_CafeteriaRatingReply {
@@ -1773,7 +1693,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getDishRatings(
+  internal func getDishRatings(
     _ request: Api_DishRatingRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_DishRatingReply {
@@ -1785,7 +1705,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func newCafeteriaRating(
+  internal func newCafeteriaRating(
     _ request: Api_NewCafeteriaRatingRequest,
     callOptions: CallOptions? = nil
   ) async throws -> SwiftProtobuf.Google_Protobuf_Empty {
@@ -1797,7 +1717,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func newDishRating(
+  internal func newDishRating(
     _ request: Api_NewDishRatingRequest,
     callOptions: CallOptions? = nil
   ) async throws -> SwiftProtobuf.Google_Protobuf_Empty {
@@ -1809,7 +1729,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getAvailableDishTags(
+  internal func getAvailableDishTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetTagsReply {
@@ -1821,7 +1741,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getNameTags(
+  internal func getNameTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetTagsReply {
@@ -1833,7 +1753,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getAvailableCafeteriaTags(
+  internal func getAvailableCafeteriaTags(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetTagsReply {
@@ -1845,7 +1765,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getCafeterias(
+  internal func getCafeterias(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetCafeteriaReply {
@@ -1857,7 +1777,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getDishes(
+  internal func getDishes(
     _ request: Api_GetDishesRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetDishesReply {
@@ -1869,7 +1789,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getResponsiblePerson(
+  internal func getResponsiblePerson(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetResponsiblePersonReply {
@@ -1881,7 +1801,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getBuilding2Gps(
+  internal func getBuilding2Gps(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetBuilding2GpsReply {
@@ -1893,7 +1813,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getAreaFacilitiesByBuildingNr(
+  internal func getAreaFacilitiesByBuildingNr(
     _ request: Api_GetAreaFacilitiesByBuildingNrRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetAreaFacilitiesByBuildingNrReply {
@@ -1905,7 +1825,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getListOfToilets(
+  internal func getListOfToilets(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetListOfToiletsReply {
@@ -1917,7 +1837,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getListOfElevators(
+  internal func getListOfElevators(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetListOfElevatorsReply {
@@ -1929,7 +1849,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getMoreInformation(
+  internal func getMoreInformation(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetMoreInformationReply {
@@ -1941,7 +1861,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getOpeningTimes(
+  internal func getOpeningTimes(
     _ request: Api_GetOpeningTimesRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetOpeningTimesReply {
@@ -1953,7 +1873,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getUpdateNote(
+  internal func getUpdateNote(
     _ request: Api_GetUpdateNoteRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetUpdateNoteReply {
@@ -1965,7 +1885,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getStudyRoomList(
+  internal func getStudyRoomList(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetStudyRoomListReply {
@@ -1977,7 +1897,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getEventList(
+  internal func getEventList(
     _ request: Api_GetEventListRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetEventListReply {
@@ -1989,7 +1909,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getKino(
+  internal func getKino(
     _ request: Api_GetKinoRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetKinoReply {
@@ -2001,7 +1921,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func sendFeedback(
+  internal func sendFeedback(
     _ request: Api_SendFeedbackRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_SendFeedbackImageReply {
@@ -2013,7 +1933,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func sendFeedbackImage(
+  internal func sendFeedbackImage(
     _ request: Api_SendFeedbackImageRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_SendFeedbackImageReply {
@@ -2025,43 +1945,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func registerDevice(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) async throws -> Api_TUMCabeStatus {
-    return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerDevice.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
-    )
-  }
-
-  public func verifyKey(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) async throws -> Api_TUMCabeStatus {
-    return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.verifyKey.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeVerifyKeyInterceptors() ?? []
-    )
-  }
-
-  public func deviceUploadGcmToken(
-    _ request: SwiftProtobuf.Google_Protobuf_Empty,
-    callOptions: CallOptions? = nil
-  ) async throws -> Api_TUMCabeStatus {
-    return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.deviceUploadGcmToken.path,
-      request: request,
-      callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeDeviceUploadGcmTokenInterceptors() ?? []
-    )
-  }
-
-  public func getUploadStatus(
+  internal func getUploadStatus(
     _ request: Api_GetUploadStatusRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetUploadStatusReply {
@@ -2073,7 +1957,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getNotification(
+  internal func getNotification(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetNotificationsReply {
@@ -2085,7 +1969,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getNotificationConfirm(
+  internal func getNotificationConfirm(
     _ request: Api_NotificationsRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetNotificationsConfirmReply {
@@ -2097,7 +1981,7 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func getMembers(
+  internal func getMembers(
     _ request: Api_GetMembersRequest,
     callOptions: CallOptions? = nil
   ) async throws -> Api_GetMembersReply {
@@ -2109,50 +1993,62 @@ extension Api_CampusAsyncClientProtocol {
     )
   }
 
-  public func registerIOSDevice(
-    _ request: Api_RegisterIOSDeviceRequest,
+  internal func getCanteenHeadCount(
+    _ request: Api_GetCanteenHeadCountRequest,
     callOptions: CallOptions? = nil
-  ) async throws -> Api_RegisterIOSDeviceReply {
+  ) async throws -> Api_GetCanteenHeadCountReply {
     return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.registerIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.getCanteenHeadCount.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRegisterIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeGetCanteenHeadCountInterceptors() ?? []
     )
   }
 
-  public func removeIOSDevice(
-    _ request: Api_RemoveIOSDeviceRequest,
+  internal func iOSDeviceRequestResponse(
+    _ request: Api_IOSDeviceRequestResponseRequest,
     callOptions: CallOptions? = nil
-  ) async throws -> Api_RemoveIOSDeviceReply {
+  ) async throws -> Api_IOSDeviceRequestResponseReply {
     return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.removeIOSDevice.path,
+      path: Api_CampusClientMetadata.Methods.iOSDeviceRequestResponse.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeRemoveIOSDeviceInterceptors() ?? []
+      interceptors: self.interceptors?.makeIOSDeviceRequestResponseInterceptors() ?? []
     )
   }
 
-  public func addIOSDeviceUsage(
-    _ request: Api_AddIOSDeviceUsageRequest,
+  internal func registerDevice(
+    _ request: Api_RegisterDeviceRequest,
     callOptions: CallOptions? = nil
-  ) async throws -> Api_AddIOSDeviceUsageReply {
+  ) async throws -> Api_RegisterDeviceReply {
     return try await self.performAsyncUnaryCall(
-      path: Api_CampusClientMetadata.Methods.addIOSDeviceUsage.path,
+      path: Api_CampusClientMetadata.Methods.registerDevice.path,
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
-      interceptors: self.interceptors?.makeAddIOSDeviceUsageInterceptors() ?? []
+      interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? []
+    )
+  }
+
+  internal func removeDevice(
+    _ request: Api_RemoveDeviceRequest,
+    callOptions: CallOptions? = nil
+  ) async throws -> Api_RemoveDeviceReply {
+    return try await self.performAsyncUnaryCall(
+      path: Api_CampusClientMetadata.Methods.removeDevice.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeRemoveDeviceInterceptors() ?? []
     )
   }
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-public struct Api_CampusAsyncClient: Api_CampusAsyncClientProtocol {
-  public var channel: GRPCChannel
-  public var defaultCallOptions: CallOptions
-  public var interceptors: Api_CampusClientInterceptorFactoryProtocol?
+internal struct Api_CampusAsyncClient: Api_CampusAsyncClientProtocol {
+  internal var channel: GRPCChannel
+  internal var defaultCallOptions: CallOptions
+  internal var interceptors: Api_CampusClientInterceptorFactoryProtocol?
 
-  public init(
+  internal init(
     channel: GRPCChannel,
     defaultCallOptions: CallOptions = CallOptions(),
     interceptors: Api_CampusClientInterceptorFactoryProtocol? = nil
@@ -2165,7 +2061,7 @@ public struct Api_CampusAsyncClient: Api_CampusAsyncClientProtocol {
 
 #endif // compiler(>=5.6)
 
-public protocol Api_CampusClientInterceptorFactoryProtocol: GRPCSendable {
+internal protocol Api_CampusClientInterceptorFactoryProtocol: GRPCSendable {
 
   /// - Returns: Interceptors to use when invoking 'getTopNews'.
   func makeGetTopNewsInterceptors() -> [ClientInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_GetTopNewsReply>]
@@ -2254,15 +2150,6 @@ public protocol Api_CampusClientInterceptorFactoryProtocol: GRPCSendable {
   /// - Returns: Interceptors to use when invoking 'sendFeedbackImage'.
   func makeSendFeedbackImageInterceptors() -> [ClientInterceptor<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply>]
 
-  /// - Returns: Interceptors to use when invoking 'registerDevice'.
-  func makeRegisterDeviceInterceptors() -> [ClientInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
-  /// - Returns: Interceptors to use when invoking 'verifyKey'.
-  func makeVerifyKeyInterceptors() -> [ClientInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
-  /// - Returns: Interceptors to use when invoking 'deviceUploadGcmToken'.
-  func makeDeviceUploadGcmTokenInterceptors() -> [ClientInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
   /// - Returns: Interceptors to use when invoking 'getUploadStatus'.
   func makeGetUploadStatusInterceptors() -> [ClientInterceptor<Api_GetUploadStatusRequest, Api_GetUploadStatusReply>]
 
@@ -2275,18 +2162,21 @@ public protocol Api_CampusClientInterceptorFactoryProtocol: GRPCSendable {
   /// - Returns: Interceptors to use when invoking 'getMembers'.
   func makeGetMembersInterceptors() -> [ClientInterceptor<Api_GetMembersRequest, Api_GetMembersReply>]
 
-  /// - Returns: Interceptors to use when invoking 'registerIOSDevice'.
-  func makeRegisterIOSDeviceInterceptors() -> [ClientInterceptor<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply>]
+  /// - Returns: Interceptors to use when invoking 'getCanteenHeadCount'.
+  func makeGetCanteenHeadCountInterceptors() -> [ClientInterceptor<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply>]
 
-  /// - Returns: Interceptors to use when invoking 'removeIOSDevice'.
-  func makeRemoveIOSDeviceInterceptors() -> [ClientInterceptor<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply>]
+  /// - Returns: Interceptors to use when invoking 'iOSDeviceRequestResponse'.
+  func makeIOSDeviceRequestResponseInterceptors() -> [ClientInterceptor<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply>]
 
-  /// - Returns: Interceptors to use when invoking 'addIOSDeviceUsage'.
-  func makeAddIOSDeviceUsageInterceptors() -> [ClientInterceptor<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply>]
+  /// - Returns: Interceptors to use when invoking 'registerDevice'.
+  func makeRegisterDeviceInterceptors() -> [ClientInterceptor<Api_RegisterDeviceRequest, Api_RegisterDeviceReply>]
+
+  /// - Returns: Interceptors to use when invoking 'removeDevice'.
+  func makeRemoveDeviceInterceptors() -> [ClientInterceptor<Api_RemoveDeviceRequest, Api_RemoveDeviceReply>]
 }
 
-public enum Api_CampusClientMetadata {
-  public static let serviceDescriptor = GRPCServiceDescriptor(
+internal enum Api_CampusClientMetadata {
+  internal static let serviceDescriptor = GRPCServiceDescriptor(
     name: "Campus",
     fullName: "api.Campus",
     methods: [
@@ -2319,258 +2209,244 @@ public enum Api_CampusClientMetadata {
       Api_CampusClientMetadata.Methods.getKino,
       Api_CampusClientMetadata.Methods.sendFeedback,
       Api_CampusClientMetadata.Methods.sendFeedbackImage,
-      Api_CampusClientMetadata.Methods.registerDevice,
-      Api_CampusClientMetadata.Methods.verifyKey,
-      Api_CampusClientMetadata.Methods.deviceUploadGcmToken,
       Api_CampusClientMetadata.Methods.getUploadStatus,
       Api_CampusClientMetadata.Methods.getNotification,
       Api_CampusClientMetadata.Methods.getNotificationConfirm,
       Api_CampusClientMetadata.Methods.getMembers,
-      Api_CampusClientMetadata.Methods.registerIOSDevice,
-      Api_CampusClientMetadata.Methods.removeIOSDevice,
-      Api_CampusClientMetadata.Methods.addIOSDeviceUsage,
+      Api_CampusClientMetadata.Methods.getCanteenHeadCount,
+      Api_CampusClientMetadata.Methods.iOSDeviceRequestResponse,
+      Api_CampusClientMetadata.Methods.registerDevice,
+      Api_CampusClientMetadata.Methods.removeDevice,
     ]
   )
 
-  public enum Methods {
-    public static let getTopNews = GRPCMethodDescriptor(
+  internal enum Methods {
+    internal static let getTopNews = GRPCMethodDescriptor(
       name: "GetTopNews",
       path: "/api.Campus/GetTopNews",
       type: GRPCCallType.unary
     )
 
-    public static let getNewsSources = GRPCMethodDescriptor(
+    internal static let getNewsSources = GRPCMethodDescriptor(
       name: "GetNewsSources",
       path: "/api.Campus/GetNewsSources",
       type: GRPCCallType.unary
     )
 
-    public static let searchRooms = GRPCMethodDescriptor(
+    internal static let searchRooms = GRPCMethodDescriptor(
       name: "SearchRooms",
       path: "/api.Campus/SearchRooms",
       type: GRPCCallType.unary
     )
 
-    public static let getLocations = GRPCMethodDescriptor(
+    internal static let getLocations = GRPCMethodDescriptor(
       name: "GetLocations",
       path: "/api.Campus/GetLocations",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomMaps = GRPCMethodDescriptor(
+    internal static let getRoomMaps = GRPCMethodDescriptor(
       name: "GetRoomMaps",
       path: "/api.Campus/GetRoomMaps",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomCoordinates = GRPCMethodDescriptor(
+    internal static let getRoomCoordinates = GRPCMethodDescriptor(
       name: "GetRoomCoordinates",
       path: "/api.Campus/GetRoomCoordinates",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomSchedule = GRPCMethodDescriptor(
+    internal static let getRoomSchedule = GRPCMethodDescriptor(
       name: "GetRoomSchedule",
       path: "/api.Campus/GetRoomSchedule",
       type: GRPCCallType.unary
     )
 
-    public static let getCafeteriaRatings = GRPCMethodDescriptor(
+    internal static let getCafeteriaRatings = GRPCMethodDescriptor(
       name: "GetCafeteriaRatings",
       path: "/api.Campus/GetCafeteriaRatings",
       type: GRPCCallType.unary
     )
 
-    public static let getDishRatings = GRPCMethodDescriptor(
+    internal static let getDishRatings = GRPCMethodDescriptor(
       name: "GetDishRatings",
       path: "/api.Campus/GetDishRatings",
       type: GRPCCallType.unary
     )
 
-    public static let newCafeteriaRating = GRPCMethodDescriptor(
+    internal static let newCafeteriaRating = GRPCMethodDescriptor(
       name: "NewCafeteriaRating",
       path: "/api.Campus/NewCafeteriaRating",
       type: GRPCCallType.unary
     )
 
-    public static let newDishRating = GRPCMethodDescriptor(
+    internal static let newDishRating = GRPCMethodDescriptor(
       name: "NewDishRating",
       path: "/api.Campus/NewDishRating",
       type: GRPCCallType.unary
     )
 
-    public static let getAvailableDishTags = GRPCMethodDescriptor(
+    internal static let getAvailableDishTags = GRPCMethodDescriptor(
       name: "GetAvailableDishTags",
       path: "/api.Campus/GetAvailableDishTags",
       type: GRPCCallType.unary
     )
 
-    public static let getNameTags = GRPCMethodDescriptor(
+    internal static let getNameTags = GRPCMethodDescriptor(
       name: "GetNameTags",
       path: "/api.Campus/GetNameTags",
       type: GRPCCallType.unary
     )
 
-    public static let getAvailableCafeteriaTags = GRPCMethodDescriptor(
+    internal static let getAvailableCafeteriaTags = GRPCMethodDescriptor(
       name: "GetAvailableCafeteriaTags",
       path: "/api.Campus/GetAvailableCafeteriaTags",
       type: GRPCCallType.unary
     )
 
-    public static let getCafeterias = GRPCMethodDescriptor(
+    internal static let getCafeterias = GRPCMethodDescriptor(
       name: "GetCafeterias",
       path: "/api.Campus/GetCafeterias",
       type: GRPCCallType.unary
     )
 
-    public static let getDishes = GRPCMethodDescriptor(
+    internal static let getDishes = GRPCMethodDescriptor(
       name: "GetDishes",
       path: "/api.Campus/GetDishes",
       type: GRPCCallType.unary
     )
 
-    public static let getResponsiblePerson = GRPCMethodDescriptor(
+    internal static let getResponsiblePerson = GRPCMethodDescriptor(
       name: "GetResponsiblePerson",
       path: "/api.Campus/GetResponsiblePerson",
       type: GRPCCallType.unary
     )
 
-    public static let getBuilding2Gps = GRPCMethodDescriptor(
+    internal static let getBuilding2Gps = GRPCMethodDescriptor(
       name: "GetBuilding2Gps",
       path: "/api.Campus/GetBuilding2Gps",
       type: GRPCCallType.unary
     )
 
-    public static let getAreaFacilitiesByBuildingNr = GRPCMethodDescriptor(
+    internal static let getAreaFacilitiesByBuildingNr = GRPCMethodDescriptor(
       name: "GetAreaFacilitiesByBuildingNr",
       path: "/api.Campus/GetAreaFacilitiesByBuildingNr",
       type: GRPCCallType.unary
     )
 
-    public static let getListOfToilets = GRPCMethodDescriptor(
+    internal static let getListOfToilets = GRPCMethodDescriptor(
       name: "GetListOfToilets",
       path: "/api.Campus/GetListOfToilets",
       type: GRPCCallType.unary
     )
 
-    public static let getListOfElevators = GRPCMethodDescriptor(
+    internal static let getListOfElevators = GRPCMethodDescriptor(
       name: "GetListOfElevators",
       path: "/api.Campus/GetListOfElevators",
       type: GRPCCallType.unary
     )
 
-    public static let getMoreInformation = GRPCMethodDescriptor(
+    internal static let getMoreInformation = GRPCMethodDescriptor(
       name: "GetMoreInformation",
       path: "/api.Campus/GetMoreInformation",
       type: GRPCCallType.unary
     )
 
-    public static let getOpeningTimes = GRPCMethodDescriptor(
+    internal static let getOpeningTimes = GRPCMethodDescriptor(
       name: "GetOpeningTimes",
       path: "/api.Campus/GetOpeningTimes",
       type: GRPCCallType.unary
     )
 
-    public static let getUpdateNote = GRPCMethodDescriptor(
+    internal static let getUpdateNote = GRPCMethodDescriptor(
       name: "GetUpdateNote",
       path: "/api.Campus/GetUpdateNote",
       type: GRPCCallType.unary
     )
 
-    public static let getStudyRoomList = GRPCMethodDescriptor(
+    internal static let getStudyRoomList = GRPCMethodDescriptor(
       name: "GetStudyRoomList",
       path: "/api.Campus/GetStudyRoomList",
       type: GRPCCallType.unary
     )
 
-    public static let getEventList = GRPCMethodDescriptor(
+    internal static let getEventList = GRPCMethodDescriptor(
       name: "GetEventList",
       path: "/api.Campus/GetEventList",
       type: GRPCCallType.unary
     )
 
-    public static let getKino = GRPCMethodDescriptor(
+    internal static let getKino = GRPCMethodDescriptor(
       name: "GetKino",
       path: "/api.Campus/GetKino",
       type: GRPCCallType.unary
     )
 
-    public static let sendFeedback = GRPCMethodDescriptor(
+    internal static let sendFeedback = GRPCMethodDescriptor(
       name: "SendFeedback",
       path: "/api.Campus/SendFeedback",
       type: GRPCCallType.unary
     )
 
-    public static let sendFeedbackImage = GRPCMethodDescriptor(
+    internal static let sendFeedbackImage = GRPCMethodDescriptor(
       name: "SendFeedbackImage",
       path: "/api.Campus/SendFeedbackImage",
       type: GRPCCallType.unary
     )
 
-    public static let registerDevice = GRPCMethodDescriptor(
-      name: "RegisterDevice",
-      path: "/api.Campus/RegisterDevice",
-      type: GRPCCallType.unary
-    )
-
-    public static let verifyKey = GRPCMethodDescriptor(
-      name: "VerifyKey",
-      path: "/api.Campus/VerifyKey",
-      type: GRPCCallType.unary
-    )
-
-    public static let deviceUploadGcmToken = GRPCMethodDescriptor(
-      name: "DeviceUploadGcmToken",
-      path: "/api.Campus/DeviceUploadGcmToken",
-      type: GRPCCallType.unary
-    )
-
-    public static let getUploadStatus = GRPCMethodDescriptor(
+    internal static let getUploadStatus = GRPCMethodDescriptor(
       name: "GetUploadStatus",
       path: "/api.Campus/GetUploadStatus",
       type: GRPCCallType.unary
     )
 
-    public static let getNotification = GRPCMethodDescriptor(
+    internal static let getNotification = GRPCMethodDescriptor(
       name: "GetNotification",
       path: "/api.Campus/GetNotification",
       type: GRPCCallType.unary
     )
 
-    public static let getNotificationConfirm = GRPCMethodDescriptor(
+    internal static let getNotificationConfirm = GRPCMethodDescriptor(
       name: "GetNotificationConfirm",
       path: "/api.Campus/GetNotificationConfirm",
       type: GRPCCallType.unary
     )
 
-    public static let getMembers = GRPCMethodDescriptor(
+    internal static let getMembers = GRPCMethodDescriptor(
       name: "GetMembers",
       path: "/api.Campus/GetMembers",
       type: GRPCCallType.unary
     )
 
-    public static let registerIOSDevice = GRPCMethodDescriptor(
-      name: "RegisterIOSDevice",
-      path: "/api.Campus/RegisterIOSDevice",
+    internal static let getCanteenHeadCount = GRPCMethodDescriptor(
+      name: "GetCanteenHeadCount",
+      path: "/api.Campus/GetCanteenHeadCount",
       type: GRPCCallType.unary
     )
 
-    public static let removeIOSDevice = GRPCMethodDescriptor(
-      name: "RemoveIOSDevice",
-      path: "/api.Campus/RemoveIOSDevice",
+    internal static let iOSDeviceRequestResponse = GRPCMethodDescriptor(
+      name: "IOSDeviceRequestResponse",
+      path: "/api.Campus/IOSDeviceRequestResponse",
       type: GRPCCallType.unary
     )
 
-    public static let addIOSDeviceUsage = GRPCMethodDescriptor(
-      name: "AddIOSDeviceUsage",
-      path: "/api.Campus/AddIOSDeviceUsage",
+    internal static let registerDevice = GRPCMethodDescriptor(
+      name: "RegisterDevice",
+      path: "/api.Campus/RegisterDevice",
+      type: GRPCCallType.unary
+    )
+
+    internal static let removeDevice = GRPCMethodDescriptor(
+      name: "RemoveDevice",
+      path: "/api.Campus/RemoveDevice",
       type: GRPCCallType.unary
     )
   }
 }
 
 /// To build a server, implement a class that conforms to this protocol.
-public protocol Api_CampusProvider: CallHandlerProvider {
+internal protocol Api_CampusProvider: CallHandlerProvider {
   var interceptors: Api_CampusServerInterceptorFactoryProtocol? { get }
 
   func getTopNews(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Api_GetTopNewsReply>
@@ -2633,12 +2509,6 @@ public protocol Api_CampusProvider: CallHandlerProvider {
 
   func sendFeedbackImage(request: Api_SendFeedbackImageRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_SendFeedbackImageReply>
 
-  func registerDevice(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Api_TUMCabeStatus>
-
-  func verifyKey(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Api_TUMCabeStatus>
-
-  func deviceUploadGcmToken(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Api_TUMCabeStatus>
-
   func getUploadStatus(request: Api_GetUploadStatusRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_GetUploadStatusReply>
 
   func getNotification(request: Api_NotificationsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_GetNotificationsReply>
@@ -2647,24 +2517,26 @@ public protocol Api_CampusProvider: CallHandlerProvider {
 
   func getMembers(request: Api_GetMembersRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_GetMembersReply>
 
-  /// register your ios device for push notifications
-  func registerIOSDevice(request: Api_RegisterIOSDeviceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_RegisterIOSDeviceReply>
+  func getCanteenHeadCount(request: Api_GetCanteenHeadCountRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_GetCanteenHeadCountReply>
 
-  /// remove your ios device from the db and unregister it from push notifications
-  func removeIOSDevice(request: Api_RemoveIOSDeviceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_RemoveIOSDeviceReply>
+  /// Endpoint for the iOS app to respond to background notifications requests
+  func iOSDeviceRequestResponse(request: Api_IOSDeviceRequestResponseRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_IOSDeviceRequestResponseReply>
 
-  /// add ios device usage log to calculate notification priority
-  func addIOSDeviceUsage(request: Api_AddIOSDeviceUsageRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_AddIOSDeviceUsageReply>
+  /// Register an Android, iOS or Windows device for push notifications
+  func registerDevice(request: Api_RegisterDeviceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_RegisterDeviceReply>
+
+  /// Unregister it from push notifications
+  func removeDevice(request: Api_RemoveDeviceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Api_RemoveDeviceReply>
 }
 
 extension Api_CampusProvider {
-  public var serviceName: Substring {
+  internal var serviceName: Substring {
     return Api_CampusServerMetadata.serviceDescriptor.fullName[...]
   }
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  public func handle(
+  internal func handle(
     method name: Substring,
     context: CallHandlerContext
   ) -> GRPCServerHandlerProtocol? {
@@ -2930,33 +2802,6 @@ extension Api_CampusProvider {
         userFunction: self.sendFeedbackImage(request:context:)
       )
 
-    case "RegisterDevice":
-      return UnaryServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? [],
-        userFunction: self.registerDevice(request:context:)
-      )
-
-    case "VerifyKey":
-      return UnaryServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeVerifyKeyInterceptors() ?? [],
-        userFunction: self.verifyKey(request:context:)
-      )
-
-    case "DeviceUploadGcmToken":
-      return UnaryServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeDeviceUploadGcmTokenInterceptors() ?? [],
-        userFunction: self.deviceUploadGcmToken(request:context:)
-      )
-
     case "GetUploadStatus":
       return UnaryServerHandler(
         context: context,
@@ -2993,31 +2838,40 @@ extension Api_CampusProvider {
         userFunction: self.getMembers(request:context:)
       )
 
-    case "RegisterIOSDevice":
+    case "GetCanteenHeadCount":
       return UnaryServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_RegisterIOSDeviceRequest>(),
-        responseSerializer: ProtobufSerializer<Api_RegisterIOSDeviceReply>(),
-        interceptors: self.interceptors?.makeRegisterIOSDeviceInterceptors() ?? [],
-        userFunction: self.registerIOSDevice(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_GetCanteenHeadCountRequest>(),
+        responseSerializer: ProtobufSerializer<Api_GetCanteenHeadCountReply>(),
+        interceptors: self.interceptors?.makeGetCanteenHeadCountInterceptors() ?? [],
+        userFunction: self.getCanteenHeadCount(request:context:)
       )
 
-    case "RemoveIOSDevice":
+    case "IOSDeviceRequestResponse":
       return UnaryServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_RemoveIOSDeviceRequest>(),
-        responseSerializer: ProtobufSerializer<Api_RemoveIOSDeviceReply>(),
-        interceptors: self.interceptors?.makeRemoveIOSDeviceInterceptors() ?? [],
-        userFunction: self.removeIOSDevice(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_IOSDeviceRequestResponseRequest>(),
+        responseSerializer: ProtobufSerializer<Api_IOSDeviceRequestResponseReply>(),
+        interceptors: self.interceptors?.makeIOSDeviceRequestResponseInterceptors() ?? [],
+        userFunction: self.iOSDeviceRequestResponse(request:context:)
       )
 
-    case "AddIOSDeviceUsage":
+    case "RegisterDevice":
       return UnaryServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_AddIOSDeviceUsageRequest>(),
-        responseSerializer: ProtobufSerializer<Api_AddIOSDeviceUsageReply>(),
-        interceptors: self.interceptors?.makeAddIOSDeviceUsageInterceptors() ?? [],
-        userFunction: self.addIOSDeviceUsage(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_RegisterDeviceRequest>(),
+        responseSerializer: ProtobufSerializer<Api_RegisterDeviceReply>(),
+        interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? [],
+        userFunction: self.registerDevice(request:context:)
+      )
+
+    case "RemoveDevice":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Api_RemoveDeviceRequest>(),
+        responseSerializer: ProtobufSerializer<Api_RemoveDeviceReply>(),
+        interceptors: self.interceptors?.makeRemoveDeviceInterceptors() ?? [],
+        userFunction: self.removeDevice(request:context:)
       )
 
     default:
@@ -3030,7 +2884,7 @@ extension Api_CampusProvider {
 
 /// To implement a server, implement an object which conforms to this protocol.
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-public protocol Api_CampusAsyncProvider: CallHandlerProvider {
+internal protocol Api_CampusAsyncProvider: CallHandlerProvider {
   static var serviceDescriptor: GRPCServiceDescriptor { get }
   var interceptors: Api_CampusServerInterceptorFactoryProtocol? { get }
 
@@ -3181,21 +3035,6 @@ public protocol Api_CampusAsyncProvider: CallHandlerProvider {
     context: GRPCAsyncServerCallContext
   ) async throws -> Api_SendFeedbackImageReply
 
-  @Sendable func registerDevice(
-    request: SwiftProtobuf.Google_Protobuf_Empty,
-    context: GRPCAsyncServerCallContext
-  ) async throws -> Api_TUMCabeStatus
-
-  @Sendable func verifyKey(
-    request: SwiftProtobuf.Google_Protobuf_Empty,
-    context: GRPCAsyncServerCallContext
-  ) async throws -> Api_TUMCabeStatus
-
-  @Sendable func deviceUploadGcmToken(
-    request: SwiftProtobuf.Google_Protobuf_Empty,
-    context: GRPCAsyncServerCallContext
-  ) async throws -> Api_TUMCabeStatus
-
   @Sendable func getUploadStatus(
     request: Api_GetUploadStatusRequest,
     context: GRPCAsyncServerCallContext
@@ -3216,40 +3055,45 @@ public protocol Api_CampusAsyncProvider: CallHandlerProvider {
     context: GRPCAsyncServerCallContext
   ) async throws -> Api_GetMembersReply
 
-  /// register your ios device for push notifications
-  @Sendable func registerIOSDevice(
-    request: Api_RegisterIOSDeviceRequest,
+  @Sendable func getCanteenHeadCount(
+    request: Api_GetCanteenHeadCountRequest,
     context: GRPCAsyncServerCallContext
-  ) async throws -> Api_RegisterIOSDeviceReply
+  ) async throws -> Api_GetCanteenHeadCountReply
 
-  /// remove your ios device from the db and unregister it from push notifications
-  @Sendable func removeIOSDevice(
-    request: Api_RemoveIOSDeviceRequest,
+  /// Endpoint for the iOS app to respond to background notifications requests
+  @Sendable func iOSDeviceRequestResponse(
+    request: Api_IOSDeviceRequestResponseRequest,
     context: GRPCAsyncServerCallContext
-  ) async throws -> Api_RemoveIOSDeviceReply
+  ) async throws -> Api_IOSDeviceRequestResponseReply
 
-  /// add ios device usage log to calculate notification priority
-  @Sendable func addIOSDeviceUsage(
-    request: Api_AddIOSDeviceUsageRequest,
+  /// Register an Android, iOS or Windows device for push notifications
+  @Sendable func registerDevice(
+    request: Api_RegisterDeviceRequest,
     context: GRPCAsyncServerCallContext
-  ) async throws -> Api_AddIOSDeviceUsageReply
+  ) async throws -> Api_RegisterDeviceReply
+
+  /// Unregister it from push notifications
+  @Sendable func removeDevice(
+    request: Api_RemoveDeviceRequest,
+    context: GRPCAsyncServerCallContext
+  ) async throws -> Api_RemoveDeviceReply
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 extension Api_CampusAsyncProvider {
-  public static var serviceDescriptor: GRPCServiceDescriptor {
+  internal static var serviceDescriptor: GRPCServiceDescriptor {
     return Api_CampusServerMetadata.serviceDescriptor
   }
 
-  public var serviceName: Substring {
+  internal var serviceName: Substring {
     return Api_CampusServerMetadata.serviceDescriptor.fullName[...]
   }
 
-  public var interceptors: Api_CampusServerInterceptorFactoryProtocol? {
+  internal var interceptors: Api_CampusServerInterceptorFactoryProtocol? {
     return nil
   }
 
-  public func handle(
+  internal func handle(
     method name: Substring,
     context: CallHandlerContext
   ) -> GRPCServerHandlerProtocol? {
@@ -3515,33 +3359,6 @@ extension Api_CampusAsyncProvider {
         wrapping: self.sendFeedbackImage(request:context:)
       )
 
-    case "RegisterDevice":
-      return GRPCAsyncServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? [],
-        wrapping: self.registerDevice(request:context:)
-      )
-
-    case "VerifyKey":
-      return GRPCAsyncServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeVerifyKeyInterceptors() ?? [],
-        wrapping: self.verifyKey(request:context:)
-      )
-
-    case "DeviceUploadGcmToken":
-      return GRPCAsyncServerHandler(
-        context: context,
-        requestDeserializer: ProtobufDeserializer<SwiftProtobuf.Google_Protobuf_Empty>(),
-        responseSerializer: ProtobufSerializer<Api_TUMCabeStatus>(),
-        interceptors: self.interceptors?.makeDeviceUploadGcmTokenInterceptors() ?? [],
-        wrapping: self.deviceUploadGcmToken(request:context:)
-      )
-
     case "GetUploadStatus":
       return GRPCAsyncServerHandler(
         context: context,
@@ -3578,31 +3395,40 @@ extension Api_CampusAsyncProvider {
         wrapping: self.getMembers(request:context:)
       )
 
-    case "RegisterIOSDevice":
+    case "GetCanteenHeadCount":
       return GRPCAsyncServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_RegisterIOSDeviceRequest>(),
-        responseSerializer: ProtobufSerializer<Api_RegisterIOSDeviceReply>(),
-        interceptors: self.interceptors?.makeRegisterIOSDeviceInterceptors() ?? [],
-        wrapping: self.registerIOSDevice(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_GetCanteenHeadCountRequest>(),
+        responseSerializer: ProtobufSerializer<Api_GetCanteenHeadCountReply>(),
+        interceptors: self.interceptors?.makeGetCanteenHeadCountInterceptors() ?? [],
+        wrapping: self.getCanteenHeadCount(request:context:)
       )
 
-    case "RemoveIOSDevice":
+    case "IOSDeviceRequestResponse":
       return GRPCAsyncServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_RemoveIOSDeviceRequest>(),
-        responseSerializer: ProtobufSerializer<Api_RemoveIOSDeviceReply>(),
-        interceptors: self.interceptors?.makeRemoveIOSDeviceInterceptors() ?? [],
-        wrapping: self.removeIOSDevice(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_IOSDeviceRequestResponseRequest>(),
+        responseSerializer: ProtobufSerializer<Api_IOSDeviceRequestResponseReply>(),
+        interceptors: self.interceptors?.makeIOSDeviceRequestResponseInterceptors() ?? [],
+        wrapping: self.iOSDeviceRequestResponse(request:context:)
       )
 
-    case "AddIOSDeviceUsage":
+    case "RegisterDevice":
       return GRPCAsyncServerHandler(
         context: context,
-        requestDeserializer: ProtobufDeserializer<Api_AddIOSDeviceUsageRequest>(),
-        responseSerializer: ProtobufSerializer<Api_AddIOSDeviceUsageReply>(),
-        interceptors: self.interceptors?.makeAddIOSDeviceUsageInterceptors() ?? [],
-        wrapping: self.addIOSDeviceUsage(request:context:)
+        requestDeserializer: ProtobufDeserializer<Api_RegisterDeviceRequest>(),
+        responseSerializer: ProtobufSerializer<Api_RegisterDeviceReply>(),
+        interceptors: self.interceptors?.makeRegisterDeviceInterceptors() ?? [],
+        wrapping: self.registerDevice(request:context:)
+      )
+
+    case "RemoveDevice":
+      return GRPCAsyncServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Api_RemoveDeviceRequest>(),
+        responseSerializer: ProtobufSerializer<Api_RemoveDeviceReply>(),
+        interceptors: self.interceptors?.makeRemoveDeviceInterceptors() ?? [],
+        wrapping: self.removeDevice(request:context:)
       )
 
     default:
@@ -3613,7 +3439,7 @@ extension Api_CampusAsyncProvider {
 
 #endif // compiler(>=5.6)
 
-public protocol Api_CampusServerInterceptorFactoryProtocol {
+internal protocol Api_CampusServerInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when handling 'getTopNews'.
   ///   Defaults to calling `self.makeInterceptors()`.
@@ -3731,18 +3557,6 @@ public protocol Api_CampusServerInterceptorFactoryProtocol {
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeSendFeedbackImageInterceptors() -> [ServerInterceptor<Api_SendFeedbackImageRequest, Api_SendFeedbackImageReply>]
 
-  /// - Returns: Interceptors to use when handling 'registerDevice'.
-  ///   Defaults to calling `self.makeInterceptors()`.
-  func makeRegisterDeviceInterceptors() -> [ServerInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
-  /// - Returns: Interceptors to use when handling 'verifyKey'.
-  ///   Defaults to calling `self.makeInterceptors()`.
-  func makeVerifyKeyInterceptors() -> [ServerInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
-  /// - Returns: Interceptors to use when handling 'deviceUploadGcmToken'.
-  ///   Defaults to calling `self.makeInterceptors()`.
-  func makeDeviceUploadGcmTokenInterceptors() -> [ServerInterceptor<SwiftProtobuf.Google_Protobuf_Empty, Api_TUMCabeStatus>]
-
   /// - Returns: Interceptors to use when handling 'getUploadStatus'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeGetUploadStatusInterceptors() -> [ServerInterceptor<Api_GetUploadStatusRequest, Api_GetUploadStatusReply>]
@@ -3759,21 +3573,25 @@ public protocol Api_CampusServerInterceptorFactoryProtocol {
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeGetMembersInterceptors() -> [ServerInterceptor<Api_GetMembersRequest, Api_GetMembersReply>]
 
-  /// - Returns: Interceptors to use when handling 'registerIOSDevice'.
+  /// - Returns: Interceptors to use when handling 'getCanteenHeadCount'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makeRegisterIOSDeviceInterceptors() -> [ServerInterceptor<Api_RegisterIOSDeviceRequest, Api_RegisterIOSDeviceReply>]
+  func makeGetCanteenHeadCountInterceptors() -> [ServerInterceptor<Api_GetCanteenHeadCountRequest, Api_GetCanteenHeadCountReply>]
 
-  /// - Returns: Interceptors to use when handling 'removeIOSDevice'.
+  /// - Returns: Interceptors to use when handling 'iOSDeviceRequestResponse'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makeRemoveIOSDeviceInterceptors() -> [ServerInterceptor<Api_RemoveIOSDeviceRequest, Api_RemoveIOSDeviceReply>]
+  func makeIOSDeviceRequestResponseInterceptors() -> [ServerInterceptor<Api_IOSDeviceRequestResponseRequest, Api_IOSDeviceRequestResponseReply>]
 
-  /// - Returns: Interceptors to use when handling 'addIOSDeviceUsage'.
+  /// - Returns: Interceptors to use when handling 'registerDevice'.
   ///   Defaults to calling `self.makeInterceptors()`.
-  func makeAddIOSDeviceUsageInterceptors() -> [ServerInterceptor<Api_AddIOSDeviceUsageRequest, Api_AddIOSDeviceUsageReply>]
+  func makeRegisterDeviceInterceptors() -> [ServerInterceptor<Api_RegisterDeviceRequest, Api_RegisterDeviceReply>]
+
+  /// - Returns: Interceptors to use when handling 'removeDevice'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeRemoveDeviceInterceptors() -> [ServerInterceptor<Api_RemoveDeviceRequest, Api_RemoveDeviceReply>]
 }
 
-public enum Api_CampusServerMetadata {
-  public static let serviceDescriptor = GRPCServiceDescriptor(
+internal enum Api_CampusServerMetadata {
+  internal static let serviceDescriptor = GRPCServiceDescriptor(
     name: "Campus",
     fullName: "api.Campus",
     methods: [
@@ -3806,251 +3624,237 @@ public enum Api_CampusServerMetadata {
       Api_CampusServerMetadata.Methods.getKino,
       Api_CampusServerMetadata.Methods.sendFeedback,
       Api_CampusServerMetadata.Methods.sendFeedbackImage,
-      Api_CampusServerMetadata.Methods.registerDevice,
-      Api_CampusServerMetadata.Methods.verifyKey,
-      Api_CampusServerMetadata.Methods.deviceUploadGcmToken,
       Api_CampusServerMetadata.Methods.getUploadStatus,
       Api_CampusServerMetadata.Methods.getNotification,
       Api_CampusServerMetadata.Methods.getNotificationConfirm,
       Api_CampusServerMetadata.Methods.getMembers,
-      Api_CampusServerMetadata.Methods.registerIOSDevice,
-      Api_CampusServerMetadata.Methods.removeIOSDevice,
-      Api_CampusServerMetadata.Methods.addIOSDeviceUsage,
+      Api_CampusServerMetadata.Methods.getCanteenHeadCount,
+      Api_CampusServerMetadata.Methods.iOSDeviceRequestResponse,
+      Api_CampusServerMetadata.Methods.registerDevice,
+      Api_CampusServerMetadata.Methods.removeDevice,
     ]
   )
 
-  public enum Methods {
-    public static let getTopNews = GRPCMethodDescriptor(
+  internal enum Methods {
+    internal static let getTopNews = GRPCMethodDescriptor(
       name: "GetTopNews",
       path: "/api.Campus/GetTopNews",
       type: GRPCCallType.unary
     )
 
-    public static let getNewsSources = GRPCMethodDescriptor(
+    internal static let getNewsSources = GRPCMethodDescriptor(
       name: "GetNewsSources",
       path: "/api.Campus/GetNewsSources",
       type: GRPCCallType.unary
     )
 
-    public static let searchRooms = GRPCMethodDescriptor(
+    internal static let searchRooms = GRPCMethodDescriptor(
       name: "SearchRooms",
       path: "/api.Campus/SearchRooms",
       type: GRPCCallType.unary
     )
 
-    public static let getLocations = GRPCMethodDescriptor(
+    internal static let getLocations = GRPCMethodDescriptor(
       name: "GetLocations",
       path: "/api.Campus/GetLocations",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomMaps = GRPCMethodDescriptor(
+    internal static let getRoomMaps = GRPCMethodDescriptor(
       name: "GetRoomMaps",
       path: "/api.Campus/GetRoomMaps",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomCoordinates = GRPCMethodDescriptor(
+    internal static let getRoomCoordinates = GRPCMethodDescriptor(
       name: "GetRoomCoordinates",
       path: "/api.Campus/GetRoomCoordinates",
       type: GRPCCallType.unary
     )
 
-    public static let getRoomSchedule = GRPCMethodDescriptor(
+    internal static let getRoomSchedule = GRPCMethodDescriptor(
       name: "GetRoomSchedule",
       path: "/api.Campus/GetRoomSchedule",
       type: GRPCCallType.unary
     )
 
-    public static let getCafeteriaRatings = GRPCMethodDescriptor(
+    internal static let getCafeteriaRatings = GRPCMethodDescriptor(
       name: "GetCafeteriaRatings",
       path: "/api.Campus/GetCafeteriaRatings",
       type: GRPCCallType.unary
     )
 
-    public static let getDishRatings = GRPCMethodDescriptor(
+    internal static let getDishRatings = GRPCMethodDescriptor(
       name: "GetDishRatings",
       path: "/api.Campus/GetDishRatings",
       type: GRPCCallType.unary
     )
 
-    public static let newCafeteriaRating = GRPCMethodDescriptor(
+    internal static let newCafeteriaRating = GRPCMethodDescriptor(
       name: "NewCafeteriaRating",
       path: "/api.Campus/NewCafeteriaRating",
       type: GRPCCallType.unary
     )
 
-    public static let newDishRating = GRPCMethodDescriptor(
+    internal static let newDishRating = GRPCMethodDescriptor(
       name: "NewDishRating",
       path: "/api.Campus/NewDishRating",
       type: GRPCCallType.unary
     )
 
-    public static let getAvailableDishTags = GRPCMethodDescriptor(
+    internal static let getAvailableDishTags = GRPCMethodDescriptor(
       name: "GetAvailableDishTags",
       path: "/api.Campus/GetAvailableDishTags",
       type: GRPCCallType.unary
     )
 
-    public static let getNameTags = GRPCMethodDescriptor(
+    internal static let getNameTags = GRPCMethodDescriptor(
       name: "GetNameTags",
       path: "/api.Campus/GetNameTags",
       type: GRPCCallType.unary
     )
 
-    public static let getAvailableCafeteriaTags = GRPCMethodDescriptor(
+    internal static let getAvailableCafeteriaTags = GRPCMethodDescriptor(
       name: "GetAvailableCafeteriaTags",
       path: "/api.Campus/GetAvailableCafeteriaTags",
       type: GRPCCallType.unary
     )
 
-    public static let getCafeterias = GRPCMethodDescriptor(
+    internal static let getCafeterias = GRPCMethodDescriptor(
       name: "GetCafeterias",
       path: "/api.Campus/GetCafeterias",
       type: GRPCCallType.unary
     )
 
-    public static let getDishes = GRPCMethodDescriptor(
+    internal static let getDishes = GRPCMethodDescriptor(
       name: "GetDishes",
       path: "/api.Campus/GetDishes",
       type: GRPCCallType.unary
     )
 
-    public static let getResponsiblePerson = GRPCMethodDescriptor(
+    internal static let getResponsiblePerson = GRPCMethodDescriptor(
       name: "GetResponsiblePerson",
       path: "/api.Campus/GetResponsiblePerson",
       type: GRPCCallType.unary
     )
 
-    public static let getBuilding2Gps = GRPCMethodDescriptor(
+    internal static let getBuilding2Gps = GRPCMethodDescriptor(
       name: "GetBuilding2Gps",
       path: "/api.Campus/GetBuilding2Gps",
       type: GRPCCallType.unary
     )
 
-    public static let getAreaFacilitiesByBuildingNr = GRPCMethodDescriptor(
+    internal static let getAreaFacilitiesByBuildingNr = GRPCMethodDescriptor(
       name: "GetAreaFacilitiesByBuildingNr",
       path: "/api.Campus/GetAreaFacilitiesByBuildingNr",
       type: GRPCCallType.unary
     )
 
-    public static let getListOfToilets = GRPCMethodDescriptor(
+    internal static let getListOfToilets = GRPCMethodDescriptor(
       name: "GetListOfToilets",
       path: "/api.Campus/GetListOfToilets",
       type: GRPCCallType.unary
     )
 
-    public static let getListOfElevators = GRPCMethodDescriptor(
+    internal static let getListOfElevators = GRPCMethodDescriptor(
       name: "GetListOfElevators",
       path: "/api.Campus/GetListOfElevators",
       type: GRPCCallType.unary
     )
 
-    public static let getMoreInformation = GRPCMethodDescriptor(
+    internal static let getMoreInformation = GRPCMethodDescriptor(
       name: "GetMoreInformation",
       path: "/api.Campus/GetMoreInformation",
       type: GRPCCallType.unary
     )
 
-    public static let getOpeningTimes = GRPCMethodDescriptor(
+    internal static let getOpeningTimes = GRPCMethodDescriptor(
       name: "GetOpeningTimes",
       path: "/api.Campus/GetOpeningTimes",
       type: GRPCCallType.unary
     )
 
-    public static let getUpdateNote = GRPCMethodDescriptor(
+    internal static let getUpdateNote = GRPCMethodDescriptor(
       name: "GetUpdateNote",
       path: "/api.Campus/GetUpdateNote",
       type: GRPCCallType.unary
     )
 
-    public static let getStudyRoomList = GRPCMethodDescriptor(
+    internal static let getStudyRoomList = GRPCMethodDescriptor(
       name: "GetStudyRoomList",
       path: "/api.Campus/GetStudyRoomList",
       type: GRPCCallType.unary
     )
 
-    public static let getEventList = GRPCMethodDescriptor(
+    internal static let getEventList = GRPCMethodDescriptor(
       name: "GetEventList",
       path: "/api.Campus/GetEventList",
       type: GRPCCallType.unary
     )
 
-    public static let getKino = GRPCMethodDescriptor(
+    internal static let getKino = GRPCMethodDescriptor(
       name: "GetKino",
       path: "/api.Campus/GetKino",
       type: GRPCCallType.unary
     )
 
-    public static let sendFeedback = GRPCMethodDescriptor(
+    internal static let sendFeedback = GRPCMethodDescriptor(
       name: "SendFeedback",
       path: "/api.Campus/SendFeedback",
       type: GRPCCallType.unary
     )
 
-    public static let sendFeedbackImage = GRPCMethodDescriptor(
+    internal static let sendFeedbackImage = GRPCMethodDescriptor(
       name: "SendFeedbackImage",
       path: "/api.Campus/SendFeedbackImage",
       type: GRPCCallType.unary
     )
 
-    public static let registerDevice = GRPCMethodDescriptor(
-      name: "RegisterDevice",
-      path: "/api.Campus/RegisterDevice",
-      type: GRPCCallType.unary
-    )
-
-    public static let verifyKey = GRPCMethodDescriptor(
-      name: "VerifyKey",
-      path: "/api.Campus/VerifyKey",
-      type: GRPCCallType.unary
-    )
-
-    public static let deviceUploadGcmToken = GRPCMethodDescriptor(
-      name: "DeviceUploadGcmToken",
-      path: "/api.Campus/DeviceUploadGcmToken",
-      type: GRPCCallType.unary
-    )
-
-    public static let getUploadStatus = GRPCMethodDescriptor(
+    internal static let getUploadStatus = GRPCMethodDescriptor(
       name: "GetUploadStatus",
       path: "/api.Campus/GetUploadStatus",
       type: GRPCCallType.unary
     )
 
-    public static let getNotification = GRPCMethodDescriptor(
+    internal static let getNotification = GRPCMethodDescriptor(
       name: "GetNotification",
       path: "/api.Campus/GetNotification",
       type: GRPCCallType.unary
     )
 
-    public static let getNotificationConfirm = GRPCMethodDescriptor(
+    internal static let getNotificationConfirm = GRPCMethodDescriptor(
       name: "GetNotificationConfirm",
       path: "/api.Campus/GetNotificationConfirm",
       type: GRPCCallType.unary
     )
 
-    public static let getMembers = GRPCMethodDescriptor(
+    internal static let getMembers = GRPCMethodDescriptor(
       name: "GetMembers",
       path: "/api.Campus/GetMembers",
       type: GRPCCallType.unary
     )
 
-    public static let registerIOSDevice = GRPCMethodDescriptor(
-      name: "RegisterIOSDevice",
-      path: "/api.Campus/RegisterIOSDevice",
+    internal static let getCanteenHeadCount = GRPCMethodDescriptor(
+      name: "GetCanteenHeadCount",
+      path: "/api.Campus/GetCanteenHeadCount",
       type: GRPCCallType.unary
     )
 
-    public static let removeIOSDevice = GRPCMethodDescriptor(
-      name: "RemoveIOSDevice",
-      path: "/api.Campus/RemoveIOSDevice",
+    internal static let iOSDeviceRequestResponse = GRPCMethodDescriptor(
+      name: "IOSDeviceRequestResponse",
+      path: "/api.Campus/IOSDeviceRequestResponse",
       type: GRPCCallType.unary
     )
 
-    public static let addIOSDeviceUsage = GRPCMethodDescriptor(
-      name: "AddIOSDeviceUsage",
-      path: "/api.Campus/AddIOSDeviceUsage",
+    internal static let registerDevice = GRPCMethodDescriptor(
+      name: "RegisterDevice",
+      path: "/api.Campus/RegisterDevice",
+      type: GRPCCallType.unary
+    )
+
+    internal static let removeDevice = GRPCMethodDescriptor(
+      name: "RemoveDevice",
+      path: "/api.Campus/RemoveDevice",
       type: GRPCCallType.unary
     )
   }

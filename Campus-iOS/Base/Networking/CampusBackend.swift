@@ -7,6 +7,7 @@
 
 import Foundation
 import GRPC
+import Logging
 
 struct CampusBackend {
     
@@ -19,16 +20,22 @@ struct CampusBackend {
     private init() {
         let group = PlatformSupport.makeEventLoopGroup(loopCount: 1)
      
-        do {
-            let channel = try GRPCChannelPool.with(
-              target: .host("localhost", port: 50051),
-              transportSecurity: .plaintext,
-              eventLoopGroup: group
-            )
-            
-            client = Api_CampusAsyncClient(channel: channel)
-        } catch {
-            fatalError("Couldn't start campus backend client!")
-        }
+        var logger = Logger(label: "gRPC", factory: StreamLogHandler.standardOutput(label:))
+        logger.logLevel = .debug
+        
+
+        let channel = ClientConnection
+              .usingPlatformAppropriateTLS(for: group)
+              .withBackgroundActivityLogger(logger)
+              .connect(host: "vmott65.in.tum.de", port: 443)
+        
+        // For local development will be removed after
+        // backend changes are merged
+        /* let channel = ClientConnection
+            .insecure(group: group)
+            .withBackgroundActivityLogger(logger)
+            .connect(host: "10.181.217.246", port: 50051)*/
+        
+        client = Api_CampusAsyncClient(channel: channel)
     }
 }
