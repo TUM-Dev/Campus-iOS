@@ -39,8 +39,6 @@ class PushNotifications {
     static let shared = PushNotifications()
     
     func registerDeviceToken(_ deviceToken: String) async -> Void {
-        print("Registering token \(deviceToken)")
-        
         do {
             let keyPair = try getPublicPrivateKeys()
             
@@ -51,7 +49,6 @@ class PushNotifications {
             })
             
             let response = try await CampusBackend.shared.registerDevice(device)
-            
         } catch RSAKeyPairError.failedGeneratingPrivateKey  {
             print("Something went wrong while generating the rsa private key")
         } catch RSAKeyPairError.failedObtainingKeyPairFromKeyChain  {
@@ -83,25 +80,17 @@ class PushNotifications {
     }
     
     private func handleCampusTokenRequest(_ requestId: String) async throws {
-        print("---- Getting Campus Token ----")
-        
         guard let campusToken = self.campusToken else {
             print("Failed responding to push device request because no campus token was available")
             throw HandlePushDeviceRequestError.noCampusToken
         }
-        
-        print("---- Got Campus Token \(campusToken) ----")
         
         let response: Api_IOSDeviceRequestResponseRequest = .with({
             $0.payload = campusToken
             $0.requestID = requestId
         })
         
-        print("---- Setting Up Response \(response) ----")
-        
         let res = try await CampusBackend.shared.iOSDeviceRequestResponse(response)
-        
-        print("---- Response Result: \(res) ----")
     }
     
     private var campusToken: String? {
