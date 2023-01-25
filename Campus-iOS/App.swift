@@ -21,8 +21,9 @@ struct CampusApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     init() {
+        #if !DEBUG
         FirebaseApp.configure()
-        
+        #endif
         UITabBar.appearance().isOpaque = true
         
         if #available(iOS 15.0, *) {
