@@ -18,7 +18,7 @@ class NotificationService: UNNotificationServiceExtension {
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
     
-    private static let privateKeyApplicationTag = "de.tum.tca.keys.push_public_key"
+    private static let privateKeyApplicationTag = "de.tum.tca.keys.push_rsa_key"
     private static let keychainAccessGroupName = "2J3C6P6X3N.de.tum.tca.notificationextension"
     
     private var privateKeyKeychainQuery: [String: Any] = [
@@ -31,10 +31,12 @@ class NotificationService: UNNotificationServiceExtension {
                 kSecAttrAccessGroup as String: NotificationService.keychainAccessGroupName
             ]
 
+    /**
+     Called before the push notification is displayed to the user
+     */
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
-        
         
         if let bestAttemptContent = bestAttemptContent {
             
@@ -56,19 +58,19 @@ class NotificationService: UNNotificationServiceExtension {
                 let privateKey = try obtainRawPrivateKeyFromKeyChain()
                 
                 if bestAttemptContent.title != "" {
-                    let plainText = decrypt(cypherText: bestAttemptContent.title, privateKey: privateKey)
+                    let plainText = decrypt(cipherText: bestAttemptContent.title, privateKey: privateKey)
     
                     bestAttemptContent.title = plainText ?? "Decryption Error"
                 }
                 
                 if bestAttemptContent.subtitle != "" {
-                    let plainText = decrypt(cypherText: bestAttemptContent.subtitle, privateKey: privateKey)
+                    let plainText = decrypt(cipherText: bestAttemptContent.subtitle, privateKey: privateKey)
     
                     bestAttemptContent.subtitle = plainText ?? "Decryption Error"
                 }
                 
                 if bestAttemptContent.body != "" {
-                    let plainText = decrypt(cypherText: bestAttemptContent.body, privateKey: privateKey)
+                    let plainText = decrypt(cipherText: bestAttemptContent.body, privateKey: privateKey)
     
                     bestAttemptContent.body = plainText ?? "Decryption Error"
                 }
@@ -88,8 +90,16 @@ class NotificationService: UNNotificationServiceExtension {
         }
     }
     
-    private func decrypt(cypherText: String, privateKey: SecKey) -> String? {
-        let cipherData = Data(base64Encoded: cypherText)! as CFData
+    /**
+     Decrypts a given `cipherText` using the RSA `privateKey`
+     
+     - Parameters:
+        - cipherText: Encrypted text that should be decrypted
+        - privateKey: RSA PrivateKey from the keychain
+     
+     */
+    private func decrypt(cipherText: String, privateKey: SecKey) -> String? {
+        let cipherData = Data(base64Encoded: cipherText)! as CFData
         
         var error: Unmanaged<CFError>?
         let plaintext = SecKeyCreateDecryptedData(privateKey, .rsaEncryptionOAEPSHA256, cipherData, &error)

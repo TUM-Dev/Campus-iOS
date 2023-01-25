@@ -26,9 +26,19 @@ enum HandlePushDeviceRequestError: Error {
     case invalidNotificationType
 }
 
+enum BackgroundNotificationType: String {
+    case campusTokenRequest = "CAMPUS_TOKEN_REQUEST"
+}
+
+
+/**
+ Integrates keychain management, including generating and storing of public and private RSA keys.
+ Handles registering the device id in the backend, responding to background notifications and reading the Campus API Token from the keychain.
+ 
+ The `PushNotification` class can be used as singleton by accessing the static `shared` property.
+ */
 class PushNotifications {
-    
-    private static let privateKeyApplicationTag = "de.tum.tca.keys.push_public_key"
+    private static let privateKeyApplicationTag = "de.tum.tca.keys.push_rsa_key"
     private static let keychainAccessGroupName = "2J3C6P6X3N.de.tum.tca.notificationextension"
     private static let keyType = kSecAttrKeyTypeRSA as String
     private static let keySize = 2048
@@ -38,6 +48,11 @@ class PushNotifications {
     
     static let shared = PushNotifications()
     
+    /**
+    Registers the `deviceToken` in the backend to receive push notifications.
+     
+     - Parameter deviceToken: the current device token
+     */
     func registerDeviceToken(_ deviceToken: String) async -> Void {
         do {
             let keyPair = try getPublicPrivateKeys()
@@ -48,7 +63,9 @@ class PushNotifications {
                 $0.deviceType = .ios
             })
             
-            let response = try await CampusBackend.shared.registerDevice(device)
+            print(keyPair.publicKey)
+            
+            let _ = try await CampusBackend.shared.registerDevice(device)
         } catch RSAKeyPairError.failedGeneratingPrivateKey  {
             print("Something went wrong while generating the rsa private key")
         } catch RSAKeyPairError.failedObtainingKeyPairFromKeyChain  {
@@ -59,6 +76,16 @@ class PushNotifications {
         
     }
     
+    /**
+     Handles incoming background notification requests from the backend.
+     
+     - Throws:
+        - `HandlePushDeviceRequestError.noRequestId`: if  the push notification body does not contain the `request_id` parameter
+        - `HandlePushDeviceRequestError.noNotificationType`: if if  the push notification body does not contain the `notification_type` parameter
+        - `HandlePushDeviceRequestError.invalidNotificationType`: if the `notification_type` is other then `BackgroundNotificationType`
+        
+     - Parameter data: the background notification body
+     */
     func handleBackgroundNotification(data: [AnyHashable : Any]) async throws {
         guard let requestId = data["request_id"] as? String else {
             print("Failed responding to push device request because no 'request_id' was defined")
@@ -71,7 +98,7 @@ class PushNotifications {
         }
         
         switch notificationType {
-        case "CAMPUS_TOKEN_REQUEST":
+        case BackgroundNotificationType.campusTokenRequest.rawValue:
             return try await handleCampusTokenRequest(requestId)
         default:
             print("Failed responding to push device request because 'notification_type' was invalid")
@@ -79,6 +106,13 @@ class PushNotifications {
         }
     }
     
+    /**
+     Handles a `BackgroundNotificationType.campusTokenRequest`.
+     Reads the `campusToken` from the keychain and sends it to the backend including the `requestId`.
+     
+     - Parameter requestId: identifies the background notification request in the backend and needs to be transmitted with the campus token
+     - Throws: `HandlePushDeviceRequestError.noCampusToken` if the campus token cannot be read from the keychain
+     */
     private func handleCampusTokenRequest(_ requestId: String) async throws {
         guard let campusToken = self.campusToken else {
             print("Failed responding to push device request because no campus token was available")
@@ -90,7 +124,7 @@ class PushNotifications {
             $0.requestID = requestId
         })
         
-        let res = try await CampusBackend.shared.iOSDeviceRequestResponse(response)
+        let _ = try await CampusBackend.shared.iOSDeviceRequestResponse(response)
     }
     
     private var campusToken: String? {
@@ -109,26 +143,38 @@ class PushNotifications {
         return try? PropertyListDecoder().decode(Credentials.self, from: data)
     }
     
+    /**
+     Checks if the there are already public and private keys stored in the keychain. If yes, it just returns them, otherwise it generates new ones.
+     
+     - Returns: A tuple containing the RSA public and private key
+     */
     private func getPublicPrivateKeys() throws -> RSAKeyPair {
-        if checkIfPrivateKeyAlreadyExists() {
+        /* if checkIfPrivateKeyAlreadyExists() {
+            print("Obtaining private key from keychain")
             return try obtainPublicPrivateKeyFromKeyChain()
-        }
+        }*/
         
-        try generatePrivateKeys()
+        try generatePrivateKey()
         
         return try obtainPublicPrivateKeyFromKeyChain()
     }
     
+    /**
+     Uses `CryptoExportImportManager` to export the public key in a format (PEM) that can be read by the backend
+     */
     private func exportPublicKeyAsValidPEM(_ publicKey: Data) -> String {
         let exportManager = CryptoExportImportManager()
         
         return exportManager.exportRSAPublicKeyToPEM(publicKey, keyType: PushNotifications.keyType, keySize: PushNotifications.keySize)
     }
     
-    private func generatePrivateKeys() throws {
+    /**
+     Generates a private inside the Keychain can then be queried afterwards
+     */
+    private func generatePrivateKey() throws {
         let attributes: [String: Any] = [
-                kSecAttrKeyType as String: kSecAttrKeyTypeEC,
-                kSecAttrKeySizeInBits as String: 2048,
+            kSecAttrKeyType as String: PushNotifications.keyType,
+            kSecAttrKeySizeInBits as String: PushNotifications.keySize,
                 kSecPrivateKeyAttrs as String: [
                     kSecAttrIsPermanent as String: true,
                     kSecAttrApplicationTag as String: PushNotifications.privateKeyApplicationTag
@@ -142,6 +188,7 @@ class PushNotifications {
         }
     }
     
+    
     private func checkIfPrivateKeyAlreadyExists() -> Bool {
         do {
             let _ = try obtainPrivateKeyFromKeyChain()
@@ -152,6 +199,9 @@ class PushNotifications {
         return true
     }
     
+    /**
+     Tries to query for the private key using the `privateKeyKeychainQuery`
+     */
     private func obtainPrivateKeyFromKeyChain() throws -> SecKey {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(privateKeyKeychainQuery as CFDictionary, &item)
@@ -163,7 +213,9 @@ class PushNotifications {
         return item as! SecKey
     }
     
-  
+    /**
+     Obtains the private key from the keychain, creates a public key from the private key and finally returns an external representation for the keys.
+     */
     private func obtainPublicPrivateKeyFromKeyChain() throws -> RSAKeyPair {
         let privateKey = try obtainPrivateKeyFromKeyChain()
                 
