@@ -36,7 +36,7 @@ class PushNotifications {
      */
     func registerDeviceToken(_ deviceToken: String) async -> Void {
         do {
-            let keyPair = try keychain.getPublicPrivateKeys()
+            let keyPair = try keychain.obtainOrGeneratePublicPrivateKeys()
             
             let device: Api_RegisterDeviceRequest = .with({
                 $0.deviceID = deviceToken
@@ -44,15 +44,19 @@ class PushNotifications {
                 $0.deviceType = .ios
             })
             
-            print(keyPair.publicKey)
-            
             let _ = try await CampusBackend.shared.registerDevice(device)
-        } catch RSAKeyPairError.failedGeneratingPrivateKey  {
-            print("Something went wrong while generating the rsa private key")
+        } catch RSAKeyPairError.failedGeneratingPrivateKey(let error)  {
+            CrashlyticsService.log("Something went wrong while generating the rsa private key with error message: \(error)")
         } catch RSAKeyPairError.failedObtainingKeyPairFromKeyChain  {
-            print("Something went wrong while obtaining the rsa private key")
+            CrashlyticsService.log("Something went wrong while obtaining the rsa private key")
+        } catch RSAKeyPairError.failedObtainingPublicKeyFromPrivateKey {
+            CrashlyticsService.log("Something went wrong while obtaining the public key from the private key")
+        } catch RSAKeyPairError.failedObtainingExternalRepresentationOfKey(let error) {
+            CrashlyticsService.log("Something went wrong while obtaining the external string representation of a key with error message: \(error)")
+        } catch RSAKeyPairError.failedToExportPublicKey(let error) {
+            CrashlyticsService.log("Something went wrong while exporting the public key with error message: \(error)")
         } catch {
-            print("Failed registering ios device token! \(error)")
+            CrashlyticsService.log("Failed registering ios device token! \(error)")
         }
         
     }
@@ -69,12 +73,12 @@ class PushNotifications {
      */
     func handleBackgroundNotification(data: [AnyHashable : Any]) async throws {
         guard let requestId = data["request_id"] as? String else {
-            print("Failed responding to push device request because no 'request_id' was defined")
+            CrashlyticsService.log("Failed responding to push device request because no 'request_id' was defined")
             throw HandlePushDeviceRequestError.noRequestId
         }
         
         guard let notificationType = data["notification_type"] as? String else {
-            print("Failed responding to push device request because no 'notification_type' was defined")
+            CrashlyticsService.log("Failed responding to push device request because no 'notification_type' was defined")
             throw HandlePushDeviceRequestError.noNotificationType
         }
         
@@ -82,7 +86,7 @@ class PushNotifications {
         case BackgroundNotificationType.campusTokenRequest.rawValue:
             return try await handleCampusTokenRequest(requestId)
         default:
-            print("Failed responding to push device request because 'notification_type' was invalid")
+            CrashlyticsService.log("Failed responding to push device request because 'notification_type' was invalid")
             throw HandlePushDeviceRequestError.invalidNotificationType
         }
     }
@@ -96,7 +100,7 @@ class PushNotifications {
      */
     private func handleCampusTokenRequest(_ requestId: String) async throws {
         guard let campusToken = keychain.campusToken else {
-            print("Failed responding to push device request because no campus token was available")
+            CrashlyticsService.log("Failed responding to push device request because no campus token was available")
             throw HandlePushDeviceRequestError.noCampusToken
         }
         

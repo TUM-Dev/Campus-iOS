@@ -30,14 +30,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for remote notifications")
-        print(error.localizedDescription)
+        CrashlyticsService.log("Failed to register for remote notifications with error message: \(error.localizedDescription)")
     }
     
     func registerForPushNotifications() {
       UNUserNotificationCenter.current()
         .requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-          print("Permission granted: \(granted)")
+          print("Notification Permission granted: \(granted)")
         }
     }
     

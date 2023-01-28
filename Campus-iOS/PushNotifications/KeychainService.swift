@@ -11,12 +11,11 @@ import KeychainAccess
 typealias RSAKeyPair = (privateKey: String, publicKey: String)
 
 enum RSAKeyPairError: Error {
-    case failedGeneratingPrivateKey
+    case failedGeneratingPrivateKey(_ error: String)
     case failedObtainingKeyPairFromKeyChain
     case failedObtainingPublicKeyFromPrivateKey
-    case failedObtainingStringRepresentationOfPrivateKey
-    case failedObtainingStringRepresentationOfPublicKey
-    case failedToExportPublicKey
+    case failedObtainingExternalRepresentationOfKey(_ error: String)
+    case failedToExportPublicKey(_ error: String)
 }
 
 class KeychainService {
@@ -49,23 +48,16 @@ class KeychainService {
      
      - Returns: A tuple containing the RSA public and private key
      */
-    func getPublicPrivateKeys() throws -> RSAKeyPair {
-        if checkIfPrivateKeyAlreadyExists() {
-            return try obtainPublicPrivateKeyFromKeyChain()
+    func obtainOrGeneratePublicPrivateKeys() throws -> RSAKeyPair {
+        guard let privateKey = optionalOptainPrivateKey() else {
+            try generatePrivateKey()
+            
+            return try obtainPublicPrivateKey()
         }
         
-        try generatePrivateKey()
+        let publicKey = try obtainPublicKey(privateKey)
         
-        return try obtainPublicPrivateKeyFromKeyChain()
-    }
-    
-    /**
-     Uses `CryptoExportImportManager` to export the public key in a format (PEM) that can be read by the backend
-     */
-    private func exportPublicKeyAsValidPEM(_ publicKey: Data) -> String {
-        let exportManager = CryptoExportImportManager()
-        
-        return exportManager.exportRSAPublicKeyToPEM(publicKey, keyType: keyType, keySize: keySize)
+        return try publicPrivateKeyToValidFormat(publicKey: publicKey, privateKey: privateKey)
     }
     
     /**
@@ -84,75 +76,121 @@ class KeychainService {
         
         var error: Unmanaged<CFError>?
         guard SecKeyCreateRandomKey(attributes as CFDictionary, &error) != nil else {
-            throw RSAKeyPairError.failedGeneratingPrivateKey
+            throw RSAKeyPairError.failedGeneratingPrivateKey(error.debugDescription)
         }
     }
     
     
-    private func checkIfPrivateKeyAlreadyExists() -> Bool {
+    func optionalOptainPrivateKey() -> SecKey? {
         do {
-            let _ = try obtainPrivateKeyFromKeyChain()
+            return try obtainPrivateKey()
         } catch {
-            return false
+            return nil
         }
-        
-        return true
     }
     
     /**
      Tries to query for the private key using the `privateKeyKeychainQuery`
      */
-    func obtainPrivateKeyFromKeyChain() throws -> SecKey {
+    func obtainPrivateKey() throws -> SecKey {
         var item: CFTypeRef?
-        let status = SecItemCopyMatching(privateKeyKeychainQuery as CFDictionary, &item)
+        let status = SecItemCopyMatching(privateKeyQuery as CFDictionary, &item)
         
-        guard status == errSecSuccess && item != nil else {
+        guard status == errSecSuccess && item != nil && CFGetTypeID(item) == SecKeyGetTypeID() else {
             throw RSAKeyPairError.failedObtainingKeyPairFromKeyChain
         }
         
         return item as! SecKey
     }
     
-    func obtainPrivateKeyFromKeyChain() throws -> String {
-        let privateKey: SecKey = try obtainPrivateKeyFromKeyChain()
+    func obtainPrivateKey() throws -> String {
+        let privateKey: SecKey = try obtainPrivateKey()
         
-        var error: Unmanaged<CFError>?
-        guard let privateERData = SecKeyCopyExternalRepresentation(privateKey, &error) else {
-            throw RSAKeyPairError.failedObtainingStringRepresentationOfPrivateKey
-        }
+        let privateData = try getExternalRepresenation(privateKey)
         
-        let privateData: Data = privateERData as Data
-        
-        return privateData.base64EncodedString()
+        return exportPrivateKeyAsValidString(privateData)
     }
     
     /**
      Obtains the private key from the keychain, creates a public key from the private key and finally returns an external representation for the keys.
      */
-    private func obtainPublicPrivateKeyFromKeyChain() throws -> RSAKeyPair {
-        let privateKey: SecKey = try obtainPrivateKeyFromKeyChain()
+    private func obtainPublicPrivateKey() throws -> RSAKeyPair {
+        let privateKey: SecKey = try obtainPrivateKey()
                 
+        let publicKey = try obtainPublicKey(privateKey)
+        
+        return try publicPrivateKeyToValidFormat(publicKey: publicKey, privateKey: privateKey)
+    }
+    
+    
+    /**
+     Creates an external representation for both the `publicKey` and the `privateKey`
+     */
+    private func publicPrivateKeyToValidFormat(publicKey: SecKey, privateKey: SecKey) throws -> RSAKeyPair {
+       let privateData = try getExternalRepresenation(privateKey)
+        
+        let publicData = try getExternalRepresenation(publicKey)
+        
+        return (exportPrivateKeyAsValidString(privateData), exportPublicKeyAsValidPEM(publicData))
+    }
+    
+    private func getExternalRepresenation(_ key: SecKey) throws -> Data {
+        var error: Unmanaged<CFError>?
+        guard let keyERData = SecKeyCopyExternalRepresentation(key, &error) else {
+            throw RSAKeyPairError.failedObtainingExternalRepresentationOfKey(error.debugDescription)
+        }
+        
+        return keyERData as Data
+    }
+    
+    private func exportPrivateKeyAsValidString(_ privateKey: Data) -> String {
+        return privateKey.base64EncodedString()
+    }
+    
+    /**
+     Uses `CryptoExportImportManager` to export the public key in a format (PEM) that can be read by the backend
+     */
+    private func exportPublicKeyAsValidPEM(_ publicKey: Data) -> String {
+        let exportManager = CryptoExportImportManager()
+        
+        return exportManager.exportRSAPublicKeyToPEM(publicKey, keyType: keyType, keySize: keySize)
+    }
+    
+    /**
+        Generates a public key, from a `privateKey`
+     */
+    private func obtainPublicKey(_ privateKey: SecKey) throws -> SecKey {
         guard let publicKey = SecKeyCopyPublicKey(privateKey) else {
             throw RSAKeyPairError.failedObtainingPublicKeyFromPrivateKey
         }
         
-        var error: Unmanaged<CFError>?
-        guard let privateERData = SecKeyCopyExternalRepresentation(privateKey, &error) else {
-            throw RSAKeyPairError.failedObtainingStringRepresentationOfPrivateKey
-        }
-        
-        let privateData: Data = privateERData as Data
-        
-        guard let publicERData = SecKeyCopyExternalRepresentation(publicKey, &error) else {
-            throw RSAKeyPairError.failedObtainingStringRepresentationOfPublicKey
-        }
-        
-        let publicData: Data = publicERData as Data
-        
-        return (privateData.base64EncodedString(), exportPublicKeyAsValidPEM(publicData))
+        return publicKey
     }
     
-    private var privateKeyKeychainQuery: [String: Any] {
+    /**
+     Decrypts a given `cipherText` using the RSA `privateKey`
+     
+     - Parameters:
+        - cipherText: Encrypted text that should be decrypted
+        - privateKey: RSA PrivateKey from the keychain
+     
+     */
+    func decrypt(cipherText: String, privateKey: SecKey) -> String? {
+        guard let cipherData = Data(base64Encoded: cipherText) else {
+            return nil
+        }
+        
+        var error: Unmanaged<CFError>?
+        let plaintext = SecKeyCreateDecryptedData(privateKey, .rsaEncryptionOAEPSHA256, cipherData as CFData, &error)
+        
+        guard let data: NSData = plaintext else {
+            return nil
+        }
+        
+        return String(data: data as Data, encoding: .utf8)
+    }
+    
+    private var privateKeyQuery: [String: Any] {
         return [
             kSecClass as String: kSecClassKey,
             kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
