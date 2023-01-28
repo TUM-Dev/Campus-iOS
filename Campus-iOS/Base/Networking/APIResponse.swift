@@ -36,9 +36,7 @@ struct TUMOnlineAPIResponse<T: Decodable>: Decodable {
           return try $0.result.get()
         }
         catch {
-            #if !DEBUG
-            Crashlytics.crashlytics().record(error: error)
-            #endif
+            CrashlyticsService.log(error)
             return nil
         }
       }

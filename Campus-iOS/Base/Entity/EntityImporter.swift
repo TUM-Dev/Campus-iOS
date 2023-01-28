@@ -55,21 +55,15 @@ final class Importer<EntityType: Entity, EntityContainer: Decodable, DecoderType
                     let storage = try decoder.decode(EntityContainer.self, from: data)
                     handler?(.success(storage))
                 } catch let apiError as APIError {
-                    #if !DEBUG
-                    Crashlytics.crashlytics().record(error: apiError)
-                    #endif
+                    CrashlyticsService.log(apiError)
                     handler?(.failure(apiError))
                     return
                 } catch let decodingError as DecodingError {
-                    #if !DEBUG
-                    Crashlytics.crashlytics().record(error: decodingError)
-                    #endif
+                    CrashlyticsService.log(decodingError)
                     handler?(.failure(decodingError))
                     return
                 } catch let error {
-                    #if !DEBUG
-                    Crashlytics.crashlytics().record(error: error)
-                    #endif
+                    CrashlyticsService.log(error)
                     handler?(.failure(error))
                 }
         }
