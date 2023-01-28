@@ -271,6 +271,7 @@
 		9973858029490EFE00B1AE34 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9973857929490EFE00B1AE34 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		997385862949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
 		997385872949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
+		99706870298569E10028D235 /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970686F298569E10028D235 /* CrashlyticsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -554,6 +555,7 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		9970686F298569E10028D235 /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
 		99438EFF2950770400766197 /* CampusService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.pb.swift; sourceTree = "<group>"; };
 		99438F002950770400766197 /* CampusService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.grpc.swift; sourceTree = "<group>"; };
 		9958317F29361F6F00F25E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1145,6 +1147,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9970686E298569CE0028D235 /* Crashlytics */,
 				995831812936215D00F25E11 /* PushNotifications */,
 				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
@@ -1581,6 +1584,14 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		9970686E298569CE0028D235 /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				9970686F298569E10028D235 /* CrashlyticsService.swift */,
+			);
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
 		995831812936215D00F25E11 /* PushNotifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1973,6 +1984,7 @@
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
 				99706872298572A50028D235 /* KeychainService.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
+				99706870298569E10028D235 /* CrashlyticsService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
