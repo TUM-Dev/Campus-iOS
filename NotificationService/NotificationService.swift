@@ -7,30 +7,12 @@
 
 import UserNotifications
 
-enum RSAKeyPairError: Error {
-    case failedObtainingPrivateKeyFromKeyChain
-    case failedObtainingStringRepresentationOfPrivateKey
-}
-
-
 class NotificationService: UNNotificationServiceExtension {
-
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
     
-    private static let privateKeyApplicationTag = "de.tum.tca.keys.push_rsa_key"
-    private static let keychainAccessGroupName = "2J3C6P6X3N.de.tum.tca.notificationextension"
+    private final let keychain: KeychainService = KeychainService()
     
-    private var privateKeyKeychainQuery: [String: Any] = [
-                kSecClass as String: kSecClassKey,
-                kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
-                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrKeySizeInBits as String: 2048,
-                kSecAttrApplicationTag as String: privateKeyApplicationTag,
-                kSecReturnRef as String: true,
-                kSecAttrAccessGroup as String: NotificationService.keychainAccessGroupName
-            ]
-
     /**
      Called before the push notification is displayed to the user
      */
@@ -123,20 +105,9 @@ class NotificationService: UNNotificationServiceExtension {
         return true
     }
     
-    private func obtainRawPrivateKeyFromKeyChain() throws -> SecKey {
-        var item: CFTypeRef?
-        let status = SecItemCopyMatching(privateKeyKeychainQuery as CFDictionary, &item)
-        
-        guard status == errSecSuccess && item != nil else {
-            throw RSAKeyPairError.failedObtainingPrivateKeyFromKeyChain
-        }
-        
-        return item as! SecKey
-    }
-    
   
     private func obtainPrivateKeyFromKeyChain() throws -> String {
-        let privateKey = try obtainRawPrivateKeyFromKeyChain()
+        let privateKey = try keychain.obtainPrivateKeyFromKeyChain()
         
         var error: Unmanaged<CFError>?
         guard let privateERData = SecKeyCopyExternalRepresentation(privateKey, &error) else {

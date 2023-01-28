@@ -265,6 +265,8 @@
 		995831912936336900F25E11 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 995831902936336900F25E11 /* GRPC */; };
 		995831932936336900F25E11 /* protoc-gen-grpc-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 995831922936336900F25E11 /* protoc-gen-grpc-swift */; };
 		995831952936469100F25E11 /* CampusBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995831942936469000F25E11 /* CampusBackend.swift */; };
+		99706872298572A50028D235 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99706871298572A50028D235 /* KeychainService.swift */; };
+		997068732985752E0028D235 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99706871298572A50028D235 /* KeychainService.swift */; };
 		9973857C29490EFE00B1AE34 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973857B29490EFE00B1AE34 /* NotificationService.swift */; };
 		9973858029490EFE00B1AE34 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9973857929490EFE00B1AE34 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		997385862949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
@@ -557,6 +559,7 @@
 		9958317F29361F6F00F25E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99583182293621A200F25E11 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		995831942936469000F25E11 /* CampusBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusBackend.swift; sourceTree = "<group>"; };
+		99706871298572A50028D235 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		9973857929490EFE00B1AE34 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9973857B29490EFE00B1AE34 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		9973857D29490EFE00B1AE34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1583,6 +1586,7 @@
 			children = (
 				99583182293621A200F25E11 /* PushNotifications.swift */,
 				997385852949324F00B1AE34 /* CryptoExportImportManager.swift */,
+				99706871298572A50028D235 /* KeychainService.swift */,
 			);
 			path = PushNotifications;
 			sourceTree = "<group>";
@@ -1967,6 +1971,7 @@
 				36AF61EA27A2FD7800FEBD98 /* Environment+Error.swift in Sources */,
 				3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */,
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
+				99706872298572A50028D235 /* KeychainService.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */,
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
@@ -2053,6 +2058,7 @@
 			files = (
 				9973857C29490EFE00B1AE34 /* NotificationService.swift in Sources */,
 				997385872949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */,
+				997068732985752E0028D235 /* KeychainService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
