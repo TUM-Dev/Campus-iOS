@@ -273,6 +273,7 @@
 		997385862949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
 		997385872949324F00B1AE34 /* CryptoExportImportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997385852949324F00B1AE34 /* CryptoExportImportManager.swift */; };
 		999E324B29859DDA0099755D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36203E8A2761C6EC00C24658 /* Credentials.swift */; };
+		99F1850B2986B8FB00F5F920 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 99F1850A2986B8FB00F5F920 /* KeychainAccess */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -612,6 +613,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99F1850B2986B8FB00F5F920 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1131,6 +1133,7 @@
 				9973857A29490EFE00B1AE34 /* NotificationService */,
 				366F0E8127580CFB0091651D /* Products */,
 				1FFEF086284E417E00ADD201 /* Recovered References */,
+				99F185092986B8FB00F5F920 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1613,6 +1616,13 @@
 			path = NotificationService;
 			sourceTree = "<group>";
 		};
+		99F185092986B8FB00F5F920 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1702,6 +1712,9 @@
 			dependencies = (
 			);
 			name = NotificationService;
+			packageProductDependencies = (
+				99F1850A2986B8FB00F5F920 /* KeychainAccess */,
+			);
 			productName = NotificationService;
 			productReference = 9973857929490EFE00B1AE34 /* NotificationService.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -2693,6 +2706,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9958318D2936336900F25E11 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = "protoc-gen-grpc-swift";
+		};
+		99F1850A2986B8FB00F5F920 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36203E812761BDD100C24658 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 
