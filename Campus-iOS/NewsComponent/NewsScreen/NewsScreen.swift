@@ -27,10 +27,8 @@ struct NewsScreen: View {
                     retryClosure: vm.getNewsSources
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getNewsSources()
-            }
+        }.task {
+            await vm.getNewsSources()
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,

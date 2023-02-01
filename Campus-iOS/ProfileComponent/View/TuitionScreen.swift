@@ -40,13 +40,8 @@ struct TuitionScreen: View {
             case .failed(error: let error):
                 Text(error.localizedDescription)
             }
-        }.onAppear {
-            Task {
-                Task {
-                    await vm.getTuition(forcedRefresh: true)
-                    print(vm.tuitionState)
-                }
-            }
+        }.task {
+            await vm.getTuition(forcedRefresh: true)
         }
     }
 }

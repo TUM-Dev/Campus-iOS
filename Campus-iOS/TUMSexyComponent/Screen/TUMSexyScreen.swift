@@ -28,10 +28,8 @@ struct TUMSexyScreen: View {
                     retryClosure: vm.getLinks
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getLinks()
-            }
+        }.task {
+            await vm.getLinks()
         }
         .alert(
             "Error while fetching Links",

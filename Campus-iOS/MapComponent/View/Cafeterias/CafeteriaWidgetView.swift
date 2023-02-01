@@ -52,6 +52,7 @@ struct CafeteriaWidgetView: View {
         }
         .task {
             await viewModel.fetch()
+            print("getwidget cafeteria")
         }
     }
     

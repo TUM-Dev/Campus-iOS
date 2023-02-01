@@ -28,10 +28,8 @@ struct MoviesScreen: View {
                     retryClosure: vm.getMovies
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getMovies()
-            }
+        }.task {
+            await vm.getMovies()
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,

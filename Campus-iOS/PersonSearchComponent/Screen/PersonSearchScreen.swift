@@ -45,11 +45,9 @@ struct PersonSearchScreen: View {
                 await vm.getPersons(for: query, forcedRefresh: true)
             }
         }
-        .onAppear {
+        .task {
             if !searchText.isEmpty {
-                Task {
-                    await vm.getPersons(for: searchText, forcedRefresh: true)
-                }
+                await vm.getPersons(for: searchText, forcedRefresh: true)
             }
         }
         .alert(

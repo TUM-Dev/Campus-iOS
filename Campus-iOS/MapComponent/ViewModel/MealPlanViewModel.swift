@@ -77,7 +77,7 @@ struct MealPlanService {
 }
 
 @MainActor
-class MealPlanViewModel2: ObservableObject {
+class MealPlanViewModel: ObservableObject {
     @Published var state: APIState<[Menu]> = .na
     @Published var hasError: Bool = false
     

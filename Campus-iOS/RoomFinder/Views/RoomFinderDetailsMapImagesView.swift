@@ -28,10 +28,8 @@ struct RoomFinderDetailsMapImagesView: View {
         .frame(
             maxWidth: .infinity,
             alignment: .topLeading
-        ).onAppear {
-            Task {
-                await vm.getRoomImageMapping(for: StudyRoom(room: self.room))
-            }
+        ).task {
+            await vm.getRoomImageMapping(for: StudyRoom(room: self.room))
         }
     }
 }

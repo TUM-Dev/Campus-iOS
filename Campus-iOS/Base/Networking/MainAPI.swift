@@ -11,12 +11,12 @@ import XMLCoder
 import UIKit
 
 protocol API {
-    // The base URL which will be the entry point for fetching the data.
+    // The base URL will be the entry point for fetching the data.
     static var baseURL: String { get }
-    // If the API requires headers, otherwise declare as empty array.
+    // If the API requires headers, otherwise declare it as an empty array.
     static var baseHeaders: HTTPHeaders { get }
     // Type of error to handle errors properly for each API.
-    static var error : APIError.Type { get }
+    static var error: APIError.Type { get }
     
     // This property should return the respective path for each data type
     var paths: String { get }
@@ -27,11 +27,11 @@ protocol API {
     
     // Returns the baseURL combinded with the relative paths. This is typically used in the asReqeust(token:) method.
     var basePathsURL: String { get }
-    // Returns the basePathURL combined with all the parameters. This is typically used as identifier for the cache.
+    // Returns the basePathURL combined with all the parameters. This is typically used as an identifier for the cache.
     var basePathsParametersURL: String { get }
     
     
-    /// Produces the final request depending concidering if a data type needs authentication.
+    /// Produces the final request depending considering if a data type needs authentication.
     ///
     /// ```
     /// let api = CampusOnline.personalLectures
@@ -129,9 +129,12 @@ enum MainAPI {
             var data: Data
             do {
                 data = try await endpoint.asRequest(token: token).serializingData().value
+                /*
+                //For debugging
                 if T.self is TUMOnlineAPI2.Response<Profile>.Type {
-//                    print("\(String(data: data, encoding: .utf8))")
+                    print("\(String(data: data, encoding: .utf8))")
                 }
+                */
             } catch {
                 print(error)
                 throw NetworkingError.deviceIsOffline

@@ -24,11 +24,9 @@ struct RoomFinderView: View {
                     }
                 }
             }
-            .onAppear {
+            .task {
                 if !searchText.isEmpty {
-                    Task {
-                        await search(searchText)
-                    }
+                    await search(searchText)
                 }
             }
             .animation(.default, value: self.viewModel.result)

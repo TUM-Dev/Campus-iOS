@@ -45,28 +45,26 @@ struct CampusApp: App {
                 })
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .onAppear {
-                    Task {
-                        if model.loginController.credentials == Credentials.noTumID {
-                            model.isUserAuthenticated = false
-                        } else {
-                            await model.loginController.confirmToken() { result in
-                                switch result {
-                                case .success:
-                                    #if !targetEnvironment(macCatalyst)
-                                    Analytics.logEvent("token_confirmed", parameters: nil)
-                                    #endif
-                                    DispatchQueue.main.async {
-                                        model.isLoginSheetPresented = false
-                                        model.isUserAuthenticated = true
-                                    }
-                                    
+                .task {
+                    if model.loginController.credentials == Credentials.noTumID {
+                        model.isUserAuthenticated = false
+                    } else {
+                        await model.loginController.confirmToken() { result in
+                            switch result {
+                            case .success:
+                                #if !targetEnvironment(macCatalyst)
+                                Analytics.logEvent("token_confirmed", parameters: nil)
+                                #endif
+                                DispatchQueue.main.async {
+                                    model.isLoginSheetPresented = false
+                                    model.isUserAuthenticated = true
+                                }
+                                
 //                                    model.loadProfile()
-                                case .failure(_):
-                                    model.isUserAuthenticated = false
-                                    if !model.showProfile {
-                                        model.isLoginSheetPresented = true
-                                    }
+                            case .failure(_):
+                                model.isUserAuthenticated = false
+                                if !model.showProfile {
+                                    model.isLoginSheetPresented = true
                                 }
                             }
                         }

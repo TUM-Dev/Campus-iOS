@@ -28,10 +28,8 @@ struct StudyRoomDetailsScreen: View {
                     retryClosure: {forcedRefresh in await vm.getRoomImageMapping(for: self.room, forcedRefresh: forcedRefresh)}
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getRoomImageMapping(for: self.room)
-            }
+        }.task {
+            await vm.getRoomImageMapping(for: self.room)
         }.alert(
             "Error while fetching Room Images",
             isPresented: $vm.hasError,

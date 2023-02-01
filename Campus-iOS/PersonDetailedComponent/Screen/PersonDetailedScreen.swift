@@ -35,11 +35,8 @@ struct PersonDetailedScreen: View {
                 )
             }
         }
-        .onAppear {
-            Task {
-                await vm.getDetails(forcedRefresh: true)
-                print(vm.state)
-            }
+        .task {
+            await vm.getDetails(forcedRefresh: true)
         }
         .alert("Error while fetching Person Details", isPresented: $vm.hasError, presenting: vm.state) { detail in
             Button("Retry") {

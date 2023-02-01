@@ -209,11 +209,8 @@ struct ProfileView: View {
                     SFSafariViewWrapper(url: link)
                 }
             }
-        }.onAppear {
-            Task {
-                await vm.getProfile(forcedRefresh: false)
-                print("getProfile")
-            }
+        }.task {
+            await vm.getProfile(forcedRefresh: false)
         }
     }
 }

@@ -53,10 +53,8 @@ struct DishView: View {
                 FailedView(errorDescription: error.localizedDescription, retryClosure: vm.getDishLabels
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getDishLabels()
-            }
+        }.task {
+            await vm.getDishLabels()
         }
     }
 }

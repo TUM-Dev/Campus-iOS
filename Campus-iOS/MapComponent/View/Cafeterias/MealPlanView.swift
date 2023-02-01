@@ -9,10 +9,10 @@ import SwiftUI
 import Alamofire
 
 struct MealPlanScreen: View {
-    @StateObject var vm: MealPlanViewModel2
+    @StateObject var vm: MealPlanViewModel
     
     init(cafeteria: Cafeteria) {
-        self._vm = StateObject(wrappedValue: MealPlanViewModel2(cafeteria: cafeteria))
+        self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
     }
     
     var body: some View {
@@ -34,11 +34,8 @@ struct MealPlanScreen: View {
                     retryClosure: vm.getMenus
                 )
             }
-        }.onAppear {
-            Task {
-                await vm.getMenus()
-                print(vm.state)
-            }
+        }.task {
+            await vm.getMenus()
         }.alert(
             "Error while fetching Menus",
             isPresented: $vm.hasError,
