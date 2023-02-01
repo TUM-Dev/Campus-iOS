@@ -22,11 +22,18 @@ struct MealPlanService {
         }
         let nextWeekAPI = EatAPI2.menu(location: cafeteria.id, year: nextWeek.year, week: nextWeek.weekOfYear)
         
-        let nextWeekMealPlanResponse = try await fetch(menu: nextWeekAPI, forcedRefresh: forcedRefresh)
+        var menus = thisWeekMenu
         
-        let nextWeekMenu = getMenuPerDay(mealPlan: nextWeekMealPlanResponse)
-
-        var menus = thisWeekMenu + nextWeekMenu.filter{ menu in !thisWeekMenu.contains(where: {$0.date == menu.date}) } // don't re-add already existent days
+        do {
+            let nextWeekMealPlanResponse = try await fetch(menu: nextWeekAPI, forcedRefresh: forcedRefresh)
+            
+            let nextWeekMenu = getMenuPerDay(mealPlan: nextWeekMealPlanResponse)
+            
+            menus = menus + nextWeekMenu.filter{ menu in !thisWeekMenu.contains(where: {$0.date == menu.date}) } // don't re-add already existent days
+        } catch {
+            //Throw no error, since sometimes the next weeks menu isn't ready yet, thus a 404 error is thrown, but at the end of the week the next week's menu is ready.
+            print(error)
+        }
         
         return menus
     }
@@ -88,8 +95,10 @@ class MealPlanViewModel2: ObservableObject {
         self.hasError = false
 
         do {
+            let data = try await service.fetch(cafeteria: self.cafeteria, forcedRefresh: forcedRefresh)
+            print(data)
             self.state = .success(
-                data: try await service.fetch(cafeteria: self.cafeteria, forcedRefresh: forcedRefresh)
+                data: data
             )
         } catch {
             self.state = .failed(error: error)
