@@ -17,12 +17,19 @@ class Campus_iOSTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testtest() throws {
+        let a = "hello"
+        let b = "hell0"
+        
+        let x = LevenshteinGreenlee.levenshtein(stringA: a, stringB: b)
+    }
 
     func testIfEqualResults() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
-        let classic = apply(method: LevenshteinClassic.levenshtein)
+        let classic = apply(method: LevenshteinGreenlee.levenshtein)
         let wiki = apply(method: LevenshteinWiki.distanceBetween)
         let marino = apply(method: LevenshteinNickyMarino.opti_leven_distance)
         
@@ -57,7 +64,7 @@ class Campus_iOSTests: XCTestCase {
         var results = [Int]()
         
         self.measure {
-            results = apply(method: LevenshteinClassic.levenshtein)
+            results = apply(method: LevenshteinGreenlee.levenshtein)
         }
     
         print(">>>>>>RESULTS Lev1<<<<<<<")
@@ -200,7 +207,7 @@ struct LevenshteinWiki {
     }
 }
 
-struct LevenshteinClassic {
+struct LevenshteinGreenlee {
     static func levenshtein(stringA: String, stringB: String) -> Int {
         /// Either `self `or the `comparisonToken` is empty.
         if stringA.isEmpty && stringB.isEmpty {
@@ -225,6 +232,7 @@ struct LevenshteinClassic {
         // 'a' prefixes can be transformed into empty string by deleting every char
         for i in 1...a.count {
             dist[i][0] = i
+            print(i)
         }
         
         // 'b' prefixes can be created from empty string by inserting every char
@@ -234,8 +242,12 @@ struct LevenshteinClassic {
         
         for i in 1...a.count {
             for j in 1...b.count {
+//                print("\(a[i-1]) = \(b[j-1])")
+//                print(dist)
                 if a[i-1] == b[j-1] {
                     dist[i][j] = dist[i-1][j-1]  // Noop
+                    
+                    
                 } else {
                     dist[i][j] = Swift.min(
                         dist[i-1][j] + 1,  // Deletion
@@ -245,7 +257,9 @@ struct LevenshteinClassic {
                 }
             }
         }
-        
+        for i in 0...a.count {
+            print(dist[i])
+        }
         return dist[a.count][b.count]
     }
 }
