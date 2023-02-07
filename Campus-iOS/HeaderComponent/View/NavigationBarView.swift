@@ -20,7 +20,7 @@ struct NavigationBarView: View {
                     HStack {
                         Image(systemName: "magnifyingglass").foregroundColor(Color.primaryText).font(.system(size: 20))
                         Spacer()
-                        if title == nil {
+                        if self.title == nil {
                             Image("logo-responsive")
                                 .resizable()
                                 .scaledToFit()
@@ -29,7 +29,7 @@ struct NavigationBarView: View {
                                 .foregroundColor(Color.primaryText)
                                 .ignoresSafeArea()
                         } else {
-                            Text(title!).font(.system(size: 17)).fontWeight(.semibold).foregroundColor(Color.primaryText)
+                            Text(self.title!).font(.system(size: 17)).fontWeight(.semibold).foregroundColor(Color.primaryText)
                         }
                         Spacer()
                         Button(action: {model.showProfile.toggle()}) {
@@ -42,7 +42,7 @@ struct NavigationBarView: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 5)
-                    Divider().overlay(Color.primaryBackground)
+                    Divider().overlay(Color.primaryBackground) //remove overlay to show Divider
                 }
             }
             .frame(height: 50)

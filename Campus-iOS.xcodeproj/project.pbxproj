@@ -59,6 +59,8 @@
 		1EF36A42297AA9EC00AF049F /* GradesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */; };
 		1EF36A44297AAA7000AF049F /* TuitionWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A43297AAA7000AF049F /* TuitionWidgetView.swift */; };
 		1EF36A46297AACD400AF049F /* WidgetScreenNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A45297AACD400AF049F /* WidgetScreenNEW.swift */; };
+		1EF36A482991654F00AF049F /* StudyRoomWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */; };
+		1EF36A4B2991730C00AF049F /* StudyRoomWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */; };
 		1EFBBEBB295DA51E001A0364 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBBEBA295DA51E001A0364 /* HomeView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
@@ -342,6 +344,8 @@
 		1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesWidgetView.swift; sourceTree = "<group>"; };
 		1EF36A43297AAA7000AF049F /* TuitionWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionWidgetView.swift; sourceTree = "<group>"; };
 		1EF36A45297AACD400AF049F /* WidgetScreenNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WidgetScreenNEW.swift; path = ../../../../../../WidgetScreenNEW.swift; sourceTree = "<group>"; };
+		1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetViewNEW.swift; sourceTree = "<group>"; };
+		1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetScreen.swift; sourceTree = "<group>"; };
 		1EFBBEBA295DA51E001A0364 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
@@ -705,6 +709,15 @@
 				1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */,
 			);
 			path = CalendarWidgetNEW;
+			sourceTree = "<group>";
+		};
+		1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */,
+				1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */,
+			);
+			path = StundyRoomWidgetNEW;
 			sourceTree = "<group>";
 		};
 		1EF530A729192D51008F2C9B /* Design */ = {
@@ -1144,6 +1157,7 @@
 		3654F382285171F6008AD5DC /* StudyRooms */ = {
 			isa = PBXGroup;
 			children = (
+				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
 				08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */,
 				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
 				3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */,
@@ -1896,6 +1910,7 @@
 				36BB6F5327AFCCB500F224AB /* PersonDetailedView.swift in Sources */,
 				3654F37E2851710E008AD5DC /* RoomFinderDetailsView.swift in Sources */,
 				36108BC327A3046B007DC62D /* LectureDetailsTitleView.swift in Sources */,
+				1EF36A482991654F00AF049F /* StudyRoomWidgetViewNEW.swift in Sources */,
 				3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */,
 				36E964A5277493D90055777F /* CalendarViewModel.swift in Sources */,
 				0805E72428CAABB3003C5CFD /* AnalyticsError.swift in Sources */,
@@ -1975,6 +1990,7 @@
 				36AF61E227A2FD7800FEBD98 /* Constants.swift in Sources */,
 				36BB6F6C27AFD2B900F224AB /* Room.swift in Sources */,
 				0815249828E492070098A2C3 /* RecommenderError.swift in Sources */,
+				1EF36A4B2991730C00AF049F /* StudyRoomWidgetScreen.swift in Sources */,
 				36AF61EB27A2FD7800FEBD98 /* ErrorCategory.swift in Sources */,
 				1EB2CB0B2977368D00B54C2E /* CalendarWidgetViewNEW.swift in Sources */,
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
