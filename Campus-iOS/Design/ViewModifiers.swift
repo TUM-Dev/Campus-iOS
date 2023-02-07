@@ -22,8 +22,21 @@ struct Title: ViewModifier {
     }
 }
 
+struct ListSection: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .frame(width: Size.cardWidth)
+            .background(Color.secondaryBackground)
+            .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+    }
+}
+
 extension View {
     func titleStyle() -> some View {
             modifier(Title())
+        }
+    func sectionStyle() -> some View {
+            modifier(ListSection())
         }
 }

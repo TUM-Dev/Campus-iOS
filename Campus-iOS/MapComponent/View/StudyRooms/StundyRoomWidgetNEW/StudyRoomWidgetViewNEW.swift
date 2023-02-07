@@ -14,10 +14,7 @@ struct StudyRoomWidgetViewNEW: View {
     var body: some View {
         if let studyGroup = studyRoomWidgetVM.studyGroup {
             Text(studyGroup.name!)
-                .padding()
-                .frame(width: Size.cardWidth)
-                .background(Color.secondaryBackground)
-                .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+                .sectionStyle()
         }
     }
 }

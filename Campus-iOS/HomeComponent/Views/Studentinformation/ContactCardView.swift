@@ -59,10 +59,7 @@ struct ContactCardView: View {
             }
             Spacer()
         }
-        .padding()
-        .frame(width: Size.cardWidth)
-        .background(Color.secondaryBackground)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+        .sectionStyle()
         .sheet(isPresented: $showImageSheet) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileViewModel.profileImageUI)
         }

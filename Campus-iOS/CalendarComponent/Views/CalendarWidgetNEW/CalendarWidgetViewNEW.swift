@@ -77,10 +77,7 @@ struct CalendarWidgetViewNEW: View {
                 Spacer(minLength: 0)
             }.padding(.leading, 5)
         }
-        .padding()
-        .frame(width: Size.cardWidth)
-        .background(Color.secondaryBackground)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+        .sectionStyle()
     }
 }
 
