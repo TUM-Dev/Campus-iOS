@@ -67,6 +67,7 @@
 		2F14477E2969B1BC006FADFE /* NavigaTumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F14477D2969B1BC006FADFE /* NavigaTumDetailsViewModel.swift */; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
+		2F7F02E029921F5200AE137C /* NavigaTumMapImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F02DF29921F5200AE137C /* NavigaTumMapImagesView.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
 		2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */; };
 		2FDB156F298059270064032D /* NavigaTumDetailsBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB156E298059270064032D /* NavigaTumDetailsBaseView.swift */; };
@@ -355,6 +356,7 @@
 		2F14477D2969B1BC006FADFE /* NavigaTumDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsViewModel.swift; sourceTree = "<group>"; };
 		2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoView.swift; sourceTree = "<group>"; };
 		2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoRowView.swift; sourceTree = "<group>"; };
+		2F7F02DF29921F5200AE137C /* NavigaTumMapImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumMapImagesView.swift; sourceTree = "<group>"; };
 		2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoView.swift; sourceTree = "<group>"; };
 		2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoRowView.swift; sourceTree = "<group>"; };
 		2FDB156E298059270064032D /* NavigaTumDetailsBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsBaseView.swift; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 				2FDB1572298059970064032D /* NavigaTumMapView.swift */,
 				2FDB15702980597C0064032D /* NavigaTumView.swift */,
 				2FDB156E298059270064032D /* NavigaTumDetailsBaseView.swift */,
+				2F7F02DF29921F5200AE137C /* NavigaTumMapImagesView.swift */,
 			);
 			path = ViewsNavigaTum;
 			sourceTree = "<group>";
@@ -2012,6 +2015,7 @@
 				08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
+				2F7F02E029921F5200AE137C /* NavigaTumMapImagesView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
 				9785A2AB29621089002F3D5E /* NavigaTumRoomFinderMap.swift in Sources */,
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,

@@ -25,87 +25,25 @@ struct NavigaTumDetailsView: View {
                     }
                     
                     Spacer().frame(height: 30)
+                    
                     NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
                     NavigaTumMapView(chosenRoom: chosenRoom)
+                    NavigaTumMapImagesView(chosenRoom: chosenRoom)
                 }
                 .frame(
                     maxWidth: .infinity,
                     alignment: .topLeading
                 )
                 .padding(.horizontal)
-                // From MapHorizontalScrollingView
-                /*
-                if viewModel.images.count > 0 {
-                    ScrollView (.horizontal, showsIndicators: true) {
-                        HStack(spacing: 10) {
-                            ForEach(viewModel.images, id: \.id) { map in
-                                GeometryReader { geometry in
-                                    if let link = URL(string: "https://nav.tum.de/cdn/maps/overlay/\(map)") {
-                                        AsyncImage(url: link) { image in
-                                            switch image {
-                                            case .empty:
-                                                ProgressView()
-                                            case .success(let image):
-                                                NavigationLink(destination: ImageFullScreenView(image: image)) {
-                                                    image
-                                                        .resizable()
-                                                        .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-                                                        .clipped()
-                                                        .cornerRadius(10.0)
-                                                }
-                                            case .failure:
-                                                Image(systemName: "photo")
-                                            @unknown default:
-                                                // Since the AsyncImagePhase enum isn't frozen,
-                                                // we need to add this currently unused fallback
-                                                // to handle any new cases that might be added
-                                                // in the future:
-                                                EmptyView()
-                                            }
-                                        }
-                                    } else {
-                                        EmptyView()
-                                    }
-                                }
-                                .frame(width: 100, height: 100)
-                                Spacer(minLength: 1)
-                            }
-                        }
-                    }
-                }
-                */
-                
-                
-                
-                
-                AsyncImage(url: URL(string: "https://nav.tum.de/cdn/maps/overlay/rf142.webp")) { image in
-                        switch image {
-                        case .empty:
-                            ProgressView()
-                        case .success(let image):
-                            NavigationLink(destination: ImageFullScreenView(image: image)) {
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
-                                    .clipped()
-                                    .cornerRadius(10.0)
-                            }
-                        case .failure:
-                            Image(systemName: "photo")
-                        @unknown default:
-                            // Since the AsyncImagePhase enum isn't frozen,
-                            // we need to add this currently unused fallback
-                            // to handle any new cases that might be added
-                            // in the future:
-                            EmptyView()
-                        }
-                    }
-                }
             }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.fetchDetails()
+            try? await Task.sleep(nanoseconds: 2_000_000_000)
+            viewModel.details?.additionalProperties.properties.forEach { entry in
+                print(entry.name)
+            }
         }
     }
 }
