@@ -338,7 +338,6 @@
 		1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesViewNEW.swift; path = "Campus-iOS/MoviesComponent/Views/MoviesViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		1EB2CB0A2977368D00B54C2E /* CalendarWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarWidgetViewNEW.swift; path = ../../../../../../CalendarWidgetViewNEW.swift; sourceTree = "<group>"; };
-		1EF36A3C2979B95C00AF049F /* CalendarWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewNEW.swift; sourceTree = "<group>"; };
 		1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetScreen.swift; sourceTree = "<group>"; };
 		1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEventView.swift; sourceTree = "<group>"; };
 		1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesWidgetView.swift; sourceTree = "<group>"; };
@@ -705,7 +704,6 @@
 			isa = PBXGroup;
 			children = (
 				1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */,
-				1EF36A3C2979B95C00AF049F /* CalendarWidgetViewNEW.swift */,
 				1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */,
 			);
 			path = CalendarWidgetNEW;
