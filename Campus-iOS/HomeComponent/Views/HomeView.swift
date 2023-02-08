@@ -25,8 +25,8 @@ struct HomeView: View {
                 .padding(.bottom, 25)
             WidgetScreenNEW(model: self.model)
                 .padding(.bottom, 25)
-            WidgetScreen(model: self.model)
-                .padding(.bottom, 25)
+            /*WidgetScreen(model: self.model)
+                .padding(.bottom, 25)*/
             MoviesViewNEW()
                 .padding(.bottom, 25)
         }

@@ -24,9 +24,3 @@ struct StudyRoomWidgetScreen: View {
         }
     }
 }
-
-struct StudyRoomWidgetScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        StudyRoomWidgetScreen(studyRoomWidgetVM: StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService()))
-    }
-}
