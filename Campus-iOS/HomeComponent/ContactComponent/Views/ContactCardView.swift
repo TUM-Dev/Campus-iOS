@@ -11,7 +11,7 @@ struct ContactCardView: View {
     
     @StateObject var profileViewModel: ProfileViewModel
     @StateObject var gradesViewModel: GradesViewModel
-    @ObservedObject var personDetailedViewModel: PersonDetailedViewModel
+    @StateObject var personDetailedViewModel: PersonDetailedViewModel
     @State private var showImageSheet = false
     
     var body: some View {
@@ -43,9 +43,13 @@ struct ContactCardView: View {
                         .font(.title2)
                     Text(profile.tumID!)
                         .font(.subheadline)
-                    Text(self.personDetailedViewModel.person?.email ?? "")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                    if let email = personDetailedViewModel.person?.email {
+                        Text(email)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    } else {
+                        ProgressView()
+                    }
                     ForEach(self.gradesViewModel.gradesByDegreeAndSemester.indices, id: \.self) { index in
                         Text(
                             self.gradesViewModel.getStudyProgramNoID(studyID: self.gradesViewModel.gradesByDegreeAndSemester[index].0)
@@ -58,6 +62,10 @@ struct ContactCardView: View {
                 ProgressView()
             }
             Spacer()
+        }
+        .task {
+            personDetailedViewModel.fetch()
+            print("💯💯💯💯")
         }
         .sectionStyle()
         .sheet(isPresented: $showImageSheet) {

@@ -54,7 +54,7 @@ struct CampusApp: App {
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
-                    HomeView(model: model)
+                    HomeScreen(model: model)
                         .overlay(NavigationBarView(model: model))
                 }
                 .navigationViewStyle(.stack)
