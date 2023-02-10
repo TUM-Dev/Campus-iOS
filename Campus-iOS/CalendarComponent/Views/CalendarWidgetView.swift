@@ -18,7 +18,7 @@ struct CalendarWidgetView: View {
     @Binding var refresh: Bool
     
     init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model, service: CalendarService()))  // Fetches in init.
+        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model, service: CalendarService()))
         self._size = State(initialValue: size)
         self.initialSize = size
         self.model = model
