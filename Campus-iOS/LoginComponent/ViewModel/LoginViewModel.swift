@@ -20,8 +20,7 @@ class LoginViewModel: ObservableObject {
     private static let hapticFeedbackGenerator = UINotificationFeedbackGenerator()
     
     var model: Model
-//    var loginController = AuthenticationHandler()
-    var loginController2 = AuthenticationHandler2()
+    var loginController = AuthenticationHandler()
     
     var isContinueEnabled: Bool {
         let firstTextFieldValid = self.firstTextField.allSatisfy({$0.isLetter}) && self.firstTextField.count == 2
@@ -39,13 +38,13 @@ class LoginViewModel: ObservableObject {
         self.model = model
     }
     
-    func loginWithContinue2(callback: @escaping (Result<Bool,Error>) -> Void) async {
+    func loginWithContinue(callback: @escaping (Result<Bool,Error>) -> Void) async {
         guard let tumID = tumID else {
             callback(.failure(LoginError.serverError(message: "No TUM ID")))
             return
         }
         
-        await loginController2.createToken(tumID: tumID, completion: { result in
+        await loginController.createToken(tumID: tumID, completion: { result in
             switch result {
             case .success:
                 DispatchQueue.main.async {
@@ -60,11 +59,11 @@ class LoginViewModel: ObservableObject {
     }
     
     func loginWithContinueWithoutTumID() {
-        loginController2.skipLogin()
+        loginController.skipLogin()
     }
     
     func checkAuthorization(callback: @escaping (Result<Bool,Error>) -> Void) async {
-        await loginController2.confirmToken { result in
+        await loginController.confirmToken { result in
             switch result {
             case .success:
                 #if !targetEnvironment(macCatalyst)

@@ -21,7 +21,7 @@ class RoomFinderViewModel: ObservableObject {
         }
         
         do {
-            self.result = try await MainAPI.makeRequest(endpoint: TUMCabeAPI2.roomSearch(query: searchString))
+            self.result = try await MainAPI.makeRequest(endpoint: TUMCabeAPI.roomSearch(query: searchString))
             self.errorMessage = ""
         } catch {
             print(error)

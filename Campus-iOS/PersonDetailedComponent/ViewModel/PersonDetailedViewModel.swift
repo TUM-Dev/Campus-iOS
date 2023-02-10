@@ -47,7 +47,7 @@ class PersonDetailedViewModel: ObservableObject {
             
             if case .Person(let person) = type {
                 self.state = .success(
-                    data: try await service.fetch(for: person.nr, token: token, forcedRefresh: forcedRefresh)
+                    data: try await service.fetch(for: person.obfuscatedID, token: token, forcedRefresh: forcedRefresh)
                 )
             }
             if case .Profile(let profile) = type, let obfuscatedID = profile.obfuscatedID {

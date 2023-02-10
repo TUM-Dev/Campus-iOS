@@ -12,7 +12,7 @@ struct CafeteriasService: ServiceProtocol {
     typealias T = Cafeteria
     
     func fetch(forcedRefresh: Bool) async throws -> [Cafeteria] {
-        let endpoint = EatAPI2.canteens
+        let endpoint = EatAPI.canteens
         
         var response: [Cafeteria] = try await MainAPI.makeRequest(endpoint: endpoint)
         
@@ -25,7 +25,7 @@ struct CafeteriasService: ServiceProtocol {
         return response
     }
     
-    func fetch(eatAPI: EatAPI2, queueStatusApi: String, forcedRefresh: Bool) async throws -> Queue {
+    func fetch(eatAPI: EatAPI, queueStatusApi: String, forcedRefresh: Bool) async throws -> Queue {
         if !forcedRefresh, let data = MainAPI.cache.value(forKey: queueStatusApi), let typedData = data as? Queue {
             return typedData
         } else {
@@ -37,7 +37,7 @@ struct CafeteriasService: ServiceProtocol {
                 throw NetworkingError.deviceIsOffline
             }
             
-            if let error = try? eatAPI.decode(EatAPI2.error, from: data) {
+            if let error = try? eatAPI.decode(EatAPI.error, from: data) {
                 print(error)
                 throw error
             }
@@ -52,7 +52,7 @@ struct CafeteriasService: ServiceProtocol {
                 
             } catch {
                 print(error)
-                throw EatAPI2.error.init(message: error.localizedDescription)
+                throw EatAPI.error.init(message: error.localizedDescription)
             }
         }
     }

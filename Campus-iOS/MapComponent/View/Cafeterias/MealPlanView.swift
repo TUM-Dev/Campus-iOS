@@ -8,57 +8,6 @@
 import SwiftUI
 import Alamofire
 
-struct MealPlanScreen: View {
-    @StateObject var vm: MealPlanViewModel
-    
-    init(cafeteria: Cafeteria) {
-        self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
-    }
-    
-    var body: some View {
-        Group {
-            switch vm.state {
-            case .success(let menus):
-                if let firstMenu = menus.first {
-                    VStack {
-                        MealPlanView(menus: menus, cafeteria: vm.cafeteria, selectedMenu: firstMenu)                    .refreshable {
-                            await vm.getMenus()
-                        }
-                    }
-                }
-            case .loading, .na:
-                LoadingView(text: "Fetching Menus")
-            case .failed(let error):
-                FailedView(
-                    errorDescription: error.localizedDescription,
-                    retryClosure: vm.getMenus
-                )
-            }
-        }.task {
-            await vm.getMenus()
-        }.alert(
-            "Error while fetching Menus",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getMenus(forcedRefresh: true)
-                    }
-                }
-        
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? EatAPIError {
-                        Text(apiError.errorDescription ?? "EatAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
-    }
-}
-
 struct MealPlanView: View {
     @Environment(\.colorScheme) var colorScheme
     let menus: [Menu]

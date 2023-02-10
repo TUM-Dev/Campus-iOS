@@ -10,7 +10,7 @@ import Foundation
 struct DishService {
     func fetch(forcedRefresh: Bool) async -> [String: DishLabel]? {
         do {
-            let response: [DishLabel] = try await MainAPI.makeRequest(endpoint: EatAPI2.labels, forcedRefresh: forcedRefresh)
+            let response: [DishLabel] = try await MainAPI.makeRequest(endpoint: EatAPI.labels, forcedRefresh: forcedRefresh)
             var labels = [String: DishLabel]()
             for dishLabel in response {
                 labels[dishLabel.name] = dishLabel

@@ -37,7 +37,7 @@ class StudyRoomViewModel: ObservableObject {
     
     func getImageURL(for room: StudyRoom, imageMappingId: Int) -> URL? {
         if let raumNr = room.raum_nr_architekt {
-            return try? TUMCabeAPI2.mapImage(room: raumNr, id: imageMappingId).asURLRequest().urlRequest?.url
+            return try? TUMCabeAPI.mapImage(room: raumNr, id: imageMappingId).asURLRequest().urlRequest?.url
         } else {
             return nil
         }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TUMSexyScreen: View {
-    @StateObject var vm = TUMSexyViewModel2()
+    @StateObject var vm = TUMSexyViewModel()
     
     var body: some View {
         Group {

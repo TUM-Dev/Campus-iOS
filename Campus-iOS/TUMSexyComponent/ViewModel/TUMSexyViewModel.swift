@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class TUMSexyViewModel2: ObservableObject {
+class TUMSexyViewModel: ObservableObject {
     @Published var state: APIState<[TUMSexyLink]> = .na
     @Published var hasError: Bool = false
     

@@ -15,11 +15,11 @@ protocol LectureDetailsServiceProtocol {
 
 struct LectureDetailsService: LectureDetailsServiceProtocol {
     func fetch(token: String, lvNr: UInt64, forcedRefresh: Bool = false) async throws -> LectureDetails {
-        let response: TUMOnlineAPI2.Response<LectureDetails> =
+        let response: TUMOnlineAPI.Response<LectureDetails> =
             try await
                 MainAPI
                     .makeRequest(
-                        endpoint: TUMOnlineAPI2.lectureDetails(lvNr: String(lvNr)),
+                        endpoint: TUMOnlineAPI.lectureDetails(lvNr: String(lvNr)),
                         token: token,
                         forcedRefresh: forcedRefresh
                     )

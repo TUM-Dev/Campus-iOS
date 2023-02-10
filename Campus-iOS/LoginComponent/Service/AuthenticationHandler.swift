@@ -33,7 +33,7 @@ enum LoginError: LocalizedError {
     }
 }
 
-class AuthenticationHandler2 {
+class AuthenticationHandler {
     private static let keychain = Keychain(service: "de.tum.campusapp")
         .synchronizable(true)
         .accessibility(.afterFirstUnlock)
@@ -64,7 +64,7 @@ class AuthenticationHandler2 {
         do {
             let tokenName = "TCA - \(await UIDevice.current.name)"
             
-            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.tokenRequest(tumID: tumID, tokenName: tokenName))
+            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
             print(token.value)
             self.credentials = Credentials.tumID(tumID: tumID, token: token.value)
             completion(.success(token.value))
@@ -82,7 +82,7 @@ class AuthenticationHandler2 {
             case .tumID(tumID: _, token: let token),
                     .tumIDAndKey(tumID: _, token: let token, key: _):
                 do {
-                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.tokenConfirmation, token: token)
+                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token)
                     if confirmation.value {
                         callback(.success(true))
                     } else {

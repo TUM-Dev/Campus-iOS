@@ -107,7 +107,7 @@ struct LoginView: View {
                             Button {
                                 if logInState != .loggedIn {
                                     Task {
-                                        await self.viewModel.loginWithContinue2 { result in
+                                        await self.viewModel.loginWithContinue { result in
                                             switch result {
                                             case .success:
                                                 withAnimation() {

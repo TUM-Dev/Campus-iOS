@@ -9,7 +9,7 @@ import Foundation
 
 struct CalendarService: ServiceTokenProtocol {
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [CalendarEvent] {
-        let response: TUMOnlineAPI2.CalendarResponse = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.calendar, token: token, forcedRefresh: forcedRefresh)
+        let response: TUMOnlineAPI.CalendarResponse = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.calendar, token: token, forcedRefresh: forcedRefresh)
         
         return response.event
     }

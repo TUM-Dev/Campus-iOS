@@ -10,14 +10,14 @@ import Foundation
 struct NewsService: ServiceProtocol {
     func fetch(forcedRefresh: Bool = false) async throws -> [NewsSource] {
         
-        var newsSourceResponse: [NewsSource] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI2.newsSources, forcedRefresh: forcedRefresh)
+        var newsSourceResponse: [NewsSource] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI.newsSources, forcedRefresh: forcedRefresh)
         
         for i in newsSourceResponse.indices {
             guard let idDescription = newsSourceResponse[i].id?.description else {
                 break
             }
             
-            let news: [News] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI2.news(source: String(idDescription)))
+            let news: [News] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI.news(source: String(idDescription)))
             
             newsSourceResponse[i].news = news
         }

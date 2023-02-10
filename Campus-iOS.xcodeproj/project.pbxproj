@@ -47,7 +47,7 @@
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F04F16E297A9A700085F273 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F16D297A9A700085F273 /* CalendarService.swift */; };
-		1F04F171297AA5F40085F273 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F170297AA5F30085F273 /* ServiceProtocols.swift */; };
+		1F04F171297AA5F40085F273 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F170297AA5F30085F273 /* Service.swift */; };
 		1F04F173297AD41B0085F273 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F172297AD41B0085F273 /* CalendarEvent.swift */; };
 		1F04F175297AD4280085F273 /* CalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F174297AD4280085F273 /* CalendarScreen.swift */; };
 		1F04F179297AED150085F273 /* LectureSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F178297AED150085F273 /* LectureSearchService.swift */; };
@@ -56,7 +56,20 @@
 		1F04F185297C3F990085F273 /* PersonDetailedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F184297C3F990085F273 /* PersonDetailedService.swift */; };
 		1F04F18A297C85120085F273 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F189297C85120085F273 /* Token.swift */; };
 		1F04F18C297C85190085F273 /* Confirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F04F18B297C85190085F273 /* Confirmation.swift */; };
-		1F183A172979D19000B5D22D /* APIErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F183A162979D19000B5D22D /* APIErrors.swift */; };
+		1F183A172979D19000B5D22D /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F183A162979D19000B5D22D /* APIError.swift */; };
+		1F189E8D29968CE50056BBD8 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E8C29968CE50056BBD8 /* TUMOnlineAPI.swift */; };
+		1F189E8F29968CFC0056BBD8 /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E8E29968CFC0056BBD8 /* TUMCabeAPI.swift */; };
+		1F189E9129968D130056BBD8 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9029968D130056BBD8 /* EatAPI.swift */; };
+		1F189E9329968D260056BBD8 /* TUMDevAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9229968D260056BBD8 /* TUMDevAppAPI.swift */; };
+		1F189E9529968D330056BBD8 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9429968D330056BBD8 /* TUMSexyAPI.swift */; };
+		1F189E9729968D490056BBD8 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9629968D490056BBD8 /* MVGAPI.swift */; };
+		1F189E9A29968D790056BBD8 /* TUMOnlineAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9929968D790056BBD8 /* TUMOnlineAPIError.swift */; };
+		1F189E9C29968D880056BBD8 /* TUMCabeAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9B29968D880056BBD8 /* TUMCabeAPIError.swift */; };
+		1F189E9E29968D9B0056BBD8 /* EatAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9D29968D9B0056BBD8 /* EatAPIError.swift */; };
+		1F189EA029968DA90056BBD8 /* TUMDevAppAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189E9F29968DA90056BBD8 /* TUMDevAppAPIError.swift */; };
+		1F189EA229968DB90056BBD8 /* TUMSexyAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189EA129968DB90056BBD8 /* TUMSexyAPIError.swift */; };
+		1F189EA429968DE60056BBD8 /* MVGAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189EA329968DE60056BBD8 /* MVGAPIError.swift */; };
+		1F189EA729968E5C0056BBD8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189EA629968E5C0056BBD8 /* API.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
 		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
@@ -81,6 +94,9 @@
 		1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */; };
 		1F69CE4E297EDF12005032CE /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */; };
 		1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA538ED297560CD004C70A8 /* MainAPI.swift */; };
+		1FACF3F92996A49300A0B8AC /* TUMDevAppAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACF3F82996A49300A0B8AC /* TUMDevAppAPIOld.swift */; };
+		1FACF3FB2996A65700A0B8AC /* MealPlanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACF3FA2996A65700A0B8AC /* MealPlanService.swift */; };
+		1FACF3FD2996E34200A0B8AC /* MealPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
@@ -160,7 +176,6 @@
 		3654F364285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F35E285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift */; };
 		3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F35F285168D2008AD5DC /* RoomImageMapping.swift */; };
 		3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */; };
-		3654F368285169AC008AD5DC /* TUMDevAppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F367285169AC008AD5DC /* TUMDevAppAPI.swift */; };
 		3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F36B2851710E008AD5DC /* RoomFinderViewModel.swift */; };
 		3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F36C2851710E008AD5DC /* RoomFinderMapViewModel.swift */; };
 		3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F36E2851710E008AD5DC /* FoundRoom.swift */; };
@@ -198,15 +213,15 @@
 		36AD5CFA27B9711B00DAE143 /* LectureSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */; };
 		36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */; };
 		36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */; };
-		36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */; };
-		36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */; };
-		36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BD27A2FD7700FEBD98 /* MVGAPI.swift */; };
-		36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BE27A2FD7700FEBD98 /* NetworkingAPI.swift */; };
-		36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPI.swift */; };
+		36AF61D927A2FD7800FEBD98 /* TUMSexyAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BB27A2FD7700FEBD98 /* TUMSexyAPIOld.swift */; };
+		36AF61DA27A2FD7800FEBD98 /* EatAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BC27A2FD7700FEBD98 /* EatAPIOld.swift */; };
+		36AF61DB27A2FD7800FEBD98 /* MVGAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BD27A2FD7700FEBD98 /* MVGAPIOld.swift */; };
+		36AF61DC27A2FD7800FEBD98 /* NetworkingAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BE27A2FD7700FEBD98 /* NetworkingAPIOld.swift */; };
+		36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPIOld.swift */; };
 		36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C027A2FD7700FEBD98 /* APIResponse.swift */; };
-		36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */; };
+		36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */; };
 		36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C227A2FD7700FEBD98 /* Cache.swift */; };
-		36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */; };
+		36AF61E127A2FD7800FEBD98 /* TUMCabeAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */; };
 		36AF61E227A2FD7800FEBD98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C527A2FD7700FEBD98 /* Constants.swift */; };
 		36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C627A2FD7700FEBD98 /* APIConstants.swift */; };
 		36AF61E427A2FD7800FEBD98 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C827A2FD7700FEBD98 /* NetworkingError.swift */; };
@@ -335,7 +350,7 @@
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F04F16D297A9A700085F273 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
-		1F04F170297AA5F30085F273 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		1F04F170297AA5F30085F273 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1F04F172297AD41B0085F273 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 		1F04F174297AD4280085F273 /* CalendarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarScreen.swift; sourceTree = "<group>"; };
 		1F04F178297AED150085F273 /* LectureSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchService.swift; sourceTree = "<group>"; };
@@ -344,7 +359,20 @@
 		1F04F184297C3F990085F273 /* PersonDetailedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedService.swift; sourceTree = "<group>"; };
 		1F04F189297C85120085F273 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		1F04F18B297C85190085F273 /* Confirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confirmation.swift; sourceTree = "<group>"; };
-		1F183A162979D19000B5D22D /* APIErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrors.swift; sourceTree = "<group>"; };
+		1F183A162979D19000B5D22D /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		1F189E8C29968CE50056BBD8 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
+		1F189E8E29968CFC0056BBD8 /* TUMCabeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
+		1F189E9029968D130056BBD8 /* EatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
+		1F189E9229968D260056BBD8 /* TUMDevAppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPI.swift; sourceTree = "<group>"; };
+		1F189E9429968D330056BBD8 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
+		1F189E9629968D490056BBD8 /* MVGAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
+		1F189E9929968D790056BBD8 /* TUMOnlineAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPIError.swift; sourceTree = "<group>"; };
+		1F189E9B29968D880056BBD8 /* TUMCabeAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPIError.swift; sourceTree = "<group>"; };
+		1F189E9D29968D9B0056BBD8 /* EatAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatAPIError.swift; sourceTree = "<group>"; };
+		1F189E9F29968DA90056BBD8 /* TUMDevAppAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPIError.swift; sourceTree = "<group>"; };
+		1F189EA129968DB90056BBD8 /* TUMSexyAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyAPIError.swift; sourceTree = "<group>"; };
+		1F189EA329968DE60056BBD8 /* MVGAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVGAPIError.swift; sourceTree = "<group>"; };
+		1F189EA629968E5C0056BBD8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
 		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
@@ -367,6 +395,9 @@
 		1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyService.swift; sourceTree = "<group>"; };
 		1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyLink.swift; sourceTree = "<group>"; };
 		1FA538ED297560CD004C70A8 /* MainAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
+		1FACF3F82996A49300A0B8AC /* TUMDevAppAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPIOld.swift; sourceTree = "<group>"; };
+		1FACF3FA2996A65700A0B8AC /* MealPlanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanService.swift; sourceTree = "<group>"; };
+		1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanScreen.swift; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
@@ -448,7 +479,6 @@
 		3654F35E285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapImagesHorizontalScrollingView.swift; sourceTree = "<group>"; };
 		3654F35F285168D2008AD5DC /* RoomImageMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomImageMapping.swift; sourceTree = "<group>"; };
 		3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomAttribute.swift; sourceTree = "<group>"; };
-		3654F367285169AC008AD5DC /* TUMDevAppAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMDevAppAPI.swift; sourceTree = "<group>"; };
 		3654F36B2851710E008AD5DC /* RoomFinderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderViewModel.swift; sourceTree = "<group>"; };
 		3654F36C2851710E008AD5DC /* RoomFinderMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomFinderMapViewModel.swift; sourceTree = "<group>"; };
 		3654F36E2851710E008AD5DC /* FoundRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundRoom.swift; sourceTree = "<group>"; };
@@ -489,15 +519,15 @@
 		36AD5CF927B9711B00DAE143 /* LectureSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureSearchView.swift; sourceTree = "<group>"; };
 		36AD5CFB27B974F100DAE143 /* TuitionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionScreen.swift; sourceTree = "<group>"; };
 		36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPI.swift; sourceTree = "<group>"; };
-		36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPI.swift; sourceTree = "<group>"; };
-		36AF61BD27A2FD7700FEBD98 /* MVGAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGAPI.swift; sourceTree = "<group>"; };
-		36AF61BE27A2FD7700FEBD98 /* NetworkingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
-		36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusOnlineAPI.swift; sourceTree = "<group>"; };
+		36AF61BB27A2FD7700FEBD98 /* TUMSexyAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMSexyAPIOld.swift; sourceTree = "<group>"; };
+		36AF61BC27A2FD7700FEBD98 /* EatAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EatAPIOld.swift; sourceTree = "<group>"; };
+		36AF61BD27A2FD7700FEBD98 /* MVGAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVGAPIOld.swift; sourceTree = "<group>"; };
+		36AF61BE27A2FD7700FEBD98 /* NetworkingAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingAPIOld.swift; sourceTree = "<group>"; };
+		36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusOnlineAPIOld.swift; sourceTree = "<group>"; };
 		36AF61C027A2FD7700FEBD98 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
-		36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPI.swift; sourceTree = "<group>"; };
+		36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPIOld.swift; sourceTree = "<group>"; };
 		36AF61C227A2FD7700FEBD98 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabeAPI.swift; sourceTree = "<group>"; };
+		36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabeAPIOld.swift; sourceTree = "<group>"; };
 		36AF61C527A2FD7700FEBD98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		36AF61C627A2FD7700FEBD98 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		36AF61C827A2FD7700FEBD98 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
@@ -686,14 +716,14 @@
 			isa = PBXGroup;
 			children = (
 				36AF61C027A2FD7700FEBD98 /* APIResponse.swift */,
-				3654F367285169AC008AD5DC /* TUMDevAppAPI.swift */,
-				36AF61BB27A2FD7700FEBD98 /* TUMSexyAPI.swift */,
-				36AF61BC27A2FD7700FEBD98 /* EatAPI.swift */,
-				36AF61BD27A2FD7700FEBD98 /* MVGAPI.swift */,
-				36AF61BE27A2FD7700FEBD98 /* NetworkingAPI.swift */,
-				36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPI.swift */,
-				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */,
-				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
+				36AF61BB27A2FD7700FEBD98 /* TUMSexyAPIOld.swift */,
+				1FACF3F82996A49300A0B8AC /* TUMDevAppAPIOld.swift */,
+				36AF61BC27A2FD7700FEBD98 /* EatAPIOld.swift */,
+				36AF61BD27A2FD7700FEBD98 /* MVGAPIOld.swift */,
+				36AF61BE27A2FD7700FEBD98 /* NetworkingAPIOld.swift */,
+				36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPIOld.swift */,
+				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */,
+				36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */,
 			);
 			path = "Old APIs";
 			sourceTree = "<group>";
@@ -772,12 +802,50 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1F189E8B29968CD70056BBD8 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				1F189E8C29968CE50056BBD8 /* TUMOnlineAPI.swift */,
+				1F189E8E29968CFC0056BBD8 /* TUMCabeAPI.swift */,
+				1F189E9029968D130056BBD8 /* EatAPI.swift */,
+				1F189E9229968D260056BBD8 /* TUMDevAppAPI.swift */,
+				1F189E9429968D330056BBD8 /* TUMSexyAPI.swift */,
+				1F189E9629968D490056BBD8 /* MVGAPI.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		1F189E9829968D620056BBD8 /* APIErrors */ = {
+			isa = PBXGroup;
+			children = (
+				1F189E9929968D790056BBD8 /* TUMOnlineAPIError.swift */,
+				1F189E9B29968D880056BBD8 /* TUMCabeAPIError.swift */,
+				1F189E9D29968D9B0056BBD8 /* EatAPIError.swift */,
+				1F189E9F29968DA90056BBD8 /* TUMDevAppAPIError.swift */,
+				1F189EA129968DB90056BBD8 /* TUMSexyAPIError.swift */,
+				1F189EA329968DE60056BBD8 /* MVGAPIError.swift */,
+			);
+			path = APIErrors;
+			sourceTree = "<group>";
+		};
+		1F189EA529968E150056BBD8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1FA538ED297560CD004C70A8 /* MainAPI.swift */,
+				1F189EA629968E5C0056BBD8 /* API.swift */,
+				1F183A162979D19000B5D22D /* APIError.swift */,
+				1F04F170297AA5F30085F273 /* Service.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		1F4C836528300E6F006971C0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				1F4C836628300E79006971C0 /* CafeteriasService.swift */,
 				3654F357285167C3008AD5DC /* StudyRoomsService.swift */,
 				1F69CE41297EC94E005032CE /* DishService.swift */,
+				1FACF3FA2996A65700A0B8AC /* MealPlanService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -967,6 +1035,7 @@
 				36108BD227A304B5007DC62D /* MealPlanView.swift */,
 				36108BD627A304B5007DC62D /* MenuView.swift */,
 				1F69CE45297EC99D005032CE /* DishView.swift */,
+				1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */,
 			);
 			path = Cafeterias;
 			sourceTree = "<group>";
@@ -1384,10 +1453,10 @@
 		36AF61BA27A2FD7700FEBD98 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1FA538ED297560CD004C70A8 /* MainAPI.swift */,
-				1F183A162979D19000B5D22D /* APIErrors.swift */,
+				1F189EA529968E150056BBD8 /* Protocols */,
+				1F189E8B29968CD70056BBD8 /* APIs */,
+				1F189E9829968D620056BBD8 /* APIErrors */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
-				1F04F170297AA5F30085F273 /* ServiceProtocols.swift */,
 				1F04F16F297AA1E00085F273 /* Old APIs */,
 			);
 			path = Networking;
@@ -1929,28 +1998,34 @@
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				0805DB7928C933AE00712FF2 /* Operators.swift in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
-				36AF61D927A2FD7800FEBD98 /* TUMSexyAPI.swift in Sources */,
+				36AF61D927A2FD7800FEBD98 /* TUMSexyAPIOld.swift in Sources */,
+				1F189E9329968D260056BBD8 /* TUMDevAppAPI.swift in Sources */,
 				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
 				3654F358285167C3008AD5DC /* StudyRoomsService.swift in Sources */,
 				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
-				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPI.swift in Sources */,
+				1F189EA729968E5C0056BBD8 /* API.swift in Sources */,
+				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPIOld.swift in Sources */,
 				3654F37B2851710E008AD5DC /* RoomFinderListView.swift in Sources */,
 				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
-				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
+				36AF61E127A2FD7800FEBD98 /* TUMCabeAPIOld.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
+				1FACF3F92996A49300A0B8AC /* TUMDevAppAPIOld.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
 				0815249E28E4A6310098A2C3 /* Date+daysBetween.swift in Sources */,
 				1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */,
 				36AD5CFA27B9711B00DAE143 /* LectureSearchView.swift in Sources */,
+				1F189E9529968D330056BBD8 /* TUMSexyAPI.swift in Sources */,
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
+				1F189E9729968D490056BBD8 /* MVGAPI.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
+				1F189E9129968D130056BBD8 /* EatAPI.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
 				36BB6F6027AFCDFA00F224AB /* PersonSearchViewModel.swift in Sources */,
 				36982BD627A251A700515847 /* NewsCardsHorizontalScrollingView.swift in Sources */,
@@ -1971,15 +2046,16 @@
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
 				36203E8B2761C6EC00C24658 /* TUMSplashScreen.swift in Sources */,
-				36AF61DA27A2FD7800FEBD98 /* EatAPI.swift in Sources */,
+				36AF61DA27A2FD7800FEBD98 /* EatAPIOld.swift in Sources */,
 				36108BEF27A304B6007DC62D /* MapContentView.swift in Sources */,
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
 				1F69CE44297EC97E005032CE /* DishViewModel.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
-				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
+				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,
+				1F189E9E29968D9B0056BBD8 /* EatAPIError.swift in Sources */,
 				08FAFD20288DEE3B006A0E27 /* Widget.swift in Sources */,
 				36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */,
 				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
@@ -2009,15 +2085,17 @@
 				36108BBB27A3046B007DC62D /* LecturesScreen.swift in Sources */,
 				36BB6F6427AFCFFB00F224AB /* PersonDetailedViewModel.swift in Sources */,
 				36AF61E427A2FD7800FEBD98 /* NetworkingError.swift in Sources */,
+				1FACF3FB2996A65700A0B8AC /* MealPlanService.swift in Sources */,
 				36BB6F8327B39B4300F224AB /* LectureSearchScreen.swift in Sources */,
 				36108BFA27A30517007DC62D /* Movie.swift in Sources */,
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				1F69CE37297DCA22005032CE /* NewsScreen.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
+				1F189E9A29968D790056BBD8 /* TUMOnlineAPIError.swift in Sources */,
 				1F69CE40297DDCD3005032CE /* StudyRoomDetailsScreen.swift in Sources */,
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
-				1F04F171297AA5F40085F273 /* ServiceProtocols.swift in Sources */,
+				1F04F171297AA5F40085F273 /* Service.swift in Sources */,
 				08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
 				0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */,
@@ -2025,7 +2103,6 @@
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
 				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
-				3654F368285169AC008AD5DC /* TUMDevAppAPI.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				1F04F16E297A9A700085F273 /* CalendarService.swift in Sources */,
 				1F04F17F297BDF1E0085F273 /* PersonSearchService.swift in Sources */,
@@ -2035,7 +2112,7 @@
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
 				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
-				1F183A172979D19000B5D22D /* APIErrors.swift in Sources */,
+				1F183A172979D19000B5D22D /* APIError.swift in Sources */,
 				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
@@ -2043,6 +2120,8 @@
 				36AD5CF827B96AD200DAE143 /* PersonSearchView.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
 				1F04F173297AD41B0085F273 /* CalendarEvent.swift in Sources */,
+				1F189E9C29968D880056BBD8 /* TUMCabeAPIError.swift in Sources */,
+				1F189E8F29968CFC0056BBD8 /* TUMCabeAPI.swift in Sources */,
 				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
@@ -2066,7 +2145,7 @@
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
-				36AF61DC27A2FD7800FEBD98 /* NetworkingAPI.swift in Sources */,
+				36AF61DC27A2FD7800FEBD98 /* NetworkingAPIOld.swift in Sources */,
 				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
 				0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
@@ -2095,6 +2174,7 @@
 				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
+				1F189EA229968DB90056BBD8 /* TUMSexyAPIError.swift in Sources */,
 				08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
@@ -2104,10 +2184,14 @@
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
+				1F189E8D29968CE50056BBD8 /* TUMOnlineAPI.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,
-				36AF61DB27A2FD7800FEBD98 /* MVGAPI.swift in Sources */,
+				36AF61DB27A2FD7800FEBD98 /* MVGAPIOld.swift in Sources */,
+				1FACF3FD2996E34200A0B8AC /* MealPlanScreen.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
+				1F189EA029968DA90056BBD8 /* TUMDevAppAPIError.swift in Sources */,
+				1F189EA429968DE60056BBD8 /* MVGAPIError.swift in Sources */,
 				36FF90652773BB8200F4C785 /* Extensions.swift in Sources */,
 				36108C1427A307F9007DC62D /* GradeColor.swift in Sources */,
 				36108BBD27A3046B007DC62D /* Lecture.swift in Sources */,

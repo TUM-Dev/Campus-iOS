@@ -11,13 +11,13 @@ import UIKit
 
 struct ProfileService {
     func fetch(token: String, forcedRefresh: Bool) async throws -> Profile? {
-        let response : TUMOnlineAPI2.Response<Profile> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.identify, token: token, forcedRefresh: forcedRefresh)
+        let response : TUMOnlineAPI.Response<Profile> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.identify, token: token, forcedRefresh: forcedRefresh)
         
         return response.row.first
     }
     
     func fetch(token: String, forcedRefresh: Bool) async throws -> Tuition? {
-        let response : TUMOnlineAPI2.Response<Tuition> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.tuitionStatus, token: token, forcedRefresh: forcedRefresh)
+        let response : TUMOnlineAPI.Response<Tuition> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tuitionStatus, token: token, forcedRefresh: forcedRefresh)
         
         return response.row.first
     }

@@ -35,7 +35,7 @@ public class Model: ObservableObject {
         }
     }
     
-    @Published var loginController = AuthenticationHandler2()
+    @Published var loginController = AuthenticationHandler()
     @Published var isUserAuthenticated = false
 //    @Published var profile: ProfileViewModel = ProfileViewModel()
     

@@ -96,16 +96,16 @@ class ProfileViewModel: ObservableObject {
             return nil
         }
         
-        let endpoint = TUMOnlineAPI2.profileImage(personGroup: personGroup, id: personId)
+        let endpoint = TUMOnlineAPI.profileImage(personGroup: personGroup, id: personId)
         
-        if !forcedRefresh, let imageData = TUMOnlineAPI2.imageCache.value(forKey: endpoint.basePathsParametersURL), let uiImage = UIImage(data: imageData) {
+        if !forcedRefresh, let imageData = TUMOnlineAPI.imageCache.value(forKey: endpoint.basePathsParametersURL), let uiImage = UIImage(data: imageData) {
             return Image(uiImage: uiImage)
         } else {
             var image: Image?
             
-            TUMOnlineAPI2.profileImage(personGroup: personGroup, id: personId).asRequest(token: token).responseData { response in
+            TUMOnlineAPI.profileImage(personGroup: personGroup, id: personId).asRequest(token: token).responseData { response in
                 if let imageData = response.value, let uiImage = UIImage(data: imageData) {
-                    TUMOnlineAPI2.imageCache.setValue(imageData, forKey: endpoint.basePathsParametersURL, cost: imageData.count)
+                    TUMOnlineAPI.imageCache.setValue(imageData, forKey: endpoint.basePathsParametersURL, cost: imageData.count)
                     image = Image(uiImage: uiImage)
                     return
                 }

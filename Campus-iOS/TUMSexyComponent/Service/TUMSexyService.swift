@@ -11,7 +11,7 @@ struct TUMSexyService: ServiceProtocol {
     typealias T = TUMSexyLink
     
     func fetch(forcedRefresh: Bool) async throws -> [TUMSexyLink] {
-        let response: [String : TUMSexyLink] = try await MainAPI.makeRequest(endpoint: TUMSexyAPI2.standard, forcedRefresh: forcedRefresh)
+        let response: [String : TUMSexyLink] = try await MainAPI.makeRequest(endpoint: TUMSexyAPI.standard, forcedRefresh: forcedRefresh)
         
         var links = [TUMSexyLink]()
         response.values.forEach {

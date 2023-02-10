@@ -9,7 +9,7 @@ import Foundation
 
 struct PersonDetailedService {
     func fetch(for id: String, token: String, forcedRefresh: Bool) async throws -> PersonDetails {
-        let response : PersonDetails = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI2.personDetails(identNumber: id), token: token, forcedRefresh: forcedRefresh)
+        let response : PersonDetails = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.personDetails(identNumber: id), token: token, forcedRefresh: forcedRefresh)
         
         return response
     }
