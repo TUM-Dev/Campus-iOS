@@ -27,7 +27,7 @@ struct CafeteriaView: View {
         if let canteen = self.selectedCanteen {
             VStack {
                 HStack{
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading) {
                         Text(canteen.name)
                             .bold()
                             .font(.title3)

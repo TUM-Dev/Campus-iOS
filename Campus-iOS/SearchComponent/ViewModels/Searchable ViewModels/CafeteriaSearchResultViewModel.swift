@@ -11,8 +11,11 @@ import Foundation
 class CafeteriasSearchResultViewModel: ObservableObject {
     
     @Published var results = [(cafeteria: Cafeteria, distances: Distances)]()
-    private let cafeteriaService: CafeteriasServiceProtocol = CafeteriasService()
+    let service: CafeteriasServiceProtocol
     
+    init(service: CafeteriasServiceProtocol) {
+        self.service = service
+    }
     
     func cafeteriasSearch(for query: String) async {
         
@@ -35,7 +38,7 @@ class CafeteriasSearchResultViewModel: ObservableObject {
         //TODO: Error handling instead of returning an empty array
         var cafeterias = [Cafeteria]()
         do {
-            cafeterias = try await cafeteriaService.fetch(forcedRefresh: false)
+            cafeterias = try await service.fetch(forcedRefresh: false)
             return cafeterias
         } catch {
             print("No cafeterias were fetched")

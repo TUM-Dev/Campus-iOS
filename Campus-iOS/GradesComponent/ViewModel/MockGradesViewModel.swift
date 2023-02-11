@@ -19,7 +19,7 @@ class MockGradesViewModel: GradesViewModel {
     override init(model: Model, service: GradesServiceProtocol) {
         super.init(model: model, service: service)
         
-        self.state = .success(data: Grade.dummyDataAll)
+        self.state = .success(data: Grade.previewData)
     }
 }
 

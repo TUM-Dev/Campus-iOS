@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum ResultSize {
-    case big
-    case small
-}
-
 struct GradesSearchResultView: View {
     
     @StateObject var vm: GradesSearchResultViewModel
@@ -93,6 +88,6 @@ struct GradesSearchResultView_Previews: PreviewProvider {
 
 struct GradeService_Preview: GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade] {
-        return Grade.dummyDataAll
+        return Grade.previewData
     }
 }

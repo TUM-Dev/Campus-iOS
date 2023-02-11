@@ -210,11 +210,11 @@ struct GradeWidgetView_Previews: PreviewProvider {
         ScrollView {
             VStack {
                 HStack {
-                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.dummyDataAll.first))
+                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.previewData.first))
                     WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: nil))
                 }
-                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .rectangle))
-                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .bigSquare))
+                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.previewData, size: .rectangle))
+                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.previewData, size: .bigSquare))
                 WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: [], size: .rectangle))
             }
             .padding()

@@ -10,7 +10,7 @@ import SwiftUI
 import Alamofire
 
 final class MealPlanViewModel: ObservableObject {
-    private let cafeteria: Cafeteria
+    let cafeteria: Cafeteria
     private let endpoint = EatAPI.canteens
     private let sessionManager = Session.defaultSession
     
