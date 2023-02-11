@@ -20,6 +20,5 @@ struct SearchView<Content: View> : View {
         } else {
             content()
         }
-        
     }
 }

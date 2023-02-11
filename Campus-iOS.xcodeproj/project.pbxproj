@@ -742,7 +742,7 @@
 			children = (
 				1F504171295B82F900A62CA1 /* SearchView.swift */,
 				1F504175295B83AA00A62CA1 /* SearchResultView.swift */,
-				1F50417C295B844F00A62CA1 /* Searchable Views */,
+				1F50417C295B844F00A62CA1 /* SearchResultViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -756,7 +756,7 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		1F50417C295B844F00A62CA1 /* Searchable Views */ = {
+		1F50417C295B844F00A62CA1 /* SearchResultViews */ = {
 			isa = PBXGroup;
 			children = (
 				1F50417A295B844A00A62CA1 /* CafeteriaSearchResultView.swift */,
@@ -768,7 +768,7 @@
 				1F74DB342972B22F00B9143C /* LectureSearchResultView.swift */,
 				1F74DB382972B92D00B9143C /* PersonSearchResultView.swift */,
 			);
-			path = "Searchable Views";
+			path = SearchResultViews;
 			sourceTree = "<group>";
 		};
 		1F504183295B84CB00A62CA1 /* Types and Protocols */ = {

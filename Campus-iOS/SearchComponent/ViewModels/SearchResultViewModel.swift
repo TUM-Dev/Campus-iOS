@@ -12,7 +12,7 @@ import NaturalLanguage
 class SearchResultViewModel: ObservableObject {
     @Published var searchDataTypeResult = [(String, Double)]()
     @Published var orderedTypes = [SearchResultType]()
-    @ObservedObject var model: Model
+    let model: Model
     
     init(model: Model) {
         self.model = model

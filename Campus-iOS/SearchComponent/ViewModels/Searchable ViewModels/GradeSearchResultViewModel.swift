@@ -11,8 +11,8 @@ class GradesSearchResultViewModel: ObservableObject {
     @ObservedObject var vm: GradesViewModel
     @Published var results = [(grade: Grade, distance: Distances)]()
     
-    init(model: Model) {
-        self.vm = GradesViewModel(model: model, service: GradesService())
+    init(model: Model, service: GradesServiceProtocol) {
+        self.vm = GradesViewModel(model: model, service: service)
     }
     
     func gradesSearch(for query: String) async {

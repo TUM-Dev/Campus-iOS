@@ -28,7 +28,7 @@ class NewsSearchResultViewModel: ObservableObject {
     }
     
     func newsSearch(for query: String) async {
-        ///** The followin code is for all newsSources. Currently we only use TUMOnline due to lagginess **
+        ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
 
 //        guard let newsSources = await fetchNewsSources() else {
 //            return

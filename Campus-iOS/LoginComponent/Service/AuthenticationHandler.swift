@@ -34,7 +34,7 @@ enum LoginError: LocalizedError {
 }
 
 /// Handles authentication for TUMOnline, TUMCabe and the MVGAPI
-final class AuthenticationHandler: RequestAdapter, RequestRetrier {
+class AuthenticationHandler: RequestAdapter, RequestRetrier {
     typealias Completion = (Result<String,Error>) -> Void
 
     private let lock = NSLock()
@@ -217,7 +217,12 @@ final class AuthenticationHandler: RequestAdapter, RequestRetrier {
         #endif
         credentials = .noTumID
     }
+}
 
+class AuthenticationHandler_Preview: AuthenticationHandler {
+    override var credentials: Credentials? {
+        return .tumID(tumID: "Previe_TUMID", token: "Preview_Token")
+    }
 }
 
 

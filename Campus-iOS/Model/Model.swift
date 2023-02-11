@@ -84,3 +84,10 @@ public class Model: ObservableObject {
         self.profile = ProfileViewModel(model: self)
     }
 }
+
+public class Model_Preview: Model {
+    override init() {
+        super.init()
+        loginController = AuthenticationHandler_Preview()
+    }
+}
