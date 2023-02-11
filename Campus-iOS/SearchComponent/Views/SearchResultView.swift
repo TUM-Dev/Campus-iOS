@@ -45,7 +45,11 @@ struct SearchResultView: View {
                             }
                             
                         case .News:
-                            NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news), query: $query)
+                            if preview {
+                                NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query)
+                            } else {
+                                NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query)
+                            }
                             
                         case .StudyRoom:
                             StudyRoomSearchResultView(query: $query)
@@ -54,7 +58,11 @@ struct SearchResultView: View {
                             EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model))
                             
                         case .Movie:
-                            NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie), query: $query)
+                            if preview {
+                                NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService_Preview()), query: $query)
+                            } else {
+                                NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService()), query: $query)
+                            }
                         }
                     }
                     .cornerRadius(25)
@@ -82,6 +90,6 @@ struct SearchResultView: View {
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()), query: .constant(" Cafeteria Garching"))
+        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()), query: .constant("Movie "))
     }
 }

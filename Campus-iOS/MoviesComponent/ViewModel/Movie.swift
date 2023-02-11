@@ -77,7 +77,8 @@ struct Movie: Entity, Searchable {
         self.movieDescription = movieDescription
         self.rating = rating
         self.runtime = runtime
-        self.title = String(title.split(separator: ":")[1].dropFirst())
+//        self.title = String(title.split(separator: ":")[1].dropFirst())
+        self.title = title
         self.year = year
     }
     
@@ -131,11 +132,13 @@ extension Movie: Identifiable {
         date: Date.now,
         director: "Frank Darapant",
         genre: "Crime",
-        link: URL(string:"www.google.com"),
+        link: URL(string:"https://www.google.com"),
         movieDescription: "Yes",
         rating: "11/10",
         runtime: "194",
         title: "Shawshank Redemption",
         year: "2020"
     )
+    
+    static let previewData: [Movie] = [dummyData]
 }

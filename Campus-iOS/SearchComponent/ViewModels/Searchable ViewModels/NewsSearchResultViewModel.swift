@@ -20,11 +20,17 @@ class NewsSearchResultViewModel: ObservableObject {
     @Published var newsResults = [(news: News, distance: Distances)]()
     @Published var movieResults = [(movie: Movie, distance: Distances)]()
     private let newsSourceService = NewsSourceService()
-    private let newsService = NewsService()
-    private let movieService = MovieService()
+    private var newsService: NewsServiceProtocol? = nil
+    private var movieService: MovieServiceProtocol? = nil
     
-    init(vmType: VmType) {
+    init(vmType: VmType, newsService: NewsServiceProtocol) {
         self.vmType = vmType
+        self.newsService = newsService
+    }
+    
+    init(vmType: VmType, movieService: MovieServiceProtocol) {
+        self.vmType = vmType
+        self.movieService = movieService
     }
     
     func newsSearch(for query: String) async {
@@ -76,6 +82,10 @@ class NewsSearchResultViewModel: ObservableObject {
 //    }
     
     func fetchNews(source: String) async -> [News]? {
+        guard let newsService = self.newsService else {
+            return nil
+        }
+        
         do {
             return try await newsService.fetch(forcedRefresh: false, source: source)
         } catch {
@@ -85,6 +95,10 @@ class NewsSearchResultViewModel: ObservableObject {
     }
     
     func fetchMovies() async -> [Movie]? {
+        guard let movieService = self.movieService else {
+            return nil
+        }
+        
         do {
             return try await movieService.fetch(forcedRefresh: false)
         } catch {

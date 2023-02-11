@@ -63,3 +63,11 @@ struct News: Entity, Searchable {
         self.imageURL = imageURLString.replacingOccurrences(of: " ", with: "%20")
     }
 }
+
+extension News {
+    static let previewData: [News] = [
+        News(id: "test", sourceId: 1, date: Date.now, created: Date.now, title: "Testing news 1", link: URL(string: "https://www.tum.de"), imageURL: nil),
+        News(id: "test1", sourceId: 1, date: Date.now, created: Date.now, title: "Testing news 2", link: URL(string: "https://www.moodle.tum.de"), imageURL: nil),
+        News(id: "test2", sourceId: 1, date: Date.now, created: Date.now, title: "Testing news 3", link: URL(string: "https://www.live.rgb.tum.de"), imageURL: nil)
+    ]
+}

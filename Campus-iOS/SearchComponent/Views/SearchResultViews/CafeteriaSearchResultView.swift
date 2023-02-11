@@ -28,32 +28,35 @@ struct CafeteriasSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            switch size {
-                            case .big:
-                                withAnimation {
-                                    self.size = .small
+                    ZStack {
+                        Text("Cafeterias")
+                            .fontWeight(.bold)
+                            .font(.title)
+                        HStack {
+                            Spacer()
+                            Button {
+                                switch size {
+                                case .big:
+                                    withAnimation {
+                                        self.size = .small
+                                    }
+                                case .small:
+                                    withAnimation {
+                                        self.size = .big
+                                    }
                                 }
-                            case .small:
-                                withAnimation {
-                                    self.size = .big
+                            } label: {
+                                if self.size == .small {
+                                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                        .padding()
+                                } else {
+                                    Image(systemName: "arrow.down.right.and.arrow.up.left")
+                                        .padding()
                                 }
                             }
-                        } label: {
-                            if self.size == .small {
-                                Image(systemName: "arrow.up.left.and.arrow.down.right")
-                                    .padding()
-                            } else {
-                                Image(systemName: "arrow.down.right.and.arrow.up.left")
-                                    .padding()
-                            }
-                            
                         }
                     }
                 }
-                
                 Spacer()
                 ScrollView {
                     ForEach(self.results, id: \.0) { result in
@@ -75,7 +78,7 @@ struct CafeteriasSearchResultView: View {
                 }
                 .navigationBarTitle(Text(cafeteria.title ?? "Current Cafeteria"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                     cafeteriaMealPlan = nil
+                    cafeteriaMealPlan = nil
                 }) {
                     Text("Done").bold()
                 })

@@ -21,35 +21,38 @@ struct GradesSearchResultView: View {
             return Array(vm.results.prefix(10))
         }
     }
-    @State var greet = "hello"
     
     var body: some View {
         ZStack {
             Color.white
             VStack {
                 VStack {
-                    HStack {
-                        Spacer()
-                        Button {
-                            switch size {
-                            case .big:
-                                withAnimation {
-                                    self.size = .small
+                    ZStack {
+                        Text("Grades")
+                            .fontWeight(.bold)
+                            .font(.title)
+                        HStack {
+                            Spacer()
+                            Button {
+                                switch size {
+                                case .big:
+                                    withAnimation {
+                                        self.size = .small
+                                    }
+                                case .small:
+                                    withAnimation {
+                                        self.size = .big
+                                    }
                                 }
-                            case .small:
-                                withAnimation {
-                                    self.size = .big
+                            } label: {
+                                if self.size == .small {
+                                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                        .padding()
+                                } else {
+                                    Image(systemName: "arrow.down.right.and.arrow.up.left")
+                                        .padding()
                                 }
                             }
-                        } label: {
-                            if self.size == .small {
-                                Image(systemName: "arrow.up.left.and.arrow.down.right")
-                                    .padding()
-                            } else {
-                                Image(systemName: "arrow.down.right.and.arrow.up.left")
-                                    .padding()
-                            }
-                            
                         }
                     }
                 }
@@ -71,7 +74,6 @@ struct GradesSearchResultView: View {
         .onAppear() {
             Task {
                 await vm.gradesSearch(for: query)
-                self.greet = "world"
             }
         }
     }
