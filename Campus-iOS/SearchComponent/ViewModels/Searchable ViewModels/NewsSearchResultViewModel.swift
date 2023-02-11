@@ -95,6 +95,9 @@ class NewsSearchResultViewModel: ObservableObject {
     }
     
     func fetchMovies() async -> [Movie]? {
+        ///IMPORTANT: Needs adaption after merge with API refactoring -> Branch GIAS/Api
+        ///Because this fetch does not filter the movies, i.e. old movies, which already are over are still shown up.
+        
         guard let movieService = self.movieService else {
             return nil
         }
