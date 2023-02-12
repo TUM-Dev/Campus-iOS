@@ -12,32 +12,65 @@ struct RoomFinderSearchResultView: View {
     @StateObject var vm = RoomFinderSearchResultViewModel()
     @Binding var query: String
     
+    @State var size: ResultSize = .small
+    
+    var results: [FoundRoom] {
+        switch size {
+        case .small:
+            return Array(vm.results.prefix(3))
+        case .big:
+            return Array(vm.results.prefix(10))
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.white
-            ScrollView {
-                ForEach(self.vm.results, id:\.id) { room in
-                    VStack(alignment: .leading) {
+            VStack {
+                VStack {
+                    ZStack {
+                        Text("RoomFinder")
+                            .fontWeight(.bold)
+                            .font(.title)
                         HStack {
-                            Text(room.info)
-                        }
-                        
-                        Spacer()
-                        
-                        HStack {
-                            Text(room.roomCode)
-                                .foregroundColor(Color(.secondaryLabel))
-                            Spacer().frame(width: 5)
-                            Text(room.purpose)
-                                .font(.footnote)
-                                .foregroundColor(Color(.secondaryLabel))
+                            Spacer()
+                            Button {
+                                switch size {
+                                case .big:
+                                    withAnimation {
+                                        self.size = .small
+                                    }
+                                case .small:
+                                    withAnimation {
+                                        self.size = .big
+                                    }
+                                }
+                            } label: {
+                                if self.size == .small {
+                                    Image(systemName: "arrow.up.left.and.arrow.down.right")
+                                        .padding()
+                                } else {
+                                    Image(systemName: "arrow.down.right.and.arrow.up.left")
+                                        .padding()
+                                }
+                            }
                         }
                     }
                 }
-            }
+                ScrollView {
+                    ForEach(results, id:\.id) { room in
+                        RoomFinderListCellView(room: room)
+                    }
+                }
+                if self.results.count == 0 {
+                    Text("No rooms found 😢")
+                        .foregroundColor(.gray)
+                }
+            }.padding()
         }.onChange(of: query) { newQuery in
             Task {
                 await vm.roomFinderSearch(for: newQuery)
+                print("ROOM QUERY: \(newQuery)")
             }
         }.onAppear() {
             Task {

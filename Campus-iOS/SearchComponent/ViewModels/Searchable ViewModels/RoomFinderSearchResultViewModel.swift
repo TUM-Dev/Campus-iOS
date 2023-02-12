@@ -13,6 +13,7 @@ class RoomFinderSearchResultViewModel: ObservableObject {
     
     func roomFinderSearch(for query: String) async {
         guard let rooms = await fetch(for: query) else {
+            results = []
             return
         }
         
