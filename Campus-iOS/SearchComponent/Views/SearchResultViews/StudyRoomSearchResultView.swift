@@ -57,7 +57,7 @@ struct StudyRoomSearchResultView: View {
                     }
                 }
                 ScrollView {
-                    ForEach(vm.results, id: \.studyRoomResult) { result in
+                    ForEach(results, id: \.studyRoomResult) { result in
                         VStack (alignment: .leading) {
                             HStack {
                                 Text(result.studyRoomResult.group.name ?? "no group name")
