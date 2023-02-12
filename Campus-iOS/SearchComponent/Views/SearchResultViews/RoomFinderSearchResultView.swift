@@ -63,7 +63,7 @@ struct RoomFinderSearchResultView: View {
                     }
                 }
                 if self.results.count == 0 {
-                    Text("No rooms found 😢")
+                    Text("No rooms were found 😢")
                         .foregroundColor(.gray)
                 }
             }.padding()

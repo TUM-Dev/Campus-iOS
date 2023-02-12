@@ -29,6 +29,7 @@ class LectureSearchResultViewModel: ObservableObject {
     
     func lectureSearch(for query: String) async {
         guard let lectures = await fetch(for: query) else {
+            results = []
             return
         }
         
