@@ -23,7 +23,11 @@ struct StudyRoomSearchResult: Searchable {
 @MainActor
 class StudyRoomSearchResultViewModel: ObservableObject {
     @Published var results = [(studyRoomResult: StudyRoomSearchResult, distance: Distances)]()
-    private let studyRoomService: StudyRoomsServiceProtocol = StudyRoomsService()
+    private let studyRoomService: StudyRoomsServiceProtocol
+    
+    init(studyRoomService: StudyRoomsServiceProtocol) {
+        self.studyRoomService = studyRoomService
+    }
     
     func studyRoomSearch(for query: String) async {
         let studyRoomsResponse = await fetch()

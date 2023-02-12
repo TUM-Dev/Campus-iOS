@@ -86,20 +86,9 @@ struct StudyRoomGroupView: View {
                         
                         HStack {
                             Spacer()
-                            
-                            Button(action: {
-                                let latitude = group.coordinate?.latitude
-                                let longitude = group.coordinate?.longitude
-                                let url = URL(string: "maps://?saddr=&daddr=\(latitude!),\(longitude!)")
-                                
-                                if UIApplication.shared.canOpenURL(url!) {
-                                    UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-                                }
-                            }, label: {
+                            GroupDirectionsButton(group: group) {
                                 Text("Show Directions \(Image(systemName: "arrow.right.circle"))")
-                                    .foregroundColor(.blue)
-                                    .font(.footnote)
-                            })
+                            }
                         }
                         .onTapGesture { }
                         .gesture(panelDragGesture)
@@ -114,37 +103,8 @@ struct StudyRoomGroupView: View {
                         
                         List {
                             ForEach(self.sortedRooms, id: \.id) { room in
-                                DisclosureGroup(content: {
-                                    StudyRoomDetailsView(studyRoom: room)
-                                }, label: {
-                                    AnyView(
-                                        HStack {
-                                            VStack(alignment: .leading) {
-                                                Text(room.name ?? "")
-                                                    .fontWeight(.bold)
-                                                HStack {
-                                                    Image(systemName: "barcode.viewfinder")
-                                                        .frame(width: 12, height: 12)
-                                                        .foregroundColor(Color("tumBlue"))
-                                                    Text(room.code ?? "")
-                                                        .font(.system(size: 12))
-                                                    Spacer()
-                                                }
-                                                .frame(minWidth: 0, maxWidth: .infinity)
-                                                .foregroundColor(.init(.darkGray))
-                                                .padding(.leading, 5)
-                                                .padding(.trailing, 5)
-                                                .padding(.top, 0)
-                                                .padding(.bottom, 0)
-                                            }
-                                            
-                                            Spacer()
-                                            
-                                            room.localizedStatusText
-                                        }
-                                    )
-                                })
-                                .accentColor(Color(UIColor.lightGray))
+                                StudyRoomCell(room: room)
+                                    .accentColor(Color(UIColor.lightGray))
                             }
                         }
                         .listStyle(.plain)
@@ -187,6 +147,71 @@ struct StudyRoomGroupView: View {
     
     func closestMatch(values: [PanelPos], inputValue: CGFloat) -> PanelPos {
         return (values.reduce(values[0]) { abs($0.rawValue-inputValue) < abs($1.rawValue-inputValue) ? $0 : $1 })
+    }
+}
+
+struct GroupDirectionsButton<Content: View>: View {
+    let group: StudyRoomGroup
+    let content: Content
+    
+    init(group: StudyRoomGroup, @ViewBuilder content: () -> Content) {
+        self.group = group
+        self.content = content()
+    }
+    
+    var body: some View {
+        Button {
+            let latitude = group.coordinate?.latitude
+            let longitude = group.coordinate?.longitude
+            let url = URL(string: "maps://?saddr=&daddr=\(latitude!),\(longitude!)")
+            
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            }
+        } label: {
+            self.content
+                .foregroundColor(.blue)
+                .font(.footnote)
+        }
+    }
+}
+
+struct StudyRoomCell: View {
+    
+    let room: StudyRoom
+    
+    var body: some View {
+        DisclosureGroup(content: {
+            StudyRoomDetailsView(studyRoom: room)
+        }, label: {
+            AnyView(
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(room.name ?? "")
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                        HStack {
+                            Image(systemName: "barcode.viewfinder")
+                                .frame(width: 12, height: 12)
+                                .foregroundColor(Color("tumBlue"))
+                            Text(room.code ?? "")
+                                .font(.system(size: 12))
+                            Spacer()
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .foregroundColor(.init(.darkGray))
+                        .padding(.leading, 5)
+                        .padding(.trailing, 5)
+                        .padding(.top, 0)
+                        .padding(.bottom, 0)
+                    }
+                    
+                    Spacer()
+                    
+                    room.localizedStatusText
+                }
+            )
+        })
     }
 }
 

@@ -52,7 +52,11 @@ struct SearchResultView: View {
                             }
                             
                         case .StudyRoom:
-                            StudyRoomSearchResultView(query: $query)
+                            if preview {
+                                StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
+                            } else {
+                                StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
+                            }
                             
                         case .Calendar:
                             if preview {
