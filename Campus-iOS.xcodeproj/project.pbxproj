@@ -47,6 +47,7 @@
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F0E8EBB293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */; };
+		1F1F42B32999331F00A0D0B7 /* SearchResultBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F42B22999331F00A0D0B7 /* SearchResultBarView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
 		1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */; };
@@ -348,6 +349,7 @@
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV2.mlmodel; sourceTree = "<group>"; };
+		1F1F42B22999331F00A0D0B7 /* SearchResultBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultBarView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
 		1F2068E128FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TokenPermissionsViewModel+State.swift"; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 				1F504171295B82F900A62CA1 /* SearchView.swift */,
 				1F504175295B83AA00A62CA1 /* SearchResultView.swift */,
 				1F50417C295B844F00A62CA1 /* SearchResultViews */,
+				1F1F42B22999331F00A0D0B7 /* SearchResultBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2093,6 +2096,7 @@
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
+				1F1F42B32999331F00A0D0B7 /* SearchResultBarView.swift in Sources */,
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,

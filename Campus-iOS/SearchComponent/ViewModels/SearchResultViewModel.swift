@@ -72,7 +72,6 @@ class SearchResultViewModel: ObservableObject {
         orderedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}
         
     }
-    
 }
 
 enum SearchResultType: String {
