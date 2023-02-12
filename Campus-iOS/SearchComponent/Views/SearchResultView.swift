@@ -55,7 +55,11 @@ struct SearchResultView: View {
                             StudyRoomSearchResultView(query: $query)
                             
                         case .Calendar:
-                            EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model))
+                            if preview {
+                                EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()))
+                            } else {
+                                EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()))
+                            }
                             
                         case .Movie:
                             if preview {

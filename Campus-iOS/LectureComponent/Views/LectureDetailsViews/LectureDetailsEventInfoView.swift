@@ -66,14 +66,14 @@ struct LectureDetailsEventInfoView: View {
         )
     }
     
-    private static let startDateFormatter: DateFormatter = {
+    static let startDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "EE, dd.MM.yyyy, HH:mm"
         return formatter
     }()
 
-    private static let endDateFormatter: DateFormatter = {
+    static let endDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
         formatter.dateFormat = "HH:mm"

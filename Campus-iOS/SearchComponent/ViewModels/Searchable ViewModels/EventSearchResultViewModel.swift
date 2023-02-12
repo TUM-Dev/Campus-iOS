@@ -19,9 +19,9 @@ struct EventSearchResult: Searchable {
 @MainActor
 class EventSearchResultViewModel: ObservableObject {
     @Published var results = [(event: EventSearchResult, distance: Distances)]()
-    private let lecturesService = LecturesService()
-    private let calendarService = CalendarService()
-    private let model: Model
+    let lecturesService: LecturesServiceProtocol
+    let calendarService: CalendarServiceProtocol
+    let model: Model
     
     var token: String? {
         switch self.model.loginController.credentials {
@@ -34,8 +34,10 @@ class EventSearchResultViewModel: ObservableObject {
         }
     }
     
-    init(model: Model) {
+    init(model: Model, lecturesService: LecturesServiceProtocol, calendarService: CalendarServiceProtocol) {
         self.model = model
+        self.lecturesService = lecturesService
+        self.calendarService = calendarService
     }
     
     func eventsSearch(for query: String) async {
@@ -72,7 +74,7 @@ class EventSearchResultViewModel: ObservableObject {
         }
         
         do {
-            return try await lecturesService.fetch(token: token)
+            return try await lecturesService.fetch(token: token, forcedRefresh: false)
         } catch {
             print("No lectures were fetched")
             return nil
