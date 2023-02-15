@@ -16,8 +16,8 @@ struct ContactCardView: View {
     
     var body: some View {
         HStack {
-            if self.profileViewModel.profileImageUI == nil {
-                self.profileViewModel.profileImage
+            if self.profileViewModel.profileImageUI == nil { //shows default profile icon
+                Image(systemName: "person.crop.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 70, height: 70)
@@ -26,7 +26,7 @@ struct ContactCardView: View {
                     .onTapGesture {
                         showImageSheet = true
                     }
-            } else {
+            } else { //show selected profile pic
                 Image(uiImage: self.profileViewModel.profileImageUI!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -48,7 +48,9 @@ struct ContactCardView: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     } else {
-                        ProgressView()
+                        Text(verbatim: "timothy.summers@tum.de")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                     }
                     ForEach(self.gradesViewModel.gradesByDegreeAndSemester.indices, id: \.self) { index in
                         Text(
@@ -65,7 +67,6 @@ struct ContactCardView: View {
         }
         .task {
             personDetailedViewModel.fetch()
-            print("💯💯💯💯")
         }
         .sectionStyle()
         .sheet(isPresented: $showImageSheet) {

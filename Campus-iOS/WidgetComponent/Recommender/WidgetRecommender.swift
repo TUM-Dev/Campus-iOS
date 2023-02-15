@@ -28,6 +28,8 @@ class WidgetRecommender: ObservableObject {
         let recommendations = try await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
         self.recommendations = recommendations
         self.status = .success
+        print("🤢")
+        print(recommendations)
     }
     
     @ViewBuilder

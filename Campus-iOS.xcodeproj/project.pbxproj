@@ -797,18 +797,10 @@
 				1EF36A572993EE2200AF049F /* MovieComponent */,
 				1EF36A562993EE1300AF049F /* WidgetComponent */,
 				1EF36A542993ED9600AF049F /* ContactComponent */,
-				1EFBBEB7295CEC88001A0364 /* Views */,
 				1E8038BA2965B23D0098C614 /* ImagePicker.swift */,
 				1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */,
 			);
 			path = HomeComponent;
-			sourceTree = "<group>";
-		};
-		1EFBBEB7295CEC88001A0364 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		1F4C836528300E6F006971C0 /* Service */ = {
