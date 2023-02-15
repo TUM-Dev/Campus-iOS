@@ -19,13 +19,13 @@ class CalendarViewModel: ObservableObject {
     
     init(model: Model) {
         self.model = model
+        self.state = .loading
         fetch()
     }
     
     
     func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         if(self.model.isUserAuthenticated) {
-            self.state = .loading
             let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
             DispatchQueue.main.async {
                 importer.performFetch(handler: { result in

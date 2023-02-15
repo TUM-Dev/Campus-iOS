@@ -25,7 +25,6 @@ struct WidgetScreenNEW: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("study rooms, food & calendar").titleStyle()
-            
             ForEach(self.recommender.recommendations, id: \.id) { recommendation in
                 let widget = recommendation.widget
                 switch widget {
@@ -39,7 +38,7 @@ struct WidgetScreenNEW: View {
                     CalendarWidgetScreen(vm: self.calendarWidgetVM)
                         .padding(.bottom, 10)
                 default:
-                    EmptyView()
+                    EmptyView() //when widget isn't supposed to be shown
                 }
             }
         }
