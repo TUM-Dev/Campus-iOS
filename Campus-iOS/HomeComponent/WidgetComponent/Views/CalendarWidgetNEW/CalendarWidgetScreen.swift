@@ -18,11 +18,11 @@ struct CalendarWidgetScreen: View {
         case .loading:
             ProgressView()
         case .failed(error: let error):
-            Text("Error").onAppear{
+            EmptyView().onAppear{
                 print(error)
             }
         case .na:
-            Text("nothing")
+            EmptyView()
         }
     }
 }

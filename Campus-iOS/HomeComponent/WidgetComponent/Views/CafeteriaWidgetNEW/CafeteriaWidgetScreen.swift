@@ -21,8 +21,12 @@ struct CafeteriaWidgetScreen: View {
             case .noMenu:
                 TextWidgetView(text: "No menu")
             case .success:
-                CafeteriaWidgetViewNEW(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
-}
+                VStack {
+                    CafeteriaWidgetViewNEW(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
+                        .padding(.bottom, 10)
+                    CafeteriaWidget2(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
+                }
+            }
         }
     }
 }

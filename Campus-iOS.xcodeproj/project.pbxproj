@@ -52,6 +52,7 @@
 		1E8038C22969FBE20098C614 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038C12969FBE20098C614 /* LinkView.swift */; };
 		1E9C1056291A914D002C4C47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C1055291A914D002C4C47 /* Theme.swift */; };
 		1E9C92DC2993F1230026B0E6 /* WidgetScreenNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */; };
+		1E9C92E0299D4D860026B0E6 /* CafeteriaWidget2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */; };
 		1EB2CB042976971500B54C2E /* MoviesViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */; };
 		1EB2CB092976D5D600B54C2E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */; };
 		1EB2CB0B2977368D00B54C2E /* CalendarWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB0A2977368D00B54C2E /* CalendarWidgetViewNEW.swift */; };
@@ -338,6 +339,7 @@
 		1E8038C12969FBE20098C614 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		1E9C1055291A914D002C4C47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreenNew.swift; sourceTree = "<group>"; };
+		1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidget2.swift; sourceTree = "<group>"; };
 		1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesViewNEW.swift; path = "Campus-iOS/HomeComponent/MovieComponent/Views/MoviesViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		1EB2CB0A2977368D00B54C2E /* CalendarWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalendarWidgetViewNEW.swift; path = ../../../../../../CalendarWidgetViewNEW.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 			children = (
 				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
 				1EF36A512993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift */,
+				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
 			);
 			path = CafeteriaWidgetNEW;
 			sourceTree = "<group>";
@@ -2039,6 +2042,7 @@
 				0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
 				1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */,
+				1E9C92E0299D4D860026B0E6 /* CafeteriaWidget2.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
 				36BB6F7B27B27D0D00F224AB /* TuitionCard.swift in Sources */,
 				36AF61E227A2FD7800FEBD98 /* Constants.swift in Sources */,
