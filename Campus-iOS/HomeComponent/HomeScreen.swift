@@ -15,11 +15,14 @@ struct HomeScreen: View {
         ScrollView{
             ContactScreen(model: self.model)
                 .padding(.top, 15)
-                .padding(.bottom, 25)
+                .padding(.bottom, 10)
+            Divider()
+                .padding(.horizontal)
+                .padding(.bottom, 10)
             WidgetScreenNEW(model: self.model)
                 .padding(.bottom, 25)
-            WidgetScreen(model: self.model)
-                .padding(.bottom, 25) //Robyn's WidgetScreen
+            /*WidgetScreen(model: self.model)
+                .padding(.bottom, 25)*/ //Robyn's WidgetScreen
             MoviesViewNEW()
                 .padding(.bottom, 25)
         }

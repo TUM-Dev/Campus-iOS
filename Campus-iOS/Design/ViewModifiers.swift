@@ -13,12 +13,11 @@ struct Title: ViewModifier {
         HStack {
             content
                 .font(.headline.bold())
-                .textCase(.uppercase)
                 .foregroundColor(Color.highlightText)
             Spacer()
         }
-        .padding(.leading, 40)
-        .padding(.bottom, 5)
+        .padding(.leading)
+        .padding(.bottom, 10)
     }
 }
 

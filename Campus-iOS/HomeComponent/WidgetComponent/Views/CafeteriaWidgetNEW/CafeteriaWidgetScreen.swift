@@ -19,13 +19,11 @@ struct CafeteriaWidgetScreen: View {
             case .loading:
                 WidgetLoadingView(text: "Searching nearby cafeteria")
             case .noMenu:
-                TextWidgetView(text: "No menu")
-            case .success:
-                VStack {
-                    CafeteriaWidgetViewNEW(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
-                        .padding(.bottom, 10)
-                    CafeteriaWidget2(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
+                EmptyView().onAppear {
+                    print("No Cafeteria Menu available!")
                 }
+            case .success:
+                CafeteriaWidget2(cafeteriaWidgetVM: self.cafeteriaWidgetVM, dishes: self.cafeteriaWidgetVM.menuViewModel?.getDishes() ?? [])
             }
         }
     }

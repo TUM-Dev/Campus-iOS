@@ -20,8 +20,6 @@ struct ContactScreen: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("student information").titleStyle()
-            
             ContactCardView(profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel, personDetailedViewModel: PersonDetailedViewModel(withProfile: self.profileViewModel.profile ?? ProfileViewModel.defaultProfile))
                 .padding(.bottom, 10)
             

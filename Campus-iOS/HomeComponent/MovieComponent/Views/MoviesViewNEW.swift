@@ -40,8 +40,7 @@ struct MoviesViewNEW: View {
                             MovieDetailedView(movie: movie)
                         }
                     }
-                    .padding(.leading)
-                    .padding(.trailing)
+                    .padding(.horizontal)
                 }
             }
         }
