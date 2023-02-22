@@ -56,6 +56,7 @@
 		1EB2CB042976971500B54C2E /* MoviesViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */; };
 		1EB2CB092976D5D600B54C2E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */; };
 		1EBD99A529A3E12500C0B40D /* MealIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */; };
+		1EBD99A829A66B8D00C0B40D /* NewsViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD99A729A66B8D00C0B40D /* NewsViewNEW.swift */; };
 		1EF36A3E2979B9D500AF049F /* CalendarWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */; };
 		1EF36A402979B9F200AF049F /* CalendarWidgetEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */; };
 		1EF36A42297AA9EC00AF049F /* GradesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */; };
@@ -345,6 +346,7 @@
 		1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesViewNEW.swift; path = "Campus-iOS/HomeComponent/MovieComponent/Views/MoviesViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealIngredientsView.swift; sourceTree = "<group>"; };
+		1EBD99A729A66B8D00C0B40D /* NewsViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewNEW.swift; sourceTree = "<group>"; };
 		1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetScreen.swift; sourceTree = "<group>"; };
 		1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEventView.swift; sourceTree = "<group>"; };
 		1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesWidgetView.swift; sourceTree = "<group>"; };
@@ -716,6 +718,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1EBD99A629A66B6400C0B40D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EBD99A729A66B8D00C0B40D /* NewsViewNEW.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +785,7 @@
 		1EF36A582993EE3000AF049F /* NewsComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1EBD99A629A66B6400C0B40D /* View */,
 			);
 			path = NewsComponent;
 			sourceTree = "<group>";
@@ -2069,6 +2080,7 @@
 				1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */,
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
 				1E9C1056291A914D002C4C47 /* Theme.swift in Sources */,
+				1EBD99A829A66B8D00C0B40D /* NewsViewNEW.swift in Sources */,
 				0815249C28E4A38D0098A2C3 /* CLLocation+isInvalid.swift in Sources */,
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,

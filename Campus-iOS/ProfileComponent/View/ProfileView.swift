@@ -62,7 +62,7 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink(destination: NewsView(viewModel: NewsViewModel())
-                                    .navigationBarTitle(Text("News"))
+                                    .navigationBarTitle(Text("Aktuelles"))
                                     .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("News", systemImage: "newspaper")

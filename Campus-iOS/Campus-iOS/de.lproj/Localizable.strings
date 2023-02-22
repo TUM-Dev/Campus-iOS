@@ -103,6 +103,8 @@
 //HomeView
 "student information" = "deine informationen";
 "study rooms, food & calendar" = "lernräume, mensen & kalender";
+"Latest News" = "Aktuelles";
+
 
 // CalendarView
 "Day" = "Tag";
