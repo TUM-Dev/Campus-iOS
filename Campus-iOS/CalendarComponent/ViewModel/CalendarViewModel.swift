@@ -15,11 +15,11 @@ class CalendarViewModel: ObservableObject {
     @Published var events: [CalendarEvent] = []
     
     let model: Model
-    var state: State = .na
+    var state: State
     
     init(model: Model) {
         self.model = model
-        self.state = .loading
+        self.state = .na
         fetch()
     }
     

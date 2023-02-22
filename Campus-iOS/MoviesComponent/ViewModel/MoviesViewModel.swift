@@ -49,6 +49,7 @@ class MoviesViewModel: ObservableObject {
                 
                 if self.movies.isEmpty {
                     self.state = .noMovies
+                    break
                 }
                 
                 self.state = .success

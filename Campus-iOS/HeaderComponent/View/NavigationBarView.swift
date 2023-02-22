@@ -21,7 +21,7 @@ struct NavigationBarView: View {
                         Image(systemName: "magnifyingglass").foregroundColor(Color.primaryText).font(.system(size: 20))
                         Spacer()
                         if self.title == nil {
-                            Image("logo-blue")
+                            Image("logo-blue-responsive")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 18)
