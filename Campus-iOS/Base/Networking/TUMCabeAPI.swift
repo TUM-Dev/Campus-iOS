@@ -100,6 +100,9 @@ enum TUMCabeAPI: URLRequestConvertible {
             var data: Data
             do {
                 data = try await asRequest().serializingData().value
+//                if T.self is FoundRoom.Type {
+//                    print(String(data: data, encoding: .utf8))
+//                }
             } catch {
                 print(error)
                 throw NetworkingError.deviceIsOffline

@@ -39,6 +39,10 @@ struct SearchResultBarView: View {
                         Text(barType.rawValue)
                             .foregroundColor(.white)
                             .padding([.trailing, .leading])
+                    }.onTapGesture {
+                        withAnimation {
+                            self.selectedType = barType
+                        }
                     }
                 }
             }

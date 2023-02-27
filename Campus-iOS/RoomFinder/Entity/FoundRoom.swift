@@ -29,8 +29,8 @@ struct FoundRoom: Codable, Hashable {
     let info: String
     let address: String
     let purpose: String
-    let campus: String
-    let name: String
+    let campus: String?
+    let name: String?
 
     enum CodingKeys: String, CodingKey {
         case roomId = "room_id"
