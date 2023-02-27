@@ -22,14 +22,14 @@ struct SearchResultView: View {
         GeometryReader { g in
             VStack {
                 SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding()
-                Text("Your results for: \(query)")
-                Spacer()
-                ForEach(vm.searchDataTypeResult, id:\.0) { (key,value) in
-                    if let accuracy = value {
-                        Text("\(key) with accuracy of \(Int(accuracy*100)) %.")
-                    }
-                }
-                Spacer()
+//                Text("Your results for: \(query)")
+//                Spacer()
+//                ForEach(vm.searchDataTypeResult, id:\.0) { (key,value) in
+//                    if let accuracy = value {
+//                        Text("\(key) with accuracy of \(Int(accuracy*100)) %.")
+//                    }
+//                }
+//                Spacer()
                 ScrollView {
                     ForEach(vm.orderedTypes, id: \.rawValue) { type in
                         switch type {

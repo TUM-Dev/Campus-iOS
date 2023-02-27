@@ -25,7 +25,7 @@ struct SearchResultBarView: View {
     @Binding var selectedType: BarType
     
     var body: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(types, id: \.rawValue) { barType in
                     ZStack {
@@ -38,7 +38,7 @@ struct SearchResultBarView: View {
                         }
                         Text(barType.rawValue)
                             .foregroundColor(.white)
-                            .padding()
+                            .padding([.trailing, .leading])
                     }
                 }
             }
