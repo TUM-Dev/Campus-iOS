@@ -46,9 +46,91 @@ struct DeparturesDetailsView: View {
                 dismiss()
             })
         }
+        ToolbarItem(placement: .navigationBarLeading) {
+            stationMenu
+        }
+    }
+    
+    var stationMenu: some View {
+        Menu (
+            content: {
+                Picker("Station", selection: $departuresViewModel.selectedStation) {
+                    ForEach(departuresViewModel.closestCampus?.allStations ?? [], id: \.self) { station in
+                        Text(station.name)
+                            .tag(station as Station?)
+                    }
+                }
+            },
+            label: { Image(systemName: "mappin.and.ellipse") }
+        )
     }
     
     var header: some View {
+        VStack {
+            if let selectedStation = departuresViewModel.selectedStation {
+                VStack(alignment: .leading) {
+                    currentStationText(selectedStation.name)
+                    walkingDistanceDirections(selectedStation)
+                }
+            }
+            listLegend
+        }
+    }
+    
+    func currentStationText(_ name: String) -> some View {
+        Group {
+            Text("Station: ")
+            + Text(name)
+                .foregroundColor(.blue)
+        }
+        .font(.footnote)
+        .fontWeight(.semibold)
+    }
+    
+    func walkingDistanceDirections(_ selectedStation: Station) -> some View {
+        HStack {
+            Group {
+                directionsText()
+                Spacer()
+                directionsButton(selectedStation)
+            }
+            .font(.footnote)
+        }
+        .padding(.bottom, 1)
+    }
+    
+    @ViewBuilder
+    func directionsText() -> some View {
+        if let walkingDistance = departuresViewModel.walkingDistance {
+            Text("Walking Distance: ")
+                .fontWeight(.semibold)
+            + Text(walkingDistance.description)
+                .fontWeight(.bold)
+                .foregroundColor(.blue)
+            + Text(" \(walkingDistance > 1 ? "mins" : "min")")
+                .fontWeight(.semibold)
+                .foregroundColor(.blue)
+        } else {
+            Text("walking distance currently unavailable")
+        }
+    }
+    
+    func directionsButton(_ selectedStation: Station) -> some View {
+        Button(action: {
+            let latitude = selectedStation.latitude
+            let longitude = selectedStation.longitude
+            let url = URL(string: "maps://?saddr=&daddr=\(latitude),\(longitude)&dirflg=w")
+            
+            if UIApplication.shared.canOpenURL(url!) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            }
+        }, label: {
+            Label("Show Directions", systemImage: "arrow.right.circle")
+                .labelStyle(TrailingIconLabelStyle())
+        })
+    }
+    
+    var listLegend: some View {
         HStack {
             Text("Line")
                 .frame(width: 50, alignment: .leading)

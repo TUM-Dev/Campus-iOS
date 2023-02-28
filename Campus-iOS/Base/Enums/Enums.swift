@@ -131,6 +131,43 @@ enum Campus: String, Codable, CaseIterable {
         }
     }
     
+    var allStations: [Station] {
+        switch self {
+        case .stammgelaende : return
+            [
+                self.defaultStation,
+                Station(name: "Theresienstraße", apiName: "Muenchen,%20Theresienstrasse", latitude: 48.1512235719802, longitude: 11.564211669898931),
+                Station(name: "Pinakotheken", apiName: "Muenchen,%20Pinakotheken", latitude: 48.148780089472, longitude: 11.571870970398924)
+            ]
+        case .olympiapark : return
+            [
+                self.defaultStation
+            ]
+        case .klinikumRechts : return
+            [
+                self.defaultStation,
+                Station(name: "Friedensengel/Villa Stuck", apiName: "Friedensengel/Villa%20Stuck", latitude: 48.14074544433942, longitude: 11.600075277341709)
+            ]
+        case .großhadern: return
+            [
+                self.defaultStation,
+                Station(name: "Klinikum Großhadern Ost", apiName: "Klinikum%20Großhadern%20Ost", latitude: 48.11092668280441, longitude: 11.473909030506093),
+                Station(name: "Klinikum Großhadern Nord", apiName: "Klinikum%20Großhadern%20Nord", latitude: 48.11250562334001, longitude: 11.467122898318992)
+            ]
+        case .garching : return
+            [
+                self.defaultStation,
+                Station(name: "Lichtenbergstraße", apiName: "Garching,%20Lichtenbergstrasse", latitude: 48.26777168760462, longitude: 11.665502685140389)
+            ]
+        case .freising : return
+            [
+                self.defaultStation,
+                Station(name: "Freising, Forstzentrum", apiName: "Freising,%20Forstzentrum", latitude: 48.39924842116169, longitude: 11.716601891310122),
+                Station(name: "Freising, Weihenstephaner Berg", apiName: "Freising,Weihenstephaner%20Berg", latitude: 48.39581877364193, longitude: 11.725859432987532)
+            ]
+        }
+    }
+    
     func getAll() -> [Campus : CLLocation] {
         var campusWithLocations = [Campus : CLLocation]()
         AllCases.Element.allCases.forEach { campus in
