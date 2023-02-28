@@ -18,6 +18,15 @@ struct DeparturesWidgetView: View {
     
     var body: some View {
         Text("This will be the widget view?")
+            .onAppear {
+                departuresViewModel.timer = Timer()
+                departuresViewModel.setTimerForRefetch()
+            }
+            .onDisappear {
+                if !showDetailsSheet {
+                    departuresViewModel.timer?.invalidate()
+                }
+            }
         Button("Show Details", action: {
             showDetailsSheet = true
         })

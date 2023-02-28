@@ -92,7 +92,7 @@ struct DeparturesDetailsRowView: View {
     
     @ViewBuilder
     func timeBuilder(_ dateTime: DepartureDateTime) -> some View {
-        if departure.countdown < 1 {
+        if departure.countdown + (departuresViewModel.walkingDistance ?? 0) < 1 {
             Text("Now")
         } else {
             let hour = String(format: "%02d", dateTime.hour)
