@@ -9,16 +9,18 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesView: View {
-    @StateObject var vm: GradesViewModel
     @State private var data = AppUsageData()
+    
+    let grades: [Grade]
+    let gradesSemesterDegrees: GradesSemesterDegrees
+    let barChartData: [BarChartData]
+    let studyProgramm: String
     
     var body: some View {
         List {
-            ForEach(self.vm.gradesByDegreeAndSemester.indices, id: \.self) { index in
+            ForEach(gradesSemesterDegrees.indices, id: \.self) { index in
                 VStack {
-                    Text(
-                        self.vm.getStudyProgram(studyID: self.vm.gradesByDegreeAndSemester[index].0)
-                    )
+                    Text(studyProgramm)
                     .font(
                         .system(
                             size: 20,
@@ -28,10 +30,10 @@ struct GradesView: View {
                     )
                     .frame(alignment: .center)
                     
-                    BarChartView(barChartData: self.vm.barChartData[index])
+                    BarChartView(barChartData: barChartData[index])
                 }
                 
-                ForEach(self.vm.gradesByDegreeAndSemester[index].1, id: \.0) { gradesBySemester in
+                ForEach(gradesSemesterDegrees[index].1, id: \.0) { gradesBySemester in
                     Section(header: Text(gradesBySemester.0)
                         .font(.headline.bold())
                         .foregroundColor(Color("tumBlue"))
@@ -69,11 +71,6 @@ struct GradesView: View {
 
 struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
-        GradesView(vm:
-            MockGradesViewModel(
-                model: MockModel(),
-                service: GradesService()
-            )
-        )
+        GradesView(grades: Grade.previewData, gradesSemesterDegrees: GradesViewModel.previewGradesSemesterDegree, barChartData: GradesViewModel.previewBarChartData, studyProgramm: GradesViewModel.getStudyProgram(for: Grade.previewData.first))
     }
 }

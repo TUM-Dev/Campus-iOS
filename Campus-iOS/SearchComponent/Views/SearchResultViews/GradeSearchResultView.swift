@@ -92,4 +92,12 @@ struct GradeService_Preview: GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade] {
         return Grade.previewData
     }
+    
+    func fetchGrades(token: String, forcedRefresh: Bool) async throws -> [Grade] {
+        return Grade.previewData
+    }
+    
+    func fetchGradesSemesterDegrees(token: String, forcedRefresh: Bool) async throws -> GradesSemesterDegrees {
+        return []
+    }
 }

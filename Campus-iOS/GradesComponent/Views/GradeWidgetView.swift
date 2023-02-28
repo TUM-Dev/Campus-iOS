@@ -26,12 +26,12 @@ struct GradeWidgetView: View {
     var content: some View {
         Group {
             switch viewModel.state {
-            case .success:
+            case .success(let data):
                 switch size {
                 case .square:
-                    SimpleGradeWidgetContent(grade: viewModel.grades.first)
+                    SimpleGradeWidgetContent(grade: data.first)
                 case .rectangle, .bigSquare:
-                    DetailedGradeWidgetContent(grades: viewModel.grades, size: size)
+                    DetailedGradeWidgetContent(grades: data, size: size)
                 }
             case .loading, .na:
                 WidgetLoadingView(text: "Fetching Grades")
@@ -54,7 +54,9 @@ struct GradeWidgetView: View {
                 showDetails.toggle()
             }
             .sheet(isPresented: $showDetails) {
-                GradesView(vm: viewModel)
+                if case .success(let data) = viewModel.state {
+                    GradesView(grades: data, gradesSemesterDegrees: GradesViewModel.gradesByDegreeAndSemester(data: data), barChartData: GradesViewModel.barChartData(data: data), studyProgramm: GradesViewModel.getStudyProgram(for: data.first))
+                }
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }

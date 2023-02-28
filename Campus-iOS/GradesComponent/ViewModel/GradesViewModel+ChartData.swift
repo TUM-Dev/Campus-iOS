@@ -9,15 +9,7 @@ import Foundation
 import SwiftUICharts
 
 extension GradesViewModel {
-    var barChartData: [BarChartData] {
-        guard case .success(let data) = self.state else {
-            return [
-                .init(
-                    dataSets: .init(dataPoints: [])
-                )
-            ]
-        }
-        
+    static func barChartData(data: [Grade]) -> [BarChartData] {
         let accumulatedGradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
                 let studyID = String(grade.studyID)
                 
@@ -97,5 +89,9 @@ extension GradesViewModel {
                 )
             )
         }
+    }
+    
+    static var previewBarChartData: [BarChartData] {
+        return Self.barChartData(data: Grade.previewData)
     }
 }

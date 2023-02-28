@@ -12,7 +12,9 @@ protocol GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade]
 }
 
-struct GradesService: GradesServiceProtocol {    
+typealias GradesSemesterDegrees = [(String, [(String, [Grade])])]
+
+struct GradesService: GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Grade] {
         let response: GradeComponents.RowSet =
         try await
@@ -24,5 +26,8 @@ struct GradesService: GradesServiceProtocol {
                 )
         
         return response.row
+            .sorted { gradeA, gradeB in
+            return gradeA.date > gradeB.date
+        }
     }
 }
