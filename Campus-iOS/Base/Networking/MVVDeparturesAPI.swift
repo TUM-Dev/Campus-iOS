@@ -12,9 +12,11 @@ import CoreLocation
 struct MVVDeparturesAPI: URLRequestConvertible {
     
     static let baseURLStringPrefix = "https://efa.mvv-muenchen.de/ng/XML_DM_REQUEST?outputFormat=JSON&language=en&stateless=1&coordOutputFormat=WGS84&type_dm=stop&name_dm="
+    static let baseURLStringMiddle = "&timeOffset="
     static let baseURLStringSufix = "&useRealtime=1&itOptionsActive=1&ptOptionsActive=1&limit=20&mergeDep=1&useAllStops=1&mode=direct"
     
     let station: String
+    let walkingTime: Int?
     
     var method: HTTPMethod {
         switch self {
@@ -24,8 +26,14 @@ struct MVVDeparturesAPI: URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = try ("\(MVVDeparturesAPI.baseURLStringPrefix)\(station)\(MVVDeparturesAPI.baseURLStringSufix)").asURL()
-        let urlRequest = try URLRequest(url: url, method: method)
-        return urlRequest
+        if let walkingTime {
+            let url = try ("\(MVVDeparturesAPI.baseURLStringPrefix)\(station)\(MVVDeparturesAPI.baseURLStringMiddle)\(walkingTime)\(MVVDeparturesAPI.baseURLStringSufix)").asURL()
+            let urlRequest = try URLRequest(url: url, method: method)
+            return urlRequest
+        } else {
+            let url = try ("\(MVVDeparturesAPI.baseURLStringPrefix)\(station)\(MVVDeparturesAPI.baseURLStringSufix)").asURL()
+            let urlRequest = try URLRequest(url: url, method: method)
+            return urlRequest
+        }
     }
 }
