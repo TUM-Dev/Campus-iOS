@@ -204,7 +204,6 @@ struct SearchResultView: View {
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 10)
                         }
-                        Spacer(minLength: 20)
                     }
                 }
             }
