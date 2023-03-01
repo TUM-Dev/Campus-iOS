@@ -85,7 +85,6 @@ struct CafeteriasSearchResultView: View {
             }
         })
         .onChange(of: query) { newQuery in
-            print(query)
             Task {
                 await vm.cafeteriasSearch(for: newQuery)
             }

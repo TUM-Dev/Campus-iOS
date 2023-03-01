@@ -101,7 +101,7 @@ enum TUMCabeAPI: URLRequestConvertible {
             do {
                 data = try await asRequest().serializingData().value
 //                if T.self is FoundRoom.Type {
-//                    print(String(data: data, encoding: .utf8))
+//                    print(String(data: data, encoding: print.utf8))
 //                }
             } catch {
                 print(error)

@@ -70,7 +70,6 @@ struct RoomFinderSearchResultView: View {
         }.onChange(of: query) { newQuery in
             Task {
                 await vm.roomFinderSearch(for: newQuery)
-                print("ROOM QUERY: \(newQuery)")
             }
         }.onAppear() {
             Task {
