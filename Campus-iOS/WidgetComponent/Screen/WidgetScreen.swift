@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 
+@available(iOS 16.0, *)
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender

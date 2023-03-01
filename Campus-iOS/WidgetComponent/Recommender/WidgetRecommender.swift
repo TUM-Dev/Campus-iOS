@@ -32,6 +32,7 @@ class WidgetRecommender: ObservableObject {
         print(recommendations)
     }
     
+    @available(iOS 16.0, *)
     @ViewBuilder
     func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
         switch widget {

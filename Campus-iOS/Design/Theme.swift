@@ -26,18 +26,11 @@ extension UIColor {
     static let contrastText = UIColor(Color("contrastText"))
 }
    
-extension Font {
-    static let body = Font.custom("Roboto", size: 12)
-    static let test = Font.custom("Roboto", size: 12)
-}
-
 struct Radius {
-    static let regular = CGFloat(10) 
-    
+    static let regular = CGFloat(10)
 }
 
 struct Size {
     static let cardWidth = UIScreen.main.bounds.size.width * 0.9
-    
 }
 

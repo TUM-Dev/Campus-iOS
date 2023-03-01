@@ -64,7 +64,6 @@
 		1EF36A482991654F00AF049F /* StudyRoomWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */; };
 		1EF36A4B2991730C00AF049F /* StudyRoomWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */; };
 		1EF36A502993DF0A00AF049F /* CafeteriaWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */; };
-		1EF36A522993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A512993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift */; };
 		1EFBBEBB295DA51E001A0364 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
@@ -354,7 +353,6 @@
 		1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetViewNEW.swift; sourceTree = "<group>"; };
 		1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomWidgetScreen.swift; sourceTree = "<group>"; };
 		1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetScreen.swift; sourceTree = "<group>"; };
-		1EF36A512993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidgetViewNEW.swift; sourceTree = "<group>"; };
 		1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
@@ -749,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
-				1EF36A512993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift */,
 				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
 				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
 			);
@@ -1997,7 +1994,6 @@
 				3654F3782851710E008AD5DC /* FoundRoom.swift in Sources */,
 				36BB6F6127AFCDFA00F224AB /* Person.swift in Sources */,
 				0805DB7728C7F3E600712FF2 /* AnalyticsOptInView.swift in Sources */,
-				1EF36A522993DF2C00AF049F /* CafeteriaWidgetViewNEW.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
 				36108BE427A304B5007DC62D /* MensaEnumService.swift in Sources */,

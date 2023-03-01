@@ -29,6 +29,7 @@ struct WidgetScreenNEW: View {
                 switch widget {
                 case .cafeteria:
                     CafeteriaWidgetScreen(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
+                        .padding(.bottom)
                 case .studyRoom:
                     StudyRoomWidgetScreen(studyRoomWidgetVM: self.studyRoomWidgetVM)
                         .padding(.bottom)

@@ -10,6 +10,7 @@ import MapKit
 import KVKCalendar
 import Firebase
 
+@available(iOS 16.0, *)
 @main
 struct CampusApp: App {
     @StateObject var model: Model = Model()

@@ -12,7 +12,11 @@ struct CafeteriaWidget2: View {
     @StateObject var cafeteriaWidgetVM : CafeteriaWidgetViewModel
     var dishes : [Dish]
     
-    
+    init(cafeteriaWidgetVM: CafeteriaWidgetViewModel, dishes: [Dish]) {
+        self._cafeteriaWidgetVM = StateObject(wrappedValue: cafeteriaWidgetVM)
+        self.dishes = dishes
+        self.dishes = dishes.sorted(by: { getTypeLabel(dishType: $0.dishType) > getTypeLabel(dishType: $1.dishType)})
+    }
     
     var body: some View {
         if let cafeteria = self.cafeteriaWidgetVM.cafeteria {

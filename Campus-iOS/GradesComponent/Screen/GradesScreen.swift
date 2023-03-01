@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftUICharts
 
+@available(iOS 16.0, *)
 struct GradesScreen: View {
     @StateObject var vm: GradesViewModel
     @Binding var refresh: Bool
@@ -83,6 +84,7 @@ struct GradesScreen: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct GradesScreen_Previews: PreviewProvider {
     static var previews: some View {
         GradesScreen(model: MockModel(), refresh: .constant(false))
