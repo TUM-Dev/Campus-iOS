@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeparturesDetailsRowView: View {
     
-    @StateObject var departuresViewModel: DepaturesWidgetViewModel
+    @StateObject var departuresViewModel: DeparturesWidgetViewModel
     
     @State var showWarningURL = false
     
@@ -35,7 +35,22 @@ struct DeparturesDetailsRowView: View {
             }
         }
         .fullScreenCover(isPresented: $showWarningURL) {
-            if let url = URL(string: departure.lineInfos?.lineInfo.additionalLinks?[0].linkURL ?? "") {
+            if let lineInfos = departure.lineInfos {
+                cover(lineInfos: lineInfos)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func cover(lineInfos: LineInfosType) -> some View {
+        switch lineInfos {
+        case .element(let lineInfo):
+            if let url = URL(string: lineInfo.lineInfo.additionalLinks?[0].linkURL ?? "") {
+                SFSafariViewWrapper(url: url)
+                    .edgesIgnoringSafeArea(.vertical)
+            }
+        case .array(let lineInfos):
+            if let url = URL(string: lineInfos[0].additionalLinks?[0].linkURL ?? "") {
                 SFSafariViewWrapper(url: url)
                     .edgesIgnoringSafeArea(.vertical)
             }
@@ -72,6 +87,7 @@ struct DeparturesDetailsRowView: View {
                         )
                 }
             }
+            .buttonStyle(PlainButtonStyle())
         }
     }
     
@@ -116,7 +132,7 @@ struct DeparturesDetailsRowView: View {
 struct DeparturesDetailsRowView_Previews: PreviewProvider {
     static var previews: some View {
         DeparturesDetailsRowView(
-            departuresViewModel: DepaturesWidgetViewModel(),
+            departuresViewModel: DeparturesWidgetViewModel(),
             departure: Departure(
                 stopID: 0,
                 countdown: 0,

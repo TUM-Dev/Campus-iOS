@@ -32,9 +32,9 @@ struct Departure: Codable, Hashable {
     let dateTime: DepartureDateTime
     let realDateTime: DepartureDateTime?
     let servingLine: ServingLine
-    let lineInfos: LineInfos?
+    let lineInfos: LineInfosType?
     
-    init(stopID: Int, countdown: Int, dateTime: DepartureDateTime, realDateTime: DepartureDateTime?, servingLine: ServingLine, lineInfos: LineInfos?) {
+    init(stopID: Int, countdown: Int, dateTime: DepartureDateTime, realDateTime: DepartureDateTime?, servingLine: ServingLine, lineInfos: LineInfosType?) {
         self.stopID = stopID
         self.countdown = countdown
         self.dateTime = dateTime
@@ -50,7 +50,7 @@ struct Departure: Codable, Hashable {
         self.dateTime = try container.decode(DepartureDateTime.self, forKey: .dateTime)
         self.realDateTime = try container.decodeIfPresent(DepartureDateTime.self, forKey: .realDateTime)
         self.servingLine = try container.decode(ServingLine.self, forKey: .servingLine)
-        self.lineInfos = try container.decodeIfPresent(LineInfos.self, forKey: .lineInfos)
+        self.lineInfos = try container.decodeIfPresent(LineInfosType.self, forKey: .lineInfos)
     }
 }
 
@@ -82,7 +82,6 @@ struct ServingLine: Codable, Hashable {
     let number, symbol: String
     let delay: Int?
     let direction, name: String
-    
     
     init(key: Int, code: Int, number: String, symbol: String, delay: Int?, direction: String, name: String) {
         self.key = key
@@ -124,11 +123,40 @@ struct ServingLine: Codable, Hashable {
     }
 }
 
-struct LineInfos: Hashable, Codable {
-    let lineInfo: LineInfo
+/// found on https://stackoverflow.com/questions/48739760/swift-4-json-codable-value-returned-is-sometimes-an-object-others-an-array
+enum LineInfosType: Codable, Hashable {
+    case array([LineInfoContent])
+    case element(LineInfoElement)
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        do {
+            self = try .array(container.decode([LineInfoContent].self))
+        } catch DecodingError.typeMismatch {
+            do {
+                self = try .element(container.decode(LineInfoElement.self))
+            } catch DecodingError.typeMismatch {
+                throw DecodingError.typeMismatch(LineInfosType.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Encoded payload not of an expected type"))
+            }
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .array(let array):
+            try container.encode(array)
+        case .element(let element):
+            try container.encode(element)
+        }
+    }
 }
 
-struct LineInfo: Hashable, Codable {
+struct LineInfoElement: Hashable, Codable {
+    let lineInfo: LineInfoContent
+}
+
+struct LineInfoContent: Hashable, Codable {
     let infoLinkText: String?
     let infoText: InfoText?
     let additionalLinks: [AdditionalLink]?
