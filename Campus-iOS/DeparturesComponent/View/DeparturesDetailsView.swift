@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeparturesDetailsView: View {
     
-    @StateObject var departuresViewModel: DepaturesWidgetViewModel
+    @StateObject var departuresViewModel: DeparturesWidgetViewModel
     
     @Environment(\.dismiss) var dismiss
     
@@ -146,6 +146,6 @@ struct DeparturesDetailsView: View {
 
 struct DeparturesDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        DeparturesDetailsView(departuresViewModel: DepaturesWidgetViewModel())
+        DeparturesDetailsView(departuresViewModel: DeparturesWidgetViewModel())
     }
 }
