@@ -66,6 +66,7 @@ struct NewsCard: View {
             if self.image.isEmpty {
                 Image("placeholder")
                     .resizable()
+                    .scaledToFit()
                     .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .top)
                     .clipped()
             } else {
