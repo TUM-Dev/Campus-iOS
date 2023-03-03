@@ -19,14 +19,12 @@ struct CampusApp: App {
     @State var isLoginSheetPresented = false
     
     init() {
-        #if !DEBUG
+#if !DEBUG
         FirebaseApp.configure()
-        #endif
+#endif
         UITabBar.appearance().isOpaque = true
-        if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
+        let appearance = UITabBarAppearance()
+        UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
     var body: some Scene {
@@ -86,7 +84,7 @@ struct CampusApp: App {
                 view.navigationViewStyle(.stack)
             })
                 
-            NavigationView {
+                NavigationView {
                 LecturesScreen(vm: LecturesViewModel(
                     model: model,
                     service: LecturesService()
@@ -101,7 +99,7 @@ struct CampusApp: App {
                 view.navigationViewStyle(.stack)
             })
                 
-            NavigationView {
+                NavigationView {
                 CalendarContentView(
                     model: model,
                     refresh: $model.isUserAuthenticated
