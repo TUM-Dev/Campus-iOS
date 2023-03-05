@@ -29,7 +29,7 @@ struct LoginView: View {
             GeometryReader { geo in
                 VStack {
                     VStack(alignment: .center) {
-                        Image("logo-blue")
+                        Image(decorative: "logo-blue")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: geo.size.width * 0.4, height: geo.size.height / 8)
@@ -131,6 +131,7 @@ struct LoginView: View {
                                             .lineLimit(1)
                                             .font(.title3)
                                             .frame(alignment: .center)
+                                            .accessibilityLabel("Log in")
                                     }
                                 case .logInError:
                                     HStack {
@@ -152,7 +153,7 @@ struct LoginView: View {
                                 case .loggedIn:
                                     NavigationLink(destination:
                                                     TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Check Token")), isActive: $isActive) {
-                                        Text("Log in 🎓")
+                                        Text("Log in 🎓").accessibilityLabel("Log in")
                                             .lineLimit(1)
                                             .font(.title3)
                                             .frame(alignment: .center)
@@ -190,7 +191,7 @@ struct LoginView: View {
                     
                     Spacer()
                         
-                    Image("tower")
+                    Image(decorative: "tower")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: geo.size.width)
