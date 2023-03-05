@@ -138,7 +138,7 @@ struct ProfileView: View {
                         if UIApplication.shared.canOpenURL(mailToUrl) {
                                 UIApplication.shared.open(mailToUrl, options: [:])
                         }
-                    }
+                    }.accessibilityHint("This Link leaves the App")
                 }
                 
                 Section() {

@@ -72,6 +72,7 @@
 "Log in Successfull" = "Eingeloggt";
 "Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
+"This Link leaves the App" = "Dieser Link verlässt die App";
 
 // TokenConfirmationView
 "Back" = "Zurück";

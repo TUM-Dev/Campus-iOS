@@ -107,6 +107,7 @@
 "Token Permissions" = "Token Permissions";
 "Token Permissions (You are logged out)" = "Token Permissions (You are logged out)";
 "Calendar days in week mode" = "Calendar days in week mode";
+"This Link leaves the App" = "This Link leaves the App";
 
 // CalendarView
 "Day" = "Day";
