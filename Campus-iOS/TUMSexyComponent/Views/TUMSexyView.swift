@@ -15,22 +15,27 @@ struct TUMSexyView: View {
     @State private var searchText = ""
     
     var body: some View {
-        List(searchResults, id: \.target) { link in
+        List(searchResults.indices , id: \.self) { idx in
             if useBuildInWebView {
-                Text(link.description ?? "")
+                Text(searchResults[idx].description ?? "")
                     .foregroundColor(.blue)
                     .onTapGesture {
                         isWebViewShowed.toggle()
                     }
                     .sheet(isPresented: $isWebViewShowed, content: {
-                        SFSafariViewWrapper(url: URL(string: link.target ?? "")!)
+                        SFSafariViewWrapper(url: URL(string: searchResults[idx].target ?? "")!)
                     })
+                    .accessibilityLabel("List element" + "\(idx + 1)" + " of " + "\(searchResults.count)")
+                    .accessibilityHint("This Button opens a WebView")
             } else {
-                Link(link.description ?? "", destination: URL(string: link.target ?? "")!)
+                Link(searchResults[idx].description ?? "", destination: URL(string: searchResults[idx].target ?? "")!)
+                    .accessibilityLabel("List element" + "\(idx + 1)" + " of " + "\(searchResults.count)")
+                    .accessibilityHint("This Link leaves the App")
             }
         }
         .searchable(text: $searchText)
         .navigationTitle("Useful Links")
+        .accessibilityLabel("This is a list with " + "\(searchResults.count)" + " entries")
     }
     
     var searchResults: [TUMSexyLink] {

@@ -60,6 +60,12 @@
 "Done" = "Fertig";
 "Places" = "Orte";
 "My Widgets" = "Meine Widgets";
+"This is a list with " = "Dies ist eine Liste mit ";
+" entries" = " Einträgen";
+"This Button opens a WebView" = "Dieser Link öffnet eine Website in der App";
+"List element" = "Listen Element";
+" of " = " von ";
+
 
 // LoginView
 "Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";

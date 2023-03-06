@@ -65,7 +65,11 @@
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
 "2 numbers in the middle of TUM ID" = "2 numbers in the middle of TUM ID";
 "Last 3 letters of TUM ID" = "Last 3 letters of TUM ID";
-
+"This is a list with " = "This is a list with ";
+" entries" = " entries";
+"This Button opens a WebView" = "This Button opens a WebView";
+"List element" = "List element";
+" of " = " of ";
 
 // LoginView
 "Welcome to TUM Campus App" = "Welcome to TUM Campus App";
