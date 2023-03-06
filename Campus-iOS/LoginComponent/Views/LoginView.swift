@@ -36,6 +36,7 @@ struct LoginView: View {
                         .frame(alignment: .center)
                         .font(.title3 .bold())
                         .multilineTextAlignment(.center)
+                        .accessibilityHeading(.h3)
                 }
                 .frame(width: geo.size.width, height: geo.size.height / 4 )
                 
@@ -43,6 +44,7 @@ struct LoginView: View {
                 VStack(alignment: .center) {
                     Text("Enter your TUM ID to get started")
                         .font(.headline .bold())
+                        .accessibilityHeading(.h4)
                     
                     HStack() {
                         TextField("go", text: $viewModel.firstTextField)

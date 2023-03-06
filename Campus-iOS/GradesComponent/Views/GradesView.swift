@@ -35,6 +35,7 @@ struct GradesView: View {
                     Section(header: Text(gradesBySemester.0)
                         .font(.headline.bold())
                         .foregroundColor(Color("tumBlue"))
+                        .accessibilityHeading(.h2)
                     ) {
                         ForEach(gradesBySemester.1) { item in
                             VStack {
