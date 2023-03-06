@@ -73,6 +73,8 @@
 "Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
 "This Link leaves the App" = "Dieser Link verlässt die App";
+"Try again" = "Erneut versuchen";
+
 
 // TokenConfirmationView
 "Back" = "Zurück";
