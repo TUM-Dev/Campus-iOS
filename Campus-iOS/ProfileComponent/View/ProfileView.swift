@@ -116,20 +116,27 @@ struct ProfileView: View {
                         Button("Join Beta") {
                             self.selectedLink = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")
                         }
+                        .accessibilityHint("This Button opens a WebView")
                         
                         Button("TUM Dev on Github") {
                             self.selectedLink = URL(string: "https://github.com/TUM-Dev")
                         }
+                        .accessibilityHint("This Button opens a WebView")
                         
                         Button("TUM Dev Website") {
                             self.selectedLink = URL(string: "https://tum.app")
                         }
+                        .accessibilityHint("This Button opens a WebView")
+                        
                     } else {
                         Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
+                            .accessibilityHint("This Link leaves the App")
                         
                         Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
+                            .accessibilityHint("This Link leaves the App")
                         
                         Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                            .accessibilityHint("This Link leaves the App")
                     }
                     
                     Button("Feedback") {
