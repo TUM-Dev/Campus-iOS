@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NavigaTumDetailsBaseView: View {
     @State var chosenRoom: NavigaTumNavigationDetails
-
+    
     var body: some View {
         GroupBox(
             label: GroupBoxLabelView(
@@ -19,32 +19,36 @@ struct NavigaTumDetailsBaseView: View {
             .padding(.bottom, 10)
         ) {
             VStack(alignment: .leading, spacing: 8) {
-                LectureDetailsBasicInfoRowView(
-                    iconName: "qrcode.viewfinder",
-                    text: chosenRoom.additionalProperties.properties.first {
-                        $0.name == "Roomcode" || $0.name == "Gebäudekennung"
-                    }?.text ?? "No room code found!"
-                )
-           
-                Divider()
-                LectureDetailsBasicInfoRowView(
-                    iconName: "building.columns",
-                    text: chosenRoom.additionalProperties.properties.first {$0.name == "Architect's name" || $0.name == "Gebäudekennung"
-                    }?.text ?? "No architect's name found!"
-                )
-                Divider()
-                LectureDetailsBasicInfoRowView(
-                    iconName: "location.fill",
-                    text: chosenRoom.additionalProperties.properties.first {
-                        $0.name == "Address" || $0.name == "Adresse"
-                    }?.text ?? "No Address found!"
-                )
+                ForEach(chosenRoom.additionalProperties.properties, id: \.name) { property in
+                    LectureDetailsBasicInfoRowView(iconName: iconName(property.name), text: property.text)
+                }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(
-              maxWidth: .infinity,
-              alignment: .topLeading
+            maxWidth: .infinity,
+            alignment: .topLeading
         )
+    }
+    
+    func iconName(_ name: String) -> String {
+        if name == "Roomcode" || name == "Raumkennung" {
+           return "qrcode.viewfinder"
+        } else if name == "Architect's name" || name == "Architekten-Name" || name == "Gebäudekennung" || name == "Buildingcode" {
+            return "building.columns"
+        } else if name == "Address" || name == "Adresse" {
+            return "location.fill"
+        } else if name == "Stockwerk" || name == "Floor" {
+            return "figure.stairs"
+        } else if name == "Sitzplätze" || name == "Seats" {
+            return "person.2.fill"
+        } else if name == "Anzahl Räume" || name == "Number of rooms"{
+            return "door.right.hand.closed"
+        } else if name == "Anzahl Gebäude" || name == "Number of buildings" {
+            return "building.2"
+        } else {
+            return "questionmark.circle"
+        }
     }
 }
 

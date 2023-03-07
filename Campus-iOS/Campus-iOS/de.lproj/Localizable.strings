@@ -166,6 +166,7 @@
 "Room" = "Raum";
 "Detail" = "Detail";
 "Floor" = "Obergeschoß";
+"Room Details" = "Raum Details";
 
 // Map
 "Search ..." = "Suchen ...";

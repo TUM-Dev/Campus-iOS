@@ -57,7 +57,7 @@ struct NavigaTumDetailsView_Previews: PreviewProvider {
                             NavigaTumRoomFinderMap(id: "rf80", name: "Lageplan Campus Garching", imageUrl: "rf80.webp", height: 480, width: 676, x: 329, y: 344, scale: "10000"),
                             NavigaTumRoomFinderMap(id: "rf54", name: "München", imageUrl: "rf54.webp", height: 603, width: 640, x: 444, y: 36, scale: "200000"),
                             NavigaTumRoomFinderMap(id: "rf156", name: "München und Umgebung", imageUrl: "rf156.webp", height: 515, width: 420, x: 265, y: 167, scale: "400000")]
-    static let maps = NavigaTumNavigationMaps(default: "rf95", roomfinder: NavigaTumRoomFinderMaps(available: available , defaultMapId: "rf95"))
+    static let maps = NavigaTumNavigationMaps(default: "rf95", roomfinder: NavigaTumRoomFinderMaps(available: available , defaultMapId: "rf95"), overlays: nil)
     static var chosenRoom = NavigaTumNavigationDetails(id: "5606.EG.036", name: "5606.EG.036 (MPI Fachschaftsbüro im MI)", parentNames: ["Standorte", "Garching Forschungszentrum","Fakultät Mathematik & Informatik (FMI oder MI)", "Finger 06 (BT06)"], type: "room", typeCommonName: "Office", additionalProperties: additionalProperties, coordinates: coords, maps: maps)
     static var viewmodel = NavigaTumDetailsViewModel(id: "5606.EG.036")
     static var previews: some View {

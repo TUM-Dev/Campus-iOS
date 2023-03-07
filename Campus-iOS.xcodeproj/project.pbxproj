@@ -68,6 +68,8 @@
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
 		2F7F02E029921F5200AE137C /* NavigaTumMapImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7F02DF29921F5200AE137C /* NavigaTumMapImagesView.swift */; };
+		2F91415D29B7790F00572995 /* NavigaTumOverlaysMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91415C29B7790F00572995 /* NavigaTumOverlaysMaps.swift */; };
+		2F91415F29B7798100572995 /* NavigaTumOverlayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91415E29B7798100572995 /* NavigaTumOverlayMap.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
 		2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */; };
 		2FDB156F298059270064032D /* NavigaTumDetailsBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDB156E298059270064032D /* NavigaTumDetailsBaseView.swift */; };
@@ -357,6 +359,8 @@
 		2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoView.swift; sourceTree = "<group>"; };
 		2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoRowView.swift; sourceTree = "<group>"; };
 		2F7F02DF29921F5200AE137C /* NavigaTumMapImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumMapImagesView.swift; sourceTree = "<group>"; };
+		2F91415C29B7790F00572995 /* NavigaTumOverlaysMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumOverlaysMaps.swift; sourceTree = "<group>"; };
+		2F91415E29B7798100572995 /* NavigaTumOverlayMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumOverlayMap.swift; sourceTree = "<group>"; };
 		2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoView.swift; sourceTree = "<group>"; };
 		2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoRowView.swift; sourceTree = "<group>"; };
 		2FDB156E298059270064032D /* NavigaTumDetailsBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsBaseView.swift; sourceTree = "<group>"; };
@@ -1582,6 +1586,7 @@
 				9785A29E29620DBD002F3D5E /* NavigaTumNavigationDetails.swift */,
 				9785A2A629620F16002F3D5E /* NavigaTumNavigationProperty.swift */,
 				9785A2AA29621089002F3D5E /* NavigaTumRoomFinderMap.swift */,
+				2F91415E29B7798100572995 /* NavigaTumOverlayMap.swift */,
 				9785A29D29620DA9002F3D5E /* Details */,
 				9785A29A29620B46002F3D5E /* Search */,
 			);
@@ -1604,6 +1609,7 @@
 				9785A2A229620EB8002F3D5E /* NavigaTumNavigationCoordinates.swift */,
 				9785A2A429620ECB002F3D5E /* NavigaTumNavigationMaps.swift */,
 				9785A2A829621029002F3D5E /* NavigaTumRoomFinderMaps.swift */,
+				2F91415C29B7790F00572995 /* NavigaTumOverlaysMaps.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -1831,6 +1837,7 @@
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
+				2F91415F29B7798100572995 /* NavigaTumOverlayMap.swift in Sources */,
 				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
@@ -1884,6 +1891,7 @@
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
+				2F91415D29B7790F00572995 /* NavigaTumOverlaysMaps.swift in Sources */,
 				9785A2A129620EA8002F3D5E /* NavigaTumNavigationAdditionalProperties.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,

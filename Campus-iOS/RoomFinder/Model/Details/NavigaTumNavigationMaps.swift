@@ -9,5 +9,6 @@ import Foundation
 
 struct NavigaTumNavigationMaps: Codable {
     let `default`: String
-    let roomfinder: NavigaTumRoomFinderMaps
+    let roomfinder: NavigaTumRoomFinderMaps?
+    let overlays: NavigaTumOverlaysMaps?
 }
