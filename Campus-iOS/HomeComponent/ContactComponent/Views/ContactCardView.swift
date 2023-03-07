@@ -94,6 +94,15 @@ struct ContactCardView: View {
         .sheet(isPresented: $showProfileSheet) {
             PersonDetailedViewNEW(profileViewModel: self.profileViewModel, personDetailedViewModel: self.personDetailedViewModel, showProfileSheet: self.$showProfileSheet, studyPrograms: self.studyPrograms)
         }
+        .onChange(of: self.profileViewModel.profileImageUI) { newImage in //saves ProfileImage
+            if let image = newImage {
+                if let fileName = self.profileViewModel.save(image: image) {
+                    print("Saved Image to: \(fileName)")
+                } else {
+                    print("Error in saving Image")
+                }
+            }
+        }
     }
 }
 

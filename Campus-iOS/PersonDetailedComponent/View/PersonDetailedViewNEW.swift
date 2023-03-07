@@ -82,6 +82,15 @@ struct PersonDetailedViewNEW: View {
         .sheet(isPresented: $showImageSheet) {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileViewModel.profileImageUI)
         }
+        .onChange(of: self.profileViewModel.profileImageUI) { newImage in //saves ProfileImage
+            if let image = newImage {
+                if let fileName = self.profileViewModel.save(image: image) {
+                    print("Saved Image to: \(fileName)")
+                } else {
+                    print("Error in saving Image")
+                }
+            }
+        }
     }
     
     var form: some View { // from PersonDetailedView of Milen Vitanov

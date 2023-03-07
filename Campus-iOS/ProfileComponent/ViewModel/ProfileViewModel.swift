@@ -34,6 +34,7 @@ class ProfileViewModel: ObservableObject {
     
     init() {
         self.profile = Self.defaultProfile
+        self.load(fileName: "ProfileImage")
     }
     
     init(model: Model) {
@@ -86,6 +87,34 @@ class ProfileViewModel: ObservableObject {
                 self.profileImageUI = image
             }
         })
+    }
+    
+    //saves Image to local storage
+    func save(image: UIImage) -> String? {
+        let fileName = "ProfileImage"
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+           try? imageData.write(to: fileURL, options: .atomic)
+           return fileName // ----> Save fileName
+        }
+        print("Error saving image")
+        return nil
+    }
+    
+    //loads Image to local storage
+    func load(fileName: String) {
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            self.profileImageUI = UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error)")
+        }
+    }
+    
+    //helper property to get FilePath for local storage
+    var documentsUrl: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
     func checkTuitionFunc(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
