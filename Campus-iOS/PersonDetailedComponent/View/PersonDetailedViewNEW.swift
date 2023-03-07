@@ -101,7 +101,7 @@ struct PersonDetailedViewNEW: View {
                         Button(action: {
                             Self.cellActionBasedOnType(cell: singleCell)
                         }, label: { PersonDetailedCellView(cell: singleCell) })
-                    }
+                    }.listRowBackground(Color.secondaryBackground)
                 }
             }
         }
