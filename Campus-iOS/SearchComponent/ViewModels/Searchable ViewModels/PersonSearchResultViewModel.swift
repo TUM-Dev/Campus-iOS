@@ -7,9 +7,20 @@
 
 import Foundation
 
+extension PersonSearchResultViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [Person])
+        case failed(error: Error)
+    }
+}
+
 @MainActor
 class PersonSearchResultViewModel: ObservableObject {
-    @Published var results = [Person]()
+    @Published var state: State = .na
+    @Published var hasError: Bool = false
+    
     let model : Model
     
     var token: String? {
@@ -27,21 +38,23 @@ class PersonSearchResultViewModel: ObservableObject {
         self.model = model
     }
     
-    func personSearch(for query: String) async {
-        guard let lectures = await fetch(for: query) else {
+    func personSearch(for query: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+        
+        guard let token = self.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
             return
         }
-        
-        results = lectures
-    }
-    
-    func fetch(for query: String) async -> [Person]? {
+
         do {
-            return try await TUMOnlineAPI.makeRequest(endpoint: .personSearch(search: query), token: self.token)
+            self.state = .success(data: try await TUMOnlineAPI.makeRequest(endpoint: .personSearch(search: query), token: token))
         } catch {
-            print("No lectures were fetched: \(String(describing: error))")
-            return nil
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
-    
 }

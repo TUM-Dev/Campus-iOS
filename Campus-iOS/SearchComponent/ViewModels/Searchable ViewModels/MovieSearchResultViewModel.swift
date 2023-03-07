@@ -1,33 +1,35 @@
 //
-//  CafeteriaSearchResultViewModel.swift
+//  MovieSearchResultView.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 27.12.22.
+//  Created by David Lin on 07.03.23.
 //
 
 import Foundation
 
-extension CafeteriaSearchResultViewModel {
+
+extension MovieSearchResultViewModel {
     enum State {
         case na
         case loading
-        case success(data: [(cafeteria: Cafeteria, distances: Distances)])
+        case success(data: [(movie: Movie, distance: Distances)])
         case failed(error: Error)
     }
 }
 
 @MainActor
-class CafeteriaSearchResultViewModel: ObservableObject {
-    
+class MovieSearchResultViewModel: ObservableObject {
     @Published var state: State = .na
     @Published var hasError: Bool = false
-    let service: CafeteriasServiceProtocol
     
-    init(service: CafeteriasServiceProtocol) {
+    let service: MovieServiceProtocol
+    
+    init(service: MovieServiceProtocol) {
         self.service = service
     }
     
-    func cafeteriasSearch(for query: String, forcedRefresh: Bool = false) async {
+    func movieSearch(for query: String, forcedRefresh: Bool = false) async {
+    
         if !forcedRefresh {
             self.state = .loading
         }
@@ -35,10 +37,15 @@ class CafeteriaSearchResultViewModel: ObservableObject {
 
         do {
             let data = try await service.fetch(forcedRefresh: forcedRefresh)
-            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: data) {
+            let filteredMovies = data.filter { movie in
+                return (movie.date ?? Date.distantPast) >= Date()
+            }
+            
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: filteredMovies) {
                 self.state = .success(data: optionalResults)
             } else {
                 self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
             }
             
         } catch {
@@ -47,3 +54,4 @@ class CafeteriaSearchResultViewModel: ObservableObject {
         }
     }
 }
+

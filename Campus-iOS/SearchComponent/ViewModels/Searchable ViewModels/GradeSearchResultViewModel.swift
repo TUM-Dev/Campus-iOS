@@ -58,27 +58,12 @@ class GradesSearchResultViewModel: ObservableObject {
                 self.state = .success(data: optionalResults)
             } else {
                 self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
             }
             
         } catch {
             self.state = .failed(error: error)
             self.hasError = true
-        }
-    }
-}
-
-enum SearchError: Error {
-    case empty(searchQuery: String)
-    case unexpected
-}
-
-extension SearchError: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .empty(let searchQuery):
-            return "No search results were found for: \"\(searchQuery)\"."
-        case .unexpected:
-            return "An unexpected error occurred."
         }
     }
 }

@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct StudyRoomSearchResultView: View {
-    @StateObject var vm: StudyRoomSearchResultViewModel
-    @Binding var query: String
+    var allResults: [(studyRoomResult: StudyRoomSearchResult, distance: Distances)]
     @State var showRoomsForGroup: [StudyRoom]? = nil
     @State var size: ResultSize = .small
     
     var results: [(studyRoomResult: StudyRoomSearchResult, distance: Distances)] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return Array(allResults.prefix(10))
         }
     }
     
@@ -82,39 +81,18 @@ struct StudyRoomSearchResultView: View {
                                         .fontWeight(.light)
                                 }
                             }
-
+                            
                             
                             if let rooms = showRoomsForGroup, showRoomsForGroup == result.studyRoomResult.rooms {
                                 ForEach(rooms) { room in
                                     StudyRoomCell(room: room)
                                         .tint(.black)
-//                                    Text(room.name ?? "no room name").foregroundColor(.teal)
-//                                    Text(room.localizedStatus).foregroundColor(.purple)
                                 }
                             }
                         }
                     }
                 }.padding()
             }
-        }.onChange(of: query) { newQuery in
-            Task {
-                
-                await vm.studyRoomSearch(for: newQuery)
-            }
-        }.task {
-            await vm.studyRoomSearch(for: query)
         }
-    }
-}
-
-struct StudyRoomSearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: .constant("studyroom garching"))
-    }
-}
-
-struct StudyRoomsService_Preview: StudyRoomsServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose {
-        return StudyRoomApiRespose.previewData
     }
 }

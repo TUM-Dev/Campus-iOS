@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-struct CafeteriasSearchResultView: View {
+struct CafeteriaSearchResultView: View {
     
-    @StateObject var vm: CafeteriasSearchResultViewModel
-    @Binding var query: String
+    let allResults: [(cafeteria: Cafeteria, distances: Distances)]
     @State var size: ResultSize = .small
     @State var cafeteriaMealPlan: Cafeteria? = nil
     
     var results: [(cafeteria: Cafeteria, distances: Distances)] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return Array(allResults.prefix(10))
         }
     }
     
@@ -84,27 +83,5 @@ struct CafeteriasSearchResultView: View {
                 })
             }
         })
-        .onChange(of: query) { newQuery in
-            Task {
-                await vm.cafeteriasSearch(for: newQuery)
-            }
-        }.task {
-            await vm.cafeteriasSearch(for: query)
-        }
-    }
-}
-
-struct CafeteriasSearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(service: CafeteriasService_Preview()), query: .constant("Garching"))
-            .cornerRadius(25)
-            .padding()
-            .shadow(color: .gray.opacity(0.8), radius: 10)
-    }
-}
-
-struct CafeteriasService_Preview: CafeteriasServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> [Cafeteria] {
-        return Cafeteria.previewData
     }
 }

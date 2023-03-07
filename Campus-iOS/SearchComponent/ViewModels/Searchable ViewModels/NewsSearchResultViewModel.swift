@@ -7,33 +7,29 @@
 
 import Foundation
 
+extension NewsSearchResultViewModel {
+    enum State {
+        case na
+        case loading
+        ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
+//        case success(data: [(news: News, distance: Distances)])
+        case success(data: [(news: News, distance: Distances)])
+        case failed(error: Error)
+    }
+}
+
 @MainActor
 class NewsSearchResultViewModel: ObservableObject {
-    enum VmType {
-        case news
-        case movie
+    @Published var state: State = .na
+    @Published var hasError: Bool = false
+    
+    let service: NewsServiceProtocol
+    
+    init(service: NewsServiceProtocol) {
+        self.service = service
     }
     
-    let vmType : VmType
-    ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
-//    @Published var results = [(sourcesResult: NewsSource, distance: Distances)]()
-    @Published var newsResults = [(news: News, distance: Distances)]()
-    @Published var movieResults = [(movie: Movie, distance: Distances)]()
-    private let newsSourceService = NewsSourceService()
-    private var newsService: NewsServiceProtocol? = nil
-    private var movieService: MovieServiceProtocol? = nil
-    
-    init(vmType: VmType, newsService: NewsServiceProtocol) {
-        self.vmType = vmType
-        self.newsService = newsService
-    }
-    
-    init(vmType: VmType, movieService: MovieServiceProtocol) {
-        self.vmType = vmType
-        self.movieService = movieService
-    }
-    
-    func newsSearch(for query: String) async {
+    func newsSearch(for query: String, forcedRefresh: Bool = false) async {
         ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
 
 //        guard let newsSources = await fetchNewsSources() else {
@@ -54,59 +50,24 @@ class NewsSearchResultViewModel: ObservableObject {
 //            self.results = optionalResults
 //        }
         
-        switch self.vmType {
-        case .news:
-            guard let news = await fetchNews(source: "1") else {
-                return
-            }
-            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: news) {
-                self.newsResults = optionalResults
-            }
-        case .movie:
-            guard let movies = await fetchMovies() else {
-                return
-            }
-            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: movies) {
-                self.movieResults = optionalResults
-            }
-        }
-    }
-    
-//    func fetchNewsSources() async -> [NewsSource]? {
-//        do {
-//            return try await newsSourceService.fetch(forcedRefresh: false)
-//        } catch {
-//            print("No news sources were fetched: \(error)")
-//            return nil
-//        }
-//    }
-    
-    func fetchNews(source: String) async -> [News]? {
-        guard let newsService = self.newsService else {
-            return nil
-        }
         
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+
         do {
-            return try await newsService.fetch(forcedRefresh: false, source: source)
+            let data = try await service.fetch(forcedRefresh: forcedRefresh, source: "1")
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: data) {
+                self.state = .success(data: optionalResults)
+            } else {
+                self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
+            }
+            
         } catch {
-            print("No news sources were fetched: \(error)")
-            return nil
-        }
-    }
-    
-    func fetchMovies() async -> [Movie]? {
-        ///IMPORTANT: Needs adaption after merge with API refactoring -> Branch GIAS/Api
-        ///Because this fetch does not filter the movies, i.e. old movies, which already are over are still shown up.
-        
-        guard let movieService = self.movieService else {
-            return nil
-        }
-        
-        do {
-            return try await movieService.fetch(forcedRefresh: false)
-        } catch {
-            print("No news sources were fetched: \(error)")
-            return nil
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
 }

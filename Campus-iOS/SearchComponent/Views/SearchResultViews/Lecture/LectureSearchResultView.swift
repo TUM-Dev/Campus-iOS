@@ -1,18 +1,20 @@
 //
-//  GradeSearchResultView.swift
+//  LectureSearchResultView.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 27.12.22.
+//  Created by David Lin on 14.01.23.
 //
 
+import Foundation
 import SwiftUI
 
-struct GradesSearchResultView: View {
+struct LectureSearchResultView: View {
     
-    var allResults: [(grade: Grade, distance: Distances)]
+    let allResults: [Lecture]
+    let model: Model
     @State var size: ResultSize = .small
     
-    var results: [(grade: Grade, distance: Distances)] {
+    var results: [Lecture] {
         switch size {
         case .small:
             return Array(allResults.prefix(3))
@@ -27,10 +29,9 @@ struct GradesSearchResultView: View {
             VStack {
                 VStack {
                     ZStack {
-                        Text("Grades")
+                        Text("Lecture Search")
                             .fontWeight(.bold)
                             .font(.title)
-                            .padding()
                         HStack {
                             Spacer()
                             Button {
@@ -57,36 +58,28 @@ struct GradesSearchResultView: View {
                     }
                 }
                 ScrollView {
-                    ForEach(self.results, id: \.grade) { result in
-                        VStack {
-                            GradeView(grade: result.grade).padding(.leading)
+                    ForEach(self.results, id: \.id) { result in
+                        VStack(alignment: .leading) {
+                            NavigationLink {
+                                LectureDetailsScreen(model: self.model, lecture: result)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            } label: {
+                                HStack {
+                                    Text(result.title)
+                                    Spacer()
+                                    Image(systemName: "info.circle")
+                                        .foregroundColor(.tumBlue)
+                                }
+                            }.buttonStyle(.plain)
+                            Divider()
                         }
                     }
                 }
-            }
+                if self.results.count == 0 {
+                    Text("No lectures were found 😢")
+                        .foregroundColor(.gray)
+                }
+            }.padding()
         }
-    }
-}
-
-struct GradesSearchResultScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: Model_Preview(), service: GradesService_Preview()), query: .constant("Grundlagen"))
-            .cornerRadius(25)
-            .padding()
-            .shadow(color: .gray.opacity(0.8), radius: 10)
-    }
-}
-
-struct GradesService_Preview: GradesServiceProtocol {
-    func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade] {
-        return Grade.previewData
-    }
-    
-    func fetchGrades(token: String, forcedRefresh: Bool) async throws -> [Grade] {
-        return Grade.previewData
-    }
-    
-    func fetchGradesSemesterDegrees(token: String, forcedRefresh: Bool) async throws -> GradesSemesterDegrees {
-        return []
     }
 }

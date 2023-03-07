@@ -1,25 +1,22 @@
 //
-//  PersonSearchResultView.swift
+//  RoomFinderSearchView.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 14.01.23.
+//  Created by David Lin on 13.01.23.
 //
 
-import Foundation
 import SwiftUI
 
-struct PersonSearchResultView: View {
-    @StateObject var vm : PersonSearchResultViewModel
-    @Binding var query: String
-    
+struct RoomFinderSearchResultView: View {
+    let allResults: [FoundRoom]
     @State var size: ResultSize = .small
     
-    var results: [Person] {
+    var results: [FoundRoom] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return Array(allResults.prefix(10))
         }
     }
     
@@ -29,7 +26,7 @@ struct PersonSearchResultView: View {
             VStack {
                 VStack {
                     ZStack {
-                        Text("Person Search")
+                        Text("RoomFinder")
                             .fontWeight(.bold)
                             .font(.title)
                         HStack {
@@ -58,31 +55,15 @@ struct PersonSearchResultView: View {
                     }
                 }
                 ScrollView {
-                    ForEach(vm.results, id: \.id) { result in
-                        VStack(alignment: .leading) {
-                            NavigationLink(
-                                destination: PersonDetailedView(withPerson: result)
-                                    .navigationBarTitleDisplayMode(.inline)
-                            ) {
-                                HStack {
-                                    Text(result.fullName)
-                                    Spacer()
-                                    Image(systemName: "info.circle")
-                                        .foregroundColor(.tumBlue)
-                                }
-                            }.buttonStyle(.plain)
-                            Divider()
-                        }
+                    ForEach(results, id:\.id) { room in
+                        RoomFinderListCellView(room: room)
                     }
                 }
+                if self.results.count == 0 {
+                    Text("No rooms were found 😢")
+                        .foregroundColor(.gray)
+                }
             }.padding()
-        }.onChange(of: query) { newQuery in
-            Task {
-                await vm.personSearch(for: newQuery)
-            }
-        }
-        .task {
-            await vm.personSearch(for: query)
         }
     }
 }

@@ -66,9 +66,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(service: CafeteriasService_Preview()), query: $query, size: .big)
+                                    CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query, size: .big)
                                 } else {
-                                    CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
+                                    CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -78,9 +78,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query, size: .big)
+                                    NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query, size: .big)
                                 } else {
-                                    NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query, size: .big)
+                                    NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -91,9 +91,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query, size: .big)
+                                    StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query, size: .big)
                                 } else {
-                                    StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
+                                    StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -104,9 +104,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), size: .big)
+                                    EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query, size: .big)
                                 } else {
-                                    EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), size: .big)
+                                    EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -117,9 +117,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService_Preview()), query: $query, size: .big)
+                                    MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
                                 } else {
-                                    NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService()), query: $query, size: .big)
+                                    MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -127,21 +127,21 @@ struct SearchResultView: View {
                         }
                     case .roomFinder:
                         ScrollView {
-                            RoomFinderSearchResultView(query: $query)
+                            RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
                                 .cornerRadius(25)
                                 .padding()
                                 .shadow(color: .gray.opacity(0.8), radius: 5)
                         }
                     case .lectureSearch:
                         ScrollView {
-                            LectureSearchResultView(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
+                            LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
                                 .cornerRadius(25)
                                 .padding()
                                 .shadow(color: .gray.opacity(0.8), radius: 5)
                         }
                     case .personSearch:
                         ScrollView {
-                            PersonSearchResultView(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
+                            PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
                                 .cornerRadius(25)
                                 .padding()
                                 .shadow(color: .gray.opacity(0.8), radius: 5)
@@ -158,37 +158,37 @@ struct SearchResultView: View {
                                     }
                                 case .Cafeteria:
                                     if preview {
-                                        CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
+                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
                                     } else {
-                                        CafeteriasSearchResultView(vm: CafeteriasSearchResultViewModel(service: CafeteriasService()), query: $query)
+                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query)
                                     }
                                     
                                 case .News:
                                     if preview {
-                                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query)
+                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query)
                                     } else {
-                                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .news, newsService: NewsService()), query: $query)
+                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query)
                                     }
                                     
                                 case .StudyRoom:
                                     if preview {
-                                        StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
+                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
                                     } else {
-                                        StudyRoomSearchResultView(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
+                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
                                     }
                                     
                                 case .Calendar:
                                     if preview {
-                                        EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()))
+                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query)
                                     } else {
-                                        EventSearchResultView(query: $query, vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()))
+                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query)
                                     }
                                     
                                 case .Movie:
                                     if preview {
-                                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService_Preview()), query: $query)
+                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
                                     } else {
-                                        NewsSearchResultView(vm: NewsSearchResultViewModel(vmType: .movie, movieService: MovieService()), query: $query)
+                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                     }
                                 }
                             }
@@ -196,9 +196,9 @@ struct SearchResultView: View {
                             .padding()
                             .shadow(color: .gray.opacity(0.8), radius: 5)
                             Group {
-                                RoomFinderSearchResultView(query: $query)
-                                LectureSearchResultView(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
-                                PersonSearchResultView(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
+                                RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
+                                LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
+                                PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
                             }
                             .cornerRadius(25)
                             .padding()
@@ -218,6 +218,6 @@ struct SearchResultView: View {
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()), query: .constant("Movie "))
+        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()), query: .constant("StudyRoom Garching"))
     }
 }

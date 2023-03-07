@@ -1,25 +1,22 @@
 //
-//  RoomFinderSearchView.swift
+//  PersonSearchResultView.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 13.01.23.
+//  Created by David Lin on 14.01.23.
 //
 
-import Foundation
 import SwiftUI
 
-struct RoomFinderSearchResultView: View {
-    @StateObject var vm = RoomFinderSearchResultViewModel()
-    @Binding var query: String
-    
+struct PersonSearchResultView: View {
+    let allResults: [Person]
     @State var size: ResultSize = .small
     
-    var results: [FoundRoom] {
+    var results: [Person] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return allResults
         }
     }
     
@@ -29,7 +26,7 @@ struct RoomFinderSearchResultView: View {
             VStack {
                 VStack {
                     ZStack {
-                        Text("RoomFinder")
+                        Text("Person Search")
                             .fontWeight(.bold)
                             .font(.title)
                         HStack {
@@ -58,21 +55,24 @@ struct RoomFinderSearchResultView: View {
                     }
                 }
                 ScrollView {
-                    ForEach(results, id:\.id) { room in
-                        RoomFinderListCellView(room: room)
+                    ForEach(results, id: \.id) { result in
+                        VStack(alignment: .leading) {
+                            NavigationLink(
+                                destination: PersonDetailedView(withPerson: result)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                HStack {
+                                    Text(result.fullName)
+                                    Spacer()
+                                    Image(systemName: "info.circle")
+                                        .foregroundColor(.tumBlue)
+                                }
+                            }.buttonStyle(.plain)
+                            Divider()
+                        }
                     }
                 }
-                if self.results.count == 0 {
-                    Text("No rooms were found 😢")
-                        .foregroundColor(.gray)
-                }
             }.padding()
-        }.onChange(of: query) { newQuery in
-            Task {
-                await vm.roomFinderSearch(for: newQuery)
-            }
-        }.task {
-            await vm.roomFinderSearch(for: query)
         }
     }
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EventSearchResultView: View {
-    @Binding var query: String
-    @StateObject var vm: EventSearchResultViewModel
+    let allResults: [(event: EventSearchResult, distance: Distances)]
+    let model: Model
     @State var showEventsFor: EventSearchResult? = nil
     @State var showDetailedLecture: Lecture? = nil
     @State var size: ResultSize = .small
@@ -17,9 +17,9 @@ struct EventSearchResultView: View {
     var results: [(event: EventSearchResult, distance: Distances)] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return Array(allResults.prefix(10))
         }
     }
     
@@ -65,7 +65,7 @@ struct EventSearchResultView: View {
                                 
                                 Spacer()
                                 NavigationLink {
-                                    LectureDetailsScreen(model: vm.model, lecture: result.event.lecture)
+                                    LectureDetailsScreen(model: self.model, lecture: result.event.lecture)
                                         .navigationBarTitleDisplayMode(.inline)
                                 } label: {
                                     Image(systemName: "info.circle")
@@ -108,7 +108,7 @@ struct EventSearchResultView: View {
                                                         )
                                                         HStack {
                                                             Spacer()
-                                                            NavigationLink(destination: RoomFinderView(model: vm.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
+                                                            NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
                                                                 HStack {
                                                                     Text("Open in RoomFinder")
                                                                     Image(systemName: "arrow.right.circle")
@@ -129,13 +129,6 @@ struct EventSearchResultView: View {
                     }
                 }
             }
-        }
-        .onChange(of: query) { newQuery in
-            Task {
-                await vm.eventsSearch(for: query)
-            }
-        }.task {
-            await vm.eventsSearch(for: query)
         }
     }
     
@@ -179,26 +172,5 @@ struct EventSearchResultView: View {
         }
         
         return roomNumber
-    }
-}
-
-struct EventSearchResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        EventSearchResultView(query: .constant("Analysis"), vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()))
-            .cornerRadius(25)
-            .padding()
-            .shadow(color: .gray.opacity(0.8), radius: 10)
-    }
-}
-
-struct LecturesService_Preview: LecturesServiceProtocol {
-    func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Lecture] {
-        return Lecture.dummyData
-    }
-}
-
-struct CalendarService_Preview: CalendarServiceProtocol {
-    func fetch(token: String, forcedRefresh: Bool) async throws -> [CalendarEvent] {
-        return CalendarEvent.previewData
     }
 }

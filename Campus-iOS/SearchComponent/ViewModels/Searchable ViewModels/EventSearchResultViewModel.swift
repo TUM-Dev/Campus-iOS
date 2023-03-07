@@ -16,9 +16,19 @@ struct EventSearchResult: Searchable {
     let events: [CalendarEvent]
 }
 
+extension EventSearchResultViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [(event: EventSearchResult, distance: Distances)])
+        case failed(error: Error)
+    }
+}
+
 @MainActor
 class EventSearchResultViewModel: ObservableObject {
-    @Published var results = [(event: EventSearchResult, distance: Distances)]()
+    @Published var state: State = .na
+    @Published var hasError: Bool = false
     let lecturesService: LecturesServiceProtocol
     let calendarService: CalendarServiceProtocol
     let model: Model
@@ -40,57 +50,61 @@ class EventSearchResultViewModel: ObservableObject {
         self.calendarService = calendarService
     }
     
-    func eventsSearch(for query: String) async {
-        guard let lectures = await fetchLectures() else {
+    func eventsSearch(for query: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+        
+        guard let token = self.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
             return
         }
         
-        var eventResults = [EventSearchResult]()
-        if let calendar = await fetchCalendarEvents() {
-            eventResults = lectures.map { lecture in
-                let lectureEvents = calendar.filter { currentCalendarEvent in
-                    if let nr = currentCalendarEvent.lvNr {
-                        return nr == String(lecture.id)
+        var calendarData = [CalendarEvent]()
+        do {
+            calendarData = try await calendarService.fetch(token: token, forcedRefresh: forcedRefresh)
+            
+        } catch {
+            print("Error fetching Calendar: \(error)")
+            // No error is thrown because we could have no permissons for the calendar, but for the lectures, i.e. only the lectures without calendar dates are shown
+        }
+
+        do {
+            let lectureData = try await lecturesService.fetch(token: token, forcedRefresh: forcedRefresh)
+            
+            var eventResults = [EventSearchResult]()
+            if calendarData.isEmpty {
+                // If e.g. we do not have the permisson to read calendar, but lectures
+                eventResults = lectureData.map { EventSearchResult(lecture: $0, events: []) }
+            } else {
+                eventResults = lectureData.map { lecture in
+                    let lectureEvents = calendarData.filter { currentCalendarEvent in
+                        if let nr = currentCalendarEvent.lvNr {
+                            if let date = currentCalendarEvent.startDate, date >= Date() {
+                                return nr == String(lecture.id)
+                            } else {
+                                return false
+                            }
+                        }
+                        return false
                     }
-                    return false
+                    
+                    return EventSearchResult(lecture: lecture, events: lectureEvents)
                 }
-                
-                return EventSearchResult(lecture: lecture, events: lectureEvents)
             }
-        } else {
-            // If e.g. we do not have the permisson to read calendar, but lectures
-            eventResults = lectures.map { EventSearchResult(lecture: $0, events: []) }
-        }
-        
-        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: eventResults) {
-            self.results = optionalResults
-        }
-    }
-    
-    func fetchLectures() async -> [Lecture]? {
-        //TODO: Error handling instead of returning nil when an error is thrown
-        guard let token = self.token else {
-            return nil
-        }
-        
-        do {
-            return try await lecturesService.fetch(token: token, forcedRefresh: false)
+            
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: eventResults) {
+                self.state = .success(data: optionalResults)
+            } else {
+                self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
+            }
+            
         } catch {
-            print("No lectures were fetched")
-            return nil
-        }
-    }
-        
-    func fetchCalendarEvents() async -> [CalendarEvent]? {
-        guard let token = self.token else {
-            return nil
-        }
-        
-        do {
-            return try await calendarService.fetch(token: token, forcedRefresh: false)
-        } catch {
-            print("No calendar events were fetched: \(error)")
-            return nil
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
 }

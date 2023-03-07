@@ -18,25 +18,9 @@ struct GradesSearchResultScreen: View {
             case .success(let data):
                 GradesSearchResultView(allResults: data, size: self.size)
             case .loading, .na:
-                ZStack {
-                    Color.white
-                    VStack {
-                        Text("Grades")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        LoadingView(text: "Searching in grades...")
-                    }.padding()
-                }
+                SearchResultLoadingView(title: "Grades")
             case .failed(let error):
-                ZStack {
-                    Color.white
-                    VStack {
-                        Text("Grades")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        Text("Error searching in grades: \(error.localizedDescription)")
-                    }.padding()
-                }
+                SearchResultErrorView(title: "Grades", error: error.localizedDescription)
             }
         }.onChange(of: query) { newQuery in
             Task {

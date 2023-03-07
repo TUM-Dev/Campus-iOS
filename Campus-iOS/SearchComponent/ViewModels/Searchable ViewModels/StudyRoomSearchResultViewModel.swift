@@ -20,49 +20,58 @@ struct StudyRoomSearchResult: Searchable {
     }
 }
 
+extension StudyRoomSearchResultViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [(studyRoomResult: StudyRoomSearchResult, distance: Distances)])
+        case failed(error: Error)
+    }
+}
+
 @MainActor
 class StudyRoomSearchResultViewModel: ObservableObject {
-    @Published var results = [(studyRoomResult: StudyRoomSearchResult, distance: Distances)]()
+    @Published var state: State = .na
+    @Published var hasError = false
     private let studyRoomService: StudyRoomsServiceProtocol
     
     init(studyRoomService: StudyRoomsServiceProtocol) {
         self.studyRoomService = studyRoomService
     }
     
-    func studyRoomSearch(for query: String) async {
-        let studyRoomsResponse = await fetch()
-        
-        guard let groups = studyRoomsResponse.groups, let rooms = studyRoomsResponse.rooms else {
-            return
+    func studyRoomSearch(for query: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
         }
-        
-        
-        
-        let groupRooms: [StudyRoomSearchResult] = groups.map { currentGroup in
-            let currentRooms = rooms.filter {
-                return currentGroup.rooms?.contains($0.id) ?? false
+        self.hasError = false
+
+        do {
+            let data = try await studyRoomService.fetch(forcedRefresh: forcedRefresh)
+            
+            guard let groups = data.groups, let rooms = data.rooms else {
+                self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
+                return
             }
             
-            return StudyRoomSearchResult(group: currentGroup, rooms: currentRooms)
-        }
-//        rint(">> GROUPS: \(groupRooms)")
-        
-        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: groupRooms) {
+            let groupRooms: [StudyRoomSearchResult] = groups.map { currentGroup in
+                let currentRooms = rooms.filter {
+                    return currentGroup.rooms?.contains($0.id) ?? false
+                }
+                
+                return StudyRoomSearchResult(group: currentGroup, rooms: currentRooms)
+            }
             
-            self.results = optionalResults
-            print(">> StudyRoomResults: \(results)")
-        }
-    }
-    
-    func fetch() async -> StudyRoomApiRespose {
-        
-        var studyRoomResponse = StudyRoomApiRespose()
-        do {
-            studyRoomResponse = try await studyRoomService.fetch(forcedRefresh: false)
+            if let optionalResults = GlobalSearch.tokenSearch(for: query, in: groupRooms) {
+                self.state = .success(data: optionalResults)
+            } else {
+                self.state = .failed(error: SearchError.empty(searchQuery: query))
+                self.hasError = true
+            }
+            
         } catch {
-            print("No studyRooms were fetched")
+            self.state = .failed(error: error)
+            self.hasError = true
         }
-        
-        return studyRoomResponse
     }
 }

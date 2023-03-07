@@ -7,26 +7,31 @@
 
 import Foundation
 
+extension RoomFinderSearchResultViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [FoundRoom])
+        case failed(error: Error)
+    }
+}
+
 @MainActor
 class RoomFinderSearchResultViewModel: ObservableObject {
-    @Published var results = [FoundRoom]()
+    @Published var state: State = .na
+    @Published var hasError: Bool = false
     
-    func roomFinderSearch(for query: String) async {
-        guard let rooms = await fetch(for: query) else {
-            results = []
-            return
+    func roomFinderSearch(for query: String, forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
         }
-        
-        results = rooms
-    }
-    
-    func fetch(for query: String) async -> [FoundRoom]? {
+        self.hasError = false
+
         do {
-            return try await TUMCabeAPI.makeRequest(endpoint: .roomSearch(query: query))
+            self.state = .success(data: try await TUMCabeAPI.makeRequest(endpoint: .roomSearch(query: query), forcedRefresh: forcedRefresh))
         } catch {
-            print("No rooms were fetched: \(String(describing: error))")
-            return nil
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
-    
 }
