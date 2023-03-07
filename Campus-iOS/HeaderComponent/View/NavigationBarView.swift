@@ -33,7 +33,7 @@ struct NavigationBarView: View {
                         }
                         Spacer()
                         Button(action: {model.showProfile.toggle()}) {
-                            Image(systemName: "person.crop.circle").foregroundColor(Color.primaryText)
+                            Image(systemName: "gearshape").foregroundColor(Color.primaryText)
                                 .font(.system(size: 20))
                         }
                         .sheet(isPresented: $model.showProfile) {

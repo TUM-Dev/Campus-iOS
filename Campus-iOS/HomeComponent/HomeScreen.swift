@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct HomeScreen: View {
     
     @StateObject var model: Model
@@ -33,6 +34,7 @@ struct HomeScreen: View {
     }
 }
 
+@available(iOS 16.0, *)
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen(model: MockModel())
