@@ -101,10 +101,8 @@ struct StudyRoomSearchResultView: View {
                 
                 await vm.studyRoomSearch(for: newQuery)
             }
-        }.onAppear() {
-            Task {
-                await vm.studyRoomSearch(for: query)
-            }
+        }.task {
+            await vm.studyRoomSearch(for: query)
         }
     }
 }

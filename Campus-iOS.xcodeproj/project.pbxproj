@@ -96,6 +96,7 @@
 		1FD025D22971A31300E66981 /* NewsSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D12971A31300E66981 /* NewsSearchResultViewModel.swift */; };
 		1FD025D42971AB7D00E66981 /* NewsSourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D32971AB7D00E66981 /* NewsSourceService.swift */; };
 		1FD025D72971BD2000E66981 /* NewsSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */; };
+		1FE6DC9F29B74ACA006A06B9 /* GradeSearchResultScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6DC9E29B74ACA006A06B9 /* GradeSearchResultScreen.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
@@ -396,6 +397,7 @@
 		1FD025D12971A31300E66981 /* NewsSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchResultViewModel.swift; sourceTree = "<group>"; };
 		1FD025D32971AB7D00E66981 /* NewsSourceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceService.swift; sourceTree = "<group>"; };
 		1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSearchResultView.swift; sourceTree = "<group>"; };
+		1FE6DC9E29B74ACA006A06B9 /* GradeSearchResultScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSearchResultScreen.swift; sourceTree = "<group>"; };
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -763,7 +765,7 @@
 			isa = PBXGroup;
 			children = (
 				1F50417A295B844A00A62CA1 /* CafeteriaSearchResultView.swift */,
-				1F50417F295B84A300A62CA1 /* GradeSearchResultView.swift */,
+				1FE6DC9D29B73B61006A06B9 /* Grades */,
 				1F504192295B897600A62CA1 /* StudyRoomSearchResultView.swift */,
 				1F50419A295CC25E00A62CA1 /* EventSearchResultView.swift */,
 				1FD025D62971BD2000E66981 /* NewsSearchResultView.swift */,
@@ -850,6 +852,15 @@
 				1F74DB2C2971D0D200B9143C /* NewsService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		1FE6DC9D29B73B61006A06B9 /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				1F50417F295B84A300A62CA1 /* GradeSearchResultView.swift */,
+				1FE6DC9E29B74ACA006A06B9 /* GradeSearchResultScreen.swift */,
+			);
+			path = Grades;
 			sourceTree = "<group>";
 		};
 		1FFEF086284E417E00ADD201 /* Recovered References */ = {
@@ -2092,6 +2103,7 @@
 				36203E8C2761C6EC00C24658 /* LoginView.swift in Sources */,
 				1F33B2ED282B084100C898E4 /* MockGradesViewModel.swift in Sources */,
 				36E964A7277498540055777F /* CalendarContentView.swift in Sources */,
+				1FE6DC9F29B74ACA006A06B9 /* GradeSearchResultScreen.swift in Sources */,
 				0815249C28E4A38D0098A2C3 /* CLLocation+isInvalid.swift in Sources */,
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */,

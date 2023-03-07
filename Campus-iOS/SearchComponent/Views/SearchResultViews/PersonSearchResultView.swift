@@ -81,10 +81,8 @@ struct PersonSearchResultView: View {
                 await vm.personSearch(for: newQuery)
             }
         }
-        .onAppear() {
-            Task {
-                await vm.personSearch(for: query)
-            }
+        .task {
+            await vm.personSearch(for: query)
         }
     }
 }

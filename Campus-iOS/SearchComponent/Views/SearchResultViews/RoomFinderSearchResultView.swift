@@ -71,11 +71,8 @@ struct RoomFinderSearchResultView: View {
             Task {
                 await vm.roomFinderSearch(for: newQuery)
             }
-        }.onAppear() {
-            Task {
-                await vm.roomFinderSearch(for: query)
-            }
+        }.task {
+            await vm.roomFinderSearch(for: query)
         }
-        
     }
 }

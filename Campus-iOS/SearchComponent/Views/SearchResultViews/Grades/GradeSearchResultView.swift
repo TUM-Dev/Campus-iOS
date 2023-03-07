@@ -9,16 +9,15 @@ import SwiftUI
 
 struct GradesSearchResultView: View {
     
-    @StateObject var vm: GradesSearchResultViewModel
-    @Binding var query: String
+    var allResults: [(grade: Grade, distance: Distances)]
     @State var size: ResultSize = .small
     
     var results: [(grade: Grade, distance: Distances)] {
         switch size {
         case .small:
-            return Array(vm.results.prefix(3))
+            return Array(allResults.prefix(3))
         case .big:
-            return Array(vm.results.prefix(10))
+            return Array(allResults.prefix(10))
         }
     }
     
@@ -31,6 +30,7 @@ struct GradesSearchResultView: View {
                         Text("Grades")
                             .fontWeight(.bold)
                             .font(.title)
+                            .padding()
                         HStack {
                             Spacer()
                             Button {
@@ -64,31 +64,20 @@ struct GradesSearchResultView: View {
                     }
                 }
             }
-            
-        }
-        .onChange(of: query) { newQuery in
-            Task {
-                await vm.gradesSearch(for: newQuery)
-            }
-        }
-        .onAppear() {
-            Task {
-                await vm.gradesSearch(for: query)
-            }
         }
     }
 }
 
-struct GradesSearchResultView_Previews: PreviewProvider {
+struct GradesSearchResultScreen_Previews: PreviewProvider {
     static var previews: some View {
-        GradesSearchResultView(vm: GradesSearchResultViewModel(model: Model_Preview(), service: GradeService_Preview()), query: .constant("Grundlagen"))
+        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: Model_Preview(), service: GradesService_Preview()), query: .constant("Grundlagen"))
             .cornerRadius(25)
             .padding()
             .shadow(color: .gray.opacity(0.8), radius: 10)
     }
 }
 
-struct GradeService_Preview: GradesServiceProtocol {
+struct GradesService_Preview: GradesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool) async throws -> [Grade] {
         return Grade.previewData
     }

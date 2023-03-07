@@ -18,7 +18,6 @@ extension GradesSearchResultViewModel {
 
 @MainActor
 class GradesSearchResultViewModel: ObservableObject {
-    @Published var results = [(grade: Grade, distance: Distances)]()
     @Published var state: State = .na
     @Published var hasError: Bool = false
     
@@ -41,22 +40,6 @@ class GradesSearchResultViewModel: ObservableObject {
         }
     }
     
-//    func gradesSearch(for query: String) async {
-//        guard let grades = try await fetch
-//
-//        if let optionalResults = GlobalSearch.tokenSearch(for: query, in: servi) {
-//            self.results = optionalResults
-//
-//            #if DEBUG
-////            print(">>> \(query)")
-////            optionalResults.forEach { result in
-////                print(result.0)
-////                print(result.1)
-////            }
-//            #endif
-//        }
-//    }
-    
     func gradesSearch(for query: String, forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.state = .loading
@@ -72,8 +55,6 @@ class GradesSearchResultViewModel: ObservableObject {
         do {
             let data = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             if let optionalResults = GlobalSearch.tokenSearch(for: query, in: data) {
-                self.results = optionalResults
-                
                 self.state = .success(data: optionalResults)
             } else {
                 self.state = .failed(error: SearchError.empty(searchQuery: query))

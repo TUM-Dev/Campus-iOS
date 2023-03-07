@@ -88,10 +88,8 @@ struct CafeteriasSearchResultView: View {
             Task {
                 await vm.cafeteriasSearch(for: newQuery)
             }
-        }.onAppear() {
-            Task {
-                await vm.cafeteriasSearch(for: query)
-            }
+        }.task {
+            await vm.cafeteriasSearch(for: query)
         }
     }
 }

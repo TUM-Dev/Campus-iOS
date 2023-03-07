@@ -54,9 +54,9 @@ struct SearchResultView: View {
                         ScrollView {
                             Group {
                                 if preview {
-                                    GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model, service: GradeService_Preview()), query: $query, size: .big)
+                                    GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query, size: .big)
                                 } else {
-                                    GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
+                                    GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
                                 }
                             }.cornerRadius(25)
                                 .padding()
@@ -152,9 +152,9 @@ struct SearchResultView: View {
                                 switch type {
                                 case .Grade:
                                     if preview {
-                                        GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model, service: GradeService_Preview()), query: $query)
+                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query)
                                     } else {
-                                        GradesSearchResultView(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
+                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
                                     }
                                 case .Cafeteria:
                                     if preview {

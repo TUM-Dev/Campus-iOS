@@ -136,10 +136,8 @@ struct NewsSearchResultView: View {
             Task {
                 await vm.newsSearch(for: newQuery)
             }
-        }.onAppear() {
-            Task {
-                await vm.newsSearch(for: query)
-            }
+        }.task {
+            await vm.newsSearch(for: query)
         }
     }
 }

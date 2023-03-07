@@ -84,11 +84,8 @@ struct LectureSearchResultView: View {
             Task {
                 await vm.lectureSearch(for: newQuery)
             }
-        }
-        .onAppear() {
-            Task {
-                await vm.lectureSearch(for: query)
-            }
+        }.task {
+            await vm.lectureSearch(for: query)
         }
     }
 }
