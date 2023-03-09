@@ -44,6 +44,8 @@
 		08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */; };
 		08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */; };
 		08FAFD292898B6C8006A0E27 /* SpatioTemporalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */; };
+		0C14497D29BA7E6A001E344E /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14497C29BA7E6A001E344E /* NavigationTabs.swift */; };
+		0C14497F29BA7F89001E344E /* ShowGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14497E29BA7F89001E344E /* ShowGrades.swift */; };
 		0CCC0AE929BA4D4A009E8DCB /* ShowCafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */; };
 		0CCC0AEB29BA4DCF009E8DCB /* AutoShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
@@ -315,6 +317,8 @@
 		08FAFD23288DF553006A0E27 /* WidgetRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRecommendation.swift; sourceTree = "<group>"; };
 		08FAFD262898A2B8006A0E27 /* LocationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationStrategy.swift; sourceTree = "<group>"; };
 		08FAFD282898B6C8006A0E27 /* SpatioTemporalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatioTemporalStrategy.swift; sourceTree = "<group>"; };
+		0C14497C29BA7E6A001E344E /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
+		0C14497E29BA7F89001E344E /* ShowGrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGrades.swift; sourceTree = "<group>"; };
 		0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCafeteriaMenu.swift; sourceTree = "<group>"; };
 		0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShortcuts.swift; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
@@ -642,6 +646,7 @@
 			children = (
 				0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */,
 				0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */,
+				0C14497E29BA7F89001E344E /* ShowGrades.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 			isa = PBXGroup;
 			children = (
 				36108C0127A30762007DC62D /* Enums.swift */,
+				0C14497C29BA7E6A001E344E /* NavigationTabs.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1765,6 +1771,7 @@
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
+				0C14497F29BA7F89001E344E /* ShowGrades.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
@@ -1800,6 +1807,7 @@
 				3616C4CF279020D3000A1BC9 /* TUMSexyViewModel.swift in Sources */,
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
+				0C14497D29BA7E6A001E344E /* NavigationTabs.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,

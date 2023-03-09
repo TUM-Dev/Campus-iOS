@@ -12,10 +12,9 @@ import Firebase
 
 @main
 struct CampusApp: App {
-    @StateObject var model: Model = Model()
+    @StateObject var model: Model = Model.shared
     
     let persistenceController = PersistenceController.shared
-    @State var selectedTab = 0
     @State var isLoginSheetPresented = false
 
     init() {
@@ -35,9 +34,6 @@ struct CampusApp: App {
                 .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 0
-                            }
                     }
                     .navigationViewStyle(.stack)
                 }
@@ -50,7 +46,7 @@ struct CampusApp: App {
     }
     
     func tabViewComponent() -> some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $model.selectedTab) {
             NavigationView {
                 CalendarContentView(
                     model: model,
@@ -58,7 +54,7 @@ struct CampusApp: App {
                 )
                 .navigationTitle("Calendar")
             }
-            .tag(4)
+            .tag(NavigationTabs.calendar)
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
@@ -76,7 +72,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(1)
+            .tag(NavigationTabs.lectures)
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
@@ -95,7 +91,7 @@ struct CampusApp: App {
                         }
                 }
                 .navigationViewStyle(.stack)
-                .tag(0)
+                .tag(NavigationTabs.home)
                 .tabItem {
                     Label("Home", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
                 }
@@ -110,7 +106,7 @@ struct CampusApp: App {
                         }
                     }
             }
-            .tag(2)
+            .tag(NavigationTabs.grades)
             .tabItem {
                 Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
             }
@@ -121,7 +117,7 @@ struct CampusApp: App {
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
-            .tag(3)
+            .tag(NavigationTabs.places)
             .tabItem {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }

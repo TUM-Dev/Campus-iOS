@@ -14,6 +14,8 @@ import FirebaseAnalytics
 
 public class Model: ObservableObject {
     
+    static let shared = Model()
+    
     @Published var showProfile = false {
         didSet {
             if showProfile {
@@ -37,6 +39,8 @@ public class Model: ObservableObject {
     @Published var loginController: AuthenticationHandler
     @Published var isUserAuthenticated = false
     @Published var profile: ProfileViewModel = ProfileViewModel()
+    
+    var selectedTab: NavigationTabs = .home
     
     var anyCancellables: [AnyCancellable] = []
     

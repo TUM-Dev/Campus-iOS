@@ -8,7 +8,7 @@
 import AppIntents
 
 struct ShowCafeteriaMenu: AppIntent {
-    static var title: LocalizedStringResource = "Open cafeteria menu"
+    static var title: LocalizedStringResource = "Show the cafeteria menu"
     
     static var openAppWhenRun = true
     
@@ -25,7 +25,9 @@ struct ShowCafeteriaMenu: AppIntent {
     
     @MainActor
     func perform() async throws -> some IntentResult {
-        return .result(value: cafeteria, dialog: "Opening today's menu for \(cafeteria.name)")
+        Model.shared.isLoginSheetPresented = false
+        Model.shared.selectedTab = .places
+        return .result(dialog: "Opening today's menu for \(cafeteria.name)")
     }
     
     static var parameterSummary: some ParameterSummary {

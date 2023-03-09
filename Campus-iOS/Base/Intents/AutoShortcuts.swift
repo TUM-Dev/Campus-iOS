@@ -17,7 +17,16 @@ struct AutoShortcuts: AppShortcutsProvider {
                 "Meal plan at \(\.$cafeteria)",
                 "Show \(\.$cafeteria) in \(.applicationName)",
             ],
-            systemImageName: "books.vertical.fill"
+            systemImageName: "mappin.and.ellipse"
+        )
+        AppShortcut(
+            intent: ShowGrades(),
+            phrases: [
+                "Show my grade report",
+                "Show the exam results",
+                "Show my grades in \(.applicationName)",
+            ],
+            systemImageName: "studentdesk"
         )
     }
 }
