@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import Combine
+import AppIntents
 
 protocol MapViewModelProtocol: ObservableObject {
     func getCafeteria(forcedRefresh: Bool) async
@@ -113,6 +115,16 @@ class MapViewModel: MapViewModelProtocol {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
         }
+    }
+    
+    func selectCafeteria(_ cafeteria: Cafeteria) {
+        selectedCafeteria = cafeteria
+        panelPos = .middle
+        lockPanel = false
+        
+        print("intent donation")
+        
+        ShowCafeteriaMenu(cafeteria: cafeteria).donate()
     }
 }
 

@@ -34,9 +34,7 @@ struct PanelContentCafeteriasListView: View {
             ForEach (self.sortedCafeterias.indices.filter({ searchString.isEmpty ? true : self.sortedCafeterias[$0].name.localizedCaseInsensitiveContains(searchString) }), id: \.self) { id in
                 Button(action: {
                     //print("BEFORE: \(viewModel.selectedCafeteria)")
-                    viewModel.selectedCafeteria = self.sortedCafeterias[id]
-                    viewModel.panelPos = .middle
-                    viewModel.lockPanel = false
+                    viewModel.selectCafeteria(self.sortedCafeterias[id])
                     //print("AFTER: \(viewModel.selectedCafeteria)")
                 }, label: {
                     CafeteriaRowView(cafeteria: self.$sortedCafeterias[id])

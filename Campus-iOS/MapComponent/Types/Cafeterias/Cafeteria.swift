@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import AppIntents
 
 struct Location: Decodable, Hashable {
     let latitude: CLLocationDegrees
@@ -21,7 +22,14 @@ struct Queue: Decodable, Hashable {
     let percent: Float
 }
 
-struct Cafeteria: Decodable, Hashable {
+struct Cafeteria: Decodable, Hashable, AppEntity {
+    var displayRepresentation: DisplayRepresentation {
+        DisplayRepresentation(title: "\(name)")
+    }
+    
+    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Cafeteria"
+    
+    static var defaultQuery = CafeteriaQuery()
     /*
      "location": {
         "address": "Arcisstraße 17, München",
@@ -50,6 +58,26 @@ struct Cafeteria: Decodable, Hashable {
         case queue
     }
     
+}
+
+struct CafeteriaQuery: EntityStringQuery {
+    func entities(matching string: String) async throws -> [Cafeteria] {
+        let cafeterias = try await CafeteriasService().fetch(forcedRefresh: false)
+        return cafeterias.filter { cafeteria in
+            cafeteria.name.localizedCaseInsensitiveContains(string)
+        }
+    }
+    
+    func entities(for identifiers: [Cafeteria.ID]) async throws -> [Cafeteria] {
+        let cafeterias = try await CafeteriasService().fetch(forcedRefresh: false)
+        return identifiers.compactMap { id in
+            cafeterias.first(where: { $0.id == id })
+        }
+    }
+    
+    func suggestedEntities() async throws -> [Cafeteria] {
+        try await Array(CafeteriasService().fetch(forcedRefresh: false).prefix(5))
+    }
 }
 
 extension Array where Element == Cafeteria {

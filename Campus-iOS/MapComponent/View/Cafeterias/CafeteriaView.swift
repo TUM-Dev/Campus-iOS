@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppIntents
 
 struct CafeteriaView: View {
     @StateObject var vm: MapViewModel
@@ -74,6 +75,8 @@ struct CafeteriaView: View {
                             .font(.footnote)
                     })
                 }
+                
+                SiriTipView(intent: ShowCafeteriaMenu(cafeteria: canteen))
             }
             .padding(.all, 10)
             .task {

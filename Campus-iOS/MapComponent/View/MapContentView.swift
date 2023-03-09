@@ -203,9 +203,7 @@ class MapContentCoordinator: NSObject, MKMapViewDelegate {
                         if title == control.vm.cafeterias[i].title {
                             control.vm.selectedAnnotationIndex = i
                             // Making the selected annotation (i.e. cafeteria) the selected cafeteria -> shows the MealPlanView inside the PanelContentView like tapping on a cafeteria in the PanelContentCafeteriasListView
-                            control.vm.selectedCafeteria = control.vm.cafeterias[i]
-                            //control.vm.panelPosition = "pushMid"
-                            control.vm.panelPos = .middle
+                            control.vm.selectCafeteria(control.vm.cafeterias[i])
                         }
                     }
                 }
