@@ -62,6 +62,21 @@
 			<string>UINewsstandBindingTypeMagazine</string>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>outline@2x</string>
+			<key>CFBundleURLName</key>
+			<string>TCA</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tum</string>
+			</array>
+		</dict>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
@@ -69,5 +84,32 @@
 		<key>UIImageName</key>
 		<string>logo-white</string>
 	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>de.tum.tca.shortcut.calendar</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeDate</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Calendar</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>de.tum.tca.shortcut.places</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeMarkLocation</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Places</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemType</key>
+			<string>de.tum.tca.shortcut.lectures</string>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeBookmark</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Lectures</string>
+		</dict>
+	</array>
 </dict>
 </plist>

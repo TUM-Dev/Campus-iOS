@@ -57,9 +57,6 @@ struct WidgetScreen: View {
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
-        if let firstName = model.profile.profile?.firstname { widgetTitle = "Hi, " + firstName }
-        else { widgetTitle = "Welcome"}
-        
         return ZStack(alignment: .topLeading) {
             ForEach(0..<views.count, id: \.self) { i in
                 views[i]

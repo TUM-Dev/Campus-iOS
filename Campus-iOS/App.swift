@@ -14,6 +14,8 @@ import Firebase
 struct CampusApp: App {
     @StateObject var model: Model = Model.shared
     
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     let persistenceController = PersistenceController.shared
     @State var isLoginSheetPresented = false
 
@@ -42,6 +44,22 @@ struct CampusApp: App {
                 })
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onOpenURL { url in
+                    guard url.scheme == "tum" else {
+                        return
+                    }
+                    
+                    switch(url.host()) {
+                        case "places":
+                            model.selectedTab = .places
+                        case "calendar":
+                            model.selectedTab = .calendar
+                        case "lectures":
+                            model.selectedTab = .lectures
+                        default:
+                            return
+                    }
+                }
         }
     }
     

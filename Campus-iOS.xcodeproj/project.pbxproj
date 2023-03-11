@@ -47,7 +47,13 @@
 		0C14497D29BA7E6A001E344E /* NavigationTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14497C29BA7E6A001E344E /* NavigationTabs.swift */; };
 		0C14497F29BA7F89001E344E /* ShowGrades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C14497E29BA7F89001E344E /* ShowGrades.swift */; };
 		0CCC0AE929BA4D4A009E8DCB /* ShowCafeteriaMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */; };
-		0CCC0AEB29BA4DCF009E8DCB /* AutoShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */; };
+		0CCC0AEB29BA4DCF009E8DCB /* AppShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC0AEA29BA4DCF009E8DCB /* AppShortcuts.swift */; };
+		0CD91F6229BC9FFE004D0D98 /* OpenCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD91F6129BC9FFE004D0D98 /* OpenCalendar.swift */; };
+		0CD91F6429BCA0B0004D0D98 /* ShowLectures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD91F6329BCA0B0004D0D98 /* ShowLectures.swift */; };
+		0CD91F6629BCA31B004D0D98 /* MainSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD91F6529BCA31B004D0D98 /* MainSceneDelegate.swift */; };
+		0CD91F6829BCA519004D0D98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD91F6729BCA519004D0D98 /* AppDelegate.swift */; };
+		0CD91F7129BCB21F004D0D98 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CD91F6F29BCB21F004D0D98 /* InfoPlist.strings */; };
+		0CD91F7629BCB57D004D0D98 /* AppShortcuts.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0CD91F7429BCB57D004D0D98 /* AppShortcuts.strings */; };
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
@@ -320,7 +326,15 @@
 		0C14497C29BA7E6A001E344E /* NavigationTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTabs.swift; sourceTree = "<group>"; };
 		0C14497E29BA7F89001E344E /* ShowGrades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGrades.swift; sourceTree = "<group>"; };
 		0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCafeteriaMenu.swift; sourceTree = "<group>"; };
-		0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoShortcuts.swift; sourceTree = "<group>"; };
+		0CCC0AEA29BA4DCF009E8DCB /* AppShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShortcuts.swift; sourceTree = "<group>"; };
+		0CD91F6129BC9FFE004D0D98 /* OpenCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCalendar.swift; sourceTree = "<group>"; };
+		0CD91F6329BCA0B0004D0D98 /* ShowLectures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLectures.swift; sourceTree = "<group>"; };
+		0CD91F6529BCA31B004D0D98 /* MainSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneDelegate.swift; sourceTree = "<group>"; };
+		0CD91F6729BCA519004D0D98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0CD91F7029BCB21F004D0D98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0CD91F7229BCB274004D0D98 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0CD91F7529BCB57D004D0D98 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
+		0CD91F7729BCB580004D0D98 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/AppShortcuts.strings; sourceTree = "<group>"; };
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
@@ -645,8 +659,10 @@
 			isa = PBXGroup;
 			children = (
 				0CCC0AE829BA4D4A009E8DCB /* ShowCafeteriaMenu.swift */,
-				0CCC0AEA29BA4DCF009E8DCB /* AutoShortcuts.swift */,
+				0CCC0AEA29BA4DCF009E8DCB /* AppShortcuts.swift */,
 				0C14497E29BA7F89001E344E /* ShowGrades.swift */,
+				0CD91F6129BC9FFE004D0D98 /* OpenCalendar.swift */,
+				0CD91F6329BCA0B0004D0D98 /* ShowLectures.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -1129,6 +1145,8 @@
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
 				366F0E8327580CFB0091651D /* App.swift */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
+				0CD91F7429BCB57D004D0D98 /* AppShortcuts.strings */,
+				0CD91F6F29BCB21F004D0D98 /* InfoPlist.strings */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				41E2B8232864D192005B5E72 /* Icons */,
@@ -1137,6 +1155,8 @@
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
 				366F0E8927580CFD0091651D /* Preview Content */,
+				0CD91F6529BCA31B004D0D98 /* MainSceneDelegate.swift */,
+				0CD91F6729BCA519004D0D98 /* AppDelegate.swift */,
 			);
 			path = "Campus-iOS";
 			sourceTree = "<group>";
@@ -1684,11 +1704,13 @@
 				36AD5CFE27BA064E00DAE143 /* GoogleService-Info.plist in Resources */,
 				0805E72E28CC2462003C5CFD /* Secrets.xcconfig in Resources */,
 				41E2B8342864D193005B5E72 /* white@2x.png in Resources */,
+				0CD91F7129BCB21F004D0D98 /* InfoPlist.strings in Resources */,
 				1F54244F285CA059008363BC /* token-tutorial.mov in Resources */,
 				4189268828A2EDCE004669AA /* Launch Screen.storyboard in Resources */,
 				36203E7F2761B9D000C24658 /* Localizable.strings in Resources */,
 				366F0E8827580CFD0091651D /* Assets.xcassets in Resources */,
 				41E2B8302864D193005B5E72 /* default@2x.png in Resources */,
+				0CD91F7629BCB57D004D0D98 /* AppShortcuts.strings in Resources */,
 				41E2B8352864D193005B5E72 /* white@3x.png in Resources */,
 				41E2B8362864D193005B5E72 /* pride@3x.png in Resources */,
 			);
@@ -1717,6 +1739,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD91F6229BC9FFE004D0D98 /* OpenCalendar.swift in Sources */,
 				36BB6F6227AFCDFA00F224AB /* PersonSearchView.swift in Sources */,
 				97270F5A27AB2A4900BB25E4 /* Array+Rearrange.swift in Sources */,
 				3654F38428517260008AD5DC /* StudyRoomVIewModel.swift in Sources */,
@@ -1749,6 +1772,7 @@
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
+				0CD91F6629BCA31B004D0D98 /* MainSceneDelegate.swift in Sources */,
 				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
@@ -1859,10 +1883,11 @@
 				1F2068E228FD73C400DBDF67 /* TokenPermissionsViewModel+State.swift in Sources */,
 				3654F37C2851710E008AD5DC /* RoomFinderView.swift in Sources */,
 				36BBE72F27989F8C0018FD3F /* SFSafariViewWrapper.swift in Sources */,
+				0CD91F6429BCA0B0004D0D98 /* ShowLectures.swift in Sources */,
 				08FAFD272898A2B8006A0E27 /* LocationStrategy.swift in Sources */,
 				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
-				0CCC0AEB29BA4DCF009E8DCB /* AutoShortcuts.swift in Sources */,
+				0CCC0AEB29BA4DCF009E8DCB /* AppShortcuts.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
 				36AD5CF827B96AD200DAE143 /* PersonSearchListView.swift in Sources */,
@@ -1914,6 +1939,7 @@
 				2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */,
 				08DFB97928666AD900E357DF /* CafeteriaWidgetView.swift in Sources */,
 				3629BA2E27A1CEFA0036AC80 /* NewsCard.swift in Sources */,
+				0CD91F6829BCA519004D0D98 /* AppDelegate.swift in Sources */,
 				100803482764E37A0013ED0E /* ProfileView.swift in Sources */,
 				08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
@@ -1973,6 +1999,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0CD91F6F29BCB21F004D0D98 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0CD91F7029BCB21F004D0D98 /* en */,
+				0CD91F7229BCB274004D0D98 /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0CD91F7429BCB57D004D0D98 /* AppShortcuts.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0CD91F7529BCB57D004D0D98 /* en */,
+				0CD91F7729BCB580004D0D98 /* de */,
+			);
+			name = AppShortcuts.strings;
+			sourceTree = "<group>";
+		};
 		36203E7D2761B9D000C24658 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

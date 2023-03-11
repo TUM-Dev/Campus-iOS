@@ -75,8 +75,6 @@ struct CafeteriaView: View {
                             .font(.footnote)
                     })
                 }
-                
-                SiriTipView(intent: ShowCafeteriaMenu(cafeteria: canteen))
             }
             .padding(.all, 10)
             .task {

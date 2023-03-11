@@ -1,0 +1,19 @@
+"CFBundleDisplayName" = "Campus App";
+"CFBundleName" = "Campus-iOS";
+
+/* Privacy - Calendars Usage Description */
+"NSCalendarsUsageDescription" = "Die TUM Campus App enthält einen Kalender mit Veranstaltungen der Uni";
+
+/* Privacy - Contacts Usage Description */
+"NSContactsUsageDescription" = "Die TUM Campus App kann Kontakte von TUM Online zu Deinem Adressbuch hinzufügen";
+
+/* Privacy - Location Always and When In Use Usage Description */
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Die TUM Campus App benötigt Deinen Standort, um ordnungsgemäß zu funktionieren";
+
+/* Privacy - Location When In Use Usage Description */
+"NSLocationWhenInUseUsageDescription" = "Die TUM Campus App verwendet Deinen Standort, um die Nähe wichtiger Orte wie Cafeterias oder Lernräume anzuzeigen";
+
+// Shortcuts
+"Calendar" = "Kalender";
+"Places" = "Orte";
+"Lectures" = "Vorlesungen";

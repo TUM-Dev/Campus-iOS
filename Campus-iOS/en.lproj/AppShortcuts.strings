@@ -1,0 +1,12 @@
+"Ask ${applicationName} what is on today's menu at ${cafeteria}" = "Ask ${applicationName} what is on today's menu at ${cafeteria}";
+"Ask ${applicationName} what to eat on campus?" = "Ask ${applicationName} what to eat on campus?";
+"Meal plan at ${cafeteria} in ${applicationName}" = "Meal plan at ${cafeteria} in ${applicationName}";
+"Open ${applicationName} calendar" = "Open ${applicationName} calendar";
+"Open the university calendar in ${applicationName}" = "Open the university calendar in ${applicationName}";
+"Show ${applicationName} lectures" = "Show ${applicationName} lectures";
+"Show ${cafeteria} in ${applicationName}" = "Show ${cafeteria} in ${applicationName}";
+"Show my grade report in ${applicationName}" = "Show my grade report in ${applicationName}";
+"Show my grades in ${applicationName}" = "Show my grades in ${applicationName}";
+"Show my lectures in ${applicationName}" = "Show my lectures in ${applicationName}";
+"Show the exam results in ${applicationName}" = "Show the exam results in ${applicationName}";
+"Show the menu at ${cafeteria} in ${applicationName}" = "Show the menu at ${cafeteria} in ${applicationName}";
