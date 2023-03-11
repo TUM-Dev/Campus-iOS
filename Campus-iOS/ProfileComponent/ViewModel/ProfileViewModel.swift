@@ -89,6 +89,7 @@ class ProfileViewModel: ObservableObject {
         })
     }
     
+    //Source: https://stackoverflow.com/questions/37574689/how-to-load-image-from-local-path-ios-swift-by-path
     //saves Image to local storage
     func save(image: UIImage) -> String? {
         let fileName = "ProfileImage"
