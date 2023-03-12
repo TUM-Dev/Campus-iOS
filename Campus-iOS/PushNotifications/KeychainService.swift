@@ -67,11 +67,12 @@ class KeychainService {
         let attributes: [String: Any] = [
             kSecAttrKeyType as String: keyType,
             kSecAttrKeySizeInBits as String: keySize,
-                kSecPrivateKeyAttrs as String: [
-                    kSecAttrIsPermanent as String: true,
-                    kSecAttrApplicationTag as String: privateKeyApplicationTag
-                ],
-                kSecAttrAccessGroup as String: keychainAccessGroupName
+            kSecPrivateKeyAttrs as String: [
+                kSecAttrIsPermanent as String: true,
+                kSecAttrApplicationTag as String: privateKeyApplicationTag,
+            ],
+            kSecAttrAccessGroup as String: keychainAccessGroupName,
+            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
         ]
         
         var error: Unmanaged<CFError>?
