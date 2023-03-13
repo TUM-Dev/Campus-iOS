@@ -122,12 +122,12 @@ enum Campus: String, Codable, CaseIterable {
     
     var defaultStation: Station {
         switch self {
-        case .stammgelaende : return Station(name: "Technische Universität", apiName: "Technische%20Universitaet", latitude: 48.148145129847244, longitude: 11.566048520744298)
-        case .olympiapark : return Station(name: "Olympiazentrum", apiName: "Olympiazentrum", latitude: 48.17946648767361, longitude: 11.555783595899824)
-        case .klinikumRechts : return Station(name: "Max-Weber-Platz", apiName: "Max-Weber-Platz", latitude: 48.13573243097588, longitude: 11.599014647301777)
-        case .großhadern: return Station(name: "München, Klinikum Großhadern", apiName: "Muenchen,%20Klinikum%20Großhadern", latitude: 48.10889880944028, longitude: 11.47363212095666)
-        case .garching : return Station(name: "Forschungszentrum", apiName: "Garching%20Forschungszentrum", latitude: 48.26519145730091, longitude: 11.671545161597082)
-        case .freising : return Station(name: "Freising, Weihenstephan", apiName: "Freising,%20Weihenstephan", latitude: 48.39799498961109, longitude: 11.723989661968458)
+        case .stammgelaende : return Station(name: "Technische Universität", apiName: "91000095", latitude: 48.148145129847244, longitude: 11.566048520744298)
+        case .olympiapark : return Station(name: "Olympiazentrum", apiName: "91000350", latitude: 48.17946648767361, longitude: 11.555783595899824)
+        case .klinikumRechts : return Station(name: "Max-Weber-Platz", apiName: "91000580", latitude: 48.13573243097588, longitude: 11.599014647301777)
+        case .großhadern: return Station(name: "Klinikum Großhadern", apiName: "91001540", latitude: 48.10889880944028, longitude: 11.47363212095666)
+        case .garching : return Station(name: "Forschungszentrum", apiName: "1000460", latitude: 48.26519145730091, longitude: 11.671545161597082)
+        case .freising : return Station(name: "Freising, Weihenstephan", apiName: "1002911", latitude: 48.39799498961109, longitude: 11.723989661968458)
         }
     }
     
@@ -136,8 +136,8 @@ enum Campus: String, Codable, CaseIterable {
         case .stammgelaende : return
             [
                 self.defaultStation,
-                Station(name: "Theresienstraße", apiName: "Muenchen,%20Theresienstrasse", latitude: 48.1512235719802, longitude: 11.564211669898931),
-                Station(name: "Pinakotheken", apiName: "Muenchen,%20Pinakotheken", latitude: 48.148780089472, longitude: 11.571870970398924)
+                Station(name: "Theresienstraße", apiName: "91000120", latitude: 48.1512235719802, longitude: 11.564211669898931),
+                Station(name: "Pinakotheken", apiName: "91000051", latitude: 48.148780089472, longitude: 11.571870970398924)
             ]
         case .olympiapark : return
             [
@@ -146,24 +146,24 @@ enum Campus: String, Codable, CaseIterable {
         case .klinikumRechts : return
             [
                 self.defaultStation,
-                Station(name: "Friedensengel/Villa Stuck", apiName: "Friedensengel/Villa%20Stuck", latitude: 48.14074544433942, longitude: 11.600075277341709)
+                Station(name: "Friedensengel/Villa Stuck", apiName: "91000073", latitude: 48.14074544433942, longitude: 11.600075277341709)
             ]
         case .großhadern: return
             [
                 self.defaultStation,
-                Station(name: "Klinikum Großhadern Ost", apiName: "Klinikum%20Großhadern%20Ost", latitude: 48.11092668280441, longitude: 11.473909030506093),
-                Station(name: "Klinikum Großhadern Nord", apiName: "Klinikum%20Großhadern%20Nord", latitude: 48.11250562334001, longitude: 11.467122898318992)
+                Station(name: "Klinikum Großhadern Ost", apiName: "91001472", latitude: 48.11092668280441, longitude: 11.473909030506093),
+                Station(name: "Klinikum Großhadern Nord", apiName: "91001474", latitude: 48.11250562334001, longitude: 11.467122898318992)
             ]
         case .garching : return
             [
                 self.defaultStation,
-                Station(name: "Lichtenbergstraße", apiName: "Garching,%20Lichtenbergstrasse", latitude: 48.26777168760462, longitude: 11.665502685140389)
+                Station(name: "Lichtenbergstraße", apiName: "1002070", latitude: 48.26777168760462, longitude: 11.665502685140389)
             ]
         case .freising : return
             [
                 self.defaultStation,
-                Station(name: "Freising, Forstzentrum", apiName: "Freising,%20Forstzentrum", latitude: 48.39924842116169, longitude: 11.716601891310122),
-                Station(name: "Freising, Weihenstephaner Berg", apiName: "Freising,Weihenstephaner%20Berg", latitude: 48.39581877364193, longitude: 11.725859432987532)
+                Station(name: "Freising, Forstzentrum", apiName: "1009413", latitude: 48.39924842116169, longitude: 11.716601891310122),
+                Station(name: "Freising, Weihenstephaner Berg", apiName: "1002617", latitude: 48.39581877364193, longitude: 11.725859432987532)
             ]
         }
     }
