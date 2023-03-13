@@ -60,12 +60,14 @@ struct DeparturesWidgetView: View {
             VStack(alignment: .leading) {
                 Group {
                     Text("\(selectedStation.name) @ \(closestCampus.rawValue)")
+                        .fontWeight(.semibold)
                         .foregroundColor(.tumBlue)
                     if let walkingDistance = departuresViewModel.walkingDistance {
                         Text("Walking Distance")
                         + Text(": ")
                         + Text("\(walkingDistance) \(walkingDistance > 1 ? "mins" : "min")")
                             .foregroundColor(.tumBlue)
+                            .fontWeight(.semibold)
                     }
                 }
                 ForEach(Array(departuresViewModel.departures.prefix(3)), id: \.self) { departure in
