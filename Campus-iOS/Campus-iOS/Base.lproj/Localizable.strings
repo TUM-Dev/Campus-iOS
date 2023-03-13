@@ -212,3 +212,17 @@
 "In the context of my Bachelor's thesis, I aim to implement intelligent widget views that display to you the content you most likely want to see at any given time and location. Ideally, you will see the content you are interested in at one glance - without having to press any buttons." = "In the context of my Bachelor's thesis, I aim to implement intelligent widget views that display to you the content you most likely want to see at any given time and location. Ideally, you will see the content you are interested in at one glance - without having to press any buttons.";
 "Sounds good?" = "Sounds good?";
 "Share anonymized analytics data" = "Share anonymized analytics data";
+
+// Departures
+"Line" = "Line";
+"Direction" = "Direction";
+"Departure" = "Departure";
+"MVV Departures" = "MVV Departures";
+"Show Directions" = "Show Directions";
+"Walking Distance" = "Walking Distance";
+"no departures where found for this station" = "no departures where found for this station";
+"walking distance currently unavailable" = "walking distance currently unavailable";
+"fetching latest departures" = "fetching latest departures";
+"location currently unavailable" = "location currently unavailable";
+"min" = "min";
+"mins" = "mins";
