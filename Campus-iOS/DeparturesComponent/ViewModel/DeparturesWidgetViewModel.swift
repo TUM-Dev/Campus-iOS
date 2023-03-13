@@ -11,7 +11,7 @@ import CoreLocation
 import MapKit
 
 @MainActor
-class DepaturesWidgetViewModel: ObservableObject {
+class DeparturesWidgetViewModel: ObservableObject {
     
     @Published var departures = [Departure]()
     @Published var closestCampus: Campus?
@@ -22,6 +22,7 @@ class DepaturesWidgetViewModel: ObservableObject {
         }
     }
     @Published var walkingDistance: Int?
+    @Published var state: State
     
     private var locationManager = CLLocationManager()
     private let sessionManager = Session.defaultSession
@@ -29,6 +30,7 @@ class DepaturesWidgetViewModel: ObservableObject {
     var timer: Timer?
     
     init() {
+        state = .loading
         Task {
             timer = Timer()
             calculateClosestCampus()
@@ -37,6 +39,7 @@ class DepaturesWidgetViewModel: ObservableObject {
     
     func calculateClosestCampus() {
         guard let location = locationManager.location?.coordinate else {
+            self.state = .noLocation
             return
         }
         let transposedLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
@@ -87,6 +90,7 @@ class DepaturesWidgetViewModel: ObservableObject {
     private func decodeRequest(request: DataRequest) {
         request.responseDecodable(of: MVVRequest.self, decoder: JSONDecoder()) { [weak self] response in
             guard !request.isCancelled else {
+                self?.state = .failed
                 return
             }
             
@@ -118,6 +122,7 @@ class DepaturesWidgetViewModel: ObservableObject {
                         }
                     }
                 }) ?? []
+            self?.state = .success
             self?.setTimerForRefetch()
         }
     }
@@ -170,5 +175,14 @@ class DepaturesWidgetViewModel: ObservableObject {
         } else {
             print("Weird")
         }
+    }
+}
+
+extension DeparturesWidgetViewModel {
+    enum State {
+        case loading
+        case success
+        case failed
+        case noLocation
     }
 }

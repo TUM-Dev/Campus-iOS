@@ -20,6 +20,7 @@ struct DeparturesDetailsView: View {
                     if departuresViewModel.departures.count > 0 {
                         ForEach(self.departuresViewModel.departures, id: \.self) { departure in
                             DeparturesDetailsRowView(departuresViewModel: departuresViewModel, departure: departure)
+                                .font(.callout)
                         }
                     } else {
                         Text("no departures where found for this station")
@@ -102,8 +103,9 @@ struct DeparturesDetailsView: View {
     @ViewBuilder
     func directionsText() -> some View {
         if let walkingDistance = departuresViewModel.walkingDistance {
-            Text("Walking Distance: ")
+            Text("Walking Distance")
                 .fontWeight(.semibold)
+            + Text(": ")
             + Text(walkingDistance.description)
                 .fontWeight(.bold)
                 .foregroundColor(.blue)

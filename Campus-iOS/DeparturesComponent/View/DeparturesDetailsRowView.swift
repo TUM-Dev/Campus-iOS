@@ -22,14 +22,13 @@ struct DeparturesDetailsRowView: View {
             HStack {
                 lineNumberRectangle
                 Text(departure.servingLine.direction)
-                    .font(.callout)
                     .multilineTextAlignment(.leading)
                     .lineLimit(1)
                 Spacer()
                 delayText()
                 timeText()
                     .frame(width: 50)
-                    .font(.system(.callout, weight: .medium))
+                    .fontWeight(.medium)
                     .multilineTextAlignment(.center)
                 
             }
