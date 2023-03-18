@@ -70,6 +70,7 @@ struct CalendarWidgetContent: View {
     init(size: WidgetSize, events: [CalendarEvent]) {
         self.size = size
         self.events = events
+
         
         switch size {
         case .square: displayedItems = 1
@@ -128,7 +129,7 @@ struct CalendarWidgetContent: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(.secondaryBackground)
+            .foregroundColor(.widget)
             .overlay {
                 content
             }
@@ -151,11 +152,12 @@ struct CalendarEventView: View {
     var body: some View {
         if let startDate = event.startDate,
            let endDate = event.endDate,
-           let title = event.title {
+           let title = event.title,
+           let location = event.location {
             HStack(alignment: .top) {
                 Capsule()
                     .frame(width: 2, height: height)
-                    .foregroundColor(.highlightText)
+                    .foregroundColor(.tumBlue)
                 
                 VStack(alignment: .leading) {
                     Text(title)
@@ -170,13 +172,8 @@ struct CalendarEventView: View {
                         Label(timeText, systemImage: "clock")
                             .lineLimit(1)
                         
-                        if let location = event.location {
-                            Label(location, systemImage: "mappin")
-                                .lineLimit(allowMultiline ? 3 : 1)
-                        } else {
-                            Label("Paradise", systemImage: "mappin")
-                                .lineLimit(allowMultiline ? 3 : 1)
-                        }
+                        Label(location, systemImage: "mappin")
+                            .lineLimit(allowMultiline ? 3 : 1)
                     }
                     .font(.caption2)
                 }

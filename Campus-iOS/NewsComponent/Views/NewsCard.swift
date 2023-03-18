@@ -13,24 +13,24 @@ struct LoadMoreCard: View {
     let loadingMethod: () -> ()
     
     var body: some View {
-        Button {
-            withAnimation {
-                loadingMethod()
+            Button {
+                withAnimation {
+                    loadingMethod()
+                }
+            } label: {
+                HStack {
+                    Text("Show more...")
+                        .font(.body)
+                        .foregroundColor(.blue)
+                }
+                .foregroundColor(colorScheme == .dark ? .white : .black)
+                .frame(width: 390 * 0.4, height: 390 * 0.6)
             }
-        } label: {
-            HStack {
-                Text("Show more...")
-                    .font(.body)
-                    .foregroundColor(.blue)
-            }
-            .foregroundColor(colorScheme == .dark ? .white : .black)
-            .frame(width: 390 * 0.4, height: 390 * 0.6)
-        }
-        .background(Color(.systemGray6))
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
-        .contentShape(Rectangle())
-        .padding(.leading)
+            .background(Color(.systemGray6))
+            .cornerRadius(15)
+            .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+            .contentShape(Rectangle())
+            .padding(.leading)
     }
 }
 
@@ -66,9 +66,20 @@ struct NewsCard: View {
             if self.image.isEmpty {
                 Image("placeholder")
                     .resizable()
-                    .scaledToFit()
-                    .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .top)
+                    .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                     .clipped()
+                    .if(self.latest) { view in
+                        view.overlay(
+                            Text("LATEST")
+                                .fontWeight(Font.Weight.medium)
+                                .font(Font.system(size: 14))
+                                .foregroundColor(Color.white)
+                                .padding([.leading, .trailing], 14)
+                                .padding([.top, .bottom], 8)
+                                .background(Color.black.opacity(0.3))
+                                .mask(RoundedCornersShape(tl: 0, tr: 0, bl: 0, br: 15))
+                            , alignment: .topLeading)
+                    }
             } else {
                 AsyncImage(url: URL(string: image)) { image in
                     switch image {
@@ -77,9 +88,20 @@ struct NewsCard: View {
                     case .success(let image):
                         image
                             .resizable()
-                            .scaledToFit()
-                            .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .top)
+                            .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                             .clipped()
+                            .if(self.latest) { view in
+                                view.overlay(
+                                    Text("LATEST")
+                                        .fontWeight(Font.Weight.medium)
+                                        .font(Font.system(size: 14))
+                                        .foregroundColor(Color.white)
+                                        .padding([.leading, .trailing], 14)
+                                        .padding([.top, .bottom], 8)
+                                        .background(Color.black.opacity(0.3))
+                                        .mask(RoundedCornersShape(tl: 0, tr: 0, bl: 0, br: 15))
+                                    , alignment: .topLeading)
+                            }
                     case .failure:
                         Image(systemName: "photo")
                     @unknown default:
@@ -93,34 +115,54 @@ struct NewsCard: View {
             }
             
             // Stack bottom half of card
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(self.title)
-                    .fontWeight(.semibold)
+                    .fontWeight(Font.Weight.heavy)
                 Text(self.created, style: .date)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-                    .padding(.top, 2)
+                    .font(Font.custom("HelveticaNeue-Bold", size: 16))
+                    .foregroundColor(Color.gray)
                 
                 if self.latest {
-                    if source != nil {
-                        Text("Source: \(source!)")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                    Divider()
+                        .foregroundColor(Color.gray.opacity(0.3))
+                        .padding([.leading, .trailing], -12)
+
+                
+                    HStack(alignment: .center, spacing: 6) {
+                        
+                        if source != nil {
+                            Text("Source:")
+                                .font(Font.system(size: 13))
+                                .fontWeight(Font.Weight.heavy)
+                            HStack {
+                                Text(source!)
+                                .font(Font.custom("HelveticaNeue-Medium", size: 12))
+                                    .padding([.leading, .trailing], 10)
+                                    .padding([.top, .bottom], 5)
+                                .foregroundColor(Color.white)
+                            }
+                            .background(Color(red: 43/255, green: 175/255, blue: 187/255))
+                            .cornerRadius(7)
+                            Spacer()
+                        }
+                        
                     }
+                    .padding([.top, .bottom], 8)
                 }
             }
             .padding(12)
             
         }
         .if(self.latest, transformT: {view in
-            view.frame(width: 390 * 0.8)
+            view.frame(width: 390 * 0.8, height: 390 * 0.8)
         }, transformF: {view in
-            view.frame(width: 390 * 0.8)
+            view.frame(width: 390 * 0.8, height: 390 * 0.6)
         })
-            
-            .background(Color.secondaryBackground)
-            .cornerRadius(Radius.regular)
-            
+        
+        .background(Color(.systemGray6))
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+        
     }
 }
 

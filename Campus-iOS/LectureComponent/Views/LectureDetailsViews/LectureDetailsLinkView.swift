@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LectureDetailsLinkView: View {
     var lectureDetails: LectureDetails
-    @State var selectedLink: URL? = nil
     
     var body: some View {
         GroupBox (
@@ -21,21 +20,24 @@ struct LectureDetailsLinkView: View {
         ) {
             VStack(alignment: .leading, spacing: 8) {
                 if let curriculum = lectureDetails.curriculumURL {
-                    Text("Curriculum").foregroundColor(.blue).onTapGesture {
-                        self.selectedLink = curriculum
-                    }
+                    Link(destination: curriculum, label: {
+                        Text("Curriculum")
+                            .foregroundColor(.blue)
+                    })
                     Divider()
                 }
                 if let dates = lectureDetails.scheduledDatesURL {
-                    Text("Dates").foregroundColor(.blue).onTapGesture {
-                        self.selectedLink = dates
-                    }
+                    Link(destination: dates, label: {
+                        Text("Dates")
+                            .foregroundColor(.blue)
+                    })
                     Divider()
                 }
                 if let exam = lectureDetails.examDateURL {
-                    Text("Exam").foregroundColor(.blue).onTapGesture {
-                        self.selectedLink = exam
-                    }
+                    Link(destination: exam, label: {
+                        Text("Exam")
+                            .foregroundColor(.blue)
+                    })
                 }
             }
         }
@@ -43,11 +45,6 @@ struct LectureDetailsLinkView: View {
               maxWidth: .infinity,
               alignment: .topLeading
         )
-        .sheet(item: $selectedLink) { selectedLink in
-            if let link = selectedLink {
-                SFSafariViewWrapper(url: link)
-            }
-        }
     }
 }
 

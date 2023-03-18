@@ -14,7 +14,7 @@ struct WidgetLoadingView: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(.secondaryBackground)
+            .foregroundColor(.widget)
             .overlay {
                 VStack {
                     Text(text)

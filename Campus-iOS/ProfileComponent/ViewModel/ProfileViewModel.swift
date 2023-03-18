@@ -15,7 +15,6 @@ class ProfileViewModel: ObservableObject {
     @Published var profile: Profile?
     @Published var tuition: Tuition?
     @Published var profileImage = Image(systemName: "person.crop.circle.fill")
-    @Published var profileImageUI: UIImage?
     
     private let sessionManager = Session.defaultSession
     
@@ -34,7 +33,6 @@ class ProfileViewModel: ObservableObject {
     
     init() {
         self.profile = Self.defaultProfile
-        self.load(fileName: "ProfileImage")
     }
     
     init(model: Model) {
@@ -77,45 +75,14 @@ class ProfileViewModel: ObservableObject {
         self.sessionManager.request(imageRequest).responseData(completionHandler: { response in
             if let imageData = response.value, let image = UIImage(data: imageData) {
                 self.profileImage = Image(uiImage: image)
-                self.profileImageUI = image
                 return
             }
 
             self.sessionManager.request(TUMOnlineAPI.personDetails(identNumber: obfuscatedID)).responseDecodable(of: PersonDetails.self, decoder: XMLDecoder()) { response in
                 guard let image = response.value?.image else { return }
                 self.profileImage = Image(uiImage: image)
-                self.profileImageUI = image
             }
         })
-    }
-    
-    //Source: https://stackoverflow.com/questions/37574689/how-to-load-image-from-local-path-ios-swift-by-path
-    //saves Image to local storage
-    func save(image: UIImage) -> String? {
-        let fileName = "ProfileImage"
-        let fileURL = documentsUrl.appendingPathComponent(fileName)
-        if let imageData = image.jpegData(compressionQuality: 1.0) {
-           try? imageData.write(to: fileURL, options: .atomic)
-           return fileName // ----> Save fileName
-        }
-        print("Error saving image")
-        return nil
-    }
-    
-    //loads Image to local storage
-    func load(fileName: String) {
-        let fileURL = documentsUrl.appendingPathComponent(fileName)
-        do {
-            let imageData = try Data(contentsOf: fileURL)
-            self.profileImageUI = UIImage(data: imageData)
-        } catch {
-            print("Error loading image : \(error)")
-        }
-    }
-    
-    //helper property to get FilePath for local storage
-    var documentsUrl: URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
     
     func checkTuitionFunc(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {

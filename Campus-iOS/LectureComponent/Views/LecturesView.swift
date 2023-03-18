@@ -27,46 +27,41 @@ struct LecturesView: View {
     }
     
     var body: some View {
-        if #available(iOS 16.0, *) {
-            List {
-                ForEach(lecturesBySemesterSearchResult, id: \.0) { lecturesBySemester in
-                    Section(header: Text(lecturesBySemester.0)
-                        .font(.headline.bold())
-                        .foregroundColor(Color("tumBlue"))
-                    ) {
-                        ForEach(lecturesBySemester.1) { item in
-                            VStack {
-                                NavigationLink(
-                                    destination:
-                                        LectureDetailsScreen(model: self.model, lecture: item)
-                                ) {
-                                    LectureView(lecture: item)
-                                }
-                                
-                                if item.id != lecturesBySemester.1.last?.id {
-                                    Divider()
-                                }
+        List {
+            ForEach(lecturesBySemesterSearchResult, id: \.0) { lecturesBySemester in
+                Section(header: Text(lecturesBySemester.0)
+                    .font(.headline.bold())
+                    .foregroundColor(Color("tumBlue"))
+                ) {
+                    ForEach(lecturesBySemester.1) { item in
+                        VStack {
+                            NavigationLink(
+                                destination:
+                                    LectureDetailsScreen(model: self.model, lecture: item)
+                                        .navigationBarTitleDisplayMode(.inline)
+                            ) {
+                                LectureView(lecture: item)
                             }
-                            .listRowInsets(
-                                EdgeInsets(
-                                    top: 4,
-                                    leading: 18,
-                                    bottom: 2,
-                                    trailing: 18
-                                )
-                            )
+
+                            if item.id != lecturesBySemester.1.last?.id {
+                                Divider()
+                            }
                         }
-                        .listRowSeparator(.hidden)
+                        .listRowInsets(
+                            EdgeInsets(
+                                top: 4,
+                                leading: 18,
+                                bottom: 2,
+                                trailing: 18
+                            )
+                        )
                     }
+                    .listRowSeparator(.hidden)
                 }
-                .listRowBackground(Color.secondaryBackground)
             }
-            .listRowSeparator(.hidden)
-            .background(Color.primaryBackground)
-            .scrollContentBackground(.hidden)
-        } else {
-            Text("Only available on iOS 16 or higher 😔")
         }
+        .listRowSeparator(.hidden)
+        .searchable(text: $searchQuery)
     }
 }
 

@@ -121,7 +121,7 @@ struct TokenPermissionsView: View {
                             .font(.system(size: 17, weight: .bold))
                             .frame(width: 200, height: 48, alignment: .center)
                             .foregroundColor(.white)
-                            .background(allPermissionsAreGranted() ? .green : .highlightText)
+                            .background(allPermissionsAreGranted() ? .green : .tumBlue)
                             .cornerRadius(10)
                             .buttonStyle(.plain)
                     }

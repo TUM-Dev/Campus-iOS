@@ -39,29 +39,21 @@ struct TumCalendarStyle {
         
         // Header
         style.headerScroll.heightSubviewHeader = 40
-        style.headerScroll.colorBackground = .primaryBackground
+        style.headerScroll.colorBackground = .systemBackground
         style.headerScroll.colorBackgroundCurrentDate = .tumBlue
         style.headerScroll.colorCurrentDate = .white
         style.headerScroll.isAnimateTitleDate = true
         style.headerScroll.isAnimateSelection = true
         style.headerScroll.bottomLineColor = .lightGray.withAlphaComponent(0.5)
-        style.headerScroll.titleDateColor = .primaryText
-        style.headerScroll.colorDate = .primaryText
-        style.headerScroll.colorNameDay = .primaryText
-        style.headerScroll.colorBackgroundSelectDate = .primaryText //maybe add colour
-        style.headerScroll.colorSelectDate = .contrastText
-        style.headerScroll.colorCurrentSelectDateForDarkStyle = .primaryText
         
-
         // Timeline
         style.timeline.offsetTimeY = 25
         style.timeline.showLineHourMode = .today
         // cuts out the hours before the first event if true
         style.timeline.startFromFirstEvent = false
-        style.timeline.backgroundColor = .primaryBackground
         
         // Day
-        style.allDay.backgroundColor = .primaryBackground
+        style.allDay.backgroundColor = .systemBackground
         if type == .day {
             style.week.showVerticalDayDivider = false
         }
@@ -70,10 +62,6 @@ struct TumCalendarStyle {
         if type == .week {
             style.week.daysInOneWeek = calendarWeekDays
         }
-        style.week.colorBackground = .primaryBackground
-        style.week.colorDate = .primaryText
-        style.week.colorSelectDate = .white //neccessary?
-
         
         // Month
         style.month.isHiddenEventTitle = false
@@ -87,17 +75,11 @@ struct TumCalendarStyle {
         style.month.isAnimateSelection = true
         style.month.colorTitleCurrentDate = .tumBlue
         style.month.weekDayAlignment = .center
-        style.month.colorBackground = .primaryBackground
-        style.month.colorDate = .primaryText
-        style.month.colorCurrentDate = .white //neccessary?
-        style.month.colorBackgroundSelectDate = .primaryText
-        style.month.colorSelectDate = .contrastText
-        style.month.colorBackgroundDate = .primaryBackground
+        
         
         //Year
         style.year.colorBackgroundCurrentDate = .tumBlue
-        style.year.colorBackgroundHeader = .primaryBackground
-        style.year.colorBackground = .primaryBackground
+        
         style.startWeekDay = .monday
         style.defaultType = type
         style.timeSystem = .current ?? .twelve
@@ -107,10 +89,8 @@ struct TumCalendarStyle {
         // allows for custom dark mode colors
         style.followInSystemTheme = false
         
-        //list view
-        style.list.backgroundColor = .primaryBackground
-        
-        return style    }
+        return addDarkMode(style: style)
+    }
     
     static func addDarkMode(style: Style) -> Style {
         
@@ -123,42 +103,56 @@ struct TumCalendarStyle {
         newStyle.headerScroll.colorNameEmptyDay = UIColor.useForStyle(dark: .systemGray6,
                                                                       white: newStyle.headerScroll.colorNameEmptyDay)
         // newStyle.headerScroll.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.headerScroll.colorBackground)
+        newStyle.headerScroll.titleDateColor = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.titleDateColor)
         newStyle.headerScroll.titleDateColorCorner = UIColor.useForStyle(dark: .systemRed,
                                                                          white: newStyle.headerScroll.titleDateColorCorner)
+        newStyle.headerScroll.colorDate = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorDate)
+        newStyle.headerScroll.colorNameDay = UIColor.useForStyle(dark: .white, white: newStyle.headerScroll.colorNameDay)
         /*newStyle.headerScroll.colorCurrentDate = UIColor.useForStyle(dark: .systemGray6,
                                                                      white: newStyle.headerScroll.colorCurrentDate)
          
         newStyle.headerScroll.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .systemRed,
                                                                                white: newStyle.headerScroll.colorBackgroundCurrentDate)
          */
-        
+        newStyle.headerScroll.colorBackgroundSelectDate = UIColor.useForStyle(dark: .white,
+                                                                              white: newStyle.headerScroll.colorBackgroundSelectDate)
+        newStyle.headerScroll.colorSelectDate = UIColor.useForStyle(dark: .black, white: newStyle.headerScroll.colorSelectDate)
+        newStyle.headerScroll.colorCurrentSelectDateForDarkStyle = UIColor.useForStyle(dark: .white,
+                                                                                       white: newStyle.headerScroll.colorCurrentSelectDateForDarkStyle)
         newStyle.headerScroll.colorWeekendDate = UIColor.useForStyle(dark: .systemGray2,
                                                                      white: newStyle.headerScroll.colorWeekendDate)
         
         // Timeline
+        newStyle.timeline.backgroundColor = UIColor.useForStyle(dark: .black, white: newStyle.timeline.backgroundColor)
         newStyle.timeline.timeColor = UIColor.useForStyle(dark: .systemGray, white: newStyle.timeline.timeColor)
         newStyle.timeline.currentLineHourColor = UIColor.useForStyle(dark: .systemRed,
                                                                      white: newStyle.timeline.currentLineHourColor)
         
         // Week
+        newStyle.week.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.week.colorBackground)
+        newStyle.week.colorDate = UIColor.useForStyle(dark: .white, white: newStyle.week.colorDate)
         newStyle.week.colorNameDay = UIColor.useForStyle(dark: .systemGray, white: newStyle.week.colorNameDay)
         newStyle.week.colorCurrentDate = UIColor.useForStyle(dark: .systemGray, white: newStyle.week.colorCurrentDate)
         newStyle.week.colorBackgroundSelectDate = UIColor.useForStyle(dark: .systemGray,
                                                                       white: newStyle.week.colorBackgroundSelectDate)
         newStyle.week.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .systemGray,
                                                                        white: newStyle.week.colorBackgroundCurrentDate)
+        newStyle.week.colorSelectDate = UIColor.useForStyle(dark: .white, white: newStyle.week.colorSelectDate)
         newStyle.week.colorWeekendDate = UIColor.useForStyle(dark: .systemGray2, white: newStyle.week.colorWeekendDate)
         newStyle.week.colorWeekendBackground = UIColor.useForStyle(dark: .clear, white: newStyle.week.colorWeekendBackground)
         newStyle.week.colorWeekdayBackground = UIColor.useForStyle(dark: .clear, white: newStyle.week.colorWeekdayBackground)
         
         // Month
+        newStyle.month.colorDate = UIColor.useForStyle(dark: .white, white: newStyle.month.colorDate)
         newStyle.month.colorNameEmptyDay = UIColor.useForStyle(dark: .systemGray6, white: newStyle.month.colorNameEmptyDay)
+        newStyle.month.colorCurrentDate = UIColor.useForStyle(dark: .white, white: newStyle.month.colorCurrentDate)
         /*newStyle.month.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .systemRed,
                                                                         white: newStyle.month.colorBackgroundCurrentDate)
          */
+        newStyle.month.colorBackgroundSelectDate = UIColor.useForStyle(dark: .white,
+                                                                       white: newStyle.month.colorBackgroundSelectDate)
         
-        
-         
+         newStyle.month.colorSelectDate = UIColor.useForStyle(dark: .black, white: newStyle.month.colorSelectDate)
         newStyle.month.colorWeekendDate = UIColor.useForStyle(dark: .systemGray2, white: newStyle.month.colorWeekendDate)
         newStyle.month.colorMoreTitle = UIColor.useForStyle(dark: .systemGray3, white: newStyle.month.colorMoreTitle)
         newStyle.month.colorEventTitle = UIColor.useForStyle(dark: .systemGray, white: newStyle.month.colorEventTitle)
@@ -171,7 +165,9 @@ struct TumCalendarStyle {
             newStyle.month.colorBackgroundWeekendDate = UIColor.useForStyle(dark: .systemGray6,
                                                                             white: newStyle.month.colorBackgroundWeekendDate)
         }
+        newStyle.month.colorBackgroundDate = UIColor.useForStyle(dark: .black, white: newStyle.month.colorBackgroundDate)
         // newStyle.month.colorTitleHeader = UIColor.useForStyle(dark: .white, white: newStyle.month.colorTitleHeader)
+        newStyle.month.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.month.colorBackground)
         // newStyle.month.colorTitleCurrentDate = .useForStyle(dark: .systemRed, white: newStyle.month.colorTitleCurrentDate)
         
         // year
@@ -179,21 +175,25 @@ struct TumCalendarStyle {
         /*newStyle.year.colorBackgroundCurrentDate = UIColor.useForStyle(dark: .systemRed,
                                                                        white: newStyle.year.colorBackgroundCurrentDate)
         */
-        newStyle.year.colorBackgroundSelectDate = UIColor.useForStyle(dark: .systemGray,
+         newStyle.year.colorBackgroundSelectDate = UIColor.useForStyle(dark: .systemGray,
                                                                       white: newStyle.year.colorBackgroundSelectDate)
         newStyle.year.colorSelectDate = UIColor.useForStyle(dark: .white, white: newStyle.year.colorSelectDate)
         newStyle.year.colorWeekendDate = UIColor.useForStyle(dark: .systemGray2, white: newStyle.year.colorWeekendDate)
         newStyle.year.colorBackgroundWeekendDate = UIColor.useForStyle(dark: .clear,
                                                                        white: newStyle.year.colorBackgroundWeekendDate)
         newStyle.year.colorTitle = UIColor.useForStyle(dark: .white, white: newStyle.year.colorTitle)
+        newStyle.year.colorBackgroundHeader = UIColor.useForStyle(dark: .black, white: newStyle.year.colorBackgroundHeader)
         newStyle.year.colorTitleHeader = UIColor.useForStyle(dark: .white, white: newStyle.year.colorTitleHeader)
         newStyle.year.colorDayTitle = UIColor.useForStyle(dark: .systemGray, white: newStyle.year.colorDayTitle)
+        newStyle.year.colorBackground = UIColor.useForStyle(dark: .black, white: newStyle.year.colorBackground)
         
         // all day
+        newStyle.allDay.backgroundColor = UIColor.useForStyle(dark: .systemGray6, white: newStyle.allDay.backgroundColor)
         newStyle.allDay.titleColor = UIColor.useForStyle(dark: .white, white: newStyle.allDay.titleColor)
         newStyle.allDay.textColor = UIColor.useForStyle(dark: .white, white: newStyle.allDay.textColor)
         
         // list view
+        newStyle.list.backgroundColor = UIColor.useForStyle(dark: .black, white: newStyle.list.backgroundColor)
                 
         return newStyle
     }

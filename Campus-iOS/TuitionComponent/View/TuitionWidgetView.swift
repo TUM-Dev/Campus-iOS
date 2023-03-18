@@ -75,7 +75,7 @@ struct TuitionWidgetInfoView: View {
     var body: some View {
         
         Rectangle()
-            .foregroundColor(.secondaryBackground)
+            .foregroundColor(.widget)
             .overlay {
                 VStack(alignment: .leading) {
                     

@@ -143,6 +143,17 @@ extension CLLocationCoordinate2D  {
     var location: CLLocation { CLLocation(latitude: latitude, longitude: longitude) }
 }
 
+extension UIColor {
+    static let tumBlue = UIColor(red: 0, green: 101/255, blue: 189/255, alpha: 1)
+}
+
+extension Color {
+    
+    static var tumBlue = Color("tumBlue")
+    
+    static var widget = Color("widgetColor")
+}
+
 extension JSONDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }
 
 extension XMLDecoder.DateDecodingStrategy: DecodingStrategyProtocol { }

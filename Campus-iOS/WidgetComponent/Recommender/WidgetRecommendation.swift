@@ -10,7 +10,6 @@ import Foundation
 struct WidgetRecommendation {
     let widget: Widget
     let priority: Int
-    let id = UUID()
     
     func size() -> WidgetSize {
         if priority < 2 {

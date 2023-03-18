@@ -17,7 +17,6 @@ struct LecturesScreen: View {
             case .success(_):
                 VStack {
                     LecturesView(model: vm.model, lecturesBySemester: vm.sortedLecturesBySemester)
-                        .padding(.top, 50)
                         .refreshable {
                             await vm.getLectures(
                                 forcedRefresh: true

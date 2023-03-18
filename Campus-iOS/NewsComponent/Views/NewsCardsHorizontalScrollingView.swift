@@ -80,7 +80,7 @@ struct NewsCardsHorizontalScrollingView: View {
                     Spacer(minLength: 1)
                 }
             }
-            .padding([.vertical, .leading], 30)
+            .padding([.top, .leading], 30)
         }
     }
 }
