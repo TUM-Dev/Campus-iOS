@@ -124,6 +124,18 @@ class GradesViewModel: GradesViewModelProtocol {
         return "\(studyDesignation) \(Self.getAcademicDegree(studyID: studyID).short) (\(studyID))"
     }
     
+    func getStudyProgramNoID(studyID: String) -> String {
+        guard case .success(let data) = self.state else {
+            return ""
+        }
+        
+        let studyDesignation = data.first { grade in
+            grade.studyID == studyID
+        }?.studyDesignation ?? ""
+        
+        return "\(studyDesignation) \(Self.getAcademicDegree(studyID: studyID).short)"
+    }
+    
     private static func getAcademicDegree(studyID: String) -> AcademicDegree {
         let splitDegreeNumbers = studyID.split(separator: " ")
         

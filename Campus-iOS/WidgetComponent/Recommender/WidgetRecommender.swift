@@ -13,10 +13,10 @@ class WidgetRecommender: ObservableObject {
     
     @Published var status: WidgetRecommenderStatus
     @Published var recommendations: [WidgetRecommendation]
-        
+    
     private let strategy: WidgetRecommenderStrategy
     private let model: Model
-
+    
     init(strategy: WidgetRecommenderStrategy, model: Model) {
         self.strategy = strategy
         self.model = model
@@ -28,8 +28,11 @@ class WidgetRecommender: ObservableObject {
         let recommendations = try await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
         self.recommendations = recommendations
         self.status = .success
+        print("🤢")
+        print(recommendations)
     }
     
+    @available(iOS 16.0, *)
     @ViewBuilder
     func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
         switch widget {

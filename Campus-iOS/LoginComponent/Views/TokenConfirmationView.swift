@@ -16,7 +16,7 @@ struct TokenConfirmationView: View {
     @State var showTokenHelp: Bool = false
     @State var tokenPermissionButton: Bool = false
     @State var tokenState: LoginViewModel.TokenState = .notChecked
-    @State var buttonBackgroundColor: Color = .tumBlue
+    @State var buttonBackgroundColor: Color = .highlightText
     @State var showBackButtonAlert: Bool = false
     @State var showCheckTokenButton: Bool = true
     @State var showTUMOnline = false
@@ -48,7 +48,7 @@ struct TokenConfirmationView: View {
                             HStack(spacing: 5) {
                                 HStack(spacing: 0) {
                                     Text("Log in on ")
-                                    Text("TUMonline").foregroundColor(.tumBlue)
+                                    Text("TUMonline").foregroundColor(.highlightText)
                                         .onTapGesture {
                                             showTUMOnline = true
                                         }
@@ -171,7 +171,7 @@ struct TokenConfirmationView: View {
                                             try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation(.easeInOut) {
                                                 tokenState = .notChecked
-                                                buttonBackgroundColor = .tumBlue
+                                                buttonBackgroundColor = .highlightText
                                             }
                                         }
                                     }

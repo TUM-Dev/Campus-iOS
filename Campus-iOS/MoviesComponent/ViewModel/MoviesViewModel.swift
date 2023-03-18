@@ -12,6 +12,7 @@ import FirebaseCrashlytics
 class MoviesViewModel: ObservableObject {
     
     @Published var movies = [Movie]()
+    @Published var state: State = .loading
     
     typealias ImporterType = Importer<Movie, [Movie], JSONDecoder>
     private let sessionManager: Session = Session.defaultSession
@@ -45,9 +46,27 @@ class MoviesViewModel: ObservableObject {
                     }
                     return dateOne < dateTwo
                 })
+                
+                if self.movies.isEmpty {
+                    self.state = .noMovies
+                    break
+                }
+                
+                self.state = .success
+            
             case .failure(let error):
                 print(error)
+                self.state = .failed
             }
         })
+    }
+}
+
+extension MoviesViewModel {
+    enum State {
+        case loading
+        case success
+        case failed
+        case noMovies
     }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 
+@available(iOS 16.0, *)
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
@@ -27,7 +28,7 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                ScrollView {
+                Group {
                     self.generateContent(
                         views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }
                     )
@@ -57,39 +58,43 @@ struct WidgetScreen: View {
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
-        return ZStack(alignment: .topLeading) {
-            ForEach(0..<views.count, id: \.self) { i in
-                views[i]
-                    .padding([.horizontal, .vertical], WidgetSize.padding)
-                    .alignmentGuide(.leading) { d in
-                        
-                        if (abs(width - d.width) > maxWidth) {
-                            width = 0
-                            height -= previousHeight
+        return VStack(spacing: 0) {
+            Text("study rooms, food & calendar").titleStyle()
+            
+            ZStack(alignment: .topLeading) {
+                ForEach(0..<views.count, id: \.self) { i in
+                    views[i]
+                        .padding([.horizontal, .vertical], WidgetSize.padding)
+                        .alignmentGuide(.leading) { d in
+                            
+                            if (abs(width - d.width) > maxWidth) {
+                                width = 0
+                                height -= previousHeight
+                            }
+                            
+                            let result = width
+                            
+                            if i == views.count - 1 {
+                                width = 0
+                            } else {
+                                width -= d.width
+                            }
+                            
+                            previousHeight = d.height
+                            
+                            return result
                         }
-                        
-                        let result = width
-                        
-                        if i == views.count - 1 {
-                            width = 0
-                        } else {
-                            width -= d.width
+                        .alignmentGuide(.top) { d in
+                            
+                            let result = height
+                            
+                            if i == views.count - 1 {
+                                height = 0
+                            }
+                            
+                            return result
                         }
-                        
-                        previousHeight = d.height
-                        
-                        return result
-                    }
-                    .alignmentGuide(.top) { d in
-                        
-                        let result = height
-                        
-                        if i == views.count - 1 {
-                            height = 0
-                        }
-                        
-                        return result
-                    }
+                }
             }
         }
         .navigationTitle(widgetTitle)
