@@ -53,6 +53,7 @@ struct Dish: Decodable, Hashable {
     var prices: [String: Price]
     let labels: [String]
     let dishType: String
+    let id = UUID()
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -64,6 +65,8 @@ struct Dish: Decodable, Hashable {
     static func == (lhs: Dish, rhs: Dish) -> Bool {
         lhs.name == rhs.name
     }
+    
+    
     
     func hash(into hasher: inout Hasher)
     {

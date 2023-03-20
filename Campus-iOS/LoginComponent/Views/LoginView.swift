@@ -22,7 +22,7 @@ struct LoginView: View {
     
     @State var logInState: LoginViewModel.LoginState = .notChecked
     @State var showLoginAlert: Bool = false
-    @State var buttonBackgroundColor: Color = .tumBlue
+    @State var buttonBackgroundColor: Color = .highlightText
     @State var showLoginButton: Bool = true
     
     var body: some View {
@@ -145,7 +145,7 @@ struct LoginView: View {
                                             try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation() {
                                                 logInState = .notChecked
-                                                buttonBackgroundColor = .tumBlue
+                                                buttonBackgroundColor = .highlightText
                                             }
                                         }
                                     }

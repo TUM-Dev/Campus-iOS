@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 struct GradeWidgetView: View {
     
     @StateObject var viewModel: GradesViewModel
@@ -86,7 +87,7 @@ struct SimpleGradeWidgetContent: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(.widget)
+            .foregroundColor(.secondaryBackground)
             .overlay {
                 if let grade = grade {
                     VStack(alignment: .leading) {
@@ -141,7 +142,7 @@ struct DetailedGradeWidgetContent: View {
     
     var body: some View {
         Rectangle()
-            .foregroundColor(.widget)
+            .foregroundColor(.secondaryBackground)
             .overlay {
                 VStack(alignment: .leading) {
                     

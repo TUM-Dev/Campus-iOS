@@ -51,10 +51,8 @@ enum TUMDevAppAPI: URLRequestConvertible {
         let fullRequestURL = baseURL + self.rooms.path
         
         if !forcedRefresh, let rawStudyRoomsResponse = cache.value(forKey: baseURL + self.rooms.path), let studyRoomsResponse = rawStudyRoomsResponse as? StudyRoomApiRespose {
-            print("Study rooms data from cache")
             return studyRoomsResponse
         } else {
-            print("Study rooms data from server")
             // Fetch new data and store in cache.
             var studyRoomsData: Data
             do {
