@@ -719,6 +719,7 @@
 		1E9C92DD299422360026B0E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2870A2F629AF52F100005264 /* DeparturesWidget */,
 				1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */,
 				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
 				1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */,
@@ -884,7 +885,6 @@
 		28609DAD29AE4B4300F3B8CA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2870A2F629AF52F100005264 /* DeparturesWidget */,
 				28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */,
 				28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */,
 			);

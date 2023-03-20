@@ -12,28 +12,21 @@ struct DeparturesWidgetView: View {
     @StateObject var departuresViewModel: DeparturesWidgetViewModel
     @Binding var showDetailsSheet: Bool
     
-    // TODO: replace with Timothy's Theme
-    let cardWidth = UIScreen.main.bounds.size.width * 0.9
-    
     var body: some View {
         VStack(spacing: 0) {
-            title
+            Text("MVV Departures")
+                .titleStyle()
             Button {
                 showDetailsSheet = true
             } label: {
                 contentRouter()
                     .frame(height: 140)
-                // TODO: replace with Timothy's styles
-                    .padding()
-                    .frame(width: cardWidth)
-                    .background(Color("secondaryBackground"))
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .sectionStyle()
             }.sheet(isPresented: $showDetailsSheet) {
                 DeparturesDetailsView(departuresViewModel: departuresViewModel)
             }
             .buttonStyle(PlainButtonStyle())
         }
-        .padding(.bottom)
     }
     
     @ViewBuilder
@@ -61,12 +54,12 @@ struct DeparturesWidgetView: View {
                 Group {
                     Text("\(selectedStation.name) @ \(closestCampus.rawValue)")
                         .fontWeight(.semibold)
-                        .foregroundColor(.tumBlue)
+                        .foregroundColor(.highlightText)
                     if let walkingDistance = departuresViewModel.walkingDistance {
                         Text("Walking Distance")
                         + Text(": ")
                         + Text("\(walkingDistance) \(walkingDistance > 1 ? "mins" : "min")")
-                            .foregroundColor(.tumBlue)
+                            .foregroundColor(.highlightText)
                             .fontWeight(.semibold)
                     }
                 }
@@ -79,18 +72,6 @@ struct DeparturesWidgetView: View {
             }
             .font(.caption)
         }
-    }
-    
-    // TODO: replace with Timothy's styles
-    var title: some View {
-        HStack {
-            Text("MVV Departures")
-                .font(.headline.bold())
-                .foregroundColor(.tumBlue)
-            Spacer()
-        }
-        .padding(.leading)
-        .padding(.bottom, 10)
     }
 }
 

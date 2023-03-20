@@ -31,6 +31,9 @@ struct DeparturesWidgetScreen: View {
                 departuresViewModel.timer?.invalidate()
             }
         }
+        .onTapGesture {
+            showDetailsSheet.toggle()
+        }
     }
 }
 

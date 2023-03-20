@@ -75,7 +75,8 @@ enum CampusAppView: String, CaseIterable {
          grades = "grades",
          studyRoom = "studyRoom",
          studyRooms = "studyRooms",
-         tuition = "tuition"
+         tuition = "tuition",
+         departures = "departures"
     
     // Widgets associated to the widget in some way.
     // We can use this to make assumptions for widget recommendations, based on the views that the user visited.
@@ -97,6 +98,8 @@ enum CampusAppView: String, CaseIterable {
             return .studyRoom
         case .tuition:
             return .tuition
+        case .departures:
+            return .departures
         }
     }
 }

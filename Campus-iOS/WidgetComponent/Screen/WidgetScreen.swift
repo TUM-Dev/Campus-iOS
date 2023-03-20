@@ -55,6 +55,8 @@ struct WidgetScreen: View {
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
+        print("Views: \(views)")
+        
         return VStack(spacing: 0) {
             Text("study rooms, food & calendar").titleStyle()
 
