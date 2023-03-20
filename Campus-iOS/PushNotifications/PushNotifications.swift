@@ -95,9 +95,7 @@ class PushNotifications {
         }
         
         switch notificationType {
-        case BackgroundNotificationType.campusTokenRequest.rawValue:
-            return try await handleCampusTokenRequest(requestId)
-        case BackgroundNotificationType.lectureUpdateRequest.rawValue:
+        case BackgroundNotificationType.campusTokenRequest.rawValue, BackgroundNotificationType.lectureUpdateRequest.rawValue:
             return try await handleCampusTokenRequest(requestId)
         default:
             CrashlyticsService.log("Failed responding to push device request because 'notification_type' was invalid")

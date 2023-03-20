@@ -24,17 +24,17 @@ struct CampusBackend {
         logger.logLevel = .debug
         
 
-        /* let channel = ClientConnection
+        let channel = ClientConnection
               .usingPlatformAppropriateTLS(for: group)
               .withBackgroundActivityLogger(logger)
               .connect(host: "api-grpc.tum.app", port: 443)
         
         // For local development will be removed after
         // backend changes are merged
-        let channel = ClientConnection
+        /* let channel = ClientConnection
             .insecure(group: group)
             .withBackgroundActivityLogger(logger)
-            .connect(host: "192.168.178.41", port: 50051)
+            .connect(host: "192.168.178.41", port: 50051) */
         
         client = Api_CampusAsyncClient(channel: channel)
     }
