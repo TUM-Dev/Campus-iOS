@@ -27,7 +27,7 @@ struct CampusBackend {
         /* let channel = ClientConnection
               .usingPlatformAppropriateTLS(for: group)
               .withBackgroundActivityLogger(logger)
-              .connect(host: "vmott65.in.tum.de", port: 443) */
+              .connect(host: "api-grpc.tum.app", port: 443)
         
         // For local development will be removed after
         // backend changes are merged
