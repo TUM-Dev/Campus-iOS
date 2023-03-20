@@ -86,8 +86,8 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-                
-                if UIDevice.current.userInterfaceIdiom == .phone {
+            
+            if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     WidgetScreen(model: model)
                     

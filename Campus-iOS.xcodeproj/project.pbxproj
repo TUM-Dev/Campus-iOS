@@ -255,6 +255,7 @@
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
 		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
+		99706870298569E10028D235 /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970686F298569E10028D235 /* CrashlyticsService.swift */; };
 		99438F012950770400766197 /* CampusService.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99438EFF2950770400766197 /* CampusService.pb.swift */; };
 		99438F022950770400766197 /* CampusService.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99438F002950770400766197 /* CampusService.grpc.swift */; };
 		9958318029361F6F00F25E11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9958317F29361F6F00F25E11 /* AppDelegate.swift */; };
@@ -557,6 +558,7 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		9970686F298569E10028D235 /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
 		99438EFF2950770400766197 /* CampusService.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.pb.swift; sourceTree = "<group>"; };
 		99438F002950770400766197 /* CampusService.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusService.grpc.swift; sourceTree = "<group>"; };
 		9958317F29361F6F00F25E11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1151,6 +1153,7 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9970686E298569CE0028D235 /* Crashlytics */,
 				9970686E298569CE0028D235 /* Crashlytics */,
 				995831812936215D00F25E11 /* PushNotifications */,
 				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
