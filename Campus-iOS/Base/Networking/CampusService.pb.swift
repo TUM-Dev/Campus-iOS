@@ -82,11 +82,21 @@ struct Api_RegisterDeviceRequest {
 
   var deviceType: Api_DeviceType = .ios
 
+  var campusApiToken: String {
+    get {return _campusApiToken ?? String()}
+    set {_campusApiToken = newValue}
+  }
+  /// Returns true if `campusApiToken` has been explicitly set.
+  var hasCampusApiToken: Bool {return self._campusApiToken != nil}
+  /// Clears the value of `campusApiToken`. Subsequent reads from it will return its default value.
+  mutating func clearCampusApiToken() {self._campusApiToken = nil}
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 
   fileprivate var _publicKey: String? = nil
+  fileprivate var _campusApiToken: String? = nil
 }
 
 struct Api_RegisterDeviceReply {
@@ -1622,6 +1632,7 @@ extension Api_RegisterDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     1: .same(proto: "deviceId"),
     2: .same(proto: "publicKey"),
     3: .same(proto: "deviceType"),
+    4: .same(proto: "campusApiToken"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1633,6 +1644,7 @@ extension Api_RegisterDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 1: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self._publicKey) }()
       case 3: try { try decoder.decodeSingularEnumField(value: &self.deviceType) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self._campusApiToken) }()
       default: break
       }
     }
@@ -1652,6 +1664,9 @@ extension Api_RegisterDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if self.deviceType != .ios {
       try visitor.visitSingularEnumField(value: self.deviceType, fieldNumber: 3)
     }
+    try { if let v = self._campusApiToken {
+      try visitor.visitSingularStringField(value: v, fieldNumber: 4)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1659,6 +1674,7 @@ extension Api_RegisterDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs._publicKey != rhs._publicKey {return false}
     if lhs.deviceType != rhs.deviceType {return false}
+    if lhs._campusApiToken != rhs._campusApiToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -5115,3 +5131,4 @@ extension Api_GetCanteenHeadCountReply: SwiftProtobuf.Message, SwiftProtobuf._Me
     return true
   }
 }
+

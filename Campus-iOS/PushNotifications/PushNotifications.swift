@@ -14,8 +14,13 @@ enum HandlePushDeviceRequestError: Error {
     case invalidNotificationType
 }
 
+enum HandleRegisterDeviceError: Error {
+    case noCampusToken
+}
+
 enum BackgroundNotificationType: String {
     case campusTokenRequest = "CAMPUS_TOKEN_REQUEST"
+    case lectureUpdateRequest = "LECTURE_UPDATE_REQUEST"
 }
 
 /**
@@ -38,10 +43,15 @@ class PushNotifications {
         do {
             let keyPair = try keychain.obtainOrGeneratePublicPrivateKeys()
             
+            guard let campusToken = keychain.campusToken else {
+                throw HandleRegisterDeviceError.noCampusToken
+            }
+            
             let device: Api_RegisterDeviceRequest = .with({
                 $0.deviceID = deviceToken
                 $0.publicKey = keyPair.publicKey
                 $0.deviceType = .ios
+                $0.campusApiToken = campusToken
             })
             
             let _ = try await CampusBackend.shared.registerDevice(device)
@@ -55,6 +65,8 @@ class PushNotifications {
             CrashlyticsService.log("Something went wrong while obtaining the external string representation of a key with error message: \(error)")
         } catch RSAKeyPairError.failedToExportPublicKey(let error) {
             CrashlyticsService.log("Something went wrong while exporting the public key with error message: \(error)")
+        } catch HandleRegisterDeviceError.noCampusToken {
+            CrashlyticsService.log("No campus token was available when trying to register the device.")
         } catch {
             CrashlyticsService.log("Failed registering ios device token! \(error)")
         }
@@ -84,6 +96,8 @@ class PushNotifications {
         
         switch notificationType {
         case BackgroundNotificationType.campusTokenRequest.rawValue:
+            return try await handleCampusTokenRequest(requestId)
+        case BackgroundNotificationType.lectureUpdateRequest.rawValue:
             return try await handleCampusTokenRequest(requestId)
         default:
             CrashlyticsService.log("Failed responding to push device request because 'notification_type' was invalid")
