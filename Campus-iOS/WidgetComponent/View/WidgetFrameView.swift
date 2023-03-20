@@ -9,8 +9,6 @@ import SwiftUI
 
 struct WidgetFrameView<Content: View>: View {
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     let size: WidgetSize
     let content: Content
     
@@ -20,10 +18,7 @@ struct WidgetFrameView<Content: View>: View {
         
         content
             .frame(width: width, height: height)
-            .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
-            .if(colorScheme == .light) { view in
-                view.shadow(color: .gray.opacity(0.4), radius: 6)
-            }
+            .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
     }
 }
 
@@ -31,7 +26,7 @@ struct WidgetFrameView_Previews: PreviewProvider {
     
     static var widgetContent: some View {
         Rectangle()
-            .foregroundColor(.widget)
+            .foregroundColor(.secondaryBackground)
             .overlay {
                 Text("Some Widget")
             }

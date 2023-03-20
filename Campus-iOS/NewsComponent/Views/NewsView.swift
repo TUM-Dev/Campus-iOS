@@ -39,7 +39,7 @@ struct NewsView: View {
                                     }
                                 }
                             }
-                            .frame(width: 250, height: 350)
+                            .frame(width: 250, height: 300)
                             // adjust height
                             Spacer(minLength: 1)
                         }.sheet(item: $selectedLink) { selectedLink in

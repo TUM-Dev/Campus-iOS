@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftUICharts
 
+@available(iOS 16.0, *)
 struct GradesView: View {
     @StateObject var vm: GradesViewModel
     @State private var data = AppUsageData()
@@ -39,7 +40,7 @@ struct GradesView: View {
                         ForEach(gradesBySemester.1) { item in
                             VStack {
                                 GradeView(grade: item)
-
+                                
                                 if item.id != gradesBySemester.1[gradesBySemester.1.count - 1].id {
                                     Divider()
                                 }
@@ -57,23 +58,28 @@ struct GradesView: View {
                 }
                 .listRowSeparator(.hidden)
             }
+            .listRowBackground(Color.secondaryBackground)
         }
+        .background(Color.primaryBackground)
+        .scrollContentBackground(.hidden)
         .task {
             data.visitView(view: .grades)
         }
         .onDisappear {
             data.didExitView()
         }
+        
     }
 }
 
+@available(iOS 16.0, *)
 struct GradesView_Previews: PreviewProvider {
     static var previews: some View {
         GradesView(vm:
-            MockGradesViewModel(
-                model: MockModel(),
-                service: GradesService()
-            )
+                    MockGradesViewModel(
+                        model: MockModel(),
+                        service: GradesService()
+                    )
         )
     }
 }

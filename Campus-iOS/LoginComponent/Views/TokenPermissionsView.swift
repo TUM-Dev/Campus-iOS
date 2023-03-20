@@ -16,11 +16,11 @@ struct TokenPermissionsView: View {
     @State var notAllPermissionsGranted = false
     @State var permissionsWarning = ""
     @State var showHelp = true
-    
+
     var dismissWhenDone: Bool = false
     
     let permissionTypes: [TokenPermissionsViewModel.PermissionType]  = [.calendar, .lectures, .grades, .tuitionFees, .identification]
-    
+
     var body: some View {
         VStack(alignment: .center) {
             HStack {
@@ -32,7 +32,7 @@ struct TokenPermissionsView: View {
                     .font(.title2)
                 Spacer(minLength: 10)
             }
-            
+
             VStack(spacing: 0) {
                 ForEach(permissionTypes, id: \.self) { permissionType in
                     HStack {
@@ -66,13 +66,13 @@ struct TokenPermissionsView: View {
                     .background(Color(.tumBlue))
                     .cornerRadius(10)
                     .padding()
-                    
+
                     Spacer()
-                    
+
                     Button {
                         Task {
                             await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
-                            
+
                             withAnimation() {
                                 doneButton = true
                             }
@@ -94,7 +94,7 @@ struct TokenPermissionsView: View {
                 
                 if doneButton {
                     // Insert the warning string and switch bool
-                    
+
                     Button {
                         if allPermissionsAreGranted() {
                             if dismissWhenDone {
@@ -106,13 +106,13 @@ struct TokenPermissionsView: View {
                             }
                         } else {
                             // Not all permissions were granted
-                            
+
                             permissionsWarning = "You have not granted the following permissions: \n\n"
                             for permission in notGrantedPermissions() {
                                 self.permissionsWarning.append("\(permission.rawValue)\n ")
                             }
                             permissionsWarning.append("\nJust be aware that the app will not fully work without all permissions. You can change the permissions every time in TUMOnline.")
-                            
+
                             notAllPermissionsGranted = true
                         }
                     } label: {
@@ -121,7 +121,7 @@ struct TokenPermissionsView: View {
                             .font(.system(size: 17, weight: .bold))
                             .frame(width: 200, height: 48, alignment: .center)
                             .foregroundColor(.white)
-                            .background(allPermissionsAreGranted() ? .green : .tumBlue)
+                            .background(allPermissionsAreGranted() ? .green : .highlightText)
                             .cornerRadius(10)
                             .buttonStyle(.plain)
                     }
@@ -145,13 +145,13 @@ struct TokenPermissionsView: View {
         }
         .task {
             await viewModel.checkPermissionFor(types: [.grades, .lectures, .calendar, .identification, .tuitionFees])
-            
+
             withAnimation() {
                 doneButton = true
             }
         }
     }
-    
+
     func notGrantedPermissions() -> [TokenPermissionsViewModel.PermissionType] {
         return permissionTypes.filter { permissionType in
             if case .success = viewModel.states[permissionType] {
@@ -161,7 +161,7 @@ struct TokenPermissionsView: View {
             }
         }
     }
-    
+
     func allPermissionsAreGranted() -> Bool {
         for permissionType in permissionTypes {
             if case .success = viewModel.states[permissionType] {} else {
