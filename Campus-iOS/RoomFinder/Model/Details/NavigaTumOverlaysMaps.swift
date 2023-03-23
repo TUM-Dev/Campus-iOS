@@ -9,10 +9,4 @@ import Foundation
 
 struct NavigaTumOverlaysMaps: Codable {
     let available: [NavigaTumOverlayMap]
-    let defaultMapId: String?
-
-    enum CodingKeys: String, CodingKey {
-        case available
-        case defaultMapId = "default"
-    }
 }
