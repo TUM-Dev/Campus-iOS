@@ -20,7 +20,9 @@ struct CampusApp: App {
     @State var isLoginSheetPresented = false
 
     init() {
+        #if !DEBUG
         FirebaseApp.configure()
+        #endif
         UITabBar.appearance().isOpaque = true
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()

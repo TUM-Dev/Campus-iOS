@@ -21,12 +21,29 @@ struct StudyRoomDetailsScreen: View {
                     }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching RoomImages")
+                VStack {
+                    Spacer()
+                    LoadingView(text: "Fetching RoomImages")
+                    Spacer()
+                }
             case .failed(let error):
-                FailedView(
-                    errorDescription: error.localizedDescription,
-                    retryClosure: {forcedRefresh in await vm.getRoomImageMapping(for: self.room, forcedRefresh: forcedRefresh)}
-                )
+                VStack {
+                    Text("Error: \(error.localizedDescription)")
+                    Button(action: {
+                        Task {
+                            await self.vm.getRoomImageMapping(for: room, forcedRefresh: true)
+                        }
+                    }) {
+                        Text("Try Again".uppercased())
+                            .lineLimit(1).font(.body)
+                                .frame(width: 200, height: 48, alignment: .center)
+                    }
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .background(Color(.tumBlue))
+                    .cornerRadius(10)
+                    .padding()
+                }
             }
         }.task {
             await vm.getRoomImageMapping(for: self.room)
@@ -50,6 +67,19 @@ struct StudyRoomDetailsScreen: View {
                     }
                 }
             }
+    }
+    
+    func printCell(key: String, value: String?) -> some View {
+        if let val = value {
+            return AnyView(HStack {
+                Text(key)
+                    .foregroundColor(Color(UIColor.darkGray))
+                Spacer()
+                Text(val).foregroundColor(.gray)
+            })
+        }
+        
+        return AnyView(EmptyView())
     }
 }
 
