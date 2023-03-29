@@ -62,7 +62,7 @@ struct DeparturesDetailsView: View {
                     }
                 }
             },
-            label: { Image(systemName: "mappin.and.ellipse") }
+            label: { Image(systemName: "house.and.flag") }
         )
     }
     

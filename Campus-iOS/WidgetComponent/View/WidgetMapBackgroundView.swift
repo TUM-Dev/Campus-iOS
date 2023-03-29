@@ -79,7 +79,7 @@ struct WidgetMapBackgroundView: View {
             let image = UIGraphicsImageRenderer(size: mapOptions.size).image { _ in
                 snapshot.image.draw(at: .zero)
                 
-                let pinView = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+                let pinView = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: nil)
                 let pinImage = pinView.image
                 
                 var point = snapshot.point(for: self.coordinate)

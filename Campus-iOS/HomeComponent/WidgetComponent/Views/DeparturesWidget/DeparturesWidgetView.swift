@@ -14,13 +14,18 @@ struct DeparturesWidgetView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("MVV Departures")
-                .titleStyle()
+            if let campusName = departuresViewModel.closestCampus?.rawValue {
+                Text("Departures @ \(campusName)")
+                    .titleStyle()
+                    .lineLimit(1)
+            } else {
+                Text("MVV Departures")
+            }
             Button {
                 showDetailsSheet = true
             } label: {
                 contentRouter()
-                    .frame(height: 140)
+                    .frame(height: 160)
                     .sectionStyle()
             }.sheet(isPresented: $showDetailsSheet) {
                 DeparturesDetailsView(departuresViewModel: departuresViewModel)
@@ -48,11 +53,13 @@ struct DeparturesWidgetView: View {
     
     @ViewBuilder
     func content() -> some View {
-        if let closestCampus = departuresViewModel.closestCampus,
+        if departuresViewModel.closestCampus != nil,
            let selectedStation = departuresViewModel.selectedStation {
             VStack(alignment: .leading) {
                 Group {
-                    Text("\(selectedStation.name) @ \(closestCampus.rawValue)")
+                    Text("Station")
+                    + Text(": ")
+                    + Text(selectedStation.name)
                         .fontWeight(.semibold)
                         .foregroundColor(.highlightText)
                     if let walkingDistance = departuresViewModel.walkingDistance {
@@ -70,7 +77,7 @@ struct DeparturesWidgetView: View {
                     )
                 }
             }
-            .font(.caption)
+            .font(.callout)
         }
     }
 }
