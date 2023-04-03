@@ -83,6 +83,14 @@
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
 		1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBFA167285E5B2D00FC1515 /* PanelContentListView.swift */; };
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
+		28609DB029AE4B6400F3B8CA /* Departures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DAF29AE4B6400F3B8CA /* Departures.swift */; };
+		28609DB229AE4B9400F3B8CA /* MVVDeparturesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DB129AE4B9400F3B8CA /* MVVDeparturesAPI.swift */; };
+		28609DB429AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DB329AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift */; };
+		28609DB629AE4D8700F3B8CA /* DeparturesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */; };
+		28609DB829AE4DA000F3B8CA /* DeparturesDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */; };
+		28609DBA29AE4DB700F3B8CA /* DeparturesDetailsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */; };
+		28609DBC29AE4F7A00F3B8CA /* TrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28609DBB29AE4F7900F3B8CA /* TrailingIconLabelStyle.swift */; };
+		2870A2F829AF530800005264 /* DeparturesWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
@@ -373,6 +381,14 @@
 		227FBB492762AC440062FEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Campus-iOS.entitlements"; sourceTree = "<group>"; };
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		28609DAF29AE4B6400F3B8CA /* Departures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Departures.swift; sourceTree = "<group>"; };
+		28609DB129AE4B9400F3B8CA /* MVVDeparturesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVDeparturesAPI.swift; sourceTree = "<group>"; };
+		28609DB329AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesWidgetViewModel.swift; sourceTree = "<group>"; };
+		28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesWidgetView.swift; sourceTree = "<group>"; };
+		28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesDetailsView.swift; sourceTree = "<group>"; };
+		28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeparturesDetailsRowView.swift; sourceTree = "<group>"; };
+		28609DBB29AE4F7900F3B8CA /* TrailingIconLabelStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailingIconLabelStyle.swift; sourceTree = "<group>"; };
+		2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesWidgetScreen.swift; sourceTree = "<group>"; };
 		2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoView.swift; sourceTree = "<group>"; };
 		2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoRowView.swift; sourceTree = "<group>"; };
 		2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoView.swift; sourceTree = "<group>"; };
@@ -703,6 +719,7 @@
 		1E9C92DD299422360026B0E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2870A2F629AF52F100005264 /* DeparturesWidget */,
 				1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */,
 				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
 				1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */,
@@ -845,6 +862,50 @@
 				256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */,
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		28609DAB29AE4B3100F3B8CA /* DeparturesComponent */ = {
+			isa = PBXGroup;
+			children = (
+				28609DAE29AE4B4800F3B8CA /* Types */,
+				28609DAD29AE4B4300F3B8CA /* View */,
+				28609DAC29AE4B3D00F3B8CA /* ViewModel */,
+			);
+			path = DeparturesComponent;
+			sourceTree = "<group>";
+		};
+		28609DAC29AE4B3D00F3B8CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				28609DB329AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		28609DAD29AE4B4300F3B8CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */,
+				28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28609DAE29AE4B4800F3B8CA /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				28609DAF29AE4B6400F3B8CA /* Departures.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		2870A2F629AF52F100005264 /* DeparturesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */,
+				28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */,
+			);
+			path = DeparturesWidget;
 			sourceTree = "<group>";
 		};
 		36108B9C27A3046B007DC62D /* LectureComponent */ = {
@@ -1265,6 +1326,7 @@
 			children = (
 				1E9C1059293EA008002C4C47 /* HeaderComponent */,
 				1EFBBEB6295CE4EF001A0364 /* HomeComponent */,
+				28609DAB29AE4B3100F3B8CA /* DeparturesComponent */,
 				9970686E298569CE0028D235 /* Crashlytics */,
 				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
@@ -1342,6 +1404,7 @@
 			children = (
 				3629BA2F27A1D0890036AC80 /* Modifiers */,
 				3698CBEC2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift */,
+				28609DBB29AE4F7900F3B8CA /* TrailingIconLabelStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -1381,6 +1444,7 @@
 				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPI.swift */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
 				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
+				28609DB129AE4B9400F3B8CA /* MVVDeparturesAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1784,7 +1848,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					366F0E7F27580CFB0091651D = {
 						CreatedOnToolsVersion = 13.1;
@@ -1909,6 +1973,7 @@
 				36108BE927A304B5007DC62D /* MenuView.swift in Sources */,
 				36108C1D27A307FA007DC62D /* GradeView.swift in Sources */,
 				36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */,
+				28609DB629AE4D8700F3B8CA /* DeparturesWidgetView.swift in Sources */,
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
 				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
@@ -1940,6 +2005,8 @@
 				36BB6F7D27B356C200F224AB /* PersonDetailedCellView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
 				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
+				28609DB229AE4B9400F3B8CA /* MVVDeparturesAPI.swift in Sources */,
+				28609DB029AE4B6400F3B8CA /* Departures.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
@@ -2004,18 +2071,21 @@
 				1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */,
 				1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
+				28609DBC29AE4F7A00F3B8CA /* TrailingIconLabelStyle.swift in Sources */,
 				36108BE027A304B5007DC62D /* Dish.swift in Sources */,
 				36108BBB27A3046B007DC62D /* LecturesScreen.swift in Sources */,
 				36BB6F6427AFCFFB00F224AB /* PersonDetailedViewModel.swift in Sources */,
 				36AF61E427A2FD7800FEBD98 /* NetworkingError.swift in Sources */,
 				36BB6F8327B39B4300F224AB /* LectureSearchView.swift in Sources */,
 				36108BFA27A30517007DC62D /* Movie.swift in Sources */,
+				28609DB429AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift in Sources */,
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
 				08FAFD17288474FC006A0E27 /* WidgetMapBackgroundView.swift in Sources */,
 				3698CBEF2761E6CC001C5735 /* TokenConfirmationView.swift in Sources */,
+				28609DBA29AE4DB700F3B8CA /* DeparturesDetailsRowView.swift in Sources */,
 				0805E72828CC0954003C5CFD /* AppUsageDataEntity.swift in Sources */,
 				36BB6F7527B1D87200F224AB /* Tuition.swift in Sources */,
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
@@ -2038,6 +2108,7 @@
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
 				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
+				2870A2F829AF530800005264 /* DeparturesWidgetScreen.swift in Sources */,
 				1E5EEEC629A3BCA500CD4381 /* CalendarWidgetViewNEW.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
@@ -2055,6 +2126,7 @@
 				36AF61F127A2FD7800FEBD98 /* XMLSerializer.swift in Sources */,
 				08FAFD1A288DED6F006A0E27 /* WidgetRecommender.swift in Sources */,
 				08D9535A28E34596007ED2F1 /* Array+Groups.swift in Sources */,
+				28609DB829AE4DA000F3B8CA /* DeparturesDetailsView.swift in Sources */,
 				1E8038C22969FBE20098C614 /* LinkView.swift in Sources */,
 				36108C1A27A307FA007DC62D /* Modus.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
@@ -2311,7 +2383,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2354,7 +2426,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2379,7 +2451,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7PLLZ436SG;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2404,7 +2476,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7PLLZ436SG;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

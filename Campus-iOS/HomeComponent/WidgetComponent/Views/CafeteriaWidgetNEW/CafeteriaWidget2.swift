@@ -95,7 +95,7 @@ struct CafeteriaWidget2: View {
     func labelToDescription(label: String) -> String {
         let labelLookup = MensaEnumService.shared.getLabels()
         
-        if Locale.current.languageCode == "de"{
+        if Locale.current.language.languageCode?.identifier == "de"{
             if let labelObject = labelLookup[label], let text = labelObject.text["DE"] {
                 return text
             }

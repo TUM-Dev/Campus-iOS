@@ -99,6 +99,20 @@ struct TimeStrategy: WidgetRecommenderStrategy {
             if month == 3 || month == 8 {
                 priority += 1
             }
+            
+        case .departures:
+            // departures are always interesting
+            priority += 1
+            
+            // bonus if during workdays
+            if weekday != 1 && weekday != 7 {
+                priority += 1
+            }
+            
+            // bonus if during workhours
+            if (9...20).contains(hour) {
+                priority += 1
+            }
         }
         
         return priority

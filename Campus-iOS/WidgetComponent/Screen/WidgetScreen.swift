@@ -55,40 +55,42 @@ struct WidgetScreen: View {
         var previousHeight = CGFloat.zero
         let maxWidth = WidgetSize.bigSquare.dimensions.0 + 2 * WidgetSize.padding
         
+        print("Views: \(views)")
+        
         return VStack(spacing: 0) {
             Text("study rooms, food & calendar").titleStyle()
-            
+
             ZStack(alignment: .topLeading) {
                 ForEach(0..<views.count, id: \.self) { i in
                     views[i]
                         .padding([.horizontal, .vertical], WidgetSize.padding)
                         .alignmentGuide(.leading) { d in
-                            
+
                             if (abs(width - d.width) > maxWidth) {
                                 width = 0
                                 height -= previousHeight
                             }
-                            
+
                             let result = width
-                            
+
                             if i == views.count - 1 {
                                 width = 0
                             } else {
                                 width -= d.width
                             }
-                            
+
                             previousHeight = d.height
-                            
+
                             return result
                         }
                         .alignmentGuide(.top) { d in
-                            
+
                             let result = height
-                            
+
                             if i == views.count - 1 {
                                 height = 0
                             }
-                            
+
                             return result
                         }
                 }

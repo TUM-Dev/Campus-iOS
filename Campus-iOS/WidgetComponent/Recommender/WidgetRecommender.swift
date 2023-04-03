@@ -46,6 +46,8 @@ class WidgetRecommender: ObservableObject {
             TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
         case .grades:
             GradeWidgetView(model: model, size: size, refresh: refresh)
+        case .departures:
+            DeparturesWidgetScreen(departuresViewModel: DeparturesWidgetViewModel())
         }
     }
 }

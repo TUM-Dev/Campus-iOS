@@ -15,6 +15,7 @@ struct WidgetScreenNEW: View {
     @StateObject var calendarWidgetVM: CalendarViewModel
     @StateObject var studyRoomWidgetVM = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
     @StateObject var cafeteriaWidgetVM: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
+    @StateObject var departuresWidgetVM: DeparturesWidgetViewModel = DeparturesWidgetViewModel()
     
     init(model: Model) {
         self._model = StateObject(wrappedValue: model)
@@ -35,6 +36,9 @@ struct WidgetScreenNEW: View {
                         .padding(.bottom)
                 case .calendar:
                     CalendarWidgetScreen(vm: self.calendarWidgetVM)
+                        .padding(.bottom)
+                case .departures:
+                    DeparturesWidgetScreen(departuresViewModel: self.departuresWidgetVM)
                         .padding(.bottom)
                 default:
                     EmptyView() //when widget isn't supposed to be shown
