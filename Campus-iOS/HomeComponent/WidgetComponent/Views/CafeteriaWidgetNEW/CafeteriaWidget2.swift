@@ -32,7 +32,7 @@ struct CafeteriaWidget2: View {
                                     MealIngredientsView(mealTitle: dish.name, labels: getIngredientLabels(ingredientLabels: dish.labels), price: DishView.formatPrice(dish: dish, pricingGroup: "students"))
                                 }
                                 Text(dish.name + "\n")
-                                    .lineLimit(3)
+                                    .lineLimit(2)
                                     .padding(.vertical, 5)
                                 Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
                                     .lineLimit(1)
