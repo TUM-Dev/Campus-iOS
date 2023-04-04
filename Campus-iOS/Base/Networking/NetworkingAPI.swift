@@ -14,5 +14,5 @@ protocol NetworkingAPI {
     static var decoder: DecoderType { get }
     static var cache: Cache<String, Decodable> { get }
     
-    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String?, forcedRefresh: Bool) async throws -> T
+    static func makeRequest<T: Decodable>(endpoint: APIConstants, token: String?, forcedRefresh: Bool?) async throws -> T
 }
