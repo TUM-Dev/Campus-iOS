@@ -16,12 +16,14 @@ extension Constants.API {
         case search(query: String)
         case details(id: String, language: String)
         case images(id: String)
+        case overlayImages(id: String)
 
         var relativePathURL: String {
             switch self {
                 case .search: return "api/search"
                 case .details: return "api/get"
                 case .images: return "cdn/maps/roomfinder"
+                case .overlayImages: return "cdn/maps/overlay"
             }
         }
 
@@ -32,6 +34,8 @@ extension Constants.API {
             case .details(let id, _):
                 return Self.baseURL + self.relativePathURL + "/" + id
             case .images(let id):
+                return Self.baseURL + self.relativePathURL + "/" + id
+            case .overlayImages(let id):
                 return Self.baseURL + self.relativePathURL + "/" + id
             }
 
@@ -48,12 +52,13 @@ extension Constants.API {
                 case .search(let query): return ["q": query]
                 case .details(_, let language): return ["lang": language]
                 case .images(_): return [:]
+                case .overlayImages(_): return [:]
             }
         }
 
         var needsAuth: Bool {
             switch self {
-                case .search, .details, .images: return false
+            case .search, .details, .images, .overlayImages: return false
             }
         }
 

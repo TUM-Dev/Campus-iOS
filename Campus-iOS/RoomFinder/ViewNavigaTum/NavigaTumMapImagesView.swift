@@ -23,7 +23,7 @@ struct NavigaTumMapImagesView: View {
                         HStack (spacing: 20) {
                             ForEach(roomfinder.available) { map in
                                 GeometryReader { _ in
-                                    actualImage(id: map.imageUrl)
+                                    actualImage(id: map.imageUrl, isRoomFinderImage: true)
                                 }
                                 .frame(width: 200, height: 200)
                                 Spacer(minLength: 1)
@@ -31,7 +31,7 @@ struct NavigaTumMapImagesView: View {
                             if let overlays = chosenRoom.maps.overlays {
                                 ForEach(overlays.available) { map in
                                     GeometryReader { _ in
-                                        actualImage(id: map.imageUrl)
+                                        actualImage(id: map.imageUrl, isRoomFinderImage: false)
                                     }
                                     .frame(width: 400, height: 200)
                                     Spacer(minLength: 1)
@@ -45,8 +45,15 @@ struct NavigaTumMapImagesView: View {
         }
     }
 
-    func actualImage(id: String) -> some View {
-        return AsyncImage(url: URL(string: Constants.API.NavigaTum.images(id: id).fullPathURL)) { image in
+    func actualImage(id: String, isRoomFinderImage: Bool) -> some View {
+        let path: String
+        if isRoomFinderImage {
+            path = Constants.API.NavigaTum.images(id: id).fullPathURL
+        } else {
+            path = Constants.API.NavigaTum.overlayImages(id: id).fullPathURL
+        }
+        
+        return AsyncImage(url: URL(string: path)) { image in
             switch image {
             case .empty:
                 ProgressView()
