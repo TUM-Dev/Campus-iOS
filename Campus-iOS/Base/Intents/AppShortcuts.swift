@@ -16,10 +16,10 @@ struct AppShortcuts: AppShortcutsProvider {
             intent: ShowCafeteriaMenu(),
             phrases: [
                 "Show \(\.$cafeteria) in \(.applicationName)",
-                "Ask \(.applicationName) what to eat on campus?",
+                "Ask \(.applicationName) for food options",
                 "Ask \(.applicationName) what is on today's menu at \(\.$cafeteria)",
                 "Show the menu at \(\.$cafeteria) in \(.applicationName)",
-                "Meal plan at \(\.$cafeteria) in \(.applicationName)",
+                "Open meal plan at \(\.$cafeteria) in \(.applicationName)",
             ],
             systemImageName: "mappin.and.ellipse"
         )
@@ -27,7 +27,7 @@ struct AppShortcuts: AppShortcutsProvider {
             intent: ShowGrades(),
             phrases: [
                 "Show my grades in \(.applicationName)",
-                "Show my grade report in \(.applicationName)",
+                "Open my grade report in \(.applicationName)",
                 "Show the exam results in \(.applicationName)",
             ],
             systemImageName: "checkmark.shield"

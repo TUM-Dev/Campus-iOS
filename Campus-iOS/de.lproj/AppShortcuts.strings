@@ -1,11 +1,11 @@
 "Ask ${applicationName} what is on today's menu at ${cafeteria}" = "Frage ${applicationName}, was heute auf dem Speiseplan in ${cafeteria} steht";
-"Ask ${applicationName} what to eat on campus?" = "Frage ${applicationName}, was man auf dem Campus essen kann?";
-"Meal plan at ${cafeteria} in ${applicationName}" = "Speiseplan in ${applicationName} für ${cafeteria}";
+"Ask ${applicationName} for food options" = "Frage ${applicationName} nach der Essensauswahl";
+"Open meal plan at ${cafeteria} in ${applicationName}" = "Öffne den Speiseplan für ${cafeteria} in ${applicationName}";
 "Open ${applicationName} calendar" = "Öffne den Kalender von ${applicationName}";
 "Open the university calendar in ${applicationName}" = "Öffne den Universitätskalender in ${applicationName}";
 "Show ${applicationName} lectures" = "Zeige ${applicationName} Vorlesungen an";
 "Show ${cafeteria} in ${applicationName}" = "Zeige ${cafeteria} in ${applicationName}";
-"Show my grade report in ${applicationName}" = "Zeige meinen Notenbericht in ${applicationName}";
+"Open my grade report in ${applicationName}" = "Öffne meinen Notenbericht in ${applicationName}";
 "Show my grades in ${applicationName}" = "Zeige meine Noten in ${applicationName}";
 "Show my lectures in ${applicationName}" = "Zeige meine Vorlesungen in ${applicationName}";
 "Show the exam results in ${applicationName}" = "Zeige die Prüfungsergebnisse in ${applicationName}";
