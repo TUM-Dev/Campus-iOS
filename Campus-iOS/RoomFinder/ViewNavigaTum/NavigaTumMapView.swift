@@ -34,7 +34,7 @@ struct NavigaTumMapView: View {
             Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: coords)]) { location in
                 MapMarker(coordinate: location.coordinate)
             }
-            .frame(height: 180)
+            .frame(height: 360)
             .cornerRadius(10)
         }
         .frame(

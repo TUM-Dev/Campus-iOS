@@ -27,7 +27,8 @@ struct NavigaTumDetailsView: View {
 
                     NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
                     NavigaTumMapView(chosenRoom: chosenRoom)
-                    NavigaTumMapImagesView(chosenRoom: chosenRoom)
+                    // Unsure how to show images/overlays that provide useful information
+                    // NavigaTumMapImagesView(chosenRoom: chosenRoom)
                 }
                 .frame(
                     maxWidth: .infinity,
