@@ -17,12 +17,15 @@ struct CampusApp: App {
     let persistenceController = PersistenceController.shared
     @State var selectedTab = 0
     @State var isLoginSheetPresented = false
-
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     init() {
         #if !DEBUG
         FirebaseApp.configure()
         #endif
         UITabBar.appearance().isOpaque = true
+        
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             UITabBar.appearance().scrollEdgeAppearance = appearance
@@ -69,12 +72,12 @@ struct CampusApp: App {
                     model: model,
                     service: LecturesService()
                 ), refresh: $model.isUserAuthenticated)
-                    .navigationTitle("Lectures")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
+                .navigationTitle("Lectures")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        ProfileToolbar(model: model)
                     }
+                }
             }
             .tag(1)
             .tabItem {
@@ -118,7 +121,7 @@ struct CampusApp: App {
                 view.navigationViewStyle(.stack)
             })
                 
-            NavigationView {
+                NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
             .tag(3)

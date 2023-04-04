@@ -17,7 +17,7 @@ class CrashlyticsService {
         #endif
     }
     
-    static func log(_ value: String) -> Void {
+    static func log(_ error: String) -> Void {
         #if !DEBUG
         CrashlyticsService.crashlytics.log(value)
         #endif
