@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum HandlePushDeviceRequestError: Error {
     case noCampusToken
@@ -27,15 +28,65 @@ enum BackgroundNotificationType: String {
 class PushNotifications {
     private final let keychain: KeychainService = KeychainService()
     
+    static let DEVICE_TOKEN_KEY = "device_token"
+    static let PUSH_NOTIFICATIONS_ENABLED = "push_notifications_enabled"
     static let shared = PushNotifications()
     
+    func updatePushNotificationPermission(_ enabled: Bool) {
+        if enabled {
+            requestPushNotificationPermission(overrideDefaultSettings: true)
+        } else {
+            unregisterPushNotifications()
+        }
+    }
+    
     /**
-    Registers the `deviceToken` in the backend to receive push notifications.
+    Will be called when the app starts or when a user changes his push notification permission inside the app settings
+     - Parameter overrideDefaultSettings: used to check if userdefaults should be overriden. E.g. user defaults should only be overwritten when the user changes
+     his permissions manually.
+     */
+    func requestPushNotificationPermission(overrideDefaultSettings: Bool = false) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            if overrideDefaultSettings {
+                DispatchQueue.main.async {
+                    UserDefaults.standard.set(granted, forKey: PushNotifications.PUSH_NOTIFICATIONS_ENABLED)
+                }
+            }
+            
+            /// if the app has notifications enabled but the user disabled notifications in the settings we can unregister from push notifications
+            if UserDefaults.standard.bool(forKey: PushNotifications.PUSH_NOTIFICATIONS_ENABLED) && !granted {
+                self.unregisterPushNotifications()
+            }
+            
+            if let deviceToken = UserDefaults.standard.string(forKey: PushNotifications.DEVICE_TOKEN_KEY) {
+                Task {
+                    await self.registerDeviceToken(deviceToken)
+                }
+            }
+        }
+    }
+    
+    func unregisterPushNotifications() {
+        Task {
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(false, forKey: PushNotifications.PUSH_NOTIFICATIONS_ENABLED)
+            }
+            
+            await unregisterDevice()
+        }
+    }
+    
+    /**
+     Registers the `deviceToken` in the backend to receive push notifications.
      
      - Parameter deviceToken: the current device token
      */
     func registerDeviceToken(_ deviceToken: String) async -> Void {
         do {
+            if !UserDefaults.standard.bool(forKey: PushNotifications.PUSH_NOTIFICATIONS_ENABLED) { return }
+            
+            UserDefaults.standard.set(deviceToken, forKey: PushNotifications.DEVICE_TOKEN_KEY)
+            
             let keyPair = try keychain.obtainOrGeneratePublicPrivateKeys()
             
             let device: Api_RegisterDeviceRequest = .with({
@@ -58,17 +109,31 @@ class PushNotifications {
         } catch {
             CrashlyticsService.log("Failed registering ios device token! \(error)")
         }
-        
+    }
+    
+    func unregisterDevice() async {
+        do {
+            if let deviceToken = UserDefaults.standard.string(forKey: PushNotifications.DEVICE_TOKEN_KEY) {
+                let device: Api_RemoveDeviceRequest = .with({
+                    $0.deviceID = deviceToken
+                    $0.deviceType = .ios
+                })
+                
+                let _ = try await CampusBackend.shared.removeDevice(device)
+            }
+        } catch {
+            CrashlyticsService.log("Failed unregistering ios device! \(error)")
+        }
     }
     
     /**
      Handles incoming background notification requests from the backend.
      
      - Throws:
-        - `HandlePushDeviceRequestError.noRequestId`: if  the push notification body does not contain the `request_id` parameter
-        - `HandlePushDeviceRequestError.noNotificationType`: if if  the push notification body does not contain the `notification_type` parameter
-        - `HandlePushDeviceRequestError.invalidNotificationType`: if the `notification_type` is other then `BackgroundNotificationType`
-        
+     - `HandlePushDeviceRequestError.noRequestId`: if  the push notification body does not contain the `request_id` parameter
+     - `HandlePushDeviceRequestError.noNotificationType`: if if  the push notification body does not contain the `notification_type` parameter
+     - `HandlePushDeviceRequestError.invalidNotificationType`: if the `notification_type` is other then `BackgroundNotificationType`
+     
      - Parameter data: the background notification body
      */
     func handleBackgroundNotification(data: [AnyHashable : Any]) async throws {

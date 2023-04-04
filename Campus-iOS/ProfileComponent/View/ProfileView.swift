@@ -15,8 +15,17 @@ struct ProfileView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var isWebViewShowed = false
     @State var selectedLink: URL? = nil
-
+    
+    @AppStorage(PushNotifications.PUSH_NOTIFICATIONS_ENABLED) var pushNotificationsEnabled: Bool = true
+    
     var body: some View {
+        
+        let pushNotificationsBinding: Binding<Bool> = Binding(
+            get: {pushNotificationsEnabled},
+            set: { enabled in
+                PushNotifications.shared.updatePushNotificationPermission(enabled)
+            }
+        )
         
         NavigationView {
             
@@ -63,15 +72,15 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink(destination: NewsView(viewModel: NewsViewModel())
-                                    .navigationBarTitle(Text("News"))
-                                    .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitle(Text("News"))
+                        .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("News", systemImage: "newspaper")
                     }
                     
                     NavigationLink(destination: MoviesView()
-                                    .navigationBarTitle(Text("Movies"))
-                                    .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitle(Text("Movies"))
+                        .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("Movies", systemImage: "film")
                     }
@@ -111,6 +120,10 @@ struct ProfileView: View {
                     .foregroundColor(.black)
                 }
                 
+                Section {
+                    Toggle("Enable Push Notifications", isOn: pushNotificationsBinding)
+                }
+                
                 Section("GET IN CONTACT") {
                     if self.useBuildInWebView {
                         Button("Join Beta") {
@@ -136,7 +149,7 @@ struct ProfileView: View {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let mailToUrl = URL(string: mailToString!)!
                         if UIApplication.shared.canOpenURL(mailToUrl) {
-                                UIApplication.shared.open(mailToUrl, options: [:])
+                            UIApplication.shared.open(mailToUrl, options: [:])
                         }
                     }
                 }
