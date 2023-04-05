@@ -122,8 +122,6 @@ class MapViewModel: MapViewModelProtocol {
         panelPos = .middle
         lockPanel = false
         
-        print("intent donation")
-        
         ShowCafeteriaMenu(cafeteria: cafeteria).donate()
     }
 }

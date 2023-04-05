@@ -71,6 +71,9 @@ struct CampusApp: App {
                     refresh: $model.isUserAuthenticated
                 )
                 .navigationTitle("Calendar")
+                .onAppear {
+                    OpenCalendar().donate()
+                }
             }
             .tag(NavigationTabs.calendar)
             .tabItem {
@@ -89,6 +92,9 @@ struct CampusApp: App {
                             ProfileToolbar(model: model)
                         }
                     }
+                    .onAppear {
+                        ShowLectures().donate()
+                    }
             }
             .tag(NavigationTabs.lectures)
             .tabItem {
@@ -101,7 +107,6 @@ struct CampusApp: App {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     WidgetScreen(model: model)
-                    
                         .toolbar {
                             ToolbarItemGroup(placement: .navigationBarTrailing) {
                                 ProfileToolbar(model: model)
@@ -122,6 +127,9 @@ struct CampusApp: App {
                         ToolbarItemGroup(placement: .navigationBarTrailing) {
                             ProfileToolbar(model: model)
                         }
+                    }
+                    .onAppear {
+                        ShowGrades().donate()
                     }
             }
             .tag(NavigationTabs.grades)
