@@ -55,7 +55,7 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink(
-                        destination: RoomFinderView(model: self.model)
+                        destination: NavigaTumView(model: self.model)
                             .navigationTitle(Text("Roomfinder"))
                             .navigationBarTitleDisplayMode(.large)
                     ) {

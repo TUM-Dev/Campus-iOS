@@ -1,5 +1,5 @@
 //
-//  APIConstants.swift
+//  LectureComponents.swift
 //  Campus-iOS
 //
 //  Created by Philipp Zagar on 21.12.21.
