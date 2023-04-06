@@ -28,7 +28,7 @@ class RoomFinderSearchResultViewModel: ObservableObject {
         self.hasError = false
 
         do {
-            self.state = .success(data: try await TUMCabeAPI.makeRequest(endpoint: .roomSearch(query: query), forcedRefresh: forcedRefresh))
+            self.state = .success(data: try await RoomFinderSearchService().fetch(for: query, forcedRefresh: forcedRefresh))
         } catch {
             self.state = .failed(error: error)
             self.hasError = true

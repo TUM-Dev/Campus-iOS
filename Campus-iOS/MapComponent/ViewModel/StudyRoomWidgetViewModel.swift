@@ -16,12 +16,11 @@ class StudyRoomWidgetViewModel: ObservableObject {
     @Published var rooms: [StudyRoom]?
     @Published var status: StudyRoomWidgetStatus
     
-    private let studyRoomService: StudyRoomsServiceProtocol
-    private let sessionManager = Session.defaultSession
+    private let studyRoomService: StudyRoomsService
     
     private let locationManager = CLLocationManager()
     
-    init(studyRoomService: StudyRoomsServiceProtocol) {
+    init(studyRoomService: StudyRoomsService) {
         self.status = .loading
         self.studyRoomService = studyRoomService
         

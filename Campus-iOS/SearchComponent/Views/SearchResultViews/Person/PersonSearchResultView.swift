@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonSearchResultView: View {
     let allResults: [Person]
+    let model: Model
     @State var size: ResultSize = .small
     
     var results: [Person] {
@@ -58,7 +59,7 @@ struct PersonSearchResultView: View {
                     ForEach(results, id: \.id) { result in
                         VStack(alignment: .leading) {
                             NavigationLink(
-                                destination: PersonDetailedView(withPerson: result)
+                                destination: PersonDetailedScreen(model: model, person: result)
                                     .navigationBarTitleDisplayMode(.inline)
                             ) {
                                 HStack {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Room: Decodable {
+struct Room: Decodable, Identifiable {
     let number: String
     let buildingName: String
     let buildingNumber: String

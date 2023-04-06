@@ -8,65 +8,53 @@
 import Foundation
 import XMLCoder
 
+@MainActor
 class CalendarViewModel: ObservableObject {
-    typealias ImporterType = Importer<CalendarEvent, CalendarAPIResponse, XMLDecoder>
-    private static let endpoint = TUMOnlineAPI.calendar
-
-    @Published var events: [CalendarEvent] = []
+    @Published var state: APIState<[CalendarEvent]> = .na
+    @Published var hasError: Bool = false
     
     let model: Model
-    var state: State = .na
+    let service: CalendarService
     
-    init(model: Model) {
+    init(model: Model, service: CalendarService) {
         self.model = model
-        fetch()
+        self.service = service
     }
     
-    
-    func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
-        if(self.model.isUserAuthenticated) {
-            let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-            DispatchQueue.main.async {
-                importer.performFetch(handler: { result in
-                    switch result {
-                    case .success(let storage):
-                        self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
-                            guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
-                                return false
-                            }
-                            return dateOne > dateTwo
-                        }) ?? []
-                        
-                        if let _ = storage.events {
-                            callback(.success(true))
-                        } else {
-                            callback(.failure(CampusOnlineAPI.Error.noPermission))
-                        }
-                    case .failure(let error):
-                        self.state = .failed(error: error)
-                    }
-                })
-            }
+    func getCalendar(forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+        
+        guard let token = self.model.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+
+        do {
+            let events = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             
-        } else {
-            self.events = []
+            self.state = .success(
+                data: events.filter( { $0.status != "CANCEL" } ).sorted {$0.startDate ?? .distantPast > $1.startDate ?? .distantPast})
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
     
     var eventsByDate: [Date? : [CalendarEvent]] {
-        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
-        let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
-        let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
-        return dictionary
-    }
-}
-
-extension CalendarViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [CalendarEvent]?)
-        case failed(error: Error)
+        if case .success(let data) = state {
+            let sortedEvents = data.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+            let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+            let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
+            
+            return dictionary
+        
+        } else {
+            return [:]
+        }
     }
 }
 

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Profile: Decodable, Entity {
+struct Profile: Decodable {
     let firstname: String?
     let obfuscatedID: String?
     let obfuscatedIDEmployee: String?
@@ -30,6 +31,8 @@ struct Profile: Decodable, Entity {
     var fullName: String {
         "\(self.firstname?.appending(" ") ?? "")\(self.surname?.appending(" ") ?? "")"
     }
+    
+    var image: Image?
     
     /*
      <row>
@@ -65,7 +68,7 @@ struct Profile: Decodable, Entity {
         }
     }
     
-    init(firstname: String?, surname: String?, tumId: String?, obfuscatedID: String?, obfuscatedIDEmployee: String?, obfuscatedIDExtern: String?, obfuscatedIDStudent: String?) {
+    init(firstname: String?, surname: String?, tumId: String?, obfuscatedID: String?, obfuscatedIDEmployee: String?, obfuscatedIDExtern: String?, obfuscatedIDStudent: String?, image: Image?) {
         self.firstname = firstname
         self.surname = surname
         self.obfuscatedID = obfuscatedID
@@ -73,6 +76,7 @@ struct Profile: Decodable, Entity {
         self.obfuscatedIDExtern = obfuscatedIDExtern
         self.obfuscatedIDStudent = obfuscatedIDStudent
         self.tumID = tumId
+        self.image = image
     }
     
     init(from decoder: Decoder) throws {
@@ -93,5 +97,6 @@ struct Profile: Decodable, Entity {
         self.obfuscatedIDExtern = obfuscatedIDExtern
         self.obfuscatedIDStudent = obfuscatedIDStudent
         self.firstname = firstname
+        self.image = nil
     }
 }

@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct StudyRoomDetailsView: View {
-    
-    @ObservedObject var viewModel: StudyRoomViewModel
-    
     @State var showPopup = false
     
-    init(studyRoom room: StudyRoom) {
-        self.viewModel = StudyRoomViewModel(studyRoom: room)
+    let room: StudyRoom
+    let roomImageMapping: [RoomImageMapping]
+    
+    init(studyRoom room: StudyRoom, roomImageMapping: [RoomImageMapping]) {
+        self.room = room
+        self.roomImageMapping = roomImageMapping
     }
     
     func printCell(key: String, value: String?) -> some View {
@@ -33,24 +34,24 @@ struct StudyRoomDetailsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-            if viewModel.roomImageMapping.count > 0 {
+            if self.roomImageMapping.count > 0 {
                 HStack {
                     Image(systemName: "map.fill").foregroundColor(.blue)
                     Text("Available Maps")
                         .fontWeight(.bold)
                         .font(.headline)
                 }
-                MapImagesHorizontalScrollingView(viewModel: viewModel)
+                MapImagesHorizontalScrollingView(room: self.room, roomImageMapping: self.roomImageMapping)
                 Spacer(minLength: 10)
             }
             
-            printCell(key: "Building:", value: viewModel.room.buildingName)
-            printCell(key: "Building Number:", value: String(viewModel.room.buildingNumber))
-            printCell(key: "Building Code:", value: viewModel.room.buildingCode)
-            if let id = viewModel.room.raum_nr_architekt {
+            printCell(key: "Building:", value: self.room.buildingName)
+            printCell(key: "Building Number:", value: String(self.room.buildingNumber))
+            printCell(key: "Building Code:", value: self.room.buildingCode)
+            if let id = self.room.raum_nr_architekt {
                 printCell(key: "ID:", value: id)
             }
-            if let attributes = viewModel.room.attributes, attributes.count > 0 {
+            if let attributes = self.room.attributes, attributes.count > 0 {
                 Text("Attributes:")
                     .foregroundColor(Color(UIColor.darkGray))
                 ForEach(attributes, id: \.name) { attribute in
@@ -64,11 +65,5 @@ struct StudyRoomDetailsView: View {
             }
             Spacer()
         }.padding([.trailing], 15)
-    }
-}
-
-struct StudyRoomDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        StudyRoomDetailsView(studyRoom: StudyRoom())
     }
 }

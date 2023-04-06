@@ -7,77 +7,69 @@
 
 import Foundation
 
-// As XMLDecoding is complete BS
-typealias Lecture = LectureComponents.Row
-
-enum LectureComponents {
-    struct RowSet: Decodable {
-        public var row: [Row]
+struct Lecture: Decodable, Identifiable, Equatable, Searchable {
+    public var id: UInt64
+    public var lvNumber: UInt64
+    public var title: String
+    public var duration: String
+    public var stp_sp_sst: String
+    public var eventTypeDefault: String
+    public var eventTypeTag: String
+    public var semesterYear: String
+    public var semesterType: String
+    public var semester: String
+    public var semesterID: String
+    public var organisationNumber: UInt64
+    public var organisation: String
+    public var organisationTag: String
+    public var speaker: String
+    
+    public var eventType: String {
+        switch self.eventTypeDefault {
+        case "Vorlesung":
+            return "Lecture".localized
+        case "Tutorium", "Übung":
+            return "Exercise".localized
+        case "Praktikum":
+            return "Practical course".localized
+        case "Seminar":
+            return "Seminar".localized
+        case "Vorlesung mit integrierten Übungen":
+            return "Lecture with integrated Exercises".localized
+        default:
+            return ""
+        }
     }
-
-    struct Row: Decodable, Identifiable, Equatable, Searchable {
-        var comparisonTokens: [ComparisonToken] {
-            return [
-                ComparisonToken(value: title),
-                ComparisonToken(value: semesterID, type: .raw),
-                ComparisonToken(value: organisation),
-                ComparisonToken(value: speaker),
-                ComparisonToken(value: semester)
-            ]
-        }
-        
-        public var id: UInt64
-        public var lvNumber: UInt64
-        public var title: String
-        public var duration: String
-        public var stp_sp_sst: String
-        public var eventTypeDefault: String
-        public var eventTypeTag: String
-        public var semesterYear: String
-        public var semesterType: String
-        public var semester: String
-        public var semesterID: String
-        public var organisationNumber: UInt64
-        public var organisation: String
-        public var organisationTag: String
-        public var speaker: String
-        
-        public var eventType: String {
-            switch self.eventTypeDefault {
-            case "Vorlesung":
-                return "Lecture".localized
-            case "Tutorium", "Übung":
-                return "Exercise".localized
-            case "Praktikum":
-                return "Practical course".localized
-            case "Seminar":
-                return "Seminar".localized
-            case "Vorlesung mit integrierten Übungen":
-                return "Lecture with integrated Exercises".localized
-            default:
-                return ""
-            }
-        }
-        
-        enum CodingKeys: String, CodingKey {
-            case id = "stp_sp_nr"
-            case lvNumber = "stp_lv_nr"
-            case title = "stp_sp_titel"
-            case duration = "dauer_info"
-            case stp_sp_sst = "stp_sp_sst"
-            case eventTypeDefault = "stp_lv_art_name"
-            case eventTypeTag = "stp_lv_art_kurz"
-            case semesterYear = "sj_name"
-            case semesterType = "semester"
-            case semester = "semester_name"
-            case semesterID = "semester_id"
-            case organisationNumber = "org_nr_betreut"
-            case organisation = "org_name_betreut"
-            case organisationTag = "org_kennung_betreut"
-            case speaker = "vortragende_mitwirkende"
-        }
+    
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: title),
+            ComparisonToken(value: semesterID, type: .raw),
+            ComparisonToken(value: organisation),
+            ComparisonToken(value: speaker),
+            ComparisonToken(value: semester)
+        ]
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "stp_sp_nr"
+        case lvNumber = "stp_lv_nr"
+        case title = "stp_sp_titel"
+        case duration = "dauer_info"
+        case stp_sp_sst = "stp_sp_sst"
+        case eventTypeDefault = "stp_lv_art_name"
+        case eventTypeTag = "stp_lv_art_kurz"
+        case semesterYear = "sj_name"
+        case semesterType = "semester"
+        case semester = "semester_name"
+        case semesterID = "semester_id"
+        case organisationNumber = "org_nr_betreut"
+        case organisation = "org_name_betreut"
+        case organisationTag = "org_kennung_betreut"
+        case speaker = "vortragende_mitwirkende"
     }
 }
+
 
 extension Lecture {
     static let dummyData: [Lecture] = [

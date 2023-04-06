@@ -10,7 +10,7 @@ import SwiftUI
 enum BarType: String {
     case all = "All"
     case grade = "Grades"
-    case calendar = "Perosnal Lectures"
+    case calendar = "Personal Lectures"
     case news = "News"
     case cafeteria = "Cafeterias"
     case studyRoom = "StudyRooms"

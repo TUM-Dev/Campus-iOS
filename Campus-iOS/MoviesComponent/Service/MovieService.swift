@@ -11,9 +11,11 @@ protocol MovieServiceProtocol {
     func fetch(forcedRefresh: Bool) async throws -> [Movie]
 }
 
-struct MovieService: MovieServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> [Movie] {
+struct MovieService: ServiceProtocol, MovieServiceProtocol {
+    func fetch(forcedRefresh: Bool = false) async throws -> [Movie] {
         
-        return try await TUMCabeAPI.makeRequest(endpoint: .movie, forcedRefresh: forcedRefresh)
+        let response: [Movie] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI.movie, forcedRefresh: forcedRefresh)
+        
+        return response
     }
 }

@@ -1,34 +1,33 @@
 //
-//  PersonSearchView.swift
+//  PersonSearchListView.swift
 //  Campus-iOS
 //
-//  Created by Milen Vitanov on 06.02.22.
+//  Created by Milen Vitanov on 13.02.22.
 //
 
 import SwiftUI
 
 struct PersonSearchView: View {
-    
-    @Environment(\.isSearching) private var isSearching
-    
-    @ObservedObject var viewModel = PersonSearchViewModel()
-    @State var searchText = ""
+    let model: Model
+    let persons: [Person]
     
     var body: some View {
-        PersonSearchListView(viewModel: self.viewModel)
-            .background(Color(.systemGroupedBackground))
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-            .onChange(of: self.searchText) { searchValue in
-                if searchValue.count > 3 {
-                    self.viewModel.fetch(searchString: searchValue)
+        List {
+            ForEach(self.persons, id: \.nr) { person in
+                NavigationLink(
+                    destination:
+                        PersonDetailedScreen(model: model, person: person)
+                                    .navigationBarTitleDisplayMode(.inline)
+                ) {
+                    Text(person.fullName)
                 }
             }
-            .animation(.default, value: self.viewModel.result)
+        }
     }
 }
 
 struct PersonSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonSearchView()
+        PersonSearchView(model: Model(), persons: [])
     }
 }

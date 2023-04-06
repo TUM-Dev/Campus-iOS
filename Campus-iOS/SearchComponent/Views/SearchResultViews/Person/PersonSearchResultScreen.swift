@@ -17,7 +17,7 @@ struct PersonSearchResultScreen: View {
         Group {
             switch vm.state {
             case .success(let data):
-                PersonSearchResultView(allResults: data, size: self.size)
+                PersonSearchResultView(allResults: data, model: vm.model, size: self.size)
             case .loading, .na:
                 SearchResultLoadingView(title: "Person Search")
             case .failed(let error):

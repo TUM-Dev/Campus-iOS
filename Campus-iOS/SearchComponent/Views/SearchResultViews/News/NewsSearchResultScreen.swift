@@ -42,6 +42,10 @@ struct NewsSearchResultScreen_Previews: PreviewProvider {
 }
 
 struct NewsService_Preview: NewsServiceProtocol {
+    func fetch(forcedRefresh: Bool) async throws -> [NewsSource] {
+        return NewsSource.previewData
+    }
+    
     func fetch(forcedRefresh: Bool, source: String) async throws -> [News] {
         return News.previewData
     }

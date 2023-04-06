@@ -14,24 +14,13 @@ protocol GradesViewModelProtocol: ObservableObject {
 
 @MainActor
 class GradesViewModel: GradesViewModelProtocol {
-    @Published var state: State = .na
+    @Published var state: APIState<[Grade]> = .na
     @Published var hasError: Bool = false
     
     let model: Model
-    let service: GradesServiceProtocol
+    private let service: GradesService
     
-    var token: String? {
-        switch self.model.loginController.credentials {
-        case .none, .noTumID:
-            return nil
-        case .tumID(_, let token):
-            return token
-        case .tumIDAndKey(_, let token, _):
-            return token
-        }
-    }
-    
-    init(model: Model, service: GradesServiceProtocol) {
+    init(model: Model, service: GradesService) {
         self.model = model
         self.service = service
     }
@@ -75,7 +64,7 @@ class GradesViewModel: GradesViewModelProtocol {
         }
         self.hasError = false
         
-        guard let token = self.token else {
+        guard let token = self.model.token else {
             self.state = .failed(error: NetworkingError.unauthorized)
             self.hasError = true
             return

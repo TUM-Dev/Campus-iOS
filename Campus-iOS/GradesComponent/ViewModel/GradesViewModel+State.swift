@@ -7,11 +7,11 @@
 
 import Foundation
 
-extension GradesViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [Grade])
-        case failed(error: Error)
-    }
-}
+//extension GradesViewModel {
+//    enum State {
+//        case na
+//        case loading
+//        case success(data: [Grade])
+//        case failed(error: Error)
+//    }
+//}

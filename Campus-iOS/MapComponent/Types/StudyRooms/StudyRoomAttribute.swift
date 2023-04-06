@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyRoomAttribute: Entity, Searchable {
+struct StudyRoomAttribute: Decodable, Searchable {
     
     var detail: String?
     var name: String?

@@ -104,7 +104,6 @@ struct StudyRoomGroupView: View {
                         List {
                             ForEach(self.sortedRooms, id: \.id) { room in
                                 StudyRoomCell(room: room)
-                                    .accentColor(Color(UIColor.lightGray))
                             }
                         }
                         .listStyle(.plain)
@@ -182,14 +181,13 @@ struct StudyRoomCell: View {
     
     var body: some View {
         DisclosureGroup(content: {
-            StudyRoomDetailsView(studyRoom: room)
+            StudyRoomDetailsScreen(room: room)
         }, label: {
             AnyView(
                 HStack {
                     VStack(alignment: .leading) {
                         Text(room.name ?? "")
                             .fontWeight(.bold)
-                            .multilineTextAlignment(.leading)
                         HStack {
                             Image(systemName: "barcode.viewfinder")
                                 .frame(width: 12, height: 12)
@@ -212,6 +210,7 @@ struct StudyRoomCell: View {
                 }
             )
         })
+        .accentColor(Color(UIColor.lightGray))
     }
 }
 

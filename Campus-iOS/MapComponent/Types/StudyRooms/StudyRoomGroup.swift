@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct StudyRoomGroup: Entity, Searchable {
+struct StudyRoomGroup: Decodable, Equatable, Searchable {
     var comparisonTokens: [ComparisonToken] {
         return [
             ComparisonToken(value: name ?? ""),

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RoomFinderDetailsMapImagesView: View {
-    
+    @StateObject var vm = StudyRoomViewModel()
     @State var room: FoundRoom
     
     var body: some View {
@@ -21,13 +21,16 @@ struct RoomFinderDetailsMapImagesView: View {
         ) {
             
             Divider()
-
-            MapImagesHorizontalScrollingView(viewModel: StudyRoomViewModel(studyRoom: StudyRoom(room: room)))
+            if case .success(let roomImageMapping) = vm.state {
+                MapImagesHorizontalScrollingView(room: StudyRoom(room: self.room), roomImageMapping: roomImageMapping)
+            }
         }
         .frame(
             maxWidth: .infinity,
             alignment: .topLeading
-      )
+        ).task {
+            await vm.getRoomImageMapping(for: StudyRoom(room: self.room))
+        }
     }
 }
 

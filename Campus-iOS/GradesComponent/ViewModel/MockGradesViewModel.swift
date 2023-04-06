@@ -16,7 +16,7 @@ class MockGradesViewModel: GradesViewModel {
         ("1630 17 030", [("Wintersemester 2020/21", Grade.dummyData20W)])
     ]
     
-    override init(model: Model, service: GradesServiceProtocol) {
+    override init(model: Model, service: GradesService) {
         super.init(model: model, service: service)
         
         self.state = .success(data: Grade.previewData)

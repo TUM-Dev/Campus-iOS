@@ -17,7 +17,9 @@ struct GradeWidgetView: View {
     @Binding var refresh: Bool
     
     init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
+//        self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
         self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+        
         self.size = size
         self.initialSize = size
         self._refresh = refresh

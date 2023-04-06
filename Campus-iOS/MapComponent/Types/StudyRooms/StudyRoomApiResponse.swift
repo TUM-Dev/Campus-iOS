@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyRoomApiRespose: Entity, Equatable {
+struct StudyRoomApiRespose: Decodable, Equatable {
     static func == (lhs: StudyRoomApiRespose, rhs: StudyRoomApiRespose) -> Bool {
         lhs.groups?.map({$0.id}) == rhs.groups?.map({$0.id}) &&
         lhs.rooms?.map({$0.id}) == rhs.rooms?.map({$0.id})

@@ -15,14 +15,9 @@ protocol LecturesServiceProtocol {
 
 struct LecturesService: LecturesServiceProtocol {
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Lecture] {
-        let response: LectureComponents.RowSet =
+        let response: TUMOnlineAPI.Response<Lecture> =
         try await
-            CampusOnlineAPI
-                .makeRequest(
-                    endpoint: Constants.API.CampusOnline.personalLectures,
-                    token: token,
-                    forcedRefresh: forcedRefresh
-                )
+        MainAPI.makeRequest(endpoint: TUMOnlineAPI.personalLectures, token: token, forcedRefresh: forcedRefresh)
         
         return response.row
     }

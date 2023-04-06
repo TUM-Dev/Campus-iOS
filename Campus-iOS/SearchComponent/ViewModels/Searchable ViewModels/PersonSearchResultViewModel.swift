@@ -50,8 +50,8 @@ class PersonSearchResultViewModel: ObservableObject {
             return
         }
 
-        do {
-            self.state = .success(data: try await TUMOnlineAPI.makeRequest(endpoint: .personSearch(search: query), token: token))
+        do {            
+            self.state = .success(data: try await PersonSearchService().fetch(for: query, token: token, forcedRefresh: forcedRefresh))
         } catch {
             self.state = .failed(error: error)
             self.hasError = true

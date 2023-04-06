@@ -52,7 +52,7 @@ struct GradesScreen: View {
         }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
-        .onChange(of: self.vm.token ?? "") { _ in
+        .onChange(of: self.vm.model.token ?? "") { _ in
             Task {
                 await vm.getGrades()
             }
@@ -70,8 +70,8 @@ struct GradesScreen: View {
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {
-                    if let campusOnlineError = error as? CampusOnlineAPI.Error {
-                        Text(campusOnlineError.errorDescription ?? "CampusOnline Error")
+                    if let apiError = error as? TUMOnlineAPIError {
+                        Text(apiError.errorDescription ?? "TUMOnlineAPI Error")
                     } else {
                         Text(error.localizedDescription)
                     }

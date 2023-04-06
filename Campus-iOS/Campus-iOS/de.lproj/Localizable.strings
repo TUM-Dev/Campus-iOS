@@ -120,6 +120,8 @@
 "Lecture Search" = "Vorlesungssuche";
 "Unable to find lecture" = "Vorlesung kann nicht gefunden werden";
 "Choose Speaker" = "Wähle Vortragenden";
+"The search query must be at least 4 characters." = "Die Suchanfrage muss aus mindestens 4 Zeichen bestehen.";
+"Fetching Lectures" = "Lade Vorlesungen";
 
 // Grades
 "Fetching Grades" = "Lade Noten";

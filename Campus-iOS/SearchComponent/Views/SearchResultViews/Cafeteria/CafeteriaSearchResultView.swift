@@ -73,7 +73,7 @@ struct CafeteriaSearchResultView: View {
         }.sheet(item: $cafeteriaMealPlan, content: { cafeteria in
             NavigationView {
                 VStack(alignment: .leading) {
-                    MealPlanView(viewModel: MealPlanViewModel(cafeteria: cafeteria))
+                    MealPlanScreen(cafeteria: cafeteria)
                 }
                 .navigationBarTitle(Text(cafeteria.title ?? "Current Cafeteria"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {

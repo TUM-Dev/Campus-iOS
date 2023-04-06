@@ -11,30 +11,44 @@ import Foundation
 import Alamofire
 import XMLCoder
 
+@MainActor
 class LectureSearchViewModel: ObservableObject {
-    @Published var result: [Lecture] = []
-    @Published var errorMessage: String = ""
+    @Published var state: APIState<[Lecture]> = .na
+    @Published var hasError: Bool = false
     
-    private let sessionManager = Session.defaultSession
+    let model: Model
+    let service: LectureSearchService
     
-    func fetch(searchString: String) {
-        // activate only when more than 3 characters
+    init(model: Model, service: LectureSearchService) {
+        self.model = model
+        self.service = service
+    }
+    
+    func getLectures(for query: String, forcedRefresh: Bool) async {
+        guard query.count > 3 else {
+            // Since requests under 4 char is not allowed
+            return
+        }
         
-        let endpoint = TUMOnlineAPI.lectureSearch(search: searchString)
-        sessionManager.cancelAllRequests()
-        let request = sessionManager.request(endpoint)
-        request.responseDecodable(of: TUMOnlineAPIResponse<Lecture>.self, decoder: XMLDecoder()) { [weak self] response in
-            guard !request.isCancelled else {
-                // cancelAllRequests doesn't seem to cancel all requests, so better check for this explicitly
-                return
-            }
-            self?.result = response.value?.rows ?? []
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
 
-            if let result = self?.result, result.isEmpty {
-                self?.errorMessage = NSString(format: "Unable to find lecture".localized as NSString, searchString) as String
-            } else {
-                self?.errorMessage = ""
-            }
+        guard let token = self.model.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+        
+        do {
+            self.state = .success(
+                data: try await service.fetch(for: query, token: token, forcedRefresh: forcedRefresh)
+            )
+            
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
         }
     }
 }

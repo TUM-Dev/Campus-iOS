@@ -29,7 +29,7 @@ struct GradesView: View {
                         )
                     )
                     .frame(alignment: .center)
-                    
+
                     BarChartView(barChartData: barChartData[index])
                 }
                 

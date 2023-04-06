@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct StudyRoom: Entity, Identifiable, Searchable {
+struct StudyRoom: Decodable, Identifiable, Searchable {
     
     static func == (lhs: StudyRoom, rhs: StudyRoom) -> Bool {
         lhs.id == rhs.id

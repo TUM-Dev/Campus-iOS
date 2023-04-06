@@ -50,7 +50,7 @@ class LectureSearchResultViewModel: ObservableObject {
         }
         
         do {
-            self.state = .success(data: try await TUMOnlineAPI.makeRequest(endpoint: .lectureSearch(search: query), token: token, forcedRefresh: forcedRefresh))
+            self.state = .success(data: try await LectureSearchService().fetch(for: query, token: token, forcedRefresh: forcedRefresh))
         } catch {
             print("No lectures were fetched: \(String(describing: error))")
             self.state = .failed(error: error)
