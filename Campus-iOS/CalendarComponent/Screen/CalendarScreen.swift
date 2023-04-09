@@ -59,7 +59,7 @@ struct CalendarScreen: View {
             }
         }
         .alert(
-            "Error while fetching Grades",
+            "Error while fetching Calendar",
             isPresented: $vm.hasError,
             presenting: vm.state) { detail in
                 Button("Retry") {

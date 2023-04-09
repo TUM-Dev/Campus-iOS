@@ -21,7 +21,7 @@ struct MovieScreen: View {
                     }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching News")
+                LoadingView(text: "Fetching Movies")
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
@@ -31,7 +31,7 @@ struct MovieScreen: View {
         }.task {
             await vm.getMovies()
         }.alert(
-            "Error while fetching News",
+            "Error while fetching Movies",
             isPresented: $vm.hasError,
             presenting: vm.state) { detail in
                 Button("Retry") {
