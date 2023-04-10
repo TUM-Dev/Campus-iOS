@@ -54,7 +54,7 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink(
-                        destination: RoomFinderView(model: self.vm.model)
+                        destination: NavigaTumView(model: self.vm.model)
                             .navigationTitle(Text("Roomfinder"))
                             .navigationBarTitleDisplayMode(.large)
                     ) {
@@ -205,9 +205,7 @@ struct ProfileView: View {
 
             }
             .sheet(item: $selectedLink) { selectedLink in
-                if let link = selectedLink {
-                    SFSafariViewWrapper(url: link)
-                }
+                SFSafariViewWrapper(url: selectedLink)
             }
         }.task {
             await vm.getProfile(forcedRefresh: false)
