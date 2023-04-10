@@ -20,7 +20,7 @@ struct MealPlanScreen: View {
             case .success(let menus):
                 if let firstMenu = menus.first {
                     VStack {
-                        MealPlanView(menus: menus, cafeteria: vm.cafeteria, selectedMenu: firstMenu)                    .refreshable {
+                        MealPlanView(menus: menus, cafeteria: vm.cafeteria, selectedMenu: firstMenu).refreshable {
                             await vm.getMenus()
                         }
                     }

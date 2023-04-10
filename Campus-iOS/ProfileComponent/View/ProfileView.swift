@@ -54,7 +54,7 @@ struct ProfileView: View {
                     }
                     
                     NavigationLink(
-                        destination: RoomFinderView(model: self.vm.model)
+                        destination: NavigaTumView(model: self.vm.model)
                             .navigationTitle(Text("Roomfinder"))
                             .navigationBarTitleDisplayMode(.large)
                     ) {
@@ -205,6 +205,7 @@ struct ProfileView: View {
 
             }
             .sheet(item: $selectedLink) { selectedLink in
+                // This if clause is needed since after logout via the ProfileView an issue occured. This fixes the weird behaviour.
                 if let link = selectedLink {
                     SFSafariViewWrapper(url: link)
                 }

@@ -15,6 +15,7 @@ protocol GradesServiceProtocol {
 typealias GradesSemesterDegrees = [(String, [(String, [Grade])])]
 
 struct GradesService: ServiceTokenProtocol, GradesServiceProtocol {
+    
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [Grade] {
         let response: TUMOnlineAPI.Response<Grade> = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.personalGrades, token: token, forcedRefresh: forcedRefresh)
         

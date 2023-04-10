@@ -12,6 +12,7 @@ protocol CalendarServiceProtocol {
 }
 
 struct CalendarService: ServiceTokenProtocol, CalendarServiceProtocol {
+    
     func fetch(token: String, forcedRefresh: Bool = false) async throws -> [CalendarEvent] {
         let response: TUMOnlineAPI.CalendarResponse = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.calendar, token: token, forcedRefresh: forcedRefresh)
         

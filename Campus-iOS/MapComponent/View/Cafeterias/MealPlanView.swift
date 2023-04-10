@@ -45,7 +45,7 @@ struct MealPlanView: View {
                         .padding(.horizontal, 5.0)
                     
                         if let menu = selectedMenu {
-                            MenuView(menu: menu)
+                            MenuScreen(menu: menu)
                         } else {
                             Spacer().frame(height: 20)
                             Text("No Menu available today").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))

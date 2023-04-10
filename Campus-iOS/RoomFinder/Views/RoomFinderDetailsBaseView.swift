@@ -27,7 +27,7 @@ struct RoomFinderDetailsBaseView: View {
                 Divider()
                 LectureDetailsBasicInfoRowView(
                     iconName: "building.columns",
-                    text: "\(room.campus), \(room.buildingNumber)"
+                    text: "\(String(describing: room.campus)), \(room.buildingNumber)"
                 )
                 Divider()
                 LectureDetailsBasicInfoRowView(

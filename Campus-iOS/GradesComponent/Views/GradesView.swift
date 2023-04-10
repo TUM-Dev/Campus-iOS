@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftUICharts
 
 struct GradesView: View {
+    
     @State private var data = AppUsageData()
     
     let grades: [Grade]

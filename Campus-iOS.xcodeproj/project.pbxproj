@@ -134,6 +134,28 @@
 		1F63A40329DECFA100844981 /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63A40229DECFA100844981 /* DishView.swift */; };
 		1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BD38E296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel */; };
 		1F6BD391296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F6BD390296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel */; };
+		1F71E84129E4800A00379428 /* NavigaTumRoomFinderMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83429E4800A00379428 /* NavigaTumRoomFinderMaps.swift */; };
+		1F71E84229E4800A00379428 /* NavigaTumNavigationCoordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83529E4800A00379428 /* NavigaTumNavigationCoordinates.swift */; };
+		1F71E84329E4800A00379428 /* NavigaTumOverlaysMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83629E4800A00379428 /* NavigaTumOverlaysMaps.swift */; };
+		1F71E84429E4800A00379428 /* NavigaTumNavigationMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83729E4800A00379428 /* NavigaTumNavigationMaps.swift */; };
+		1F71E84529E4800A00379428 /* NavigaTumNavigationAdditionalProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83829E4800A00379428 /* NavigaTumNavigationAdditionalProperties.swift */; };
+		1F71E84629E4800A00379428 /* NavigaTumOverlayMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83929E4800A00379428 /* NavigaTumOverlayMap.swift */; };
+		1F71E84729E4800A00379428 /* NavigaTumNavigationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83A29E4800A00379428 /* NavigaTumNavigationDetails.swift */; };
+		1F71E84829E4800A00379428 /* NavigaTumSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83C29E4800A00379428 /* NavigaTumSearchResponse.swift */; };
+		1F71E84929E4800A00379428 /* NavigaTumSearchResponseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83D29E4800A00379428 /* NavigaTumSearchResponseSection.swift */; };
+		1F71E84A29E4800A00379428 /* NavigaTumNavigationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83E29E4800A00379428 /* NavigaTumNavigationEntity.swift */; };
+		1F71E84B29E4800A00379428 /* NavigaTumNavigationProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E83F29E4800A00379428 /* NavigaTumNavigationProperty.swift */; };
+		1F71E84C29E4800A00379428 /* NavigaTumRoomFinderMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E84029E4800A00379428 /* NavigaTumRoomFinderMap.swift */; };
+		1F71E84F29E4802800379428 /* NavigaTumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E84D29E4802800379428 /* NavigaTumDetailsViewModel.swift */; };
+		1F71E85029E4802800379428 /* NavigaTumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E84E29E4802800379428 /* NavigaTumViewModel.swift */; };
+		1F71E85829E4803400379428 /* NavigaTumDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85229E4803400379428 /* NavigaTumDetailsView.swift */; };
+		1F71E85929E4803400379428 /* NavigaTumDetailsBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85329E4803400379428 /* NavigaTumDetailsBaseView.swift */; };
+		1F71E85A29E4803400379428 /* NavigaTumMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85429E4803400379428 /* NavigaTumMapView.swift */; };
+		1F71E85B29E4803400379428 /* NavigaTumMapImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85529E4803400379428 /* NavigaTumMapImagesView.swift */; };
+		1F71E85C29E4803400379428 /* NavigaTumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85629E4803400379428 /* NavigaTumView.swift */; };
+		1F71E85D29E4803400379428 /* NavigaTumListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85729E4803400379428 /* NavigaTumListView.swift */; };
+		1F71E85F29E4833500379428 /* NavigaTUMAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E85E29E4833500379428 /* NavigaTUMAPI.swift */; };
+		1F71E86129E4834200379428 /* NavigaTUMAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71E86029E4834200379428 /* NavigaTUMAPIError.swift */; };
 		1F74DB2D2971D0D200B9143C /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB2C2971D0D200B9143C /* NewsService.swift */; };
 		1F74DB2F2971E01100B9143C /* RoomFinderSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB2E2971E01100B9143C /* RoomFinderSearchResultViewModel.swift */; };
 		1F74DB312971E01F00B9143C /* RoomFinderSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB302971E01F00B9143C /* RoomFinderSearchResultView.swift */; };
@@ -482,6 +504,28 @@
 		1F63A40229DECFA100844981 /* DishView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DishView.swift; path = "Campus-iOS/MapComponent/View/Cafeterias/DishView.swift"; sourceTree = SOURCE_ROOT; };
 		1F6BD38E296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV4English.mlmodel; sourceTree = "<group>"; };
 		1F6BD390296F53E900CDD625 /* DataTypeClassifierV4German.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV4German.mlmodel; sourceTree = "<group>"; };
+		1F71E83429E4800A00379428 /* NavigaTumRoomFinderMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumRoomFinderMaps.swift; sourceTree = "<group>"; };
+		1F71E83529E4800A00379428 /* NavigaTumNavigationCoordinates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationCoordinates.swift; sourceTree = "<group>"; };
+		1F71E83629E4800A00379428 /* NavigaTumOverlaysMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumOverlaysMaps.swift; sourceTree = "<group>"; };
+		1F71E83729E4800A00379428 /* NavigaTumNavigationMaps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationMaps.swift; sourceTree = "<group>"; };
+		1F71E83829E4800A00379428 /* NavigaTumNavigationAdditionalProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationAdditionalProperties.swift; sourceTree = "<group>"; };
+		1F71E83929E4800A00379428 /* NavigaTumOverlayMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumOverlayMap.swift; sourceTree = "<group>"; };
+		1F71E83A29E4800A00379428 /* NavigaTumNavigationDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationDetails.swift; sourceTree = "<group>"; };
+		1F71E83C29E4800A00379428 /* NavigaTumSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumSearchResponse.swift; sourceTree = "<group>"; };
+		1F71E83D29E4800A00379428 /* NavigaTumSearchResponseSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumSearchResponseSection.swift; sourceTree = "<group>"; };
+		1F71E83E29E4800A00379428 /* NavigaTumNavigationEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationEntity.swift; sourceTree = "<group>"; };
+		1F71E83F29E4800A00379428 /* NavigaTumNavigationProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumNavigationProperty.swift; sourceTree = "<group>"; };
+		1F71E84029E4800A00379428 /* NavigaTumRoomFinderMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumRoomFinderMap.swift; sourceTree = "<group>"; };
+		1F71E84D29E4802800379428 /* NavigaTumDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsViewModel.swift; sourceTree = "<group>"; };
+		1F71E84E29E4802800379428 /* NavigaTumViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumViewModel.swift; sourceTree = "<group>"; };
+		1F71E85229E4803400379428 /* NavigaTumDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsView.swift; sourceTree = "<group>"; };
+		1F71E85329E4803400379428 /* NavigaTumDetailsBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumDetailsBaseView.swift; sourceTree = "<group>"; };
+		1F71E85429E4803400379428 /* NavigaTumMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumMapView.swift; sourceTree = "<group>"; };
+		1F71E85529E4803400379428 /* NavigaTumMapImagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumMapImagesView.swift; sourceTree = "<group>"; };
+		1F71E85629E4803400379428 /* NavigaTumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumView.swift; sourceTree = "<group>"; };
+		1F71E85729E4803400379428 /* NavigaTumListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTumListView.swift; sourceTree = "<group>"; };
+		1F71E85E29E4833500379428 /* NavigaTUMAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTUMAPI.swift; sourceTree = "<group>"; };
+		1F71E86029E4834200379428 /* NavigaTUMAPIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigaTUMAPIError.swift; sourceTree = "<group>"; };
 		1F74DB2C2971D0D200B9143C /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1F74DB2E2971E01100B9143C /* RoomFinderSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderSearchResultViewModel.swift; sourceTree = "<group>"; };
 		1F74DB302971E01F00B9143C /* RoomFinderSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomFinderSearchResultView.swift; sourceTree = "<group>"; };
@@ -852,6 +896,7 @@
 				1F26157429D9E8DC0062B8E5 /* TUMCabeAPIError.swift */,
 				1F26157529D9E8DC0062B8E5 /* MVGAPIError.swift */,
 				1F26157629D9E8DC0062B8E5 /* TUMSexyAPIError.swift */,
+				1F71E86029E4834200379428 /* NavigaTUMAPIError.swift */,
 			);
 			path = APIErrors;
 			sourceTree = "<group>";
@@ -865,6 +910,7 @@
 				1F26157B29D9E8DC0062B8E5 /* MVGAPI.swift */,
 				1F26157C29D9E8DC0062B8E5 /* TUMOnlineAPI.swift */,
 				1F26157D29D9E8DC0062B8E5 /* TUMCabeAPI.swift */,
+				1F71E85E29E4833500379428 /* NavigaTUMAPI.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -1134,6 +1180,54 @@
 				1F488335296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel */,
 			);
 			path = "Old models";
+			sourceTree = "<group>";
+		};
+		1F71E83229E4800A00379428 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F71E83329E4800A00379428 /* Details */,
+				1F71E83929E4800A00379428 /* NavigaTumOverlayMap.swift */,
+				1F71E83A29E4800A00379428 /* NavigaTumNavigationDetails.swift */,
+				1F71E83B29E4800A00379428 /* Search */,
+				1F71E83E29E4800A00379428 /* NavigaTumNavigationEntity.swift */,
+				1F71E83F29E4800A00379428 /* NavigaTumNavigationProperty.swift */,
+				1F71E84029E4800A00379428 /* NavigaTumRoomFinderMap.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F71E83329E4800A00379428 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				1F71E83429E4800A00379428 /* NavigaTumRoomFinderMaps.swift */,
+				1F71E83529E4800A00379428 /* NavigaTumNavigationCoordinates.swift */,
+				1F71E83629E4800A00379428 /* NavigaTumOverlaysMaps.swift */,
+				1F71E83729E4800A00379428 /* NavigaTumNavigationMaps.swift */,
+				1F71E83829E4800A00379428 /* NavigaTumNavigationAdditionalProperties.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		1F71E83B29E4800A00379428 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1F71E83C29E4800A00379428 /* NavigaTumSearchResponse.swift */,
+				1F71E83D29E4800A00379428 /* NavigaTumSearchResponseSection.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1F71E85129E4803400379428 /* ViewNavigaTum */ = {
+			isa = PBXGroup;
+			children = (
+				1F71E85229E4803400379428 /* NavigaTumDetailsView.swift */,
+				1F71E85329E4803400379428 /* NavigaTumDetailsBaseView.swift */,
+				1F71E85429E4803400379428 /* NavigaTumMapView.swift */,
+				1F71E85529E4803400379428 /* NavigaTumMapImagesView.swift */,
+				1F71E85629E4803400379428 /* NavigaTumView.swift */,
+				1F71E85729E4803400379428 /* NavigaTumListView.swift */,
+			);
+			path = ViewNavigaTum;
 			sourceTree = "<group>";
 		};
 		1F74DB3C2973039200B9143C /* Service */ = {
@@ -1579,8 +1673,8 @@
 		3654F35A28516855008AD5DC /* StudyRooms */ = {
 			isa = PBXGroup;
 			children = (
-				3654F35F285168D2008AD5DC /* RoomImageMapping.swift */,
 				3654F35D285168D2008AD5DC /* StudyRoom.swift */,
+				3654F35F285168D2008AD5DC /* RoomImageMapping.swift */,
 				3654F35C285168D2008AD5DC /* StudyRoomApiResponse.swift */,
 				3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */,
 				3654F35B285168D2008AD5DC /* StudyRoomGroup.swift */,
@@ -1591,6 +1685,8 @@
 		3654F3692851710E008AD5DC /* RoomFinder */ = {
 			isa = PBXGroup;
 			children = (
+				1F71E85129E4803400379428 /* ViewNavigaTum */,
+				1F71E83229E4800A00379428 /* Model */,
 				1F63A3FF29DECDE200844981 /* Service */,
 				3654F36A2851710E008AD5DC /* ViewModel */,
 				3654F36D2851710E008AD5DC /* Entity */,
@@ -1602,6 +1698,8 @@
 		3654F36A2851710E008AD5DC /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1F71E84D29E4802800379428 /* NavigaTumDetailsViewModel.swift */,
+				1F71E84E29E4802800379428 /* NavigaTumViewModel.swift */,
 				3654F36B2851710E008AD5DC /* RoomFinderViewModel.swift */,
 				3654F36C2851710E008AD5DC /* RoomFinderMapViewModel.swift */,
 			);
@@ -2277,6 +2375,7 @@
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
 				1F63A3F729DEC67E00844981 /* TuitionScreen.swift in Sources */,
+				1F71E85F29E4833500379428 /* NavigaTUMAPI.swift in Sources */,
 				1F63A3DC29DDE6D500844981 /* TumCalendarStyle.swift in Sources */,
 				08FAFD24288DF553006A0E27 /* WidgetRecommendation.swift in Sources */,
 				08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */,
@@ -2303,6 +2402,7 @@
 				36108C1D27A307FA007DC62D /* GradeView.swift in Sources */,
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
 				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
+				1F71E84629E4800A00379428 /* NavigaTumOverlayMap.swift in Sources */,
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				1F504190295B85AB00A62CA1 /* String+Keep.swift in Sources */,
@@ -2314,6 +2414,7 @@
 				1FD025D22971A31300E66981 /* NewsSearchResultViewModel.swift in Sources */,
 				1F26158729D9E8DD0062B8E5 /* TUMDevAppAPIError.swift in Sources */,
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
+				1F71E84B29E4800A00379428 /* NavigaTumNavigationProperty.swift in Sources */,
 				1F63A3D329DDE68E00844981 /* TUMSexyScreen.swift in Sources */,
 				1FE6DCAC29B790F8006A06B9 /* SearchError.swift in Sources */,
 				3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */,
@@ -2330,6 +2431,7 @@
 				3654F358285167C3008AD5DC /* StudyRoomsService.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
 				1F26158F29D9E8DD0062B8E5 /* TUMDevAppAPI.swift in Sources */,
+				1F71E84229E4800A00379428 /* NavigaTumNavigationCoordinates.swift in Sources */,
 				3654F37B2851710E008AD5DC /* RoomFinderListView.swift in Sources */,
 				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
 				1FE6DCA729B77978006A06B9 /* LectureSearchResultScreen.swift in Sources */,
@@ -2361,10 +2463,12 @@
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
 				08573BA5287847DC006AC06F /* MapLocation.swift in Sources */,
 				1FE6DCA429B77094006A06B9 /* SearchResultLoadingView.swift in Sources */,
+				1F71E85A29E4803400379428 /* NavigaTumMapView.swift in Sources */,
 				3629BA3127A1D0AD0036AC80 /* ScrollableCardsViewModifier.swift in Sources */,
 				36108C1927A307FA007DC62D /* Grade.swift in Sources */,
 				36108BBA27A3046B007DC62D /* LectureDetailsScreen.swift in Sources */,
 				08573BA7287B6152006AC06F /* GradeWidgetView.swift in Sources */,
+				1F71E84429E4800A00379428 /* NavigaTumNavigationMaps.swift in Sources */,
 				1F63A3F229DDF99B00844981 /* LectureSearchScreen.swift in Sources */,
 				1F63A3FA29DEC6A400844981 /* NewsScreen.swift in Sources */,
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
@@ -2390,6 +2494,7 @@
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
 				1FE6DCAA29B78131006A06B9 /* CafeteriaSearchResultScreen.swift in Sources */,
 				36108BC627A3046B007DC62D /* LectureDetailsBasicInfoRowView.swift in Sources */,
+				1F71E85D29E4803400379428 /* NavigaTumListView.swift in Sources */,
 				08FAFD20288DEE3B006A0E27 /* Widget.swift in Sources */,
 				36108BDF27A304B5007DC62D /* MealPlan.swift in Sources */,
 				36BBE7342798B04D0018FD3F /* NewsSource.swift in Sources */,
@@ -2417,6 +2522,7 @@
 				1F26156229D9E8BD0062B8E5 /* APIError.swift in Sources */,
 				1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */,
 				36108C1527A307F9007DC62D /* GradesViewModel.swift in Sources */,
+				1F71E85929E4803400379428 /* NavigaTumDetailsBaseView.swift in Sources */,
 				1F2068E428FD73CB00DBDF67 /* TokenPermissionsViewModel+PermissionType.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
 				36108BE027A304B5007DC62D /* Dish.swift in Sources */,
@@ -2427,6 +2533,7 @@
 				36108BFA27A30517007DC62D /* Movie.swift in Sources */,
 				36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */,
 				1F63A3E929DDF50C00844981 /* PersonSearchScreen.swift in Sources */,
+				1F71E85C29E4803400379428 /* NavigaTumView.swift in Sources */,
 				1F488336296EF0CD0002CE77 /* DataTypeClassifierV3.mlmodel in Sources */,
 				1F74DB352972B22F00B9143C /* LectureSearchResultView.swift in Sources */,
 				1FE6DCBC29B7A824006A06B9 /* NewsSearchResultScreen.swift in Sources */,
@@ -2442,6 +2549,7 @@
 				3616C4CD279020A0000A1BC9 /* TUMSexyView.swift in Sources */,
 				1F4C836728300E79006971C0 /* CafeteriasService.swift in Sources */,
 				36108C1E27A307FA007DC62D /* BarChartView.swift in Sources */,
+				1F71E85B29E4803400379428 /* NavigaTumMapImagesView.swift in Sources */,
 				3683C31A2758118A00082930 /* MockModel.swift in Sources */,
 				08DFB9812867ACB600E357DF /* StudyRoomWidgetViewModel.swift in Sources */,
 				1F504176295B83AA00A62CA1 /* SearchResultView.swift in Sources */,
@@ -2454,12 +2562,14 @@
 				1F63A3DB29DDE6D500844981 /* CalendarEvent.swift in Sources */,
 				1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */,
 				1F26158E29D9E8DD0062B8E5 /* EatAPI.swift in Sources */,
+				1F71E84929E4800A00379428 /* NavigaTumSearchResponseSection.swift in Sources */,
 				1F63A3FD29DEC6E300844981 /* MovieScreen.swift in Sources */,
 				36AF61E627A2FD7800FEBD98 /* View+Error.swift in Sources */,
 				1F26156329D9E8BD0062B8E5 /* Service.swift in Sources */,
 				1F26158629D9E8DD0062B8E5 /* NetworkingAPIOld.swift in Sources */,
 				1FE6DCB529B79FDF006A06B9 /* MovieSearchResultViewModel.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
+				1F71E86129E4834200379428 /* NavigaTUMAPIError.swift in Sources */,
 				1F26158329D9E8DD0062B8E5 /* TUMSexyAPIOld.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
@@ -2475,6 +2585,7 @@
 				36AF61EA27A2FD7800FEBD98 /* Environment+Error.swift in Sources */,
 				3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */,
 				36AF61ED27A2FD7800FEBD98 /* FailedView.swift in Sources */,
+				1F71E84A29E4800A00379428 /* NavigaTumNavigationEntity.swift in Sources */,
 				36108BBE27A3046B007DC62D /* LecturesService.swift in Sources */,
 				1F26158B29D9E8DD0062B8E5 /* MVGAPIError.swift in Sources */,
 				36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */,
@@ -2488,6 +2599,7 @@
 				1F26158829D9E8DD0062B8E5 /* TUMOnlineAPIError.swift in Sources */,
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				1F74DB312971E01F00B9143C /* RoomFinderSearchResultView.swift in Sources */,
+				1F71E84829E4800A00379428 /* NavigaTumSearchResponse.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				1F36EC8229377CD300349FC1 /* DataTypeClassifierV1.mlmodel in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
@@ -2495,9 +2607,12 @@
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
 				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
 				1FE6DCB729B7A2B0006A06B9 /* MovieSearchResultView.swift in Sources */,
+				1F71E85829E4803400379428 /* NavigaTumDetailsView.swift in Sources */,
+				1F71E84329E4800A00379428 /* NavigaTumOverlaysMaps.swift in Sources */,
 				0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
 				1F26158929D9E8DD0062B8E5 /* EatAPIError.swift in Sources */,
+				1F71E85029E4802800379428 /* NavigaTumViewModel.swift in Sources */,
 				1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
 				36BB6F7B27B27D0D00F224AB /* TuitionCard.swift in Sources */,
@@ -2522,6 +2637,7 @@
 				1F1F42B32999331F00A0D0B7 /* SearchResultBarView.swift in Sources */,
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
+				1F71E84F29E4802800379428 /* NavigaTumDetailsViewModel.swift in Sources */,
 				36BB6F6827AFD26500F224AB /* Organization.swift in Sources */,
 				082F756628AD2F0E00FE0D52 /* AnalyticsStrategy.swift in Sources */,
 				3616C4DB27904BD3000A1BC9 /* NewsViewModel.swift in Sources */,
@@ -2537,13 +2653,17 @@
 				08DFB97D2867800C00E357DF /* CafeteriaWidgetViewModel.swift in Sources */,
 				1FE6DCBA29B7A7FE006A06B9 /* MovieSearchResultScreen.swift in Sources */,
 				1F504172295B82F900A62CA1 /* SearchView.swift in Sources */,
+				1F71E84529E4800A00379428 /* NavigaTumNavigationAdditionalProperties.swift in Sources */,
 				36AD5CF627B8D97500DAE143 /* LectureDetailsEventInfoView.swift in Sources */,
 				1F4C836428300D25006971C0 /* MapViewModel+State.swift in Sources */,
 				1F26159829D9E9010062B8E5 /* CrashlyticsService.swift in Sources */,
+				1F71E84129E4800A00379428 /* NavigaTumRoomFinderMaps.swift in Sources */,
 				08DFB97F2867AC9200E357DF /* StudyRoomWidgetView.swift in Sources */,
 				36108C1827A307F9007DC62D /* GradesScreen.swift in Sources */,
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
+				1F71E84729E4800A00379428 /* NavigaTumNavigationDetails.swift in Sources */,
+				1F71E84C29E4800A00379428 /* NavigaTumRoomFinderMap.swift in Sources */,
 				1F63A3E229DDE91100844981 /* Token.swift in Sources */,
 				1F63A3DA29DDE6D500844981 /* CalendarScreen.swift in Sources */,
 				1F74DB392972B92D00B9143C /* PersonSearchResultView.swift in Sources */,
