@@ -205,7 +205,9 @@ struct ProfileView: View {
 
             }
             .sheet(item: $selectedLink) { selectedLink in
-                SFSafariViewWrapper(url: selectedLink)
+                if let link = selectedLink {
+                    SFSafariViewWrapper(url: link)
+                }
             }
         }.task {
             await vm.getProfile(forcedRefresh: false)
