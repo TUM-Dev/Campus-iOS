@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct RoomFinderSearchResultView: View {
-    let allResults: [FoundRoom]
+    let allResults: [NavigaTumNavigationEntity]
     @State var size: ResultSize = .small
     
-    var results: [FoundRoom] {
+    var results: [NavigaTumNavigationEntity] {
         switch size {
         case .small:
             return Array(allResults.prefix(3))
@@ -26,7 +26,7 @@ struct RoomFinderSearchResultView: View {
             VStack {
                 VStack {
                     ZStack {
-                        Text("RoomFinder")
+                        Text("NavigaTUM")
                             .fontWeight(.bold)
                             .font(.title)
                         HStack {
@@ -55,8 +55,14 @@ struct RoomFinderSearchResultView: View {
                     }
                 }
                 ScrollView {
-                    ForEach(results, id:\.id) { room in
-                        RoomFinderListCellView(room: room)
+                    VStack(alignment: .leading) {
+                        ForEach(results, id:\.id) { room in
+                            NavigationLink(
+                                destination: NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: room.id))
+                            ) {
+                                Text(room.name).padding()
+                            }
+                        }
                     }
                 }
                 if self.results.count == 0 {
