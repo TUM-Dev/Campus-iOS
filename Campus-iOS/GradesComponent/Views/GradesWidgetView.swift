@@ -71,9 +71,9 @@ struct SimpleGradeWidgetContent: View {
             .foregroundColor(.clear)
             .frame(maxHeight: .infinity)
             .overlay {
-                if let grade, let gradeString = grade.grade {
+                if let grade {
                     GeometryReader { g in
-                        Text(gradeString.isEmpty ? "tbd" : gradeString)
+                        Text(grade.grade.isEmpty ? "tbd" : grade.grade)
                             .bold()
                             .font(.system(size: g.size.height * 0.75))
                             .foregroundColor(GradesViewModel.GradeColor.color(for: grade))

@@ -51,6 +51,13 @@ struct ProfileView: View {
                     
                     ProfileMyTumSection()
                         .listRowBackground(Color.secondaryBackground)
+                    NavigationLink(
+                        destination: NavigaTumView(model: self.model)
+                            .navigationTitle(Text("Roomfinder"))
+                            .navigationBarTitleDisplayMode(.large)
+                    ) {
+                        Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
+                    }
                     
                     Section("GENERAL") {
                         NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
@@ -221,6 +228,11 @@ struct ProfileView: View {
                 .background(Color.primaryBackground)
             } else {
                 Text("This content is only available on iOS 16 or higher 🫠").padding(.horizontal)
+            }
+            .sheet(item: $selectedLink) { selectedLink in
+                if let link = selectedLink {
+                    SFSafariViewWrapper(url: link)
+                }
             }
         }
     }
