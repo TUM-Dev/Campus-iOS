@@ -31,7 +31,22 @@ enum Gender: Decodable, Hashable {
     }
 }
 
-enum ContactInfo {
+enum ContactInfo: Identifiable {
+    var id: String {
+        switch self {
+        case .phone(let phone):
+            return phone
+        case .mobilePhone(let mobile):
+            return mobile
+        case .fax(let fax):
+            return fax
+        case .additionalInfo(let info):
+            return info
+        case .homepage(let homepage):
+            return homepage
+        }
+    }
+    
     case phone(String)
     case mobilePhone(String)
     case fax(String)

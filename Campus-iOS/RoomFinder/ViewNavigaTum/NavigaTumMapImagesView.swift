@@ -48,9 +48,9 @@ struct NavigaTumMapImagesView: View {
     func actualImage(id: String, isRoomFinderImage: Bool) -> some View {
         let path: String
         if isRoomFinderImage {
-            path = Constants.API.NavigaTum.images(id: id).fullPathURL
+            path = NavigaTUMAPI.images(id: id).basePathsParametersURL
         } else {
-            path = Constants.API.NavigaTum.overlayImages(id: id).fullPathURL
+            path = NavigaTUMAPI.overlayImages(id: id).basePathsParametersURL
         }
         
         return AsyncImage(url: URL(string: path)) { image in

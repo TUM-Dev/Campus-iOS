@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-
-final class MenuViewModel: ObservableObject, Identifiable {
-    let id = UUID()
+final class Menu: Identifiable, Decodable {
+    var id = UUID()
     let date: Date
-    @Published var categories: [MenuCategory]
+    var categories: [MenuCategory]
     
     init(date: Date, categories: [MenuCategory]) {
         self.date = date
@@ -31,8 +30,8 @@ final class MenuViewModel: ObservableObject, Identifiable {
     }
 }
 
-struct MenuCategory: Identifiable {
-    let id = UUID()
+struct MenuCategory: Identifiable, Decodable {
+    var id = UUID()
     let name: String
     let dishes: [Dish]
   
