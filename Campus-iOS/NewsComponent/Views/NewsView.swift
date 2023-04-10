@@ -45,7 +45,9 @@ struct NewsView: View {
                             // adjust height
                             Spacer(minLength: 1)
                         }.sheet(item: $selectedLink) { selectedLink in
-                            SFSafariViewWrapper(url: selectedLink)
+                            if let link = selectedLink {
+                                SFSafariViewWrapper(url: link)
+                            }
                         }
                         Spacer()
                     }.padding()
