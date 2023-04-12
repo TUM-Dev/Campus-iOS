@@ -10,115 +10,144 @@ import ContactsUI
 
 struct PersonDetailedView: View {
     let imageSize: CGFloat = 125.0
-    
-    @ObservedObject var viewModel: PersonDetailedViewModel
-    
-    init(withPerson person: Person) {
-        self.viewModel = PersonDetailedViewModel(withPerson: person)
-    }
-    
-    init(withProfile profile: Profile) {
-        self.viewModel = PersonDetailedViewModel(withProfile: profile)
-    }
+    let personDetails: PersonDetails
     
     var body: some View {
         VStack {
-            Spacer()
-            if let header = viewModel.sections?.first(where: { $0.name == "Header" })?.cells.first, let cell = header as? PersonDetailsHeader {
-                if let image = cell.image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .clipShape(Circle())
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: imageSize, height: imageSize)
-                } else {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .foregroundColor(Color(.secondaryLabel))
-                        .frame(width: imageSize, height: imageSize)
-                }
-                Spacer().frame(height: 10)
-                Text("\(cell.name)").font(.system(size: 18))
+            if let image = personDetails.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .clipShape(Circle())
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: imageSize, height: imageSize)
             } else {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                    .padding(2)
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .foregroundColor(Color(.secondaryLabel))
+                    .frame(width: imageSize, height: imageSize)
             }
-            if self.viewModel.sections?.count ?? 0 > 1 {
-                form
-            } else {
-                List {
-                    HStack {
-                        Spacer()
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                            .padding(2)
-                        Spacer()
+            Spacer().frame(height: 10)
+            Text("\(personDetails.firstName) \(personDetails.name)").font(.system(size: 18))
+            List {
+                if !personDetails.email.isEmpty || !(personDetails.officeHours?.isEmpty ?? false) {
+                    Section(header: Text("General")) {
+                        if !personDetails.email.isEmpty, let mailURL = URL(string: "mailto:\(personDetails.email)") {
+                            VStack(alignment: .leading) {
+                                Text("E-Mail")
+                                Link(personDetails.email, destination: mailURL)
+                            }
+                        }
+                        if let officeHours = personDetails.officeHours, !officeHours.isEmpty {
+                            VStack(alignment: .leading) {
+                                Text("Office Hours")
+                                Text(officeHours)
+                            }
+                        }
+                    }
+                }
+                if !personDetails.officialContact.isEmpty {
+                    Section(header: Text("Offical Contact")) {
+                        ForEach(personDetails.officialContact) { contactInfo in
+                            VStack(alignment: .leading) {
+                                switch contactInfo {
+                                case .phone(let phone):
+                                    let number = phone.replacingOccurrences(of: " ", with: "")
+                                    if let phoneURL = URL(string: "tel:\(number)") {
+                                        Text("Phone")
+                                        Link("\(phone)", destination: phoneURL)
+                                    }
+                                case .mobilePhone(let mobilePhone):
+                                    let number = mobilePhone.replacingOccurrences(of: " ", with: "")
+                                    if let mobilePhoneURL = URL(string: "tel:\(number)") {
+                                        Text("Mobile")
+                                        Link("\(mobilePhone)", destination: mobilePhoneURL)
+                                    }
+                                case .fax(let fax):
+                                    Text("Fax")
+                                    Text("\(fax)")
+                                case .additionalInfo(let additionalInfo):
+                                    Text("Additional Info")
+                                    Text("\(additionalInfo)")
+                                case .homepage(let homepage):
+                                    if let homepageURL = URL(string: homepage) {
+                                        Text("Hoomepage")
+                                        Link("\(homepage)", destination: homepageURL)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if !personDetails.privateContact.isEmpty {
+                    Section(header: Text("Offical Contact")) {
+                        ForEach(personDetails.privateContact) { contactInfo in
+                            VStack(alignment: .leading) {
+                                switch contactInfo {
+                                case .phone(let phone):
+                                    let number = phone.replacingOccurrences(of: " ", with: "")
+                                    if let phoneURL = URL(string: "tel:\(number)") {
+                                        Text("Phone")
+                                        Link("\(phone)", destination: phoneURL)
+                                    }
+                                case .mobilePhone(let mobilePhone):
+                                    let number = mobilePhone.replacingOccurrences(of: " ", with: "")
+                                    if let mobilePhoneURL = URL(string: "tel:\(number)") {
+                                        Text("Mobile")
+                                        Link("\(mobilePhone)", destination: mobilePhoneURL)
+                                    }
+                                case .fax(let fax):
+                                    Text("Fax")
+                                    Text("\(fax)")
+                                case .additionalInfo(let additionalInfo):
+                                    Text("Additional Info")
+                                    Text("\(additionalInfo)")
+                                case .homepage(let homepage):
+                                    if let homepageURL = URL(string: homepage) {
+                                        Text("Hoomepage")
+                                        Link("\(homepage)", destination: homepageURL)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if !personDetails.phoneExtensions.isEmpty {
+                    Section(header: Text("Phone Extensions")) {
+                        ForEach(personDetails.phoneExtensions) { phoneExtension in
+                            let number = phoneExtension.phoneNumber.replacingOccurrences(of: " ", with: "")
+                            if let phoneNumberURL = URL(string: "tel:\(number)") {
+                                VStack(alignment: .leading) {
+                                    Text("Office")
+                                    Link("\(phoneExtension.phoneNumber)", destination: phoneNumberURL)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if !personDetails.organisations.isEmpty {
+                    Section(header: Text("Organisations")) {
+                        ForEach(personDetails.organisations) { organisation in
+                            VStack(alignment: .leading) {
+                                Text("Organisation")
+                                Text("\(organisation.name)")
+                            }
+                        }
+                    }
+                }
+                
+                if !personDetails.rooms.isEmpty {
+                    Section(header: Text("Rooms")) {
+                        ForEach(personDetails.rooms) { room in
+                            VStack(alignment: .leading) {
+                                Text("Room")
+                                Text("\(room.shortLocationDescription)")
+                            }
+                        }
                     }
                 }
             }
         }
-        .background(Color(.systemGroupedBackground))
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                NavigationLink(
-                    destination: AddToContactsView(contact: self.viewModel.cnContact)
-                        .navigationBarTitleDisplayMode(.inline)
-                ) {
-                    Label("", systemImage: "person.crop.circle.badge.plus")
-                }.disabled(self.viewModel.sections?.count ?? 0 < 2)
-            }
-        }
-        .onAppear {
-            self.viewModel.fetch()
-        }
-    }
-
-    var form: some View {
-        Form {
-            ForEach(self.viewModel.sections?.filter({ $0.name != "Header" }) ?? []) { section in
-                Section(section.name) {
-                    ForEach(section.cells as? [PersonDetailsCell] ?? []) { singleCell in
-                        Button(action: {
-                            Self.cellActionBasedOnType(cell: singleCell)
-                        }, label: { PersonDetailedCellView(cell: singleCell) })
-                    }
-                }
-            }
-        }
-        .edgesIgnoringSafeArea(.all)
     }
     
-    static func cellActionBasedOnType(cell: PersonDetailsCell) {
-        switch cell.actionType {
-        case .none, .showRoom:
-            break
-        case .call:
-            let number = cell.value.replacingOccurrences(of: " ", with: "")
-            if let url = URL(string: "tel://\(number)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        case .mail:
-            if let url = URL(string: "mailto:\(cell.value)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        case .openURL:
-            if let url = URL(string: cell.value) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        }
-    }
-}
-
-struct PersonDetailedView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            PersonDetailedView(withPerson: Person(firstName: "Milen", lastName: "Vitanov", title: nil, nr: "12654465", obfuscatedId: "445555dd4", gender: Gender.male))
-                .preferredColorScheme(.light)
-                .previewInterfaceOrientation(.portrait)
-            PersonDetailedView(withPerson: Person(firstName: "Milen", lastName: "Vitanov", title: nil, nr: "12654465", obfuscatedId: "445555dd4", gender: Gender.male))
-                .preferredColorScheme(.dark)
-                .previewInterfaceOrientation(.portrait)
-        }
-    }
 }

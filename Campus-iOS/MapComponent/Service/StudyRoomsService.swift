@@ -7,12 +7,16 @@
 
 import Foundation
 
-protocol StudyRoomsServiceProtocol {
-    func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose
-}
-
-struct StudyRoomsService: StudyRoomsServiceProtocol {
+struct StudyRoomsService {
     func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose {
-        return try await TUMDevAppAPI.fetchStudyRooms(forcedRefresh: forcedRefresh)
+        let response: StudyRoomApiRespose = try await MainAPI.makeRequest(endpoint: TUMDevAppAPI.rooms, forcedRefresh: forcedRefresh)
+        
+        return response
+    }
+    
+    func fetchMap(room: String, forcedRefresh: Bool) async throws -> [RoomImageMapping] {
+        let response: [RoomImageMapping] = try await MainAPI.makeRequest(endpoint: TUMCabeAPI.roomMaps(room: room))
+        
+        return response
     }
 }

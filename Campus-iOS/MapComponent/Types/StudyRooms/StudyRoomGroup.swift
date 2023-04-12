@@ -8,7 +8,7 @@
 import Foundation
 import MapKit
 
-struct StudyRoomGroup: Entity, Equatable {
+struct StudyRoomGroup: Decodable, Equatable {
     var detail: String?
     var id: Int64
     var name: String?

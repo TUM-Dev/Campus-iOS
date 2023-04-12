@@ -132,6 +132,8 @@
 "Lecture Search" = "Lecture Search";
 "Unable to find lecture" = "Unable to find lecture";
 "Choose Speaker" = "Choose Speaker";
+"The search query must be at least 4 characters." = "The search query must be at least 4 characters.";
+"Fetching Lectures" = "Fetching Lectures";
 
 // Grades
 "Fetching Grades" = "Fetching Grades";

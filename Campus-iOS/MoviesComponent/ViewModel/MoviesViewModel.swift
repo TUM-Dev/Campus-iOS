@@ -9,56 +9,50 @@ import Foundation
 import Alamofire
 import FirebaseCrashlytics
 
+@MainActor
 class MoviesViewModel: ObservableObject {
+    @Published var state: APIState<[Movie]> = .na
+    @Published var hasError: Bool = false
     
     @Published var movies = [Movie]()
     @Published var state: State = .loading
+    let service: MoviesService = MoviesService()
     
-    typealias ImporterType = Importer<Movie, [Movie], JSONDecoder>
-    private let sessionManager: Session = Session.defaultSession
-    
-    init() {
-        // TODO: Get from cache, if not found, then fetch
-        fetch()
+    func getMovies(forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+
+        do {
+            let movies = try await service.fetch(forcedRefresh: forcedRefresh)
+            
+            self.state = .success(
+                data: filterAndSort(for: movies)
+            )
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
+        }
     }
     
-    func fetch() {
-        let endpoint: URLRequestConvertible = TUMCabeAPI.movie
-        let dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .formatted(.yyyyMMddhhmmss)
-        let importer = ImporterType(endpoint: endpoint, dateDecodingStrategy: dateDecodingStrategy)
-        
-        importer.performFetch(handler: { result in
-            switch result {
-            case .success(let incoming):
-                // Remove all movies from list that are older than today
-                let relevantMovies = incoming.filter ({
-                    if let date = $0.date {
-                        return Date.now <= date
-                    } else {
-                        // If no date available keep movie just in case
-                        return true;
-                    }
-                })
-                
-                self.movies = relevantMovies.sorted(by: {
-                    guard let dateOne = $0.date, let dateTwo = $1.date else {
-                        return false
-                    }
-                    return dateOne < dateTwo
-                })
-                
-                if self.movies.isEmpty {
-                    self.state = .noMovies
-                    break
-                }
-                
-                self.state = .success
-            
-            case .failure(let error):
-                print(error)
-                self.state = .failed
+    func filterAndSort(for movies: [Movie]) -> [Movie] {
+        let relevantMovies = movies.filter ({
+            if let date = $0.date {
+                return Date.now <= date
+            } else {
+                // If no date available keep movie just in case
+                return true;
             }
         })
+        
+        return relevantMovies.sorted(by: {
+            guard let dateOne = $0.date, let dateTwo = $1.date else {
+                return false
+            }
+            return dateOne < dateTwo
+        })
+        
     }
 }
 

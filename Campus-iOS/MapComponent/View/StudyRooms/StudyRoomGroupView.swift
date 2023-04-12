@@ -113,7 +113,7 @@ struct StudyRoomGroupView: View {
                         List {
                             ForEach(self.sortedRooms, id: \.id) { room in
                                 DisclosureGroup(content: {
-                                    StudyRoomDetailsView(studyRoom: room)
+                                    StudyRoomDetailsScreen(room: room)
                                 }, label: {
                                     AnyView(
                                         HStack {

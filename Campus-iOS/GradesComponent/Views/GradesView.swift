@@ -10,6 +10,7 @@ import SwiftUICharts
 
 @available(iOS 16.0, *)
 struct GradesView: View {
+    
     @StateObject var vm: GradesViewModel
     @State private var data = AppUsageData()
     

@@ -12,6 +12,7 @@ import Firebase
 
 @available(iOS 16.0, *)
 @main
+@MainActor
 struct CampusApp: App {
     @StateObject var model: Model = Model()
     let persistenceController = PersistenceController.shared
@@ -44,12 +45,49 @@ struct CampusApp: App {
                 })
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .task {
+                    if model.loginController.credentials == Credentials.noTumID {
+                        model.isUserAuthenticated = false
+                    } else {
+                        await model.loginController.confirmToken() { result in
+                            switch result {
+                            case .success:
+                                #if !targetEnvironment(macCatalyst)
+                                Analytics.logEvent("token_confirmed", parameters: nil)
+                                #endif
+                                DispatchQueue.main.async {
+                                    model.isLoginSheetPresented = false
+                                    model.isUserAuthenticated = true
+                                }
+                                
+//                                    model.loadProfile()
+                            case .failure(_):
+                                model.isUserAuthenticated = false
+                                if !model.showProfile {
+                                    model.isLoginSheetPresented = true
+                                }
+                            }
+                        }
+                    }
+                }
                 .background(Color.primaryBackground)
         }
     }
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
+            NavigationView {
+                CalendarScreen(
+                    model: model,
+                    refresh: $model.isUserAuthenticated
+                )
+                .navigationTitle("Calendar")
+            }
+            .tag(4)
+            .tabItem {
+                Label("Calendar", systemImage: "calendar")
+            }
+            .navigationViewStyle(.stack)
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {

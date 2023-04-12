@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct PhoneExtension: Decodable {
+struct PhoneExtension: Decodable, Identifiable {
+    let id = UUID()
     let phoneNumber: String
     let countryCode: String
     let areaCode: String

@@ -14,19 +14,12 @@ protocol RoomFinderServiceProtocol {
 
 struct RoomFinderService: RoomFinderServiceProtocol {
     func search(query: String) async throws -> NavigaTumSearchResponse {
-        try await
-            NavigaTumAPI
-                .makeRequest(
-                    endpoint: Constants.API.NavigaTum.search(query: query)
-                )
+        return try await MainAPI.makeRequest(endpoint: NavigaTUMAPI.search(query: query))
     }
+    
     func details(id: String) async throws -> NavigaTumNavigationDetails {
         let language = (Locale.current.languageCode == "de") ? "de" : "en"
-        print("fetched id \(id)")
-        return try await
-            NavigaTumAPI
-                .makeRequest(
-                    endpoint: Constants.API.NavigaTum.details(id: id, language: language)
-                )
+        
+        return try await MainAPI.makeRequest(endpoint: NavigaTUMAPI.details(id: id, language: language))
     }
 }

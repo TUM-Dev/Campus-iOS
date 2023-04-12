@@ -55,53 +55,44 @@ class TokenPermissionsViewModel: ObservableObject {
                     self.states[.grades] = .failed(error: error)
                 }
             case .calendar:
-                let calenderVM = CalendarViewModel(model: self.model)
-                
-                calenderVM.fetch { result in
-                    if case let .success(data) = result {
-                        print("Success")
-                        self.states[.calendar] = .success(data: data)
-                    } else {
-                        print("No success")
-                        self.states[.calendar] = .failed(error: CampusOnlineAPI.Error.noPermission)
-                    }
+                do {
+                    self.states[.calendar] = .success(
+                        data: try await CalendarService().fetch(token: token, forcedRefresh: true))
+                } catch {
+                    self.states[.calendar] = .failed(error: error)
                 }
-                
             case .lectures:
                 do {
                     self.states[.lectures] = .success(
                         data: try await LecturesService().fetch(token: token, forcedRefresh: true))
                 } catch {
                     self.states[.lectures] = .failed(error: error)
-                    print(error)
                 }
             case .tuitionFees:
-                
-                let profileVM = ProfileViewModel(model: self.model)
-                profileVM.fetch()
-                profileVM.checkTuitionFunc() {  result in
-                    print(result)
-                    if case let .success(data) = result {
-                        print("Success")
-                        self.states[.tuitionFees] = .success(data: data)
-                    } else {
-                        print("no success")
-                        self.states[.tuitionFees] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                do {
+                    guard let tuitionFees: Tuition = try await ProfileService().fetch(token: token, forcedRefresh: true) else {
+                        self.states[.identification] = .failed(error: TUMOnlineAPIError(message: "Tuition couldn't be loaded."))
+                        break
                     }
+                    
+                    self.states[.tuitionFees] = .success(
+                        data: tuitionFees)
+                } catch {
+                    self.states[.identification] = .failed(error: error)
                 }
                 
             case .identification:
                 
-                let profileVM = ProfileViewModel(model: self.model)
-                profileVM.fetch() {  result in
-                    print(result)
-                    if case let .success(data) = result {
-                        print("Success")
-                        self.states[.identification] = .success(data: data)
-                    } else {
-                        print("no success")
-                        self.states[.identification] = .failed(error: CampusOnlineAPI.Error.noPermission)
+                do {
+                    guard let profile: Profile = try await ProfileService().fetch(token: token, forcedRefresh: true) else {
+                        self.states[.identification] = .failed(error: TUMOnlineAPIError(message: "Tuition couldn't be loaded."))
+                        break
                     }
+                    
+                    self.states[.identification] = .success(
+                        data: profile)
+                } catch {
+                    self.states[.identification] = .failed(error: error)
                 }
             }
         }

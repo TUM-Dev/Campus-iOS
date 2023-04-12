@@ -43,7 +43,7 @@ class WidgetRecommender: ObservableObject {
         case .calendar:
             CalendarWidgetView(model: model, size: size, refresh: refresh)
         case .tuition:
-            TuitionWidgetView(size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
+            TuitionWidgetView(model: model, size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
         case .grades:
             GradeWidgetView(model: model, size: size, refresh: refresh)
         case .departures:

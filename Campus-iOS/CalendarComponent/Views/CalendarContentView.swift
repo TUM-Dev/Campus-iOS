@@ -9,20 +9,15 @@ import SwiftUI
 import KVKCalendar
 
 struct CalendarContentView: View {
-    
-    @StateObject var viewModel: CalendarViewModel
-    @Binding var refresh: Bool
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
     @State private var data = AppUsageData()
-
-    init(model: Model, refresh: Binding<Bool>) {
-        self._viewModel = StateObject(wrappedValue: CalendarViewModel(model: model))
-        self._refresh = refresh
-    }
+    
+    let model: Model
+    var events: [CalendarEvent] = []
     
     var body: some View {
         VStack {
@@ -69,19 +64,19 @@ struct CalendarContentView: View {
                 switch self.selectedType {
                 case .week:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: self.events.map({ $0.kvkEvent }),
                         type: .week,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .day:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: self.events.map({ $0.kvkEvent }),
                         type: .day,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
                 case .month:
                     CalendarDisplayView(
-                        events: self.viewModel.events.map({ $0.kvkEvent }),
+                        events: self.events.map({ $0.kvkEvent }),
                         type: .month,
                         selectedEventID: self.$selectedEventID,
                         frame: Self.getSafeAreaFrame(geometry: geo), todayPressed: self.$isTodayPressed, calendarWeekDays: UInt(calendarWeekDays))
@@ -97,17 +92,57 @@ struct CalendarContentView: View {
             self.viewModel.fetch()
         }
         .sheet(item: self.$selectedEventID) { eventId in
-            let chosenEvent = self.viewModel.events
+            let chosenEvent = self.events
                 .first(where: { $0.id.description == eventId })
             CalendarSingleEventView(
                 viewModel: LectureDetailsViewModel(
-                    model: viewModel.model,
+                    model: model,
                                 service: LectureDetailsService(),
                                 // Yes, it is a really hacky solution...
                                 lecture: Lecture(id: UInt64(chosenEvent?.lvNr ?? "") ?? 0, lvNumber: UInt64(chosenEvent?.lvNr ?? "") ?? 0, title: "", duration: "", stp_sp_sst: "", eventTypeDefault: "", eventTypeTag: "", semesterYear: "", semesterType: "", semester: "", semesterID: "", organisationNumber: 0, organisation: "", organisationTag: "", speaker: "")
                             ),
                 event: chosenEvent
             )
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.isTodayPressed = true
+                    selectedType = .day
+                }) {
+                    Text("Today")
+                }
+            }
+            ToolbarItem(placement: .principal) {
+                Picker("Calendar Type", selection: $selectedType) {
+                    ForEach(CalendarType.allCases, id: \.self) {
+                        switch $0 {
+                        case .week:
+                            Text("Week")
+                        case .day:
+                            Text("Day")
+                        case .month:
+                            Text("Month")
+                        default:
+                            EmptyView()
+                        }
+                    }
+                }
+                .opacity(1.0)
+                .pickerStyle(.segmented)
+                .onAppear {
+                    UISegmentedControl.appearance().backgroundColor = UIColor.systemBlue.withAlphaComponent(0.2)
+                    UISegmentedControl.appearance()
+                        .selectedSegmentTintColor = .tumBlue
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+                    UISegmentedControl.appearance()
+                        .setTitleTextAttributes([.foregroundColor: UIColor.useForStyle(dark: UIColor(red: 28/255, green: 171/255, blue: 246/255, alpha: 1), white: UIColor(red: 34/255, green: 126/255, blue: 177/255, alpha: 1))], for: .normal)
+                }
+            }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                ProfileToolbar(model: model)
+            }
         }
         .task {
             data.visitView(view: .calendar)
@@ -128,7 +163,7 @@ struct CalendarContentView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarContentView(
             model: MockModel(),
-            refresh: .constant(false)
+            events: []
         )
     }
 }

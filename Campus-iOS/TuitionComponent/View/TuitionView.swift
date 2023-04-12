@@ -9,17 +9,14 @@ import SwiftUI
 
 struct TuitionView: View {
     
-    @ObservedObject var viewModel: ProfileViewModel
+    let tuition: Tuition
     @State private var data = AppUsageData()
     
     var body: some View {
-        if #available(iOS 16.0, *) {
-            List {
-                VStack(alignment: .center) {
-                    Spacer(minLength: 0.10 * UIScreen.main.bounds.width)
-                    TuitionCard(tuition: self.viewModel.tuition ?? Tuition.unknown)
-                }
-                .listRowBackground(Color.primaryBackground)
+        List {
+            VStack(alignment: .center) {
+                Spacer(minLength: 0.10 * UIScreen.main.bounds.width)
+                TuitionCard(tuition: self.tuition)
             }
             .scrollContentBackground(.hidden)
             .background(Color.primaryBackground)
@@ -35,14 +32,20 @@ struct TuitionView: View {
         } else {
             Text("This content is only available on iOS 16 or higher 🫠").padding(.horizontal)
         }
+        .task {
+            data.visitView(view: .tuition)
+        }
+        .onDisappear {
+            data.didExitView()
+        }
     }
 }
 
-struct TuitionView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        TuitionView(viewModel: ProfileViewModel())
-        TuitionView(viewModel: ProfileViewModel())
-            .preferredColorScheme(.dark)
-    }
-}
+//struct TuitionView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        TuitionView(viewModel: ProfileViewModel())
+//        TuitionView(viewModel: ProfileViewModel())
+//            .preferredColorScheme(.dark)
+//    }
+//}

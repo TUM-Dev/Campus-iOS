@@ -14,45 +14,56 @@ struct TuitionWidgetView: View {
     @State private var scale: CGFloat = 1
     @Binding var refresh: Bool
     
-    init(size: TuitionWidgetSize, refresh: Binding<Bool> = .constant(false)) {
+    let model: Model
+    
+    init(model: Model ,size: TuitionWidgetSize, refresh: Binding<Bool> = .constant(false)) {
+        self.model = model
         self._size = State(initialValue: size.value)
         self.initialSize = size.value
         self._refresh = refresh
     }
     
     var body: some View {
-        WidgetFrameView(size: size, content: TuitionWidgetContent(size: size, refresh: $refresh))
+        WidgetFrameView(size: size, content: TuitionWidgetContent(viewModel: ProfileViewModel(model: model, service: ProfileService()), size: size, refresh: $refresh))
             .expandable(size: $size, initialSize: initialSize, biggestSize: .rectangle, scale: $scale)
     }
 }
 
 struct TuitionWidgetContent: View {
-    @StateObject var viewModel = ProfileViewModel()
+    @StateObject var viewModel: ProfileViewModel
     let size: WidgetSize
     @Binding var refresh: Bool
     
     var body: some View {
         Group {
-            if let tuition = self.viewModel.tuition,
-               let amount = tuition.amount,
-               let deadline = tuition.deadline,
-               let semester = tuition.semesterID {
-                TuitionWidgetInfoView(
-                    amount: amount,
-                    openAmount: tuition.isOpenAmount,
-                    deadline: deadline,
-                    semester: semester,
-                    big: size != .square
-                )
-            } else {
-                WidgetLoadingView(text: "Loading tuition fee")
+            switch viewModel.tuitionState {
+            case .success(let tuition):
+                if let amount = tuition.amount,
+                let deadline = tuition.deadline,
+                   let semester = tuition.semesterID {
+                    TuitionWidgetInfoView(
+                        amount: amount,
+                        openAmount: tuition.isOpenAmount,
+                        deadline: deadline,
+                        semester: semester,
+                        big: size != .square
+                    )
+                }
+            case .loading, .na:
+                    WidgetLoadingView(text: "Loading tuition fee")
+            case .failed(error: let error):
+                    WidgetLoadingView(text: "Error: \(error)")
             }
         }
         .onChange(of: refresh) { _ in
-            viewModel.fetch()
+            Task {
+                await viewModel.getTuition(forcedRefresh: true)
+            }
         }
         .task {
-            viewModel.fetch()
+            Task {
+                await viewModel.getTuition(forcedRefresh: false)
+            }
         }
     }
 }

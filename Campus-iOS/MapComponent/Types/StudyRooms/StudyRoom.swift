@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct StudyRoom: Entity {
+struct StudyRoom: Decodable {
     var buildingCode: String?
     var buildingName: String?
     var buildingNumber: Int64

@@ -8,21 +8,44 @@
 import Foundation
 import XMLCoder
 
+@MainActor
 class CalendarViewModel: ObservableObject {
-    typealias ImporterType = Importer<CalendarEvent, CalendarAPIResponse, XMLDecoder>
-    private static let endpoint = TUMOnlineAPI.calendar
-
-    @Published var events: [CalendarEvent] = []
+    @Published var state: APIState<[CalendarEvent]> = .na
+    @Published var hasError: Bool = false
     
     let model: Model
     var state: State
+    let service: CalendarService
     
-    init(model: Model) {
+    init(model: Model, service: CalendarService) {
         self.model = model
         self.state = .na
         fetch()
+        self.service = service
     }
     
+    func getCalendar(forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        self.hasError = false
+        
+        guard let token = self.model.token else {
+            self.state = .failed(error: NetworkingError.unauthorized)
+            self.hasError = true
+            return
+        }
+
+        do {
+            let events = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
+            
+            self.state = .success(
+                data: events.filter( { $0.status != "CANCEL" } ).sorted {$0.startDate ?? .distantPast > $1.startDate ?? .distantPast})
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
+        }
+    }
     
     func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
         if(self.model.isUserAuthenticated) {
@@ -38,13 +61,10 @@ class CalendarViewModel: ObservableObject {
                             return dateOne > dateTwo
                         }) ?? []
                         
-                        self.state = .success(data: self.events)
-                        
                         if let _ = storage.events {
                             callback(.success(true))
                         } else {
                             callback(.failure(CampusOnlineAPI.Error.noPermission))
-                            self.state = .failed(error: CampusOnlineAPI.Error.noPermission)
                         }
                     case .failure(let error):
                         self.state = .failed(error: error)
@@ -52,8 +72,10 @@ class CalendarViewModel: ObservableObject {
                 })
             }
             
+            return dictionary
+        
         } else {
-            self.events = []
+            return [:]
         }
     }
     
@@ -96,15 +118,6 @@ class CalendarViewModel: ObservableObject {
             }
         }
         return (leftColumn, rightColumn)
-    }
-}
-
-extension CalendarViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [CalendarEvent]?)
-        case failed(error: Error)
     }
 }
 
