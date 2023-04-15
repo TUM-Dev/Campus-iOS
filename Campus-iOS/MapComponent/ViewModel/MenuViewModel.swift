@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-final class Menu: Identifiable, Decodable {
+final class cafeteriaMenu: Identifiable, Decodable {
     var id = UUID()
     let date: Date
     var categories: [MenuCategory]

@@ -25,7 +25,7 @@ class DeparturesWidgetViewModel: ObservableObject {
     @Published var state: State
     
     private var locationManager = CLLocationManager()
-    private let sessionManager = Session.defaultSession
+    private let sessionManager = Session()
     
     var timer: Timer?
     

@@ -16,7 +16,6 @@ struct NewsViewNEW: View {
     
     init(viewModel: NewsViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
-        viewModel.fetch()
     }
     
     var body: some View {

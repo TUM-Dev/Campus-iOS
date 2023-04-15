@@ -10,9 +10,9 @@ import Alamofire
 
 struct MealPlanView: View {
     @Environment(\.colorScheme) var colorScheme
-    let menus: [Menu]
+    let menus: [cafeteriaMenu]
     let cafeteria: Cafeteria
-    @State var selectedMenu: Menu
+    @State var selectedMenu: cafeteriaMenu
         
     var body: some View {
         VStack {

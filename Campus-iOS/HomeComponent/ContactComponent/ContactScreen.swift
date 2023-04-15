@@ -11,27 +11,31 @@ import SwiftUI
 struct ContactScreen: View {
     
     @StateObject var model: Model
-    @StateObject var profileViewModel = ProfileViewModel()
     @StateObject var gradesViewModel: GradesViewModel
+    @StateObject var profileVm: ProfileViewModel
     
     init (model: Model) {
         self._model = StateObject(wrappedValue: model)
         self._gradesViewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+        self._profileVm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            ContactCardView(profileViewModel: self.profileViewModel, gradesViewModel: self.gradesViewModel, personDetailedViewModel: PersonDetailedViewModel(withProfile: self.profileViewModel.profile ?? ProfileViewModel.defaultProfile))
-                .padding(.bottom, 10)
+            if case .success(let profile) = profileVm.profileState {
+                ContactCardView(model: self.model, profile: profile, profileVm: self.profileVm, gradesVm: self.gradesViewModel)
+                    .padding(.bottom, 10)
+            }
             
-            TuitionViewNEW(model: self.model, profileViewModel: self.profileViewModel)
+            
+            TuitionViewNEW(profileViewModel: self.profileVm)
                 .padding(.bottom, 10)
             
             LinkView()
             
         }.task {
-            profileViewModel.fetch()
             await gradesViewModel.getGrades()
+            await profileVm.getProfile(forcedRefresh: false)
         }
     }
 }

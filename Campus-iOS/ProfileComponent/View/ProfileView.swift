@@ -100,28 +100,28 @@ struct ProfileView: View {
                             Spacer()
                         }
                         
-                        NavigationLink(destination: NewsView(viewModel: NewsViewModel())
+                        NavigationLink(destination: NewsScreen()
                             .navigationBarTitle(Text("Aktuelles"))
                             .navigationBarTitleDisplayMode(.large)
                         ) {
                             Label("News", systemImage: "newspaper")
                         }
                         
-                        NavigationLink(destination: MoviesView()
+                        NavigationLink(destination: MoviesScreen()
                             .navigationBarTitle(Text("Movies"))
                             .navigationBarTitleDisplayMode(.large)
                         ) {
                             Label("Movies", systemImage: "film")
                         }
                         
-                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
-                            if self.model.isUserAuthenticated {
+                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: vm.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
+                            if vm.model.isUserAuthenticated {
                                 Label("Token Permissions", systemImage: "key")
                             } else {
                                 Label("Token Permissions (You are logged out)", systemImage: "key")
                             }
                             
-                        }.disabled(!self.model.isUserAuthenticated)
+                        }.disabled(!vm.model.isUserAuthenticated)
                     }
                     .listRowBackground(Color.secondaryBackground)
                     
@@ -149,9 +149,9 @@ struct ProfileView: View {
                                         .tag(number)
                                 }
                             }
+                            .pickerStyle(MenuPickerStyle())
+                            .foregroundColor(.black)
                         }
-                        .pickerStyle(MenuPickerStyle())
-                        .foregroundColor(.black)
                     }
                     .listRowBackground(Color.secondaryBackground)
                     
@@ -181,15 +181,15 @@ struct ProfileView: View {
                     Section() {
                         HStack(alignment: .bottom) {
                             Spacer()
-                            if model.isUserAuthenticated {
+                            if vm.model.isUserAuthenticated {
                                 Button(action: {
-                                    model.logout()
+                                    vm.model.logout()
                                 }) {
                                     Text("Sign Out").foregroundColor(.red)
                                 }
                             } else {
                                 Button(action: {
-                                    model.isLoginSheetPresented = true
+                                    vm.model.isLoginSheetPresented = true
                                 }) {
                                     Text("Sign In").foregroundColor(.green)
                                 }
@@ -231,9 +231,9 @@ struct ProfileView: View {
                 }
                 .scrollContentBackground(.hidden)
                 .background(Color.primaryBackground)
-                .sheet(isPresented: $model.isLoginSheetPresented) {
+                .sheet(isPresented: $vm.model.isLoginSheetPresented) {
                     NavigationView {
-                        LoginView(model: model)
+                        LoginView(model: vm.model)
                     }
                 }
                 .listRowBackground(Color.clear)

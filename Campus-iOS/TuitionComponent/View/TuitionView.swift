@@ -18,19 +18,7 @@ struct TuitionView: View {
                 Spacer(minLength: 0.10 * UIScreen.main.bounds.width)
                 TuitionCard(tuition: self.tuition)
             }
-            .scrollContentBackground(.hidden)
-            .background(Color.primaryBackground)
-            .refreshable {
-                self.viewModel.checkTuitionFunc()
-            }
-            .task {
-                data.visitView(view: .tuition)
-            }
-            .onDisappear {
-                data.didExitView()
-            }
-        } else {
-            Text("This content is only available on iOS 16 or higher 🫠").padding(.horizontal)
+            .listRowBackground(Color(.systemGroupedBackground))
         }
         .task {
             data.visitView(view: .tuition)

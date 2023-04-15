@@ -25,22 +25,7 @@ struct CafeteriaWidget2: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(dishes, id: \.id ) { dish in
-                            VStack(alignment: .leading){
-                                HStack{
-                                    Text(getTypeLabel(dishType: dish.dishType))
-                                    Spacer()
-                                    MealIngredientsView(mealTitle: dish.name, labels: getIngredientLabels(ingredientLabels: dish.labels), price: DishView.formatPrice(dish: dish, pricingGroup: "students"))
-                                }
-                                Text(dish.name + "\n")
-                                    .lineLimit(2)
-                                    .padding(.vertical, 5)
-                                Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
-                                    .lineLimit(1)
-                            }
-                            .frame(width: 150)
-                            .padding()
-                            .background(Color.secondaryBackground)
-                            .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+                            DishView2(dish: dish)
                         }
                     }
                     .padding(.horizontal)
@@ -73,40 +58,5 @@ struct CafeteriaWidget2: View {
             return " "
         }
     }
-    
-    func getIngredientLabels(ingredientLabels: [String]) -> [String] {
-        var result = [String]()
-        for label in ingredientLabels {
-            let newLabel = "\(labelToAbbreviation(label: label)) \(labelToDescription(label: label))"
-            result.append(newLabel)
-        }
-        return result
-    }
-    
-    func labelToAbbreviation(label: String) -> String {
-        let labelLookup = MensaEnumService.shared.getLabels()
-        
-        if let labelObject = labelLookup[label] {
-            return labelObject.abbreviation
-        }
-        return label
-    }
-    
-    func labelToDescription(label: String) -> String {
-        let labelLookup = MensaEnumService.shared.getLabels()
-        
-        if Locale.current.language.languageCode?.identifier == "de"{
-            if let labelObject = labelLookup[label], let text = labelObject.text["DE"] {
-                return text
-            }
-        } else {
-            if let labelObject = labelLookup[label], let text = labelObject.text["EN"] {
-                return text
-            }
-        }
-        
-        return label
-    }
-    
 }
 

@@ -23,7 +23,7 @@ struct HomeScreen: View {
             WidgetScreenNEW(model: self.model)
                 .padding(.bottom, 10)
             /*WidgetScreen(model: self.model)
-                .padding(.bottom, 25)*/ //Robyn's WidgetScreen
+             .padding(.bottom, 25)*/ //Robyn's WidgetScreen
             MoviesViewNEW()
                 .padding(.bottom)
             NewsViewNEW(viewModel: NewsViewModel())

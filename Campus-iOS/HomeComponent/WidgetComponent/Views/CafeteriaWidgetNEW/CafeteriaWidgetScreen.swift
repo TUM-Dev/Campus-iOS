@@ -9,22 +9,26 @@ import SwiftUI
 
 struct CafeteriaWidgetScreen: View {
     
-    @StateObject var cafeteriaWidgetVM : CafeteriaWidgetViewModel
+    @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
     
     var body: some View {
         Group {
-            switch(self.cafeteriaWidgetVM.status) {
+            switch(viewModel.status) {
             case .error:
                 TextWidgetView(text: "No nearby cafeteria.")
             case .loading:
                 WidgetLoadingView(text: "Searching nearby cafeteria")
-            case .noMenu:
-                EmptyView().onAppear {
-                    print("No Cafeteria Menu available!")
+            default:
+                if let cafeteria = viewModel.cafeteria,
+                   let title = cafeteria.title,
+                   let coordinate = cafeteria.coordinate {
+                    CafeteriaWidget2(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
+                } else {
+                    TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
                 }
-            case .success:
-                CafeteriaWidget2(cafeteriaWidgetVM: self.cafeteriaWidgetVM, dishes: self.cafeteriaWidgetVM.menuViewModel?.getDishes() ?? [])
             }
+        }.task {
+            await viewModel.fetch()
         }
     }
 }

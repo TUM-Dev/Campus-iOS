@@ -15,7 +15,6 @@ class MoviesViewModel: ObservableObject {
     @Published var hasError: Bool = false
     
     @Published var movies = [Movie]()
-    @Published var state: State = .loading
     let service: MoviesService = MoviesService()
     
     func getMovies(forcedRefresh: Bool = false) async {
@@ -53,14 +52,5 @@ class MoviesViewModel: ObservableObject {
             return dateOne < dateTwo
         })
         
-    }
-}
-
-extension MoviesViewModel {
-    enum State {
-        case loading
-        case success
-        case failed
-        case noMovies
     }
 }

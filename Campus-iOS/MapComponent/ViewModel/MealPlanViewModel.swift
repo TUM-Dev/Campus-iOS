@@ -11,7 +11,7 @@ import Alamofire
 
 @MainActor
 class MealPlanViewModel: ObservableObject {
-    @Published var state: APIState<[Menu]> = .na
+    @Published var state: APIState<[cafeteriaMenu]> = .na
     @Published var hasError: Bool = false
     
     let service = MealPlanService()

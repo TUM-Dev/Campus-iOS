@@ -13,7 +13,7 @@ import Alamofire
 class CafeteriaWidgetViewModel: ObservableObject {
     
     @Published var cafeteria: Cafeteria?
-    @Published var menu: Menu?
+    @Published var menu: cafeteriaMenu?
     @Published var status: CafeteriaWidgetStatus
     
     private let cafeteriaService: CafeteriasService

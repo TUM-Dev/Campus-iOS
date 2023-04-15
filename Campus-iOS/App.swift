@@ -81,7 +81,8 @@ struct CampusApp: App {
                     model: model,
                     refresh: $model.isUserAuthenticated
                 )
-                .navigationTitle("Calendar")
+                .background(Color.primaryBackground)
+                .overlay(NavigationBarView(model: model, title: "Calendar"))
             }
             .tag(4)
             .tabItem {
@@ -136,22 +137,6 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-                
-                NavigationView {
-                CalendarContentView(
-                    model: model,
-                    refresh: $model.isUserAuthenticated
-                )
-                .background(Color.primaryBackground)
-                .overlay(NavigationBarView(model: model, title: "Calendar"))
-            }
-            .tag(3)
-            .tabItem {
-                Label("Calendar", systemImage: "calendar")
-            }
-            .navigationViewStyle(.stack)
-            
-            
             
             NavigationView {
                 MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))

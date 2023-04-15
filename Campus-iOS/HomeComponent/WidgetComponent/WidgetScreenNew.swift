@@ -14,12 +14,11 @@ struct WidgetScreenNEW: View {
     @StateObject private var recommender: WidgetRecommender
     @StateObject var calendarWidgetVM: CalendarViewModel
     @StateObject var studyRoomWidgetVM = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
-    @StateObject var cafeteriaWidgetVM: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
     @StateObject var departuresWidgetVM: DeparturesWidgetViewModel = DeparturesWidgetViewModel()
     
     init(model: Model) {
         self._model = StateObject(wrappedValue: model)
-        self._calendarWidgetVM = StateObject(wrappedValue: CalendarViewModel(model: model))
+        self._calendarWidgetVM = StateObject(wrappedValue: CalendarViewModel(model: model, service: CalendarService()))
         self._recommender = StateObject(wrappedValue: WidgetRecommender(strategy: SpatioTemporalStrategy(), model: model))
     }
     
@@ -29,7 +28,7 @@ struct WidgetScreenNEW: View {
                 let widget = recommendation.widget
                 switch widget {
                 case .cafeteria:
-                    CafeteriaWidgetScreen(cafeteriaWidgetVM: self.cafeteriaWidgetVM)
+                    CafeteriaWidgetScreen()
                         .padding(.bottom)
                 case .studyRoom:
                     StudyRoomWidgetScreen(studyRoomWidgetVM: self.studyRoomWidgetVM)
@@ -46,9 +45,8 @@ struct WidgetScreenNEW: View {
             }
         }
         .task {
-            calendarWidgetVM.fetch()
+            await calendarWidgetVM.getCalendar()
             await studyRoomWidgetVM.fetch()
-            await cafeteriaWidgetVM.fetch()
             try? await recommender.fetchRecommendations()
         }
     }

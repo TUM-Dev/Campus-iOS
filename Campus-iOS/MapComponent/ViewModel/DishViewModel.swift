@@ -90,4 +90,38 @@ class DishViewModel: ObservableObject {
         }
         return shortenedLabels.joined(separator:", ")
     }
+    
+    func getIngredientLabels(generalLabel: [String:DishLabel]?, ingredientLabels: [String]) -> [String] {
+        var result = [String]()
+        for label in ingredientLabels {
+            let newLabel = "\(labelToAbbreviation(generalLabel: generalLabel, label: label)) \(labelToDescription(generalLabel: generalLabel, label: label))"
+            result.append(newLabel)
+        }
+        return result
+    }
+    
+    func getTypeLabel(dishType: String) -> String {
+        switch dishType {
+        case "Wok":
+            return "🥘"
+        case "Pasta":
+            return "🍝"
+        case "Pizza":
+            return "🍕"
+        case "Fleisch":
+            return "🥩"
+        case "Grill":
+            return "🍖"
+        case "Studitopf":
+            return "🍲"
+        case "Vegetarisch/fleischlos":
+            return "🥗"
+        case "Fisch":
+            return "🐟"
+        case "Suppe":
+            return "🍜"
+        default:
+            return " "
+        }
+    }
 }

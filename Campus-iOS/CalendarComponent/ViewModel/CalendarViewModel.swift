@@ -14,13 +14,10 @@ class CalendarViewModel: ObservableObject {
     @Published var hasError: Bool = false
     
     let model: Model
-    var state: State
     let service: CalendarService
     
     init(model: Model, service: CalendarService) {
         self.model = model
-        self.state = .na
-        fetch()
         self.service = service
     }
     
@@ -35,7 +32,7 @@ class CalendarViewModel: ObservableObject {
             self.hasError = true
             return
         }
-
+        
         do {
             let events = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             
@@ -47,50 +44,30 @@ class CalendarViewModel: ObservableObject {
         }
     }
     
-    func fetch(callback: @escaping (Result<Bool,Error>) -> Void = {_ in }) {
-        if(self.model.isUserAuthenticated) {
-            let importer = ImporterType(endpoint: Self.endpoint, predicate: nil, dateDecodingStrategy: .formatted(.yyyyMMddhhmmss))
-            DispatchQueue.main.async {
-                importer.performFetch(handler: { result in
-                    switch result {
-                    case .success(let storage):
-                        self.events = storage.events?.filter( { $0.status != "CANCEL" } ).sorted(by: {
-                            guard let dateOne = $0.startDate, let dateTwo = $1.startDate else {
-                                return false
-                            }
-                            return dateOne > dateTwo
-                        }) ?? []
-                        
-                        if let _ = storage.events {
-                            callback(.success(true))
-                        } else {
-                            callback(.failure(CampusOnlineAPI.Error.noPermission))
-                        }
-                    case .failure(let error):
-                        self.state = .failed(error: error)
-                    }
-                })
-            }
+    var eventsByDate: [Date? : [CalendarEvent]] {
+        if case .success(let data) = state {
+            let sortedEvents = data.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+            let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+            let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
             
             return dictionary
-        
+            
         } else {
             return [:]
         }
     }
     
-    var eventsByDate: [Date? : [CalendarEvent]] {
-        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
-        let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
-        let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
-        return dictionary
-    }
-    
     var eventsByDateNEW: [Date? : [CalendarEvent]] {
-        let sortedEvents = events.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
-        let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
-        let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate })
-        return dictionary
+        if case .success(let data) = state {
+            let sortedEvents = data.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+            let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+            let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate })
+            
+            return dictionary
+            
+        } else {
+            return [:]
+        }
     }
     
     func getWidgetEventViews(events: [Dictionary<Date?, [CalendarEvent]>.Element]) -> ([CalendarWidgetEventView], [CalendarWidgetEventView]) {
@@ -123,9 +100,9 @@ class CalendarViewModel: ObservableObject {
 
 extension Date {
     public var removeTimeStamp : Date? {
-       guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
-        return nil
-       }
-       return date
-   }
+        guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+            return nil
+        }
+        return date
+    }
 }

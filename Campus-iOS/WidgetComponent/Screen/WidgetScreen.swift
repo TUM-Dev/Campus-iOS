@@ -8,7 +8,6 @@
 import SwiftUI
 import MapKit
 
-@available(iOS 16.0, *)
 struct WidgetScreen: View {
     
     @StateObject private var recommender: WidgetRecommender
@@ -31,7 +30,7 @@ struct WidgetScreen: View {
             case .loading:
                 ProgressView()
             case .success:
-                Group {
+                ScrollView {
                     self.generateContent(
                         views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }, widgetTitle: self.widgetTitle
                     )
@@ -53,7 +52,7 @@ struct WidgetScreen: View {
             }
         }
         .onReceive(timer) { _ in
-            refresh.toggle()            
+            refresh.toggle()
         }
     }
     
@@ -75,18 +74,31 @@ struct WidgetScreen: View {
                             width = 0
                             height -= previousHeight
                         }
-                        .alignmentGuide(.top) { d in
-
-                            let result = height
-
-                            if i == views.count - 1 {
-                                height = 0
-                            }
-
-                            return result
+                        
+                        let result = width
+                        
+                        if i == views.count - 1 {
+                            width = 0
+                        } else {
+                            width -= d.width
                         }
-                }
+                        
+                        previousHeight = d.height
+                        
+                        return result
+                    }
+                    .alignmentGuide(.top) { d in
+                        
+                        let result = height
+                        
+                        if i == views.count - 1 {
+                            height = 0
+                        }
+                        
+                        return result
+                    }
             }
         }
+        .navigationTitle(widgetTitle)
     }
 }

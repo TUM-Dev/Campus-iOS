@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
-    let menu: Menu
+    let menu: cafeteriaMenu
     
     var body: some View {
         List {

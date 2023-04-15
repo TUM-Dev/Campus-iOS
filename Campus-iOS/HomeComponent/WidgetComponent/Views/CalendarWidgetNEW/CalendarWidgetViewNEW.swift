@@ -14,14 +14,13 @@ struct CalendarWidgetViewNEW: View {
     var body: some View {
         VStack(spacing: 0) {
             
-            Text("Calendar").titleStyle()
-            
             // Show the events on the earliest date which is not in the past.
             let futureEvents = self.vm.eventsByDateNEW.filter{$0.key! >= Date.now}.sorted(by: { $0.key!.compare($1.key!) == .orderedAscending })
             
             if futureEvents.isEmpty {
                 EmptyView()
             } else {
+                Text("Calendar").titleStyle()
                 HStack(spacing: 0) {
                     HStack {
                         VStack(alignment: .leading) {

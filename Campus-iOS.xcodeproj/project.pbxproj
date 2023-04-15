@@ -44,6 +44,8 @@
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1E096B162940DC7300ED1EC0 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */; };
 		1E5EEEC629A3BCA500CD4381 /* CalendarWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */; };
+		1E62C81C29E6FCB8002E1F47 /* TUMCabeAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81B29E6FCB8002E1F47 /* TUMCabeAPIOld.swift */; };
+		1E62C81E29E9D629002E1F47 /* DishView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81D29E9D629002E1F47 /* DishView2.swift */; };
 		1E8038B9295F82EA0098C614 /* ContactScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038B8295F82EA0098C614 /* ContactScreen.swift */; };
 		1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BA2965B23D0098C614 /* ImagePicker.swift */; };
 		1E8038BE2969FAE70098C614 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BD2969FAE70098C614 /* ContactCardView.swift */; };
@@ -272,7 +274,6 @@
 		36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C027A2FD7700FEBD98 /* APIResponse.swift */; };
 		36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */; };
 		36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C227A2FD7700FEBD98 /* Cache.swift */; };
-		36AF61E127A2FD7800FEBD98 /* TUMCabeAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */; };
 		36AF61E227A2FD7800FEBD98 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C527A2FD7700FEBD98 /* Constants.swift */; };
 		36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C627A2FD7700FEBD98 /* APIConstants.swift */; };
 		36AF61E427A2FD7800FEBD98 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AF61C827A2FD7700FEBD98 /* NetworkingError.swift */; };
@@ -400,6 +401,8 @@
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewNEW.swift; sourceTree = "<group>"; };
+		1E62C81B29E6FCB8002E1F47 /* TUMCabeAPIOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TUMCabeAPIOld.swift; path = ../../../../../../../TUMCabeAPIOld.swift; sourceTree = "<group>"; };
+		1E62C81D29E9D629002E1F47 /* DishView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView2.swift; sourceTree = "<group>"; };
 		1E8038B8295F82EA0098C614 /* ContactScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactScreen.swift; sourceTree = "<group>"; };
 		1E8038BA2965B23D0098C614 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1E8038BD2969FAE70098C614 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
@@ -631,7 +634,6 @@
 		36AF61C027A2FD7700FEBD98 /* APIResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMOnlineAPIOld.swift; sourceTree = "<group>"; };
 		36AF61C227A2FD7700FEBD98 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUMCabeAPIOld.swift; sourceTree = "<group>"; };
 		36AF61C527A2FD7700FEBD98 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		36AF61C627A2FD7700FEBD98 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		36AF61C827A2FD7700FEBD98 /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
@@ -817,6 +819,145 @@
 			path = ProfileComponent;
 			sourceTree = "<group>";
 		};
+		1E45DC5D296F456600D6050D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E9C1059293EA008002C4C47 /* HeaderComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1E45DC5D296F456600D6050D /* View */,
+			);
+			path = HeaderComponent;
+			sourceTree = "<group>";
+		};
+		1E9C92DD299422360026B0E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2870A2F629AF52F100005264 /* DeparturesWidget */,
+				1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */,
+				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
+				1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E9C92DE299422EA0026B0E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1EBD99A629A66B6400C0B40D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EBD99A729A66B8D00C0B40D /* NewsViewNEW.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */,
+				1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */,
+				1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */,
+			);
+			path = CalendarWidgetNEW;
+			sourceTree = "<group>";
+		};
+		1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */,
+				1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */,
+			);
+			path = StundyRoomWidgetNEW;
+			sourceTree = "<group>";
+		};
+		1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
+				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
+				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
+				1E62C81D29E9D629002E1F47 /* DishView2.swift */,
+			);
+			path = CafeteriaWidgetNEW;
+			sourceTree = "<group>";
+		};
+		1EF36A542993ED9600AF049F /* ContactComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A592993EECC00AF049F /* Views */,
+				1E8038B8295F82EA0098C614 /* ContactScreen.swift */,
+			);
+			path = ContactComponent;
+			sourceTree = "<group>";
+		};
+		1EF36A562993EE1300AF049F /* WidgetComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1E9C92DD299422360026B0E6 /* Views */,
+				1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */,
+			);
+			path = WidgetComponent;
+			sourceTree = "<group>";
+		};
+		1EF36A572993EE2200AF049F /* MovieComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1E9C92DE299422EA0026B0E6 /* Views */,
+			);
+			path = MovieComponent;
+			sourceTree = "<group>";
+		};
+		1EF36A582993EE3000AF049F /* NewsComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1EBD99A629A66B6400C0B40D /* View */,
+			);
+			path = NewsComponent;
+			sourceTree = "<group>";
+		};
+		1EF36A592993EECC00AF049F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E8038C12969FBE20098C614 /* LinkView.swift */,
+				1E8038BD2969FAE70098C614 /* ContactCardView.swift */,
+				1E8038BF2969FB550098C614 /* TuitionViewNEW.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1EF530A729192D51008F2C9B /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				1E9C1055291A914D002C4C47 /* Theme.swift */,
+				1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		1EFBBEB6295CE4EF001A0364 /* HomeComponent */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A582993EE3000AF049F /* NewsComponent */,
+				1EF36A572993EE2200AF049F /* MovieComponent */,
+				1EF36A562993EE1300AF049F /* WidgetComponent */,
+				1EF36A542993ED9600AF049F /* ContactComponent */,
+				1E8038BA2965B23D0098C614 /* ImagePicker.swift */,
+				1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */,
+			);
+			path = HomeComponent;
+			sourceTree = "<group>";
+		};
 		1F04F16F297AA1E00085F273 /* Old APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,7 +969,7 @@
 				36AF61BE27A2FD7700FEBD98 /* NetworkingAPIOld.swift */,
 				36AF61BF27A2FD7700FEBD98 /* CampusOnlineAPIOld.swift */,
 				36AF61C127A2FD7700FEBD98 /* TUMOnlineAPIOld.swift */,
-				36AF61C327A2FD7700FEBD98 /* TUMCabeAPIOld.swift */,
+				1E62C81B29E6FCB8002E1F47 /* TUMCabeAPIOld.swift */,
 			);
 			path = "Old APIs";
 			sourceTree = "<group>";
@@ -946,144 +1087,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		1E45DC5D296F456600D6050D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1E9C1059293EA008002C4C47 /* HeaderComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1E45DC5D296F456600D6050D /* View */,
-			);
-			path = HeaderComponent;
-			sourceTree = "<group>";
-		};
-		1E9C92DD299422360026B0E6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2870A2F629AF52F100005264 /* DeparturesWidget */,
-				1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */,
-				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
-				1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1E9C92DE299422EA0026B0E6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1EB2CB032976971500B54C2E /* MoviesViewNEW.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1EBD99A629A66B6400C0B40D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EBD99A729A66B8D00C0B40D /* NewsViewNEW.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */,
-				1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */,
-				1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */,
-			);
-			path = CalendarWidgetNEW;
-			sourceTree = "<group>";
-		};
-		1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A472991654F00AF049F /* StudyRoomWidgetViewNEW.swift */,
-				1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */,
-			);
-			path = StundyRoomWidgetNEW;
-			sourceTree = "<group>";
-		};
-		1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
-				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
-				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
-			);
-			path = CafeteriaWidgetNEW;
-			sourceTree = "<group>";
-		};
-		1EF36A542993ED9600AF049F /* ContactComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A592993EECC00AF049F /* Views */,
-				1E8038B8295F82EA0098C614 /* ContactScreen.swift */,
-			);
-			path = ContactComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A562993EE1300AF049F /* WidgetComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C92DD299422360026B0E6 /* Views */,
-				1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */,
-			);
-			path = WidgetComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A572993EE2200AF049F /* MovieComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C92DE299422EA0026B0E6 /* Views */,
-			);
-			path = MovieComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A582993EE3000AF049F /* NewsComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1EBD99A629A66B6400C0B40D /* View */,
-			);
-			path = NewsComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A592993EECC00AF049F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1E8038C12969FBE20098C614 /* LinkView.swift */,
-				1E8038BD2969FAE70098C614 /* ContactCardView.swift */,
-				1E8038BF2969FB550098C614 /* TuitionViewNEW.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1EF530A729192D51008F2C9B /* Design */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C1055291A914D002C4C47 /* Theme.swift */,
-				1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */,
-			);
-			path = Design;
-			sourceTree = "<group>";
-		};
-		1EFBBEB6295CE4EF001A0364 /* HomeComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A582993EE3000AF049F /* NewsComponent */,
-				1EF36A572993EE2200AF049F /* MovieComponent */,
-				1EF36A562993EE1300AF049F /* WidgetComponent */,
-				1EF36A542993ED9600AF049F /* ContactComponent */,
-				1E8038BA2965B23D0098C614 /* ImagePicker.swift */,
-				1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */,
-			);
-			path = HomeComponent;
-			sourceTree = "<group>";
-		};
 		1F4C836528300E6F006971C0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -1109,50 +1112,6 @@
 				1F69CE34297DB732005032CE /* NewsService.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		28609DAB29AE4B3100F3B8CA /* DeparturesComponent */ = {
-			isa = PBXGroup;
-			children = (
-				28609DAE29AE4B4800F3B8CA /* Types */,
-				28609DAD29AE4B4300F3B8CA /* View */,
-				28609DAC29AE4B3D00F3B8CA /* ViewModel */,
-			);
-			path = DeparturesComponent;
-			sourceTree = "<group>";
-		};
-		28609DAC29AE4B3D00F3B8CA /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				28609DB329AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		28609DAD29AE4B4300F3B8CA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */,
-				28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		28609DAE29AE4B4800F3B8CA /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				28609DAF29AE4B6400F3B8CA /* Departures.swift */,
-			);
-			path = Types;
-			sourceTree = "<group>";
-		};
-		2870A2F629AF52F100005264 /* DeparturesWidget */ = {
-			isa = PBXGroup;
-			children = (
-				2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */,
-				28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */,
-			);
-			path = DeparturesWidget;
 			sourceTree = "<group>";
 		};
 		1F69CE38297DCA2B005032CE /* NewsScreen */ = {
@@ -1273,6 +1232,50 @@
 				1FFF9AC5297D31830098E874 /* ProfileService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		28609DAB29AE4B3100F3B8CA /* DeparturesComponent */ = {
+			isa = PBXGroup;
+			children = (
+				28609DAE29AE4B4800F3B8CA /* Types */,
+				28609DAD29AE4B4300F3B8CA /* View */,
+				28609DAC29AE4B3D00F3B8CA /* ViewModel */,
+			);
+			path = DeparturesComponent;
+			sourceTree = "<group>";
+		};
+		28609DAC29AE4B3D00F3B8CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				28609DB329AE4BC200F3B8CA /* DeparturesWidgetViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		28609DAD29AE4B4300F3B8CA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */,
+				28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		28609DAE29AE4B4800F3B8CA /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				28609DAF29AE4B6400F3B8CA /* Departures.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		2870A2F629AF52F100005264 /* DeparturesWidget */ = {
+			isa = PBXGroup;
+			children = (
+				2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */,
+				28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */,
+			);
+			path = DeparturesWidget;
 			sourceTree = "<group>";
 		};
 		36108B9C27A3046B007DC62D /* LectureComponent */ = {
@@ -1814,7 +1817,6 @@
 				1F189E9829968D620056BBD8 /* APIErrors */,
 				36AF61C227A2FD7700FEBD98 /* Cache.swift */,
 				1F04F16F297AA1E00085F273 /* Old APIs */,
-				36AF61C327A2FD7700FEBD98 /* TUMCabeAPI.swift */,
 				28609DB129AE4B9400F3B8CA /* MVVDeparturesAPI.swift */,
 			);
 			path = Networking;
@@ -2330,8 +2332,6 @@
 				08DFB96F286647E900E357DF /* WidgetScreen.swift in Sources */,
 				1EFBBEBB295DA51E001A0364 /* HomeScreen.swift in Sources */,
 				974D5B9A27E5E9CB00FD7B11 /* GlowBorder.swift in Sources */,
-				08DFB97328664BC400E357DF /* TuitionWidgetView.swift in Sources */,
-				36BB6F8A27B3D21200F224AB /* CalendarEvent.swift in Sources */,
 				36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */,
 				1F71E80B29E4611000379428 /* NavigaTumSearchResponseSection.swift in Sources */,
 				08DFB9772866506900E357DF /* WidgetFrameView.swift in Sources */,
@@ -2375,12 +2375,13 @@
 				2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */,
 				36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */,
 				1ECB371D29B7518A007951AA /* PersonDetailedViewNEW.swift in Sources */,
-				36AD5CFC27B974F100DAE143 /* ProfileMyTumSection.swift in Sources */,
+				36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */,
 				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				1EBD99A529A3E12500C0B40D /* MealIngredientsView.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
 				0805DB7928C933AE00712FF2 /* Operators.swift in Sources */,
 				97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */,
+				1E62C81C29E6FCB8002E1F47 /* TUMCabeAPIOld.swift in Sources */,
 				36AF61D927A2FD7800FEBD98 /* TUMSexyAPIOld.swift in Sources */,
 				1F189E9329968D260056BBD8 /* TUMDevAppAPI.swift in Sources */,
 				3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */,
@@ -2395,8 +2396,6 @@
 				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
-				36AF61E127A2FD7800FEBD98 /* TUMCabeAPIOld.swift in Sources */,
-				36AF61E127A2FD7800FEBD98 /* TUMCabeAPI.swift in Sources */,
 				28609DB229AE4B9400F3B8CA /* MVVDeparturesAPI.swift in Sources */,
 				28609DB029AE4B6400F3B8CA /* Departures.swift in Sources */,
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
@@ -2445,7 +2444,7 @@
 				36AF61EC27A2FD7800FEBD98 /* Error+Category.swift in Sources */,
 				1F71E82229E4613F00379428 /* NavigaTumDetailsView.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */,
-				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPI.swift in Sources */,
+				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */,
 				1EB2CB042976971500B54C2E /* MoviesViewNEW.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
@@ -2525,6 +2524,7 @@
 				1F71E82D29E464C400379428 /* CafeteriaWidgetViewModel.swift in Sources */,
 				36AD5CF827B96AD200DAE143 /* PersonSearchView.swift in Sources */,
 				36108C1727A307F9007DC62D /* GradesViewModel+State.swift in Sources */,
+				1E62C81E29E9D629002E1F47 /* DishView2.swift in Sources */,
 				1F04F173297AD41B0085F273 /* CalendarEvent.swift in Sources */,
 				1F189E9C29968D880056BBD8 /* TUMCabeAPIError.swift in Sources */,
 				1F189E8F29968CFC0056BBD8 /* TUMCabeAPI.swift in Sources */,
@@ -2532,7 +2532,6 @@
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				2870A2F829AF530800005264 /* DeparturesWidgetScreen.swift in Sources */,
 				1E5EEEC629A3BCA500CD4381 /* CalendarWidgetViewNEW.swift in Sources */,
-				2FB5AB4229DC6BA900C255B3 /* NavigaTumViewModel.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
 				1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */,

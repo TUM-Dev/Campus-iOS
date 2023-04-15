@@ -20,8 +20,6 @@ struct MoviesViewNEW: View {
         switch self.viewModel.state {
         case .failed:
             EmptyView()
-        case .noMovies:
-            EmptyView()
         case .loading:
             ProgressView()
         case .success:
@@ -43,6 +41,8 @@ struct MoviesViewNEW: View {
                     .padding(.horizontal)
                 }
             }
+        case .na:
+            EmptyView()
         }
     }
 }

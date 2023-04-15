@@ -11,10 +11,10 @@ import SwiftUI
 struct PersonDetailedViewNEW: View {
     
     @StateObject var profileViewModel: ProfileViewModel
-    @StateObject var personDetailedViewModel: PersonDetailedViewModel
     @State private var showImageSheet = false
     @Binding var showProfileSheet: Bool
     var studyPrograms: [String]
+    let personDetails: PersonDetails
     
     var body: some View {
         NavigationStack {
@@ -54,19 +54,126 @@ struct PersonDetailedViewNEW: View {
                     ProgressView()
                 }
                 
-                if self.personDetailedViewModel.sections?.count ?? 0 > 1 {
-                    form
-                } else {
-                    List {
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                                .padding(2)
-                            Spacer()
+                List {
+                    if !personDetails.email.isEmpty || !(personDetails.officeHours?.isEmpty ?? false) {
+                        Section(header: Text("General")) {
+                            if !personDetails.email.isEmpty, let mailURL = URL(string: "mailto:\(personDetails.email)") {
+                                VStack(alignment: .leading) {
+                                    Text("E-Mail")
+                                    Link(personDetails.email, destination: mailURL)
+                                }
+                            }
+                            if let officeHours = personDetails.officeHours, !officeHours.isEmpty {
+                                VStack(alignment: .leading) {
+                                    Text("Office Hours")
+                                    Text(officeHours)
+                                }
+                            }
+                        }
+                    }
+                    if !personDetails.officialContact.isEmpty {
+                        Section(header: Text("Offical Contact")) {
+                            ForEach(personDetails.officialContact) { contactInfo in
+                                VStack(alignment: .leading) {
+                                    switch contactInfo {
+                                    case .phone(let phone):
+                                        let number = phone.replacingOccurrences(of: " ", with: "")
+                                        if let phoneURL = URL(string: "tel:\(number)") {
+                                            Text("Phone")
+                                            Link("\(phone)", destination: phoneURL)
+                                        }
+                                    case .mobilePhone(let mobilePhone):
+                                        let number = mobilePhone.replacingOccurrences(of: " ", with: "")
+                                        if let mobilePhoneURL = URL(string: "tel:\(number)") {
+                                            Text("Mobile")
+                                            Link("\(mobilePhone)", destination: mobilePhoneURL)
+                                        }
+                                    case .fax(let fax):
+                                        Text("Fax")
+                                        Text("\(fax)")
+                                    case .additionalInfo(let additionalInfo):
+                                        Text("Additional Info")
+                                        Text("\(additionalInfo)")
+                                    case .homepage(let homepage):
+                                        if let homepageURL = URL(string: homepage) {
+                                            Text("Hoomepage")
+                                            Link("\(homepage)", destination: homepageURL)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if !personDetails.privateContact.isEmpty {
+                        Section(header: Text("Offical Contact")) {
+                            ForEach(personDetails.privateContact) { contactInfo in
+                                VStack(alignment: .leading) {
+                                    switch contactInfo {
+                                    case .phone(let phone):
+                                        let number = phone.replacingOccurrences(of: " ", with: "")
+                                        if let phoneURL = URL(string: "tel:\(number)") {
+                                            Text("Phone")
+                                            Link("\(phone)", destination: phoneURL)
+                                        }
+                                    case .mobilePhone(let mobilePhone):
+                                        let number = mobilePhone.replacingOccurrences(of: " ", with: "")
+                                        if let mobilePhoneURL = URL(string: "tel:\(number)") {
+                                            Text("Mobile")
+                                            Link("\(mobilePhone)", destination: mobilePhoneURL)
+                                        }
+                                    case .fax(let fax):
+                                        Text("Fax")
+                                        Text("\(fax)")
+                                    case .additionalInfo(let additionalInfo):
+                                        Text("Additional Info")
+                                        Text("\(additionalInfo)")
+                                    case .homepage(let homepage):
+                                        if let homepageURL = URL(string: homepage) {
+                                            Text("Hoomepage")
+                                            Link("\(homepage)", destination: homepageURL)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if !personDetails.phoneExtensions.isEmpty {
+                        Section(header: Text("Phone Extensions")) {
+                            ForEach(personDetails.phoneExtensions) { phoneExtension in
+                                let number = phoneExtension.phoneNumber.replacingOccurrences(of: " ", with: "")
+                                if let phoneNumberURL = URL(string: "tel:\(number)") {
+                                    VStack(alignment: .leading) {
+                                        Text("Office")
+                                        Link("\(phoneExtension.phoneNumber)", destination: phoneNumberURL)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if !personDetails.organisations.isEmpty {
+                        Section(header: Text("Organisations")) {
+                            ForEach(personDetails.organisations) { organisation in
+                                VStack(alignment: .leading) {
+                                    Text("Organisation")
+                                    Text("\(organisation.name)")
+                                }
+                            }
+                        }
+                    }
+                    
+                    if !personDetails.rooms.isEmpty {
+                        Section(header: Text("Rooms")) {
+                            ForEach(personDetails.rooms) { room in
+                                VStack(alignment: .leading) {
+                                    Text("Room")
+                                    Text("\(room.shortLocationDescription)")
+                                }
+                            }
                         }
                     }
                 }
+
                 
                 Spacer()
             }
@@ -92,42 +199,4 @@ struct PersonDetailedViewNEW: View {
             }
         }
     }
-    
-    var form: some View { // from PersonDetailedView of Milen Vitanov
-        Form {
-            ForEach(self.personDetailedViewModel.sections?.filter({ $0.name != "Header" }) ?? []) { section in
-                Section(section.name) {
-                    ForEach(section.cells as? [PersonDetailsCell] ?? []) { singleCell in
-                        Button(action: {
-                            Self.cellActionBasedOnType(cell: singleCell)
-                        }, label: { PersonDetailedCellView(cell: singleCell) })
-                    }.listRowBackground(Color.secondaryBackground)
-                }
-            }
-        }
-        .scrollContentBackground(.hidden)
-        .background(Color.primaryBackground.edgesIgnoringSafeArea(.all))
-        .edgesIgnoringSafeArea(.all)
-    }
-    
-    static func cellActionBasedOnType(cell: PersonDetailsCell) { // from PersonDetailedView of Milen Vitanov
-        switch cell.actionType {
-        case .none, .showRoom:
-            break
-        case .call:
-            let number = cell.value.replacingOccurrences(of: " ", with: "")
-            if let url = URL(string: "tel://\(number)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        case .mail:
-            if let url = URL(string: "mailto:\(cell.value)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        case .openURL:
-            if let url = URL(string: cell.value) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
-        }
-    }
-    
 }
