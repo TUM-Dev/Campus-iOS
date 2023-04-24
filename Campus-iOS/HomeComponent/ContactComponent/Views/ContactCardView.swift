@@ -97,8 +97,8 @@ struct ContactCardView: View {
             ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileVm.profileImageUI)
         }
         .sheet(isPresented: $showProfileSheet) {
-            PersonDetailedScreen(model: self.model, profile: self.profile)
-        }
+            PersonDetailedScreenUser(model: self.model, profileVm: self.profileVm, studyPrograms: self.studyPrograms, showProfileSheet: self.$showProfileSheet, profile: self.profile)
+        }.disabled(!self.profileVm.model.isUserAuthenticated)
         .onChange(of: self.profileVm.profileImageUI) { newImage in //saves ProfileImage
             if let image = newImage {
                 if let fileName = self.profileVm.save(image: image) {

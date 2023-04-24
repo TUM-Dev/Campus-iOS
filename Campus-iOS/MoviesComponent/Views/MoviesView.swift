@@ -9,15 +9,20 @@ import SwiftUI
 
 struct MoviesScreen: View {
     @StateObject var vm = MoviesViewModel()
+    let isWidget: Bool
     
     var body: some View {
         Group {
             switch vm.state {
             case .success(let movies):
                 VStack {
-                    MoviesView(movies: movies)
-                    .refreshable {
-                        await vm.getMovies(forcedRefresh: true)
+                    if isWidget {
+                        MoviesWidgetView(movies: movies)
+                    } else {
+                        MoviesView(movies: movies)
+                            .refreshable {
+                                await vm.getMovies(forcedRefresh: true)
+                            }
                     }
                 }
             case .loading, .na:
@@ -56,9 +61,9 @@ struct MoviesScreen: View {
 struct MoviesView: View {
     let movies: [Movie]
     @State private var selectedMovie: Movie? = nil
-
+    
     var items: [GridItem] {
-      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+        Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
     
     var body: some View {
@@ -68,7 +73,7 @@ struct MoviesView: View {
             ScrollView(.vertical) {
                 LazyVGrid(columns: items, spacing: 10) {
                     ForEach(self.movies, id: \.id ) { movie in
-                            MovieCard(movie: movie).padding(7)
+                        MovieCard(movie: movie).padding(7)
                             .onTapGesture {
                                 selectedMovie = movie
                             }

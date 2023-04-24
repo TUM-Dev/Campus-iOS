@@ -1,5 +1,5 @@
 //
-//  PersonDetailedScreen.swift
+//  PersonDetailedScreenSearch.swift
 //  Campus-iOS
 //
 //  Created by David Lin on 21.01.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonDetailedScreen: View {
+struct PersonDetailedScreenSearch: View {
     @StateObject var vm: PersonDetailedViewModel
     
     init(model: Model, person: Person) {

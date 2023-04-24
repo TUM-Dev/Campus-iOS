@@ -27,8 +27,7 @@ struct ContactScreen: View {
                     .padding(.bottom, 10)
             }
             
-            
-            TuitionViewNEW(profileViewModel: self.profileVm)
+            TuitionScreen(vm: self.profileVm)
                 .padding(.bottom, 10)
             
             LinkView()

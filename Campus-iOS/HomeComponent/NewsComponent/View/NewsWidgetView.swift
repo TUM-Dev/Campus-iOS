@@ -1,5 +1,5 @@
 //
-//  NewsViewNEW.swift
+//  NewsWidgetView.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 22.02.23.
@@ -7,16 +7,12 @@
 
 import SwiftUI
 
-struct NewsViewNEW: View {
+struct NewsWidgetView: View {
     
-    @StateObject var viewModel: NewsViewModel
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @State var isWebViewShowed = false
     @State var selectedLink: URL? = nil
-    
-    init(viewModel: NewsViewModel) {
-        self._viewModel = StateObject(wrappedValue: viewModel)
-    }
+    let latestFiveNews: [(String?, News?)]
     
     var body: some View {
         VStack(spacing: 0){
@@ -24,7 +20,7 @@ struct NewsViewNEW: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
-                    ForEach(viewModel.latestFiveNews, id: \.1?.id) { article in
+                    ForEach(self.latestFiveNews, id: \.1?.id) { article in
                         if let url = article.1?.link {
                             if self.useBuildInWebView {
                                 NewsCard(news: article, latest: true)

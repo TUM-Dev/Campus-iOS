@@ -18,8 +18,10 @@ struct TuitionView: View {
                 Spacer(minLength: 0.10 * UIScreen.main.bounds.width)
                 TuitionCard(tuition: self.tuition)
             }
-            .listRowBackground(Color(.systemGroupedBackground))
+            .listRowBackground(Color.primaryBackground)
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.primaryBackground)
         .task {
             data.visitView(view: .tuition)
         }

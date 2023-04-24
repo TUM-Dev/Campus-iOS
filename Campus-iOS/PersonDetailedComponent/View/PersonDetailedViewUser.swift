@@ -1,25 +1,26 @@
 //
-//  PersonDetailedViewNEW.swift
+//  PersonDetailedViewUser.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 07.03.23.
 //
 
 import SwiftUI
+import ContactsUI
 
-@available(iOS 16.0, *)
-struct PersonDetailedViewNEW: View {
-    
-    @StateObject var profileViewModel: ProfileViewModel
+struct PersonDetailedViewUser: View {
+    let personDetails: PersonDetails
+    let studyPrograms: [String]
+    @StateObject var profileVm: ProfileViewModel
+    let profile: Profile
     @State private var showImageSheet = false
     @Binding var showProfileSheet: Bool
-    var studyPrograms: [String]
-    let personDetails: PersonDetails
     
     var body: some View {
+        
         NavigationStack {
             VStack {
-                if self.profileViewModel.profileImageUI == nil { //shows default profile icon
+                if self.profileVm.profileImageUI == nil { //shows default profile icon
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -30,7 +31,7 @@ struct PersonDetailedViewNEW: View {
                             showImageSheet = true
                         }
                 } else { //show selected profile pic
-                    Image(uiImage: self.profileViewModel.profileImageUI!)
+                    Image(uiImage: self.profileVm.profileImageUI!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 125, height: 125)
@@ -40,19 +41,17 @@ struct PersonDetailedViewNEW: View {
                         }
                 }
                 
-                if let profile = self.profileViewModel.profile {
-                    Text(profile.fullName)
-                        .font(.title2)
-                        .lineLimit(1)
-                    ForEach(studyPrograms) { studyprogram in
-                        Text(studyprogram)
-                            .font(.subheadline)
-                    }
-                    Text(profile.tumID!)
+                Text(profile.fullName)
+                    .font(.title2)
+                    .lineLimit(1)
+                
+                ForEach(studyPrograms) { studyprogram in
+                    Text(studyprogram)
                         .font(.subheadline)
-                } else {
-                    ProgressView()
                 }
+                Text(profile.tumID ?? "")
+                    .font(.subheadline)
+                
                 
                 List {
                     if !personDetails.email.isEmpty || !(personDetails.officeHours?.isEmpty ?? false) {
@@ -70,6 +69,7 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                     if !personDetails.officialContact.isEmpty {
                         Section(header: Text("Offical Contact")) {
@@ -103,6 +103,7 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                     if !personDetails.privateContact.isEmpty {
                         Section(header: Text("Offical Contact")) {
@@ -136,6 +137,7 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                     if !personDetails.phoneExtensions.isEmpty {
                         Section(header: Text("Phone Extensions")) {
@@ -149,6 +151,7 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                     
                     if !personDetails.organisations.isEmpty {
@@ -160,6 +163,7 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                     
                     if !personDetails.rooms.isEmpty {
@@ -171,9 +175,11 @@ struct PersonDetailedViewNEW: View {
                                 }
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                 }
-
+                .background(Color.primaryBackground)
+                .scrollContentBackground(.hidden)
                 
                 Spacer()
             }
@@ -187,16 +193,16 @@ struct PersonDetailedViewNEW: View {
             }
         }
         .sheet(isPresented: $showImageSheet) {
-            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileViewModel.profileImageUI)
-        }
-        .onChange(of: self.profileViewModel.profileImageUI) { newImage in //saves ProfileImage
-            if let image = newImage {
-                if let fileName = self.profileViewModel.save(image: image) {
-                    print("Saved Image to: \(fileName)")
-                } else {
-                    print("Error in saving Image")
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$profileVm.profileImageUI)
+        }.disabled(!self.profileVm.model.isUserAuthenticated)
+            .onChange(of: self.profileVm.profileImageUI) { newImage in //saves ProfileImage
+                if let image = newImage {
+                    if let fileName = self.profileVm.save(image: image) {
+                        print("Saved Image to: \(fileName)")
+                    } else {
+                        print("Error in saving Image")
+                    }
                 }
             }
-        }
     }
 }

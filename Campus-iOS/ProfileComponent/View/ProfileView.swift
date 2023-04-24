@@ -26,7 +26,7 @@ struct ProfileView: View {
         NavigationView {
             List {
                 if case .success(let profile) = vm.profileState {
-                    NavigationLink(destination: PersonDetailedScreen(model: self.vm.model, profile: profile)) {
+                    NavigationLink(destination: PersonDetailedScreenSearch(model: self.vm.model, profile: profile)) {
                         
                         ProfileCell(model: self.vm.model, profile: profile)
                     }.disabled(!self.vm.model.isUserAuthenticated)
@@ -35,8 +35,6 @@ struct ProfileView: View {
                 }
                 
                 Section("MY TUM") {
-                    TuitionScreen(vm: self.vm)
-                    
                     NavigationLink(destination: PersonSearchScreen(model: self.vm.model).navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
                         Label("Person Search", systemImage: "magnifyingglass")
                     }
@@ -47,6 +45,7 @@ struct ProfileView: View {
                     }
                     .disabled(!self.vm.model.isUserAuthenticated)
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section("GENERAL") {
                     NavigationLink(destination: TUMSexyScreen().navigationBarTitle(Text("Useful Links"))) {
@@ -61,14 +60,14 @@ struct ProfileView: View {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
-                    NavigationLink(destination: NewsScreen()
+                    NavigationLink(destination: NewsScreen(isWidget: false)
                         .navigationBarTitle(Text("News"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("News", systemImage: "newspaper")
                     }
                     
-                    NavigationLink(destination: MoviesScreen()
+                    NavigationLink(destination: MoviesScreen(isWidget: false)
                         .navigationBarTitle(Text("Movies"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {
@@ -84,12 +83,14 @@ struct ProfileView: View {
                         
                     }.disabled(!self.vm.model.isUserAuthenticated)
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     VStack {
                         Toggle("Use build-in Web View", isOn: $useBuildInWebView)
                     }
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     HStack {
@@ -99,31 +100,38 @@ struct ProfileView: View {
                                 .foregroundColor(Color(.label))
                             Spacer()
                         }
-                        
-                        NavigationLink(destination: NewsScreen()
-                            .navigationBarTitle(Text("Aktuelles"))
-                            .navigationBarTitleDisplayMode(.large)
-                        ) {
-                            Label("News", systemImage: "newspaper")
-                        }
-                        
-                        NavigationLink(destination: MoviesScreen()
-                            .navigationBarTitle(Text("Movies"))
-                            .navigationBarTitleDisplayMode(.large)
-                        ) {
-                            Label("Movies", systemImage: "film")
-                        }
-                        
-                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: vm.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
-                            if vm.model.isUserAuthenticated {
-                                Label("Token Permissions", systemImage: "key")
-                            } else {
-                                Label("Token Permissions (You are logged out)", systemImage: "key")
+                        Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode").foregroundColor(Color(.label))) {
+                            ForEach(2..<8) { number in
+                                Text("\(number)")
+                                    .tag(number)
                             }
-                            
-                        }.disabled(!vm.model.isUserAuthenticated)
+                        }
                     }
                     .listRowBackground(Color.secondaryBackground)
+                    .pickerStyle(MenuPickerStyle())
+                    .foregroundColor(.black)
+                }
+                
+                Section("GET IN CONTACT") {
+                    if self.useBuildInWebView {
+                        Button("Join Beta") {
+                            self.selectedLink = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")
+                        }
+                        
+                        Button("TUM Dev on Github") {
+                            self.selectedLink = URL(string: "https://github.com/TUM-Dev")
+                        }
+                        
+                        Button("TUM Dev Website") {
+                            self.selectedLink = URL(string: "https://tum.app")
+                        }
+                    } else {
+                        Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
+                        
+                        Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
+                        
+                        Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                    }
                     
                     Button("Feedback") {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -133,6 +141,7 @@ struct ProfileView: View {
                         }
                     }
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     HStack(alignment: .bottom) {
@@ -143,31 +152,6 @@ struct ProfileView: View {
                             }) {
                                 Text("Sign Out").foregroundColor(.red)
                             }
-                            Picker(selection: $calendarWeekDays, label: Text("Calendar days in week mode").foregroundColor(Color(.label))) {
-                                ForEach(2..<8) { number in
-                                    Text("\(number)")
-                                        .tag(number)
-                                }
-                            }
-                            .pickerStyle(MenuPickerStyle())
-                            .foregroundColor(.black)
-                        }
-                    }
-                    .listRowBackground(Color.secondaryBackground)
-                    
-                    Section("GET IN CONTACT") {
-                        if self.useBuildInWebView {
-                            Button("Join Beta") {
-                                self.selectedLink = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")
-                            }
-                            
-                            Button("TUM Dev on Github") {
-                                self.selectedLink = URL(string: "https://github.com/TUM-Dev")
-                            }
-                            
-                            Button("TUM Dev Website") {
-                                self.selectedLink = URL(string: "https://tum.app")
-                            }
                         } else {
                             Button(action: {
                                 vm.model.isLoginSheetPresented = true
@@ -175,75 +159,49 @@ struct ProfileView: View {
                                 Text("Sign In").foregroundColor(.green)
                             }
                         }
+                        Spacer()
                     }
-                    .listRowBackground(Color.secondaryBackground)
-                    
-                    Section() {
-                        HStack(alignment: .bottom) {
-                            Spacer()
-                            if vm.model.isUserAuthenticated {
-                                Button(action: {
-                                    vm.model.logout()
-                                }) {
-                                    Text("Sign Out").foregroundColor(.red)
-                                }
-                            } else {
-                                Button(action: {
-                                    vm.model.isLoginSheetPresented = true
-                                }) {
-                                    Text("Sign In").foregroundColor(.green)
-                                }
-                            }
-                            Spacer()
-                        }
-                    }
-                    .listRowBackground(Color.secondaryBackground)
-                    
-                    Section() {
-                        var i = 0
-                        Button(action: {
-                            i += 1
-                            if i == 5 {
-                                i = 0
-                                self.showActionSheet = true
-                            }
-                        }) {
-                            HStack {
-                                Spacer()
-                                Text("Version 4.1").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
-                                Spacer()
-                            }
-                        }
-                    }
-                    .listRowBackground(Color.secondaryBackground)
-                    .actionSheet(isPresented: self.$showActionSheet) {
-                        //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
-                        ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
-                            .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
-                            .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
-                            .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },
-                            .default(Text("3D 📐")) { UIApplication.shared.setAlternateIconName("3D") },
-                            .default(Text("Outline 🖍")) { UIApplication.shared.setAlternateIconName("outline") },
-                            .cancel()
-                        ])
-                    }
-                    .listRowBackground(Color.clear)
                 }
-                .scrollContentBackground(.hidden)
-                .background(Color.primaryBackground)
-                .sheet(isPresented: $vm.model.isLoginSheetPresented) {
-                    NavigationView {
-                        LoginView(model: vm.model)
+                .listRowBackground(Color.secondaryBackground)
+                
+                Section() {
+                    var i = 0
+                    Button(action: {
+                        i += 1
+                        if i == 5 {
+                            i = 0
+                            self.showActionSheet = true
+                        }
+                    }) {
+                        HStack {
+                            Spacer()
+                            Text("Version 4.1").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
+                            Spacer()
+                        }
                     }
+                }
+                .actionSheet(isPresented: self.$showActionSheet) {
+                    //ActionSheet(title: Text("Choose Speaker"), buttons: self.actionSheetButtons)
+                    ActionSheet(title: Text("Change App icon"), message: Text("Select a new design"), buttons: [
+                        .default(Text("Default 🎓")) { UIApplication.shared.setAlternateIconName(nil) },
+                        .default(Text("Inverted 🔄")) { UIApplication.shared.setAlternateIconName("inverted") },
+                        .default(Text("Pride 🏳️‍🌈")) { UIApplication.shared.setAlternateIconName("pride") },
+                        .default(Text("3D 📐")) { UIApplication.shared.setAlternateIconName("3D") },
+                        .default(Text("Outline 🖍")) { UIApplication.shared.setAlternateIconName("outline") },
+                        .cancel()
+                    ])
                 }
                 .listRowBackground(Color.clear)
+                
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.primaryBackground)
             .sheet(isPresented: $vm.model.isLoginSheetPresented) {
                 NavigationView {
                     LoginView(model: vm.model)
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button {
@@ -251,7 +209,7 @@ struct ProfileView: View {
                 } label: {
                     Text("Done").bold()
                 }
-
+                
             }
             .sheet(item: $selectedLink) { selectedLink in
                 // This if clause is needed since after logout via the ProfileView an issue occured. This fixes the weird behaviour.
@@ -286,7 +244,7 @@ struct ProfileCell: View {
                     .frame(width: 75, height: 75)
                     .foregroundColor(Color(.secondaryLabel))
             }
-
+            
             VStack(alignment: .leading) {
                 if self.model.isUserAuthenticated {
                     Text(profile.fullName)
