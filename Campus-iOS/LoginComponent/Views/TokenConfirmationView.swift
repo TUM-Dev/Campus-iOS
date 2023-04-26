@@ -178,17 +178,15 @@ struct TokenConfirmationView: View {
                                         }
                                     }
                                 case .active:
-                                    if let model = self.viewModel.model {
-                                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
-                                            Text("Next")
-                                                .lineLimit(1)
-                                                .font(.body)
-                                                .frame(width: 200, height: 48, alignment: .center)
-                                                .foregroundColor(.white)
-                                                .background(.green)
-                                                .cornerRadius(10)
-                                                .buttonStyle(.plain)
-                                        }
+                                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.viewModel.model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+                                        Text("Next")
+                                            .lineLimit(1)
+                                            .font(.body)
+                                            .frame(width: 200, height: 48, alignment: .center)
+                                            .foregroundColor(.white)
+                                            .background(.green)
+                                            .cornerRadius(10)
+                                            .buttonStyle(.plain)
                                     }
                                 }
                             }
