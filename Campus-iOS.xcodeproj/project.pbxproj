@@ -47,6 +47,12 @@
 		1E62C81C29E6FCB8002E1F47 /* TUMCabeAPIOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81B29E6FCB8002E1F47 /* TUMCabeAPIOld.swift */; };
 		1E62C81E29E9D629002E1F47 /* DishView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81D29E9D629002E1F47 /* DishView2.swift */; };
 		1E62C82029ED9F4F002E1F47 /* PersonDetailedScreenUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81F29ED9F4F002E1F47 /* PersonDetailedScreenUser.swift */; };
+		1E62C82429F7F754002E1F47 /* PlacesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82329F7F753002E1F47 /* PlacesView.swift */; };
+		1E62C82629F7F774002E1F47 /* PlacesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82529F7F774002E1F47 /* PlacesScreen.swift */; };
+		1E62C82829F7F970002E1F47 /* CafeteriaViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82729F7F970002E1F47 /* CafeteriaViewNEW.swift */; };
+		1E62C82A29F7F996002E1F47 /* StudyRoomViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82929F7F996002E1F47 /* StudyRoomViewNEW.swift */; };
+		1E62C82C29F82773002E1F47 /* CampusCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82B29F82773002E1F47 /* CampusCellView.swift */; };
+		1E62C82E29F8278B002E1F47 /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C82D29F8278B002E1F47 /* CampusView.swift */; };
 		1E8038B9295F82EA0098C614 /* ContactScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038B8295F82EA0098C614 /* ContactScreen.swift */; };
 		1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BA2965B23D0098C614 /* ImagePicker.swift */; };
 		1E8038BE2969FAE70098C614 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BD2969FAE70098C614 /* ContactCardView.swift */; };
@@ -404,6 +410,12 @@
 		1E62C81B29E6FCB8002E1F47 /* TUMCabeAPIOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TUMCabeAPIOld.swift; path = ../../../../../../../TUMCabeAPIOld.swift; sourceTree = "<group>"; };
 		1E62C81D29E9D629002E1F47 /* DishView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView2.swift; sourceTree = "<group>"; };
 		1E62C81F29ED9F4F002E1F47 /* PersonDetailedScreenUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedScreenUser.swift; sourceTree = "<group>"; };
+		1E62C82329F7F753002E1F47 /* PlacesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesView.swift; sourceTree = "<group>"; };
+		1E62C82529F7F774002E1F47 /* PlacesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesScreen.swift; sourceTree = "<group>"; };
+		1E62C82729F7F970002E1F47 /* CafeteriaViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaViewNEW.swift; sourceTree = "<group>"; };
+		1E62C82929F7F996002E1F47 /* StudyRoomViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StudyRoomViewNEW.swift; path = ../../../../../../../StudyRoomViewNEW.swift; sourceTree = "<group>"; };
+		1E62C82B29F82773002E1F47 /* CampusCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCellView.swift; sourceTree = "<group>"; };
+		1E62C82D29F8278B002E1F47 /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
 		1E8038B8295F82EA0098C614 /* ContactScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactScreen.swift; sourceTree = "<group>"; };
 		1E8038BA2965B23D0098C614 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1E8038BD2969FAE70098C614 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
@@ -1384,6 +1396,7 @@
 				36108BD627A304B5007DC62D /* MenuView.swift */,
 				1F69CE45297EC99D005032CE /* DishView.swift */,
 				1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */,
+				1E62C82729F7F970002E1F47 /* CafeteriaViewNEW.swift */,
 			);
 			path = Cafeterias;
 			sourceTree = "<group>";
@@ -1401,6 +1414,10 @@
 				3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */,
 				36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */,
 				36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */,
+				1E62C82329F7F753002E1F47 /* PlacesView.swift */,
+				1E62C82529F7F774002E1F47 /* PlacesScreen.swift */,
+				1E62C82B29F82773002E1F47 /* CampusCellView.swift */,
+				1E62C82D29F8278B002E1F47 /* CampusView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1682,6 +1699,7 @@
 				3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */,
 				3654F35E285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift */,
 				1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */,
+				1E62C82929F7F996002E1F47 /* StudyRoomViewNEW.swift */,
 			);
 			path = StudyRooms;
 			sourceTree = "<group>";
@@ -2350,6 +2368,7 @@
 				1F69CE48297EDEA3005032CE /* TUMSexyScreen.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
+				1E62C82E29F8278B002E1F47 /* CampusView.swift in Sources */,
 				1E8038B9295F82EA0098C614 /* ContactScreen.swift in Sources */,
 				1F4C926F2882FD85003DC7D7 /* RoundedCorners.swift in Sources */,
 				1F71E81A29E4613500379428 /* NavigaTumViewModel.swift in Sources */,
@@ -2369,6 +2388,7 @@
 				08FAFD15287DC484006A0E27 /* CalendarWidgetView.swift in Sources */,
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
+				1E62C82A29F7F996002E1F47 /* StudyRoomViewNEW.swift in Sources */,
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
 				3654F365285168D2008AD5DC /* RoomImageMapping.swift in Sources */,
 				1FFF9AC6297D31830098E874 /* ProfileService.swift in Sources */,
@@ -2376,6 +2396,7 @@
 				36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */,
 				1ECB371D29B7518A007951AA /* PersonDetailedViewUser.swift in Sources */,
 				36AD5CFC27B974F100DAE143 /* TuitionScreen.swift in Sources */,
+				1E62C82429F7F754002E1F47 /* PlacesView.swift in Sources */,
 				36108BE227A304B5007DC62D /* MensaMenu.swift in Sources */,
 				1EBD99A529A3E12500C0B40D /* MealIngredientsView.swift in Sources */,
 				36108BC027A3046B007DC62D /* LecturesView.swift in Sources */,
@@ -2389,6 +2410,7 @@
 				36AD5CF227B7FEAD00DAE143 /* TumCalendarStyle.swift in Sources */,
 				1E096B162940DC7300ED1EC0 /* NavigationBarView.swift in Sources */,
 				1FA538EE297560CD004C70A8 /* MainAPI.swift in Sources */,
+				1E62C82829F7F970002E1F47 /* CafeteriaViewNEW.swift in Sources */,
 				36BB6F7F27B386D100F224AB /* AddToContactsView.swift in Sources */,
 				1F189EA729968E5C0056BBD8 /* API.swift in Sources */,
 				36AF61DF27A2FD7800FEBD98 /* TUMOnlineAPIOld.swift in Sources */,
@@ -2412,6 +2434,7 @@
 				1F4C836228300306006971C0 /* MapViewModel.swift in Sources */,
 				1F189E9729968D490056BBD8 /* MVGAPI.swift in Sources */,
 				36108BFF27A30517007DC62D /* MoviesView.swift in Sources */,
+				1E62C82C29F82773002E1F47 /* CampusCellView.swift in Sources */,
 				1F71E80729E4611000379428 /* NavigaTumNavigationAdditionalProperties.swift in Sources */,
 				1F189E9129968D130056BBD8 /* EatAPI.swift in Sources */,
 				36AF61E927A2FD7800FEBD98 /* ErrorHandler.swift in Sources */,
@@ -2559,6 +2582,7 @@
 				3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */,
 				36108BC127A3046B007DC62D /* LectureView.swift in Sources */,
 				366F0E9027580CFD0091651D /* Campus_iOS.xcdatamodeld in Sources */,
+				1E62C82629F7F774002E1F47 /* PlacesScreen.swift in Sources */,
 				1E9C92DC2993F1230026B0E6 /* WidgetScreenNew.swift in Sources */,
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
 				1F71E82529E4613F00379428 /* NavigaTumMapImagesView.swift in Sources */,

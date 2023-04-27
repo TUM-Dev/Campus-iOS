@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import KVKCalendar
+import SwiftUI
 
 enum SheetDestination {
     case none
@@ -120,12 +121,23 @@ enum CampusAppView: String, CaseIterable {
 }
 
 enum Campus: String, Codable, CaseIterable {
-    case stammgelaende = "Stammgelände"
-    case olympiapark = "Campus Olympiapark"
-    case klinikumRechts = "Klinikum rechts der Isar"
+    case stammgelaende = "👔 Stammgelände"
+    case olympiapark = "⛹️‍♀️ Campus Olympiapark"
+    case klinikumRechts = "👨‍⚕️ Klinikum rechts der Isar"
     case großhadern = "Klinikum Großhadern"
-    case garching = "Garching Forschungszentrum"
-    case freising = "Campus Freising"
+    case garching = "🧪 Garching Forschungszentrum"
+    case freising = "🌱 Campus Freising"
+    
+    var image: Image {
+        switch self {
+        case .stammgelaende: return Image("campus-stamm")
+        case .olympiapark: return Image("campus-olympia")
+        case .klinikumRechts: return Image("campus-klinikum")
+        case .großhadern: return Image("placeholder")
+        case .garching: return Image("campus-garching")
+        case .freising: return Image("campus-freising")
+        }
+    }
     
     var location: CLLocation {
         switch self {

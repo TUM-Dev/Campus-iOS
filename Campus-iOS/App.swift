@@ -52,15 +52,15 @@ struct CampusApp: App {
                         await model.loginController.confirmToken() { result in
                             switch result {
                             case .success:
-                                #if !targetEnvironment(macCatalyst)
+#if !targetEnvironment(macCatalyst)
                                 Analytics.logEvent("token_confirmed", parameters: nil)
-                                #endif
+#endif
                                 DispatchQueue.main.async {
                                     model.isLoginSheetPresented = false
                                     model.isUserAuthenticated = true
                                 }
                                 
-//                                    model.loadProfile()
+                                //                                    model.loadProfile()
                             case .failure(_):
                                 model.isUserAuthenticated = false
                                 if !model.showProfile {
@@ -76,20 +76,7 @@ struct CampusApp: App {
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
-            NavigationView {
-                CalendarScreen(
-                    model: model,
-                    refresh: $model.isUserAuthenticated
-                )
-                .background(Color.primaryBackground)
-                .overlay(NavigationBarView(model: model, title: "Calendar"))
-            }
-            .tag(4)
-            .tabItem {
-                Label("Calendar", systemImage: "calendar")
-            }
-            .navigationViewStyle(.stack)
-            
+            // MARK: - Home Screen
             if UIDevice.current.userInterfaceIdiom == .phone {
                 NavigationView {
                     HomeScreen(model: model)
@@ -105,7 +92,7 @@ struct CampusApp: App {
                     }
                 }
             }
-            
+            // MARK: - Grades Screen
             NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .overlay(NavigationBarView(model: model, title: "Grades"))
@@ -122,7 +109,7 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-                
+                // MARK: - Lecture Screen
                 NavigationView {
                 LecturesScreen(vm: LecturesViewModel(
                     model: model,
@@ -137,9 +124,26 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-            
+                // MARK: - Calendar Screen
+                NavigationView {
+                CalendarScreen(
+                    model: model,
+                    refresh: $model.isUserAuthenticated
+                )
+                .background(Color.primaryBackground)
+                .overlay(NavigationBarView(model: model, title: "Calendar"))
+            }
+            .tag(3)
+            .tabItem {
+                Label("Calendar", systemImage: "calendar")
+            }
+            .navigationViewStyle(.stack)
+            // MARK: - Places Screen
             NavigationView {
-                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                PlacesScreen(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                    .background(Color.primaryBackground)
+                    .overlay(NavigationBarView(model: model, title: "Places"))
+                //MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
             .tag(4)
             .tabItem {
