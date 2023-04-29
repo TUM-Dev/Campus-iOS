@@ -13,7 +13,7 @@ struct MealPlanView: View {
     let menus: [cafeteriaMenu]
     let cafeteria: Cafeteria
     @State var selectedMenu: cafeteriaMenu
-        
+    
     var body: some View {
         VStack {
             HStack{
@@ -35,7 +35,7 @@ struct MealPlanView: View {
                                                     .foregroundColor(menu === self.selectedMenu ? Color(UIColor.systemBackground) : (Calendar.current.isDateInToday(menu.date) ? Color("tumBlue") : Color(UIColor.label)))
                                             )
                                             .frame(maxWidth: UIScreen.main.bounds.width, minHeight: 35, maxHeight: 35)
-
+                                        
                                         Text(getFormattedDate(date: menu.date, format: "EEE"))
                                             .foregroundColor(Color(UIColor.label))
                                     }
@@ -43,13 +43,9 @@ struct MealPlanView: View {
                             }
                         }
                         .padding(.horizontal, 5.0)
-                    
-                        if let menu = selectedMenu {
-                            MenuView(menu: menu)
-                        } else {
-                            Spacer().frame(height: 20)
-                            Text("No Menu available today").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
-                        }
+                        
+                        MenuView(menu: selectedMenu)
+                        
                     }
                 } else {
                     Text("No Menus available")

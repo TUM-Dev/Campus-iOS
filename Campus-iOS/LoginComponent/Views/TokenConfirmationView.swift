@@ -22,7 +22,7 @@ struct TokenConfirmationView: View {
     @State var showTUMOnline = false
     @State var currentStep: Int = 1
     @State var isActive = true
-
+    
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
@@ -87,7 +87,7 @@ struct TokenConfirmationView: View {
                             Text("Activate the newly created token and enable your desired permissions")
                                 .font(.body)
                                 .minimumScaleFactor(0.2)
-
+                            
                         }
                     default: EmptyView()
                     }
@@ -96,7 +96,7 @@ struct TokenConfirmationView: View {
                 
                 
                 
-                    
+                
                 let videoUrl = Bundle.main
                     .url(forResource: "token-tutorial", withExtension: "mov")!
                 PlayerView(videoUrl: videoUrl)
@@ -105,7 +105,7 @@ struct TokenConfirmationView: View {
                 // Video is 2532 x 1170
                     .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
                 
-            
+                
                 VStack {
                     Spacer()
                     
@@ -178,18 +178,17 @@ struct TokenConfirmationView: View {
                                         }
                                     }
                                 case .active:
-                                    if let model = self.viewModel.model {
-                                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
-                                            Text("Next")
-                                                .lineLimit(1)
-                                                .font(.body)
-                                                .frame(width: 200, height: 48, alignment: .center)
-                                                .foregroundColor(.white)
-                                                .background(.green)
-                                                .cornerRadius(10)
-                                                .buttonStyle(.plain)
-                                        }
+                                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.viewModel.model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+                                        Text("Next")
+                                            .lineLimit(1)
+                                            .font(.body)
+                                            .frame(width: 200, height: 48, alignment: .center)
+                                            .foregroundColor(.white)
+                                            .background(.green)
+                                            .cornerRadius(10)
+                                            .buttonStyle(.plain)
                                     }
+                                    
                                 }
                             }
                             .frame(width: 150, height: 48, alignment: .center)
@@ -233,24 +232,24 @@ struct TokenConfirmationView: View {
                 Text("Back")
             }
             .foregroundColor(Color(.tumBlue))
-          }
+        }
         )
         .alert(isPresented: $showBackButtonAlert) {
-              Alert(
+            Alert(
                 title: Text("Are you sure?"),
                 message: Text("Leaving now will invalidate the current token!"),
                 primaryButton: .default(Text("Leave")) {
-                  self.presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
-              )
+            )
         }
         .task {
             await switchSteps()
         }
         .sheet(isPresented: $showTUMOnline) {
             SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
-         }
+        }
         
         
     }
@@ -294,7 +293,7 @@ struct TokenConfirmationView_Previews: PreviewProvider {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
         }//.previewDevice("iPod touch (7th generation)")
-            //.previewDevice("iPhone SE (3rd generation)")
+        //.previewDevice("iPhone SE (3rd generation)")
         .previewDevice("iPhone 12")
         
         Text("Background2").sheet(isPresented: .constant(true)) {
@@ -302,7 +301,7 @@ struct TokenConfirmationView_Previews: PreviewProvider {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
         }.previewDevice("iPod touch (7th generation)")
-            //.previewDevice("iPhone SE (3rd generation)")
+        //.previewDevice("iPhone SE (3rd generation)")
         //.previewDevice("iPhone 12")
     }
 }

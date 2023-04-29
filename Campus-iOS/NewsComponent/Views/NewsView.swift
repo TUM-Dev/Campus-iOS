@@ -45,14 +45,13 @@ struct NewsView: View {
                             // adjust height
                             Spacer(minLength: 1)
                         }.sheet(item: $selectedLink) { selectedLink in
-                            if let link = selectedLink {
-                                SFSafariViewWrapper(url: link)
-                            }
+                            SFSafariViewWrapper(url: selectedLink)
+                            
                         }
                         Spacer()
                     }.padding()
                 }
-
+                
                 Spacer()
                 
                 ForEach(newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in

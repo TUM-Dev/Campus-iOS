@@ -34,9 +34,7 @@ struct NewsWidgetView: View {
                             }
                         }
                     }.sheet(item: $selectedLink) { selectedLink in
-                        if let link = selectedLink {
-                            SFSafariViewWrapper(url: link)
-                        }
+                            SFSafariViewWrapper(url: selectedLink)
                     }
                 }.padding(.horizontal)
             }

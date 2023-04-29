@@ -16,7 +16,49 @@ struct PlacesScreen: View {
     }
     
     var body: some View {
-        PlacesView(vm: self.vm)
-            .padding(.top, 60)
+        Group {
+            switch vm.cafeteriasState {
+            case .success(_):
+                PlacesView(vm: self.vm)
+                    .padding(.top, 60)
+                .refreshable {
+                    await vm.getCafeteria(forcedRefresh: true)
+                }
+            case .loading, .na:
+                ZStack {
+                    VStack {
+                        LoadingView(text: "Fetching Canteens", position: .middletop)
+                    }
+                }
+            case .failed(let error):
+                FailedView(
+                    errorDescription: error.localizedDescription,
+                    retryClosure:  { _ in
+                        await vm.getCafeteria()
+                    } )
+                .onAppear {
+                    withAnimation(.easeIn) {
+                        vm.panelPos = .top
+                    }
+                }
+            }
+        }
+        .task {
+            await vm.getCafeteria()
+        }
+        .alert("Error while fetching Cafeterias", isPresented: $vm.hasError, presenting: vm.cafeteriasState) {
+            detail in
+            Button("Retry") {
+                Task {
+                    await vm.getCafeteria()
+                }
+            }
+            
+            Button("Cancel", role: .cancel) {}
+        } message: { detail in
+            if case let .failed(error) = detail {
+                Text(error.localizedDescription)
+            }
+        }
     }
 }

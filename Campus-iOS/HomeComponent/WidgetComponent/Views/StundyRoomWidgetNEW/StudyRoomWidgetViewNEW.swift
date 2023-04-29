@@ -25,8 +25,8 @@ struct StudyRoomWidgetViewNEW: View {
                     Label {
                         HStack {
                             Text(studyGroup.name!).foregroundColor(Color.primaryText)
-                            if let freeRooms = rooms.filter{ $0.isAvailable() }.count,
-                            freeRooms > 0 {
+                            let freeRooms = rooms.filter{ $0.isAvailable() }.count
+                            if freeRooms > 0 {
                                 Spacer()
                                 Text("\(freeRooms) rooms free").foregroundColor(.green)
                             } else {
