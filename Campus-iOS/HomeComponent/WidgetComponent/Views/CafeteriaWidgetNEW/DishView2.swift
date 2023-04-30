@@ -26,8 +26,8 @@ struct DishView2: View {
                         Spacer()
                         MealIngredientsView(mealTitle: vm.dish.name, labels: vm.getIngredientLabels(generalLabel: generalLabels, ingredientLabels: vm.dish.labels), price: vm.formatPrice(dish: vm.dish, pricingGroup: "students"))
                     }
-                    Text(vm.dish.name + "\n")
-                        .lineLimit(2)
+                    Text(vm.dish.name)
+                        .lineLimit(2, reservesSpace: true)
                         .padding(.vertical, 5)
                     Text(vm.formatPrice(dish: vm.dish, pricingGroup: "students"))
                         .lineLimit(1)

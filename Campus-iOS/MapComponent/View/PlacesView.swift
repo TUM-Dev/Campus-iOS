@@ -6,29 +6,18 @@
 //
 
 import SwiftUI
-import MapKit
 
 struct PlacesView: View {
     @StateObject var vm: MapViewModel
-    @State var sortedCafeterias: [Cafeteria]
-    
-    var locationManager = CLLocationManager()
     
     init(vm: MapViewModel) {
         self._vm = StateObject(wrappedValue: vm)
-        if let location = self.locationManager.location {
-            self.sortedCafeterias = vm.cafeterias.sorted {
-                $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)
-            }
-        } else {
-            self.sortedCafeterias = vm.cafeterias
-        }
     }
     
     var body: some View {
         ScrollView {
             VStack {
-                NavigationLink(destination: CafeteriaViewNEW(vm: self.vm).navigationBarTitle(Text("Cafeterias"))) {
+                NavigationLink(destination: CafeteriasViewNEW(vm: self.vm).navigationBarTitle(Text("Cafeterias"))) {
                     Label {
                         HStack {
                             Text("Cafeterias").foregroundColor(Color.primaryText)
@@ -68,27 +57,27 @@ struct PlacesView: View {
                     .padding(.horizontal)
                     .padding(.bottom, 10)
                 
-                NavigationLink(destination: CampusView(campus: Campus.stammgelaende)) {
+                NavigationLink(destination: CampusView(campus: Campus.stammgelaende, cafeterias: self.vm.getCampusCafeteria(campus: Campus.stammgelaende))) {
                     CampusCellView(campus: Campus.stammgelaende)
                 }
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: CampusView(campus: Campus.garching)) {
+                NavigationLink(destination: CampusView(campus: Campus.garching, cafeterias: self.vm.getCampusCafeteria(campus: Campus.garching))) {
                     CampusCellView(campus: Campus.garching)
                 }
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: CampusView(campus: Campus.freising)) {
+                NavigationLink(destination: CampusView(campus: Campus.freising, cafeterias: self.vm.getCampusCafeteria(campus: Campus.freising))) {
                     CampusCellView(campus: Campus.freising)
                 }
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: CampusView(campus: Campus.klinikumRechts)) {
+                NavigationLink(destination: CampusView(campus: Campus.klinikumRechts, cafeterias: self.vm.getCampusCafeteria(campus: Campus.klinikumRechts))) {
                     CampusCellView(campus: Campus.klinikumRechts)
                 }
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: CampusView(campus: Campus.olympiapark)) {
+                NavigationLink(destination: CampusView(campus: Campus.olympiapark, cafeterias: self.vm.getCampusCafeteria(campus: Campus.olympiapark))) {
                     CampusCellView(campus: Campus.olympiapark)
                 }
                 .padding(.bottom, 10)

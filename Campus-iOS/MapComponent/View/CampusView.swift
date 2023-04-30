@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CampusView: View {
     let campus: Campus
+    let cafeterias: [Cafeteria]
     
     var body: some View {
         ScrollView {
@@ -24,6 +25,12 @@ struct CampusView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .frame(width: Size.cardWidth, alignment: .leading)
+                    .padding(.bottom, 15)
+                Label("Food", systemImage: "fork.knife").titleStyle()
+                ForEach(cafeterias) { cafeteria in
+                    CafeteriaViewNEW(cafeteria: cafeteria)
+                    Divider().padding(.horizontal)
+                }
             }
         }
         .scrollContentBackground(.hidden)

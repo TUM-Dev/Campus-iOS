@@ -21,7 +21,7 @@ struct Queue: Decodable, Hashable {
     let percent: Float
 }
 
-struct Cafeteria: Decodable, Hashable {
+struct Cafeteria: Decodable, Hashable, Identifiable {
     /*
      "location": {
         "address": "Arcisstraße 17, München",

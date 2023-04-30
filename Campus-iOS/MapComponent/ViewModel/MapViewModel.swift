@@ -52,9 +52,6 @@ class MapViewModel: MapViewModelProtocol {
                 return cafeterias
             }
         }
-        set {
-            self.cafeterias = newValue
-        }
     }
     
     var studyRoomsResponse: StudyRoomApiRespose {
@@ -67,9 +64,6 @@ class MapViewModel: MapViewModelProtocol {
                 }
                 return studyRoomsResponse
             }
-        }
-        set {
-            self.studyRoomsResponse = newValue
         }
     }
     
@@ -113,6 +107,10 @@ class MapViewModel: MapViewModelProtocol {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
         }
+    }
+    
+    func getCampusCafeteria(campus: Campus) -> [Cafeteria] {
+        return self.cafeterias.filter { $0.coordinate.location.distance(from: campus.location) <= 1000 }
     }
 }
 
