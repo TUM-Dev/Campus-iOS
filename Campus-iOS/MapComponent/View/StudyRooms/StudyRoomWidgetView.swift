@@ -39,7 +39,7 @@ struct StudyRoomWidgetView: View {
                 NavigationView { // To enable navigation to the map images.
                     StudyRoomGroupView(
                         vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
-                        selectedGroup: $viewModel.studyGroup,
+                        selectedGroup: viewModel.studyGroup,
                         rooms: viewModel.rooms ?? [],
                         canDismiss: false
                     )

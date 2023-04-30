@@ -16,7 +16,7 @@ struct StudyRoomWidgetViewNEW: View {
             Text((studyRoomWidgetVM.studyGroup?.name)!).titleStyle()
             NavigationLink(destination: StudyRoomGroupView(
                 vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
-                selectedGroup: $studyRoomWidgetVM.studyGroup,
+                selectedGroup: studyRoomWidgetVM.studyGroup,
                 rooms: studyRoomWidgetVM.rooms ?? [],
                 canDismiss: false
             )) {

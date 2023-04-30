@@ -112,6 +112,10 @@ class MapViewModel: MapViewModelProtocol {
     func getCampusCafeteria(campus: Campus) -> [Cafeteria] {
         return self.cafeterias.filter { $0.coordinate.location.distance(from: campus.location) <= 1000 }
     }
+    
+    func getCampusStudyRooms(campus: Campus) -> [StudyRoomGroup] {
+        return self.studyRoomsResponse.groups!.filter { $0.coordinate?.location.distance(from: campus.location) ?? 1500 <= 1000 }
+    }
 }
 
 let screenHeight = UIScreen.main.bounds.height
