@@ -64,7 +64,7 @@ class AuthenticationHandler {
         do {
             let tokenName = "TCA - \(await UIDevice.current.name)"
             
-            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
+            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName), forcedRefresh: true)
             print(token.value)
             self.credentials = Credentials.tumID(tumID: tumID, token: token.value)
             completion(.success(token.value))
@@ -82,7 +82,7 @@ class AuthenticationHandler {
             case .tumID(tumID: _, token: let token),
                     .tumIDAndKey(tumID: _, token: let token, key: _):
                 do {
-                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token)
+                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token, forcedRefresh: true)
                     if confirmation.value {
                         callback(.success(true))
                     } else {
