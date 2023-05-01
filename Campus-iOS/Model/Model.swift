@@ -55,21 +55,8 @@ public class Model: ObservableObject {
     func logout() {
         DispatchQueue.main.async {
             self.loginController.logout()
-            self.isLoginSheetPresented = self.showProfile ? false : true
+            self.isLoginSheetPresented = true
             self.isUserAuthenticated = false
-//            self.unloadProfile()
         }
     }
-    
-//    func unloadProfile() {
-//        DispatchQueue.main.async {
-//            self.profile = ProfileViewModel()
-//        }
-//    }
-//
-//    func loadProfile() {
-//        DispatchQueue.main.async {
-//            self.profile = ProfileViewModel(model: self)
-//        }
-//    }
 }

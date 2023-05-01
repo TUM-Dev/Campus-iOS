@@ -132,7 +132,7 @@ struct TokenConfirmationView: View {
                         if !tokenPermissionButton {
                             Button(action: {
                                 Task {
-                                    await  self.viewModel.checkAuthorization() { result in
+                                    await self.viewModel.checkAuthorization() { result in
                                         switch result {
                                         case .success:
                                             withAnimation {

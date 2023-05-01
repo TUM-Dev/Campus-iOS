@@ -63,25 +63,23 @@ class LoginViewModel: ObservableObject {
     }
     
     func checkAuthorization(callback: @escaping (Result<Bool,Error>) -> Void) async {
-        await loginController.confirmToken { result in
-            switch result {
+        switch await model.loginController.confirmToken() {
             case .success:
                 #if !targetEnvironment(macCatalyst)
                 Analytics.logEvent("token_confirmed", parameters: nil)
                 #endif
-                //wself?.model?.isLoginSheetPresented = false
+
                 DispatchQueue.main.async {
                     self.model.isUserAuthenticated = true
                     self.model.showProfile = false
                 }
-//                self.model?.loadProfile()
-                
+
                 callback(.success(true))
-            case let .failure(error):
+            case .failure(let error):
                 self.model.isUserAuthenticated = false
                 self.alertMessage = error.localizedDescription
+            
                 callback(.failure(error))
-            }
         }
     }
 }
