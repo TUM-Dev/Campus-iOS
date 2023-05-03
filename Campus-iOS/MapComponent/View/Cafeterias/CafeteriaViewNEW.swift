@@ -28,7 +28,7 @@ struct CafeteriaViewNEW: View {
                     Button() {
                         print("Button tapped!")
                     } label: {
-                        Label("View on Maps", systemImage: "arrow.up.forward.app")
+                        Label("View Location", systemImage: "arrow.up.forward.app")
                     }
                     .font(.footnote)
                     .foregroundColor(.highlightText)
