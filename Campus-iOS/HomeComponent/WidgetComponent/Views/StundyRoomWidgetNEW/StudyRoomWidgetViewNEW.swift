@@ -13,7 +13,7 @@ struct StudyRoomWidgetViewNEW: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            Text((studyRoomWidgetVM.studyGroup?.name)!).titleStyle()
+            Text("Nearest Study Room").titleStyle()
             NavigationLink(destination: StudyRoomGroupView(
                 vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                 selectedGroup: studyRoomWidgetVM.studyGroup,

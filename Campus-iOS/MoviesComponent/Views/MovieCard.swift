@@ -50,13 +50,13 @@ struct MovieCard: View {
             // Stack bottom half of card
             VStack(alignment: .leading, spacing: 2) {
                 Text(self.movie.title ?? "")
-                    .fontWeight(Font.Weight.heavy)
-                    .font(.subheadline).foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
+                    .foregroundColor(Color.primaryText)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(1)
                 Text(self.movie.date ?? Date(), style: .date)
-                    .font(Font.custom("HelveticaNeue-Bold", size: 12))
-                    .foregroundColor(Color.gray)
+                    .font(.system(size: 11))
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
                 Spacer()
             }
             .padding(EdgeInsets(top: 15, leading: 10, bottom: 10, trailing: 5))

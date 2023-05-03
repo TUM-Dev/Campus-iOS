@@ -13,6 +13,7 @@ struct CampusView: View {
     let cafeterias: [Cafeteria]
     let studyRooms: [StudyRoomGroup]
     @StateObject var vm: MapViewModel
+    @StateObject var vmNavi = NavigaTumViewModel()
     
     init(campus: Campus, cafeterias: [Cafeteria], studyRooms: [StudyRoomGroup], vm: MapViewModel) {
         self.campus = campus
@@ -77,9 +78,52 @@ struct CampusView: View {
                     .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
                     .padding(.horizontal)
                 }
+                Label("Most Searched Rooms", systemImage: "door.right.hand.closed").titleStyle()
+                    .padding(.top, 20)
+                
+                VStack {
+                    ForEach(vmNavi.searchResults.filter{$0.name.first?.isNumber ?? false
+                    }) { entry in
+                        NavigationLink(
+                            destination: NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: entry.id))
+                        ) {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(entry.name)
+                                    Spacer()
+                                    Image(systemName: "chevron.right").foregroundColor(Color.highlightText)
+                                }
+                                .padding(.horizontal)
+                                .foregroundColor(Color.primaryText)
+                                if entry != vmNavi.searchResults.last {
+                                    Divider()
+                                }
+                            }
+                        }
+                    }
+                }
+                .sectionStyle()
+                
+                if vmNavi.errorMessage != "" {
+                    VStack {
+                        Spacer()
+                        Text(self.vmNavi.errorMessage).foregroundColor(.gray)
+                        Spacer()
+                    }
+                }
             }
+            .padding(.bottom, 20)
         }
         .scrollContentBackground(.hidden)
         .background(Color.primaryBackground)
+        .onAppear{
+            Task {
+                await getCampusRooms(String(self.campus.rawValue.dropFirst(2)))
+            }
+        }
+    }
+    
+    func getCampusRooms(_ searchValue: String) async {
+        await self.vmNavi.fetch(searchString: searchValue)
     }
 }

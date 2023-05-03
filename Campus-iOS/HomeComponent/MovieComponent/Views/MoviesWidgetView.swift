@@ -23,7 +23,7 @@ struct MoviesWidgetView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(movies, id: \.id ) { movie in
-                        MovieCard(movie: movie).padding(7)
+                        MovieCard(movie: movie).padding(2)
                             .onTapGesture {
                                 selectedMovie = movie
                             }
