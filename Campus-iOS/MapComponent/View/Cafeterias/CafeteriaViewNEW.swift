@@ -47,7 +47,7 @@ struct CafeteriaViewNEW: View {
                             .rotationEffect(Angle(degrees: rotationAngle))
                     }
                     .padding(5)
-                    .foregroundColor(.highlightText)
+                    .foregroundColor(.primaryText)
                     .background(Color.secondaryBackground)
                     .cornerRadius(5)
                 }

@@ -35,7 +35,7 @@ struct PlacesView: View {
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: StudyRoomViewNEW().navigationBarTitle(Text("Study Rooms"))) {
+                NavigationLink(destination: StudyRoomViewNEW(vm: self.vm, studyRoomGroups: self.vm.studyRoomsResponse.groups).navigationBarTitle(Text("Study Rooms"))) {
                     Label {
                         HStack {
                             Text("Study Rooms").foregroundColor(Color.primaryText)

@@ -120,7 +120,7 @@ struct CampusView: View {
                                             .clipShape(Circle())
                                         Text(entry.name)
                                         Spacer()
-                                        Image(systemName: "chevron.right").foregroundColor(Color.highlightText)
+                                        Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                                     }
                                     .padding(.horizontal, 5)
                                     .foregroundColor(Color.primaryText)
@@ -188,7 +188,7 @@ struct CampusView: View {
                     .resizable()
                     .foregroundColor(Color.highlightText)
                     .frame(width: 20, height: 20)
-                    .background(Color.primaryBackground)
+                    .background(.white)
                     .clipShape(Circle())
                 
                 Image(systemName: "arrowtriangle.down.fill")
