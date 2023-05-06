@@ -64,9 +64,6 @@ class SearchResultViewModel: ObservableObject {
             return
         }
         
-//        for (label, accuracy) in modelOutput {
-//            print("\(label) was at \(accuracy)")
-//        }
         searchDataTypeResult = modelOutput.sorted(by: {$0.value > $1.value})
         
         orderedTypes = modelOutput.sorted(by: {$0.value > $1.value}).compactMap {SearchResultType(rawValue: $0.key)}

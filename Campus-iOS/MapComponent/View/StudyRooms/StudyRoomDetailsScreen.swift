@@ -46,7 +46,7 @@ struct StudyRoomDetailsScreen: View {
                 }
             }
         }.task {
-            await vm.getRoomImageMapping(for: self.room)
+            await vm.getRoomImageMapping(for: self.room, forcedRefresh: true)
         }.alert(
             "Error while fetching Room Images",
             isPresented: $vm.hasError,

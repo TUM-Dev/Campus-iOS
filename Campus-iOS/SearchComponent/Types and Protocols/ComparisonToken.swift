@@ -31,11 +31,4 @@ struct ComparisonToken: Hashable {
         
         return true
     }
-    
-    func testing() -> Bool {
-        let a = ComparisonToken(value: "hello")
-        let b = ComparisonToken(value: "olleh")
-        
-        return a =/ b
-    }
 }

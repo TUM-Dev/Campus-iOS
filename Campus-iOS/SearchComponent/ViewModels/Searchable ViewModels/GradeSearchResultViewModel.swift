@@ -7,18 +7,9 @@
 
 import SwiftUI
 
-extension GradesSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [(grade: Grade, distance: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class GradesSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: SearchState<Grade> = .na
     @Published var hasError: Bool = false
     
     let model: Model

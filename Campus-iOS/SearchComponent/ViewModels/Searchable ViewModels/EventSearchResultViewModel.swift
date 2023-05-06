@@ -16,18 +16,9 @@ struct EventSearchResult: Searchable {
     let events: [CalendarEvent]
 }
 
-extension EventSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [(event: EventSearchResult, distance: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class EventSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: SearchState<EventSearchResult> = .na
     @Published var hasError: Bool = false
     let lecturesService: LecturesServiceProtocol
     let calendarService: CalendarServiceProtocol

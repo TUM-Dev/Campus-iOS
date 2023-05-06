@@ -7,19 +7,9 @@
 
 import Foundation
 
-
-extension MovieSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [(movie: Movie, distance: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class MovieSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: SearchState<Movie> = .na
     @Published var hasError: Bool = false
     
     let service: MovieServiceProtocol

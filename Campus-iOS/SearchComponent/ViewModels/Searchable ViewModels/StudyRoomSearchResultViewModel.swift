@@ -20,18 +20,9 @@ struct StudyRoomSearchResult: Searchable {
     }
 }
 
-extension StudyRoomSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [(studyRoomResult: StudyRoomSearchResult, distance: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class StudyRoomSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: SearchState<StudyRoomSearchResult> = .na
     @Published var hasError = false
     private let studyRoomService: StudyRoomsServiceProtocol
     

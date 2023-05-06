@@ -7,19 +7,10 @@
 
 import Foundation
 
-extension CafeteriaSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [(cafeteria: Cafeteria, distances: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class CafeteriaSearchResultViewModel: ObservableObject {
     
-    @Published var state: State = .na
+    @Published var state: SearchState<Cafeteria> = .na
     @Published var hasError: Bool = false
     let service: CafeteriasServiceProtocol
     

@@ -7,18 +7,9 @@
 
 import Foundation
 
-extension PersonSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [Person])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class PersonSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: APIState<[Person]> = .na
     @Published var hasError: Bool = false
     
     let model : Model

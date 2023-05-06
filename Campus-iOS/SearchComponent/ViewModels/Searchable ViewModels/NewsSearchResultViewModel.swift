@@ -7,20 +7,11 @@
 
 import Foundation
 
-extension NewsSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
-//        case success(data: [(news: News, distance: Distances)])
-        case success(data: [(news: News, distance: Distances)])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class NewsSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
+//    @Published var state: SearchState<NewsSource> = .na
+    @Published var state: SearchState<News> = .na
     @Published var hasError: Bool = false
     
     let service: NewsServiceProtocol

@@ -70,6 +70,14 @@ struct StudyRoomGroup: Decodable, Equatable, Searchable {
         self.rooms = room_nrs
     }
     
+    init(detail: String? = nil, id: Int64, name: String? = nil, sorting: Int64, rooms: [Int64]? = nil) {
+        self.detail = detail
+        self.id = id
+        self.name = name
+        self.sorting = sorting
+        self.rooms = rooms
+    }
+    
     func getRooms(allRooms rooms: [StudyRoom]) -> [StudyRoom]? {
         rooms.filter({ self.rooms?.contains($0.id) ?? false })
     }

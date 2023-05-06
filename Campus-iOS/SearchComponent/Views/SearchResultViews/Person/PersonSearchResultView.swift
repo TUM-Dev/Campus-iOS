@@ -30,29 +30,7 @@ struct PersonSearchResultView: View {
                         Text("Person Search")
                             .fontWeight(.bold)
                             .font(.title)
-                        HStack {
-                            Spacer()
-                            Button {
-                                switch size {
-                                case .big:
-                                    withAnimation {
-                                        self.size = .small
-                                    }
-                                case .small:
-                                    withAnimation {
-                                        self.size = .big
-                                    }
-                                }
-                            } label: {
-                                if self.size == .small {
-                                    Image(systemName: "arrow.up.left.and.arrow.down.right")
-                                        .padding()
-                                } else {
-                                    Image(systemName: "arrow.down.right.and.arrow.up.left")
-                                        .padding()
-                                }
-                            }
-                        }
+                        ExpandIcon(size: $size)
                     }
                 }
                 ScrollView {

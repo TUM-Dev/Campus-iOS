@@ -47,6 +47,13 @@
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1F0E8EBB293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */; };
+		1F0F396A2A058AAA00E55FCB /* Grade+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F39692A058AAA00E55FCB /* Grade+PreviewData.swift */; };
+		1F0F396C2A058AEA00E55FCB /* News+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F396B2A058AEA00E55FCB /* News+PreviewData.swift */; };
+		1F0F396F2A058B5000E55FCB /* Movie+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F396E2A058B5000E55FCB /* Movie+PreviewData.swift */; };
+		1F0F39712A058B9F00E55FCB /* StudyRoomApiResponse+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F39702A058B9F00E55FCB /* StudyRoomApiResponse+PreviewData.swift */; };
+		1F0F39732A05913F00E55FCB /* Cafeteria+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F39722A05913F00E55FCB /* Cafeteria+PreviewData.swift */; };
+		1F0F39752A05917400E55FCB /* CalendarEvent+PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F39742A05917400E55FCB /* CalendarEvent+PreviewData.swift */; };
+		1F0F39772A05975200E55FCB /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0F39762A05975200E55FCB /* SearchState.swift */; };
 		1F1F42B32999331F00A0D0B7 /* SearchResultBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1F42B22999331F00A0D0B7 /* SearchResultBarView.swift */; };
 		1F2068DC28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */; };
 		1F2068DE28FD731200DBDF67 /* LoginViewModel+TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */; };
@@ -164,6 +171,7 @@
 		1F74DB372972B87800B9143C /* PersonSearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB362972B87800B9143C /* PersonSearchResultViewModel.swift */; };
 		1F74DB392972B92D00B9143C /* PersonSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB382972B92D00B9143C /* PersonSearchResultView.swift */; };
 		1F74DB3B2973038800B9143C /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74DB3A2973038800B9143C /* MovieService.swift */; };
+		1FAC1A6F2A0632F900A0A4F3 /* View+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC1A6E2A0632F900A0A4F3 /* View+Search.swift */; };
 		1FAF9F0C284D2ABC000ABE93 /* MapScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */; };
 		1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */; };
 		1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */; };
@@ -419,6 +427,13 @@
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1F0E8EBA293E22FF006E8BB9 /* DataTypeClassifierV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DataTypeClassifierV2.mlmodel; sourceTree = "<group>"; };
+		1F0F39692A058AAA00E55FCB /* Grade+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grade+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F396B2A058AEA00E55FCB /* News+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "News+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F396E2A058B5000E55FCB /* Movie+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F39702A058B9F00E55FCB /* StudyRoomApiResponse+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomApiResponse+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F39722A05913F00E55FCB /* Cafeteria+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cafeteria+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F39742A05917400E55FCB /* CalendarEvent+PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarEvent+PreviewData.swift"; sourceTree = "<group>"; };
+		1F0F39762A05975200E55FCB /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		1F1F42B22999331F00A0D0B7 /* SearchResultBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultBarView.swift; sourceTree = "<group>"; };
 		1F2068DB28FD6E2800DBDF67 /* LoginViewModel+LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+LoginState.swift"; sourceTree = "<group>"; };
 		1F2068DD28FD731200DBDF67 /* LoginViewModel+TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+TokenState.swift"; sourceTree = "<group>"; };
@@ -534,6 +549,7 @@
 		1F74DB362972B87800B9143C /* PersonSearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchResultViewModel.swift; sourceTree = "<group>"; };
 		1F74DB382972B92D00B9143C /* PersonSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonSearchResultView.swift; sourceTree = "<group>"; };
 		1F74DB3A2973038800B9143C /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
+		1FAC1A6E2A0632F900A0A4F3 /* View+Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Search.swift"; sourceTree = "<group>"; };
 		1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenView.swift; sourceTree = "<group>"; };
 		1FB82E3328F95776007B1858 /* TokenPermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsView.swift; sourceTree = "<group>"; };
 		1FB82E3528F96C9E007B1858 /* TokenPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenPermissionsViewModel.swift; sourceTree = "<group>"; };
@@ -860,6 +876,15 @@
 			path = DataModels;
 			sourceTree = "<group>";
 		};
+		1F0F396D2A058B3500E55FCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36108BF327A30516007DC62D /* Movie.swift */,
+				1F0F396E2A058B5000E55FCB /* Movie+PreviewData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1F26155D29D9E8BD0062B8E5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1021,7 @@
 				1F504184295B84DC00A62CA1 /* ComparisonToken.swift */,
 				1F504191295B85D300A62CA1 /* Extensions */,
 				1FE6DCAB29B790F8006A06B9 /* SearchError.swift */,
+				1F0F39762A05975200E55FCB /* SearchState.swift */,
 			);
 			path = "Types and Protocols";
 			sourceTree = "<group>";
@@ -1021,6 +1047,7 @@
 			children = (
 				1F50418D295B857B00A62CA1 /* String+Levenshtein.swift */,
 				1F50418F295B85AB00A62CA1 /* String+Keep.swift */,
+				1FAC1A6E2A0632F900A0A4F3 /* View+Search.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1085,6 +1112,7 @@
 			isa = PBXGroup;
 			children = (
 				1F63A3D829DDE6D500844981 /* CalendarEvent.swift */,
+				1F0F39742A05917400E55FCB /* CalendarEvent+PreviewData.swift */,
 				1F63A3D929DDE6D500844981 /* TumCalendarStyle.swift */,
 			);
 			path = Model;
@@ -1475,6 +1503,7 @@
 		36108BF127A30516007DC62D /* MoviesComponent */ = {
 			isa = PBXGroup;
 			children = (
+				1F0F396D2A058B3500E55FCB /* Model */,
 				1F63A3FB29DEC6E300844981 /* Screen */,
 				36108BF227A30516007DC62D /* ViewModel */,
 				36108BF527A30516007DC62D /* Views */,
@@ -1486,7 +1515,6 @@
 		36108BF227A30516007DC62D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				36108BF327A30516007DC62D /* Movie.swift */,
 				36108BF427A30516007DC62D /* MovieViewModel.swift */,
 			);
 			path = ViewModel;
@@ -1551,6 +1579,7 @@
 			isa = PBXGroup;
 			children = (
 				36108C0C27A307F9007DC62D /* Grade.swift */,
+				1F0F39692A058AAA00E55FCB /* Grade+PreviewData.swift */,
 				36108C0D27A307F9007DC62D /* Modus.swift */,
 				97F8A79227E641570099EE83 /* AcademicDegree.swift */,
 			);
@@ -1662,6 +1691,7 @@
 				36108BCB27A304B5007DC62D /* MealPlan.swift */,
 				36108BCC27A304B5007DC62D /* Dish.swift */,
 				36108BCD27A304B5007DC62D /* Cafeteria.swift */,
+				1F0F39722A05913F00E55FCB /* Cafeteria+PreviewData.swift */,
 				36108BCE27A304B5007DC62D /* MensaMenu.swift */,
 				36108BD427A304B5007DC62D /* Menu.swift */,
 				36108BCF27A304B5007DC62D /* DishLabel.swift */,
@@ -1676,6 +1706,7 @@
 				3654F35D285168D2008AD5DC /* StudyRoom.swift */,
 				3654F35F285168D2008AD5DC /* RoomImageMapping.swift */,
 				3654F35C285168D2008AD5DC /* StudyRoomApiResponse.swift */,
+				1F0F39702A058B9F00E55FCB /* StudyRoomApiResponse+PreviewData.swift */,
 				3654F360285168D2008AD5DC /* StudyRoomAttribute.swift */,
 				3654F35B285168D2008AD5DC /* StudyRoomGroup.swift */,
 			);
@@ -2093,6 +2124,7 @@
 			isa = PBXGroup;
 			children = (
 				36BBE7312798AFE10018FD3F /* News.swift */,
+				1F0F396B2A058AEA00E55FCB /* News+PreviewData.swift */,
 				36BBE7332798B04D0018FD3F /* NewsSource.swift */,
 			);
 			path = Model;
@@ -2411,6 +2443,7 @@
 				3654F3762851710E008AD5DC /* RoomFinderViewModel.swift in Sources */,
 				1F26158429D9E8DD0062B8E5 /* TUMOnlineAPIOld.swift in Sources */,
 				36108BC427A3046B007DC62D /* LectureDetailsDetailedInfoRowView.swift in Sources */,
+				1F0F39732A05913F00E55FCB /* Cafeteria+PreviewData.swift in Sources */,
 				1FD025D22971A31300E66981 /* NewsSearchResultViewModel.swift in Sources */,
 				1F26158729D9E8DD0062B8E5 /* TUMDevAppAPIError.swift in Sources */,
 				36108C1C27A307FA007DC62D /* GradesView.swift in Sources */,
@@ -2458,6 +2491,7 @@
 				36AF61E727A2FD7800FEBD98 /* ErrorEmittingViewModifier.swift in Sources */,
 				3654F362285168D2008AD5DC /* StudyRoomApiResponse.swift in Sources */,
 				1F63A3D229DDE68E00844981 /* TUMSexyLink.swift in Sources */,
+				1F0F396A2A058AAA00E55FCB /* Grade+PreviewData.swift in Sources */,
 				36108BC527A3046B007DC62D /* LectureDetailsDetailedInfoView.swift in Sources */,
 				1F50418C295B854900A62CA1 /* GlobalSearch.swift in Sources */,
 				3654F363285168D2008AD5DC /* StudyRoom.swift in Sources */,
@@ -2612,6 +2646,7 @@
 				0815249628E45C390098A2C3 /* MLModelDataHandler.swift in Sources */,
 				3654F366285168D2008AD5DC /* StudyRoomAttribute.swift in Sources */,
 				1F26158929D9E8DD0062B8E5 /* EatAPIError.swift in Sources */,
+				1F0F396F2A058B5000E55FCB /* Movie+PreviewData.swift in Sources */,
 				1F71E85029E4802800379428 /* NavigaTumViewModel.swift in Sources */,
 				1FBFA168285E5B2D00FC1515 /* PanelContentListView.swift in Sources */,
 				100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */,
@@ -2634,6 +2669,7 @@
 				36AF61E327A2FD7800FEBD98 /* APIConstants.swift in Sources */,
 				1F6BD38F296F53E200CDD625 /* DataTypeClassifierV4English.mlmodel in Sources */,
 				3629BA2C27A1CECA0036AC80 /* NewsView.swift in Sources */,
+				1F0F39752A05917400E55FCB /* CalendarEvent+PreviewData.swift in Sources */,
 				1F1F42B32999331F00A0D0B7 /* SearchResultBarView.swift in Sources */,
 				1FB82E3428F95776007B1858 /* TokenPermissionsView.swift in Sources */,
 				36BB6F7327B1CD9200F224AB /* ProfileViewModel.swift in Sources */,
@@ -2665,14 +2701,18 @@
 				1F71E84729E4800A00379428 /* NavigaTumNavigationDetails.swift in Sources */,
 				1F71E84C29E4800A00379428 /* NavigaTumRoomFinderMap.swift in Sources */,
 				1F63A3E229DDE91100844981 /* Token.swift in Sources */,
+				1F0F39772A05975200E55FCB /* SearchState.swift in Sources */,
 				1F63A3DA29DDE6D500844981 /* CalendarScreen.swift in Sources */,
+				1F0F396C2A058AEA00E55FCB /* News+PreviewData.swift in Sources */,
 				1F74DB392972B92D00B9143C /* PersonSearchResultView.swift in Sources */,
 				1F504193295B897600A62CA1 /* StudyRoomSearchResultView.swift in Sources */,
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
+				1FAC1A6F2A0632F900A0A4F3 /* View+Search.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
 				1F504195295B898000A62CA1 /* StudyRoomSearchResultViewModel.swift in Sources */,
 				3654F3772851710E008AD5DC /* RoomFinderMapViewModel.swift in Sources */,
+				1F0F39712A058B9F00E55FCB /* StudyRoomApiResponse+PreviewData.swift in Sources */,
 				366F0E8427580CFB0091651D /* App.swift in Sources */,
 				36FF90652773BB8200F4C785 /* Extensions.swift in Sources */,
 				36108C1427A307F9007DC62D /* GradeColor.swift in Sources */,

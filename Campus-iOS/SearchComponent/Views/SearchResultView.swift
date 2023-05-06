@@ -41,6 +41,7 @@ struct SearchResultView: View {
             } else {
                 VStack {
                     SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding()
+                    /// **For debugging purposes**
                     //                Text("Your results for: \(query)")
                     //                Spacer()
                     //                ForEach(vm.searchDataTypeResult, id:\.0) { (key,value) in
@@ -49,6 +50,7 @@ struct SearchResultView: View {
                     //                    }
                     //                }
                     //                Spacer()
+                    /// **For debugging purposes**
                     switch self.selectedType {
                     case .grade:
                         ScrollView {
@@ -58,9 +60,7 @@ struct SearchResultView: View {
                                 } else {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                     case .cafeteria:
                         ScrollView {
@@ -70,9 +70,7 @@ struct SearchResultView: View {
                                 } else {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                     case .news:
                         ScrollView {
@@ -82,9 +80,7 @@ struct SearchResultView: View {
                                 } else {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                         
                     case .studyRoom:
@@ -95,9 +91,7 @@ struct SearchResultView: View {
                                 } else {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                         
                     case .calendar:
@@ -108,9 +102,7 @@ struct SearchResultView: View {
                                 } else {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                         
                     case .movie:
@@ -121,30 +113,22 @@ struct SearchResultView: View {
                                 } else {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                 }
-                            }.cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                            }.searchStyle()
                         }
                     case .roomFinder:
                         ScrollView {
                             RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                .cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                                .searchStyle()
                         }
                     case .lectureSearch:
                         ScrollView {
                             LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                                .searchStyle()
                         }
                     case .personSearch:
                         ScrollView {
                             PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .cornerRadius(25)
-                                .padding()
-                                .shadow(color: .gray.opacity(0.8), radius: 5)
+                                .searchStyle()
                         }
                     case .all:
                         ScrollView {
@@ -213,6 +197,14 @@ struct SearchResultView: View {
         .onAppear {
             vm.search(for: query)
         }
+    }
+}
+
+struct Search: ViewModifier {
+    func body(content: Content) -> some View {
+        content.cornerRadius(25)
+            .padding()
+            .shadow(color: .gray.opacity(0.8), radius: 5)
     }
 }
 

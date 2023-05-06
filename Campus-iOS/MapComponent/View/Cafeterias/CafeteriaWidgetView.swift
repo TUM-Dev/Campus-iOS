@@ -33,13 +33,12 @@ struct CafeteriaWidgetView: View {
                 WidgetLoadingView(text: "Searching nearby cafeteria")
             default:
                 if let cafeteria = viewModel.cafeteria,
-                   let title = cafeteria.title,
-                   let coordinate = cafeteria.coordinate {
-                    CafeteriaWidgetContent(
+                   let title = cafeteria.title {
+                   CafeteriaWidgetContent(
                         size: size,
                         cafeteria: title,
                         dishes: viewModel.menu?.getDishes() ?? [],
-                        coordinate: coordinate
+                        coordinate: cafeteria.coordinate
                     )
                 } else {
                     TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")

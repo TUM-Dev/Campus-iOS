@@ -7,18 +7,9 @@
 
 import Foundation
 
-extension LectureSearchResultViewModel {
-    enum State {
-        case na
-        case loading
-        case success(data: [Lecture])
-        case failed(error: Error)
-    }
-}
-
 @MainActor
 class LectureSearchResultViewModel: ObservableObject {
-    @Published var state: State = .na
+    @Published var state: APIState<[Lecture]> = .na
     @Published var hasError: Bool = false
     let model : Model
     
