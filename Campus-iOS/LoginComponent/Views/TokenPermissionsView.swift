@@ -49,7 +49,7 @@ struct TokenPermissionsView: View {
             .padding()
             
             VStack {
-                HStack (){
+                HStack {
                     Button {
                         self.showTUMOnline = true
                         self.doneButton = false

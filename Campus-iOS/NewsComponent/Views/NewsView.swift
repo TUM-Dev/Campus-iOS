@@ -46,7 +46,6 @@ struct NewsView: View {
                             Spacer(minLength: 1)
                         }.sheet(item: $selectedLink) { selectedLink in
                             SFSafariViewWrapper(url: selectedLink)
-                            
                         }
                         Spacer()
                     }.padding()

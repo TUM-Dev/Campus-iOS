@@ -46,28 +46,19 @@ struct CampusApp: App {
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .task {
-                    if model.loginController.credentials == Credentials.noTumID {
+                    guard let credentials = model.loginController.credentials else {
                         model.isUserAuthenticated = false
-                    } else {
-                        await model.loginController.confirmToken() { result in
-                            switch result {
-                            case .success:
-#if !targetEnvironment(macCatalyst)
-                                Analytics.logEvent("token_confirmed", parameters: nil)
-#endif
-                                DispatchQueue.main.async {
-                                    model.isLoginSheetPresented = false
-                                    model.isUserAuthenticated = true
-                                }
-                                
-                                //                                    model.loadProfile()
-                            case .failure(_):
-                                model.isUserAuthenticated = false
-                                if !model.showProfile {
-                                    model.isLoginSheetPresented = true
-                                }
-                            }
-                        }
+                        model.isLoginSheetPresented = true
+                        return
+                    }
+                    
+                    switch credentials {
+                        case .noTumID:
+                            model.isUserAuthenticated = false
+                            model.isLoginSheetPresented = false
+                    case .tumID(tumID: _, token: _), .tumIDAndKey(tumID: _, token: _, key: _):
+                            model.isUserAuthenticated = true
+                            model.isLoginSheetPresented = false
                     }
                 }
                 .background(Color.primaryBackground)

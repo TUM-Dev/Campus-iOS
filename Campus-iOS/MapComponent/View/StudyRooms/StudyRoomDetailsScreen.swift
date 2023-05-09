@@ -25,6 +25,8 @@ struct StudyRoomDetailsScreen: View {
                     Spacer()
                     LoadingView(text: "Fetching RoomImages")
                     Spacer()
+                }.task {
+                    await vm.getRoomImageMapping(for: room)
                 }
             case .failed(let error):
                 VStack {
@@ -45,8 +47,6 @@ struct StudyRoomDetailsScreen: View {
                     .padding()
                 }
             }
-        }.task {
-            await vm.getRoomImageMapping(for: self.room)
         }.alert(
             "Error while fetching Room Images",
             isPresented: $vm.hasError,
