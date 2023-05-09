@@ -29,7 +29,7 @@ struct MoviesScreen: View {
                 LoadingView(text: "Fetching News")
             case .failed(let error):
                 if isWidget {
-                    
+                    EmptyView()
                 } else {
                     FailedView(
                         errorDescription: error.localizedDescription,
