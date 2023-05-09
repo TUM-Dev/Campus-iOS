@@ -5,7 +5,6 @@
 //  Created by Tim Gymnich on 1/4/19.
 //  Copyright © 2019 TUM. All rights reserved.
 //
-
 import Alamofire
 import UIKit
 
@@ -29,14 +28,14 @@ import UIKit
 //    case ticketReservationCancellation
 //    case ticketPurchase
 //    case stripeKey
-//    
+//
 //    static let baseURLString = "https://app.tum.de/api"
 //    static let serverTrustPolicies: [String: ServerTrustEvaluating] = ["app.tum.de" : PinnedCertificatesTrustEvaluator()]
 //    static let baseHeaders: HTTPHeaders = ["X-DEVICE-ID": UIDevice.current.identifierForVendor?.uuidString ?? "not available",
 //                                                 "X-APP-VERSION": Bundle.main.version,
 //                                                 "X-APP-BUILD": Bundle.main.build,
 //                                                 "X-OS-VERSION": UIDevice.current.systemVersion,]
-//    
+//
 //    var path: String {
 //        switch self {
 //        case .movie:                            return "kino"
@@ -60,15 +59,15 @@ import UIKit
 //        case .stripeKey:                        return "event/ticket/payment/stripe/ephemeralkey"
 //        }
 //    }
-//    
+//
 //    var method: HTTPMethod {
 //        switch self {
 //        default: return .get
 //        }
 //    }
-//    
+//
 //    static var requiresAuth: [String] = []
-//    
+//
 //    func asURLRequest() throws -> URLRequest {
 //        let url = try TUMCabeAPI.baseURLString.asURL()
 //        let urlRequest = try URLRequest(url: url.appendingPathComponent(path), method: method, headers: TUMCabeAPI.baseHeaders)
