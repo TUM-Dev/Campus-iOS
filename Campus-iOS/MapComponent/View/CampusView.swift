@@ -12,13 +12,13 @@ struct CampusView: View {
     
     let campus: Campus
     let cafeterias: [Cafeteria]
-    let studyRooms: [StudyRoomGroup]
+    let studyRooms: [StudyRoomGroup]?
     @StateObject var vm: MapViewModel
     @StateObject var vmNavi = NavigaTumViewModel()
     @State private var region: MKCoordinateRegion
     @State private var pointsOfInterest = [AnnotatedItem]()
     
-    init(campus: Campus, cafeterias: [Cafeteria], studyRooms: [StudyRoomGroup], vm: MapViewModel) {
+    init(campus: Campus, cafeterias: [Cafeteria], studyRooms: [StudyRoomGroup]?, vm: MapViewModel) {
         self.campus = campus
         self.cafeterias = cafeterias
         self.studyRooms = studyRooms
@@ -53,54 +53,57 @@ struct CampusView: View {
                         Divider().padding(.horizontal)
                     }
                 }
-                Group {
-                    Label("Study Rooms", systemImage: "studentdesk").titleStyle()
-                        .padding(.top, 20)
-                    VStack {
-                        ForEach(studyRooms) { studyRoom in
-                            NavigationLink(destination: StudyRoomGroupView(
-                                vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
-                                selectedGroup: studyRoom,
-                                rooms: vm.studyRoomsResponse.rooms ?? [],
-                                canDismiss: false
-                            )) {
-                                if let rooms =  studyRoom.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? []){
-                                    
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: "pencil.circle")
-                                                .resizable()
-                                                .foregroundColor(Color.highlightText)
-                                                .frame(width: 20, height: 20)
-                                                .clipShape(Circle())
-                                            Text(studyRoom.name!).foregroundColor(Color.primaryText)
-                                            let freeRooms = rooms.filter{ $0.isAvailable() }.count
-                                            if freeRooms > 0 {
-                                                Spacer()
-                                                Text("\(freeRooms) rooms free").foregroundColor(.green)
-                                            } else {
-                                                Spacer()
-                                                Text("No rooms free").foregroundColor(.red)
+                if let studyGroups = self.studyRooms {
+                    Group {
+                        Label("Study Rooms", systemImage: "studentdesk").titleStyle()
+                            .padding(.top, 20)
+                        VStack {
+                            ForEach(studyGroups) { studyRoom in
+                                NavigationLink(destination: StudyRoomGroupView(
+                                    vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                                    selectedGroup: studyRoom,
+                                    rooms: vm.studyRoomsResponse.rooms ?? [],
+                                    canDismiss: false
+                                )) {
+                                    if let rooms =  studyRoom.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? []){
+                                        
+                                        VStack {
+                                            HStack {
+                                                Image(systemName: "pencil.circle")
+                                                    .resizable()
+                                                    .foregroundColor(Color.highlightText)
+                                                    .frame(width: 20, height: 20)
+                                                    .clipShape(Circle())
+                                                Text(studyRoom.name!).foregroundColor(Color.primaryText)
+                                                let freeRooms = rooms.filter{ $0.isAvailable() }.count
+                                                if freeRooms > 0 {
+                                                    Spacer()
+                                                    Text("\(freeRooms) rooms free").foregroundColor(.green)
+                                                } else {
+                                                    Spacer()
+                                                    Text("No rooms free").foregroundColor(.red)
+                                                }
+                                                Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                                             }
-                                            Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
+                                            .padding(.horizontal, 5)
+                                            if studyRoom != studyGroups.last {
+                                                Divider()
+                                            }
                                         }
-                                        .padding(.horizontal, 5)
-                                        if studyRoom != studyRooms.last {
-                                            Divider()
+                                        
+                                        .task {
+                                            self.pointsOfInterest.append(AnnotatedItem(name: studyRoom.name!, coordinate: studyRoom.coordinate!, symbol: Image(systemName: "pencil.circle.fill")))
                                         }
+                                    } else {
+                                        
                                     }
-                                    
-                                    .task {
-                                        self.pointsOfInterest.append(AnnotatedItem(name: studyRoom.name!, coordinate: studyRoom.coordinate!, symbol: Image(systemName: "pencil.circle.fill")))
-                                    }
-                                } else {
-                                    
                                 }
                             }
                         }
+                        .sectionStyle()
                     }
-                    .sectionStyle()
                 }
+                
                 Group {
                     Label("Most Searched Rooms", systemImage: "door.right.hand.closed").titleStyle()
                         .padding(.top, 20)

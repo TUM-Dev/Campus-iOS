@@ -113,8 +113,12 @@ class MapViewModel: MapViewModelProtocol {
         return self.cafeterias.filter { $0.coordinate.location.distance(from: campus.location) <= 1000 }
     }
     
-    func getCampusStudyRooms(campus: Campus) -> [StudyRoomGroup] {
-        return self.studyRoomsResponse.groups!.filter { $0.coordinate?.location.distance(from: campus.location) ?? 1500 <= 1000 }
+    func getCampusStudyRooms(campus: Campus) -> [StudyRoomGroup]? {
+        if let studyGroups = self.studyRoomsResponse.groups {
+            return studyGroups.filter { $0.coordinate?.location.distance(from: campus.location) ?? 1500 <= 1000 }
+        } else {
+            return nil
+        }
     }
 }
 

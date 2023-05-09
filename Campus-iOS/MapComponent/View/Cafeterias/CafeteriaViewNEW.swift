@@ -48,8 +48,6 @@ struct CafeteriaViewNEW: View {
                     }
                     .padding(5)
                     .foregroundColor(.primaryText)
-                    .background(Color.secondaryBackground)
-                    .cornerRadius(5)
                 }
             }.padding(.horizontal)
             
@@ -80,3 +78,4 @@ struct CafeteriaViewNEW: View {
         .padding(.bottom, 10)
     }
 }
+

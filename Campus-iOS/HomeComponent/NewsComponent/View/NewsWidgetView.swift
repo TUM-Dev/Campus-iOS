@@ -19,7 +19,7 @@ struct NewsWidgetView: View {
             Text("Latest News").titleStyle()
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
+                HStack(spacing: 15) {
                     ForEach(self.latestFiveNews, id: \.1?.id) { article in
                         if let url = article.1?.link {
                             if self.useBuildInWebView {
