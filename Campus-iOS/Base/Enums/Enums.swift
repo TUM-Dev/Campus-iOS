@@ -139,6 +139,17 @@ enum Campus: String, Codable, CaseIterable {
         }
     }
     
+    var searchStringRooms: String {
+        switch self {
+        case .stammgelaende: return "Stammgelände"
+        case .olympiapark: return "Olympiapark"
+        case .klinikumRechts: return "klinikum isar"
+        case .großhadern: return "Großhadern"
+        case .garching: return "Garching Forschungszentrum"
+        case .freising: return "Weihenstephan"
+        }
+    }
+    
     var location: CLLocation {
         switch self {
         case .stammgelaende : return CLLocation(latitude: 48.14887567648079, longitude: 11.568029074814328)
