@@ -15,7 +15,7 @@ struct StudyRoomWidgetScreen: View {
         Group {
             switch(self.studyRoomWidgetVM.status) {
             case .error:
-                TextWidgetView(text: "No nearby study rooms.")
+                EmptyView() //muss mann noch besser handeln -> keine study rooms nearby
             case .loading:
                 WidgetLoadingView(text: "Searching nearby study rooms")
             case .success:

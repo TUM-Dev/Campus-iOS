@@ -28,10 +28,14 @@ struct MoviesScreen: View {
             case .loading, .na:
                 LoadingView(text: "Fetching News")
             case .failed(let error):
-                FailedView(
-                    errorDescription: error.localizedDescription,
-                    retryClosure: vm.getMovies
-                )
+                if isWidget {
+                    
+                } else {
+                    FailedView(
+                        errorDescription: error.localizedDescription,
+                        retryClosure: vm.getMovies
+                    )
+                }
             }
         }.task {
             await vm.getMovies()

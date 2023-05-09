@@ -15,7 +15,7 @@ struct CafeteriaWidgetScreen: View {
         Group {
             switch(viewModel.status) {
             case .error:
-                TextWidgetView(text: "No nearby cafeteria.")
+                EmptyView() //muss mann noch besser handeln -> keine study rooms nearby
             case .loading:
                 WidgetLoadingView(text: "Searching nearby cafeteria")
             default:

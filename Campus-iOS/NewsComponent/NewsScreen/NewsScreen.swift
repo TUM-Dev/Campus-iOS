@@ -28,10 +28,14 @@ struct NewsScreen: View {
             case .loading, .na:
                 LoadingView(text: "Fetching News")
             case .failed(let error):
-                FailedView(
-                    errorDescription: error.localizedDescription,
-                    retryClosure: vm.getNewsSources
-                )
+                if isWidget {
+                    EmptyView()
+                } else {
+                    FailedView(
+                        errorDescription: error.localizedDescription,
+                        retryClosure: vm.getNewsSources
+                    )
+                }
             }
         }.task {
             await vm.getNewsSources()
