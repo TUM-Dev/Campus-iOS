@@ -64,7 +64,7 @@ class AuthenticationHandler {
         do {
             let tokenName = "TCA - \(await UIDevice.current.name)"
             
-            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName))
+            let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName), forcedRefresh: true)
             print(token.value)
             self.credentials = Credentials.tumID(tumID: tumID, token: token.value)
             completion(.success(token.value))
@@ -75,24 +75,27 @@ class AuthenticationHandler {
         
     }
     
-    func confirmToken(callback: @escaping (Result<Bool,Error>) -> Void) async {
-        if let credentials = credentials {
-            switch credentials {
-            case .noTumID: callback(.failure(LoginError.missingToken))
-            case .tumID(tumID: _, token: let token),
-                    .tumIDAndKey(tumID: _, token: let token, key: _):
+    func confirmToken() async -> Result<Bool, Error> {
+        guard let credentials else {
+            return .failure(TUMOnlineAPIError.invalidToken)
+        }
+        
+        switch credentials {
+            case .noTumID:
+                return .failure(LoginError.missingToken)
+            case .tumID(tumID: _, token: let token), .tumIDAndKey(tumID: _, token: let token, key: _):
                 do {
-                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token)
+                    let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token, forcedRefresh: true)
+                    
                     if confirmation.value {
-                        callback(.success(true))
+                        return .success(true)
                     } else {
-                        callback(.failure(TUMOnlineAPIError.tokenNotConfirmed))
+                        return .failure(TUMOnlineAPIError.tokenNotConfirmed)
                     }
                 } catch {
                     print(error.localizedDescription)
-                    callback(.failure(LoginError.serverError(message: error.localizedDescription)))
+                    return .failure(LoginError.serverError(message: error.localizedDescription))
                 }
-            }
         }
     }
 
@@ -100,7 +103,7 @@ class AuthenticationHandler {
         #if !targetEnvironment(macCatalyst)
         Analytics.logEvent("logout", parameters: nil)
         #endif
-        // deletes uthenticationHandler.keychain[data: "credentials"]
+        // deletes authenticationHandler.keychain[data: "credentials"]
         credentials = nil
     }
 

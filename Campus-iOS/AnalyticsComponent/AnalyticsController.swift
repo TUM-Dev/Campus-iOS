@@ -33,6 +33,7 @@ struct AnalyticsController {
         print("Info: app usage data upload is disabled.")
         return
         
+        /*
         if !didOptIn {
             return
         }
@@ -89,5 +90,6 @@ struct AnalyticsController {
         request.setValue(postToken, forHTTPHeaderField: "Authorization")
 
         let (_, _) = try await URLSession.shared.data(for: request)
+         */
     }
 }

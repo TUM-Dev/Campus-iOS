@@ -38,7 +38,7 @@ struct TUMSexyView: View {
         .searchable(text: $searchText)
         .navigationTitle("Useful Links")
         .sheet(item: $shownLink) { link in
-            if let link = link, let target = link.target, let url = URL(string: target) {
+            if let target = link.target, let url = URL(string: target) {
                 SFSafariViewWrapper(url: url)
             }
         }
