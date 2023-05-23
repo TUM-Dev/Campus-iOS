@@ -313,7 +313,11 @@
 		97997AE7277234120079F809 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 97997AE6277234120079F809 /* XMLCoder */; };
 		97C9AB1227732A200097B10C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 97C9AB1127732A200097B10C /* SwiftUICharts */; };
 		97F8A79327E641570099EE83 /* AcademicDegree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F8A79227E641570099EE83 /* AcademicDegree.swift */; };
+		9926FD432A1D0BC000EE3ECB /* GradesStudyProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9926FD422A1D0BC000EE3ECB /* GradesStudyProgramView.swift */; };
+		9926FD452A1D0DBC00EE3ECB /* GradesSemesterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9926FD442A1D0DBC00EE3ECB /* GradesSemesterView.swift */; };
 		99706870298569E10028D235 /* CrashlyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9970686F298569E10028D235 /* CrashlyticsService.swift */; };
+		99EE85342A0920AE00973916 /* AverageGradesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EE85332A0920AE00973916 /* AverageGradesService.swift */; };
+		99EE85362A09216600973916 /* AverageGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99EE85352A09216600973916 /* AverageGrade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -634,7 +638,11 @@
 		97270F5927AB2A4900BB25E4 /* Array+Rearrange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Rearrange.swift"; sourceTree = "<group>"; };
 		974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlowBorder.swift; sourceTree = "<group>"; };
 		97F8A79227E641570099EE83 /* AcademicDegree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicDegree.swift; sourceTree = "<group>"; };
+		9926FD422A1D0BC000EE3ECB /* GradesStudyProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesStudyProgramView.swift; sourceTree = "<group>"; };
+		9926FD442A1D0DBC00EE3ECB /* GradesSemesterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSemesterView.swift; sourceTree = "<group>"; };
 		9970686F298569E10028D235 /* CrashlyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsService.swift; sourceTree = "<group>"; };
+		99EE85332A0920AE00973916 /* AverageGradesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageGradesService.swift; sourceTree = "<group>"; };
+		99EE85352A09216600973916 /* AverageGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageGrade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1244,6 +1252,7 @@
 				36108C0C27A307F9007DC62D /* Grade.swift */,
 				36108C0D27A307F9007DC62D /* Modus.swift */,
 				97F8A79227E641570099EE83 /* AcademicDegree.swift */,
+				99EE85352A09216600973916 /* AverageGrade.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1252,6 +1261,7 @@
 			isa = PBXGroup;
 			children = (
 				36108C0F27A307F9007DC62D /* GradesService.swift */,
+				99EE85332A0920AE00973916 /* AverageGradesService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1264,6 +1274,8 @@
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
 				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
 				08573BA6287B6152006AC06F /* GradeWidgetView.swift */,
+				9926FD422A1D0BC000EE3ECB /* GradesStudyProgramView.swift */,
+				9926FD442A1D0DBC00EE3ECB /* GradesSemesterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2142,6 +2154,7 @@
 				3654F37D2851710E008AD5DC /* RoomFinderDetailsMapImagesView.swift in Sources */,
 				36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */,
 				1FACF3F92996A49300A0B8AC /* TUMDevAppAPIOld.swift in Sources */,
+				99EE85362A09216600973916 /* AverageGrade.swift in Sources */,
 				36108BBF27A3046B007DC62D /* LectureDetailsService.swift in Sources */,
 				0805E72C28CC2278003C5CFD /* HashFunction.swift in Sources */,
 				36982BD827A2739000515847 /* Collapsible.swift in Sources */,
@@ -2260,6 +2273,7 @@
 				1F189E9C29968D880056BBD8 /* TUMCabeAPIError.swift in Sources */,
 				1F189E8F29968CFC0056BBD8 /* TUMCabeAPI.swift in Sources */,
 				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
+				9926FD432A1D0BC000EE3ECB /* GradesStudyProgramView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
@@ -2287,6 +2301,7 @@
 				36108BFC27A30517007DC62D /* MovieCard.swift in Sources */,
 				1F71E82529E4613F00379428 /* NavigaTumMapImagesView.swift in Sources */,
 				36BB6F6A27AFD2A100F224AB /* PhoneExtension.swift in Sources */,
+				9926FD452A1D0DBC00EE3ECB /* GradesSemesterView.swift in Sources */,
 				36AF61DC27A2FD7800FEBD98 /* NetworkingAPIOld.swift in Sources */,
 				1F71E82329E4613F00379428 /* NavigaTumDetailsBaseView.swift in Sources */,
 				08DFB97528664CFC00E357DF /* TuitionDetailsView.swift in Sources */,
@@ -2327,6 +2342,7 @@
 				36108BC827A3046B007DC62D /* LecturesDetailView.swift in Sources */,
 				3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */,
 				1FB82E3628F96C9E007B1858 /* TokenPermissionsViewModel.swift in Sources */,
+				99EE85342A0920AE00973916 /* AverageGradesService.swift in Sources */,
 				36108C1B27A307FA007DC62D /* GradesService.swift in Sources */,
 				1F189E8D29968CE50056BBD8 /* TUMOnlineAPI.swift in Sources */,
 				36AF61E527A2FD7800FEBD98 /* BackendError.swift in Sources */,
