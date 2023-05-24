@@ -132,7 +132,7 @@ struct TokenConfirmationView: View {
                         if !tokenPermissionButton {
                             Button(action: {
                                 Task {
-                                    await  self.viewModel.checkAuthorization() { result in
+                                    await self.viewModel.checkAuthorization() { result in
                                         switch result {
                                         case .success:
                                             withAnimation {
@@ -178,7 +178,11 @@ struct TokenConfirmationView: View {
                                         }
                                     }
                                 case .active:
+<<<<<<< HEAD
                                     NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: viewModel.model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+=======
+                                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.viewModel.model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+>>>>>>> b197426bf4be744ed54446b5c6953f4a1c782ce2
                                         Text("Next")
                                             .lineLimit(1)
                                             .font(.body)

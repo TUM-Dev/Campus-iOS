@@ -34,7 +34,8 @@ struct CafeteriaWidgetView: View {
             default:
                 if let cafeteria = viewModel.cafeteria,
                    let title = cafeteria.title {
-                   CafeteriaWidgetContent(
+
+                    CafeteriaWidgetContent(
                         size: size,
                         cafeteria: title,
                         dishes: viewModel.menu?.getDishes() ?? [],

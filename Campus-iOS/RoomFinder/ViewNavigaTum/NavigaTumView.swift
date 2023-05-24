@@ -9,7 +9,7 @@ import SwiftUI
 struct NavigaTumView: View {
     @ObservedObject var model: Model
     @StateObject var viewModel = NavigaTumViewModel()
-    @State private var searchText = ""
+    @State var searchText = ""
 
     var body: some View {
         NavigaTumListView(model: self.model, viewModel: self.viewModel)

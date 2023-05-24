@@ -47,7 +47,9 @@ struct LectureDetailsEventInfoView: View {
                     )
                     HStack {
                         Spacer()
-                        NavigationLink(destination: RoomFinderView(model: viewModel.model, viewModel: RoomFinderViewModel(), searchText: extract(room: self.location))) {
+                        NavigationLink(destination: NavigaTumView(model: viewModel.model, searchText: extract(room: self.location))
+                            .navigationTitle(Text("Roomfinder"))
+                            .navigationBarTitleDisplayMode(.large)) {
                             HStack {
                                 Text("Open in RoomFinder")
                                 Image(systemName: "arrow.right.circle")

@@ -25,6 +25,8 @@ struct StudyRoomDetailsScreen: View {
                     Spacer()
                     LoadingView(text: "Fetching RoomImages")
                     Spacer()
+                }.task {
+                    await vm.getRoomImageMapping(for: room)
                 }
             case .failed(let error):
                 VStack {

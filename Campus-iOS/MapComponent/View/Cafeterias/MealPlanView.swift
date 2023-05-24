@@ -44,9 +44,8 @@ selectedMenu: Menu
                             }
                         }
                         .padding(.horizontal, 5.0)
-                    
                         
-                        MenuScreen(menu: selectedMenu)
+                    MenuScreen(menu: selectedMenu)
                     }
                 } else {
                     Text("No Menus available")
