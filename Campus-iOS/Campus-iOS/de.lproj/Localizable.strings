@@ -42,7 +42,7 @@
 "No Links" = "Keine Links";
 "Cafeteria Map" = "Mensa Landkarte";
 "Search Rooms" = "Räume suchen";
-"Room Finder" = "Room Finder";
+"Roomfinder" = "Roomfinder";
 "Unable to find room" = "Raum '%@' konnte nicht gefunden werden";
 "No Menu" = "Kein Menü";
 "List View" = "Listenansicht";
@@ -170,7 +170,7 @@
 "Unknown" = "Unbekannt";
 
 // Roomfinder
-"Roomfinder" = "Raum Finder";
+"Roomfinder" = "Roomfinder";
 "Building" = "Gebäude";
 "Room" = "Raum";
 "Detail" = "Detail";
