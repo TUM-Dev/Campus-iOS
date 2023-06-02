@@ -216,10 +216,9 @@ struct ProfileView: View {
                 }
                 
             }
-            .sheet(item: $selectedLink) { selectedLink in
-                // This if clause is needed since after logout via the ProfileView an issue occured. This fixes the weird behaviour.
-                SFSafariViewWrapper(url: selectedLink)
-            }
+            .sheet(isPresented: $showSheet) {
+                            if showSheet { SFSafariViewWrapper(url: url!) }
+                        }
         }.task {
             await vm.getProfile(forcedRefresh: false)
         }
