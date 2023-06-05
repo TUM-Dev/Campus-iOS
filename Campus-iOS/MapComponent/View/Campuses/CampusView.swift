@@ -163,7 +163,7 @@ struct CampusView: View {
                     
                     Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: pointsOfInterest) {item in
                         MapAnnotation(coordinate: item.coordinate) {
-                            PlaceAnnotationView(symbol: item.symbol)
+                            PlaceAnnotationView(item: item)
                         }
                     }
                     .frame(width: Size.cardWidth, height: Size.cardWidth)
@@ -185,29 +185,4 @@ struct CampusView: View {
         await self.vmNavi.fetch(searchString: searchValue)
     }
     
-    struct AnnotatedItem: Identifiable {
-        let id = UUID()
-        var name: String
-        var coordinate: CLLocationCoordinate2D
-        var symbol: Image
-    }
-    
-    struct PlaceAnnotationView: View {
-        var symbol: Image
-        var body: some View {
-            VStack(spacing: 0) {
-                symbol
-                    .resizable()
-                    .foregroundColor(Color.highlightText)
-                    .frame(width: 20, height: 20)
-                    .background(.white)
-                    .clipShape(Circle())
-                
-                Image(systemName: "arrowtriangle.down.fill")
-                    .font(.caption)
-                    .foregroundColor(Color.highlightText)
-                    .offset(x: 0, y: -5)
-            }
-        }
-    }
 }
