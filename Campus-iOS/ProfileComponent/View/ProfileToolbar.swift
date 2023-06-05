@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ProfileToolbar: View {
-    @ObservedObject var model: Model
+    @StateObject var model: Model
+    @State var showProfile = false
     
     var body: some View {
         
-        Button(action: {model.showProfile.toggle()}) {
+        Button(action: {self.showProfile.toggle()}) {
             Image(systemName: "person.crop.circle")
         }
-        .sheet(isPresented: $model.showProfile) {
+        .sheet(isPresented: $showProfile) {
             ProfileView(model: model)
         }
         

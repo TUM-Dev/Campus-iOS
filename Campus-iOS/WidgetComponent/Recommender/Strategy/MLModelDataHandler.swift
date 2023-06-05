@@ -160,7 +160,7 @@ class MLModelDataHandler {
     
     private func groupedTimes(from data: [AppUsageDataEntity]) -> [[Date.Time]] {
         let times = data.compactMap { $0.startTime?.time }
-        var result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold })
+        let result = times.groups(where: { Date.Time.minutesBetween($0, $1) <= timeNearbyThreshold })
         
         // Remove duplicate groups.
         return Array(Set(result))
@@ -168,7 +168,7 @@ class MLModelDataHandler {
     
     private func groupedDates(from data: [AppUsageDataEntity]) -> [[Date]] {
         let dates = data.compactMap { $0.startTime }
-        var result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold })
+        let result = dates.groups(where: { Calendar.current.dateComponents([.day], from: $0, to: $1).day! <= dateNearbyThreshold })
         
         // Remove duplicate groups.
         return Array(Set(result))

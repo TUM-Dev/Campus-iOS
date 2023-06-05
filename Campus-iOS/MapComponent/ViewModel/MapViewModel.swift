@@ -38,8 +38,8 @@ class MapViewModel: MapViewModelProtocol {
     
     private let mock: Bool
     
-    private let cafeteriaService: CafeteriasServiceProtocol
-    private let studyRoomsService: StudyRoomsServiceProtocol
+    private let cafeteriaService: CafeteriasService
+    private let studyRoomsService: StudyRoomsService
     
     var cafeterias: [Cafeteria] {
         get {
@@ -73,7 +73,7 @@ class MapViewModel: MapViewModelProtocol {
         }
     }
     
-    init(cafeteriaService: CafeteriasServiceProtocol, studyRoomsService: StudyRoomsServiceProtocol, mock: Bool = false) {
+    init(cafeteriaService: CafeteriasService, studyRoomsService: StudyRoomsService, mock: Bool = false) {
         self.cafeteriaService = cafeteriaService
         self.studyRoomsService = studyRoomsService
         self.mock = mock

@@ -33,13 +33,12 @@ struct CafeteriaWidgetView: View {
                 WidgetLoadingView(text: "Searching nearby cafeteria")
             default:
                 if let cafeteria = viewModel.cafeteria,
-                   let title = cafeteria.title,
-                   let coordinate = cafeteria.coordinate {
+                   let title = cafeteria.title {
                     CafeteriaWidgetContent(
                         size: size,
                         cafeteria: title,
-                        dishes: viewModel.menuViewModel?.getDishes() ?? [],
-                        coordinate: coordinate
+                        dishes: viewModel.menu?.getDishes() ?? [],
+                        coordinate: cafeteria.coordinate
                     )
                 } else {
                     TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
@@ -62,13 +61,13 @@ struct CafeteriaWidgetView: View {
             }
             .sheet(isPresented: $showDetails) {
                 VStack {
-                    if let cafeteria = viewModel.cafeteria, let mealVm = viewModel.mealPlanViewModel {
+                    if let cafeteria = viewModel.cafeteria {
                         CafeteriaView(
                             vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedCanteen: .constant(cafeteria),
                             canDismiss: false
                         )
-                        MealPlanView(viewModel: mealVm)
+                        MealPlanScreen(cafeteria: cafeteria)
                     } else {
                         ProgressView()
                     }
@@ -164,13 +163,16 @@ struct CompactMenuView: View {
 
 struct CompactDishView: View {
     
-    var dish: Dish
+    @StateObject var vm: DishViewModel
+    init(dish: Dish) {
+        self._vm = StateObject(wrappedValue: DishViewModel(dish: dish))
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(dish.name)
+            Text(vm.dish.name)
                 .lineLimit(1)
-            Text(DishView.formatPrice(dish: dish, pricingGroup: "students"))
+            Text(vm.formatPrice(dish: vm.dish, pricingGroup: "students"))
                 .font(.caption)
                 .bold()
         }

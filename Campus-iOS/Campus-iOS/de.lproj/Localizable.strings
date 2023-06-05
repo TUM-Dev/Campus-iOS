@@ -43,7 +43,7 @@
 "No Links" = "Keine Links";
 "Cafeteria Map" = "Mensa Landkarte";
 "Search Rooms" = "Räume suchen";
-"Room Finder" = "Room Finder";
+"Roomfinder" = "Roomfinder";
 "Unable to find room" = "Raum '%@' konnte nicht gefunden werden";
 "No Menu" = "Kein Menü";
 "List View" = "Listenansicht";
@@ -120,6 +120,8 @@
 "Lecture Search" = "Vorlesungssuche";
 "Unable to find lecture" = "Vorlesung kann nicht gefunden werden";
 "Choose Speaker" = "Wähle Vortragenden";
+"The search query must be at least 4 characters." = "Die Suchanfrage muss aus mindestens 4 Zeichen bestehen.";
+"Fetching Lectures" = "Lade Vorlesungen";
 
 // Grades
 "Fetching Grades" = "Lade Noten";
@@ -161,11 +163,12 @@
 "Unknown" = "Unbekannt";
 
 // Roomfinder
-"Roomfinder" = "Raum Finder";
+"Roomfinder" = "Roomfinder";
 "Building" = "Gebäude";
 "Room" = "Raum";
 "Detail" = "Detail";
 "Floor" = "Obergeschoß";
+"Room Details" = "Raum Details";
 
 // Map
 "Search ..." = "Suchen ...";

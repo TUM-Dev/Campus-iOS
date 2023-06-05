@@ -24,8 +24,7 @@ struct ImageFullScreenView: View {
             })
             .gesture(MagnificationGesture().onChanged { val in
                 self.scale = val.magnitude
-            }
-        )
+            })
     }
 }
 

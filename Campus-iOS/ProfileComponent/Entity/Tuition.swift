@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tuition: Entity {
+struct Tuition: Decodable {
     
     var amount: NSDecimalNumber?
     var deadline: Date?

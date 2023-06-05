@@ -12,7 +12,7 @@ struct PanelContentView: View {
     @StateObject var vm: MapViewModel
     
     @State private var searchString = ""
-    @State private var mealPlanViewModel: MealPlanViewModel?
+//    @State private var mealPlanViewModel: MealPlanViewModel?
     @State private var sortedGroups: [StudyRoomGroup] = []
     @State private var cafeteriasData = AppUsageData()
     @State private var studyRoomsData = AppUsageData()
@@ -37,13 +37,12 @@ struct PanelContentView: View {
                     .frame(width: 40, height: CGFloat(5.0))
                     .foregroundColor(Color.primary.opacity(0.2))
                 
-                if vm.selectedCafeteria != nil {
+                if let cafeteria = vm.selectedCafeteria {
                     CafeteriaView(vm: vm,
                                   selectedCanteen: $vm.selectedCafeteria,
                                   panelHeight: $panelHeight)
-                    if let viewModel = mealPlanViewModel {
-                        MealPlanView(viewModel: viewModel)
-                    }
+                    
+                    MealPlanScreen(cafeteria: cafeteria)
                     
                 } else if vm.selectedStudyGroup != nil {
                     StudyRoomGroupView(
@@ -140,11 +139,11 @@ struct PanelContentView: View {
                         }
                 }
             }
-            .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
-                if let cafeteria = optionalCafeteria {
-                    mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
-                }
-            }
+//            .onChange(of: vm.selectedCafeteria) { optionalCafeteria in
+//                if let cafeteria = optionalCafeteria {
+//                    mealPlanViewModel = MealPlanViewModel(cafeteria: cafeteria)
+//                }
+//            }
             .task(id: vm.panelPos) {
                 if panelHeight != vm.panelPos.rawValue {
                     withAnimation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0)) {

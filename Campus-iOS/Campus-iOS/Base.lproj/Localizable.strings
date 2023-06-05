@@ -43,7 +43,7 @@
 "No Links" = "No Links";
 "Cafeteria Map"  = "Cafeteria Map";
 "Search Rooms" = "Search Rooms";
-"Room Finder" = "Room Finder";
+"Roomfinder" = "Roomfinder";
 "Unable to find room" = "Unable to find room '%@'";
 "No Menu" = "No Menu";
 "List View" = "List View";
@@ -126,6 +126,8 @@
 "Lecture Search" = "Lecture Search";
 "Unable to find lecture" = "Unable to find lecture";
 "Choose Speaker" = "Choose Speaker";
+"The search query must be at least 4 characters." = "The search query must be at least 4 characters.";
+"Fetching Lectures" = "Fetching Lectures";
 
 // Grades
 "Fetching Grades" = "Fetching Grades";
@@ -172,6 +174,7 @@
 "Room" = "Room";
 "Detail" = "Detail";
 "Obergeschoß" = "Obergeschoß";
+"Room Details" = "Room Details";
 
 // Map
 "Search ..." = "Search ...";

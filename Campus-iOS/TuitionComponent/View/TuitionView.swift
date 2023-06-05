@@ -9,19 +9,16 @@ import SwiftUI
 
 struct TuitionView: View {
     
-    @ObservedObject var viewModel: ProfileViewModel
+    let tuition: Tuition
     @State private var data = AppUsageData()
     
     var body: some View {
         List {
             VStack(alignment: .center) {
                 Spacer(minLength: 0.10 * UIScreen.main.bounds.width)
-                TuitionCard(tuition: self.viewModel.tuition ?? Tuition.unknown)
+                TuitionCard(tuition: self.tuition)
             }
             .listRowBackground(Color(.systemGroupedBackground))
-        }
-        .refreshable {
-            self.viewModel.checkTuitionFunc()
         }
         .task {
             data.visitView(view: .tuition)
@@ -32,11 +29,11 @@ struct TuitionView: View {
     }
 }
 
-struct TuitionView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        TuitionView(viewModel: ProfileViewModel())
-        TuitionView(viewModel: ProfileViewModel())
-            .preferredColorScheme(.dark)
-    }
-}
+//struct TuitionView_Previews: PreviewProvider {
+//
+//    static var previews: some View {
+//        TuitionView(viewModel: ProfileViewModel())
+//        TuitionView(viewModel: ProfileViewModel())
+//            .preferredColorScheme(.dark)
+//    }
+//}

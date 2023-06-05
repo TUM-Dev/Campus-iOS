@@ -8,82 +8,83 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @StateObject var vm: ProfileViewModel
+    
     @State var showActionSheet = false
-    @ObservedObject var model: Model
     @AppStorage("useBuildInWebView") var useBuildInWebView: Bool = true
     @AppStorage("calendarWeekDays") var calendarWeekDays: Int = 7
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) var dismiss
     @State var isWebViewShowed = false
-    @State var selectedLink: URL? = nil
-
+    @State private var showSheet: Bool = false
+    @State private var url: URL?
+    
+    init(model: Model) {
+        self._vm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
+        self.url = .init(string: "https://google.com")
+    }
+  
     var body: some View {
-        
         NavigationView {
-            
             List {
-                NavigationLink(destination: PersonDetailedView(withProfile: self.model.profile.profile ?? ProfileViewModel.defaultProfile)) {
-                    HStack(spacing: 24) {
-                        self.model.profile.profileImage
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 75, height: 75)
-                            .foregroundColor(Color(.secondaryLabel))
+                if case .success(let profile) = vm.profileState {
+                    NavigationLink(destination: PersonDetailedScreen(model: self.vm.model, profile: profile)) {
                         
-                        VStack(alignment: .leading) {
-                            if self.model.isUserAuthenticated {
-                                Text(self.model.profile.profile?.fullName ?? "TUM Student")
-                                    .font(.title2)
-                            } else {
-                                Text("Not logged in")
-                                    .font(.title2)
-                            }
-                            
-                            Text(self.model.profile.profile?.tumID ?? "TUM ID")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    .padding(.vertical, 6)
-                }.disabled(!self.model.isUserAuthenticated)
+                        ProfileCell(model: self.vm.model, profile: profile)
+                    }.disabled(!self.vm.model.isUserAuthenticated)
+                } else {
+                    ProfileCell(model: self.vm.model, profile: ProfileViewModel.defaultProfile)
+                }
                 
-                ProfileMyTumSection()
+                Section("MY TUM") {
+                    TuitionScreen(vm: self.vm)
+                    
+                    NavigationLink(destination: PersonSearchScreen(model: self.vm.model).navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
+                        Label("Person Search", systemImage: "magnifyingglass")
+                    }
+                    .disabled(!self.vm.model.isUserAuthenticated)
+                    
+                    NavigationLink(destination: LectureSearchScreen(model: vm.model).navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
+                        Label("Lecture Search", systemImage: "brain.head.profile")
+                    }
+                    .disabled(!self.vm.model.isUserAuthenticated)
+                }
                 
                 Section("GENERAL") {
-                    NavigationLink(destination: TUMSexyView().navigationBarTitle(Text("Useful Links"))) {
+                    NavigationLink(destination: TUMSexyScreen().navigationBarTitle(Text("Useful Links"))) {
                         Label("TUM.sexy", systemImage: "heart")
                     }
                     
                     NavigationLink(
-                        destination: RoomFinderView(model: self.model)
+                        destination: NavigaTumView(model: self.vm.model)
                             .navigationTitle(Text("Roomfinder"))
                             .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
-                    NavigationLink(destination: NewsView(viewModel: NewsViewModel())
-                                    .navigationBarTitle(Text("News"))
-                                    .navigationBarTitleDisplayMode(.large)
+                    NavigationLink(destination: NewsScreen()
+                        .navigationBarTitle(Text("News"))
+                        .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("News", systemImage: "newspaper")
                     }
                     
-                    NavigationLink(destination: MoviesView()
-                                    .navigationBarTitle(Text("Movies"))
-                                    .navigationBarTitleDisplayMode(.large)
+                    NavigationLink(destination: MoviesScreen()
+                        .navigationBarTitle(Text("Movies"))
+                        .navigationBarTitleDisplayMode(.large)
                     ) {
                         Label("Movies", systemImage: "film")
                     }
                     
-                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
-                        if self.model.isUserAuthenticated {
+                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.vm.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
+                        if self.vm.model.isUserAuthenticated {
                             Label("Token Permissions", systemImage: "key")
                         } else {
                             Label("Token Permissions (You are logged out)", systemImage: "key")
                         }
                         
-                    }.disabled(!self.model.isUserAuthenticated)
+                    }.disabled(!self.vm.model.isUserAuthenticated)
                 }
                 
                 Section() {
@@ -114,15 +115,18 @@ struct ProfileView: View {
                 Section("GET IN CONTACT") {
                     if self.useBuildInWebView {
                         Button("Join Beta") {
-                            self.selectedLink = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")
+                            self.url = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!
+                            showSheet = true
                         }
                         
                         Button("TUM Dev on Github") {
-                            self.selectedLink = URL(string: "https://github.com/TUM-Dev")
+                            self.url = URL(string: "https://github.com/TUM-Dev")!
+                            showSheet = true
                         }
                         
                         Button("TUM Dev Website") {
-                            self.selectedLink = URL(string: "https://tum.app")
+                            self.url = URL(string: "https://tum.app")!
+                            showSheet = true
                         }
                     } else {
                         Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
@@ -136,7 +140,7 @@ struct ProfileView: View {
                         let mailToString = "mailto:app@tum.de?subject=[IOS]&body=Hello I have an issue...".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
                         let mailToUrl = URL(string: mailToString!)!
                         if UIApplication.shared.canOpenURL(mailToUrl) {
-                                UIApplication.shared.open(mailToUrl, options: [:])
+                            UIApplication.shared.open(mailToUrl, options: [:])
                         }
                     }
                 }
@@ -144,15 +148,15 @@ struct ProfileView: View {
                 Section() {
                     HStack(alignment: .bottom) {
                         Spacer()
-                        if model.isUserAuthenticated {
+                        if vm.model.isUserAuthenticated {
                             Button(action: {
-                                model.logout()
+                                vm.model.logout()
                             }) {
                                 Text("Sign Out").foregroundColor(.red)
                             }
                         } else {
                             Button(action: {
-                                model.isLoginSheetPresented = true
+                                vm.model.isLoginSheetPresented = true
                             }) {
                                 Text("Sign In").foregroundColor(.green)
                             }
@@ -190,30 +194,67 @@ struct ProfileView: View {
                 }
                 .listRowBackground(Color.clear)
             }
-            .sheet(isPresented: $model.isLoginSheetPresented) {
+            .sheet(isPresented: $vm.model.isLoginSheetPresented) {
                 NavigationView {
-                    LoginView(model: model)
+                    LoginView(model: vm.model)
                 }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: {model.showProfile.toggle()}) {
+                Button {
+                    dismiss()
+                } label: {
                     Text("Done").bold()
                 }
+
             }
-            .sheet(item: $selectedLink) { selectedLink in
-                if let link = selectedLink {
-                    SFSafariViewWrapper(url: link)
-                }
+            .sheet(isPresented: $showSheet) {
+                if showSheet { SFSafariViewWrapper(url: url!) }
             }
+        }.task {
+            await vm.getProfile(forcedRefresh: false)
         }
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
+struct ProfileCell: View {
+    @StateObject var model: Model
+    let profile: Profile
     
-    static var previews: some View {
-        ProfileView(model: MockModel()).environmentObject(MockModel())
+    var body: some View {
+        HStack(spacing: 24) {
+            if let image = profile.image {
+                image
+                    .resizable()
+                    .clipShape(Circle())
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 75, height: 75)
+                    .foregroundColor(Color(.secondaryLabel))
+            } else {
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .clipShape(Circle())
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 75, height: 75)
+                    .foregroundColor(Color(.secondaryLabel))
+            }
+
+            VStack(alignment: .leading) {
+                if self.model.isUserAuthenticated {
+                    Text(profile.fullName)
+                        .font(.title2)
+                    Text(profile.tumID ?? "TUM ID")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                } else {
+                    Text("Not logged in")
+                        .font(.title2)
+                }
+                
+                
+            }
+        }
+        .padding(.vertical, 6)
     }
 }

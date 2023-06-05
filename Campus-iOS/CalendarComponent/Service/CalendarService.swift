@@ -1,0 +1,16 @@
+//
+//  CalendarService.swift
+//  Campus-iOS
+//
+//  Created by David Lin on 20.01.23.
+//
+
+import Foundation
+
+struct CalendarService: ServiceTokenProtocol {
+    func fetch(token: String, forcedRefresh: Bool = false) async throws -> [CalendarEvent] {
+        let response: TUMOnlineAPI.CalendarResponse = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.calendar, token: token, forcedRefresh: forcedRefresh)
+        
+        return response.event
+    }
+}

@@ -131,19 +131,21 @@ struct TokenConfirmationView: View {
                         
                         if !tokenPermissionButton {
                             Button(action: {
-                                self.viewModel.checkAuthorization() { result in
-                                    switch result {
-                                    case .success:
-                                        withAnimation {
-                                            tokenState = .active
-                                            buttonBackgroundColor = .green
-                                            showTokenHelp = false
-                                        }
-                                    case .failure(_):
-                                        withAnimation {
-                                            tokenState = .inactive
-                                            buttonBackgroundColor = .red
-                                            showTokenHelp = true
+                                Task {
+                                    await self.viewModel.checkAuthorization() { result in
+                                        switch result {
+                                        case .success:
+                                            withAnimation {
+                                                tokenState = .active
+                                                buttonBackgroundColor = .green
+                                                showTokenHelp = false
+                                            }
+                                        case .failure(_):
+                                            withAnimation {
+                                                tokenState = .inactive
+                                                buttonBackgroundColor = .red
+                                                showTokenHelp = true
+                                            }
                                         }
                                     }
                                 }
@@ -176,17 +178,15 @@ struct TokenConfirmationView: View {
                                         }
                                     }
                                 case .active:
-                                    if let model = self.viewModel.model {
-                                        NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: model)).navigationTitle("Check Permissions"), isActive: $isActive) {
-                                            Text("Next")
-                                                .lineLimit(1)
-                                                .font(.body)
-                                                .frame(width: 200, height: 48, alignment: .center)
-                                                .foregroundColor(.white)
-                                                .background(.green)
-                                                .cornerRadius(10)
-                                                .buttonStyle(.plain)
-                                        }
+                                    NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.viewModel.model)).navigationTitle("Check Permissions"), isActive: $isActive) {
+                                        Text("Next")
+                                            .lineLimit(1)
+                                            .font(.body)
+                                            .frame(width: 200, height: 48, alignment: .center)
+                                            .foregroundColor(.white)
+                                            .background(.green)
+                                            .cornerRadius(10)
+                                            .buttonStyle(.plain)
                                     }
                                 }
                             }
@@ -255,11 +255,7 @@ struct TokenConfirmationView: View {
     
     private func switchSteps() async {
         // Delay of 5 seconds (1 second = 1_000_000_000 nanoseconds)
-        guard let model = self.viewModel.model else {
-            return
-        }
-        
-        while (!model.isUserAuthenticated) {
+        while (!self.viewModel.model.isUserAuthenticated) {
             switch currentStep {
             case 1:
                 try? await Task.sleep(nanoseconds: 5_160_000_000)

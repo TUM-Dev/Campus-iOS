@@ -11,6 +11,7 @@ import KVKCalendar
 import Firebase
 
 @main
+@MainActor
 struct CampusApp: App {
     @StateObject var model: Model = Model()
     
@@ -46,13 +47,29 @@ struct CampusApp: App {
                 })
                 .environmentObject(model)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .task {
+                    guard let credentials = model.loginController.credentials else {
+                        model.isUserAuthenticated = false
+                        model.isLoginSheetPresented = true
+                        return
+                    }
+                    
+                    switch credentials {
+                        case .noTumID:
+                            model.isUserAuthenticated = false
+                            model.isLoginSheetPresented = false
+                    case .tumID(tumID: _, token: _), .tumIDAndKey(tumID: _, token: _, key: _):
+                            model.isUserAuthenticated = true
+                            model.isLoginSheetPresented = false
+                    }
+                }
         }
     }
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
             NavigationView {
-                CalendarContentView(
+                CalendarScreen(
                     model: model,
                     refresh: $model.isUserAuthenticated
                 )

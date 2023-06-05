@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyRoomAttribute: Entity {
+struct StudyRoomAttribute: Decodable {
     var detail: String?
     var name: String?
 

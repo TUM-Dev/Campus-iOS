@@ -19,20 +19,22 @@ struct RoomFinderView: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onChange(of: self.searchText) { searchValue in
                 if searchValue.count > 3 {
-                    search(searchValue)
+                    Task {
+                        await search(searchValue)
+                    }
                 }
             }
-            .onAppear {
+            .task {
                 if !searchText.isEmpty {
-                    search(searchText)
+                    await search(searchText)
                 }
             }
             .animation(.default, value: self.viewModel.result)
         
     }
     
-    func search(_ searchValue: String) {
-        self.viewModel.fetch(searchString: searchValue)
+    func search(_ searchValue: String) async {
+        await self.viewModel.fetch(searchString: searchValue)
     }
 }
 
