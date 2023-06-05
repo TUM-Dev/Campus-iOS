@@ -59,7 +59,7 @@ class AuthenticationHandler {
             }
         }
     }
-    
+
     func createToken(tumID: String, completion: @escaping (Result<String,Error>) -> Void) async {
         do {
             let tokenName = "TCA - \(await UIDevice.current.name)"
@@ -72,7 +72,6 @@ class AuthenticationHandler {
             print(error)
             completion(.failure(LoginError.serverError(message: error.localizedDescription)))
         }
-        
     }
     
     func confirmToken() async -> Result<Bool, Error> {
