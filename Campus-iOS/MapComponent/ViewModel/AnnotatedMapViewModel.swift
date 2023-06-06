@@ -14,6 +14,8 @@ class AnnotatedMapViewModel: ObservableObject {
     @Published var cafeterias = [Cafeteria]()
     @Published var studyRoomGroups = [StudyRoomGroup]()
     @Published var rooms = [NavigaTumNavigationEntity]()
+    @Published var annotationCloser = false //remove
+    @Published var openAnnotation: UUID?
     
     func addCafeterias(cafeterias: [Cafeteria]) {
         locations.append(contentsOf: cafeterias.map {TUMLocation(cafeteria: $0)})

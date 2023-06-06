@@ -14,6 +14,8 @@ struct TUMLocation: Identifiable {
     var name: String
     var coordinate: CLLocationCoordinate2D
     var symbol: Image
+    var annotationController = false
+    
     var studyRoomGroup: StudyRoomGroup?
     var cafeteria: Cafeteria?
     var room: NavigaTumNavigationEntity?

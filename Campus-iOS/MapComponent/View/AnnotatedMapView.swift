@@ -24,7 +24,7 @@ struct AnnotatedMapView: View {
         
         Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: vm.locations) {item in
             MapAnnotation(coordinate: item.coordinate) {
-                AnnotationView(item: item)
+                AnnotationView(location: item, vm: self.vm)
             }
         }
         .frame(width: Size.cardWidth, height: Size.cardWidth)
