@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StudyRoomGroupView: View {
+struct StudyRoomGroupListView: View {
     
     @StateObject var vmAnno: AnnotatedMapViewModel
     @StateObject var vm: MapViewModel //old should be replaced

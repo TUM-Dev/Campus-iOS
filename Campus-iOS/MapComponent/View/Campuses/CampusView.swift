@@ -37,16 +37,15 @@ struct CampusView: View {
                         .font(.title)
                         .fontWeight(.bold)
                         .frame(width: Size.cardWidth, alignment: .leading)
-                        .padding(.bottom, 20)
                 }
                 
-                CafeteriasView(vm: self.vmAnno)
+                CafeteriasListView(vm: self.vmAnno)
                 
-                StudyRoomGroupView(vmAnno: self.vmAnno, vm: self.vm)
+                StudyRoomGroupListView(vmAnno: self.vmAnno, vm: self.vm)
                 
                 RoomsView(vm: self.vmAnno)
                 
-                AnnotatedMapView(vm: vmAnno, centerOfMap: campus.location.coordinate)
+                AnnotatedMapView(vm: vmAnno, centerOfMap: campus.location.coordinate, zoomLevel: 0.01)
                 
             }
             .padding(.bottom, 20)

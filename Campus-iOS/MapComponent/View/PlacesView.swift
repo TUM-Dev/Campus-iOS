@@ -17,7 +17,7 @@ struct PlacesView: View {
     var body: some View {
         ScrollView {
             VStack {
-                NavigationLink(destination: CafeteriasViewNEW(vm: self.vm).navigationBarTitle(Text("Cafeterias"))) {
+                NavigationLink(destination: CafeteriasView(vm: self.vm).navigationBarTitle(Text("Cafeterias"))) {
                     Label {
                         HStack {
                             Text("Cafeterias").foregroundColor(Color.primaryText)
@@ -35,7 +35,7 @@ struct PlacesView: View {
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
                 .padding(.bottom, 10)
                 
-                NavigationLink(destination: StudyRoomViewNEW(vm: self.vm, studyRoomGroups: self.vm.studyRoomsResponse.groups).navigationBarTitle(Text("Study Rooms"))) {
+                NavigationLink(destination: StudyRoomGroupsView(vm: self.vm, studyRoomGroups: self.vm.studyRoomsResponse.groups).navigationBarTitle(Text("Study Rooms"))) {
                     Label {
                         HStack {
                             Text("Study Rooms").foregroundColor(Color.primaryText)

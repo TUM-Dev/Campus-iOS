@@ -13,9 +13,9 @@ struct AnnotatedMapView: View {
     @StateObject var vm: AnnotatedMapViewModel
     @State private var region: MKCoordinateRegion
     
-    internal init(vm: AnnotatedMapViewModel, centerOfMap: CLLocationCoordinate2D) {
+    internal init(vm: AnnotatedMapViewModel, centerOfMap: CLLocationCoordinate2D, zoomLevel: Double) {
         self._vm = StateObject(wrappedValue: vm)
-        self.region = MKCoordinateRegion(center: centerOfMap, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.region = MKCoordinateRegion(center: centerOfMap, span: MKCoordinateSpan(latitudeDelta: zoomLevel, longitudeDelta: zoomLevel))
     }
     
     var body: some View {
