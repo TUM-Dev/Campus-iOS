@@ -39,7 +39,7 @@ struct StudyRoomViewNEW: View {
                     
                     VStack {
                         ForEach(loadedStudyRoomsGroups) { studyRoomGroup in
-                            NavigationLink(destination: StudyRoomGroupView(
+                            NavigationLink(destination: StudyRoomGroupViewOld(
                                 vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                                 selectedGroup: studyRoomGroup,
                                 rooms: vm.studyRoomsResponse.rooms ?? [],

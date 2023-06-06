@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CafeteriaView: View {
+struct CafeteriaViewOld: View {
     @StateObject var vm: MapViewModel
     
     @Binding var selectedCanteen: Cafeteria?
@@ -118,7 +118,7 @@ struct CanteenView_Previews: PreviewProvider {
     static var vm = MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService(), mock: true)
     
     static var previews: some View {
-        CafeteriaView(vm: vm, selectedCanteen: .constant(nil), panelHeight: $ph)
+        CafeteriaViewOld(vm: vm, selectedCanteen: .constant(nil), panelHeight: $ph)
             .previewInterfaceOrientation(.portrait)
     }
 }

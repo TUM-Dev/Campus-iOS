@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 struct Location: Decodable, Hashable {
     let latitude: CLLocationDegrees
@@ -22,6 +23,7 @@ struct Queue: Decodable, Hashable {
 }
 
 struct Cafeteria: Decodable, Hashable, Identifiable {
+    
     /*
      "location": {
         "address": "Arcisstraße 17, München",

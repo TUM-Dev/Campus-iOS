@@ -38,14 +38,14 @@ struct PanelContentView: View {
                     .foregroundColor(Color.primary.opacity(0.2))
                 
                 if let cafeteria = vm.selectedCafeteria {
-                    CafeteriaView(vm: vm,
+                    CafeteriaViewOld(vm: vm,
                                   selectedCanteen: $vm.selectedCafeteria,
                                   panelHeight: $panelHeight)
                     
                     MealPlanScreen(cafeteria: cafeteria)
                     
                 } else if vm.selectedStudyGroup != nil {
-                    StudyRoomGroupView(
+                    StudyRoomGroupViewOld(
                         vm: vm,
                         selectedGroup: vm.selectedStudyGroup,
                         rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom](),

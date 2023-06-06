@@ -62,7 +62,7 @@ struct CafeteriaWidgetView: View {
             .sheet(isPresented: $showDetails) {
                 VStack {
                     if let cafeteria = viewModel.cafeteria {
-                        CafeteriaView(
+                        CafeteriaViewOld(
                             vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedCanteen: .constant(cafeteria),
                             canDismiss: false

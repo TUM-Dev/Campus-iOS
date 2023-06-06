@@ -8,18 +8,10 @@
 import SwiftUI
 import MapKit
 
-// Temp should be replaced by unified location handling
-struct AnnotatedItem: Identifiable {
-    let id = UUID()
-    var name: String
-    var coordinate: CLLocationCoordinate2D
-    var symbol: Image
-}
-
-struct PlaceAnnotationView: View {
+struct AnnotationView: View {
     
     @State var isSelected = false
-    var item: AnnotatedItem
+    var item: TUMLocation
     
     var body: some View {
         ZStack {
