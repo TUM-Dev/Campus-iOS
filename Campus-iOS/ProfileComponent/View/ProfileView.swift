@@ -63,6 +63,10 @@ struct ProfileView: View {
                         Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
                     }
                     
+                    NavigationLink(destination: EventsView(model: self.vm.model)) {
+                        Label("Events", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
+                    }
+                    
                     NavigationLink(destination: NewsScreen()
                         .navigationBarTitle(Text("News"))
                         .navigationBarTitleDisplayMode(.large)
