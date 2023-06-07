@@ -13,11 +13,11 @@ struct EventsView: View {
     var body: some View {
         VStack {
             ForEach(viewModel.allTalks, id: \.title) { talk in
-                HStack {
-                    Text(talk.title)
-                }
+                EventElementView(event: talk)
             }
         }
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
         .task {
             await talks()
         }

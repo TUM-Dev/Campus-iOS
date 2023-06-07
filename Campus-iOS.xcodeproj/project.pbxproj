@@ -128,6 +128,7 @@
 		226CB51E2798DF9C0043ABCA /* Snap in Frameworks */ = {isa = PBXBuildFile; productRef = 226CB51D2798DF9C0043ABCA /* Snap */; settings = {ATTRIBUTES = (Required, ); }; };
 		2F0538BB2A30EEDA005C991C /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0538BA2A30EEDA005C991C /* EventViewModel.swift */; };
 		2F0538BD2A30F04D005C991C /* EventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0538BC2A30F04D005C991C /* EventsView.swift */; };
+		2F0538C22A31001E005C991C /* EventElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F0538C12A31001E005C991C /* EventElementView.swift */; };
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
 		2F6B6C322A30E56800EFE110 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B6C312A30E56800EFE110 /* EventsService.swift */; };
@@ -460,6 +461,7 @@
 		256D0D4227D77A9C00F5EC38 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		2F0538BA2A30EEDA005C991C /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		2F0538BC2A30F04D005C991C /* EventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsView.swift; sourceTree = "<group>"; };
+		2F0538C12A31001E005C991C /* EventElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventElementView.swift; sourceTree = "<group>"; };
 		2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoView.swift; sourceTree = "<group>"; };
 		2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoRowView.swift; sourceTree = "<group>"; };
 		2F6B6C312A30E56800EFE110 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
@@ -1048,13 +1050,22 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		2F0538BE2A30FF24005C991C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F0538BC2A30F04D005C991C /* EventsView.swift */,
+				2F0538C12A31001E005C991C /* EventElementView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2FFAB4272A26569700385BC4 /* EventsComponent */ = {
 			isa = PBXGroup;
 			children = (
+				2F0538BE2A30FF24005C991C /* Views */,
 				2F6B6C312A30E56800EFE110 /* EventsService.swift */,
 				2F6B6C332A30E6F200EFE110 /* TUMEvent.swift */,
 				2F0538BA2A30EEDA005C991C /* EventViewModel.swift */,
-				2F0538BC2A30F04D005C991C /* EventsView.swift */,
 			);
 			path = EventsComponent;
 			sourceTree = "<group>";
@@ -1491,10 +1502,10 @@
 		366F0E8227580CFB0091651D /* Campus-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				2FFAB4272A26569700385BC4 /* EventsComponent */,
 				9970686E298569CE0028D235 /* Crashlytics */,
 				085DE9C428AB7C3D0045095F /* AnalyticsComponent */,
 				3654F3692851710E008AD5DC /* RoomFinder */,
+				2FFAB4272A26569700385BC4 /* EventsComponent */,
 				36BB6F8027B39B2200F224AB /* LectureSearchComponent */,
 				36BB6F7627B26DCA00F224AB /* TuitionComponent */,
 				36BB6F5927AFCDF900F224AB /* PersonSearchComponent */,
@@ -2292,6 +2303,7 @@
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
 				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
 				1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */,
+				2F0538C22A31001E005C991C /* EventElementView.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,
 				36AF61EF27A2FD7800FEBD98 /* LoadingView.swift in Sources */,
