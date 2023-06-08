@@ -14,10 +14,21 @@ struct EventElementView: View {
         HStack(spacing: 15) {
             VStack (alignment: .leading, spacing: 5){
                 Text(event.title).font(.title2)
-                Text(event.user).font(.subheadline)
+//                Text(event.user + " | " + event.category).font(.subheadline)
+//                Text("By: " + event.user).font(.subheadline)
+                
+                HStack {
+                    Text(event.category)
+                        .foregroundColor(.blue)
+                        .font(.caption)
+                }
+                .padding(3)
+                .background(Color(.systemGray3))
+                .cornerRadius(3)
             }
             Spacer()
             Text(getFormattedDate(date: event.date)).font(.title2)
+            
             
         }
         .padding(20)
@@ -32,7 +43,7 @@ struct EventElementView: View {
 }
 
 struct EventElementView_Previews: PreviewProvider {
-static let event = TUMEvent(user: "Me", title: "Party!", category: "Software Engineering", date: Date(), link: "https://www.tum.dev", body: "Party!")
+static let event = TUMEvent(user: "Me", title: "Party!", category: "software engineering", date: Date(), link: "https://www.tum.dev", body: "Party!")
     static var previews: some View {
         EventElementView(event: event)
     }

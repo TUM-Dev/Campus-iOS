@@ -13,7 +13,9 @@ struct EventsView: View {
     var body: some View {
         VStack {
             ForEach(viewModel.allTalks, id: \.title) { talk in
-                EventElementView(event: talk)
+                NavigationLink(destination: EventDetailsView(event: talk)) {
+                    EventElementView(event: talk)
+                }
             }
         }
         .background(Color(.systemGray6))

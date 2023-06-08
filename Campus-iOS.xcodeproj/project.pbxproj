@@ -137,6 +137,7 @@
 		2F6B6C382A30E8F800EFE110 /* EventsAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B6C372A30E8F800EFE110 /* EventsAPIError.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
 		2FCF38B1286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */; };
+		2FFECAD92A31F355003F2360 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFECAD82A31F355003F2360 /* EventDetailsView.swift */; };
 		36108BB627A3046B007DC62D /* LectureDetailsViewModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */; };
 		36108BB727A3046B007DC62D /* LectureDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */; };
 		36108BB827A3046B007DC62D /* LecturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BA027A3046B007DC62D /* LecturesViewModel.swift */; };
@@ -470,6 +471,7 @@
 		2F6B6C372A30E8F800EFE110 /* EventsAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsAPIError.swift; sourceTree = "<group>"; };
 		2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoView.swift; sourceTree = "<group>"; };
 		2FCF38B0286C9B9200F10915 /* MovieDetailsDetailedInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoRowView.swift; sourceTree = "<group>"; };
+		2FFECAD82A31F355003F2360 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
 		36108B9E27A3046B007DC62D /* LectureDetailsViewModel+State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LectureDetailsViewModel+State.swift"; sourceTree = "<group>"; };
 		36108B9F27A3046B007DC62D /* LectureDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureDetailsViewModel.swift; sourceTree = "<group>"; };
 		36108BA027A3046B007DC62D /* LecturesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LecturesViewModel.swift; sourceTree = "<group>"; };
@@ -1055,6 +1057,7 @@
 			children = (
 				2F0538BC2A30F04D005C991C /* EventsView.swift */,
 				2F0538C12A31001E005C991C /* EventElementView.swift */,
+				2FFECAD82A31F355003F2360 /* EventDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2298,6 +2301,7 @@
 				1F04F173297AD41B0085F273 /* CalendarEvent.swift in Sources */,
 				1F189E9C29968D880056BBD8 /* TUMCabeAPIError.swift in Sources */,
 				1F189E8F29968CFC0056BBD8 /* TUMCabeAPI.swift in Sources */,
+				2FFECAD92A31F355003F2360 /* EventDetailsView.swift in Sources */,
 				08038F96287430FB0048DAE5 /* WidgetTitleView.swift in Sources */,
 				36FF906F2773BE8100F4C785 /* AuthenticationHandler.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
