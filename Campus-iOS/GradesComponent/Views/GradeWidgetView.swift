@@ -43,10 +43,10 @@ struct GradeWidgetView: View {
         }
         .onChange(of: refresh) { _ in
             if showDetails { return }
-            Task { await viewModel.reloadGradesAndAverageGrades() }
+            Task { await viewModel.getGrades() }
         }
         .task {
-            await viewModel.reloadGradesAndAverageGrades()
+            await viewModel.getGrades()
         }
     }
     
