@@ -20,12 +20,12 @@ class GradesViewModel: GradesViewModelProtocol {
     @Published var averageGradesState: APIState<[AverageGrade]> = .na
     
     let model: Model
-    private let service: GradesService
+    private let gradesService: GradesService
     private let averageGradesService: AverageGradesService
     
-    init(model: Model, service: GradesService, averageGradesService: AverageGradesService) {
+    init(model: Model, gradesService: GradesService, averageGradesService: AverageGradesService) {
         self.model = model
-        self.service = service
+        self.gradesService = gradesService
         self.averageGradesService = averageGradesService
     }
     
@@ -118,7 +118,7 @@ class GradesViewModel: GradesViewModelProtocol {
 
         do {
             self.gradesState = .success(
-                data: try await service.fetch(token: token, forcedRefresh: forcedRefresh)
+                data: try await gradesService.fetch(token: token, forcedRefresh: forcedRefresh)
             )
         } catch {
             self.gradesState = .failed(error: error)
