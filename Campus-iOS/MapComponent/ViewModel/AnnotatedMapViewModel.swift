@@ -29,7 +29,11 @@ class AnnotatedMapViewModel: ObservableObject {
     
     func addRooms(rooms: [NavigaTumNavigationEntity]) async {
         for room in rooms {
-            await locations.append(TUMLocation(room: room))
+            let tempVM = NavigaTumDetailsViewModel(id: room.id)
+            await tempVM.fetchDetails()
+            if let details = tempVM.details {
+                locations.append(TUMLocation(room: room, details: tempVM.details!))
+            }
         }
         self.rooms.append(contentsOf: rooms)
     }

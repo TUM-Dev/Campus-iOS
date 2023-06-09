@@ -141,7 +141,7 @@ struct DetailedStudyRoomWidgetContent: View {
                     Spacer()
                     
                     ForEach(rooms.prefix(DISPLAYED_ROOMS), id: \.id) { room in
-                        RoomDetailsView(room: room)
+                        StudyRoomDetailsViewWidget(room: room)
                             .padding(.bottom, 2)
                     }
                     
@@ -193,7 +193,7 @@ struct StudyRoomWidgetHeaderView: View {
     }
 }
 
-struct RoomDetailsView: View {
+struct StudyRoomDetailsViewWidget: View {
     
     let room: StudyRoom
     

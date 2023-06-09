@@ -14,12 +14,15 @@ struct CampusView: View {
     @StateObject var vm: MapViewModel
     @StateObject var vmNavi = NavigaTumViewModel()
     var vmAnno = AnnotatedMapViewModel()
+    @State private var loadedRooms = false
     
     init(campus: Campus, cafeterias: [Cafeteria], studyRooms: [StudyRoomGroup]?, vm: MapViewModel) {
         self.campus = campus
         self._vm = StateObject(wrappedValue: vm)
         vmAnno.addCafeterias(cafeterias: cafeterias)
-        vmAnno.addStudyRoomGroups(studyRoomGroups: studyRooms!) //forceunwrapping!!
+        if studyRooms != nil {
+            vmAnno.addStudyRoomGroups(studyRoomGroups: studyRooms!)
+        }
     }
     
     var body: some View {
@@ -52,10 +55,11 @@ struct CampusView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Color.primaryBackground)
-        .onAppear{
-            Task {
+        .task {
+            if !loadedRooms {
                 await getCampusRooms(self.campus.searchStringRooms)
                 await vmAnno.addRooms(rooms: vmNavi.searchResults.filter({$0.name.first?.isNumber ?? false})) //clean up
+                loadedRooms = true
             }
         }
     }

@@ -25,7 +25,7 @@ struct CampusCellView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.primaryText)
                 Spacer()
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: LocationView(location: TUMLocation(campus: self.campus))) {
                     Image(systemName: "mappin.circle")
                         .font(.system(size: 20))
                         .foregroundColor(.highlightText)

@@ -20,8 +20,8 @@ struct RoomsView: View {
                 VStack {
                     ForEach(vm.rooms) { entry in
                         NavigationLink(
-                            destination: NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: entry.id))
-                        ) {
+                            destination: RoomDetailsScreen(room: entry))
+                        {
                             VStack(alignment: .leading) {
                                 HStack {
                                     Image(systemName: "graduationcap.circle")
@@ -39,10 +39,6 @@ struct RoomsView: View {
                                     Divider()
                                 }
                             }
-                        }
-                        .task {
-                            let tempVm = NavigaTumDetailsViewModel(id: entry.id)
-                            await tempVm.fetchDetails()
                         }
                     }
                 }

@@ -18,7 +18,9 @@ struct TUMLocation: Identifiable {
     
     var studyRoomGroup: StudyRoomGroup?
     var cafeteria: Cafeteria?
+    
     var room: NavigaTumNavigationEntity?
+    var roomDetails: NavigaTumNavigationDetails?
 
     init(name: String, coordinate: CLLocationCoordinate2D, symbol: Image) {
         self.name = name
@@ -40,18 +42,17 @@ struct TUMLocation: Identifiable {
         self.studyRoomGroup = studyRoomGroup
     }
     
-    init(room: NavigaTumNavigationEntity) async {
+    init(room: NavigaTumNavigationEntity, details: NavigaTumNavigationDetails) {
         self.name = room.name
-        let tempVm = NavigaTumDetailsViewModel(id: room.id)
-        await tempVm.fetchDetails()
-        self.coordinate = CLLocationCoordinate2D(latitude: tempVm.details?.coordinates.latitude ?? 0, longitude: tempVm.details?.coordinates.longitude ?? 0) 
+        self.coordinate = CLLocationCoordinate2D(latitude: details.coordinates.latitude, longitude: details.coordinates.longitude)
         self.symbol = Image(systemName: "graduationcap.circle.fill")
         self.room = room
+        self.roomDetails = details
     }
     
     init(campus: Campus) {
         self.name = campus.rawValue
         self.coordinate = campus.location.coordinate
-        self.symbol = Image(systemName: "fork.knife.circle.fill")
+        self.symbol = Image(systemName: "building.2.crop.circle.fill")
     }
 }

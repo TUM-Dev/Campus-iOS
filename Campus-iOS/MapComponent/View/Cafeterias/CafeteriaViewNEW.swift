@@ -7,51 +7,64 @@
 
 import SwiftUI
 
-struct CafeteriaViewNEW: View {
+struct CafeteriaViewNEW: View { //Refactor
     
     @StateObject var vm: MealPlanViewModel
     let cafeteria: Cafeteria
     @State var isExpanded = false
     @State private var rotationAngle: Double = 0
+    let onlyMenu: Bool
     
     init(cafeteria: Cafeteria) {
         self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
         self.cafeteria = cafeteria
+        self.onlyMenu = false
+    }
+    
+    init(cafeteria: Cafeteria, onlyMenu: Bool) {
+        self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
+        self.cafeteria = cafeteria
+        self.onlyMenu = onlyMenu
     }
     
     var body: some View {
         VStack {
-            HStack {
-                VStack (alignment: .leading) {
-                    Text(cafeteria.name).font(.headline.bold())
-                        .padding(.bottom, 2)
-                    Button() {
-                        print("Button tapped!")
+            if onlyMenu {
+                Text("Menu")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(width: Size.cardWidth, alignment: .leading)
+            } else {
+                HStack {
+                    VStack (alignment: .leading) {
+                        Text(cafeteria.name).font(.headline.bold())
+                            .padding(.bottom, 2)
+                        NavigationLink(destination: LocationView(location: TUMLocation(cafeteria: self.cafeteria))) {
+                            Label("View Location", systemImage: "mappin.circle")
+                                .font(.footnote)
+                                .foregroundColor(.highlightText)
+                        }
+                    }
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            isExpanded.toggle()
+                            rotationAngle = isExpanded ? 90 : 0
+                        }
                     } label: {
-                        Label("View Location", systemImage: "arrow.up.forward.app")
+                        HStack {
+                            Text("Menu")
+                            Image(systemName: "chevron.right")
+                                .frame(width: 20)
+                                .rotationEffect(Angle(degrees: rotationAngle))
+                        }
+                        .padding(5)
+                        .foregroundColor(.primaryText)
                     }
-                    .font(.footnote)
-                    .foregroundColor(.highlightText)
-                }
-                Spacer()
-                Button {
-                    withAnimation {
-                        isExpanded.toggle()
-                        rotationAngle = isExpanded ? 90 : 0
-                    }
-                } label: {
-                    HStack {
-                        Text("Menu")
-                        Image(systemName: "chevron.right")
-                            .frame(width: 20)
-                            .rotationEffect(Angle(degrees: rotationAngle))
-                    }
-                    .padding(5)
-                    .foregroundColor(.primaryText)
-                }
-            }.padding(.horizontal)
+                }.padding(.horizontal)
+            }
             
-            if isExpanded {
+            if isExpanded || onlyMenu {
                 Group {
                     switch vm.state {
                     case .success(let menus):

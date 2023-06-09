@@ -43,6 +43,8 @@
 		100803462764E2C50013ED0E /* ProfileToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803452764E2C50013ED0E /* ProfileToolbar.swift */; };
 		100803482764E37A0013ED0E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100803472764E37A0013ED0E /* ProfileView.swift */; };
 		1E096B162940DC7300ED1EC0 /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */; };
+		1E2447C02A30B10700BEB44A /* RoomDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2447BF2A30B10700BEB44A /* RoomDetailsView.swift */; };
+		1E2447C42A331F5700BEB44A /* RoomDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2447C32A331F5700BEB44A /* RoomDetailsScreen.swift */; };
 		1E5EEEC629A3BCA500CD4381 /* CalendarWidgetViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */; };
 		1E62C81E29E9D629002E1F47 /* DishView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81D29E9D629002E1F47 /* DishView2.swift */; };
 		1E62C82029ED9F4F002E1F47 /* PersonDetailedScreenUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E62C81F29ED9F4F002E1F47 /* PersonDetailedScreenUser.swift */; };
@@ -416,6 +418,8 @@
 		100803452764E2C50013ED0E /* ProfileToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileToolbar.swift; sourceTree = "<group>"; };
 		100803472764E37A0013ED0E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1E096B152940DC7300ED1EC0 /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		1E2447BF2A30B10700BEB44A /* RoomDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsView.swift; sourceTree = "<group>"; };
+		1E2447C32A331F5700BEB44A /* RoomDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailsScreen.swift; sourceTree = "<group>"; };
 		1E5EEEC529A3BCA500CD4381 /* CalendarWidgetViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetViewNEW.swift; sourceTree = "<group>"; };
 		1E62C81D29E9D629002E1F47 /* DishView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView2.swift; sourceTree = "<group>"; };
 		1E62C81F29ED9F4F002E1F47 /* PersonDetailedScreenUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedScreenUser.swift; sourceTree = "<group>"; };
@@ -1271,6 +1275,8 @@
 				1F71E82029E4613F00379428 /* NavigaTumView.swift */,
 				1F71E82129E4613F00379428 /* NavigaTumListView.swift */,
 				1EBCA8BA2A2F2E8100406F24 /* RoomsView.swift */,
+				1E2447BF2A30B10700BEB44A /* RoomDetailsView.swift */,
+				1E2447C32A331F5700BEB44A /* RoomDetailsScreen.swift */,
 			);
 			path = ViewNavigaTum;
 			sourceTree = "<group>";
@@ -2388,6 +2394,7 @@
 				1F71E82629E4613F00379428 /* NavigaTumView.swift in Sources */,
 				3654F38428517260008AD5DC /* StudyRoomViewModel.swift in Sources */,
 				2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */,
+				1E2447C42A331F5700BEB44A /* RoomDetailsScreen.swift in Sources */,
 				36BB6F6627AFD12B00F224AB /* PersonDetails.swift in Sources */,
 				36108BFD27A30517007DC62D /* MovieDetailedView.swift in Sources */,
 				3683C3182758117900082930 /* Model.swift in Sources */,
@@ -2518,6 +2525,7 @@
 				1F71E82229E4613F00379428 /* NavigaTumDetailsView.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */,
 				36AF61DD27A2FD7800FEBD98 /* CampusOnlineAPIOld.swift in Sources */,
+				1E2447C02A30B10700BEB44A /* RoomDetailsView.swift in Sources */,
 				1EB2CB042976971500B54C2E /* MoviesWidgetView.swift in Sources */,
 				36AD5CF427B8C83500DAE143 /* CalendarSingleEventView.swift in Sources */,
 				36108BBC27A3046B007DC62D /* LectureDetails.swift in Sources */,
