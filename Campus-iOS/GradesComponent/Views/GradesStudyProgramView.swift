@@ -33,7 +33,7 @@ struct GradesStudyProgramView: View {
                 Divider()
                 
                 HStack {
-                    Text("Average Grade: ")
+                    Text("Average Grade:")
                     Spacer()
                     Text("\(avgRounded)")
                         .bold()
