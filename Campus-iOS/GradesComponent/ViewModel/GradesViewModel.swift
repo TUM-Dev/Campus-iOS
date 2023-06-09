@@ -115,7 +115,7 @@ class GradesViewModel: GradesViewModelProtocol {
             self.hasError = true
             return
         }
-
+        
         do {
             self.gradesState = .success(
                 data: try await gradesService.fetch(token: token, forcedRefresh: forcedRefresh)
@@ -136,7 +136,7 @@ class GradesViewModel: GradesViewModelProtocol {
             self.hasError = true
             return
         }
-
+        
         do {
             self.averageGradesState = .success(
                 data: try await averageGradesService.fetch(token: token, forcedRefresh: forcedRefresh)
@@ -192,7 +192,7 @@ class GradesViewModel: GradesViewModelProtocol {
     static func toFullSemesterName(_ semester: String) -> String {
         let year = "20\(String(semester.prefix(2)))"
         let nextYearShort = String((Int(year) ?? 2000) + 1).suffix(2)
-
+        
         switch semester.last {
         case "W": return "Wintersemester".localized + " \(year)/\(nextYearShort)"
         case "S": return "Summersemester".localized + " \(year)"
