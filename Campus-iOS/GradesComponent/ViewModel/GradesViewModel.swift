@@ -8,8 +8,13 @@
 import Foundation
 import SwiftUI
 
+protocol GradesViewModelProtocol: ObservableObject {
+    func getGrades(forcedRefresh: Bool) async
+    func getAverageGrades(forcedRefresh: Bool) async
+}
+
 @MainActor
-class GradesViewModel: ObservableObject {
+class GradesViewModel: GradesViewModelProtocol {
     @Published var gradesState: APIState<[Grade]> = .na
     @Published var hasError: Bool = false
     @Published var averageGradesState: APIState<[AverageGrade]> = .na
@@ -99,7 +104,7 @@ class GradesViewModel: ObservableObject {
         }
     }
     
-    private func getGrades(forcedRefresh: Bool = false) async {
+    func getGrades(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.gradesState = .loading
         }
@@ -121,7 +126,7 @@ class GradesViewModel: ObservableObject {
         }
     }
     
-    private func getAverageGrades(forcedRefresh: Bool = false) async {
+    func getAverageGrades(forcedRefresh: Bool = false) async {
         if !forcedRefresh {
             self.averageGradesState = .loading
         }
