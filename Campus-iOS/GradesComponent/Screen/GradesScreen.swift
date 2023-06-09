@@ -33,7 +33,7 @@ struct GradesScreen: View {
                         vm: self.vm
                     )
                     .refreshable {
-                        await vm.refresh(forcedRefresh: true)
+                        await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
                     }
                 }
             case .loading, .na:
@@ -41,24 +41,24 @@ struct GradesScreen: View {
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
-                    retryClosure: vm.refresh
+                    retryClosure: vm.reloadGradesAndAverageGrades
                 )
             }
         }
         .task {
-            await vm.refresh()
+            await vm.reloadGradesAndAverageGrades()
         }
         // Refresh whenever user authentication status changes
         .onChange(of: self.refresh) { _ in
             Task {
-                await vm.refresh()
+                await vm.reloadGradesAndAverageGrades()
             }
         }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
         .onChange(of: self.vm.model.token ?? "") { _ in
             Task {
-                await vm.refresh()
+                await vm.reloadGradesAndAverageGrades()
             }
         }
         .alert(
@@ -67,7 +67,7 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.refresh()
+                        await vm.reloadGradesAndAverageGrades()
                     }
                 }
                 

@@ -147,7 +147,7 @@ class GradesViewModel: GradesViewModelProtocol {
         }
     }
     
-    func refresh(forcedRefresh: Bool = false) async {
+    func reloadGradesAndAverageGrades(forcedRefresh: Bool = false) async {
         await getGrades(forcedRefresh: forcedRefresh)
         await getAverageGrades(forcedRefresh: forcedRefresh)
     }
