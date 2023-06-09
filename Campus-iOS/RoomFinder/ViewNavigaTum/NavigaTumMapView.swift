@@ -30,7 +30,7 @@ struct NavigaTumMapView: View {
             }
         ) {
             let coords = CLLocationCoordinate2D(latitude: chosenRoom.coordinates.latitude, longitude: chosenRoom.coordinates.longitude)
-            let mapRegion = MKCoordinateRegion(center: coords , span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+            let mapRegion = MKCoordinateRegion(center: coords , span: MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003))
             Map(coordinateRegion: .constant(mapRegion), showsUserLocation: true, annotationItems: [RoomFinderLocation(coordinate: coords)]) { location in
                 MapMarker(coordinate: location.coordinate)
             }
