@@ -45,7 +45,7 @@ struct PanelContentView: View {
                     MealPlanScreen(cafeteria: cafeteria)
                     
                 } else if vm.selectedStudyGroup != nil {
-                    StudyRoomGroupViewOld(
+                    StudyRoomGroupView(
                         vm: vm,
                         selectedGroup: vm.selectedStudyGroup,
                         rooms: vm.selectedStudyGroup?.getRooms(allRooms: vm.studyRoomsResponse.rooms ?? [StudyRoom]()) ?? [StudyRoom](),

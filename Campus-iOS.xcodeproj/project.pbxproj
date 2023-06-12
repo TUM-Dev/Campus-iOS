@@ -259,7 +259,7 @@
 		3654F38028517156008AD5DC /* ImageFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F37F28517156008AD5DC /* ImageFullScreenView.swift */; };
 		3654F38428517260008AD5DC /* StudyRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38328517260008AD5DC /* StudyRoomViewModel.swift */; };
 		3654F38628517BB4008AD5DC /* CafeteriaViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38528517BB4008AD5DC /* CafeteriaViewOld.swift */; };
-		3654F388285185A4008AD5DC /* StudyRoomGroupViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F387285185A4008AD5DC /* StudyRoomGroupViewOld.swift */; };
+		3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */; };
 		3654F38A28518640008AD5DC /* StudyRoomDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */; };
 		3654F38C285187C5008AD5DC /* PanelSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */; };
 		3654F38E28518B3D008AD5DC /* StudyGroupRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */; };
@@ -634,7 +634,7 @@
 		3654F37F28517156008AD5DC /* ImageFullScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFullScreenView.swift; sourceTree = "<group>"; };
 		3654F38328517260008AD5DC /* StudyRoomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomViewModel.swift; sourceTree = "<group>"; };
 		3654F38528517BB4008AD5DC /* CafeteriaViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaViewOld.swift; sourceTree = "<group>"; };
-		3654F387285185A4008AD5DC /* StudyRoomGroupViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupViewOld.swift; sourceTree = "<group>"; };
+		3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupView.swift; sourceTree = "<group>"; };
 		3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsView.swift; sourceTree = "<group>"; };
 		3654F38B285187C5008AD5DC /* PanelSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelSearchBarView.swift; sourceTree = "<group>"; };
 		3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyGroupRowView.swift; sourceTree = "<group>"; };
@@ -871,6 +871,7 @@
 		1E2447C82A371C5800BEB44A /* OldStudyGroupComponent */ = {
 			isa = PBXGroup;
 			children = (
+				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
 			);
 			path = OldStudyGroupComponent;
 			sourceTree = "<group>";
@@ -920,7 +921,7 @@
 			path = Campuses;
 			sourceTree = "<group>";
 		};
-		1EBCA8AF2A2B8EC000406F24 /* Old MapsScreen */ = {
+		1EBCA8AF2A2B8EC000406F24 /* OldMapsComponent */ = {
 			isa = PBXGroup;
 			children = (
 				1FAF9F0B284D2ABC000ABE93 /* MapScreenView.swift */,
@@ -931,7 +932,7 @@
 				36C70FB028538A190097416E /* PanelContentCafeteriasListView.swift */,
 				36C70FB22854D2AB0097416E /* PanelContentStudyGroupsListView.swift */,
 			);
-			path = "Old MapsScreen";
+			path = OldMapsComponent;
 			sourceTree = "<group>";
 		};
 		1EBD99A629A66B6400C0B40D /* View */ = {
@@ -1475,7 +1476,7 @@
 		36108BD727A304B5007DC62D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1EBCA8AF2A2B8EC000406F24 /* Old MapsScreen */,
+				1EBCA8AF2A2B8EC000406F24 /* OldMapsComponent */,
 				1EBCA8AE2A2B8E8100406F24 /* Campuses */,
 				3654F382285171F6008AD5DC /* StudyGroups */,
 				36108BD127A304B5007DC62D /* Cafeterias */,
@@ -1761,9 +1762,8 @@
 			children = (
 				1E2447C82A371C5800BEB44A /* OldStudyGroupComponent */,
 				08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */,
-				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
 				3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */,
-				3654F387285185A4008AD5DC /* StudyRoomGroupViewOld.swift */,
+				3654F387285185A4008AD5DC /* StudyRoomGroupView.swift */,
 				3654F35E285168D2008AD5DC /* MapImagesHorizontalScrollingView.swift */,
 				1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */,
 				1EBCA8A72A0A4A5C00406F24 /* StudyRoomGroupsView.swift */,
@@ -2453,7 +2453,7 @@
 				1F71E81629E4611E00379428 /* RoomFinderService.swift in Sources */,
 				1F69CE4E297EDF12005032CE /* TUMSexyLink.swift in Sources */,
 				3654F37A2851710E008AD5DC /* RoomFinderDetailsBaseView.swift in Sources */,
-				3654F388285185A4008AD5DC /* StudyRoomGroupViewOld.swift in Sources */,
+				3654F388285185A4008AD5DC /* StudyRoomGroupView.swift in Sources */,
 				0815249428E445030098A2C3 /* Date+Time.swift in Sources */,
 				36BB6F7027B1197400F224AB /* Profile.swift in Sources */,
 				08D0703A28776DD6004140B1 /* TextWidgetView.swift in Sources */,
