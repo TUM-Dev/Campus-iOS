@@ -19,11 +19,7 @@ struct CafeteriaWidgetScreen: View {
             case .loading:
                 WidgetLoadingView(text: "Searching nearby cafeteria")
             default:
-                if let cafeteria = viewModel.cafeteria {
-                    CafeteriaWidget2(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
-                } else {
-                    TextWidgetView(text: "There was an error getting the menu from the nearest cafeteria.")
-                }
+                CafeteriaWidget2(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
             }
         }.task {
             await viewModel.fetch()

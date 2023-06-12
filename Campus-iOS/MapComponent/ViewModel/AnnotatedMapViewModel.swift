@@ -32,7 +32,7 @@ class AnnotatedMapViewModel: ObservableObject {
             let tempVM = NavigaTumDetailsViewModel(id: room.id)
             await tempVM.fetchDetails()
             if let details = tempVM.details {
-                locations.append(TUMLocation(room: room, details: tempVM.details!))
+                locations.append(TUMLocation(room: room, details: details))
             }
         }
         self.rooms.append(contentsOf: rooms)
