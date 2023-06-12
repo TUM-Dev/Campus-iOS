@@ -98,6 +98,15 @@ class CalendarViewModel: ObservableObject {
     }
 }
 
+extension CalendarViewModel {
+    enum State {
+        case na
+        case loading
+        case success(data: [CalendarEvent]?)
+        case failed(error: Error)
+    }
+}
+
 extension Date {
     public var removeTimeStamp : Date? {
         guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {

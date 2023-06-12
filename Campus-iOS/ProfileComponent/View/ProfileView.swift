@@ -23,7 +23,7 @@ struct ProfileView: View {
         self._vm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
         self.url = .init(string: "https://google.com")
     }
-    
+  
     var body: some View {
         NavigationView {
             List {
