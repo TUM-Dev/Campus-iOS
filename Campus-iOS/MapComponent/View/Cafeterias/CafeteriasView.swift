@@ -16,6 +16,7 @@ struct CafeteriasView: View {
     
     init(vm: MapViewModel) {
         self._vm = StateObject(wrappedValue: vm)
+        //sorts cafeterias based on distance from user
         if let location = self.locationManager.location {
             self.sortedCafeterias = vm.cafeterias.sorted {
                 $0.coordinate.location.distance(from: location) < $1.coordinate.location.distance(from: location)

@@ -20,7 +20,7 @@ struct StudyRoomGroupListView: View {
                 
                 VStack {
                     ForEach(vmAnno.studyRoomGroups) { studyRoom in
-                        NavigationLink(destination: StudyRoomGroupViewOld( //need to check this
+                        NavigationLink(destination: StudyRoomGroupViewOld(
                             vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
                             selectedGroup: studyRoom,
                             rooms: vm.studyRoomsResponse.rooms ?? [],
@@ -35,7 +35,9 @@ struct StudyRoomGroupListView: View {
                                             .foregroundColor(Color.highlightText)
                                             .frame(width: 20, height: 20)
                                             .clipShape(Circle())
-                                        Text(studyRoom.name!).foregroundColor(Color.primaryText)
+                                        Text(studyRoom.name!)
+                                            .foregroundColor(Color.primaryText)
+                                            .multilineTextAlignment(.leading)
                                         let freeRooms = rooms.filter{ $0.isAvailable() }.count
                                         if freeRooms > 0 {
                                             Spacer()

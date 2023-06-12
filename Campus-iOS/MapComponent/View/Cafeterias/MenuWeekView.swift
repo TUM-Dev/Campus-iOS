@@ -1,5 +1,5 @@
 //
-//  MenuViewNEW.swift
+//  MenuViewWeek.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 30.04.23.

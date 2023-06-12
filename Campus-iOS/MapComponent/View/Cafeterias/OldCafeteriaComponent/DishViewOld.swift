@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DishView: View {
+struct DishViewOld: View {
     @StateObject var vm: DishViewModel
     @State private var isExpanded = false
     

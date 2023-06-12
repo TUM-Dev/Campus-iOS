@@ -30,6 +30,7 @@ struct RoomsView: View {
                                         .frame(width: 20, height: 20)
                                         .clipShape(Circle())
                                     Text(entry.name)
+                                        .multilineTextAlignment(.leading)
                                     Spacer()
                                     Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                                 }
@@ -44,6 +45,6 @@ struct RoomsView: View {
                 }
                 .sectionStyle()
             }
-        }
+        } 
     }
 }

@@ -36,7 +36,7 @@ struct StudyRoomDetailsView: View {
             Spacer()
             if self.roomImageMapping.count > 0 {
                 HStack {
-                    Image(systemName: "map.fill").foregroundColor(.blue)
+                    Image(systemName: "map.fill").foregroundColor(.highlightText)
                     Text("Available Maps")
                         .fontWeight(.bold)
                         .font(.headline)

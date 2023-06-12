@@ -14,24 +14,16 @@ struct RoomDetailsView: View {
     
     
     var body: some View {
-        GroupBox(
-            label: GroupBoxLabelView(
-                iconName: "info.circle.fill",
-                text: "Room Details".localized
-            )
-            .padding(.bottom, 10)
-        ) {
-            VStack(alignment: .leading, spacing: 8) {
-                ForEach(details.additionalProperties.properties, id: \.name) { property in
+        Text("Room Details").titleStyle()
+        
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(details.additionalProperties.properties, id: \.name) { property in
+                HStack{
                     LectureDetailsBasicInfoRowView(iconName: iconName(property.name), text: property.text)
+                    Spacer()
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .frame(
-            maxWidth: .infinity,
-            alignment: .topLeading
-        )
+        }.sectionStyle()
     }
     
     func iconName(_ name: String) -> String {

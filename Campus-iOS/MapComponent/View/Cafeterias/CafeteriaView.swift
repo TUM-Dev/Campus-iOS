@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CafeteriaViewNEW: View { //Refactor
+struct CafeteriaView: View {
     
     @StateObject var vm: MealPlanViewModel
     let cafeteria: Cafeteria
@@ -30,10 +30,7 @@ struct CafeteriaViewNEW: View { //Refactor
     var body: some View {
         VStack {
             if onlyMenu {
-                Text("Menu")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .frame(width: Size.cardWidth, alignment: .leading)
+                Text("Menu").titleStyle()
             } else {
                 HStack {
                     VStack (alignment: .leading) {
@@ -64,6 +61,7 @@ struct CafeteriaViewNEW: View { //Refactor
                 }.padding(.horizontal)
             }
             
+            //only menu always shows the expanded view without the title of the cafetera
             if isExpanded || onlyMenu {
                 Group {
                     switch vm.state {

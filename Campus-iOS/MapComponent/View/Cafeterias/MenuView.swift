@@ -1,30 +1,28 @@
 //
-//  MenuView.swift
+//  MenuViewNEW.swift
 //  Campus-iOS
 //
-//  Created by August Wittgenstein on 15.01.22.
+//  Created by Timothy Summers on 30.04.23.
 //
 
 import SwiftUI
 
-struct MenuView: View {
+struct MenuView: View { //wird grad ned genutzt evtl delete
+    
     let menu: cafeteriaMenu
     
     var body: some View {
-        List {
+        VStack{
             ForEach(menu.categories.sorted { $0.name < $1.name }) { category in
-                Section(category.name) {
-                    ForEach(category.dishes, id: \.self) { dish in
-                        DishView(dish: dish)
-                    }
+                Text(category.name)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(category.dishes, id: \.self) { dish in
+                            DishView2(dish: dish)
+                        }
+                    }.padding(.horizontal)
                 }
             }
-        }.listStyle(GroupedListStyle()) // make sections non-collapsible
+        }
     }
 }
-
-//struct MenuView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MenuView(viewModel: MenuViewModel(date: Date(), categories: []))
-//    }
-//}

@@ -57,9 +57,9 @@
 		1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BA2965B23D0098C614 /* ImagePicker.swift */; };
 		1E8038BE2969FAE70098C614 /* ContactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038BD2969FAE70098C614 /* ContactCardView.swift */; };
 		1E8038C22969FBE20098C614 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8038C12969FBE20098C614 /* LinkView.swift */; };
-		1E89C3E629FDB3CC006E1276 /* CafeteriaViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89C3E529FDB3CC006E1276 /* CafeteriaViewNEW.swift */; };
+		1E89C3E629FDB3CC006E1276 /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89C3E529FDB3CC006E1276 /* CafeteriaView.swift */; };
 		1E89C3E829FE672B006E1276 /* MenuWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89C3E729FE672B006E1276 /* MenuWeekView.swift */; };
-		1E89C3EA29FE9960006E1276 /* MenuViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89C3E929FE9960006E1276 /* MenuViewNEW.swift */; };
+		1E89C3EA29FE9960006E1276 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89C3E929FE9960006E1276 /* MenuView.swift */; };
 		1E9C1056291A914D002C4C47 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C1055291A914D002C4C47 /* Theme.swift */; };
 		1E9C92DC2993F1230026B0E6 /* WidgetScreenNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */; };
 		1E9C92E0299D4D860026B0E6 /* CafeteriaWidget2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */; };
@@ -129,7 +129,7 @@
 		1F69CE40297DDCD3005032CE /* StudyRoomDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */; };
 		1F69CE42297EC94E005032CE /* DishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE41297EC94E005032CE /* DishService.swift */; };
 		1F69CE44297EC97E005032CE /* DishViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE43297EC97E005032CE /* DishViewModel.swift */; };
-		1F69CE46297EC99D005032CE /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE45297EC99D005032CE /* DishView.swift */; };
+		1F69CE46297EC99D005032CE /* DishViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE45297EC99D005032CE /* DishViewOld.swift */; };
 		1F69CE48297EDEA3005032CE /* TUMSexyScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE47297EDEA3005032CE /* TUMSexyScreen.swift */; };
 		1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */; };
 		1F69CE4E297EDF12005032CE /* TUMSexyLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */; };
@@ -206,7 +206,7 @@
 		36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD227A304B5007DC62D /* MealPlanView.swift */; };
 		36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD327A304B5007DC62D /* MealPlanViewModel.swift */; };
 		36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD427A304B5007DC62D /* MenuViewModel.swift */; };
-		36108BE927A304B5007DC62D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD627A304B5007DC62D /* MenuView.swift */; };
+		36108BE927A304B5007DC62D /* MenuViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD627A304B5007DC62D /* MenuViewOld.swift */; };
 		36108BEB27A304B6007DC62D /* CafeteriaRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BD927A304B5007DC62D /* CafeteriaRowView.swift */; };
 		36108BEF27A304B6007DC62D /* MapContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDD27A304B5007DC62D /* MapContentView.swift */; };
 		36108BF027A304B6007DC62D /* PanelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36108BDE27A304B5007DC62D /* PanelContentView.swift */; };
@@ -432,9 +432,9 @@
 		1E8038BA2965B23D0098C614 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		1E8038BD2969FAE70098C614 /* ContactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCardView.swift; sourceTree = "<group>"; };
 		1E8038C12969FBE20098C614 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
-		1E89C3E529FDB3CC006E1276 /* CafeteriaViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaViewNEW.swift; sourceTree = "<group>"; };
+		1E89C3E529FDB3CC006E1276 /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		1E89C3E729FE672B006E1276 /* MenuWeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWeekView.swift; sourceTree = "<group>"; };
-		1E89C3E929FE9960006E1276 /* MenuViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewNEW.swift; sourceTree = "<group>"; };
+		1E89C3E929FE9960006E1276 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1E9C1055291A914D002C4C47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1E9C92DB2993F1230026B0E6 /* WidgetScreenNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreenNew.swift; sourceTree = "<group>"; };
 		1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidget2.swift; sourceTree = "<group>"; };
@@ -502,7 +502,7 @@
 		1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsScreen.swift; sourceTree = "<group>"; };
 		1F69CE41297EC94E005032CE /* DishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishService.swift; sourceTree = "<group>"; };
 		1F69CE43297EC97E005032CE /* DishViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewModel.swift; sourceTree = "<group>"; };
-		1F69CE45297EC99D005032CE /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
+		1F69CE45297EC99D005032CE /* DishViewOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewOld.swift; sourceTree = "<group>"; };
 		1F69CE47297EDEA3005032CE /* TUMSexyScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyScreen.swift; sourceTree = "<group>"; };
 		1F69CE4A297EDEC7005032CE /* TUMSexyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyService.swift; sourceTree = "<group>"; };
 		1F69CE4D297EDF12005032CE /* TUMSexyLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMSexyLink.swift; sourceTree = "<group>"; };
@@ -581,7 +581,7 @@
 		36108BD227A304B5007DC62D /* MealPlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanView.swift; sourceTree = "<group>"; };
 		36108BD327A304B5007DC62D /* MealPlanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		36108BD427A304B5007DC62D /* MenuViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
-		36108BD627A304B5007DC62D /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		36108BD627A304B5007DC62D /* MenuViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewOld.swift; sourceTree = "<group>"; };
 		36108BD927A304B5007DC62D /* CafeteriaRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CafeteriaRowView.swift; sourceTree = "<group>"; };
 		36108BDD27A304B5007DC62D /* MapContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapContentView.swift; sourceTree = "<group>"; };
 		36108BDE27A304B5007DC62D /* PanelContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelContentView.swift; sourceTree = "<group>"; };
@@ -853,6 +853,26 @@
 				36BB6F6D27B1195600F224AB /* View */,
 			);
 			path = ProfileComponent;
+			sourceTree = "<group>";
+		};
+		1E2447C72A3719C700BEB44A /* OldCafeteriaComponent */ = {
+			isa = PBXGroup;
+			children = (
+				36108BD927A304B5007DC62D /* CafeteriaRowView.swift */,
+				36108BD227A304B5007DC62D /* MealPlanView.swift */,
+				36108BD627A304B5007DC62D /* MenuViewOld.swift */,
+				3654F38528517BB4008AD5DC /* CafeteriaViewOld.swift */,
+				1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */,
+				1F69CE45297EC99D005032CE /* DishViewOld.swift */,
+			);
+			path = OldCafeteriaComponent;
+			sourceTree = "<group>";
+		};
+		1E2447C82A371C5800BEB44A /* OldStudyGroupComponent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OldStudyGroupComponent;
 			sourceTree = "<group>";
 		};
 		1E45DC5D296F456600D6050D /* View */ = {
@@ -1441,17 +1461,12 @@
 		36108BD127A304B5007DC62D /* Cafeterias */ = {
 			isa = PBXGroup;
 			children = (
+				1E2447C72A3719C700BEB44A /* OldCafeteriaComponent */,
 				08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */,
-				3654F38528517BB4008AD5DC /* CafeteriaViewOld.swift */,
-				36108BD927A304B5007DC62D /* CafeteriaRowView.swift */,
-				36108BD227A304B5007DC62D /* MealPlanView.swift */,
-				36108BD627A304B5007DC62D /* MenuView.swift */,
-				1F69CE45297EC99D005032CE /* DishView.swift */,
-				1FACF3FC2996E34200A0B8AC /* MealPlanScreen.swift */,
 				1E62C82729F7F970002E1F47 /* CafeteriasView.swift */,
-				1E89C3E529FDB3CC006E1276 /* CafeteriaViewNEW.swift */,
+				1E89C3E529FDB3CC006E1276 /* CafeteriaView.swift */,
 				1E89C3E729FE672B006E1276 /* MenuWeekView.swift */,
-				1E89C3E929FE9960006E1276 /* MenuViewNEW.swift */,
+				1E89C3E929FE9960006E1276 /* MenuView.swift */,
 				1EBCA8B22A2E118C00406F24 /* CafeteriasListView.swift */,
 			);
 			path = Cafeterias;
@@ -1462,7 +1477,7 @@
 			children = (
 				1EBCA8AF2A2B8EC000406F24 /* Old MapsScreen */,
 				1EBCA8AE2A2B8E8100406F24 /* Campuses */,
-				3654F382285171F6008AD5DC /* StudyRooms */,
+				3654F382285171F6008AD5DC /* StudyGroups */,
 				36108BD127A304B5007DC62D /* Cafeterias */,
 				1E62C82329F7F753002E1F47 /* PlacesView.swift */,
 				1E62C82529F7F774002E1F47 /* PlacesScreen.swift */,
@@ -1741,9 +1756,10 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		3654F382285171F6008AD5DC /* StudyRooms */ = {
+		3654F382285171F6008AD5DC /* StudyGroups */ = {
 			isa = PBXGroup;
 			children = (
+				1E2447C82A371C5800BEB44A /* OldStudyGroupComponent */,
 				08DFB97E2867AC9200E357DF /* StudyRoomWidgetView.swift */,
 				3654F38D28518B3D008AD5DC /* StudyGroupRowView.swift */,
 				3654F38928518640008AD5DC /* StudyRoomDetailsView.swift */,
@@ -1753,7 +1769,7 @@
 				1EBCA8A72A0A4A5C00406F24 /* StudyRoomGroupsView.swift */,
 				1EBCA8B82A2F2B2300406F24 /* StudyRoomGroupListView.swift */,
 			);
-			path = StudyRooms;
+			path = StudyGroups;
 			sourceTree = "<group>";
 		};
 		366F0E7727580CFB0091651D = {
@@ -2430,7 +2446,7 @@
 				1F71E81A29E4613500379428 /* NavigaTumViewModel.swift in Sources */,
 				1F71E80C29E4611000379428 /* NavigaTumNavigationEntity.swift in Sources */,
 				36FAE365277472EF00628799 /* LoginViewModel.swift in Sources */,
-				36108BE927A304B5007DC62D /* MenuView.swift in Sources */,
+				36108BE927A304B5007DC62D /* MenuViewOld.swift in Sources */,
 				36108C1D27A307FA007DC62D /* GradeView.swift in Sources */,
 				36AF61DE27A2FD7800FEBD98 /* APIResponse.swift in Sources */,
 				28609DB629AE4D8700F3B8CA /* DeparturesWidgetView.swift in Sources */,
@@ -2471,7 +2487,7 @@
 				3654F37B2851710E008AD5DC /* RoomFinderListView.swift in Sources */,
 				36C70FB32854D2AB0097416E /* PanelContentStudyGroupsListView.swift in Sources */,
 				36C70FB128538A190097416E /* PanelContentCafeteriasListView.swift in Sources */,
-				1E89C3E629FDB3CC006E1276 /* CafeteriaViewNEW.swift in Sources */,
+				1E89C3E629FDB3CC006E1276 /* CafeteriaView.swift in Sources */,
 				36108BE727A304B5007DC62D /* MenuViewModel.swift in Sources */,
 				28609DB229AE4B9400F3B8CA /* MVVDeparturesAPI.swift in Sources */,
 				28609DB029AE4B6400F3B8CA /* Departures.swift in Sources */,
@@ -2575,7 +2591,7 @@
 				36AF61E027A2FD7800FEBD98 /* Cache.swift in Sources */,
 				1F69CE37297DCA22005032CE /* NewsScreen.swift in Sources */,
 				36AF61F027A2FD7800FEBD98 /* DecoderProtocol.swift in Sources */,
-				1E89C3EA29FE9960006E1276 /* MenuViewNEW.swift in Sources */,
+				1E89C3EA29FE9960006E1276 /* MenuView.swift in Sources */,
 				1F189E9A29968D790056BBD8 /* TUMOnlineAPIError.swift in Sources */,
 				1F69CE40297DDCD3005032CE /* StudyRoomDetailsScreen.swift in Sources */,
 				08FAFD1C288DEDBF006A0E27 /* TimeStrategy.swift in Sources */,
@@ -2619,7 +2635,7 @@
 				2870A2F829AF530800005264 /* DeparturesWidgetScreen.swift in Sources */,
 				1E5EEEC629A3BCA500CD4381 /* CalendarWidgetViewNEW.swift in Sources */,
 				36108BFE27A30517007DC62D /* MovieDetailCellView.swift in Sources */,
-				1F69CE46297EC99D005032CE /* DishView.swift in Sources */,
+				1F69CE46297EC99D005032CE /* DishViewOld.swift in Sources */,
 				1F69CE4B297EDEC7005032CE /* TUMSexyService.swift in Sources */,
 				2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */,
 				36108BE527A304B5007DC62D /* MealPlanView.swift in Sources */,

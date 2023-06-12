@@ -44,7 +44,7 @@ struct MealPlanView: View {
                         }
                         .padding(.horizontal, 5.0)
                         
-                        MenuView(menu: selectedMenu)
+                        MenuViewOld(menu: selectedMenu)
                         
                     }
                 } else {

@@ -62,11 +62,13 @@ struct LocationView: View {
                 Divider().padding()
                 
                 if location.cafeteria != nil {
-                    CafeteriaViewNEW(cafeteria: location.cafeteria!, onlyMenu: true)
+                    CafeteriaView(cafeteria: location.cafeteria!, onlyMenu: true)
+                        .padding(.bottom)
                 }
                 
                 if location.room != nil {
                     RoomDetailsView(room: location.room!, details: location.roomDetails!)
+                        .padding(.bottom)
                 }
                 
                 HStack{
@@ -77,7 +79,7 @@ struct LocationView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Color.primaryBackground)
-        .task {
+        .onAppear {
             self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.007, longitudeDelta: 0.007))
         }
     }
