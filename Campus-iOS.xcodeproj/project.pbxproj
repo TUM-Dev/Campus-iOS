@@ -898,7 +898,6 @@
 				2870A2F629AF52F100005264 /* DeparturesWidget */,
 				1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */,
 				1EF36A49299172E400AF049F /* StundyRoomWidgetNEW */,
-				1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -943,6 +942,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1EE8F36C2A38BEEE002F9EED /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
+				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
+				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
+				1E62C81D29E9D629002E1F47 /* DishView2.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		1EF36A3B2979B94E00AF049F /* CalendarWidgetNEW */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,17 +970,6 @@
 				1EF36A4A2991730C00AF049F /* StudyRoomWidgetScreen.swift */,
 			);
 			path = StundyRoomWidgetNEW;
-			sourceTree = "<group>";
-		};
-		1EF36A4E2993DDE400AF049F /* CafeteriaWidgetNEW */ = {
-			isa = PBXGroup;
-			children = (
-				1EF36A4F2993DF0A00AF049F /* CafeteriaWidgetScreen.swift */,
-				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget2.swift */,
-				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
-				1E62C81D29E9D629002E1F47 /* DishView2.swift */,
-			);
-			path = CafeteriaWidgetNEW;
 			sourceTree = "<group>";
 		};
 		1EF36A542993ED9600AF049F /* ContactComponent */ = {
@@ -1462,6 +1461,7 @@
 		36108BD127A304B5007DC62D /* Cafeterias */ = {
 			isa = PBXGroup;
 			children = (
+				1EE8F36C2A38BEEE002F9EED /* Widget */,
 				1E2447C72A3719C700BEB44A /* OldCafeteriaComponent */,
 				08DFB97828666AD900E357DF /* CafeteriaWidgetView.swift */,
 				1E62C82729F7F970002E1F47 /* CafeteriasView.swift */,

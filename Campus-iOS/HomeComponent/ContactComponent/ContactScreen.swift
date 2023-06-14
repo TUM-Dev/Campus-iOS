@@ -33,8 +33,8 @@ struct ContactScreen: View {
             LinkView()
             
         }.task {
-            await gradesViewModel.getGrades()
-            await profileVm.getProfile(forcedRefresh: false)
+            await gradesViewModel.getGrades(forcedRefresh: true)
+            await profileVm.getProfile(forcedRefresh: true)
         }
     }
 }

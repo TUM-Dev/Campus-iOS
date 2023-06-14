@@ -38,7 +38,7 @@ struct MoviesScreen: View {
                 }
             }
         }.task {
-            await vm.getMovies()
+            await vm.getMovies(forcedRefresh: true)
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,

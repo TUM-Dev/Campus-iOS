@@ -21,13 +21,12 @@ struct HomeScreen: View {
                 .padding(.horizontal)
                 .padding(.bottom, 10)
             WidgetScreenNEW(model: self.model)
-                .padding(.bottom, 10)
             /*WidgetScreen(model: self.model)
              .padding(.bottom, 25)*/ //Robyn's WidgetScreen
             MoviesScreen(isWidget: true)
                 .padding(.bottom)
             NewsScreen(isWidget: true)
-                .padding(.bottom, 25)
+                .padding(.bottom)
         }
         .padding(.top, 50)
         .background(Color.primaryBackground)

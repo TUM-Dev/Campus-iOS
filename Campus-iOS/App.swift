@@ -16,8 +16,16 @@ import Firebase
 struct CampusApp: App {
     @StateObject var model: Model = Model()
     let persistenceController = PersistenceController.shared
-    @State var selectedTab = 0
+    @State private var selectedTab: Tab = .home
     @State var isLoginSheetPresented = false
+    
+    enum Tab {
+            case home
+            case grades
+            case lectures
+            case calendar
+            case maps
+        }
     
     init() {
 #if !DEBUG
@@ -34,9 +42,6 @@ struct CampusApp: App {
                 .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 0
-                            }
                     }
                     .navigationViewStyle(.stack)
                 }
@@ -74,9 +79,9 @@ struct CampusApp: App {
                         .overlay(NavigationBarView(model: model))
                 }
                 .navigationViewStyle(.stack)
-                .tag(0)
+                .tag(Tab.home)
                 .tabItem {
-                    if selectedTab == 0 {
+                    if selectedTab == .home {
                         Label("Home", systemImage: "house")
                     } else {
                         Label("Home", systemImage: "house").environment(\.symbolVariants, .none)
@@ -88,9 +93,9 @@ struct CampusApp: App {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
                     .overlay(NavigationBarView(model: model, title: "Grades"))
             }
-            .tag(1)
+            .tag(Tab.grades)
             .tabItem {
-                if selectedTab == 1 {
+                if selectedTab == .grades {
                     Label("Grades", systemImage: "checkmark.shield")
                 } else {
                     Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
@@ -108,7 +113,7 @@ struct CampusApp: App {
                 ), refresh: $model.isUserAuthenticated)
                 .overlay(NavigationBarView(model: model, title: "Lectures"))
             }
-            .tag(2)
+            .tag(Tab.lectures)
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
@@ -124,7 +129,7 @@ struct CampusApp: App {
                 .background(Color.primaryBackground)
                 .overlay(NavigationBarView(model: model, title: "Calendar"))
             }
-            .tag(3)
+            .tag(Tab.calendar)
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
@@ -136,7 +141,7 @@ struct CampusApp: App {
                     .overlay(NavigationBarView(model: model, title: "Places"))
                 //MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
-            .tag(4)
+            .tag(Tab.maps)
             .tabItem {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }

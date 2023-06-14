@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CafeteriaWidgetScreen: View {
     
-    @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
+    @StateObject var viewModel: CafeteriaWidgetViewModel
     
     var body: some View {
         Group {
@@ -17,12 +17,10 @@ struct CafeteriaWidgetScreen: View {
             case .error:
                 EmptyView() //muss mann noch besser handeln -> keine cafeterias nearby
             case .loading:
-                WidgetLoadingView(text: "Searching nearby cafeteria")
+                LoadingView(text: "Searching nearby cafeteria")
             default:
                 CafeteriaWidget2(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
             }
-        }.task {
-            await viewModel.fetch()
         }
     }
 }

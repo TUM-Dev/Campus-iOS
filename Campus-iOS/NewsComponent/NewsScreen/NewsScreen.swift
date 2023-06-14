@@ -38,7 +38,7 @@ struct NewsScreen: View {
                 }
             }
         }.task {
-            await vm.getNewsSources()
+            await vm.getNewsSources(forcedRefresh: true)
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,
