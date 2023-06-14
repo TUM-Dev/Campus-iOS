@@ -43,7 +43,7 @@ struct DishView2: View {
                 )
             }
         }.task {
-            await vm.getDishLabels()
+            await vm.getDishLabels(forcedRefresh: true)
         }
     }
 }

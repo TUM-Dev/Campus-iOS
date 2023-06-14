@@ -83,10 +83,12 @@ struct CampusApp: App {
                 .tabItem {
                     if selectedTab == .home {
                         Label("Home", systemImage: "house")
+                            .foregroundColor(.highlightText)
                     } else {
                         Label("Home", systemImage: "house").environment(\.symbolVariants, .none)
                     }
                 }
+                .toolbarBackground(Color.primaryBackground, for: .tabBar)
             }
             // MARK: - Grades Screen
             NavigationView {
@@ -102,6 +104,7 @@ struct CampusApp: App {
                 }
                 
             }
+            .toolbarBackground(Color.secondaryBackground, for: .tabBar)
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
@@ -117,6 +120,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
@@ -133,6 +137,7 @@ struct CampusApp: App {
             .tabItem {
                 Label("Calendar", systemImage: "calendar")
             }
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
             .navigationViewStyle(.stack)
             // MARK: - Places Screen
             NavigationView {
@@ -145,7 +150,9 @@ struct CampusApp: App {
             .tabItem {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
             .navigationViewStyle(.stack)
         }
+        .accentColor(.highlightText)
     }
 }
