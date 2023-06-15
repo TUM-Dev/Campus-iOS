@@ -93,7 +93,7 @@ struct CampusApp: App {
             // MARK: - Grades Screen
             NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
-                    .overlay(NavigationBarView(model: model, title: "Grades"))
+                    .overlay(NavigationBarView(model: model, title: "Grades".localized))
             }
             .tag(Tab.grades)
             .tabItem {
@@ -114,7 +114,7 @@ struct CampusApp: App {
                     model: model,
                     service: LecturesService()
                 ), refresh: $model.isUserAuthenticated)
-                .overlay(NavigationBarView(model: model, title: "Lectures"))
+                .overlay(NavigationBarView(model: model, title: "Lectures".localized))
             }
             .tag(Tab.lectures)
             .tabItem {
@@ -131,7 +131,7 @@ struct CampusApp: App {
                     refresh: $model.isUserAuthenticated
                 )
                 .background(Color.primaryBackground)
-                .overlay(NavigationBarView(model: model, title: "Calendar"))
+                .overlay(NavigationBarView(model: model, title: "Calendar".localized))
             }
             .tag(Tab.calendar)
             .tabItem {
@@ -143,7 +143,7 @@ struct CampusApp: App {
             NavigationView {
                 PlacesScreen(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
                     .background(Color.primaryBackground)
-                    .overlay(NavigationBarView(model: model, title: "Places"))
+                    .overlay(NavigationBarView(model: model, title: "Places".localized))
                 //MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
             .tag(Tab.maps)

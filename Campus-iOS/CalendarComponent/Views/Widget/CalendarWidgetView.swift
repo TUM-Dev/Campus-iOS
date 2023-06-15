@@ -1,5 +1,5 @@
 //
-//  CalendarWidgetView2.swift
+//  CalendarWidgetView.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 17.01.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalendarWidgetViewNEW: View {
+struct CalendarWidgetView: View {
     
     @State var vm: CalendarViewModel
     

@@ -14,7 +14,7 @@ struct CalendarWidgetScreen: View {
     var body: some View {
         switch self.vm.state {
         case .success(data: _):
-            CalendarWidgetViewNEW(vm: self.vm)
+            CalendarWidgetView(vm: self.vm)
         case .loading:
             ProgressView()
         case .failed(error: let error):

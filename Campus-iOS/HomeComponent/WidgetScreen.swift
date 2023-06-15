@@ -26,6 +26,7 @@ struct WidgetScreen: View {
     
     var body: some View {
         VStack {
+            //dynamic widgets
             ForEach(self.recommender.recommendations, id: \.id) { recommendation in
                 let widget = recommendation.widget
                 switch widget {
@@ -45,6 +46,11 @@ struct WidgetScreen: View {
                     EmptyView() //when widget isn't supposed to be shown
                 }
             }
+            //static widgets
+            MoviesScreen(isWidget: true)
+                .padding(.bottom)
+            NewsScreen(isWidget: true)
+                .padding(.bottom)
         }
         .task {
             await calendarWidgetVM.getCalendar(forcedRefresh: true)

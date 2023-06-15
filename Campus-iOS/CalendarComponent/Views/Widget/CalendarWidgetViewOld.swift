@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalendarWidgetView: View {
+struct CalendarWidgetViewOld: View {
     
     @StateObject private var viewModel: CalendarViewModel
     @State private var size: WidgetSize

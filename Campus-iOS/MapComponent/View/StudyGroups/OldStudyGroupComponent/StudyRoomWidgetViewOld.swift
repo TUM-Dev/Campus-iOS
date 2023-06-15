@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct StudyRoomWidgetView: View {
+struct StudyRoomWidgetViewOld: View {
     
     @StateObject var viewModel = StudyRoomWidgetViewModel(studyRoomService: StudyRoomsService())
     @State private var size: WidgetSize

@@ -21,7 +21,7 @@ struct CafeteriaWidget: View {
     var body: some View {
         if let cafeteria = self.cafeteriaWidgetVM.cafeteria {
             VStack(spacing: 0) {
-                Text("Nearest cafeteria").titleStyle()
+                Text("Nearest Cafeteria").titleStyle()
                 HStack {
                     Text(cafeteria.name).font(.headline.bold())
                         .padding(.bottom, 2)

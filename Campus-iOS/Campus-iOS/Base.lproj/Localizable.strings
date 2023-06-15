@@ -113,6 +113,13 @@
 "student information" = "student information";
 "study rooms, food & calendar" = "study rooms, food & calendar";
 "Latest News" = "Latest News";
+"Nearest Cafeteria" = "Nearest Cafeteria";
+"Nearest Study Room" = "Nearest Study Room";
+"No events today" = "No events today";
+"View Location" = "View Location";
+"rooms free" = "rooms free";
+"No rooms free" = "No rooms free";
+
 
 // CalendarView
 "Day" = "Day";
@@ -186,6 +193,12 @@
 // Map
 "Search ..." = "Search ...";
 "Traffic" = "Traffic";
+"Fetching Study Rooms" = "Fetching Study Rooms";
+"Fetching Canteens" = "Fetching Canteens";
+"Most Searched Rooms" = "Most Searched Rooms";
+"View On Maps" = "View On Maps";
+"Directions in Maps" = "Directions in Maps";
+"Menu" = "Menu";
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";

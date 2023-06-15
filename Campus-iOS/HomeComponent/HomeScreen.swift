@@ -23,10 +23,6 @@ struct HomeScreen: View {
             WidgetScreen(model: self.model)
             /*WidgetScreenOld(model: self.model)
              .padding(.bottom, 25)*/ //Robyn's WidgetScreen
-            MoviesScreen(isWidget: true)
-                .padding(.bottom)
-            NewsScreen(isWidget: true)
-                .padding(.bottom)
         }
         .padding(.top, 50)
         .background(Color.primaryBackground)

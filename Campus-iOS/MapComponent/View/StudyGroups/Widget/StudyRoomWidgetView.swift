@@ -1,5 +1,5 @@
 //
-//  StudyRoomWidgetViewNEW.swift
+//  StudyRoomWidgetView.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 06.02.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StudyRoomWidgetViewNEW: View {
+struct StudyRoomWidgetView: View {
     
     @StateObject var studyRoomWidgetVM : StudyRoomWidgetViewModel
     
@@ -28,7 +28,7 @@ struct StudyRoomWidgetViewNEW: View {
                             let freeRooms = rooms.filter{ $0.isAvailable() }.count
                             if freeRooms > 0 {
                                 Spacer()
-                                Text("\(freeRooms) rooms free").foregroundColor(.green)
+                                Text("\(freeRooms) "+"rooms free").foregroundColor(.green)
                             } else {
                                 Spacer()
                                 Text("No rooms free").foregroundColor(.red)
@@ -36,7 +36,7 @@ struct StudyRoomWidgetViewNEW: View {
                             Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                         }
                     } icon: {
-                        Image(systemName: "book").foregroundColor(Color.primaryText)
+                        Image(systemName: "pencil.circle").foregroundColor(Color.highlightText)
                     }
                     .padding(.vertical, 15)
                     .padding(.horizontal)

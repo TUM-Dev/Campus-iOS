@@ -81,10 +81,14 @@ struct StudyRoomGroupView: View {
                                 )
                             })
                             .accentColor(.primaryText)
-                            Divider()
+                            
+                            if room.id != self.sortedRooms.last?.id {
+                                Divider()
+                            }
                         }
                     }
                     .sectionStyle()
+                    .padding(.bottom)
                 }
                 
             } else {

@@ -105,6 +105,12 @@
 "student information" = "deine informationen";
 "study rooms, food & calendar" = "lernräume, mensen & kalender";
 "Latest News" = "Aktuelles";
+"Nearest Cafeteria" = "Nächstgelegene Mensa";
+"Nearest Study Room" = "Nächstgelegener Lernraum";
+"No events today" = "Keine Events heute";
+"View Location" = "Standort anzeigen";
+"rooms free" = "Zimmer frei";
+"No rooms free" = "Keine Zimmer frei";
 
 
 // CalendarView
@@ -180,6 +186,13 @@
 // Map
 "Search ..." = "Suchen ...";
 "Traffic" = "Auslastung";
+"Fetching Study Rooms" = "Lernräume laden";
+"Fetching Canteens" = "Mensen laden";
+"Most Searched Rooms" = "Meist gesuchte Räume";
+"View On Maps" = "Auf Karte ansehen";
+"Directions in Maps" = "Route in Karten ansehen";
+"Menu" = "Menü";
+
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";
