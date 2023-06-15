@@ -9,7 +9,7 @@ import SwiftUI
 
 import SwiftUI
 
-struct DishView2: View {
+struct DishView: View {
     @StateObject var vm: DishViewModel
     
     init(dish: Dish) {

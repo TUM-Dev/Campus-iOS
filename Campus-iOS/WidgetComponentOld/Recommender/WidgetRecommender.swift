@@ -37,7 +37,7 @@ class WidgetRecommender: ObservableObject {
     func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
         switch widget {
         case .cafeteria:
-            CafeteriaWidgetView(size: size, refresh: refresh)
+            CafeteriaWidgetViewOld(size: size, refresh: refresh)
         case .studyRoom:
             StudyRoomWidgetView(size: size, refresh: refresh)
         case .calendar:

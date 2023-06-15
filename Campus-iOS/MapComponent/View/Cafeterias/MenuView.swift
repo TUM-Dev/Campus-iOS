@@ -18,7 +18,7 @@ struct MenuView: View { //wird grad ned genutzt evtl delete
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(category.dishes, id: \.self) { dish in
-                            DishView2(dish: dish)
+                            DishView(dish: dish)
                         }
                     }.padding(.horizontal)
                 }

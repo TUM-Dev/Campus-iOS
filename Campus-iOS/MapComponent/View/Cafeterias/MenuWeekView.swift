@@ -46,7 +46,7 @@ struct MenuWeekView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(selectedMenu.getDishes().sorted(by: { getTypeLabel(dishType: $0.dishType) > getTypeLabel(dishType: $1.dishType)}), id: \.self) { dish in
-                                    DishView2(dish: dish)
+                                    DishView(dish: dish)
                                 }
                             }.padding(.horizontal)
                         }

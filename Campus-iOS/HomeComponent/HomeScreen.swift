@@ -20,8 +20,8 @@ struct HomeScreen: View {
             Divider()
                 .padding(.horizontal)
                 .padding(.bottom, 10)
-            WidgetScreenNEW(model: self.model)
-            /*WidgetScreen(model: self.model)
+            WidgetScreen(model: self.model)
+            /*WidgetScreenOld(model: self.model)
              .padding(.bottom, 25)*/ //Robyn's WidgetScreen
             MoviesScreen(isWidget: true)
                 .padding(.bottom)

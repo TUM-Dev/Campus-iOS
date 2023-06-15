@@ -1,14 +1,15 @@
 //
-//  WidgetScreenNEW.swift
+//  WidgetScreen.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 20.01.23.
 //
-//  Based on Robyn's WidgetScreen -> uses Robyn's Recommender System an custom View Models
+//  Based on Robyn's WidgetScreen -> uses Robyn's Recommender System and custom View Models
+//  Individual Widgets can be found in their respective components
 
 import SwiftUI
 
-struct WidgetScreenNEW: View {
+struct WidgetScreen: View {
     
     @StateObject var model: Model
     @StateObject private var recommender: WidgetRecommender

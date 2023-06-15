@@ -19,7 +19,7 @@ struct CafeteriaWidgetScreen: View {
             case .loading:
                 LoadingView(text: "Searching nearby cafeteria")
             default:
-                CafeteriaWidget2(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
+                CafeteriaWidget(cafeteriaWidgetVM: self.viewModel, dishes: viewModel.menu?.getDishes() ?? [])
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  CafeteriaWidget2.swift
+//  CafeteriaWidget.swift
 //  Campus-iOS
 //
 //  Created by Timothy Summers on 15.02.23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CafeteriaWidget2: View {
+struct CafeteriaWidget: View {
     
     @StateObject var cafeteriaWidgetVM : CafeteriaWidgetViewModel
     var dishes : [Dish]
@@ -21,14 +21,27 @@ struct CafeteriaWidget2: View {
     var body: some View {
         if let cafeteria = self.cafeteriaWidgetVM.cafeteria {
             VStack(spacing: 0) {
-                Text(cafeteria.name).titleStyle()
+                Text("Nearest cafeteria").titleStyle()
+                HStack {
+                    Text(cafeteria.name).font(.headline.bold())
+                        .padding(.bottom, 2)
+                    Spacer()
+                    NavigationLink(destination: LocationView(location: TUMLocation(cafeteria: cafeteria))) {
+                        Label("View Location", systemImage: "mappin.circle")
+                            .font(.footnote)
+                            .foregroundColor(.highlightText)
+                    }
+                    
+                    
+                }.padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(dishes, id: \.id ) { dish in
-                            DishView2(dish: dish)
+                            DishView(dish: dish)
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.top, 10)
                 }
             }
         }

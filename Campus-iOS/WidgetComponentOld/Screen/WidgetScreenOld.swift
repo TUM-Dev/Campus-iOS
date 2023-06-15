@@ -1,5 +1,5 @@
 //
-//  WidgetScreen.swift
+//  WidgetScreenOld.swift
 //  Campus-iOS
 //
 //  Created by Robyn Kölle on 24.06.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct WidgetScreen: View {
+struct WidgetScreenOld: View {
     
     @StateObject private var recommender: WidgetRecommender
     var model: Model

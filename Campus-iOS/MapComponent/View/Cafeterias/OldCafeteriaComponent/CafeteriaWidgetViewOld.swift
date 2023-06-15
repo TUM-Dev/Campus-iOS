@@ -1,5 +1,5 @@
 //
-//  CafeteriaWidgetView.swift
+//  CafeteriaWidgetViewOld.swift
 //  Campus-iOS
 //
 //  Created by Robyn Kölle on 24.06.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import MapKit
 
-struct CafeteriaWidgetView: View {
+struct CafeteriaWidgetViewOld: View {
     
     @StateObject var viewModel: CafeteriaWidgetViewModel = CafeteriaWidgetViewModel(cafeteriaService: CafeteriasService())
     
@@ -180,7 +180,7 @@ struct CompactDishView: View {
     }
 }
 
-struct CafeteriaWidgetView_Previews: PreviewProvider {
+struct CafeteriaWidgetViewOld_Previews: PreviewProvider {
     
     struct cafeteriaWidgetContent: View {
         

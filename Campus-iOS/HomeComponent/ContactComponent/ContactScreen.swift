@@ -11,8 +11,8 @@ import SwiftUI
 struct ContactScreen: View {
     
     @StateObject var model: Model
-    @StateObject var gradesViewModel: GradesViewModel
-    @StateObject var profileVm: ProfileViewModel
+    @StateObject var gradesViewModel: GradesViewModel //provides studyprogram info
+    @StateObject var profileVm: ProfileViewModel //profile info
     
     init (model: Model) {
         self._model = StateObject(wrappedValue: model)
