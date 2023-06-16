@@ -1,32 +1,32 @@
 //
-//  NewsScreen.swift
+//  MoviesScreen.swift
 //  Campus-iOS
 //
-//  Created by David Lin on 22.01.23.
+//  Created by Timothy Summers on 15.06.23.
 //
 
 import SwiftUI
 
-struct NewsScreen: View {
-    @StateObject var vm = NewsViewModel()
+struct MoviesScreen: View {
+    @StateObject var vm = MoviesViewModel()
     let isWidget: Bool
     
     var body: some View {
         Group {
             switch vm.state {
-            case .success(let newsSources):
-                if isWidget {
-                    NewsWidgetView(latestFiveNews: vm.latestFiveNews)
-                } else {
-                    VStack {
-                        NewsView(latestFiveNews: vm.latestFiveNews, newsSources: newsSources)
+            case .success(let movies):
+                VStack {
+                    if isWidget {
+                        MoviesWidgetView(movies: movies)
+                    } else {
+                        MoviesView(movies: movies)
                             .refreshable {
-                                await vm.getNewsSources(forcedRefresh: true)
+                                await vm.getMovies(forcedRefresh: true)
                             }
                     }
                 }
             case .loading, .na:
-                LoadingView(text: "Fetching News")
+                LoadingView(text: "Fetching Movies")
                     .padding(.vertical)
             case .failed(let error):
                 if isWidget {
@@ -34,19 +34,19 @@ struct NewsScreen: View {
                 } else {
                     FailedView(
                         errorDescription: error.localizedDescription,
-                        retryClosure: vm.getNewsSources
+                        retryClosure: vm.getMovies
                     )
                 }
             }
         }.task {
-            await vm.getNewsSources(forcedRefresh: true)
+            await vm.getMovies(forcedRefresh: true)
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getNewsSources(forcedRefresh: true)
+                        await vm.getMovies(forcedRefresh: true)
                     }
                 }
                 

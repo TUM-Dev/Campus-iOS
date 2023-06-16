@@ -45,6 +45,7 @@ struct TuitionScreen: View {
                 Text("Loading")
             case .failed(error: let error):
                 Text(error.localizedDescription)
+                    .sectionStyle()
             }
         }.task {
             await vm.getTuition(forcedRefresh: true)

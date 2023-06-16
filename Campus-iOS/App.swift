@@ -93,6 +93,7 @@ struct CampusApp: App {
             // MARK: - Grades Screen
             NavigationView {
                 GradesScreen(model: model, refresh: $model.isUserAuthenticated)
+                    .background(Color.primaryBackground)
                     .overlay(NavigationBarView(model: model, title: "Grades".localized))
             }
             .tag(Tab.grades)
@@ -114,6 +115,7 @@ struct CampusApp: App {
                     model: model,
                     service: LecturesService()
                 ), refresh: $model.isUserAuthenticated)
+                .background(Color.primaryBackground)
                 .overlay(NavigationBarView(model: model, title: "Lectures".localized))
             }
             .tag(Tab.lectures)

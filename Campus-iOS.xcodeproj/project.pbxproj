@@ -79,6 +79,7 @@
 		1EBD99A829A66B8D00C0B40D /* NewsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD99A729A66B8D00C0B40D /* NewsWidgetView.swift */; };
 		1ECB371D29B7518A007951AA /* PersonDetailedViewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECB371C29B7518A007951AA /* PersonDetailedViewUser.swift */; };
 		1EE8F36B2A375120002F9EED /* TuitionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE8F36A2A375120002F9EED /* TuitionScreen.swift */; };
+		1EEE61B42A3B4FF70038BF5B /* MoviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE61B32A3B4FF70038BF5B /* MoviesScreen.swift */; };
 		1EF36A3E2979B9D500AF049F /* CalendarWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */; };
 		1EF36A402979B9F200AF049F /* CalendarWidgetEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */; };
 		1EF36A42297AA9EC00AF049F /* GradesWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */; };
@@ -125,7 +126,6 @@
 		1F542451285CA059008363BC /* token-tutorial.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1F54244E285CA059008363BC /* token-tutorial.mov */; };
 		1F69CE35297DB732005032CE /* NewsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE34297DB732005032CE /* NewsService.swift */; };
 		1F69CE37297DCA22005032CE /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE36297DCA22005032CE /* NewsScreen.swift */; };
-		1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3B297DCC12005032CE /* MoviesScreen.swift */; };
 		1F69CE3E297DCC19005032CE /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3D297DCC19005032CE /* MovieService.swift */; };
 		1F69CE40297DDCD3005032CE /* StudyRoomDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */; };
 		1F69CE42297EC94E005032CE /* DishService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F69CE41297EC94E005032CE /* DishService.swift */; };
@@ -438,7 +438,7 @@
 		1E9C1055291A914D002C4C47 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		1E9C92DB2993F1230026B0E6 /* WidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetScreen.swift; sourceTree = "<group>"; };
 		1E9C92DF299D4D860026B0E6 /* CafeteriaWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaWidget.swift; sourceTree = "<group>"; };
-		1EB2CB032976971500B54C2E /* MoviesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesWidgetView.swift; path = "Campus-iOS/HomeComponent/MovieComponent/Views/MoviesWidgetView.swift"; sourceTree = SOURCE_ROOT; };
+		1EB2CB032976971500B54C2E /* MoviesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesWidgetView.swift; path = "Campus-iOS/MoviesComponent/Views/Widget/MoviesWidgetView.swift"; sourceTree = SOURCE_ROOT; };
 		1EB2CB082976D5D600B54C2E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		1EBCA8A72A0A4A5C00406F24 /* StudyRoomGroupsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupsView.swift; sourceTree = "<group>"; };
 		1EBCA8AB2A0A4B0900406F24 /* TUMCabeAPIOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUMCabeAPIOld.swift; sourceTree = "<group>"; };
@@ -454,6 +454,7 @@
 		1EBD99A729A66B8D00C0B40D /* NewsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWidgetView.swift; sourceTree = "<group>"; };
 		1ECB371C29B7518A007951AA /* PersonDetailedViewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailedViewUser.swift; sourceTree = "<group>"; };
 		1EE8F36A2A375120002F9EED /* TuitionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuitionScreen.swift; sourceTree = "<group>"; };
+		1EEE61B32A3B4FF70038BF5B /* MoviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoviesScreen.swift; path = ../Views/MoviesScreen.swift; sourceTree = "<group>"; };
 		1EF36A3D2979B9D500AF049F /* CalendarWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetScreen.swift; sourceTree = "<group>"; };
 		1EF36A3F2979B9F200AF049F /* CalendarWidgetEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEventView.swift; sourceTree = "<group>"; };
 		1EF36A41297AA9EC00AF049F /* GradesWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesWidgetView.swift; sourceTree = "<group>"; };
@@ -498,7 +499,6 @@
 		1F54244E285CA059008363BC /* token-tutorial.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "token-tutorial.mov"; sourceTree = "<group>"; };
 		1F69CE34297DB732005032CE /* NewsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsService.swift; sourceTree = "<group>"; };
 		1F69CE36297DCA22005032CE /* NewsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
-		1F69CE3B297DCC12005032CE /* MoviesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesScreen.swift; sourceTree = "<group>"; };
 		1F69CE3D297DCC19005032CE /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		1F69CE3F297DDCD3005032CE /* StudyRoomDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomDetailsScreen.swift; sourceTree = "<group>"; };
 		1F69CE41297EC94E005032CE /* DishService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishService.swift; sourceTree = "<group>"; };
@@ -894,22 +894,6 @@
 			path = HeaderComponent;
 			sourceTree = "<group>";
 		};
-		1E9C92DD299422360026B0E6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2870A2F629AF52F100005264 /* DeparturesWidget */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1E9C92DE299422EA0026B0E6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1EB2CB032976971500B54C2E /* MoviesWidgetView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		1EBCA8AE2A2B8E8100406F24 /* Campuses */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,14 +918,6 @@
 			path = OldMapsComponent;
 			sourceTree = "<group>";
 		};
-		1EBD99A629A66B6400C0B40D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EBD99A729A66B8D00C0B40D /* NewsWidgetView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		1EE8F36C2A38BEEE002F9EED /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +925,22 @@
 				1E9C92DF299D4D860026B0E6 /* CafeteriaWidget.swift */,
 				1EBD99A429A3E12500C0B40D /* MealIngredientsView.swift */,
 				1E62C81D29E9D629002E1F47 /* DishView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		1EEE61B22A3B4ECF0038BF5B /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				1EBD99A729A66B8D00C0B40D /* NewsWidgetView.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		1EEE61B52A3B502D0038BF5B /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				1EB2CB032976971500B54C2E /* MoviesWidgetView.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -982,30 +974,6 @@
 			path = ContactComponent;
 			sourceTree = "<group>";
 		};
-		1EF36A562993EE1300AF049F /* WidgetComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C92DD299422360026B0E6 /* Views */,
-			);
-			path = WidgetComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A572993EE2200AF049F /* MovieComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1E9C92DE299422EA0026B0E6 /* Views */,
-			);
-			path = MovieComponent;
-			sourceTree = "<group>";
-		};
-		1EF36A582993EE3000AF049F /* NewsComponent */ = {
-			isa = PBXGroup;
-			children = (
-				1EBD99A629A66B6400C0B40D /* View */,
-			);
-			path = NewsComponent;
-			sourceTree = "<group>";
-		};
 		1EF36A592993EECC00AF049F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,9 +995,6 @@
 		1EFBBEB6295CE4EF001A0364 /* HomeComponent */ = {
 			isa = PBXGroup;
 			children = (
-				1EF36A582993EE3000AF049F /* NewsComponent */,
-				1EF36A572993EE2200AF049F /* MovieComponent */,
-				1EF36A562993EE1300AF049F /* WidgetComponent */,
 				1EF36A542993ED9600AF049F /* ContactComponent */,
 				1EFBBEBA295DA51E001A0364 /* HomeScreen.swift */,
 				1E9C92DB2993F1230026B0E6 /* WidgetScreen.swift */,
@@ -1213,7 +1178,7 @@
 		1F69CE3A297DCC04005032CE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				1F69CE3B297DCC12005032CE /* MoviesScreen.swift */,
+				1EEE61B32A3B4FF70038BF5B /* MoviesScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -1338,6 +1303,7 @@
 		28609DAD29AE4B4300F3B8CA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2870A2F629AF52F100005264 /* Widget */,
 				28609DB729AE4DA000F3B8CA /* DeparturesDetailsView.swift */,
 				28609DB929AE4DB700F3B8CA /* DeparturesDetailsRowView.swift */,
 			);
@@ -1352,13 +1318,14 @@
 			path = Types;
 			sourceTree = "<group>";
 		};
-		2870A2F629AF52F100005264 /* DeparturesWidget */ = {
+		2870A2F629AF52F100005264 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
 				2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */,
 				28609DB529AE4D8700F3B8CA /* DeparturesWidgetView.swift */,
 			);
-			path = DeparturesWidget;
+			name = Widget;
+			path = ../../HomeComponent/WidgetComponent/Views/Widget;
 			sourceTree = "<group>";
 		};
 		36108B9C27A3046B007DC62D /* LectureComponent */ = {
@@ -1510,6 +1477,7 @@
 		36108BF527A30516007DC62D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1EEE61B52A3B502D0038BF5B /* Widget */,
 				36108BF627A30516007DC62D /* MovieCard.swift */,
 				36108BF727A30516007DC62D /* MovieDetailedView.swift */,
 				36108BF827A30516007DC62D /* MovieDetailCellView.swift */,
@@ -1654,6 +1622,7 @@
 		3629BA2A27A1CEAD0036AC80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1EEE61B22A3B4ECF0038BF5B /* Widget */,
 				3629BA2B27A1CECA0036AC80 /* NewsView.swift */,
 				3629BA2D27A1CEFA0036AC80 /* NewsCard.swift */,
 				36982BD527A251A700515847 /* NewsCardsHorizontalScrollingView.swift */,
@@ -2436,7 +2405,6 @@
 				1EB2CB092976D5D600B54C2E /* ViewModifiers.swift in Sources */,
 				1EF36A402979B9F200AF049F /* CalendarWidgetEventView.swift in Sources */,
 				36AF61EE27A2FD7800FEBD98 /* GroupBoxLabelView.swift in Sources */,
-				1F69CE3C297DCC12005032CE /* MoviesScreen.swift in Sources */,
 				1F69CE48297EDEA3005032CE /* TUMSexyScreen.swift in Sources */,
 				36108BFB27A30517007DC62D /* MoviesViewModel.swift in Sources */,
 				36E964AC277499860055777F /* CalendarDisplayView.swift in Sources */,
@@ -2524,6 +2492,7 @@
 				0805E72228CA9DF5003C5CFD /* AppUsageData.swift in Sources */,
 				1EBCA8A82A0A4A5C00406F24 /* StudyRoomGroupsView.swift in Sources */,
 				08FAFD1E288DEDD3006A0E27 /* WidgetRecommenderStrategy.swift in Sources */,
+				1EEE61B42A3B4FF70038BF5B /* MoviesScreen.swift in Sources */,
 				3654F3792851710E008AD5DC /* RoomFinderDetailsMapView.swift in Sources */,
 				3698CBED2761E014001C5735 /* CustomRoundedBorderTextFieldStyle.swift in Sources */,
 				36108BE627A304B5007DC62D /* MealPlanViewModel.swift in Sources */,
