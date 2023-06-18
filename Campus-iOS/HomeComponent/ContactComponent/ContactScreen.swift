@@ -12,20 +12,21 @@ struct ContactScreen: View {
     
     @StateObject var model: Model
     @StateObject var gradesViewModel: GradesViewModel //provides studyprogram info
-    @StateObject var profileVm: ProfileViewModel //profile info
+    @StateObject var profileVm: ProfileViewModel
+    let profile: Profile
     
-    init (model: Model) {
+    init (model: Model, profileVm: ProfileViewModel, profile: Profile) {
         self._model = StateObject(wrappedValue: model)
         self._gradesViewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
-        self._profileVm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
+        self._profileVm = StateObject(wrappedValue: profileVm)
+        self.profile =  profile
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            if case .success(let profile) = profileVm.profileState {
-                ContactCardView(model: self.model, profile: profile, profileVm: self.profileVm, gradesVm: self.gradesViewModel)
-                    .padding(.bottom, 10)
-            }
+            ContactCardView(model: self.model, profile: profile, profileVm: self.profileVm, gradesVm: self.gradesViewModel)
+                .padding(.bottom, 10)
+            
             
             TuitionScreen(vm: self.profileVm)
                 .padding(.bottom, 10)
@@ -34,7 +35,6 @@ struct ContactScreen: View {
             
         }.task {
             await gradesViewModel.getGrades(forcedRefresh: true)
-            await profileVm.getProfile(forcedRefresh: true)
         }
     }
 }

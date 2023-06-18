@@ -96,6 +96,7 @@ struct NewsCard: View {
             VStack(alignment: .leading) {
                 Text(self.title)
                     .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
                 Text(self.created, style: .date)
                     .font(.subheadline)
                     .foregroundColor(.gray)
@@ -106,6 +107,7 @@ struct NewsCard: View {
                         Text("Source: \(source!)")
                             .font(.subheadline)
                             .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
                     }
                 }
             }

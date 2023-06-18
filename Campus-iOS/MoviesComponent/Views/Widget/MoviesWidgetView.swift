@@ -21,9 +21,9 @@ struct MoviesWidgetView: View {
             Text("TU Film").titleStyle()
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
+                HStack(spacing: 15) {
                     ForEach(movies, id: \.id ) { movie in
-                        MovieCard(movie: movie).padding(2)
+                        MovieCard(movie: movie)
                             .onTapGesture {
                                 selectedMovie = movie
                             }
@@ -32,7 +32,7 @@ struct MoviesWidgetView: View {
                         MovieDetailedView(movie: movie)
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 20)
             }
         }
     }

@@ -40,7 +40,7 @@ struct CafeteriaWidget: View {
                             DishView(dish: dish)
                         }
                     }
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
                     .padding(.top, 10)
                 }
             }

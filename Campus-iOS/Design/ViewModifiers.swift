@@ -31,6 +31,16 @@ struct ListSection: ViewModifier {
     }
 }
 
+struct ScrollableCardsViewModifier: ViewModifier { //only used for news credit: Milen Vitanov
+    func body(content: Content) -> some View {
+        content
+            .background(Color.blue.opacity(0.05))
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 0)
+            .padding(10)
+    }
+}
+
 extension View {
     func titleStyle() -> some View {
             modifier(Title())

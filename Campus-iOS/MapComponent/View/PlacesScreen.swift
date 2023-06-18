@@ -60,8 +60,8 @@ struct PlacesScreen: View {
             }
         }
         .task {
-            await vm.getCafeteria()
-            await vm.getStudyRoomResponse()
+            await vm.getCafeteria(forcedRefresh: true)
+            await vm.getStudyRoomResponse(forcedRefresh: true)
         }
         .alert("Error while fetching Cafeterias", isPresented: $vm.hasError, presenting: vm.cafeteriasState) {
             detail in
