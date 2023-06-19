@@ -60,7 +60,7 @@ class AuthenticationHandler {
             }
         }
     }
-    
+
     func createToken(tumID: String, completion: @escaping (Result<String,Error>) -> Void) async {
         do {
             let tokenName = "TCA - \(await UIDevice.current.name)"
@@ -73,7 +73,6 @@ class AuthenticationHandler {
             print(error)
             completion(.failure(LoginError.serverError(message: error.localizedDescription)))
         }
-        
     }
     
     func confirmToken() async -> Result<Bool, Error> {
@@ -87,10 +86,7 @@ class AuthenticationHandler {
             case .tumID(tumID: _, token: let token), .tumIDAndKey(tumID: _, token: let token, key: _):
                 do {
                     let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token, forcedRefresh: true)
-<<<<<<< HEAD
-=======
-                    
->>>>>>> b197426bf4be744ed54446b5c6953f4a1c782ce2
+
                     if confirmation.value {
                         return .success(true)
                     } else {

@@ -73,11 +73,7 @@ class LoginViewModel: ObservableObject {
                     self.model.isUserAuthenticated = true
                     self.model.showProfile = false
                 }
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> b197426bf4be744ed54446b5c6953f4a1c782ce2
                 callback(.success(true))
             case .failure(let error):
                 self.model.isUserAuthenticated = false
