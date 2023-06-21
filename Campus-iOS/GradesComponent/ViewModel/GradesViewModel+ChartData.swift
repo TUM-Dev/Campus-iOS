@@ -18,7 +18,7 @@ extension GradesViewModel {
             ]
         }
         
-        let accumulatedGradesByDegree = data.reduce(into: [String: [Grade]]()) { partialResult, grade in
+        let accumulatedGradesByDegree = data.grades.reduce(into: [String: [Grade]]()) { partialResult, grade in
                 let studyID = String(grade.studyID)
                 
                 if partialResult[studyID] == nil {
