@@ -29,4 +29,6 @@ extension Grade {
         Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Schriftlich", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170),
         Grade(date: .now, lvNumber: "IN4741", semester: "17W", title: "Seminar Teaching iOS", examiner: "Brügge", grade: "1,0", examType: "FA", modus: "Schriftlich", studyID: "1630 17 030", studyDesignation: "Informatik", studyNumber: 947170)
     ]
+    
+    static var dummyDataAll: [Grade] = dummyData21W + dummyData21S + dummyData20W
 } 

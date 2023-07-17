@@ -31,9 +31,9 @@ struct GradeWidgetView: View {
             case .success:
                 switch size {
                 case .square:
-                    SimpleGradeWidgetContent(grade: data.first)
+                    SimpleGradeWidgetContent(grade: viewModel.grades.first)
                 case .rectangle, .bigSquare:
-                    DetailedGradeWidgetContent(grades: data, size: size)
+                    DetailedGradeWidgetContent(grades: viewModel.grades, size: size)
                 }
             case .loading, .na:
                 WidgetLoadingView(text: "Fetching Grades")
@@ -56,9 +56,7 @@ struct GradeWidgetView: View {
                 showDetails.toggle()
             }
             .sheet(isPresented: $showDetails) {
-                if case .success(let data) = viewModel.state {
-                    GradesView(grades: data, gradesSemesterDegrees: GradesViewModel.gradesByDegreeAndSemester(data: data), barChartData: GradesViewModel.barChartData(data: data), studyProgramm: GradesViewModel.getStudyProgram(for: data.first))
-                }
+                GradesView(vm: viewModel)
             }
             .expandable(size: $size, initialSize: initialSize, scale: $scale)
     }
@@ -214,11 +212,11 @@ struct GradeWidgetView_Previews: PreviewProvider {
         ScrollView {
             VStack {
                 HStack {
-                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.previewData.first))
+                    WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: Grade.dummyDataAll.first))
                     WidgetFrameView(size: .square, content: SimpleGradeWidgetContent(grade: nil))
                 }
-                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.previewData, size: .rectangle))
-                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.previewData, size: .bigSquare))
+                WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .rectangle))
+                WidgetFrameView(size: .bigSquare, content: DetailedGradeWidgetContent(grades: Grade.dummyDataAll, size: .bigSquare))
                 WidgetFrameView(size: .rectangle, content: DetailedGradeWidgetContent(grades: [], size: .rectangle))
             }
             .padding()

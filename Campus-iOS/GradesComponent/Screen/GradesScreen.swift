@@ -27,11 +27,13 @@ struct GradesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success(let data):
+            case .success(_):
                 VStack {
-                    GradesView(grades: data, gradesSemesterDegrees: GradesViewModel.gradesByDegreeAndSemester(data: data), barChartData: GradesViewModel.barChartData(data: data), studyProgramm: GradesViewModel.getStudyProgram(for: data.first))
-                        .refreshable {
-                        await vm.getGrades(forcedRefresh: true)
+                    GradesView(
+                        vm: self.vm
+                    )
+                    .refreshable {
+                        await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
                     }
                 }
             case .loading, .na:

@@ -10,12 +10,8 @@ import SwiftUICharts
 
 struct GradesView: View {
     
+    @StateObject var vm: GradesViewModel
     @State private var data = AppUsageData()
-    
-    let grades: [Grade]
-    let gradesSemesterDegrees: GradesSemesterDegrees
-    let barChartData: [BarChartData]
-    let studyProgramm: String
     
     var body: some View {
         let gradesWithAverage = self.vm.gradesByDegreeAndSemesterWithAverageGrade

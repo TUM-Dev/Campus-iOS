@@ -98,8 +98,4 @@ extension GradesViewModel {
             )
         }
     }
-    
-    static var previewBarChartData: [BarChartData] {
-        return Self.barChartData(data: Grade.previewData)
-    }
 }

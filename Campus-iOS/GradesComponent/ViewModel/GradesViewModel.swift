@@ -200,9 +200,3 @@ class GradesViewModel: GradesViewModelProtocol {
         }
     }
 }
-
-extension GradesViewModel {
-    static var previewGradesSemesterDegree: GradesSemesterDegrees {
-        return Self.gradesByDegreeAndSemester(data: Grade.previewData)
-    }
-}
