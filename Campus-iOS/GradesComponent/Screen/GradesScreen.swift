@@ -11,14 +11,16 @@ import SwiftUICharts
 struct GradesScreen: View {
     @StateObject var vm: GradesViewModel
     @Binding var refresh: Bool
-
+    
     init(model: Model, refresh: Binding<Bool>) {
         self._vm = StateObject(wrappedValue:
-            GradesViewModel(
-                model: model,
-                service: GradesService()
-            )
+                                GradesViewModel(
+                                    model: model,
+                                    gradesService: GradesService(),
+                                    averageGradesService: AverageGradesService()
+                                )
         )
+        
         self._refresh = refresh
     }
     
@@ -37,24 +39,24 @@ struct GradesScreen: View {
             case .failed(let error):
                 FailedView(
                     errorDescription: error.localizedDescription,
-                    retryClosure: vm.getGrades
+                    retryClosure: vm.reloadGradesAndAverageGrades
                 )
             }
         }
         .task {
-            await vm.getGrades()
+            await vm.reloadGradesAndAverageGrades()
         }
         // Refresh whenever user authentication status changes
         .onChange(of: self.refresh) { _ in
             Task {
-                await vm.getGrades()
+                await vm.reloadGradesAndAverageGrades()
             }
         }
         // As LoginView is just a sheet displayed in front of the GradeScreen
         // Listen to changes on the token, then fetch the grades
         .onChange(of: self.vm.model.token ?? "") { _ in
             Task {
-                await vm.getGrades()
+                await vm.reloadGradesAndAverageGrades()
             }
         }
         .alert(
@@ -63,10 +65,10 @@ struct GradesScreen: View {
             presenting: vm.state) { detail in
                 Button("Retry") {
                     Task {
-                        await vm.getGrades(forcedRefresh: true)
+                        await vm.reloadGradesAndAverageGrades()
                     }
                 }
-        
+                
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {

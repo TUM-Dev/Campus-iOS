@@ -16,10 +16,11 @@ class MockGradesViewModel: GradesViewModel {
         ("1630 17 030", [("Wintersemester 2020/21", Grade.dummyData20W)])
     ]
     
-    override init(model: Model, service: GradesService) {
-        super.init(model: model, service: service)
+    override init(model: Model, gradesService: GradesService, averageGradesService: AverageGradesService) {
+        super.init(model: model, gradesService: gradesService, averageGradesService: AverageGradesService())
         
-        self.state = .success(data: Grade.previewData)
+        self.gradesState = .success(data: Grade.dummyDataAll)
+        self.averageGradesState = .success(data: AverageGrade.dummyData)
     }
 }
 

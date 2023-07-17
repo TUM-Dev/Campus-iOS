@@ -1590,6 +1590,7 @@
 				1F0F39692A058AAA00E55FCB /* Grade+PreviewData.swift */,
 				36108C0D27A307F9007DC62D /* Modus.swift */,
 				97F8A79227E641570099EE83 /* AcademicDegree.swift */,
+				99EE85352A09216600973916 /* AverageGrade.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1598,6 +1599,7 @@
 			isa = PBXGroup;
 			children = (
 				36108C0F27A307F9007DC62D /* GradesService.swift */,
+				99EE85332A0920AE00973916 /* AverageGradesService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1610,6 +1612,8 @@
 				36108C1327A307F9007DC62D /* BarChartView.swift */,
 				974D5B9927E5E9CB00FD7B11 /* GlowBorder.swift */,
 				08573BA6287B6152006AC06F /* GradeWidgetView.swift */,
+				9926FD422A1D0BC000EE3ECB /* GradesStudyProgramView.swift */,
+				9926FD442A1D0DBC00EE3ECB /* GradesSemesterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
