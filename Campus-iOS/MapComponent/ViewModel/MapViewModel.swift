@@ -44,7 +44,7 @@ class MapViewModel: MapViewModelProtocol {
     var cafeterias: [Cafeteria] {
         get {
             if mock {
-                return mockCafeterias
+                return Cafeteria.previewData
             } else {
                 guard case .success(let cafeterias) = self.cafeteriasState else {
                     return []

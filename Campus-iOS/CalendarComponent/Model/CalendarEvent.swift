@@ -18,7 +18,9 @@ struct CalendarAPIResponse: Decodable {
     }
 }
 
-struct CalendarEvent: Decodable, Identifiable, Equatable {
+
+struct CalendarEvent: Decodable, Identifiable, Equatable, Searchable {
+
     var descriptionText: String?
     var endDate: Date?
     var id: Int64
@@ -27,6 +29,13 @@ struct CalendarEvent: Decodable, Identifiable, Equatable {
     var status: String?
     var title: String?
     var url: URL?
+    
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: title ?? ""),
+            ComparisonToken(value: location ?? ""),
+        ]
+    }
     
     /*
      <event>
@@ -166,16 +175,46 @@ class CustomEventDesign: EventViewGeneral {
     }
 }
 
-extension CalendarEvent {
-    
-    static let mockEvent = CalendarEvent(
-        id: 1,
-        status: "FT",
-        url: URL(string: "https://campus.tum.de/tumonline/lv.detail?cLvNr=950369994"),
-        title: "Programmoptimierung (IN2053) VI",
-        descriptionText: "fix; Abhaltung; ",
-        startDate: Date(),
-        endDate: Date().addingTimeInterval(60 * 60),
-        location: "00.13.009A, Seminarraum (5613.EG.009A)"
-    )
-}
+
+/*
+ <event>
+     <nr>889413054</nr>
+     <status>FT</status>
+     <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950630619</url>
+     <title>Grundlagen: Betriebssysteme und Systemsoftware (IN0009) VO</title>
+     <description>fix; Abhaltung; </description>
+     <dtstart>2022-12-21 13:00:00</dtstart>
+     <dtend>2022-12-21 14:00:00</dtend>
+     <location>MW 0001, Gustav-Niemann-Hörsaal (5510.EG.001)</location>
+   </event>
+   <event>
+     <nr>889461603</nr>
+     <status>FT</status>
+     <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950629892</url>
+     <title>Analysis für Informatik [MA0902] VO</title>
+     <description>fix; Abhaltung; </description>
+     <dtstart>2022-12-22 08:30:00</dtstart>
+     <dtend>2022-12-22 10:00:00</dtend>
+     <location>MW 0001, Gustav-Niemann-Hörsaal (5510.EG.001)</location>
+   </event>
+   <event>
+     <nr>889413025</nr>
+     <status>FT</status>
+     <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950630619</url>
+     <title>Grundlagen: Betriebssysteme und Systemsoftware (IN0009) VO</title>
+     <description>fix; Abhaltung; </description>
+     <dtstart>2023-01-09 13:45:00</dtstart>
+     <dtend>2023-01-09 15:15:00</dtend>
+     <location>MW 2001 Rudolf-Diesel-Hörsaal (5510.02.001)</location>
+   </event>
+   <event>
+     <nr>889461590</nr>
+     <status>FT</status>
+     <url>https://campus.tum.de/tumonline/lv.detail?cLvNr=950629892</url>
+     <title>Analysis für Informatik [MA0902] VO</title>
+     <description>fix; Abhaltung; </description>
+     <dtstart>2023-01-10 08:30:00</dtstart>
+     <dtend>2023-01-10 10:00:00</dtend>
+     <location>MW 0001, Gustav-Niemann-Hörsaal (5510.EG.001)</location>
+   </event>
+ */

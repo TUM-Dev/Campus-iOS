@@ -66,7 +66,7 @@ struct CafeteriaRowView: View {
 
 struct CafeteriaRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CafeteriaRowView(cafeteria: .constant(mockCafeterias[0]))
+        CafeteriaRowView(cafeteria: .constant(Cafeteria.previewData[0]))
             .previewLayout(PreviewLayout.sizeThatFits)
     }
 }

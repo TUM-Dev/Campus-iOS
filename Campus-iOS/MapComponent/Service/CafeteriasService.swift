@@ -8,7 +8,11 @@
 import Foundation
 import Alamofire
 
-struct CafeteriasService: ServiceProtocol {
+protocol CafeteriasServiceProtocol {
+    func fetch(forcedRefresh: Bool) async throws -> [Cafeteria]
+}
+
+struct CafeteriasService: ServiceProtocol, CafeteriasServiceProtocol {
     typealias T = Cafeteria
     
     func fetch(forcedRefresh: Bool) async throws -> [Cafeteria] {

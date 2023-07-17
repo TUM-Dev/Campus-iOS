@@ -31,8 +31,6 @@ struct TUMSexyView: View {
                         Link(link.description ?? "", destination: URL(string: link.target ?? "")!)
                     }
                 }
-                    
-//
             }
         }
         .searchable(text: $searchText)

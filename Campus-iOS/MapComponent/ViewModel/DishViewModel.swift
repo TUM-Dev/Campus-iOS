@@ -9,29 +9,6 @@ import Foundation
 
 @MainActor
 class DishViewModel: ObservableObject {
-    @Published var state: APIState<[String: DishLabel]> = .na
-    
-    let service = DishService()
-    let dish: Dish
-    
-    init(dish: Dish) {
-        self.dish = dish
-    }
-    
-    func getDishLabels(forcedRefresh: Bool = false) async {
-        if !forcedRefresh {
-            self.state = .loading
-        }
-        
-        let dishLabels = await service.fetch(forcedRefresh: forcedRefresh)
-        if let generalLabels = dishLabels {
-            self.state = .success(
-                data: generalLabels
-            )
-        } else {
-            self.state = .success(data: [:])
-        }
-    }
     
     func formatPrice(dish: Dish, pricingGroup: String) -> String {
         let priceFormatter: NumberFormatter = {

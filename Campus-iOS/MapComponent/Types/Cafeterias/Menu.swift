@@ -29,14 +29,3 @@ final class Menu: Identifiable, Decodable {
         return dishes.sorted(by: { $0.name < $1.name })
     }
 }
-
-struct MenuCategory: Identifiable, Decodable {
-    var id = UUID()
-    let name: String
-    let dishes: [Dish]
-  
-    init(name: String, dishes: [Dish]) {
-        self.name = name
-        self.dishes = dishes
-    }
-}

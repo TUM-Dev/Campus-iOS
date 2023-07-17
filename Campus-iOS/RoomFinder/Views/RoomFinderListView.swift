@@ -16,27 +16,7 @@ struct RoomFinderListView: View {
     var body: some View {
         List {
             ForEach(self.viewModel.result, id: \.id) { room in
-                NavigationLink(
-                    destination: RoomFinderDetailsView(room: room)
-                        .navigationBarTitleDisplayMode(.inline)
-                ) {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text(room.info)
-                        }
-                        
-                        Spacer()
-                        
-                        HStack {
-                            Text(room.roomCode)
-                                .foregroundColor(Color(.secondaryLabel))
-                            Spacer().frame(width: 5)
-                            Text(room.purpose)
-                                .font(.footnote)
-                                .foregroundColor(Color(.secondaryLabel))
-                        }
-                    }
-                }
+                RoomFinderListCellView(room: room)
             }
             if viewModel.errorMessage != "" {
                 VStack {
@@ -50,6 +30,37 @@ struct RoomFinderListView: View {
             if !newValue {
                 self.viewModel.result = []
             }
+        }
+    }
+}
+
+struct RoomFinderListCellView: View {
+    let room: FoundRoom
+    
+    var body: some View {
+        NavigationLink(
+            destination: RoomFinderDetailsView(room: room)
+                .navigationBarTitleDisplayMode(.inline)
+        ) {
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(room.info)
+                    }
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Text(room.roomCode)
+                            .foregroundColor(Color(.secondaryLabel))
+                        Spacer().frame(width: 5)
+                        Text(room.purpose)
+                            .font(.footnote)
+                            .foregroundColor(Color(.secondaryLabel))
+                    }
+                }
+                Spacer()
+            }.padding()
         }
     }
 }

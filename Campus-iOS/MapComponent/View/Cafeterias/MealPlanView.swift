@@ -12,7 +12,8 @@ struct MealPlanView: View {
     @Environment(\.colorScheme) var colorScheme
     let menus: [Menu]
     let cafeteria: Cafeteria
-    @State var selectedMenu: Menu
+    @State var
+selectedMenu: Menu
         
     var body: some View {
         VStack {
@@ -43,17 +44,8 @@ struct MealPlanView: View {
                             }
                         }
                         .padding(.horizontal, 5.0)
-                    
-                        MenuView(menu: selectedMenu)
                         
-                        /*
-                        if let menu = selectedMenu {
-                            
-                        } else {
-                            Spacer().frame(height: 20)
-                            Text("No Menu available today").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
-                        }
-                         */
+                    MenuScreen(menu: selectedMenu)
                     }
                 } else {
                     Text("No Menus available")

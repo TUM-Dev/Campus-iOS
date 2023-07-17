@@ -8,7 +8,25 @@
 import Foundation
 import SwiftUI
 
-struct StudyRoom: Decodable {
+struct StudyRoom: Decodable, Identifiable, Searchable {
+    
+    static func == (lhs: StudyRoom, rhs: StudyRoom) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    var comparisonTokens: [ComparisonToken] {
+        get {
+            return [
+                ComparisonToken(value: name ?? ""),
+                ComparisonToken(value: buildingCode ?? "", type: .raw),
+                ComparisonToken(value: buildingName ?? ""),
+                ComparisonToken(value: String(buildingNumber), type: .raw),
+                ComparisonToken(value: status ?? ""),
+                ComparisonToken(value: occupiedBy ?? "")
+            ] + (attributes?.flatMap { $0.comparisonTokens } ?? [])
+        }
+    }
+    
     var buildingCode: String?
     var buildingName: String?
     var buildingNumber: Int64
@@ -147,5 +165,24 @@ struct StudyRoom: Decodable {
     
     func isAvailable() -> Bool {
         return status == "frei"
+    }
+    
+    init(buildingCode: String? = nil, buildingName: String? = nil, buildingNumber: Int64, code: String? = nil, id: Int64, name: String? = nil, number: String? = nil, occupiedBy: String? = nil, occupiedFor: Int64, occupiedFrom: String? = nil, occupiedIn: Int64, occupiedUntil: String? = nil, raum_nr_architekt: String? = nil, res_nr: Int64, status: String? = nil, attributes: [StudyRoomAttribute]? = nil) {
+        self.buildingCode = buildingCode
+        self.buildingName = buildingName
+        self.buildingNumber = buildingNumber
+        self.code = code
+        self.id = id
+        self.name = name
+        self.number = number
+        self.occupiedBy = occupiedBy
+        self.occupiedFor = occupiedFor
+        self.occupiedFrom = occupiedFrom
+        self.occupiedIn = occupiedIn
+        self.occupiedUntil = occupiedUntil
+        self.raum_nr_architekt = raum_nr_architekt
+        self.res_nr = res_nr
+        self.status = status
+        self.attributes = attributes
     }
 }

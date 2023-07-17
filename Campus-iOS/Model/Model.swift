@@ -37,7 +37,6 @@ public class Model: ObservableObject {
     
     @Published var loginController = AuthenticationHandler()
     @Published var isUserAuthenticated = false
-//    @Published var profile: ProfileViewModel = ProfileViewModel()
     
     var anyCancellables: [AnyCancellable] = []
     
@@ -58,5 +57,12 @@ public class Model: ObservableObject {
             self.isLoginSheetPresented = true
             self.isUserAuthenticated = false
         }
+    }
+}
+
+public class Model_Preview: Model {
+    override init() {
+        super.init()
+        loginController = AuthenticationHandler_Preview()
     }
 }
