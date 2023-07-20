@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct News: Decodable {
+struct News: Decodable, Searchable {
+    var comparisonTokens: [ComparisonToken] {
+        return [ComparisonToken(value: title ?? "")]
+    }
+
     var id: String?
     var sourceID: Int64
     var date: Date?

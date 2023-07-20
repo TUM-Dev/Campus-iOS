@@ -33,6 +33,7 @@ enum LoginError: LocalizedError {
     }
 }
 
+
 class AuthenticationHandler {
     private static let keychain = Keychain(service: "de.tum.campusapp")
         .synchronizable(true)
@@ -85,7 +86,7 @@ class AuthenticationHandler {
             case .tumID(tumID: _, token: let token), .tumIDAndKey(tumID: _, token: let token, key: _):
                 do {
                     let confirmation: Confirmation = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenConfirmation, token: token, forcedRefresh: true)
-                    
+
                     if confirmation.value {
                         return .success(true)
                     } else {
@@ -111,5 +112,11 @@ class AuthenticationHandler {
         Analytics.logEvent("skip_login", parameters: nil)
         #endif
         credentials = .noTumID
+    }
+}
+
+class AuthenticationHandler_Preview: AuthenticationHandler {
+    override var credentials: Credentials? {
+        return .tumID(tumID: "Preview_TUMID", token: "Preview_Token")
     }
 }

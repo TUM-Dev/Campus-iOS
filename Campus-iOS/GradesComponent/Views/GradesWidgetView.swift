@@ -19,7 +19,7 @@ struct GradeWidgetView: View {
     
     init(model: Model, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) {
 //        self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
-        self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+        self._viewModel = StateObject(wrappedValue: GradesViewModel(model: model, gradesService: GradesService(), averageGradesService: AverageGradesService()))
         
         self.size = size
         self.initialSize = size
@@ -28,7 +28,7 @@ struct GradeWidgetView: View {
     
     var content: some View {
         Group {
-            switch viewModel.state {
+            switch viewModel.gradesState {
             case .success:
                 switch size {
                 case .square:

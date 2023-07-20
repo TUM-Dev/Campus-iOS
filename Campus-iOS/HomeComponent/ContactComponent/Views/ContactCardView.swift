@@ -20,8 +20,8 @@ struct ContactCardView: View {
     
     var studyPrograms: [String] {
         var result = [String]()
-        for index in self.gradesVm.gradesByDegreeAndSemester.indices {
-            result.append(self.gradesVm.getStudyProgramNoID(studyID: self.gradesVm.gradesByDegreeAndSemester[index].0))
+        for index in self.gradesVm.gradesByDegreeAndSemesterWithAverageGrade.indices {
+            result.append(self.gradesVm.getStudyProgramNoID(studyID: self.gradesVm.gradesByDegreeAndSemesterWithAverageGrade[index].degree))
         }
         return result
     }
@@ -107,6 +107,10 @@ struct ContactCardView: View {
                     print("Error in saving Image")
                 }
             }
+        }
+        .task {
+            print("✅✅")
+            print(self.gradesVm.gradesByDegreeAndSemesterWithAverageGrade)
         }
     }
 }

@@ -8,7 +8,14 @@
 import Foundation
 import MapKit
 
-struct StudyRoomGroup: Decodable, Equatable, Identifiable {
+struct StudyRoomGroup: Decodable, Equatable, Searchable, Identifiable {
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: name ?? ""),
+            ComparisonToken(value: detail ?? "")
+        ]
+    }
+    
     var detail: String?
     var id: Int64
     var name: String?
@@ -61,6 +68,14 @@ struct StudyRoomGroup: Decodable, Equatable, Identifiable {
         self.id = id
         self.sorting = sorting
         self.rooms = room_nrs
+    }
+    
+    init(detail: String? = nil, id: Int64, name: String? = nil, sorting: Int64, rooms: [Int64]? = nil) {
+        self.detail = detail
+        self.id = id
+        self.name = name
+        self.sorting = sorting
+        self.rooms = rooms
     }
     
     func getRooms(allRooms rooms: [StudyRoom]) -> [StudyRoom]? {

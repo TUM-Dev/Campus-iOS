@@ -34,7 +34,7 @@ struct RoomFinderView: View {
     }
     
     func search(_ searchValue: String) async {
-        await self.viewModel.fetch(searchString: searchValue)
+        await self.viewModel.fetch(for: searchValue)
     }
 }
 

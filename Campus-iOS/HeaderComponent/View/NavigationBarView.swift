@@ -18,7 +18,11 @@ struct NavigationBarView: View {
                 VStack {
                     Spacer()
                     HStack {
-                        Image(systemName: "magnifyingglass").foregroundColor(Color.primaryText).font(.system(size: 20))
+                        NavigationLink {
+                            SearchResultView(vm: SearchResultViewModel (model: self .model))
+                        } label: {
+                            Image(systemName: "magnifyingglass").foregroundColor(Color.primaryText).font(.system(size: 20))
+                        }
                         Spacer()
                         if self.title == nil {
                             Image("logo-blue-responsive")

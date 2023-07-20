@@ -47,6 +47,9 @@ struct StudyRoomDetailsScreen: View {
                     .padding()
                 }
             }
+        }.task {
+            /// Cache currently not working since the view permanently redraws, due to an unknonw reason, i.e. the loading screen and the loaded data is flickering, when forcedRefresh is removed from the method call (i.e. forcedRefresh is then false since its default value is false, see getRoomImageMappin() inside the view model).
+            await vm.getRoomImageMapping(for: self.room, forcedRefresh: true)
         }.alert(
             "Error while fetching Room Images",
             isPresented: $vm.hasError,

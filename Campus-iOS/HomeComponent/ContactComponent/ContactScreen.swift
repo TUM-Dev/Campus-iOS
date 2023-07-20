@@ -17,7 +17,7 @@ struct ContactScreen: View {
     
     init (model: Model, profileVm: ProfileViewModel, profile: Profile) {
         self._model = StateObject(wrappedValue: model)
-        self._gradesViewModel = StateObject(wrappedValue: GradesViewModel(model: model, service: GradesService()))
+        self._gradesViewModel = StateObject(wrappedValue: GradesViewModel(model: model, gradesService: GradesService(), averageGradesService: AverageGradesService()))
         self._profileVm = StateObject(wrappedValue: profileVm)
         self.profile =  profile
     }
@@ -35,6 +35,7 @@ struct ContactScreen: View {
             
         }.task {
             await gradesViewModel.getGrades(forcedRefresh: true)
+            await gradesViewModel.getAverageGrades(forcedRefresh: true)
         }
     }
 }

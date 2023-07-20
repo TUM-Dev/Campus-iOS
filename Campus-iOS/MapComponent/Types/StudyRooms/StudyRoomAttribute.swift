@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct StudyRoomAttribute: Decodable {
+struct StudyRoomAttribute: Decodable, Searchable {
+    
     var detail: String?
     var name: String?
 
@@ -24,5 +25,12 @@ struct StudyRoomAttribute: Decodable {
 
         self.detail = detail
         self.name = name
+    }
+    
+    var comparisonTokens: [ComparisonToken] {
+        return [
+            ComparisonToken(value: detail ?? ""),
+            ComparisonToken(value: name ?? "")
+        ]
     }
 }

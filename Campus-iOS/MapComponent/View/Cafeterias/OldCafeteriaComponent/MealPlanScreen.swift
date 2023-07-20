@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MealPlanScreen: View {
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var vm: MealPlanViewModel
     
     init(cafeteria: Cafeteria) {
@@ -20,7 +21,7 @@ struct MealPlanScreen: View {
             case .success(let menus):
                 if let firstMenu = menus.first {
                     VStack {
-                        MealPlanView(menus: menus, cafeteria: vm.cafeteria, selectedMenu: firstMenu)                    .refreshable {
+                        MealPlanView(menus: menus, cafeteria: vm.cafeteria, selectedMenu: firstMenu).refreshable {
                             await vm.getMenus()
                         }
                     }
@@ -31,7 +32,7 @@ struct MealPlanScreen: View {
                 VStack {
                     Spacer()
                     // Since some cafeterias do not update their menus this is how we handle error here. There could be a better differentiation.
-                    Text("No Menu available")
+                    Text("No Menu available").foregroundColor(colorScheme == .dark ? .init(UIColor.lightGray) : .init(UIColor.darkGray))
                     Spacer()
                 }
             }

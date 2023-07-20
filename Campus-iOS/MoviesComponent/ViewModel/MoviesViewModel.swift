@@ -15,7 +15,7 @@ class MoviesViewModel: ObservableObject {
     @Published var hasError: Bool = false
     
     @Published var movies = [Movie]()
-    let service: MoviesService = MoviesService()
+    let service: MovieService = MovieService()
     
     func getMovies(forcedRefresh: Bool = false) async {
         if !forcedRefresh {

@@ -10,11 +10,15 @@ import MapKit
 
 struct WidgetScreenOld: View {
     
+    @Environment(\.isSearching) var isSearching
+    
     @StateObject private var recommender: WidgetRecommender
     var model: Model
     var profileViewModel: ProfileViewModel
     @State private var refresh = false
-    @State private var widgetTitle = ""
+    @State private var widgetTitle = String()
+    @State private var searchString = ""
+
     private let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
     
     init(model: Model) {
@@ -30,16 +34,19 @@ struct WidgetScreenOld: View {
             case .loading:
                 ProgressView()
             case .success:
-                ScrollView {
-                    self.generateContent(
-                        views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }, widgetTitle: self.widgetTitle
-                    )
+                SearchView(model: self.model, query: $searchString) {
+                    ScrollView {
+                        self.generateContent(
+                            views: recommender.recommendations.map { recommender.getWidget(for: $0.widget, size: $0.size(), refresh: $refresh) }, widgetTitle: self.widgetTitle
+                        )
                         .frame(maxWidth: .infinity)
+                    }
+                    .refreshable {
+                        try? await recommender.fetchRecommendations()
+                        refresh.toggle()
+                    }
                 }
-                .refreshable {
-                    try? await recommender.fetchRecommendations()
-                    refresh.toggle()
-                }
+                .searchable(text: $searchString, placement: .navigationBarDrawer(displayMode: .always))
             }
         }
         .task {
@@ -108,5 +115,12 @@ struct WidgetScreenOld: View {
             }
         }
         .navigationTitle(widgetTitle)
+        .navigationBarTitleDisplayMode(.large)
+    }
+}
+
+struct WidgetScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        WidgetScreen(model: Model())
     }
 }

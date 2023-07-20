@@ -34,6 +34,7 @@ struct CafeteriaWidgetViewOld: View {
             default:
                 if let cafeteria = viewModel.cafeteria,
                    let title = cafeteria.title {
+
                     CafeteriaWidgetContent(
                         size: size,
                         cafeteria: title,
@@ -164,15 +165,18 @@ struct CompactMenuView: View {
 struct CompactDishView: View {
     
     @StateObject var vm: DishViewModel
+    let dish: Dish
+    
     init(dish: Dish) {
+        self.dish = dish
         self._vm = StateObject(wrappedValue: DishViewModel(dish: dish))
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(vm.dish.name)
+            Text(dish.name)
                 .lineLimit(1)
-            Text(vm.formatPrice(dish: vm.dish, pricingGroup: "students"))
+            Text(vm.formatPrice(dish: dish, pricingGroup: "students"))
                 .font(.caption)
                 .bold()
         }

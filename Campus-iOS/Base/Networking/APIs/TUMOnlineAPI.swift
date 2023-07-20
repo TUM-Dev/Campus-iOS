@@ -25,6 +25,7 @@ enum TUMOnlineAPI: API {
     case identify
     case secretUpload
     case profileImage(personGroup: String, id: String)
+    case averageGrades
     
     
     static let baseURL: String = "https://campus.tum.de/tumonline/"
@@ -48,6 +49,7 @@ enum TUMOnlineAPI: API {
         case .identify:             return "wbservicesbasic.id"
         case .secretUpload:         return "wbservicesbasic.secretUpload"
         case .profileImage:         return "visitenkarte.showImage"
+        case .averageGrades:         return "wbservicesbasic.absNoten"
         }
     }
     
@@ -74,15 +76,16 @@ enum TUMOnlineAPI: API {
     var needsAuth: Bool {
         switch self {
         case .personSearch(search: _),
-                .tokenConfirmation,
-                .tuitionStatus,
-                .calendar,
-                .personDetails(identNumber: _),
-                .personalLectures,
-                .personalGrades,
-                .lectureSearch(search: _),
-                .lectureDetails(_),
-                .identify: return true
+            .tokenConfirmation,
+            .tuitionStatus,
+            .calendar,
+            .personDetails(identNumber: _),
+            .personalLectures,
+            .personalGrades,
+            .lectureSearch(search: _),
+            .lectureDetails(_),
+            .identify,
+            .averageGrades: return true
         default:
             return false
         }
@@ -91,7 +94,7 @@ enum TUMOnlineAPI: API {
     var dateDecodingStrategy: DateFormatter {
         switch self {
         case .calendar :
-                return DateFormatter.yyyyMMddhhmmss
+            return DateFormatter.yyyyMMddhhmmss
         default :
             return DateFormatter.yyyyMMdd
         }
@@ -111,6 +114,10 @@ enum TUMOnlineAPI: API {
     struct CalendarResponse: Decodable {
         // This is needed because for .calendar the response is not "rowset" and "row", instead it is "events" and "event"
         public var event: [CalendarEvent]
+    }
+    
+    struct AverageGradesResponse: Decodable {
+        public var studium: [AverageGrade]
     }
     
     static let imageCache = Cache<String, Data>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
