@@ -12,6 +12,18 @@ The TUM Campus App (TCA) is an open source project, developed by volunteers and 
 
 It mostly targets phones, but can also be used on tablets or any other device that runs iOS. We also have a [mac app](https://github.com/TUM-Dev/Campus-iOS/releases/lastest). This is the repo for the iOS version of the TUM Campus App.
 
+
+## 🚨 Public Service Announcement 🚨
+
+The current state of the game is, that we have three Campus apps ([iOS](https://github.com/TUM-Dev/Campus-iOS), [Android](https://github.com/TUM-Dev/Campus-Android), [UWP](https://github.com/TUM-Dev/Campus-iOS)).
+This current model brings a few downsides, but most notorios are feature divergence and bugfixes.
+It also relies on there always being a core maintainer to each of the projects.
+
+Feature divergance and the lack of a maintainer on the Android side have pushed us towards uniting our front and merging the effort into a [Flutter](https://flutter.dev/)-based alternative.
+
+You are still welcome to contribute to this Campus-iOS.  
+This new codebase will take over these apps sometime in 2024: [github.com/TUM-Dev/Campus-Flutter](https://github.com/TUM-Dev/Campus-Flutter)
+
 ## Features
 
 - [x] Calendar Access
