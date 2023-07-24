@@ -26,18 +26,24 @@ struct GradesSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
+                    HStack {
+                        Image(systemName: "checkmark.shield")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
                         Text("Grades")
-                            .fontWeight(.bold)
-                            .font(.title)
-                            .padding()
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 ScrollView {
                     ForEach(self.results, id: \.grade) { result in
                         VStack {
-                            GradeView(grade: result.grade).padding(.leading)
+                            GradeView(grade: result.grade)
                         }
                     }
                 }

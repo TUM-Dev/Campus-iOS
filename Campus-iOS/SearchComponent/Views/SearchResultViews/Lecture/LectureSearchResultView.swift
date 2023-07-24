@@ -28,12 +28,20 @@ struct LectureSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
-                        Text("Lecture Search")
-                            .fontWeight(.bold)
-                            .font(.title)
+                    HStack {
+                        Image(systemName: "studentdesk")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Text("Lectures")
+                            .lineLimit(1)
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 ScrollView {
                     ForEach(self.results, id: \.id) { result in
@@ -57,7 +65,7 @@ struct LectureSearchResultView: View {
                     Text("No lectures were found 😢")
                         .foregroundColor(.gray)
                 }
-            }.padding()
+            }
         }
     }
 }

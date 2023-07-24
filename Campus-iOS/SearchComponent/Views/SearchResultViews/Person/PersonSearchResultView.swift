@@ -26,12 +26,20 @@ struct PersonSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
+                    HStack {
+                        Image(systemName: "person.3")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
                         Text("Person Search")
-                            .fontWeight(.bold)
-                            .font(.title)
+                            .lineLimit(1)
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 ScrollView {
                     ForEach(results, id: \.id) { result in
@@ -51,7 +59,7 @@ struct PersonSearchResultView: View {
                         }
                     }
                 }
-            }.padding()
+            }
         }
     }
 }

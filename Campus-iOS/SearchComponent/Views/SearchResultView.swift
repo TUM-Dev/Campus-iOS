@@ -41,7 +41,7 @@ struct SearchResultView: View {
 
             } else {
                 VStack {
-                    SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding()
+                    SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding(.vertical)
                     /// **For debugging purposes**
                     //                Text("Your results for: \(query)")
                     //                Spacer()
@@ -61,7 +61,7 @@ struct SearchResultView: View {
                                 } else {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                     case .cafeteria:
                         ScrollView {
@@ -71,7 +71,7 @@ struct SearchResultView: View {
                                 } else {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                     case .news:
                         ScrollView {
@@ -81,7 +81,7 @@ struct SearchResultView: View {
                                 } else {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                         
                     case .studyRoom:
@@ -92,7 +92,7 @@ struct SearchResultView: View {
                                 } else {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                         
                     case .calendar:
@@ -103,7 +103,7 @@ struct SearchResultView: View {
                                 } else {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                         
                     case .movie:
@@ -114,25 +114,25 @@ struct SearchResultView: View {
                                 } else {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
                         }
                     case .roomFinder:
                         ScrollView {
                             RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                .searchStyle()
+                                .sectionStyle()
                         }
                     case .lectureSearch:
                         ScrollView {
                             LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .searchStyle()
+                                .sectionStyle()
                         }
                     case .personSearch:
                         ScrollView {
                             PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .searchStyle()
+                                .sectionStyle()
                         }
                     case .all:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             ForEach(vm.orderedTypes, id: \.rawValue) { type in
                                 switch type {
                                 case .Grade:
@@ -177,17 +177,13 @@ struct SearchResultView: View {
                                     }
                                 }
                             }
-                            .cornerRadius(25)
-                            .padding()
-                            .shadow(color: .gray.opacity(0.8), radius: 5)
+                            .sectionStyle()
                             Group {
                                 RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
                                 LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
                                 PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
                             }
-                            .cornerRadius(25)
-                            .padding()
-                            .shadow(color: .gray.opacity(0.8), radius: 10)
+                            .sectionStyle()
                         }
                     }
                 }

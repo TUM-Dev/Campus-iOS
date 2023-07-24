@@ -27,23 +27,33 @@ struct CafeteriaSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
+                    HStack {
+                        Image(systemName: "fork.knife")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
                         Text("Cafeterias")
-                            .fontWeight(.bold)
-                            .font(.title)
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider().padding(.horizontal)
                 }
                 Spacer()
                 ScrollView {
                     ForEach(self.results, id: \.0) { result in
+                        CafeteriaView(cafeteria: result.cafeteria)
+                        Divider().padding(.horizontal)
+                        /*
                         CafeteriaRowView(cafeteria: .constant(result.cafeteria))
                             .padding([.leading, .trailing])
                             .onTapGesture {
                                 withAnimation(.easeIn(duration: 0.1)) {
                                     cafeteriaMealPlan = cafeteriaMealPlan == result.cafeteria ? nil : result.cafeteria
                                 }
-                            }
+                            }*/
                     }
                 }
                 

@@ -26,50 +26,59 @@ struct StudyRoomSearchResultView: View {
             Color.white
             VStack(alignment: .leading) {
                 VStack {
-                    ZStack {
+                    HStack {
+                        Image(systemName: "pencil.circle")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
                         Text("Study Rooms")
-                            .fontWeight(.bold)
-                            .font(.title)
+                            .lineLimit(1)
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 ScrollView {
                     ForEach(results, id: \.studyRoomResult) { result in
-                        VStack (alignment: .leading) {
-                            HStack {
-                                Text(result.studyRoomResult.group.name ?? "no group name")
-                                    .fontWeight(.heavy)
-                                Spacer()
-                                GroupDirectionsButton(group: result.studyRoomResult.group) {
-                                    Image(systemName: "mappin.and.ellipse")
+                        NavigationLink(destination: StudyRoomGroupView(
+                            vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()),
+                            selectedGroup: result.studyRoomResult.group,
+                            rooms: result.studyRoomResult.rooms,
+                            canDismiss: false
+                        )) {
+                            VStack {
+                                HStack {
+                                    Image(systemName: "pencil.circle")
+                                        .resizable()
+                                        .foregroundColor(Color.highlightText)
+                                        .frame(width: 20, height: 20)
+                                        .clipShape(Circle())
+                                    Text(result.studyRoomResult.group.name ?? "no group name")
+                                        .foregroundColor(Color.primaryText)
+                                        .multilineTextAlignment(.leading)
+                                    let freeRooms = result.studyRoomResult.rooms.filter{ $0.isAvailable() }.count
+                                    if freeRooms > 0 {
+                                        Spacer()
+                                        Text("\(freeRooms) rooms free").foregroundColor(.green)
+                                    } else {
+                                        Spacer()
+                                        Text("No rooms free").foregroundColor(.red)
+                                    }
+                                    Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                                 }
-                            }
-                            Button {
-                                withAnimation {
-                                    self.showRoomsForGroup = showRoomsForGroup == result.studyRoomResult.rooms ? nil : result.studyRoomResult.rooms
-                                }
-                            } label: {
-                                if showRoomsForGroup == result.studyRoomResult.rooms {
-                                    Text("Hide rooms")
-                                        .foregroundColor(.gray)
-                                        .fontWeight(.light)
-                                } else {
-                                    Text("Show rooms")
-                                        .foregroundColor(.gray)
-                                        .fontWeight(.light)
-                                }
-                            }
-                            
-                            
-                            if let rooms = showRoomsForGroup, showRoomsForGroup == result.studyRoomResult.rooms {
-                                ForEach(rooms) { room in
-                                    StudyRoomCell(room: room)
-                                        .tint(.black)
+                                .padding(.horizontal, 5)
+                                if results.last != nil {
+                                    if result != results.last! {
+                                        Divider()
+                                    }
                                 }
                             }
                         }
                     }
-                }.padding()
+                }.padding(.top, 10)
             }
         }
     }

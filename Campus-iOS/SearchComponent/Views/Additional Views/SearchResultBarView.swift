@@ -45,7 +45,7 @@ struct SearchResultBarView: View {
                         }
                     }
                 }
-            }
+            }.padding(.horizontal)
         }
     }
 }

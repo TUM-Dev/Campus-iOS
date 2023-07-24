@@ -48,7 +48,7 @@ struct WidgetScreen: View {
             }
             //static widgets
             MoviesScreen(isWidget: true)
-                .padding(.bottom)
+
             NewsScreen(isWidget: true)
                 .padding(.bottom)
         }

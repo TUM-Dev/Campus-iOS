@@ -54,7 +54,7 @@ struct StudyRoomGroupListView: View {
                                     }
                                 }
                                 
-                            } else { //not nice
+                            } else {
                                 EmptyView()
                             }
                         }

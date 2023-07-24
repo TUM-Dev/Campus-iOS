@@ -81,7 +81,11 @@ struct NewsCard: View {
                             .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .top)
                             .clipped()
                     case .failure:
-                        Image(systemName: "photo")
+                        Image("placeholder")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .top)
+                            .clipped()
                     @unknown default:
                         // Since the AsyncImagePhase enum isn't frozen,
                         // we need to add this currently unused fallback

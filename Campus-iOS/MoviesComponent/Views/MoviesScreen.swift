@@ -17,7 +17,10 @@ struct MoviesScreen: View {
             case .success(let movies):
                 VStack {
                     if isWidget {
-                        MoviesWidgetView(movies: movies)
+                        if !movies.isEmpty {
+                            MoviesWidgetView(movies: movies)
+                                .padding(.bottom)
+                        }
                     } else {
                         MoviesView(movies: movies)
                             .refreshable {

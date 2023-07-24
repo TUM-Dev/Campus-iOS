@@ -26,11 +26,19 @@ struct NewsSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
-                        Text("News").fontWeight(.bold)
-                            .font(.title)
+                    HStack {
+                        Image(systemName: "newspaper")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Text("News")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider().padding(.horizontal)
                 }
                 ScrollView {
                     ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **

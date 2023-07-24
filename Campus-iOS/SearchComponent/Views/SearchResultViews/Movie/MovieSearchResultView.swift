@@ -29,15 +29,22 @@ struct MovieSearchResultView: View {
             Color.white
             VStack {
                 VStack {
-                    ZStack {
-                        Text("Movies").fontWeight(.bold)
-                        .font(.title)
+                    HStack {
+                        Image(systemName: "popcorn")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Text("Movies")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 if results.isEmpty {
-                    Text("No more movies this semester 😢\nGet excited for the next season!")
-                        .padding()
+                    Text("No more movies this semester 😢\nGet excited for the next season!").padding(.top, 5)
                 } else {
                     ScrollView {
                         ForEach(results, id: \.movie) { result in

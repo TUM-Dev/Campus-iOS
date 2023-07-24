@@ -15,11 +15,20 @@ struct SearchResultErrorView: View {
         ZStack {
             Color.white
             VStack {
-                Text(title)
-                    .fontWeight(.bold)
-                    .font(.title)
+                HStack {
+                    Image(systemName: "exclamationmark.triangle")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text(title)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                }
+                Divider()
                 Text("Error searching: \(error)")
-            }.padding()
+            }
         }
     }
 }
