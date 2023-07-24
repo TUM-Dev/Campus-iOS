@@ -15,14 +15,17 @@ It mostly targets phones, but can also be used on tablets or any other device th
 
 ## 🚨 Public Service Announcement 🚨
 
-The current state of the game is, that we have three Campus apps ([iOS](https://github.com/TUM-Dev/Campus-iOS), [Android](https://github.com/TUM-Dev/Campus-Android), [UWP](https://github.com/TUM-Dev/Campus-iOS)).
-This current model brings a few downsides, but most notorios are feature divergence and bugfixes.
-It also relies on there always being a core maintainer to each of the projects.
+Currently, we are at a transitioning point for our TUM Campus Apps. We have three platform-specific versions: [iOS](https://github.com/TUM-Dev/Campus-iOS), [Android](https://github.com/TUM-Dev/Campus-Android), and [UWP](https://github.com/TUM-Dev/Campus-UWP).  
+ However, maintaining these distinct versions has proven challenging, with notable issues including feature disparity and the need for individual bug fixes for each platform. Furthermore, this model is dependent on having a dedicated maintainer for each app.
 
-Feature divergance and the lack of a maintainer on the Android side have pushed us towards uniting our front and merging the effort into a [Flutter](https://flutter.dev/)-based alternative.
+As such, we have decided to consolidate our resources and efforts towards the creation of a unified, cross-platform app using [Flutter](https://flutter.dev/). You can access the new codebase here: [github.com/TUM-Dev/Campus-Flutter](https://github.com/TUM-Dev/Campus-Flutter).
 
-You are still welcome to contribute to this Campus-iOS.  
-This new codebase will take over these apps sometime in 2024: [github.com/TUM-Dev/Campus-Flutter](https://github.com/TUM-Dev/Campus-Flutter)
+By uniting our efforts under one platform, we aim to enhance our efficiency and streamline the feature sets across all versions, thereby offering a more cohesive and reliable user experience.
+
+We invite and value your contributions to the ongoing development of the Campus-iOS.
+However, please note that we are transitioning towards a new [Flutter](https://flutter.dev/)-based codebase, expected to take over the platform-specific apps in 2024.
+We thank you for your understanding and look forward to your continued support during this exciting period of transition.
+If you have any comments/feedback about this decison, you can reach us at app <at> tum.de or by adding a GitHub issue
 
 ## Features
 
