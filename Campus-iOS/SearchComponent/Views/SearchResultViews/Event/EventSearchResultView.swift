@@ -28,29 +28,37 @@ struct EventSearchResultView: View {
             Color.white
             VStack{
                 VStack {
-                    ZStack {
-                        Text("Lectures")
-                            .fontWeight(.bold)
-                            .font(.title)
+                    HStack {
+                        Image(systemName: "studentdesk")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Text("Perosnal Lectures")
+                            .lineLimit(1)
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                            .foregroundColor(Color.highlightText)
+                        Spacer()
                         ExpandIcon(size: $size)
                     }
+                    Divider()
                 }
                 ScrollView {
                     ForEach(self.results, id: \.event) { result in
+                        
                         VStack(alignment: .leading) {
-                            HStack {
-                                Text(result.event.lecture.title)
-                                
-                                Spacer()
-                                NavigationLink {
-                                    LectureDetailsScreen(model: self.model, lecture: result.event.lecture)
-                                        .navigationBarTitleDisplayMode(.inline)
-                                } label: {
+                            NavigationLink {
+                                LectureDetailsScreen(model: self.model, lecture: result.event.lecture)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            } label: {
+                                HStack {
+                                    Text(result.event.lecture.title)
+                                    Spacer()
                                     Image(systemName: "info.circle")
                                         .foregroundColor(Color.highlightText)
                                 }
-                                
-                            }
+                            }.buttonStyle(.plain)
+                            
                             if result.event.events.count > 0 {
                                 Button {
                                     withAnimation {
@@ -103,7 +111,12 @@ struct EventSearchResultView: View {
                                     }
                                 }
                             }
-                        }.padding()
+                            if results.last != nil {
+                                if result != results.last! {
+                                    Divider()
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -33,11 +33,12 @@ struct SearchResultView: View {
                             } label: {
                                 Text(query)
                                     .buttonStyle(.plain)
+                                    .foregroundColor(.primaryText)
                             }
                         }
                     }
                 }
-                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
 
             } else {
                 VStack {
@@ -54,7 +55,7 @@ struct SearchResultView: View {
                     /// **For debugging purposes**
                     switch self.selectedType {
                     case .grade:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query, size: .big)
@@ -62,9 +63,10 @@ struct SearchResultView: View {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .cafeteria:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query, size: .big)
@@ -72,9 +74,10 @@ struct SearchResultView: View {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .news:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query, size: .big)
@@ -82,10 +85,11 @@ struct SearchResultView: View {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .studyRoom:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query, size: .big)
@@ -93,10 +97,11 @@ struct SearchResultView: View {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .calendar:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query, size: .big)
@@ -104,10 +109,11 @@ struct SearchResultView: View {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .movie:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
@@ -115,21 +121,25 @@ struct SearchResultView: View {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                 }
                             }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .roomFinder:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
                                 .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .lectureSearch:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
                                 .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .personSearch:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
                                 .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .all:
                         ScrollView (showsIndicators: false) {
@@ -184,6 +194,7 @@ struct SearchResultView: View {
                                 PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
                             }
                             .sectionStyle()
+                            .padding(.bottom)
                         }
                     }
                 }

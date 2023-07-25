@@ -57,7 +57,11 @@ struct LectureSearchResultView: View {
                                         .foregroundColor(Color.highlightText)
                                 }
                             }.buttonStyle(.plain)
-                            Divider()
+                            if results.last != nil {
+                                if result != results.last! {
+                                    Divider()
+                                }
+                            }
                         }
                     }
                 }

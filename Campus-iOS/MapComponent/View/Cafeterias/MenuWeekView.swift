@@ -48,7 +48,9 @@ struct MenuWeekView: View {
                                 ForEach(selectedMenu.getDishes().sorted(by: { getTypeLabel(dishType: $0.dishType) > getTypeLabel(dishType: $1.dishType)}), id: \.self) { dish in
                                     DishView(dish: dish)
                                 }
-                            }.padding(.horizontal)
+                            }
+                            .padding(.vertical, 5)
+                            .padding(.horizontal)
                         }
                         
                         

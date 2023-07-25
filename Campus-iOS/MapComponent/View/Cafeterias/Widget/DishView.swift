@@ -36,6 +36,10 @@ struct DishView: View {
                 .padding()
                 .background(Color.secondaryBackground)
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
+                .overlay(
+                        RoundedRectangle(cornerRadius: Radius.regular)
+                            .stroke(Color.primaryBackground, lineWidth: 3)
+                    )
             case .loading, .na:
                 LoadingView(text: "Fetching Dish Labels")
             case .failed(error: let error):

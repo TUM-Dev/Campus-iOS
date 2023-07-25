@@ -51,16 +51,29 @@ struct NewsSearchResultView: View {
                     //                    }
                     //                }
                     ForEach(results, id: \.news) { result in
-                        HStack {
-                            Button {
-                                self.newsLink = result.news.link
-                            } label: {
-                                Text(result.news.title ?? "")
-                                    .fontWeight(.bold)
-                                    .multilineTextAlignment(.leading)
-                                    .padding()
+                        Button {
+                            self.newsLink = result.news.link
+                        } label: {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Image(systemName: "newspaper.circle")
+                                        .resizable()
+                                        .foregroundColor(Color.highlightText)
+                                        .frame(width: 20, height: 20)
+                                        .clipShape(Circle())
+                                    Text(result.news.title ?? "")
+                                        .multilineTextAlignment(.leading)
+                                    Spacer()
+                                    Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
+                                }
+                                .padding(.horizontal, 5)
+                                .foregroundColor(Color.primaryText)
+                                if results.last != nil {
+                                    if result != results.last! {
+                                        Divider()
+                                    }
+                                }
                             }
-                            Spacer()
                         }
                     }.sheet(item: $newsLink) { selectedLink in
                         SFSafariViewWrapper(url: selectedLink)
