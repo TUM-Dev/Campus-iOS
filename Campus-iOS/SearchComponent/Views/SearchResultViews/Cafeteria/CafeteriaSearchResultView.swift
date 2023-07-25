@@ -23,41 +23,38 @@ struct CafeteriaSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    HStack {
-                        Image(systemName: "fork.knife")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Text("Cafeterias")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Spacer()
-                        ExpandIcon(size: $size)
-                    }
-                    Divider().padding(.horizontal)
+                HStack {
+                    Image(systemName: "fork.knife")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Cafeterias")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                Spacer()
-                ScrollView {
-                    ForEach(self.results, id: \.0) { result in
-                        CafeteriaView(cafeteria: result.cafeteria)
-                        Divider().padding(.horizontal)
-                        /*
-                        CafeteriaRowView(cafeteria: .constant(result.cafeteria))
-                            .padding([.leading, .trailing])
-                            .onTapGesture {
-                                withAnimation(.easeIn(duration: 0.1)) {
-                                    cafeteriaMealPlan = cafeteriaMealPlan == result.cafeteria ? nil : result.cafeteria
-                                }
-                            }*/
-                    }
-                }
-                
+                Divider().padding(.horizontal)
             }
+            Spacer()
+            ScrollView {
+                ForEach(self.results, id: \.0) { result in
+                    CafeteriaView(cafeteria: result.cafeteria)
+                    Divider().padding(.horizontal)
+                    /*
+                     CafeteriaRowView(cafeteria: .constant(result.cafeteria))
+                     .padding([.leading, .trailing])
+                     .onTapGesture {
+                     withAnimation(.easeIn(duration: 0.1)) {
+                     cafeteriaMealPlan = cafeteriaMealPlan == result.cafeteria ? nil : result.cafeteria
+                     }
+                     }*/
+                }
+            }
+            
         }.sheet(item: $cafeteriaMealPlan, content: { cafeteria in
             NavigationView {
                 VStack(alignment: .leading) {

@@ -22,29 +22,26 @@ struct GradesSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    HStack {
-                        Image(systemName: "checkmark.shield")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Text("Grades")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Spacer()
-                        ExpandIcon(size: $size)
-                    }
-                    Divider()
+                HStack {
+                    Image(systemName: "checkmark.shield")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Grades")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                ScrollView {
-                    ForEach(self.results, id: \.grade) { result in
-                        VStack {
-                            GradeView(grade: result.grade)
-                        }
+                Divider()
+            }
+            ScrollView {
+                ForEach(self.results, id: \.grade) { result in
+                    VStack {
+                        GradeView(grade: result.grade)
                     }
                 }
             }

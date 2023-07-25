@@ -24,97 +24,94 @@ struct EventSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
-            VStack{
-                VStack {
-                    HStack {
-                        Image(systemName: "studentdesk")
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Text("Perosnal Lectures")
-                            .lineLimit(1)
-                            .fontWeight(.semibold)
-                            .font(.title2)
-                            .foregroundColor(Color.highlightText)
-                        Spacer()
-                        ExpandIcon(size: $size)
-                    }
-                    Divider()
+        VStack{
+            VStack {
+                HStack {
+                    Image(systemName: "studentdesk")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Perosnal Lectures")
+                        .lineLimit(1)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                ScrollView {
-                    ForEach(self.results, id: \.event) { result in
+                Divider()
+            }
+            ScrollView {
+                ForEach(self.results, id: \.event) { result in
+                    
+                    VStack(alignment: .leading) {
+                        NavigationLink {
+                            LectureDetailsScreen(model: self.model, lecture: result.event.lecture)
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            HStack {
+                                Text(result.event.lecture.title)
+                                Spacer()
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(Color.highlightText)
+                            }
+                        }.buttonStyle(.plain)
                         
-                        VStack(alignment: .leading) {
-                            NavigationLink {
-                                LectureDetailsScreen(model: self.model, lecture: result.event.lecture)
-                                    .navigationBarTitleDisplayMode(.inline)
+                        if result.event.events.count > 0 {
+                            Button {
+                                withAnimation {
+                                    self.showEventsFor = showEventsFor == result.event ? nil : result.event
+                                }
                             } label: {
-                                HStack {
-                                    Text(result.event.lecture.title)
-                                    Spacer()
-                                    Image(systemName: "info.circle")
-                                        .foregroundColor(Color.highlightText)
+                                if self.showEventsFor == result.event {
+                                    Text("Hide next events")
+                                        .fontWeight(.light)
+                                        .foregroundColor(.gray)
+                                } else {
+                                    Text("Show next events")
+                                        .fontWeight(.light)
+                                        .foregroundColor(.gray)
                                 }
-                            }.buttonStyle(.plain)
-                            
-                            if result.event.events.count > 0 {
-                                Button {
-                                    withAnimation {
-                                        self.showEventsFor = showEventsFor == result.event ? nil : result.event
-                                    }
-                                } label: {
-                                    if self.showEventsFor == result.event {
-                                        Text("Hide next events")
-                                            .fontWeight(.light)
-                                            .foregroundColor(.gray)
-                                    } else {
-                                        Text("Show next events")
-                                            .fontWeight(.light)
-                                            .foregroundColor(.gray)
-                                    }
-                                    
-                                }
-                                if let shownResultEvents = showEventsFor, showEventsFor == result.event {
-                                    ScrollView {
-                                        VStack {
-                                            ForEach(shownResultEvents.events, id: \.id) { event in
-                                                VStack(alignment: .leading, spacing: 8) {
+                                
+                            }
+                            if let shownResultEvents = showEventsFor, showEventsFor == result.event {
+                                ScrollView {
+                                    VStack {
+                                        ForEach(shownResultEvents.events, id: \.id) { event in
+                                            VStack(alignment: .leading, spacing: 8) {
+                                                LectureDetailsBasicInfoRowView(
+                                                    iconName: "hourglass",
+                                                    text: duration(event)
+                                                )
+                                                Divider()
+                                                // Open RoomfinderView
+                                                VStack (alignment: .leading) {
                                                     LectureDetailsBasicInfoRowView(
-                                                        iconName: "hourglass",
-                                                        text: duration(event)
+                                                        iconName: "rectangle.portrait.arrowtriangle.2.inward",
+                                                        text: location(event)
                                                     )
-                                                    Divider()
-                                                    // Open RoomfinderView
-                                                    VStack (alignment: .leading) {
-                                                        LectureDetailsBasicInfoRowView(
-                                                            iconName: "rectangle.portrait.arrowtriangle.2.inward",
-                                                            text: location(event)
-                                                        )
-                                                        HStack {
-                                                            Spacer()
-                                                            NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
-                                                                HStack {
-                                                                    Text("Open in RoomFinder")
-                                                                    Image(systemName: "arrow.right.circle")
-                                                                }.foregroundColor(Color(UIColor.tumBlue))
-                                                                    .font(.footnote)
-                                                            }
+                                                    HStack {
+                                                        Spacer()
+                                                        NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
+                                                            HStack {
+                                                                Text("Open in RoomFinder")
+                                                                Image(systemName: "arrow.right.circle")
+                                                            }.foregroundColor(Color(UIColor.tumBlue))
+                                                                .font(.footnote)
                                                         }
                                                     }
-                                                    Divider()
-                                                    Divider()
                                                 }
+                                                Divider()
+                                                Divider()
                                             }
                                         }
                                     }
                                 }
                             }
-                            if results.last != nil {
-                                if result != results.last! {
-                                    Divider()
-                                }
+                        }
+                        if results.last != nil {
+                            if result != results.last! {
+                                Divider()
                             }
                         }
                     }

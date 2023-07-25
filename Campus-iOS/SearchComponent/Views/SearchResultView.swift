@@ -36,6 +36,7 @@ struct SearchResultView: View {
                                     .foregroundColor(.primaryText)
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
                 }
                 .scrollContentBackground(.hidden)
