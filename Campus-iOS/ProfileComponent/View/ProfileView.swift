@@ -27,6 +27,7 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             List {
+                //Old profile detailed screen
                 /*
                  if case .success(let profile) = vm.profileState {
                  NavigationLink(destination: PersonDetailedScreenSearch(model: self.vm.model, profile: profile)) {

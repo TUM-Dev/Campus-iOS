@@ -40,7 +40,7 @@ struct SearchResultView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-
+                
             } else {
                 VStack {
                     SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding(.vertical)
@@ -145,56 +145,58 @@ struct SearchResultView: View {
                     case .all:
                         ScrollView (showsIndicators: false) {
                             ForEach(vm.orderedTypes, id: \.rawValue) { type in
-                                switch type {
-                                case .Grade:
-                                    if preview {
-                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query)
-                                    } else {
-                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
-                                    }
-                                case .Cafeteria:
-                                    if preview {
-                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
-                                    } else {
-                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query)
-                                    }
-                                    
-                                case .News:
-                                    if preview {
-                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query)
-                                    } else {
-                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query)
-                                    }
-                                    
-                                case .StudyRoom:
-                                    if preview {
-                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
-                                    } else {
-                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
-                                    }
-                                    
-                                case .Calendar:
-                                    if preview {
-                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query)
-                                    } else {
-                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query)
-                                    }
-                                    
-                                case .Movie:
-                                    if preview {
-                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
-                                    } else {
-                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
+                                Group {
+                                    switch type {
+                                    case .Grade:
+                                        if preview {
+                                            GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query)
+                                        } else {
+                                            GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
+                                        }
+                                    case .Cafeteria:
+                                        if preview {
+                                            CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
+                                        } else {
+                                            CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query)
+                                        }
+                                        
+                                    case .News:
+                                        if preview {
+                                            NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query)
+                                        } else {
+                                            NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query)
+                                        }
+                                        
+                                    case .StudyRoom:
+                                        if preview {
+                                            StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
+                                        } else {
+                                            StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
+                                        }
+                                        
+                                    case .Calendar:
+                                        if preview {
+                                            EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query)
+                                        } else {
+                                            EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query)
+                                        }
+                                        
+                                    case .Movie:
+                                        if preview {
+                                            MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
+                                        } else {
+                                            MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
+                                        }
                                     }
                                 }
+                                .sectionStyle()
+                                Group {
+                                    RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
+                                    LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
+                                    PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
+                                }
+                                .sectionStyle()
                             }
-                            .sectionStyle()
-                            Group {
-                                RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
-                                PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
-                            }
-                            .sectionStyle()
                             .padding(.bottom)
                         }
                     }

@@ -37,21 +37,17 @@ struct CafeteriaSearchResultView: View {
                     Spacer()
                     ExpandIcon(size: $size)
                 }
-                Divider().padding(.horizontal)
+                Divider()
             }
             Spacer()
             ScrollView {
                 ForEach(self.results, id: \.0) { result in
                     CafeteriaView(cafeteria: result.cafeteria)
-                    Divider().padding(.horizontal)
-                    /*
-                     CafeteriaRowView(cafeteria: .constant(result.cafeteria))
-                     .padding([.leading, .trailing])
-                     .onTapGesture {
-                     withAnimation(.easeIn(duration: 0.1)) {
-                     cafeteriaMealPlan = cafeteriaMealPlan == result.cafeteria ? nil : result.cafeteria
-                     }
-                     }*/
+                    if results.last != nil {
+                        if result != results.last! {
+                            Divider()
+                        }
+                    }
                 }
             }
             
