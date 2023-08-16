@@ -43,7 +43,7 @@ struct EventElementView: View {
 }
 
 struct EventElementView_Previews: PreviewProvider {
-static let event = TUMEvent(user: "Me", title: "Party!", category: "software engineering", date: Date(), link: "https://www.tum.dev", body: "Party!")
+    static let event = TUMEvent(user: "Me", title: "Party!", category: "software engineering", date: Date(), link: "https://www.tum.dev", body: "Party!", image: nil)
     static var previews: some View {
         EventElementView(event: event)
     }

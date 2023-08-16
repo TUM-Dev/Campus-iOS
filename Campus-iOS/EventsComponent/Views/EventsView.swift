@@ -18,6 +18,7 @@ struct EventsView: View {
                 }
             }
         }
+        .padding(.horizontal)
         .background(Color(.systemGray6))
         .cornerRadius(10)
         .task {

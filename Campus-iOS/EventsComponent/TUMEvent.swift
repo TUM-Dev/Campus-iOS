@@ -13,6 +13,7 @@ struct TUMEvent: Codable {
     let date: Date
     let link: String
     let body: String
+    let image: String?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -22,7 +23,7 @@ struct TUMEvent: Codable {
         category = try container.decode(String.self, forKey: .category)
         link = try container.decode(String.self, forKey: .link)
         body = try container.decode(String.self, forKey: .body)
-        
+        image = try container.decodeIfPresent(String.self, forKey: .image)
         let dateString = try container.decode(String.self, forKey: .date)
     
         let dateFormatter = ISO8601DateFormatter()
@@ -33,12 +34,13 @@ struct TUMEvent: Codable {
         }
     }
     
-    init(user: String, title: String, category: String, date: Date, link: String, body: String) {
-           self.user = user
-           self.title = title
-           self.category = category
-           self.date = date
-           self.link = link
-           self.body = body
-       }
+    init(user: String, title: String, category: String, date: Date, link: String, body: String, image: String?) {
+        self.user = user
+        self.title = title
+        self.category = category
+        self.date = date
+        self.link = link
+        self.body = body
+        self.image = image
+    }
 }
