@@ -143,7 +143,7 @@ struct SearchResultView: View {
                                 .padding(.bottom)
                         }
                     case .all:
-                        ScrollView (showsIndicators: false) {
+                        ScrollView(showsIndicators: false) {
                             ForEach(vm.orderedTypes, id: \.rawValue) { type in
                                 Group {
                                     switch type {
@@ -188,12 +188,6 @@ struct SearchResultView: View {
                                             MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                         }
                                     }
-                                }
-                                .sectionStyle()
-                                Group {
-                                    RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                    LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
-                                    PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
                                 }
                                 .sectionStyle()
                             }

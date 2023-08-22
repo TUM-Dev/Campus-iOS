@@ -132,7 +132,7 @@ struct NewsCard: View {
 
 struct ProductCard_Previews: PreviewProvider {
     static var previews: some View {
-        NewsCard(title: "SMOOTHIE BOWL", source: "FEELING FIT", created: Date(), image: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg", latest: false)
+        NewsCard(title: "SMOOTHIE BOWL", source: "FEELING FIT", created: Date(), image: "https://www.app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg", latest: false)
         LoadMoreCard(loadingMethod: {print("loading mehtod")})
     }
 }

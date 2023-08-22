@@ -31,7 +31,7 @@ struct EventSearchResultView: View {
                         .fontWeight(.semibold)
                         .font(.title2)
                         .foregroundColor(Color.highlightText)
-                    Text("Perosnal Lectures")
+                    Text("Personal Lectures")
                         .lineLimit(1)
                         .fontWeight(.semibold)
                         .font(.title2)

@@ -40,12 +40,6 @@ enum MainAPI {
             var data: Data
             do {
                 data = try await endpoint.asRequest(token: token).serializingData().value
-                /*
-                //For debugging; print only for certain types, i.e. Profile responses.
-                if T.self is TUMOnlineAPI.Response<Profile>.Type {
-                    print("\(String(data: data, encoding: .utf8))")
-                }
-                */
             } catch {
                 print(error)
                 throw NetworkingError.deviceIsOffline

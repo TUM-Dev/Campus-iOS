@@ -31,7 +31,7 @@ enum TUMCabeAPI: API {
     case ticketPurchase
     case stripeKey
     
-    static let baseURL = "https://app.tum.de/api/"
+    static let baseURL = "https://www.app.tum.de/api/"
     static let baseHeaders: HTTPHeaders = ["X-DEVICE-ID": UIDevice.current.identifierForVendor?.uuidString ?? "not available",
                                                  "X-APP-VERSION": Bundle.main.version,
                                                  "X-APP-BUILD": Bundle.main.build,
@@ -42,7 +42,7 @@ enum TUMCabeAPI: API {
         switch self {
         case .movie:                            return "kino"
         case .cafeteria:                        return "mensen"
-        case .news(let source):                             return "news/\(source)/getAll"
+        case .news(let source):                 return "news/\(source)/getAll"
         case .newsSources:                      return "news/sources"
         case .newsAlert:                        return "news/alert"
         case .roomSearch(let room):             return "roomfinder/room/search/\(room.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? "")"
