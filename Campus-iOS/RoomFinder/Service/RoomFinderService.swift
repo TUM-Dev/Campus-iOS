@@ -20,7 +20,7 @@ struct RoomFinderService: RoomFinderServiceProtocol {
     }
     
     func details(id: String) async throws -> NavigaTumNavigationDetails {
-        let language = (Locale.current.languageCode == "de") ? "de" : "en"
+        let language = (Locale.current.language.languageCode?.identifier == "de") ? "de" : "en"
         
         return try await MainAPI.makeRequest(endpoint: NavigaTUMAPI.details(id: id, language: language))
     }

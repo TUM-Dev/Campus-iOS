@@ -84,7 +84,6 @@
 		1E1CD1272A693B3C00553228 /* SearchResultBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD0FB2A693B3C00553228 /* SearchResultBarView.swift */; };
 		1E1CD1282A693B3C00553228 /* GlobalSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD0FD2A693B3C00553228 /* GlobalSearch.swift */; };
 		1E1CD1292A693B3C00553228 /* String+Levenshtein.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD0FF2A693B3C00553228 /* String+Levenshtein.swift */; };
-		1E1CD12B2A693B3C00553228 /* SearchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD1012A693B3C00553228 /* SearchError.swift */; };
 		1E1CD12C2A693B3C00553228 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD1022A693B3C00553228 /* Searchable.swift */; };
 		1E1CD12D2A693B3C00553228 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD1032A693B3C00553228 /* SearchState.swift */; };
 		1E1CD12E2A693B3C00553228 /* ComparisonToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CD1042A693B3C00553228 /* ComparisonToken.swift */; };
@@ -2194,23 +2193,23 @@
 				36E9649E277492AE0055777F /* CalendarComponent */,
 				36203E872761C6EC00C24658 /* LoginComponent */,
 				100803442764E2A90013ED0E /* ProfileComponent */,
+				1F504173295B82FE00A62CA1 /* SearchComponent */,
 				08DFB96B2866479A00E357DF /* WidgetComponentOld */,
 				3683C3162758115000082930 /* Model */,
 				36AF61B727A2FD7700FEBD98 /* Base */,
+				1EF530A729192D51008F2C9B /* Design */,
 				36FF90632773BB8100F4C785 /* Extensions */,
 				227FBB4A2762AC4C0062FEC3 /* Campus-iOS.entitlements */,
-				1EF530A729192D51008F2C9B /* Design */,
 				366F0E8327580CFB0091651D /* App.swift */,
 				227FBB492762AC440062FEC3 /* Info.plist */,
 				36203E7D2761B9D000C24658 /* Localizable.strings */,
 				366F0E8727580CFD0091651D /* Assets.xcassets */,
 				41E2B8232864D192005B5E72 /* Icons */,
-				1F542452285CA081008363BC /* VideoAssets */,
 				366F0E8C27580CFD0091651D /* Persistence.swift */,
 				36AD5CFD27BA064E00DAE143 /* GoogleService-Info.plist */,
 				366F0E8E27580CFD0091651D /* Campus_iOS.xcdatamodeld */,
+				1F542452285CA081008363BC /* VideoAssets */,
 				366F0E8927580CFD0091651D /* Preview Content */,
-				1F504173295B82FE00A62CA1 /* SearchComponent */,
 			);
 			path = "Campus-iOS";
 			sourceTree = "<group>";
@@ -2664,7 +2663,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					366F0E7F27580CFB0091651D = {
 						CreatedOnToolsVersion = 13.1;
@@ -2995,7 +2994,6 @@
 				1F26158629D9E8DD0062B8E5 /* NetworkingAPIOld.swift in Sources */,
 				36BBE7322798AFE10018FD3F /* News.swift in Sources */,
 				1F26158329D9E8DD0062B8E5 /* TUMSexyAPIOld.swift in Sources */,
-				1E1CD12B2A693B3C00553228 /* SearchError.swift in Sources */,
 				36108C1627A307F9007DC62D /* GradesViewModel+ChartData.swift in Sources */,
 				1E1CD1182A693B3C00553228 /* PersonSearchResultView.swift in Sources */,
 				1E1CD1392A693C4600553228 /* GradesStudyProgramView.swift in Sources */,
@@ -3221,6 +3219,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -3284,6 +3283,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3548,7 +3548,7 @@
 			repositoryURL = "https://github.com/kvyatkovskys/KVKCalendar.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.6.7;
+				version = 0.6.15;
 			};
 		};
 		36FF90662773BCA600F4C785 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
