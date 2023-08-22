@@ -28,9 +28,10 @@ struct CampusApp: App {
         }
     
     init() {
-#if !DEBUG
-        FirebaseApp.configure()
-#endif
+        #if !DEBUG
+            FirebaseApp.configure()
+        #endif
+        
         UITabBar.appearance().isOpaque = true
         let appearance = UITabBarAppearance()
         UITabBar.appearance().scrollEdgeAppearance = appearance

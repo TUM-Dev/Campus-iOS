@@ -30,8 +30,6 @@ struct HomeScreen: View {
                         .padding(.horizontal)
                         .padding(.bottom, 10)
                     WidgetScreen(model: self.model)
-                    /*WidgetScreenOld(model: self.model)
-                     .padding(.bottom, 25)*/ //Robyn's WidgetScreen
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching Profile")
