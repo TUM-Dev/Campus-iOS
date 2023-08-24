@@ -31,7 +31,7 @@ enum TUMCabeAPI: API {
     case ticketPurchase
     case stripeKey
     
-    static let baseURL = "https://www.app.tum.de/api/"
+    static let baseURL = "https://app.tum.de/api/"
     static let baseHeaders: HTTPHeaders = ["X-DEVICE-ID": UIDevice.current.identifierForVendor?.uuidString ?? "not available",
                                                  "X-APP-VERSION": Bundle.main.version,
                                                  "X-APP-BUILD": Bundle.main.build,

@@ -87,7 +87,7 @@ struct NewsCardsHorizontalScrollingView: View {
 
 struct NewsCardsHorizontalScrollingView_Previews: PreviewProvider {
     
-    static let news = News(id: "1", sourceId: 1, date: Date(), created: Date(), title: "Dummy Title", link: URL(string: "https://github.com/orgs/TUM-Dev"), imageURL: "https://www.app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg")
+    static let news = News(id: "1", sourceId: 1, date: Date(), created: Date(), title: "Dummy Title", link: URL(string: "https://github.com/orgs/TUM-Dev"), imageURL: "https://app.tum.de/File/news/newspread/dab04abdf3954d3e1bf56cef44d68662.jpg")
     
     static var previews: some View {
         NewsCardsHorizontalScrollingView(news: [news, news, news, news, news])

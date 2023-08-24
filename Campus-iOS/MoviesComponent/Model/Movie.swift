@@ -41,7 +41,7 @@ struct Movie: Decodable, Searchable {
      "actors": "Cate Blanchett, Gerard Butler, Kit Harington, Jonah Hill",
      "rating": "8.2",
      "description": "\nJagd auf Drachen? Das finden die Bewohner von Berk ganz und gar nicht lustig. Unter der Führung des jungen Häuptlings Hicks und seines Drachens Ohnezahn versuchen sie die Drachenjäger aufzuhalten. Heroisch überfallen sie die Drachenjäger, befreien\n deren Beute und setzen ihre Schiffe in Brand. Die befreiten Drachen werden eingeladen mit nach Berk zu kommen, wo sie liebevoll umhegt und gepflegt werden. Doch so langsam platzt das Dorf aus allen Nähten … und macht sich gleich\u00adzeitig zur großen Zielscheibe für ambitionierte Drachen\u00adjäger. Schließlich kann man dort aller Sorten Drachen auf einmal fangen.\r\n\r\nDie geschundenen Jäger sind obendrein frustriert von ihren Verlusten und greifen nach dem letzten Strohhalm. Sie holen den Drachenjäger Grimmel aus dem Ruhestand zurück, der eigenhändig alle Nachtschatten erlegt hat, und erzählen ihm von dem einen Exemplar, das er übersehen hat: Ohnezahn. Grimmel hat auch bereits einen Plan, wie er an den letzten Nachtschatten kommen kann. Und durch ihn, den Alpha der Drachen, auch an alle anderen Drachen von Berk.\n",
-     "cover": "https://www.app.tum.de/File/kino/Drachenzhmen leicht gemacht 3 Die geheime Welt.jpg",
+     "cover": "https://app.tum.de/File/kino/Drachenzhmen leicht gemacht 3 Die geheime Welt.jpg",
      "trailer": null,
      "link": "https://www.tu-film.de/programm/view/1041"
      }
