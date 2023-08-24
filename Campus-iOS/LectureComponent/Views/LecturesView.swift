@@ -33,6 +33,7 @@ struct LecturesView: View {
                     Section(header: Text(lecturesBySemester.0)
                         .font(.headline.bold())
                         .foregroundColor(Color("tumBlue"))
+                        .accessibilityHeading(.h2)
                     ) {
                         ForEach(lecturesBySemester.1) { item in
                             VStack {
