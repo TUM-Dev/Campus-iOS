@@ -27,7 +27,7 @@ struct MovieCard: View {
                             .frame(width: 390 * 0.425, height: 390 * 0.6)
                             .clipped()
                     case .failure:
-                        Image("movie")
+                        Image(decorative: "movie")
                             .resizable()
                             .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                             .clipped()
@@ -41,7 +41,7 @@ struct MovieCard: View {
                 }
                 
             } else {
-                Image("movie")
+                Image(decorative: "movie")
                     .resizable()
                     .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                     .clipped()

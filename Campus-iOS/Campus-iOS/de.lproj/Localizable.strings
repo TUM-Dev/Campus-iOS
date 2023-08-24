@@ -59,6 +59,12 @@
 "Done" = "Fertig";
 "Places" = "Orte";
 "My Widgets" = "Meine Widgets";
+"This is a list with " = "Dies ist eine Liste mit ";
+" entries" = " Einträgen";
+"This Button opens a WebView" = "Dieser Link öffnet eine Website in der App";
+"List element" = "Listen Element";
+" of " = " von ";
+
 
 // LoginView
 "Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";
@@ -67,9 +73,13 @@
 "42" = "42";
 "tum" = "tum";
 "Log in 🎓" = "Einloggen 🎓";
+"Log in" = "Einloggen";
 "Log in Successfull" = "Eingeloggt";
 "Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
+"This Link leaves the App" = "Dieser Link verlässt die App";
+"Try again" = "Erneut versuchen";
+
 
 // TokenConfirmationView
 "Back" = "Zurück";

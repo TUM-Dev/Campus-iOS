@@ -44,7 +44,7 @@ struct MovieDetailedView: View {
                                             .offset(y: -geometry.frame(in: .global).minY)
                                     }
                                 case .failure:
-                                    Image("movie")
+                                    Image(decorative: "movie")
                                         .resizable()
                                         .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                                         .clipped()
@@ -57,7 +57,7 @@ struct MovieDetailedView: View {
                                 }
                             }
                         } else {
-                            Image("movie")
+                            Image(decorative: "movie")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 120, alignment: .top)

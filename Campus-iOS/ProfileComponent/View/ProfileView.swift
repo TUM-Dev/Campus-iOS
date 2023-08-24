@@ -164,27 +164,34 @@ struct ProfileView: View {
                             showSheet = true
                         }
                         .foregroundColor(Color.highlightText)
+                        .accessibilityHint("This Button opens a WebView")
                         
                         Button("TUM Dev on Github") {
                             self.url = URL(string: "https://github.com/TUM-Dev")!
                             showSheet = true
                         }
                         .foregroundColor(Color.highlightText)
+                        .accessibilityHint("This Button opens a WebView")
                         
                         Button("TUM Dev Website") {
                             self.url = URL(string: "https://tum.app")!
                             showSheet = true
                         }
                         .foregroundColor(Color.highlightText)
+                        .accessibilityHint("This Button opens a WebView")
+                        
                     } else {
                         Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
                             .foregroundColor(Color.highlightText)
+                            .accessibilityHint("This Link leaves the App")
                         
                         Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
                             .foregroundColor(Color.highlightText)
+                            .accessibilityHint("This Link leaves the App")
                         
                         Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
                             .foregroundColor(Color.highlightText)
+                            .accessibilityHint("This Link leaves the App")
                     }
                     
                     Button("Feedback") {
@@ -194,6 +201,7 @@ struct ProfileView: View {
                             UIApplication.shared.open(mailToUrl, options: [:])
                         }
                     }.foregroundColor(Color.highlightText)
+                    }.accessibilityHint("This Link leaves the App")
                 }
                 .listRowBackground(Color.secondaryBackground)
                 
