@@ -28,24 +28,19 @@ struct SearchResultBarView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(types, id: \.rawValue) { barType in
-                    ZStack {
-                        if selectedType == barType {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.tumBlue)
-                        } else {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.gray)
-                        }
-                        Text(barType.rawValue)
-                            .foregroundColor(.white)
-                            .padding([.trailing, .leading])
-                    }.onTapGesture {
+                    Text(barType.rawValue)
+                        .foregroundColor(selectedType == barType ? .white : .primaryText)
+                        .padding(.horizontal)
+                        .padding(.vertical, 7)
+                        .background(selectedType == barType ? Color.highlightText : Color.secondaryBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .onTapGesture {
                         withAnimation {
                             self.selectedType = barType
                         }
                     }
                 }
-            }
+            }.padding(.horizontal)
         }
     }
 }

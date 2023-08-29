@@ -22,7 +22,7 @@ struct LoginView: View {
     
     @State var logInState: LoginViewModel.LoginState = .notChecked
     @State var showLoginAlert: Bool = false
-    @State var buttonBackgroundColor: Color = .tumBlue
+    @State var buttonBackgroundColor: Color = .highlightText
     @State var showLoginButton: Bool = true
     
     var body: some View {
@@ -130,6 +130,7 @@ struct LoginView: View {
                                 case .notChecked:
                                     HStack {
                                         Text("Log in 🎓")
+                                            .accessibilityLabel("Log in")
                                             .lineLimit(1)
                                             .font(.title3)
                                             .frame(alignment: .center)
@@ -147,7 +148,7 @@ struct LoginView: View {
                                             try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation() {
                                                 logInState = .notChecked
-                                                buttonBackgroundColor = .tumBlue
+                                                buttonBackgroundColor = .highlightText
                                             }
                                         }
                                     }
@@ -155,6 +156,7 @@ struct LoginView: View {
                                     NavigationLink(destination:
                                                     TokenConfirmationView(viewModel: self.viewModel).navigationBarTitle(Text("Check Token")), isActive: $isActive) {
                                         Text("Log in 🎓")
+                                            .accessibilityLabel("Log in")
                                             .lineLimit(1)
                                             .font(.title3)
                                             .frame(alignment: .center)

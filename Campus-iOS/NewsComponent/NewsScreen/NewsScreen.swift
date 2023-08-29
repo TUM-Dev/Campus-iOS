@@ -9,26 +9,37 @@ import SwiftUI
 
 struct NewsScreen: View {
     @StateObject var vm = NewsViewModel()
+    let isWidget: Bool
     
     var body: some View {
         Group {
             switch vm.state {
             case .success(let newsSources):
-                VStack {
-                    NewsView(latestFiveNews: vm.latestFiveNews, newsSources: newsSources)           .refreshable {
-                        await vm.getNewsSources(forcedRefresh: true)
+                if isWidget {
+                    NewsWidgetView(latestFiveNews: vm.latestFiveNews)
+                } else {
+                    VStack {
+                        NewsView(latestFiveNews: vm.latestFiveNews, newsSources: newsSources)
+                            .refreshable {
+                                await vm.getNewsSources(forcedRefresh: true)
+                            }
                     }
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching News")
+                    .padding(.vertical)
             case .failed(let error):
-                FailedView(
-                    errorDescription: error.localizedDescription,
-                    retryClosure: vm.getNewsSources
-                )
+                if isWidget {
+                    EmptyView()
+                } else {
+                    FailedView(
+                        errorDescription: error.localizedDescription,
+                        retryClosure: vm.getNewsSources
+                    )
+                }
             }
         }.task {
-            await vm.getNewsSources()
+            await vm.getNewsSources(forcedRefresh: true)
         }.alert(
             "Error while fetching News",
             isPresented: $vm.hasError,

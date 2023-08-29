@@ -29,6 +29,7 @@ struct CalendarScreen: View {
                     CalendarContentView(
                         model: self.vm.model, events: events
                     )
+                    .padding(.bottom)
                     .refreshable {
                         await vm.getCalendar(forcedRefresh: true)
                     }

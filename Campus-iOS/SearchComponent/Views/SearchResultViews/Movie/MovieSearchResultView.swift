@@ -25,41 +25,45 @@ struct MovieSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    ZStack {
-                        Text("Movies").fontWeight(.bold)
-                        .font(.title)
-                        ExpandIcon(size: $size)
-                    }
+                HStack {
+                    Image(systemName: "popcorn")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Movies")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                if results.isEmpty {
-                    Text("No more movies this semester 😢\nGet excited for the next season!")
-                        .padding()
-                } else {
-                    ScrollView {
-                        ForEach(results, id: \.movie) { result in
-                            HStack {
-                                Button {
-                                    self.selectedMovie = result.movie
-                                } label: {
-                                    VStack(alignment: .leading) {
-                                        Text(result.movie.title ?? "")
-                                            .fontWeight(.bold)
-                                        Text(result.movie.genre ?? "")
-                                            .fontWeight(.light)
-                                            .foregroundColor(.gray)
-                                    }
-                                    .multilineTextAlignment(.leading)
-                                    .padding()
+                Divider()
+            }
+            if results.isEmpty {
+                Text("No more movies this semester 😢\nGet excited for the next season!").padding(.top, 5)
+            } else {
+                ScrollView {
+                    ForEach(results, id: \.movie) { result in
+                        HStack {
+                            Button {
+                                self.selectedMovie = result.movie
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text(result.movie.title ?? "")
+                                        .fontWeight(.bold)
+                                    Text(result.movie.genre ?? "")
+                                        .fontWeight(.light)
+                                        .foregroundColor(.gray)
                                 }
-                                Spacer()
+                                .multilineTextAlignment(.leading)
+                                .padding()
                             }
-                        }.sheet(item: $selectedMovie) { selectedMovie in
-                            MovieDetailedView(movie: selectedMovie)
+                            Spacer()
                         }
+                    }.sheet(item: $selectedMovie) { selectedMovie in
+                        MovieDetailedView(movie: selectedMovie)
                     }
                 }
             }

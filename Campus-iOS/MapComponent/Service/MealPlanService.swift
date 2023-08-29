@@ -8,12 +8,12 @@
 import Foundation
 
 struct MealPlanService {
-    func fetch(cafeteria: Cafeteria, forcedRefresh: Bool) async throws -> [Menu] {
+    func fetch(cafeteria: Cafeteria, forcedRefresh: Bool) async throws -> [cafeteriaMenu] {
         let thisWeekAPI = EatAPI.menu(location: cafeteria.id, year: Date().year, week: Date().weekOfYear)
        
         let thisWeekMealPlanResponse = try await fetch(menu: thisWeekAPI, forcedRefresh: forcedRefresh)
         
-        let thisWeekMenu: [Menu] = getMenuPerDay(mealPlan: thisWeekMealPlanResponse)
+        let thisWeekMenu: [cafeteriaMenu] = getMenuPerDay(mealPlan: thisWeekMealPlanResponse)
         
         guard let nextWeek = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date()) else {
             return thisWeekMenu
@@ -44,17 +44,17 @@ struct MealPlanService {
     
     
     
-    func getMenuPerDay(mealPlan: MealPlan) -> [Menu] {
+    func getMenuPerDay(mealPlan: MealPlan) -> [cafeteriaMenu] {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-        var menus = [Menu]()
+        var menus = [cafeteriaMenu]()
         menus = mealPlan.days
             .filter { !$0.dishes.isEmpty && ($0.date.isToday || $0.date.isLaterThanOrEqual(to: Date())) }
             .sorted { $0.date < $1.date }
             .map {
                 let categories = categories(from: $0.dishes)
-                return Menu(date: $0.date, categories: categories)
+                return cafeteriaMenu(date: $0.date, categories: categories)
             }
         
         return menus.sorted { $0.date < $1.date }

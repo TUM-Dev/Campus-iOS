@@ -24,40 +24,49 @@ struct LectureSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    ZStack {
-                        Text("Lecture Search")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        ExpandIcon(size: $size)
-                    }
+                HStack {
+                    Image(systemName: "studentdesk")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Lectures")
+                        .lineLimit(1)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                ScrollView {
-                    ForEach(self.results, id: \.id) { result in
-                        VStack(alignment: .leading) {
-                            NavigationLink {
-                                LectureDetailsScreen(model: self.model, lecture: result)
-                                    .navigationBarTitleDisplayMode(.inline)
-                            } label: {
-                                HStack {
-                                    Text(result.title)
-                                    Spacer()
-                                    Image(systemName: "info.circle")
-                                        .foregroundColor(.tumBlue)
-                                }
-                            }.buttonStyle(.plain)
-                            Divider()
+                Divider()
+            }
+            ScrollView {
+                ForEach(self.results, id: \.id) { result in
+                    VStack(alignment: .leading) {
+                        NavigationLink {
+                            LectureDetailsScreen(model: self.model, lecture: result)
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            HStack {
+                                Text(result.title)
+                                Spacer()
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(Color.highlightText)
+                            }
+                        }.buttonStyle(.plain)
+                        if results.last != nil {
+                            if result != results.last! {
+                                Divider()
+                            }
                         }
                     }
                 }
-                if self.results.count == 0 {
-                    Text("No lectures were found 😢")
-                        .foregroundColor(.gray)
-                }
-            }.padding()
+            }
+            if self.results.count == 0 {
+                Text("No lectures were found 😢")
+                    .foregroundColor(.gray)
+            }
         }
     }
 }

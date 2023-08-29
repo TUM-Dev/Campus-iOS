@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 struct Location: Decodable, Hashable {
     let latitude: CLLocationDegrees

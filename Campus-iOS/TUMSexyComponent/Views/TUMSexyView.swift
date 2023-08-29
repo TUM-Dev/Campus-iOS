@@ -40,6 +40,7 @@ struct TUMSexyView: View {
                 SFSafariViewWrapper(url: url)
             }
         }
+        .accessibilityLabel("This is a list with " + "\(searchResults.count)" + " entries")
     }
     
     var searchResults: [TUMSexyLink] {

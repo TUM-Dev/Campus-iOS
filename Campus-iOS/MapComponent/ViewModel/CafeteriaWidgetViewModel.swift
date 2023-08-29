@@ -13,15 +13,14 @@ import Alamofire
 class CafeteriaWidgetViewModel: ObservableObject {
     
     @Published var cafeteria: Cafeteria?
-    @Published var menu: Menu?
-    @Published var status: CafeteriaWidgetStatus
+    @Published var menu: cafeteriaMenu?
+    @Published var status: CafeteriaWidgetStatus = .loading
     
     private let cafeteriaService: CafeteriasService
     
     private let locationManager = CLLocationManager()
     
     init(cafeteriaService: CafeteriasService) {
-        self.status = .loading
         self.cafeteriaService = cafeteriaService
         
         let authorization = locationManager.authorizationStatus
@@ -32,7 +31,7 @@ class CafeteriaWidgetViewModel: ObservableObject {
     
     func fetch() async {
         do {
-            let cafeterias = try await cafeteriaService.fetch(forcedRefresh: false)
+            let cafeterias = try await cafeteriaService.fetch(forcedRefresh: true)
             
             // Get the closest cafeteria.
             

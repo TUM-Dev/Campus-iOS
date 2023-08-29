@@ -10,24 +10,31 @@ import MapKit
 import KVKCalendar
 import Firebase
 
+@available(iOS 16.0, *)
 @main
 @MainActor
 struct CampusApp: App {
     @StateObject var model: Model = Model()
-    
     let persistenceController = PersistenceController.shared
-    @State var selectedTab = 0
+    @State private var selectedTab: Tab = .home
     @State var isLoginSheetPresented = false
-
+    
+    enum Tab {
+            case home
+            case grades
+            case lectures
+            case calendar
+            case maps
+        }
+    
     init() {
         #if !DEBUG
-        FirebaseApp.configure()
+            FirebaseApp.configure()
         #endif
+        
         UITabBar.appearance().isOpaque = true
-        if #available(iOS 15.0, *) {
-            let appearance = UITabBarAppearance()
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
+        let appearance = UITabBarAppearance()
+        UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
     var body: some Scene {
@@ -36,9 +43,6 @@ struct CampusApp: App {
                 .sheet(isPresented: $isLoginSheetPresented) {
                     NavigationView {
                         LoginView(model: model)
-                            .onAppear {
-                                selectedTab = 0
-                            }
                     }
                     .navigationViewStyle(.stack)
                 }
@@ -63,86 +67,95 @@ struct CampusApp: App {
                             model.isLoginSheetPresented = false
                     }
                 }
+                .background(Color.primaryBackground)
         }
     }
     
     func tabViewComponent() -> some View {
         TabView(selection: $selectedTab) {
-            NavigationView {
-                CalendarScreen(
-                    model: model,
-                    refresh: $model.isUserAuthenticated
-                )
-                .navigationTitle("Calendar")
+            // MARK: - Home Screen
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                NavigationView {
+                    HomeScreen(model: model)
+                        .overlay(NavigationBarView(model: model))
+                }
+                .navigationViewStyle(.stack)
+                .tag(Tab.home)
+                .tabItem {
+                    if selectedTab == .home {
+                        Label("Home", systemImage: "house")
+                            .foregroundColor(.highlightText)
+                    } else {
+                        Label("Home", systemImage: "house").environment(\.symbolVariants, .none)
+                    }
+                }
+                .toolbarBackground(Color.primaryBackground, for: .tabBar)
             }
-            .tag(4)
+            // MARK: - Grades Screen
+            NavigationView {
+                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
+                    .background(Color.primaryBackground)
+                    .overlay(NavigationBarView(model: model, title: "Grades".localized))
+            }
+            .tag(Tab.grades)
             .tabItem {
-                Label("Calendar", systemImage: "calendar")
+                if selectedTab == .grades {
+                    Label("Grades", systemImage: "checkmark.shield")
+                } else {
+                    Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
+                }
+                
             }
-            .navigationViewStyle(.stack)
-            
-            NavigationView {
+            .toolbarBackground(Color.secondaryBackground, for: .tabBar)
+            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
+                view.navigationViewStyle(.stack)
+            })
+                // MARK: - Lecture Screen
+                NavigationView {
                 LecturesScreen(vm: LecturesViewModel(
                     model: model,
                     service: LecturesService()
                 ), refresh: $model.isUserAuthenticated)
-                    .navigationTitle("Lectures")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
+                .background(Color.primaryBackground)
+                .overlay(NavigationBarView(model: model, title: "Lectures".localized))
             }
-            .tag(1)
+            .tag(Tab.lectures)
             .tabItem {
                 Label("Lectures", systemImage: "studentdesk")
             }
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-            
-            if UIDevice.current.userInterfaceIdiom == .phone {
+                // MARK: - Calendar Screen
                 NavigationView {
-                    WidgetScreen(model: model)
-                    
-                        .toolbar {
-                            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                                ProfileToolbar(model: model)
-                            }
-                        }
-                }
-                .navigationViewStyle(.stack)
-                .tag(0)
-                .tabItem {
-                    Label("Home", systemImage: "rectangle.3.group").environment(\.symbolVariants, .none)
-                }
+                CalendarScreen(
+                    model: model,
+                    refresh: $model.isUserAuthenticated
+                )
+                .background(Color.primaryBackground)
+                .overlay(NavigationBarView(model: model, title: "Calendar".localized))
             }
-            
-            NavigationView {
-                GradesScreen(model: model, refresh: $model.isUserAuthenticated)
-                    .navigationTitle("Grades")
-                    .toolbar {
-                        ToolbarItemGroup(placement: .navigationBarTrailing) {
-                            ProfileToolbar(model: model)
-                        }
-                    }
-            }
-            .tag(2)
+            .tag(Tab.calendar)
             .tabItem {
-                Label("Grades", systemImage: "checkmark.shield").environment(\.symbolVariants, .none)
+                Label("Calendar", systemImage: "calendar")
             }
-            .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
-                view.navigationViewStyle(.stack)
-            })
-                
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
+            .navigationViewStyle(.stack)
+            // MARK: - Places Screen
             NavigationView {
-                MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                PlacesScreen(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
+                    .background(Color.primaryBackground)
+                    .overlay(NavigationBarView(model: model, title: "Places".localized))
+                //MapScreenView(vm: MapViewModel(cafeteriaService: CafeteriasService(), studyRoomsService: StudyRoomsService()))
             }
-            .tag(3)
+            .tag(Tab.maps)
             .tabItem {
                 Label("Places", systemImage: "mappin.and.ellipse")
             }
+            .toolbarBackground(Color.primaryBackground, for: .tabBar)
             .navigationViewStyle(.stack)
         }
+        .accentColor(.highlightText)
     }
 }

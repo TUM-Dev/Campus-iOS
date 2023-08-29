@@ -17,6 +17,10 @@ class ProfileViewModel: ObservableObject {
     @Published var tuitionState: APIState<Tuition> = .na
     @Published var tuitionHasError: Bool = false
     
+    @Published var profile: Profile?
+    @Published var tuition: Tuition?
+    @Published var profileImage = Image(systemName: "person.crop.circle.fill")
+    @Published var profileImageUI: UIImage?
     var model: Model
     let service: ProfileService
     
@@ -34,6 +38,7 @@ class ProfileViewModel: ObservableObject {
     init(model: Model, service: ProfileService) {
         self.model = model
         self.service = service
+        self.load(fileName: "ProfileImage")
     }
     
     func getProfile(forcedRefresh: Bool) async {
@@ -127,4 +132,34 @@ class ProfileViewModel: ObservableObject {
             }
         }
     }
+    
+    //Source: https://stackoverflow.com/questions/37574689/how-to-load-image-from-local-path-ios-swift-by-path
+    //saves Image to local storage
+    func save(image: UIImage) -> String? {
+        let fileName = "ProfileImage"
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            try? imageData.write(to: fileURL, options: .atomic)
+            return fileName // ----> Save fileName
+        }
+        print("Error saving image")
+        return nil
+    }
+    
+    //loads Image to local storage
+    func load(fileName: String) {
+        let fileURL = documentsUrl.appendingPathComponent(fileName)
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            self.profileImageUI = UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error)")
+        }
+    }
+    
+    //helper property to get FilePath for local storage
+    var documentsUrl: URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+    
 }

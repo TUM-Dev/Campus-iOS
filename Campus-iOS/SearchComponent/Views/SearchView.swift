@@ -16,7 +16,7 @@ struct SearchView<Content: View> : View {
     
     var body: some View {
         if isSearching {
-            SearchResultView(vm: SearchResultViewModel(model: self.model), query: $query)
+            SearchResultView(vm: SearchResultViewModel(model: self.model))
         } else {
             content()
         }

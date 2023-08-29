@@ -22,36 +22,45 @@ struct PersonSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    ZStack {
-                        Text("Person Search")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        ExpandIcon(size: $size)
-                    }
+                HStack {
+                    Image(systemName: "person.3")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Person Search")
+                        .lineLimit(1)
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                ScrollView {
-                    ForEach(results, id: \.id) { result in
-                        VStack(alignment: .leading) {
-                            NavigationLink(
-                                destination: PersonDetailedScreen(model: model, person: result)
-                                    .navigationBarTitleDisplayMode(.inline)
-                            ) {
-                                HStack {
-                                    Text(result.fullName)
-                                    Spacer()
-                                    Image(systemName: "info.circle")
-                                        .foregroundColor(.tumBlue)
-                                }
-                            }.buttonStyle(.plain)
-                            Divider()
+                Divider()
+            }
+            ScrollView {
+                ForEach(results, id: \.id) { result in
+                    VStack(alignment: .leading) {
+                        NavigationLink(
+                            destination: PersonDetailedScreenSearch(model: model, person: result)
+                                .navigationBarTitleDisplayMode(.inline)
+                        ) {
+                            HStack {
+                                Text(result.fullName)
+                                Spacer()
+                                Image(systemName: "info.circle")
+                                    .foregroundColor(Color.highlightText)
+                            }
+                        }.buttonStyle(.plain)
+                        if results.last != nil {
+                            if result != results.last! {
+                                Divider()
+                            }
                         }
                     }
                 }
-            }.padding()
+            }
         }
     }
 }

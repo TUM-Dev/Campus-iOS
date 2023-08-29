@@ -25,6 +25,7 @@ struct LoadingView: View {
                 }
             }.position(x: geo.size.width/2, y: geo.size.height * position.rawValue)
         }
+        .background(Color.primaryBackground)
     }
 }
 

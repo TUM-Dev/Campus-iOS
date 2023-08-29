@@ -16,13 +16,13 @@ struct TokenConfirmationView: View {
     @State var showTokenHelp: Bool = false
     @State var tokenPermissionButton: Bool = false
     @State var tokenState: LoginViewModel.TokenState = .notChecked
-    @State var buttonBackgroundColor: Color = .tumBlue
+    @State var buttonBackgroundColor: Color = .highlightText
     @State var showBackButtonAlert: Bool = false
     @State var showCheckTokenButton: Bool = true
     @State var showTUMOnline = false
     @State var currentStep: Int = 1
     @State var isActive = true
-
+    
     /// The `LoginViewModel` that manages the content of the login screen
     @ObservedObject var viewModel: LoginViewModel
     
@@ -48,7 +48,7 @@ struct TokenConfirmationView: View {
                             HStack(spacing: 5) {
                                 HStack(spacing: 0) {
                                     Text("Log in on ")
-                                    Text("TUMonline").foregroundColor(.tumBlue)
+                                    Text("TUMonline").foregroundColor(.highlightText)
                                         .onTapGesture {
                                             showTUMOnline = true
                                         }
@@ -87,7 +87,7 @@ struct TokenConfirmationView: View {
                             Text("Activate the newly created token and enable your desired permissions")
                                 .font(.body)
                                 .minimumScaleFactor(0.2)
-
+                            
                         }
                     default: EmptyView()
                     }
@@ -96,7 +96,7 @@ struct TokenConfirmationView: View {
                 
                 
                 
-                    
+                
                 let videoUrl = Bundle.main
                     .url(forResource: "token-tutorial", withExtension: "mov")!
                 PlayerView(videoUrl: videoUrl)
@@ -105,7 +105,7 @@ struct TokenConfirmationView: View {
                 // Video is 2532 x 1170
                     .frame(width: screenWidth*0.109*5, height: screenWidth*0.185*5, alignment: .center)
                 
-            
+                
                 VStack {
                     Spacer()
                     
@@ -173,7 +173,7 @@ struct TokenConfirmationView: View {
                                             try? await Task.sleep(nanoseconds: 1_500_000_000)
                                             withAnimation(.easeInOut) {
                                                 tokenState = .notChecked
-                                                buttonBackgroundColor = .tumBlue
+                                                buttonBackgroundColor = .highlightText
                                             }
                                         }
                                     }
@@ -188,6 +188,7 @@ struct TokenConfirmationView: View {
                                             .cornerRadius(10)
                                             .buttonStyle(.plain)
                                     }
+                                    
                                 }
                             }
                             .frame(width: 150, height: 48, alignment: .center)
@@ -231,24 +232,24 @@ struct TokenConfirmationView: View {
                 Text("Back")
             }
             .foregroundColor(Color(.tumBlue))
-          }
+        }
         )
         .alert(isPresented: $showBackButtonAlert) {
-              Alert(
+            Alert(
                 title: Text("Are you sure?"),
                 message: Text("Leaving now will invalidate the current token!"),
                 primaryButton: .default(Text("Leave")) {
-                  self.presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
                 },
                 secondaryButton: .cancel()
-              )
+            )
         }
         .task {
             await switchSteps()
         }
         .sheet(isPresented: $showTUMOnline) {
             SFSafariViewWrapper(url: Constants.tokenManagementTUMOnlineUrl).edgesIgnoringSafeArea(.bottom)
-         }
+        }
         
         
     }
@@ -292,7 +293,7 @@ struct TokenConfirmationView_Previews: PreviewProvider {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
         }//.previewDevice("iPod touch (7th generation)")
-            //.previewDevice("iPhone SE (3rd generation)")
+        //.previewDevice("iPhone SE (3rd generation)")
         .previewDevice("iPhone 12")
         
         Text("Background2").sheet(isPresented: .constant(true)) {
@@ -300,7 +301,7 @@ struct TokenConfirmationView_Previews: PreviewProvider {
                 TokenConfirmationView(viewModel: LoginViewModel(model: model))
             }
         }.previewDevice("iPod touch (7th generation)")
-            //.previewDevice("iPhone SE (3rd generation)")
+        //.previewDevice("iPhone SE (3rd generation)")
         //.previewDevice("iPhone 12")
     }
 }

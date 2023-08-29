@@ -22,41 +22,59 @@ struct NewsSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    ZStack {
-                        Text("News").fontWeight(.bold)
-                            .font(.title)
-                        ExpandIcon(size: $size)
-                    }
+                HStack {
+                    Image(systemName: "newspaper")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("News")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                ScrollView {
-                    ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
-                    //                ForEach(vm.results, id: \.newsResult) { result in
-                    //                    VStack {
-                    //                        Text(result.newsResult.title ?? "")
-                    //                        ForEach(result.newsResult.news, id: \.id) { news in
-                    //                            Text(news.title ?? "")
-                    //                        }
-                    //                    }
-                    //                }
-                    ForEach(results, id: \.news) { result in
-                        HStack {
-                            Button {
-                                self.newsLink = result.news.link
-                            } label: {
+                Divider().padding(.horizontal)
+            }
+            ScrollView {
+                ///** The following code is for all newsSources. Currently we only use TUMOnline due to lagginess **
+                //                ForEach(vm.results, id: \.newsResult) { result in
+                //                    VStack {
+                //                        Text(result.newsResult.title ?? "")
+                //                        ForEach(result.newsResult.news, id: \.id) { news in
+                //                            Text(news.title ?? "")
+                //                        }
+                //                    }
+                //                }
+                ForEach(results, id: \.news) { result in
+                    Button {
+                        self.newsLink = result.news.link
+                    } label: {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Image(systemName: "newspaper.circle")
+                                    .resizable()
+                                    .foregroundColor(Color.highlightText)
+                                    .frame(width: 20, height: 20)
+                                    .clipShape(Circle())
                                 Text(result.news.title ?? "")
-                                    .fontWeight(.bold)
                                     .multilineTextAlignment(.leading)
-                                    .padding()
+                                Spacer()
+                                Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                             }
-                            Spacer()
+                            .padding(.horizontal, 5)
+                            .foregroundColor(Color.primaryText)
+                            if results.last != nil {
+                                if result != results.last! {
+                                    Divider()
+                                }
+                            }
                         }
-                    }.sheet(item: $newsLink) { selectedLink in
-                        SFSafariViewWrapper(url: selectedLink)
                     }
+                }.sheet(item: $newsLink) { selectedLink in
+                    SFSafariViewWrapper(url: selectedLink)
                 }
             }
         }

@@ -14,7 +14,7 @@ enum ResultSize {
 
 struct SearchResultView: View {
     @StateObject var vm: SearchResultViewModel
-    @Binding var query: String
+    @State private var query = ""
     private let preview = (ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1")
     @State var selectedType: BarType = BarType.all
     
@@ -33,14 +33,17 @@ struct SearchResultView: View {
                             } label: {
                                 Text(query)
                                     .buttonStyle(.plain)
-                                
+                                    .foregroundColor(.primaryText)
                             }
                         }
+                        .listRowBackground(Color.secondaryBackground)
                     }
-                }.listStyle(.plain)
+                }
+                .scrollContentBackground(.hidden)
+                
             } else {
                 VStack {
-                    SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding()
+                    SearchResultBarView(selectedType: $selectedType).frame(height: g.size.height/20).padding(.vertical)
                     /// **For debugging purposes**
                     //                Text("Your results for: \(query)")
                     //                Spacer()
@@ -53,150 +56,155 @@ struct SearchResultView: View {
                     /// **For debugging purposes**
                     switch self.selectedType {
                     case .grade:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query, size: .big)
                                 } else {
                                     GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .cafeteria:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query, size: .big)
                                 } else {
                                     CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .news:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query, size: .big)
                                 } else {
                                     NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .studyRoom:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query, size: .big)
                                 } else {
                                     StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .calendar:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query, size: .big)
                                 } else {
                                     EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                         
                     case .movie:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             Group {
                                 if preview {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
                                 } else {
                                     MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
                                 }
-                            }.searchStyle()
+                            }.sectionStyle()
+                                .padding(.bottom)
                         }
                     case .roomFinder:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                .searchStyle()
+                                .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .lectureSearch:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .searchStyle()
+                                .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .personSearch:
-                        ScrollView {
+                        ScrollView (showsIndicators: false) {
                             PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query, size: .big)
-                                .searchStyle()
+                                .sectionStyle()
+                                .padding(.bottom)
                         }
                     case .all:
-                        ScrollView {
+                        ScrollView(showsIndicators: false) {
                             ForEach(vm.orderedTypes, id: \.rawValue) { type in
-                                switch type {
-                                case .Grade:
-                                    if preview {
-                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query)
-                                    } else {
-                                        GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
-                                    }
-                                case .Cafeteria:
-                                    if preview {
-                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
-                                    } else {
-                                        CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query)
-                                    }
-                                    
-                                case .News:
-                                    if preview {
-                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query)
-                                    } else {
-                                        NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query)
-                                    }
-                                    
-                                case .StudyRoom:
-                                    if preview {
-                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
-                                    } else {
-                                        StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
-                                    }
-                                    
-                                case .Calendar:
-                                    if preview {
-                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query)
-                                    } else {
-                                        EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query)
-                                    }
-                                    
-                                case .Movie:
-                                    if preview {
-                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
-                                    } else {
-                                        MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
+                                Group {
+                                    switch type {
+                                    case .Grade:
+                                        if preview {
+                                            GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService_Preview()), query: $query)
+                                        } else {
+                                            GradesSearchResultScreen(vm: GradesSearchResultViewModel(model: vm.model, service: GradesService()), query: $query)
+                                        }
+                                    case .Cafeteria:
+                                        if preview {
+                                            CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService_Preview()), query: $query)
+                                        } else {
+                                            CafeteriaSearchResultScreen(vm: CafeteriaSearchResultViewModel(service: CafeteriasService()), query: $query)
+                                        }
+                                        
+                                    case .News:
+                                        if preview {
+                                            NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService_Preview()), query: $query)
+                                        } else {
+                                            NewsSearchResultScreen(vm: NewsSearchResultViewModel(service: NewsService()), query: $query)
+                                        }
+                                        
+                                    case .StudyRoom:
+                                        if preview {
+                                            StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService_Preview()), query: $query)
+                                        } else {
+                                            StudyRoomSearchResultScreen(vm: StudyRoomSearchResultViewModel(studyRoomService: StudyRoomsService()),query: $query)
+                                        }
+                                        
+                                    case .Calendar:
+                                        if preview {
+                                            EventSearchResultScreen(vm: EventSearchResultViewModel(model: Model_Preview(), lecturesService: LecturesService_Preview(), calendarService: CalendarService_Preview()), query: $query)
+                                        } else {
+                                            EventSearchResultScreen(vm: EventSearchResultViewModel(model: self.vm.model, lecturesService: LecturesService(), calendarService: CalendarService()), query: $query)
+                                        }
+                                        
+                                    case .Movie:
+                                        if preview {
+                                            MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService_Preview()), query: $query, size: .big)
+                                        } else {
+                                            MovieSearchResultScreen(vm: MovieSearchResultViewModel(service: MovieService()), query: $query, size: .big)
+                                        }
                                     }
                                 }
+                                .sectionStyle()
                             }
-                            .cornerRadius(25)
-                            .padding()
-                            .shadow(color: .gray.opacity(0.8), radius: 5)
-                            Group {
-                                RoomFinderSearchResultScreen(vm: RoomFinderSearchResultViewModel(), query: $query)
-                                LectureSearchResultScreen(vm: LectureSearchResultViewModel(model: vm.model), query: $query)
-                                PersonSearchResultScreen(vm: PersonSearchResultViewModel(model: vm.model), query: $query)
-                            }
-                            .cornerRadius(25)
-                            .padding()
-                            .shadow(color: .gray.opacity(0.8), radius: 10)
+                            .padding(.bottom)
                         }
                     }
                 }
             }
-        }.onChange(of: query) { newQuery in
+        }
+        .searchable (text: $query, placement: .navigationBarDrawer(displayMode: .always))
+        .onChange(of: query) { newQuery in
             vm.search(for: newQuery)
         }
         .onAppear {
             vm.search(for: query)
         }
+        .background(Color.primaryBackground)
     }
 }
 
@@ -210,6 +218,6 @@ struct Search: ViewModifier {
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()), query: .constant("StudyRoom Garching"))
+        SearchResultView(vm: SearchResultViewModel(model: Model_Preview()))
     }
 }

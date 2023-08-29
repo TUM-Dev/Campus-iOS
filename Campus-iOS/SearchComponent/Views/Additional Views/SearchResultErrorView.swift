@@ -12,14 +12,20 @@ struct SearchResultErrorView: View {
     @State var error: String
     
     var body: some View {
-        ZStack {
-            Color.white
-            VStack {
+        VStack {
+            HStack {
+                Image(systemName: "exclamationmark.triangle")
+                    .fontWeight(.semibold)
+                    .font(.title2)
+                    .foregroundColor(Color.highlightText)
                 Text(title)
-                    .fontWeight(.bold)
-                    .font(.title)
-                Text("Error searching: \(error)")
-            }.padding()
+                    .fontWeight(.semibold)
+                    .font(.title2)
+                    .foregroundColor(Color.highlightText)
+                Spacer()
+            }
+            Divider()
+            Text("Error searching: \(error)")
         }
     }
 }

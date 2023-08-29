@@ -32,7 +32,7 @@ struct LocationStrategy: WidgetRecommenderStrategy {
             recommendations.append(recommendation)
         }
         
-        return recommendations.filter { $0.priority > 0 }
+        return recommendations
     }
     
     private func priority(of widget: Widget) async throws -> Int {
@@ -65,6 +65,16 @@ struct LocationStrategy: WidgetRecommenderStrategy {
                 if !locations.isEmpty {
                     priority += 1
                 }
+            }
+            
+        case .departures:
+            
+            var locations = Campus.allCases
+            locations = locations.filter { $0.location.distance(from: location) <= 2000 }
+            if locations.isEmpty {
+                priority = -4
+            } else {
+                priority = 1
             }
 
         default:

@@ -25,10 +25,8 @@ struct ExpandIcon: View {
             } label: {
                 if self.size == .small {
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
-                        .padding()
                 } else {
                     Image(systemName: "arrow.down.right.and.arrow.up.left")
-                        .padding()
                 }
             }
         }

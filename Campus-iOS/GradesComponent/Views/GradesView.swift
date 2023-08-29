@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftUICharts
 
+@available(iOS 16.0, *)
 struct GradesView: View {
     
     @StateObject var vm: GradesViewModel
@@ -20,12 +21,16 @@ struct GradesView: View {
             ForEach(gradesWithAverage.indices, id: \.self) { index in
                 GradesStudyProgramView(semesterGrades: gradesWithAverage[index], studyProgram: self.vm.getStudyProgram(studyID: gradesWithAverage[index].degree), barChartData: vm.barChartData[index])
             }
+            .listRowBackground(Color.secondaryBackground)
         }
+        .background(Color.primaryBackground)
+        .scrollContentBackground(.hidden)
         .task {
             data.visitView(view: .grades)
         }
         .onDisappear {
             data.didExitView()
         }
+        
     }
 }

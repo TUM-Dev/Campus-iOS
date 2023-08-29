@@ -27,7 +27,6 @@
 "No Lectures" = "Keine Vorlesungen";
 "Grades" = "Noten";
 "No Grades" = "Keine Noten";
-"Tuition fees" = "Studienbeiträge";
 "Amount" = "Betrag";
 "Deadline" = "Frist";
 "Cafeterias" = "Mensa";
@@ -60,6 +59,12 @@
 "Done" = "Fertig";
 "Places" = "Orte";
 "My Widgets" = "Meine Widgets";
+"This is a list with " = "Dies ist eine Liste mit ";
+" entries" = " Einträgen";
+"This Button opens a WebView" = "Dieser Link öffnet eine Website in der App";
+"List element" = "Listen Element";
+" of " = " von ";
+
 
 // LoginView
 "Welcome to TUM Campus App" = "Wilkommen zur TUM Campus App";
@@ -68,9 +73,13 @@
 "42" = "42";
 "tum" = "tum";
 "Log in 🎓" = "Einloggen 🎓";
+"Log in" = "Einloggen";
 "Log in Successfull" = "Eingeloggt";
 "Next" = "Weiter";
 "Continue without TUM ID" = "Weiter ohne TUM ID";
+"This Link leaves the App" = "Dieser Link verlässt die App";
+"Try again" = "Erneut versuchen";
+
 
 // TokenConfirmationView
 "Back" = "Zurück";
@@ -100,6 +109,19 @@
 "Token Permissions" = "Token Rechte";
 "Token Permissions (You are logged out)" = "Token Rechte (Du bist ausgeloggt)";
 "Calendar days in week mode" = "Anzahl Kalendertage je Woche";
+"Settings" = "Einstellungen";
+
+//HomeView
+"student information" = "deine informationen";
+"study rooms, food & calendar" = "lernräume, mensen & kalender";
+"Latest News" = "Aktuelles";
+"Nearest Cafeteria" = "Nächstgelegene Mensa";
+"Nearest Study Room" = "Nächstgelegener Lernraum";
+"No events today" = "Keine Events heute";
+"View Location" = "Standort anzeigen";
+"rooms free" = "Zimmer frei";
+"No rooms free" = "Keine Zimmer frei";
+
 
 // CalendarView
 "Day" = "Tag";
@@ -115,6 +137,7 @@
 
 // Tuition
 "Open Amount" = "Offener Betrag";
+"Tuition fees" = "Studienbeiträge";
 
 // LectureSearch
 "Lecture Search" = "Vorlesungssuche";
@@ -173,6 +196,13 @@
 // Map
 "Search ..." = "Suchen ...";
 "Traffic" = "Auslastung";
+"Fetching Study Rooms" = "Lernräume laden";
+"Fetching Canteens" = "Mensen laden";
+"Most Searched Rooms" = "Meist gesuchte Räume";
+"View On Maps" = "Auf Karte ansehen";
+"Directions in Maps" = "Route in Karten ansehen";
+"Menu" = "Menü";
+
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "Keine Filme mehr dieses Semester 😢\nMacht euch ready für die nächste Saison!";
@@ -210,3 +240,17 @@
 "Sounds good?" = "Klingt gut?";
 "Share anonymized analytics data" = "Anonymisierte Nutzungsdaten teilen";
 "Average Grade:" = "Durchschnittsnote:";
+
+// Departures
+"Line" = "Linie";
+"Direction" = "Richtung";
+"Departure" = "Abfahrt";
+"MVV Departures" = "MVV Abfahrten";
+"Show Directions" = "Wegbeschreibung";
+"Walking Distance" = "Laufdistanz";
+"walking distance currently unavailable" = "Laufdistanz zurzeit nicht verfügbar";
+"no departures where found for this station" = "Es wurden leider keine Abfahrten gefunden";
+"fetching latest departures" = "Lade neueste Abfahrten";
+"location currently unavailable" = "Standort zurzeit nicht verfügbar";
+"min" = "Min.";
+"mins" = "Min.";

@@ -52,9 +52,6 @@ class MapViewModel: MapViewModelProtocol {
                 return cafeterias
             }
         }
-        set {
-            self.cafeterias = newValue
-        }
     }
     
     var studyRoomsResponse: StudyRoomApiRespose {
@@ -67,9 +64,6 @@ class MapViewModel: MapViewModelProtocol {
                 }
                 return studyRoomsResponse
             }
-        }
-        set {
-            self.studyRoomsResponse = newValue
         }
     }
     
@@ -112,6 +106,18 @@ class MapViewModel: MapViewModelProtocol {
         } catch {
             self.studyRoomsState = .failed(error: error)
             self.hasError = true
+        }
+    }
+    
+    func getCampusCafeteria(campus: Campus) -> [Cafeteria] {
+        return self.cafeterias.filter { $0.coordinate.location.distance(from: campus.location) <= 1000 }
+    }
+    
+    func getCampusStudyRooms(campus: Campus) -> [StudyRoomGroup]? {
+        if let studyGroups = self.studyRoomsResponse.groups {
+            return studyGroups.filter { $0.coordinate?.location.distance(from: campus.location) ?? 1500 <= 1000 }
+        } else {
+            return nil
         }
     }
 }

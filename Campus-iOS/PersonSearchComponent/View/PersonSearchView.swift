@@ -16,7 +16,7 @@ struct PersonSearchView: View {
             ForEach(self.persons, id: \.nr) { person in
                 NavigationLink(
                     destination:
-                        PersonDetailedScreen(model: model, person: person)
+                        PersonDetailedScreenSearch(model: model, person: person)
                                     .navigationBarTitleDisplayMode(.inline)
                 ) {
                     Text(person.fullName)

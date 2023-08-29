@@ -27,7 +27,7 @@ struct MovieCard: View {
                             .frame(width: 390 * 0.425, height: 390 * 0.6)
                             .clipped()
                     case .failure:
-                        Image("movie")
+                        Image(decorative: "movie")
                             .resizable()
                             .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                             .clipped()
@@ -41,7 +41,7 @@ struct MovieCard: View {
                 }
                 
             } else {
-                Image("movie")
+                Image(decorative: "movie")
                     .resizable()
                     .frame(minWidth: nil, idealWidth: nil, maxWidth: UIScreen.main.bounds.width, minHeight: nil, idealHeight: nil, maxHeight: UIScreen.main.bounds.height, alignment: .center)
                     .clipped()
@@ -50,13 +50,13 @@ struct MovieCard: View {
             // Stack bottom half of card
             VStack(alignment: .leading, spacing: 2) {
                 Text(self.movie.title ?? "")
-                    .fontWeight(Font.Weight.heavy)
-                    .font(.subheadline).foregroundColor(colorScheme == .dark ? .init(UIColor.white) : .init(UIColor.black))
+                    .foregroundColor(Color.primaryText)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(1)
                 Text(self.movie.date ?? Date(), style: .date)
-                    .font(Font.custom("HelveticaNeue-Bold", size: 12))
-                    .foregroundColor(Color.gray)
+                    .font(.system(size: 11))
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
                 Spacer()
             }
             .padding(EdgeInsets(top: 15, leading: 10, bottom: 10, trailing: 5))
@@ -64,9 +64,8 @@ struct MovieCard: View {
             
         }
         .frame(width: 390 * 0.425, height: 390 * 0.73)
-        .background(Color(.systemGray5))
-        .cornerRadius(15)
-        .shadow(color: Color.black.opacity(0.2), radius: 7, x: 0, y: 2)
+        .background(Color.secondaryBackground)
+        .cornerRadius(Radius.regular)
     }
 }
 

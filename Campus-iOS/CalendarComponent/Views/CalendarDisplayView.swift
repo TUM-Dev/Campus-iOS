@@ -15,17 +15,17 @@ struct CalendarDisplayView: UIViewRepresentable {
     @Binding var todayPressed: Bool
     
     private var events: [Event]
-    private var calendar: CalendarView
+    private var calendar: KVKCalendarView
     var selectDate: Date?
     
     init(events: [Event], type: CalendarType, selectedEventID: Binding<String?>, frame: CGRect, todayPressed: Binding<Bool>, calendarWeekDays: UInt) {
         self.events = events
         self._todayPressed = todayPressed
         self._selectedEventID = selectedEventID
-        self.calendar = CalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type, calendarWeekDays: calendarWeekDays))
+        self.calendar = KVKCalendarView(frame: frame, style: TumCalendarStyle.getStyle(type: type, calendarWeekDays: calendarWeekDays))
     }
         
-    func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> CalendarView {
+    func makeUIView(context: UIViewRepresentableContext<CalendarDisplayView>) -> KVKCalendarView {
         calendar.dataSource = context.coordinator
         calendar.delegate = context.coordinator
         DispatchQueue.main.async {
@@ -35,7 +35,7 @@ struct CalendarDisplayView: UIViewRepresentable {
         return calendar
     }
     
-    func updateUIView(_ uiView: CalendarView, context: UIViewRepresentableContext<CalendarDisplayView>) {
+    func updateUIView(_ uiView: KVKCalendarView, context: UIViewRepresentableContext<CalendarDisplayView>) {
         context.coordinator.events = self.events
         // changing calendar type after initial initialization of CalendarView is not supported (bug with KVKCalendar)
         // calendar.set(type: .day, date: Date())
@@ -109,9 +109,3 @@ struct CalendarDisplayView: UIViewRepresentable {
     }
     
 }
-
-//struct CalendarDisplayView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CalendarDisplayView(...)
-//    }
-//}

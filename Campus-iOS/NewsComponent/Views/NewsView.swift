@@ -41,7 +41,7 @@ struct NewsView: View {
                                     }
                                 }
                             }
-                            .frame(width: 250, height: 350)
+                            .frame(width: 250, height: 300)
                             // adjust height
                             Spacer(minLength: 1)
                         }.sheet(item: $selectedLink) { selectedLink in
@@ -50,7 +50,7 @@ struct NewsView: View {
                         Spacer()
                     }.padding()
                 }
-
+                
                 Spacer()
                 
                 ForEach(newsSources.filter({!$0.news.isEmpty && $0.id != 2}), id: \.id) { source in

@@ -11,14 +11,20 @@ struct SearchResultLoadingView: View {
     @State var title: String
     
     var body: some View {
-        ZStack {
-            Color.white
-            VStack {
+        VStack {
+            HStack {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .fontWeight(.semibold)
+                    .font(.title2)
+                    .foregroundColor(Color.highlightText)
                 Text(title)
-                    .fontWeight(.bold)
-                    .font(.title)
-                LoadingView(text: "Searching...")
-            }.padding()
+                    .fontWeight(.semibold)
+                    .font(.title2)
+                    .foregroundColor(Color.highlightText)
+                Spacer()
+            }
+            Divider()
+            LoadingView(text: "Searching...")
         }
     }
 }

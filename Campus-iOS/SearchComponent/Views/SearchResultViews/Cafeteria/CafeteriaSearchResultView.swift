@@ -23,31 +23,34 @@ struct CafeteriaSearchResultView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.white
+        VStack {
             VStack {
-                VStack {
-                    ZStack {
-                        Text("Cafeterias")
-                            .fontWeight(.bold)
-                            .font(.title)
-                        ExpandIcon(size: $size)
-                    }
+                HStack {
+                    Image(systemName: "fork.knife")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Text("Cafeterias")
+                        .fontWeight(.semibold)
+                        .font(.title2)
+                        .foregroundColor(Color.highlightText)
+                    Spacer()
+                    ExpandIcon(size: $size)
                 }
-                Spacer()
-                ScrollView {
-                    ForEach(self.results, id: \.0) { result in
-                        CafeteriaRowView(cafeteria: .constant(result.cafeteria))
-                            .padding([.leading, .trailing])
-                            .onTapGesture {
-                                withAnimation(.easeIn(duration: 0.1)) {
-                                    cafeteriaMealPlan = cafeteriaMealPlan == result.cafeteria ? nil : result.cafeteria
-                                }
-                            }
-                    }
-                }
-                
+                Divider()
             }
+            Spacer()
+            ScrollView {
+                ForEach(self.results, id: \.0) { result in
+                    CafeteriaView(cafeteria: result.cafeteria)
+                    if results.last != nil {
+                        if result != results.last! {
+                            Divider()
+                        }
+                    }
+                }
+            }
+            
         }.sheet(item: $cafeteriaMealPlan, content: { cafeteria in
             NavigationView {
                 VStack(alignment: .leading) {

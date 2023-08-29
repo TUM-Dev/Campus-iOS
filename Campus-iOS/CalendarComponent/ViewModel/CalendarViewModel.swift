@@ -32,7 +32,7 @@ class CalendarViewModel: ObservableObject {
             self.hasError = true
             return
         }
-
+        
         do {
             let events = try await service.fetch(token: token, forcedRefresh: forcedRefresh)
             
@@ -51,10 +51,50 @@ class CalendarViewModel: ObservableObject {
             let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate?.removeTimeStamp })
             
             return dictionary
-        
+            
         } else {
             return [:]
         }
+    }
+    
+    var eventsByDateNEW: [Date? : [CalendarEvent]] {
+        if case .success(let data) = state {
+            let sortedEvents = data.sorted { $0.startDate ?? Date() < $1.startDate ?? Date() }
+            let filteredEvents = sortedEvents.filter { Date() <= $0.startDate ?? Date() }
+            let dictionary = Dictionary(grouping: filteredEvents, by: { $0.startDate })
+            
+            return dictionary
+            
+        } else {
+            return [:]
+        }
+    }
+    
+    func getWidgetEventViews(events: [Dictionary<Date?, [CalendarEvent]>.Element]) -> ([CalendarWidgetEventView], [CalendarWidgetEventView]) {
+        
+        var leftColumn = [CalendarWidgetEventView]()
+        var rightColumn = [CalendarWidgetEventView]()
+        var rightColumnCounter = 0
+        
+        for entry in events {
+            rightColumn.append(CalendarWidgetEventView(event: entry.value[0], title: entry.key!))
+            for event in entry.value {
+                if leftColumn.count == 0 && entry.key!.isToday {
+                    leftColumn.append(CalendarWidgetEventView(event: event))
+                }
+                else if rightColumnCounter < 2 {
+                    rightColumn.append(CalendarWidgetEventView(event: event))
+                    rightColumnCounter += 1
+                }
+                else {
+                    break
+                }
+            }
+            if rightColumnCounter >= 2 {
+                break
+            }
+        }
+        return (leftColumn, rightColumn)
     }
 }
 
@@ -69,9 +109,9 @@ extension CalendarViewModel {
 
 extension Date {
     public var removeTimeStamp : Date? {
-       guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
-        return nil
-       }
-       return date
-   }
+        guard let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day], from: self)) else {
+            return nil
+        }
+        return date
+    }
 }

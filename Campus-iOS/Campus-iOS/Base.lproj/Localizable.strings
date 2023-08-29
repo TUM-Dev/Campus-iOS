@@ -65,7 +65,11 @@
 "First 2 letters of TUM ID" = "First 2 letters of TUM ID";
 "2 numbers in the middle of TUM ID" = "2 numbers in the middle of TUM ID";
 "Last 3 letters of TUM ID" = "Last 3 letters of TUM ID";
-
+"This is a list with " = "This is a list with ";
+" entries" = " entries";
+"This Button opens a WebView" = "This Button opens a WebView";
+"List element" = "List element";
+" of " = " of ";
 
 // LoginView
 "Welcome to TUM Campus App" = "Welcome to TUM Campus App";
@@ -74,9 +78,11 @@
 "42" = "42";
 "tum" = "tum";
 "Log in 🎓" = "Log in 🎓";
+"Log in" = "Log in";
 "Log in Successfull" = "Log in Successfull";
 "Next" = "Next";
 "Continue without TUM ID" = "Continue without TUM ID";
+"Try again" = "Try again";
 
 // TokenConfirmationView
 "Back" = "Back";
@@ -94,6 +100,7 @@
 "Token inactive" = "Token inactive";
 "Token active" = "Token active";
 
+
 // TokenPermissionsView
 "You can change your permissions in TUMOnline" = "You can change your permissions in TUMOnline";
 "Identification (TUM ID and name)" = "Identification (TUM ID and name)";
@@ -106,6 +113,20 @@
 "Token Permissions" = "Token Permissions";
 "Token Permissions (You are logged out)" = "Token Permissions (You are logged out)";
 "Calendar days in week mode" = "Calendar days in week mode";
+"Settings" = "Settings";
+"This Link leaves the App" = "This Link leaves the App";
+
+//HomeView
+"student information" = "student information";
+"study rooms, food & calendar" = "study rooms, food & calendar";
+"Latest News" = "Latest News";
+"Nearest Cafeteria" = "Nearest Cafeteria";
+"Nearest Study Room" = "Nearest Study Room";
+"No events today" = "No events today";
+"View Location" = "View Location";
+"rooms free" = "rooms free";
+"No rooms free" = "No rooms free";
+
 
 // CalendarView
 "Day" = "Day";
@@ -179,6 +200,12 @@
 // Map
 "Search ..." = "Search ...";
 "Traffic" = "Traffic";
+"Fetching Study Rooms" = "Fetching Study Rooms";
+"Fetching Canteens" = "Fetching Canteens";
+"Most Searched Rooms" = "Most Searched Rooms";
+"View On Maps" = "View On Maps";
+"Directions in Maps" = "Directions in Maps";
+"Menu" = "Menu";
 
 // Movies
 "No more movies this semester 😢\nGet excited for the next season!" = "No more movies this semester 😢\nGet excited for the next season!";
@@ -216,3 +243,17 @@
 "Sounds good?" = "Sounds good?";
 "Share anonymized analytics data" = "Share anonymized analytics data";
 "Average Grade:" = "Average Grade:";
+
+// Departures
+"Line" = "Line";
+"Direction" = "Direction";
+"Departure" = "Departure";
+"MVV Departures" = "MVV Departures";
+"Show Directions" = "Show Directions";
+"Walking Distance" = "Walking Distance";
+"no departures where found for this station" = "no departures where found for this station";
+"walking distance currently unavailable" = "walking distance currently unavailable";
+"fetching latest departures" = "fetching latest departures";
+"location currently unavailable" = "location currently unavailable";
+"min" = "min";
+"mins" = "mins";

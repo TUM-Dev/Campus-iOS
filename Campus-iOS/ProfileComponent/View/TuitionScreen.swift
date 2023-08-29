@@ -18,7 +18,7 @@ struct TuitionScreen: View {
                 NavigationLink(destination: TuitionView(tuition: tuition).navigationBarTitle(Text("Tuition fees"))) {
                     Label {
                         HStack {
-                            Text("Tuition fees")
+                            Text("Tuition fees").foregroundColor(Color.primaryText)
                             if !tuition.isOpenAmount {
                                 Spacer()
                                 Text("✅")
@@ -30,15 +30,22 @@ struct TuitionScreen: View {
                                     Text("Open amount couldn't be fetched.")
                                 }
                             }
+                            Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                         }
                     } icon: {
-                        Image(systemName: "eurosign.circle")
+                        Image(systemName: "eurosign.circle").foregroundColor(Color.primaryText)
                     }
+                    .padding(.vertical, 15)
+                    .padding(.horizontal)
                 }
+                .frame(width: Size.cardWidth)
+                .background(Color.secondaryBackground)
+                .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
             case .loading, .na:
                 Text("Loading")
             case .failed(error: let error):
                 Text(error.localizedDescription)
+                    .sectionStyle()
             }
         }.task {
             await vm.getTuition(forcedRefresh: true)
@@ -47,16 +54,16 @@ struct TuitionScreen: View {
 }
 
 //struct ProfileMyTumSection: View {
-//    
+//
 //    @EnvironmentObject private var model: Model
-//    
+//
 //    var formattedAmount: String {
 //        guard let amount = self.model.profile.tuition?.amount else {
 //            return "n/a"
 //        }
 //        return OpenTuitionAmountView.currencyFormatter.string(from: amount) ?? "n/a"
 //    }
-//    
+//
 //    var body: some View {
 //        Section("MY TUM") {
 ////            NavigationLink(destination: TuitionView(viewModel: self.model.profile).navigationBarTitle(Text("Tuition fees"))) {
@@ -76,12 +83,12 @@ struct TuitionScreen: View {
 ////                }
 ////            }
 ////            .disabled(!self.model.isUserAuthenticated)
-//            
+//
 //            NavigationLink(destination: PersonSearchScreen(model: self.model).navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
 //                Label("Person Search", systemImage: "magnifyingglass")
 //            }
 //            .disabled(!self.model.isUserAuthenticated)
-//            
+//
 //            NavigationLink(destination: LectureSearchScreen(model: model).navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
 //                Label("Lecture Search", systemImage: "brain.head.profile")
 //            }

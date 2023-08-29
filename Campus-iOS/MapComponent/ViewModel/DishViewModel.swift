@@ -9,6 +9,29 @@ import Foundation
 
 @MainActor
 class DishViewModel: ObservableObject {
+    @Published var state: APIState<[String: DishLabel]> = .na
+    
+    let service = DishService()
+    let dish: Dish
+    
+    init(dish: Dish) {
+        self.dish = dish
+    }
+    
+    func getDishLabels(forcedRefresh: Bool = false) async {
+        if !forcedRefresh {
+            self.state = .loading
+        }
+        
+        let dishLabels = await service.fetch(forcedRefresh: forcedRefresh)
+        if let generalLabels = dishLabels {
+            self.state = .success(
+                data: generalLabels
+            )
+        } else {
+            self.state = .success(data: [:])
+        }
+    }
     
     func formatPrice(dish: Dish, pricingGroup: String) -> String {
         let priceFormatter: NumberFormatter = {
@@ -66,5 +89,39 @@ class DishViewModel: ObservableObject {
             return labelToAbbreviation(generalLabel: generalLabel, label: label)
         }
         return shortenedLabels.joined(separator:", ")
+    }
+    
+    func getIngredientLabels(generalLabel: [String:DishLabel]?, ingredientLabels: [String]) -> [String] {
+        var result = [String]()
+        for label in ingredientLabels {
+            let newLabel = "\(labelToAbbreviation(generalLabel: generalLabel, label: label)) \(labelToDescription(generalLabel: generalLabel, label: label))"
+            result.append(newLabel)
+        }
+        return result
+    }
+    
+    func getTypeLabel(dishType: String) -> String {
+        switch dishType {
+        case "Wok":
+            return "🥘"
+        case "Pasta":
+            return "🍝"
+        case "Pizza":
+            return "🍕"
+        case "Fleisch":
+            return "🥩"
+        case "Grill":
+            return "🍖"
+        case "Studitopf":
+            return "🍲"
+        case "Vegetarisch/fleischlos":
+            return "🥗"
+        case "Fisch":
+            return "🐟"
+        case "Suppe":
+            return "🍜"
+        default:
+            return " "
+        }
     }
 }

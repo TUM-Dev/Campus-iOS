@@ -36,12 +36,13 @@ struct WidgetMapBackgroundView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if let image {
+                /*if let image {
                     Image(uiImage: image)
                         .blur(radius: 2)
-                }
+                }*/
 
-                Rectangle().foregroundColor(.widget.opacity(image == nil ? 1 : 0.9))
+                //Rectangle().foregroundColor(.secondaryBackground.opacity(image == nil ? 1 : 0.9))
+                Rectangle().foregroundColor(Color.secondaryBackground)
             }
             .task {
                 generateSnapshot(width: geometry.size.width, height: geometry.size.height)
@@ -78,7 +79,7 @@ struct WidgetMapBackgroundView: View {
             let image = UIGraphicsImageRenderer(size: mapOptions.size).image { _ in
                 snapshot.image.draw(at: .zero)
                 
-                let pinView = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+                let pinView = MKMarkerAnnotationView(annotation: nil, reuseIdentifier: nil)
                 let pinImage = pinView.image
                 
                 var point = snapshot.point(for: self.coordinate)

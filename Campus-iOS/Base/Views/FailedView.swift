@@ -19,7 +19,7 @@ struct FailedView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("Error-logo-transparent")
+                Image(decorative: "Error-logo-transparent")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .offset(y: -geo.size.height*0.1)

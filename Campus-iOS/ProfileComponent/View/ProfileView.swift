@@ -23,36 +23,53 @@ struct ProfileView: View {
         self._vm = StateObject(wrappedValue: ProfileViewModel(model: model, service: ProfileService()))
         self.url = .init(string: "https://google.com")
     }
-  
+    
     var body: some View {
         NavigationView {
             List {
-                if case .success(let profile) = vm.profileState {
-                    NavigationLink(destination: PersonDetailedScreen(model: self.vm.model, profile: profile)) {
-                        
-                        ProfileCell(model: self.vm.model, profile: profile)
-                    }.disabled(!self.vm.model.isUserAuthenticated)
-                } else {
-                    ProfileCell(model: self.vm.model, profile: ProfileViewModel.defaultProfile)
-                }
+                //Old profile detailed screen
+                /*
+                 if case .success(let profile) = vm.profileState {
+                 NavigationLink(destination: PersonDetailedScreenSearch(model: self.vm.model, profile: profile)) {
+                 
+                 ProfileCell(model: self.vm.model, profile: profile)
+                 }.disabled(!self.vm.model.isUserAuthenticated)
+                 } else {
+                 ProfileCell(model: self.vm.model, profile: ProfileViewModel.defaultProfile)
+                 }
+                 */
                 
                 Section("MY TUM") {
-                    TuitionScreen(vm: self.vm)
-                    
                     NavigationLink(destination: PersonSearchScreen(model: self.vm.model).navigationBarTitle(Text("Person Search")).navigationBarTitleDisplayMode(.large)) {
-                        Label("Person Search", systemImage: "magnifyingglass")
+                        Label {
+                            Text("Person Search")
+                        } icon: {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     .disabled(!self.vm.model.isUserAuthenticated)
                     
                     NavigationLink(destination: LectureSearchScreen(model: vm.model).navigationBarTitle(Text("Lecture Search")).navigationBarTitleDisplayMode(.large)) {
-                        Label("Lecture Search", systemImage: "brain.head.profile")
+                        Label {
+                            Text("Lecture Search")
+                        } icon: {
+                            Image(systemName: "brain.head.profile")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     .disabled(!self.vm.model.isUserAuthenticated)
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section("GENERAL") {
                     NavigationLink(destination: TUMSexyScreen().navigationBarTitle(Text("Useful Links"))) {
-                        Label("TUM.sexy", systemImage: "heart")
+                        Label {
+                            Text("TUM.sexy")
+                        } icon: {
+                            Image(systemName: "heart")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     
                     NavigationLink(
@@ -60,38 +77,65 @@ struct ProfileView: View {
                             .navigationTitle(Text("Roomfinder"))
                             .navigationBarTitleDisplayMode(.large)
                     ) {
-                        Label("Roomfinder", systemImage: "rectangle.portrait.arrowtriangle.2.inward")
+                        Label {
+                            Text("Roomfinder")
+                        } icon: {
+                            Image(systemName: "rectangle.portrait.arrowtriangle.2.inward")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     
-                    NavigationLink(destination: NewsScreen()
+                    NavigationLink(destination: NewsScreen(isWidget: false)
                         .navigationBarTitle(Text("News"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {
-                        Label("News", systemImage: "newspaper")
+                        Label {
+                            Text("News")
+                        } icon: {
+                            Image(systemName: "newspaper")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     
-                    NavigationLink(destination: MovieScreen()
+                    NavigationLink(destination: MoviesScreen(isWidget: false)
                         .navigationBarTitle(Text("Movies"))
                         .navigationBarTitleDisplayMode(.large)
                     ) {
-                        Label("Movies", systemImage: "film")
+                        Label {
+                            Text("Movies")
+                        } icon: {
+                            Image(systemName: "film")
+                                .foregroundColor(Color.highlightText)
+                        }
                     }
                     
                     NavigationLink(destination: TokenPermissionsView(viewModel: TokenPermissionsViewModel(model: self.vm.model), dismissWhenDone: true).navigationBarTitle("Check Permissions")) {
                         if self.vm.model.isUserAuthenticated {
-                            Label("Token Permissions", systemImage: "key")
+                            Label {
+                                Text("Token Permissions")
+                            } icon: {
+                                Image(systemName: "key")
+                                    .foregroundColor(Color.highlightText)
+                            }
                         } else {
-                            Label("Token Permissions (You are logged out)", systemImage: "key")
+                            Label {
+                                Text("Token Permissions (You are logged out)")
+                            } icon: {
+                                Image(systemName: "key")
+                                    .foregroundColor(Color.highlightText)
+                            }
                         }
                         
                     }.disabled(!self.vm.model.isUserAuthenticated)
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     VStack {
                         Toggle("Use build-in Web View", isOn: $useBuildInWebView)
                     }
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     HStack {
@@ -106,8 +150,9 @@ struct ProfileView: View {
                                 Text("\(number)")
                                     .tag(number)
                             }
-                        }
+                        }.accentColor(Color.highlightText)
                     }
+                    .listRowBackground(Color.secondaryBackground)
                     .pickerStyle(MenuPickerStyle())
                     .foregroundColor(.black)
                 }
@@ -118,22 +163,28 @@ struct ProfileView: View {
                             self.url = URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!
                             showSheet = true
                         }
+                        .foregroundColor(Color.highlightText)
                         
                         Button("TUM Dev on Github") {
                             self.url = URL(string: "https://github.com/TUM-Dev")!
                             showSheet = true
                         }
+                        .foregroundColor(Color.highlightText)
                         
                         Button("TUM Dev Website") {
                             self.url = URL(string: "https://tum.app")!
                             showSheet = true
                         }
+                        .foregroundColor(Color.highlightText)
                     } else {
                         Link(LocalizedStringKey("Join Beta"), destination: URL(string: "https://testflight.apple.com/join/4Ddi6f2f")!)
+                            .foregroundColor(Color.highlightText)
                         
                         Link(LocalizedStringKey("TUM Dev on Github"), destination: URL(string: "https://github.com/TUM-Dev")!)
+                            .foregroundColor(Color.highlightText)
                         
                         Link("TUM Dev Website", destination: URL(string: "https://tum.app")!)
+                            .foregroundColor(Color.highlightText)
                     }
                     
                     Button("Feedback") {
@@ -142,8 +193,9 @@ struct ProfileView: View {
                         if UIApplication.shared.canOpenURL(mailToUrl) {
                             UIApplication.shared.open(mailToUrl, options: [:])
                         }
-                    }
+                    }.foregroundColor(Color.highlightText)
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     HStack(alignment: .bottom) {
@@ -164,6 +216,7 @@ struct ProfileView: View {
                         Spacer()
                     }
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
                 Section() {
                     var i = 0
@@ -193,21 +246,24 @@ struct ProfileView: View {
                     ])
                 }
                 .listRowBackground(Color.clear)
+                
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.primaryBackground)
             .sheet(isPresented: $vm.model.isLoginSheetPresented) {
                 NavigationView {
                     LoginView(model: vm.model)
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button {
                     dismiss()
                 } label: {
-                    Text("Done").bold()
+                    Text("Done").bold().foregroundColor(.highlightText)
                 }
-
+                
             }
             .sheet(isPresented: $showSheet) {
                 if showSheet { SFSafariViewWrapper(url: url!) }
@@ -239,7 +295,7 @@ struct ProfileCell: View {
                     .frame(width: 75, height: 75)
                     .foregroundColor(Color(.secondaryLabel))
             }
-
+            
             VStack(alignment: .leading) {
                 if self.model.isUserAuthenticated {
                     Text(profile.fullName)
