@@ -15,17 +15,18 @@ import Firebase
 @MainActor
 struct CampusApp: App {
     @StateObject var model: Model = Model()
-    let persistenceController = PersistenceController.shared
     @State private var selectedTab: Tab = .home
     @State var isLoginSheetPresented = false
     
+    let persistenceController = PersistenceController.shared
+    
     enum Tab {
-            case home
-            case grades
-            case lectures
-            case calendar
-            case maps
-        }
+        case home
+        case grades
+        case lectures
+        case calendar
+        case maps
+    }
     
     init() {
         #if !DEBUG
