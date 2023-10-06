@@ -15,7 +15,6 @@ struct CalendarSingleEventView: View {
     
     @StateObject var viewModel: LectureDetailsViewModel
     @State var event: CalendarEvent?
-    @State private var data = AppUsageData()
     
     var body: some View {
         NavigationView {
@@ -51,12 +50,6 @@ struct CalendarSingleEventView: View {
                     Text("Done").bold()
                 }
             }
-        }
-        .task {
-            data.visitView(view: .calendarEvent)
-        }
-        .onDisappear {
-            data.didExitView()
         }
     }
 }

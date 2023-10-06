@@ -28,27 +28,6 @@ class WidgetRecommender: ObservableObject {
         let recommendations = try await strategy.getRecommendation().sorted(by: { $0.priority > $1.priority })
         self.recommendations = recommendations
         self.status = .success
-        print("🤢")
-        print(recommendations)
-    }
-    
-    @available(iOS 16.0, *)
-    @ViewBuilder
-    func getWidget(for widget: Widget, size: WidgetSize, refresh: Binding<Bool> = .constant(false)) -> some View {
-        switch widget {
-        case .cafeteria:
-            CafeteriaWidgetViewOld(size: size, refresh: refresh)
-        case .studyRoom:
-            StudyRoomWidgetViewOld(size: size, refresh: refresh)
-        case .calendar:
-            CalendarWidgetViewOld(model: model, size: size, refresh: refresh)
-        case .tuition:
-            TuitionWidgetView(model: model, size: TuitionWidgetSize.from(widgetSize: size), refresh: refresh)
-        case .grades:
-            GradeWidgetView(model: model, size: size, refresh: refresh)
-        case .departures:
-            DeparturesWidgetScreen(departuresViewModel: DeparturesWidgetViewModel())
-        }
     }
 }
 

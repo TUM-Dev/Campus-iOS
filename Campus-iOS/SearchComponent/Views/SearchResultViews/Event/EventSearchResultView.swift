@@ -90,7 +90,7 @@ struct EventSearchResultView: View {
                                                         iconName: "rectangle.portrait.arrowtriangle.2.inward",
                                                         text: location(event)
                                                     )
-                                                    HStack {
+                                                    /*HStack {
                                                         Spacer()
                                                         NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
                                                             HStack {
@@ -99,7 +99,7 @@ struct EventSearchResultView: View {
                                                             }.foregroundColor(Color(UIColor.tumBlue))
                                                                 .font(.footnote)
                                                         }
-                                                    }
+                                                    }*/
                                                 }
                                                 Divider()
                                                 Divider()

@@ -15,10 +15,6 @@ enum MainAPI {
     static let cache = Cache<String, Decodable>(totalCostLimit: 500_000, countLimit: 1_000, entryLifetime: 10 * 60)
     
     /// Returns a generic value of type `T` fetched from the API or the cache.
-    ///
-    /// ```
-    /// print(hello("world")) // "Hello, world!"
-    /// ```
     /// This method uses the specified `endpoint` to make a request, i.e. fetch the data, decode it and to check if any given error occured.
     /// If the cache is stil valid (lifetime not expired yet) and the `forcedRefresh` is `false` then data is not fetched from the `endpoint`.
     /// Instead the data is retrieved from the cache.

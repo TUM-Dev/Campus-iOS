@@ -172,8 +172,6 @@ class DeparturesWidgetViewModel: ObservableObject {
                 self.walkingDistance = (Int(response.expectedTravelTime) / 60) % 60
                 completion(self.walkingDistance != nil)
             }
-        } else {
-            print("Weird")
         }
     }
 }

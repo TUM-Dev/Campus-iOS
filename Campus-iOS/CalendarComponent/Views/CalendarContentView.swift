@@ -14,7 +14,6 @@ struct CalendarContentView: View {
     @State var selectedType: CalendarType = .week
     @State var selectedEventID: String?
     @State var isTodayPressed: Bool = false
-    @State private var data = AppUsageData()
     
     let model: Model
     var events: [CalendarEvent] = []
@@ -99,12 +98,6 @@ struct CalendarContentView: View {
                             ),
                 event: chosenEvent
             )
-        }
-        .task {
-            data.visitView(view: .calendar)
-        }
-        .onDisappear {
-            data.didExitView()
         }
     }
     

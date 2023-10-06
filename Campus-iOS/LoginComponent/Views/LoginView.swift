@@ -120,7 +120,7 @@ struct LoginView: View {
                                                     buttonBackgroundColor = .red
                                                     logInState = .logInError
                                                 }
-                                                print("Loggin Error")
+                                                print("Log in Error")
                                             }
                                         }
                                     }

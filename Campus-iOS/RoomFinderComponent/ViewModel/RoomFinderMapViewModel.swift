@@ -4,7 +4,7 @@
 //
 //  Created by Milen Vitanov on 05.06.22.
 //
-
+/*
 import Foundation
 import MapKit
 
@@ -43,3 +43,4 @@ class RoomFinderMapViewModel: ObservableObject {
         }
     }
 }
+*/

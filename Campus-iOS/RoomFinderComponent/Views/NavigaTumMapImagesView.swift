@@ -23,7 +23,7 @@ struct NavigaTumMapImagesView: View {
                         HStack (spacing: 20) {
                             ForEach(roomfinder.available) { map in
                                 GeometryReader { _ in
-                                    actualImage(id: map.imageUrl, isRoomFinderImage: true)
+                                    actualImage(map: map, isRoomFinderImage: true)
                                 }
                                 .frame(width: 200, height: 200)
                                 Spacer(minLength: 1)
@@ -31,7 +31,7 @@ struct NavigaTumMapImagesView: View {
                             if let overlays = chosenRoom.maps.overlays {
                                 ForEach(overlays.available) { map in
                                     GeometryReader { _ in
-                                        actualImage(id: map.imageUrl, isRoomFinderImage: false)
+                                        actualImage(overlay: map, isRoomFinderImage: false)
                                     }
                                     .frame(width: 400, height: 200)
                                     Spacer(minLength: 1)
@@ -45,12 +45,12 @@ struct NavigaTumMapImagesView: View {
         }
     }
 
-    func actualImage(id: String, isRoomFinderImage: Bool) -> some View {
+    func actualImage(map: NavigaTumRoomFinderMap? = nil, overlay: NavigaTumOverlayMap? = nil, isRoomFinderImage: Bool) -> some View {
         let path: String
-        if isRoomFinderImage {
-            path = NavigaTUMAPI.images(id: id).basePathsParametersURL
+        if isRoomFinderImage, let roomFinderMap = map {
+            path = NavigaTUMAPI.images(id: roomFinderMap.imageUrl).basePathsParametersURL
         } else {
-            path = NavigaTUMAPI.overlayImages(id: id).basePathsParametersURL
+            path = NavigaTUMAPI.overlayImages(id: overlay?.imageUrl ?? "").basePathsParametersURL
         }
         
         return AsyncImage(url: URL(string: path)) { image in
@@ -58,7 +58,7 @@ struct NavigaTumMapImagesView: View {
             case .empty:
                 ProgressView()
             case .success(let image):
-                NavigationLink(destination: ImageFullScreenView(image: image)) {
+                NavigationLink(destination: ImageFullScreenView(image: image, map: map)) {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)

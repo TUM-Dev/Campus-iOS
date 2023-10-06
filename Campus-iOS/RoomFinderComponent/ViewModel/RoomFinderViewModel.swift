@@ -4,7 +4,7 @@
 //
 //  Created by Milen Vitanov on 17.05.22.
 //
-
+/*
 import Foundation
 import Alamofire
 import XMLCoder
@@ -29,3 +29,4 @@ class RoomFinderViewModel: ObservableObject {
         }
     }
 }
+*/

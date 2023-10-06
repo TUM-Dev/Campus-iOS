@@ -43,7 +43,7 @@ struct LectureDetailsBasicInfoView: View {
             NavigationLink(isActive: self.$navigationLinkActive, destination: {
                 PersonSearchScreen(model: model, findPerson: chosenSpeaker)
             }) {
-                EmptyView().onAppear{print("empty view")}
+                EmptyView()
             }
             
             VStack(alignment: .leading, spacing: 8) {

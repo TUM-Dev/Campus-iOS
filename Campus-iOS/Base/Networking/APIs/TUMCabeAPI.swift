@@ -16,11 +16,6 @@ enum TUMCabeAPI: API {
     case news(source: String)
     case newsSources
     case newsAlert
-    case roomSearch(query: String)
-    case roomMaps(room: String)
-    case roomCoordinates(room: String)
-    case mapImage(room: String, id: Int)
-    case defaultMap(room: String)
     case registerDevice(publicKey: String)
     case events
     case myEvents
@@ -45,11 +40,6 @@ enum TUMCabeAPI: API {
         case .news(let source):                 return "news/\(source)/getAll"
         case .newsSources:                      return "news/sources"
         case .newsAlert:                        return "news/alert"
-        case .roomSearch(let room):             return "roomfinder/room/search/\(room.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? "")"
-        case .roomMaps(let room):               return "roomfinder/room/availableMaps/\(room.addingPercentEncoding(withAllowedCharacters: .afURLQueryAllowed) ?? "")"
-        case .roomCoordinates(let room):        return "roomfinder/room/coordinates/\(room)"
-        case .defaultMap(let room):             return "roomfinder/room/defaultMap/\(room)"
-        case .mapImage(let room, let id):       return "roomfinder/room/map/\(room)/\(id)"
         case .registerDevice(let publicKey):    return "device/register/\(publicKey)"
         case .events:                           return "event/list"
         case .myEvents:                         return "event/ticket/my"
