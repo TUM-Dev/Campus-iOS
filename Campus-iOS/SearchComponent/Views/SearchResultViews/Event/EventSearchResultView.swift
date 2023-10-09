@@ -90,16 +90,16 @@ struct EventSearchResultView: View {
                                                         iconName: "rectangle.portrait.arrowtriangle.2.inward",
                                                         text: location(event)
                                                     )
-                                                    /*HStack {
+                                                    HStack {
                                                         Spacer()
-                                                        NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
+                                                        NavigationLink(destination: NavigaTumView(model: self.model, searchText: extract(room: location(event)))) {
                                                             HStack {
                                                                 Text("Open in RoomFinder")
                                                                 Image(systemName: "arrow.right.circle")
                                                             }.foregroundColor(Color(UIColor.tumBlue))
                                                                 .font(.footnote)
                                                         }
-                                                    }*/
+                                                    }
                                                 }
                                                 Divider()
                                                 Divider()

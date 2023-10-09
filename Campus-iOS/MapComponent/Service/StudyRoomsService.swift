@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol StudyRoomsServiceProtocol {
     func fetch(forcedRefresh: Bool) async throws -> StudyRoomApiRespose
