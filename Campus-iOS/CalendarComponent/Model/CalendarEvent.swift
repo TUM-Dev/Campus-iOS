@@ -136,15 +136,14 @@ struct CalendarEvent: Decodable, Identifiable, Equatable, Searchable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
         let id = try container.decode(Int64.self, forKey: .id)
         let status = try container.decode(String.self, forKey: .status)
-        let url = try container.decodeIfPresent(URL.self, forKey: .url)
+        let url = try? container.decodeIfPresent(URL.self, forKey: .url)
         let title = try container.decode(String.self, forKey: .title)
         let descriptionText = try container.decodeIfPresent(String.self, forKey: .descriptionText)
         let startDate = try container.decode(Date.self, forKey: .startDate)
         let endDate = try container.decode(Date.self, forKey: .endDate)
-        let location = try container.decodeIfPresent(String.self, forKey: .location)
+        let location = try? container.decodeIfPresent(String.self, forKey: .location)
         
         self.id = id
         self.status = status
