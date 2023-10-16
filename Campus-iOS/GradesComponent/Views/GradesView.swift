@@ -12,7 +12,6 @@ import SwiftUICharts
 struct GradesView: View {
     
     @StateObject var vm: GradesViewModel
-    @State private var data = AppUsageData()
     
     var body: some View {
         let gradesWithAverage = self.vm.gradesByDegreeAndSemesterWithAverageGrade
@@ -25,12 +24,5 @@ struct GradesView: View {
         }
         .background(Color.primaryBackground)
         .scrollContentBackground(.hidden)
-        .task {
-            data.visitView(view: .grades)
-        }
-        .onDisappear {
-            data.didExitView()
-        }
-        
     }
 }

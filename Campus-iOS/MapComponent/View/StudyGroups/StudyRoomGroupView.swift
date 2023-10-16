@@ -12,7 +12,6 @@ struct StudyRoomGroupView: View {
     
     var selectedGroup: StudyRoomGroup?
     @State var rooms: [StudyRoom]
-    @State private var data = AppUsageData()
     private let canDismiss: Bool
     @Binding var panelHeight: CGFloat
     let dragAreaHeight = PanelHeight.top * 0.04
@@ -21,7 +20,6 @@ struct StudyRoomGroupView: View {
         self._vm = StateObject(wrappedValue: vm)
         self.selectedGroup = selectedGroup
         self._rooms = State(initialValue: rooms)
-        self._data = State(initialValue: AppUsageData())
         self._panelHeight = panelHeight
         self.canDismiss = canDismiss
     }
@@ -54,8 +52,8 @@ struct StudyRoomGroupView: View {
                     
                     VStack {
                         ForEach(self.sortedRooms, id: \.id) { room in
-                            DisclosureGroup(content: {
-                                StudyRoomDetailsScreen(room: room)
+                            NavigationLink(destination: {
+                                NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: room.raum_nr_architekt ?? ""))
                             }, label: {
                                 AnyView(
                                     HStack {
@@ -77,6 +75,10 @@ struct StudyRoomGroupView: View {
                                         Spacer()
                                         
                                         room.localizedStatusText
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "chevron.right").foregroundColor(Color.primaryText)
                                     }
                                 )
                             })
@@ -96,12 +98,6 @@ struct StudyRoomGroupView: View {
             }
         }
         .background(Color.primaryBackground)
-        .task {
-            data.visitView(view: .studyRoom)
-        }
-        .onDisappear {
-            data.didExitView()
-        }
     }
     
     var panelDragGesture: some Gesture { //Legacy

@@ -66,7 +66,6 @@ class AuthenticationHandler {
             let tokenName = "TCA - \(await UIDevice.current.name)"
             
             let token: Token = try await MainAPI.makeRequest(endpoint: TUMOnlineAPI.tokenRequest(tumID: tumID, tokenName: tokenName), forcedRefresh: true)
-            print(token.value)
             self.credentials = Credentials.tumID(tumID: tumID, token: token.value)
             completion(.success(token.value))
         } catch {

@@ -62,7 +62,6 @@ class ProfileViewModel: ObservableObject {
             if let personGroup = profile.personGroup, let id = profile.id, let obfuscatedID = profile.obfuscatedID, let image = await downloadProfileImage(personGroup: personGroup, personId: id, obfuscatedID: obfuscatedID, forcedRefresh: forcedRefresh) {
                 profile.image = image
             }
-            print(profile)
             self.profileState = .success(data: profile)
         } catch {
             self.profileState = .failed(error: error)

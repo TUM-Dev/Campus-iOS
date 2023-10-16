@@ -27,8 +27,7 @@ struct NavigaTumDetailsView: View {
 
                     NavigaTumDetailsBaseView(chosenRoom: chosenRoom)
                     NavigaTumMapView(chosenRoom: chosenRoom)
-                    // Unsure how to show images/overlays that provide useful information
-                    // NavigaTumMapImagesView(chosenRoom: chosenRoom)
+                    NavigaTumMapImagesView(chosenRoom: chosenRoom)
                 }
                 .frame(
                     maxWidth: .infinity,
@@ -40,10 +39,6 @@ struct NavigaTumDetailsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .task {
             await viewModel.fetchDetails()
-            try? await Task.sleep(nanoseconds: 2_000_000_000)
-            viewModel.details?.additionalProperties.properties.forEach { entry in
-                print(entry.name)
-            }
         }
     }
 }

@@ -59,7 +59,6 @@ enum GlobalSearch {
                 guard let newDistance = bestRelativeLevensthein(for: token, with: searchable) else {
                     break
                 }
-//                print(newDistance)
                 
                 // Add new distance to the dictionary where the seachrable is the key.
                 levenshteinValues[searchable, default: []].append(newDistance)
@@ -125,7 +124,6 @@ enum GlobalSearch {
             
             //Normalized Levenshtein Distance (see: https://ieeexplore.ieee.org/document/4160958)
             let result = Double(2 * lev) / Double(1 * (token.count + dataToken.count) + lev)
-            //print("For token \(token) and compToken \(dataToken): \(result)")
             
             return Int(result * 100)
         }.min()
@@ -146,8 +144,6 @@ enum GlobalSearch {
             }
             
             let result = Int(Double(token.levenshtein(to: dataToken))/Double(dataToken.count)*100)
-            
-            //print("For token \(token) and compToken \(dataToken): \(result)")
             
             return result
         }

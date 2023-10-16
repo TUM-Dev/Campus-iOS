@@ -26,18 +26,6 @@ struct WidgetLoadingView: View {
 
 struct WidgetLoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        VStack {
-            ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetFrameView(size: size, content: WidgetLoadingView(text: "Loading content"))
-            }
-        }
-        
-        VStack {
-            ForEach(WidgetSize.allCases, id: \.self) { size in
-                WidgetFrameView(size: size, content: WidgetLoadingView(text: "Loading content"))
-                    .preferredColorScheme(.dark)
-            }
-        }
+        WidgetLoadingView(text: "Loading Preview")
     }
 }

@@ -20,7 +20,7 @@ struct RoomsView: View {
                 VStack {
                     ForEach(vm.rooms) { entry in
                         NavigationLink(
-                            destination: RoomDetailsScreen(room: entry))
+                            destination: NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: entry.id)))
                         {
                             VStack(alignment: .leading) {
                                 HStack {

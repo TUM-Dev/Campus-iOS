@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct DishView: View {
     @StateObject var vm: DishViewModel
     

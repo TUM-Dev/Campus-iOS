@@ -92,7 +92,7 @@ struct EventSearchResultView: View {
                                                     )
                                                     HStack {
                                                         Spacer()
-                                                        NavigationLink(destination: RoomFinderView(model: self.model, viewModel: RoomFinderViewModel(), searchText: extract(room: location(event)))) {
+                                                        NavigationLink(destination: NavigaTumView(model: self.model, searchText: extract(room: location(event)))) {
                                                             HStack {
                                                                 Text("Open in RoomFinder")
                                                                 Image(systemName: "arrow.right.circle")

@@ -108,10 +108,6 @@ struct ContactCardView: View {
                 }
             }
         }
-        .task {
-            print("✅✅")
-            print(self.gradesVm.gradesByDegreeAndSemesterWithAverageGrade)
-        }
     }
 }
 

@@ -47,4 +47,10 @@ enum NavigaTUMAPI: API {
     func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
         return try JSONDecoder().decode(type, from: data)
     }
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = try Self.baseURL.asURL()
+        let urlRequest = try URLRequest(url: url.appendingPathComponent(paths), method: .get, headers: Self.baseHeaders)
+        return urlRequest
+    }
 }

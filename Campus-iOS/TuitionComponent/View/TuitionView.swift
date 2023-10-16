@@ -10,7 +10,6 @@ import SwiftUI
 struct TuitionView: View {
     
     let tuition: Tuition
-    @State private var data = AppUsageData()
     
     var body: some View {
         List {
@@ -22,12 +21,6 @@ struct TuitionView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Color.primaryBackground)
-        .task {
-            data.visitView(view: .tuition)
-        }
-        .onDisappear {
-            data.didExitView()
-        }
     }
 }
 

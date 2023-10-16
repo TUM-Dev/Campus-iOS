@@ -112,8 +112,8 @@ struct StudyRoomCell: View {
     let room: StudyRoom
     
     var body: some View {
-        DisclosureGroup(content: {
-            StudyRoomDetailsScreen(room: room)
+        NavigationLink(destination: {
+            NavigaTumDetailsView(viewModel: NavigaTumDetailsViewModel(id: room.raum_nr_architekt ?? ""))
         }, label: {
             AnyView(
                 HStack {
