@@ -2980,7 +2980,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Campus-iOS/Campus-iOS.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Base/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -3023,7 +3023,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Campus-iOS/Campus-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 56;
 				DEVELOPMENT_ASSET_PATHS = "\"Campus-iOS/Base/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J3C6P6X3N;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
