@@ -52,19 +52,9 @@ struct News: Decodable, Searchable {
         let title = try container.decode(String.self, forKey: .title)
         let imageURLString = try container.decode(String.self, forKey: .imageURL)
         
-        do {
-            self.date = try container.decode(Date.self, forKey: .date)
-        } catch {
-            self.date = Date.distantPast
-            print("News decoding error for property date: \(error)")
-        }
+        self.date = try? container.decode(Date.self, forKey: .date)
         
-        do {
-            self.link = try container.decode(URL.self, forKey: .link)
-        } catch {
-            self.link = nil
-            print("News decoding error for property link: \(error)")
-        }
+        self.link = try? container.decode(URL.self, forKey: .link)
         
         self.id = id
         self.sourceID = sourceID
