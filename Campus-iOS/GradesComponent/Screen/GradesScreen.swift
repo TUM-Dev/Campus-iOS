@@ -30,9 +30,7 @@ struct GradesScreen: View {
             switch vm.state {
             case .success(let data):
                 if (data.grades.count == 0) {
-                    NoDataView(description: "You seem to not have any grades yet!\n Happy Studying! 🙌").task {
-                        print(data.grades.count)
-                    }
+                    NoDataView(description: "You seem to not have any grades yet!\n Happy Studying! 🙌")
                 } else {
                     VStack {
                         GradesView(
