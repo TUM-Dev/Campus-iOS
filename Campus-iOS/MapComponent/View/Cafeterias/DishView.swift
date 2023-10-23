@@ -9,9 +9,16 @@ import SwiftUI
 
 struct DishView: View {
     @StateObject var vm: DishViewModel
+    let isListItem: Bool
     
     init(dish: Dish) {
         self._vm = StateObject(wrappedValue: DishViewModel(dish: dish))
+        self.isListItem = false
+    }
+    
+    init(dish: Dish, isListItem: Bool) {
+        self._vm = StateObject(wrappedValue: DishViewModel(dish: dish))
+        self.isListItem = isListItem
     }
     
     var body: some View {
@@ -32,7 +39,7 @@ struct DishView: View {
                 }
                 .frame(width: 150)
                 .padding()
-                .background(Color.secondaryBackground)
+                .background(isListItem ? Color.primaryBackground : Color.secondaryBackground)
                 .clipShape(RoundedRectangle(cornerRadius: Radius.regular))
                 .overlay(
                         RoundedRectangle(cornerRadius: Radius.regular)

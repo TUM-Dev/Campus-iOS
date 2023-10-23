@@ -11,6 +11,7 @@ struct MenuWeekView: View {
     
     let menus: [cafeteriaMenu]
     @State var selectedMenu: cafeteriaMenu
+    let isListItem: Bool
     
     var body: some View {
         VStack {
@@ -46,7 +47,7 @@ struct MenuWeekView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(selectedMenu.getDishes().sorted(by: { getTypeLabel(dishType: $0.dishType) > getTypeLabel(dishType: $1.dishType)}), id: \.self) { dish in
-                                    DishView(dish: dish)
+                                    DishView(dish: dish, isListItem: isListItem)
                                 }
                             }
                             .padding(.vertical, 5)

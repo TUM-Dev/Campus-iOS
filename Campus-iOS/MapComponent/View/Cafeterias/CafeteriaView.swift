@@ -14,17 +14,27 @@ struct CafeteriaView: View {
     @State var isExpanded = false
     @State private var rotationAngle: Double = 0
     let onlyMenu: Bool
+    let isListItem: Bool
     
     init(cafeteria: Cafeteria) {
         self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
         self.cafeteria = cafeteria
         self.onlyMenu = false
+        self.isListItem = false
     }
     
     init(cafeteria: Cafeteria, onlyMenu: Bool) {
         self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
         self.cafeteria = cafeteria
         self.onlyMenu = onlyMenu
+        self.isListItem = false
+    }
+    
+    init(cafeteria: Cafeteria, isListItem: Bool) {
+        self._vm = StateObject(wrappedValue: MealPlanViewModel(cafeteria: cafeteria))
+        self.cafeteria = cafeteria
+        self.onlyMenu = false
+        self.isListItem = isListItem
     }
     
     var body: some View {
@@ -67,7 +77,7 @@ struct CafeteriaView: View {
                     switch vm.state {
                     case .success(let menus):
                         if let firstMenu = menus.first {
-                            MenuWeekView(menus: menus, selectedMenu: firstMenu)
+                            MenuWeekView(menus: menus, selectedMenu: firstMenu, isListItem: isListItem)
                         }
                     case .loading, .na:
                         LoadingView(text: "Fetching Menus")
