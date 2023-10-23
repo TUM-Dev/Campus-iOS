@@ -14,15 +14,19 @@ struct LecturesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success(_):
-                VStack {
-                    LecturesView(model: vm.model, lecturesBySemester: vm.sortedLecturesBySemester)
-                        .padding(.top, 50)
-                        .refreshable {
-                            await vm.getLectures(
-                                forcedRefresh: true
-                            )
-                        }
+            case .success(let lectures):
+                if (lectures.count == 0) {
+                    NoDataView(description: "You seem to not have any lectures yet!\n Happy Studying! 🙌")
+                } else {
+                    VStack {
+                        LecturesView(model: vm.model, lecturesBySemester: vm.sortedLecturesBySemester)
+                            .padding(.top, 50)
+                            .refreshable {
+                                await vm.getLectures(
+                                    forcedRefresh: true
+                                )
+                            }
+                    }
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching Lectures".localized)
@@ -51,7 +55,7 @@ struct LecturesScreen: View {
                         await vm.getLectures()
                     }
                 }
-        
+                
                 Button("Cancel", role: .cancel) { }
             } message: { detail in
                 if case let .failed(error) = detail {

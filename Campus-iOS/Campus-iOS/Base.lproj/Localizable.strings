@@ -152,7 +152,8 @@
 
 // Grades
 "Fetching Grades" = "Fetching Grades";
-"You seem to not have any grades yet!" = "You seem to not have any grades yet!";
+"You seem to not have any grades yet!\n Happy Studying! 🙌" = "You seem to not have any grades yet!\n Happy Studying! 🙌";
+"You seem to not have any lectures yet!\n Happy Studying! 🙌" = "You seem to not have any lectures yet!\n Happy Studying! 🙌";
 "Error while fetching Grades" = "Error while fetching Grades";
 "Retry" = "Retry";
 "Cancel" = "Cancel";

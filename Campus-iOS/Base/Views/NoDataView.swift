@@ -16,12 +16,11 @@ struct NoDataView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            VStack (alignment: .center) {
-                Text(description.localized)
-                    .frame(maxWidth: .infinity)
-            }
+        VStack (alignment: .center) {
+            Text(description.localized)
+                .multilineTextAlignment(.center)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
