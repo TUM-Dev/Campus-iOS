@@ -28,14 +28,20 @@ struct GradesScreen: View {
     var body: some View {
         Group {
             switch vm.state {
-            case .success(_):
-                VStack {
-                    GradesView(
-                        vm: self.vm
-                    )
-                    .padding(.top, 30)
-                    .refreshable {
-                        await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
+            case .success(let data):
+                if (data.grades.count == 0) {
+                    NoDataView(description: "You seem to not have any grades yet!\n Happy Studying! 🙌")
+                } else {
+                    VStack {
+                        GradesView(
+                            vm: self.vm
+                        )
+                        .padding(.top, 30)
+                        .refreshable {
+                            await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
+                        }
+                    }.task {
+                        print(data.grades.count)
                     }
                 }
             case .loading, .na:

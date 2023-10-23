@@ -152,6 +152,7 @@
 
 // Grades
 "Fetching Grades" = "Fetching Grades";
+"You seem to not have any grades yet!\n Happy Studying! 🙌" = "You seem to not have any grades yet!\n Happy Studying! 🙌";
 "Error while fetching Grades" = "Error while fetching Grades";
 "Retry" = "Retry";
 "Cancel" = "Cancel";
@@ -165,6 +166,7 @@
 
 // Lectures
 "Fetching details of lecture" = "Fetching details of lecture";
+"You seem to not have any lectures yet!\n Happy Studying! 🙌" = "You seem to not have any lectures yet!\n Happy Studying! 🙌";
 "Error while fetching details of lecture" = "Error while fetching details of lecture";
 "Fetching Lectures" = "Fetching Lectures";
 "Error while fetching Lectures" = "Error while fetching Lectures";
