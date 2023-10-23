@@ -65,10 +65,6 @@ struct LecturesView: View {
             .listRowSeparator(.hidden)
             .background(Color.primaryBackground)
             .scrollContentBackground(.hidden)
-            
-            if lecturesBySemester.count <= 0 {
-                NoDataView(description: "You seem to not have any lectures yet!")
-            }
         } else {
             Text("Only available on iOS 16 or higher 😔")
         }
