@@ -178,7 +178,11 @@
 		287048502AD08DF300E59900 /* MealPlanScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870484F2AD08DF300E59900 /* MealPlanScreen.swift */; };
 		2870A2F829AF530800005264 /* DeparturesWidgetScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */; };
 		28D463612AD069D000F610AC /* StudyRoomGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D463602AD069D000F610AC /* StudyRoomGroupView.swift */; };
+<<<<<<< HEAD
 		2B3CEE242AE5D9F20011B3FB /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CEE232AE5D9F20011B3FB /* NoDataView.swift */; };
+=======
+		2B3CEE242AE5D9F20011B3FB /* EmptyGradesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3CEE232AE5D9F20011B3FB /* EmptyGradesView.swift */; };
+>>>>>>> c3d10cb792c96d4b8e82243b72276ea7a29251b2
 		2F1B2B8528652FC90023BD9A /* MovieDetailsBasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */; };
 		2F1B2B87286530120023BD9A /* MovieDetailsBasicInfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */; };
 		2FCF38AD286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */; };
@@ -562,7 +566,11 @@
 		2870484F2AD08DF300E59900 /* MealPlanScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanScreen.swift; sourceTree = "<group>"; };
 		2870A2F729AF530800005264 /* DeparturesWidgetScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesWidgetScreen.swift; sourceTree = "<group>"; };
 		28D463602AD069D000F610AC /* StudyRoomGroupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudyRoomGroupView.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		2B3CEE232AE5D9F20011B3FB /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+=======
+		2B3CEE232AE5D9F20011B3FB /* EmptyGradesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyGradesView.swift; sourceTree = "<group>"; };
+>>>>>>> c3d10cb792c96d4b8e82243b72276ea7a29251b2
 		2F1B2B8428652FC90023BD9A /* MovieDetailsBasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoView.swift; sourceTree = "<group>"; };
 		2F1B2B86286530120023BD9A /* MovieDetailsBasicInfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsBasicInfoRowView.swift; sourceTree = "<group>"; };
 		2FCF38AC286C9B5600F10915 /* MovieDetailsDetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsDetailedInfoView.swift; sourceTree = "<group>"; };
@@ -1847,7 +1855,11 @@
 				3654F37F28517156008AD5DC /* ImageFullScreenView.swift */,
 				36BBE72E27989F8C0018FD3F /* SFSafariViewWrapper.swift */,
 				36982BD727A2739000515847 /* Collapsible.swift */,
+<<<<<<< HEAD
 				2B3CEE232AE5D9F20011B3FB /* NoDataView.swift */,
+=======
+				2B3CEE232AE5D9F20011B3FB /* EmptyGradesView.swift */,
+>>>>>>> c3d10cb792c96d4b8e82243b72276ea7a29251b2
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2630,7 +2642,11 @@
 				1E8038BB2965B23D0098C614 /* ImagePicker.swift in Sources */,
 				1E1CD1692A69626800553228 /* NavigaTumOverlaysMaps.swift in Sources */,
 				36108BE127A304B5007DC62D /* Cafeteria.swift in Sources */,
+<<<<<<< HEAD
 				2B3CEE242AE5D9F20011B3FB /* NoDataView.swift in Sources */,
+=======
+				2B3CEE242AE5D9F20011B3FB /* EmptyGradesView.swift in Sources */,
+>>>>>>> c3d10cb792c96d4b8e82243b72276ea7a29251b2
 				28609DBC29AE4F7A00F3B8CA /* TrailingIconLabelStyle.swift in Sources */,
 				1E1CD18C2A696BD700553228 /* MoviesScreen.swift in Sources */,
 				97CE13CF2A94AD78003053D0 /* StudyRoomSearchResultViewModel.swift in Sources */,
