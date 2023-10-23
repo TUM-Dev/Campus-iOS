@@ -55,26 +55,38 @@ struct DeparturesWidgetView: View {
     func content() -> some View {
         if departuresViewModel.closestCampus != nil,
            let selectedStation = departuresViewModel.selectedStation {
-            VStack(alignment: .leading) {
+            VStack {
                 Group {
-                    Text("Station")
-                    + Text(": ")
-                    + Text(selectedStation.name)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.highlightText)
-                    if let walkingDistance = departuresViewModel.walkingDistance {
-                        Text("Walking Distance")
-                        + Text(": ")
-                        + Text("\(walkingDistance) \(walkingDistance > 1 ? "mins" : "min")")
-                            .foregroundColor(.highlightText)
-                            .fontWeight(.semibold)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Station")
+                            + Text(": ")
+                            + Text(selectedStation.name)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.highlightText)
+                            if let walkingDistance = departuresViewModel.walkingDistance {
+                                Text("Walking Distance")
+                                + Text(": ")
+                                + Text("\(walkingDistance) \(walkingDistance > 1 ? "mins" : "min")")
+                                    .foregroundColor(.highlightText)
+                                    .fontWeight(.semibold)
+                            }
+                        }
+                        Spacer()
                     }
                 }
-                ForEach(Array(departuresViewModel.departures.prefix(3)), id: \.self) { departure in
-                    DeparturesDetailsRowView(
-                        departuresViewModel: departuresViewModel,
-                        departure: departure
-                    )
+                if (departuresViewModel.departures.isEmpty) {
+                    Spacer()
+                    Text("Resource not found")
+                        .frame(alignment: Alignment.center)
+                    Spacer()
+                } else {
+                    ForEach(Array(departuresViewModel.departures.prefix(3)), id: \.self) { departure in
+                        DeparturesDetailsRowView(
+                            departuresViewModel: departuresViewModel,
+                            departure: departure
+                        )
+                    }
                 }
             }
             .font(.callout)

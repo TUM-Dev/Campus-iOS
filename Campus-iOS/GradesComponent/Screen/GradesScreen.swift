@@ -40,8 +40,6 @@ struct GradesScreen: View {
                         .refreshable {
                             await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
                         }
-                    }.task {
-                        print(data.grades.count)
                     }
                 }
             case .loading, .na:
