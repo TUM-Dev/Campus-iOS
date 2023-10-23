@@ -148,6 +148,7 @@
 
 // Grades
 "Fetching Grades" = "Lade Noten";
+"You seem to not have any grades yet!" = "Sie scheinen noch keine Noten zu haben!";
 "Error while fetching Grades" = "Ein Fehler ist aufgetreten beim Laden der Noten";
 "Retry" = "Nochmals versuchen";
 "Cancel" = "Abbrechen";
@@ -161,6 +162,7 @@
 
 // Lectures
 "Fetching details of lecture" = "Lade Details der Vorlesung";
+"You seem to not have any lectures yet!" = "Sie scheinen noch keine Vorlesungen zu haben!";
 "Error while fetching details of lecture" = "Ein Fehler ist aufgetreten beim Laden der Vorlesung";
 "Fetching Lectures" = "Lade Vorlesungen";
 "Error while fetching Lectures" = "Ein Fehler ist aufgetreten beim Laden der Vorlesungen";

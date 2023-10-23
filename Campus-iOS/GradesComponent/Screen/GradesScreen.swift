@@ -29,21 +29,15 @@ struct GradesScreen: View {
         Group {
             switch vm.state {
             case .success(_):
-                if vm.grades.count <= 0 {
-                    FailedView(
-                            errorDescription: "No grades yet!",
-                            retryClosure: vm.reloadGradesAndAverageGrades
-                        )
-                } else {
-                    VStack {
-                        GradesView(
-                            vm: self.vm
-                        )
-                        .padding(.top, 30)
-                        .refreshable {
-                            await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
-                        }
+                VStack {
+                    GradesView(
+                        vm: self.vm
+                    )
+                    .padding(.top, 30)
+                    .refreshable {
+                        await vm.reloadGradesAndAverageGrades(forcedRefresh: true)
                     }
+                    NoDataView(description: "You seem to not have any grades yet!")
                 }
             case .loading, .na:
                 LoadingView(text: "Fetching Grades")
