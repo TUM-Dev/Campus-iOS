@@ -46,22 +46,6 @@ struct LecturesScreen: View {
                 await vm.getLectures()
             }
         }
-        .alert(
-            "Error while fetching Lectures",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getLectures()
-                    }
-                }
-                
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    Text(error.localizedDescription)
-                }
-            }
     }
 }
 

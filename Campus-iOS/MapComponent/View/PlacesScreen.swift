@@ -63,19 +63,5 @@ struct PlacesScreen: View {
             await vm.getCafeteria(forcedRefresh: true)
             await vm.getStudyRoomResponse(forcedRefresh: true)
         }
-        .alert("Error while fetching Cafeterias", isPresented: $vm.hasError, presenting: vm.cafeteriasState) {
-            detail in
-            Button("Retry") {
-                Task {
-                    await vm.getCafeteria()
-                }
-            }
-            
-            Button("Cancel", role: .cancel) {}
-        } message: { detail in
-            if case let .failed(error) = detail {
-                Text(error.localizedDescription)
-            }
-        }
     }
 }

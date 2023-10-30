@@ -67,26 +67,6 @@ struct GradesScreen: View {
                 await vm.reloadGradesAndAverageGrades()
             }
         }
-        .alert(
-            "Error while fetching Grades",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.reloadGradesAndAverageGrades()
-                    }
-                }
-                
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? TUMOnlineAPIError {
-                        Text(apiError.errorDescription ?? "TUMOnlineAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
     }
 }
 

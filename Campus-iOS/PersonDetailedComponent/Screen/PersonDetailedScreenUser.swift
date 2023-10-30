@@ -43,22 +43,5 @@ struct PersonDetailedScreenUser: View {
         .task {
             await personDetailedVm.getDetails(forcedRefresh: true)
         }
-        .alert("Error while fetching Person Details", isPresented: $personDetailedVm.hasError, presenting: personDetailedVm.state) { detail in
-            Button("Retry") {
-                Task {
-                    await personDetailedVm.getDetails(forcedRefresh: true)
-                }
-            }
-            
-            Button("Cancel", role: .cancel) { }
-        } message: { detail in
-            if case let .failed(error) = detail {
-                if let apiError = error as? TUMOnlineAPIError {
-                    Text(apiError.errorDescription ?? "TUMOnlineAPI Error")
-                } else {
-                    Text(error.localizedDescription)
-                }
-            }
-        }
     }
 }

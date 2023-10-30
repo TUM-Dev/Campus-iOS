@@ -45,25 +45,5 @@ struct HomeScreen: View {
         .task {
             await profileVm.getProfile(forcedRefresh: true)
         }
-        .alert(
-            "Error while fetching Profile",
-            isPresented: $profileVm.profileHasError,
-            presenting: profileVm.profileState) { detail in
-                Button("Retry") {
-                    Task {
-                        await profileVm.getProfile(forcedRefresh: true)
-                    }
-                }
-        
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? TUMOnlineAPIError {
-                        Text(apiError.errorDescription ?? "TUMOnlineAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
     }
 }

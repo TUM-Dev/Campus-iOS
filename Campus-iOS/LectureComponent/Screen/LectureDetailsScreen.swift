@@ -37,22 +37,6 @@ struct LectureDetailsScreen: View {
         .task {
             await vm.getLectureDetails()
         }
-        .alert(
-            "Error while fetching details of lecture",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getLectureDetails()
-                    }
-                }
-        
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    Text(error.localizedDescription)
-                }
-            }
     }
 }
 
