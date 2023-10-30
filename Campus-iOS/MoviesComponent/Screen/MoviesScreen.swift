@@ -43,25 +43,6 @@ struct MoviesScreen: View {
             }
         }.task {
             await vm.getMovies(forcedRefresh: true)
-        }.alert(
-            "Error while fetching News",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getMovies(forcedRefresh: true)
-                    }
-                }
-                
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? TUMCabeAPIError {
-                        Text(apiError.errorDescription ?? "TUMCabeAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
+        }
     }
 }

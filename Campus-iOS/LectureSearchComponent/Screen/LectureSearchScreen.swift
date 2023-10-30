@@ -46,26 +46,6 @@ struct LectureSearchScreen: View {
                 await vm.getLectures(for: query, forcedRefresh: true)
             }
         }
-        .alert(
-            "Error while fetching Lectures",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getLectures(for: self.searchText, forcedRefresh: true)
-                    }
-                }
-                
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? TUMOnlineAPIError {
-                        Text(apiError.errorDescription ?? "TUMOnlineAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
     }
 }
 

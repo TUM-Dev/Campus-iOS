@@ -40,25 +40,6 @@ struct NewsScreen: View {
             }
         }.task {
             await vm.getNewsSources(forcedRefresh: true)
-        }.alert(
-            "Error while fetching News",
-            isPresented: $vm.hasError,
-            presenting: vm.state) { detail in
-                Button("Retry") {
-                    Task {
-                        await vm.getNewsSources(forcedRefresh: true)
-                    }
-                }
-                
-                Button("Cancel", role: .cancel) { }
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    if let apiError = error as? TUMCabeAPIError {
-                        Text(apiError.errorDescription ?? "TUMCabeAPI Error")
-                    } else {
-                        Text(error.localizedDescription)
-                    }
-                }
-            }
+        }
     }
 }

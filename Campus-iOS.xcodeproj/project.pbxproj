@@ -1182,6 +1182,7 @@
 		1F63A3FB29DEC6E300844981 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				1E1CD18B2A696BD700553228 /* MoviesScreen.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -1458,7 +1459,6 @@
 		36108BF527A30516007DC62D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1E1CD18B2A696BD700553228 /* MoviesScreen.swift */,
 				1EEE61B52A3B502D0038BF5B /* Widget */,
 				36108BF627A30516007DC62D /* MovieCard.swift */,
 				1E1CD1BA2A697C9500553228 /* MoviesView.swift */,
