@@ -117,7 +117,8 @@ struct Movie: Decodable, Searchable {
         self.movieDescription = movieDescription
         self.rating = rating
         self.runtime = runtime
-        self.title = String(title.split(separator: ":")[1].dropFirst())
+        let splitTitle = title.split(separator: ":")
+        self.title = splitTitle.count > 1 ? String(splitTitle[1].dropFirst()) : title
         self.year = year
     }
 }
