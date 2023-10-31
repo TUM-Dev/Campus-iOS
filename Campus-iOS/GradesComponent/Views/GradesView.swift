@@ -18,7 +18,7 @@ struct GradesView: View {
         
         return List {
             ForEach(gradesWithAverage.indices, id: \.self) { index in
-                GradesStudyProgramView(semesterGrades: gradesWithAverage[index], studyProgram: self.vm.getStudyProgram(studyID: gradesWithAverage[index].degree), barChartData: vm.barChartData[index])
+                GradesStudyProgramView(semesterGrades: gradesWithAverage[index], studyProgram: self.vm.getStudyProgram(studyID: gradesWithAverage[index].degree), barChartData: vm.barChartData.count > index ? vm.barChartData[index] : BarChartData(dataSets: BarDataSet(dataPoints: [])))
             }
             .listRowBackground(Color.secondaryBackground)
         }

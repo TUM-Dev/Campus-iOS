@@ -33,9 +33,11 @@ struct CampusApp: App {
             FirebaseApp.configure()
         #endif
         
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithDefaultBackground()
         UITabBar.appearance().isOpaque = true
-        let appearance = UITabBarAppearance()
-        UITabBar.appearance().scrollEdgeAppearance = appearance
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
     }
     
     var body: some Scene {
@@ -60,12 +62,12 @@ struct CampusApp: App {
                     }
                     
                     switch credentials {
-                        case .noTumID:
-                            model.isUserAuthenticated = false
-                            model.isLoginSheetPresented = false
+                    case .noTumID:
+                        model.isUserAuthenticated = false
+                        model.isLoginSheetPresented = false
                     case .tumID(tumID: _, token: _), .tumIDAndKey(tumID: _, token: _, key: _):
-                            model.isUserAuthenticated = true
-                            model.isLoginSheetPresented = false
+                        model.isUserAuthenticated = true
+                        model.isLoginSheetPresented = false
                     }
                 }
                 .background(Color.primaryBackground)
@@ -111,8 +113,8 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-                // MARK: - Lecture Screen
-                NavigationView {
+            // MARK: - Lecture Screen
+            NavigationView {
                 LecturesScreen(vm: LecturesViewModel(
                     model: model,
                     service: LecturesService()
@@ -128,8 +130,8 @@ struct CampusApp: App {
             .if(UIDevice.current.userInterfaceIdiom == .pad, transformT: { view in
                 view.navigationViewStyle(.stack)
             })
-                // MARK: - Calendar Screen
-                NavigationView {
+            // MARK: - Calendar Screen
+            NavigationView {
                 CalendarScreen(
                     model: model,
                     refresh: $model.isUserAuthenticated
